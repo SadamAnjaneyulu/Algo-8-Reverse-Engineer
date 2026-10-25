@@ -97,6 +97,48 @@ class HistoryValidation(unittest.TestCase):
         self.assertIn("historical", str(caught.exception))
         self.assertNotIn("private-marker", str(caught.exception))
 
+    def test_certificate_failure_has_safe_specific_reason(self):
+        error = module.ssl.SSLCertVerificationError(1, "private-marker")
+        error.verify_code = 20
+        error.verify_message = "unable to get local issuer certificate"
+        diagnostic = module.connection_diagnostic(module.urllib.error.URLError(error))
+        self.assertEqual(diagnostic["category"], "tls_certificate_verification")
+        self.assertEqual(diagnostic["verify_code"], 20)
+        self.assertEqual(diagnostic["reason"], "unable to get local issuer certificate")
+        self.assertNotIn("private-marker", str(diagnostic))
+
+    def test_proxy_error_does_not_echo_credential_url(self):
+        error = module.urllib.error.URLError("private-marker http://username:password@proxy.invalid/")
+        diagnostic = module.connection_diagnostic(error)
+        self.assertEqual(diagnostic["category"], "connection_or_proxy_error")
+        self.assertNotIn("password", str(diagnostic))
+        self.assertNotIn("proxy.invalid", str(diagnostic))
+
+    def test_dns_and_reset_failures_are_distinguished(self):
+        self.assertEqual(module.connection_diagnostic(module.socket.gaierror(11001, "private-marker"))["category"], "dns_resolution")
+        self.assertEqual(module.connection_diagnostic(ConnectionResetError(10054, "private-marker"))["category"], "connection_reset")
+
+    def test_network_diagnostics_never_send_credentials(self):
+        sent = []
+        class Reply(io.BytesIO):
+            status = 200
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                self.close()
+        class Opener:
+            def open(self, request, timeout):
+                sent.append(request)
+                return Reply(b"public-response")
+        with patch.object(module.urllib.request, "build_opener", return_value=Opener()):
+            diagnostic = module.network_diagnostics()
+        self.assertEqual(len(sent), 3)
+        self.assertFalse(diagnostic["credential_values_included"])
+        for request in sent:
+            self.assertIsNone(request.data)
+            self.assertFalse(request.has_header("Apikey"))
+            self.assertFalse(request.has_header("X-sessiontoken"))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -14,6 +14,8 @@ import json
 import math
 import os
 import re
+import socket
+import ssl
 import sys
 import time
 import urllib.error
@@ -60,6 +62,70 @@ def save_immutable(path, content):
         f.write(content)
 
 
+def connection_diagnostic(exc):
+    """Categorize transport errors without arbitrary exception text or URLs."""
+    reason = exc.reason if isinstance(exc, urllib.error.URLError) else exc
+    if isinstance(reason, ssl.SSLCertVerificationError):
+        labels = (
+            "unable to get local issuer certificate", "unable to verify the first certificate",
+            "self-signed certificate", "certificate has expired", "certificate is not yet valid",
+            "hostname mismatch", "IP address mismatch", "Missing Authority Key Identifier",
+            "Missing Subject Key Identifier", "Basic Constraints of CA cert not marked critical",
+            "CA cert does not include key usage extension", "path length constraint exceeded",
+            "unsuitable certificate purpose", "certificate chain too long", "certificate signature failure",
+        )
+        message = str(getattr(reason, "verify_message", ""))
+        label = next((label for label in labels if label.lower() in message.lower()), "certificate verification failed")
+        code = getattr(reason, "verify_code", None)
+        return dict(category="tls_certificate_verification", verify_code=code if isinstance(code, int) else None,
+                    reason=label)
+    if isinstance(reason, socket.gaierror):
+        return dict(category="dns_resolution", os_error_code=reason.errno)
+    if isinstance(reason, (TimeoutError, socket.timeout)):
+        return dict(category="connection_timeout")
+    if isinstance(reason, ssl.SSLError):
+        return dict(category="tls_handshake")
+    if isinstance(reason, ConnectionRefusedError):
+        return dict(category="connection_refused", os_error_code=reason.errno)
+    if isinstance(reason, ConnectionResetError):
+        return dict(category="connection_reset", os_error_code=reason.errno)
+    if isinstance(reason, OSError):
+        return dict(category="connection_os_error", os_error_code=reason.errno,
+                    windows_error_code=getattr(reason, "winerror", None))
+    return dict(category="connection_or_proxy_error", reason_type=type(reason).__name__)
+
+
+def network_diagnostics():
+    """Credential-free checks through inherited proxy and verified TLS settings."""
+    result = dict(python_version=sys.version.split()[0], openssl_version=ssl.OPENSSL_VERSION,
+                  credential_values_included=False, tls_verification="enabled",
+                  configured_variable_presence={name: bool(os.environ.get(name)) for name in
+                      ("SSL_CERT_FILE", "SSL_CERT_DIR", "REQUESTS_CA_BUNDLE", "HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "NO_PROXY")},
+                  proxy_scheme_names=sorted(urllib.request.getproxies()), endpoints=[])
+    try:
+        result["certificate_store_counts"] = ssl.create_default_context().cert_store_stats()
+    except OSError as exc:
+        result["certificate_store_error"] = connection_diagnostic(exc)
+    for url in (SESSION_URL, HISTORY_URL, "https://pypi.org/"):
+        parsed = urllib.parse.urlparse(url)
+        entry = dict(host=parsed.hostname, path=parsed.path)
+        try:
+            request = urllib.request.Request(url, method="GET")
+            with urllib.request.build_opener(NoRedirect()).open(request, timeout=15) as response:
+                content = response.read(1024)
+                entry.update(transport="connected_with_verified_tls", http_status=response.status,
+                             broker_rejection_page=b"request rejected" in content.lower())
+        except urllib.error.HTTPError as exc:
+            # A normal HTTP rejection still proves verified TLS reached a server.
+            entry.update(transport="connected_with_verified_tls", http_status=exc.code)
+        except (urllib.error.URLError, OSError) as exc:
+            entry.update(transport="failed", **connection_diagnostic(exc))
+        except FetchError:
+            entry.update(transport="redirect_refused")
+        result["endpoints"].append(entry)
+    return result
+
+
 def request_json(url, headers, body=None):
     # HTTPS proxy and CA configuration are inherited. Never log headers, request
     # bodies, session responses, or arbitrary provider error messages.
@@ -89,8 +155,10 @@ def request_json(url, headers, body=None):
                 time.sleep(2**attempt)
                 continue
             raise FetchError(f"HTTP {exc.code}; response body suppressed.") from None
-        except (urllib.error.URLError, TimeoutError):
-            raise FetchError("Connection/TLS/proxy request failed; credential-bearing details suppressed.") from None
+        except (urllib.error.URLError, OSError) as exc:
+            diagnostic = connection_diagnostic(exc)
+            stage = "history" if urllib.parse.urlparse(url).path.endswith("historicalcharts") else "session"
+            raise FetchError(f"Breeze {stage} connection failed: {json.dumps(diagnostic, sort_keys=True)}. Run --diagnose-network; credential-bearing details suppressed.") from None
         except (ValueError, UnicodeError):
             raise FetchError("Provider did not return valid JSON; body suppressed.") from None
 
@@ -230,12 +298,16 @@ def main():
     parser.add_argument("--smoke", action="store_true", help="NIFTY 23 June and SENSEX 24 June sample sessions.")
     parser.add_argument("--index", choices=("both", "NIFTY", "SENSEX"), default="both")
     parser.add_argument("--prompt-credentials", action="store_true", help="Prompt for missing credentials with hidden input in a local terminal; never write them to disk.")
+    parser.add_argument("--diagnose-network", action="store_true", help="Print credential-free TLS/DNS/proxy diagnostics; does not download bars or prompt for secrets.")
     parser.add_argument("--start", type=date.fromisoformat, default=date(2026, 6, 22))
     parser.add_argument("--end", type=date.fromisoformat, default=date(2026, 10, 22))
     parser.add_argument("--output", type=Path, default=ROOT/"data"/"breeze")
     parser.add_argument("--response-timezone", default="Asia/Kolkata")
     parser.add_argument("--bar-label", choices=("start", "end"), default="start")
     args = parser.parse_args()
+    if args.diagnose_network:
+        print(json.dumps(network_diagnostics(), indent=2))
+        return
     if args.fetch and args.prompt_credentials:
         missing = [n for n in ("BREEZE_API_KEY", "BREEZE_API_SESSION") if not os.environ.get(n)]
         if missing and not sys.stdin.isatty():

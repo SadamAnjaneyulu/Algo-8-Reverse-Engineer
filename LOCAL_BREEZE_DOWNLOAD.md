@@ -37,6 +37,21 @@ The requests are read-only. The downloader preserves your normal networking/TLS
 settings. If the rejection repeats locally, stop and provide the sanitized support
 ID to ICICI. Do not try to bypass broker controls or disable TLS verification.
 
+For a connection/TLS/proxy error on your computer, first update and run the
+credential-free diagnostic. On Windows PowerShell, from the repository folder:
+
+```powershell
+git pull --ff-only
+py research/fetch_breeze_indices.py --diagnose-network
+```
+
+This does not ask for keys. It reports DNS/connection error categories, certificate
+verification codes, proxy presence (never proxy values), and public endpoint HTTP
+status. It preserves TLS verification and your inherited proxy configuration.
+Share this diagnostic output to distinguish a local certificate/trust problem,
+DNS failure, timeout, connection reset or broker HTTP rejection. It does not
+establish data access just because HTTPS connects.
+
 `NIFTY`/NSE and `BSESEN`/BSE index mappings require live confirmation. Current
 Breeze API docs say BSE securities are unavailable despite BFO SDK examples;
 SENSEX coverage remains unverified. If NIFTY works but SENSEX does not, continue
