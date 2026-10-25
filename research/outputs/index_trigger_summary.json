@@ -1,0 +1,429 @@
+{
+  "input_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "validated_index_days": 170,
+  "stored_index_bars": 63678,
+  "fill_records": 41421,
+  "cycles": 35,
+  "preexpiry_pair_events": 1087,
+  "observed_preexpiry_dates": 32,
+  "initial_0916_dates": 31,
+  "initial_nearest_prior_close_matches": 31,
+  "initial_nearest_prior_close_available": 32,
+  "initial_exceptions": [
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-06",
+      "event_minute_ist": "2026-10-05T09:30:00+05:30",
+      "first_leg_time_ist": "2026-10-05T09:30:59+05:30",
+      "both_legs_started_ist": "2026-10-05T09:30:59+05:30",
+      "calendar_dte": 1,
+      "strike": 22600,
+      "ce_opening_quantity": 130,
+      "pe_opening_quantity": 130,
+      "source_rows": "35839;35840;35841;35842",
+      "reference_bar_start_ist": "2026-10-05T09:29:00+05:30",
+      "reference_close": 22568.95,
+      "completed_open_to_now_pct": 0.16665631074854748,
+      "completed_range_pct": 0.2818289143151335,
+      "completed_15min_return_pct": "",
+      "minute_boundary_open": 22569.4,
+      "nearest_prior_close_strike": 22550,
+      "sold_minus_nearest_prior_close_strike": 50,
+      "nearest_boundary_open_strike": 22550,
+      "clock_offset_mod15": 14,
+      "weighted_sold_ce_premium": 97.4,
+      "weighted_sold_pe_premium": 93.275
+    }
+  ],
+  "cohorts": [
+    {
+      "underlying": "NIFTY",
+      "block": "all",
+      "first_pairs": 15,
+      "initial_at_nearest": 14,
+      "opening_gap_pct": {
+        "n": 15,
+        "minimum": -0.7409656095309525,
+        "median": 0.03388357769005257,
+        "maximum": 0.8261274608379443
+      },
+      "pair_groups": 504,
+      "prior_index_available": 501,
+      "all_pairs_at_nearest_prior_close": 352,
+      "all_pairs_within_one_strike_step": 488,
+      "clock_mod15_counts": {
+        "0": 217,
+        "1": 55,
+        "14": 114,
+        "8": 10,
+        "11": 6,
+        "2": 9,
+        "9": 5,
+        "7": 9,
+        "6": 4,
+        "13": 38,
+        "12": 6,
+        "3": 9,
+        "4": 6,
+        "5": 9,
+        "10": 7
+      },
+      "events_within_3min_clock_window": 281,
+      "scheduled_opportunities": 365,
+      "scheduled_opportunities_with_event": 220,
+      "dates_with_any_clock_event": 15,
+      "large_late_groups_with_prior_index": 11,
+      "large_late_call_after_up_or_put_after_down": 2,
+      "flat_preexpiry_cycles": 11,
+      "negative_flow_cycles": 8,
+      "negative_flow_amounts": {
+        "n": 8,
+        "minimum": -222267.5,
+        "median": -144925.625,
+        "maximum": -17036.5
+      }
+    },
+    {
+      "underlying": "NIFTY",
+      "block": "June_September",
+      "first_pairs": 12,
+      "initial_at_nearest": 12,
+      "opening_gap_pct": {
+        "n": 12,
+        "minimum": -0.7409656095309525,
+        "median": -0.027624093843447994,
+        "maximum": 0.8261274608379443
+      },
+      "pair_groups": 404,
+      "prior_index_available": 402,
+      "all_pairs_at_nearest_prior_close": 284,
+      "all_pairs_within_one_strike_step": 392,
+      "clock_mod15_counts": {
+        "0": 175,
+        "1": 46,
+        "14": 94,
+        "8": 9,
+        "11": 6,
+        "2": 7,
+        "9": 2,
+        "7": 6,
+        "6": 3,
+        "13": 28,
+        "12": 5,
+        "3": 8,
+        "4": 4,
+        "5": 5,
+        "10": 6
+      },
+      "events_within_3min_clock_window": 228,
+      "scheduled_opportunities": 293,
+      "scheduled_opportunities_with_event": 177,
+      "dates_with_any_clock_event": 12,
+      "large_late_groups_with_prior_index": 10,
+      "large_late_call_after_up_or_put_after_down": 1,
+      "flat_preexpiry_cycles": 9,
+      "negative_flow_cycles": 6,
+      "negative_flow_amounts": {
+        "n": 6,
+        "minimum": -222267.5,
+        "median": -145622.75,
+        "maximum": -17036.5
+      }
+    },
+    {
+      "underlying": "NIFTY",
+      "block": "October",
+      "first_pairs": 3,
+      "initial_at_nearest": 2,
+      "opening_gap_pct": {
+        "n": 3,
+        "minimum": 0.23673601604567995,
+        "median": 0.3822575471362111,
+        "maximum": 0.5050383955603754
+      },
+      "pair_groups": 100,
+      "prior_index_available": 99,
+      "all_pairs_at_nearest_prior_close": 68,
+      "all_pairs_within_one_strike_step": 96,
+      "clock_mod15_counts": {
+        "14": 20,
+        "0": 42,
+        "1": 9,
+        "9": 3,
+        "7": 3,
+        "4": 2,
+        "3": 1,
+        "13": 10,
+        "5": 4,
+        "8": 1,
+        "10": 1,
+        "2": 2,
+        "6": 1,
+        "12": 1
+      },
+      "events_within_3min_clock_window": 53,
+      "scheduled_opportunities": 72,
+      "scheduled_opportunities_with_event": 43,
+      "dates_with_any_clock_event": 3,
+      "large_late_groups_with_prior_index": 1,
+      "large_late_call_after_up_or_put_after_down": 1,
+      "flat_preexpiry_cycles": 2,
+      "negative_flow_cycles": 2,
+      "negative_flow_amounts": {
+        "n": 2,
+        "minimum": -144888.25,
+        "median": -142176.125,
+        "maximum": -139464.0
+      }
+    },
+    {
+      "underlying": "SENSEX",
+      "block": "all",
+      "first_pairs": 17,
+      "initial_at_nearest": 17,
+      "opening_gap_pct": {
+        "n": 17,
+        "minimum": -0.5535477081217488,
+        "median": 0.06460224414717164,
+        "maximum": 0.95808562708668
+      },
+      "pair_groups": 583,
+      "prior_index_available": 579,
+      "all_pairs_at_nearest_prior_close": 395,
+      "all_pairs_within_one_strike_step": 548,
+      "clock_mod15_counts": {
+        "0": 279,
+        "1": 69,
+        "14": 144,
+        "9": 6,
+        "10": 6,
+        "6": 8,
+        "12": 7,
+        "2": 10,
+        "7": 10,
+        "3": 11,
+        "8": 6,
+        "4": 8,
+        "11": 4,
+        "13": 9,
+        "5": 6
+      },
+      "events_within_3min_clock_window": 358,
+      "scheduled_opportunities": 414,
+      "scheduled_opportunities_with_event": 260,
+      "dates_with_any_clock_event": 17,
+      "large_late_groups_with_prior_index": 8,
+      "large_late_call_after_up_or_put_after_down": 2,
+      "flat_preexpiry_cycles": 11,
+      "negative_flow_cycles": 7,
+      "negative_flow_amounts": {
+        "n": 7,
+        "minimum": -190755.0,
+        "median": -141580.0,
+        "maximum": -1059.0
+      }
+    },
+    {
+      "underlying": "SENSEX",
+      "block": "June_September",
+      "first_pairs": 13,
+      "initial_at_nearest": 13,
+      "opening_gap_pct": {
+        "n": 13,
+        "minimum": -0.5535477081217488,
+        "median": 0.08042103255034849,
+        "maximum": 0.95808562708668
+      },
+      "pair_groups": 438,
+      "prior_index_available": 435,
+      "all_pairs_at_nearest_prior_close": 300,
+      "all_pairs_within_one_strike_step": 412,
+      "clock_mod15_counts": {
+        "0": 209,
+        "1": 54,
+        "14": 105,
+        "9": 5,
+        "10": 3,
+        "6": 7,
+        "12": 4,
+        "2": 9,
+        "7": 7,
+        "3": 9,
+        "8": 5,
+        "4": 6,
+        "11": 3,
+        "13": 8,
+        "5": 4
+      },
+      "events_within_3min_clock_window": 272,
+      "scheduled_opportunities": 318,
+      "scheduled_opportunities_with_event": 197,
+      "dates_with_any_clock_event": 13,
+      "large_late_groups_with_prior_index": 8,
+      "large_late_call_after_up_or_put_after_down": 2,
+      "flat_preexpiry_cycles": 7,
+      "negative_flow_cycles": 5,
+      "negative_flow_amounts": {
+        "n": 5,
+        "minimum": -190755.0,
+        "median": -141580.0,
+        "maximum": -36852.0
+      }
+    },
+    {
+      "underlying": "SENSEX",
+      "block": "October",
+      "first_pairs": 4,
+      "initial_at_nearest": 4,
+      "opening_gap_pct": {
+        "n": 4,
+        "minimum": -0.05400039564645853,
+        "median": 0.013276903097786397,
+        "maximum": 0.7603477168362183
+      },
+      "pair_groups": 145,
+      "prior_index_available": 144,
+      "all_pairs_at_nearest_prior_close": 95,
+      "all_pairs_within_one_strike_step": 136,
+      "clock_mod15_counts": {
+        "0": 70,
+        "7": 3,
+        "1": 15,
+        "14": 39,
+        "3": 2,
+        "10": 3,
+        "12": 3,
+        "6": 1,
+        "5": 2,
+        "8": 1,
+        "2": 1,
+        "4": 2,
+        "9": 1,
+        "11": 1,
+        "13": 1
+      },
+      "events_within_3min_clock_window": 86,
+      "scheduled_opportunities": 96,
+      "scheduled_opportunities_with_event": 63,
+      "dates_with_any_clock_event": 4,
+      "large_late_groups_with_prior_index": 0,
+      "large_late_call_after_up_or_put_after_down": 0,
+      "flat_preexpiry_cycles": 4,
+      "negative_flow_cycles": 2,
+      "negative_flow_amounts": {
+        "n": 2,
+        "minimum": -149911.0,
+        "median": -75485.0,
+        "maximum": -1059.0
+      }
+    }
+  ],
+  "limitations": [
+    "Clock opportunities are descriptive windows, not verified scheduled decisions. Missing events do not establish skipped strategy signals.",
+    "Cashflow is conditional on zero initial inventory, complete export and no residual positions; costs and external settlement are unavailable.",
+    "Initial straddle premium is a gross sold price; it excludes hedge costs and is a scale for path description, not the current-book breakeven or stop.",
+    "Cycle path features use full sessions and can extend after exits; they are outcome descriptions, never entry predictors.",
+    "Post-CAS prior continuous close to expiry open includes the closing auction; it is not an isolated overnight return.",
+    "No neighboring option prices, IV, theta, marked P&L, fills-to-quote latency or definitive causal trigger are inferred.",
+    "October has already been inspected; chronological replication is not a blinded holdout."
+  ],
+  "quarter_hour_sensitivity": {
+    "definition": "Additional descriptive window after inspecting phase counts: quarter-hour minute and two following minutes; not a newly validated strategy rule.",
+    "pair_groups_in_window": 878,
+    "total_pair_groups": 1087
+  },
+  "large_late_groups": 39,
+  "large_late_groups_without_immediately_prior_continuous_bar": 20,
+  "initial_completed_minute_returns_pct": {
+    "n": 32,
+    "minimum": -0.4555941897117721,
+    "median": -0.012442213468955021,
+    "maximum": 0.25609703163078645
+  },
+  "initial_completed_minute_return_signs": {
+    "positive": 15,
+    "negative": 17
+  },
+  "scheduled_event_direction_splits": [
+    {
+      "feature": "completed_open_to_now_pct",
+      "direction": "nonpositive",
+      "opportunities": 417,
+      "opportunities_with_pair": 255
+    },
+    {
+      "feature": "completed_open_to_now_pct",
+      "direction": "positive",
+      "opportunities": 362,
+      "opportunities_with_pair": 225
+    },
+    {
+      "feature": "completed_15min_return_pct",
+      "direction": "nonpositive",
+      "opportunities": 386,
+      "opportunities_with_pair": 223
+    },
+    {
+      "feature": "completed_15min_return_pct",
+      "direction": "positive",
+      "opportunities": 361,
+      "opportunities_with_pair": 226
+    }
+  ],
+  "routine_new_long_fill_prices": [
+    {
+      "underlying": "NIFTY",
+      "fill_records": 1357,
+      "median_executed_price": 1.95,
+      "concentration_interval": [
+        1.5,
+        2.5
+      ],
+      "fills_in_interval": 917
+    },
+    {
+      "underlying": "SENSEX",
+      "fill_records": 1496,
+      "median_executed_price": 6.7,
+      "concentration_interval": [
+        5,
+        9
+      ],
+      "fills_in_interval": 1312
+    }
+  ],
+  "initial_wing_gaps": [
+    {
+      "underlying": "NIFTY",
+      "period": "all",
+      "observations": 28,
+      "nominal_gap": 2000,
+      "exact": 19,
+      "tolerance": 100,
+      "within_tolerance": 26
+    },
+    {
+      "underlying": "SENSEX",
+      "period": "before_2026_09_16",
+      "observations": 22,
+      "nominal_gap": 4000,
+      "exact": 16,
+      "tolerance": 200,
+      "within_tolerance": 21
+    },
+    {
+      "underlying": "SENSEX",
+      "period": "from_2026_09_16",
+      "observations": 12,
+      "nominal_gap": 2000,
+      "exact": 12,
+      "tolerance": 200,
+      "within_tolerance": 12
+    }
+  ],
+  "next_option_sample": {
+    "cycles": 4,
+    "contract_days": 356,
+    "note": "Request plan only. No options have been fetched; expired-series/BSE derivatives support needs a small verified sample. Does not include unselected neighbors."
+  }
+}
