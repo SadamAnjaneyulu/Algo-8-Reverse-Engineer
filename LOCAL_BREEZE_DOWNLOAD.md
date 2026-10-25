@@ -52,6 +52,41 @@ Share this diagnostic output to distinguish a local certificate/trust problem,
 DNS failure, timeout, connection reset or broker HTTP rejection. It does not
 establish data access just because HTTPS connects.
 
+### Windows: self-signed certificate in the login endpoint's chain
+
+If Python's diagnostic reports certificate verification code 19 for
+`api.icicidirect.com`, while other sites pass TLS, do not assume the API key is
+invalid. The chain is not trusted by that Python/OpenSSL context. The issuer and
+reason (broker chain, security software, organizational inspection, or other
+network behavior) remain unconfirmed.
+
+Try the supported native Windows trust source. It uses Windows CryptoAPI chain
+validation through `truststore`; it does not accept arbitrary self-signed
+certificates, disable hostname checks, or install a new root certificate.
+
+```powershell
+git pull --ff-only
+py -m pip install truststore==0.10.5
+py research/fetch_breeze_indices.py --diagnose-network --tls-backend native
+```
+
+If the login endpoint now shows `connected_with_verified_tls` (an unauthenticated
+HTTP 400/401/415 is acceptable for this connectivity check), retry:
+
+```powershell
+py research/fetch_breeze_indices.py --smoke --fetch --prompt-credentials --tls-backend native
+```
+
+Keep `--tls-backend native` on subsequent full downloads if this is the working
+trust source. The normal proxy configuration and any explicitly configured CA
+locations are retained. Official truststore source/docs:
+https://pypi.org/project/truststore/0.10.5/ and https://truststore.readthedocs.io/.
+
+If native verification also fails, stop before sending credentials and check the
+certificate issuer in the browser/with IT or ICICI. Do not trust a certificate
+downloaded from the failed connection, turn off antivirus, or set verification
+to false to force the request through.
+
 `NIFTY`/NSE and `BSESEN`/BSE index mappings require live confirmation. Current
 Breeze API docs say BSE securities are unavailable despite BFO SDK examples;
 SENSEX coverage remains unverified. If NIFTY works but SENSEX does not, continue

@@ -139,6 +139,30 @@ class HistoryValidation(unittest.TestCase):
             self.assertFalse(request.has_header("Apikey"))
             self.assertFalse(request.has_header("X-sessiontoken"))
 
+    def test_default_tls_requires_certificate_and_hostname_validation(self):
+        with patch.object(module, "TLS_BACKEND", "python"):
+            context = module.tls_context()
+        self.assertEqual(context.verify_mode, module.ssl.CERT_REQUIRED)
+        self.assertTrue(context.check_hostname)
+
+    def test_native_trust_context_is_used_without_global_ssl_injection(self):
+        context = module.ssl.create_default_context()
+        class Native:
+            SSLContext = staticmethod(lambda protocol: context)
+        with patch.object(module, "TLS_BACKEND", "native"), patch.object(module.importlib, "import_module", return_value=Native), patch.dict(module.os.environ, {}, clear=True):
+            self.assertIs(module.tls_context(), context)
+        self.assertEqual(context.verify_mode, module.ssl.CERT_REQUIRED)
+        self.assertTrue(context.check_hostname)
+
+    def test_unverified_native_context_is_rejected(self):
+        context = module.ssl.SSLContext(module.ssl.PROTOCOL_TLS_CLIENT)
+        context.check_hostname = False
+        class Native:
+            SSLContext = staticmethod(lambda protocol: context)
+        with patch.object(module, "TLS_BACKEND", "native"), patch.object(module.importlib, "import_module", return_value=Native), patch.dict(module.os.environ, {}, clear=True):
+            with self.assertRaises(module.FetchError):
+                module.tls_context()
+
 
 if __name__ == "__main__":
     unittest.main()

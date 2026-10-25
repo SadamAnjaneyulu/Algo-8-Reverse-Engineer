@@ -10,6 +10,7 @@ import csv
 import getpass
 import hashlib
 import io
+import importlib
 import json
 import math
 import os
@@ -33,6 +34,7 @@ except ZoneInfoNotFoundError:
 SESSION_URL = "https://api.icicidirect.com/breezeapi/api/v1/customerdetails"
 HISTORY_URL = "https://breezeapi.icicidirect.com/api/v2/historicalcharts"
 SYMBOLS = {"NIFTY": ("NSE", "NIFTY"), "SENSEX": ("BSE", "BSESEN")}
+TLS_BACKEND = "python"
 
 
 class FetchError(Exception):
@@ -60,6 +62,30 @@ def save_immutable(path, content):
         return
     with path.open("xb") as f:
         f.write(content)
+
+
+def tls_context():
+    """Use a supported trust source; always require chain and hostname checks."""
+    if TLS_BACKEND == "native":
+        try:
+            truststore = importlib.import_module("truststore")
+        except ImportError:
+            raise FetchError("Native TLS trust requires truststore: py -m pip install truststore==0.10.5") from None
+        context = truststore.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+        # Preserve explicit additional CA bindings. Otherwise native truststore
+        # uses Windows CryptoAPI / macOS Security / OS OpenSSL trust settings.
+        cafile, capath = os.environ.get("SSL_CERT_FILE"), os.environ.get("SSL_CERT_DIR")
+        if cafile or capath:
+            context.load_verify_locations(cafile=cafile, capath=capath)
+    else:
+        context = ssl.create_default_context()
+    if context.verify_mode != ssl.CERT_REQUIRED or not context.check_hostname:
+        raise FetchError("TLS context must verify both certificate chains and hostnames.")
+    return context
+
+
+def https_opener():
+    return urllib.request.build_opener(NoRedirect(), urllib.request.HTTPSHandler(context=tls_context()))
 
 
 def connection_diagnostic(exc):
@@ -98,12 +124,17 @@ def connection_diagnostic(exc):
 def network_diagnostics():
     """Credential-free checks through inherited proxy and verified TLS settings."""
     result = dict(python_version=sys.version.split()[0], openssl_version=ssl.OPENSSL_VERSION,
+                  tls_backend=TLS_BACKEND,
                   credential_values_included=False, tls_verification="enabled",
                   configured_variable_presence={name: bool(os.environ.get(name)) for name in
                       ("SSL_CERT_FILE", "SSL_CERT_DIR", "REQUESTS_CA_BUNDLE", "HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "NO_PROXY")},
                   proxy_scheme_names=sorted(urllib.request.getproxies()), endpoints=[])
     try:
-        result["certificate_store_counts"] = ssl.create_default_context().cert_store_stats()
+        context = tls_context()
+        if TLS_BACKEND == "native":
+            result["certificate_store_source"] = "native_operating_system"
+        else:
+            result["certificate_store_counts"] = context.cert_store_stats()
     except OSError as exc:
         result["certificate_store_error"] = connection_diagnostic(exc)
     for url in (SESSION_URL, HISTORY_URL, "https://pypi.org/"):
@@ -111,7 +142,7 @@ def network_diagnostics():
         entry = dict(host=parsed.hostname, path=parsed.path)
         try:
             request = urllib.request.Request(url, method="GET")
-            with urllib.request.build_opener(NoRedirect()).open(request, timeout=15) as response:
+            with https_opener().open(request, timeout=15) as response:
                 content = response.read(1024)
                 entry.update(transport="connected_with_verified_tls", http_status=response.status,
                              broker_rejection_page=b"request rejected" in content.lower())
@@ -129,7 +160,7 @@ def network_diagnostics():
 def request_json(url, headers, body=None):
     # HTTPS proxy and CA configuration are inherited. Never log headers, request
     # bodies, session responses, or arbitrary provider error messages.
-    opener = urllib.request.build_opener(NoRedirect())
+    opener = https_opener()
     for attempt in range(3):
         try:
             request = urllib.request.Request(url, data=body, headers=headers, method="GET")
@@ -293,18 +324,29 @@ def fetch_day(client, root, underlying, target_date, response_timezone="Asia/Kol
 
 
 def main():
+    global TLS_BACKEND
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fetch", action="store_true", help="Actually request data; default only prints plan.")
     parser.add_argument("--smoke", action="store_true", help="NIFTY 23 June and SENSEX 24 June sample sessions.")
     parser.add_argument("--index", choices=("both", "NIFTY", "SENSEX"), default="both")
     parser.add_argument("--prompt-credentials", action="store_true", help="Prompt for missing credentials with hidden input in a local terminal; never write them to disk.")
     parser.add_argument("--diagnose-network", action="store_true", help="Print credential-free TLS/DNS/proxy diagnostics; does not download bars or prompt for secrets.")
+    parser.add_argument("--tls-backend", choices=("python", "native"), default="python",
+                        help="Certificate trust source. native requires truststore and uses Windows CryptoAPI on Windows; verification stays enabled.")
     parser.add_argument("--start", type=date.fromisoformat, default=date(2026, 6, 22))
     parser.add_argument("--end", type=date.fromisoformat, default=date(2026, 10, 22))
     parser.add_argument("--output", type=Path, default=ROOT/"data"/"breeze")
     parser.add_argument("--response-timezone", default="Asia/Kolkata")
     parser.add_argument("--bar-label", choices=("start", "end"), default="start")
     args = parser.parse_args()
+    TLS_BACKEND = args.tls_backend
+    if args.fetch or args.diagnose_network:
+        try:
+            tls_context()
+        except FetchError as exc:
+            parser.error(str(exc))
+        except OSError:
+            parser.error("Cannot initialize the configured certificate trust source; check trusted CA configuration.")
     if args.diagnose_network:
         print(json.dumps(network_diagnostics(), indent=2))
         return
