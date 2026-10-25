@@ -32,6 +32,52 @@ class HistoryValidation(unittest.TestCase):
             with self.assertRaises(module.FetchError):
                 module.normalize(payload, "NIFTY", DAY, "Asia/Kolkata", "start")
 
+    def test_missing_minutes_are_reported_exactly(self):
+        payload = response()
+        del payload["Success"][2:6]
+        with self.assertRaises(module.MissingMinutesError) as caught:
+            module.normalize(payload, "NIFTY", DAY, "Asia/Kolkata", "start")
+        self.assertEqual([datetime.fromisoformat(t).strftime("%H:%M") for t in caught.exception.missing],
+                         ["09:17", "09:18", "09:19", "09:20"])
+
+    def test_bulk_continues_other_dates_but_reports_incomplete_exit_status(self):
+        calls = []
+        def fake_fetch(client, root, underlying, target, *args):
+            calls.append((underlying, target))
+            if target == date(2026, 6, 22):
+                raise module.MissingMinutesError(["2026-06-22T09:17:00+05:30"])
+            return {"regular_session_bars": 375}
+        with tempfile.TemporaryDirectory(prefix="algo8-continue-test-") as folder:
+            argv = ["fetch", "--fetch", "--index", "NIFTY", "--start", "2026-06-22", "--end", "2026-06-23", "--continue-incomplete", "--output", folder]
+            with patch.object(module.sys, "argv", argv), patch.object(module, "fetch_day", side_effect=fake_fetch), patch("sys.stdout", new_callable=io.StringIO):
+                with self.assertRaises(SystemExit) as caught:
+                    module.main()
+            self.assertEqual(caught.exception.code, 2)
+            self.assertEqual(len(calls), 2)
+            review = module.json.loads((Path(folder)/"diagnostics"/"download_review.json").read_text())
+            self.assertEqual(review["status"], "incomplete")
+            self.assertEqual(review["validated_index_days"], 1)
+            self.assertEqual(len(review["incomplete_index_days"]), 1)
+
+    def test_inspection_reads_incomplete_cache_without_network_or_writes(self):
+        payload = response()
+        del payload["Success"][2:6]
+        class FakeClient:
+            def fetch(self, params):
+                return payload
+        with tempfile.TemporaryDirectory(prefix="algo8-inspect-test-") as folder:
+            root = Path(folder)
+            with self.assertRaises(module.MissingMinutesError):
+                module.fetch_day(FakeClient(), root, "NIFTY", DAY)
+            before = {p.relative_to(root).as_posix(): p.read_bytes() for p in root.rglob("*") if p.is_file()}
+            argv = ["fetch", "--inspect-cached", "--index", "NIFTY", "--start", "2026-06-23", "--end", "2026-06-23", "--output", folder]
+            with patch.object(module.sys, "argv", argv), patch.object(module, "request_json", side_effect=AssertionError("unexpected network")), patch("sys.stdout", new_callable=io.StringIO) as out:
+                module.main()
+            report = module.json.loads(out.getvalue())
+            self.assertEqual(report["status"], "incomplete")
+            self.assertEqual(len(report["missing_minutes_ist"]), 4)
+            self.assertEqual(before, {p.relative_to(root).as_posix(): p.read_bytes() for p in root.rglob("*") if p.is_file()})
+
     def test_wrong_index_bad_prices_and_empty_rejected(self):
         for field, value in (("stock_code", "RELIND"), ("exchange_code", "BSE"),
                              ("high", 98), ("close", float("nan"))):

@@ -41,6 +41,14 @@ class FetchError(Exception):
     """Contains only sanitized, non-credential diagnostics."""
 
 
+class MissingMinutesError(FetchError):
+    def __init__(self, missing):
+        self.missing = sorted(missing)
+        clocks = ", ".join(datetime.fromisoformat(t).strftime("%H:%M") for t in self.missing[:10])
+        suffix = " ..." if len(self.missing) > 10 else ""
+        super().__init__(f"Incomplete regular session: {len(self.missing)} expected minutes missing (IST: {clocks}{suffix}); not marked complete.")
+
+
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         raise FetchError("Redirect refused; verify the documented endpoint.")
@@ -281,7 +289,7 @@ def normalize(response, underlying, target_date, response_timezone, bar_label):
                                  provider_volume=bar.get("volume", ""))
     expected = {(datetime.combine(target_date, clock(9, 15), IST)+timedelta(minutes=i)).isoformat() for i in range(375)}
     if set(normalized) != expected:
-        raise FetchError(f"Incomplete regular session: {len(expected-set(normalized))} expected minutes missing; check calendar, timezone, bar labels and index support.")
+        raise MissingMinutesError(expected-set(normalized))
     return [normalized[key] for key in sorted(normalized)]
 
 
@@ -372,6 +380,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fetch", action="store_true", help="Actually request data; default only prints plan.")
     parser.add_argument("--smoke", action="store_true", help="NIFTY 23 June and SENSEX 24 June sample sessions.")
+    parser.add_argument("--continue-incomplete", action="store_true", help="In bulk runs, record gaps of 1–10 minutes and continue other dates; incomplete days remain unvalidated and the run exits with status 2.")
+    parser.add_argument("--inspect-cached", action="store_true", help="Inspect existing raw-cache coverage without credentials, network calls or new artifacts.")
     parser.add_argument("--index", choices=("both", "NIFTY", "SENSEX"), default="both")
     parser.add_argument("--prompt-credentials", action="store_true", help="Prompt for missing credentials with hidden input in a local terminal; never write them to disk.")
     parser.add_argument("--diagnose-network", action="store_true", help="Print credential-free TLS/DNS/proxy diagnostics; does not download bars or prompt for secrets.")
@@ -398,6 +408,24 @@ def main():
     if args.end < args.start:
         parser.error("--end must not precede --start")
     targets, exclusions = build_targets(args.start, args.end, args.index, args.smoke)
+    if args.inspect_cached:
+        for underlying, target in targets:
+            params = parameters(underlying, target)
+            raw = args.output/"raw"/"indices"/underlying/f"{target}.{digest(canonical(params))[:12]}.json"
+            report = dict(underlying=underlying, date=target.isoformat())
+            if not raw.exists():
+                report["status"] = "no_raw_cache"
+            else:
+                payload = json.loads(raw.read_text())
+                if payload.get("request") != params:
+                    raise FetchError("Cached raw request does not match inspection target.")
+                try:
+                    bars = normalize(payload["response"], underlying, target, args.response_timezone, args.bar_label)
+                    report.update(status="complete_raw_coverage", regular_session_bars=len(bars))
+                except MissingMinutesError as exc:
+                    report.update(status="incomplete", missing_minutes_ist=exc.missing)
+            print(json.dumps(report))
+        return
     if args.fetch and args.prompt_credentials:
         missing = [n for n in ("BREEZE_API_KEY", "BREEZE_API_SESSION") if not os.environ.get(n)]
         if missing and not sys.stdin.isatty():
@@ -416,16 +444,32 @@ def main():
     if not args.fetch:
         return
     client = BreezeHistory()
+    completed, incomplete = [], []
     for underlying, target in targets:
         try:
             result = fetch_day(client, args.output, underlying, target, args.response_timezone, args.bar_label)
+        except MissingMinutesError as exc:
+            if not args.continue_incomplete or args.smoke or len(exc.missing) > 10:
+                print(f"BLOCKED {underlying} {target}: {exc}", file=sys.stderr)
+                sys.exit(1)
+            incomplete.append(dict(underlying=underlying, date=target.isoformat(), missing_minutes_ist=exc.missing))
+            print(f"INCOMPLETE {underlying} {target}: {exc}", flush=True)
+            continue
         except FetchError as exc:
             print(f"BLOCKED {underlying} {target}: {exc}", file=sys.stderr)
             sys.exit(1)
+        completed.append((underlying, target))
         print(f"VALIDATED {underlying} {target}: {result['regular_session_bars']} regular-session bars")
-    print(json.dumps(dict(status="complete", validated_index_days=len(targets),
-                          per_index={u: sum(underlying == u for underlying, day in targets) for u in SYMBOLS},
-                          confirmed_holiday_index_days_skipped=len(exclusions))))
+    summary = dict(status="incomplete" if incomplete else "complete", planned_index_days=len(targets),
+                   validated_index_days=len(completed), incomplete_index_days=incomplete,
+                   per_index={u: sum(underlying == u for underlying, day in completed) for u in SYMBOLS},
+                   confirmed_holiday_index_days_skipped=len(exclusions))
+    print(json.dumps(summary))
+    if incomplete:
+        report_path = args.output/"diagnostics"/"download_review.json"
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_bytes(canonical(summary))
+        sys.exit(2)
 
 
 if __name__ == "__main__":

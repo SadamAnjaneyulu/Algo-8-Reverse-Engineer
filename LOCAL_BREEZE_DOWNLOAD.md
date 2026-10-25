@@ -127,6 +127,34 @@ paths, while existing Windows-path metadata is preserved and supported. The
 repository's `.gitattributes` keeps provider artifact bytes unchanged across
 Windows/Linux so Git cannot invalidate the saved file hashes through EOL conversion.
 
+### If a non-holiday has a few missing minutes
+
+The 12 October NIFTY response in the first full run lacked four minutes. The
+154 completed index sessions through 9 October were validated and pushed. Do not
+fill the missing prices or declare that day complete.
+
+Update, then finish the remaining date range while retaining a review flag:
+
+```powershell
+git pull --ff-only
+py research/fetch_breeze_indices.py --start 2026-10-12 --end 2026-10-22 --fetch --prompt-credentials --tls-backend native --continue-incomplete
+py research/push_validated_breeze_data.py --push
+```
+
+The optional continuation mode prints exact missing IST timestamps and continues
+only gaps of 1–10 minutes in bulk runs. Larger gaps, corrupt OHLC, wrong contracts,
+empty responses and authentication failures still stop the run. Incomplete raw
+responses remain cached, but receive no completed metadata/normalized CSV and are
+excluded from the validated-data push. The final summary explicitly reports
+`status: incomplete` and exits with status 2 until those sessions are resolved.
+The review summary is also saved locally to `data/breeze/diagnostics/download_review.json`.
+
+To inspect just the cached 12 October response without credentials or a new request:
+
+```powershell
+py research/fetch_breeze_indices.py --index NIFTY --start 2026-10-12 --end 2026-10-12 --inspect-cached
+```
+
 ## Push only validated data back to this repository
 
 Review the exact file list, then publish it on the work branch:
