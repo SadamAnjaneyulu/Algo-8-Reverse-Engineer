@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-07",
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "normalized_path": "normalized/indices/SENSEX/2026-10-07.70834a8c84.csv",
+  "normalized_sha256": "104b12f01d57e044fcc099c3e2f8699a9d5952dcabad36bfe02c3d6ebeefa06b",
+  "note": "Index provider_volume is retained for provenance, not treated as traded index volume.",
+  "raw_path": "raw/indices/SENSEX/2026-10-07.686c04df41ea.json",
+  "raw_sha256": "cd4b84cc5e53e8634adde6531445ee6d00ae99fd6e75c33c394945dc3072fe8c",
+  "regular_session_bars": 375,
+  "request": {
+    "exch_code": "BSE",
+    "from_date": "2026-10-07T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "cash",
+    "stock_code": "BSESEN",
+    "to_date": "2026-10-07T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-25T17:40:11.343149+00:00",
+  "status": "complete_under_documented_timestamp_convention",
+  "underlying": "SENSEX"
+}

@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-24",
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "normalized_path": "normalized/indices/NIFTY/2026-09-24.70834a8c84.csv",
+  "normalized_sha256": "a029d363e1dcb4da02db37417150343eddf884cf0103c7c8f294a170ab865048",
+  "note": "Index provider_volume is retained for provenance, not treated as traded index volume.",
+  "raw_path": "raw/indices/NIFTY/2026-09-24.a877f9d8a842.json",
+  "raw_sha256": "7e83a5b392130c4fec10647893ed1062d20324dcc80d04e902a8d54161bc60bb",
+  "regular_session_bars": 375,
+  "request": {
+    "exch_code": "NSE",
+    "from_date": "2026-09-24T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "cash",
+    "stock_code": "NIFTY",
+    "to_date": "2026-09-24T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-25T17:39:50.084851+00:00",
+  "status": "complete_under_documented_timestamp_convention",
+  "underlying": "NIFTY"
+}
