@@ -1,0 +1,4 @@
+# Provider artifacts are hashed as bytes; preserve line endings on every OS.
+data/breeze/raw/indices/** -text
+data/breeze/normalized/indices/** -text whitespace=cr-at-eol
+data/breeze/metadata/indices/** -text

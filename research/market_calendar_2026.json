@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "coverage_start": "2026-06-22",
+  "coverage_end": "2026-10-22",
+  "checked_at_utc": "2026-10-25T17:34:11.005654+00:00",
+  "sources": {
+    "NIFTY": {
+      "url": "https://www.nseindia.com/api/holiday-master?type=trading",
+      "segment": "CM",
+      "source_response_sha256": "933cf5dc6dd4efe3b8db8ce6ecd6ecb2582929f5e0b4faffdb88e11cf4efdfbe"
+    },
+    "SENSEX": {
+      "url": "https://www.icicidirect.com/ilearn/stocks/articles/bse-holiday-list",
+      "description": "ICICI Direct BSE 2026 trading holiday list for equity/equity derivatives",
+      "source_response_sha256": "7d77d243a308982442415feef08702f2b420dcb886cebeab118a192bd55a4319"
+    }
+  },
+  "closures": [
+    {
+      "date": "2026-06-26",
+      "description": "Muharram",
+      "underlyings": [
+        "NIFTY",
+        "SENSEX"
+      ]
+    },
+    {
+      "date": "2026-09-14",
+      "description": "Ganesh Chaturthi",
+      "underlyings": [
+        "NIFTY",
+        "SENSEX"
+      ]
+    },
+    {
+      "date": "2026-10-02",
+      "description": "Mahatma Gandhi Jayanti",
+      "underlyings": [
+        "NIFTY",
+        "SENSEX"
+      ]
+    },
+    {
+      "date": "2026-10-20",
+      "description": "Dussehra",
+      "underlyings": [
+        "NIFTY",
+        "SENSEX"
+      ]
+    }
+  ],
+  "notes": [
+    "Scope is this historical study range; dates outside the range are not certified by this snapshot.",
+    "Only confirmed full-day weekday closures are excluded; unexpected empty/partial sessions still fail validation.",
+    "The BSE source is ICICI Direct's published BSE calendar, not an independently fetched BSE exchange circular."
+  ]
+}

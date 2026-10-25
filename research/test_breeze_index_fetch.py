@@ -74,12 +74,46 @@ class HistoryValidation(unittest.TestCase):
                 module.fetch_day(client, root, "NIFTY", DAY)
             self.assertEqual(path.read_text(), "user data\n")
 
+    def test_legacy_windows_metadata_resumes_without_overwrite(self):
+        class FakeClient:
+            def fetch(self, params):
+                return response()
+        with tempfile.TemporaryDirectory(prefix="algo8-windows-meta-") as folder:
+            root = Path(folder)
+            metadata = module.fetch_day(FakeClient(), root, "NIFTY", DAY)
+            for key in ("raw_path", "normalized_path"):
+                metadata[key] = metadata[key].replace("/", "\\")
+            path = next((root/"metadata").rglob("*.json"))
+            saved = module.canonical(metadata)
+            path.write_bytes(saved)
+            with patch.object(FakeClient, "fetch", side_effect=AssertionError("unexpected network call")):
+                result = module.fetch_day(FakeClient(), root, "NIFTY", DAY)
+            self.assertEqual(result, metadata)
+            self.assertEqual(path.read_bytes(), saved)
+
     def test_request_under_candle_cap(self):
         p = module.parameters("NIFTY", DAY)
         span = (datetime.fromisoformat(p["to_date"])-datetime.fromisoformat(p["from_date"])).total_seconds()/60+1
         self.assertLessEqual(span, 1000)
         self.assertNotIn("AppKey", p)
         self.assertNotIn("SessionToken", p)
+
+    def test_study_calendar_excludes_only_four_confirmed_weekday_holidays(self):
+        targets, excluded = module.build_targets(date(2026, 6, 22), date(2026, 10, 22))
+        self.assertEqual(len(targets), 170)
+        self.assertEqual(len(excluded), 8)
+        self.assertEqual({r["date"] for r in excluded}, {"2026-06-26", "2026-09-14", "2026-10-02", "2026-10-20"})
+        self.assertTrue(all(day.weekday() < 5 for u, day in targets))
+        self.assertEqual(sum(u == "NIFTY" for u, day in targets), 85)
+        self.assertEqual(sum(u == "SENSEX" for u, day in targets), 85)
+
+    def test_calendar_resumes_at_next_regular_session_and_filters_index(self):
+        targets, excluded = module.build_targets(date(2026, 6, 26), date(2026, 6, 29), "NIFTY")
+        self.assertEqual(targets, [("NIFTY", date(2026, 6, 29))])
+        self.assertEqual(len(excluded), 1)
+        smoke, excluded = module.build_targets(DAY, DAY, "SENSEX", smoke=True)
+        self.assertEqual(smoke, [("SENSEX", date(2026, 6, 24))])
+        self.assertEqual(excluded, [])
 
     def test_html_denial_is_reported_without_echoing_body(self):
         class Reply(io.BytesIO):

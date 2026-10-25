@@ -38,6 +38,12 @@ class DataPublishChecks(unittest.TestCase):
         self.assertTrue(all(p.startswith("data/breeze/") for p in files))
         self.assertNotIn(".env", files)
 
+    def test_legacy_windows_paths_validate_on_posix(self):
+        for key in ("raw_path", "normalized_path"):
+            self.metadata[key] = self.metadata[key].replace("/", "\\")
+        self.meta_path.write_bytes(publish.fetch.canonical(self.metadata))
+        self.assertEqual(len(publish.validated_files(self.root)), 3)
+
     def test_corrupted_normalized_file_rejected(self):
         (self.data/self.metadata["normalized_path"]).write_text("changed\n")
         with self.assertRaises(publish.fetch.FetchError):

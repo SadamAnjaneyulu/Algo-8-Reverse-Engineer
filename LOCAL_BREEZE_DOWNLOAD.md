@@ -87,10 +87,10 @@ certificate issuer in the browser/with IT or ICICI. Do not trust a certificate
 downloaded from the failed connection, turn off antivirus, or set verification
 to false to force the request through.
 
-`NIFTY`/NSE and `BSESEN`/BSE index mappings require live confirmation. Current
-Breeze API docs say BSE securities are unavailable despite BFO SDK examples;
-SENSEX coverage remains unverified. If NIFTY works but SENSEX does not, continue
-NIFTY separately and retain the SENSEX limitation:
+`NIFTY`/NSE and `BSESEN`/BSE have now returned full 375-bar sessions for 22–25 June
+2026. Both mappings are verified for those downloaded dates. The earlier BSE
+availability concern from conflicting documentation did not prevent these real
+downloads. If a later date fails for one index, it can be investigated separately:
 
 ```sh
 python research/fetch_breeze_indices.py --index NIFTY --smoke --fetch --prompt-credentials
@@ -107,6 +107,25 @@ python research/fetch_breeze_indices.py --start 2026-06-22 --end 2026-10-22 --fe
 Or add `--index NIFTY` to fetch only the working series. Completed sessions resume
 from their raw cache. The first unexpected empty/partial session stops the run;
 an exchange holiday must be verified rather than silently filled or marked complete.
+
+The verified calendar snapshot now excludes four full-day weekday holidays for
+both indices in this study: **26 June (Muharram), 14 September (Ganesh Chaturthi),
+2 October (Mahatma Gandhi Jayanti), and 20 October (Dussehra)**. Sources and retrieval
+hashes are in `research/market_calendar_2026.json`: NSE's cash-market holiday API
+and ICICI Direct's published BSE holiday list. The default plan now contains
+**170 index-days: 85 for each index**. Unknown missing/partial sessions still stop.
+
+If the previous run stopped at 26 June, update and rerun the original range:
+
+```powershell
+git pull --ff-only
+py research/fetch_breeze_indices.py --start 2026-06-22 --end 2026-10-22 --fetch --prompt-credentials --tls-backend native
+```
+
+Existing validated sessions are reused. New metadata uses portable forward-slash
+paths, while existing Windows-path metadata is preserved and supported. The
+repository's `.gitattributes` keeps provider artifact bytes unchanged across
+Windows/Linux so Git cannot invalidate the saved file hashes through EOL conversion.
 
 ## Push only validated data back to this repository
 

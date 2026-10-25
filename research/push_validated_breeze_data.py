@@ -26,6 +26,8 @@ EXPECTED_NOTE = "Index provider_volume is retained for provenance, not treated a
 
 
 def contained(root, relative, prefix):
+    # Metadata written on Windows must resolve identically after a Linux clone.
+    relative = relative.replace("\\", "/")
     path = root / relative
     if Path(relative).is_absolute() or path.is_symlink() or not path.resolve().is_relative_to((root/prefix).resolve()):
         raise fetch.FetchError("Artifact path is outside the expected data subtree.")

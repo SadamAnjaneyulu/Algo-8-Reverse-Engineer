@@ -315,12 +315,56 @@ def fetch_day(client, root, underlying, target_date, response_timezone="Asia/Kol
     metadata = dict(underlying=underlying, date=target_date.isoformat(), request=params,
                     interpretation=profile, regular_session_bars=len(bars),
                     raw_sha256=digest(raw_path.read_bytes()), normalized_sha256=digest(content),
-                    raw_path=str(raw_path.relative_to(root)), normalized_path=str(normalized_path.relative_to(root)),
+                    raw_path=raw_path.relative_to(root).as_posix(), normalized_path=normalized_path.relative_to(root).as_posix(),
                     retrieved_at_utc=payload["retrieved_at_utc"],
                     status="complete_under_documented_timestamp_convention",
                     note="Index provider_volume is retained for provenance, not treated as traded index volume.")
+    if metadata_path.exists():
+        # Older Windows downloads used backslashes in metadata. Preserve those
+        # immutable records when equivalent instead of forcing a new API fetch.
+        existing = json.loads(metadata_path.read_text())
+        portable = dict(existing)
+        for key in ("raw_path", "normalized_path"):
+            if isinstance(portable.get(key), str):
+                portable[key] = portable[key].replace("\\", "/")
+        if portable != metadata:
+            raise FetchError("Existing metadata differs; preserved it without overwriting.")
+        metadata = existing
     save_immutable(metadata_path, canonical(metadata))
     return metadata
+
+
+def build_targets(start, end, index="both", smoke=False):
+    """Exclude only the documented, bounded holiday snapshot, never empty bars."""
+    if smoke:
+        targets = [("NIFTY", date(2026, 6, 23)), ("SENSEX", date(2026, 6, 24))]
+        return [(u, d) for u, d in targets if index == "both" or u == index], []
+    calendar = json.loads((Path(__file__).with_name("market_calendar_2026.json")).read_text())
+    if calendar.get("version") != 1:
+        raise FetchError("Unsupported market calendar snapshot.")
+    lower, upper = date.fromisoformat(calendar["coverage_start"]), date.fromisoformat(calendar["coverage_end"])
+    closed = {}
+    for entry in calendar["closures"]:
+        day = date.fromisoformat(entry["date"])
+        if not lower <= day <= upper or not entry["description"]:
+            raise FetchError("Holiday record is outside its verified snapshot scope.")
+        for underlying in entry["underlyings"]:
+            if underlying not in SYMBOLS or underlying not in calendar["sources"]:
+                raise FetchError("Holiday lacks the requested index's calendar source.")
+            closed[(underlying, day)] = entry["description"]
+    targets, exclusions = [], []
+    current = start
+    while current <= end:
+        if current.weekday() < 5:
+            for u in SYMBOLS:
+                if index != "both" and u != index:
+                    continue
+                if (u, current) in closed:
+                    exclusions.append(dict(underlying=u, date=current.isoformat(), reason=closed[(u, current)]))
+                else:
+                    targets.append((u, current))
+        current += timedelta(days=1)
+    return targets, exclusions
 
 
 def main():
@@ -350,6 +394,10 @@ def main():
     if args.diagnose_network:
         print(json.dumps(network_diagnostics(), indent=2))
         return
+    ZoneInfo(args.response_timezone)
+    if args.end < args.start:
+        parser.error("--end must not precede --start")
+    targets, exclusions = build_targets(args.start, args.end, args.index, args.smoke)
     if args.fetch and args.prompt_credentials:
         missing = [n for n in ("BREEZE_API_KEY", "BREEZE_API_SESSION") if not os.environ.get(n)]
         if missing and not sys.stdin.isatty():
@@ -359,25 +407,12 @@ def main():
             if not value:
                 parser.error(f"{name} was empty")
             os.environ[name] = value
-    ZoneInfo(args.response_timezone)
-    if args.end < args.start:
-        parser.error("--end must not precede --start")
-    targets = []
-    if args.smoke:
-        targets = [("NIFTY", date(2026, 6, 23)), ("SENSEX", date(2026, 6, 24))]
-    else:
-        current = args.start
-        while current <= args.end:
-            if current.weekday() < 5:
-                targets.extend((u, current) for u in SYMBOLS)
-            current += timedelta(days=1)
-    if args.index != "both":
-        targets = [(u, d) for u, d in targets if u == args.index]
     print(json.dumps(dict(mode="fetch" if args.fetch else "plan", target_index_days=len(targets),
                           output=str(args.output), mappings=SYMBOLS,
                           first_targets=[(u, str(d)) for u, d in targets[:4]],
+                          confirmed_holiday_index_days_skipped=len(exclusions), holiday_exclusions=exclusions,
                           credentials_present={n: bool(os.environ.get(n)) for n in ("BREEZE_API_KEY", "BREEZE_API_SESSION")},
-                          note="Weekdays are candidates; an empty response is not accepted as a verified exchange holiday.")))
+                          note="Documented study-range holidays are excluded; unexpected empty/partial sessions still block completion.")))
     if not args.fetch:
         return
     client = BreezeHistory()
@@ -388,6 +423,9 @@ def main():
             print(f"BLOCKED {underlying} {target}: {exc}", file=sys.stderr)
             sys.exit(1)
         print(f"VALIDATED {underlying} {target}: {result['regular_session_bars']} regular-session bars")
+    print(json.dumps(dict(status="complete", validated_index_days=len(targets),
+                          per_index={u: sum(underlying == u for underlying, day in targets) for u in SYMBOLS},
+                          confirmed_holiday_index_days_skipped=len(exclusions))))
 
 
 if __name__ == "__main__":
