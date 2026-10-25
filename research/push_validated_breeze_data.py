@@ -43,14 +43,17 @@ def validated_files(root):
         if path.is_symlink() or not path.resolve().is_relative_to((data/"metadata"/"indices").resolve()):
             raise fetch.FetchError("Unexpected metadata path.")
         metadata = json.loads(path.read_text())
-        if set(metadata) != META_FIELDS or metadata["status"] != "complete_under_documented_timestamp_convention" or metadata["note"] != EXPECTED_NOTE:
+        if set(metadata) != META_FIELDS or metadata["status"] not in ("complete_under_documented_timestamp_convention", "continuous_cash_complete_with_observed_auction") or metadata["note"] != EXPECTED_NOTE:
             raise fetch.FetchError("Unexpected metadata fields or incomplete data; not staged.")
         u, day = metadata["underlying"], date.fromisoformat(metadata["date"])
         if u not in fetch.SYMBOLS or path.parent.name != u or metadata["request"] != fetch.parameters(u, day):
             raise fetch.FetchError("Metadata does not match a supported index/day request.")
         profile = metadata["interpretation"]
-        if set(profile) != {"response_timezone", "bar_label", "normalizer_version"} or profile["normalizer_version"] != 1 or profile["bar_label"] not in ("start", "end"):
+        if set(profile) != {"response_timezone", "bar_label", "normalizer_version"} or profile["normalizer_version"] not in (1, 2) or profile["bar_label"] not in ("start", "end"):
             raise fetch.FetchError("Unexpected normalization profile.")
+        expected_status = "continuous_cash_complete_with_observed_auction" if profile["normalizer_version"] == 2 else "complete_under_documented_timestamp_convention"
+        if metadata["status"] != expected_status:
+            raise fetch.FetchError("Data coverage status does not match its normalization version.")
         datetime.fromisoformat(metadata["retrieved_at_utc"])
         raw = contained(data, metadata["raw_path"], f"raw/indices/{u}")
         normalized = contained(data, metadata["normalized_path"], f"normalized/indices/{u}")
@@ -64,7 +67,7 @@ def validated_files(root):
             raise fetch.FetchError("Unexpected raw response shape.")
         if any(not isinstance(bar, dict) or set(bar)-BAR_FIELDS for bar in response["Success"]):
             raise fetch.FetchError("Unexpected raw-bar fields; review before sharing. Nothing staged.")
-        bars = fetch.normalize(response, u, day, profile["response_timezone"], profile["bar_label"])
+        bars = fetch.normalize(response, u, day, profile["response_timezone"], profile["bar_label"], normalizer_version=profile["normalizer_version"])
         output = io.StringIO(newline="")
         writer = csv.DictWriter(output, fieldnames=list(bars[0]))
         writer.writeheader()

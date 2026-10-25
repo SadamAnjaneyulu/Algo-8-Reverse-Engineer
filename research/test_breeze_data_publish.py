@@ -76,6 +76,19 @@ class DataPublishChecks(unittest.TestCase):
         with self.assertRaises(publish.fetch.FetchError):
             publish.validated_files(self.root)
 
+    def test_cas_profile_publishes_only_observed_bars_with_complete_continuous_coverage(self):
+        day = date(2026, 10, 12)
+        class CasClient:
+            def fetch(self, params):
+                payload = FakeClient().fetch(params)
+                payload["Success"] = [dict(r, datetime=r["datetime"].replace("2026-06-23", str(day))) for r in payload["Success"]
+                                      if r["datetime"][11:16] not in ("15:16", "15:17", "15:18", "15:19")]
+                return payload
+        metadata = publish.fetch.fetch_day(CasClient(), self.data, "NIFTY", day)
+        self.assertEqual(metadata["interpretation"]["normalizer_version"], 2)
+        self.assertEqual(metadata["regular_session_bars"], 371)
+        self.assertEqual(len(publish.validated_files(self.root)), 6)
+
 
 if __name__ == "__main__":
     unittest.main()

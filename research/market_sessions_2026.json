@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "study_scope_start": "2026-06-22",
+  "study_scope_end": "2026-10-22",
+  "cas_effective_from": "2026-08-03",
+  "source_circular": {
+    "url": "https://www.sebi.gov.in/sebi_data/attachdocs/jan-2026/1768576287344.pdf",
+    "date": "2026-01-16",
+    "sha256": "cdd882291c3e788e1f8dcf478b4284604e9d939e12adf1b103e6a50a9d618571",
+    "references": [
+      "4.2.1: transition 15:15\u201315:20, order entry 15:20\u201315:30, matching 15:30\u201315:35",
+      "4.2.2: random close between 15:28 and 15:30",
+      "4.2.3: equity derivatives operate until 15:40",
+      "6.1: effective 3 August 2026"
+    ]
+  },
+  "corroboration": {
+    "url": "https://www.sebi.gov.in/sebi_data/attachdocs/sep-2026/1789202841824.pdf",
+    "sha256": "4306deb8d80005643852e5ee1f2d2d6533e1e703924e325dcdd5d3606f8ebcc1",
+    "references": [
+      "1.1: effective 3 August 2026",
+      "page 13: current continuous session for CAS stocks ends 15:15, derivatives end 15:40"
+    ]
+  },
+  "policy": {
+    "before_cas": {
+      "required_continuous_bar_start_times": "09:15 through 15:29 IST",
+      "required_bars": 375
+    },
+    "cas_period": {
+      "required_continuous_bar_start_times": "09:15 through 15:14 IST",
+      "required_bars": 360,
+      "preserve_observed_bar_start_times": "09:15 through 15:39 IST",
+      "optional_phases": {
+        "15:15\u201315:19": "transition",
+        "15:20\u201315:29": "auction order entry / random close",
+        "15:30\u201315:34": "auction matching",
+        "15:35\u201315:39": "post-auction, derivatives still trading"
+      }
+    }
+  },
+  "limitations": [
+    "Applies to this study interval only; later regulatory changes require a new snapshot.",
+    "Index quotes during auction can be indicative, stale or absent; a timestamp phase does not establish vendor price semantics.",
+    "Never synthesize missing prices or treat optional auction observations as ordinary continuous-cash bars.",
+    "Old version-1 CSVs remain immutable; apply session classification separately when using those records."
+  ]
+}

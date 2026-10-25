@@ -35,6 +35,8 @@ SESSION_URL = "https://api.icicidirect.com/breezeapi/api/v1/customerdetails"
 HISTORY_URL = "https://breezeapi.icicidirect.com/api/v2/historicalcharts"
 SYMBOLS = {"NIFTY": ("NSE", "NIFTY"), "SENSEX": ("BSE", "BSESEN")}
 TLS_BACKEND = "python"
+CAS_START = date(2026, 8, 3)
+SESSION_POLICY_END = date(2026, 10, 22)
 
 
 class FetchError(Exception):
@@ -250,7 +252,36 @@ def parameters(underlying, target_date):
                 exch_code=exchange, product_type="cash")
 
 
-def normalize(response, underlying, target_date, response_timezone, bar_label):
+def session_version(target_date):
+    if target_date > SESSION_POLICY_END:
+        raise FetchError("Session-policy snapshot ends 22 October 2026; verify later exchange rules before extending it.")
+    return 2 if target_date >= CAS_START else 1
+
+
+def session_phase(t, version):
+    if version == 1 or t.time() < clock(15, 15):
+        return "continuous_cash"
+    if t.time() < clock(15, 20):
+        return "closing_transition"
+    if t.time() < clock(15, 30):
+        return "auction_order_entry_or_random_close"
+    if t.time() < clock(15, 35):
+        return "auction_matching"
+    return "post_auction_derivatives_still_open"
+
+
+def csv_bytes(bars):
+    output = io.StringIO(newline="")
+    writer = csv.DictWriter(output, fieldnames=list(bars[0]))
+    writer.writeheader()
+    writer.writerows(bars)
+    return output.getvalue().encode()
+
+
+def normalize(response, underlying, target_date, response_timezone, bar_label, *, normalizer_version=None):
+    version = session_version(target_date) if normalizer_version is None else normalizer_version
+    if version not in (1, 2) or (version == 2 and not CAS_START <= target_date <= SESSION_POLICY_END):
+        raise FetchError("Unsupported date or session normalization version.")
     bars = response["Success"]
     if not bars:
         raise FetchError("Empty history: holiday, unsupported index, retention or entitlement requires review; not marked complete.")
@@ -280,27 +311,52 @@ def normalize(response, underlying, target_date, response_timezone, bar_label):
             raise FetchError("Invalid OHLC bounds.")
         if t.second or t.microsecond:
             raise FetchError("One-minute bar timestamp is off the minute grid.")
-        if t.date() != target_date or not clock(9, 15) <= t.time() < clock(15, 30):
+        preserve_until = clock(15, 30) if version == 1 else clock(15, 40)
+        if t.date() != target_date or not clock(9, 15) <= t.time() < preserve_until:
             continue
         stamp = t.isoformat()
         if stamp in normalized:
             raise FetchError("Duplicate regular-session bar timestamp.")
         normalized[stamp] = dict(timestamp_ist=stamp, underlying=underlying, **prices,
                                  provider_volume=bar.get("volume", ""))
-    expected = {(datetime.combine(target_date, clock(9, 15), IST)+timedelta(minutes=i)).isoformat() for i in range(375)}
-    if set(normalized) != expected:
+        if version == 2:
+            normalized[stamp]["session_phase"] = session_phase(t, version)
+    required = 375 if version == 1 else 360
+    expected = {(datetime.combine(target_date, clock(9, 15), IST)+timedelta(minutes=i)).isoformat() for i in range(required)}
+    if expected-set(normalized):
         raise MissingMinutesError(expected-set(normalized))
     return [normalized[key] for key in sorted(normalized)]
 
 
-def fetch_day(client, root, underlying, target_date, response_timezone="Asia/Kolkata", bar_label="start"):
+def fetch_day(client, root, underlying, target_date, response_timezone="Asia/Kolkata", bar_label="start", *, normalizer_version=None):
     params = parameters(underlying, target_date)
     request_id = digest(canonical(params))[:12]
-    profile = dict(response_timezone=response_timezone, bar_label=bar_label, normalizer_version=1)
+    version = session_version(target_date) if normalizer_version is None else normalizer_version
+    profile = dict(response_timezone=response_timezone, bar_label=bar_label, normalizer_version=version)
     profile_id = digest(canonical(profile))[:10]
     raw_path = root/"raw"/"indices"/underlying/f"{target_date}.{request_id}.json"
     normalized_path = root/"normalized"/"indices"/underlying/f"{target_date}.{profile_id}.csv"
     metadata_path = root/"metadata"/"indices"/underlying/f"{target_date}.{profile_id}.json"
+    if version == 2 and not metadata_path.exists():
+        # Preserve complete version-1 downloads and hashes; do not create a
+        # second profile or discard their provider observations just to relabel.
+        legacy_profile = dict(profile, normalizer_version=1)
+        legacy_id = digest(canonical(legacy_profile))[:10]
+        legacy_meta = root/"metadata"/"indices"/underlying/f"{target_date}.{legacy_id}.json"
+        if legacy_meta.exists():
+            saved = json.loads(legacy_meta.read_text())
+            legacy_csv = root/"normalized"/"indices"/underlying/f"{target_date}.{legacy_id}.csv"
+            if saved.get("interpretation") != legacy_profile or saved.get("request") != params or saved.get("status") != "complete_under_documented_timestamp_convention":
+                raise FetchError("Existing legacy cache metadata differs; preserved without overwriting.")
+            if saved.get("raw_path", "").replace("\\", "/") != raw_path.relative_to(root).as_posix() or saved.get("normalized_path", "").replace("\\", "/") != legacy_csv.relative_to(root).as_posix():
+                raise FetchError("Legacy cache paths differ from the expected request.")
+            if not raw_path.exists() or not legacy_csv.exists() or digest(raw_path.read_bytes()) != saved.get("raw_sha256") or digest(legacy_csv.read_bytes()) != saved.get("normalized_sha256"):
+                raise FetchError("Legacy cache integrity check failed; no overwrite.")
+            old_payload = json.loads(raw_path.read_text())
+            old_bars = normalize(old_payload["response"], underlying, target_date, response_timezone, bar_label, normalizer_version=1)
+            if old_payload.get("request") != params or csv_bytes(old_bars) != legacy_csv.read_bytes():
+                raise FetchError("Legacy raw response does not reproduce its normalized data.")
+            return saved
     if raw_path.exists():
         payload = json.loads(raw_path.read_text())
         if not isinstance(payload, dict) or set(payload) != {"request", "response", "retrieved_at_utc"} or payload["request"] != params:
@@ -313,19 +369,15 @@ def fetch_day(client, root, underlying, target_date, response_timezone="Asia/Kol
         payload = dict(request=params, response=response,
                        retrieved_at_utc=datetime.now(timezone.utc).isoformat())
         save_immutable(raw_path, canonical(payload))
-    bars = normalize(response, underlying, target_date, response_timezone, bar_label)
-    output = io.StringIO(newline="")
-    writer = csv.DictWriter(output, fieldnames=list(bars[0]))
-    writer.writeheader()
-    writer.writerows(bars)
-    content = output.getvalue().encode()
+    bars = normalize(response, underlying, target_date, response_timezone, bar_label, normalizer_version=version)
+    content = csv_bytes(bars)
     save_immutable(normalized_path, content)
     metadata = dict(underlying=underlying, date=target_date.isoformat(), request=params,
                     interpretation=profile, regular_session_bars=len(bars),
                     raw_sha256=digest(raw_path.read_bytes()), normalized_sha256=digest(content),
                     raw_path=raw_path.relative_to(root).as_posix(), normalized_path=normalized_path.relative_to(root).as_posix(),
                     retrieved_at_utc=payload["retrieved_at_utc"],
-                    status="complete_under_documented_timestamp_convention",
+                    status="continuous_cash_complete_with_observed_auction" if version == 2 else "complete_under_documented_timestamp_convention",
                     note="Index provider_volume is retained for provenance, not treated as traded index volume.")
     if metadata_path.exists():
         # Older Windows downloads used backslashes in metadata. Preserve those
@@ -382,6 +434,7 @@ def main():
     parser.add_argument("--smoke", action="store_true", help="NIFTY 23 June and SENSEX 24 June sample sessions.")
     parser.add_argument("--continue-incomplete", action="store_true", help="In bulk runs, record gaps of 1–10 minutes and continue other dates; incomplete days remain unvalidated and the run exits with status 2.")
     parser.add_argument("--inspect-cached", action="store_true", help="Inspect existing raw-cache coverage without credentials, network calls or new artifacts.")
+    parser.add_argument("--revalidate-cached", action="store_true", help="Build validated outputs from existing raw responses only; never requests data or credentials.")
     parser.add_argument("--index", choices=("both", "NIFTY", "SENSEX"), default="both")
     parser.add_argument("--prompt-credentials", action="store_true", help="Prompt for missing credentials with hidden input in a local terminal; never write them to disk.")
     parser.add_argument("--diagnose-network", action="store_true", help="Print credential-free TLS/DNS/proxy diagnostics; does not download bars or prompt for secrets.")
@@ -393,6 +446,8 @@ def main():
     parser.add_argument("--response-timezone", default="Asia/Kolkata")
     parser.add_argument("--bar-label", choices=("start", "end"), default="start")
     args = parser.parse_args()
+    if args.revalidate_cached and args.fetch:
+        parser.error("Choose --revalidate-cached or --fetch, not both")
     TLS_BACKEND = args.tls_backend
     if args.fetch or args.diagnose_network:
         try:
@@ -435,15 +490,18 @@ def main():
             if not value:
                 parser.error(f"{name} was empty")
             os.environ[name] = value
-    print(json.dumps(dict(mode="fetch" if args.fetch else "plan", target_index_days=len(targets),
+    print(json.dumps(dict(mode="cache_revalidation" if args.revalidate_cached else "fetch" if args.fetch else "plan", target_index_days=len(targets),
                           output=str(args.output), mappings=SYMBOLS,
                           first_targets=[(u, str(d)) for u, d in targets[:4]],
                           confirmed_holiday_index_days_skipped=len(exclusions), holiday_exclusions=exclusions,
                           credentials_present={n: bool(os.environ.get(n)) for n in ("BREEZE_API_KEY", "BREEZE_API_SESSION")},
                           note="Documented study-range holidays are excluded; unexpected empty/partial sessions still block completion.")))
-    if not args.fetch:
+    if not args.fetch and not args.revalidate_cached:
         return
-    client = BreezeHistory()
+    class CacheOnly:
+        def fetch(self, params):
+            raise FetchError("Required raw response is not cached; offline revalidation made no network request.")
+    client = CacheOnly() if args.revalidate_cached else BreezeHistory()
     completed, incomplete = [], []
     for underlying, target in targets:
         try:
@@ -459,7 +517,11 @@ def main():
             print(f"BLOCKED {underlying} {target}: {exc}", file=sys.stderr)
             sys.exit(1)
         completed.append((underlying, target))
-        print(f"VALIDATED {underlying} {target}: {result['regular_session_bars']} regular-session bars")
+        observed = result['regular_session_bars']
+        if result['interpretation']['normalizer_version'] == 2:
+            print(f"VALIDATED {underlying} {target}: {observed} observed bars; 360 required continuous-cash minutes complete; auction phases labelled")
+        else:
+            print(f"VALIDATED {underlying} {target}: {observed} observed bars (preserved version-1 profile)")
     summary = dict(status="incomplete" if incomplete else "complete", planned_index_days=len(targets),
                    validated_index_days=len(completed), incomplete_index_days=incomplete,
                    per_index={u: sum(underlying == u for underlying, day in completed) for u in SYMBOLS},

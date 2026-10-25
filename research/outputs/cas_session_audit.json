@@ -1,0 +1,24 @@
+{
+  "scope": "154 index sessions through 9 October 2026 and available trade log",
+  "pre_CAS_index_sessions": 58,
+  "post_CAS_index_sessions": 96,
+  "post_CAS_sessions_with_four_identical_flat_bars_at_1516_to_1519": 95,
+  "trade_event_timestamps_after_1530": {
+    "total": 420,
+    "post_cas": 420,
+    "before_1540": 420
+  },
+  "short_book_close_comparison": {
+    "pre_CAS": {
+      "reconciled_short_book_closures": 10,
+      "late_closures_defined_as_at_or_after_1500": 7,
+      "late_closures_in_1514_minute": 0
+    },
+    "post_CAS": {
+      "reconciled_short_book_closures": 19,
+      "late_closures_defined_as_at_or_after_1500": 10,
+      "late_closures_in_1514_minute": 9
+    }
+  },
+  "comparison_note": "Late >=15:00 is a descriptive grouping, not a confirmed normal-exit classifier. Timing association is not proof of the programmed rule or alpha."
+}

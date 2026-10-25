@@ -127,33 +127,47 @@ paths, while existing Windows-path metadata is preserved and supported. The
 repository's `.gitattributes` keeps provider artifact bytes unchanged across
 Windows/Linux so Git cannot invalidate the saved file hashes through EOL conversion.
 
-### If a non-holiday has a few missing minutes
+### Correct session coverage after the August 2026 CAS introduction
 
-The 12 October NIFTY response in the first full run lacked four minutes. The
-154 completed index sessions through 9 October were validated and pushed. Do not
-fill the missing prices or declare that day complete.
+The old validator required 375 ordinary cash-session bars through 15:29 on every
+date. That was too strict after **3 August 2026**, when the Closing Auction Session
+changed the applicable trading phases. It incorrectly rejected all 16 remaining
+12–22 October index-days because 15:16–15:19 and sometimes 15:29 were absent.
 
-Update, then finish the remaining date range while retaining a review flag:
+SEBI's 16 January circular, effective 3 August, specifies a 15:15–15:20 transition,
+auction order entry from 15:20 with random close between 15:28 and 15:30, matching
+until 15:35, and equity derivatives trading until 15:40. See
+`research/market_sessions_2026.json` for original/corroborating sources and hashes.
+
+Version 2 requires all **360 continuous-cash minutes from 09:15 through 15:14**
+and preserves whatever later observations the provider returns through 15:39,
+with an explicit `session_phase` column. It does not manufacture a fixed grid of
+auction quotes or assert that an auction observation is a continuously traded
+cash price. Missing continuous-session minutes, bad OHLC and wrong series still fail.
+Before 3 August, the 375-minute rule remains required.
+
+All 16 original provider responses are already cached on your computer. Revalidate
+them offline with the corrected rule, then push the resulting data:
 
 ```powershell
 git pull --ff-only
-py research/fetch_breeze_indices.py --start 2026-10-12 --end 2026-10-22 --fetch --prompt-credentials --tls-backend native --continue-incomplete
+py research/fetch_breeze_indices.py --start 2026-10-12 --end 2026-10-22 --revalidate-cached
 py research/push_validated_breeze_data.py --push
 ```
 
-The optional continuation mode prints exact missing IST timestamps and continues
-only gaps of 1–10 minutes in bulk runs. Larger gaps, corrupt OHLC, wrong contracts,
-empty responses and authentication failures still stop the run. Incomplete raw
-responses remain cached, but receive no completed metadata/normalized CSV and are
-excluded from the validated-data push. The final summary explicitly reports
-`status: incomplete` and exits with status 2 until those sessions are resolved.
-The review summary is also saved locally to `data/breeze/diagnostics/download_review.json`.
+No API key, session entry, network request or new download is needed for cached
+revalidation. Existing version-1 outputs/hashes remain unchanged; a complete
+legacy profile is reused rather than duplicated. New CAS outputs use a version-2
+profile and status `continuous_cash_complete_with_observed_auction`. Bar counts
+can differ from 375 because real post-continuous observations are retained and
+absent auction observations are not invented. The legacy metadata field named
+`regular_session_bars` stores the actual normalized row count; use the version and
+phase labels to interpret it.
 
-To inspect just the cached 12 October response without credentials or a new request:
-
-```powershell
-py research/fetch_breeze_indices.py --index NIFTY --start 2026-10-12 --end 2026-10-12 --inspect-cached
-```
+The optional `--continue-incomplete` switch still exists for genuinely missing
+continuous-session minutes in bulk downloads. It retains review flags and never
+marks such sessions complete. `--inspect-cached` can inspect coverage without
+credentials or writes. Neither option fills prices.
 
 ## Push only validated data back to this repository
 
@@ -164,7 +178,7 @@ python research/push_validated_breeze_data.py
 python research/push_validated_breeze_data.py --push
 ```
 
-The helper checks full 375-bar sessions, raw/normalized hashes, reproducible
+The helper checks date-effective continuous-session coverage, raw/normalized hashes, reproducible
 normalization and artifact schemas before staging. It stages only validated data
 triples under `data/breeze/{raw,normalized,metadata}/indices/`; it excludes scripts,
 diagnostics, credential files and unrelated work. It refuses main/master,

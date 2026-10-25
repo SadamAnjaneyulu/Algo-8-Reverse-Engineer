@@ -46,7 +46,7 @@ class HistoryValidation(unittest.TestCase):
             calls.append((underlying, target))
             if target == date(2026, 6, 22):
                 raise module.MissingMinutesError(["2026-06-22T09:17:00+05:30"])
-            return {"regular_session_bars": 375}
+            return {"regular_session_bars": 375, "interpretation": {"normalizer_version": 1}}
         with tempfile.TemporaryDirectory(prefix="algo8-continue-test-") as folder:
             argv = ["fetch", "--fetch", "--index", "NIFTY", "--start", "2026-06-22", "--end", "2026-06-23", "--continue-incomplete", "--output", folder]
             with patch.object(module.sys, "argv", argv), patch.object(module, "fetch_day", side_effect=fake_fetch), patch("sys.stdout", new_callable=io.StringIO):
@@ -77,6 +77,89 @@ class HistoryValidation(unittest.TestCase):
             self.assertEqual(report["status"], "incomplete")
             self.assertEqual(len(report["missing_minutes_ist"]), 4)
             self.assertEqual(before, {p.relative_to(root).as_posix(): p.read_bytes() for p in root.rglob("*") if p.is_file()})
+
+    def test_cas_optional_auction_holes_are_preserved_without_filling(self):
+        day = date(2026, 10, 12)
+        payload = response()
+        payload["Success"] = [dict(r, datetime=r["datetime"].replace("2026-06-23", str(day))) for r in payload["Success"]
+                              if r["datetime"][11:16] not in ("15:16", "15:17", "15:18", "15:19", "15:29")]
+        bars = module.normalize(payload, "NIFTY", day, "Asia/Kolkata", "start")
+        self.assertEqual(len(bars), 370)
+        self.assertEqual(sum(r["session_phase"] == "continuous_cash" for r in bars), 360)
+        self.assertNotIn("15:16", {r["timestamp_ist"][11:16] for r in bars})
+        with self.assertRaises(module.MissingMinutesError):
+            module.normalize(payload, "NIFTY", day, "Asia/Kolkata", "start", normalizer_version=1)
+
+    def test_cas_continuous_gap_is_still_rejected(self):
+        payload = response()
+        day = date(2026, 10, 12)
+        payload["Success"] = [dict(r, datetime=r["datetime"].replace("2026-06-23", str(day))) for r in payload["Success"] if r["datetime"][11:16] != "10:20"]
+        with self.assertRaises(module.MissingMinutesError) as caught:
+            module.normalize(payload, "NIFTY", day, "Asia/Kolkata", "start")
+        self.assertEqual(caught.exception.missing, ["2026-10-12T10:20:00+05:30"])
+
+    def test_cas_preserves_later_observations_and_labels_phase_boundaries(self):
+        payload = response()
+        day = date(2026, 10, 12)
+        payload["Success"] = [dict(r, datetime=r["datetime"].replace("2026-06-23", str(day))) for r in payload["Success"]]
+        last = payload["Success"][-1]
+        payload["Success"].extend(dict(last, datetime=f"{day} 15:{minute}:00") for minute in range(30, 41))
+        bars = module.normalize(payload, "NIFTY", day, "Asia/Kolkata", "start")
+        self.assertEqual(len(bars), 385)
+        phases = {r["timestamp_ist"][11:16]: r["session_phase"] for r in bars}
+        self.assertEqual(phases["15:14"], "continuous_cash")
+        self.assertEqual(phases["15:15"], "closing_transition")
+        self.assertEqual(phases["15:20"], "auction_order_entry_or_random_close")
+        self.assertEqual(phases["15:30"], "auction_matching")
+        self.assertEqual(phases["15:35"], "post_auction_derivatives_still_open")
+        self.assertNotIn("15:40", phases)
+
+    def test_pre_cas_late_minutes_remain_required(self):
+        payload = response()
+        day = date(2026, 7, 31)
+        payload["Success"] = [dict(r, datetime=r["datetime"].replace("2026-06-23", str(day))) for r in payload["Success"] if r["datetime"][11:16] != "15:17"]
+        with self.assertRaises(module.MissingMinutesError):
+            module.normalize(payload, "NIFTY", day, "Asia/Kolkata", "start")
+
+    def test_legacy_complete_cas_profile_resumes_without_duplicate_outputs(self):
+        day = date(2026, 8, 3)
+        payload = response()
+        payload["Success"] = [dict(r, datetime=r["datetime"].replace("2026-06-23", str(day))) for r in payload["Success"]]
+        class Initial:
+            def fetch(self, params):
+                return payload
+        class NoNetwork:
+            def fetch(self, params):
+                raise AssertionError("unexpected fetch")
+        with tempfile.TemporaryDirectory(prefix="algo8-cas-legacy-") as folder:
+            root = Path(folder)
+            old = module.fetch_day(Initial(), root, "NIFTY", day, normalizer_version=1)
+            result = module.fetch_day(NoNetwork(), root, "NIFTY", day)
+            self.assertEqual(result, old)
+            self.assertEqual(len(list((root/"metadata").rglob("*.json"))), 1)
+
+    def test_cached_cas_revalidation_never_authenticates_or_downloads(self):
+        day = date(2026, 10, 12)
+        payload = response()
+        payload["Success"] = [dict(r, datetime=r["datetime"].replace("2026-06-23", str(day))) for r in payload["Success"]
+                              if r["datetime"][11:16] not in ("15:16", "15:17", "15:18", "15:19")]
+        class Initial:
+            def fetch(self, params):
+                return payload
+        with tempfile.TemporaryDirectory(prefix="algo8-cas-revalidate-") as folder:
+            root = Path(folder)
+            with self.assertRaises(module.MissingMinutesError):
+                module.fetch_day(Initial(), root, "NIFTY", day, normalizer_version=1)
+            raw = next((root/"raw").rglob("*.json"))
+            original = raw.read_bytes()
+            argv = ["fetch", "--revalidate-cached", "--index", "NIFTY", "--start", str(day), "--end", str(day), "--output", folder]
+            with patch.object(module.sys, "argv", argv), patch.object(module, "request_json", side_effect=AssertionError("network forbidden")), patch("sys.stdout", new_callable=io.StringIO) as out:
+                module.main()
+            self.assertIn('"status": "complete"', out.getvalue())
+            meta = module.json.loads(next((root/"metadata").rglob("*.json")).read_text())
+            self.assertEqual(meta["interpretation"]["normalizer_version"], 2)
+            self.assertEqual(meta["regular_session_bars"], 371)
+            self.assertEqual(raw.read_bytes(), original)
 
     def test_wrong_index_bad_prices_and_empty_rejected(self):
         for field, value in (("stock_code", "RELIND"), ("exchange_code", "BSE"),
