@@ -1,0 +1,3726 @@
+{
+  "request": {
+    "exch_code": "NSE",
+    "from_date": "2026-10-13T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "cash",
+    "stock_code": "NIFTY",
+    "to_date": "2026-10-13T15:45:00.000Z"
+  },
+  "response": {
+    "Status": 200,
+    "Success": [
+      {
+        "close": 22364.15,
+        "datetime": "2026-10-13 09:09:00",
+        "exchange_code": "NSE",
+        "high": 22376.35,
+        "low": 22358.4,
+        "open": 22376.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22321.15,
+        "datetime": "2026-10-13 09:15:00",
+        "exchange_code": "NSE",
+        "high": 22373.35,
+        "low": 22288.7,
+        "open": 22367.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22389.5,
+        "datetime": "2026-10-13 09:16:00",
+        "exchange_code": "NSE",
+        "high": 22391.6,
+        "low": 22321.25,
+        "open": 22321.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22447.85,
+        "datetime": "2026-10-13 09:17:00",
+        "exchange_code": "NSE",
+        "high": 22447.85,
+        "low": 22383.0,
+        "open": 22390.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22426.25,
+        "datetime": "2026-10-13 09:18:00",
+        "exchange_code": "NSE",
+        "high": 22458.4,
+        "low": 22426.25,
+        "open": 22448.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22436.95,
+        "datetime": "2026-10-13 09:19:00",
+        "exchange_code": "NSE",
+        "high": 22439.45,
+        "low": 22420.85,
+        "open": 22425.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22423.95,
+        "datetime": "2026-10-13 09:20:00",
+        "exchange_code": "NSE",
+        "high": 22448.0,
+        "low": 22421.6,
+        "open": 22436.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22435.8,
+        "datetime": "2026-10-13 09:21:00",
+        "exchange_code": "NSE",
+        "high": 22438.6,
+        "low": 22409.3,
+        "open": 22423.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22450.2,
+        "datetime": "2026-10-13 09:22:00",
+        "exchange_code": "NSE",
+        "high": 22451.45,
+        "low": 22427.95,
+        "open": 22435.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22450.95,
+        "datetime": "2026-10-13 09:23:00",
+        "exchange_code": "NSE",
+        "high": 22460.6,
+        "low": 22447.75,
+        "open": 22451.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22457.25,
+        "datetime": "2026-10-13 09:24:00",
+        "exchange_code": "NSE",
+        "high": 22458.1,
+        "low": 22441.85,
+        "open": 22451.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22463.45,
+        "datetime": "2026-10-13 09:25:00",
+        "exchange_code": "NSE",
+        "high": 22471.9,
+        "low": 22455.1,
+        "open": 22456.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22462.15,
+        "datetime": "2026-10-13 09:26:00",
+        "exchange_code": "NSE",
+        "high": 22471.95,
+        "low": 22458.75,
+        "open": 22465.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22469.15,
+        "datetime": "2026-10-13 09:27:00",
+        "exchange_code": "NSE",
+        "high": 22471.25,
+        "low": 22452.75,
+        "open": 22462.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22473.0,
+        "datetime": "2026-10-13 09:28:00",
+        "exchange_code": "NSE",
+        "high": 22473.0,
+        "low": 22462.3,
+        "open": 22469.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22471.4,
+        "datetime": "2026-10-13 09:29:00",
+        "exchange_code": "NSE",
+        "high": 22478.05,
+        "low": 22467.0,
+        "open": 22473.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22465.55,
+        "datetime": "2026-10-13 09:30:00",
+        "exchange_code": "NSE",
+        "high": 22478.3,
+        "low": 22461.5,
+        "open": 22470.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22467.65,
+        "datetime": "2026-10-13 09:31:00",
+        "exchange_code": "NSE",
+        "high": 22470.35,
+        "low": 22461.15,
+        "open": 22466.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22476.4,
+        "datetime": "2026-10-13 09:32:00",
+        "exchange_code": "NSE",
+        "high": 22478.7,
+        "low": 22462.1,
+        "open": 22467.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22479.75,
+        "datetime": "2026-10-13 09:33:00",
+        "exchange_code": "NSE",
+        "high": 22488.0,
+        "low": 22476.45,
+        "open": 22476.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22492.2,
+        "datetime": "2026-10-13 09:34:00",
+        "exchange_code": "NSE",
+        "high": 22495.7,
+        "low": 22479.4,
+        "open": 22479.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22487.95,
+        "datetime": "2026-10-13 09:35:00",
+        "exchange_code": "NSE",
+        "high": 22499.95,
+        "low": 22487.3,
+        "open": 22492.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22488.7,
+        "datetime": "2026-10-13 09:36:00",
+        "exchange_code": "NSE",
+        "high": 22491.0,
+        "low": 22481.2,
+        "open": 22488.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22486.25,
+        "datetime": "2026-10-13 09:37:00",
+        "exchange_code": "NSE",
+        "high": 22490.65,
+        "low": 22475.3,
+        "open": 22489.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22505.25,
+        "datetime": "2026-10-13 09:38:00",
+        "exchange_code": "NSE",
+        "high": 22506.7,
+        "low": 22486.4,
+        "open": 22486.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22519.0,
+        "datetime": "2026-10-13 09:39:00",
+        "exchange_code": "NSE",
+        "high": 22520.55,
+        "low": 22504.55,
+        "open": 22504.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22530.4,
+        "datetime": "2026-10-13 09:40:00",
+        "exchange_code": "NSE",
+        "high": 22530.6,
+        "low": 22516.2,
+        "open": 22518.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22536.8,
+        "datetime": "2026-10-13 09:41:00",
+        "exchange_code": "NSE",
+        "high": 22543.0,
+        "low": 22530.3,
+        "open": 22530.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22536.6,
+        "datetime": "2026-10-13 09:42:00",
+        "exchange_code": "NSE",
+        "high": 22539.95,
+        "low": 22530.35,
+        "open": 22536.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22529.75,
+        "datetime": "2026-10-13 09:43:00",
+        "exchange_code": "NSE",
+        "high": 22541.65,
+        "low": 22528.65,
+        "open": 22536.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22532.9,
+        "datetime": "2026-10-13 09:44:00",
+        "exchange_code": "NSE",
+        "high": 22538.0,
+        "low": 22529.55,
+        "open": 22529.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22550.0,
+        "datetime": "2026-10-13 09:45:00",
+        "exchange_code": "NSE",
+        "high": 22550.2,
+        "low": 22533.35,
+        "open": 22534.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22553.8,
+        "datetime": "2026-10-13 09:46:00",
+        "exchange_code": "NSE",
+        "high": 22554.85,
+        "low": 22548.25,
+        "open": 22550.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22559.45,
+        "datetime": "2026-10-13 09:47:00",
+        "exchange_code": "NSE",
+        "high": 22563.2,
+        "low": 22553.5,
+        "open": 22553.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22566.4,
+        "datetime": "2026-10-13 09:48:00",
+        "exchange_code": "NSE",
+        "high": 22570.8,
+        "low": 22555.2,
+        "open": 22559.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22560.8,
+        "datetime": "2026-10-13 09:49:00",
+        "exchange_code": "NSE",
+        "high": 22567.0,
+        "low": 22557.6,
+        "open": 22566.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22552.45,
+        "datetime": "2026-10-13 09:50:00",
+        "exchange_code": "NSE",
+        "high": 22563.5,
+        "low": 22551.5,
+        "open": 22560.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22556.7,
+        "datetime": "2026-10-13 09:51:00",
+        "exchange_code": "NSE",
+        "high": 22559.6,
+        "low": 22549.95,
+        "open": 22552.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22550.9,
+        "datetime": "2026-10-13 09:52:00",
+        "exchange_code": "NSE",
+        "high": 22557.85,
+        "low": 22549.95,
+        "open": 22556.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22555.55,
+        "datetime": "2026-10-13 09:53:00",
+        "exchange_code": "NSE",
+        "high": 22556.9,
+        "low": 22548.75,
+        "open": 22550.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22566.05,
+        "datetime": "2026-10-13 09:54:00",
+        "exchange_code": "NSE",
+        "high": 22568.45,
+        "low": 22556.1,
+        "open": 22556.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22570.25,
+        "datetime": "2026-10-13 09:55:00",
+        "exchange_code": "NSE",
+        "high": 22581.0,
+        "low": 22565.55,
+        "open": 22565.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22566.1,
+        "datetime": "2026-10-13 09:56:00",
+        "exchange_code": "NSE",
+        "high": 22574.35,
+        "low": 22565.05,
+        "open": 22569.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22572.6,
+        "datetime": "2026-10-13 09:57:00",
+        "exchange_code": "NSE",
+        "high": 22575.55,
+        "low": 22564.85,
+        "open": 22566.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22573.05,
+        "datetime": "2026-10-13 09:58:00",
+        "exchange_code": "NSE",
+        "high": 22576.6,
+        "low": 22571.4,
+        "open": 22572.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22567.55,
+        "datetime": "2026-10-13 09:59:00",
+        "exchange_code": "NSE",
+        "high": 22577.0,
+        "low": 22567.1,
+        "open": 22573.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22566.15,
+        "datetime": "2026-10-13 10:00:00",
+        "exchange_code": "NSE",
+        "high": 22570.4,
+        "low": 22562.15,
+        "open": 22567.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22574.6,
+        "datetime": "2026-10-13 10:01:00",
+        "exchange_code": "NSE",
+        "high": 22577.0,
+        "low": 22566.6,
+        "open": 22566.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22571.65,
+        "datetime": "2026-10-13 10:02:00",
+        "exchange_code": "NSE",
+        "high": 22576.4,
+        "low": 22569.75,
+        "open": 22574.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22564.5,
+        "datetime": "2026-10-13 10:03:00",
+        "exchange_code": "NSE",
+        "high": 22573.7,
+        "low": 22564.45,
+        "open": 22571.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22562.2,
+        "datetime": "2026-10-13 10:04:00",
+        "exchange_code": "NSE",
+        "high": 22566.65,
+        "low": 22557.65,
+        "open": 22565.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22570.2,
+        "datetime": "2026-10-13 10:05:00",
+        "exchange_code": "NSE",
+        "high": 22570.9,
+        "low": 22562.25,
+        "open": 22562.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22564.9,
+        "datetime": "2026-10-13 10:06:00",
+        "exchange_code": "NSE",
+        "high": 22571.75,
+        "low": 22564.45,
+        "open": 22570.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22565.6,
+        "datetime": "2026-10-13 10:07:00",
+        "exchange_code": "NSE",
+        "high": 22567.95,
+        "low": 22562.35,
+        "open": 22564.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22563.45,
+        "datetime": "2026-10-13 10:08:00",
+        "exchange_code": "NSE",
+        "high": 22568.35,
+        "low": 22561.95,
+        "open": 22565.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22570.55,
+        "datetime": "2026-10-13 10:09:00",
+        "exchange_code": "NSE",
+        "high": 22572.85,
+        "low": 22563.05,
+        "open": 22563.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22560.4,
+        "datetime": "2026-10-13 10:10:00",
+        "exchange_code": "NSE",
+        "high": 22571.6,
+        "low": 22559.7,
+        "open": 22570.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22560.2,
+        "datetime": "2026-10-13 10:11:00",
+        "exchange_code": "NSE",
+        "high": 22563.5,
+        "low": 22558.25,
+        "open": 22559.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22558.05,
+        "datetime": "2026-10-13 10:12:00",
+        "exchange_code": "NSE",
+        "high": 22563.5,
+        "low": 22557.45,
+        "open": 22560.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22557.35,
+        "datetime": "2026-10-13 10:13:00",
+        "exchange_code": "NSE",
+        "high": 22563.2,
+        "low": 22557.35,
+        "open": 22557.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22558.9,
+        "datetime": "2026-10-13 10:14:00",
+        "exchange_code": "NSE",
+        "high": 22562.1,
+        "low": 22554.9,
+        "open": 22556.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22563.45,
+        "datetime": "2026-10-13 10:15:00",
+        "exchange_code": "NSE",
+        "high": 22564.75,
+        "low": 22558.25,
+        "open": 22558.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22560.05,
+        "datetime": "2026-10-13 10:16:00",
+        "exchange_code": "NSE",
+        "high": 22567.1,
+        "low": 22557.15,
+        "open": 22563.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22561.75,
+        "datetime": "2026-10-13 10:17:00",
+        "exchange_code": "NSE",
+        "high": 22564.05,
+        "low": 22559.5,
+        "open": 22560.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.8,
+        "datetime": "2026-10-13 10:18:00",
+        "exchange_code": "NSE",
+        "high": 22563.7,
+        "low": 22549.8,
+        "open": 22562.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22544.85,
+        "datetime": "2026-10-13 10:19:00",
+        "exchange_code": "NSE",
+        "high": 22552.85,
+        "low": 22541.35,
+        "open": 22549.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22542.65,
+        "datetime": "2026-10-13 10:20:00",
+        "exchange_code": "NSE",
+        "high": 22546.85,
+        "low": 22540.7,
+        "open": 22545.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.25,
+        "datetime": "2026-10-13 10:21:00",
+        "exchange_code": "NSE",
+        "high": 22550.05,
+        "low": 22542.4,
+        "open": 22543.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.25,
+        "datetime": "2026-10-13 10:22:00",
+        "exchange_code": "NSE",
+        "high": 22551.15,
+        "low": 22546.1,
+        "open": 22549.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22550.45,
+        "datetime": "2026-10-13 10:23:00",
+        "exchange_code": "NSE",
+        "high": 22553.5,
+        "low": 22546.1,
+        "open": 22549.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22544.6,
+        "datetime": "2026-10-13 10:24:00",
+        "exchange_code": "NSE",
+        "high": 22552.25,
+        "low": 22542.45,
+        "open": 22550.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22536.35,
+        "datetime": "2026-10-13 10:25:00",
+        "exchange_code": "NSE",
+        "high": 22545.0,
+        "low": 22536.1,
+        "open": 22544.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22535.9,
+        "datetime": "2026-10-13 10:26:00",
+        "exchange_code": "NSE",
+        "high": 22538.6,
+        "low": 22534.35,
+        "open": 22536.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22532.25,
+        "datetime": "2026-10-13 10:27:00",
+        "exchange_code": "NSE",
+        "high": 22540.8,
+        "low": 22530.9,
+        "open": 22536.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22526.15,
+        "datetime": "2026-10-13 10:28:00",
+        "exchange_code": "NSE",
+        "high": 22534.05,
+        "low": 22520.4,
+        "open": 22532.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22525.6,
+        "datetime": "2026-10-13 10:29:00",
+        "exchange_code": "NSE",
+        "high": 22531.85,
+        "low": 22522.65,
+        "open": 22526.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22530.3,
+        "datetime": "2026-10-13 10:30:00",
+        "exchange_code": "NSE",
+        "high": 22532.05,
+        "low": 22521.8,
+        "open": 22527.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22527.6,
+        "datetime": "2026-10-13 10:31:00",
+        "exchange_code": "NSE",
+        "high": 22531.7,
+        "low": 22523.3,
+        "open": 22531.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22514.55,
+        "datetime": "2026-10-13 10:32:00",
+        "exchange_code": "NSE",
+        "high": 22529.45,
+        "low": 22513.0,
+        "open": 22529.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22514.25,
+        "datetime": "2026-10-13 10:33:00",
+        "exchange_code": "NSE",
+        "high": 22522.55,
+        "low": 22509.65,
+        "open": 22516.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22515.55,
+        "datetime": "2026-10-13 10:34:00",
+        "exchange_code": "NSE",
+        "high": 22517.7,
+        "low": 22512.95,
+        "open": 22516.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22515.1,
+        "datetime": "2026-10-13 10:35:00",
+        "exchange_code": "NSE",
+        "high": 22517.1,
+        "low": 22505.95,
+        "open": 22516.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22509.7,
+        "datetime": "2026-10-13 10:36:00",
+        "exchange_code": "NSE",
+        "high": 22517.05,
+        "low": 22506.5,
+        "open": 22516.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22512.05,
+        "datetime": "2026-10-13 10:37:00",
+        "exchange_code": "NSE",
+        "high": 22513.75,
+        "low": 22507.9,
+        "open": 22512.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22501.5,
+        "datetime": "2026-10-13 10:38:00",
+        "exchange_code": "NSE",
+        "high": 22513.7,
+        "low": 22499.15,
+        "open": 22513.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22497.9,
+        "datetime": "2026-10-13 10:39:00",
+        "exchange_code": "NSE",
+        "high": 22503.65,
+        "low": 22485.95,
+        "open": 22503.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22510.4,
+        "datetime": "2026-10-13 10:40:00",
+        "exchange_code": "NSE",
+        "high": 22511.7,
+        "low": 22494.55,
+        "open": 22499.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22502.65,
+        "datetime": "2026-10-13 10:41:00",
+        "exchange_code": "NSE",
+        "high": 22513.3,
+        "low": 22499.2,
+        "open": 22511.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22495.3,
+        "datetime": "2026-10-13 10:42:00",
+        "exchange_code": "NSE",
+        "high": 22505.35,
+        "low": 22492.7,
+        "open": 22504.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22499.6,
+        "datetime": "2026-10-13 10:43:00",
+        "exchange_code": "NSE",
+        "high": 22503.0,
+        "low": 22489.35,
+        "open": 22496.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22510.85,
+        "datetime": "2026-10-13 10:44:00",
+        "exchange_code": "NSE",
+        "high": 22511.95,
+        "low": 22495.15,
+        "open": 22499.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22511.5,
+        "datetime": "2026-10-13 10:45:00",
+        "exchange_code": "NSE",
+        "high": 22517.05,
+        "low": 22510.25,
+        "open": 22512.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22506.5,
+        "datetime": "2026-10-13 10:46:00",
+        "exchange_code": "NSE",
+        "high": 22513.9,
+        "low": 22505.85,
+        "open": 22513.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22511.65,
+        "datetime": "2026-10-13 10:47:00",
+        "exchange_code": "NSE",
+        "high": 22511.65,
+        "low": 22503.55,
+        "open": 22508.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22518.9,
+        "datetime": "2026-10-13 10:48:00",
+        "exchange_code": "NSE",
+        "high": 22518.9,
+        "low": 22509.85,
+        "open": 22512.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22524.25,
+        "datetime": "2026-10-13 10:49:00",
+        "exchange_code": "NSE",
+        "high": 22525.9,
+        "low": 22515.85,
+        "open": 22519.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22510.55,
+        "datetime": "2026-10-13 10:50:00",
+        "exchange_code": "NSE",
+        "high": 22526.85,
+        "low": 22510.3,
+        "open": 22526.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22509.75,
+        "datetime": "2026-10-13 10:51:00",
+        "exchange_code": "NSE",
+        "high": 22516.3,
+        "low": 22508.55,
+        "open": 22512.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22513.2,
+        "datetime": "2026-10-13 10:52:00",
+        "exchange_code": "NSE",
+        "high": 22514.2,
+        "low": 22508.8,
+        "open": 22511.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22518.1,
+        "datetime": "2026-10-13 10:53:00",
+        "exchange_code": "NSE",
+        "high": 22519.45,
+        "low": 22511.7,
+        "open": 22515.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22515.7,
+        "datetime": "2026-10-13 10:54:00",
+        "exchange_code": "NSE",
+        "high": 22520.5,
+        "low": 22513.85,
+        "open": 22520.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22522.65,
+        "datetime": "2026-10-13 10:55:00",
+        "exchange_code": "NSE",
+        "high": 22524.45,
+        "low": 22513.95,
+        "open": 22516.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22516.75,
+        "datetime": "2026-10-13 10:56:00",
+        "exchange_code": "NSE",
+        "high": 22524.55,
+        "low": 22516.05,
+        "open": 22523.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22512.75,
+        "datetime": "2026-10-13 10:57:00",
+        "exchange_code": "NSE",
+        "high": 22518.35,
+        "low": 22512.3,
+        "open": 22518.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22507.25,
+        "datetime": "2026-10-13 10:58:00",
+        "exchange_code": "NSE",
+        "high": 22513.8,
+        "low": 22506.5,
+        "open": 22513.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22497.3,
+        "datetime": "2026-10-13 10:59:00",
+        "exchange_code": "NSE",
+        "high": 22509.0,
+        "low": 22497.2,
+        "open": 22508.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22501.1,
+        "datetime": "2026-10-13 11:00:00",
+        "exchange_code": "NSE",
+        "high": 22503.05,
+        "low": 22497.9,
+        "open": 22499.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22503.4,
+        "datetime": "2026-10-13 11:01:00",
+        "exchange_code": "NSE",
+        "high": 22505.7,
+        "low": 22499.0,
+        "open": 22502.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22498.4,
+        "datetime": "2026-10-13 11:02:00",
+        "exchange_code": "NSE",
+        "high": 22504.6,
+        "low": 22497.1,
+        "open": 22504.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22505.05,
+        "datetime": "2026-10-13 11:03:00",
+        "exchange_code": "NSE",
+        "high": 22506.6,
+        "low": 22498.0,
+        "open": 22499.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22507.85,
+        "datetime": "2026-10-13 11:04:00",
+        "exchange_code": "NSE",
+        "high": 22510.45,
+        "low": 22503.2,
+        "open": 22505.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22508.8,
+        "datetime": "2026-10-13 11:05:00",
+        "exchange_code": "NSE",
+        "high": 22513.6,
+        "low": 22507.5,
+        "open": 22508.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22506.95,
+        "datetime": "2026-10-13 11:06:00",
+        "exchange_code": "NSE",
+        "high": 22510.4,
+        "low": 22504.35,
+        "open": 22509.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22502.35,
+        "datetime": "2026-10-13 11:07:00",
+        "exchange_code": "NSE",
+        "high": 22508.5,
+        "low": 22501.0,
+        "open": 22507.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22504.7,
+        "datetime": "2026-10-13 11:08:00",
+        "exchange_code": "NSE",
+        "high": 22507.2,
+        "low": 22502.05,
+        "open": 22503.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22502.45,
+        "datetime": "2026-10-13 11:09:00",
+        "exchange_code": "NSE",
+        "high": 22507.55,
+        "low": 22501.4,
+        "open": 22506.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22502.25,
+        "datetime": "2026-10-13 11:10:00",
+        "exchange_code": "NSE",
+        "high": 22504.6,
+        "low": 22501.0,
+        "open": 22503.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22501.1,
+        "datetime": "2026-10-13 11:11:00",
+        "exchange_code": "NSE",
+        "high": 22502.85,
+        "low": 22498.7,
+        "open": 22502.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22500.5,
+        "datetime": "2026-10-13 11:12:00",
+        "exchange_code": "NSE",
+        "high": 22502.3,
+        "low": 22496.85,
+        "open": 22501.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22500.05,
+        "datetime": "2026-10-13 11:13:00",
+        "exchange_code": "NSE",
+        "high": 22501.8,
+        "low": 22497.3,
+        "open": 22501.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22489.9,
+        "datetime": "2026-10-13 11:14:00",
+        "exchange_code": "NSE",
+        "high": 22500.95,
+        "low": 22489.6,
+        "open": 22500.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22487.3,
+        "datetime": "2026-10-13 11:15:00",
+        "exchange_code": "NSE",
+        "high": 22492.5,
+        "low": 22486.25,
+        "open": 22492.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22498.85,
+        "datetime": "2026-10-13 11:16:00",
+        "exchange_code": "NSE",
+        "high": 22499.6,
+        "low": 22486.85,
+        "open": 22488.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22496.5,
+        "datetime": "2026-10-13 11:17:00",
+        "exchange_code": "NSE",
+        "high": 22500.75,
+        "low": 22493.9,
+        "open": 22500.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22497.35,
+        "datetime": "2026-10-13 11:18:00",
+        "exchange_code": "NSE",
+        "high": 22498.35,
+        "low": 22492.1,
+        "open": 22497.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22504.9,
+        "datetime": "2026-10-13 11:19:00",
+        "exchange_code": "NSE",
+        "high": 22509.05,
+        "low": 22497.0,
+        "open": 22499.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22505.55,
+        "datetime": "2026-10-13 11:20:00",
+        "exchange_code": "NSE",
+        "high": 22507.55,
+        "low": 22503.3,
+        "open": 22506.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22498.65,
+        "datetime": "2026-10-13 11:21:00",
+        "exchange_code": "NSE",
+        "high": 22506.8,
+        "low": 22498.3,
+        "open": 22506.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22491.8,
+        "datetime": "2026-10-13 11:22:00",
+        "exchange_code": "NSE",
+        "high": 22500.65,
+        "low": 22490.4,
+        "open": 22500.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22495.15,
+        "datetime": "2026-10-13 11:23:00",
+        "exchange_code": "NSE",
+        "high": 22496.2,
+        "low": 22490.65,
+        "open": 22493.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22490.3,
+        "datetime": "2026-10-13 11:24:00",
+        "exchange_code": "NSE",
+        "high": 22497.15,
+        "low": 22490.0,
+        "open": 22496.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22489.8,
+        "datetime": "2026-10-13 11:25:00",
+        "exchange_code": "NSE",
+        "high": 22492.75,
+        "low": 22487.65,
+        "open": 22491.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22486.7,
+        "datetime": "2026-10-13 11:26:00",
+        "exchange_code": "NSE",
+        "high": 22490.8,
+        "low": 22484.3,
+        "open": 22490.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22487.4,
+        "datetime": "2026-10-13 11:27:00",
+        "exchange_code": "NSE",
+        "high": 22490.7,
+        "low": 22486.7,
+        "open": 22487.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22483.55,
+        "datetime": "2026-10-13 11:28:00",
+        "exchange_code": "NSE",
+        "high": 22488.9,
+        "low": 22481.25,
+        "open": 22488.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22486.25,
+        "datetime": "2026-10-13 11:29:00",
+        "exchange_code": "NSE",
+        "high": 22488.25,
+        "low": 22480.8,
+        "open": 22484.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22494.35,
+        "datetime": "2026-10-13 11:30:00",
+        "exchange_code": "NSE",
+        "high": 22494.75,
+        "low": 22483.05,
+        "open": 22486.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22504.9,
+        "datetime": "2026-10-13 11:31:00",
+        "exchange_code": "NSE",
+        "high": 22507.9,
+        "low": 22493.25,
+        "open": 22494.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22504.4,
+        "datetime": "2026-10-13 11:32:00",
+        "exchange_code": "NSE",
+        "high": 22511.05,
+        "low": 22502.65,
+        "open": 22506.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22504.05,
+        "datetime": "2026-10-13 11:33:00",
+        "exchange_code": "NSE",
+        "high": 22505.55,
+        "low": 22499.2,
+        "open": 22505.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22500.5,
+        "datetime": "2026-10-13 11:34:00",
+        "exchange_code": "NSE",
+        "high": 22505.05,
+        "low": 22499.35,
+        "open": 22504.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22504.75,
+        "datetime": "2026-10-13 11:35:00",
+        "exchange_code": "NSE",
+        "high": 22508.95,
+        "low": 22500.4,
+        "open": 22501.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22509.5,
+        "datetime": "2026-10-13 11:36:00",
+        "exchange_code": "NSE",
+        "high": 22510.15,
+        "low": 22504.65,
+        "open": 22505.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22509.1,
+        "datetime": "2026-10-13 11:37:00",
+        "exchange_code": "NSE",
+        "high": 22511.5,
+        "low": 22505.25,
+        "open": 22511.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22520.3,
+        "datetime": "2026-10-13 11:38:00",
+        "exchange_code": "NSE",
+        "high": 22521.55,
+        "low": 22508.2,
+        "open": 22510.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22525.75,
+        "datetime": "2026-10-13 11:39:00",
+        "exchange_code": "NSE",
+        "high": 22528.65,
+        "low": 22519.95,
+        "open": 22520.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22518.65,
+        "datetime": "2026-10-13 11:40:00",
+        "exchange_code": "NSE",
+        "high": 22527.1,
+        "low": 22517.1,
+        "open": 22527.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22518.6,
+        "datetime": "2026-10-13 11:41:00",
+        "exchange_code": "NSE",
+        "high": 22526.9,
+        "low": 22517.1,
+        "open": 22521.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22517.5,
+        "datetime": "2026-10-13 11:42:00",
+        "exchange_code": "NSE",
+        "high": 22520.8,
+        "low": 22513.7,
+        "open": 22519.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22509.75,
+        "datetime": "2026-10-13 11:43:00",
+        "exchange_code": "NSE",
+        "high": 22518.5,
+        "low": 22509.0,
+        "open": 22518.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22505.8,
+        "datetime": "2026-10-13 11:44:00",
+        "exchange_code": "NSE",
+        "high": 22515.5,
+        "low": 22505.3,
+        "open": 22510.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22501.9,
+        "datetime": "2026-10-13 11:45:00",
+        "exchange_code": "NSE",
+        "high": 22507.85,
+        "low": 22501.05,
+        "open": 22507.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22491.85,
+        "datetime": "2026-10-13 11:46:00",
+        "exchange_code": "NSE",
+        "high": 22503.85,
+        "low": 22490.85,
+        "open": 22503.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22491.95,
+        "datetime": "2026-10-13 11:47:00",
+        "exchange_code": "NSE",
+        "high": 22493.65,
+        "low": 22486.8,
+        "open": 22493.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22490.7,
+        "datetime": "2026-10-13 11:48:00",
+        "exchange_code": "NSE",
+        "high": 22495.9,
+        "low": 22489.9,
+        "open": 22492.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22488.35,
+        "datetime": "2026-10-13 11:49:00",
+        "exchange_code": "NSE",
+        "high": 22491.95,
+        "low": 22485.6,
+        "open": 22491.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22492.7,
+        "datetime": "2026-10-13 11:50:00",
+        "exchange_code": "NSE",
+        "high": 22493.75,
+        "low": 22486.05,
+        "open": 22488.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22506.1,
+        "datetime": "2026-10-13 11:51:00",
+        "exchange_code": "NSE",
+        "high": 22506.2,
+        "low": 22491.2,
+        "open": 22494.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22513.15,
+        "datetime": "2026-10-13 11:52:00",
+        "exchange_code": "NSE",
+        "high": 22516.15,
+        "low": 22505.2,
+        "open": 22507.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22515.95,
+        "datetime": "2026-10-13 11:53:00",
+        "exchange_code": "NSE",
+        "high": 22517.4,
+        "low": 22513.05,
+        "open": 22514.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22513.45,
+        "datetime": "2026-10-13 11:54:00",
+        "exchange_code": "NSE",
+        "high": 22517.0,
+        "low": 22511.1,
+        "open": 22517.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22510.7,
+        "datetime": "2026-10-13 11:55:00",
+        "exchange_code": "NSE",
+        "high": 22514.75,
+        "low": 22508.95,
+        "open": 22514.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22511.9,
+        "datetime": "2026-10-13 11:56:00",
+        "exchange_code": "NSE",
+        "high": 22513.5,
+        "low": 22508.05,
+        "open": 22511.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22516.95,
+        "datetime": "2026-10-13 11:57:00",
+        "exchange_code": "NSE",
+        "high": 22517.55,
+        "low": 22510.95,
+        "open": 22512.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22516.15,
+        "datetime": "2026-10-13 11:58:00",
+        "exchange_code": "NSE",
+        "high": 22520.45,
+        "low": 22515.4,
+        "open": 22518.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22520.25,
+        "datetime": "2026-10-13 11:59:00",
+        "exchange_code": "NSE",
+        "high": 22520.85,
+        "low": 22514.55,
+        "open": 22517.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22521.15,
+        "datetime": "2026-10-13 12:00:00",
+        "exchange_code": "NSE",
+        "high": 22526.4,
+        "low": 22518.8,
+        "open": 22521.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22519.35,
+        "datetime": "2026-10-13 12:01:00",
+        "exchange_code": "NSE",
+        "high": 22526.25,
+        "low": 22519.35,
+        "open": 22523.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22515.25,
+        "datetime": "2026-10-13 12:02:00",
+        "exchange_code": "NSE",
+        "high": 22522.0,
+        "low": 22512.9,
+        "open": 22521.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22515.7,
+        "datetime": "2026-10-13 12:03:00",
+        "exchange_code": "NSE",
+        "high": 22521.55,
+        "low": 22515.15,
+        "open": 22517.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22514.55,
+        "datetime": "2026-10-13 12:04:00",
+        "exchange_code": "NSE",
+        "high": 22517.65,
+        "low": 22514.05,
+        "open": 22517.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22514.15,
+        "datetime": "2026-10-13 12:05:00",
+        "exchange_code": "NSE",
+        "high": 22516.5,
+        "low": 22513.2,
+        "open": 22515.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22517.35,
+        "datetime": "2026-10-13 12:06:00",
+        "exchange_code": "NSE",
+        "high": 22517.8,
+        "low": 22512.85,
+        "open": 22514.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22504.0,
+        "datetime": "2026-10-13 12:07:00",
+        "exchange_code": "NSE",
+        "high": 22518.6,
+        "low": 22500.9,
+        "open": 22518.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22506.7,
+        "datetime": "2026-10-13 12:08:00",
+        "exchange_code": "NSE",
+        "high": 22510.45,
+        "low": 22504.8,
+        "open": 22505.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22503.15,
+        "datetime": "2026-10-13 12:09:00",
+        "exchange_code": "NSE",
+        "high": 22508.45,
+        "low": 22501.85,
+        "open": 22508.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22498.9,
+        "datetime": "2026-10-13 12:10:00",
+        "exchange_code": "NSE",
+        "high": 22504.3,
+        "low": 22497.5,
+        "open": 22504.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22499.9,
+        "datetime": "2026-10-13 12:11:00",
+        "exchange_code": "NSE",
+        "high": 22504.3,
+        "low": 22497.9,
+        "open": 22499.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22508.35,
+        "datetime": "2026-10-13 12:12:00",
+        "exchange_code": "NSE",
+        "high": 22508.95,
+        "low": 22500.4,
+        "open": 22501.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22510.45,
+        "datetime": "2026-10-13 12:13:00",
+        "exchange_code": "NSE",
+        "high": 22512.95,
+        "low": 22507.9,
+        "open": 22509.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22515.75,
+        "datetime": "2026-10-13 12:14:00",
+        "exchange_code": "NSE",
+        "high": 22517.25,
+        "low": 22509.65,
+        "open": 22511.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22518.6,
+        "datetime": "2026-10-13 12:15:00",
+        "exchange_code": "NSE",
+        "high": 22521.75,
+        "low": 22514.35,
+        "open": 22516.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22511.75,
+        "datetime": "2026-10-13 12:16:00",
+        "exchange_code": "NSE",
+        "high": 22519.5,
+        "low": 22511.6,
+        "open": 22519.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22525.8,
+        "datetime": "2026-10-13 12:17:00",
+        "exchange_code": "NSE",
+        "high": 22525.8,
+        "low": 22512.3,
+        "open": 22513.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22538.25,
+        "datetime": "2026-10-13 12:18:00",
+        "exchange_code": "NSE",
+        "high": 22540.3,
+        "low": 22526.8,
+        "open": 22527.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22529.8,
+        "datetime": "2026-10-13 12:19:00",
+        "exchange_code": "NSE",
+        "high": 22539.95,
+        "low": 22528.95,
+        "open": 22539.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22533.8,
+        "datetime": "2026-10-13 12:20:00",
+        "exchange_code": "NSE",
+        "high": 22535.3,
+        "low": 22526.4,
+        "open": 22531.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22530.2,
+        "datetime": "2026-10-13 12:21:00",
+        "exchange_code": "NSE",
+        "high": 22535.05,
+        "low": 22526.6,
+        "open": 22534.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22524.95,
+        "datetime": "2026-10-13 12:22:00",
+        "exchange_code": "NSE",
+        "high": 22532.0,
+        "low": 22523.6,
+        "open": 22531.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22529.05,
+        "datetime": "2026-10-13 12:23:00",
+        "exchange_code": "NSE",
+        "high": 22534.55,
+        "low": 22523.55,
+        "open": 22526.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22527.45,
+        "datetime": "2026-10-13 12:24:00",
+        "exchange_code": "NSE",
+        "high": 22532.2,
+        "low": 22526.6,
+        "open": 22529.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22523.55,
+        "datetime": "2026-10-13 12:25:00",
+        "exchange_code": "NSE",
+        "high": 22529.6,
+        "low": 22522.85,
+        "open": 22529.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22520.9,
+        "datetime": "2026-10-13 12:26:00",
+        "exchange_code": "NSE",
+        "high": 22527.25,
+        "low": 22520.5,
+        "open": 22524.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22525.05,
+        "datetime": "2026-10-13 12:27:00",
+        "exchange_code": "NSE",
+        "high": 22526.65,
+        "low": 22517.85,
+        "open": 22521.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22532.1,
+        "datetime": "2026-10-13 12:28:00",
+        "exchange_code": "NSE",
+        "high": 22534.8,
+        "low": 22526.45,
+        "open": 22526.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22537.8,
+        "datetime": "2026-10-13 12:29:00",
+        "exchange_code": "NSE",
+        "high": 22538.95,
+        "low": 22529.4,
+        "open": 22533.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22539.35,
+        "datetime": "2026-10-13 12:30:00",
+        "exchange_code": "NSE",
+        "high": 22557.95,
+        "low": 22537.5,
+        "open": 22538.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22548.25,
+        "datetime": "2026-10-13 12:31:00",
+        "exchange_code": "NSE",
+        "high": 22549.65,
+        "low": 22539.0,
+        "open": 22540.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22542.9,
+        "datetime": "2026-10-13 12:32:00",
+        "exchange_code": "NSE",
+        "high": 22552.8,
+        "low": 22541.6,
+        "open": 22549.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22551.1,
+        "datetime": "2026-10-13 12:33:00",
+        "exchange_code": "NSE",
+        "high": 22552.85,
+        "low": 22541.3,
+        "open": 22545.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22547.8,
+        "datetime": "2026-10-13 12:34:00",
+        "exchange_code": "NSE",
+        "high": 22556.45,
+        "low": 22546.4,
+        "open": 22552.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22539.2,
+        "datetime": "2026-10-13 12:35:00",
+        "exchange_code": "NSE",
+        "high": 22549.7,
+        "low": 22537.85,
+        "open": 22549.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22537.65,
+        "datetime": "2026-10-13 12:36:00",
+        "exchange_code": "NSE",
+        "high": 22541.15,
+        "low": 22533.2,
+        "open": 22541.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22543.4,
+        "datetime": "2026-10-13 12:37:00",
+        "exchange_code": "NSE",
+        "high": 22544.25,
+        "low": 22536.25,
+        "open": 22538.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22548.15,
+        "datetime": "2026-10-13 12:38:00",
+        "exchange_code": "NSE",
+        "high": 22549.9,
+        "low": 22542.9,
+        "open": 22545.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22546.8,
+        "datetime": "2026-10-13 12:39:00",
+        "exchange_code": "NSE",
+        "high": 22550.05,
+        "low": 22544.2,
+        "open": 22548.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22550.2,
+        "datetime": "2026-10-13 12:40:00",
+        "exchange_code": "NSE",
+        "high": 22551.3,
+        "low": 22545.45,
+        "open": 22548.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22544.35,
+        "datetime": "2026-10-13 12:41:00",
+        "exchange_code": "NSE",
+        "high": 22551.45,
+        "low": 22543.85,
+        "open": 22551.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22539.25,
+        "datetime": "2026-10-13 12:42:00",
+        "exchange_code": "NSE",
+        "high": 22545.8,
+        "low": 22535.55,
+        "open": 22545.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22537.8,
+        "datetime": "2026-10-13 12:43:00",
+        "exchange_code": "NSE",
+        "high": 22540.2,
+        "low": 22535.45,
+        "open": 22539.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22537.75,
+        "datetime": "2026-10-13 12:44:00",
+        "exchange_code": "NSE",
+        "high": 22541.95,
+        "low": 22535.95,
+        "open": 22538.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22530.5,
+        "datetime": "2026-10-13 12:45:00",
+        "exchange_code": "NSE",
+        "high": 22540.0,
+        "low": 22528.85,
+        "open": 22538.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22539.4,
+        "datetime": "2026-10-13 12:46:00",
+        "exchange_code": "NSE",
+        "high": 22541.0,
+        "low": 22530.35,
+        "open": 22532.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22539.05,
+        "datetime": "2026-10-13 12:47:00",
+        "exchange_code": "NSE",
+        "high": 22542.9,
+        "low": 22537.0,
+        "open": 22541.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22535.55,
+        "datetime": "2026-10-13 12:48:00",
+        "exchange_code": "NSE",
+        "high": 22540.75,
+        "low": 22534.65,
+        "open": 22540.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22538.75,
+        "datetime": "2026-10-13 12:49:00",
+        "exchange_code": "NSE",
+        "high": 22541.35,
+        "low": 22535.05,
+        "open": 22536.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22547.6,
+        "datetime": "2026-10-13 12:50:00",
+        "exchange_code": "NSE",
+        "high": 22548.75,
+        "low": 22537.95,
+        "open": 22542.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.4,
+        "datetime": "2026-10-13 12:51:00",
+        "exchange_code": "NSE",
+        "high": 22554.1,
+        "low": 22547.55,
+        "open": 22549.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22543.55,
+        "datetime": "2026-10-13 12:52:00",
+        "exchange_code": "NSE",
+        "high": 22550.8,
+        "low": 22542.25,
+        "open": 22550.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22547.05,
+        "datetime": "2026-10-13 12:53:00",
+        "exchange_code": "NSE",
+        "high": 22550.85,
+        "low": 22542.95,
+        "open": 22545.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22543.15,
+        "datetime": "2026-10-13 12:54:00",
+        "exchange_code": "NSE",
+        "high": 22548.8,
+        "low": 22541.35,
+        "open": 22548.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22541.2,
+        "datetime": "2026-10-13 12:55:00",
+        "exchange_code": "NSE",
+        "high": 22546.35,
+        "low": 22541.15,
+        "open": 22544.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22541.75,
+        "datetime": "2026-10-13 12:56:00",
+        "exchange_code": "NSE",
+        "high": 22546.3,
+        "low": 22540.3,
+        "open": 22542.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22538.3,
+        "datetime": "2026-10-13 12:57:00",
+        "exchange_code": "NSE",
+        "high": 22544.15,
+        "low": 22537.85,
+        "open": 22543.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22539.25,
+        "datetime": "2026-10-13 12:58:00",
+        "exchange_code": "NSE",
+        "high": 22541.65,
+        "low": 22537.1,
+        "open": 22541.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22540.7,
+        "datetime": "2026-10-13 12:59:00",
+        "exchange_code": "NSE",
+        "high": 22543.7,
+        "low": 22536.15,
+        "open": 22540.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22534.45,
+        "datetime": "2026-10-13 13:00:00",
+        "exchange_code": "NSE",
+        "high": 22542.75,
+        "low": 22532.9,
+        "open": 22542.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22534.2,
+        "datetime": "2026-10-13 13:01:00",
+        "exchange_code": "NSE",
+        "high": 22538.0,
+        "low": 22533.85,
+        "open": 22536.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22532.95,
+        "datetime": "2026-10-13 13:02:00",
+        "exchange_code": "NSE",
+        "high": 22536.1,
+        "low": 22531.4,
+        "open": 22535.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22532.9,
+        "datetime": "2026-10-13 13:03:00",
+        "exchange_code": "NSE",
+        "high": 22535.25,
+        "low": 22530.3,
+        "open": 22533.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22533.5,
+        "datetime": "2026-10-13 13:04:00",
+        "exchange_code": "NSE",
+        "high": 22534.85,
+        "low": 22531.9,
+        "open": 22533.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22534.4,
+        "datetime": "2026-10-13 13:05:00",
+        "exchange_code": "NSE",
+        "high": 22536.2,
+        "low": 22532.2,
+        "open": 22535.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22535.25,
+        "datetime": "2026-10-13 13:06:00",
+        "exchange_code": "NSE",
+        "high": 22538.35,
+        "low": 22534.55,
+        "open": 22535.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22540.35,
+        "datetime": "2026-10-13 13:07:00",
+        "exchange_code": "NSE",
+        "high": 22541.2,
+        "low": 22534.9,
+        "open": 22536.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22544.7,
+        "datetime": "2026-10-13 13:08:00",
+        "exchange_code": "NSE",
+        "high": 22547.05,
+        "low": 22538.15,
+        "open": 22541.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22544.3,
+        "datetime": "2026-10-13 13:09:00",
+        "exchange_code": "NSE",
+        "high": 22545.95,
+        "low": 22542.9,
+        "open": 22545.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22550.3,
+        "datetime": "2026-10-13 13:10:00",
+        "exchange_code": "NSE",
+        "high": 22552.35,
+        "low": 22544.0,
+        "open": 22545.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.25,
+        "datetime": "2026-10-13 13:11:00",
+        "exchange_code": "NSE",
+        "high": 22552.0,
+        "low": 22547.75,
+        "open": 22551.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22551.95,
+        "datetime": "2026-10-13 13:12:00",
+        "exchange_code": "NSE",
+        "high": 22555.0,
+        "low": 22547.9,
+        "open": 22550.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22556.1,
+        "datetime": "2026-10-13 13:13:00",
+        "exchange_code": "NSE",
+        "high": 22558.4,
+        "low": 22549.6,
+        "open": 22553.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22557.5,
+        "datetime": "2026-10-13 13:14:00",
+        "exchange_code": "NSE",
+        "high": 22560.35,
+        "low": 22554.6,
+        "open": 22557.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.45,
+        "datetime": "2026-10-13 13:15:00",
+        "exchange_code": "NSE",
+        "high": 22560.4,
+        "low": 22549.2,
+        "open": 22559.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22542.1,
+        "datetime": "2026-10-13 13:16:00",
+        "exchange_code": "NSE",
+        "high": 22550.5,
+        "low": 22541.7,
+        "open": 22550.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22539.45,
+        "datetime": "2026-10-13 13:17:00",
+        "exchange_code": "NSE",
+        "high": 22544.2,
+        "low": 22539.25,
+        "open": 22542.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22542.1,
+        "datetime": "2026-10-13 13:18:00",
+        "exchange_code": "NSE",
+        "high": 22542.8,
+        "low": 22539.35,
+        "open": 22540.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22544.1,
+        "datetime": "2026-10-13 13:19:00",
+        "exchange_code": "NSE",
+        "high": 22548.45,
+        "low": 22541.45,
+        "open": 22543.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22533.25,
+        "datetime": "2026-10-13 13:20:00",
+        "exchange_code": "NSE",
+        "high": 22547.9,
+        "low": 22532.25,
+        "open": 22545.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22535.0,
+        "datetime": "2026-10-13 13:21:00",
+        "exchange_code": "NSE",
+        "high": 22537.8,
+        "low": 22533.75,
+        "open": 22534.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22529.6,
+        "datetime": "2026-10-13 13:22:00",
+        "exchange_code": "NSE",
+        "high": 22537.1,
+        "low": 22529.5,
+        "open": 22536.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22529.15,
+        "datetime": "2026-10-13 13:23:00",
+        "exchange_code": "NSE",
+        "high": 22531.45,
+        "low": 22521.9,
+        "open": 22530.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22534.55,
+        "datetime": "2026-10-13 13:24:00",
+        "exchange_code": "NSE",
+        "high": 22537.0,
+        "low": 22528.8,
+        "open": 22529.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22531.4,
+        "datetime": "2026-10-13 13:25:00",
+        "exchange_code": "NSE",
+        "high": 22537.1,
+        "low": 22529.75,
+        "open": 22535.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22533.45,
+        "datetime": "2026-10-13 13:26:00",
+        "exchange_code": "NSE",
+        "high": 22534.55,
+        "low": 22530.6,
+        "open": 22532.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22533.0,
+        "datetime": "2026-10-13 13:27:00",
+        "exchange_code": "NSE",
+        "high": 22537.4,
+        "low": 22532.15,
+        "open": 22534.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22531.85,
+        "datetime": "2026-10-13 13:28:00",
+        "exchange_code": "NSE",
+        "high": 22534.55,
+        "low": 22530.4,
+        "open": 22534.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22530.5,
+        "datetime": "2026-10-13 13:29:00",
+        "exchange_code": "NSE",
+        "high": 22533.5,
+        "low": 22528.65,
+        "open": 22532.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22528.7,
+        "datetime": "2026-10-13 13:30:00",
+        "exchange_code": "NSE",
+        "high": 22533.25,
+        "low": 22527.55,
+        "open": 22531.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22528.6,
+        "datetime": "2026-10-13 13:31:00",
+        "exchange_code": "NSE",
+        "high": 22533.05,
+        "low": 22525.8,
+        "open": 22529.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22523.75,
+        "datetime": "2026-10-13 13:32:00",
+        "exchange_code": "NSE",
+        "high": 22529.85,
+        "low": 22522.65,
+        "open": 22529.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22540.05,
+        "datetime": "2026-10-13 13:33:00",
+        "exchange_code": "NSE",
+        "high": 22542.7,
+        "low": 22523.85,
+        "open": 22524.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22544.65,
+        "datetime": "2026-10-13 13:34:00",
+        "exchange_code": "NSE",
+        "high": 22545.65,
+        "low": 22536.55,
+        "open": 22541.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.95,
+        "datetime": "2026-10-13 13:35:00",
+        "exchange_code": "NSE",
+        "high": 22549.95,
+        "low": 22544.1,
+        "open": 22546.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22542.55,
+        "datetime": "2026-10-13 13:36:00",
+        "exchange_code": "NSE",
+        "high": 22550.6,
+        "low": 22542.5,
+        "open": 22549.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22540.3,
+        "datetime": "2026-10-13 13:37:00",
+        "exchange_code": "NSE",
+        "high": 22544.15,
+        "low": 22539.85,
+        "open": 22544.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22539.85,
+        "datetime": "2026-10-13 13:38:00",
+        "exchange_code": "NSE",
+        "high": 22541.45,
+        "low": 22538.0,
+        "open": 22541.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22544.95,
+        "datetime": "2026-10-13 13:39:00",
+        "exchange_code": "NSE",
+        "high": 22546.9,
+        "low": 22540.05,
+        "open": 22541.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22543.95,
+        "datetime": "2026-10-13 13:40:00",
+        "exchange_code": "NSE",
+        "high": 22546.55,
+        "low": 22541.75,
+        "open": 22545.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22542.65,
+        "datetime": "2026-10-13 13:41:00",
+        "exchange_code": "NSE",
+        "high": 22547.15,
+        "low": 22541.65,
+        "open": 22546.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22547.1,
+        "datetime": "2026-10-13 13:42:00",
+        "exchange_code": "NSE",
+        "high": 22548.35,
+        "low": 22542.7,
+        "open": 22544.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22548.05,
+        "datetime": "2026-10-13 13:43:00",
+        "exchange_code": "NSE",
+        "high": 22548.85,
+        "low": 22546.05,
+        "open": 22548.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22554.8,
+        "datetime": "2026-10-13 13:44:00",
+        "exchange_code": "NSE",
+        "high": 22555.75,
+        "low": 22547.15,
+        "open": 22548.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22554.9,
+        "datetime": "2026-10-13 13:45:00",
+        "exchange_code": "NSE",
+        "high": 22559.5,
+        "low": 22554.25,
+        "open": 22555.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22551.5,
+        "datetime": "2026-10-13 13:46:00",
+        "exchange_code": "NSE",
+        "high": 22557.55,
+        "low": 22551.3,
+        "open": 22557.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22553.0,
+        "datetime": "2026-10-13 13:47:00",
+        "exchange_code": "NSE",
+        "high": 22554.65,
+        "low": 22548.85,
+        "open": 22552.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22553.3,
+        "datetime": "2026-10-13 13:48:00",
+        "exchange_code": "NSE",
+        "high": 22555.65,
+        "low": 22552.55,
+        "open": 22554.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22555.85,
+        "datetime": "2026-10-13 13:49:00",
+        "exchange_code": "NSE",
+        "high": 22557.45,
+        "low": 22552.1,
+        "open": 22554.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22553.85,
+        "datetime": "2026-10-13 13:50:00",
+        "exchange_code": "NSE",
+        "high": 22557.3,
+        "low": 22552.3,
+        "open": 22557.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22559.95,
+        "datetime": "2026-10-13 13:51:00",
+        "exchange_code": "NSE",
+        "high": 22560.45,
+        "low": 22554.0,
+        "open": 22554.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22558.3,
+        "datetime": "2026-10-13 13:52:00",
+        "exchange_code": "NSE",
+        "high": 22564.3,
+        "low": 22558.3,
+        "open": 22560.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22556.4,
+        "datetime": "2026-10-13 13:53:00",
+        "exchange_code": "NSE",
+        "high": 22559.2,
+        "low": 22555.55,
+        "open": 22559.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22553.15,
+        "datetime": "2026-10-13 13:54:00",
+        "exchange_code": "NSE",
+        "high": 22558.35,
+        "low": 22552.25,
+        "open": 22557.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22554.9,
+        "datetime": "2026-10-13 13:55:00",
+        "exchange_code": "NSE",
+        "high": 22556.8,
+        "low": 22551.5,
+        "open": 22554.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22551.45,
+        "datetime": "2026-10-13 13:56:00",
+        "exchange_code": "NSE",
+        "high": 22556.85,
+        "low": 22551.25,
+        "open": 22555.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22552.95,
+        "datetime": "2026-10-13 13:57:00",
+        "exchange_code": "NSE",
+        "high": 22554.25,
+        "low": 22549.75,
+        "open": 22552.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.25,
+        "datetime": "2026-10-13 13:58:00",
+        "exchange_code": "NSE",
+        "high": 22556.35,
+        "low": 22548.15,
+        "open": 22554.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22549.5,
+        "datetime": "2026-10-13 13:59:00",
+        "exchange_code": "NSE",
+        "high": 22550.9,
+        "low": 22546.05,
+        "open": 22550.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22552.95,
+        "datetime": "2026-10-13 14:00:00",
+        "exchange_code": "NSE",
+        "high": 22553.6,
+        "low": 22547.7,
+        "open": 22550.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22554.6,
+        "datetime": "2026-10-13 14:01:00",
+        "exchange_code": "NSE",
+        "high": 22559.15,
+        "low": 22553.15,
+        "open": 22553.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22558.65,
+        "datetime": "2026-10-13 14:02:00",
+        "exchange_code": "NSE",
+        "high": 22559.35,
+        "low": 22552.9,
+        "open": 22556.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22567.35,
+        "datetime": "2026-10-13 14:03:00",
+        "exchange_code": "NSE",
+        "high": 22569.2,
+        "low": 22559.1,
+        "open": 22560.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22563.4,
+        "datetime": "2026-10-13 14:04:00",
+        "exchange_code": "NSE",
+        "high": 22574.25,
+        "low": 22563.15,
+        "open": 22569.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22571.55,
+        "datetime": "2026-10-13 14:05:00",
+        "exchange_code": "NSE",
+        "high": 22572.5,
+        "low": 22564.6,
+        "open": 22566.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22577.55,
+        "datetime": "2026-10-13 14:06:00",
+        "exchange_code": "NSE",
+        "high": 22578.35,
+        "low": 22571.85,
+        "open": 22572.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22581.6,
+        "datetime": "2026-10-13 14:07:00",
+        "exchange_code": "NSE",
+        "high": 22583.05,
+        "low": 22576.2,
+        "open": 22578.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22584.9,
+        "datetime": "2026-10-13 14:08:00",
+        "exchange_code": "NSE",
+        "high": 22585.95,
+        "low": 22580.7,
+        "open": 22582.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22579.55,
+        "datetime": "2026-10-13 14:09:00",
+        "exchange_code": "NSE",
+        "high": 22586.15,
+        "low": 22578.3,
+        "open": 22585.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22579.3,
+        "datetime": "2026-10-13 14:10:00",
+        "exchange_code": "NSE",
+        "high": 22580.85,
+        "low": 22575.2,
+        "open": 22580.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22578.0,
+        "datetime": "2026-10-13 14:11:00",
+        "exchange_code": "NSE",
+        "high": 22581.45,
+        "low": 22576.55,
+        "open": 22580.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22582.75,
+        "datetime": "2026-10-13 14:12:00",
+        "exchange_code": "NSE",
+        "high": 22583.25,
+        "low": 22577.35,
+        "open": 22578.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22586.3,
+        "datetime": "2026-10-13 14:13:00",
+        "exchange_code": "NSE",
+        "high": 22588.0,
+        "low": 22581.1,
+        "open": 22583.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22582.35,
+        "datetime": "2026-10-13 14:14:00",
+        "exchange_code": "NSE",
+        "high": 22587.15,
+        "low": 22582.1,
+        "open": 22586.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22575.15,
+        "datetime": "2026-10-13 14:15:00",
+        "exchange_code": "NSE",
+        "high": 22584.85,
+        "low": 22574.45,
+        "open": 22582.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22580.75,
+        "datetime": "2026-10-13 14:16:00",
+        "exchange_code": "NSE",
+        "high": 22581.9,
+        "low": 22574.45,
+        "open": 22576.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22582.8,
+        "datetime": "2026-10-13 14:17:00",
+        "exchange_code": "NSE",
+        "high": 22584.75,
+        "low": 22579.85,
+        "open": 22581.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22584.5,
+        "datetime": "2026-10-13 14:18:00",
+        "exchange_code": "NSE",
+        "high": 22584.85,
+        "low": 22579.85,
+        "open": 22584.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22598.25,
+        "datetime": "2026-10-13 14:19:00",
+        "exchange_code": "NSE",
+        "high": 22605.45,
+        "low": 22583.3,
+        "open": 22584.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22598.65,
+        "datetime": "2026-10-13 14:20:00",
+        "exchange_code": "NSE",
+        "high": 22600.45,
+        "low": 22589.65,
+        "open": 22599.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22597.95,
+        "datetime": "2026-10-13 14:21:00",
+        "exchange_code": "NSE",
+        "high": 22603.65,
+        "low": 22595.5,
+        "open": 22600.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22588.8,
+        "datetime": "2026-10-13 14:22:00",
+        "exchange_code": "NSE",
+        "high": 22599.55,
+        "low": 22585.8,
+        "open": 22598.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22593.3,
+        "datetime": "2026-10-13 14:23:00",
+        "exchange_code": "NSE",
+        "high": 22593.9,
+        "low": 22586.1,
+        "open": 22589.4,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22590.2,
+        "datetime": "2026-10-13 14:24:00",
+        "exchange_code": "NSE",
+        "high": 22594.2,
+        "low": 22589.2,
+        "open": 22593.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22586.3,
+        "datetime": "2026-10-13 14:25:00",
+        "exchange_code": "NSE",
+        "high": 22592.55,
+        "low": 22584.9,
+        "open": 22591.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22588.65,
+        "datetime": "2026-10-13 14:26:00",
+        "exchange_code": "NSE",
+        "high": 22591.1,
+        "low": 22584.25,
+        "open": 22588.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22586.7,
+        "datetime": "2026-10-13 14:27:00",
+        "exchange_code": "NSE",
+        "high": 22590.0,
+        "low": 22585.15,
+        "open": 22589.9,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22590.4,
+        "datetime": "2026-10-13 14:28:00",
+        "exchange_code": "NSE",
+        "high": 22590.45,
+        "low": 22585.95,
+        "open": 22588.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22598.65,
+        "datetime": "2026-10-13 14:29:00",
+        "exchange_code": "NSE",
+        "high": 22599.65,
+        "low": 22587.75,
+        "open": 22590.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22597.65,
+        "datetime": "2026-10-13 14:30:00",
+        "exchange_code": "NSE",
+        "high": 22599.7,
+        "low": 22594.2,
+        "open": 22599.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22605.15,
+        "datetime": "2026-10-13 14:31:00",
+        "exchange_code": "NSE",
+        "high": 22606.3,
+        "low": 22596.6,
+        "open": 22598.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22615.8,
+        "datetime": "2026-10-13 14:32:00",
+        "exchange_code": "NSE",
+        "high": 22621.95,
+        "low": 22604.6,
+        "open": 22606.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22631.6,
+        "datetime": "2026-10-13 14:33:00",
+        "exchange_code": "NSE",
+        "high": 22631.95,
+        "low": 22615.6,
+        "open": 22617.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22634.35,
+        "datetime": "2026-10-13 14:34:00",
+        "exchange_code": "NSE",
+        "high": 22635.95,
+        "low": 22628.9,
+        "open": 22632.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22637.15,
+        "datetime": "2026-10-13 14:35:00",
+        "exchange_code": "NSE",
+        "high": 22641.7,
+        "low": 22631.9,
+        "open": 22636.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22638.7,
+        "datetime": "2026-10-13 14:36:00",
+        "exchange_code": "NSE",
+        "high": 22640.45,
+        "low": 22630.25,
+        "open": 22638.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22642.0,
+        "datetime": "2026-10-13 14:37:00",
+        "exchange_code": "NSE",
+        "high": 22644.0,
+        "low": 22636.5,
+        "open": 22639.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22642.35,
+        "datetime": "2026-10-13 14:38:00",
+        "exchange_code": "NSE",
+        "high": 22646.1,
+        "low": 22641.75,
+        "open": 22643.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22646.6,
+        "datetime": "2026-10-13 14:39:00",
+        "exchange_code": "NSE",
+        "high": 22647.2,
+        "low": 22641.55,
+        "open": 22643.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22639.5,
+        "datetime": "2026-10-13 14:40:00",
+        "exchange_code": "NSE",
+        "high": 22647.05,
+        "low": 22633.85,
+        "open": 22647.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22633.3,
+        "datetime": "2026-10-13 14:41:00",
+        "exchange_code": "NSE",
+        "high": 22641.0,
+        "low": 22631.0,
+        "open": 22641.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22647.2,
+        "datetime": "2026-10-13 14:42:00",
+        "exchange_code": "NSE",
+        "high": 22650.45,
+        "low": 22632.3,
+        "open": 22634.55,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22658.25,
+        "datetime": "2026-10-13 14:43:00",
+        "exchange_code": "NSE",
+        "high": 22659.85,
+        "low": 22647.6,
+        "open": 22647.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22653.05,
+        "datetime": "2026-10-13 14:44:00",
+        "exchange_code": "NSE",
+        "high": 22659.95,
+        "low": 22650.7,
+        "open": 22659.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22657.85,
+        "datetime": "2026-10-13 14:45:00",
+        "exchange_code": "NSE",
+        "high": 22658.8,
+        "low": 22652.4,
+        "open": 22652.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22658.6,
+        "datetime": "2026-10-13 14:46:00",
+        "exchange_code": "NSE",
+        "high": 22664.75,
+        "low": 22655.6,
+        "open": 22659.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22666.65,
+        "datetime": "2026-10-13 14:47:00",
+        "exchange_code": "NSE",
+        "high": 22667.6,
+        "low": 22656.9,
+        "open": 22660.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22673.75,
+        "datetime": "2026-10-13 14:48:00",
+        "exchange_code": "NSE",
+        "high": 22673.75,
+        "low": 22666.5,
+        "open": 22668.0,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22681.45,
+        "datetime": "2026-10-13 14:49:00",
+        "exchange_code": "NSE",
+        "high": 22683.15,
+        "low": 22673.1,
+        "open": 22675.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22697.2,
+        "datetime": "2026-10-13 14:50:00",
+        "exchange_code": "NSE",
+        "high": 22712.3,
+        "low": 22681.1,
+        "open": 22682.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22692.0,
+        "datetime": "2026-10-13 14:51:00",
+        "exchange_code": "NSE",
+        "high": 22700.1,
+        "low": 22691.35,
+        "open": 22698.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22697.2,
+        "datetime": "2026-10-13 14:52:00",
+        "exchange_code": "NSE",
+        "high": 22699.6,
+        "low": 22691.95,
+        "open": 22693.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22702.05,
+        "datetime": "2026-10-13 14:53:00",
+        "exchange_code": "NSE",
+        "high": 22703.35,
+        "low": 22693.9,
+        "open": 22698.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22693.6,
+        "datetime": "2026-10-13 14:54:00",
+        "exchange_code": "NSE",
+        "high": 22702.9,
+        "low": 22692.65,
+        "open": 22702.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22702.35,
+        "datetime": "2026-10-13 14:55:00",
+        "exchange_code": "NSE",
+        "high": 22702.85,
+        "low": 22692.6,
+        "open": 22694.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22710.65,
+        "datetime": "2026-10-13 14:56:00",
+        "exchange_code": "NSE",
+        "high": 22712.6,
+        "low": 22699.25,
+        "open": 22703.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22707.55,
+        "datetime": "2026-10-13 14:57:00",
+        "exchange_code": "NSE",
+        "high": 22713.2,
+        "low": 22705.75,
+        "open": 22711.85,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22694.6,
+        "datetime": "2026-10-13 14:58:00",
+        "exchange_code": "NSE",
+        "high": 22709.6,
+        "low": 22693.95,
+        "open": 22709.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22680.0,
+        "datetime": "2026-10-13 14:59:00",
+        "exchange_code": "NSE",
+        "high": 22696.1,
+        "low": 22679.85,
+        "open": 22695.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22673.6,
+        "datetime": "2026-10-13 15:00:00",
+        "exchange_code": "NSE",
+        "high": 22682.95,
+        "low": 22673.4,
+        "open": 22680.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22673.35,
+        "datetime": "2026-10-13 15:01:00",
+        "exchange_code": "NSE",
+        "high": 22675.6,
+        "low": 22668.85,
+        "open": 22674.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22675.3,
+        "datetime": "2026-10-13 15:02:00",
+        "exchange_code": "NSE",
+        "high": 22681.05,
+        "low": 22671.75,
+        "open": 22673.45,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22681.95,
+        "datetime": "2026-10-13 15:03:00",
+        "exchange_code": "NSE",
+        "high": 22684.9,
+        "low": 22673.9,
+        "open": 22675.6,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22680.65,
+        "datetime": "2026-10-13 15:04:00",
+        "exchange_code": "NSE",
+        "high": 22683.45,
+        "low": 22678.7,
+        "open": 22681.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22680.4,
+        "datetime": "2026-10-13 15:05:00",
+        "exchange_code": "NSE",
+        "high": 22682.95,
+        "low": 22677.05,
+        "open": 22680.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22689.55,
+        "datetime": "2026-10-13 15:06:00",
+        "exchange_code": "NSE",
+        "high": 22690.25,
+        "low": 22679.6,
+        "open": 22680.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22694.15,
+        "datetime": "2026-10-13 15:07:00",
+        "exchange_code": "NSE",
+        "high": 22695.4,
+        "low": 22687.7,
+        "open": 22689.1,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22691.3,
+        "datetime": "2026-10-13 15:08:00",
+        "exchange_code": "NSE",
+        "high": 22695.7,
+        "low": 22687.9,
+        "open": 22694.95,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22694.5,
+        "datetime": "2026-10-13 15:09:00",
+        "exchange_code": "NSE",
+        "high": 22695.85,
+        "low": 22689.35,
+        "open": 22690.25,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22709.15,
+        "datetime": "2026-10-13 15:10:00",
+        "exchange_code": "NSE",
+        "high": 22709.8,
+        "low": 22693.75,
+        "open": 22694.65,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22707.05,
+        "datetime": "2026-10-13 15:11:00",
+        "exchange_code": "NSE",
+        "high": 22711.7,
+        "low": 22703.0,
+        "open": 22709.2,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22710.1,
+        "datetime": "2026-10-13 15:12:00",
+        "exchange_code": "NSE",
+        "high": 22719.0,
+        "low": 22705.9,
+        "open": 22709.35,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22710.3,
+        "datetime": "2026-10-13 15:13:00",
+        "exchange_code": "NSE",
+        "high": 22718.55,
+        "low": 22703.9,
+        "open": 22710.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22699.55,
+        "datetime": "2026-10-13 15:14:00",
+        "exchange_code": "NSE",
+        "high": 22715.3,
+        "low": 22698.25,
+        "open": 22712.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22702.05,
+        "datetime": "2026-10-13 15:15:00",
+        "exchange_code": "NSE",
+        "high": 22702.05,
+        "low": 22702.05,
+        "open": 22702.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22746.45,
+        "datetime": "2026-10-13 15:20:00",
+        "exchange_code": "NSE",
+        "high": 23091.7,
+        "low": 22726.95,
+        "open": 23011.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22730.6,
+        "datetime": "2026-10-13 15:21:00",
+        "exchange_code": "NSE",
+        "high": 22746.3,
+        "low": 22730.25,
+        "open": 22746.3,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22742.6,
+        "datetime": "2026-10-13 15:22:00",
+        "exchange_code": "NSE",
+        "high": 22742.6,
+        "low": 22730.25,
+        "open": 22730.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22725.1,
+        "datetime": "2026-10-13 15:23:00",
+        "exchange_code": "NSE",
+        "high": 22744.2,
+        "low": 22723.05,
+        "open": 22742.7,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22717.85,
+        "datetime": "2026-10-13 15:24:00",
+        "exchange_code": "NSE",
+        "high": 22726.85,
+        "low": 22715.05,
+        "open": 22726.05,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22722.9,
+        "datetime": "2026-10-13 15:25:00",
+        "exchange_code": "NSE",
+        "high": 22723.3,
+        "low": 22716.4,
+        "open": 22717.5,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22723.35,
+        "datetime": "2026-10-13 15:26:00",
+        "exchange_code": "NSE",
+        "high": 22727.25,
+        "low": 22722.6,
+        "open": 22722.75,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22721.95,
+        "datetime": "2026-10-13 15:27:00",
+        "exchange_code": "NSE",
+        "high": 22723.15,
+        "low": 22720.85,
+        "open": 22723.15,
+        "stock_code": "NIFTY",
+        "volume": 0
+      },
+      {
+        "close": 22721.95,
+        "datetime": "2026-10-13 15:28:00",
+        "exchange_code": "NSE",
+        "high": 22722.9,
+        "low": 22702.05,
+        "open": 22721.8,
+        "stock_code": "NIFTY",
+        "volume": 0
+      }
+    ]
+  },
+  "retrieved_at_utc": "2026-10-25T17:48:22.387533+00:00"
+}
