@@ -1,0 +1,200 @@
+preexpiry|quarter_entries
+|--- clock_minute <= 172.50000
+|   |--- weights: [0.00000, 198.00000] class: True
+|--- clock_minute >  172.50000
+|   |--- clock_minute <= 232.50000
+|   |   |--- time_since_last_pair_min <= 14.80833
+|   |   |   |--- x_short_over25_fraction <= 0.19091
+|   |   |   |   |--- weights: [22.00000, 1.00000] class: False
+|   |   |   |--- x_short_over25_fraction >  0.19091
+|   |   |   |   |--- weights: [13.00000, 7.00000] class: False
+|   |   |--- time_since_last_pair_min >  14.80833
+|   |   |   |--- weights: [11.00000, 18.00000] class: True
+|   |--- clock_minute >  232.50000
+|   |   |--- weights: [0.00000, 108.00000] class: True
+
+
+preexpiry|extra_entries
+|--- bollinger_abs_z_30 <= 1.22343
+|   |--- x_long_book_equity_pct_capital <= -0.01316
+|   |   |--- weights: [17.00000, 3.00000] class: False
+|   |--- x_long_book_equity_pct_capital >  -0.01316
+|   |   |--- equity_pct_capital <= -0.39548
+|   |   |   |--- weights: [18.00000, 2.00000] class: False
+|   |   |--- equity_pct_capital >  -0.39548
+|   |   |   |--- x_max_trailing_rise_pct <= 168.05005
+|   |   |   |   |--- weights: [2592.00000, 13.00000] class: False
+|   |   |   |--- x_max_trailing_rise_pct >  168.05005
+|   |   |   |   |--- weights: [68.00000, 3.00000] class: False
+|--- bollinger_abs_z_30 >  1.22343
+|   |--- x_since_cover_minutes <= 60.32500
+|   |   |--- x_since_short_minutes <= 12.69167
+|   |   |   |--- adx_7 <= 17.63852
+|   |   |   |   |--- weights: [27.00000, 4.00000] class: False
+|   |   |   |--- adx_7 >  17.63852
+|   |   |   |   |--- weights: [1279.00000, 30.00000] class: False
+|   |   |--- x_since_short_minutes >  12.69167
+|   |   |   |--- o_ce_oi_change_15 <= 3.38742
+|   |   |   |   |--- weights: [18.00000, 10.00000] class: False
+|   |   |   |--- o_ce_oi_change_15 >  3.38742
+|   |   |   |   |--- weights: [90.00000, 3.00000] class: False
+|   |--- x_since_cover_minutes >  60.32500
+|   |   |--- x_short_pe_units <= 29.50000
+|   |   |   |--- last_pair_max_leg_change_pct <= 3.03770
+|   |   |   |   |--- weights: [73.00000, 9.00000] class: False
+|   |   |   |--- last_pair_max_leg_change_pct >  3.03770
+|   |   |   |   |--- weights: [124.00000, 1.00000] class: False
+|   |   |--- x_short_pe_units >  29.50000
+|   |   |   |--- spot_return_1 <= -0.00149
+|   |   |   |   |--- weights: [54.00000, 17.00000] class: False
+|   |   |   |--- spot_return_1 >  -0.00149
+|   |   |   |   |--- weights: [59.00000, 4.00000] class: False
+
+
+preexpiry|cover_onsets
+|--- rsi_neutral_distance_14 <= 17.22277
+|   |--- bollinger_z_50 <= -1.89025
+|   |   |--- ema_gap_20_50 <= -0.02633
+|   |   |   |--- weights: [29.00000, 8.00000] class: False
+|   |   |--- ema_gap_20_50 >  -0.02633
+|   |   |   |--- rsi_5 <= 31.70487
+|   |   |   |   |--- weights: [83.00000, 0.00000] class: False
+|   |   |   |--- rsi_5 >  31.70487
+|   |   |   |   |--- weights: [18.00000, 2.00000] class: False
+|   |--- bollinger_z_50 >  -1.89025
+|   |   |--- ema_gap_12_100 <= 0.11987
+|   |   |   |--- x_mean_short_loss_pct <= 2.66467
+|   |   |   |   |--- weights: [4256.00000, 19.00000] class: False
+|   |   |   |--- x_mean_short_loss_pct >  2.66467
+|   |   |   |   |--- weights: [35.00000, 5.00000] class: False
+|   |   |--- ema_gap_12_100 >  0.11987
+|   |   |   |--- o_pe_relative_volume_5 <= 1.34590
+|   |   |   |   |--- weights: [137.00000, 5.00000] class: False
+|   |   |   |--- o_pe_relative_volume_5 >  1.34590
+|   |   |   |   |--- weights: [26.00000, 6.00000] class: False
+|--- rsi_neutral_distance_14 >  17.22277
+|   |--- o_ce_relative_volume_15 <= 3.28243
+|   |   |--- x_max_short_loss_pct <= 26.41230
+|   |   |   |--- weights: [189.00000, 0.00000] class: False
+|   |   |--- x_max_short_loss_pct >  26.41230
+|   |   |   |--- x_cover_orders_today <= 3.50000
+|   |   |   |   |--- weights: [131.00000, 11.00000] class: False
+|   |   |   |--- x_cover_orders_today >  3.50000
+|   |   |   |   |--- weights: [98.00000, 35.00000] class: False
+|   |--- o_ce_relative_volume_15 >  3.28243
+|   |   |--- weights: [8.00000, 13.00000] class: True
+
+
+expiry|quarter_entries
+|--- x_net_equity_pct_capital <= -0.40358
+|   |--- weights: [101.00000, 0.00000] class: False
+|--- x_net_equity_pct_capital >  -0.40358
+|   |--- missingindicator_o_ce_oi_change_5 <= 0.50000
+|   |   |--- x_since_long_minutes <= 7.83333
+|   |   |   |--- ema_gap_20_21 <= -0.00180
+|   |   |   |   |--- weights: [1.00000, 19.00000] class: True
+|   |   |   |--- ema_gap_20_21 >  -0.00180
+|   |   |   |   |--- weights: [0.00000, 114.00000] class: True
+|   |   |--- x_since_long_minutes >  7.83333
+|   |   |   |--- weights: [6.00000, 26.00000] class: True
+|   |--- missingindicator_o_ce_oi_change_5 >  0.50000
+|   |   |--- x_phase_minute <= 261.50000
+|   |   |   |--- ema_gap_3_15 <= 0.01047
+|   |   |   |   |--- weights: [21.00000, 68.00000] class: True
+|   |   |   |--- ema_gap_3_15 >  0.01047
+|   |   |   |   |--- weights: [21.00000, 15.00000] class: False
+|   |   |--- x_phase_minute >  261.50000
+|   |   |   |--- weights: [23.00000, 5.00000] class: False
+
+
+expiry|extra_entries
+|--- missingindicator_o_ce_oi_change_1 <= 0.50000
+|   |--- x_long_orders_today <= 72.50000
+|   |   |--- adx_28 <= 24.36758
+|   |   |   |--- x_unrealized_equity_pct_capital <= 1.28727
+|   |   |   |   |--- weights: [782.00000, 0.00000] class: False
+|   |   |   |--- x_unrealized_equity_pct_capital >  1.28727
+|   |   |   |   |--- weights: [42.00000, 2.00000] class: False
+|   |   |--- adx_28 >  24.36758
+|   |   |   |--- bollinger_abs_z_50 <= 0.91566
+|   |   |   |   |--- weights: [41.00000, 0.00000] class: False
+|   |   |   |--- bollinger_abs_z_50 >  0.91566
+|   |   |   |   |--- weights: [23.00000, 7.00000] class: False
+|   |--- x_long_orders_today >  72.50000
+|   |   |--- clock_mod15 <= 10.50000
+|   |   |   |--- clock_minute <= 170.50000
+|   |   |   |   |--- weights: [391.00000, 6.00000] class: False
+|   |   |   |--- clock_minute >  170.50000
+|   |   |   |   |--- weights: [612.00000, 68.00000] class: False
+|   |   |--- clock_mod15 >  10.50000
+|   |   |   |--- clock_mod15 <= 11.50000
+|   |   |   |   |--- weights: [76.00000, 60.00000] class: False
+|   |   |   |--- clock_mod15 >  11.50000
+|   |   |   |   |--- weights: [367.00000, 33.00000] class: False
+|--- missingindicator_o_ce_oi_change_1 >  0.50000
+|   |--- clock_mod15 <= 4.50000
+|   |   |--- clock_minute <= 273.50000
+|   |   |   |--- rsi_7 <= 75.19743
+|   |   |   |   |--- weights: [330.00000, 0.00000] class: False
+|   |   |   |--- rsi_7 >  75.19743
+|   |   |   |   |--- weights: [19.00000, 1.00000] class: False
+|   |   |--- clock_minute >  273.50000
+|   |   |   |--- clock_minute <= 288.50000
+|   |   |   |   |--- weights: [13.00000, 7.00000] class: False
+|   |   |   |--- clock_minute >  288.50000
+|   |   |   |   |--- weights: [50.00000, 0.00000] class: False
+|   |--- clock_mod15 >  4.50000
+|   |   |--- weights: [2090.00000, 0.00000] class: False
+
+
+expiry|cover_onsets
+|--- o_pe_relative_volume_15 <= 2.59816
+|   |--- clock_mod15 <= 0.50000
+|   |   |--- x_phase_minute <= 172.50000
+|   |   |   |--- x_since_long_minutes <= 0.94167
+|   |   |   |   |--- weights: [22.00000, 5.00000] class: False
+|   |   |   |--- x_since_long_minutes >  0.94167
+|   |   |   |   |--- weights: [80.00000, 0.00000] class: False
+|   |   |--- x_phase_minute >  172.50000
+|   |   |   |--- x_short_orders_15m <= 8.50000
+|   |   |   |   |--- weights: [12.00000, 27.00000] class: True
+|   |   |   |--- x_short_orders_15m >  8.50000
+|   |   |   |   |--- weights: [22.00000, 7.00000] class: False
+|   |--- clock_mod15 >  0.50000
+|   |   |--- x_since_short_minutes <= 0.19167
+|   |   |   |--- time_since_last_pair_min <= 0.99167
+|   |   |   |   |--- weights: [51.00000, 5.00000] class: False
+|   |   |   |--- time_since_last_pair_min >  0.99167
+|   |   |   |   |--- weights: [37.00000, 24.00000] class: False
+|   |   |--- x_since_short_minutes >  0.19167
+|   |   |   |--- x_phase_minute <= 289.50000
+|   |   |   |   |--- weights: [2060.00000, 96.00000] class: False
+|   |   |   |--- x_phase_minute >  289.50000
+|   |   |   |   |--- weights: [86.00000, 22.00000] class: False
+|--- o_pe_relative_volume_15 >  2.59816
+|   |--- weights: [11.00000, 15.00000] class: True
+
+
+expiry|first_closure_next_3m
+|--- unrealized_equity_pct_capital <= 0.05320
+|   |--- x_cover_orders_5m <= 22.50000
+|   |   |--- weights: [1.00000, 19.00000] class: True
+|   |--- x_cover_orders_5m >  22.50000
+|   |   |--- weights: [17.00000, 8.00000] class: False
+|--- unrealized_equity_pct_capital >  0.05320
+|   |--- x_phase_minute <= 356.50000
+|   |   |--- net_equity_pct_capital <= -0.42226
+|   |   |   |--- weights: [25.00000, 5.00000] class: False
+|   |   |--- net_equity_pct_capital >  -0.42226
+|   |   |   |--- x_prior_pair_spot_gap_steps <= 1.67800
+|   |   |   |   |--- weights: [4197.00000, 0.00000] class: False
+|   |   |   |--- x_prior_pair_spot_gap_steps >  1.67800
+|   |   |   |   |--- weights: [122.00000, 2.00000] class: False
+|   |--- x_phase_minute >  356.50000
+|   |   |--- net_equity_change_expiry_open_pct_capital <= 0.13390
+|   |   |   |--- weights: [12.00000, 8.00000] class: False
+|   |   |--- net_equity_change_expiry_open_pct_capital >  0.13390
+|   |   |   |--- x_short_book_equity_pct_capital <= 1.44841
+|   |   |   |   |--- weights: [49.00000, 0.00000] class: False
+|   |   |   |--- x_short_book_equity_pct_capital >  1.44841
+|   |   |   |   |--- weights: [16.00000, 4.00000] class: False

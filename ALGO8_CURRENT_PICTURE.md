@@ -5,6 +5,12 @@ through the mass matching and rule refinements. Treat Algo 8 as automated:
 unresolved means its programmed rule has not yet been recovered.
 All trading times below are **IST**.
 
+The [trigger probability follow-up](research/TRIGGER_PROBABILITY_FINDINGS.md)
+quantifies candidate match rates and their uncertainty: scheduled entries meet
+80–90% point-estimate precision/coverage, while extra entries and the full exit
+controller remain below that goal. It includes the 27 suppressed expiry windows
+and four exit counterexamples for the next allocation-state reconstruction.
+
 Latest work: [combined-rule search and historical curve fits](research/COMBINATION_SEARCH_FINDINGS.md).
 It adds 15,906,565 rule/parameter/context comparisons and executable historical
 mimics. The original extra-entry/exit controller and repeatable incremental
