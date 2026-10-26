@@ -1,5 +1,8 @@
 # Algo 8 — working trading rulebook, v0.4
 
+For the consolidated findings and remaining priorities, start with
+[Algo 8 — current picture](ALGO8_CURRENT_PICTURE.md).
+
 **Purpose:** describe the strategy supported by the logs and supplied notes.
 This is a research specification, not a fully decoded executable clone.
 All clock times below are **IST**. The evidence covers June–October 2026;
