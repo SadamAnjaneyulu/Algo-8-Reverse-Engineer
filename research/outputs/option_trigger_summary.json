@@ -1,0 +1,114 @@
+{
+  "audit": {
+    "NIFTY": {
+      "contract_days": 1445,
+      "bars": 545979,
+      "full_minute_grid": 1315,
+      "missing_minutes": 5266,
+      "zero_price_bars": 0,
+      "zero_volume_bars": 19224,
+      "logged_fills": 19904,
+      "fills_with_bar": 19904,
+      "fills_inside_ohlc_plus_one_tick": 19575,
+      "fills_outside_ohlc_plus_one_tick": 329,
+      "fills_without_bar": 0
+    },
+    "SENSEX": {
+      "contract_days": 1798,
+      "bars": 684086,
+      "full_minute_grid": 1728,
+      "missing_minutes": 684,
+      "zero_price_bars": 0,
+      "zero_volume_bars": 10167,
+      "logged_fills": 21517,
+      "fills_with_bar": 21517,
+      "fills_inside_ohlc_plus_one_tick": 20945,
+      "fills_outside_ohlc_plus_one_tick": 572,
+      "fills_without_bar": 0
+    }
+  },
+  "cycles": 35,
+  "minute_snapshots": 25565,
+  "unavailable_equity_snapshots": 107,
+  "premium_cohorts": [
+    {
+      "underlying": "NIFTY",
+      "phase": "initial",
+      "minute_strike_groups": 51,
+      "with_prior_candle": 50,
+      "median_prior_close": 0.5,
+      "restricted_rank_comparisons": 50,
+      "selected_closest": 3,
+      "median_closer_candidates": 8.0
+    },
+    {
+      "underlying": "NIFTY",
+      "phase": "routine",
+      "minute_strike_groups": 1181,
+      "with_prior_candle": 1181,
+      "median_prior_close": 1.9,
+      "restricted_rank_comparisons": 1181,
+      "selected_closest": 233,
+      "median_closer_candidates": 2
+    },
+    {
+      "underlying": "NIFTY",
+      "phase": "late",
+      "minute_strike_groups": 143,
+      "with_prior_candle": 143,
+      "median_prior_close": 1.7,
+      "restricted_rank_comparisons": 104,
+      "selected_closest": 8,
+      "median_closer_candidates": 5.5
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "initial",
+      "minute_strike_groups": 54,
+      "with_prior_candle": 53,
+      "median_prior_close": 2.05,
+      "restricted_rank_comparisons": 53,
+      "selected_closest": 4,
+      "median_closer_candidates": 5
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "routine",
+      "minute_strike_groups": 1306,
+      "with_prior_candle": 1306,
+      "median_prior_close": 6.65,
+      "restricted_rank_comparisons": 1306,
+      "selected_closest": 387,
+      "median_closer_candidates": 1.0
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "late",
+      "minute_strike_groups": 162,
+      "with_prior_candle": 162,
+      "median_prior_close": 6.324999999999999,
+      "restricted_rank_comparisons": 122,
+      "selected_closest": 5,
+      "median_closer_candidates": 7.0
+    }
+  ],
+  "limitations": [
+    "All inventory/MTM is conditional on zero opening inventory, complete recorded fills and inferred event clock; no fees, funding or external settlement.",
+    "Missing active-contract minute makes equity unavailable; no interpolation or forward fill. Observed zero-volume trade candles may be stale and are flagged.",
+    "OHLC adverse/favorable bounds freeze the preminute book and combine nonsimultaneous extremes. They are not observed equity, executable losses or proof a stop fired.",
+    "Premium rank candidates are restricted to contracts traded anywhere in this cycle; this retrospective universe is not the complete eligible chain.",
+    "One-minute trade candles and internally inferred event times cannot identify exact intraminute stop chronology, quote-side selection or execution latency.",
+    "Fixed loss candidates 140k/150k are exploratory after inspecting execution cashflows; the documented 1% of 2Cr is 200k.",
+    "Fixed carry 4% candidate uses short option debit relative to prior close, not a confirmed denominator; it can include hypothetical quotes after real buybacks.",
+    "Chronological October comparisons have been inspected and are not a blinded holdout; no strategy Sharpe, return curve or causal theta/IV attribution is inferred."
+  ],
+  "carry_4pct_prior_close_candidate": {
+    "carried_short_contracts_with_reference": 358,
+    "attribution_unambiguous": 204,
+    "unambiguous_with_price_cross": 122,
+    "completion_within_0_to_2min_of_cross": 46,
+    "completion_more_than_10min_after_cross": 42,
+    "completion_before_candidate_cross": 18,
+    "note": "4% price increase relative to previous derivative close is one candidate only. No original basket IDs, confirmed stop reference or intraminute crossing are supplied."
+  }
+}

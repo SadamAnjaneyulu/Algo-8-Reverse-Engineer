@@ -1,10 +1,13 @@
 # Algo 8: first results from the index-data join
 
+This records the index-only stage. The subsequent options download and initial
+marked replay are documented in `OPTION_TRIGGER_FINDINGS.md`.
+
 The index download is complete for the requested study: **170 index-days, 85 per
 index, 22 June–22 October 2026**. All 510 raw/normalized/metadata artifacts pass
 hash and reproduction validation. There are 63,678 stored normalized bars.
 Date-effective continuous-session coverage is complete; auction observations
-are treated separately. No option-history bars have been downloaded yet.
+are treated separately. Option-history bars were not yet available at this stage.
 
 The strongest working reconstruction is a **calendar/time-based near-expiry
 short-straddle program, with repeated allocations and multiple hedge behaviors**.
