@@ -23,7 +23,9 @@ same-strike CE/PE short pair occurs in every one of these windows:
 That is **544/544 session-window observations**. It repeats in the earlier 18
 sessions and the later 14 sessions; these are repeated observations within 32
 sessions, not 544 independent experiments. The initial opening around 09:16 is
-separate from this later build-up.
+usually separate. On 5 October the delayed first NIFTY pair falls in the 09:30
+window, so this count means fresh-short attendance, not 544 extra baskets on
+top of an already completed opening basket.
 
 An execution window is **[listed time − 2 seconds, listed time + 3 minutes)**.
 This does not mean an exact fill at, for example, 10:00:00, nor does it establish
