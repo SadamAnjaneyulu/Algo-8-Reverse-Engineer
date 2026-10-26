@@ -216,3 +216,9 @@ Evidence: [Info.txt](Info.txt),
 The opening quantities/contract counts are traceable by source row in
 `research/outputs/rulebook_opening_allocations.csv`; the corresponding summary
 is `research/outputs/rulebook_evidence_summary.json`.
+
+Subsequent IV/theta exposure tests are documented in
+[`research/IV_THETA_HYPOTHESIS_FINDINGS.md`](research/IV_THETA_HYPOTHESIS_FINDINGS.md).
+They support the initial positive-theta / short-IV exposure and distinguish
+new short-risk allocations from protective changes; they do not supply a decoded
+IV trigger to fill the unresolved decision rules above.
