@@ -1,0 +1,709 @@
+preexpiry|fresh_pairs
+BOOLEAN: {"expression": ["clock"], "text": "CLOCK_ATTENDANCE_AND_BOOK", "cooldown": 0, "maximum": 0, "require_book": false, "position_cap": 0}
+TREE:
+|--- clock_mod15 <= 1.5000
+|   |--- x_phase_minute <= 173.0000
+|   |   |--- clock_mod15 <= 0.5000
+|   |   |   |--- bollinger_abs_z_50 <= 1.4359
+|   |   |   |   |--- o_pe_oi_change_5 <= 1.7317
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- o_pe_oi_change_5 >  1.7317
+|   |   |   |   |   |--- class: False
+|   |   |   |--- bollinger_abs_z_50 >  1.4359
+|   |   |   |   |--- adx_7 <= 42.6451
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- adx_7 >  42.6451
+|   |   |   |   |   |--- class: False
+|   |   |--- clock_mod15 >  0.5000
+|   |   |   |--- o_ce_oi_change_5 <= 4.0987
+|   |   |   |   |--- class: True
+|   |   |   |--- o_ce_oi_change_5 >  4.0987
+|   |   |   |   |--- class: True
+|   |--- x_phase_minute >  173.0000
+|   |   |--- time_since_last_pair_min <= 5.3583
+|   |   |   |--- ema_gap_20_21 <= 0.0007
+|   |   |   |   |--- equity_change5_pct_capital <= 0.0153
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- equity_change5_pct_capital >  0.0153
+|   |   |   |   |   |--- class: False
+|   |   |   |--- ema_gap_20_21 >  0.0007
+|   |   |   |   |--- class: False
+|   |   |--- time_since_last_pair_min >  5.3583
+|   |   |   |--- x_phase_minute <= 240.5000
+|   |   |   |   |--- o_pe_relative_volume_5 <= 1.3132
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- o_pe_relative_volume_5 >  1.3132
+|   |   |   |   |   |--- class: False
+|   |   |   |--- x_phase_minute >  240.5000
+|   |   |   |   |--- x_short_orders_5m <= 0.5000
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- x_short_orders_5m >  0.5000
+|   |   |   |   |   |--- class: True
+|--- clock_mod15 >  1.5000
+|   |--- x_since_long_minutes <= 0.4750
+|   |   |--- clock_mod15 <= 2.5000
+|   |   |   |--- x_since_short_minutes <= 0.4500
+|   |   |   |   |--- class: False
+|   |   |   |--- x_since_short_minutes >  0.4500
+|   |   |   |   |--- o_pe_relative_volume_15 <= 0.9940
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- o_pe_relative_volume_15 >  0.9940
+|   |   |   |   |   |--- class: True
+|   |   |--- clock_mod15 >  2.5000
+|   |   |   |--- x_short_orders_15m <= 5.5000
+|   |   |   |   |--- class: False
+|   |   |   |--- x_short_orders_15m >  5.5000
+|   |   |   |   |--- atr_pct_21 <= 0.0259
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- atr_pct_21 >  0.0259
+|   |   |   |   |   |--- class: False
+|   |--- x_since_long_minutes >  0.4750
+|   |   |--- rsi_neutral_distance_10 <= 9.8413
+|   |   |   |--- atr_pct_21 <= 0.0225
+|   |   |   |   |--- rsi_neutral_distance_14 <= 6.0368
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- rsi_neutral_distance_14 >  6.0368
+|   |   |   |   |   |--- class: False
+|   |   |   |--- atr_pct_21 >  0.0225
+|   |   |   |   |--- o_ce_relative_volume_5 <= 1.4475
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- o_ce_relative_volume_5 >  1.4475
+|   |   |   |   |   |--- class: False
+|   |   |--- rsi_neutral_distance_10 >  9.8413
+|   |   |   |--- x_since_cover_minutes <= 61.0167
+|   |   |   |   |--- atr_pct_21 <= 0.0260
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- atr_pct_21 >  0.0260
+|   |   |   |   |   |--- class: False
+|   |   |   |--- x_since_cover_minutes >  61.0167
+|   |   |   |   |--- x_since_cover_minutes <= 66.0833
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_since_cover_minutes >  66.0833
+|   |   |   |   |   |--- class: False
+
+
+expiry|fresh_pairs
+BOOLEAN: {"expression": ["clock"], "text": "CLOCK_ATTENDANCE_AND_BOOK", "cooldown": 0, "maximum": 0, "require_book": false, "position_cap": 0}
+TREE:
+|--- clock_mod15 <= 2.5000
+|   |--- time_since_last_pair_min <= 8.9917
+|   |   |--- x_phase_minute <= 286.5000
+|   |   |   |--- clock_mod15 <= 0.5000
+|   |   |   |   |--- x_phase_minute <= 217.5000
+|   |   |   |   |   |--- x_since_long_minutes <= 3.6333
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- x_since_long_minutes >  3.6333
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_phase_minute >  217.5000
+|   |   |   |   |   |--- class: True
+|   |   |   |--- clock_mod15 >  0.5000
+|   |   |   |   |--- clock_mod15 <= 1.5000
+|   |   |   |   |   |--- x_max_trailing_rise_pct <= 167.1721
+|   |   |   |   |   |   |--- rsi_neutral_distance_21 <= 2.4741
+|   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- rsi_neutral_distance_21 >  2.4741
+|   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- x_max_trailing_rise_pct >  167.1721
+|   |   |   |   |   |   |--- class: True
+|   |   |   |   |--- clock_mod15 >  1.5000
+|   |   |   |   |   |--- x_since_long_minutes <= 0.4417
+|   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- x_since_long_minutes >  0.4417
+|   |   |   |   |   |   |--- x_long_book_equity_pct_capital <= -0.0634
+|   |   |   |   |   |   |   |--- ema_gap_5_21 <= 0.0063
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- ema_gap_5_21 >  0.0063
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- x_long_book_equity_pct_capital >  -0.0634
+|   |   |   |   |   |   |   |--- class: False
+|   |   |--- x_phase_minute >  286.5000
+|   |   |   |--- time_since_last_pair_min <= 2.0083
+|   |   |   |   |--- x_max_short_loss_pct <= 38.8680
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_max_short_loss_pct >  38.8680
+|   |   |   |   |   |--- class: False
+|   |   |   |--- time_since_last_pair_min >  2.0083
+|   |   |   |   |--- class: False
+|   |--- time_since_last_pair_min >  8.9917
+|   |   |--- x_short_book_equity_pct_capital <= -0.2385
+|   |   |   |--- class: False
+|   |   |--- x_short_book_equity_pct_capital >  -0.2385
+|   |   |   |--- missingindicator_o_oi_pcr <= 0.5000
+|   |   |   |   |--- time_since_last_pair_min <= 13.1667
+|   |   |   |   |   |--- x_short_orders_15m <= 7.0000
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- x_short_orders_15m >  7.0000
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- time_since_last_pair_min >  13.1667
+|   |   |   |   |   |--- clock_mod15 <= 0.5000
+|   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- clock_mod15 >  0.5000
+|   |   |   |   |   |   |--- class: True
+|   |   |   |--- missingindicator_o_oi_pcr >  0.5000
+|   |   |   |   |--- clock_mod15 <= 1.5000
+|   |   |   |   |   |--- x_spot_change_since_pair_pct <= -0.1119
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- x_spot_change_since_pair_pct >  -0.1119
+|   |   |   |   |   |   |--- ema_gap_12_100 <= 0.0867
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- ema_gap_12_100 >  0.0867
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- clock_mod15 >  1.5000
+|   |   |   |   |   |--- x_phase_minute <= 264.5000
+|   |   |   |   |   |   |--- bollinger_z_30 <= -0.1025
+|   |   |   |   |   |   |   |--- ema_gap_5_20 <= -0.0171
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- ema_gap_5_20 >  -0.0171
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- bollinger_z_30 >  -0.1025
+|   |   |   |   |   |   |   |--- bollinger_z_50 <= 0.7090
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- bollinger_z_50 >  0.7090
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- x_phase_minute >  264.5000
+|   |   |   |   |   |   |--- class: False
+|--- clock_mod15 >  2.5000
+|   |--- missingindicator_o_ce_oi_change_15 <= 0.5000
+|   |   |--- x_long_orders_today <= 72.5000
+|   |   |   |--- adx_28 <= 24.3676
+|   |   |   |   |--- x_unrealized_equity_pct_capital <= 1.2873
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_unrealized_equity_pct_capital >  1.2873
+|   |   |   |   |   |--- ema_gap_5_30 <= -0.0338
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- ema_gap_5_30 >  -0.0338
+|   |   |   |   |   |   |--- class: False
+|   |   |   |--- adx_28 >  24.3676
+|   |   |   |   |--- bollinger_abs_z_50 <= 0.9157
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- bollinger_abs_z_50 >  0.9157
+|   |   |   |   |   |--- class: False
+|   |   |--- x_long_orders_today >  72.5000
+|   |   |   |--- clock_mod15 <= 10.5000
+|   |   |   |   |--- x_phase_minute <= 170.5000
+|   |   |   |   |   |--- iv_change15_points <= 0.1285
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- iv_change15_points >  0.1285
+|   |   |   |   |   |   |--- x_since_cover_minutes <= 9.5000
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- x_since_cover_minutes >  9.5000
+|   |   |   |   |   |   |   |--- spot_abs_return_3 <= 0.0277
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- spot_abs_return_3 >  0.0277
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_phase_minute >  170.5000
+|   |   |   |   |   |--- clock_mod15 <= 7.5000
+|   |   |   |   |   |   |--- clock_mod15 <= 5.5000
+|   |   |   |   |   |   |   |--- o_pe_oi_change_1 <= -0.4244
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- o_pe_oi_change_1 >  -0.4244
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- clock_mod15 >  5.5000
+|   |   |   |   |   |   |   |--- x_since_cover_minutes <= 5.9917
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- x_since_cover_minutes >  5.9917
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- clock_mod15 >  7.5000
+|   |   |   |   |   |   |--- bollinger_z_30 <= 1.5596
+|   |   |   |   |   |   |   |--- spot_abs_return_10 <= 0.0043
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- spot_abs_return_10 >  0.0043
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- bollinger_z_30 >  1.5596
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |--- clock_mod15 >  10.5000
+|   |   |   |   |--- clock_mod15 <= 11.5000
+|   |   |   |   |   |--- time_since_last_pair_min <= 5.0250
+|   |   |   |   |   |   |--- bollinger_abs_z_50 <= 1.3121
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- bollinger_abs_z_50 >  1.3121
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- time_since_last_pair_min >  5.0250
+|   |   |   |   |   |   |--- x_phase_minute <= 258.5000
+|   |   |   |   |   |   |   |--- x_phase_minute <= 153.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- x_phase_minute >  153.5000
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- x_phase_minute >  258.5000
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- clock_mod15 >  11.5000
+|   |   |   |   |   |--- clock_minute <= 238.5000
+|   |   |   |   |   |   |--- clock_minute <= 87.5000
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- clock_minute >  87.5000
+|   |   |   |   |   |   |   |--- rsi_5 <= 23.9219
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- rsi_5 >  23.9219
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- clock_minute >  238.5000
+|   |   |   |   |   |   |--- clock_mod15 <= 13.5000
+|   |   |   |   |   |   |   |--- x_short_orders_15m <= 6.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- x_short_orders_15m >  6.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- clock_mod15 >  13.5000
+|   |   |   |   |   |   |   |--- spot_abs_return_5 <= 0.0252
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- spot_abs_return_5 >  0.0252
+|   |   |   |   |   |   |   |   |--- class: True
+|   |--- missingindicator_o_ce_oi_change_15 >  0.5000
+|   |   |--- clock_mod15 <= 4.5000
+|   |   |   |--- x_phase_minute <= 273.5000
+|   |   |   |   |--- spot_return_15 <= 0.1461
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- spot_return_15 >  0.1461
+|   |   |   |   |   |--- class: False
+|   |   |   |--- x_phase_minute >  273.5000
+|   |   |   |   |--- x_phase_minute <= 288.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_phase_minute >  288.5000
+|   |   |   |   |   |--- class: False
+|   |   |--- clock_mod15 >  4.5000
+|   |   |   |--- class: False
+
+
+preexpiry|extra_pairs
+BOOLEAN: {"expression": ["or", ["and", ["atom", 4334], ["atom", 2357]], ["atom", 371]], "text": "((x_since_cover_minutes gt 60 [state] AND bollinger_abs_z_50 gt 1.5 [state]) OR time_since_last_pair_min gt 14 [cross])", "cooldown": 15, "maximum": 0, "require_book": false, "position_cap": 0}
+TREE:
+|--- rsi_neutral_distance_10 <= 8.8488
+|   |--- clock_minute <= 258.5000
+|   |   |--- o_ce_relative_volume_15 <= 1.5637
+|   |   |   |--- class: False
+|   |   |--- o_ce_relative_volume_15 >  1.5637
+|   |   |   |--- spot_return_60 <= 0.1614
+|   |   |   |   |--- class: False
+|   |   |   |--- spot_return_60 >  0.1614
+|   |   |   |   |--- class: True
+|   |--- clock_minute >  258.5000
+|   |   |--- x_since_long_minutes <= 13.9417
+|   |   |   |--- clock_mod15 <= 4.5000
+|   |   |   |   |--- opening_gap_pct <= 0.3166
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- opening_gap_pct >  0.3166
+|   |   |   |   |   |--- o_volume_pcr <= 0.9620
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- o_volume_pcr >  0.9620
+|   |   |   |   |   |   |--- spot_abs_return_30 <= 0.0523
+|   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- spot_abs_return_30 >  0.0523
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |--- clock_mod15 >  4.5000
+|   |   |   |   |--- last_pair_abs_spot_gap_steps <= 0.0192
+|   |   |   |   |   |--- x_realized_equity_pct_capital <= -0.3452
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- x_realized_equity_pct_capital >  -0.3452
+|   |   |   |   |   |   |--- class: True
+|   |   |   |   |--- last_pair_abs_spot_gap_steps >  0.0192
+|   |   |   |   |   |--- class: False
+|   |   |--- x_since_long_minutes >  13.9417
+|   |   |   |--- reference_premium_change5_pct <= -0.3568
+|   |   |   |   |--- class: False
+|   |   |   |--- reference_premium_change5_pct >  -0.3568
+|   |   |   |   |--- class: True
+|--- rsi_neutral_distance_10 >  8.8488
+|   |--- x_phase_minute <= 81.5000
+|   |   |--- class: False
+|   |--- x_phase_minute >  81.5000
+|   |   |--- x_since_cover_minutes <= 9.8750
+|   |   |   |--- reference_premium_change5_pct <= 0.2340
+|   |   |   |   |--- class: False
+|   |   |   |--- reference_premium_change5_pct >  0.2340
+|   |   |   |   |--- x_mean_short_loss_pct <= -12.7803
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_mean_short_loss_pct >  -12.7803
+|   |   |   |   |   |--- spot_abs_return_5 <= 0.0373
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- spot_abs_return_5 >  0.0373
+|   |   |   |   |   |   |--- rsi_neutral_distance_28 <= 8.9459
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- rsi_neutral_distance_28 >  8.9459
+|   |   |   |   |   |   |   |--- x_since_long_minutes <= 1.2167
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- x_since_long_minutes >  1.2167
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |--- x_since_cover_minutes >  9.8750
+|   |   |   |--- bollinger_abs_z_50 <= 0.7015
+|   |   |   |   |--- clock_mod15 <= 13.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- clock_mod15 >  13.5000
+|   |   |   |   |   |--- x_max_short_loss_pct <= 19.2383
+|   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- x_max_short_loss_pct >  19.2383
+|   |   |   |   |   |   |--- class: False
+|   |   |   |--- bollinger_abs_z_50 >  0.7015
+|   |   |   |   |--- ema_gap_9_50 <= -0.0778
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- ema_gap_9_50 >  -0.0778
+|   |   |   |   |   |--- spot_return_3 <= -0.0490
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- spot_return_3 >  -0.0490
+|   |   |   |   |   |   |--- ema_gap_3_50 <= 0.0888
+|   |   |   |   |   |   |   |--- rsi_neutral_distance_14 <= 7.5318
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- rsi_neutral_distance_14 >  7.5318
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- ema_gap_3_50 >  0.0888
+|   |   |   |   |   |   |   |--- class: False
+
+
+expiry|extra_pairs
+BOOLEAN: {"expression": ["clock"], "text": "CLOCK_ATTENDANCE_AND_BOOK", "cooldown": 0, "maximum": 0, "require_book": false, "position_cap": 0}
+TREE:
+|--- missingindicator_o_pe_price_oi_quadrant_upup <= 0.5000
+|   |--- x_short_ce_units <= 31.5000
+|   |   |--- class: False
+|   |--- x_short_ce_units >  31.5000
+|   |   |--- x_phase_minute <= 70.5000
+|   |   |   |--- class: False
+|   |   |--- x_phase_minute >  70.5000
+|   |   |   |--- clock_mod15 <= 10.5000
+|   |   |   |   |--- x_phase_minute <= 170.5000
+|   |   |   |   |   |--- iv_change15_points <= 0.1285
+|   |   |   |   |   |   |--- donchian_direction_5 <= -0.5000
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- donchian_direction_5 >  -0.5000
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- iv_change15_points >  0.1285
+|   |   |   |   |   |   |--- x_since_cover_minutes <= 9.5000
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- x_since_cover_minutes >  9.5000
+|   |   |   |   |   |   |   |--- x_since_long_minutes <= 3.0167
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- x_since_long_minutes >  3.0167
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_phase_minute >  170.5000
+|   |   |   |   |   |--- time_since_last_pair_min <= 8.0083
+|   |   |   |   |   |   |--- clock_mod15 <= 7.5000
+|   |   |   |   |   |   |   |--- clock_mod15 <= 5.5000
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- clock_mod15 >  5.5000
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- clock_mod15 >  7.5000
+|   |   |   |   |   |   |   |--- iv_change15_points <= 0.2489
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- iv_change15_points >  0.2489
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- time_since_last_pair_min >  8.0083
+|   |   |   |   |   |   |--- class: False
+|   |   |   |--- clock_mod15 >  10.5000
+|   |   |   |   |--- clock_mod15 <= 11.5000
+|   |   |   |   |   |--- x_phase_minute <= 288.5000
+|   |   |   |   |   |   |--- time_since_last_pair_min <= 5.0250
+|   |   |   |   |   |   |   |--- x_gross_losing_open_pct_capital <= -0.3152
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- x_gross_losing_open_pct_capital >  -0.3152
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- time_since_last_pair_min >  5.0250
+|   |   |   |   |   |   |   |--- clock_minute <= 153.5000
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- clock_minute >  153.5000
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- x_phase_minute >  288.5000
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- clock_mod15 >  11.5000
+|   |   |   |   |   |--- clock_minute <= 238.5000
+|   |   |   |   |   |   |--- clock_minute <= 80.5000
+|   |   |   |   |   |   |   |--- clock_mod15 <= 13.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- clock_mod15 >  13.5000
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- clock_minute >  80.5000
+|   |   |   |   |   |   |   |--- rsi_10 <= 32.8026
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- rsi_10 >  32.8026
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- clock_minute >  238.5000
+|   |   |   |   |   |   |--- x_short_orders_15m <= 27.5000
+|   |   |   |   |   |   |   |--- last_pair_max_leg_change_pct <= 30.3419
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- last_pair_max_leg_change_pct >  30.3419
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- x_short_orders_15m >  27.5000
+|   |   |   |   |   |   |   |--- x_short_orders_today <= 261.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- x_short_orders_today >  261.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|--- missingindicator_o_pe_price_oi_quadrant_upup >  0.5000
+|   |--- clock_mod15 <= 4.5000
+|   |   |--- clock_minute <= 273.5000
+|   |   |   |--- spot_return_15 <= 0.1982
+|   |   |   |   |--- class: False
+|   |   |   |--- spot_return_15 >  0.1982
+|   |   |   |   |--- class: True
+|   |   |--- clock_minute >  273.5000
+|   |   |   |--- clock_minute <= 281.0000
+|   |   |   |   |--- x_short_unrealized_pct_capital <= 1.1759
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- x_short_unrealized_pct_capital >  1.1759
+|   |   |   |   |   |--- class: True
+|   |   |   |--- clock_minute >  281.0000
+|   |   |   |   |--- class: False
+|   |--- clock_mod15 >  4.5000
+|   |   |--- class: False
+
+
+preexpiry|covers
+BOOLEAN: {"expression": ["or", ["and", ["atom", 783], ["atom", 3930]], ["atom", 2734]], "text": "((rsi_neutral_distance_10 gt 20 [state] AND x_short_over25_fraction gt 0.25 [state]) OR donchian_direction_60 gt 0 [state])", "cooldown": 0, "maximum": 0, "require_book": false, "position_cap": 0}
+TREE:
+|--- rsi_neutral_distance_10 <= 19.3077
+|   |--- x_since_cover_minutes <= 4.9917
+|   |   |--- x_long_book_equity_pct_capital <= -0.0112
+|   |   |   |--- x_since_long_minutes <= 3.5917
+|   |   |   |   |--- class: True
+|   |   |   |--- x_since_long_minutes >  3.5917
+|   |   |   |   |--- class: False
+|   |   |--- x_long_book_equity_pct_capital >  -0.0112
+|   |   |   |--- equity_change5_pct_capital <= -0.0703
+|   |   |   |   |--- x_cover_orders_today <= 23.5000
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- x_cover_orders_today >  23.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |--- equity_change5_pct_capital >  -0.0703
+|   |   |   |   |--- rsi_7 <= 70.3765
+|   |   |   |   |   |--- x_max_trailing_rise_pct <= 13.1310
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- x_max_trailing_rise_pct >  13.1310
+|   |   |   |   |   |   |--- reference_iv_pct <= 18.5281
+|   |   |   |   |   |   |   |--- rsi_neutral_distance_5 <= 8.9620
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- rsi_neutral_distance_5 >  8.9620
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- reference_iv_pct >  18.5281
+|   |   |   |   |   |   |   |--- equity_change5_pct_capital <= -0.0284
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- equity_change5_pct_capital >  -0.0284
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- rsi_7 >  70.3765
+|   |   |   |   |   |--- x_since_short_minutes <= 1.8750
+|   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- x_since_short_minutes >  1.8750
+|   |   |   |   |   |   |--- spot_abs_return_5 <= 0.0302
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- spot_abs_return_5 >  0.0302
+|   |   |   |   |   |   |   |--- class: False
+|   |--- x_since_cover_minutes >  4.9917
+|   |   |--- rsi_5 <= 84.3945
+|   |   |   |--- bollinger_z_50 <= -1.9498
+|   |   |   |   |--- ema_gap_9_50 <= -0.0650
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- ema_gap_9_50 >  -0.0650
+|   |   |   |   |   |--- ema_gap_20_100 <= -0.0781
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- ema_gap_20_100 >  -0.0781
+|   |   |   |   |   |   |--- x_long_book_equity_pct_capital <= -0.0066
+|   |   |   |   |   |   |   |--- bollinger_z_10 <= -1.5150
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- bollinger_z_10 >  -1.5150
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- x_long_book_equity_pct_capital >  -0.0066
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |--- bollinger_z_50 >  -1.9498
+|   |   |   |   |--- ema_gap_12_100 <= 0.1199
+|   |   |   |   |   |--- adx_7 <= 57.6685
+|   |   |   |   |   |   |--- x_mean_short_loss_pct <= 3.9394
+|   |   |   |   |   |   |   |--- ema_gap_20_50 <= 0.1215
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- ema_gap_20_50 >  0.1215
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- x_mean_short_loss_pct >  3.9394
+|   |   |   |   |   |   |   |--- bollinger_abs_z_10 <= 1.0853
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- bollinger_abs_z_10 >  1.0853
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- adx_7 >  57.6685
+|   |   |   |   |   |   |--- bollinger_z_10 <= 0.7115
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- bollinger_z_10 >  0.7115
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- ema_gap_12_100 >  0.1199
+|   |   |   |   |   |--- x_phase_minute <= 282.5000
+|   |   |   |   |   |   |--- adx_7 <= 23.4805
+|   |   |   |   |   |   |   |--- spot_abs_return_60 <= 0.1791
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- spot_abs_return_60 >  0.1791
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- adx_7 >  23.4805
+|   |   |   |   |   |   |   |--- x_short_book_equity_pct_capital <= 0.0314
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- x_short_book_equity_pct_capital >  0.0314
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- x_phase_minute >  282.5000
+|   |   |   |   |   |   |--- class: False
+|   |   |--- rsi_5 >  84.3945
+|   |   |   |--- o_pe_relative_volume_15 <= 1.0062
+|   |   |   |   |--- class: True
+|   |   |   |--- o_pe_relative_volume_15 >  1.0062
+|   |   |   |   |--- class: False
+|--- rsi_neutral_distance_10 >  19.3077
+|   |--- x_max_short_loss_pct <= 64.5571
+|   |   |--- x_mean_short_loss_pct <= 0.8870
+|   |   |   |--- x_max_short_loss_pct <= 32.3788
+|   |   |   |   |--- x_last_known_spot_change_pct <= -0.7122
+|   |   |   |   |   |--- spot_return_1 <= 0.0116
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- spot_return_1 >  0.0116
+|   |   |   |   |   |   |--- class: True
+|   |   |   |   |--- x_last_known_spot_change_pct >  -0.7122
+|   |   |   |   |   |--- o_ce_oi_change_15 <= -7.7892
+|   |   |   |   |   |   |--- x_since_short_minutes <= 7.0833
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- x_since_short_minutes >  7.0833
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- o_ce_oi_change_15 >  -7.7892
+|   |   |   |   |   |   |--- rsi_5 <= 89.6661
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- rsi_5 >  89.6661
+|   |   |   |   |   |   |   |--- atr_pct_28 <= 0.0254
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- atr_pct_28 >  0.0254
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |--- x_max_short_loss_pct >  32.3788
+|   |   |   |   |--- bollinger_abs_z_20 <= 2.9554
+|   |   |   |   |   |--- reference_iv_pct <= 11.7892
+|   |   |   |   |   |   |--- atr_pct_7 <= 0.0254
+|   |   |   |   |   |   |   |--- x_cover_orders_5m <= 1.5000
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- x_cover_orders_5m >  1.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- atr_pct_7 >  0.0254
+|   |   |   |   |   |   |   |--- spot_abs_return_3 <= 0.0680
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- spot_abs_return_3 >  0.0680
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |--- reference_iv_pct >  11.7892
+|   |   |   |   |   |   |--- spot_abs_return_1 <= 0.0374
+|   |   |   |   |   |   |   |--- o_oi_missing <= 0.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- o_oi_missing >  0.5000
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- spot_abs_return_1 >  0.0374
+|   |   |   |   |   |   |   |--- spot_abs_return_10 <= 0.1181
+|   |   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |   |--- spot_abs_return_10 >  0.1181
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- bollinger_abs_z_20 >  2.9554
+|   |   |   |   |   |--- class: True
+|   |   |--- x_mean_short_loss_pct >  0.8870
+|   |   |   |--- rsi_neutral_distance_10 <= 24.7673
+|   |   |   |   |--- bollinger_z_30 <= 2.0768
+|   |   |   |   |   |--- x_short_orders_15m <= 3.5000
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- x_short_orders_15m >  3.5000
+|   |   |   |   |   |   |--- x_gross_losing_open_pct_capital <= -0.1264
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- x_gross_losing_open_pct_capital >  -0.1264
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |--- bollinger_z_30 >  2.0768
+|   |   |   |   |   |--- class: True
+|   |   |   |--- rsi_neutral_distance_10 >  24.7673
+|   |   |   |   |--- x_long_orders_15m <= 3.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_long_orders_15m >  3.5000
+|   |   |   |   |   |--- adx_28 <= 15.5599
+|   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- adx_28 >  15.5599
+|   |   |   |   |   |   |--- x_cover_orders_today <= 26.0000
+|   |   |   |   |   |   |   |--- class: True
+|   |   |   |   |   |   |--- x_cover_orders_today >  26.0000
+|   |   |   |   |   |   |   |--- class: True
+|   |--- x_max_short_loss_pct >  64.5571
+|   |   |--- spot_abs_return_1 <= 0.0318
+|   |   |   |--- x_gross_losing_open_pct_capital <= -0.1647
+|   |   |   |   |--- spot_return_1 <= 0.0053
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- spot_return_1 >  0.0053
+|   |   |   |   |   |--- class: True
+|   |   |   |--- x_gross_losing_open_pct_capital >  -0.1647
+|   |   |   |   |--- rsi_neutral_distance_28 <= 12.7292
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- rsi_neutral_distance_28 >  12.7292
+|   |   |   |   |   |--- ema_gap_9_100 <= 0.1722
+|   |   |   |   |   |   |--- spot_return_1 <= -0.0230
+|   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |--- spot_return_1 >  -0.0230
+|   |   |   |   |   |   |   |--- x_short_over4_fraction <= 0.4365
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |   |   |--- x_short_over4_fraction >  0.4365
+|   |   |   |   |   |   |   |   |--- class: False
+|   |   |   |   |   |--- ema_gap_9_100 >  0.1722
+|   |   |   |   |   |   |--- class: True
+|   |   |--- spot_abs_return_1 >  0.0318
+|   |   |   |--- rsi_neutral_distance_10 <= 21.1619
+|   |   |   |   |--- class: False
+|   |   |   |--- rsi_neutral_distance_10 >  21.1619
+|   |   |   |   |--- class: True
+
+
+expiry|covers
+BOOLEAN: {"expression": ["or", ["and", ["atom", 330], ["atom", 4300]], ["clock"]], "text": "((recent_short_covers5_units gt 2 [state] AND x_since_cover_minutes le 2 [state]) OR CLOCK_ATTENDANCE_AND_BOOK)", "cooldown": 0, "maximum": 0, "require_book": true, "position_cap": 0}
+TREE:
+|--- recent_short_covers5_units <= 1.5000
+|   |--- x_gross_losing_open_pct_capital <= -0.0656
+|   |   |--- x_since_short_minutes <= 0.2083
+|   |   |   |--- x_since_long_minutes <= 0.9417
+|   |   |   |   |--- clock_minute <= 45.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- clock_minute >  45.5000
+|   |   |   |   |   |--- class: True
+|   |   |   |--- x_since_long_minutes >  0.9417
+|   |   |   |   |--- atr_pct_7 <= 0.0348
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- atr_pct_7 >  0.0348
+|   |   |   |   |   |--- class: True
+|   |   |--- x_since_short_minutes >  0.2083
+|   |   |   |--- clock_mod15 <= 0.5000
+|   |   |   |   |--- clock_minute <= 172.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- clock_minute >  172.5000
+|   |   |   |   |   |--- class: True
+|   |   |   |--- clock_mod15 >  0.5000
+|   |   |   |   |--- clock_minute <= 288.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- clock_minute >  288.5000
+|   |   |   |   |   |--- class: True
+|   |--- x_gross_losing_open_pct_capital >  -0.0656
+|   |   |--- x_since_cover_minutes <= 6.2083
+|   |   |   |--- class: False
+|   |   |--- x_since_cover_minutes >  6.2083
+|   |   |   |--- bollinger_abs_z_50 <= 0.0214
+|   |   |   |   |--- class: False
+|   |   |   |--- bollinger_abs_z_50 >  0.0214
+|   |   |   |   |--- class: False
+|--- recent_short_covers5_units >  1.5000
+|   |--- x_since_cover_minutes <= 0.4750
+|   |   |--- x_long_orders_today <= 65.0000
+|   |   |   |--- x_short_book_equity_pct_capital <= 0.5382
+|   |   |   |   |--- class: False
+|   |   |   |--- x_short_book_equity_pct_capital >  0.5382
+|   |   |   |   |--- class: True
+|   |   |--- x_long_orders_today >  65.0000
+|   |   |   |--- x_max_trailing_rise_pct <= 86.0345
+|   |   |   |   |--- x_max_trailing_rise_pct <= 72.9104
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- x_max_trailing_rise_pct >  72.9104
+|   |   |   |   |   |--- class: True
+|   |   |   |--- x_max_trailing_rise_pct >  86.0345
+|   |   |   |   |--- x_since_cover_minutes <= 0.3750
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- x_since_cover_minutes >  0.3750
+|   |   |   |   |   |--- class: True
+|   |--- x_since_cover_minutes >  0.4750
+|   |   |--- x_short_orders_15m <= 15.5000
+|   |   |   |--- bollinger_abs_z_10 <= 1.4630
+|   |   |   |   |--- x_cover_orders_15m <= 6.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_cover_orders_15m >  6.5000
+|   |   |   |   |   |--- class: True
+|   |   |   |--- bollinger_abs_z_10 >  1.4630
+|   |   |   |   |--- x_short_orders_today <= 94.5000
+|   |   |   |   |   |--- class: False
+|   |   |   |   |--- x_short_orders_today >  94.5000
+|   |   |   |   |   |--- class: True
+|   |   |--- x_short_orders_15m >  15.5000
+|   |   |   |--- x_gross_losing_open_pct_capital <= -0.0762
+|   |   |   |   |--- o_ce_relative_volume_5 <= 1.0644
+|   |   |   |   |   |--- class: True
+|   |   |   |   |--- o_ce_relative_volume_5 >  1.0644
+|   |   |   |   |   |--- class: True
+|   |   |   |--- x_gross_losing_open_pct_capital >  -0.0762
+|   |   |   |   |--- class: False

@@ -5,6 +5,12 @@ through the mass matching and rule refinements. Treat Algo 8 as automated:
 unresolved means its programmed rule has not yet been recovered.
 All trading times below are **IST**.
 
+Latest work: [combined-rule search and historical curve fits](research/COMBINATION_SEARCH_FINDINGS.md).
+It adds 15,906,565 rule/parameter/context comparisons and executable historical
+mimics. The original extra-entry/exit controller and repeatable incremental
+alpha remain unidentified. Exact historical minute-label fit is not exact order
+reconstruction.
+
 **Current reconstruction:** start protected near-ATM short allocations before
 expiry, build positions at recurring times, make additional trades and change
 protection, carry the resulting inventory, then manage carried and fresh
@@ -20,9 +26,10 @@ not yet established.
 | Options data | 3,243 traded-option contract-days; 1,230,065 minute candles |
 | Fill-price check | All recorded fills have an event-minute candle; 97.8% fit its range within one tick |
 | Position/P&L reconstruction | 25,565 session-minute snapshots; role ledgers reconcile to the original full-book marks |
-| Rule matching | 71,720 calibration parameter/context comparisons, with chronological later-cycle checks |
+| Rule matching | Earlier 71,720 comparisons plus 15,906,565 combined-search parameter/context evaluations; chronological later-cycle checks and separately labeled full-sample fits |
 
-These are not 71,720 independent experiments. Later data had already been
+These are not independent experiments. Most new comparisons reuse the same
+exit atoms across accounting/target/time contexts. Later data had already been
 inspected, some hypotheses were introduced after exploration, and the option
 universe contains traded contracts rather than the full historical chain.
 Trade field meanings are inferred and internally cross-checked. Missing prices
@@ -74,6 +81,12 @@ over the sample. The cause of that change has not been decoded.
 This schedule is established for **pre-expiry**. Later-period expiry sessions
 contain fresh pairs in only 157/273 tested quarter-hour opportunities. The algo
 does not simply add every 15 minutes unconditionally on both days.
+
+The combined study finds that requiring the actual prior short book to remain
+active predicts 184 of those expiry opportunities: all 157 additions, plus
+27 false signals. Its F1 of 0.921 exceeds the fitted indicator/book-state tree's
+0.907. The 27 suppressions remain unexplained; this baseline is not an autonomous
+entry controller.
 
 ### Fresh hedge purchases around later sales
 
@@ -131,6 +144,11 @@ The older ₹2 NIFTY / ₹7 SENSEX observations are **price clusters**, not conf
 fixed targets. A relative budget fits substantially better and explains why
 both premium targets and strike gaps can move.
 
+Conditional budget branches only modestly improve later pre-expiry exact fits
+to 323/637 NIFTY and 327/623 SENSEX; expiry results are mixed. Volume/OI filters
+do not improve selected later exact counts. SENSEX OI is unavailable in the
+received bars (all supplied values are zero), so it cannot be tested there.
+
 ### Candidate B: extra pre-expiry straddles shift toward recent movement
 
 Conditional on an extra sale occurring outside the scheduled windows:
@@ -168,10 +186,15 @@ The tested simple interpretations fail many observed exits.
 | 5 | **Eligibility and configuration changes** | Explain skipped/delayed starts, the SENSEX seed-wing change, schedule changes and date-specific calendar behaviour |
 | 6 | **Economic alpha and original backtest** | Test a sufficiently specified reconstruction on independent data with costs and comparable risk; reconcile the screenshot's earlier period/configuration |
 
-The mass RSI/EMA/Bollinger/ATR/ADX/Supertrend/breakout/price/IV searches did not
-recover a simple universal trigger or exit instruction. That does not exclude
-combinations, allocation-specific state or intraminute controls. No missing
-function should be replaced by the highest-fitting historical threshold.
+The combined AND/OR, temporal, tree, order-history, portfolio-state, OI/volume
+and composite-exit search also leaves these priorities open. Selected extra-entry
+timing catches only 13/93 later pre-expiry and 36/172 expiry event minutes.
+The selected final-closure program matches within two minutes in 7/12 later
+cycles; sizing matches exact CE/PE quantities in 257/567 later windows.
+Unrestricted trees fit all modeled historical action/quantity labels, but need
+hundreds of branches and do not reproduce original orders or hedge strikes.
+Allocation-specific state and intraminute controls remain possible missing
+inputs. No missing function should be replaced by its best historical fit.
 
 ## 6. What the alpha comparison says
 
@@ -184,6 +207,11 @@ NIFTY's does not. Combined performance changes sign between periods, and the
 later uncertainty interval includes no advantage. Repeatable incremental alpha
 has therefore **not been established overall**. This is separate from the
 strong execution patterns and the screenshot's reported performance.
+
+The new combined-signal test also finds no established advantage: all six
+later-week uncertainty intervals include zero for fixed four-leg baskets after
+cost stress. This is a conditional markout study using actual prior book state,
+not a full-cycle strategy backtest or an account-return comparison.
 
 ## 7. One real cycle makes the structure concrete
 
@@ -207,6 +235,7 @@ contains the accumulated surviving positions, not just the first four orders.
 - [Option replay and initial hedge/stop tests](research/OPTION_TRIGGER_FINDINGS.md)
 - [Repeated addition windows](research/ADDITION_PATTERN_DISCOVERY_FINDINGS.md)
 - [Mass rule matching](research/MASS_RULE_MATCH_FINDINGS.md)
+- [Combined rules, curve-fit programs and later checks](research/COMBINATION_SEARCH_FINDINGS.md)
 - [Hedge rounding, P&L scopes and closure episodes](research/RULE_REFINEMENT_FINDINGS.md)
 - [Theta/IV/movement study](research/IV_THETA_HYPOTHESIS_FINDINGS.md)
 - [Benchmark and its limitations](research/HEDGED_STRADDLE_BENCHMARK_FINDINGS.md)

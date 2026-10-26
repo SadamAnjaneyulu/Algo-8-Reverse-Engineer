@@ -1,0 +1,13 @@
+target_kind,completed_only,kind,expression,calibration_matches_2m,cycles,matches_2m,matches_5m,mean_abs_error_minutes,early_observed,early_matches_2m,false_early_signals
+material_95pct,False,calibration_selected,(NO_PRICE_TRIGGER) OR (net_equity_pct_capital le -0.5) OR TIME[920/915],13,12,8,8,74.88472222222224,6,4,2
+material_95pct,False,all_observed_curve_fit,(short_book_equity_pct_capital le -0.4) OR (long_book_equity_pct_capital le -0.4) OR TIME[920/915],12,30,21,23,18.9638888888889,12,8,2
+first_short_flat,False,calibration_selected,(NO_PRICE_TRIGGER) OR (net_equity_pct_capital le -0.5) OR TIME[925/915],10,12,8,8,74.89583333333334,6,4,2
+first_short_flat,False,all_observed_curve_fit,(short_book_equity_pct_capital le -0.4) OR (long_book_equity_pct_capital le -0.4) OR TIME[925/915],9,29,18,22,20.148275862068967,12,8,2
+final_short_flat,False,calibration_selected,(NO_PRICE_TRIGGER) OR (net_equity_pct_capital le -0.5) OR TIME[925/915],9,12,7,7,75.3263888888889,6,3,2
+final_short_flat,False,all_observed_curve_fit,(short_book_equity_pct_capital le -0.4) OR (long_book_equity_pct_capital le -0.4) OR TIME[925/915],8,29,16,21,20.664367816091957,12,6,2
+material_95pct,True,calibration_selected,(NO_PRICE_TRIGGER) OR (net_equity_pct_capital le -0.5) OR TIME[920/914],11,12,7,7,104.66527777777777,6,3,2
+material_95pct,True,all_observed_curve_fit,(short_book_equity_pct_capital le -0.4) OR (long_book_equity_pct_capital le -0.3) OR TIME[920/914],10,30,18,20,54.785,12,5,2
+first_short_flat,True,calibration_selected,(NO_PRICE_TRIGGER) OR (net_equity_pct_capital le -0.5) OR TIME[925/914],8,12,7,7,104.67638888888888,6,3,2
+first_short_flat,True,all_observed_curve_fit,(short_book_equity_pct_capital le -0.6) OR (net_equity_change_previous_close_pct_capital le -0.6) OR TIME[925/914],8,29,16,19,81.89310344827585,12,7,4
+final_short_flat,True,calibration_selected,(NO_PRICE_TRIGGER) OR (net_equity_pct_capital le -0.5) OR TIME[925/914],8,12,6,6,105.05694444444443,6,2,2
+final_short_flat,True,all_observed_curve_fit,(short_book_equity_pct_capital le -0.4) OR (long_book_equity_pct_capital le -0.3) OR TIME[925/914],7,29,14,18,57.56666666666666,12,4,2

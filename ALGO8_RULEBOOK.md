@@ -1,4 +1,4 @@
-# Algo 8 — working trading rulebook, v0.4
+# Algo 8 — working trading rulebook, v0.5
 
 For the consolidated findings and remaining priorities, start with
 [Algo 8 — current picture](ALGO8_CURRENT_PICTURE.md).
@@ -16,6 +16,12 @@ original instruction.
 The strategy is treated as automated. An unresolved function means its
 programmed rule/configuration has not yet been recovered; it does not imply
 manual discretion.
+
+The [combined-rule search](research/COMBINATION_SEARCH_FINDINGS.md) tests
+15,906,565 new rule/parameter/context combinations. Flexible trees reproduce
+modeled historical minute actions and quarter-window quantities, but those
+full-sample mimics are not a decoded executable trading strategy. Candidate
+rules below retain their evidence boundaries after this search.
 
 ## 1. Strategy structure and eligible sessions
 
@@ -120,6 +126,10 @@ new CE/PE shorts in the three-minute window are 195/195 on 13/15 NIFTY dates
 and 60/60 on 16/17 SENSEX dates. This is a repeated sizing pattern, not the
 complete allocation or margin rule.
 
+The combined earlier-fit sizing model matches joint CE/PE quantities on 257/567
+later quarter windows (45.3%), only 36% of actual nonzero allocations. It does
+not recover the capital/margin formula, number of parents or exposure ceiling.
+
 **S4 — No borrowed benchmark sizes:** the 2,600 NIFTY / 680 SENSEX quantities
 used in the research benchmark were comparison-size calibrations. They are
 **not Algo 8 sizing rules**.
@@ -161,6 +171,12 @@ both indices before expiry. It matches the exact or adjacent later hedge strike
 in 586/637 NIFTY and 589/623 SENSEX events; exact-strike rates remain about half.
 The selected SENSEX pre-expiry version rounds the budget to nearest ₹0.10.
 
+Conditional state-dependent budget branches improve later pre-expiry exact
+matches only to 323/637 NIFTY and 327/623 SENSEX. Expiry results are mixed;
+volume/OI eligibility does not improve selected later exact counts. SENSEX OI
+is unavailable in the supplied candles. These tests do not identify a fixed
+₹2/₹7 instruction or an exact universal selector.
+
 **A3 — Late protection can be much larger or nearer the short strikes.** It must
 be modeled separately from the initial wings and routine buys. The exact
 overnight-hedge sizing and trigger are unresolved. Do not assign every late buy
@@ -187,6 +203,12 @@ a newly sold short or create a new long; its role must come from inventory.
 The 17 recurring pre-expiry windows are not an unconditional expiry-day selling
 rule. Later-period expiry windows contain fresh pairs in 157/273 opportunities;
 already-flat books and other conditions matter.
+
+A strong **candidate baseline** is to allow each tested quarter opportunity
+while the actual prior short book is active. It catches all 157 later expiry
+additions but predicts 27 extra additions, outperforming the selected tree on
+F1. This exposes an unresolved suppression condition, not proof of the original
+entry rule or a self-contained controller.
 
 **X2 — Early exits occur.** The strategy sometimes closes significant exposure
 early in the session. The exact position-stop, portfolio-stop, profit-target
@@ -215,6 +237,13 @@ well. First zero exposure therefore does not establish a permanent entry lock;
 the reason for closure, later entry permissions and pending-order handling must
 be recovered separately. A 95% carry reduction, first full short closure and
 final full short closure are different research labels.
+
+The combined loss/profit/trailing/time search does not resolve this controller.
+Its earlier-selected final-closure program matches within two minutes on 7/12
+later cycles and has large errors elsewhere. Its fitted 0.5% net-cycle threshold
+is not a recovered stop and must not replace the supplied 1% instruction.
+Joint post-stop locks/cooldowns do not improve the selected later entry match;
+this does not prove the original has no re-entry restriction.
 
 ## 6. Risk-management rules supplied in the note
 

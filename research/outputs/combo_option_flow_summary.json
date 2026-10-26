@@ -1,0 +1,14 @@
+{
+  "coverage": {
+    "NIFTY": {
+      "bars": 545979,
+      "positive_oi": 545979
+    },
+    "SENSEX": {
+      "bars": 684086,
+      "positive_oi": 0
+    }
+  },
+  "context_rows": 24860,
+  "note": "Reference is a previously executed paired strike with a completed minute. OI changes use the same strike; zero OI is missing, not a flat signal. Price/OI sign quadrants do not identify buyer/seller intent."
+}

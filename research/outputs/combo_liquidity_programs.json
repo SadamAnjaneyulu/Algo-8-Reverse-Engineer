@@ -1,0 +1,74 @@
+{
+  "NIFTY|preexpiry": {
+    "selected": [
+      0.025,
+      0,
+      "none",
+      "ceiling",
+      0,
+      0
+    ],
+    "base": [
+      0.025,
+      0,
+      "none",
+      "ceiling",
+      65,
+      0
+    ]
+  },
+  "NIFTY|expiry": {
+    "selected": [
+      0.0225,
+      0.1,
+      "ceil",
+      "nearest",
+      6500,
+      0
+    ],
+    "base": [
+      0.025,
+      0,
+      "none",
+      "nearest",
+      65,
+      0
+    ]
+  },
+  "SENSEX|preexpiry": {
+    "selected": [
+      0.025,
+      0.1,
+      "nearest",
+      "ceiling",
+      0,
+      0
+    ],
+    "base": [
+      0.025,
+      0.1,
+      "nearest",
+      "ceiling",
+      20,
+      0
+    ]
+  },
+  "SENSEX|expiry": {
+    "selected": [
+      0.025,
+      0.1,
+      "floor",
+      "nearest",
+      1000,
+      0
+    ],
+    "base": [
+      0.025,
+      0.1,
+      "floor",
+      "nearest",
+      20,
+      0
+    ]
+  }
+}

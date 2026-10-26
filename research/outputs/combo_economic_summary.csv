@@ -1,0 +1,9 @@
+model,horizon,attempted,quoted_allocations,cycles,mean_net_pnl_per_observed_quantity_unit,mean_net_per_10000_tail_loss,positive_after_stress,allocations_with_zero_volume_endpoint
+boolean_temporal,15_minutes,633,632,15,-232.50588904272152,-82.0264697989282,122,4
+fixed_clock_active_book,15_minutes,421,417,15,-225.8953117505995,-76.99670554284127,97,1
+joint_entry_exit,15_minutes,276,276,9,-236.68252038043477,-111.97729572958143,65,0
+tree_combinations,15_minutes,607,607,15,-219.76989909390446,-81.0072292975468,132,4
+boolean_temporal,expiry_15:14,633,632,15,-1573.5305874208861,-593.1509306292278,290,2
+fixed_clock_active_book,expiry_15:14,421,417,15,-1821.2962649880096,-698.1514601789873,184,2
+joint_entry_exit,expiry_15:14,276,276,9,-416.4182971014492,-235.89929305215753,140,0
+tree_combinations,expiry_15:14,607,607,15,-1524.7052162273476,-571.6964812100238,278,1

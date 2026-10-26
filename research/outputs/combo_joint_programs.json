@@ -1,0 +1,105 @@
+{
+  "fresh_pairs": {
+    "entry": {
+      "expression": [
+        "clock"
+      ],
+      "text": "CLOCK_ATTENDANCE_AND_BOOK",
+      "training": {
+        "rows": 6520,
+        "positives": 562,
+        "negatives": 5958,
+        "signals": 506,
+        "true_positives": 473,
+        "false_positives": 33,
+        "false_negatives": 89,
+        "precision": 0.9347826086956522,
+        "recall": 0.8416370106761566,
+        "f1": 0.8857677902621723,
+        "balanced_accuracy": 0.918049119638179,
+        "cycle_weighted_f1": 0.8857677902621723
+      }
+    },
+    "exit": {
+      "atom1": 0,
+      "atom2": 0,
+      "before_aug3_cutoff": 929,
+      "after_aug3_cutoff": 914
+    },
+    "lock_policy": "none",
+    "cooldown": 0,
+    "maximum": 0,
+    "require_book": false
+  },
+  "extra_pairs": {
+    "entry": {
+      "expression": [
+        "clock"
+      ],
+      "text": "CLOCK_ATTENDANCE_AND_BOOK",
+      "training": {
+        "rows": 5020,
+        "positives": 184,
+        "negatives": 4836,
+        "signals": 145,
+        "true_positives": 139,
+        "false_positives": 6,
+        "false_negatives": 45,
+        "precision": 0.9586206896551724,
+        "recall": 0.7554347826086957,
+        "f1": 0.8449848024316109,
+        "balanced_accuracy": 0.8770970439098069,
+        "cycle_weighted_f1": 0.8449848024316109
+      }
+    },
+    "exit": {
+      "atom1": 0,
+      "atom2": 0,
+      "before_aug3_cutoff": 929,
+      "after_aug3_cutoff": 914
+    },
+    "lock_policy": "none",
+    "cooldown": 0,
+    "maximum": 0,
+    "require_book": false
+  },
+  "quarter_pairs": {
+    "entry": {
+      "expression": [
+        "and",
+        [
+          "clock"
+        ],
+        [
+          "atom",
+          410
+        ]
+      ],
+      "text": "(CLOCK_ATTENDANCE_AND_BOOK AND equity_pct_capital gt -0.4 [state])",
+      "training": {
+        "rows": 420,
+        "positives": 247,
+        "negatives": 173,
+        "signals": 239,
+        "true_positives": 238,
+        "false_positives": 1,
+        "false_negatives": 9,
+        "precision": 0.99581589958159,
+        "recall": 0.9635627530364372,
+        "f1": 0.9794238683127572,
+        "balanced_accuracy": 0.978891203107814,
+        "cycle_weighted_f1": 0.9794238683127573
+      }
+    },
+    "exit": {
+      "atom1": 0,
+      "atom2": 0,
+      "before_aug3_cutoff": 929,
+      "after_aug3_cutoff": 914
+    },
+    "lock_policy": "none",
+    "cooldown": 0,
+    "maximum": 0,
+    "require_book": false
+  }
+}
