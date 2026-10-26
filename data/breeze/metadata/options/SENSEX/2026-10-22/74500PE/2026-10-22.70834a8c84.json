@@ -1,0 +1,53 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-22",
+    "option_type": "PE",
+    "strike": 74500,
+    "trade_date": "2026-10-22",
+    "underlying": "SENSEX"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-10-22T12:35:00+05:30",
+      "2026-10-22T13:58:00+05:30",
+      "2026-10-22T14:59:00+05:30"
+    ],
+    "observed_bars": 382,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 0
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 0,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 0,
+    "fills_without_bar": 0,
+    "logged_fills": 0
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/SENSEX/2026-10-22/74500PE/2026-10-22.70834a8c84.csv",
+  "normalized_sha256": "57c1eea5c3bf0239b3db65976a736e7967207729460fe3a42d51a60da91913c6",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/SENSEX/2026-10-22/74500PE/2026-10-22.56c672ad0f40.json",
+  "raw_sha256": "bf18295c6448f3452efd07d1dd96903a5833d135ba320ea11474e14dcc6499b6",
+  "request": {
+    "exch_code": "BFO",
+    "expiry_date": "2026-10-22T07:00:00.000Z",
+    "from_date": "2026-10-22T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "put",
+    "stock_code": "BSESEN",
+    "strike_price": "74500",
+    "to_date": "2026-10-22T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T06:20:49.887599+00:00",
+  "status": "validated_observed_option_bars"
+}

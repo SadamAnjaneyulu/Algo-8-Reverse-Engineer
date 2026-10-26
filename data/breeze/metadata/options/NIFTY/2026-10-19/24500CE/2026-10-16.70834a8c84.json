@@ -1,0 +1,52 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-19",
+    "option_type": "CE",
+    "strike": 24500,
+    "trade_date": "2026-10-16",
+    "underlying": "NIFTY"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-10-16T13:33:00+05:30",
+      "2026-10-16T13:51:00+05:30"
+    ],
+    "observed_bars": 383,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 1
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 10,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 10,
+    "fills_without_bar": 0,
+    "logged_fills": 10
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/NIFTY/2026-10-19/24500CE/2026-10-16.70834a8c84.csv",
+  "normalized_sha256": "641fd6b2f079c1765233086f509ce30af19210422210d5fabfca5872d7d60325",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/NIFTY/2026-10-19/24500CE/2026-10-16.f07f7cf1ef2a.json",
+  "raw_sha256": "92352bb745875a0a8fabfa28f72ec63af867da8650ebed2acb61f9f5de32716e",
+  "request": {
+    "exch_code": "NFO",
+    "expiry_date": "2026-10-19T07:00:00.000Z",
+    "from_date": "2026-10-16T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "call",
+    "stock_code": "NIFTY",
+    "strike_price": "24500",
+    "to_date": "2026-10-16T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T05:44:10.470199+00:00",
+  "status": "validated_observed_option_bars"
+}

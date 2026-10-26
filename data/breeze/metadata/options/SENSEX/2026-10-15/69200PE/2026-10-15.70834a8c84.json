@@ -1,0 +1,60 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-15",
+    "option_type": "PE",
+    "strike": 69200,
+    "trade_date": "2026-10-15",
+    "underlying": "SENSEX"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-10-15T14:50:00+05:30",
+      "2026-10-15T14:54:00+05:30",
+      "2026-10-15T15:28:00+05:30",
+      "2026-10-15T15:29:00+05:30",
+      "2026-10-15T15:31:00+05:30",
+      "2026-10-15T15:32:00+05:30",
+      "2026-10-15T15:33:00+05:30",
+      "2026-10-15T15:34:00+05:30",
+      "2026-10-15T15:35:00+05:30",
+      "2026-10-15T15:36:00+05:30"
+    ],
+    "observed_bars": 375,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 0
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 11,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 11,
+    "fills_without_bar": 0,
+    "logged_fills": 11
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/SENSEX/2026-10-15/69200PE/2026-10-15.70834a8c84.csv",
+  "normalized_sha256": "5ae81ba2b6ad01fc0e304e5a35942deea7b37a7900790008e65488564ba1eebc",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/SENSEX/2026-10-15/69200PE/2026-10-15.488a67243ec8.json",
+  "raw_sha256": "534532870e294fc0c4937a6ba8facba83bca597072fa38d677893060f39c0783",
+  "request": {
+    "exch_code": "BFO",
+    "expiry_date": "2026-10-15T07:00:00.000Z",
+    "from_date": "2026-10-15T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "put",
+    "stock_code": "BSESEN",
+    "strike_price": "69200",
+    "to_date": "2026-10-15T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T06:17:29.830616+00:00",
+  "status": "validated_observed_option_bars"
+}

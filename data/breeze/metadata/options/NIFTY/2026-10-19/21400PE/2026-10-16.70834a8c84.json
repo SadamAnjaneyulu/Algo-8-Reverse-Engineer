@@ -1,0 +1,63 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-19",
+    "option_type": "PE",
+    "strike": 21400,
+    "trade_date": "2026-10-16",
+    "underlying": "NIFTY"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-10-16T11:44:00+05:30",
+      "2026-10-16T12:16:00+05:30",
+      "2026-10-16T12:19:00+05:30",
+      "2026-10-16T12:20:00+05:30",
+      "2026-10-16T12:26:00+05:30",
+      "2026-10-16T12:27:00+05:30",
+      "2026-10-16T12:40:00+05:30",
+      "2026-10-16T12:43:00+05:30",
+      "2026-10-16T12:47:00+05:30",
+      "2026-10-16T12:50:00+05:30",
+      "2026-10-16T12:57:00+05:30",
+      "2026-10-16T13:01:00+05:30",
+      "2026-10-16T14:07:00+05:30"
+    ],
+    "observed_bars": 372,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 1
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 0,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 0,
+    "fills_without_bar": 0,
+    "logged_fills": 0
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/NIFTY/2026-10-19/21400PE/2026-10-16.70834a8c84.csv",
+  "normalized_sha256": "38d323f6ede4cf496e8d7cc5be3ba146f9173817458a7df3f330c1307ba6838b",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/NIFTY/2026-10-19/21400PE/2026-10-16.ad9564871f37.json",
+  "raw_sha256": "8ca5b106840574df077ca5b21b8571570e64e28702a15d4d5770b654a42ae337",
+  "request": {
+    "exch_code": "NFO",
+    "expiry_date": "2026-10-19T07:00:00.000Z",
+    "from_date": "2026-10-16T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "put",
+    "stock_code": "NIFTY",
+    "strike_price": "21400",
+    "to_date": "2026-10-16T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T05:42:42.945631+00:00",
+  "status": "validated_observed_option_bars"
+}

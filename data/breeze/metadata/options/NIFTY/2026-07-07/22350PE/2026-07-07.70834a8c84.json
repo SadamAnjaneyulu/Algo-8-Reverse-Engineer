@@ -1,0 +1,54 @@
+{
+  "contract": {
+    "expiry_date": "2026-07-07",
+    "option_type": "PE",
+    "strike": 22350,
+    "trade_date": "2026-07-07",
+    "underlying": "NIFTY"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 375,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-07-07T15:20:00+05:30",
+      "2026-07-07T15:24:00+05:30",
+      "2026-07-07T15:25:00+05:30",
+      "2026-07-07T15:27:00+05:30"
+    ],
+    "observed_bars": 371,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 185
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 0,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 0,
+    "fills_without_bar": 0,
+    "logged_fills": 0
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/NIFTY/2026-07-07/22350PE/2026-07-07.70834a8c84.csv",
+  "normalized_sha256": "4b708621607710011d9e6928d201c3887192464dd46578f57f3686d9531f6bfc",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/NIFTY/2026-07-07/22350PE/2026-07-07.08eba427e651.json",
+  "raw_sha256": "f9a1a5ba82ec0291aa5dabd67c9e24e580e0e886c2cf58d3ed3e115039ada010",
+  "request": {
+    "exch_code": "NFO",
+    "expiry_date": "2026-07-07T07:00:00.000Z",
+    "from_date": "2026-07-07T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "put",
+    "stock_code": "NIFTY",
+    "strike_price": "22350",
+    "to_date": "2026-07-07T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T05:17:12.504078+00:00",
+  "status": "validated_observed_option_bars"
+}

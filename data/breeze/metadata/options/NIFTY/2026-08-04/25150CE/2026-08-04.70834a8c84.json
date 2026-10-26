@@ -1,0 +1,49 @@
+{
+  "contract": {
+    "expiry_date": "2026-08-04",
+    "option_type": "CE",
+    "strike": 25150,
+    "trade_date": "2026-08-04",
+    "underlying": "NIFTY"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": true,
+    "missing_minutes_ist": [],
+    "observed_bars": 385,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 4
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 7,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 7,
+    "fills_without_bar": 0,
+    "logged_fills": 7
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": true,
+  "normalized_path": "normalized/options/NIFTY/2026-08-04/25150CE/2026-08-04.70834a8c84.csv",
+  "normalized_sha256": "259b13fb29951a01dbeb6a3735b06cefdc2c8076c463e96babd20bd82a64e16a",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/NIFTY/2026-08-04/25150CE/2026-08-04.9f2ae9bf72e1.json",
+  "raw_sha256": "38122c159c45c897f2b16d973a93f5dd12e4991e71e6a196ea28c9adde4ce762",
+  "request": {
+    "exch_code": "NFO",
+    "expiry_date": "2026-08-04T07:00:00.000Z",
+    "from_date": "2026-08-04T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "call",
+    "stock_code": "NIFTY",
+    "strike_price": "25150",
+    "to_date": "2026-08-04T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T05:26:52.666282+00:00",
+  "status": "validated_observed_option_bars"
+}

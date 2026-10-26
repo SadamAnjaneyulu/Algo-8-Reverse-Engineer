@@ -1,0 +1,49 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-22",
+    "option_type": "PE",
+    "strike": 72000,
+    "trade_date": "2026-10-21",
+    "underlying": "SENSEX"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": true,
+    "missing_minutes_ist": [],
+    "observed_bars": 385,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 0
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 7,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 7,
+    "fills_without_bar": 0,
+    "logged_fills": 7
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": true,
+  "normalized_path": "normalized/options/SENSEX/2026-10-22/72000PE/2026-10-21.70834a8c84.csv",
+  "normalized_sha256": "0f64050782b126d29cb2f5a966574b8b3d5044790fc4205c80ecb2dac092f23b",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/SENSEX/2026-10-22/72000PE/2026-10-21.a3784e26827a.json",
+  "raw_sha256": "480fc38f52e1d3ffe78b9fa442109ea0387d902006695bab144c25dfe6ea8d9d",
+  "request": {
+    "exch_code": "BFO",
+    "expiry_date": "2026-10-22T07:00:00.000Z",
+    "from_date": "2026-10-21T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "put",
+    "stock_code": "BSESEN",
+    "strike_price": "72000",
+    "to_date": "2026-10-21T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T06:19:13.622961+00:00",
+  "status": "validated_observed_option_bars"
+}

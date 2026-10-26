@@ -1,0 +1,69 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-13",
+    "option_type": "CE",
+    "strike": 23800,
+    "trade_date": "2026-10-12",
+    "underlying": "NIFTY"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-10-12T11:15:00+05:30",
+      "2026-10-12T11:23:00+05:30",
+      "2026-10-12T11:33:00+05:30",
+      "2026-10-12T11:35:00+05:30",
+      "2026-10-12T11:50:00+05:30",
+      "2026-10-12T12:06:00+05:30",
+      "2026-10-12T12:19:00+05:30",
+      "2026-10-12T12:27:00+05:30",
+      "2026-10-12T12:37:00+05:30",
+      "2026-10-12T12:40:00+05:30",
+      "2026-10-12T12:54:00+05:30",
+      "2026-10-12T12:56:00+05:30",
+      "2026-10-12T13:00:00+05:30",
+      "2026-10-12T13:02:00+05:30",
+      "2026-10-12T13:24:00+05:30",
+      "2026-10-12T13:28:00+05:30",
+      "2026-10-12T13:51:00+05:30",
+      "2026-10-12T13:56:00+05:30",
+      "2026-10-12T14:06:00+05:30"
+    ],
+    "observed_bars": 366,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 6
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 0,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 0,
+    "fills_without_bar": 0,
+    "logged_fills": 0
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/NIFTY/2026-10-13/23800CE/2026-10-12.70834a8c84.csv",
+  "normalized_sha256": "b5f6016ff1503380c8cfb6fd36a965923fd7ab6935bd8328c947a22bac67ea53",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/NIFTY/2026-10-13/23800CE/2026-10-12.38a241be5ded.json",
+  "raw_sha256": "fc36bc03d24784ddc3260fc068e6d4e7e31c3eab4b88690100ace83364312741",
+  "request": {
+    "exch_code": "NFO",
+    "expiry_date": "2026-10-13T07:00:00.000Z",
+    "from_date": "2026-10-12T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "call",
+    "stock_code": "NIFTY",
+    "strike_price": "23800",
+    "to_date": "2026-10-12T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T05:42:25.458603+00:00",
+  "status": "validated_observed_option_bars"
+}

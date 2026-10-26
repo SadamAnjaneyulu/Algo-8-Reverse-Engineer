@@ -1,0 +1,57 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-06",
+    "option_type": "CE",
+    "strike": 24500,
+    "trade_date": "2026-10-06",
+    "underlying": "NIFTY"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-10-06T13:44:00+05:30",
+      "2026-10-06T13:49:00+05:30",
+      "2026-10-06T13:58:00+05:30",
+      "2026-10-06T14:02:00+05:30",
+      "2026-10-06T14:18:00+05:30",
+      "2026-10-06T14:19:00+05:30",
+      "2026-10-06T14:42:00+05:30"
+    ],
+    "observed_bars": 378,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 102
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 21,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 21,
+    "fills_without_bar": 0,
+    "logged_fills": 21
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/NIFTY/2026-10-06/24500CE/2026-10-06.70834a8c84.csv",
+  "normalized_sha256": "bf76b61eac6f5874a2041e335b82df738859851e87515ac2ee59fdb572b7e614",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/NIFTY/2026-10-06/24500CE/2026-10-06.eef5e0b3f5c9.json",
+  "raw_sha256": "9a499255cce2fa8b05a6e54235a6e6ad3cb814932dc8df78feae456a942049e7",
+  "request": {
+    "exch_code": "NFO",
+    "expiry_date": "2026-10-06T07:00:00.000Z",
+    "from_date": "2026-10-06T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "call",
+    "stock_code": "NIFTY",
+    "strike_price": "24500",
+    "to_date": "2026-10-06T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T05:40:49.157878+00:00",
+  "status": "validated_observed_option_bars"
+}

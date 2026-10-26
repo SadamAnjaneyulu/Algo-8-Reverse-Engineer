@@ -1,0 +1,62 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-15",
+    "option_type": "CE",
+    "strike": 77000,
+    "trade_date": "2026-10-14",
+    "underlying": "SENSEX"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-10-14T10:04:00+05:30",
+      "2026-10-14T10:37:00+05:30",
+      "2026-10-14T10:39:00+05:30",
+      "2026-10-14T10:41:00+05:30",
+      "2026-10-14T10:43:00+05:30",
+      "2026-10-14T10:45:00+05:30",
+      "2026-10-14T11:53:00+05:30",
+      "2026-10-14T12:23:00+05:30",
+      "2026-10-14T12:38:00+05:30",
+      "2026-10-14T12:39:00+05:30",
+      "2026-10-14T14:15:00+05:30",
+      "2026-10-14T14:17:00+05:30"
+    ],
+    "observed_bars": 373,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 0
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 0,
+    "fills_outside_ohlc_plus_one_tick": 0,
+    "fills_with_bar": 0,
+    "fills_without_bar": 0,
+    "logged_fills": 0
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/SENSEX/2026-10-15/77000CE/2026-10-14.70834a8c84.csv",
+  "normalized_sha256": "8a5bd51118958cf887c8b317f96da68381c447e9e0a0b3f00363cfc563d43dcb",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/SENSEX/2026-10-15/77000CE/2026-10-14.4a37deb33e8e.json",
+  "raw_sha256": "7fdbc15a294b686405fe19fd6cd13aa34b7252ca7221e694fd5e03c23fbfd12b",
+  "request": {
+    "exch_code": "BFO",
+    "expiry_date": "2026-10-15T07:00:00.000Z",
+    "from_date": "2026-10-14T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "call",
+    "stock_code": "BSESEN",
+    "strike_price": "77000",
+    "to_date": "2026-10-14T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T06:18:46.094213+00:00",
+  "status": "validated_observed_option_bars"
+}

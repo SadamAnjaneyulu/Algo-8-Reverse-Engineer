@@ -1,0 +1,57 @@
+{
+  "contract": {
+    "expiry_date": "2026-10-22",
+    "option_type": "CE",
+    "strike": 73300,
+    "trade_date": "2026-10-21",
+    "underlying": "SENSEX"
+  },
+  "coverage": {
+    "expected_derivative_minutes": 385,
+    "full_minute_grid": false,
+    "missing_minutes_ist": [
+      "2026-10-21T09:36:00+05:30",
+      "2026-10-21T09:38:00+05:30",
+      "2026-10-21T09:46:00+05:30",
+      "2026-10-21T09:47:00+05:30",
+      "2026-10-21T09:48:00+05:30",
+      "2026-10-21T09:49:00+05:30",
+      "2026-10-21T10:48:00+05:30"
+    ],
+    "observed_bars": 378,
+    "zero_price_bars": 0,
+    "zero_volume_bars": 0
+  },
+  "fill_alignment": {
+    "comparison": "Recorded event minute; OHLC range plus 0.05 tolerance; diagnostic, not proof of exchange timestamp semantics.",
+    "fills_inside_ohlc_plus_one_tick": 16,
+    "fills_outside_ohlc_plus_one_tick": 1,
+    "fills_with_bar": 17,
+    "fills_without_bar": 0,
+    "logged_fills": 17
+  },
+  "interpretation": {
+    "bar_label": "start",
+    "normalizer_version": 1,
+    "response_timezone": "Asia/Kolkata"
+  },
+  "minute_grid_price_coverage_complete": false,
+  "normalized_path": "normalized/options/SENSEX/2026-10-22/73300CE/2026-10-21.70834a8c84.csv",
+  "normalized_sha256": "2330c122a8c6d2286f3e540f96331cc4c69f05a094650ea1901b40cdbf504bb6",
+  "note": "Observed trade candles only; no interpolation, executable quotes, IV, Greeks or inferred settlement. Coverage does not imply replay readiness.",
+  "raw_path": "raw/options/SENSEX/2026-10-22/73300CE/2026-10-21.201f89cabdc8.json",
+  "raw_sha256": "f538207d1f7c6cf4941b2eb85f21e4f5259b0563a03b7e3e88d65029fb8e1df5",
+  "request": {
+    "exch_code": "BFO",
+    "expiry_date": "2026-10-22T07:00:00.000Z",
+    "from_date": "2026-10-21T03:30:00.000Z",
+    "interval": "1minute",
+    "product_type": "options",
+    "right": "call",
+    "stock_code": "BSESEN",
+    "strike_price": "73300",
+    "to_date": "2026-10-21T15:45:00.000Z"
+  },
+  "retrieved_at_utc": "2026-10-26T06:19:46.121679+00:00",
+  "status": "validated_observed_option_bars"
+}
