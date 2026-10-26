@@ -1,0 +1,15 @@
+{
+  "checked_on_client_date": "2026-10-26",
+  "cloud_session_exchange": "rejected_by_breeze",
+  "cause": "unconfirmed; existing session/app-key pair was not accepted",
+  "observed_option_contract_days": 0,
+  "smoke_contract_days": 4,
+  "prioritized_sample_contract_days": 356,
+  "all_traded_contract_days": 3243,
+  "official_sdk_source": {
+    "url": "https://raw.githubusercontent.com/Idirect-Tech/Breeze-Python-SDK/main/README.md",
+    "sha256": "a62a6d1acb3b115fec161c52fadf9b78c1b4ee10ff0ab806291ed55b2f1d0b88",
+    "reference": "Historical Data V2: OPTIONS; 1000-interval request cap"
+  },
+  "note": "No API credentials, login response or credential-bearing errors stored. Sparse observations are never filled or called full replay data."
+}
