@@ -1,4 +1,4 @@
-# Algo 8 — working trading rulebook, v0.1
+# Algo 8 — working trading rulebook, v0.2
 
 **Purpose:** describe the strategy supported by the logs and supplied notes.
 This is a research specification, not a fully decoded executable clone.
@@ -97,16 +97,33 @@ and trigger of each addition, sizing as a function of capital/margin/premium,
 maximum lots, maximum exposure and CE/PE quantity ratios are **unresolved**.
 Equal opening-role quantities do not imply the later book stays equal-sized.
 
+Pure new-short **parent order** quantities on pre-expiry day are 65 units in
+2,022/2,032 NIFTY cases and 20 units in all 2,375 SENSEX cases. Multiple parents
+can occur together; these are not total basket quantities. At 09:45, aggregate
+new CE/PE shorts in the three-minute window are 195/195 on 13/15 NIFTY dates
+and 60/60 on 16/17 SENSEX dates. This is a repeated sizing pattern, not the
+complete allocation or margin rule.
+
 **S4 — No borrowed benchmark sizes:** the 2,600 NIFTY / 680 SENSEX quantities
 used in the research benchmark were comparison-size calibrations. They are
 **not Algo 8 sizing rules**.
 
 ## 4. Pre-expiry intraday management
 
-**A1 — Further allocations occur.** The logs show new near-ATM CE/PE short groups,
-covering/reducing positions and additional long options. New sales are often
-clustered around quarter-hour boundaries, but there is no verified instruction
-to add a basket unconditionally every 15 minutes.
+**A1 — Scheduled build-up is strongly observed.** All 32 observed pre-expiry
+sessions have a fresh same-strike CE/PE short pair in each of these 17 windows:
+09:30, 09:45, 10:00, 10:15, 10:30, 10:45, 11:00, 11:15, 11:30, 11:45,
+12:00, 12:30, 13:30, 13:45, 14:00, 14:15 and 14:30. A window runs from
+two seconds before the listed time until three minutes afterward; NIFTY
+afternoon executions can start one second early. This is 544/544 observed
+session-window attendances, not a universal instruction for unobserved dates
+or confirmation of an atomic four-leg basket at each time. 12:15, 12:45,
+13:00 and 13:15 are less consistent. Additional off-quarter trades occur.
+
+The repeated additions occur with spot moving either way and reference premiums
+or estimated IV rising or falling. Falling premiums, rising IV or a new breakout
+are not established necessary conditions for this scheduled build-up. The
+additional sales must not all be described as reducing risk.
 
 **A2 — Routine later protection differs from initial seed protection.** Routine
 new-long fill premiums cluster near **₹2 for NIFTY / ₹7 for SENSEX**, with changing
@@ -177,8 +194,8 @@ must be specified before any executable version can apply those limits correctly
 | Why one eligible expiry is traded and another is skipped | Unresolved |
 | Whether the entry reference is spot, futures or another quote | Strong nearest-index-strike fit; exact reference unresolved |
 | Exact initial-wing exception/configuration rule | Unresolved |
-| Trigger for additional short allocations | Unresolved |
-| Quantity for every new allocation | Unresolved |
+| Trigger for additional short allocations | Strong 17-window pre-expiry schedule; extra-entry and expiry-day conditions unresolved |
+| Quantity for every new allocation | Repeated 65/20-unit pre-expiry parents; total basket and exposure formula unresolved |
 | Later wing selector and large late hedge trigger | Unresolved |
 | 4% carry-stop denominator and position/basket scope | Unresolved |
 | 1% capital-stop accounting reference and scope | Unresolved |
@@ -194,7 +211,7 @@ The reconstructed structure is:
 
 ```
 pre-expiry opening: start protected near-ATM short allocations around 09:16
-pre-expiry session: add/reduce positions and change protection
+pre-expiry session: build shorts at recurring times; also add/reduce and change protection
 overnight: carry the resulting inventory if still open
 expiry session: manage carry, make further trades and reduce/exit exposure
 after trading: reconcile actual residual positions and settlement
@@ -222,3 +239,8 @@ Subsequent IV/theta exposure tests are documented in
 They support the initial positive-theta / short-IV exposure and distinguish
 new short-risk allocations from protective changes; they do not supply a decoded
 IV trigger to fill the unresolved decision rules above.
+
+The [addition-pattern study](research/ADDITION_PATTERN_DISCOVERY_FINDINGS.md)
+documents the repeated schedule, parent sizing and later-cycle clock/market/state
+comparisons. It corrects minute-boundary grouping artifacts and supplies strong
+execution-pattern evidence, without establishing incremental economic alpha.
