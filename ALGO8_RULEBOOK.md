@@ -1,4 +1,4 @@
-# Algo 8 — working trading rulebook, v0.3
+# Algo 8 — working trading rulebook, v0.4
 
 **Purpose:** describe the strategy supported by the logs and supplied notes.
 This is a research specification, not a fully decoded executable clone.
@@ -8,6 +8,8 @@ contract sizes, expiries and exchange hours must be date-specific.
 Labels: **Observed** = reconstructed pattern, with possible exceptions;
 **Stated** = supplied in `Info.txt`; **Unresolved** = the exact rule is not known.
 An observed pattern must not be mistaken for a universal original instruction.
+**Candidate** denotes a partially matching reconstruction, not a recovered
+original instruction.
 The strategy is treated as automated. An unresolved function means its
 programmed rule/configuration has not yet been recovered; it does not imply
 manual discretion.
@@ -151,6 +153,11 @@ fraction for both indices; later exact-strike matches are 316/637 NIFTY and
 many exceptions. Quotes are previous completed trade candles from an incomplete
 chain. This remains a candidate, not a decoded universal hedge instruction.
 
+Further calibration of nearby fractions and budget rounding retains 2.5% for
+both indices before expiry. It matches the exact or adjacent later hedge strike
+in 586/637 NIFTY and 589/623 SENSEX events; exact-strike rates remain about half.
+The selected SENSEX pre-expiry version rounds the budget to nearest ₹0.10.
+
 **A3 — Late protection can be much larger or nearer the short strikes.** It must
 be modeled separately from the initial wings and routine buys. The exact
 overnight-hedge sizing and trigger are unresolved. Do not assign every late buy
@@ -198,6 +205,13 @@ settlement or missing records before calling the entire book squared off.
 entries resume after a stop, and the handling of outstanding opening orders
 are unresolved. Do not invent a take-profit percentage or assume a permanent
 entry lock from the currently available logs.
+
+**Observed post-closure fills:** ten cycles have fresh-short fills after the
+whole short book first reaches zero. Four have later order-label minutes as
+well. First zero exposure therefore does not establish a permanent entry lock;
+the reason for closure, later entry permissions and pending-order handling must
+be recovered separately. A 95% carry reduction, first full short closure and
+final full short closure are different research labels.
 
 ## 6. Risk-management rules supplied in the note
 
@@ -279,3 +293,8 @@ strike, hedge-cost and exit hypotheses with calibration-only parameter selection
 chronological checks, negative opportunities and timing sensitivities. It adds
 the directional-placement and relative hedge-budget candidates above. It does
 not identify an exact universal exit rule or replace the stated risk limits.
+
+The [rounding and loss-scope follow-up](research/RULE_REFINEMENT_FINDINGS.md)
+reconciles every full-book minute, distinguishes closure episodes and tests
+additional hedge/exit interpretations. It strengthens the relative hedge-budget
+lead while leaving the complete exit controller unresolved.

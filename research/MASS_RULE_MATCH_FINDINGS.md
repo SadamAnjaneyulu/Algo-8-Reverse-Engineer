@@ -287,3 +287,7 @@ quantity; it does not invent their remaining requested fills. Raw prices and
 original logs are unchanged. The tests cover causal prefixes, warm-up, time
 alignment, own-cycle exclusion, allocation ambiguity, one-to-one matching,
 unquoted-strike handling and conditional selector inputs.
+
+Further [hedge-budget and loss-scope refinements](RULE_REFINEMENT_FINDINGS.md)
+add rounding checks, reconciled role ledgers and separate first/final closure
+targets. The initial 68,516 comparisons above remain the first search snapshot.

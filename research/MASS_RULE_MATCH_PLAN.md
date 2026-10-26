@@ -118,3 +118,22 @@ they are exploratory even though parameter selection still uses earlier cycles:
 The search counts parameter/context evaluations, including repeated parameters
 in different cohorts, not that many independent strategy hypotheses. No
 family-wise significance or untouched external replication is claimed.
+
+## Exploratory continuation
+
+After the first study, refine the ATM-leg budget using fractions
+2/2.25/2.5/2.75/3%, target tick sizes 0.05/0.10/0.25/0.50/1.00, explicit
+half-up/floor/ceiling rounding or no rounding, and nearest/ceiling/floor chain
+selection. Report every selected model's later failures and per-cycle scores;
+retain unrounded nearest/ceiling ablations rather than attributing their method
+change entirely to rounding.
+
+Reconstruct separate short/long, realized/unrealized and losing-open-position
+ledgers and require full-book reconciliation at every saved minute. Test reversed
+same-second ordering sensitivity. Compare cycle/day/drawdown references and
+loss/profit thresholds on stated capital, preserving explicit 1% scope tests.
+Separate material 95% short reduction, first whole short-book zero and final
+whole short-book zero, netting same-second events before identifying closures.
+Opening marks are labeled proxies; do not use future bar volume to select them.
+Audit later fresh-short fills and their order-label minutes after a first closure.
+These extensions remain retrospective exploration, not original-code proof.
