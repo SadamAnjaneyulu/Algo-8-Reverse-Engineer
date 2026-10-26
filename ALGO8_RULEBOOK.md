@@ -1,4 +1,4 @@
-# Algo 8 — working trading rulebook, v0.2
+# Algo 8 — working trading rulebook, v0.3
 
 **Purpose:** describe the strategy supported by the logs and supplied notes.
 This is a research specification, not a fully decoded executable clone.
@@ -8,6 +8,9 @@ contract sizes, expiries and exchange hours must be date-specific.
 Labels: **Observed** = reconstructed pattern, with possible exceptions;
 **Stated** = supplied in `Info.txt`; **Unresolved** = the exact rule is not known.
 An observed pattern must not be mistaken for a universal original instruction.
+The strategy is treated as automated. An unresolved function means its
+programmed rule/configuration has not yet been recovered; it does not imply
+manual discretion.
 
 ## 1. Strategy structure and eligible sessions
 
@@ -40,6 +43,14 @@ S = the previous completed index minute's close, as a tested proxy
 This matches the initial strike on the 31 ordinary 09:16 dates. The exact
 decision quote, spot/futures reference and rounding implementation are unresolved.
 Later allocations can use another near-ATM strike as the index moves.
+
+Scheduled and extra sales need separate strike-selection models. A secondary
+candidate for extra pre-expiry pairs places the strike one grid step in the
+direction of the completed recent spot move, relative to nearest ATM. Using
+10 minutes for NIFTY / 15 for SENSEX, parameters selected on earlier cycles match
+33/39 and 26/34 later extra-sale strikes. This explains conditional placement,
+not when to submit an extra sale; the hypothesis was introduced after inspecting
+the data and is not a confirmed original instruction.
 
 **E3 — Initial protection:** buy an OTM CE above the sold strike and an OTM PE
 below it. For the first seed wing on each side, observed nominal gaps are:
@@ -132,6 +143,14 @@ and asymmetric strike gaps. These values are **descriptive price clusters**.
 most selections. The exact premium band, delta/IV/distance/liquidity selector and
 reference quote remain unresolved.
 
+A stronger **routine pre-expiry selector candidate** is to choose the highest
+quoted OTM premium not exceeding about **2.5% of the corresponding current ATM
+leg premium**, separately for CE and PE. Earlier-cycle calibration chooses that
+fraction for both indices; later exact-strike matches are 316/637 NIFTY and
+312/623 SENSEX. Those rates are materially better than fixed ₹2/₹7 but leave
+many exceptions. Quotes are previous completed trade candles from an incomplete
+chain. This remains a candidate, not a decoded universal hedge instruction.
+
 **A3 — Late protection can be much larger or nearer the short strikes.** It must
 be modeled separately from the initial wings and routine buys. The exact
 overnight-hedge sizing and trigger are unresolved. Do not assign every late buy
@@ -142,12 +161,22 @@ That resulting book, not just its first four orders, is what is carried. It can
 contain several short strikes and extra long options. Some cycles close before
 expiry and carry nothing.
 
+**A5 — Fresh protection commonly accompanies later sales.** Between 09:18 and
+14:45, both outward CE and PE new-long parents are within five seconds of
+497/535 NIFTY and 535/595 SENSEX paired-short batches on pre-expiry day. Both
+outward long rights are present in reconstructed inventory six seconds after
+the last new-short parent starts in all those pre-expiry batches. This is a
+temporal/inventory association, not a basket ID or a complete risk-coverage test.
+
 ## 5. Expiry-day activity and exit
 
 **X1 — Manage carried positions and fresh positions separately.** Expiry day is
 not merely liquidation of yesterday's basket. Inferred stable new short sales
 occur on expiry day in 33/35 observed cycles. A buy may cover an old short, cover
 a newly sold short or create a new long; its role must come from inventory.
+The 17 recurring pre-expiry windows are not an unconditional expiry-day selling
+rule. Later-period expiry windows contain fresh pairs in 157/273 opportunities;
+already-flat books and other conditions matter.
 
 **X2 — Early exits occur.** The strategy sometimes closes significant exposure
 early in the session. The exact position-stop, portfolio-stop, profit-target
@@ -244,3 +273,9 @@ The [addition-pattern study](research/ADDITION_PATTERN_DISCOVERY_FINDINGS.md)
 documents the repeated schedule, parent sizing and later-cycle clock/market/state
 comparisons. It corrects minute-boundary grouping artifacts and supplies strong
 execution-pattern evidence, without establishing incremental economic alpha.
+
+The [mass rule-matching study](research/MASS_RULE_MATCH_FINDINGS.md) tests indicator,
+strike, hedge-cost and exit hypotheses with calibration-only parameter selection,
+chronological checks, negative opportunities and timing sensitivities. It adds
+the directional-placement and relative hedge-budget candidates above. It does
+not identify an exact universal exit rule or replace the stated risk limits.

@@ -1,0 +1,93 @@
+{
+  "contracts": 349,
+  "calibration_contracts": 207,
+  "evaluation_contracts": 142,
+  "parameter_comparisons": 480,
+  "selected_comparisons": [
+    {
+      "kind": "selected",
+      "reference": "expiry_open",
+      "family": "expiry_trailing_stop",
+      "parameter": 3,
+      "include_opening_proxy": false,
+      "calibration_cycle_mean_match": 0.3399395357728691,
+      "contracts": 142,
+      "cycles": 12,
+      "matches_2m": 50,
+      "match_rate_2m": 0.352112676056338,
+      "cycle_mean_match": 0.3516233766233766,
+      "mean_abs_error_minutes": 67.19518779342722
+    },
+    {
+      "kind": "stated_4pct_previous_close",
+      "reference": "previous_close",
+      "family": "fixed_stop",
+      "parameter": 4,
+      "include_opening_proxy": false,
+      "calibration_cycle_mean_match": 0.25523565940232606,
+      "contracts": 142,
+      "cycles": 12,
+      "matches_2m": 43,
+      "match_rate_2m": 0.3028169014084507,
+      "cycle_mean_match": 0.30308441558441557,
+      "mean_abs_error_minutes": 115.69730046948357
+    },
+    {
+      "kind": "stated_4pct_pooled_entry",
+      "reference": "pooled_entry",
+      "family": "fixed_stop",
+      "parameter": 4,
+      "include_opening_proxy": false,
+      "calibration_cycle_mean_match": 0.21754464671131338,
+      "contracts": 142,
+      "cycles": 12,
+      "matches_2m": 36,
+      "match_rate_2m": 0.2535211267605634,
+      "cycle_mean_match": 0.24556277056277057,
+      "mean_abs_error_minutes": 134.48603286384977
+    },
+    {
+      "kind": "selected",
+      "reference": "previous_close",
+      "family": "expiry_trailing_stop",
+      "parameter": 1,
+      "include_opening_proxy": true,
+      "calibration_cycle_mean_match": 0.3617997742997743,
+      "contracts": 142,
+      "cycles": 12,
+      "matches_2m": 51,
+      "match_rate_2m": 0.3591549295774648,
+      "cycle_mean_match": 0.3591360028860029,
+      "mean_abs_error_minutes": 67.52382629107981
+    },
+    {
+      "kind": "stated_4pct_previous_close",
+      "reference": "previous_close",
+      "family": "fixed_stop",
+      "parameter": 4,
+      "include_opening_proxy": true,
+      "calibration_cycle_mean_match": 0.25378803295469965,
+      "contracts": 142,
+      "cycles": 12,
+      "matches_2m": 44,
+      "match_rate_2m": 0.30985915492957744,
+      "cycle_mean_match": 0.3093344155844156,
+      "mean_abs_error_minutes": 108.4994131455399
+    },
+    {
+      "kind": "stated_4pct_pooled_entry",
+      "reference": "pooled_entry",
+      "family": "fixed_stop",
+      "parameter": 4,
+      "include_opening_proxy": true,
+      "calibration_cycle_mean_match": 0.20034887951554617,
+      "contracts": 142,
+      "cycles": 12,
+      "matches_2m": 37,
+      "match_rate_2m": 0.2605633802816901,
+      "cycle_mean_match": 0.2510551948051948,
+      "mean_abs_error_minutes": 123.45340375586855
+    }
+  ],
+  "note": "Target is first stable buyback in a carried contract, not verified closing of a particular overnight lot. Entry reference uses alternative FIFO/LIFO or pooled allocations. Includes fixed terminal time fallback; first crossings use positive-volume completed prices, with opening proxy separately flagged."
+}

@@ -1,0 +1,7 @@
+task,phase,selected_family,weeks,f1_difference,lower,upper,draws
+off_quarter_additions,preexpiry,bollinger,8,-0.03327102803738318,-0.10635132557695974,0.03731911652703732,5000
+short_covers,preexpiry,donchian,8,0.23948220064724918,0.15328467153284672,0.30604982206405695,5000
+new_protection,preexpiry,clock,8,0.0,0.0,0.0,5000
+off_quarter_additions,expiry,clock,7,0.0,0.0,0.0,5000
+short_covers,expiry,book_state,7,0.06781193490054249,-0.03721075672295182,0.16430112817989367,5000
+new_protection,expiry,clock,7,0.0,0.0,0.0,5000
