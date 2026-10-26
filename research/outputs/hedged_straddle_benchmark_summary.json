@@ -1,0 +1,1847 @@
+{
+  "specification": "research/BENCHMARK_TEST_PLAN.md",
+  "calibration_end": "2026-08-31",
+  "nominal_capital": 20000000,
+  "ordinary_opening_cycles": 31,
+  "sizing": [
+    {
+      "baseline": "frozen",
+      "underlying": "NIFTY",
+      "training_cycles": 8,
+      "ideal_quantity": 2627.830348212847,
+      "frozen_quantity": 2600,
+      "actual_calibration_sd": 187892.146428512,
+      "baseline_calibration_sd": 185902.25242141943
+    },
+    {
+      "baseline": "frozen",
+      "underlying": "SENSEX",
+      "training_cycles": 10,
+      "ideal_quantity": 682.6969650451603,
+      "frozen_quantity": 680,
+      "actual_calibration_sd": 201227.98969242713,
+      "baseline_calibration_sd": 200433.04715994874
+    },
+    {
+      "baseline": "averaging",
+      "underlying": "NIFTY",
+      "training_cycles": 8,
+      "ideal_quantity": 2627.931425615412,
+      "frozen_quantity": 2600,
+      "actual_calibration_sd": 187892.146428512,
+      "baseline_calibration_sd": 185895.10211429093
+    },
+    {
+      "baseline": "averaging",
+      "underlying": "SENSEX",
+      "training_cycles": 10,
+      "ideal_quantity": 678.0522268851705,
+      "frozen_quantity": 680,
+      "actual_calibration_sd": 201227.98969242713,
+      "baseline_calibration_sd": 201806.0373010525
+    }
+  ],
+  "results": [
+    {
+      "baseline": "frozen",
+      "variant": "primary",
+      "cost_scenario": "gross",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 933572.5,
+      "baseline_total": 1385796.0,
+      "difference_total": -452223.49999999994,
+      "difference_mean": -25123.527777777774,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -222267.5,
+      "baseline_worst_cycle": -313956.00000000006,
+      "actual_sd": 195189.3468748815,
+      "baseline_sd": 216828.22402239495,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -184084.30250000002,
+        "upper": 119076.22638888884,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "primary",
+      "cost_scenario": "gross",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 498323.75,
+      "baseline_total": -506506.0000000002,
+      "difference_total": 1004829.7500000001,
+      "difference_mean": 91348.1590909091,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -152971.0,
+      "baseline_worst_cycle": -351492.0000000001,
+      "actual_sd": 230766.55395816875,
+      "baseline_sd": 220344.5085732794,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -108227.55018939395,
+        "upper": 310901.1028409088,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "primary",
+      "cost_scenario": "low",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 418283.59199999995,
+      "baseline_total": 1370017.724,
+      "difference_total": -951734.1319999999,
+      "difference_mean": -52874.11844444444,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -233974.3765,
+      "baseline_worst_cycle": -315194.27600000007,
+      "actual_sd": 187623.16111055174,
+      "baseline_sd": 217010.3264674364,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -206213.93736920232,
+        "upper": 86331.12485734378,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "primary",
+      "cost_scenario": "low",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 264631.80225,
+      "baseline_total": -518394.74200000026,
+      "difference_total": 783026.5442500003,
+      "difference_mean": 71184.23129545456,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -174681.283,
+      "baseline_worst_cycle": -352932.8480000001,
+      "actual_sd": 225417.8983821397,
+      "baseline_sd": 220539.8749321539,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -126198.70508466347,
+        "upper": 288289.27872727276,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "primary",
+      "cost_scenario": "primary",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 270329.73000000004,
+      "baseline_total": 1339630.3099999998,
+      "difference_total": -1069300.5799999998,
+      "difference_mean": -59405.58777777777,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -240363.69125,
+      "baseline_worst_cycle": -317083.69000000006,
+      "actual_sd": 187499.94334543002,
+      "baseline_sd": 217089.61847085724,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -212251.24652604168,
+        "upper": 79113.21589941406,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "primary",
+      "cost_scenario": "primary",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 181013.88062499996,
+      "baseline_total": -539651.8550000002,
+      "difference_total": 720665.7356250001,
+      "difference_mean": 65515.06687500001,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -187823.45750000002,
+      "baseline_worst_cycle": -355126.1200000001,
+      "actual_sd": 224535.2068030088,
+      "baseline_sd": 220636.31372261042,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -132268.09694010415,
+        "upper": 282418.8308309659,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "primary",
+      "cost_scenario": "high",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 69906.96000000002,
+      "baseline_total": 1296344.6199999999,
+      "difference_total": -1226437.66,
+      "difference_mean": -68135.42555555554,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -248559.8825,
+      "baseline_worst_cycle": -320051.38000000006,
+      "actual_sd": 187440.5909795798,
+      "baseline_sd": 217352.14648601576,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -219853.35644270835,
+        "upper": 69542.05852395146,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "primary",
+      "cost_scenario": "high",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 64324.01124999995,
+      "baseline_total": -571037.7100000002,
+      "difference_total": 635361.7212500002,
+      "difference_mean": 57760.156477272736,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -204804.415,
+      "baseline_worst_cycle": -358600.2400000001,
+      "actual_sd": 223320.2973333822,
+      "baseline_sd": 220929.13208181635,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -140171.53713973213,
+        "upper": 274382.836725063,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "gross",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 933572.5,
+      "baseline_total": 1338552.0,
+      "difference_total": -404979.49999999994,
+      "difference_mean": -22498.86111111111,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -222267.5,
+      "baseline_worst_cycle": -310589.99999999994,
+      "actual_sd": 195189.3468748815,
+      "baseline_sd": 219033.01775706033,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -185150.73365542764,
+        "upper": 124839.56820175436,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "gross",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 498323.75,
+      "baseline_total": -427829.99999999977,
+      "difference_total": 926153.7499999998,
+      "difference_mean": 84195.79545454543,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -152971.0,
+      "baseline_worst_cycle": -353362.0,
+      "actual_sd": 230766.55395816875,
+      "baseline_sd": 221759.6751581643,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -117062.50000000003,
+        "upper": 306777.5227272727,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "low",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 418283.59199999995,
+      "baseline_total": 1322822.24,
+      "difference_total": -904538.6479999999,
+      "difference_mean": -50252.14711111111,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -233974.3765,
+      "baseline_worst_cycle": -311831.30199999997,
+      "actual_sd": 187623.16111055174,
+      "baseline_sd": 219212.71275904658,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -207153.02584375002,
+        "upper": 91930.71277118057,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "low",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 264631.80225,
+      "baseline_total": -439796.12599999976,
+      "difference_total": 704427.9282499996,
+      "difference_mean": 64038.90256818179,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -174681.283,
+      "baseline_worst_cycle": -354797.986,
+      "actual_sd": 225417.8983821397,
+      "baseline_sd": 221941.85288470855,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -135495.91590000002,
+        "upper": 284140.51612499997,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "primary",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 270329.73000000004,
+      "baseline_total": 1292507.5999999999,
+      "difference_total": -1022177.8699999998,
+      "difference_mean": -56787.659444444434,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -240363.69125,
+      "baseline_worst_cycle": -313725.25499999995,
+      "actual_sd": 187499.94334543002,
+      "baseline_sd": 219290.93901973026,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -212824.89273437503,
+        "upper": 84735.01233141443,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "primary",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 181013.88062499996,
+      "baseline_total": -461169.3149999998,
+      "difference_total": 642183.1956249997,
+      "difference_mean": 58380.29051136361,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -187823.45750000002,
+      "baseline_worst_cycle": -356983.965,
+      "actual_sd": 224535.2068030088,
+      "baseline_sd": 222014.4289058207,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -140411.67031250003,
+        "upper": 278678.3724305555,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "high",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 69906.96000000002,
+      "baseline_total": 1249343.2,
+      "difference_total": -1179436.2399999998,
+      "difference_mean": -65524.23555555555,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -248559.8825,
+      "baseline_worst_cycle": -316700.50999999995,
+      "actual_sd": 187440.5909795798,
+      "baseline_sd": 219549.96516609142,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -220470.1326628472,
+        "upper": 75294.33200390618,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "high",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 64324.01124999995,
+      "baseline_total": -492748.6299999998,
+      "difference_total": 557072.6412499999,
+      "difference_mean": 50642.96738636362,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -204804.415,
+      "baseline_worst_cycle": -360445.93,
+      "actual_sd": 223320.2973333822,
+      "baseline_sd": 222270.41946605564,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -148120.56896477277,
+        "upper": 270867.9667013889,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "gross",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 877420.25,
+      "baseline_total": 1361545.9999999998,
+      "difference_total": -484125.7499999999,
+      "difference_mean": -26895.874999999996,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -222267.5,
+      "baseline_worst_cycle": -269484.00000000006,
+      "actual_sd": 192050.5186150058,
+      "baseline_sd": 208717.38705081632,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -184306.81476151317,
+        "upper": 114337.92626096481,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "gross",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 498323.75,
+      "baseline_total": -506506.0000000002,
+      "difference_total": 1004829.7500000001,
+      "difference_mean": 91348.1590909091,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -152971.0,
+      "baseline_worst_cycle": -351492.0000000001,
+      "actual_sd": 230766.55395816875,
+      "baseline_sd": 220344.5085732794,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -108227.55018939395,
+        "upper": 310901.1028409088,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "low",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 345964.9117499999,
+      "baseline_total": 1345743.95,
+      "difference_total": -999779.0382500001,
+      "difference_mean": -55543.27990277778,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -233974.3765,
+      "baseline_worst_cycle": -270677.60000000003,
+      "actual_sd": 183709.09052340937,
+      "baseline_sd": 208890.19141863266,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -207891.40619024768,
+        "upper": 79895.90471716004,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "low",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 264631.80225,
+      "baseline_total": -518394.74200000026,
+      "difference_total": 783026.5442500003,
+      "difference_mean": 71184.23129545456,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -174681.283,
+      "baseline_worst_cycle": -352932.8480000001,
+      "actual_sd": 225417.8983821397,
+      "baseline_sd": 220539.8749321539,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -126198.70508466347,
+        "upper": 288289.27872727276,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "primary",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 197655.90437499998,
+      "baseline_total": 1315320.8749999998,
+      "difference_total": -1117664.9706249998,
+      "difference_mean": -62092.49836805555,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -240363.69125,
+      "baseline_worst_cycle": -272500.00000000006,
+      "actual_sd": 183590.00381718375,
+      "baseline_sd": 208957.43089339577,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -213440.6829900429,
+        "upper": 72887.20813610191,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "primary",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 181013.88062499996,
+      "baseline_total": -539651.8550000002,
+      "difference_total": 720665.7356250001,
+      "difference_mean": 65515.06687500001,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -187823.45750000002,
+      "baseline_worst_cycle": -355126.1200000001,
+      "actual_sd": 224535.2068030088,
+      "baseline_sd": 220636.31372261042,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -132268.09694010415,
+        "upper": 282418.8308309659,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "high",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": -3208.441250000018,
+      "baseline_total": 1271975.7499999998,
+      "difference_total": -1275184.19125,
+      "difference_mean": -70843.56618055556,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -248559.8825,
+      "baseline_worst_cycle": -275356.00000000006,
+      "actual_sd": 183529.45312227184,
+      "baseline_sd": 209198.64981271196,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -221398.37481811683,
+        "upper": 63754.34355263159,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "frozen",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "high",
+      "phase": "evaluation",
+      "cycles": 11,
+      "actual_total": 64324.01124999995,
+      "baseline_total": -571037.7100000002,
+      "difference_total": 635361.7212500002,
+      "difference_mean": 57760.156477272736,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -204804.415,
+      "baseline_worst_cycle": -358600.2400000001,
+      "actual_sd": 223320.2973333822,
+      "baseline_sd": 220929.13208181635,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -140171.53713973213,
+        "upper": 274382.836725063,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "primary",
+      "cost_scenario": "gross",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 933572.5,
+      "baseline_total": 1579233.1818181816,
+      "difference_total": -645660.6818181818,
+      "difference_mean": -35870.03787878787,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -222267.5,
+      "baseline_worst_cycle": -289610.4545454543,
+      "actual_sd": 195189.3468748815,
+      "baseline_sd": 213029.3300145583,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -206226.5313397129,
+        "upper": 112833.52991310162,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "primary",
+      "cost_scenario": "gross",
+      "phase": "evaluation",
+      "cycles": 9,
+      "actual_total": 172917.5,
+      "baseline_total": -532703.272727273,
+      "difference_total": 705620.7727272732,
+      "difference_mean": 78402.30808080813,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -152971.0,
+      "baseline_worst_cycle": -396118.54545454535,
+      "actual_sd": 196728.03905589506,
+      "baseline_sd": 233492.69312299267,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -105792.06822773183,
+        "upper": 313752.29545454547,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "primary",
+      "cost_scenario": "low",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 418283.59199999995,
+      "baseline_total": 1533021.7246363636,
+      "difference_total": -1114738.1326363636,
+      "difference_mean": -61929.896257575754,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -233974.3765,
+      "baseline_worst_cycle": -292555.5797272725,
+      "actual_sd": 187623.16111055174,
+      "baseline_sd": 213202.2583967287,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -226248.84861603024,
+        "upper": 81855.66177156325,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "primary",
+      "cost_scenario": "low",
+      "phase": "evaluation",
+      "cycles": 9,
+      "actual_total": -23144.299500000012,
+      "baseline_total": -557378.6530909095,
+      "difference_total": 534234.3535909095,
+      "difference_mean": 59359.37262121216,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -174681.283,
+      "baseline_worst_cycle": -399180.98454545444,
+      "actual_sd": 190909.46142756537,
+      "baseline_sd": 233722.97189218295,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -121407.14757070698,
+        "upper": 292407.44544886367,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "primary",
+      "cost_scenario": "primary",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 270329.73000000004,
+      "baseline_total": 1502344.5388636363,
+      "difference_total": -1232014.8088636363,
+      "difference_mean": -68445.2671590909,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -240363.69125,
+      "baseline_worst_cycle": -294485.2674999997,
+      "actual_sd": 187499.94334543002,
+      "baseline_sd": 213281.62443938633,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -231979.17558042138,
+        "upper": 74806.52347736244,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "primary",
+      "cost_scenario": "primary",
+      "phase": "evaluation",
+      "cycles": 9,
+      "actual_total": -83683.99875000003,
+      "baseline_total": -573535.723636364,
+      "difference_total": 489851.72488636395,
+      "difference_mean": 54427.969431818216,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -187823.45750000002,
+      "baseline_worst_cycle": -401286.6431818181,
+      "actual_sd": 190564.0739346895,
+      "baseline_sd": 233857.77988789527,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -125826.20216428199,
+        "upper": 287511.65844760096,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "primary",
+      "cost_scenario": "high",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 69906.96000000002,
+      "baseline_total": 1458575.8959090908,
+      "difference_total": -1388668.9359090906,
+      "difference_mean": -77148.2742171717,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -248559.8825,
+      "baseline_worst_cycle": -297520.0804545452,
+      "actual_sd": 187440.5909795798,
+      "baseline_sd": 213535.2138458877,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -239775.8593622907,
+        "upper": 65373.893020334915,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "primary",
+      "cost_scenario": "high",
+      "phase": "evaluation",
+      "cycles": 9,
+      "actual_total": -171625.49750000003,
+      "baseline_total": -597808.1745454548,
+      "difference_total": 426182.67704545485,
+      "difference_mean": 47353.63078282832,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -204804.415,
+      "baseline_worst_cycle": -404614.7409090908,
+      "actual_sd": 189787.856736225,
+      "baseline_sd": 234223.53715980853,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -133572.95898749994,
+        "upper": 280200.2491912089,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "gross",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 933572.5,
+      "baseline_total": 1576518.7272727268,
+      "difference_total": -642946.2272727268,
+      "difference_mean": -35719.234848484826,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -222267.5,
+      "baseline_worst_cycle": -290078.7272727271,
+      "actual_sd": 195189.3468748815,
+      "baseline_sd": 213201.4226213067,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -206236.76497208932,
+        "upper": 113188.45680704102,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "gross",
+      "phase": "evaluation",
+      "cycles": 10,
+      "actual_total": 643212.0,
+      "baseline_total": -699479.1818181815,
+      "difference_total": 1342691.1818181816,
+      "difference_mean": 134269.11818181816,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -152971.0,
+      "baseline_worst_cycle": -396353.45454545424,
+      "actual_sd": 233985.37308893193,
+      "baseline_sd": 222944.8371229827,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -93516.50659090905,
+        "upper": 363381.60159090906,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "low",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 418283.59199999995,
+      "baseline_total": 1530310.628545454,
+      "difference_total": -1112027.0365454543,
+      "difference_mean": -61779.27980808079,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -233974.3765,
+      "baseline_worst_cycle": -293023.0472727271,
+      "actual_sd": 187623.16111055174,
+      "baseline_sd": 213373.98106890437,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -226366.2166319513,
+        "upper": 82374.47230191775,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "low",
+      "phase": "evaluation",
+      "cycles": 10,
+      "actual_total": 421958.137,
+      "baseline_total": -726915.4260909088,
+      "difference_total": 1148873.5630909088,
+      "difference_mean": 114887.35630909089,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -174681.283,
+      "baseline_worst_cycle": -399415.473272727,
+      "actual_sd": 228993.5004809912,
+      "baseline_sd": 223160.59783973574,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -111356.82804545452,
+        "upper": 339991.2026825757,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "primary",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 270329.73000000004,
+      "baseline_total": 1499638.480454545,
+      "difference_total": -1229308.750454545,
+      "difference_mean": -68294.93058080805,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -240363.69125,
+      "baseline_worst_cycle": -294951.5272727271,
+      "actual_sd": 187499.94334543002,
+      "baseline_sd": 213452.56707484805,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -232083.3748430232,
+        "upper": 75188.50263139218,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "primary",
+      "phase": "evaluation",
+      "cycles": 10,
+      "actual_total": 349340.34249999997,
+      "baseline_total": -745493.7924999997,
+      "difference_total": 1094834.1349999995,
+      "difference_mean": 109483.41349999997,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -187823.45750000002,
+      "baseline_worst_cycle": -401520.50136363605,
+      "actual_sd": 227694.15530172148,
+      "baseline_sd": 223316.49904336597,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -115988.52861111109,
+        "upper": 334463.4219492277,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "high",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 69906.96000000002,
+      "baseline_total": 1455878.2336363632,
+      "difference_total": -1385971.273636363,
+      "difference_mean": -76998.40409090905,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -248559.8825,
+      "baseline_worst_cycle": -297984.3272727271,
+      "actual_sd": 187440.5909795798,
+      "baseline_sd": 213705.01028418218,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -239890.76174406405,
+        "upper": 65694.62936004785,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "entry_one_minute_later",
+      "cost_scenario": "high",
+      "phase": "evaluation",
+      "cycles": 10,
+      "actual_total": 246208.68499999997,
+      "baseline_total": -773108.4031818178,
+      "difference_total": 1019317.0881818178,
+      "difference_mean": 101931.70881818178,
+      "actual_better_cycles": 7,
+      "actual_worst_cycle": -204804.415,
+      "baseline_worst_cycle": -404847.54818181787,
+      "actual_sd": 226065.81866095788,
+      "baseline_sd": 223688.8774447171,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -122845.17619696967,
+        "upper": 326366.95695804193,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "gross",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 877420.25,
+      "baseline_total": 1554983.1818181816,
+      "difference_total": -677562.9318181815,
+      "difference_mean": -37642.385101010084,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -222267.5,
+      "baseline_worst_cycle": -245138.45454545433,
+      "actual_sd": 192050.5186150058,
+      "baseline_sd": 206193.57585012724,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -206660.74214347417,
+        "upper": 108678.91551136356,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "gross",
+      "phase": "evaluation",
+      "cycles": 9,
+      "actual_total": 172917.5,
+      "baseline_total": -532703.272727273,
+      "difference_total": 705620.7727272732,
+      "difference_mean": 78402.30808080813,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -152971.0,
+      "baseline_worst_cycle": -396118.54545454535,
+      "actual_sd": 196728.03905589506,
+      "baseline_sd": 233492.69312299267,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -105792.06822773183,
+        "upper": 313752.29545454547,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "low",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 345964.9117499999,
+      "baseline_total": 1508747.9506363634,
+      "difference_total": -1162783.0388863636,
+      "difference_mean": -64599.05771590909,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -233974.3765,
+      "baseline_worst_cycle": -248038.9037272725,
+      "actual_sd": 183709.09052340937,
+      "baseline_sd": 206355.6221559489,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -227625.92182896772,
+        "upper": 76410.27793155081,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "low",
+      "phase": "evaluation",
+      "cycles": 9,
+      "actual_total": -23144.299500000012,
+      "baseline_total": -557378.6530909095,
+      "difference_total": 534234.3535909095,
+      "difference_mean": 59359.37262121216,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -174681.283,
+      "baseline_worst_cycle": -399180.98454545444,
+      "actual_sd": 190909.46142756537,
+      "baseline_sd": 233722.97189218295,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -121407.14757070698,
+        "upper": 292407.44544886367,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "primary",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": 197655.90437499998,
+      "baseline_total": 1478035.103863636,
+      "difference_total": -1280379.199488636,
+      "difference_mean": -71132.17774936867,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -240363.69125,
+      "baseline_worst_cycle": -249901.57749999978,
+      "actual_sd": 183590.00381718375,
+      "baseline_sd": 206422.2343733622,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -233260.06470567812,
+        "upper": 69121.81971456691,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "primary",
+      "phase": "evaluation",
+      "cycles": 9,
+      "actual_total": -83683.99875000003,
+      "baseline_total": -573535.723636364,
+      "difference_total": 489851.72488636395,
+      "difference_mean": 54427.969431818216,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -187823.45750000002,
+      "baseline_worst_cycle": -401286.6431818181,
+      "actual_sd": 190564.0739346895,
+      "baseline_sd": 233857.77988789527,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -125826.20216428199,
+        "upper": 287511.65844760096,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "high",
+      "phase": "calibration",
+      "cycles": 18,
+      "actual_total": -3208.441250000018,
+      "baseline_total": 1434207.0259090906,
+      "difference_total": -1437415.4671590908,
+      "difference_mean": -79856.41484217171,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -248559.8825,
+      "baseline_worst_cycle": -252824.70045454524,
+      "actual_sd": 183529.45312227184,
+      "baseline_sd": 206652.21326104246,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -241105.6964469499,
+        "upper": 59808.62701355352,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "baseline": "averaging",
+      "variant": "historical_exit_clock",
+      "cost_scenario": "high",
+      "phase": "evaluation",
+      "cycles": 9,
+      "actual_total": -171625.49750000003,
+      "baseline_total": -597808.1745454548,
+      "difference_total": 426182.67704545485,
+      "difference_mean": 47353.63078282832,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -204804.415,
+      "baseline_worst_cycle": -404614.7409090908,
+      "actual_sd": 189787.856736225,
+      "baseline_sd": 234223.53715980853,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -133572.95898749994,
+        "upper": 280200.2491912089,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    }
+  ],
+  "primary_by_index": [
+    {
+      "underlying": "NIFTY",
+      "phase": "calibration",
+      "cycles": 8,
+      "actual_total": -283753.4875,
+      "baseline_total": 1526279.475,
+      "difference_total": -1810032.9625,
+      "difference_mean": -226254.1203125,
+      "actual_better_cycles": 0,
+      "actual_worst_cycle": -240363.69125,
+      "baseline_worst_cycle": -153009.77500000005,
+      "actual_sd": 179489.96588289924,
+      "baseline_sd": 186259.6772832378,
+      "bootstrap": {
+        "weeks": 8,
+        "draws": 10000,
+        "lower": -321945.83996484376,
+        "upper": -141400.12984374998,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "underlying": "NIFTY",
+      "phase": "evaluation",
+      "cycles": 4,
+      "actual_total": -80695.24187500004,
+      "baseline_total": 368373.7749999999,
+      "difference_total": -449069.016875,
+      "difference_mean": -112267.25421875,
+      "actual_better_cycles": 1,
+      "actual_worst_cycle": -187823.45750000002,
+      "baseline_worst_cycle": -182225.325,
+      "actual_sd": 302391.4667494099,
+      "baseline_sd": 187083.87057768967,
+      "bootstrap": {
+        "weeks": 4,
+        "draws": 10000,
+        "lower": -396353.7903125,
+        "upper": 378483.09046875,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "calibration",
+      "cycles": 10,
+      "actual_total": 554083.2175,
+      "baseline_total": -186649.16500000012,
+      "difference_total": 740732.3825000001,
+      "difference_mean": 74073.23825000001,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -209081.1675,
+      "baseline_worst_cycle": -317083.69000000006,
+      "actual_sd": 193055.52609394758,
+      "baseline_sd": 200928.7518281939,
+      "bootstrap": {
+        "weeks": 10,
+        "draws": 10000,
+        "lower": -139461.4219125,
+        "upper": 282574.851,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "evaluation",
+      "cycles": 7,
+      "actual_total": 261709.1225,
+      "baseline_total": -908025.63,
+      "difference_total": 1169734.7525000002,
+      "difference_mean": 167104.96464285714,
+      "actual_better_cycles": 6,
+      "actual_worst_cycle": -165422.2675,
+      "baseline_worst_cycle": -355126.1200000001,
+      "actual_sd": 192095.9260966275,
+      "baseline_sd": 206787.16741899398,
+      "bootstrap": {
+        "weeks": 7,
+        "draws": 10000,
+        "lower": -21280.001857142874,
+        "upper": 365924.7504464282,
+        "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+      }
+    }
+  ],
+  "primary_full_sample_descriptive": {
+    "cycles": 29,
+    "actual_total": 451343.610625,
+    "baseline_total": 799978.4549999997,
+    "difference_total": -348634.8443749998,
+    "difference_mean": -12021.89118534482,
+    "actual_better_cycles": 13,
+    "actual_worst_cycle": -240363.69125,
+    "baseline_worst_cycle": -355126.1200000001,
+    "actual_sd": 198371.09777588613,
+    "baseline_sd": 222973.8801914827,
+    "bootstrap": {
+      "weeks": 18,
+      "draws": 10000,
+      "lower": -133029.60536959005,
+      "upper": 113414.9214791667,
+      "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+    }
+  },
+  "primary_evaluation_leave_one_week_out": [
+    {
+      "expiry_iso_year": 2026,
+      "expiry_iso_week": 36,
+      "cycles": 1,
+      "week_contribution": -306045.48875,
+      "evaluation_difference_without_week": 1026711.2243750001
+    },
+    {
+      "expiry_iso_year": 2026,
+      "expiry_iso_week": 37,
+      "cycles": 2,
+      "week_contribution": 845172.10375,
+      "evaluation_difference_without_week": -124506.36812499992
+    },
+    {
+      "expiry_iso_year": 2026,
+      "expiry_iso_week": 38,
+      "cycles": 1,
+      "week_contribution": -278801.17000000004,
+      "evaluation_difference_without_week": 999466.9056250001
+    },
+    {
+      "expiry_iso_year": 2026,
+      "expiry_iso_week": 39,
+      "cycles": 2,
+      "week_contribution": -305868.755,
+      "evaluation_difference_without_week": 1026534.4906250001
+    },
+    {
+      "expiry_iso_year": 2026,
+      "expiry_iso_week": 40,
+      "cycles": 1,
+      "week_contribution": 152511.35249999998,
+      "evaluation_difference_without_week": 568154.3831250002
+    },
+    {
+      "expiry_iso_year": 2026,
+      "expiry_iso_week": 41,
+      "cycles": 1,
+      "week_contribution": 655276.1800000002,
+      "evaluation_difference_without_week": 65389.55562499992
+    },
+    {
+      "expiry_iso_year": 2026,
+      "expiry_iso_week": 42,
+      "cycles": 1,
+      "week_contribution": 106503.8974999999,
+      "evaluation_difference_without_week": 614161.8381250002
+    },
+    {
+      "expiry_iso_year": 2026,
+      "expiry_iso_week": 43,
+      "cycles": 2,
+      "week_contribution": -148082.38437499997,
+      "evaluation_difference_without_week": 868748.1200000001
+    }
+  ],
+  "supplemental_stopped_baseline": {
+    "results": [
+      {
+        "phase": "calibration",
+        "cost_scenario": "gross",
+        "cycles": 14,
+        "actual_total": 708350.75,
+        "baseline_total": 253.99999999998545,
+        "difference_total": 708096.75,
+        "difference_mean": 50578.33928571428,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -190755.0,
+        "baseline_worst_cycle": -348874.00000000006,
+        "actual_sd": 196305.3586957522,
+        "baseline_sd": 244690.82776367065,
+        "bootstrap": {
+          "weeks": 10,
+          "draws": 10000,
+          "lower": -156914.2337611607,
+          "upper": 274532.93088942295,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "calibration",
+        "cost_scenario": "low",
+        "cycles": 14,
+        "actual_total": 304509.30575,
+        "baseline_total": -13232.314000000044,
+        "difference_total": 317741.6197500001,
+        "difference_mean": 22695.829982142866,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -203011.067,
+        "baseline_worst_cycle": -350151.9540000001,
+        "actual_sd": 188852.2560030211,
+        "baseline_sd": 244907.3927996178,
+        "bootstrap": {
+          "weeks": 10,
+          "draws": 10000,
+          "lower": -179814.69076214288,
+          "upper": 243400.71174947917,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "calibration",
+        "cost_scenario": "primary",
+        "cycles": 14,
+        "actual_total": 198395.139375,
+        "baseline_total": -36981.78500000002,
+        "difference_total": 235376.924375,
+        "difference_mean": 16812.637455357144,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -209081.1675,
+        "baseline_worst_cycle": -352100.88500000007,
+        "actual_sd": 189279.82006994152,
+        "baseline_sd": 245108.9536069235,
+        "bootstrap": {
+          "weeks": 10,
+          "draws": 10000,
+          "lower": -185201.23463854167,
+          "upper": 237366.14386588536,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "calibration",
+        "cost_scenario": "high",
+        "cycles": 14,
+        "actual_total": 50679.52875000001,
+        "baseline_total": -71977.57000000011,
+        "difference_total": 122657.09875000014,
+        "difference_mean": 8761.221339285725,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -218447.335,
+        "baseline_worst_cycle": -355167.7700000001,
+        "actual_sd": 189858.37318093696,
+        "baseline_sd": 245528.40684112546,
+        "bootstrap": {
+          "weeks": 10,
+          "draws": 10000,
+          "lower": -192801.73206071425,
+          "upper": 229146.0021227678,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "evaluation",
+        "cost_scenario": "gross",
+        "cycles": 9,
+        "actual_total": 789494.5,
+        "baseline_total": -991494.0000000002,
+        "difference_total": 1780988.5000000002,
+        "difference_mean": 197887.61111111112,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -152971.0,
+        "baseline_worst_cycle": -316438.0,
+        "actual_sd": 235441.14491760166,
+        "baseline_sd": 180991.26515111164,
+        "bootstrap": {
+          "weeks": 8,
+          "draws": 10000,
+          "lower": -36129.212499999994,
+          "upper": 381411.4,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "evaluation",
+        "cost_scenario": "low",
+        "cycles": 9,
+        "actual_total": 596639.42,
+        "baseline_total": -1001592.2820000002,
+        "difference_total": 1598231.7020000005,
+        "difference_mean": 177581.30022222226,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -162187.507,
+        "baseline_worst_cycle": -317918.05,
+        "actual_sd": 229041.5759667319,
+        "baseline_sd": 181213.42991310367,
+        "bootstrap": {
+          "weeks": 8,
+          "draws": 10000,
+          "lower": -53669.00801875003,
+          "upper": 356978.9340937501,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "evaluation",
+        "cost_scenario": "primary",
+        "cycles": 9,
+        "actual_total": 537163.7999999999,
+        "baseline_total": -1018563.7050000003,
+        "difference_total": 1555727.5050000004,
+        "difference_mean": 172858.6116666667,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -165422.2675,
+        "baseline_worst_cycle": -320170.125,
+        "actual_sd": 226789.3631071758,
+        "baseline_sd": 181444.59973183507,
+        "bootstrap": {
+          "weeks": 8,
+          "draws": 10000,
+          "lower": -57768.56438802082,
+          "upper": 351668.35561805544,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "evaluation",
+        "cost_scenario": "high",
+        "cycles": 9,
+        "actual_total": 451013.1,
+        "baseline_total": -1044193.4100000003,
+        "difference_total": 1495206.5100000002,
+        "difference_mean": 166134.0566666667,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -170293.535,
+        "baseline_worst_cycle": -323742.25,
+        "actual_sd": 224016.5698430036,
+        "baseline_sd": 181898.42303885808,
+        "bootstrap": {
+          "weeks": 8,
+          "draws": 10000,
+          "lower": -64420.25055555555,
+          "upper": 344040.50820833317,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      }
+    ],
+    "same_cohort_unstopped_results": [
+      {
+        "phase": "calibration",
+        "cost_scenario": "gross",
+        "cycles": 14,
+        "actual_total": 708350.75,
+        "baseline_total": 403515.9999999998,
+        "difference_total": 304834.7500000001,
+        "difference_mean": 21773.91071428572,
+        "actual_better_cycles": 6,
+        "actual_worst_cycle": -190755.0,
+        "baseline_worst_cycle": -313956.00000000006,
+        "actual_sd": 196305.3586957522,
+        "baseline_sd": 216743.04145256866,
+        "bootstrap": {
+          "weeks": 10,
+          "draws": 10000,
+          "lower": -172806.24480392155,
+          "upper": 236359.9829545454,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "calibration",
+        "cost_scenario": "low",
+        "cycles": 14,
+        "actual_total": 304509.30575,
+        "baseline_total": 390447.8439999998,
+        "difference_total": -85938.53824999982,
+        "difference_mean": -6138.4670178571305,
+        "actual_better_cycles": 6,
+        "actual_worst_cycle": -203011.067,
+        "baseline_worst_cycle": -315194.27600000007,
+        "actual_sd": 188852.2560030211,
+        "baseline_sd": 216916.5795548249,
+        "bootstrap": {
+          "weeks": 10,
+          "draws": 10000,
+          "lower": -195506.4081217647,
+          "upper": 205174.4612965144,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "calibration",
+        "cost_scenario": "primary",
+        "cycles": 14,
+        "actual_total": 198395.139375,
+        "baseline_total": 367325.60999999987,
+        "difference_total": -168930.4706249999,
+        "difference_mean": -12066.462187499992,
+        "actual_better_cycles": 6,
+        "actual_worst_cycle": -209081.1675,
+        "baseline_worst_cycle": -317083.69000000006,
+        "actual_sd": 189279.82006994152,
+        "baseline_sd": 217054.54645048434,
+        "bootstrap": {
+          "weeks": 10,
+          "draws": 10000,
+          "lower": -200916.09440527981,
+          "upper": 199092.9215401786,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "calibration",
+        "cost_scenario": "high",
+        "cycles": 14,
+        "actual_total": 50679.52875000001,
+        "baseline_total": 333375.2199999998,
+        "difference_total": -282695.69124999974,
+        "difference_mean": -20192.549374999984,
+        "actual_better_cycles": 6,
+        "actual_worst_cycle": -218447.335,
+        "baseline_worst_cycle": -320051.38000000006,
+        "actual_sd": 189858.37318093696,
+        "baseline_sd": 217367.47063232423,
+        "bootstrap": {
+          "weeks": 10,
+          "draws": 10000,
+          "lower": -208326.98259765626,
+          "upper": 190801.4079244789,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "evaluation",
+        "cost_scenario": "gross",
+        "cycles": 9,
+        "actual_total": 789494.5,
+        "baseline_total": -915096.0000000001,
+        "difference_total": 1704590.5,
+        "difference_mean": 189398.94444444447,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -152971.0,
+        "baseline_worst_cycle": -351492.0000000001,
+        "actual_sd": 235441.14491760166,
+        "baseline_sd": 202973.6449443622,
+        "bootstrap": {
+          "weeks": 8,
+          "draws": 10000,
+          "lower": -45715.125000000015,
+          "upper": 384004.30000000005,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "evaluation",
+        "cost_scenario": "low",
+        "cycles": 9,
+        "actual_total": 596639.42,
+        "baseline_total": -925038.0520000001,
+        "difference_total": 1521677.472,
+        "difference_mean": 169075.2746666667,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -162187.507,
+        "baseline_worst_cycle": -352932.8480000001,
+        "actual_sd": 229041.5759667319,
+        "baseline_sd": 203187.53490940385,
+        "bootstrap": {
+          "weeks": 8,
+          "draws": 10000,
+          "lower": -65356.216414062495,
+          "upper": 360342.4945762499,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "evaluation",
+        "cost_scenario": "primary",
+        "cycles": 9,
+        "actual_total": 537163.7999999999,
+        "baseline_total": -941775.1300000001,
+        "difference_total": 1478938.9300000002,
+        "difference_mean": 164326.5477777778,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -165422.2675,
+        "baseline_worst_cycle": -355126.1200000001,
+        "actual_sd": 226789.3631071758,
+        "baseline_sd": 203425.36198218894,
+        "bootstrap": {
+          "weeks": 8,
+          "draws": 10000,
+          "lower": -69958.17796875002,
+          "upper": 355014.99675000005,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      },
+      {
+        "phase": "evaluation",
+        "cost_scenario": "high",
+        "cycles": 9,
+        "actual_total": 451013.1,
+        "baseline_total": -967014.2600000001,
+        "difference_total": 1418027.36,
+        "difference_mean": 157558.59555555557,
+        "actual_better_cycles": 7,
+        "actual_worst_cycle": -170293.535,
+        "baseline_worst_cycle": -358600.2400000001,
+        "actual_sd": 224016.5698430036,
+        "baseline_sd": 203877.47833403538,
+        "bootstrap": {
+          "weeks": 8,
+          "draws": 10000,
+          "lower": -76374.93167187499,
+          "upper": 347632.49350000004,
+          "note": "Paired mean difference per cycle; expiry-week cluster bootstrap, not independent minute/order samples."
+        }
+      }
+    ],
+    "excluded": [
+      {
+        "underlying": "NIFTY",
+        "expiry_date": "2026-07-07",
+        "reason": "Missing stop-monitoring quote at 14:21."
+      },
+      {
+        "underlying": "NIFTY",
+        "expiry_date": "2026-07-28",
+        "reason": "Missing stop-monitoring quote at 14:53."
+      },
+      {
+        "underlying": "NIFTY",
+        "expiry_date": "2026-08-18",
+        "reason": "Missing stop-monitoring quote at 09:24."
+      },
+      {
+        "underlying": "NIFTY",
+        "expiry_date": "2026-08-25",
+        "reason": "Missing stop-monitoring quote at 12:32."
+      },
+      {
+        "underlying": "NIFTY",
+        "expiry_date": "2026-09-22",
+        "reason": "Missing stop-monitoring quote at 14:11."
+      },
+      {
+        "underlying": "NIFTY",
+        "expiry_date": "2026-10-19",
+        "reason": "Missing stop-monitoring quote at 09:33."
+      }
+    ],
+    "note": "Exploratory \u20b9200k cycle-loss stop on expiry day, added after inspecting primary outcomes. Same sizing; no refit or threshold-price execution."
+  },
+  "excluded": [
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-06-23",
+      "variant": "all",
+      "baseline": "all",
+      "reason": "Delayed opening or no observed pre-expiry 09:16 four-leg basket."
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-08-11",
+      "variant": "all",
+      "baseline": "all",
+      "reason": "Delayed opening or no observed pre-expiry 09:16 four-leg basket."
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-15",
+      "variant": "all",
+      "baseline": "all",
+      "reason": "Delayed opening or no observed pre-expiry 09:16 four-leg basket."
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-06",
+      "variant": "all",
+      "baseline": "all",
+      "reason": "Delayed opening or no observed pre-expiry 09:16 four-leg basket."
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-08",
+      "variant": "primary",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=entry:14:16:22200PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-08",
+      "variant": "historical_exit_clock",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=entry:14:16:22200PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-29",
+      "variant": "primary",
+      "baseline": "frozen",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24950CE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-29",
+      "variant": "primary",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24950CE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-29",
+      "variant": "entry_one_minute_later",
+      "baseline": "frozen",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24950CE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-29",
+      "variant": "entry_one_minute_later",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24950CE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-29",
+      "variant": "historical_exit_clock",
+      "baseline": "frozen",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24950CE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-29",
+      "variant": "historical_exit_clock",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24950CE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-13",
+      "variant": "primary",
+      "baseline": "frozen",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24550CE;exit:15:14:20650PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-13",
+      "variant": "primary",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=entry:09:31:24550CE;entry:10:01:24550CE;entry:10:01:20650PE;entry:10:16:24550CE;entry:10:16:20650PE;entry:10:31:24550CE;entry:10:46:24550CE;entry:10:46:20650PE;entry:11:01:20650PE;entry:11:16:24550CE;entry:11:16:20650PE;entry:11:31:20650PE;entry:12:01:24550CE;entry:12:01:20650PE;entry:12:16:24550CE;entry:12:31:24550CE;entry:12:31:20650PE;entry:12:46:20650PE;entry:13:01:24550CE;entry:13:01:20650PE;entry:13:16:24550CE;entry:13:16:20650PE;entry:13:31:24550CE;entry:13:31:20650PE;entry:13:46:20650PE;entry:14:01:20650PE;entry:14:31:24550CE;entry:14:31:20650PE;exit:15:14:24550CE;exit:15:14:20650PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-13",
+      "variant": "entry_one_minute_later",
+      "baseline": "frozen",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24550CE;exit:15:14:20650PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-13",
+      "variant": "entry_one_minute_later",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=entry:09:32:24550CE;entry:09:47:20650PE;entry:10:02:24550CE;entry:10:17:20650PE;entry:10:32:24550CE;entry:10:47:24550CE;entry:11:32:20650PE;entry:11:47:24550CE;entry:12:02:24550CE;entry:12:02:20650PE;entry:12:17:24550CE;entry:12:32:24550CE;entry:12:32:20650PE;entry:12:47:24550CE;entry:13:02:20650PE;entry:13:17:24550CE;entry:13:17:20650PE;entry:13:32:24550CE;entry:13:32:20650PE;entry:13:47:20650PE;entry:14:02:24550CE;entry:14:02:20650PE;exit:15:14:24550CE;exit:15:14:20650PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-13",
+      "variant": "historical_exit_clock",
+      "baseline": "frozen",
+      "reason": "Missing exact quote: actual=; baseline=exit:15:14:24550CE;exit:15:14:20650PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-13",
+      "variant": "historical_exit_clock",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=entry:09:31:24550CE;entry:10:01:24550CE;entry:10:01:20650PE;entry:10:16:24550CE;entry:10:16:20650PE;entry:10:31:24550CE;entry:10:46:24550CE;entry:10:46:20650PE;entry:11:01:20650PE;entry:11:16:24550CE;entry:11:16:20650PE;entry:11:31:20650PE;entry:12:01:24550CE;entry:12:01:20650PE;entry:12:16:24550CE;entry:12:31:24550CE;entry:12:31:20650PE;entry:12:46:20650PE;entry:13:01:24550CE;entry:13:01:20650PE;entry:13:16:24550CE;entry:13:16:20650PE;entry:13:31:24550CE;entry:13:31:20650PE;entry:13:46:20650PE;entry:14:01:20650PE;entry:14:31:24550CE;entry:14:31:20650PE;exit:15:14:24550CE;exit:15:14:20650PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-19",
+      "variant": "primary",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=entry:10:46:21050PE;entry:11:01:21050PE;entry:11:46:21050PE;entry:12:31:21050PE;entry:12:46:21050PE;entry:13:16:21050PE;entry:13:46:21050PE;entry:14:16:21050PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-19",
+      "variant": "entry_one_minute_later",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=entry:11:02:21050PE;entry:11:17:21050PE;entry:11:47:21050PE;entry:12:02:21050PE;entry:12:32:21050PE;entry:12:47:21050PE;entry:13:47:21050PE;entry:14:02:21050PE;entry:14:17:21050PE"
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-19",
+      "variant": "historical_exit_clock",
+      "baseline": "averaging",
+      "reason": "Missing exact quote: actual=; baseline=entry:10:46:21050PE;entry:11:01:21050PE;entry:11:46:21050PE;entry:12:31:21050PE;entry:12:46:21050PE;entry:13:16:21050PE;entry:13:46:21050PE;entry:14:16:21050PE"
+    }
+  ],
+  "primary_definition": "Frozen same observed opening contracts; 09:16 entry, expiry 15:14 exit, 25bps premium turnover + \u20b920/order + \u20b90.05/unit stress.",
+  "limits": [
+    "Opening strikes are shared with the actual strategy; this tests later trading, not an independent opening-alpha signal.",
+    "Variability-calibrated size is not equal historical margin, equal delta/gamma or equal tail risk. Actual margin and funding are unavailable.",
+    "September\u2013October has been inspected in previous work; evaluation is chronological, not blinded.",
+    "All values depend on zero initial inventory, complete recorded fills, trade-candle opens and hypothetical costs; no verified broker net P&L.",
+    "Missing quotes exclude paired cycles and can bias the result. No forward fill, inferred settlement or zero-valued missing wings.",
+    "Averaging is idealized fractional-slot exposure and is a diagnostic, not an executable lot schedule.",
+    "Small weekly clusters, no liquidity/depth reconstruction and shared observed entry contracts limit repeatable-edge claims."
+  ]
+}

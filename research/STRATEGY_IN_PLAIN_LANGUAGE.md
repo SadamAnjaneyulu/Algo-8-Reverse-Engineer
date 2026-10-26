@@ -70,3 +70,7 @@ python research/test_profit_sources.py
 Full option-data tests are in `OPTION_TRIGGER_FINDINGS.md`. This explanation
 does not change the observed normal opening sequence; it separates that opening
 from the many later trades and from the still-unresolved exact trigger rules.
+
+The first frozen-basket comparison is now complete; see
+`HEDGED_STRADDLE_BENCHMARK_FINDINGS.md`. It does not establish a repeatable
+incremental advantage overall. The index split is a useful lead for further work.

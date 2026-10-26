@@ -1,0 +1,22 @@
+underlying,expiry_date,variant,baseline,reason
+NIFTY,2026-06-23,all,all,Delayed opening or no observed pre-expiry 09:16 four-leg basket.
+NIFTY,2026-08-11,all,all,Delayed opening or no observed pre-expiry 09:16 four-leg basket.
+NIFTY,2026-09-15,all,all,Delayed opening or no observed pre-expiry 09:16 four-leg basket.
+NIFTY,2026-10-06,all,all,Delayed opening or no observed pre-expiry 09:16 four-leg basket.
+NIFTY,2026-09-08,primary,averaging,Missing exact quote: actual=; baseline=entry:14:16:22200PE
+NIFTY,2026-09-08,historical_exit_clock,averaging,Missing exact quote: actual=; baseline=entry:14:16:22200PE
+NIFTY,2026-09-29,primary,frozen,Missing exact quote: actual=; baseline=exit:15:14:24950CE
+NIFTY,2026-09-29,primary,averaging,Missing exact quote: actual=; baseline=exit:15:14:24950CE
+NIFTY,2026-09-29,entry_one_minute_later,frozen,Missing exact quote: actual=; baseline=exit:15:14:24950CE
+NIFTY,2026-09-29,entry_one_minute_later,averaging,Missing exact quote: actual=; baseline=exit:15:14:24950CE
+NIFTY,2026-09-29,historical_exit_clock,frozen,Missing exact quote: actual=; baseline=exit:15:14:24950CE
+NIFTY,2026-09-29,historical_exit_clock,averaging,Missing exact quote: actual=; baseline=exit:15:14:24950CE
+NIFTY,2026-10-13,primary,frozen,Missing exact quote: actual=; baseline=exit:15:14:24550CE;exit:15:14:20650PE
+NIFTY,2026-10-13,primary,averaging,Missing exact quote: actual=; baseline=entry:09:31:24550CE;entry:10:01:24550CE;entry:10:01:20650PE;entry:10:16:24550CE;entry:10:16:20650PE;entry:10:31:24550CE;entry:10:46:24550CE;entry:10:46:20650PE;entry:11:01:20650PE;entry:11:16:24550CE;entry:11:16:20650PE;entry:11:31:20650PE;entry:12:01:24550CE;entry:12:01:20650PE;entry:12:16:24550CE;entry:12:31:24550CE;entry:12:31:20650PE;entry:12:46:20650PE;entry:13:01:24550CE;entry:13:01:20650PE;entry:13:16:24550CE;entry:13:16:20650PE;entry:13:31:24550CE;entry:13:31:20650PE;entry:13:46:20650PE;entry:14:01:20650PE;entry:14:31:24550CE;entry:14:31:20650PE;exit:15:14:24550CE;exit:15:14:20650PE
+NIFTY,2026-10-13,entry_one_minute_later,frozen,Missing exact quote: actual=; baseline=exit:15:14:24550CE;exit:15:14:20650PE
+NIFTY,2026-10-13,entry_one_minute_later,averaging,Missing exact quote: actual=; baseline=entry:09:32:24550CE;entry:09:47:20650PE;entry:10:02:24550CE;entry:10:17:20650PE;entry:10:32:24550CE;entry:10:47:24550CE;entry:11:32:20650PE;entry:11:47:24550CE;entry:12:02:24550CE;entry:12:02:20650PE;entry:12:17:24550CE;entry:12:32:24550CE;entry:12:32:20650PE;entry:12:47:24550CE;entry:13:02:20650PE;entry:13:17:24550CE;entry:13:17:20650PE;entry:13:32:24550CE;entry:13:32:20650PE;entry:13:47:20650PE;entry:14:02:24550CE;entry:14:02:20650PE;exit:15:14:24550CE;exit:15:14:20650PE
+NIFTY,2026-10-13,historical_exit_clock,frozen,Missing exact quote: actual=; baseline=exit:15:14:24550CE;exit:15:14:20650PE
+NIFTY,2026-10-13,historical_exit_clock,averaging,Missing exact quote: actual=; baseline=entry:09:31:24550CE;entry:10:01:24550CE;entry:10:01:20650PE;entry:10:16:24550CE;entry:10:16:20650PE;entry:10:31:24550CE;entry:10:46:24550CE;entry:10:46:20650PE;entry:11:01:20650PE;entry:11:16:24550CE;entry:11:16:20650PE;entry:11:31:20650PE;entry:12:01:24550CE;entry:12:01:20650PE;entry:12:16:24550CE;entry:12:31:24550CE;entry:12:31:20650PE;entry:12:46:20650PE;entry:13:01:24550CE;entry:13:01:20650PE;entry:13:16:24550CE;entry:13:16:20650PE;entry:13:31:24550CE;entry:13:31:20650PE;entry:13:46:20650PE;entry:14:01:20650PE;entry:14:31:24550CE;entry:14:31:20650PE;exit:15:14:24550CE;exit:15:14:20650PE
+NIFTY,2026-10-19,primary,averaging,Missing exact quote: actual=; baseline=entry:10:46:21050PE;entry:11:01:21050PE;entry:11:46:21050PE;entry:12:31:21050PE;entry:12:46:21050PE;entry:13:16:21050PE;entry:13:46:21050PE;entry:14:16:21050PE
+NIFTY,2026-10-19,entry_one_minute_later,averaging,Missing exact quote: actual=; baseline=entry:11:02:21050PE;entry:11:17:21050PE;entry:11:47:21050PE;entry:12:02:21050PE;entry:12:32:21050PE;entry:12:47:21050PE;entry:13:47:21050PE;entry:14:02:21050PE;entry:14:17:21050PE
+NIFTY,2026-10-19,historical_exit_clock,averaging,Missing exact quote: actual=; baseline=entry:10:46:21050PE;entry:11:01:21050PE;entry:11:46:21050PE;entry:12:31:21050PE;entry:12:46:21050PE;entry:13:16:21050PE;entry:13:46:21050PE;entry:14:16:21050PE
