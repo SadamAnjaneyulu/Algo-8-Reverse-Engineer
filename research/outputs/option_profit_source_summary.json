@@ -1,0 +1,15 @@
+{
+  "cycles": 35,
+  "fully_flat_cycles": 24,
+  "example_nifty_2026_07_07": {
+    "underlying": "NIFTY",
+    "expiry_date": "2026-07-07",
+    "short_position_realized_pnl_fifo": "240002.75",
+    "long_position_realized_pnl_fifo": "-47232.25",
+    "observed_cashflow_before_costs": "192770.50",
+    "residual_contracts": 0,
+    "fully_flat": true,
+    "conditional_on_zero_opening_inventory": true
+  },
+  "note": "No all-strategy return estimate. Residual positions, opening inventory, external settlement and costs remain unresolved; short/long attribution does not identify theta, IV or directional effects."
+}
