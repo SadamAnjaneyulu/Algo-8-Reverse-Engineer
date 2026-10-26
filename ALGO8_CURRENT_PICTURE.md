@@ -5,6 +5,13 @@ through the mass matching and rule refinements. Treat Algo 8 as automated:
 unresolved means its programmed rule has not yet been recovered.
 All trading times below are **IST**.
 
+The [position lifecycle clarification](research/POSITION_LIFECYCLE_CLARIFICATION.md)
+checks the basket-replacement question directly: prior short and long exposure
+survives all 544 scheduled pre-expiry windows. A 13 July example closes original
+CE exposure in stages while retaining the original PE side. Initial entries
+also occur after sizable opening candles; a mandatory range/spike filter is
+not established.
+
 The [trigger probability follow-up](research/TRIGGER_PROBABILITY_FINDINGS.md)
 quantifies candidate match rates and their uncertainty: scheduled entries meet
 80–90% point-estimate precision/coverage, while extra entries and the full exit

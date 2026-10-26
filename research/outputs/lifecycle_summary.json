@@ -1,0 +1,398 @@
+{
+  "scheduled_windows": 544,
+  "guaranteed_prior_short_retention": 544,
+  "guaranteed_prior_long_retention": 544,
+  "net_short_quantity_increased": 530,
+  "first_0930_windows": [
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-06-30",
+      "date": "2026-06-29",
+      "clock": "09:30",
+      "short_quantity_before": 585,
+      "short_quantity_after": 975,
+      "retained_old_short_lower_bound": 585,
+      "retained_old_long_lower_bound": 585
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-07-07",
+      "date": "2026-07-06",
+      "clock": "09:30",
+      "short_quantity_before": 390,
+      "short_quantity_after": 650,
+      "retained_old_short_lower_bound": 390,
+      "retained_old_long_lower_bound": 390
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-07-14",
+      "date": "2026-07-13",
+      "clock": "09:30",
+      "short_quantity_before": 390,
+      "short_quantity_after": 650,
+      "retained_old_short_lower_bound": 390,
+      "retained_old_long_lower_bound": 390
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-07-21",
+      "date": "2026-07-20",
+      "clock": "09:30",
+      "short_quantity_before": 650,
+      "short_quantity_after": 975,
+      "retained_old_short_lower_bound": 650,
+      "retained_old_long_lower_bound": 650
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-07-28",
+      "date": "2026-07-27",
+      "clock": "09:30",
+      "short_quantity_before": 390,
+      "short_quantity_after": 650,
+      "retained_old_short_lower_bound": 390,
+      "retained_old_long_lower_bound": 390
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-08-04",
+      "date": "2026-08-03",
+      "clock": "09:30",
+      "short_quantity_before": 455,
+      "short_quantity_after": 715,
+      "retained_old_short_lower_bound": 455,
+      "retained_old_long_lower_bound": 455
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-08-18",
+      "date": "2026-08-17",
+      "clock": "09:30",
+      "short_quantity_before": 390,
+      "short_quantity_after": 650,
+      "retained_old_short_lower_bound": 390,
+      "retained_old_long_lower_bound": 390
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-08-25",
+      "date": "2026-08-24",
+      "clock": "09:30",
+      "short_quantity_before": 455,
+      "short_quantity_after": 910,
+      "retained_old_short_lower_bound": 455,
+      "retained_old_long_lower_bound": 455
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-01",
+      "date": "2026-08-31",
+      "clock": "09:30",
+      "short_quantity_before": 455,
+      "short_quantity_after": 715,
+      "retained_old_short_lower_bound": 455,
+      "retained_old_long_lower_bound": 455
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-08",
+      "date": "2026-09-07",
+      "clock": "09:30",
+      "short_quantity_before": 390,
+      "short_quantity_after": 650,
+      "retained_old_short_lower_bound": 390,
+      "retained_old_long_lower_bound": 390
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-22",
+      "date": "2026-09-21",
+      "clock": "09:30",
+      "short_quantity_before": 650,
+      "short_quantity_after": 1040,
+      "retained_old_short_lower_bound": 650,
+      "retained_old_long_lower_bound": 650
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-09-29",
+      "date": "2026-09-28",
+      "clock": "09:30",
+      "short_quantity_before": 520,
+      "short_quantity_after": 910,
+      "retained_old_short_lower_bound": 130,
+      "retained_old_long_lower_bound": 130
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-06",
+      "date": "2026-10-05",
+      "clock": "09:30",
+      "short_quantity_before": 65,
+      "short_quantity_after": 325,
+      "retained_old_short_lower_bound": 65,
+      "retained_old_long_lower_bound": 65
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-13",
+      "date": "2026-10-12",
+      "clock": "09:30",
+      "short_quantity_before": 195,
+      "short_quantity_after": 455,
+      "retained_old_short_lower_bound": 195,
+      "retained_old_long_lower_bound": 195
+    },
+    {
+      "underlying": "NIFTY",
+      "expiry_date": "2026-10-19",
+      "date": "2026-10-16",
+      "clock": "09:30",
+      "short_quantity_before": 585,
+      "short_quantity_after": 975,
+      "retained_old_short_lower_bound": 585,
+      "retained_old_long_lower_bound": 585
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-06-25",
+      "date": "2026-06-24",
+      "clock": "09:30",
+      "short_quantity_before": 120,
+      "short_quantity_after": 200,
+      "retained_old_short_lower_bound": 120,
+      "retained_old_long_lower_bound": 120
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-07-02",
+      "date": "2026-07-01",
+      "clock": "09:30",
+      "short_quantity_before": 120,
+      "short_quantity_after": 200,
+      "retained_old_short_lower_bound": 120,
+      "retained_old_long_lower_bound": 120
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-07-09",
+      "date": "2026-07-08",
+      "clock": "09:30",
+      "short_quantity_before": 180,
+      "short_quantity_after": 300,
+      "retained_old_short_lower_bound": 180,
+      "retained_old_long_lower_bound": 180
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-07-16",
+      "date": "2026-07-15",
+      "clock": "09:30",
+      "short_quantity_before": 80,
+      "short_quantity_after": 160,
+      "retained_old_short_lower_bound": 80,
+      "retained_old_long_lower_bound": 80
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-07-23",
+      "date": "2026-07-22",
+      "clock": "09:30",
+      "short_quantity_before": 160,
+      "short_quantity_after": 300,
+      "retained_old_short_lower_bound": 160,
+      "retained_old_long_lower_bound": 160
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-07-30",
+      "date": "2026-07-29",
+      "clock": "09:30",
+      "short_quantity_before": 140,
+      "short_quantity_after": 220,
+      "retained_old_short_lower_bound": 140,
+      "retained_old_long_lower_bound": 140
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-08-06",
+      "date": "2026-08-05",
+      "clock": "09:30",
+      "short_quantity_before": 160,
+      "short_quantity_after": 240,
+      "retained_old_short_lower_bound": 140,
+      "retained_old_long_lower_bound": 140
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-08-13",
+      "date": "2026-08-12",
+      "clock": "09:30",
+      "short_quantity_before": 120,
+      "short_quantity_after": 200,
+      "retained_old_short_lower_bound": 120,
+      "retained_old_long_lower_bound": 120
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-08-20",
+      "date": "2026-08-19",
+      "clock": "09:30",
+      "short_quantity_before": 140,
+      "short_quantity_after": 300,
+      "retained_old_short_lower_bound": 140,
+      "retained_old_long_lower_bound": 140
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-08-27",
+      "date": "2026-08-26",
+      "clock": "09:30",
+      "short_quantity_before": 120,
+      "short_quantity_after": 200,
+      "retained_old_short_lower_bound": 120,
+      "retained_old_long_lower_bound": 120
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-09-10",
+      "date": "2026-09-09",
+      "clock": "09:30",
+      "short_quantity_before": 120,
+      "short_quantity_after": 200,
+      "retained_old_short_lower_bound": 120,
+      "retained_old_long_lower_bound": 120
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-09-17",
+      "date": "2026-09-16",
+      "clock": "09:30",
+      "short_quantity_before": 200,
+      "short_quantity_after": 220,
+      "retained_old_short_lower_bound": 160,
+      "retained_old_long_lower_bound": 160
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-09-24",
+      "date": "2026-09-23",
+      "clock": "09:30",
+      "short_quantity_before": 160,
+      "short_quantity_after": 280,
+      "retained_old_short_lower_bound": 160,
+      "retained_old_long_lower_bound": 160
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-10-01",
+      "date": "2026-09-30",
+      "clock": "09:30",
+      "short_quantity_before": 80,
+      "short_quantity_after": 120,
+      "retained_old_short_lower_bound": 80,
+      "retained_old_long_lower_bound": 80
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-10-08",
+      "date": "2026-10-07",
+      "clock": "09:30",
+      "short_quantity_before": 120,
+      "short_quantity_after": 160,
+      "retained_old_short_lower_bound": 120,
+      "retained_old_long_lower_bound": 120
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-10-15",
+      "date": "2026-10-14",
+      "clock": "09:30",
+      "short_quantity_before": 60,
+      "short_quantity_after": 100,
+      "retained_old_short_lower_bound": 60,
+      "retained_old_long_lower_bound": 60
+    },
+    {
+      "underlying": "SENSEX",
+      "expiry_date": "2026-10-22",
+      "date": "2026-10-21",
+      "clock": "09:30",
+      "short_quantity_before": 120,
+      "short_quantity_after": 200,
+      "retained_old_short_lower_bound": 120,
+      "retained_old_long_lower_bound": 120
+    }
+  ],
+  "example_inventory": [
+    {
+      "timestamp_ist": "2026-07-13T09:17:00+05:30",
+      "short_ce_24000": -195,
+      "short_pe_24000": -195,
+      "long_ce_26000": 195,
+      "long_pe_22000": 195,
+      "all_short_quantity": 390,
+      "all_long_quantity": 390
+    },
+    {
+      "timestamp_ist": "2026-07-13T09:29:58+05:30",
+      "short_ce_24000": -195,
+      "short_pe_24000": -195,
+      "long_ce_26000": 195,
+      "long_pe_22000": 195,
+      "all_short_quantity": 390,
+      "all_long_quantity": 390
+    },
+    {
+      "timestamp_ist": "2026-07-13T09:33:00+05:30",
+      "short_ce_24000": -195,
+      "short_pe_24000": -195,
+      "long_ce_26000": 195,
+      "long_pe_22000": 195,
+      "all_short_quantity": 650,
+      "all_long_quantity": 650
+    },
+    {
+      "timestamp_ist": "2026-07-13T09:48:00+05:30",
+      "short_ce_24000": -195,
+      "short_pe_24000": -195,
+      "long_ce_26000": 195,
+      "long_pe_22000": 195,
+      "all_short_quantity": 1105,
+      "all_long_quantity": 1105
+    },
+    {
+      "timestamp_ist": "2026-07-13T10:03:00+05:30",
+      "short_ce_24000": 0,
+      "short_pe_24000": -195,
+      "long_ce_26000": 0,
+      "long_pe_22000": 195,
+      "all_short_quantity": 975,
+      "all_long_quantity": 975
+    },
+    {
+      "timestamp_ist": "2026-07-13T14:33:00+05:30",
+      "short_ce_24000": 0,
+      "short_pe_24000": -195,
+      "long_ce_26000": 0,
+      "long_pe_22000": 195,
+      "all_short_quantity": 4030,
+      "all_long_quantity": 4030
+    }
+  ],
+  "material_exit_prior_pnl_counts": {
+    "loss": 12,
+    "profit": 15
+  },
+  "initial_leg_first_cover_rows": 62,
+  "initial_leg_uncontaminated_first_covers": 24,
+  "limitations": [
+    "Retention bounds require no basket IDs and do not prove all old lots survive.",
+    "Initial rows include only observed entry dates; no-trade eligibility is not labeled.",
+    "Opening-candle magnitude is descriptive, not an inferred spike threshold.",
+    "Exit P&L is the preceding completed-minute whole-book mark before costs, not the exact exit fill outcome or trigger reason.",
+    "Initial short first-cover cost references are pooled within the opening minute; cleanliness is a retrospective exclusion, not an entry condition or proof of allocation identity.",
+    "No economic alpha or independent 80-90 percent controller recovery is established."
+  ]
+}
