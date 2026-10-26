@@ -1,4 +1,11 @@
-# Algo 8 — working trading rulebook, v0.5
+# Algo 8 — working trading rulebook, v0.6
+
+**Latest correction:** [allocation/side study](research/ALLOCATION_SIDE_FINDINGS.md).
+Earlier 157/184 entry matching measures same-strike CE/PE pairs. Eighteen of
+the 27 missing-pair windows contain other new short sales; only nine have none.
+Both different-strike CE/PE entries and one-sided entries are observed. Shared
+normalized sizing modes agree at all 22 pre-expiry clock slots, with exceptions
+on individual dates. Broker margin/capital allocation remains unidentified.
 
 For the consolidated findings and remaining priorities, start with
 [Algo 8 — current picture](ALGO8_CURRENT_PICTURE.md).
@@ -42,7 +49,9 @@ indicator filter should be invented to fill that gap.
 The first paired sale is in 09:16 on 31/32 observed pre-expiry opening dates.
 The delayed 5 October entry is an exception, not a decoded second entry rule.
 
-**E2 — Sold strike:** sell CE and PE at the same near-ATM strike for an allocation.
+**E2 — Sold strike:** the ordinary initial paired core sells CE and PE at the
+same near-ATM strike. Later activity also includes different-strike CE/PE and
+one-sided entries; do not impose a same-strike condition on every addition.
 The best-fitting initial strike reconstruction is:
 
 ```
@@ -205,10 +214,11 @@ rule. Later-period expiry windows contain fresh pairs in 157/273 opportunities;
 already-flat books and other conditions matter.
 
 A strong **candidate baseline** is to allow each tested quarter opportunity
-while the actual prior short book is active. It catches all 157 later expiry
-additions but predicts 27 extra additions, outperforming the selected tree on
-F1. This exposes an unresolved suppression condition, not proof of the original
-entry rule or a self-contained controller.
+while the actual prior short book is active. For any new short selling, it
+catches all 175 later positive windows and predicts nine empty ones (95.1%
+precision). The historical 157/184 score is specifically for a same-strike
+paired entry. It does not establish 27 suppressed trading opportunities or
+prove an original range filter. No self-contained controller is recovered.
 
 **X2 — Early exits occur.** The strategy sometimes closes significant exposure
 early in the session. The exact position-stop, portfolio-stop, profit-target

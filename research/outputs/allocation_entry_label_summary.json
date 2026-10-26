@@ -1,0 +1,38 @@
+{
+  "former_27_types": {
+    "no_new_short": 9,
+    "both_rights": 12,
+    "PE_only": 4,
+    "CE_only": 2
+  },
+  "summary": [
+    {
+      "underlying": "NIFTY",
+      "later_expiry_windows": 126,
+      "active_windows": 83,
+      "active_old_same_strike_pairs": 80,
+      "active_any_new_short": 80,
+      "active_both_rights": 80,
+      "inactive_but_new_short": 0
+    },
+    {
+      "underlying": "SENSEX",
+      "later_expiry_windows": 147,
+      "active_windows": 101,
+      "active_old_same_strike_pairs": 77,
+      "active_any_new_short": 95,
+      "active_both_rights": 89,
+      "inactive_but_new_short": 0
+    },
+    {
+      "underlying": "all",
+      "later_expiry_windows": 273,
+      "active_windows": 184,
+      "active_old_same_strike_pairs": 157,
+      "active_any_new_short": 175,
+      "active_both_rights": 169,
+      "inactive_but_new_short": 0
+    }
+  ],
+  "correction": "The old label required a same-strike CE/PE opening pair. It was incorrectly described as absence of any addition. Both-right and one-right sales require different entry targets, not a fabricated range-filter rejection."
+}

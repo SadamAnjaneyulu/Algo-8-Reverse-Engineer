@@ -1,5 +1,14 @@
 # Algo 8: probabilities for the leading trigger hypotheses
 
+**Interpretation correction:** this historical probability study's “entry”
+labels require a qualifying same-strike CE/PE pair. The later audit finds new
+short selling in 18 of its 27 missing-pair windows; only nine are truly empty.
+Thus 157/184 is paired-entry precision, not any-entry precision (175/184).
+Some old off-quarter physical-minute events also fall within two seconds of
+the next timer. The corrected definitions and new tests are in
+[ALLOCATION_SIDE_FINDINGS.md](ALLOCATION_SIDE_FINDINGS.md). Keep the historical
+tables below as paired-label results, not evidence of a range-filter rejection.
+
 **Scheduled entry reconstruction meets an 80–90% point-estimate target. Extra
 entries and the complete exit controller do not.** The probabilities below are
 observed matching/event rates, not the probability that a particular indicator

@@ -1,0 +1,90 @@
+expiry|per_index_side|NIFTY|PE best_f1
+|--- a_clock_minute <= 298.50000
+|   |--- a_i_donchian_direction_30 <= 0.50000
+|   |   |--- missingindicator_a_contract_abs_delta_change5 <= 0.50000
+|   |   |   |--- a_i_atr_pct_5 <= 0.06199
+|   |   |   |   |--- class: False
+|   |   |   |--- a_i_atr_pct_5 >  0.06199
+|   |   |   |   |--- class: True
+|   |   |--- missingindicator_a_contract_abs_delta_change5 >  0.50000
+|   |   |   |--- a_i_twap_gap_pct <= -0.03595
+|   |   |   |   |--- class: False
+|   |   |   |--- a_i_twap_gap_pct >  -0.03595
+|   |   |   |   |--- class: True
+|   |--- a_i_donchian_direction_30 >  0.50000
+|   |   |--- a_lifo_max_loss_pct <= 40.91269
+|   |   |   |--- a_contract_gamma_move1pct_over_premium <= 1.17438
+|   |   |   |   |--- class: True
+|   |   |   |--- a_contract_gamma_move1pct_over_premium >  1.17438
+|   |   |   |   |--- class: False
+|   |   |--- a_lifo_max_loss_pct >  40.91269
+|   |   |   |--- a_i_spot_return_1 <= 0.03768
+|   |   |   |   |--- class: True
+|   |   |   |--- a_i_spot_return_1 >  0.03768
+|   |   |   |   |--- class: True
+|--- a_clock_minute >  298.50000
+|   |--- a_opposite_short_units <= 140.50000
+|   |   |--- a_i_realized_vol15_annual_pct <= 3.27920
+|   |   |   |--- class: False
+|   |   |--- a_i_realized_vol15_annual_pct >  3.27920
+|   |   |   |--- a_clock_mod15 <= 13.50000
+|   |   |   |   |--- class: True
+|   |   |   |--- a_clock_mod15 >  13.50000
+|   |   |   |   |--- class: True
+|   |--- a_opposite_short_units >  140.50000
+|   |   |--- a_contract_iv_pct <= 25.11820
+|   |   |   |--- a_range5_pct <= 0.05342
+|   |   |   |   |--- class: False
+|   |   |   |--- a_range5_pct >  0.05342
+|   |   |   |   |--- class: True
+|   |   |--- a_contract_iv_pct >  25.11820
+|   |   |   |--- a_i_spot_return_30 <= -0.14944
+|   |   |   |   |--- class: True
+|   |   |   |--- a_i_spot_return_30 >  -0.14944
+|   |   |   |   |--- class: False
+
+
+expiry|per_index_side|SENSEX|PE best_f1
+|--- a_clock_minute <= 289.50000
+|   |--- a_lifo_max_loss_pct <= -14.78868
+|   |   |--- a_i_ema_gap_12_100 <= -0.08481
+|   |   |   |--- a_clock_mod15 <= 0.50000
+|   |   |   |   |--- class: True
+|   |   |   |--- a_clock_mod15 >  0.50000
+|   |   |   |   |--- class: False
+|   |   |--- a_i_ema_gap_12_100 >  -0.08481
+|   |   |   |--- a_contract_abs_delta_change5 <= 0.02734
+|   |   |   |   |--- class: False
+|   |   |   |--- a_contract_abs_delta_change5 >  0.02734
+|   |   |   |   |--- class: True
+|   |--- a_lifo_max_loss_pct >  -14.78868
+|   |   |--- a_same_strike_volume_ratio <= 1.60763
+|   |   |   |--- a_i_bollinger_abs_z_30 <= 1.00704
+|   |   |   |   |--- class: False
+|   |   |   |--- a_i_bollinger_abs_z_30 >  1.00704
+|   |   |   |   |--- class: False
+|   |   |--- a_same_strike_volume_ratio >  1.60763
+|   |   |   |--- a_contract_iv_pct <= 20.99089
+|   |   |   |   |--- class: True
+|   |   |   |--- a_contract_iv_pct >  20.99089
+|   |   |   |   |--- class: True
+|--- a_clock_minute >  289.50000
+|   |--- a_range15_pct <= 0.12303
+|   |   |--- a_fifo_fraction_over50 <= 0.60769
+|   |   |   |--- a_i_realized_vol15_annual_pct <= 8.86682
+|   |   |   |   |--- class: True
+|   |   |   |--- a_i_realized_vol15_annual_pct >  8.86682
+|   |   |   |   |--- class: False
+|   |   |--- a_fifo_fraction_over50 >  0.60769
+|   |   |   |--- a_i_spot_return_1 <= -0.02468
+|   |   |   |   |--- class: False
+|   |   |   |--- a_i_spot_return_1 >  -0.02468
+|   |   |   |   |--- class: False
+|   |--- a_range15_pct >  0.12303
+|   |   |--- a_i_adx_28 <= 7.57484
+|   |   |   |--- class: False
+|   |   |--- a_i_adx_28 >  7.57484
+|   |   |   |--- a_opposite_vega_pct_capital <= -0.03437
+|   |   |   |   |--- class: False
+|   |   |   |--- a_opposite_vega_pct_capital >  -0.03437
+|   |   |   |   |--- class: True

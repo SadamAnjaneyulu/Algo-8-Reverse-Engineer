@@ -1,5 +1,12 @@
 # Algo 8: combined-rule search and historical curve fits
 
+**Later interpretation correction:** the quarter-window entry target below is
+a same-strike CE/PE pair. Eighteen of its 27 missing-pair windows contain new
+short sales; only nine have none. The new any-short baseline is 175/184.
+Consequently these paired-entry scores do not identify a range filter that
+rejected all 27 opportunities. Some physical-minute “extra” events also belong
+to the next timer. See [ALLOCATION_SIDE_FINDINGS.md](ALLOCATION_SIDE_FINDINGS.md).
+
 The combined search ran **15,906,565 new calibration rule/parameter/context
 comparisons**, in addition to the previous 71,720. It produced executable
 historical mimics and explicit, partially matching candidate rules. **It did

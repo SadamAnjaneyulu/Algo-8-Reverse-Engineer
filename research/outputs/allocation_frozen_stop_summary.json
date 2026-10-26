@@ -1,0 +1,388 @@
+{
+  "cases": 16353,
+  "atoms": 69,
+  "or_pairs": 2415,
+  "evaluation": [
+    {
+      "task": "fifo|CE|pooled",
+      "model": "clock_only",
+      "later_cases": 1217,
+      "matches_2m": 250,
+      "match_rate": 0.20542317173377156,
+      "mean_abs_error_minutes": 406.4519309779673,
+      "unambiguous_cases": 1017
+    },
+    {
+      "task": "fifo|CE|pooled",
+      "model": "selected_stop_program",
+      "later_cases": 1217,
+      "matches_2m": 314,
+      "match_rate": 0.2580115036976171,
+      "mean_abs_error_minutes": 206.10156121625334,
+      "unambiguous_cases": 1017
+    },
+    {
+      "task": "fifo|CE|NIFTY",
+      "model": "clock_only",
+      "later_cases": 591,
+      "matches_2m": 147,
+      "match_rate": 0.24873096446700507,
+      "mean_abs_error_minutes": 451.32695995508215,
+      "unambiguous_cases": 484
+    },
+    {
+      "task": "fifo|CE|NIFTY",
+      "model": "selected_stop_program",
+      "later_cases": 591,
+      "matches_2m": 201,
+      "match_rate": 0.3401015228426396,
+      "mean_abs_error_minutes": 174.741285956211,
+      "unambiguous_cases": 484
+    },
+    {
+      "task": "fifo|CE|SENSEX",
+      "model": "clock_only",
+      "later_cases": 626,
+      "matches_2m": 103,
+      "match_rate": 0.1645367412140575,
+      "mean_abs_error_minutes": 364.08588924398197,
+      "unambiguous_cases": 533
+    },
+    {
+      "task": "fifo|CE|SENSEX",
+      "model": "selected_stop_program",
+      "later_cases": 626,
+      "matches_2m": 157,
+      "match_rate": 0.2507987220447284,
+      "mean_abs_error_minutes": 222.93471778482913,
+      "unambiguous_cases": 533
+    },
+    {
+      "task": "fifo|PE|pooled",
+      "model": "clock_only",
+      "later_cases": 1118,
+      "matches_2m": 175,
+      "match_rate": 0.15652951699463327,
+      "mean_abs_error_minutes": 483.73059033999664,
+      "unambiguous_cases": 913
+    },
+    {
+      "task": "fifo|PE|pooled",
+      "model": "selected_stop_program",
+      "later_cases": 1118,
+      "matches_2m": 388,
+      "match_rate": 0.3470483005366726,
+      "mean_abs_error_minutes": 184.63864042945139,
+      "unambiguous_cases": 913
+    },
+    {
+      "task": "fifo|PE|NIFTY",
+      "model": "clock_only",
+      "later_cases": 542,
+      "matches_2m": 102,
+      "match_rate": 0.1881918819188192,
+      "mean_abs_error_minutes": 419.2536592867459,
+      "unambiguous_cases": 440
+    },
+    {
+      "task": "fifo|PE|NIFTY",
+      "model": "selected_stop_program",
+      "later_cases": 542,
+      "matches_2m": 183,
+      "match_rate": 0.3376383763837638,
+      "mean_abs_error_minutes": 201.41595940973707,
+      "unambiguous_cases": 440
+    },
+    {
+      "task": "fifo|PE|SENSEX",
+      "model": "clock_only",
+      "later_cases": 576,
+      "matches_2m": 73,
+      "match_rate": 0.1267361111111111,
+      "mean_abs_error_minutes": 544.401591435243,
+      "unambiguous_cases": 473
+    },
+    {
+      "task": "fifo|PE|SENSEX",
+      "model": "selected_stop_program",
+      "later_cases": 576,
+      "matches_2m": 167,
+      "match_rate": 0.2899305555555556,
+      "mean_abs_error_minutes": 165.1376446760389,
+      "unambiguous_cases": 473
+    },
+    {
+      "task": "fifo|combined|pooled",
+      "model": "clock_only",
+      "later_cases": 775,
+      "matches_2m": 97,
+      "match_rate": 0.12516129032258064,
+      "mean_abs_error_minutes": 604.7526451614067,
+      "unambiguous_cases": 630
+    },
+    {
+      "task": "fifo|combined|pooled",
+      "model": "selected_stop_program",
+      "later_cases": 775,
+      "matches_2m": 224,
+      "match_rate": 0.28903225806451616,
+      "mean_abs_error_minutes": 190.09574193556944,
+      "unambiguous_cases": 630
+    },
+    {
+      "task": "fifo|combined|NIFTY",
+      "model": "clock_only",
+      "later_cases": 403,
+      "matches_2m": 69,
+      "match_rate": 0.17121588089330025,
+      "mean_abs_error_minutes": 517.5720430109697,
+      "unambiguous_cases": 319
+    },
+    {
+      "task": "fifo|combined|NIFTY",
+      "model": "selected_stop_program",
+      "later_cases": 403,
+      "matches_2m": 136,
+      "match_rate": 0.337468982630273,
+      "mean_abs_error_minutes": 170.2301075270321,
+      "unambiguous_cases": 319
+    },
+    {
+      "task": "fifo|combined|SENSEX",
+      "model": "clock_only",
+      "later_cases": 372,
+      "matches_2m": 28,
+      "match_rate": 0.07526881720430108,
+      "mean_abs_error_minutes": 699.1982974910468,
+      "unambiguous_cases": 311
+    },
+    {
+      "task": "fifo|combined|SENSEX",
+      "model": "selected_stop_program",
+      "later_cases": 372,
+      "matches_2m": 90,
+      "match_rate": 0.24193548387096775,
+      "mean_abs_error_minutes": 201.63942652330883,
+      "unambiguous_cases": 311
+    },
+    {
+      "task": "lifo|CE|pooled",
+      "model": "clock_only",
+      "later_cases": 1213,
+      "matches_2m": 206,
+      "match_rate": 0.16982687551525144,
+      "mean_abs_error_minutes": 408.8304067052293,
+      "unambiguous_cases": 1014
+    },
+    {
+      "task": "lifo|CE|pooled",
+      "model": "selected_stop_program",
+      "later_cases": 1213,
+      "matches_2m": 344,
+      "match_rate": 0.28359439406430337,
+      "mean_abs_error_minutes": 201.97187414138233,
+      "unambiguous_cases": 1014
+    },
+    {
+      "task": "lifo|CE|NIFTY",
+      "model": "clock_only",
+      "later_cases": 588,
+      "matches_2m": 114,
+      "match_rate": 0.19387755102040816,
+      "mean_abs_error_minutes": 462.24376417242854,
+      "unambiguous_cases": 481
+    },
+    {
+      "task": "lifo|CE|NIFTY",
+      "model": "selected_stop_program",
+      "later_cases": 588,
+      "matches_2m": 171,
+      "match_rate": 0.29081632653061223,
+      "mean_abs_error_minutes": 163.266780045441,
+      "unambiguous_cases": 481
+    },
+    {
+      "task": "lifo|CE|SENSEX",
+      "model": "clock_only",
+      "later_cases": 625,
+      "matches_2m": 92,
+      "match_rate": 0.1472,
+      "mean_abs_error_minutes": 358.5791200000882,
+      "unambiguous_cases": 533
+    },
+    {
+      "task": "lifo|CE|SENSEX",
+      "model": "selected_stop_program",
+      "later_cases": 625,
+      "matches_2m": 126,
+      "match_rate": 0.2016,
+      "mean_abs_error_minutes": 239.11160000001192,
+      "unambiguous_cases": 533
+    },
+    {
+      "task": "lifo|PE|pooled",
+      "model": "clock_only",
+      "later_cases": 1117,
+      "matches_2m": 167,
+      "match_rate": 0.1495076096687556,
+      "mean_abs_error_minutes": 489.4732467920762,
+      "unambiguous_cases": 912
+    },
+    {
+      "task": "lifo|PE|pooled",
+      "model": "selected_stop_program",
+      "later_cases": 1117,
+      "matches_2m": 386,
+      "match_rate": 0.3455684870188004,
+      "mean_abs_error_minutes": 195.01741271274582,
+      "unambiguous_cases": 912
+    },
+    {
+      "task": "lifo|PE|NIFTY",
+      "model": "clock_only",
+      "later_cases": 541,
+      "matches_2m": 90,
+      "match_rate": 0.16635859519408502,
+      "mean_abs_error_minutes": 436.34078866306027,
+      "unambiguous_cases": 439
+    },
+    {
+      "task": "lifo|PE|NIFTY",
+      "model": "selected_stop_program",
+      "later_cases": 541,
+      "matches_2m": 205,
+      "match_rate": 0.3789279112754159,
+      "mean_abs_error_minutes": 259.1784966113235,
+      "unambiguous_cases": 439
+    },
+    {
+      "task": "lifo|PE|SENSEX",
+      "model": "clock_only",
+      "later_cases": 576,
+      "matches_2m": 77,
+      "match_rate": 0.13368055555555555,
+      "mean_abs_error_minutes": 539.3771701389471,
+      "unambiguous_cases": 473
+    },
+    {
+      "task": "lifo|PE|SENSEX",
+      "model": "selected_stop_program",
+      "later_cases": 576,
+      "matches_2m": 186,
+      "match_rate": 0.3229166666666667,
+      "mean_abs_error_minutes": 141.74927662048464,
+      "unambiguous_cases": 473
+    },
+    {
+      "task": "lifo|combined|pooled",
+      "model": "clock_only",
+      "later_cases": 773,
+      "matches_2m": 78,
+      "match_rate": 0.10090556274256145,
+      "mean_abs_error_minutes": 651.4548512289992,
+      "unambiguous_cases": 629
+    },
+    {
+      "task": "lifo|combined|pooled",
+      "model": "selected_stop_program",
+      "later_cases": 773,
+      "matches_2m": 265,
+      "match_rate": 0.3428201811125485,
+      "mean_abs_error_minutes": 198.01392841744894,
+      "unambiguous_cases": 629
+    },
+    {
+      "task": "lifo|combined|NIFTY",
+      "model": "clock_only",
+      "later_cases": 402,
+      "matches_2m": 50,
+      "match_rate": 0.12437810945273632,
+      "mean_abs_error_minutes": 580.9788142620905,
+      "unambiguous_cases": 318
+    },
+    {
+      "task": "lifo|combined|NIFTY",
+      "model": "selected_stop_program",
+      "later_cases": 402,
+      "matches_2m": 139,
+      "match_rate": 0.34577114427860695,
+      "mean_abs_error_minutes": 193.3580845771867,
+      "unambiguous_cases": 318
+    },
+    {
+      "task": "lifo|combined|SENSEX",
+      "model": "clock_only",
+      "later_cases": 371,
+      "matches_2m": 28,
+      "match_rate": 0.07547169811320754,
+      "mean_abs_error_minutes": 727.8197214734663,
+      "unambiguous_cases": 311
+    },
+    {
+      "task": "lifo|combined|SENSEX",
+      "model": "selected_stop_program",
+      "later_cases": 371,
+      "matches_2m": 126,
+      "match_rate": 0.33962264150943394,
+      "mean_abs_error_minutes": 200.01630727760997,
+      "unambiguous_cases": 311
+    }
+  ],
+  "economic_summary": [
+    {
+      "task": "fifo|CE|pooled",
+      "allocations": 1016,
+      "weeks": 8,
+      "mean_improvement_per_10000_tail_loss": -116.38863178554726,
+      "lower": -596.94103445741,
+      "upper": 549.4404919696108
+    },
+    {
+      "task": "fifo|PE|pooled",
+      "allocations": 911,
+      "weeks": 8,
+      "mean_improvement_per_10000_tail_loss": 523.7291705961813,
+      "lower": 58.445741073765625,
+      "upper": 933.1787847039816
+    },
+    {
+      "task": "fifo|combined|pooled",
+      "allocations": 628,
+      "weeks": 8,
+      "mean_improvement_per_10000_tail_loss": 407.4271316522075,
+      "lower": -141.95032335961812,
+      "upper": 994.5884089594108
+    },
+    {
+      "task": "lifo|CE|pooled",
+      "allocations": 1013,
+      "weeks": 8,
+      "mean_improvement_per_10000_tail_loss": -94.08519007730669,
+      "lower": -712.1231131491802,
+      "upper": 753.9020318289753
+    },
+    {
+      "task": "lifo|PE|pooled",
+      "allocations": 910,
+      "weeks": 8,
+      "mean_improvement_per_10000_tail_loss": 524.3407539298202,
+      "lower": 60.016391221811666,
+      "upper": 936.7168970058415
+    },
+    {
+      "task": "lifo|combined|pooled",
+      "allocations": 627,
+      "weeks": 8,
+      "mean_improvement_per_10000_tail_loss": 373.4327324992368,
+      "lower": -133.8127709751884,
+      "upper": 895.7115392743273
+    }
+  ],
+  "limitations": [
+    "Frozen inferred side/paired allocations, not original basket IDs; FIFO/LIFO targets differ.",
+    "Missing path minutes can hide earlier crossings. No missing quote is invented.",
+    "Targets are first partial short reductions, not necessarily full liquidation.",
+    "Economic comparison shares recorded entries and inferred frozen protection, uses next-minute open exits, stress costs and static expiry tail risk, not broker margin or independent entry alpha.",
+    "Later periods were already inspected. No full original strategy or capital controller is reproduced."
+  ]
+}

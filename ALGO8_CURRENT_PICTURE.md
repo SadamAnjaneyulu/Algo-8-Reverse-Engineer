@@ -1,5 +1,22 @@
 # Algo 8 — consolidated findings and remaining work
 
+**Interpretation correction:** the earlier “27 skipped additions” were windows
+without a qualifying **same-strike CE/PE pair**. Eighteen contain new short sales
+(12 both-right and six one-right windows); only nine contain no new short sale.
+The active-book baseline is **175/184 (95.1%)** for any new short entry. The old
+157/184 scores measure paired-straddle presence. See the
+[allocation/side study](research/ALLOCATION_SIDE_FINDINGS.md), including the
+correction of early timer fills in some former “extra-entry” labels.
+
+**Latest allocation findings:** all 22 pre-expiry modal size vectors agree
+between indices after dividing quantities by 65/20, beginning 3, 2, 3, 1, 4
+base units. This supports a shared sizing template with index-specific settings,
+not identical complete code. Losing pre-expiry short covers usually accompany
+adverse spot movement: rises for CE and falls for PE. The expanded per-side,
+Greek/OI and frozen-allocation stop tests still do not recover 80–90% of exit
+decisions. Capital/margin per leg and the complete allocation controller remain
+unidentified. See the linked study for corrected labels, exceptions and costs.
+
 This is the current overview, reconciling the research from the original logs
 through the mass matching and rule refinements. Treat Algo 8 as automated:
 unresolved means its programmed rule has not yet been recovered.
@@ -15,10 +32,11 @@ not established.
 The [trigger probability follow-up](research/TRIGGER_PROBABILITY_FINDINGS.md)
 quantifies candidate match rates and their uncertainty: scheduled entries meet
 80–90% point-estimate precision/coverage, while extra entries and the full exit
-controller remain below that goal. It includes the 27 suppressed expiry windows
+controller remain below that goal. Its 27 missing-pair expiry windows were later
+reclassified as described above; it includes those historical examples
 and four exit counterexamples for the next allocation-state reconstruction.
 
-Latest work: [combined-rule search and historical curve fits](research/COMBINATION_SEARCH_FINDINGS.md).
+Earlier stage: [combined-rule search and historical curve fits](research/COMBINATION_SEARCH_FINDINGS.md).
 It adds 15,906,565 rule/parameter/context comparisons and executable historical
 mimics. The original extra-entry/exit controller and repeatable incremental
 alpha remain unidentified. Exact historical minute-label fit is not exact order
@@ -96,10 +114,11 @@ contain fresh pairs in only 157/273 tested quarter-hour opportunities. The algo
 does not simply add every 15 minutes unconditionally on both days.
 
 The combined study finds that requiring the actual prior short book to remain
-active predicts 184 of those expiry opportunities: all 157 additions, plus
-27 false signals. Its F1 of 0.921 exceeds the fitted indicator/book-state tree's
-0.907. The 27 suppressions remain unexplained; this baseline is not an autonomous
-entry controller.
+active predicts 184 opportunities: 157 qualifying paired entries. The old
+paired-label F1 is 0.921. After auditing all new shorts, 175 windows contain
+an entry and only nine contain none; 18 of the old 27 missing-pair windows
+contain both-right or one-right selling. The baseline is not an autonomous
+entry controller, and the narrower pair label must not identify a range filter.
 
 ### Fresh hedge purchases around later sales
 

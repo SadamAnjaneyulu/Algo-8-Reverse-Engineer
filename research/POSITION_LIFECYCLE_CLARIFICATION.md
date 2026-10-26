@@ -1,5 +1,11 @@
 # What the observed positions actually do
 
+**Entry-label correction:** earlier “27 suppressed” opportunities lack a
+same-strike CE/PE pair, but 18 contain new short sales and only nine are empty.
+The newer [allocation/side study](ALLOCATION_SIDE_FINDINGS.md) separates those
+outcomes and removes early timer fills from the new off-schedule definition.
+The overlapping-inventory and 13 July observations below remain valid.
+
 The original Algo 8 entry/exit causes remain the objective. The current evidence
 supports **overlapping protected short allocations with separate reductions**,
 not replacing the complete portfolio every 15 minutes. All times here are IST.
