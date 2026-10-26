@@ -1,0 +1,277 @@
+{
+  "weekly_evidence": [
+    {
+      "asset": "pooled",
+      "model": "budget_2p5|late_to_expiry|time_only|none",
+      "quality": "all",
+      "cycles": 12,
+      "traded": 12,
+      "winning": 7,
+      "win_rate_lower": 0.31951131254954973,
+      "win_rate_upper": 0.8067396863412435,
+      "weeks": 8,
+      "mean": -780.3295619047298,
+      "lower": -1980.1477300767153,
+      "upper": 383.47816196604623
+    },
+    {
+      "asset": "pooled",
+      "model": "budget_2p5|late_to_expiry|time_only|none",
+      "quality": "fresh_and_price_bounds",
+      "cycles": 12,
+      "traded": 12,
+      "winning": 7,
+      "win_rate_lower": 0.31951131254954973,
+      "win_rate_upper": 0.8067396863412435,
+      "weeks": 8,
+      "mean": -780.3295619047298,
+      "lower": -1980.1477300767153,
+      "upper": 383.47816196604623
+    },
+    {
+      "asset": "NIFTY",
+      "model": "budget_2p5|pre_to_expiry|time_only|none",
+      "quality": "all",
+      "cycles": 7,
+      "traded": 7,
+      "winning": 5,
+      "win_rate_lower": 0.35893445183261935,
+      "win_rate_upper": 0.9177810759959433,
+      "weeks": 7,
+      "mean": 362.0446450299025,
+      "lower": -407.9911856857021,
+      "upper": 1030.2386930432392
+    },
+    {
+      "asset": "NIFTY",
+      "model": "budget_2p5|pre_to_expiry|time_only|none",
+      "quality": "fresh_and_price_bounds",
+      "cycles": 7,
+      "traded": 7,
+      "winning": 5,
+      "win_rate_lower": 0.35893445183261935,
+      "win_rate_upper": 0.9177810759959433,
+      "weeks": 7,
+      "mean": 362.0446450299025,
+      "lower": -407.9911856857021,
+      "upper": 1030.2386930432392
+    },
+    {
+      "asset": "SENSEX",
+      "model": "budget_2p5|expiry_intraday|time_only|none",
+      "quality": "all",
+      "cycles": 6,
+      "traded": 6,
+      "winning": 3,
+      "win_rate_lower": 0.1876163064826506,
+      "win_rate_upper": 0.8123836935173494,
+      "weeks": 6,
+      "mean": -1031.8467466122547,
+      "lower": -3382.001383517561,
+      "upper": 930.9738813966529
+    },
+    {
+      "asset": "SENSEX",
+      "model": "budget_2p5|expiry_intraday|time_only|none",
+      "quality": "fresh_and_price_bounds",
+      "cycles": 6,
+      "traded": 6,
+      "winning": 3,
+      "win_rate_lower": 0.1876163064826506,
+      "win_rate_upper": 0.8123836935173494,
+      "weeks": 6,
+      "mean": -1031.8467466122547,
+      "lower": -3382.001383517561,
+      "upper": 930.9738813966529
+    }
+  ],
+  "common_baseline": [
+    {
+      "asset": "pooled",
+      "common_cycles": 9,
+      "total_difference_net": -38954.64000000001,
+      "weeks": 6,
+      "mean": -4328.293333333334,
+      "lower": -11434.6854375,
+      "upper": 3506.161041666664,
+      "risk_normalized_weeks": 6,
+      "risk_normalized_mean": -64.06609975532086,
+      "risk_normalized_lower": -803.8545277807091,
+      "risk_normalized_upper": 854.5322957791025
+    },
+    {
+      "asset": "NIFTY",
+      "common_cycles": 4,
+      "total_difference_net": -2277.8681249999945,
+      "weeks": 4,
+      "mean": -569.4670312499986,
+      "lower": -735.5948437499997,
+      "upper": -435.1790624999976,
+      "risk_normalized_weeks": 4,
+      "risk_normalized_mean": 485.80244328892866,
+      "risk_normalized_lower": 261.457098041044,
+      "risk_normalized_upper": 667.7444641819457
+    },
+    {
+      "asset": "SENSEX",
+      "common_cycles": 6,
+      "total_difference_net": 16756.642499999987,
+      "weeks": 6,
+      "mean": 2792.773749999998,
+      "lower": -8730.267500000002,
+      "upper": 19064.37,
+      "risk_normalized_weeks": 6,
+      "risk_normalized_mean": 29.338733859055992,
+      "risk_normalized_lower": -1439.428845564392,
+      "risk_normalized_upper": 2028.2702880673514
+    }
+  ],
+  "execution_sensitivities": [
+    {
+      "asset": "pooled",
+      "variant": "both_plus_1m",
+      "cycles": 12,
+      "net": -83249.4,
+      "winning": 7
+    },
+    {
+      "asset": "pooled",
+      "variant": "entry_plus_1m",
+      "cycles": 12,
+      "net": -88344.8175,
+      "winning": 7
+    },
+    {
+      "asset": "pooled",
+      "variant": "exit_plus_1m",
+      "cycles": 12,
+      "net": -81432.93,
+      "winning": 7
+    },
+    {
+      "asset": "pooled",
+      "variant": "primary",
+      "cycles": 12,
+      "net": -86528.3475,
+      "winning": 7
+    },
+    {
+      "asset": "pooled",
+      "variant": "three_parallel_parents",
+      "cycles": 12,
+      "net": -90368.3475,
+      "winning": 6
+    },
+    {
+      "asset": "NIFTY",
+      "variant": "both_plus_1m",
+      "cycles": 7,
+      "net": 37853.211875000015,
+      "winning": 5
+    },
+    {
+      "asset": "NIFTY",
+      "variant": "entry_plus_1m",
+      "cycles": 7,
+      "net": 39485.337500000016,
+      "winning": 5
+    },
+    {
+      "asset": "NIFTY",
+      "variant": "exit_plus_1m",
+      "cycles": 7,
+      "net": 34946.07875,
+      "winning": 5
+    },
+    {
+      "asset": "NIFTY",
+      "variant": "primary",
+      "cycles": 7,
+      "net": 36578.20437500001,
+      "winning": 5
+    },
+    {
+      "asset": "NIFTY",
+      "variant": "three_parallel_parents",
+      "cycles": 7,
+      "net": 34338.20437500001,
+      "winning": 5
+    },
+    {
+      "asset": "SENSEX",
+      "variant": "both_plus_1m",
+      "cycles": 6,
+      "net": -37978.59,
+      "winning": 3
+    },
+    {
+      "asset": "SENSEX",
+      "variant": "entry_plus_1m",
+      "cycles": 6,
+      "net": -39321.77999999999,
+      "winning": 3
+    },
+    {
+      "asset": "SENSEX",
+      "variant": "exit_plus_1m",
+      "cycles": 6,
+      "net": -33876.6375,
+      "winning": 3
+    },
+    {
+      "asset": "SENSEX",
+      "variant": "primary",
+      "cycles": 6,
+      "net": -35219.82750000001,
+      "winning": 3
+    },
+    {
+      "asset": "SENSEX",
+      "variant": "three_parallel_parents",
+      "cycles": 6,
+      "net": -37139.82750000001,
+      "winning": 3
+    }
+  ],
+  "ordinary_opening_sensitivity": [
+    {
+      "asset": "pooled",
+      "cycles": 11,
+      "net_primary": -85650.91812500001,
+      "note": "Excludes recorded delayed-opening cycles, without selecting on their profit."
+    },
+    {
+      "asset": "NIFTY",
+      "cycles": 6,
+      "net_primary": 32476.845,
+      "note": "Excludes recorded delayed-opening cycles, without selecting on their profit."
+    },
+    {
+      "asset": "SENSEX",
+      "cycles": 6,
+      "net_primary": -35219.82750000001,
+      "note": "Excludes recorded delayed-opening cycles, without selecting on their profit."
+    }
+  ],
+  "caveat": "Small previously inspected samples, many searched alternatives, historical traded-chain selection and unequal dynamic risk prevent a validated alpha or original-code probability claim.",
+  "sha256": {
+    "alpha_candidate_baseline_evidence.csv": "cc2d11f1d511d85b277dc9fde3ad6cc7988d8a932714262bceaa52dbf296df4f",
+    "alpha_candidate_cycles.csv.gz": "0b3f90418f198813a7f19a736b52fced4abe99d404497ba940631d6bb9d2f0e6",
+    "alpha_candidate_exclusions.csv": "140ff03b67aa019c928a676d9b4332a5cc1049ee12d74ee6d66b636334650007",
+    "alpha_candidate_execution_sensitivity.csv": "eb26160e514cf9694926bd356be0e9b6d2d1cd595bdf48ded7478d5c6a92a5d8",
+    "alpha_candidate_ordinary_opening_sensitivity.csv": "430377c426829b2e3958cf999a65e095418218e426384a199fb20826973311b3",
+    "alpha_candidate_profit_components.csv": "7059676c353f28a08045b0f008cd2820c4c48209995bba715ba8e7c124569dea",
+    "alpha_candidate_ranking.csv": "fa590baf6552bfff7de9f4bdb76310d10fdf49f87440f46ad58e5b9dd98f9623",
+    "alpha_candidate_sensitivity_summary.csv": "2f73c465c83770e195cfc759628d7ab4d9faded04c2ae7802bda7f360036f718",
+    "alpha_candidate_summary.json": "9664be9543ce1d98123b0fd6dd6b585457f9f75fe6f0cd8ba36d3bdf00fca6c1",
+    "alpha_candidate_weekly_evidence.csv": "9afc4f6ff3692f5d5a119bf92590a565fa7dbdb4045dbb2f4bf2e2d05885a46a",
+    "alpha_highest_ranked_rulebook.json": "50efa39c1a61e2342fbdbd0b2efd2b8d4adc9656158806f068ae7cee7fae4323",
+    "alpha_reference_cycles.csv": "e15c6a11133ceb48e3b6a7878676758cc3daaa46ebcf3f4959fdd31c7d24962d",
+    "alpha_selected_vs_baseline.csv": "70784eb0b476434420ba2916f59d48ad4c6d22346f30b31484d8219df56a56ae",
+    "alpha_staggered_cycles.csv": "913a4ce91e71f74cb6fd28546af1f70ad662d0178286da46c46cee3b9d7d4d21",
+    "alpha_staggered_exclusions.csv": "66236077845643574e57c032a38c7b2bdfcc51533938e7b8df50f0bdd9f8ae25",
+    "alpha_staggered_recentering_comparison.csv": "91717787a336bf7d55fe1c95120350e8035e68012f26f8cbd7b31d855d40e928",
+    "alpha_staggered_summary.csv": "a27ef9f73870e735b251adb845ce9c5dd09668ff71ae7015ff91f5d39c2f1b2f",
+    "alpha_staggered_summary.json": "7b3019ed48fe3ef8e2c52ce33804f658671833d6428562c4ad023e63997759bd"
+  }
+}

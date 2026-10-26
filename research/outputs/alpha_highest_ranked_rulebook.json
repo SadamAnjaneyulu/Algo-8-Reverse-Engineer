@@ -1,0 +1,47 @@
+{
+  "status": "Highest-ranked NIFTY economic candidate; not recovered original code or certified independent alpha",
+  "selected_model": "budget_2p5|pre_to_expiry|time_only|none",
+  "selection_period": "Expiries through 2026-08-31",
+  "entry": {
+    "signal": "09:16 IST on the observed pre-expiry session",
+    "modeled_fill": "09:17 candle open",
+    "short_strike": "Nearest 50-point strike to the completed 09:15 index close",
+    "quantity_per_leg": 195,
+    "wings": "Each right separately: highest prior fresh outward premium <= 2.5% of the corresponding ATM premium"
+  },
+  "exit": {
+    "clock": "15:14 expiry-day candle open",
+    "note": "Time-only won the earlier ranking; tested side stops did not improve the selected economic score"
+  },
+  "exposure": "Defined-risk short volatility; short CE/PE plus outward long CE/PE",
+  "scope": "One basket per cycle. Observed later ladder entries, pending orders and original margin/controller are not replicated",
+  "capital": "No inference of broker margin from premium cashflows or theoretical payoff loss",
+  "calibration": {
+    "cycles": 8,
+    "active_cycles": 8,
+    "weeks": 8,
+    "net_primary": 107362.3,
+    "net_high": 105771.09999999999,
+    "mean_net_per_10000_tail_loss": 883.9482542733001,
+    "median_net_per_10000_tail_loss": 1193.8708973379896,
+    "worst_leave_week_out_mean": 754.0327395568322,
+    "winning_traded_cycles": 7,
+    "traded_win_rate": 0.875,
+    "closed_cycle_drawdown_rupees": 13114.435,
+    "worst_cycle_net": -13114.435
+  },
+  "later": {
+    "cycles": 7,
+    "active_cycles": 7,
+    "weeks": 7,
+    "net_primary": 36578.204375,
+    "net_high": 34915.65875,
+    "mean_net_per_10000_tail_loss": 362.0446450299025,
+    "median_net_per_10000_tail_loss": 936.5895635576886,
+    "worst_leave_week_out_mean": 192.7082383670444,
+    "winning_traded_cycles": 5,
+    "traded_win_rate": 0.7142857142857143,
+    "closed_cycle_drawdown_rupees": 15311.54875,
+    "worst_cycle_net": -15311.54875
+  }
+}

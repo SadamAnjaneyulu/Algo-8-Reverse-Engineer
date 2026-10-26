@@ -1,5 +1,12 @@
 # Algo 8 — consolidated findings and remaining work
 
+**Economic lead:** the [alpha candidate study](research/ALPHA_CANDIDATE_FINDINGS.md)
+ranks calendar-based protected short-volatility carry first. An autonomous
+NIFTY one-basket approximation is positive after costs in eight earlier and
+seven later observed cycles, with five later winners; its uncertainty interval
+still includes zero and excess alpha is not established. This is an economic
+core hypothesis, not the full observed ladder or a recovered 80–90% controller.
+
 **Interpretation correction:** the earlier “27 skipped additions” were windows
 without a qualifying **same-strike CE/PE pair**. Eighteen contain new short sales
 (12 both-right and six one-right windows); only nine contain no new short sale.

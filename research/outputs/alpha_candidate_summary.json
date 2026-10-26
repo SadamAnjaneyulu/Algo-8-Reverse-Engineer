@@ -1,0 +1,113 @@
+{
+  "selected": [
+    {
+      "asset": "pooled",
+      "model": "budget_2p5|late_to_expiry|time_only|none",
+      "calibration": {
+        "cycles": 18,
+        "active_cycles": 18,
+        "weeks": 10,
+        "net_primary": 145364.9325,
+        "net_high": 142355.865,
+        "mean_net_per_10000_tail_loss": 665.7908358580463,
+        "median_net_per_10000_tail_loss": 740.3578696177708,
+        "worst_leave_week_out_mean": 539.917305843479,
+        "winning_traded_cycles": 13,
+        "traded_win_rate": 0.7222222222222222,
+        "closed_cycle_drawdown_rupees": 16933.74687500001,
+        "worst_cycle_net": -13556.32
+      },
+      "later": {
+        "cycles": 12,
+        "active_cycles": 12,
+        "weeks": 8,
+        "net_primary": -86528.34750000002,
+        "net_high": -89227.69499999999,
+        "mean_net_per_10000_tail_loss": -780.3295619047295,
+        "median_net_per_10000_tail_loss": 114.28377314307232,
+        "worst_leave_week_out_mean": -1041.2147441112763,
+        "winning_traded_cycles": 7,
+        "traded_win_rate": 0.5833333333333334,
+        "closed_cycle_drawdown_rupees": 142111.455625,
+        "worst_cycle_net": -51817.59625
+      }
+    },
+    {
+      "asset": "NIFTY",
+      "model": "budget_2p5|pre_to_expiry|time_only|none",
+      "calibration": {
+        "cycles": 8,
+        "active_cycles": 8,
+        "weeks": 8,
+        "net_primary": 107362.3,
+        "net_high": 105771.09999999999,
+        "mean_net_per_10000_tail_loss": 883.9482542733001,
+        "median_net_per_10000_tail_loss": 1193.8708973379896,
+        "worst_leave_week_out_mean": 754.0327395568322,
+        "winning_traded_cycles": 7,
+        "traded_win_rate": 0.875,
+        "closed_cycle_drawdown_rupees": 13114.435,
+        "worst_cycle_net": -13114.435
+      },
+      "later": {
+        "cycles": 7,
+        "active_cycles": 7,
+        "weeks": 7,
+        "net_primary": 36578.204375,
+        "net_high": 34915.65875,
+        "mean_net_per_10000_tail_loss": 362.0446450299025,
+        "median_net_per_10000_tail_loss": 936.5895635576886,
+        "worst_leave_week_out_mean": 192.7082383670444,
+        "winning_traded_cycles": 5,
+        "traded_win_rate": 0.7142857142857143,
+        "closed_cycle_drawdown_rupees": 15311.54875,
+        "worst_cycle_net": -15311.54875
+      }
+    },
+    {
+      "asset": "SENSEX",
+      "model": "budget_2p5|expiry_intraday|time_only|none",
+      "calibration": {
+        "cycles": 10,
+        "active_cycles": 10,
+        "weeks": 10,
+        "net_primary": 65876.3675,
+        "net_high": 64751.73499999999,
+        "mean_net_per_10000_tail_loss": 801.5710607089322,
+        "median_net_per_10000_tail_loss": 615.1603610214215,
+        "worst_leave_week_out_mean": 584.1619684452133,
+        "winning_traded_cycles": 7,
+        "traded_win_rate": 0.7,
+        "closed_cycle_drawdown_rupees": 12536.7025,
+        "worst_cycle_net": -12536.7025
+      },
+      "later": {
+        "cycles": 6,
+        "active_cycles": 6,
+        "weeks": 6,
+        "net_primary": -35219.82750000001,
+        "net_high": -36290.655000000006,
+        "mean_net_per_10000_tail_loss": -1031.8467466122547,
+        "median_net_per_10000_tail_loss": 42.02344251409636,
+        "worst_leave_week_out_mean": -1651.8104907165484,
+        "winning_traded_cycles": 3,
+        "traded_win_rate": 0.5,
+        "closed_cycle_drawdown_rupees": 60299.135,
+        "worst_cycle_net": -32379.145
+      }
+    }
+  ],
+  "observed_cycles": 32,
+  "model_count": 504,
+  "observations": 10500,
+  "exclusions": 177,
+  "selection": "Earlier-only worst leave-one-week-out mean normalized net outcome, then median and mean, then simpler policy on exact ties; minimum data coverage and active-trade support. Exit/filter variants share quote-valid cycles within each horizon/geometry.",
+  "limitations": [
+    "Autonomous single protected basket per cycle; no actual later trade decisions are replayed. This does not replicate the observed allocation ladder or original capital/margin controller.",
+    "Three observed quantity units per leg. Joint exits use the frozen expiry loss bound; separate-side exits use the more conservative sum-of-side-widths loss budget, since separate exits can exceed the frozen-basket bound. Neither is broker margin or equal dynamic risk.",
+    "Seed-wing date configuration and candidate thresholds draw on previously inspected research. Later data are chronological checks, not untouched validation.",
+    "Trade-candle zero-volume flags, missing-quote exclusions and traded-contract-only universe limit execution and generalization.",
+    "Filters skip with zero outcome only after the unfiltered policy is quote-valid; missing input/quotes are excluded, not profitable zero trades.",
+    "Closed-cycle drawdown excludes intracycle losses and is not the screenshot drawdown. No original-code posterior probability or verified independent alpha is claimed."
+  ]
+}
