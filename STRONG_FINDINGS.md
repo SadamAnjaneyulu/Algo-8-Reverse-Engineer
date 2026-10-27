@@ -1,6 +1,6 @@
 # Algo 8 — cumulative strong findings
 
-**Updated:** 27 October 2026 · **Version:** 6 · **Branch:** `research/strong-findings`
+**Updated:** 27 October 2026 · **Version:** 7 · **Branch:** `research/strong-findings`
 
 **Evidence snapshot:** F01–F30 and C01/C02 use research/data inherited from
 `60427b2`. The additional cover-to-re-entry assessment is from `984164c`.
@@ -9,6 +9,7 @@ The constrained autonomous-controller assessment is from `8524844`.
 The policy/execution separation and fixed-cohort forensic assessment are from
 `8e32701`. F01–F34 and C01/C02 retain their existing definitions and counts.
 The registered intermediate-exit event study is from `12dc6af`.
+The final economic attribution and research closure are from `21ce61d`.
 
 This is the single cumulative reference for strong findings. Preserve its finding
 IDs when adding evidence. The original research continues on
@@ -428,7 +429,40 @@ These constraints prevent the strong findings from being combined incorrectly:
   improves aggregate results versus a clock hold but remains negative pooled
   and does not establish an independent return advantage.
 
-Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
+- **Final economic closure is B: positive marked results, no demonstrated alpha.**
+  The 32 initialized cycles have received fill cash flow of **₹2,065,205.25**,
+  gross realized P&L **₹1,371,078.56** and quoted unrealized P&L **₹523,276.94**,
+  for combined marked economic P&L **₹1,894,355.50**. These are reconciling views,
+  not amounts to add together. Estimated net is **₹821,401.08 moderate**,
+  **₹475,346.65 conservative**, and **−₹477,316.85 adverse execution**. Costs are
+  fixed premium-turnover/parent/unit scenarios, not verified broker charges.
+  Ten primary books retain residual positions; marks are not settlement or
+  verified post-export holdings. The 22 primary books that end flat have only
+  **₹207,230.50 gross** and **−₹673,382.41 conservative net**; this is a selected
+  sensitivity subset, not an unbiased full-strategy rejection. Three expiry-only
+  starts remain separate from the primary economic inference.
+- **Economic gains are fragile and do not establish comparable-risk excess.**
+  Conservative mean-cycle bootstrap uncertainty includes zero. Removing the
+  largest winner leaves **₹1,721.58**; removing the two largest leaves
+  **−₹423,305.62**. The largest winner, NIFTY 29 September, has no received
+  expiry-day fills and **₹540,801.92** of quoted unrealized P&L. The paired
+  fixed-clock opening-only and scheduled-accumulation comparisons have intervals
+  spanning zero, on 25 and 20 shared quoted cycles respectively. Their dynamic
+  risks differ; no verified ex-ante equal-risk/margin budget can be constructed.
+  Direct role P&L and estimated own-IV/time/forward attribution are consistent
+  with short-option carry offset by convexity, repricing, protection and costs;
+  fitted components retain material residuals and are not causal alpha proof.
+  No account return, Sharpe, CAGR or screenshot reproduction is inferred.
+  Independent checks preserve 41,421 children, 21,882 atomic books and all earlier
+  configurations/findings; 25,458 available raw-quote equity marks reconcile.
+  All **252 tests pass**, **26 numeric artifacts reproduce exactly**, and 6,674
+  source hashes remain unchanged. The final planned investigation is closed;
+  no follow-up controller, indicator or threshold search is part of this task.
+
+Sources: [final economic report](research/final_alpha_attribution/FINAL_ALPHA_ATTRIBUTION_AND_FALSIFICATION.md),
+[machine-readable closure verdict](research/final_alpha_attribution/final_verdict.json),
+[economic reproduction and validation](research/final_alpha_attribution/validation_audit.json),
+[lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 [re-entry/closure evidence](research/RULE_REFINEMENT_FINDINGS.md),
 [controlled cover/re-entry follow-up](research/COVER_REENTRY_FINDINGS.md),
 [operational playbook](ALLOCATION_ENTRY_EXIT_RISK_PLAYBOOK.md),
@@ -461,6 +495,13 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 
 ### Change log
 
+- **v7 · 27 October 2026:** Added the final economic attribution/falsification
+  from `21ce61d`, with explicit cash/realized/quoted-residual views, fixed costs,
+  concentration, common-clock benchmarks and unavailable equal-risk inference.
+  Selected closure outcome B; no economic alpha is demonstrated. F01–F34,
+  C01/C02, original configurations and all earlier results remain unchanged.
+  All 252 tests pass and 26 numeric artifacts reproduce exactly. This completes
+  the final planned research task; no further search phase is launched.
 - **v6 · 27 October 2026:** Added the finite intermediate-exit study from
   `12dc6af`, including the long/short distinction in the unchanged 32/27 motif
   partition, upstream differences, strict pre-event reconstruction, matched
