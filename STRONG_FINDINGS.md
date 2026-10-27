@@ -1,6 +1,6 @@
 # Algo 8 — cumulative strong findings
 
-**Updated:** 27 October 2026 · **Version:** 5 · **Branch:** `research/strong-findings`
+**Updated:** 27 October 2026 · **Version:** 6 · **Branch:** `research/strong-findings`
 
 **Evidence snapshot:** F01–F30 and C01/C02 use research/data inherited from
 `60427b2`. The additional cover-to-re-entry assessment is from `984164c`.
@@ -8,6 +8,7 @@ F31–F34 and the independent operational audit are from `58ae0cf`.
 The constrained autonomous-controller assessment is from `8524844`.
 The policy/execution separation and fixed-cohort forensic assessment are from
 `8e32701`. F01–F34 and C01/C02 retain their existing definitions and counts.
+The registered intermediate-exit event study is from `12dc6af`.
 
 This is the single cumulative reference for strong findings. Preserve its finding
 IDs when adding evidence. The original research continues on
@@ -383,6 +384,34 @@ These constraints prevent the strong findings from being combined incorrectly:
   quantities conserve, and the public YAML replay reproduces saved child fills,
   targets, requests and books exactly. Those checks do not establish an original
   controller or economic alpha.
+- **The 32/27 motif comparison includes protective-long closures.** The absent
+  group contains nine short covers and 23 long closures; the retained group
+  contains seven short covers and 20 long closures. In M06 the candidate retains
+  the opposite direction to the observed long being closed. In the absent group,
+  ten cases have another role/right strike near the active epoch's first entry,
+  13 have no comparable allocation near that entry, eight previously held that
+  role but reduced it earlier, and one lacks initialization. The +/-120-second
+  entry comparison is a diagnostic, not unique original allocation ownership.
+  Three retained short cases close during 09:15 before a completed session candle
+  is available. Their missing minute features are not filled with future data.
+- **A finite exit-event study finds relative discrimination, not a general stop.**
+  The registered study retains all 11,716 Buy closing children, 8,197 atomic
+  contract/second covers and 4,251 grouped reduction episodes. Its 32 initialized
+  cycles contain 3,512 intermediate episodes and 326 separately labeled final
+  episodes. Twelve fixed hypotheses are compared with training-only clock and
+  inventory baselines, with whole-cycle exclusion and 24 expanding chronological
+  test cycles (2,200 intermediate episodes). A 50% pooled premium-loss rule has
+  **36.4% precision / 9.8% recall** within two minutes. The best average-cycle F1
+  hypothesis, sampled side drawdown of 0.5% of supplied capital, has **18.0%
+  precision / 16.6% recall**. Its mean cycle F1 improves on clock by 10.1 percentage
+  points and inventory by 8.5, but neither it nor another candidate meets both
+  80% precision and recall. Matched non-exits often share the conditions; weak
+  common support and unknown original ownership remain explicit. This is
+  conditional discrimination using received inventory, not a replacement for the
+  autonomous controller, an all-action F1 comparison or recovered economic alpha.
+  The original selected model and configurations remain unchanged. All 234 tests
+  pass; 208,885 opportunity quantities and marks are checked against strict past
+  inventory/completed candles. No expanded search follows this negative result.
 - **Capital/stop statements are supplied context, not recovered implementation.**
   [Info.txt](Info.txt) states ₹2 crore, a 4% carry-forward stop and a 1% expiry-day
   capital stop. The 4% denominator, scope, reset rules, pending-order handling,
@@ -408,6 +437,9 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 [policy/execution reconstruction](research/policy_execution_separation/POLICY_EXECUTION_RECONSTRUCTION.md),
 [fixed-cohort case ledger](research/policy_execution_separation/reversal_motif_ledger.csv),
 [reproduction checks](research/policy_execution_separation/validation_audit.json),
+[intermediate-exit event study](research/intermediate_exit_study/INTERMEDIATE_EXIT_CONTROLLER.md),
+[exit study registration](research/intermediate_exit_study/REGISTERED_PLAN.md),
+[cycle validation](research/intermediate_exit_study/cycle_validation_scores.csv),
 [latest controller search](research/DEEP_CONTROLLER_FINDINGS.md),
 [economic candidate limits](research/ALPHA_CANDIDATE_FINDINGS.md).
 
@@ -429,6 +461,13 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 
 ### Change log
 
+- **v6 · 27 October 2026:** Added the finite intermediate-exit study from
+  `12dc6af`, including the long/short distinction in the unchanged 32/27 motif
+  partition, upstream differences, strict pre-event reconstruction, matched
+  controls and chronological negative results. Relative discrimination does not
+  establish an original stop. F01–F34, C01/C02 and the selected baseline remain
+  unchanged. All 234 software tests pass; no general 80–90% trigger or economic
+  alpha is claimed.
 - **v5 · 27 October 2026:** Added the policy/execution assessment from
   `8e32701`: immutable 59-case forensics, matched-control limitations, separate
   opening metrics, 84 interpretable models and failure to recover reversal
