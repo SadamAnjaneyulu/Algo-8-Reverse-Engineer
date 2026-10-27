@@ -1,0 +1,49 @@
+{
+  "landmarks": 49720,
+  "counts": [
+    {
+      "underlying": "NIFTY",
+      "phase": "expiry",
+      "all_cover_minutes": 1151,
+      "onset_cover_minutes": 340,
+      "eligible_onsets": 327,
+      "excluded_time_or_no_prestate": 8,
+      "full_flat_onsets": 5
+    },
+    {
+      "underlying": "NIFTY",
+      "phase": "preexpiry",
+      "all_cover_minutes": 182,
+      "onset_cover_minutes": 112,
+      "eligible_onsets": 105,
+      "excluded_time_or_no_prestate": 5,
+      "full_flat_onsets": 2
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "expiry",
+      "all_cover_minutes": 1491,
+      "onset_cover_minutes": 321,
+      "eligible_onsets": 300,
+      "excluded_time_or_no_prestate": 9,
+      "full_flat_onsets": 12
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "preexpiry",
+      "all_cover_minutes": 304,
+      "onset_cover_minutes": 173,
+      "eligible_onsets": 159,
+      "excluded_time_or_no_prestate": 14,
+      "full_flat_onsets": 0
+    }
+  ],
+  "primary_horizon_minutes": 5,
+  "input_sha256": {
+    "Trades_GKOHNP140.csv": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+    "research/outputs/allocation_parent_inventory.csv": "8a827efab1ed6ff1b6e6bf0f0900ca240bad8021505f455c9970e7a269dd4048",
+    "research/outputs/deep_side_minute_features.csv.gz": "19a127c133d4b191a57994d3d5aac77a575046de51a1902544d2466a2807dc2f"
+  },
+  "input_roles": "Received fill opening/closing classification and stable pure new-short parents",
+  "note": "Within-cycle matched association and inspected later predictive checks; no identified original re-entry trigger, causal effect or alpha."
+}
