@@ -1,9 +1,10 @@
 # Algo 8 — cumulative strong findings
 
-**Updated:** 27 October 2026 · **Version:** 2 · **Branch:** `research/strong-findings`
+**Updated:** 27 October 2026 · **Version:** 3 · **Branch:** `research/strong-findings`
 
 **Evidence snapshot:** F01–F30 and C01/C02 use research/data inherited from
 `60427b2`. The additional cover-to-re-entry assessment is from `984164c`.
+F31–F34 and the independent operational audit are from `58ae0cf`.
 
 This is the single cumulative reference for strong findings. Preserve its finding
 IDs when adding evidence. The original research continues on
@@ -41,12 +42,15 @@ Inventory/role reconstruction assumes zero inventory before each contract's firs
 observed fill and the received records' completeness. Unobserved holdings,
 settlement and missing executions are not invented. Parent/hedge associations
 are inferred where the export supplies no original allocation IDs.
+An inventory-opening fill is not automatically an intended new allocation:
+rapid close/opposite-reopen/neutralize sequences also occur. Protection present
+in the book does not imply continuously matched quantities or unique pairing.
 
 ## 1. Opening entries and the initial protection
 
 | ID | Strong finding | Evidence and scope | Meaning / limit |
 | --- | --- | --- | --- |
-| F01 | The first paired CE/PE short sale normally starts in **09:16 IST**. | **31/32 sessions, 96.9%.** The exception is NIFTY 5 October at 09:30:59. | Observed timing; eligible no-trade dates are not fully labeled. |
+| F01 | The first paired CE/PE short sale normally starts in **09:16 IST**. | **31/32 sessions, 96.9%.** The exception is NIFTY 5 October at 09:30:59; its first single CE short is earlier, at 09:21:21. | First pair, not first exposure. Observed timing; eligible no-trade dates are not fully labeled. |
 | F02 | On those same 31 ordinary starts, the initial sold CE/PE strike is nearest ATM using the completed 09:15 index close: NIFTY 50-point grid, SENSEX 100-point grid. | **31/32 overall, 96.9%; 31/31 ordinary starts.** | Exact proxy match. It does not distinguish a completed-close implementation from a contemporaneous spot quote producing the same strike. |
 | F03 | The ordinary 09:17 inventory contains all four roles: short CE, short PE, long CE and long PE. | **31/31 ordinary opening snapshots, 100%.** | These are roles across the inventory, not necessarily exactly four contracts or one simultaneous order. |
 | F04 | Ordinary opening quantities commonly equal **195 per role for NIFTY; 60 per role for SENSEX**. | All four roles match together on **13/14 NIFTY dates (92.9%)** and **15/17 SENSEX dates (88.2%)**. | Observed 09:17 net quantities, not gross buys, broker margin or an unconditional size instruction. |
@@ -173,6 +177,22 @@ Sources: [opening Greeks](research/outputs/iv_initial_book_exposures.csv),
 Sources: [closure timestamps](research/outputs/rule_refine_exit_target_comparison.csv),
 [date-effective session context](research/CAS_SESSION_FINDING.md).
 
+### Additional operational findings from the independent book audit
+
+| ID | Strong finding | Evidence and scope | Meaning / limit |
+| --- | --- | --- | --- |
+| F31 | Observed pre-expiry new-short parent requests predominantly use one base quantity: **65 NIFTY / 20 SENSEX**. | NIFTY **2,022/2,032 parents (99.5%)** request 65; SENSEX **2,375/2,375 (100%)** request 20. Every received incremental fill is an integer multiple of its index's base quantity. | Requested child-order granularity, not capital per allocation, verified exchange lot metadata or a number-of-orders formula. Inventory roles are retrospective; some openings can be processing reversals. |
+| F32 | Ordinary first short/wing fills are tightly sequenced. | First CE and PE short fills are within one second on **31/31 ordinary starts** (24 at the same second). Each right's first wing/short separation is at most three seconds on **31/31**; the CE wing precedes its short on **28/31 (90.3%)**, PE on **30/31 (96.8%)**. | First observed fills, not completion of all quantities or proof of an atomic basket/guaranteed hedge-first broker instruction. Log seconds are not independently certified exchange timestamps. |
+| F33 | Brief states with more short calls than long calls occur in the recorded book. | At least one atomic-second state in **35/35 cycles**. There are **4,457 intervals**, median four seconds; **4,452/4,457 (99.9%)** last at most 60 seconds. The longest is 1,346 seconds in NIFTY on 16 October. | Under the zero-initial-inventory, received-options-only convention, the frozen payoff has a negative upside tail during these states. This does not establish the actual account's total risk, margin or realized loss. Most intervals are brief sequencing states; the long interval is a material exception. |
+| F34 | Every observed pre-expiry carry snapshot has long quantities covering shorts on each right. | **31/31 carry books:** long CE >= short CE and long PE >= short PE at the last received pre-expiry execution; all have a finite frozen expiry-payoff loss bound. The other one of 32 pre-expiry session books is flat. | Strong end-book quantity condition, consistent with overnight preparation. It does not identify a coded guard, continuous intraday matching, per-allocation ownership, actual margin or an acceptable loss cap. |
+
+Sources: [operational playbook](ALLOCATION_ENTRY_EXIT_RISK_PLAYBOOK.md),
+[independent reconciliation](research/outputs/playbook_book_audit.json),
+[parent request granularity](research/outputs/playbook_cadence_summary.csv),
+[first-role times](research/outputs/playbook_initial_role_times.csv),
+[call-tail intervals](research/outputs/playbook_negative_call_tail_intervals.csv),
+[session-end books](research/outputs/playbook_session_end_books.csv).
+
 ## 8. What the strong findings establish together
 
 ### C01 — a joint opening structure, not separate percentages
@@ -246,6 +266,15 @@ near-expiry volatility carry with protection and active management more directly
 than a recovered range-forecast indicator. They do not prove that no eligibility
 filter exists. They also do not establish the optimality of 15-minute spacing.
 
+Combining the operational additions suggests one further constraint: repeated
+small order requests assemble a larger book, temporary quantity mismatches can
+occur during management, and the last recorded pre-expiry carry book restores
+same-right long coverage in all 31 observed carry cases. This is consistent with
+an overnight preparation stage around a shared allocation engine with index-
+specific configuration. It does not recover the instruction that causes that
+stage, prove that one program generated all orders, or turn overnight quantity
+coverage into a verified capital-loss limit.
+
 ## 9. Verified constraints and claims excluded from the strong register
 
 These constraints prevent the strong findings from being combined incorrectly:
@@ -254,6 +283,8 @@ These constraints prevent the strong findings from being combined incorrectly:
   24000 CE shorts close in 65-unit pieces at 09:50, 09:53 and 09:59 while their
   26000 CE protection is sold. Initial PE/22000 PE protection survives. New
   24050 CE/PE shorts had been added at 09:30 while the original holdings remained.
+  Closing the original 24000 CE contract does not mean the entire CE side is
+  flat: other CE shorts remain after its final reduction.
   This refutes mandatory all-four-leg replacement every quarter hour; it does
   not identify the general side-stop threshold.
 - **Opening movement does not automatically block entry.** The 28 September
@@ -276,6 +307,16 @@ These constraints prevent the strong findings from being combined incorrectly:
   **not an additional 80–90%-accurate trigger finding**. The comparison excludes
   full-flat shutdowns and uses minutes after a completed cover minute; it is
   not an exact five-minute-from-fill rule.
+- **Inventory openings can reflect rapid liquidation reversals.** The independent
+  audit flags 59 conservative close/opposite-reopen/neutralize motifs, fully
+  covering 43 new-short and 24 new-long parents. The bounds were specified
+  after inspecting the 6 August example; these are processing candidates,
+  not proven errors or original rules. Excluding flagged later first-reduction
+  cases barely changes the frozen global exit match: **1,313/4,538 (28.93%)**
+  becomes **1,310/4,526 (28.94%)**. This does not explain away the missing
+  controller or establish a better stop. All 32 pre-expiry sessions also contain
+  some inventory-opening flow after 14:30; that alone does not establish a
+  planned late allocation schedule.
 - **Capital/stop statements are supplied context, not recovered implementation.**
   [Info.txt](Info.txt) states ₹2 crore, a 4% carry-forward stop and a 1% expiry-day
   capital stop. The 4% denominator, scope, reset rules, pending-order handling,
@@ -295,12 +336,14 @@ These constraints prevent the strong findings from being combined incorrectly:
 Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 [re-entry/closure evidence](research/RULE_REFINEMENT_FINDINGS.md),
 [controlled cover/re-entry follow-up](research/COVER_REENTRY_FINDINGS.md),
+[operational playbook](ALLOCATION_ENTRY_EXIT_RISK_PLAYBOOK.md),
+[reversal sensitivity](research/outputs/playbook_frozen_exit_reversal_sensitivity.csv),
 [latest controller search](research/DEEP_CONTROLLER_FINDINGS.md),
 [economic candidate limits](research/ALPHA_CANDIDATE_FINDINGS.md).
 
 ## 10. How to add the next strong finding
 
-1. Append a new stable **F31, F32, …** ID; do not silently rewrite an old claim.
+1. Append a new stable **F35, F36, …** ID; do not silently rewrite an old claim.
 2. Record the event/session/cycle definition, numerator, denominator, exclusions,
    exceptions, exact tolerance and source file/commit. Label observed,
    conditional, approximate, modeled or template support.
@@ -316,6 +359,14 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 
 ### Change log
 
+- **v3 · 27 October 2026:** Added F31–F34 from `58ae0cf`: observed request
+  granularity, ordinary first-fill sequencing, transient call-tail mismatches
+  and the 31/31 carry-book quantity condition. Clarified F01's first-pair versus
+  first-exposure distinction without changing its rate. Added rapid-reversal
+  limits and the full operational playbook. Independent raw accounting matches
+  24,860 cached quantity and 25,565 marked-P&L snapshots over 41,421 fills;
+  all 190 research tests pass. C01/C02 remain unchanged. No exact original
+  trigger or economic alpha is promoted.
 - **v2 · 27 October 2026:** Added the controlled cover-to-re-entry assessment
   from `984164c` as a constraint, including weak balance/common support and the
   NIFTY/SENSEX distinction. F01–F30 and C01/C02 remain unchanged; no new rate or
