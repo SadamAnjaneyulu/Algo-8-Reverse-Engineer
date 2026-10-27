@@ -1,0 +1,591 @@
+motif_id,hypothesis,variant,status,direct_submission_evidence,limitation
+M01,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M01,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M01,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M01,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M01,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M01,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M01,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M01,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M01,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M01,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M02,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M02,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M02,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M02,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M02,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M02,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M02,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M02,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M02,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M02,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M03,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M03,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M03,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M03,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M03,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M03,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M03,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M03,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M03,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M03,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M04,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M04,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M04,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M04,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M04,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M04,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M04,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M04,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M04,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M04,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M05,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M05,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M05,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M05,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M05,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M05,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M05,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M05,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M05,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M05,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M06,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M06,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M06,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M06,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M06,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M06,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M06,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M06,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M06,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M06,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M07,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M07,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M07,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M07,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M07,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M07,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M07,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M07,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M07,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M07,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M08,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M08,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M08,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M08,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M08,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M08,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M08,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M08,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M08,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M08,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M09,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M09,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M09,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M09,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M09,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M09,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M09,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M09,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M09,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M09,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M10,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M10,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M10,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M10,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M10,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M10,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M10,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M10,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M10,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M10,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M11,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M11,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M11,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M11,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M11,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M11,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M11,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M11,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M11,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M11,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M12,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M12,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M12,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M12,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M12,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M12,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M12,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M12,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M12,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M12,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M13,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M13,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M13,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M13,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M13,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M13,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M13,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M13,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M13,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M13,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M14,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M14,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M14,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M14,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M14,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M14,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M14,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M14,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M14,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M14,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M15,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M15,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M15,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M15,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M15,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M15,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M15,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M15,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M15,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M15,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M16,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M16,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M16,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M16,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M16,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M16,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M16,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M16,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M16,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M16,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M17,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M17,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M17,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M17,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M17,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M17,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M17,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M17,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M17,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M17,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M18,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M18,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M18,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M18,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M18,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M18,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M18,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M18,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M18,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M18,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M19,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M19,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M19,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M19,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M19,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M19,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M19,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M19,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M19,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M19,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M20,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M20,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M20,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M20,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M20,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M20,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M20,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M20,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M20,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M20,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M21,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M21,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M21,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M21,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M21,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M21,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M21,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M21,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M21,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M21,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M22,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M22,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M22,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M22,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M22,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M22,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M22,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M22,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M22,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M22,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M23,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M23,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M23,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M23,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M23,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M23,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M23,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M23,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M23,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M23,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M24,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M24,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M24,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M24,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M24,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M24,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M24,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M24,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M24,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M24,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M25,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M25,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M25,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M25,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M25,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M25,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M25,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M25,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M25,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M25,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M26,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M26,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M26,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M26,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M26,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M26,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M26,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M26,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M26,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M26,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M27,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M27,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M27,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M27,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M27,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M27,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M27,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M27,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M27,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M27,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M28,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M28,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M28,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M28,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M28,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M28,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M28,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M28,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M28,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M28,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M29,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M29,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M29,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M29,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M29,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M29,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M29,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M29,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M29,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M29,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M30,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M30,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M30,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M30,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M30,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M30,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M30,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M30,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M30,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M30,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M31,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M31,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M31,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M31,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M31,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M31,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M31,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M31,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M31,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M31,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M32,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M32,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M32,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M32,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M32,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M32,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M32,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M32,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M32,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M32,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M33,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M33,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M33,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M33,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M33,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M33,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M33,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M33,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M33,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M33,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M34,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M34,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M34,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M34,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M34,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M34,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M34,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M34,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M34,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M34,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M35,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M35,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M35,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M35,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M35,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M35,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M35,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M35,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M35,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M35,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M36,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M36,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M36,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M36,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M36,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M36,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M36,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M36,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M36,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M36,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M37,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M37,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M37,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M37,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M37,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M37,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M37,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M37,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M37,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M37,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M38,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M38,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M38,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M38,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M38,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M38,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M38,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M38,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M38,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M38,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M39,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M39,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M39,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M39,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M39,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M39,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M39,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M39,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M39,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M39,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M40,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M40,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M40,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,compatible,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M40,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M40,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M40,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M40,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M40,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M40,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M40,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M41,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M41,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M41,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M41,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M41,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M41,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M41,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M41,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M41,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M41,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M42,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M42,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M42,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M42,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M42,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M42,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M42,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M42,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M42,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M42,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M43,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M43,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M43,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M43,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M43,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M43,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M43,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M43,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M43,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M43,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M44,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M44,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M44,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M44,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M44,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M44,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M44,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M44,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M44,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M44,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M45,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M45,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M45,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M45,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M45,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M45,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M45,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M45,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M45,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M45,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M46,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M46,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M46,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M46,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M46,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M46,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M46,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M46,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M46,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M46,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M47,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M47,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M47,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M47,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M47,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M47,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M47,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M47,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M47,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M47,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M48,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M48,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M48,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M48,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M48,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M48,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M48,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M48,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M48,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M48,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M49,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M49,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M49,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M49,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M49,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M49,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M49,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M49,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M49,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M49,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M50,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M50,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M50,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M50,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M50,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M50,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M50,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M50,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M50,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M50,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M51,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M51,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M51,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M51,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M51,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M51,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M51,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M51,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M51,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M51,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M52,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M52,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M52,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M52,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M52,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M52,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M52,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M52,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M52,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M52,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M53,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M53,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M53,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M53,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M53,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M53,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M53,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M53,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M53,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M53,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M54,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M54,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M54,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M54,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M54,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M54,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M54,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M54,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M54,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M54,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M55,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M55,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M55,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M55,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M55,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M55,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M55,D_protective_adjustment,old_long_and_near_equal_new_long,contradicted_variant,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M55,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M55,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M55,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M56,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M56,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M56,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M56,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M56,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M56,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M56,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M56,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M56,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M56,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M57,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,compatible,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M57,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,compatible,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M57,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M57,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M57,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M57,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M57,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M57,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M57,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M57,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M58,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M58,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M58,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M58,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M58,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M58,C_target_synchronisation,zero_target_correction_within5sec,contradicted_variant,False,zero target is latent; <=60sec correction is imposed by cohort
+M58,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M58,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M58,E_partial_or_ordering,multiple_child_fills_in_involved_parent,compatible,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M58,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
+M59,A_duplicate_stale_close,two_distinct_parent_full_atomic_duplicate,contradicted_variant,False,same grouped parent contradicts two-distinct-parent variant; equality also selected by size restriction
+M59,A_duplicate_stale_close,distinct_parent_requested_quantity_repeats,contradicted_variant,False,"same instrument/direction follows from reversal; repeated requested size is compatible with stale requests or deliberate trades, not proof of duplicate intent"
+M59,A_duplicate_stale_close,distinct_parent_size_and_limit_candidate_repeat,contradicted_variant,False,"limit field semantics are inferred from fill bounds; same payload can reflect distinct policy instructions, repricing/retry or a duplicate"
+M59,B_intentional_rotation,persistent_opposite_exposure_at5min,contradicted_variant,False,short-lived round trips remain possible; initial <=60sec flattening is selected
+M59,B_intentional_rotation,nearby_paired_shorts_at_prior_clock_label,unresolved,False,time/strike association permits an allocation or rotation explanation; labels are not confirmed submission timestamps and allocation IDs are missing
+M59,C_target_synchronisation,zero_target_correction_within5sec,compatible,False,zero target is latent; <=60sec correction is imposed by cohort
+M59,D_protective_adjustment,old_long_and_near_equal_new_long,unresolved,False,"strict pure-rotation variant excludes nearby shorts, including a possible overshoot; lack of compatibility does not rule out mixed hedge adjustment and execution effects"
+M59,E_partial_or_ordering,one_grouped_parent_spans_flat_boundary,contradicted_variant,False,supports a received parent spanning zero; not direct submission/cancellation evidence
+M59,E_partial_or_ordering,multiple_child_fills_in_involved_parent,contradicted_variant,False,observed fragmentation can coexist with repeated requests; it does not identify the reason for the opposite order
+M59,F_other_unresolved,unique_cause_identification,unresolved,False,all intents unconfirmed; A-E compatibility can overlap
