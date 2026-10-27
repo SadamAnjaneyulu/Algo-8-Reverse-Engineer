@@ -1,0 +1,1009 @@
+mode,test_cycle_id,baseline,index,right,phase,parameters
+leave_one_cycle_out,1,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,1,clock_only,NIFTY,CE,expiry,"[178, 111, 176]"
+leave_one_cycle_out,1,clock_only,NIFTY,CE,preexpiry,"[118, 113, 177]"
+leave_one_cycle_out,1,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+leave_one_cycle_out,1,clock_only,NIFTY,PE,preexpiry,"[177, 114, 134]"
+leave_one_cycle_out,1,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,1,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,1,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,1,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,1,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,1,inventory_only,NIFTY,CE,expiry,28.0
+leave_one_cycle_out,1,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,1,inventory_only,NIFTY,PE,expiry,19.0
+leave_one_cycle_out,1,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,1,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,1,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,1,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,1,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,2,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,2,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,2,clock_only,NIFTY,CE,preexpiry,"[118, 125, 113]"
+leave_one_cycle_out,2,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,2,clock_only,NIFTY,PE,preexpiry,"[177, 114, 134]"
+leave_one_cycle_out,2,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,2,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,2,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,2,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,2,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,2,inventory_only,NIFTY,CE,expiry,28.0
+leave_one_cycle_out,2,inventory_only,NIFTY,CE,preexpiry,6.5
+leave_one_cycle_out,2,inventory_only,NIFTY,PE,expiry,17.0
+leave_one_cycle_out,2,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,2,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,2,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,2,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,2,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,3,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,3,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,3,clock_only,NIFTY,CE,preexpiry,"[125, 177, 113]"
+leave_one_cycle_out,3,clock_only,NIFTY,PE,expiry,"[173, 178, 183]"
+leave_one_cycle_out,3,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,3,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,3,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,3,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,3,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,3,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,3,inventory_only,NIFTY,CE,expiry,28.0
+leave_one_cycle_out,3,inventory_only,NIFTY,CE,preexpiry,7.0
+leave_one_cycle_out,3,inventory_only,NIFTY,PE,expiry,19.0
+leave_one_cycle_out,3,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,3,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,3,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,3,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,3,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,4,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,4,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,4,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,4,clock_only,NIFTY,PE,expiry,"[183, 111, 178]"
+leave_one_cycle_out,4,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,4,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,4,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,4,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,4,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,4,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,4,inventory_only,NIFTY,CE,expiry,26.0
+leave_one_cycle_out,4,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,4,inventory_only,NIFTY,PE,expiry,17.0
+leave_one_cycle_out,4,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,4,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,4,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,4,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,4,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,5,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+leave_one_cycle_out,5,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+leave_one_cycle_out,5,clock_only,NIFTY,CE,preexpiry,"[125, 118, 177]"
+leave_one_cycle_out,5,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,5,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,5,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,5,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,5,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,5,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,5,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,5,inventory_only,NIFTY,CE,expiry,25.0
+leave_one_cycle_out,5,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,5,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,5,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,5,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,5,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,5,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,5,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,6,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+leave_one_cycle_out,6,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+leave_one_cycle_out,6,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,6,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,6,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,6,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,6,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,6,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,6,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,6,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,6,inventory_only,NIFTY,CE,expiry,25.0
+leave_one_cycle_out,6,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,6,inventory_only,NIFTY,PE,expiry,19.0
+leave_one_cycle_out,6,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,6,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,6,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,6,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,6,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,8,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,8,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,8,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,8,clock_only,NIFTY,PE,expiry,"[173, 178, 183]"
+leave_one_cycle_out,8,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,8,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,8,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,8,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,8,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,8,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,8,inventory_only,NIFTY,CE,expiry,28.0
+leave_one_cycle_out,8,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,8,inventory_only,NIFTY,PE,expiry,19.0
+leave_one_cycle_out,8,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,8,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,8,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,8,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,8,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,9,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+leave_one_cycle_out,9,clock_only,NIFTY,CE,expiry,"[173, 111, 178]"
+leave_one_cycle_out,9,clock_only,NIFTY,CE,preexpiry,"[125, 118, 177]"
+leave_one_cycle_out,9,clock_only,NIFTY,PE,expiry,"[111, 173, 183]"
+leave_one_cycle_out,9,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,9,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,9,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,9,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,9,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,9,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,9,inventory_only,NIFTY,CE,expiry,28.0
+leave_one_cycle_out,9,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,9,inventory_only,NIFTY,PE,expiry,17.0
+leave_one_cycle_out,9,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,9,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,9,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,9,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,9,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,10,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,10,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,10,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,10,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,10,clock_only,NIFTY,PE,preexpiry,"[114, 115, 134]"
+leave_one_cycle_out,10,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,10,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,10,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,10,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,10,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,10,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,10,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,10,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,10,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,10,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,10,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,10,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,10,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,11,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,11,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,11,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,11,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,11,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,11,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,11,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,11,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,11,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,11,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,11,inventory_only,NIFTY,CE,expiry,25.0
+leave_one_cycle_out,11,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,11,inventory_only,NIFTY,PE,expiry,19.0
+leave_one_cycle_out,11,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,11,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,11,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,11,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,11,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,13,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,13,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,13,clock_only,NIFTY,CE,preexpiry,"[125, 118, 177]"
+leave_one_cycle_out,13,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,13,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,13,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,13,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,13,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,13,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,13,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,13,inventory_only,NIFTY,CE,expiry,26.0
+leave_one_cycle_out,13,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,13,inventory_only,NIFTY,PE,expiry,19.0
+leave_one_cycle_out,13,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,13,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,13,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,13,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,13,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,14,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,14,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,14,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,14,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,14,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,14,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,14,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,14,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,14,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,14,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,14,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,14,inventory_only,NIFTY,CE,preexpiry,6.5
+leave_one_cycle_out,14,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,14,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,14,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,14,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,14,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,14,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,15,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,15,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,15,clock_only,NIFTY,CE,preexpiry,"[118, 125, 177]"
+leave_one_cycle_out,15,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+leave_one_cycle_out,15,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,15,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,15,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,15,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,15,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,15,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,15,inventory_only,NIFTY,CE,expiry,28.0
+leave_one_cycle_out,15,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,15,inventory_only,NIFTY,PE,expiry,17.0
+leave_one_cycle_out,15,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,15,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,15,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,15,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,15,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,16,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,16,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,16,clock_only,NIFTY,CE,preexpiry,"[125, 118, 177]"
+leave_one_cycle_out,16,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,16,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,16,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,16,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,16,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,16,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,16,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,16,inventory_only,NIFTY,CE,expiry,28.0
+leave_one_cycle_out,16,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,16,inventory_only,NIFTY,PE,expiry,19.0
+leave_one_cycle_out,16,inventory_only,NIFTY,PE,preexpiry,6.0
+leave_one_cycle_out,16,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,16,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,16,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,16,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,17,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,17,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,17,clock_only,NIFTY,CE,preexpiry,"[125, 113, 177]"
+leave_one_cycle_out,17,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,17,clock_only,NIFTY,PE,preexpiry,"[177, 169, 144]"
+leave_one_cycle_out,17,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,17,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,17,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,17,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,17,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,17,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,17,inventory_only,NIFTY,CE,preexpiry,7.0
+leave_one_cycle_out,17,inventory_only,NIFTY,PE,expiry,19.0
+leave_one_cycle_out,17,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,17,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,17,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,17,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,17,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,18,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+leave_one_cycle_out,18,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,18,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,18,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,18,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,18,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,18,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,18,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,18,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,18,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,18,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,18,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,18,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,18,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,18,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,18,inventory_only,SENSEX,CE,preexpiry,5.0
+leave_one_cycle_out,18,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,18,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,19,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,19,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,19,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,19,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,19,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,19,clock_only,SENSEX,CE,expiry,"[111, 176, 179]"
+leave_one_cycle_out,19,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,19,clock_only,SENSEX,PE,expiry,"[111, 179, 185]"
+leave_one_cycle_out,19,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,19,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,19,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,19,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,19,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,19,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,19,inventory_only,SENSEX,CE,expiry,11.0
+leave_one_cycle_out,19,inventory_only,SENSEX,CE,preexpiry,5.0
+leave_one_cycle_out,19,inventory_only,SENSEX,PE,expiry,9.0
+leave_one_cycle_out,19,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,20,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,20,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,20,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,20,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,20,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,20,clock_only,SENSEX,CE,expiry,"[111, 184, 179]"
+leave_one_cycle_out,20,clock_only,SENSEX,CE,preexpiry,"[151, 123, 145]"
+leave_one_cycle_out,20,clock_only,SENSEX,PE,expiry,"[111, 178, 176]"
+leave_one_cycle_out,20,clock_only,SENSEX,PE,preexpiry,"[156, 165, 157]"
+leave_one_cycle_out,20,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,20,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,20,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,20,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,20,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,20,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,20,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,20,inventory_only,SENSEX,PE,expiry,13.0
+leave_one_cycle_out,20,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,21,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,21,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,21,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,21,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,21,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,21,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,21,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,21,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,21,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,21,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,21,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,21,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,21,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,21,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,21,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,21,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,21,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,21,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,22,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,22,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,22,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,22,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,22,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,22,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,22,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,22,clock_only,SENSEX,PE,expiry,"[111, 176, 179]"
+leave_one_cycle_out,22,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,22,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,22,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,22,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,22,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,22,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,22,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,22,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,22,inventory_only,SENSEX,PE,expiry,13.0
+leave_one_cycle_out,22,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,23,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,23,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,23,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,23,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,23,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,23,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,23,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,23,clock_only,SENSEX,PE,expiry,"[111, 179, 185]"
+leave_one_cycle_out,23,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,23,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,23,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,23,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,23,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,23,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,23,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,23,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,23,inventory_only,SENSEX,PE,expiry,11.0
+leave_one_cycle_out,23,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,24,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,24,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,24,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,24,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,24,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,24,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,24,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,24,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,24,clock_only,SENSEX,PE,preexpiry,"[165, 156, 157]"
+leave_one_cycle_out,24,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,24,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,24,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,24,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,24,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,24,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,24,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,24,inventory_only,SENSEX,PE,expiry,13.0
+leave_one_cycle_out,24,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,25,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+leave_one_cycle_out,25,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,25,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,25,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,25,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,25,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,25,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,25,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,25,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,25,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,25,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,25,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,25,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,25,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,25,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,25,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,25,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,25,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,26,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,26,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,26,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,26,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,26,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,26,clock_only,SENSEX,CE,expiry,"[179, 176, 111]"
+leave_one_cycle_out,26,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,26,clock_only,SENSEX,PE,expiry,"[179, 176, 178]"
+leave_one_cycle_out,26,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,26,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,26,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,26,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,26,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,26,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,26,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,26,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,26,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,26,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,27,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,27,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,27,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,27,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,27,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,27,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,27,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,27,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,27,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,27,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,27,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,27,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,27,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,27,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,27,inventory_only,SENSEX,CE,expiry,9.0
+leave_one_cycle_out,27,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,27,inventory_only,SENSEX,PE,expiry,13.0
+leave_one_cycle_out,27,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,28,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,28,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,28,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,28,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,28,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,28,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,28,clock_only,SENSEX,CE,preexpiry,"[165, 123, 145]"
+leave_one_cycle_out,28,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,28,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,28,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,28,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,28,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,28,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,28,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,28,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,28,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,28,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,28,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,29,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,29,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,29,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,29,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,29,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,29,clock_only,SENSEX,CE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,29,clock_only,SENSEX,CE,preexpiry,"[165, 151, 123]"
+leave_one_cycle_out,29,clock_only,SENSEX,PE,expiry,"[111, 176, 179]"
+leave_one_cycle_out,29,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,29,inventory_only,ALL,ALL,ALL,10.0
+leave_one_cycle_out,29,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,29,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,29,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,29,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,29,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,29,inventory_only,SENSEX,CE,preexpiry,5.0
+leave_one_cycle_out,29,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,29,inventory_only,SENSEX,PE,preexpiry,3.5
+leave_one_cycle_out,30,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,30,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,30,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,30,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,30,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,30,clock_only,SENSEX,CE,expiry,"[179, 111, 176]"
+leave_one_cycle_out,30,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,30,clock_only,SENSEX,PE,expiry,"[179, 176, 111]"
+leave_one_cycle_out,30,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,30,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,30,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,30,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,30,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,30,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,30,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,30,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,30,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,30,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,31,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,31,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,31,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,31,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,31,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,31,clock_only,SENSEX,CE,expiry,"[111, 176, 179]"
+leave_one_cycle_out,31,clock_only,SENSEX,CE,preexpiry,"[165, 123, 145]"
+leave_one_cycle_out,31,clock_only,SENSEX,PE,expiry,"[111, 176, 178]"
+leave_one_cycle_out,31,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,31,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,31,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,31,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,31,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,31,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,31,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,31,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,31,inventory_only,SENSEX,PE,expiry,13.0
+leave_one_cycle_out,31,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,32,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,32,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,32,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,32,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,32,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,32,clock_only,SENSEX,CE,expiry,"[111, 176, 179]"
+leave_one_cycle_out,32,clock_only,SENSEX,CE,preexpiry,"[165, 150, 151]"
+leave_one_cycle_out,32,clock_only,SENSEX,PE,expiry,"[111, 176, 179]"
+leave_one_cycle_out,32,clock_only,SENSEX,PE,preexpiry,"[165, 150, 148]"
+leave_one_cycle_out,32,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,32,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,32,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,32,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,32,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,32,inventory_only,SENSEX,CE,expiry,9.0
+leave_one_cycle_out,32,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,32,inventory_only,SENSEX,PE,expiry,13.0
+leave_one_cycle_out,32,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,33,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,33,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,33,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,33,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,33,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,33,clock_only,SENSEX,CE,expiry,"[179, 111, 176]"
+leave_one_cycle_out,33,clock_only,SENSEX,CE,preexpiry,"[150, 151, 123]"
+leave_one_cycle_out,33,clock_only,SENSEX,PE,expiry,"[111, 179, 176]"
+leave_one_cycle_out,33,clock_only,SENSEX,PE,preexpiry,"[165, 150, 148]"
+leave_one_cycle_out,33,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,33,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,33,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,33,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,33,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,33,inventory_only,SENSEX,CE,expiry,10.0
+leave_one_cycle_out,33,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,33,inventory_only,SENSEX,PE,expiry,12.0
+leave_one_cycle_out,33,inventory_only,SENSEX,PE,preexpiry,3.0
+leave_one_cycle_out,34,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+leave_one_cycle_out,34,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+leave_one_cycle_out,34,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+leave_one_cycle_out,34,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+leave_one_cycle_out,34,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+leave_one_cycle_out,34,clock_only,SENSEX,CE,expiry,"[111, 176, 179]"
+leave_one_cycle_out,34,clock_only,SENSEX,CE,preexpiry,"[165, 151, 145]"
+leave_one_cycle_out,34,clock_only,SENSEX,PE,expiry,"[176, 111, 179]"
+leave_one_cycle_out,34,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+leave_one_cycle_out,34,inventory_only,ALL,ALL,ALL,11.0
+leave_one_cycle_out,34,inventory_only,NIFTY,CE,expiry,27.0
+leave_one_cycle_out,34,inventory_only,NIFTY,CE,preexpiry,6.0
+leave_one_cycle_out,34,inventory_only,NIFTY,PE,expiry,18.0
+leave_one_cycle_out,34,inventory_only,NIFTY,PE,preexpiry,5.0
+leave_one_cycle_out,34,inventory_only,SENSEX,CE,expiry,11.0
+leave_one_cycle_out,34,inventory_only,SENSEX,CE,preexpiry,4.0
+leave_one_cycle_out,34,inventory_only,SENSEX,PE,expiry,13.0
+leave_one_cycle_out,34,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,5,clock_only,ALL,ALL,ALL,"[111, 176, 179]"
+expanding_chronological,5,clock_only,NIFTY,CE,expiry,"[173, 111, 178]"
+expanding_chronological,5,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,5,clock_only,NIFTY,PE,expiry,"[173, 111, 176]"
+expanding_chronological,5,clock_only,NIFTY,PE,preexpiry,"[150, 146, 161]"
+expanding_chronological,5,clock_only,SENSEX,CE,expiry,"[176, 179, 180]"
+expanding_chronological,5,clock_only,SENSEX,CE,preexpiry,"[123, 125, 145]"
+expanding_chronological,5,clock_only,SENSEX,PE,expiry,"[176, 175, 179]"
+expanding_chronological,5,clock_only,SENSEX,PE,preexpiry,"[165, 148, 125]"
+expanding_chronological,5,inventory_only,ALL,ALL,ALL,11.0
+expanding_chronological,5,inventory_only,NIFTY,CE,expiry,22.0
+expanding_chronological,5,inventory_only,NIFTY,CE,preexpiry,6.0
+expanding_chronological,5,inventory_only,NIFTY,PE,expiry,20.0
+expanding_chronological,5,inventory_only,NIFTY,PE,preexpiry,7.0
+expanding_chronological,5,inventory_only,SENSEX,CE,expiry,7.0
+expanding_chronological,5,inventory_only,SENSEX,CE,preexpiry,3.0
+expanding_chronological,5,inventory_only,SENSEX,PE,expiry,16.0
+expanding_chronological,5,inventory_only,SENSEX,PE,preexpiry,3.5
+expanding_chronological,6,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+expanding_chronological,6,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+expanding_chronological,6,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,6,clock_only,NIFTY,PE,expiry,"[173, 178, 111]"
+expanding_chronological,6,clock_only,NIFTY,PE,preexpiry,"[150, 146, 161]"
+expanding_chronological,6,clock_only,SENSEX,CE,expiry,"[176, 179, 178]"
+expanding_chronological,6,clock_only,SENSEX,CE,preexpiry,"[123, 125, 145]"
+expanding_chronological,6,clock_only,SENSEX,PE,expiry,"[176, 179, 175]"
+expanding_chronological,6,clock_only,SENSEX,PE,preexpiry,"[165, 148, 125]"
+expanding_chronological,6,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,6,inventory_only,NIFTY,CE,expiry,25.0
+expanding_chronological,6,inventory_only,NIFTY,CE,preexpiry,6.5
+expanding_chronological,6,inventory_only,NIFTY,PE,expiry,20.0
+expanding_chronological,6,inventory_only,NIFTY,PE,preexpiry,7.0
+expanding_chronological,6,inventory_only,SENSEX,CE,expiry,8.0
+expanding_chronological,6,inventory_only,SENSEX,CE,preexpiry,3.0
+expanding_chronological,6,inventory_only,SENSEX,PE,expiry,16.0
+expanding_chronological,6,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,8,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,8,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+expanding_chronological,8,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,8,clock_only,NIFTY,PE,expiry,"[173, 111, 178]"
+expanding_chronological,8,clock_only,NIFTY,PE,preexpiry,"[150, 146, 161]"
+expanding_chronological,8,clock_only,SENSEX,CE,expiry,"[176, 178, 179]"
+expanding_chronological,8,clock_only,SENSEX,CE,preexpiry,"[131, 123, 178]"
+expanding_chronological,8,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,8,clock_only,SENSEX,PE,preexpiry,"[150, 165, 131]"
+expanding_chronological,8,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,8,inventory_only,NIFTY,CE,expiry,28.0
+expanding_chronological,8,inventory_only,NIFTY,CE,preexpiry,6.5
+expanding_chronological,8,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,8,inventory_only,NIFTY,PE,preexpiry,7.0
+expanding_chronological,8,inventory_only,SENSEX,CE,expiry,8.0
+expanding_chronological,8,inventory_only,SENSEX,CE,preexpiry,4.5
+expanding_chronological,8,inventory_only,SENSEX,PE,expiry,17.0
+expanding_chronological,8,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,9,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,9,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+expanding_chronological,9,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,9,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+expanding_chronological,9,clock_only,NIFTY,PE,preexpiry,"[153, 150, 146]"
+expanding_chronological,9,clock_only,SENSEX,CE,expiry,"[176, 178, 179]"
+expanding_chronological,9,clock_only,SENSEX,CE,preexpiry,"[131, 123, 178]"
+expanding_chronological,9,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,9,clock_only,SENSEX,PE,preexpiry,"[150, 165, 131]"
+expanding_chronological,9,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,9,inventory_only,NIFTY,CE,expiry,27.0
+expanding_chronological,9,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,9,inventory_only,NIFTY,PE,expiry,17.5
+expanding_chronological,9,inventory_only,NIFTY,PE,preexpiry,7.5
+expanding_chronological,9,inventory_only,SENSEX,CE,expiry,8.0
+expanding_chronological,9,inventory_only,SENSEX,CE,preexpiry,5.0
+expanding_chronological,9,inventory_only,SENSEX,PE,expiry,16.0
+expanding_chronological,9,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,10,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,10,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,10,clock_only,NIFTY,CE,preexpiry,"[125, 118, 146]"
+expanding_chronological,10,clock_only,NIFTY,PE,expiry,"[111, 178, 173]"
+expanding_chronological,10,clock_only,NIFTY,PE,preexpiry,"[132, 138, 153]"
+expanding_chronological,10,clock_only,SENSEX,CE,expiry,"[176, 178, 111]"
+expanding_chronological,10,clock_only,SENSEX,CE,preexpiry,"[131, 123, 178]"
+expanding_chronological,10,clock_only,SENSEX,PE,expiry,"[176, 178, 175]"
+expanding_chronological,10,clock_only,SENSEX,PE,preexpiry,"[150, 165, 131]"
+expanding_chronological,10,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,10,inventory_only,NIFTY,CE,expiry,27.0
+expanding_chronological,10,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,10,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,10,inventory_only,NIFTY,PE,preexpiry,6.0
+expanding_chronological,10,inventory_only,SENSEX,CE,expiry,9.0
+expanding_chronological,10,inventory_only,SENSEX,CE,preexpiry,5.0
+expanding_chronological,10,inventory_only,SENSEX,PE,expiry,15.0
+expanding_chronological,10,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,11,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,11,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,11,clock_only,NIFTY,CE,preexpiry,"[177, 125, 146]"
+expanding_chronological,11,clock_only,NIFTY,PE,expiry,"[111, 178, 173]"
+expanding_chronological,11,clock_only,NIFTY,PE,preexpiry,"[177, 132, 138]"
+expanding_chronological,11,clock_only,SENSEX,CE,expiry,"[176, 178, 111]"
+expanding_chronological,11,clock_only,SENSEX,CE,preexpiry,"[131, 123, 178]"
+expanding_chronological,11,clock_only,SENSEX,PE,expiry,"[176, 178, 175]"
+expanding_chronological,11,clock_only,SENSEX,PE,preexpiry,"[150, 165, 131]"
+expanding_chronological,11,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,11,inventory_only,NIFTY,CE,expiry,27.0
+expanding_chronological,11,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,11,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,11,inventory_only,NIFTY,PE,preexpiry,6.0
+expanding_chronological,11,inventory_only,SENSEX,CE,expiry,9.0
+expanding_chronological,11,inventory_only,SENSEX,CE,preexpiry,5.0
+expanding_chronological,11,inventory_only,SENSEX,PE,expiry,15.0
+expanding_chronological,11,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,13,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,13,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,13,clock_only,NIFTY,CE,preexpiry,"[177, 125, 118]"
+expanding_chronological,13,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+expanding_chronological,13,clock_only,NIFTY,PE,preexpiry,"[177, 132, 138]"
+expanding_chronological,13,clock_only,SENSEX,CE,expiry,"[176, 111, 178]"
+expanding_chronological,13,clock_only,SENSEX,CE,preexpiry,"[131, 123, 165]"
+expanding_chronological,13,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,13,clock_only,SENSEX,PE,preexpiry,"[165, 150, 144]"
+expanding_chronological,13,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,13,inventory_only,NIFTY,CE,expiry,28.0
+expanding_chronological,13,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,13,inventory_only,NIFTY,PE,expiry,18.0
+expanding_chronological,13,inventory_only,NIFTY,PE,preexpiry,6.5
+expanding_chronological,13,inventory_only,SENSEX,CE,expiry,10.0
+expanding_chronological,13,inventory_only,SENSEX,CE,preexpiry,5.0
+expanding_chronological,13,inventory_only,SENSEX,PE,expiry,15.0
+expanding_chronological,13,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,14,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,14,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,14,clock_only,NIFTY,CE,preexpiry,"[177, 125, 122]"
+expanding_chronological,14,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+expanding_chronological,14,clock_only,NIFTY,PE,preexpiry,"[177, 132, 138]"
+expanding_chronological,14,clock_only,SENSEX,CE,expiry,"[176, 111, 178]"
+expanding_chronological,14,clock_only,SENSEX,CE,preexpiry,"[145, 124, 131]"
+expanding_chronological,14,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,14,clock_only,SENSEX,PE,preexpiry,"[165, 150, 144]"
+expanding_chronological,14,inventory_only,ALL,ALL,ALL,13.0
+expanding_chronological,14,inventory_only,NIFTY,CE,expiry,29.0
+expanding_chronological,14,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,14,inventory_only,NIFTY,PE,expiry,18.0
+expanding_chronological,14,inventory_only,NIFTY,PE,preexpiry,6.5
+expanding_chronological,14,inventory_only,SENSEX,CE,expiry,10.0
+expanding_chronological,14,inventory_only,SENSEX,CE,preexpiry,4.5
+expanding_chronological,14,inventory_only,SENSEX,PE,expiry,15.0
+expanding_chronological,14,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,15,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,15,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,15,clock_only,NIFTY,CE,preexpiry,"[125, 177, 122]"
+expanding_chronological,15,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+expanding_chronological,15,clock_only,NIFTY,PE,preexpiry,"[177, 132, 138]"
+expanding_chronological,15,clock_only,SENSEX,CE,expiry,"[176, 111, 179]"
+expanding_chronological,15,clock_only,SENSEX,CE,preexpiry,"[151, 145, 150]"
+expanding_chronological,15,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,15,clock_only,SENSEX,PE,preexpiry,"[165, 150, 144]"
+expanding_chronological,15,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,15,inventory_only,NIFTY,CE,expiry,29.0
+expanding_chronological,15,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,15,inventory_only,NIFTY,PE,expiry,18.0
+expanding_chronological,15,inventory_only,NIFTY,PE,preexpiry,6.0
+expanding_chronological,15,inventory_only,SENSEX,CE,expiry,10.0
+expanding_chronological,15,inventory_only,SENSEX,CE,preexpiry,4.0
+expanding_chronological,15,inventory_only,SENSEX,PE,expiry,14.0
+expanding_chronological,15,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,16,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,16,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,16,clock_only,NIFTY,CE,preexpiry,"[125, 177, 164]"
+expanding_chronological,16,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+expanding_chronological,16,clock_only,NIFTY,PE,preexpiry,"[177, 169, 144]"
+expanding_chronological,16,clock_only,SENSEX,CE,expiry,"[111, 176, 179]"
+expanding_chronological,16,clock_only,SENSEX,CE,preexpiry,"[151, 145, 123]"
+expanding_chronological,16,clock_only,SENSEX,PE,expiry,"[176, 179, 178]"
+expanding_chronological,16,clock_only,SENSEX,PE,preexpiry,"[165, 150, 144]"
+expanding_chronological,16,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,16,inventory_only,NIFTY,CE,expiry,28.0
+expanding_chronological,16,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,16,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,16,inventory_only,NIFTY,PE,preexpiry,6.0
+expanding_chronological,16,inventory_only,SENSEX,CE,expiry,11.0
+expanding_chronological,16,inventory_only,SENSEX,CE,preexpiry,4.0
+expanding_chronological,16,inventory_only,SENSEX,PE,expiry,13.0
+expanding_chronological,16,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,17,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,17,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,17,clock_only,NIFTY,CE,preexpiry,"[125, 113, 177]"
+expanding_chronological,17,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+expanding_chronological,17,clock_only,NIFTY,PE,preexpiry,"[177, 169, 144]"
+expanding_chronological,17,clock_only,SENSEX,CE,expiry,"[111, 176, 179]"
+expanding_chronological,17,clock_only,SENSEX,CE,preexpiry,"[165, 151, 145]"
+expanding_chronological,17,clock_only,SENSEX,PE,expiry,"[176, 111, 179]"
+expanding_chronological,17,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+expanding_chronological,17,inventory_only,ALL,ALL,ALL,11.0
+expanding_chronological,17,inventory_only,NIFTY,CE,expiry,27.0
+expanding_chronological,17,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,17,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,17,inventory_only,NIFTY,PE,preexpiry,5.0
+expanding_chronological,17,inventory_only,SENSEX,CE,expiry,11.0
+expanding_chronological,17,inventory_only,SENSEX,CE,preexpiry,4.0
+expanding_chronological,17,inventory_only,SENSEX,PE,expiry,13.0
+expanding_chronological,17,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,22,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+expanding_chronological,22,clock_only,NIFTY,CE,expiry,"[173, 111, 178]"
+expanding_chronological,22,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,22,clock_only,NIFTY,PE,expiry,"[173, 111, 176]"
+expanding_chronological,22,clock_only,NIFTY,PE,preexpiry,"[150, 146, 161]"
+expanding_chronological,22,clock_only,SENSEX,CE,expiry,"[180, 179, 176]"
+expanding_chronological,22,clock_only,SENSEX,CE,preexpiry,"[123, 125, 124]"
+expanding_chronological,22,clock_only,SENSEX,PE,expiry,"[176, 177, 182]"
+expanding_chronological,22,clock_only,SENSEX,PE,preexpiry,"[165, 147, 150]"
+expanding_chronological,22,inventory_only,ALL,ALL,ALL,11.0
+expanding_chronological,22,inventory_only,NIFTY,CE,expiry,22.0
+expanding_chronological,22,inventory_only,NIFTY,CE,preexpiry,6.0
+expanding_chronological,22,inventory_only,NIFTY,PE,expiry,20.0
+expanding_chronological,22,inventory_only,NIFTY,PE,preexpiry,7.0
+expanding_chronological,22,inventory_only,SENSEX,CE,expiry,6.0
+expanding_chronological,22,inventory_only,SENSEX,CE,preexpiry,3.0
+expanding_chronological,22,inventory_only,SENSEX,PE,expiry,17.0
+expanding_chronological,22,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,23,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+expanding_chronological,23,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+expanding_chronological,23,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,23,clock_only,NIFTY,PE,expiry,"[173, 178, 111]"
+expanding_chronological,23,clock_only,NIFTY,PE,preexpiry,"[150, 146, 161]"
+expanding_chronological,23,clock_only,SENSEX,CE,expiry,"[176, 179, 180]"
+expanding_chronological,23,clock_only,SENSEX,CE,preexpiry,"[123, 125, 145]"
+expanding_chronological,23,clock_only,SENSEX,PE,expiry,"[176, 175, 179]"
+expanding_chronological,23,clock_only,SENSEX,PE,preexpiry,"[165, 148, 125]"
+expanding_chronological,23,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,23,inventory_only,NIFTY,CE,expiry,25.0
+expanding_chronological,23,inventory_only,NIFTY,CE,preexpiry,6.5
+expanding_chronological,23,inventory_only,NIFTY,PE,expiry,20.0
+expanding_chronological,23,inventory_only,NIFTY,PE,preexpiry,7.0
+expanding_chronological,23,inventory_only,SENSEX,CE,expiry,7.0
+expanding_chronological,23,inventory_only,SENSEX,CE,preexpiry,3.0
+expanding_chronological,23,inventory_only,SENSEX,PE,expiry,16.0
+expanding_chronological,23,inventory_only,SENSEX,PE,preexpiry,3.5
+expanding_chronological,24,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+expanding_chronological,24,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+expanding_chronological,24,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,24,clock_only,NIFTY,PE,expiry,"[173, 111, 178]"
+expanding_chronological,24,clock_only,NIFTY,PE,preexpiry,"[150, 146, 161]"
+expanding_chronological,24,clock_only,SENSEX,CE,expiry,"[176, 179, 178]"
+expanding_chronological,24,clock_only,SENSEX,CE,preexpiry,"[123, 125, 145]"
+expanding_chronological,24,clock_only,SENSEX,PE,expiry,"[176, 179, 175]"
+expanding_chronological,24,clock_only,SENSEX,PE,preexpiry,"[165, 148, 125]"
+expanding_chronological,24,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,24,inventory_only,NIFTY,CE,expiry,28.0
+expanding_chronological,24,inventory_only,NIFTY,CE,preexpiry,6.5
+expanding_chronological,24,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,24,inventory_only,NIFTY,PE,preexpiry,7.0
+expanding_chronological,24,inventory_only,SENSEX,CE,expiry,8.0
+expanding_chronological,24,inventory_only,SENSEX,CE,preexpiry,3.0
+expanding_chronological,24,inventory_only,SENSEX,PE,expiry,16.0
+expanding_chronological,24,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,25,clock_only,ALL,ALL,ALL,"[111, 176, 178]"
+expanding_chronological,25,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+expanding_chronological,25,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,25,clock_only,NIFTY,PE,expiry,"[173, 111, 178]"
+expanding_chronological,25,clock_only,NIFTY,PE,preexpiry,"[150, 146, 161]"
+expanding_chronological,25,clock_only,SENSEX,CE,expiry,"[176, 179, 178]"
+expanding_chronological,25,clock_only,SENSEX,CE,preexpiry,"[131, 123, 125]"
+expanding_chronological,25,clock_only,SENSEX,PE,expiry,"[176, 179, 175]"
+expanding_chronological,25,clock_only,SENSEX,PE,preexpiry,"[150, 165, 148]"
+expanding_chronological,25,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,25,inventory_only,NIFTY,CE,expiry,28.0
+expanding_chronological,25,inventory_only,NIFTY,CE,preexpiry,6.5
+expanding_chronological,25,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,25,inventory_only,NIFTY,PE,preexpiry,7.0
+expanding_chronological,25,inventory_only,SENSEX,CE,expiry,8.0
+expanding_chronological,25,inventory_only,SENSEX,CE,preexpiry,4.0
+expanding_chronological,25,inventory_only,SENSEX,PE,expiry,16.0
+expanding_chronological,25,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,26,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,26,clock_only,NIFTY,CE,expiry,"[173, 178, 111]"
+expanding_chronological,26,clock_only,NIFTY,CE,preexpiry,"[125, 146, 118]"
+expanding_chronological,26,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+expanding_chronological,26,clock_only,NIFTY,PE,preexpiry,"[153, 150, 146]"
+expanding_chronological,26,clock_only,SENSEX,CE,expiry,"[176, 178, 179]"
+expanding_chronological,26,clock_only,SENSEX,CE,preexpiry,"[131, 123, 178]"
+expanding_chronological,26,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,26,clock_only,SENSEX,PE,preexpiry,"[150, 165, 131]"
+expanding_chronological,26,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,26,inventory_only,NIFTY,CE,expiry,27.0
+expanding_chronological,26,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,26,inventory_only,NIFTY,PE,expiry,17.5
+expanding_chronological,26,inventory_only,NIFTY,PE,preexpiry,7.5
+expanding_chronological,26,inventory_only,SENSEX,CE,expiry,8.0
+expanding_chronological,26,inventory_only,SENSEX,CE,preexpiry,4.5
+expanding_chronological,26,inventory_only,SENSEX,PE,expiry,17.0
+expanding_chronological,26,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,27,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,27,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,27,clock_only,NIFTY,CE,preexpiry,"[125, 118, 146]"
+expanding_chronological,27,clock_only,NIFTY,PE,expiry,"[111, 178, 173]"
+expanding_chronological,27,clock_only,NIFTY,PE,preexpiry,"[132, 138, 153]"
+expanding_chronological,27,clock_only,SENSEX,CE,expiry,"[176, 178, 179]"
+expanding_chronological,27,clock_only,SENSEX,CE,preexpiry,"[131, 123, 178]"
+expanding_chronological,27,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,27,clock_only,SENSEX,PE,preexpiry,"[150, 165, 131]"
+expanding_chronological,27,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,27,inventory_only,NIFTY,CE,expiry,27.0
+expanding_chronological,27,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,27,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,27,inventory_only,NIFTY,PE,preexpiry,6.0
+expanding_chronological,27,inventory_only,SENSEX,CE,expiry,8.0
+expanding_chronological,27,inventory_only,SENSEX,CE,preexpiry,5.0
+expanding_chronological,27,inventory_only,SENSEX,PE,expiry,16.0
+expanding_chronological,27,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,28,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,28,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,28,clock_only,NIFTY,CE,preexpiry,"[177, 125, 118]"
+expanding_chronological,28,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+expanding_chronological,28,clock_only,NIFTY,PE,preexpiry,"[177, 132, 138]"
+expanding_chronological,28,clock_only,SENSEX,CE,expiry,"[176, 178, 111]"
+expanding_chronological,28,clock_only,SENSEX,CE,preexpiry,"[131, 123, 178]"
+expanding_chronological,28,clock_only,SENSEX,PE,expiry,"[176, 178, 175]"
+expanding_chronological,28,clock_only,SENSEX,PE,preexpiry,"[150, 165, 131]"
+expanding_chronological,28,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,28,inventory_only,NIFTY,CE,expiry,28.0
+expanding_chronological,28,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,28,inventory_only,NIFTY,PE,expiry,18.0
+expanding_chronological,28,inventory_only,NIFTY,PE,preexpiry,6.5
+expanding_chronological,28,inventory_only,SENSEX,CE,expiry,9.0
+expanding_chronological,28,inventory_only,SENSEX,CE,preexpiry,5.0
+expanding_chronological,28,inventory_only,SENSEX,PE,expiry,15.0
+expanding_chronological,28,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,29,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,29,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,29,clock_only,NIFTY,CE,preexpiry,"[177, 125, 118]"
+expanding_chronological,29,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+expanding_chronological,29,clock_only,NIFTY,PE,preexpiry,"[177, 132, 138]"
+expanding_chronological,29,clock_only,SENSEX,CE,expiry,"[176, 178, 111]"
+expanding_chronological,29,clock_only,SENSEX,CE,preexpiry,"[131, 123, 124]"
+expanding_chronological,29,clock_only,SENSEX,PE,expiry,"[176, 178, 175]"
+expanding_chronological,29,clock_only,SENSEX,PE,preexpiry,"[150, 165, 131]"
+expanding_chronological,29,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,29,inventory_only,NIFTY,CE,expiry,28.0
+expanding_chronological,29,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,29,inventory_only,NIFTY,PE,expiry,18.0
+expanding_chronological,29,inventory_only,NIFTY,PE,preexpiry,6.5
+expanding_chronological,29,inventory_only,SENSEX,CE,expiry,10.0
+expanding_chronological,29,inventory_only,SENSEX,CE,preexpiry,5.0
+expanding_chronological,29,inventory_only,SENSEX,PE,expiry,15.0
+expanding_chronological,29,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,30,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,30,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,30,clock_only,NIFTY,CE,preexpiry,"[177, 125, 122]"
+expanding_chronological,30,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+expanding_chronological,30,clock_only,NIFTY,PE,preexpiry,"[177, 132, 138]"
+expanding_chronological,30,clock_only,SENSEX,CE,expiry,"[176, 111, 178]"
+expanding_chronological,30,clock_only,SENSEX,CE,preexpiry,"[131, 123, 165]"
+expanding_chronological,30,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,30,clock_only,SENSEX,PE,preexpiry,"[165, 150, 144]"
+expanding_chronological,30,inventory_only,ALL,ALL,ALL,13.0
+expanding_chronological,30,inventory_only,NIFTY,CE,expiry,29.0
+expanding_chronological,30,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,30,inventory_only,NIFTY,PE,expiry,18.0
+expanding_chronological,30,inventory_only,NIFTY,PE,preexpiry,6.5
+expanding_chronological,30,inventory_only,SENSEX,CE,expiry,10.0
+expanding_chronological,30,inventory_only,SENSEX,CE,preexpiry,5.0
+expanding_chronological,30,inventory_only,SENSEX,PE,expiry,15.0
+expanding_chronological,30,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,31,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,31,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,31,clock_only,NIFTY,CE,preexpiry,"[125, 177, 122]"
+expanding_chronological,31,clock_only,NIFTY,PE,expiry,"[111, 178, 183]"
+expanding_chronological,31,clock_only,NIFTY,PE,preexpiry,"[177, 132, 138]"
+expanding_chronological,31,clock_only,SENSEX,CE,expiry,"[176, 111, 178]"
+expanding_chronological,31,clock_only,SENSEX,CE,preexpiry,"[145, 124, 131]"
+expanding_chronological,31,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,31,clock_only,SENSEX,PE,preexpiry,"[165, 150, 144]"
+expanding_chronological,31,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,31,inventory_only,NIFTY,CE,expiry,29.0
+expanding_chronological,31,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,31,inventory_only,NIFTY,PE,expiry,18.0
+expanding_chronological,31,inventory_only,NIFTY,PE,preexpiry,6.0
+expanding_chronological,31,inventory_only,SENSEX,CE,expiry,10.0
+expanding_chronological,31,inventory_only,SENSEX,CE,preexpiry,4.5
+expanding_chronological,31,inventory_only,SENSEX,PE,expiry,15.0
+expanding_chronological,31,inventory_only,SENSEX,PE,preexpiry,3.0
+expanding_chronological,32,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,32,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,32,clock_only,NIFTY,CE,preexpiry,"[125, 177, 164]"
+expanding_chronological,32,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+expanding_chronological,32,clock_only,NIFTY,PE,preexpiry,"[177, 169, 144]"
+expanding_chronological,32,clock_only,SENSEX,CE,expiry,"[176, 111, 179]"
+expanding_chronological,32,clock_only,SENSEX,CE,preexpiry,"[151, 145, 150]"
+expanding_chronological,32,clock_only,SENSEX,PE,expiry,"[176, 178, 179]"
+expanding_chronological,32,clock_only,SENSEX,PE,preexpiry,"[165, 150, 144]"
+expanding_chronological,32,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,32,inventory_only,NIFTY,CE,expiry,28.0
+expanding_chronological,32,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,32,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,32,inventory_only,NIFTY,PE,preexpiry,6.0
+expanding_chronological,32,inventory_only,SENSEX,CE,expiry,10.0
+expanding_chronological,32,inventory_only,SENSEX,CE,preexpiry,4.0
+expanding_chronological,32,inventory_only,SENSEX,PE,expiry,14.0
+expanding_chronological,32,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,33,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,33,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,33,clock_only,NIFTY,CE,preexpiry,"[125, 113, 177]"
+expanding_chronological,33,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+expanding_chronological,33,clock_only,NIFTY,PE,preexpiry,"[177, 169, 144]"
+expanding_chronological,33,clock_only,SENSEX,CE,expiry,"[111, 176, 179]"
+expanding_chronological,33,clock_only,SENSEX,CE,preexpiry,"[151, 145, 123]"
+expanding_chronological,33,clock_only,SENSEX,PE,expiry,"[176, 179, 178]"
+expanding_chronological,33,clock_only,SENSEX,PE,preexpiry,"[165, 150, 144]"
+expanding_chronological,33,inventory_only,ALL,ALL,ALL,12.0
+expanding_chronological,33,inventory_only,NIFTY,CE,expiry,27.0
+expanding_chronological,33,inventory_only,NIFTY,CE,preexpiry,7.0
+expanding_chronological,33,inventory_only,NIFTY,PE,expiry,19.0
+expanding_chronological,33,inventory_only,NIFTY,PE,preexpiry,5.0
+expanding_chronological,33,inventory_only,SENSEX,CE,expiry,11.0
+expanding_chronological,33,inventory_only,SENSEX,CE,preexpiry,4.0
+expanding_chronological,33,inventory_only,SENSEX,PE,expiry,13.0
+expanding_chronological,33,inventory_only,SENSEX,PE,preexpiry,4.0
+expanding_chronological,34,clock_only,ALL,ALL,ALL,"[111, 178, 176]"
+expanding_chronological,34,clock_only,NIFTY,CE,expiry,"[178, 173, 111]"
+expanding_chronological,34,clock_only,NIFTY,CE,preexpiry,"[125, 118, 113]"
+expanding_chronological,34,clock_only,NIFTY,PE,expiry,"[111, 173, 178]"
+expanding_chronological,34,clock_only,NIFTY,PE,preexpiry,"[177, 114, 115]"
+expanding_chronological,34,clock_only,SENSEX,CE,expiry,"[111, 176, 179]"
+expanding_chronological,34,clock_only,SENSEX,CE,preexpiry,"[165, 151, 145]"
+expanding_chronological,34,clock_only,SENSEX,PE,expiry,"[176, 111, 179]"
+expanding_chronological,34,clock_only,SENSEX,PE,preexpiry,"[165, 156, 150]"
+expanding_chronological,34,inventory_only,ALL,ALL,ALL,11.0
+expanding_chronological,34,inventory_only,NIFTY,CE,expiry,27.0
+expanding_chronological,34,inventory_only,NIFTY,CE,preexpiry,6.0
+expanding_chronological,34,inventory_only,NIFTY,PE,expiry,18.0
+expanding_chronological,34,inventory_only,NIFTY,PE,preexpiry,5.0
+expanding_chronological,34,inventory_only,SENSEX,CE,expiry,11.0
+expanding_chronological,34,inventory_only,SENSEX,CE,preexpiry,4.0
+expanding_chronological,34,inventory_only,SENSEX,PE,expiry,13.0
+expanding_chronological,34,inventory_only,SENSEX,PE,preexpiry,4.0
