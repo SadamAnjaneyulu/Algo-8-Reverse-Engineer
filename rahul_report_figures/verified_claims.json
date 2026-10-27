@@ -1,0 +1,242 @@
+{
+  "counts": {
+    "fill_records": 41421,
+    "parent_orders": 39874,
+    "cycles": 35,
+    "primary_cycles": 32,
+    "atomic_books": 21882,
+    "index_days": 170,
+    "index_bars": 63678,
+    "option_contract_days": 3243,
+    "trade_first": "2026-06-23",
+    "trade_last": "2026-10-22"
+  },
+  "claims": [
+    {
+      "id": "R01",
+      "claim": "Verified evidence-base counts",
+      "sources": "S07 S08 S18",
+      "definition": "Direct stored-file and canonical-ledger counts; no synthetic history."
+    },
+    {
+      "id": "R02",
+      "claim": "31/32 initial paired starts near 09:16; 31 ordinary ATM proxy matches",
+      "sources": "S02 S09",
+      "definition": "Paired start, not first exposure; completed-close proxy does not identify the original feed/query."
+    },
+    {
+      "id": "R03",
+      "claim": "Common four-role opening size: NIFTY 195; SENSEX 60",
+      "sources": "S02 S09",
+      "definition": "Observed 09:17 role quantities; exceptions retained, not verified capital or exchange lot sizing."
+    },
+    {
+      "id": "R04",
+      "claim": "17 recurring windows; 529/544 joint structural matches",
+      "sources": "S02 S10",
+      "definition": "One-to-one join of retention, four-role opening quantities, growth and frozen-state Greek changes."
+    },
+    {
+      "id": "R05",
+      "claim": "New-short request granularity: 65 NIFTY / 20 SENSEX",
+      "sources": "S02 S03",
+      "definition": "Pre-expiry request sizes: 2022/2032 and 2375/2375; not a recovered size formula."
+    },
+    {
+      "id": "R06",
+      "claim": "Latest opening module: 28/32 shorts, 17/32 first wings, 19/32 net roles",
+      "sources": "S05",
+      "definition": "Model 28; true first executed wing pair, gross opening short pair and 09:17 net quantities are different targets."
+    },
+    {
+      "id": "R07",
+      "claim": "Earlier selected controller opening contradiction: 0/32 wing pairs and short quantity pairs",
+      "sources": "S04 S05",
+      "definition": "Candidate 13845; preserved legacy first-three-minute test and child-second re-audit, not rewritten by model 28."
+    },
+    {
+      "id": "R08",
+      "claim": "13,864 definitions; earlier later F1 23.3% vs 18.2% baseline",
+      "sources": "S04",
+      "definition": "15 already-inspected September\u2013October cycles; four-action event macro F1."
+    },
+    {
+      "id": "R09",
+      "claim": "Separated model later F1 24.3%",
+      "sources": "S05",
+      "definition": "14 initialized later cycles; safe model28 and pending-aware33 have the same minute F1; different cohort/module from R08."
+    },
+    {
+      "id": "R10",
+      "claim": "3,512 intermediate / 326 final episodes in initialized cycles",
+      "sources": "S06",
+      "definition": "32 initialized cycles; adjacent covers within 120s grouped unless opening/date/stratum breaks the episode."
+    },
+    {
+      "id": "R11",
+      "claim": "Exit tests: premium-loss50 P36.4/R9.8; drawdown P18.0/R16.6",
+      "sources": "S06",
+      "definition": "24 expanding chronological test cycles; 2200 intermediate starts; same-contract matching within \u00b1120s; full active-inventory risk set."
+    },
+    {
+      "id": "R12",
+      "claim": "49/59 equal-quantity reversals; distinct closing/opening parents",
+      "sources": "S05 S13",
+      "definition": "Immutable conservative motifs; opposite size <=closed quantity is a cohort restriction, not independent evidence."
+    },
+    {
+      "id": "R13",
+      "claim": "Strict bounded non-reversal controls: 9/14; difference CI crosses zero",
+      "sources": "S13",
+      "definition": "Unadjusted cycle bootstrap difference from saved table; weak exact support (one matched case/control)."
+    },
+    {
+      "id": "R14",
+      "claim": "Universal duplicate variant: 559 predictions, 0/59 hits",
+      "sources": "S05 S13",
+      "definition": "Model32; exact contract and close time within \u00b1120s. Shape compatibility does not identify activation."
+    },
+    {
+      "id": "R15",
+      "claim": "Late final closures: 9/10 at 15:14; 27/29 by 15:27:33",
+      "sources": "S02 S12",
+      "definition": "Post-3-Aug late selected closures vs all reconciled final short-book closures; not all legs or every exit."
+    },
+    {
+      "id": "R16",
+      "claim": "4% carry and 1% expiry capital stops are supplied wording",
+      "sources": "S02 S03",
+      "definition": "Denominator, scope, reset, queue handling, NAV and margin remain unidentified."
+    },
+    {
+      "id": "R17",
+      "claim": "Primary gross realised / unrealised / combined economics",
+      "sources": "S01 S14",
+      "definition": "32 initialized cycles; canonical realised plus quote-marked residuals, not verified liquidation or NAV."
+    },
+    {
+      "id": "R18",
+      "claim": "Four fixed cost-scenario nets",
+      "sources": "S01 S15 S19",
+      "definition": "Premium-turnover percentage plus per-parent fee plus per-unit allowance; estimated rather than authenticated charges."
+    },
+    {
+      "id": "R19",
+      "claim": "Largest-winner exclusion leaves \u20b91721.58; top-two exclusion \u2212\u20b9423305.62",
+      "sources": "S01 S15",
+      "definition": "Primary32 conservative marked net; order determined by cycle net, not traded fills."
+    },
+    {
+      "id": "R20",
+      "claim": "Largest winner: NIFTY29Sep, no expiry fills, unrealised \u20b9540801.92",
+      "sources": "S01 S07 S14",
+      "definition": "Known initialization but residual paper valuation; source book does not certify post-export holdings or settlement."
+    },
+    {
+      "id": "R21",
+      "claim": "Short CE +\u20b936.185lakh; short PE \u2212\u20b98.874lakh; long CE \u2212\u20b94.854lakh; long PE \u2212\u20b93.514lakh",
+      "sources": "S14",
+      "definition": "Primary32 pooled gross direction/right attribution, including residual marks; not original allocation ownership."
+    },
+    {
+      "id": "R22",
+      "claim": "Forward/time/own-IV/bridge/residual decomposition",
+      "sources": "S16 S19",
+      "definition": "Primary model variant-valid intervals; own-option IV, explicit fit failures and residual; model sensitivities use common intervals separately."
+    },
+    {
+      "id": "R23",
+      "claim": "Paired benchmark intervals span zero; no defensible equal-risk benchmark",
+      "sources": "S01 S17",
+      "definition": "Conservative costs; D_common_clock vsB n25 /C n20; quoted shared cycles only, dynamic risks unequal."
+    },
+    {
+      "id": "R24",
+      "claim": "Outcome B; original controller and alpha not recovered",
+      "sources": "S01 S02",
+      "definition": "Authoritative closure; neither a proof of no alpha in all periods nor validation of the screenshot."
+    },
+    {
+      "id": "R25",
+      "claim": "252 tests and 26 exactly reproduced numeric artifacts",
+      "sources": "S18",
+      "definition": "Saved passed validation inspected; current code/artifact hashes and frozen source hashes reverified during report build. No trading searches rerun."
+    },
+    {
+      "id": "R26",
+      "claim": "Seed geometry differs from routine 2.5% premium-budget proxy",
+      "sources": "S02 S09 S11",
+      "definition": "N26/28 within100 of2000 (19 exact); S early21/22 within200 of4000, later12/12 exactly2000; routine exact vs tolerance reported separately."
+    },
+    {
+      "id": "R27",
+      "claim": "Sampled risk and mean-cycle confidence interval",
+      "sources": "S15",
+      "definition": "Primary32 conservative cycle-level sample; mean95% bootstrap includeszero, sampled intracycle drawdown not tick maximum."
+    },
+    {
+      "id": "R28",
+      "claim": "No universal whole-basket replacement every quarter hour",
+      "sources": "S02 S03 S10",
+      "definition": "Older long and short exposure necessarily retained in every recurring window; selected side reductions do not imply every contract on that side is flat."
+    }
+  ],
+  "source_hashes": {
+    "research/final_alpha_attribution/FINAL_ALPHA_ATTRIBUTION_AND_FALSIFICATION.md": "ff4a020e17b4a922448d7bb28f97cf345a02f1f46835cec66ddad71bea217a37",
+    "research/final_alpha_attribution/final_verdict.json": "bdb9dc4d3078841f5e72ba0be39438fdec9f19cf5e1080da0dd02a468f31fe2b",
+    "15a0e5e:STRONG_FINDINGS.md": "509a20ed958aa9149ca5c13aacad1b205238fddb29c25ba85711f1af529ab0f0",
+    "ALLOCATION_ENTRY_EXIT_RISK_PLAYBOOK.md": "cdb8f27d5d6a9d08b012ddf99429642e5be9d27e5a7c76f46acd49054ae1d2f0",
+    "research/outputs/playbook_book_audit.json": "732a03ccd3c0418ea370d6f3458ef0134ac2403c4bd7a3960c3f5a7fe25b02b6",
+    "research/hypothesis_controller_search/HYPOTHESIS_CONTROLLER_SEARCH.md": "ca9caa771c97f554b9406ee4803e3968fd41f7a925e39ed73489dcb759e23202",
+    "research/hypothesis_controller_search/outputs/candidate_scores.csv": "64a793cc1ed42e7b95fc57893c4ba64427177d06562a0a7c2896974939d1769b",
+    "research/hypothesis_controller_search/outputs/search_manifest.json": "5538800b6d3595b1ae7e567bcb80f2964c6f92ac5dcdadbe245f26927c96a6d8",
+    "research/policy_execution_separation/POLICY_EXECUTION_RECONSTRUCTION.md": "dcbc97350d26a2c04aaca860ed2177e787268a6c11bbfea99e6ca94aa9574383",
+    "research/policy_execution_separation/policy_vs_execution_comparison.csv": "ff8f00ccc3d7f2f0359de38c13e4fc5a0b9692e78f54822ecf70b0e773d34a8a",
+    "research/policy_execution_separation/opening_vs_prior_contradiction.csv": "d524a5092559dbecbb7898d7d284ae0151a9e95e67e6852a78acd699668e6689",
+    "research/intermediate_exit_study/INTERMEDIATE_EXIT_CONTROLLER.md": "401c32a6087f3af7e339b9ed33361431835af464e3032086b38610c251b705b7",
+    "research/intermediate_exit_study/ranked_trigger_hypotheses.csv": "87fa7ee01a4abfb798f4c400e0a906915d2e5ed5ea7bb8faeff7210d05c2b369",
+    "research/intermediate_exit_study/exit_case_ledger.csv.gz": "46d321f95e03d10c23c94e48683270301a10ba26f244beb58cd5f88c7b653020",
+    "research/outputs/playbook_fill_ledger.csv.gz": "7329b842cf433595539541616ea2ee3091cc74c372557ed1bb11fb32289844c5",
+    "research/outputs/playbook_event_book.csv.gz": "85c2a99996ffa25f1479ad4e1560d0956a41e5bd2e028a0e1f2cd30a3ff5d588",
+    "research/final_alpha_attribution/data_quality_and_coverage.csv": "defa12beb1b3a8683a7cadb412a6fdb023fcbb83ec21eec76dd9678efe79c1cc",
+    "research/final_alpha_attribution/input_audit.json": "3a566fc3b7c70ee11544f6c38f903086880271e066aefd0d82fd015417cf8dd3",
+    "research/outputs/trigger_initial_entries.csv": "680b4dcedc8b0bce16eae244da94a9c60d3737aa90496fdc160b4ce7ca8841b9",
+    "research/outputs/trigger_initial_wings.csv": "e853cb2cad72336c65f973cc0a1e84ded2797e10ca5020718ddf26798486edca",
+    "research/outputs/rulebook_opening_allocations.csv": "60dd9e0f9fdb893108240ed2658efb401ef5dc10a95784d1c2598dded80ecb46",
+    "research/outputs/playbook_allocation_windows.csv": "31bc4830a0d49ebbf3ae07f4bee1dd10fa00c6ab519523b7d1eee35fd4d782ba",
+    "research/outputs/allocation_window_sizes.csv": "d7c2ad900e2b7a9658a60729115c3eed65f02c1658a3247f19be52822ed1ebef",
+    "research/outputs/lifecycle_scheduled_window_retention.csv": "d1a31e12e566da4c8e3d7e448ad8532dfc64789617333f043b3393e311b492ca",
+    "research/outputs/building_rationale_windows.csv": "31f32922f67baa711990feb652f00c64f4370d4957596af561cf4b86c8e2de2e",
+    "research/outputs/rule_refine_hedge_evaluation.csv": "d53b4982983d83768ccac13f4ccfcdb44077d5e3c53e1cf30f4519f10dd60c6c",
+    "research/RULE_REFINEMENT_FINDINGS.md": "75ef1f3efd2f91916facdb7040cff9dfdeee0f1daa75d9510cbad37e762118de",
+    "research/outputs/rule_refine_exit_target_comparison.csv": "e6d2039abe960cc9cf218a34e4f6ec759d6a03db698957c2d279f7be5a5c1de7",
+    "research/policy_execution_separation/reversal_motif_ledger.csv": "57c3e7ec4cb2bfd732914ea72d45ac973fe300fd3a12282a8ace956b482c44cd",
+    "research/policy_execution_separation/quantity_equality_controls.csv": "5f4c0426389d4020c49fc83662c4ce1741924393a11daa4c9e44b5bfe7188d0f",
+    "research/policy_execution_separation/control_cycle_uncertainty.csv": "3a499c1e34f502c4b9d8d96867ce4da53d4804bcd940917bbb74631998c0143e",
+    "research/policy_execution_separation/reversal_pattern_coverage.csv": "5dc7d4948a00a50816fc02f1a45d68a0638907f1e197c9208079276814c8a562",
+    "research/final_alpha_attribution/cycle_economic_results.csv": "3c4f4ac9f8cfe3e47cd799eec0c80dcc1d88315a25560ad88c7603d5c8d40eef",
+    "research/final_alpha_attribution/role_economic_results.csv": "9f19cec9845dff924dd000ca6fc551d3a935139563888d26baf20e08f5ad2a32",
+    "research/final_alpha_attribution/phase_economic_results.csv": "3271d9b5c40410d5f6ff222d970a166166006e84687e0603e6065b8ff39e834c",
+    "research/final_alpha_attribution/cost_stress_results.csv": "16a360438d66ae73667fc25c01abc554c290464b3ac4ab77faa65d38d2a3538a",
+    "research/final_alpha_attribution/risk_and_drawdown_summary.csv": "d59af60a1d56495bb2351766ff1118f4fc2189f6fe757d07ed5b97e8d9a04c3a",
+    "research/final_alpha_attribution/leave_one_cycle_out.csv": "e35ce0f5977f8a3d17bea4d84dcb4b2995c39fa070f3c2e6c85f9310cbb24ddd",
+    "research/final_alpha_attribution/cycle_pnl_decomposition.csv": "3e089e0328a722361f13ae16176c350d5ff2ac47e6c32631751c33213fef5368",
+    "research/final_alpha_attribution/attribution_interval_ledger.csv.gz": "d10ff2478c13917c018c8d74a4473d04642052a564f7b9e7134d9d1015e83bc9",
+    "research/final_alpha_attribution/benchmark_comparison.csv": "a627f326438aea34b3b2232d59d9a7ff0cea06460173cce6cfc9d4fd69150089",
+    "research/final_alpha_attribution/paired_benchmark_differences.csv": "82fa9e2d4be6ce67c600a6f010ab86bcda59a4c31d9dfd881ede55edc9cf9d7e",
+    "research/final_alpha_attribution/benchmark_exposure_ratios.csv": "dff35e64f0bee27f129842e7f622e7489444f41e47ae328fe81ef167b99b24e0",
+    "research/final_alpha_attribution/validation_audit.json": "6ac6849dc2ed1200f0bca73f3b9f986f265c7c238377075eb0e2c1361310c48a",
+    "research/final_alpha_attribution/DATA_QUALITY_AUDIT.md": "6816a1e456162df2e76ea62cf6768d8176b4b96815afcb0381dff150006f550e",
+    "research/final_alpha_attribution/REGISTERED_PLAN.md": "49d621018e43d09a3d0031ca2562dd65ba0f01d0bc38425154bc2b76a3fa4a87",
+    "research/final_alpha_attribution/BENCHMARK_AND_MODEL_CLARIFICATIONS.md": "cd51275583b55c65d9b07f2c6125baf6eb20982684d0dce9dea22118e1033cc6",
+    "research/intermediate_exit_study/REGISTERED_PLAN.md": "ca06281ea3de88d7691f72e6a383ae5d8b1e886b4ca4f3d9085292860ec3cc1d",
+    "research/final_alpha_attribution/management_markout_summary.csv": "cef375aefa732c12e2fe92dca604bdd9c469b1d8626543a04be2aa91a4aa58a4",
+    "research/final_alpha_attribution/flow_and_holding_attribution.csv": "83f917a23737669771fb019ffb30591b639b8aa7ba1c52063014ff19cc22e7ed",
+    "research/final_alpha_attribution/attribution_counterexamples.csv": "35216a630fd8e71c4a71b0034ae3c5c36ca166eba08810c982d42a4f2b30bdb8"
+  },
+  "research_validation": {
+    "tests": 252,
+    "numeric_artifacts": 26,
+    "source_hashes_verified": 6674
+  }
+}
