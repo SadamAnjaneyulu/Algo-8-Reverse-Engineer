@@ -1,0 +1,17 @@
+{
+  "fills": 41421,
+  "parents": 39874,
+  "cycles": 35,
+  "sessions": 65,
+  "atomic_seconds": 21882,
+  "cached_minute_quantity_checks": 24860,
+  "maximum_reverse_tie_realized_difference": 822.0694444444445,
+  "independent_minute_pnl_checks": 25565,
+  "maximum_legacy_pnl_difference": 4.3655745685100555e-11,
+  "preceding_quote_equity_before_available": 21460,
+  "preceding_quote_equity_after_available": 21459,
+  "greek_before_available": 20539,
+  "greek_after_available": 20546,
+  "raw_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "note": "Independent pooled-cost accounting; quotes/Greeks are preceding-candle estimates, not executable NAV, broker margin or original allocation ownership. No settlement is invented."
+}
