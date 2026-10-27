@@ -1,0 +1,38 @@
+cycle_id,index,expiry_date,counterexample,value,description
+0,NIFTY,2026-06-23,positive_modeled_time_negative_net,-113943.55374999992,Positive fitted time component coexists with net loss
+0,NIFTY,2026-06-23,unknown_initialization,-25535.25,"Expiry-only received start, sensitivity cohort"
+1,NIFTY,2026-06-30,positive_modeled_time_negative_net,-207331.065,Positive fitted time component coexists with net loss
+3,NIFTY,2026-07-14,positive_modeled_time_negative_net,-164872.59125,Positive fitted time component coexists with net loss
+4,NIFTY,2026-07-21,residual_book_not_settlement,-6094.508296485261,Marked endpoint includes received residual exposure
+6,NIFTY,2026-08-04,positive_modeled_time_negative_net,-164551.66125,Positive fitted time component coexists with net loss
+6,NIFTY,2026-08-04,residual_book_not_settlement,-490.2713950163398,Marked endpoint includes received residual exposure
+7,NIFTY,2026-08-11,residual_book_not_settlement,-6460.567370129868,Marked endpoint includes received residual exposure
+7,NIFTY,2026-08-11,unknown_initialization,302435.25,"Expiry-only received start, sensitivity cohort"
+8,NIFTY,2026-08-18,positive_modeled_time_negative_net,-248559.8825,Positive fitted time component coexists with net loss
+9,NIFTY,2026-08-25,positive_modeled_time_negative_net,-75584.505,Positive fitted time component coexists with net loss
+9,NIFTY,2026-08-25,short_profit_offset_by_wings_and_costs,-75584.505,Positive short-leg P&L does not establish net profitability
+10,NIFTY,2026-09-01,positive_modeled_time_negative_net,-163216.3275,Positive fitted time component coexists with net loss
+12,NIFTY,2026-09-15,unknown_initialization,445672.5,"Expiry-only received start, sensitivity cohort"
+13,NIFTY,2026-09-22,positive_modeled_time_negative_net,-204804.415,Positive fitted time component coexists with net loss
+14,NIFTY,2026-09-29,residual_book_not_settlement,540801.9201690821,Marked endpoint includes received residual exposure
+15,NIFTY,2026-10-06,residual_book_not_settlement,-68.25,Marked endpoint includes received residual exposure
+16,NIFTY,2026-10-13,positive_modeled_time_negative_net,-171227.435,Positive fitted time component coexists with net loss
+17,NIFTY,2026-10-19,positive_modeled_time_negative_net,-181884.67375,Positive fitted time component coexists with net loss
+18,SENSEX,2026-06-25,residual_book_not_settlement,-1404.571428571429,Marked endpoint includes received residual exposure
+18,SENSEX,2026-06-25,execution_cost_fragility,-32465.805000000026,Conservative positive becomes negative at adverse cost assumptions
+19,SENSEX,2026-07-02,residual_book_not_settlement,-875.409090909091,Marked endpoint includes received residual exposure
+20,SENSEX,2026-07-09,residual_book_not_settlement,-1601.451388888889,Marked endpoint includes received residual exposure
+21,SENSEX,2026-07-16,positive_modeled_time_negative_net,-170977.91999999998,Positive fitted time component coexists with net loss
+22,SENSEX,2026-07-23,residual_book_not_settlement,-900.9,Marked endpoint includes received residual exposure
+23,SENSEX,2026-07-30,residual_book_not_settlement,1135.8033694353153,Marked endpoint includes received residual exposure
+24,SENSEX,2026-08-06,positive_modeled_time_negative_net,-165676.195,Positive fitted time component coexists with net loss
+25,SENSEX,2026-08-13,positive_modeled_time_negative_net,-61936.28000000002,Positive fitted time component coexists with net loss
+25,SENSEX,2026-08-13,short_profit_offset_by_wings_and_costs,-61936.28000000002,Positive short-leg P&L does not establish net profitability
+25,SENSEX,2026-08-13,residual_book_not_settlement,-7225.421709401709,Marked endpoint includes received residual exposure
+26,SENSEX,2026-08-20,positive_modeled_time_negative_net,-218447.335,Positive fitted time component coexists with net loss
+29,SENSEX,2026-09-17,positive_modeled_time_negative_net,-83107.71,Positive fitted time component coexists with net loss
+29,SENSEX,2026-09-17,short_profit_offset_by_wings_and_costs,-83107.71,Positive short-leg P&L does not establish net profitability
+30,SENSEX,2026-09-24,positive_modeled_time_negative_net,-170293.535,Positive fitted time component coexists with net loss
+33,SENSEX,2026-10-15,positive_modeled_time_negative_net,-166561.525,Positive fitted time component coexists with net loss
+34,SENSEX,2026-10-22,positive_modeled_time_negative_net,-54896.595,Positive fitted time component coexists with net loss
+34,SENSEX,2026-10-22,short_profit_offset_by_wings_and_costs,-54896.595,Positive short-leg P&L does not establish net profitability

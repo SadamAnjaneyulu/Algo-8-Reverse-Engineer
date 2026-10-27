@@ -1,0 +1,68 @@
+{
+  "outcome": "B",
+  "plain_language_outcome": "Positive marked results under some assumptions, but no demonstrated alpha",
+  "research_closed": true,
+  "follow_up_search_authorized_by_this_report": false,
+  "best_supported_observed_measure": {
+    "primary_cohort_cycles": 32,
+    "fill_cashflow": 2065205.25,
+    "gross_realised": 1371078.5597707555,
+    "marked_unrealised": 523276.9402292447,
+    "combined_quoted_endpoint_pnl": 1894355.5,
+    "meaning": "received cash plus stored residual quote marks; not verified account return or settlement"
+  },
+  "primary_net_by_cost_scenario": {
+    "zero_diagnostic": 1894355.5,
+    "moderate": 821401.076875,
+    "conservative": 475346.6537499998,
+    "adverse_execution": -477316.84624999994
+  },
+  "all35_sensitivity_net": {
+    "zero_diagnostic": 2616928.0,
+    "moderate": 1421781.9437500003,
+    "conservative": 1024115.8875,
+    "adverse_execution": -52525.112499999785
+  },
+  "fully_flat_primary_cycles": 22,
+  "fully_flat_primary_net": {
+    "zero_diagnostic": 207230.5,
+    "moderate": -437695.95625000005,
+    "conservative": -673382.4125,
+    "adverse_execution": -1237749.4124999999
+  },
+  "defensible_equal_risk_benchmark_available": false,
+  "paired_common_clock_benchmark_available": true,
+  "benchmark_alpha_comparison": "inconclusive: risk/exposure differences and no verified ex-ante margin/NAV budget",
+  "survives_primary_leave_one_cycle_out": {
+    "zero_diagnostic": true,
+    "moderate": true,
+    "conservative": true,
+    "adverse_execution": false
+  },
+  "primary_conservative_net_without_top2_winners": -423305.62375000026,
+  "primary_conservative_top2_share_gross_winning_pnl": 0.2853519953372272,
+  "profits_concentrated_or_fragile": true,
+  "data_support_absolute_profitability": "conditional marked profitability under moderate/conservative scenarios; adverse execution scenario and fully flat subset are negative",
+  "data_support_verified_complete_account_profit": false,
+  "data_support_economic_alpha": false,
+  "conservative_mean_cycle_bootstrap95": [
+    -55260.39456933594,
+    87259.05964843747
+  ],
+  "confidence_and_coverage_limitations": [
+    "35 previously inspected cycles; 32 initialized primary cycles; no blind external validation",
+    "11 residual books overall; 10 in primary; no verified settlement or post-export positions",
+    "3 expiry-only starts excluded from primary; zero before first received fill remains an assumption",
+    "Quote marks and minute sampling, sparse/zero-volume bars and incomplete received-contract chain",
+    "Transaction-cost/slippage scenarios are estimates; authenticated charges, account NAV and margin absent",
+    "Own-IV Shapley attribution is model-dependent and descriptive, with unfitted residuals",
+    "Paired benchmarks share a clock but not a defensible equal dynamic risk budget"
+  ],
+  "reasons_no_alpha": [
+    "Positive cash/premium/theta is not alpha",
+    "P&L is sensitive to costs, endpoint/residual treatment and exceptional cycles",
+    "No persistent advantage is established at comparable risk",
+    "Original intermediate decisions remain unidentified; economic test does not depend on recovering them"
+  ],
+  "stopping_decision": "Deliver final report and reproduction checks; no further controller, threshold or indicator bank"
+}
