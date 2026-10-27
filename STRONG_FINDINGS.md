@@ -1,6 +1,7 @@
 # Algo 8 — cumulative strong findings
 
-**Updated:** 27 October 2026 · **Version:** 1 · **Branch:** `research/strong-findings`  
+**Updated:** 27 October 2026 · **Version:** 1 · **Branch:** `research/strong-findings`
+
 **Evidence snapshot:** research/data inherited from commit `60427b2`.
 
 This is the single cumulative reference for strong findings. Preserve its finding
