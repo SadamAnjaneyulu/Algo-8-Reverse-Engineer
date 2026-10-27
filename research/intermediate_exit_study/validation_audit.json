@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "repository_tests": 234,
+  "new_study_tests": 17,
+  "original_motifs_preserved": 59,
+  "absent_retained_preserved": [
+    32,
+    27
+  ],
+  "all_original_input_hashes_unchanged": true,
+  "selected_model28_configuration_unchanged": true,
+  "earlier_tracked_outputs_unchanged": true,
+  "original_buy_closing_children": 11716,
+  "atomic_covers": 8197,
+  "reduction_episodes": 4251,
+  "strict_pre_event_inventory_checks": 208885,
+  "completed_market_mark_checks": 208885,
+  "whole_cycle_book_cash_reconciliations": 35,
+  "loco_cycles": 32,
+  "chronological_test_cycles": 24,
+  "baseline_prefix_replays": 8,
+  "parameter_search": false,
+  "registered_hypotheses": 12,
+  "qualified_general_triggers": 0,
+  "inference": "software/evidence validation; not recovered original controller or alpha",
+  "code_sha256": {
+    "evaluate.py": "b1fd30c8b208affc7aededa713ac09306afc86ea7a81b5c0c7d334992bbe44af",
+    "report.py": "29a01f0049a663cc818ccf08f2de89f173571f2df6fed91d07b6e463dee4e1f3",
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "test_intermediate_exits.py": "b4dff374eec8f1ff71ce35c08b44dbd7e9325a63a5b65d16243bc5e7f6cfc0b5",
+    "validate.py": "556cc06d00b2cee739f3073201ab9a000b7ff5d130c2d5c82a4eb3e36fd9d15a",
+    "build.py": "67a7593221519339f904cf79de73a786e11392b0a605808847fee9d14066f674"
+  },
+  "registration_sha256": "ca06281ea3de88d7691f72e6a383ae5d8b1e886b4ca4f3d9085292860ec3cc1d"
+}

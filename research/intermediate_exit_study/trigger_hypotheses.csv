@@ -1,0 +1,13 @@
+hypothesis,feature,operator,threshold,parameters_fixed
+premium_loss50,premium_loss_pct,ge,50.0,True
+premium_profit50,premium_loss_pct,le,-50.0,True
+trailing_rebound25,trailing_rebound_pct,ge,25.0,True
+side_loss1pct,side_equity_pct,le,-1.0,True
+side_drawdown_halfpct,side_drawdown_pct,ge,0.5,True
+adverse_spot5_quarterpct,adverse_spot5_pct,ge,0.25,True
+favourable_spot5_quarterpct,adverse_spot5_pct,le,-0.25,True
+adverse_entry_halfpct,adverse_entry_pct,ge,0.5,True
+abs_delta75,contract_abs_delta,ge,0.75,True
+iv_rise1point5,iv_change5_points,ge,1.0,True
+protection_deficit,protection_deficit_units,ge,1.0,True
+allocation_profit25,premium_loss_pct,allocation,-25.0,True

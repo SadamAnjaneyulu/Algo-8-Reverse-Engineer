@@ -1,0 +1,21 @@
+{
+  "base_revision": "8e32701",
+  "inputs_sha256": {
+    "research/outputs/playbook_fill_ledger.csv.gz": "7329b842cf433595539541616ea2ee3091cc74c372557ed1bb11fb32289844c5",
+    "research/outputs/playbook_event_book.csv.gz": "85c2a99996ffa25f1479ad4e1560d0956a41e5bd2e028a0e1f2cd30a3ff5d588",
+    "research/policy_execution_separation/selected_model_config.yaml": "23ffe46107c898eb58a73685f970d11e446549d840d5c0dafed15cfe7637539a",
+    "research/policy_execution_separation/case_policy_execution_localisation.csv": "2b8edd88d38944bb0e861a7e800a37299fe8223031a673ec4892fee2842fa49b",
+    "research/policy_execution_separation/reversal_motif_ledger.csv": "57c3e7ec4cb2bfd732914ea72d45ac973fe300fd3a12282a8ace956b482c44cd",
+    "research/outputs/playbook_rapid_reversal_motifs.csv": "1ac4a2ba20013eaf0fbd2dff3be7207126fb127a97dbbb62e329f42d7364ca00",
+    "research/intermediate_exit_study/REGISTERED_PLAN.md": "ca06281ea3de88d7691f72e6a383ae5d8b1e886b4ca4f3d9085292860ec3cc1d"
+  },
+  "fill_count": 41421,
+  "buy_closing_children": 11716,
+  "atomic_short_covers": 8197,
+  "episodes": 4251,
+  "risk_observations": 208885,
+  "primary_cycles": 32,
+  "greeks": "inherited flat ATM IV surface; approximate; not broker Greeks",
+  "side_pnl": "cash + complete fresh previous-minute marks of both long/short same right; gross of costs",
+  "sampling": "past minute sampled extrema only; not tick high water or full continuous drawdown"
+}
