@@ -1,0 +1,28 @@
+{
+  "registered_plan_sha256": "49d621018e43d09a3d0031ca2562dd65ba0f01d0bc38425154bc2b76a3fa4a87",
+  "clarifications_sha256": "cd51275583b55c65d9b07f2c6125baf6eb20982684d0dce9dea22118e1033cc6",
+  "cost_scenarios": {
+    "zero_diagnostic": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "moderate": [
+      0.0025,
+      20.0,
+      0.05
+    ],
+    "conservative": [
+      0.005,
+      20.0,
+      0.1
+    ],
+    "adverse_execution": [
+      0.005,
+      40.0,
+      0.2
+    ]
+  },
+  "source_audit_sha256": "3a566fc3b7c70ee11544f6c38f903086880271e066aefd0d82fd015417cf8dd3",
+  "no_model_liquidation_in_observed_pnl": true
+}
