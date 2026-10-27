@@ -1,11 +1,13 @@
 # Algo 8 — cumulative strong findings
 
-**Updated:** 27 October 2026 · **Version:** 4 · **Branch:** `research/strong-findings`
+**Updated:** 27 October 2026 · **Version:** 5 · **Branch:** `research/strong-findings`
 
 **Evidence snapshot:** F01–F30 and C01/C02 use research/data inherited from
 `60427b2`. The additional cover-to-re-entry assessment is from `984164c`.
 F31–F34 and the independent operational audit are from `58ae0cf`.
 The constrained autonomous-controller assessment is from `8524844`.
+The policy/execution separation and fixed-cohort forensic assessment are from
+`8e32701`. F01–F34 and C01/C02 retain their existing definitions and counts.
 
 This is the single cumulative reference for strong findings. Preserve its finding
 IDs when adding evidence. The original research continues on
@@ -342,6 +344,45 @@ These constraints prevent the strong findings from being combined incorrectly:
   does not exclude other eligibility rules. The simulated economics do not
   establish alpha. All 201 software tests and saved-YAML replay checks pass;
   they validate software behavior, not original-strategy truth.
+- **Forensic compatibility does not establish duplicate submissions.** The
+  unchanged 59-case cohort has distinct received parent references at every
+  final-close/opposite-open boundary (59/59). The opposite quantity equals the
+  atomic close in 49/59, but only 10/59 repeat both requested size and the inferred
+  limit-price candidate. Multiple received children occur in involved parents
+  in 27/59. These observations permit mixed execution explanations; submission,
+  cancellation and acknowledgement evidence remains absent. Size equality is
+  selection-sensitive: the cohort excludes opposite quantities above the close,
+  and one-base equality is forced by the quantity restriction. Only one case has
+  a non-reversal control matched on index, cycle, phase, old role and closed size;
+  even that control is about 109 minutes away. The aggregate equality comparison
+  cannot establish a causal duplicate probability. All 59 conservative motifs
+  occur before 15:00; the broader 66-case source includes one later,
+  nonconservative case, so this is not a universal time restriction.
+- **Separating policy from execution does not recover the missing decisions.**
+  The limited experiment crosses 12 desired-inventory policies with seven
+  execution mechanisms, replaying all 35 cycles. Selection uses the same 32
+  starts with known pre-expiry initialization: 11 fit, seven August and 14 later
+  cycles. A separate opening module matches both opening short quantities on
+  **28/32**, both true first-executed wing strikes on **17/32**, and all four
+  09:17 net role quantities on **19/32**. The earlier controller's **0/32**
+  contradictions are preserved and independently re-audited; these are different
+  models, not revised historical counts. The selected pooled-clock/premium-stop
+  policy with safe execution reaches later event macro F1 **24.3%**. Sequential
+  and pending-aware variants have the same later minute F1; delay variants add
+  about one percentage point but worsen final liquidation and the registered
+  composite. Base-unit parent requests better reproduce observed request-size
+  granularity, even when minute paths are equivalent; the exact sequencing delay
+  remains unidentified. A universal stale-close variant produces **559**
+  conservative simulated motifs and matches **0/59** original cases by exact
+  contract within two minutes. At those original close times the selected model
+  lacks both contract holdings and targets in 32 cases, and retains both in 27;
+  none is simply an unfinished execution toward its own zero target. This
+  localizes failure in candidate holdings/decisions before adding execution
+  detail; it does not reveal the original desired target. The chronological
+  later data were already inspected. All **217** software tests pass, request
+  quantities conserve, and the public YAML replay reproduces saved child fills,
+  targets, requests and books exactly. Those checks do not establish an original
+  controller or economic alpha.
 - **Capital/stop statements are supplied context, not recovered implementation.**
   [Info.txt](Info.txt) states ₹2 crore, a 4% carry-forward stop and a 1% expiry-day
   capital stop. The 4% denominator, scope, reset rules, pending-order handling,
@@ -364,6 +405,9 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 [operational playbook](ALLOCATION_ENTRY_EXIT_RISK_PLAYBOOK.md),
 [reversal sensitivity](research/outputs/playbook_frozen_exit_reversal_sensitivity.csv),
 [constrained autonomous search](research/hypothesis_controller_search/HYPOTHESIS_CONTROLLER_SEARCH.md),
+[policy/execution reconstruction](research/policy_execution_separation/POLICY_EXECUTION_RECONSTRUCTION.md),
+[fixed-cohort case ledger](research/policy_execution_separation/reversal_motif_ledger.csv),
+[reproduction checks](research/policy_execution_separation/validation_audit.json),
 [latest controller search](research/DEEP_CONTROLLER_FINDINGS.md),
 [economic candidate limits](research/ALPHA_CANDIDATE_FINDINGS.md).
 
@@ -385,6 +429,13 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 
 ### Change log
 
+- **v5 · 27 October 2026:** Added the policy/execution assessment from
+  `8e32701`: immutable 59-case forensics, matched-control limitations, separate
+  opening metrics, 84 interpretable models and failure to recover reversal
+  activation. Preserved the earlier opening contradiction and distinguished
+  base-unit parent granularity from inferred latency/intent. F01–F34 and C01/C02
+  remain unchanged. No recovered 80–90% controller or economic alpha is claimed.
+  The complete suite passes 217 tests and deterministic saved-YAML replay.
 - **v4 · 27 October 2026:** Added the autonomous-controller assessment from
   `8524844` as a constraint, with the relevant baseline, event F1 definition,
   opening contradictions and competing simple controller. Recorded the 49/59
