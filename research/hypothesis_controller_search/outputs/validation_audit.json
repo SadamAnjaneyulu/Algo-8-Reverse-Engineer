@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "canonical_fill_rows": 41421,
+  "baseline_quantity_minutes": 24860,
+  "baseline_max_cash_error": 7.275957614183399e-12,
+  "baseline_max_realized_error": 4.71482053399086e-09,
+  "candidate_count": 13864,
+  "all_candidates_have_three_split_scores": true,
+  "fit_only_refinement_parents": true,
+  "simulated_minute_quantity_checks": 348040,
+  "simulated_minute_cash_checks": 348040,
+  "maximum_simulated_cash_error": 1.9251019693911076e-06,
+  "saved_yaml_replay_exact_actions": true,
+  "saved_yaml_replay_exact_inventory_and_cash": true,
+  "trace_candidate_count": 14,
+  "repository_tests": 201,
+  "scope": "tests validate software, not original controller or economic alpha",
+  "strict_positive_volume_common_active_cycles": 0
+}

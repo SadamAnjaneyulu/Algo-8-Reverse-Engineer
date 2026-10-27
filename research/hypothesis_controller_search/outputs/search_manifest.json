@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "source_revision": "58ae0cfd58985f878f5f585c18e5bd3a8f04da17",
+  "strong_findings_revision": "4e00077",
+  "seed": 0,
+  "candidate_count": 13864,
+  "main_bank_count": 13824,
+  "failed_candidates": 0,
+  "discarded_definitions": "discarded_candidates.csv",
+  "grammar": {
+    "allocation": [
+      "index_clock",
+      "pooled_clock",
+      "fixed_increment",
+      "target_restore",
+      "replace_covers",
+      "clock_risk_iv"
+    ],
+    "exit": [
+      "deadline_only",
+      "premium_loss30",
+      "premium_loss50",
+      "premium_loss75",
+      "profit90",
+      "profit50_trail20",
+      "adverse_spot0p3",
+      "adverse_spot0p5",
+      "side_equity100k",
+      "expiry_cycle_equity200k",
+      "carry4pct_debit",
+      "premium50_or_capital200k"
+    ],
+    "gate": [
+      "none",
+      "range15_le0p35",
+      "efficiency15_le0p70"
+    ],
+    "wing": [
+      "seed_then_budget",
+      "budget_always",
+      "fixed_distance",
+      "seed_budget_decay_refresh"
+    ],
+    "reentry": [
+      "scheduled_only",
+      "cooldown5_then_one",
+      "cooldown15_then_one",
+      "lock_after_short_flat"
+    ],
+    "final": [
+      "fixed1514",
+      "phase_date_deadline"
+    ],
+    "reference": [
+      "completed_close",
+      "median_last3_closes"
+    ]
+  },
+  "scoring_weights": {
+    "primary": [
+      0.4,
+      0.2,
+      0.3,
+      0.1
+    ],
+    "event_heavy": [
+      0.6,
+      0.15,
+      0.15,
+      0.1
+    ],
+    "inventory_heavy": [
+      0.25,
+      0.15,
+      0.5,
+      0.1
+    ]
+  },
+  "complexity_penalty": 0.002,
+  "parameter_count_is_not_sample_size": true,
+  "fit": "expiry <= 2026-07-31",
+  "validation": "2026-08-01..2026-08-31",
+  "later": "2026-09-01..2026-10-22, previously inspected",
+  "external_validation": "none",
+  "selected_on": "internal August cycle mean penalized reconstruction score, never later profit",
+  "best_candidate_id": 13845,
+  "trace_candidate_ids": [
+    0,
+    16,
+    2320,
+    4624,
+    13845,
+    13830,
+    2704,
+    13855,
+    5008,
+    7344,
+    9616,
+    11920,
+    4640,
+    13684
+  ],
+  "inputs": "input_hashes.json",
+  "code_sha256": {
+    "evaluate.py": "c921751e559e3eea0c0aa74f5fec8a5af94d200e1de20996f71ffeff456ad3b7",
+    "write_report.py": "fb780b094d9e74145fe5bb42af2e7d8eace1611906367f5a633062e779ceaa45",
+    "prepare.py": "2c2412a7fdd3aaca7a13fa53ccb6f30df6c2b1c04eccbf09fbf0b41636630d58",
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "robustness.py": "d4739a92c87d1340af34e1b97268a32f1d6c2dfcff5e974560d9a322902e4e73",
+    "search.py": "1d80539c15f817e27c29857f5108fe045fad3247c7d3e30d3d13bfe65d8eaa76",
+    "replay.cpp": "fd0bd4954325eb74aa524908ba51f3b2ffe04acc0b9ff2726bf04bb5f0814d00",
+    "validate.py": "28326453daf8c108564bcbb7a5707f280d8ca113a97cb9f00990ea06951a8dea",
+    "test_search.py": "a349d8262ea9a7c30f218798f2cc31f652411e8c2c4ac637395c9462d9167e19"
+  },
+  "spec_sha256": "966d989dc398707f4070c9981b562239b0843dbf628b2774739558d467840f44",
+  "causal_input": "prior completed minute, own simulated book only; no teacher-forced inventory",
+  "unsupported": [
+    "true account margin",
+    "complete option chain",
+    "certified entry eligibility",
+    "original allocation ownership",
+    "verified decision/cancel times"
+  ],
+  "greek_assumption": "flat ATM IV surface from previous completed minute; hypothetical simulation Greek approximation",
+  "execution": "selected prior-candle contract; current or latency minute open, missing positive quote = unfilled; no historical trade borrowed as fill",
+  "final_valuation": "same preceding price state as decisions; no settlement invented",
+  "fragmentation": "one base-unit request per 65/20 units for cost; aggregated contract/minute action for reconstruction",
+  "evidence": "canonical_events.csv.gz + canonical_atomic_books.csv.gz; received calendar only",
+  "elapsed_seconds": 301.31,
+  "additional_baseline_trace_comparison": "stage1 configs 16,2320,4624; winner unchanged",
+  "registered_spec_sha256": "6a6c5f56ae3118499d5cc47c3f5b55f1769e5c4eeeaa54b011d72b1789f68e61",
+  "registered_spec_path": "REGISTERED_SPEC.md",
+  "reporting_amendment": "additional already-evaluated simple baseline traces; objectives and winner unchanged",
+  "software_tests": {
+    "repository_tests": 201,
+    "scope": "software behavior only, not original-rule truth"
+  },
+  "principal_score_layout": "candidate_scores.csv has all candidates and three chronological whole-cycle splits; all phase/index metrics in candidate_stratum_scores.csv.gz",
+  "replayed_sessions": 65,
+  "cycles": 35,
+  "canonical_fills": 41421,
+  "report_sha256": "ca9caa771c97f554b9406ee4803e3968fd41f7a925e39ed73489dcb759e23202"
+}

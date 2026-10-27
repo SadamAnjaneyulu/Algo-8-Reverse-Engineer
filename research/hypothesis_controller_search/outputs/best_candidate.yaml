@@ -1,0 +1,36 @@
+allocation: 1
+budget: 0.025
+cap_scale: 1.0
+close_fraction: 1.0
+deadline_shift: 0
+exit: 2
+final: 1
+gate: 0
+latency: 0
+loss_override: 0.0
+reentry: 0
+reference: 0
+scale: 1.25
+wing: 1
+id: 13845
+parent_id: 2706
+stage: local_refinement
+description:
+  candidate_id: 13845
+  stage: local_refinement
+  parent_id: 2706
+  definition_sha256: 6949e89d9cf8c7aa4ab0fcb6e0b129b8282043598d70acbb28325a93914860e3
+  allocation: pooled_clock
+  exit: premium_loss50
+  gate: none
+  wing: budget_always
+  reentry: scheduled_only
+  final: phase_date_deadline
+  reference: completed_close
+  complexity: 8
+  configuration: '{"allocation":1,"budget":0.025,"cap_scale":1.0,"close_fraction":1.0,"deadline_shift":0,"exit":2,"final":1,"gate":0,"latency":0,"loss_override":0.0,"reentry":0,"reference":0,"scale":1.25,"wing":1}'
+  calendar: received sessions only; eligibility unknown
+  chain: historically selected stored contracts
+  greek_model: flat ATM implied-volatility surface
+  execution: candle open; missing request unfilled
+calibration_reference: calibration.json
