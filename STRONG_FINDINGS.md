@@ -1,10 +1,11 @@
 # Algo 8 — cumulative strong findings
 
-**Updated:** 27 October 2026 · **Version:** 3 · **Branch:** `research/strong-findings`
+**Updated:** 27 October 2026 · **Version:** 4 · **Branch:** `research/strong-findings`
 
 **Evidence snapshot:** F01–F30 and C01/C02 use research/data inherited from
 `60427b2`. The additional cover-to-re-entry assessment is from `984164c`.
 F31–F34 and the independent operational audit are from `58ae0cf`.
+The constrained autonomous-controller assessment is from `8524844`.
 
 This is the single cumulative reference for strong findings. Preserve its finding
 IDs when adding evidence. The original research continues on
@@ -317,6 +318,30 @@ These constraints prevent the strong findings from being combined incorrectly:
   controller or establish a better stop. All 32 pre-expiry sessions also contain
   some inventory-opening flow after 14:30; that alone does not establish a
   planned late allocation schedule.
+- **The duplicate-close explanation is a conditional processing lead.** Within
+  those 59 conservative reversal motifs, the first opposite quantity equals the
+  just-closed quantity in **49/59 cases (83.1%)**. The motif definition already
+  restricts holding age, timing and maximum opposite size. This is not an
+  independent all-order trigger match or proof of a stale/duplicate submission.
+  Original submission, cancellation and acknowledgement records are missing.
+- **Autonomous reconstruction still falls well below 80–90%.** A separate
+  constrained search evaluates **13,864 definitions** (13,824 main combinations
+  and 40 earlier-fit refinements) with their own simulated inventory. The
+  August-selected controller reaches later event macro F1 **23.3%**, versus
+  **18.2%** for a simple pooled-budget clock controller, over 15 already-inspected
+  September–October cycles. Matches are exact contract/action within two minutes;
+  all four action types contribute. The normalized quantity/path scores are
+  **15.7% / 46.1%**, not exact sizing/book accuracy. These metrics have different
+  targets from C02 and the earlier conditional first-reduction studies.
+  The selected premium50/clock/budget composite scales opening sizes by 1.25
+  and uses budget wings from initialization: it matches both first wing strikes
+  and both short quantities on **0/32** received pre-expiry first-three-minute
+  gross-action windows. This is a concrete contradiction, not recovered intent.
+  A simpler competing controller has almost the same penalized score. Fixed
+  range/efficiency gates worsen paired reconstruction in this grammar; this
+  does not exclude other eligibility rules. The simulated economics do not
+  establish alpha. All 201 software tests and saved-YAML replay checks pass;
+  they validate software behavior, not original-strategy truth.
 - **Capital/stop statements are supplied context, not recovered implementation.**
   [Info.txt](Info.txt) states ₹2 crore, a 4% carry-forward stop and a 1% expiry-day
   capital stop. The 4% denominator, scope, reset rules, pending-order handling,
@@ -338,6 +363,7 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 [controlled cover/re-entry follow-up](research/COVER_REENTRY_FINDINGS.md),
 [operational playbook](ALLOCATION_ENTRY_EXIT_RISK_PLAYBOOK.md),
 [reversal sensitivity](research/outputs/playbook_frozen_exit_reversal_sensitivity.csv),
+[constrained autonomous search](research/hypothesis_controller_search/HYPOTHESIS_CONTROLLER_SEARCH.md),
 [latest controller search](research/DEEP_CONTROLLER_FINDINGS.md),
 [economic candidate limits](research/ALPHA_CANDIDATE_FINDINGS.md).
 
@@ -359,6 +385,12 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 
 ### Change log
 
+- **v4 · 27 October 2026:** Added the autonomous-controller assessment from
+  `8524844` as a constraint, with the relevant baseline, event F1 definition,
+  opening contradictions and competing simple controller. Recorded the 49/59
+  conditional duplicate-quantity observation without promoting it to a general
+  trigger. F01–F34 and C01/C02 remain unchanged. No full-controller 80–90% match
+  or economic alpha is claimed. The complete research suite passes 201 tests.
 - **v3 · 27 October 2026:** Added F31–F34 from `58ae0cf`: observed request
   granularity, ordinary first-fill sequencing, transient call-tail mismatches
   and the 31/31 carry-book quantity condition. Clarified F01's first-pair versus
