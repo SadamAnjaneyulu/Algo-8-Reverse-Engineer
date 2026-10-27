@@ -1,8 +1,9 @@
 # Algo 8 — cumulative strong findings
 
-**Updated:** 27 October 2026 · **Version:** 1 · **Branch:** `research/strong-findings`
+**Updated:** 27 October 2026 · **Version:** 2 · **Branch:** `research/strong-findings`
 
-**Evidence snapshot:** research/data inherited from commit `60427b2`.
+**Evidence snapshot:** F01–F30 and C01/C02 use research/data inherited from
+`60427b2`. The additional cover-to-re-entry assessment is from `984164c`.
 
 This is the single cumulative reference for strong findings. Preserve its finding
 IDs when adding evidence. The original research continues on
@@ -263,6 +264,18 @@ These constraints prevent the strong findings from being combined incorrectly:
   short fills occur after that point in ten cycles; some later order-label
   minutes also postdate closure. Pending orders and permitted re-entry cannot
   be treated as the same mechanism.
+- **A recent cover is not an established re-entry instruction.** The controlled
+  follow-up finds later NIFTY expiry fresh same-side entries in **76/97**
+  post-cover five-minute windows versus **52/97** matched no-cover windows,
+  across only four cycles. Both rights receive entries in 73/97 versus 48/97,
+  so the association is not specific to reopening the covered leg. SENSEX is
+  **75/113 versus 75/113** across five cycles. Primary matches retain recent-
+  activity/range imbalance; stricter matching leaves just 15 later NIFTY cases
+  and three SENSEX cases. Adding cover history to known-state prediction does
+  not establish a general improvement. These results are constraints/leads,
+  **not an additional 80–90%-accurate trigger finding**. The comparison excludes
+  full-flat shutdowns and uses minutes after a completed cover minute; it is
+  not an exact five-minute-from-fill rule.
 - **Capital/stop statements are supplied context, not recovered implementation.**
   [Info.txt](Info.txt) states ₹2 crore, a 4% carry-forward stop and a 1% expiry-day
   capital stop. The 4% denominator, scope, reset rules, pending-order handling,
@@ -281,6 +294,7 @@ These constraints prevent the strong findings from being combined incorrectly:
 
 Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 [re-entry/closure evidence](research/RULE_REFINEMENT_FINDINGS.md),
+[controlled cover/re-entry follow-up](research/COVER_REENTRY_FINDINGS.md),
 [latest controller search](research/DEEP_CONTROLLER_FINDINGS.md),
 [economic candidate limits](research/ALPHA_CANDIDATE_FINDINGS.md).
 
@@ -302,6 +316,10 @@ Sources: [lifecycle examples](research/POSITION_LIFECYCLE_CLARIFICATION.md),
 
 ### Change log
 
+- **v2 · 27 October 2026:** Added the controlled cover-to-re-entry assessment
+  from `984164c` as a constraint, including weak balance/common support and the
+  NIFTY/SENSEX distinction. F01–F30 and C01/C02 remain unchanged; no new rate or
+  original trigger is promoted. The expanded research suite passes 177 tests.
 - **v1 · 27 October 2026:** Consolidated F01–F30 from the research through
   `60427b2`; corrected skipped-entry and exit-time scopes; computed joint
   opening C01 and recurring-window C02; kept unverified controllers outside
