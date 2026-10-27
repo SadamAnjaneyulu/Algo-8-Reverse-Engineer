@@ -1,0 +1,49 @@
+{
+  "base_research_revision": "8524844",
+  "base_strong_findings_revision": "9ebffe6",
+  "registration_sha256": "b1a11be6d2c2bfd5c0a4111b64f4939cc71f88efd74da728bae8c489e708791e",
+  "code_sha256": {
+    "write_report.py": "f07ca49fa608557631d50d05529acbbe6031a56042231aa984710dc952859e05",
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "execution.cpp": "de4253f420574cd519a5fce80469907e3655af5db8cd97ce5d5db34d2aa65e80",
+    "forensics.py": "d4dac84d9a38dc382f55e43eadc083ab59c9cdf52f4fe2c86c892bcefa217fbe",
+    "model_runner.py": "ffb43bb5f70fa659420429defc97ddaa8e9dc82fb3087543e0e58c0687c9ecad",
+    "replay_inputs.py": "828b83b1667df6d2e6d53188e6e43832646bab4adafb736bb8d91f1626849fef",
+    "validate.py": "96b0fcb6691f00169510747aa52dc2576c194b3b5ed52d3548025a9cc1570368",
+    "analyse.py": "a71d92958bf78819dc352399450f0f65507a088d23661295b836bc3ebaa5b1ca",
+    "test_policy_execution.py": "b1e056454e6af733319ac7ad7a39e7fd0b34ab5cff4eb5c2b83bd9ee1d7feb3e",
+    "policy.hpp": "fafef38239279ef9b4b4f85768d5cae58b8fc982513a31637f217849cad6ef5c"
+  },
+  "inherited_replay_sha256": "fd0bd4954325eb74aa524908ba51f3b2ffe04acc0b9ff2726bf04bb5f0814d00",
+  "canonical_cache_sha256": "bf686a9507b78a2f98bda75f597b20af231f9c82e0c30e5a2be3529a4293469c",
+  "input_manifest_sha256": "d48533de17e2f1a66d360106f89afdbff2c20510c46571eb3d9ac266c0a2bb0d",
+  "model_definitions": 84,
+  "selected_model_id": 28,
+  "selection": "August penalized cycle means,32 pre-initialised cycles; later data already inspected",
+  "original_decisions_observed": false,
+  "order_submission_cancel_ack_observed": false,
+  "limit_field": "inferred price-bound candidate, not confirmed order type",
+  "source_tags": "T0/T1 are uninterpreted export categories, not strategy or manual/automated labels",
+  "remaining_quantity": "scheduled child quantity unprocessed by replay end; not confirmation of active original orders",
+  "prices": "causal minute-open execution proxies at simulated time, not tick bid/ask",
+  "trace_cohort": {
+    "model_ids": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      0,
+      70,
+      49,
+      7
+    ],
+    "full_scores_models": 84,
+    "closures_and_request_audits_models": 84,
+    "detailed_trace_exclusion": "stale-ignore-pending negative control has complete aggregate actions and closure diagnostics, not all repetitive child orders"
+  },
+  "measurement_audit": "MEASUREMENT_NOTES.md",
+  "test_count": 217
+}

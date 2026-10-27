@@ -1,0 +1,55 @@
+selected_model:
+  model_id: 28
+  policy_id: 4
+  mechanics_id: 0
+  allocation: pooled_clock_increment
+  risk: pooled_contract_premium50
+  mechanics: safe_immediate
+  system: policy_alone
+  complexity: 12
+policy:
+  policy_id: 4
+  allocation: pooled_clock_increment
+  risk: pooled_contract_premium50
+  allocation_code: 1
+  risk_code: 1
+  complexity: 12
+  opening: fixed evidence-derived three-base seed module; no historical opening labels
+    used
+  calendar: received pre-initialised sessions; expiry-only initial history unknown
+  carry_guard: 15:10 target long coverage, 15:20 confirmed protection short reduction
+  reentry: next scheduled window; own target activity gates expiry additions
+execution:
+  mechanics_id: 0
+  name: safe_immediate
+  system: policy_alone
+  complexity: 0
+  parameters:
+    id: 0
+    lag_seconds: 0
+    slice_spacing_seconds: 0
+    leg_lag_seconds: 0
+    keep_pending: 0
+    cancel_ack_seconds: 0
+    duplicate_on_flatten: 0
+    reconcile_seconds: 0
+    stale_seconds: 0
+    pending_aware: 0
+    target_bounded: 1
+    ttl_seconds: 120
+  assumption: latent hypothetical process; original orders unobserved
+  maximum_outstanding_per_contract: null
+  parent_fragmentation: aggregate target delta; configured child slices
+  duplicate_lag_seconds: null
+  duplicate_minimum_age_seconds: null
+  duplicate_correction_seconds: null
+selection: August penalized cycle mean on same32 pre-initialised cycles; later previously
+  inspected
+opening_frozen_before_evaluation: true
+source_revision: 8524844bf72c92cfe344b3df9a02e22081f294e7
+registration_sha256: b1a11be6d2c2bfd5c0a4111b64f4939cc71f88efd74da728bae8c489e708791e
+execution_quotes: minute-open proxies at simulated fill times, not tick quotes
+canonical_accounting: inherited Replay::fill and score
+inputs:
+  motif_source_sha256: 1ac4a2ba20013eaf0fbd2dff3be7207126fb127a97dbbb62e329f42d7364ca00
+  cache_sha256: bf686a9507b78a2f98bda75f597b20af231f9c82e0c30e5a2be3529a4293469c
