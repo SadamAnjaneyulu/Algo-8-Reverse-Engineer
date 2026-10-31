@@ -319,6 +319,19 @@ def build_dataset(out):
             state.advance_peaks(ctx,z['previous'][ti])
         part = pd.DataFrame(rows)
         part.insert(0,'observation_id',[f'C{cid:02}-{i:08}' for i in range(len(part))])
+        # Compact each cycle before concatenation, not after making multiple
+        # full-size copies of the complete risk set on a bounded cloud runner.
+        categories={'underlying':['NIFTY','SENSEX'],'phase':['preexpiry','expiry'],
+                    'level':['basket','side','contract'],'option_type':['BOTH','CE','PE']}
+        for col,values in categories.items():
+            part[col]=pd.Categorical(part[col],categories=values)
+        for col in part:
+            if col.startswith('y_') and not col.endswith('_units') and col!='y_source_rows':
+                part[col]=part[col].astype('int8')
+            elif part[col].dtype=='float64' and not any(k in col for k in ['second','cost','equity','realized']):
+                part[col]=part[col].astype('float32')
+        for col in ['timestamp_ist','expiry_date','first_session','y_source_rows']:
+            part[col]=part[col].astype('category')
         path=out/f'.dataset_cycle_{cid:02}.parquet'
         part.to_parquet(path,index=False); chunks.append(path)
         print('Dataset cycle',cid,'rows',len(part),flush=True)
@@ -326,6 +339,8 @@ def build_dataset(out):
     # Schema union through pandas handles early cycles with no live contract features.
     frames=[pd.read_parquet(p) for p in chunks]
     dataset=pd.concat(frames,ignore_index=True)
+    for col in ['timestamp_ist','expiry_date','first_session','y_source_rows']:
+        dataset[col]=dataset[col].astype('category')
     for col in dataset.select_dtypes('float64'):
         if 'second' not in col and 'cost' not in col and 'equity' not in col and 'realized' not in col:
             dataset[col]=dataset[col].astype('float32')

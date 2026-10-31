@@ -27,7 +27,7 @@ def run_quantities(data,meta,protocol,predictions,out):
                     if len(tr)<12 or len(te)==0:continue
                     for fs in ['clock_inventory','full']:
                         cols=feature_columns(g,fs)
-                        cat=[c for c in cols if g[c].dtype=='object']
+                        cat=[c for c in cols if g[c].dtype=='object' or isinstance(g[c].dtype,pd.CategoricalDtype)]
                         num=[c for c in cols if c not in cat]
                         transform=ColumnTransformer([
                             ('num',SimpleImputer(strategy='median',add_indicator=True,keep_empty_features=True),num),

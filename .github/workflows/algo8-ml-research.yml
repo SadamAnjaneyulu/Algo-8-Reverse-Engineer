@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: algo8-ml-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   research:

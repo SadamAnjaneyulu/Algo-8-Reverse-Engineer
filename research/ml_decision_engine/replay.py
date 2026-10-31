@@ -33,7 +33,7 @@ def run_replay(configurations,quantities,predictions,meta,protocol,out):
         for (f,level,action),(conf,model) in models.items():
             if f!=fold:continue
             earlier=predictions[(predictions.fold<fold)&(predictions.feature_set=='full')&
-                predictions.level.eq(level)&predictions.action.eq(action)&predictions.expiry_date.lt(boundary)]
+                predictions.level.eq(level)&predictions.action.eq(action)&predictions.expiry_date.astype(str).lt(boundary)]
             s=scores(earlier.target,earlier.prediction) if len(earlier) else dict(precision=0.,recall=0.,actual_events=0)
             supported=conf['replay_eligible'] and earlier.cycle_id.nunique()>=protocol['minimum_target_cycles'] and s['actual_events']>=protocol['minimum_target_events'] and s['precision']>=.75 and s['recall']>=.75
             approved[(level,action)]=supported

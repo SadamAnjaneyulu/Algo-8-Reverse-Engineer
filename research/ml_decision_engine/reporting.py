@@ -29,7 +29,7 @@ def summarize(data,score,pred,labels,protocol,out):
             row['target_scope']='conditional received sessions; previously inspected; row label next-minute execution'
             aggregate.append(row)
             for dimension in ['underlying','phase','direction_regime','volatility_regime','volatility_transition','structure_regime']:
-                for value,c in g.groupby(dimension):
+                for value,c in g.groupby(dimension,observed=True):
                     strata.append(dict(level=level,action=action,feature_set=fs,dimension=dimension,value=value,
                         independent_cycles=c.cycle_id.nunique(),**scores(c.target,c.prediction)))
             if fs=='full':
