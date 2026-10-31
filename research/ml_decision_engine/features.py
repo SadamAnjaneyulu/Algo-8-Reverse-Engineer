@@ -62,24 +62,40 @@ def market_features(bars: pd.DataFrame) -> pd.DataFrame:
 
 class Regimes:
     """Fit independent thresholds using training sessions only, not future rows."""
+    @staticmethod
+    def direction_score(frame,scales):
+        parts=[]
+        for col,scale in scales.items():
+            if col in frame:
+                parts.append(np.tanh(pd.to_numeric(frame[col],errors='coerce')/max(scale,1e-9)))
+        if 'efficiency_15' in frame and 'return_15' in frame:
+            parts.append(frame.efficiency_15*np.sign(frame.return_15))
+        return pd.concat(parts,axis=1).mean(axis=1) if parts else pd.Series(np.nan,index=frame.index)
+
     def fit(self, frame):
         d = frame.drop_duplicates(['underlying', 'second'])
         self.thresholds = {}
         for u, g in d.groupby('underlying'):
-            values = g.get('return_15', pd.Series(dtype=float)).abs().dropna()
+            scales={col:float(g[col].abs().quantile(.75)) for col in ['return_15','slope_5','persistence_15','vwap_distance_pct'] if col in g and g[col].notna().any()}
+            values = self.direction_score(g,scales).abs().dropna()
             rv = g.get('rv_15', pd.Series(dtype=float)).dropna()
             self.thresholds[u] = {
                 'direction': values.quantile([.33, .75]).tolist() if len(values) else [0., 0.],
                 'volatility': rv.quantile([.25, .75]).tolist() if len(rv) else [0., 0.],
+                'direction_scales':scales,
             }
         return self
 
     def transform(self, frame):
         f = frame.copy()
+        f['direction_score']=np.nan
+        for u,t in self.thresholds.items():
+            mask=f.underlying.eq(u)
+            f.loc[mask,'direction_score']=self.direction_score(f.loc[mask],t['direction_scales'])
         direction, volatility, change, structure = [], [], [], []
         for row in f.itertuples():
             t = self.thresholds.get(row.underlying)
-            ret, rv = getattr(row, 'return_15', np.nan), getattr(row, 'rv_15', np.nan)
+            ret, rv = getattr(row, 'direction_score', np.nan), getattr(row, 'rv_15', np.nan)
             eff, expansion = getattr(row, 'efficiency_15', np.nan), getattr(row, 'range_expansion_5', np.nan)
             if t is None or not np.isfinite(ret):
                 direction.append('unknown')

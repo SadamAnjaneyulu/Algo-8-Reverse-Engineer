@@ -41,7 +41,7 @@ RISK = ['ce_equity','pe_equity','ce_realized','pe_realized','ce_unrealized','pe_
 def feature_columns(frame, feature_set):
     base = [x for x in BASE if x in frame]
     spot = [x for x in frame if any(x.startswith(p) for p in ['return_','atr_','rv_','range_','efficiency_','slope_','persistence_','choppiness_','high_distance_','low_distance_','breakout_','failed_breakout_','intraday_','opening_','vwap_'])]
-    option = [x for x in frame if x.startswith(('iv_change_','premium_change_'))]+[x for x in ['atm_iv_pct','iv_minus_rv15','option_mark','entry_cost','relative_strike_grids','previous_bar_volume'] if x in frame]
+    option = [x for x in frame if x.startswith(('iv_change_','premium_change_'))]+[x for x in ['atm_iv_pct','atm_ce_premium','atm_pe_premium','atm_combined_premium','iv_minus_rv15','option_mark','entry_cost','relative_strike_grids','previous_bar_volume'] if x in frame]
     groups = {'spot_atr':spot,'option_iv':option,'greeks_pnl':[x for x in RISK if x in frame]}
     extra = [] if feature_set=='clock_inventory' else sum(groups.values(),[]) if feature_set=='full' else groups[feature_set]
     # Absolute strike/cycle/date/session IDs and outcome columns are never inputs.

@@ -220,6 +220,17 @@ def build_dataset(out):
             m = frame.loc[stamp].to_dict() if frame is not None and stamp in frame.index else {}
             m.pop('prior_close_date', None)
             m.update(atm_iv_pct=float(z['feature'][ti,6]), tau_days=float(z['feature'][ti,7]))
+            for unavailable in ['atm_ce_own_iv','atm_pe_own_iv','iv_skew','iv_term_structure',
+                                'bid_ask_spread','certified_liquidity','broker_delta','broker_gamma','broker_theta','broker_vega']:
+                m[unavailable]=np.nan
+            spot=m.get('spot',np.nan)
+            atm=int(np.floor(spot/step+.5)*step) if np.isfinite(spot) else None
+            premiums=[]
+            for right,name in [(0,'ce'),(1,'pe')]:
+                matches=np.flatnonzero((z['strikes']==atm)&(z['rights']==right)) if atm is not None else []
+                p=float(z['previous'][ti,matches[0]]) if len(matches) else np.nan
+                m[f'atm_{name}_premium']=p;premiums.append(p)
+            m['atm_combined_premium']=sum(premiums) if all(np.isfinite(premiums)) else np.nan
             for w in WINDOWS:
                 valid = ti>=w and z['minutes'][ti]-z['minutes'][ti-w]==w and z['session'][ti]==z['session'][ti-w]
                 m[f'iv_change_{w}'] = float(z['feature'][ti,6]-z['feature'][ti-w,6]) if valid else np.nan

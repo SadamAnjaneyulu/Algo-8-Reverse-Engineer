@@ -62,6 +62,12 @@ def run_replay(configurations,quantities,predictions,meta,protocol,out):
                     valid=ti>=w and z['minutes'][ti]-z['minutes'][ti-w]==w and z['session'][ti]==z['session'][ti-w]
                     row[f'iv_change_{w}']=float(z['feature'][ti,6]-z['feature'][ti-w,6]) if valid else np.nan
                 row['iv_minus_rv15']=row['atm_iv_pct']-row.get('rv_15',np.nan)*np.sqrt(252*375/15)
+                spot=row.get('spot',np.nan)
+                atm=int(np.floor(spot/int(z['step'])+.5)*int(z['step'])) if np.isfinite(spot) else None
+                for r,name in [(0,'ce'),(1,'pe')]:
+                    matches=np.flatnonzero((z['strikes']==atm)&(rr==r)) if atm is not None else []
+                    row[f'atm_{name}_premium']=float(z['previous'][ti,matches[0]]) if len(matches) else np.nan
+                row['atm_combined_premium']=row['atm_ce_premium']+row['atm_pe_premium']
                 if right is not None:row['side_units']=row[('pe' if right else 'ce')+'_short_units']
                 if j is not None:
                     p=float(z['previous'][ti,j]);cost=state.cost[j]
