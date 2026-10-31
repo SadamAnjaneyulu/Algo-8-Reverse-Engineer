@@ -9,6 +9,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from .features import WINDOWS, market_features
+from .checkpoints import CheckpointStore,publish_partial
 
 ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT/'research/outputs'
@@ -182,7 +183,7 @@ def actions_for(before, after, flow, right=None, initial=False, reenter=False, f
     return result
 
 
-def build_dataset(out):
+def build_dataset(out,resume_signature=None):
     cache = canonical_cache()
     meta_path = HERE/'.cache/evidence/cycle_metadata.json'
     metas = json.loads(meta_path.read_text())
@@ -190,8 +191,14 @@ def build_dataset(out):
     fills['second'] = pd.to_datetime(fills.timestamp_ist).astype('int64')//10**9
     market = load_market()
     chunks, audit = [], []
+    store=CheckpointStore(out,resume_signature) if resume_signature else None
     for meta in metas:
         cid, u, expiry = meta['cycle_id'], meta['underlying'], meta['expiry_date']
+        cached=store.load(f'dataset_cycle_{cid:02}') if store else None
+        if cached is not None:
+            chunks.append(out/cached['path']);audit.extend(cached['audit'])
+            print('Resumed dataset cycle',cid,flush=True);continue
+        audit_start=len(audit)
         with np.load(cache/f'cycle_{cid:02}.npz') as a:
             z = {k:a[k] for k in a.files}
         T, C = z['observed'].shape
@@ -334,6 +341,8 @@ def build_dataset(out):
             part[col]=part[col].astype('category')
         path=out/f'.dataset_cycle_{cid:02}.parquet'
         part.to_parquet(path,index=False); chunks.append(path)
+        if store:store.save(f'dataset_cycle_{cid:02}',dict(path=path.name,audit=audit[audit_start:]),[path])
+        publish_partial(out,'dataset',len(chunks),len(metas))
         print('Dataset cycle',cid,'rows',len(part),flush=True)
     import pyarrow.parquet as pq
     # Schema union through pandas handles early cycles with no live contract features.

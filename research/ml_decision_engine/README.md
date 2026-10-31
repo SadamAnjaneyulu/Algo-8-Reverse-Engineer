@@ -8,12 +8,21 @@ Run from the repository root on Linux with Python 3.11:
 
 ```bash
 python -m pip install -r research/ml_decision_engine/requirements.txt
-python -m pytest research/ml_decision_engine/test_engine.py -q
-python -m research.ml_decision_engine.run --output /tmp/algo8-ml-results
+python -m pytest research/ml_decision_engine/test_engine.py research/ml_decision_engine/test_checkpoints.py -q
+python -m research.ml_decision_engine.stages --stage dataset --root /tmp/algo8-ml-results
+python -m research.ml_decision_engine.stages --stage actions --fold 0 --root /tmp/algo8-ml-results
+python -m research.ml_decision_engine.stages --stage quantities --fold 0 --root /tmp/algo8-ml-results
 ```
 
-The cloud workflow performs these steps and retains the complete result directory
-as a downloadable artifact. The output option prevents mixing different runs.
+Repeat the fold commands for IDs in `dataset/fold_plan.json`. Exit analysis is
+`--stage exits`; replay is `--stage replay --fold N`; report assembly is
+`--stage report`. Use the same root to resume. An incompatible or corrupt
+checkpoint is rejected rather than silently reused. See EXECUTION_RECOVERY.md.
+
+The cloud workflow runs these as separate jobs and saves each fold immediately.
+It uploads after basket, side and contract action groups and after each quantity
+group, including available failure/cancellation evidence. A hard runner shutdown
+can prevent a final upload; the previous successful upload remains reusable.
 Existing canonical market-cache preparation is redirected into this study's
 disposable cache. Original raw files and outputs are hash-audited before/after.
 

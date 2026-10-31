@@ -14,6 +14,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import precision_recall_fscore_support, mean_absolute_error
 from sklearn.inspection import permutation_importance
 from .features import Regimes, strict_event_matches
+from .checkpoints import CheckpointStore,atomic_frame,publish_partial
 
 TASKS = {
  'basket': ['initial_entry','add_both','one_sided','flatten_short','final_liquidation'],
@@ -21,7 +22,7 @@ TASKS = {
  'contract': ['new_short','reduce_contract','close_contract','buy_protection','sell_protection','reenter'],
 }
 CATEGORIES = {
- 'initial_entry':'entry','add_ce':'entry','add_pe':'entry','add_both':'entry','one_sided':'entry',
+ 'initial_entry':'entry','add_ce':'entry','add_pe':'entry','add_both':'entry','one_sided':'entry','new_short':'entry',
  'buy_protection':'hedge','sell_protection':'hedge','replace_protection':'hedge',
  'reenter':'reentry',
 }
@@ -74,15 +75,15 @@ def make_model(family, frame, columns, seed):
     elif family=='lightgbm':
         from lightgbm import LGBMClassifier
         model = LGBMClassifier(n_estimators=140,num_leaves=15,max_depth=5,min_child_samples=40,
-                               learning_rate=.05,reg_lambda=5,n_jobs=2,verbosity=-1,random_state=seed)
+                               learning_rate=.05,reg_lambda=5,n_jobs=1,verbosity=-1,random_state=seed)
     elif family=='catboost':
         from catboost import CatBoostClassifier
         model = CatBoostClassifier(iterations=140,depth=4,learning_rate=.05,l2_leaf_reg=5,
-            thread_count=2,random_seed=seed,verbose=False,allow_writing_files=False)
+            thread_count=1,random_seed=seed,verbose=False,allow_writing_files=False)
     elif family=='gam':
         from interpret.glassbox import ExplainableBoostingClassifier
         model = ExplainableBoostingClassifier(interactions=0,max_bins=32,max_rounds=500,
-            outer_bags=2,n_jobs=2,random_state=seed)
+            outer_bags=2,n_jobs=1,random_state=seed)
     else:
         raise ValueError(family)
     return make_pipeline(transform,model)
@@ -204,12 +205,21 @@ def explain(model, held, y, cols, out, name, metadata):
     return result
 
 
-def train_models(data,meta,protocol,out):
+def train_models(data,meta,protocol,out,fold_ids=None,levels=None,signature=None):
     (out/'selected_model_configurations').mkdir(exist_ok=True)
     (out/'shap_explanations').mkdir(exist_ok=True)
     all_scores=[]; predictions=[]; configurations=[]; importance=[]; faults=[]; regimes=[]
     folds=list(chronological_folds(meta,protocol))
+    selected_folds=set(range(len(folds))) if fold_ids is None else set(fold_ids)
+    store=CheckpointStore(out,signature) if signature else None
+    expected=len(selected_folds)*sum(map(len,TASKS.values()));completed=0
+    def persist():
+        atomic_frame(pd.DataFrame(all_scores),out/'chronological_validation_results.csv')
+        atomic_frame(pd.DataFrame(faults),out/'unavailable_tasks_and_models.csv')
+        atomic_frame(pd.DataFrame(importance),out/'feature_importance_by_action.csv')
+        publish_partial(out,'actions',completed,expected,pd.DataFrame(all_scores))
     for fold,(_,train_ids,test_ids) in enumerate(folds):
+        if fold not in selected_folds:continue
         train=data[data.cycle_id.isin(train_ids)];test=data[data.cycle_id.isin(test_ids)]
         regime=Regimes().fit(train[train.level.eq('basket')])
         test=regime.transform(test);train=regime.transform(train)
@@ -220,14 +230,34 @@ def train_models(data,meta,protocol,out):
         fit_ids=[cid for cid in ordered if next(m['expiry_date'] for m in meta if m['cycle_id']==cid)<inner_start]
         for level,actions in TASKS.items():
             for action in actions:
+                task_key=f'action_fold{fold}_{level}_{action}'
+                cached=store.load(task_key) if store else None
+                if cached is not None:
+                    all_scores.extend(cached['scores']);predictions.extend(cached['predictions'])
+                    configurations.extend(cached['configurations']);importance.extend(cached['importance']);faults.extend(cached['faults'])
+                    completed+=1;persist();print('Resumed',task_key,flush=True);continue
+                if levels is not None and level not in levels:continue
+                starts=[len(x) for x in [all_scores,predictions,configurations,importance,faults]]
+                def commit_task():
+                    nonlocal completed
+                    arrays=[all_scores,predictions,configurations,importance,faults]
+                    payload={name:value[start:] for name,value,start in zip(['scores','predictions','configurations','importance','faults'],arrays,starts)}
+                    deps=[]
+                    for config in payload['configurations']:
+                        name=f"fold{config['fold']}_{config['level']}_{config['action']}_{config['feature_set']}"
+                        deps.extend([out/'selected_model_configurations'/(name+'.json'),out/'selected_model_configurations'/(name+'.pkl')])
+                    if store:store.save(task_key,payload,deps)
+                    completed+=1;persist()
                 tr,te=task_rows(train,level,action),task_rows(test,level,action)
                 target='y_'+action
                 if len(tr)==0 or len(te)==0 or tr[target].sum()<protocol['minimum_positive_training_events']:
                     faults.append(dict(fold=fold,level=level,action=action,status='insufficient_training_support',training_positives=int(tr[target].sum()) if len(tr) else 0))
+                    commit_task()
                     continue
                 inn=tr[tr.cycle_id.isin(fit_ids)]; val=tr[tr.cycle_id.isin(inner_ids)]
                 if inn[target].nunique()<2 or val[target].nunique()<2:
                     faults.append(dict(fold=fold,level=level,action=action,status='inner_fold_single_class'))
+                    commit_task()
                     continue
                 candidates=[]
                 for fs in ['clock_inventory','full','spot_atr','option_iv','greeks_pnl']:
@@ -255,6 +285,7 @@ def train_models(data,meta,protocol,out):
                                 es,_=event_scores(trace,action,tolerance)
                                 row.update({f'{k}_{tolerance}s':v for k,v in es.items()})
                             all_scores.append(row)
+                            atomic_frame(pd.DataFrame(all_scores),out/'chronological_validation_results.csv')
                             # Select separately inside each feature set, only using INNER validation.
                             inner_metrics=scores(val[target],probs>=threshold)
                             candidates.append((inner_score,fs,family,threshold,cols,model,trace,inner_metrics))
@@ -278,12 +309,11 @@ def train_models(data,meta,protocol,out):
                     if fs=='full' and fold==len(folds)-1 and inner_score>=.2:
                         importance.extend(explain(model,te,te[target],cols,out,key,dict(level=level,action=action,fold=fold)))
                 print('Trained',fold,level,action,len(candidates),'models',flush=True)
+                commit_task()
     score=pd.DataFrame(all_scores)
-    score.to_csv(out/'chronological_validation_results.csv',index=False)
-    pd.DataFrame(faults).to_csv(out/'unavailable_tasks_and_models.csv',index=False)
-    pd.DataFrame(importance).to_csv(out/'feature_importance_by_action.csv',index=False)
+    persist()
     pred=pd.concat(predictions,ignore_index=True) if predictions else pd.DataFrame()
-    pred.to_parquet(out/'held_cycle_predictions.parquet',index=False)
+    atomic_frame(pred,out/'held_cycle_predictions.parquet')
     labels=pd.concat(regimes,ignore_index=True) if regimes else pd.DataFrame()
-    labels.to_parquet(out/'market_regime_labels.parquet',index=False)
+    atomic_frame(labels,out/'market_regime_labels.parquet')
     return score,pred,configurations,labels

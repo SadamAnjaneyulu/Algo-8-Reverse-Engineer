@@ -11,7 +11,7 @@ from .features import WINDOWS, strict_event_matches
 from .models import scores
 
 
-def run_replay(configurations,quantities,predictions,meta,protocol,out):
+def run_replay(configurations,quantities,predictions,meta,protocol,out,fold_ids=None):
     sys.path.insert(0,str(ROOT/'research'))
     from reconstruct_operational_book import IndependentBook
     cache=canonical_cache(); market=load_market()
@@ -28,6 +28,7 @@ def run_replay(configurations,quantities,predictions,meta,protocol,out):
             qs[(conf['fold'],conf['level'],conf['option_type'],conf['role'])]=(conf,pickle.load(f))
     fold_tests={c['fold']:c['test_cycles'] for c in configurations}
     for fold,test_ids in sorted(fold_tests.items()):
+        if fold_ids is not None and fold not in fold_ids:continue
         boundary=min(m['dates'][0] for m in meta if m['cycle_id'] in test_ids)
         approved={}
         for (f,level,action),(conf,model) in models.items():
