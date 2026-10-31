@@ -1,0 +1,54 @@
+name: Algo 8 chronological ML research
+
+on:
+  push:
+    branches: [research/ml-decision-engine]
+    paths:
+      - research/ml_decision_engine/**
+      - .github/workflows/algo8-ml-research.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: algo8-ml-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      MPLBACKEND: Agg
+      ALGO8_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: research/ml_decision_engine/requirements.txt
+      - name: Install pinned research dependencies
+        run: python -m pip install -r research/ml_decision_engine/requirements.txt
+      - name: Compile and test causal research components
+        run: |
+          python -m compileall -q research/ml_decision_engine
+          python -m pytest research/ml_decision_engine/test_engine.py -q
+      - name: Run complete chronological study
+        run: python -m research.ml_decision_engine.run --output research/ml_decision_engine/results
+      - name: Preserve outputs, manifests and failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: algo8-ml-decision-engine-${{ github.run_id }}
+          path: research/ml_decision_engine/results/
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
