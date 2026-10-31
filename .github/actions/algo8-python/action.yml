@@ -1,0 +1,14 @@
+name: Prepare isolated ML job
+description: Pinned dependencies and serial native/model execution
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: pip
+        cache-dependency-path: research/ml_decision_engine/requirements.txt
+    - shell: bash
+      run: |
+        python -m pip install -r research/ml_decision_engine/requirements.txt
+        mkdir -p "$JOBLIB_TEMP_FOLDER"

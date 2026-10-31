@@ -1,0 +1,369 @@
+name: Algo 8 resumable chronological ML research
+
+on:
+  push:
+    branches: [research/ml-decision-engine]
+    paths:
+      - research/ml_decision_engine/**
+      - .github/actions/algo8-python/**
+      - .github/workflows/algo8-ml-research.yml
+  workflow_dispatch:
+    inputs:
+      resume_run_id:
+        description: Restore compatible artifacts from this run (blank for fresh)
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: algo8-ml-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  OMP_NUM_THREADS: '1'
+  OPENBLAS_NUM_THREADS: '1'
+  MKL_NUM_THREADS: '1'
+  NUMEXPR_NUM_THREADS: '1'
+  JOBLIB_TEMP_FOLDER: ${{ github.workspace }}/.algo8-joblib
+  MPLBACKEND: Agg
+  ALGO8_RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+  RESULT_ROOT: research/ml_decision_engine/results
+
+jobs:
+  dataset:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    outputs:
+      folds: ${{ steps.plan.outputs.folds }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1, persist-credentials: false}
+      - uses: ./.github/actions/algo8-python
+      - name: Test chronology, accounting and injected resume failures
+        run: |
+          python -m compileall -q research/ml_decision_engine
+          python -m pytest research/ml_decision_engine/test_engine.py research/ml_decision_engine/test_checkpoints.py -q
+      - name: Restore compatible algo8-dataset
+        if: github.run_attempt > 1 || inputs.resume_run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: "algo8-dataset"
+          path: ${{ env.RESULT_ROOT }}/dataset
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.resume_run_id || github.run_id }}
+      - name: Restore compatible algo8-canonical-cache
+        if: github.run_attempt > 1 || inputs.resume_run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: "algo8-canonical-cache"
+          path: research/ml_decision_engine/.cache
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.resume_run_id || github.run_id }}
+      - name: dataset stage
+        run: python -m research.ml_decision_engine.stages --stage dataset
+      - id: plan
+        name: Publish unchanged chronological fold plan
+        shell: bash
+        run: |
+          python -c 'import json,os; p="research/ml_decision_engine/results/dataset/fold_plan.json"; f=open(os.environ["GITHUB_OUTPUT"],"a"); f.write("folds="+json.dumps(json.load(open(p)))+"\n")'
+      - name: Preserve algo8-dataset (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-dataset"
+          path: ${{ env.RESULT_ROOT }}/dataset
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+      - name: Preserve algo8-canonical-cache (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-canonical-cache"
+          path: research/ml_decision_engine/.cache
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+
+  actions:
+    needs: dataset
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        fold: ${{ fromJSON(needs.dataset.outputs.folds) }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1, persist-credentials: false}
+      - uses: ./.github/actions/algo8-python
+      - uses: actions/download-artifact@v4
+        with:
+          name: "algo8-dataset"
+          path: ${{ env.RESULT_ROOT }}/dataset
+      - name: Restore compatible algo8-action-fold-${{ matrix.fold }}
+        if: github.run_attempt > 1 || inputs.resume_run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: "algo8-action-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/actions
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.resume_run_id || github.run_id }}
+      - name: actions --fold ${{ matrix.fold }} --level basket
+        run: python -m research.ml_decision_engine.stages --stage actions --fold ${{ matrix.fold }} --level basket
+      - name: Preserve algo8-action-fold-${{ matrix.fold }} (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-action-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/actions
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+      - name: actions --fold ${{ matrix.fold }} --level side
+        run: python -m research.ml_decision_engine.stages --stage actions --fold ${{ matrix.fold }} --level side
+      - name: Preserve algo8-action-fold-${{ matrix.fold }} (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-action-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/actions
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+      - name: actions --fold ${{ matrix.fold }} --level contract
+        run: python -m research.ml_decision_engine.stages --stage actions --fold ${{ matrix.fold }} --level contract
+      - name: Preserve algo8-action-fold-${{ matrix.fold }} (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-action-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/actions
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+
+  quantities:
+    needs: [dataset, actions]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        fold: ${{ fromJSON(needs.dataset.outputs.folds) }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1, persist-credentials: false}
+      - uses: ./.github/actions/algo8-python
+      - uses: actions/download-artifact@v4
+        with:
+          name: "algo8-dataset"
+          path: ${{ env.RESULT_ROOT }}/dataset
+      - uses: actions/download-artifact@v4
+        with:
+          name: "algo8-action-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/actions
+      - name: Restore compatible algo8-quantity-fold-${{ matrix.fold }}
+        if: github.run_attempt > 1 || inputs.resume_run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: "algo8-quantity-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/quantities
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.resume_run_id || github.run_id }}
+      - name: quantities --fold ${{ matrix.fold }} --level side
+        run: python -m research.ml_decision_engine.stages --stage quantities --fold ${{ matrix.fold }} --level side
+      - name: Preserve algo8-quantity-fold-${{ matrix.fold }} (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-quantity-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/quantities
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+      - name: quantities --fold ${{ matrix.fold }} --level contract
+        run: python -m research.ml_decision_engine.stages --stage quantities --fold ${{ matrix.fold }} --level contract
+      - name: Preserve algo8-quantity-fold-${{ matrix.fold }} (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-quantity-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/quantities
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+
+  exits:
+    needs: dataset
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1, persist-credentials: false}
+      - uses: ./.github/actions/algo8-python
+      - uses: actions/download-artifact@v4
+        with:
+          name: "algo8-dataset"
+          path: ${{ env.RESULT_ROOT }}/dataset
+      - name: Restore compatible algo8-exits
+        if: github.run_attempt > 1 || inputs.resume_run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: "algo8-exits"
+          path: ${{ env.RESULT_ROOT }}/exits
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.resume_run_id || github.run_id }}
+      - name: exits stage
+        run: python -m research.ml_decision_engine.stages --stage exits
+      - name: Preserve algo8-exits (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-exits"
+          path: ${{ env.RESULT_ROOT }}/exits
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+
+  replay:
+    needs: [dataset, actions, quantities]
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        fold: ${{ fromJSON(needs.dataset.outputs.folds) }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1, persist-credentials: false}
+      - uses: ./.github/actions/algo8-python
+      - uses: actions/download-artifact@v4
+        with:
+          name: "algo8-dataset"
+          path: ${{ env.RESULT_ROOT }}/dataset
+      - uses: actions/download-artifact@v4
+        with:
+          name: "algo8-canonical-cache"
+          path: research/ml_decision_engine/.cache
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: "algo8-action-fold-*"
+          path: ${{ env.RESULT_ROOT }}/actions
+          merge-multiple: true
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: "algo8-quantity-fold-*"
+          path: ${{ env.RESULT_ROOT }}/quantities
+          merge-multiple: true
+      - name: Restore compatible algo8-replay-fold-${{ matrix.fold }}
+        if: github.run_attempt > 1 || inputs.resume_run_id != ''
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: "algo8-replay-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/replay
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.resume_run_id || github.run_id }}
+      - name: replay --fold ${{ matrix.fold }}
+        run: python -m research.ml_decision_engine.stages --stage replay --fold ${{ matrix.fold }}
+      - name: Preserve algo8-replay-fold-${{ matrix.fold }} (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-replay-fold-${{ matrix.fold }}"
+          path: ${{ env.RESULT_ROOT }}/replay
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+
+  report:
+    needs: [dataset, actions, quantities, exits, replay]
+    if: always() && needs.dataset.result == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1, persist-credentials: false}
+      - uses: ./.github/actions/algo8-python
+      - uses: actions/download-artifact@v4
+        with:
+          name: "algo8-dataset"
+          path: ${{ env.RESULT_ROOT }}/dataset
+      - name: Download available algo8-action-fold-*
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "algo8-action-fold-*"
+          path: ${{ env.RESULT_ROOT }}/actions
+          merge-multiple: true
+      - name: Download available algo8-quantity-fold-*
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "algo8-quantity-fold-*"
+          path: ${{ env.RESULT_ROOT }}/quantities
+          merge-multiple: true
+      - name: Download available algo8-exits
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: "algo8-exits"
+          path: ${{ env.RESULT_ROOT }}/exits
+      - name: Download available algo8-replay-fold-*
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: "algo8-replay-fold-*"
+          path: ${{ env.RESULT_ROOT }}/replay
+          merge-multiple: true
+      - name: report stage
+        run: python -m research.ml_decision_engine.stages --stage report
+      - name: Preserve algo8-research-report (also on failure/cancellation where possible)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: "algo8-research-report"
+          path: ${{ env.RESULT_ROOT }}/report
+          overwrite: true
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 30
+          compression-level: 3
+      - name: Add honest stage report to run summary
+        if: always()
+        shell: bash
+        run: |
+          if test -f "$RESULT_ROOT/report/ML_DECISION_ENGINE_RESEARCH_REPORT.md"; then
+            cat "$RESULT_ROOT/report/ML_DECISION_ENGINE_RESEARCH_REPORT.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
