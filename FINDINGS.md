@@ -1,111 +1,128 @@
-# Algo 8 — Reverse-Engineering Findings (v1)
+# Algo 8 — Reverse-Engineering Findings (v2, deep pass)
 
-Source material: `Info.txt` (the only spec) + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 trading days, one client `GKOHNP140`).
-All numbers below were produced by code in `analysis/` (run: `python3 analysis/report.py`). Evidence labels: **[OBSERVED]** = measured directly from fills · **[INFERRED]** = pattern fit, not proven · **[UNKNOWN]** = cannot be determined from this data.
+Sources: `Info.txt` + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 days, client `GKOHNP140`).
+Reproduce everything: `python3 analysis/report.py` · `python3 analysis/modules.py` · `python3 analysis/ladder.py`.
+Labels: **[OBSERVED]** measured from fills · **[INFERRED]** pattern fit · **[RULED OUT]** tested and rejected · **[UNKNOWN]**.
 
-> **Hard limit of this dataset:** it contains *fills only*. No spot, no option chain, no IV, no margin, no order-trigger log. Every "rule" below is inferred from what the algo *did*, not from what it *saw*. Underlying spot was reconstructed from put-call parity on same-strike CE/PE fills (`S = K + CE − PE`).
+> v1 was a structural summary. v2 uses three signals v1 ignored: the **order tag** (raw col 163), the **limit-price band** (which leaks the live quote at decision time), and second-level timing. Several v1 statements were wrong and are corrected in §9.
 
 ---
 
-## 1. What the file is  [OBSERVED]
+## 1. The algo is a set of tagged modules  [OBSERVED]
 
-| Item | Value |
-|---|---|
-| Format | Headerless broker order/fill dump, 167 columns, ~120 constant/empty. **One row = one fill** (large orders are filled 1 lot at a time, e.g. 975 qty → 15 rows) |
-| Instruments | NIFTY weekly options (NSE, lot 65, expiry Tue) and SENSEX weekly options (BSE, lot 20, expiry Thu) |
-| Order type | All `Limit`; entries/exits are *marketable* limits (buy limit ≈ LTP+10–15%, sell limit ≈ LTP−15%) → fills are better than limit. `IOC` for wing legs, `DAY` for body legs |
-| Source | `ClientAPI` — fully automated |
-| Useful columns | 11 side · 12 underlying · 14 strike · 16 CE/PE · 18 fill price · 33 fill qty · 32 contract text (use this for expiry; col 15/158 are *not* expiry) · 161 fill epoch (IST = +5:30) |
+Raw column 163 is the client order tag. It names the module that sent the order:
 
-## 2. Weekly rhythm  [OBSERVED]
+| Tag | Module | Order type | Fills / lots | Meaning |
+|---|---|---|---|---|
+| *numeric* | **BODY** | DAY limit | 26,954 / 31,874 | Short ATM straddle legs (sells) and their buy-backs |
+| `h_…` | **WING HEDGE** | IOC limit | 13,181 / 25,627 | Long OTM wings bought with each body sell; sold when body is closed |
+| `v_…` | **LUMP HEDGE** | IOC limit | 515 / 2,441 | Overnight single-strike tail hedge (bought D‑1 ≈15:10, salvaged D0) |
+| `s_…` | **STOP-LOSS** | DAY+IOC | 763 / 3,678 | Whole-cycle liquidation. Present on exactly the 12 stop-out days |
+| `m_…` | manual | IOC | 8 / 32 | Human intervention, one day only (2026‑07‑07 NIFTY) |
 
-Each expiry **cycle** = two sessions:
+## 2. Order pricing: the algo's quote is recoverable  [OBSERVED]
 
-| Session | NIFTY | SENSEX | Role |
-|---|---|---|---|
-| **D‑1** (BTST day) | Mon | Wed | Build the book all day, carry overnight |
-| **D0** (expiry day) | Tue | Thu | Unwind carry, run a fresh intraday book, flatten ≈ **15:14** |
+Every algo order is a **marketable limit at ±15 % of LTP**, rounded to the 0.05 tick:
 
-One underlying and one expiry per day; NIFTY and SENSEX alternate so the account always has something live. After a holiday shift D‑1 can be 3 calendar days (10/16 Fri → 10/19 Mon).
+* BUY limit = LTP × **1.15** (median limit/fill = 1.146 body, 1.157 wing/stop)
+* SELL limit = LTP × **0.85** (median 0.852 body, 0.842–0.843 wing/stop)
+* `v_` BUY limit = LTP × **≈1.03–1.04** (tighter; it is a patient buyer), `v_` SELL ×0.85.
 
-## 3. Core structure: hedged short straddle ("iron-fly in 1-lot slices")  [OBSERVED + INFERRED]
+So `L = limit/1.15` (buys) or `limit/0.85` (sells) is the live quote the algo saw at decision time (±tick). Fills happen at the actual book, better than the limit. This turns the fill log into a sparse tick feed and is what made §4 solvable.
 
-Per **slot** the algo:
-1. **Sells 1 ATM CE + 1 ATM PE** (same strike, nearest listed strike to spot; NIFTY step 50, SENSEX step 100).
-2. **Buys 1 CE wing + 1 PE wing**, one-for-one with the shorts.
+## 3. Weekly rhythm and the clock  [OBSERVED]
 
-Evidence it is one-for-one: on the D‑1 evening (before the lump below) `long CE lots = short CE lots` **and** `long PE lots = short PE lots` exactly on 16 of 31 days, within ±3 lots on 24 of 31; the rest drift (max |imbalance| = 123 lots on 10/16, a 3-day carry). So the hedge is one-for-one *by design*, with execution/adjustment drift.
+* **Cycle = D‑1 (BTST day) + D0 (expiry)**. NIFTY Mon/Tue, SENSEX Wed/Thu. Always one underlying per day.
+* **15-minute grid at 09:16, 09:31, 09:46, 10:01 …** Orders are decided in the first ~3 min of each slot (second-of-minute clusters at :00–:02, :09–:11, :30–:32 → the engine polls roughly every 10 s).
+* **Hard-coded lot ladder** (body sells per leg, identical for NIFTY and SENSEX, all months). Modal value, with share of days exactly equal to mode:
 
-**Wing selection is premium-based, not distance-based** [OBSERVED]: wing price ÷ straddle premium has median ≈ **1.15–1.27 %** (IQR ≈ 1.0–1.4 %) for both NIFTY and SENSEX, while wing distance varies (CE ≈ 2.4–2.5 % OTM, PE ≈ 2.7–3.8 % OTM — PE wings sit further out for the same price, consistent with skew). The exact target ratio/rounding rule is **[UNKNOWN]** (1.0 %? 1.2 %? nearest-strike?).
+| Slot | 09:16 | 09:31 | 09:46 | 10:01 | 10:16 | 10:31 | 10:46 | 11:01 | 11:16 | 11:31 | 11:46 | 12:01 | 12:16 | 12:31 | 12:46 | 13:01 | 13:16 | 13:31+ |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| **D‑1** CE/PE lots | 3 (88 %) | 2 | 3 | 1 | 2–3 | 1 | 2 (91 %) | 2 | 1 | 1 | 2–3 | 1 | 0 | 2 | 0 | 0 | 1 / 0 | 0 |
+| **D0** CE/PE lots | 10 / 7 | 0–4 | 4 | 0–1 | 4 | 3 | 2 | 3 / 2 | 2 | 2 | 3 | 1 / 0 | 0 | 4 | 2 | 3 | 1 | 3,0,2,0,0… |
 
-Exception: the **first slot of D‑1 (09:16)** uses much cheaper, far wings (~0.3 % of straddle; e.g. NIFTY CE 26250 / PE 22350 at ₹0.4–0.6). Slot ≥ 2 uses the ~1.2 % wings.
+  Hit-rates 28–100 % per slot: the ladder is the baseline; off-ladder lots are event-driven additions (§5). D0 is a *different* ladder, not a scaled D‑1.
+* D0 forced flatten ≈ **15:14** (1,259 + 1,224 lots at 15:14 across D0 days).
 
-## 4. The clock and the lot ladder  [OBSERVED]
+## 4. STOP-LOSS module: cracked numerically  [OBSERVED]
 
-* **15‑minute grid anchored at 09:16** (`:16 :31 :46 :01`), each slot spilling 1–2 min as orders are sliced per second.
-* Lots-per-leg per slot is a **fixed, day-independent ladder** (sold ATM lots per leg, D‑1, slots from 09:16):
+Reconstructed the cycle's mark-to-market **at the instant the first `s_` order fires**, marking every open instrument at its LTP taken from that order's limit:
 
-  `3, 2, 3, 1, 3, 1, 2, 2, 1, 1, 3, 1, 0, 2, 0, 0, 1 …`
+| Date | Und | Trigger | Short lots | **MTM at trigger** | Final cycle P&L |
+|---|---|---|---:|---:|---:|
+| 06‑30 | NIFTY | 14:25:17 | 145 | −152,326 | −153,392 |
+| 07‑14 | NIFTY | 09:15:19 | 56 | −137,178 | −142,889 |
+| 08‑31 | NIFTY | 14:46:28 | 71 | −144,360 | −144,833 |
+| 09‑22 | NIFTY | 14:14:30 | 209 | −144,105 | −146,237 |
+| 10‑13 | NIFTY | 09:18:03 | 104 | −145,339 | −139,347 |
+| 10‑19 | NIFTY | 09:26:21 | 120 | −141,418 | −144,684 |
+| 07‑16 | SENSEX | 11:00:52 | 96 | −142,497 | −141,524 |
+| 08‑06 | SENSEX | 09:24:39 | 65 | −142,262 | −140,045 |
+| 09‑24 | SENSEX | 09:15:12 | 62 | −157,754 | −152,852 |
+| 10‑15 | SENSEX | 09:16:31 | 60 | −134,256 | −149,885 |
+| *08‑18* | NIFTY | 09:15:12 | 61 | *−213,587* | *−222,118* (gap-through) |
+| *08‑20* | SENSEX | 09:15:13 | 45 | *−252,607* | *−189,732* (gap-through) |
 
-  This pattern repeats almost identically on all 31 D‑1 days → the entry schedule is **hard-coded / time-driven, not signal-driven**. Deviations from the ladder (extra lots, spikes of 5–22) are *adjustment/re-entry* activity layered on top.
-* D0 uses the same 15-min clock with a different ladder (CE+PE lots/slot ≈ 8, 9, 3, 8, 6, 4, 5, 4 …) on top of unwinding the carried book.
+**Findings**
+1. **The stop base is the whole-cycle (D‑1 + D0 cumulative) MTM of body + hedges at LTP**, not day P&L. Cycle-cumulative: CV 4.7 % across the 10 non-gap stops. Day-only vs previous close: ±40 % scatter. Body-only (hedges ignored): CV 19.7 %. Band-marked (shorts at LTP×1.15): SD 26 K vs 6.8 K.
+2. **Threshold ≈ −₹1.44 L** (mean −144,150, SD 6,779, range −134 K … −158 K; scatter is consistent with the ±tick/±1 % error of L). It is **size-independent**: short lots ranged 56 → 209 yet the threshold did not move, so it is a fixed rupee amount, not a % of margin or of premium.
+3. **It applies on D‑1 as well as D0** (08‑31 stopped on a D‑1 at −144,360; no D0 trades followed). Info.txt's "4 % carry / 1 % on expiry day" is **not reproduced**: there is one empirical number, ≈ 0.72 % of ₹2 Cr.
+4. **Action:** everything is closed within 3 s – 5 min (body buy-backs `DAY`, wings/lump `IOC`), then **no new entries that cycle**.
+5. Two cycles gapped through the line at the 09:15 print (−213 K, −253 K MTM at the first tick) — the loss limit is not hard.
 
-## 5. Re-centering / adjustments  [OBSERVED, trigger INFERRED]
+Open: what the −1.44 L is derived from (e.g. 1 % of ₹2 Cr less a cost reserve? a stored constant?). **[UNKNOWN]** — fills cannot tell.
 
-Straddle strikes track spot: e.g. SENSEX 7/8 shorts start at 77 700 and step down to 76 200 as spot fell ~1.7 %. Clusters of `Buy ATM + Sell FAR` (closing a straddle and its wings, then re-selling at the new ATM) occur at 12:31/12:47, 13:41–13:47, 14:46, 14:54–55, 15:05, 15:15. The *trigger* (spot-move threshold? leg-premium SL? time?) is **[UNKNOWN]**: FIFO leg-matching gives a smooth continuum of exit/entry price ratios (0.5×→5×) with no clustering at a round SL multiple, so a simple "+X % per leg" stop is *not* supported by the data.
+## 5. BODY module  [OBSERVED / INFERRED]
 
-## 6. The overnight "lump" hedge (BTST carry)  [OBSERVED]
+* Each slot **sells 1 ATM CE + 1 ATM PE at the same strike** per ladder lot and the wing module buys one wing per sold lot. (Pre-lump D‑1 book: long CE = short CE **and** long PE = short PE exactly on 16/31 days, within ±3 lots on 24/31.)
+* **On D‑1 the book is an accumulating ladder, not a re-centered position.** Example 7/6 NIFTY: strikes sold 24350 → 24400 → 24450 → 24500 as spot drifted 24325 → 24440; old strikes are kept. Only 1,326 body lots are bought back on D‑1 across all 31 days, and **every D‑1 exit is a loser** (median exit/entry 1.38, −₹2.28 M total), i.e. D‑1 buy-backs are loss-cuts, never profit-takes.
+* Strike is **not** reliably the nearest-to-spot. Over 916 grid slots, the modal sold strike equals the nearest strike (by parity-derived spot) in **61.5 %**; (S−K)/step has SD ≈ 0.7 with tails to ±1.5 steps (≈ 10 % of slots are > 1 step away). Part of that spread is spot-proxy error (≈ 10–25 pts), but not 40 %. A sticky-strike (hysteresis) rule is **not** supported cleanly: strikes that stay have |S−K_prev| median 0.33 step (p95 1.09), strikes that switch have median 0.83 step (p5 0.12), the distributions overlap heavily. **[UNKNOWN]** rule (different reference price — futures/prev-close? straddle-balance? config offset?).
+* Carried D‑1 shorts (2,323 lots) are unwound **gradually through D0** (exit/entry ratio falls 1.5 at 09:15 → 0.02 by 15:00), 425 lots at the 09:15 open (these are the stops, −₹977 K) and the rest as decay.
+* Wing selection is premium-based: wing price ≈ **1.0–1.4 % of the straddle premium** (median ≈ 1.2 %); first D‑1 slot (09:16) uses much cheaper far wings (~0.3 %).
 
-Near the end of every D‑1 the algo makes **one large single-strike purchase** of an OTM option on the side that has more short lots:
+## 6. LUMP hedge (`v_`)  [OBSERVED]
 
-* Side: the side with more short lots (≈ 29/31 days).
-* Strike: ≈ 1.1–2.5 % OTM, premium ≈ ₹3–9 (NIFTY) / ₹12–22 (SENSEX).
-* Size: 2 – 153 lots, e.g. 7/6 NIFTY: **62 × PE 24100 @5.51**; 7/8 SENSEX: **54 × CE 78200 @15.0**.
-* Timing: ≈ 15:06–15:14 until Aug 12, then **15:23–15:38** from Aug 12 onward (a regime/timestamp change — **[UNKNOWN]** whether the algo or the venue clock shifted).
-* Effect: caps the heavy-side tail. Expiry-payoff of the carried book without the lump loses ≈ ₹41.5 L at a −4 % move (intrinsic-at-expiry model) on 7/6; with the lump ₹13.5 L. The sizing rule (what number of lots?) is **[UNKNOWN]** — it is *not* a constant rupee cost (₹6 K–₹87 K), not equal to the CE/PE imbalance, and not a constant fraction of short lots (0.04–0.85).
+* **Buy:** one OTM strike, one ~3 % limit band, ≈15:06–15:14 (until Aug‑12) then ≈15:23–15:38; on the heavier short side (29/31 days); 2–153 lots; price ₹3–9 NIFTY / ₹12–22 SENSEX.
+* **Sell (D0):** not a signal. It is a **salvage dribble**: IOC sells of 1–8 lots at 0.03–0.25× entry (typically 14:00–15:15), plus a lump liquidation inside stop events (e.g. 7/14: 15 lots at ₹3.50 in the first second). Sizing rule for the buy: **[UNKNOWN]** (not constant ₹, not CE/PE imbalance, not constant % of short lots).
 
-The carried book on a typical D‑1 close: ~100 short ATM lots + ~100 wing lots + the lump. On D0 the exact inverse trades happen (net per instrument over D‑1+D0 = 0; positions are always squared off, never left to settle).
+## 7. What I tested and RULED OUT  [RULED OUT]
 
-## 7. Stop-losses  [partly OBSERVED]
+| Hypothesis | Test | Result |
+|---|---|---|
+| Per-leg stop at fixed premium multiple (e.g. +50 %, +100 %) | exit/entry ratios, FIFO and running-average per strike, using LTP at decision time | Continuous 0.5×–2× spread; no spike |
+| Exit when spot moves X % from entry spot | adverse move at exit | Smooth 0.1 %–0.75 %, no threshold |
+| Exit when spot is X strike-steps from the sold strike | (spot − strike)/step at exit | Exits from −10 to +10 steps, including dead ATM |
+| Fixed holding time (15 min multiples) | 9,127 D0 lots | Flat distribution, no peaks |
+| D0 profit-target fraction / absolute price | ratio × time, absolute L × time | Mixed 0.05×–2.5×, no cluster |
+| Stop gap vs −₹2 L explained by costs | STT+exchange charges per cycle | ₹1.2–3.3 K, far too small |
+| Stop base = day P&L vs prior close | day MTM − carried value at prior close | ±40 % scatter |
 
-Info.txt: *"carry-forward SL of 4 % on positions carried forward to expiry, and 1 % on the entire capital on expiry day"*, capital ₹2 Cr.
+**Not ruled out (competing hypothesis):** the stop is really −₹2 L (= 1 % × ₹2 Cr per Info.txt) measured on *band-marked* P&L (shorts at LTP×1.15, longs at LTP×0.85). That version gives mean −207 K (≈ −2 L!) but SD 26.5 K vs 6.8 K for plain LTP-MTM. Dispersion favours the LTP-MTM / −1.44 L reading, but the −207 K mean coincidence is notable; n = 10 cannot separate them with certainty and a quote feed could.
 
-What the fills show:
-* **11 of 30 clean cycles were whole-book stop-outs**: everything is liquidated in seconds (e.g. 7/14: 09:15:00 → 09:16:12, buy-back of shorts first with `DAY` limits, then wings sold `IOC`). Eight of the 11 trigger **within seconds–minutes of the 09:15 open** after an overnight gap (|gap| ≈ 0.3–0.7 % by my spot proxy, both directions); three triggered intraday (6/30 14:25, 9/22 14:14, 7/16 11:01). A 12th stop occurred on a D‑1 itself (8/31 14:46, gross −₹145 K; D0 shows no trades afterward) and is outside the 30-cycle count.
-* Realised **gross cycle P&L at the stop clusters tightly at −₹139 K … −₹153 K** (9 of 11), plus two gap-through outliers (−₹190 K, −₹222 K).
-* This is **≈ 0.70–0.77 % of ₹2 Cr, not 1 %**. Statutory costs are only ₹1.2–3.3 K per cycle so costs do not explain the gap. Candidate explanations (all **[UNKNOWN]**): SL base is *used margin* (~₹1.4–1.5 Cr), not the full ₹2 Cr; SL evaluated on a different MTM (e.g. vs previous close); the "4 %" is on something other than spot/premium. I could **not** reconcile the 4 % with any measurable quantity (gap sizes are 0.6–0.7 %, carried premium is small).
+## 8. Performance (fills only, gross of brokerage)  [OBSERVED]
 
-## 8. P&L (fills only, **gross of brokerage**)  [OBSERVED]
+| Slice | Cycles | Total | Mean | Win % | Stops | Max DD |
+|---|---:|---:|---:|---:|---:|---:|
+| All clean D‑1+D0 | 30 | **+₹15.53 L** | ₹51.8 K | 47 % | 11 | −₹6.82 L |
+| NIFTY | 13 | +₹2.78 L | ₹21.4 K | 38 % | 6 | −₹3.38 L |
+| SENSEX | 17 | +₹12.74 L | ₹75.0 K | 53 % | 5 | −₹3.44 L |
 
-| Slice | n cycles | Total | Mean | Win % | Stops | Worst | Max DD (cycle seq) |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| All clean D‑1+D0 | 30 | **+₹15.53 L** | ₹51.8 K | 47 % | 11 | −₹222 K | −₹682 K |
-| NIFTY | 13 | +₹2.78 L | ₹21.4 K | 38 % | 6 | −₹222 K | −₹338 K |
-| SENSEX | 17 | +₹12.74 L | ₹75.0 K | 53 % | 5 | −₹190 K | −₹344 K |
+Non-stop mean +₹172 K (74 % win); stops mean −₹157 K. t-stat of cycle mean 1.39 (n = 30): **edge not established**. ≈ 37 K orders, so brokerage at ₹20/order ≈ ₹7.5 L, about half the gross. Four log gaps (8/10, 9/1, 9/14, 9/29) and three D0-only cycles are excluded.
 
-* Non-stop cycles: mean **+₹172 K**, 74 % win. Stop cycles: mean **−₹157 K**. The profile is classic *short-vol*: many modest wins, a capped (by design) but frequent loss.
-* 7.8 % gross on ₹2 Cr over ~4 months, **t-stat of cycle mean = 1.39 → not statistically distinguishable from zero** at n = 30.
-* **Brokerage is the elephant**: 37 258 orders. At a flat ₹20/order that is ≈ ₹7.5 L — roughly **half** the gross profit. Slippage is also not modelled (fills are the real fills, so it is already inside the P&L, but not the exchange/broker fees).
-* Data gaps: no rows for 8/10, 9/1, 9/14, 9/29 (and 9/29's carried book is open in the file). Cycles 6/23, 8/11, 9/15 are D0-only; 9/1 is D‑1-only (stopped). All excluded from the 30-cycle stats.
+## 9. Corrections to v1
 
-## 9. What is cracked vs not
+* v1 §5 called D‑1 behaviour "re-centering". **Wrong** — D‑1 accumulates new ATM straddles at the current spot; old strikes stay.
+* v1 said the stop "does not reconcile" (−0.7 % of ₹2 Cr). Now resolved empirically: the **base is cycle-cumulative LTP MTM** and the threshold is a **fixed ≈ −₹1.44 L**. Info.txt's 1 %/4 % wording does not map onto it.
+* v1 listed the first-slot far wings and ladder loosely; v2 gives the modal ladder and hit-rates.
+* v1 labelled the lump "sizing rule open"; still open, but its **sell side is now identified as salvage**, not a signal.
 
-| Component | Status |
-|---|---|
-| Underlying/expiry/day mapping | **Cracked** |
-| Strategy family (hedged ATM short straddle, 1-lot slices) | **Cracked** |
-| 15-min clock @09:16, fixed lot ladder | **Cracked** (ladder values extracted; exact tail after slot ~16 needs per-regime table) |
-| Wing = ~1.2 % of straddle premium | **Strong fit**, exact rule open |
-| EOD lump hedge: side, ~1–2.5 % OTM, one strike | **Cracked qualitatively**; lot-sizing & strike rule open |
-| Re-center trigger | Open |
-| Stop-loss (4 % carry / 1 % capital) arithmetic | **Does not reconcile** — open |
-| D0 final flatten ≈ 15:14 | **Cracked** |
-| Edge significance | **Not established** (n = 30, t = 1.4, fees ≈ half of gross) |
+## 10. Still not cracked
 
-## 10. Decisions needed from you (blocking, not guessed)
+1. **Exit / adjustment trigger** for off-ladder body buy-backs on D‑1 and D0 (the largest P&L driver). Needs the real quote path.
+2. **Strike selection rule** for the body (≈ 20 % of entries are not nearest-to-spot).
+3. **Lump lot-sizing** and exact **wing-premium target**.
+4. **D0 09:16 slot** (10–12 lots/leg, hit-rate 17 %) — varies; likely sized off the carried book.
+5. **Origin of −₹1.44 L**, and whether it is time/day dependent (all 12 stops are consistent, but all are at one threshold).
+6. The Aug‑12 timestamp regime change (lump at 15:23–15:38).
 
-1. **Data:** can you provide NIFTY/SENSEX 1-min spot + option-chain (or at least 1-min spot and Black-Scholes IV) for 2026-06-23 → 2026-10-22? Without it, the re-center trigger, wing rule and SL arithmetic cannot be pinned down — only fitted.
-2. **Goal of "crack":** (A) exact replica that reproduces these fills, (B) a re-implementation of the *idea* with my own validated rules, or (C) estimate whether the edge is real? Each needs different next steps.
-3. **Costs:** broker brokerage per order (flat ₹20? zero?) so net P&L can be stated.
-4. **SL:** do you know whether "1 % of capital" is measured on ₹2 Cr, on used margin, or as MTM vs previous close? And what the "4 %" is a percentage *of*?
-5. **Timestamp regime change from 12 Aug** (lump at 15:23–15:38, trades stamped after 15:30): was the algo changed that day, or did the broker/venue clock change?
+**To go further I need one of:** (a) 1-minute NIFTY/SENSEX spot + option-chain/IV for 2026‑06‑23 → 2026‑10‑22 — then I can regress every off-ladder order against state; (b) the Algo's config/settings (ladder arrays, stop value, hedge %); or (c) the broker's *rejected/cancelled* order log (this file has only fills — modified/cancelled orders carry the trigger state).

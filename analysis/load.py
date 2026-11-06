@@ -25,3 +25,14 @@ def load():
     d['hhmm']=d.t.dt.strftime('%H:%M')
     d['sgn']=np.where(d.side=='Buy',1,-1)
     return d
+
+def load_tagged():
+    """load() + order tag (col 163) decoded: tp in {num(body), h_(wing hedge), s_(stop-loss module), v_(overnight lump hedge), m_(manual)}"""
+    raw = pd.read_csv(RAW, header=None, dtype=str, keep_default_na=False)
+    d = load()
+    d['tag'] = raw[163].values
+    d['tp'] = d.tag.str.extract(r'^([a-z]+_)')[0].fillna('num')
+    d['hms'] = d.t.dt.strftime('%H:%M:%S')
+    d['sl'] = d.sgn * d.lots
+    d['cash'] = -d.sgn * d.qty_fill * d.px_fill
+    return d
