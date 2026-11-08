@@ -1,4 +1,4 @@
-# Algo 8 — Reverse-Engineering Findings (v7, alpha search + locked OOS)
+# Algo 8 — Reverse-Engineering Findings (v8, Algo 7 cross-insights)
 
 Sources: `Info.txt` + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 days, client `GKOHNP140`)
 + **Breeze 1-minute market data and prior research on branch `research/ml-decision-engine`** (also `data/local-breeze-fetch`, `research/strong-findings`).
@@ -52,6 +52,35 @@ Method: one targeted supervised problem per question, built from tagged fills + 
 | P5 | Overnight lump lot count | **Not cracked (negative)** | Leave-one-out ridge / random forest 35–37 % median error, **worse than** the naive per-index median (24 %). Cost / day credit median 3.9 % but CV 0.44; delta/gamma/vega-neutral sizes don't fit. Rules that hold: heavier short side (90 %), 0.9–2.3 % OTM. Sizing likely depends on something not in the data (overnight margin or config) |
 
 **Structural insight behind the partial results.** The fills are the **superposition of several concurrently running allocations**, each with its own 15-min timer, ≈1.55× leg stop and exit clock, all sharing one cycle-level stop. Same-contract buy-and-sell within minutes (22 % on D0) is the fingerprint. This is why no single per-contract trigger reproduces every fill, and why the per-lot rules work best on D‑1, where allocations overlap least.
+
+---
+
+## 0f. v8 — what Algo 7 tells us about Algo 8 (`analysis/a7_*.py`)
+
+Inputs: `ALGO7_FINAL_REPORT.pdf` (24 Sep 2026) and `Algo_7_Dump.xlsx` (30,192 fills, client PCHNA531, 13 Apr–15 Sep 2026), supplied by the user. The dump has the **same 168-column broker export with a header**, which names Algo 8's columns.
+
+**Same platform and codebase [OBSERVED].** Column 163 is `UniqueOrderIdentifier` (the module tag), 144 `AlgoId`, 145 `AlgoCategory`, 166 `DashboardAppKey`, 154 the price band. Both algos use the **same AlgoIds**, the same module-tag scheme and the same two-app-key structure:
+
+| AlgoId | Algo 8 | Algo 7 |
+|---|---|---|
+| `9999999999999990` (Excel: 1E+16) | **SENSEX** main book (body/wings/stops/lump) | main book, sells ~₹80 |
+| `99999` | **NIFTY** main book | main book, sells ~₹44 |
+| `152432` (AlgoCategory 99) | **platform risk actor**: stop orders, closes positions it did not open (7.5 % of its books flat), on stop days (8/18…) | same ID, cheap buys ~₹1 |
+| `2188110094900040` (2.18811E+15) | separate SENSEX hedge app (2nd app key), 3 days | same ID, cheap buys ~₹3 |
+
+AlgoId is **per index**, not per sub-strategy; it does not recover allocation identity.
+
+**Algo 7 findings re-tested on Algo 8**
+
+| Algo 7 finding | Algo 8 result |
+|---|---|
+| Lean (delta × move) drives P&L: corr 0.71, +₹23.4 L vs premium −₹4.4 L | **Same shape:** lean **+₹47.5 L** (D‑1 +17.8, overnight +7.9, D0 +21.8) vs everything else **−₹32.0 L**; corr(session P&L, lean) **0.60** (SENSEX 0.74) vs 0.23 |
+| Lean is a directional decision | **No directional skill in Algo 8:** sign(book delta) vs next 15/60-min move corr −0.007 / +0.025; book delta before the move vs move to expiry: agreement 37–43 %, corr −0.13…−0.33 (n.s.). The lean is the realised path P&L of a continuously rebalanced short-gamma book, favourable in this sample |
+| Strike = delta target (sell 0.45Δ) | **Delta-based too:** grid A ≡ 0.50Δ (= ATM); off-grid modules sell **CE at ≈ 0.55–0.58Δ** (unchained 42 % vs ATM 29 %; :00 grid 37 % vs 19 %) → explains the ITM-call tilt |
+| 58.8 % of orders add delta in the direction of the last move | **68.6 %** (D‑1 buy-backs 88 %, sales 64–70 %) → momentum-following rebalancing is shared engine logic |
+| 28 Jul 2026 redesign (spreads → naked + portfolio hedge) | Algo 8 shows configuration changes in the same period (extra D0 clocks until early July; lump timing shift 12 Aug); no direct test yet |
+
+**Implication for alpha.** Both algos' P&L is dominated by delta path P&L, with the systematic premium/gamma part negative in this window. For Algo 8 that delta P&L shows **no forecasting power** at minute, hour or cycle horizons, which supports the earlier verdict: no demonstrated informational alpha. The frozen H1 (BTST overnight premium) is unaffected. Its OOS test is the decider.
 
 ---
 
