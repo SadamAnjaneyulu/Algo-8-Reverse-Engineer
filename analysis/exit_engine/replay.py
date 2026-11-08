@@ -428,9 +428,9 @@ def summarise(D):
     return pd.DataFrame(out)
 
 if __name__ == '__main__':
-    ap = argparse.ArgumentParser(); ap.add_argument('--fill', default='open'); ap.add_argument('--smoke', action='store_true'); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument('--fill', default='open'); ap.add_argument('--smoke', action='store_true'); ap.add_argument('--policies', default='model,hold,clone'); a = ap.parse_args()
     pd.set_option('display.width', 250); pd.set_option('display.max_columns', 60)
-    D, ctrl, rules = main(a.fill, max_cycles=2 if a.smoke else None)
+    D, ctrl, rules = main(a.fill, policies=tuple(a.policies.split(',')), max_cycles=2 if a.smoke else None)
     if a.smoke:
         print(D.T.to_string()); raise SystemExit(0)
     D.to_csv(os.path.join(RES, f'autonomous_replay_by_cycle_{a.fill}.csv'), index=False)
