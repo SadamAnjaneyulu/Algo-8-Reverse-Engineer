@@ -1,4 +1,4 @@
-# Algo 8 — Reverse-Engineering Findings (v4, ML pass on market data)
+# Algo 8 — Reverse-Engineering Findings (v5, allocation chains + indicator search)
 
 Sources: `Info.txt` + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 days, client `GKOHNP140`)
 + **Breeze 1-minute market data and prior research on branch `research/ml-decision-engine`** (also `data/local-breeze-fetch`, `research/strong-findings`).
@@ -52,6 +52,60 @@ Method: one targeted supervised problem per question, built from tagged fills + 
 | P5 | Overnight lump lot count | **Not cracked (negative)** | Leave-one-out ridge / random forest 35–37 % median error, **worse than** the naive per-index median (24 %). Cost / day credit median 3.9 % but CV 0.44; delta/gamma/vega-neutral sizes don't fit. Rules that hold: heavier short side (90 %), 0.9–2.3 % OTM. Sizing likely depends on something not in the data (overnight margin or config) |
 
 **Structural insight behind the partial results.** The fills are the **superposition of several concurrently running allocations**, each with its own 15-min timer, ≈1.55× leg stop and exit clock, all sharing one cycle-level stop. Same-contract buy-and-sell within minutes (22 % on D0) is the fingerprint. This is why no single per-contract trigger reproduces every fill, and why the per-lot rules work best on D‑1, where allocations overlap least.
+
+---
+
+## 0c. v5 — allocation chains and the indicator search
+
+### Allocation / timer structure (`analysis/chains.py`, `a2_*.py`)
+Sale bursts were clustered by their **second-level phase modulo 15 min**, with a jitter null calibrated so the false-discovery rate is ≈ 0 (p < 1e-12; at p < 1e-4 the null produced 55 % false chains, so the strict level is required).
+
+| Clock | Where | Phase | Role |
+|---|---|---|---|
+| Grid A | D‑1 and D0 | :01/:16/:31/:46 (from 09:16) | Ladder entries; sells nearest ATM (D‑1 77.6 %, 85.6 % allowing intraminute) |
+| Grid :00 | D‑1 13:30–15:00, some D0 | :00/:15/:30/:45 | Afternoon additions; mostly **one strike low** (CE ITM 73 %) |
+| **Clock B** | D0 from **09:29** | :14/:29/:44/:59 | **Rebalance scheduler**: 25.5 % of D0 buy-backs in 8.3 % of the time; buys and sells per event correlate 0.91; closes ≈ 10–12 % of a contract per tick |
+| Extra clocks | D0, early weeks only (6/25, 7/02) | :05/:20…, :10/:25… | Disappear later → configuration change |
+
+* **Event-anchored chains do not survive the null**: every confirmed chain is a fixed clock. Off-grid "extra" sales are timer chains (≈ 24 % on D‑1), batch spill-over, or unchained (see §0b P3).
+* At a Clock‑B tick, *which* lots are closed is **not** a per-lot price rule (fungible-lot count test: profit-target and stop conditions ≤ 10 % precision at every threshold). Contract-level model AUC 0.84 but F1 0.23 (lots held and time). Lots are interchangeable in the fills, so allocation identity cannot be recovered → this stays **[UNKNOWN]**.
+* Strike choice depends on the module: grid A sells ATM; grid :00 and unchained sales shift **toward the recent move** (CE ITM 73–78 % on D‑1). A premium-parity ATM (min |CE−PE|) is **worse** than index-nearest (54 % vs 78 %).
+
+### Does it use indicators? (`analysis/indicators*.py`, `b2_*.py`)
+Library: **75 causal index indicators** at 1/5/15 min (EMA 5/9/20/50 distance, EMA 9/20 spread and slope, SMA20, MACD and histogram, RSI 7/14, Stochastic, CCI, ROC, ATR, Bollinger %b/width, ADX/DI, Supertrend(10,3), realized vol, prior-day H/L/C, pivot/R1/S1, gap, day open/high/low distance, opening-range breakout), **14 option measures** (ATM IV, CE−PE IV, straddle, 1.5 %-OTM skew, PCR-OI, their changes), and **crossover events** (EMA cross, Supertrend flip, MACD flip, RSI 30/70, BB touch, first ORB break). VWAP is impossible (index has no volume); SENSEX OI is zero in the data.
+
+Test: 8 decisions; nested out-of-sample LightGBM (3 expanding chronological folds) **base (clock+book) → +raw price moves → +indicators**, against 5 nulls that take indicators from a different random date at the same time of day; then univariate tests with BH-FDR, re-checked **within date** to remove between-day confounding.
+
+| Decision | Gain from indicators over raw price (null max) | Verdict |
+|---|---|---|
+| Extra off-grid sale | −0.002 (−0.015) | none |
+| Timer-due fire | −0.030 (−0.012) | none |
+| D0 buy-back hazard | −0.008 (−0.007) | none |
+| Clock-B rebalance choice | −0.002 (−0.028) | none |
+| Slot sized above ladder | −0.021 (−0.078) | none |
+| Strike off ATM | +0.026 (+0.002) | options family; **no single feature** (all AUC 0.46–0.52) |
+| Leg stop executed vs survived | +0.099 (+0.062); trend family +0.105 (+0.050) | **no single feature** (best 15m ADX, within-date AUC 0.58); not the wick, not spot-since-entry, not a 1/3/5/15-min candle-close stop (none beats "always stop") |
+| Offset direction (OTM vs ITM) | +0.005 overall; **levels +0.013** (+0.002) | **spot vs the day's high / prior high / R1**: within-date AUC 0.69–0.74 |
+
+* The univariate scan flags 335/1,008 tests at q < 0.05, but the top hits are all **1-minute momentum readings** (RSI 7/14, Stochastic, EMA 5/9/20 distance, %b, DI diff). These are near-copies of the recent price move and add **nothing** beyond raw moves in the model-level test. They show the algo reacts to recent movement, **not** that it computes RSI or an EMA.
+* **Conclusion [INFERRED, strong]: no classical technical or option indicator is identifiably used.** Decisions are driven by fixed clocks, its own P&L and premium ratios, and **price location** (recent move and where spot sits in the day's range) for the direction of strike shifts. Residual unexplained variation (leg-stop survival, strike off-ATM) shows only diffuse, interaction-level association.
+
+### Parameter sheet (everything decoded so far)
+
+| Parameter | Value | Status |
+|---|---|---|
+| Cycle | D‑1 (BTST) + D0 expiry; NIFTY Mon/Tue (lot 65), SENSEX Wed/Thu (lot 20) | observed |
+| Orders | 1 lot per order; limit = LTP×1.15 buy / ×0.85 sell (lump buy ×1.03); tags num/h_/v_/s_/m_ | validated |
+| D‑1 ladder (lots/leg) | 09:16 3, 09:31 2, 09:46 3, 10:01 1, 10:16 3, 10:31 1, 10:46 2, 11:01 2, 11:16 1, 11:31 1, 11:46 3, 12:01 1, 12:16 0, 12:31 2, 12:46 0, 13:01 0, 13:16 1 | observed (modal) |
+| Clocks | grid A :01/:16/:31/:46; grid :00 13:30–15:00; D0 Clock B :14/:29/:44/:59 from 09:29 | validated (null-calibrated) |
+| Timer windows | active 09:16–11:15, quiet 11:16–13:27, active 13:28–14:36 (93 % if no sale for 14.5 min), off after ≈ 14:47 | ML (AUC 0.887) |
+| Strike | nearest to previous-minute index close (grid); ±1 strike toward recent move / day-range position (other modules) | partial (68.5 %) |
+| Wings | premium ≈ 1.0–1.4 % of straddle (prior work: ≈ 2.5 % of each ATM leg); 09:16 seed wings far (~0.3 %) | partial |
+| Leg stop | ≈ 1.55× the lot's own entry; lots ≤ ₹4 effectively exempt | validated (82–89 %) |
+| Cycle stop | cumulative LTP-MTM ≤ ≈ −₹1.30–1.35 L; 1–20 s check latency (fills average −₹1.44 L); ends cycle | validated |
+| Lump hedge | heavier short side (90 %), 0.9–2.3 % OTM, ₹3–9 NIFTY / ₹12–22 SENSEX, ≈ 15:06–15:38; sold as salvage on D0; **lot count not predictable** | partial |
+| D0 exits | leg stop 23 %, salvage ≤ ₹1 / ≤ 5 % of entry 12 %, Clock-B rebalance, 15:14 flatten | partial |
+| Indicators | none identifiable | tested |
 
 ---
 
@@ -166,7 +220,7 @@ Non-stop mean +₹172 K (74 % win); stops mean −₹157 K. t-stat of cycle mean
 
 ## 10. Still not cracked
 
-*After v4 (see §0b):* open are the D0 "other" exits (59 % of exit minutes), the ~20–30 % deliberate strike offsets, lump lot-sizing, and the origin of the ≈ −₹1.30–1.35 L stop constant. The most promising next step is to reconstruct **allocation identity** (assign each lot to a timer chain) so per-allocation rules can be fitted instead of per-contract ones. The v3 list below is kept for history.
+*After v5 (see §0b, §0c):* indicator use is tested (none identifiable) and clock structure is decoded. Still open are the Clock-B lot-selection rule (needs allocation identity), the leg-stop survival residual (~21 %), and also the D0 "other" exits (59 % of exit minutes), the ~20–30 % deliberate strike offsets, lump lot-sizing, and the origin of the ≈ −₹1.30–1.35 L stop constant. The most promising next step is to reconstruct **allocation identity** (assign each lot to a timer chain) so per-allocation rules can be fitted instead of per-contract ones. The v3 list below is kept for history.
 
 ### v3 list
 
