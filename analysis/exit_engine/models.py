@@ -38,7 +38,8 @@ def ece(y, p, bins=10):
     return e
 
 def feats_of(df):
-    return [c for c in df.columns if c not in ACTION_COLS | ID_COLS and df[c].dtype != object and not c.startswith('y_')]
+    num = lambda c: pd.api.types.is_bool_dtype(df[c]) or pd.api.types.is_numeric_dtype(df[c])      # excludes object AND pandas string dtypes
+    return [c for c in df.columns if c not in ACTION_COLS | ID_COLS and num(c) and not c.startswith('y_')]
 
 def prep(df):
     X = df.copy()

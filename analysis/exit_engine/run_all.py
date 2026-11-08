@@ -24,16 +24,23 @@ def parallel(*chains):
         for f in [ex.submit(chain, *c) for c in chains]: f.result()
 
 if __name__ == '__main__':
-    removed = [p for p in glob.glob(os.path.join(C, 'exit_*.pkl')) + glob.glob(os.path.join(C, 'fp_*.pkl'))]
-    for p in removed: os.remove(p)
-    print('removed caches:', [os.path.basename(p) for p in removed], flush=True)
     E = 'exit_engine/'
-    chain(('01_ledger', [E + 'ledger.py']), ('02_taxonomy', [E + 'taxonomy.py']), ('03_common', [E + 'common.py']),
+    resume = '--resume-models' in sys.argv          # re-run from stage 15 on the caches of this same clean build (stages 1-14 already done)
+    removed = []
+    if not resume:
+        removed = [p for p in glob.glob(os.path.join(C, 'exit_*.pkl')) + glob.glob(os.path.join(C, 'fp_*.pkl'))]
+        for p in removed: os.remove(p)
+        print('removed caches:', [os.path.basename(p) for p in removed], flush=True)
+    else:
+        print('resume from stage 15 (no cache deletion)', flush=True)
+        run('15_models', [E + 'models.py'])
+    if not resume:
+      chain(('01_ledger', [E + 'ledger.py']), ('02_taxonomy', [E + 'taxonomy.py']), ('03_common', [E + 'common.py']),
           ('04_order_key_audit', [E + 'order_key_audit.py']), ('05_bookstate', [E + 'bookstate.py']))
-    parallel([('06_panel', [E + 'panel.py']), ('07_triggers', [E + 'triggers.py']), ('08_stop_shape', [E + 'stop_shape.py']), ('09_carry_stop', [E + 'carry_stop.py'])],
-             [('10_first_passage', [E + 'first_passage.py'])],
-             [('11_side_basket', [E + 'side_basket.py']), ('12_clock_b', [E + 'clock_b.py']), ('13_carried', [E + 'carried.py']), ('14_newest_ref', [E + 'newest_ref.py'])],
-             [('15_models', [E + 'models.py'])])
+      parallel([('06_panel', [E + 'panel.py']), ('07_triggers', [E + 'triggers.py']), ('08_stop_shape', [E + 'stop_shape.py']), ('09_carry_stop', [E + 'carry_stop.py'])],
+               [('10_first_passage', [E + 'first_passage.py'])],
+               [('11_side_basket', [E + 'side_basket.py']), ('12_clock_b', [E + 'clock_b.py']), ('13_carried', [E + 'carried.py']), ('14_newest_ref', [E + 'newest_ref.py'])],
+               [('15_models', [E + 'models.py'])])
     parallel([('16_replay_open', [E + 'replay.py', '--fill', 'open'])], [('17_replay_adverse', [E + 'replay.py', '--fill', 'adverse'])],
              [('18_replay_delay1', [E + 'replay.py', '--fill', 'delay1'])], [('19_robustness', [E + 'robustness.py'])])
     import shutil
