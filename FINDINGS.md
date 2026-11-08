@@ -1,10 +1,40 @@
-# Algo 8 — Reverse-Engineering Findings (v2, deep pass)
+# Algo 8 — Reverse-Engineering Findings (v3, with market data)
 
-Sources: `Info.txt` + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 days, client `GKOHNP140`).
-Reproduce everything: `python3 analysis/report.py` · `python3 analysis/modules.py` · `python3 analysis/ladder.py`.
-Labels: **[OBSERVED]** measured from fills · **[INFERRED]** pattern fit · **[RULED OUT]** tested and rejected · **[UNKNOWN]**.
+Sources: `Info.txt` + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 days, client `GKOHNP140`)
++ **Breeze 1-minute market data and prior research on branch `research/ml-decision-engine`** (also `data/local-breeze-fetch`, `research/strong-findings`).
+Reproduce: `python3 analysis/report.py` · `analysis/modules.py` · `analysis/ladder.py` (fills only) — and, with market data,
+`ALGO8_MARKET_DIR=<checkout of research/ml-decision-engine>/data/breeze/normalized python3 analysis/mtm.py` · `analysis/leg_stop.py`
+(`analysis/market.py` loads the candles; first run caches them in `analysis/_cache/`).
+Labels: **[OBSERVED]** measured · **[VALIDATED]** confirmed on independent market data · **[INFERRED]** pattern fit · **[RULED OUT]** · **[UNKNOWN]**.
 
-> v1 was a structural summary. v2 uses three signals v1 ignored: the **order tag** (raw col 163), the **limit-price band** (which leaks the live quote at decision time), and second-level timing. Several v1 statements were wrong and are corrected in §9.
+> v1 = structural summary. v2 = order tags (raw col 163), limit-band quote recovery, second-level timing. **v3 = the same findings re-tested on real NIFTY/SENSEX index bars and 1.23 M option candles (3,243 traded contract-days) that already existed on the other branches**, plus a corrected per-leg stop test. §0 is new; §4, §6, §7, §9, §10 are updated.
+
+---
+
+## 0. v3 — what the market data confirms  [VALIDATED]
+
+**Relation to the prior research on the other branches.** That work (36–55 commits, `ALGO8_CURRENT_PICTURE.md`, `ALGO8_RULEBOOK.md`, Rahul report) established the 17 recurring pre-expiry windows, the 65/20-unit parent orders, the ~2.5 %-of-ATM-premium hedge budget, directional placement of extra straddles, and the 15:14 late exit. It **did not use** the order-tag column, the ±15 % limit band, or identify a stop threshold (it lists the stop as "unknown" and the 4 %/1 % note as unverified). v3 adds those, tested on its data.
+
+| Claim (from v2) | Test on market data | Result |
+|---|---|---|
+| Limit = LTP×1.15 (buy) / ×0.85 (sell) ⇒ L = recovered live quote | L vs Breeze candle of the order minute, 37,258 orders | **L inside the real candle range for 96.6 %** of orders (hedge orders 99.8 %); fills inside range 97.8 % |
+| Stop = cycle-cumulative MTM at LTP ≈ −₹1.44 L | Minute MTM of every cycle from exact fills + real candle marks; directional intraminute extreme (calls at high & puts at low, or the reverse) | **No non-stop cycle ever went below −₹1.43 L** (worst −142.6 K, 10/22 SENSEX) even at intraminute extremes; stop cycles reach −139.9 K … −351 K inside the trigger minute (10/13 −144.5 K, 7/16 −147.3 K, 8/06 −139.9 K) |
+| Competing: stop = −₹2 L on band-marked P&L | Band-marked minute MTM | **Falsified** — SENSEX 10/01 cycle hit −218.9 K band-marked at 10:07 with no stop (LTP-MTM then ≈ −117 K) |
+| "Aug-12 timestamp regime change" | Breeze session metadata | **Resolved, not a regime change**: derivatives session runs to 15:39 from 3 Aug (385 bars); late lumps are inside the session |
+
+**Stop-loss, final reading:** the `s_` module liquidates the whole cycle when **cycle-cumulative (D‑1+D0) mark-to-market at LTP, body + hedges, falls to ≈ −₹1.43–1.45 L**; bracketed above by −142.6 K (never fired) and below by ≈ −144 K (fires). It is size-independent, applies on D‑1 and D0, and ends trading for the cycle. −₹1.5 L and −₹2 L thresholds are inconsistent with the data.
+
+**Per-leg stop (new, corrected test)** — each body short lot is bought back when its own option first trades at ≈ **1.5–1.6× that lot's entry fill** (minute high), cheapest-entry lot first:
+
+| D‑1 (4,834 lots, 1,640 body buy-back lots) | Value |
+|---|---|
+| After a lot first trades ≥ 1.55× entry, an actual buy-back of that contract within 2 min | **74 %** (82 % within 15 min; 12.7 % never on D‑1) |
+| Actual D‑1 exits at ≥ 1.45× cheapest open entry predicted within 2 min | **80–86 %** (691 events) |
+| Price had already closed ≥2 % above the exit level earlier (first-passage check) for exits ≥ 1.3× | 0–7 % (a stop's signature) |
+| Best grid point (threshold 1.5–1.6, on minute high) lot-level precision / recall | 0.50–0.59 / 0.35 |
+
+* The remaining ~640 D‑1 exits at < 1.45× are largely **companions**: 36 % (1.0–1.45×) fire within 5 s of a stop-class exit, mostly other strikes on the **same side**; 53 % of ≤ 1.0× exits do, often the **same-strike other side**. A triggered leg stop closes a group whose exact definition is still **[UNKNOWN]**.
+* **D0:** weaker and higher — a D0 lot at 1.6–1.8× entry is exited within 2 min in 69–76 % of cases, but recall is only 0.22–0.25 (expiry-day exits mix several mechanisms). **[INFERRED]**
 
 ---
 
@@ -82,14 +112,14 @@ Open: what the −1.44 L is derived from (e.g. 1 % of ₹2 Cr less a cost reserv
 
 ## 6. LUMP hedge (`v_`)  [OBSERVED]
 
-* **Buy:** one OTM strike, one ~3 % limit band, ≈15:06–15:14 (until Aug‑12) then ≈15:23–15:38; on the heavier short side (29/31 days); 2–153 lots; price ₹3–9 NIFTY / ₹12–22 SENSEX.
+* **Buy:** one OTM strike, one ~3 % limit band, ≈15:06–15:14 (until Aug‑12) then ≈15:23–15:38 (inside the 15:39 derivatives session that starts 3 Aug — not a clock anomaly); on the heavier short side (29/31 days); 2–153 lots; price ₹3–9 NIFTY / ₹12–22 SENSEX.
 * **Sell (D0):** not a signal. It is a **salvage dribble**: IOC sells of 1–8 lots at 0.03–0.25× entry (typically 14:00–15:15), plus a lump liquidation inside stop events (e.g. 7/14: 15 lots at ₹3.50 in the first second). Sizing rule for the buy: **[UNKNOWN]** (not constant ₹, not CE/PE imbalance, not constant % of short lots).
 
 ## 7. What I tested and RULED OUT  [RULED OUT]
 
 | Hypothesis | Test | Result |
 |---|---|---|
-| Per-leg stop at fixed premium multiple (e.g. +50 %, +100 %) | exit/entry ratios, FIFO and running-average per strike, using LTP at decision time | Continuous 0.5×–2× spread; no spike |
+| ~~Per-leg stop at fixed premium multiple~~ | v2 used FIFO / running-average entry pairing | **v2 conclusion was wrong** — the pairing was mis-specified. Measured against the *cheapest open lot* with real candles (§0) a ≈1.5–1.6× leg stop is supported on D‑1 |
 | Exit when spot moves X % from entry spot | adverse move at exit | Smooth 0.1 %–0.75 %, no threshold |
 | Exit when spot is X strike-steps from the sold strike | (spot − strike)/step at exit | Exits from −10 to +10 steps, including dead ATM |
 | Fixed holding time (15 min multiples) | 9,127 D0 lots | Flat distribution, no peaks |
@@ -97,7 +127,7 @@ Open: what the −1.44 L is derived from (e.g. 1 % of ₹2 Cr less a cost reserv
 | Stop gap vs −₹2 L explained by costs | STT+exchange charges per cycle | ₹1.2–3.3 K, far too small |
 | Stop base = day P&L vs prior close | day MTM − carried value at prior close | ±40 % scatter |
 
-**Not ruled out (competing hypothesis):** the stop is really −₹2 L (= 1 % × ₹2 Cr per Info.txt) measured on *band-marked* P&L (shorts at LTP×1.15, longs at LTP×0.85). That version gives mean −207 K (≈ −2 L!) but SD 26.5 K vs 6.8 K for plain LTP-MTM. Dispersion favours the LTP-MTM / −1.44 L reading, but the −207 K mean coincidence is notable; n = 10 cannot separate them with certainty and a quote feed could.
+| Stop = −₹2 L on band-marked P&L (shorts ×1.15, longs ×0.85) | v2: mean −207 K but SD 26.5 K; v3: market-data minute MTM | **Falsified in v3** — a non-stop cycle (SENSEX 10/01) reached −218.9 K band-marked without a stop |
 
 ## 8. Performance (fills only, gross of brokerage)  [OBSERVED]
 
@@ -115,14 +145,15 @@ Non-stop mean +₹172 K (74 % win); stops mean −₹157 K. t-stat of cycle mean
 * v1 said the stop "does not reconcile" (−0.7 % of ₹2 Cr). Now resolved empirically: the **base is cycle-cumulative LTP MTM** and the threshold is a **fixed ≈ −₹1.44 L**. Info.txt's 1 %/4 % wording does not map onto it.
 * v1 listed the first-slot far wings and ladder loosely; v2 gives the modal ladder and hit-rates.
 * v1 labelled the lump "sizing rule open"; still open, but its **sell side is now identified as salvage**, not a signal.
+* **v3 corrections to v2:** (a) v2 "ruled out" a per-leg premium stop — that test paired exits to the wrong lots; with cheapest-lot pairing and real candles a ≈1.5–1.6× D‑1 leg stop is supported (§0). (b) v2 left "−₹2 L on band-marked P&L" open — now falsified. (c) v2's "Aug‑12 timestamp regime change" is the extended 15:39 derivatives session. (d) v2 said market data was needed — it was already in the repo on the other branches.
 
-## 10. Still not cracked
+## 10. Still not cracked (after v3)
 
-1. **Exit / adjustment trigger** for off-ladder body buy-backs on D‑1 and D0 (the largest P&L driver). Needs the real quote path.
-2. **Strike selection rule** for the body (≈ 20 % of entries are not nearest-to-spot).
-3. **Lump lot-sizing** and exact **wing-premium target**.
-4. **D0 09:16 slot** (10–12 lots/leg, hit-rate 17 %) — varies; likely sized off the carried book.
-5. **Origin of −₹1.44 L**, and whether it is time/day dependent (all 12 stops are consistent, but all are at one threshold).
-6. The Aug‑12 timestamp regime change (lump at 15:23–15:38).
+1. **Leg-stop grouping** — which other lots close when one leg stops (same side? same allocation/slot? straddle partner?), and the exact multiple (1.5 vs 1.6, high vs LTP crossing).
+2. **D0 exit controller** — the leg stop explains only ~¼ of D0 exits; decay closes, rebalancing and the 15:14 flatten still need separating.
+3. **Extra (off-ladder) entry trigger** — prior work's directional strike placement fits, but *when* they fire is unknown.
+4. **Strike selection** for ladder entries (61.5 % nearest-to-spot); prior work finds the nearest preceding index close matches the 31 opening strikes — test that rule for all later slots with the real index bars.
+5. **Lump lot-sizing**, exact wing/hedge premium target (prior work: ≈ 2.5 % of ATM premium per side, 50 % exact / 92–95 % ±1 strike).
+6. **Origin of −₹1.44 L** (not 1 % of ₹2 Cr on any P&L definition tested).
 
-**To go further I need one of:** (a) 1-minute NIFTY/SENSEX spot + option-chain/IV for 2026‑06‑23 → 2026‑10‑22 — then I can regress every off-ladder order against state; (b) the Algo's config/settings (ladder arrays, stop value, hedge %); or (c) the broker's *rejected/cancelled* order log (this file has only fills — modified/cancelled orders carry the trigger state).
+All of 1–5 can now be attacked with the market data on `research/ml-decision-engine`; none of it needs new downloads. Guardrail: every fit here is on the same 35 cycles that were explored, so these are reconstruction fits, not out-of-sample evidence of an edge.
