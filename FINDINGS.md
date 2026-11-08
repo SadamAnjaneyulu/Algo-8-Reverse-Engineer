@@ -1,4 +1,4 @@
-# Algo 8 — Reverse-Engineering Findings (v3, with market data)
+# Algo 8 — Reverse-Engineering Findings (v4, ML pass on market data)
 
 Sources: `Info.txt` + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 days, client `GKOHNP140`)
 + **Breeze 1-minute market data and prior research on branch `research/ml-decision-engine`** (also `data/local-breeze-fetch`, `research/strong-findings`).
@@ -35,6 +35,23 @@ Labels: **[OBSERVED]** measured · **[VALIDATED]** confirmed on independent mark
 
 * The remaining ~640 D‑1 exits at < 1.45× are largely **companions**: 36 % (1.0–1.45×) fire within 5 s of a stop-class exit, mostly other strikes on the **same side**; 53 % of ≤ 1.0× exits do, often the **same-strike other side**. A triggered leg stop closes a group whose exact definition is still **[UNKNOWN]**.
 * **D0:** weaker and higher — a D0 lot at 1.6–1.8× entry is exited within 2 min in 69–76 % of cases, but recall is only 0.22–0.25 (expiry-day exits mix several mechanisms). **[INFERRED]**
+
+---
+
+## 0b. v4 — ML attack on the six open questions
+
+Method: one targeted supervised problem per question, built from tagged fills + Breeze bars; interpretable models (shallow trees) next to LightGBM; **chronological 60/40 split by session** (train on earlier dates, score on later), grouped CV where n is small. Scripts: `analysis/p1_*.py … p6_*.py`, `analysis/ml_followups.py`. All 35 cycles were already explored, so these are reconstruction fits, not independent evidence.
+
+| # | Question | Verdict | Key evidence (out-of-sample unless noted) |
+|---|---|---|---|
+| P6 | Why −₹1.44 L, not −₹2 L? | **Metric cracked; level bracketed** | Only gross **cycle-cumulative LTP-MTM** separates stop vs non-stop cycles (margin +₹12.5 K, CV 4.7 %); drawdown-from-peak, day P&L, day drawdown all fail (non-stop drawdowns reach −₹3.65 L). Configured level ≈ **−₹1.30–1.35 L**: deepest non-stop instantaneous MTM −₹1.302 L; 8/06 and 7/16 were already at −₹1.35 L / −₹1.37 L **1 s** before firing. The −₹1.44 L average is level + overshoot from a **1–20 s check latency** (gap opens fire 10–20 s after 09:15:00). No tested P&L definition puts it at −₹2 L. Origin of the constant: **[UNKNOWN]** |
+| P1 | Which lots close together on a leg stop? | **No group rule (negative)** | Candidate model F1 0.23; other open contracts close within 30 s only 6.9 %. Each lot has its **own ≈1.55× stop**: 82 % (D‑1) / 78 % (D0) of crossings bought back ≤ 15 min, **89 %** for lots entered ≥ ₹16; lots ≤ ₹4 effectively exempt (tick noise); off-grid lots stopped less (66 % vs 92 %). "Companions" = same-side lots crossing their own levels in the same move |
+| P3 | When do extra entries fire? | **Largely cracked** | Off-grid minute model AP 0.45 vs base 0.105. Mechanism = **per-leg 15-min timers**: 24 % of D‑1 off-grid sale minutes come 14–15 min after that side's previous sale. Whether a due timer fires is predictable (**grouped-CV AUC 0.887**), almost purely by **time window**: 09:16–11:15 33–43 %, 11:16–13:27 3–11 % (dead), 13:28–14:36 56 % → **93 %** if no sale on either side for > 14.5 min, after ~14:47 ≈ 0. Plus batch spill-over (12 % D‑1, 26 % D0 at 1-min gap). Re-entry after stops is **not** it (1–2 % same side) |
+| P4 | Exact strike rule | **Partial (68.5 %)** | Candidate-choice LightGBM **68.5 %** top-1 vs 58.4 % nearest-ATM (D‑1 scheduled 78.5 %, D0 scheduled 74 %, off-grid 61–63 %). Best single reference = previous-minute index close (72 % D‑1 scheduled); more lag/smoothing is worse. Even generous intraminute bound for nearest-to-live-spot explains only 80 % (scheduled D‑1) / 45 % (off-grid) → the rest are **deliberate offsets**, mostly 1 strike lower. Top features: closeness to the previous same-side sale's premium, same strike as previous sale. Fixed ₹ premium target **ruled out** (sold premium tracks ATM premium, corr 0.96). Book-state (delta/imbalance) adds < 1 pt |
+| P2 | Expiry-day exits beyond the stop | **Decomposed, not one rule** | Minute exit hazard AP 0.11 vs base 0.018. Exit minutes split: leg stop 22.7 %, salvage of near-worthless OTM shorts (≤ 5 % of entry or ≤ ₹1) 11.5 %, **afternoon exit clock** 6.5 % (hazard at :14/:29/:44 is **22 % vs 3.7 %** in 14:15–14:45, 6× lift), other 59 %. 63 % of exit minutes have a same-side sale within 1 min (baseline 50 %). **22 %** of D0 buy-backs have a sale of the *same contract* within 2 min → several allocations trade the same contracts concurrently |
+| P5 | Overnight lump lot count | **Not cracked (negative)** | Leave-one-out ridge / random forest 35–37 % median error, **worse than** the naive per-index median (24 %). Cost / day credit median 3.9 % but CV 0.44; delta/gamma/vega-neutral sizes don't fit. Rules that hold: heavier short side (90 %), 0.9–2.3 % OTM. Sizing likely depends on something not in the data (overnight margin or config) |
+
+**Structural insight behind the partial results.** The fills are the **superposition of several concurrently running allocations**, each with its own 15-min timer, ≈1.55× leg stop and exit clock, all sharing one cycle-level stop. Same-contract buy-and-sell within minutes (22 % on D0) is the fingerprint. This is why no single per-contract trigger reproduces every fill, and why the per-lot rules work best on D‑1, where allocations overlap least.
 
 ---
 
@@ -147,7 +164,11 @@ Non-stop mean +₹172 K (74 % win); stops mean −₹157 K. t-stat of cycle mean
 * v1 labelled the lump "sizing rule open"; still open, but its **sell side is now identified as salvage**, not a signal.
 * **v3 corrections to v2:** (a) v2 "ruled out" a per-leg premium stop — that test paired exits to the wrong lots; with cheapest-lot pairing and real candles a ≈1.5–1.6× D‑1 leg stop is supported (§0). (b) v2 left "−₹2 L on band-marked P&L" open — now falsified. (c) v2's "Aug‑12 timestamp regime change" is the extended 15:39 derivatives session. (d) v2 said market data was needed — it was already in the repo on the other branches.
 
-## 10. Still not cracked (after v3)
+## 10. Still not cracked
+
+*After v4 (see §0b):* open are the D0 "other" exits (59 % of exit minutes), the ~20–30 % deliberate strike offsets, lump lot-sizing, and the origin of the ≈ −₹1.30–1.35 L stop constant. The most promising next step is to reconstruct **allocation identity** (assign each lot to a timer chain) so per-allocation rules can be fitted instead of per-contract ones. The v3 list below is kept for history.
+
+### v3 list
 
 1. **Leg-stop grouping** — which other lots close when one leg stops (same side? same allocation/slot? straddle partner?), and the exact multiple (1.5 vs 1.6, high vs LTP crossing).
 2. **D0 exit controller** — the leg stop explains only ~¼ of D0 exits; decay closes, rebalancing and the 15:14 flatten still need separating.
