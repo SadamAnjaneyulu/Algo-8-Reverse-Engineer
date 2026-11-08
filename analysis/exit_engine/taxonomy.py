@@ -35,7 +35,7 @@ def classify(X, sells):
     def roll(u, e, cp, t):
         try: ts = S.loc[(u, e, cp)].t
         except KeyError: return False
-        ts = pd.to_datetime(np.atleast_1d(ts.values)); return bool(np.any(np.abs((ts - t).total_seconds()) <= ROLL_WIN_S))
+        ts = pd.to_datetime(np.atleast_1d(getattr(ts, 'values', ts))); return bool(np.any(np.abs((ts - t).total_seconds()) <= ROLL_WIN_S))
     X['flag_roll'] = [roll(u, e, cp, t) for u, e, cp, t in zip(X.und, X.expiry, X.cp, X.t_dec)]
     X['flag_platform'] = X.algoid.isin(PLATFORM_IDS) | (X.tp == 'm_')
     X['flag_stopmodule'] = X.tp == 's_'
@@ -44,8 +44,8 @@ def classify(X, sells):
     X['flag_lot_stop'] = X.closing_short & (X.r_cheap >= STOP_R)
     X['flag_first_passage'] = X.flag_lot_stop & ~(X.run_max_since_cheap >= 1.02 * X.L)          # price had not traded above this quote earlier
     X['flag_partial'] = X.remaining_after > 0
-    X['flag_side_multi'] = X.closing_short & (X.n_contracts >= 2) & (X.sides.str.len() == 2).eq(False)
-    X['flag_basket'] = X.closing_short & (X.n_contracts >= 2) & (X.sides.str.len() == 2)
+    X['flag_side_multi'] = X.closing_short & (X.n_contracts >= 2) & X.sides.isin(['CE', 'PE'])        # one side, >=2 contracts
+    X['flag_basket'] = X.closing_short & (X.n_contracts >= 2) & (X.sides == 'CEPE')                   # both sides (fixed: was len('CE')==2)
     shc = X[X.closing_short].groupby(['und', 'expiry', 'cp']).t_dec.apply(lambda z: pd.to_datetime(z.values))
     X['flag_short_close_near'] = [((u, e, cp) in shc.index) and bool(np.any(np.abs((shc[(u, e, cp)] - t).total_seconds()) <= ROLL_WIN_S)) for u, e, cp, t in zip(X.und, X.expiry, X.cp, X.t_dec)]
     X['flag_cross_module'] = (X.closing_short & (X.tp == 'h_')) | (~X.closing_short & (X.tp == 'num'))
@@ -76,7 +76,7 @@ def classify(X, sells):
 
 if __name__ == '__main__':
     X = pd.read_pickle(os.path.join(C, 'exit_ledger.pkl')); X['lot'] = np.where(X.und == 'NIFTY', 65, 20)
-    d = load_tagged(); sells = d[(d.tp == 'num') & (d.side == 'Sell') & (d.px_fill >= 5)].groupby('oid').agg(t=('t', 'min'), und=('und', 'first'), expiry=('expiry', 'first'), cp=('cp', 'first')).reset_index()
+    d = load_tagged(); d['oid'] = d['tag']; sells = d[(d.tp == 'num') & (d.side == 'Sell') & (d.px_fill >= 5)].groupby('oid').agg(t=('t', 'min'), und=('und', 'first'), expiry=('expiry', 'first'), cp=('cp', 'first')).reset_index()
     X = classify(X, sells); X.to_pickle(os.path.join(C, 'exit_taxonomy.pkl'))
     pd.set_option('display.width', 220)
     sh = X[X.closing_short].copy(); sh['pnl_vs_avg'] = (sh.e_avg - sh.vwap) * sh.lots_closed * sh.lot

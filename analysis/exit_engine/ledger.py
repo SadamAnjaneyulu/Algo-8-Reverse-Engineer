@@ -26,6 +26,7 @@ def decision_times(d):
 def build():
     raw = pd.read_csv(RAW, header=None, dtype=str, keep_default_na=False)
     d = load_tagged(); d['algoid'] = raw[144].values; d['appkey'] = raw[166].str[-6:].values
+    d['oid'] = d['tag']      # col 4 order ids are reused across days; col 163 (UniqueOrderIdentifier) is unique per order (== oid + date)
     d['L'] = np.where(d.side == 'Buy', d.px_order / 1.15, d.px_order / 0.85)
     v = d.tp == 'v_'; d.loc[v, 'L'] = np.where(d.side == 'Buy', d.px_order / 1.03, d.px_order / 0.85)[v]
     dt = decision_times(d)
