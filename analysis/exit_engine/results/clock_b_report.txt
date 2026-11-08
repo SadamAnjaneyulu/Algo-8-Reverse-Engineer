@@ -1,0 +1,146 @@
+       part                                                                                        metric       value                            note
+tick action                                                                            ticks DEV/VAL/TEST 327/169/100 action rate DEV 0.440 VAL 0.391
+tick action                                                                            univariate AUC mv1    0.518879                       VAL 0.531
+tick action                                                                            univariate AUC mv5    0.509183                       VAL 0.511
+tick action                                                                           univariate AUC mv15    0.546866                       VAL 0.510
+tick action                                                                           univariate AUC mv30    0.557681                       VAL 0.539
+tick action                                                                            univariate AUC atr     0.51461                       VAL 0.513
+tick action                                                                            univariate AUC rv1    0.511005                       VAL 0.501
+tick action                                                                      univariate AUC up_basket    0.716758                       VAL 0.641
+tick action                                                                          univariate AUC up_ce    0.612933                       VAL 0.606
+tick action                                                                          univariate AUC up_pe    0.558174                       VAL 0.546
+tick action                                                                            univariate AUC mtm    0.622951                       VAL 0.589
+tick action                                                                         univariate AUC mtm_dd    0.576541                       VAL 0.582
+tick action                                                                       univariate AUC mtm_peak    0.595192                       VAL 0.631
+tick action                                                                      univariate AUC net_delta    0.601093                       VAL 0.554
+tick action                                                                      univariate AUC net_gamma    0.592403                       VAL 0.615
+tick action                                                                       univariate AUC net_vega    0.617145                       VAL 0.579
+tick action                                                                      univariate AUC net_theta    0.777247                       VAL 0.777
+tick action                                                                    univariate AUC n_contracts     0.60633                       VAL 0.617
+tick action                                                                       univariate AUC lots_tot    0.675376                       VAL 0.747
+tick action                                                                      univariate AUC max_share    0.549218                       VAL 0.625
+tick action                                                                      univariate AUC imbalance    0.539542                       VAL 0.529
+tick action                                                                     univariate AUC since_sale    0.695355                       VAL 0.624
+tick action                                                                       univariate AUC since_bb    0.726923                       VAL 0.652
+tick action                                                                          univariate AUC gridA         0.5                       VAL 0.500
+tick action                                                                         univariate AUC grid00         0.5                       VAL 0.500
+tick action                                                                           univariate AUC hhmm    0.797643                       VAL 0.699
+tick action                                                                            univariate AUC day         0.5                       VAL 0.500
+tick action                                                                        univariate AUC tte_min    0.797643                       VAL 0.699
+tick action                                                                              LightGBM VAL AUC     0.75684                                
+tick action                                                           depth-3 tree VAL precision / recall    0.756098                    recall 0.470
+   quantity                   1 individual lot stop-loss: full-contract share / 1-lot share / median frac    0.005714           0.891 / 0.050 (n=175)
+   quantity             2 same-contract partial buy-back: full-contract share / 1-lot share / median frac         0.0             1.000 / 0.250 (n=1)
+   quantity                     4 basket-level reduction: full-contract share / 1-lot share / median frac         0.0             0.833 / 0.053 (n=6)
+   quantity 6 clock-based exit (clock B, no replacement): full-contract share / 1-lot share / median frac    0.003322           0.957 / 0.034 (n=301)
+   quantity           6 clock-based exit (final flatten): full-contract share / 1-lot share / median frac         0.1           0.606 / 0.092 (n=170)
+   quantity                         7 expiry-day salvage: full-contract share / 1-lot share / median frac    0.044025           0.836 / 0.077 (n=159)
+   quantity                          8 clock-B rebalance: full-contract share / 1-lot share / median frac     0.03854           0.852 / 0.045 (n=493)
+   quantity              8b grid rebalance (A/:00 clock): full-contract share / 1-lot share / median frac         0.0             1.000 / 0.033 (n=8)
+replacement                                                                              pairs (non-TEST)        1305                                
+replacement                                              sold strike further OTM than bought-back (share)    0.262069 same strike 0.211; closer 0.526
+replacement                                                             median |delta| bought back / sold    0.270321                           0.429
+replacement                                                                              sold |delta| IQR    0.236484                           0.678
+replacement                                                   sold strike vs ATM (steps OTM) median / IQR         0.0                       -1.0..2.0
+replacement                                                         sold lots == bought-back lots (share)    0.939464       median sold 1.0 vs bb 1.0
+replacement                                                                sale after buy-back (s) median        26.0                  IQR -3.0..47.0
+
+--- tick-action tree (DEV) ---
+|--- tte_min <= 204.50
+|   |--- since_sale <= 5.50
+|   |   |--- mtm_dd <= -63550.43
+|   |   |   |--- class: True
+|   |   |--- mtm_dd >  -63550.43
+|   |   |   |--- class: True
+|   |--- since_sale >  5.50
+|   |   |--- class: False
+|--- tte_min >  204.50
+|   |--- since_bb <= 4.50
+|   |   |--- class: False
+|   |--- since_bb >  4.50
+|   |   |--- max_share <= 0.24
+|   |   |   |--- class: False
+|   |   |--- max_share >  0.24
+|   |   |   |--- class: False
+
+                                       event        split                                            criterion  n_episodes  hit_at_1  exact_set  mean_candidates  mean_chosen
+clock-B buy-back: which contract of the side          DEV               random baseline (E[chosen/candidates])         218     0.294        NaN            7.651        2.078
+clock-B buy-back: which contract of the side          DEV                most adverse ratio (max px/avg entry)         218     0.165      0.078              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                max px/cheapest entry         218     0.220      0.096              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                           largest Rs loss (min upnl)         218     0.161      0.055              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                         largest Rs profit (max upnl)         218     0.486      0.289              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                      highest premium         218     0.151      0.106              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                       lowest premium         218     0.142      0.096              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                      largest |delta|         218     0.151      0.106              NaN          NaN
+clock-B buy-back: which contract of the side          DEV              largest delta exposure (|delta| x lots)         218     0.440      0.257              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                               largest gamma exposure         218     0.509      0.330              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                largest vega exposure         218     0.505      0.312              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                              nearest ATM (min |K-S|)         218     0.408      0.220              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                         farthest OTM         218     0.147      0.096              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                            most lots         218     0.537      0.335              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                          fewest lots         218     0.087      0.050              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                      oldest position         218     0.271      0.147              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                           newest lot         218     0.472      0.275              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                                       cheapest entry         218     0.257      0.151              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                             most expensive avg entry         218     0.165      0.078              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                         most recent sale on contract         218     0.509      0.326              NaN          NaN
+clock-B buy-back: which contract of the side          DEV timer-phase match (age of newest lot mod 15 min ~ 0)         218     0.294      0.101              NaN          NaN
+clock-B buy-back: which contract of the side          VAL               random baseline (E[chosen/candidates])          94     0.265        NaN            7.255        1.915
+clock-B buy-back: which contract of the side          VAL                most adverse ratio (max px/avg entry)          94     0.213      0.074              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                max px/cheapest entry          94     0.330      0.170              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                           largest Rs loss (min upnl)          94     0.213      0.064              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                         largest Rs profit (max upnl)          94     0.543      0.287              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                      highest premium          94     0.170      0.128              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                       lowest premium          94     0.053      0.043              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                      largest |delta|          94     0.170      0.128              NaN          NaN
+clock-B buy-back: which contract of the side          VAL              largest delta exposure (|delta| x lots)          94     0.585      0.468              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                               largest gamma exposure          94     0.617      0.489              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                largest vega exposure          94     0.638      0.500              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                              nearest ATM (min |K-S|)          94     0.543      0.383              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                         farthest OTM          94     0.053      0.043              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                            most lots          94     0.585      0.426              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                          fewest lots          94     0.032      0.021              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                      oldest position          94     0.181      0.074              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                           newest lot          94     0.426      0.181              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                                       cheapest entry          94     0.138      0.085              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                             most expensive avg entry          94     0.213      0.128              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                         most recent sale on contract          94     0.436      0.234              NaN          NaN
+clock-B buy-back: which contract of the side          VAL timer-phase match (age of newest lot mod 15 min ~ 0)          94     0.351      0.085              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST               random baseline (E[chosen/candidates])         312     0.285        NaN            7.532        2.029
+clock-B buy-back: which contract of the side ALL-not-TEST                most adverse ratio (max px/avg entry)         312     0.179      0.077              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                max px/cheapest entry         312     0.253      0.119              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                           largest Rs loss (min upnl)         312     0.176      0.058              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                         largest Rs profit (max upnl)         312     0.503      0.288              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                      highest premium         312     0.157      0.112              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                       lowest premium         312     0.115      0.080              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                      largest |delta|         312     0.157      0.112              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST              largest delta exposure (|delta| x lots)         312     0.484      0.321              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                               largest gamma exposure         312     0.542      0.378              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                largest vega exposure         312     0.545      0.369              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                              nearest ATM (min |K-S|)         312     0.449      0.269              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                         farthest OTM         312     0.119      0.080              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                            most lots         312     0.551      0.362              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                          fewest lots         312     0.071      0.042              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                      oldest position         312     0.244      0.125              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                           newest lot         312     0.458      0.247              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                                       cheapest entry         312     0.221      0.131              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                             most expensive avg entry         312     0.179      0.093              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST                         most recent sale on contract         312     0.487      0.298              NaN          NaN
+clock-B buy-back: which contract of the side ALL-not-TEST timer-phase match (age of newest lot mod 15 min ~ 0)         312     0.311      0.096              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                          conditional logit (DEV fit)         218     0.596        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          VAL                          conditional logit (DEV fit)          94     0.521        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                          clogit coef (std units): px         218    -1.001        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                     clogit coef (std units): abs_otm         218    -0.862        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                       clogit coef (std units): r_avg         218     0.428        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                        clogit coef (std units): upnl         218     0.409        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                  clogit coef (std units): age_oldest         218     0.347        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                clogit coef (std units): since_sale_k         218    -0.313        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                       clogit coef (std units): e_avg         218    -0.203        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                        clogit coef (std units): dexp         218     0.191        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                        clogit coef (std units): gexp         218    -0.172        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                   clogit coef (std units): n_carried         218    -0.130        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                  clogit coef (std units): age_newest         218     0.067        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                   clogit coef (std units): delta_abs         218     0.020        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                      clogit coef (std units): n_lots         218    -0.015        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                   clogit coef (std units): phase_off         218    -0.015        NaN              NaN          NaN
+clock-B buy-back: which contract of the side          DEV                        clogit coef (std units): vexp         218    -0.012        NaN              NaN          NaN
