@@ -79,8 +79,9 @@ equally important. Exits (rows 7–12, 17) carry most of the unexplained behavio
    forced replay reproduces features and P&L exactly. **No, as a simulator of Algo 8's decisions**: the decision rules are
    incomplete.
 7. **Can we build an autonomous model that makes similar decisions without seeing the actual future orders?** **Only a
-   coarse one.** Lineage X's best autonomous controller reaches a later event macro-F1 of 23–24 %. Lineage Y's autonomous
-   replay is still running (smoke test only), so its fidelity is not yet known. Neither approaches the 80 % target.
+   coarse one.** Lineage X's best autonomous controller reaches a later event macro-F1 of 23–24 %. Lineage Y's
+   autonomous replay matches actual exits with precision 0.40 / recall 0.24 on TEST when given the actual entries, and
+   0.37 / 0.12 fully autonomously. Neither approaches the 80 % target.
 8. **What percentage of the complete strategy is genuinely understood?** The estimated coverage score is **≈ 34 %**
    (25–34 % depending on how partial components are counted; 0 % exact), calculated above. It is not a probability of
    exact replication.

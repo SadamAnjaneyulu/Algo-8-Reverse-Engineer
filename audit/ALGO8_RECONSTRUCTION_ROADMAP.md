@@ -35,8 +35,9 @@ Priority is set by **how much a task reduces uncertainty about the original stra
 | Item | State | Next step | Depends on | Branch | Acceptance criterion |
 |---|---|---|---|---|---|
 | Clean exit engine sections 4–6 | Done (first passage, side/basket, Clock-B, carried) | Write-up in `EXIT_ENGINE_FINDINGS.md` | — | Y | Doc updated with DEV/VAL/TEST numbers |
-| Section 7 models | Re-running after a crash | Finish; score TEST once | `models.py` | Y | All model rows present with VAL and TEST metrics; none tuned on TEST |
-| Section 8 replay (Mode A actual entries; Mode B decoded entries) | Smoke test passed; full open-fill run in progress | Adverse / delay-1 fills; summarise A and B separately | `replay.py` | Y | `autonomous_replay_metrics.csv` for 3 fills × 2 modes × 3 policies |
+| Section 7 models | Stopped at the 2-hour background limit (no results) | Re-run as separate per-model jobs; score TEST once | `models.py` | Y | All model rows present with VAL and TEST metrics; none tuned on TEST |
+| Section 3 trigger re-run | Stopped at the 2-hour background limit | Re-run on the clean build | `triggers.py`, `stop_shape.py`, `carry_stop.py` | Y | Reports regenerated |
+| Section 8 replay (Mode A actual entries; Mode B decoded entries) | Open-fill run complete (ML-06) | Adverse / delay-1 fills | `replay.py` | Y | Metrics for 3 fills × 2 modes × 3 policies |
 | Section 9 robustness | Not started | Run `robustness.py` | Section 7 models | Y | Segment, bootstrap, ablation and missing-data tables |
 | PR #1 ML decision engine | Cloud run finished; results unreviewed | Download and review `algo8-research-report` | Artifact (expires 30 Nov 2026) | X (PR #1) | Report metrics entered in the ML audit |
 

@@ -43,8 +43,9 @@ documentation only; no research logic, model, threshold or finding was changed f
   **1.7×** its cheapest open entry is bought back within one minute 88 % of the time, against 38 % at 1.55×. The stop
   closes one lot at a time and explains only ≈ 45 % of stop-like exits. On D0 it is weak, especially for carried lots.
 * **No model in either lineage meets 80 % precision and 80 % recall on any important action class out of sample.** The
-  best autonomous controller (lineage X) reaches a later event macro-F1 of 23–24 %. Lineage Y's clean models and replay
-  were still running at this snapshot.
+  best autonomous controller (lineage X) reaches a later event macro-F1 of 23–24 %. Lineage Y's autonomous replay
+  matches actual exits with precision 0.40 / recall 0.24 on TEST when fed the actual entries (Mode A), and 0.37 / 0.12
+  fully autonomously (Mode B).
 * **A data-quality defect was found and contained:** column 4 order ids are reused across days. This invalidated PR #3's
   first exit-engine results. They are being rebuilt, and none of PR #2's headline findings flip.
 * **Estimated coverage score: ≈ 34 %** (25–34 % depending on how partial components are counted). This is computed in the
@@ -61,9 +62,10 @@ documentation only; no research logic, model, threshold or finding was changed f
 
 * Checked-out branch in the main working copy: `research/algo8-exit-engine` (PR #3), clean relative to origin except for
   in-progress run outputs.
-* At this snapshot three research jobs started under the previous task are still running in that working copy:
-  section 7 models, the section 3 trigger re-run and the section 8 open-fill replay. This audit was written in a separate
-  worktree so that those jobs were not disturbed. Their outputs are **not final** and are not cited as results.
+* Three research jobs from the previous task ran in that working copy while this audit was written (in a separate
+  worktree, so they were not disturbed). The section 8 open-fill replay **completed** and is reported in §7. The
+  section 7 models and the section 3 trigger re-run were **stopped at the 2-hour background limit**, so they have no
+  results; section 9 robustness and the adverse/delay-1 replays never ran.
 * Remote default branch: `main`.
 
 ### 2.2 Branch / PR table
@@ -252,8 +254,10 @@ been scored.
 | Y exit engine Clock-B act | Tick buys back anything | Book state one minute before the tick | DEV | LightGBM AUC 0.78; tree P 0.77 / R 0.55 | not scored | — | Medium for ranking; below target |
 | Y exit engine Clock-B selection | Which contract (candidate-level) | Contract features | DEV | Best criterion hit@1 0.66 vs 0.41 random; conditional logit 0.52 | not scored | — | Low–medium |
 | Y exit engine carried-stop rule | D0 stop-like exit at ≥ 1.5× | Age, premium, decay, TTE, moves, IV | DEV | Tree P 0.16 / R 0.80 | not scored | — | Rejected |
-| Y exit engine §7 (LR, LightGBM, CatBoost, depth-3 trees, discrete hazard; lot stop, label-free, side, basket, Clock-B, carried, salvage, profit-taking, re-entry, final liquidation, multiclass) | per model | causal CM/BM features | DEV, VAL thresholds | **Running** (first run crashed at model 7 and was fixed) | — | — | No result yet |
-| Y exit engine §8 replay | Own-book exit controller (Mode A actual base entries; Mode B decoded entries) | §8 controller models | DEV | **Running**; smoke test (2 DEV cycles, in-sample) only | — | Smoke: on cycle 1 the model policy made 33 exits vs 505 actual (exit-match recall 3 %) | Not an assessment |
+| Y exit engine §7 (LR, LightGBM, CatBoost, depth-3 trees, discrete hazard; lot stop, label-free, side, basket, Clock-B, carried, salvage, profit-taking, re-entry, final liquidation, multiclass) | per model | causal CM/BM features | DEV, VAL thresholds | **No result**: run stopped at the 2-hour background limit | — | — | Not assessed |
+| Y exit engine §8 autonomous replay, Mode A (actual base entries; own exits) | Own-book exits, re-entries, wing releases, liquidation | Contract-minute exit + quantity models, re-entry model, final-flatten model (DEV fit, VAL thresholds) | DEV | VAL exit-match P 0.39 / R 0.25 | **TEST P 0.40 / R 0.24**; quantity agreement 0.51; P&L corr 0.87 (₹4.6 L vs ₹7.5 L) | Genuine autonomous (own book); abstention 1–8 % | Low; P&L similarity driven by the supplied entries |
+| Y exit engine §8 autonomous replay, Mode B (decoded entries; own exits) | Full autonomous book | same + decoded clone entries | DEV | VAL P 0.45 / R 0.11 | **TEST P 0.37 / R 0.12**; P&L corr 0.59 (−₹3.5 L vs ₹7.5 L) | Fully autonomous | Low |
+| Y rule clone inside the replay (1.55× lot stop, cycle stop, 15:14) | — | — | — | Mode A VAL P 0.65 / R 0.16 | Mode A TEST P 0.63 / R 0.18 | Autonomous exits | Low recall |
 | X constrained autonomous controller | Contract/action events within 2 min | Clock, budget, premium, book (own simulated inventory) | August-selected | Later macro F1 23.3 % vs 18.2 % baseline; quantity 15.7 %, path 46.1 % | — | Opening contradiction 0/32 | Genuinely autonomous; far below target |
 | X policy/execution separation | same | 12 policies × 7 execution mechanisms | 11 fit + 7 Aug | Later macro F1 24.3 %; opening 28/32 shorts, 17/32 wings, 19/32 net roles | — | 0/59 reversal motifs reproduced | Autonomous; below target |
 | X intermediate-exit study | Grouped reduction episodes | 12 registered hypotheses | Expanding folds, 24 test cycles | Best 18.0 % P / 16.6 % R; 50 % premium loss 36.4 % / 9.8 % | — | — | Strong negative |
@@ -267,7 +271,7 @@ been scored.
 - The only ≥ 80 % figures are either conditional on the actual book (X entry baseline), or structural and in-sample
   (schedule 544/544, C02 529/544).
 - No exit, reduction, Clock-B or quantity model reaches 80/80 on validation.
-- No lineage-Y model has been scored on TEST.
+- Lineage Y's autonomous replay on TEST: exit-match recall 0.12–0.24.
 - PR #1's results are unread.
 
 There is also no genuine out-of-sample data. Every cycle has been inspected; the 2025–26 history planned for the alpha
@@ -287,7 +291,7 @@ These are correlates of when the algo acts, not a recovered decision rule. Three
 |---|---|---|
 | **Teacher-forced replay** (actual orders fed in) | The engine's accounting and causal features match the panel and the cash P&L exactly | Passed on 2 cycles (pre-clean caches; re-run pending) — validates software only |
 | **Smoke test** (2 DEV cycles, own decisions) | The pipeline runs end to end | Passed; in-sample; not an assessment |
-| **Autonomous replay** (own book; no actual exits or future inventory) | Fidelity of a reconstructed controller | Lineage X: macro-F1 23–24 %. Lineage Y: running (Mode A actual base entries; Mode B decoded entries) |
+| **Autonomous replay** (own book; no actual exits or future inventory) | Fidelity of a reconstructed controller | Lineage X: macro-F1 23–24 %. Lineage Y (minute-open fills, TEST): Mode A exit-match P 0.40 / R 0.24; Mode B P 0.37 / R 0.12. Adverse-fill / delay-1 variants not run |
 
 ---
 
