@@ -1,4 +1,4 @@
-# Algo 8 — Reverse-Engineering Findings (v6, alpha anatomy)
+# Algo 8 — Reverse-Engineering Findings (v7, alpha search + locked OOS)
 
 Sources: `Info.txt` + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 days, client `GKOHNP140`)
 + **Breeze 1-minute market data and prior research on branch `research/ml-decision-engine`** (also `data/local-breeze-fetch`, `research/strong-findings`).
@@ -52,6 +52,30 @@ Method: one targeted supervised problem per question, built from tagged fills + 
 | P5 | Overnight lump lot count | **Not cracked (negative)** | Leave-one-out ridge / random forest 35–37 % median error, **worse than** the naive per-index median (24 %). Cost / day credit median 3.9 % but CV 0.44; delta/gamma/vega-neutral sizes don't fit. Rules that hold: heavier short side (90 %), 0.9–2.3 % OTM. Sizing likely depends on something not in the data (overnight margin or config) |
 
 **Structural insight behind the partial results.** The fills are the **superposition of several concurrently running allocations**, each with its own 15-min timer, ≈1.55× leg stop and exit clock, all sharing one cycle-level stop. Same-contract buy-and-sell within minutes (22 % on D0) is the fingerprint. This is why no single per-contract trigger reproduces every fill, and why the per-lot rules work best on D‑1, where allocations overlap least.
+
+---
+
+## 0e. v7 — alpha search on development data, frozen for a locked out-of-sample test
+
+**Tooling.** `analysis/engine.py` (minute-bar backtester; explicit fill/stop-fill/cost options), `clone_validate.py`, `alpha_grid.py`, `alpha_eval.py`, `alpha_robust.py`, `oos_run.py`, `history_fetch.py`.
+
+**Clone check.** Decoded rules (ladders, 1.2 % wings, 1.55× leg stop, −₹1.33 L cycle stop, 15:14 flatten; no Clock-B selection, no lump) give per-cycle correlation **0.48** with Algo 8's actual P&L (₹7.7 L vs ₹15.5 L). The Jun–Oct data contain only Algo-8-traded contracts, so entries after Algo 8 stopped trading a day are partly missing (universe bias, flagged per config). Band-based history removes this.
+
+**Research ledger (development sample only: Jun–Oct 2026, 30 cycles)**
+
+| # | Experiment | Combinations | Result |
+|---|---|---:|---|
+| E1 | P&L split: selection vs management/hedges | — | carry of sold options +₹31.1 L; management −5.8, wings −5.9, lump −4.0 |
+| E2 | Timing / sizing skill vs same-session null | — | none (−0.3 bp / −3.0 bp; sizing p = 0.34) |
+| E3 | Market ATM-straddle premium (D-1 / D0) | — | +3.9 bp [−12, +19] / +0.65 bp — not significant |
+| E4 | Structural grid: day set × entry timing × exit × wings × leg stop × cycle stop × VRP filter | **4,512** | BTST median Sharpe 2.99 vs D0-only −0.55; best region = D‑1 afternoon entry, exit at D0 open; **White reality check p = 0.104, PBO = 0.25** |
+| E5 | Execution stress of the top region (stop fill level/high/next-open × entry fill × costs) | 480 | survives bar-high stop fills + adverse costs (Sharpe 5.2, PF 3.0, +₹16.2 K/lot, both indices +, LOO min +₹14.4 K) |
+
+**Pre-registered H1** (`alpha_freeze/PRIMARY_HYPOTHESIS.md`): sell 1 ATM straddle at 13:16 on D‑1, per-lot stop 1.55×, exit at D0 09:16 (secondaries 15:01 entry, 10:01 / expiry exit). Mechanism: the **overnight gap / 1-DTE variance premium**. Development numbers are from a searched grid in a falling market and are **not** evidence of an edge.
+
+**Freeze.** Full dev ranking + protocol: SHA-256 `c0623b61…4b8d`; supplement + H1: `21856dcb…aa34`; commit `d695b777` (2026-11-08 11:16 UTC). `oos_run.py` refuses to run if the hashes don't match and requires user-confirmed lot sizes. OOS tests: Spearman(dev rank, OOS rank), top-decile vs rest, White reality check, PBO, all 7 metrics × 4 cost scenarios.
+
+**Exploratory (not pre-registered).** Cheap far-OTM short calls (< ₹10) were the only module whose carry CI excluded zero in dev (+₹0.88 L, CI [+0.42, +1.37]); worth a separate test on band data, labelled exploratory.
 
 ---
 
