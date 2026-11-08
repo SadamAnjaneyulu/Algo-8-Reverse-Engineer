@@ -1,4 +1,4 @@
-# Algo 8 — Reverse-Engineering Findings (v5, allocation chains + indicator search)
+# Algo 8 — Reverse-Engineering Findings (v6, alpha anatomy)
 
 Sources: `Info.txt` + `Trades_GKOHNP140.csv` (41,421 fills, 2026-06-23 → 2026-10-22, 65 days, client `GKOHNP140`)
 + **Breeze 1-minute market data and prior research on branch `research/ml-decision-engine`** (also `data/local-breeze-fetch`, `research/strong-findings`).
@@ -52,6 +52,32 @@ Method: one targeted supervised problem per question, built from tagged fills + 
 | P5 | Overnight lump lot count | **Not cracked (negative)** | Leave-one-out ridge / random forest 35–37 % median error, **worse than** the naive per-index median (24 %). Cost / day credit median 3.9 % but CV 0.44; delta/gamma/vega-neutral sizes don't fit. Rules that hold: heavier short side (90 %), 0.9–2.3 % OTM. Sizing likely depends on something not in the data (overnight margin or config) |
 
 **Structural insight behind the partial results.** The fills are the **superposition of several concurrently running allocations**, each with its own 15-min timer, ≈1.55× leg stop and exit clock, all sharing one cycle-level stop. Same-contract buy-and-sell within minutes (22 % on D0) is the fingerprint. This is why no single per-contract trigger reproduces every fill, and why the per-lot rules work best on D‑1, where allocations overlap least.
+
+---
+
+## 0d. v6 — where the money comes from ("the alpha")
+
+Scripts: `analysis/alpha_selection_management.py`, `alpha_vrp.py`, `alpha_direction.py`, `alpha_by_module.py`. Gross of costs, 30 complete D‑1+D0 cycles, expiry settlement proxied by the last index bar. Prior closed study on `research/ml-decision-engine` (`research/final_alpha_attribution/`) is consistent: **positive raw P&L, no demonstrated economic alpha**, with time decay +₹87.7 L, gamma/direction −₹59 L and IV −₹19 L; costs bring the mean cycle to ≈ 0 (conservative bootstrap [−₹55 K, +₹87 K]).
+
+**1. Selection vs management (₹ lakh)**
+
+| Component | P&L |
+|---|---:|
+| Body short sales **held to expiry** (entry selection) | **+31.1** |
+| Management of those shorts (stops, rebalances, exits) | −5.8 (stop cycles +3.6, non-stop −9.5) |
+| Wings | −5.9 |
+| Overnight lump | −4.0 |
+| **Actual total** | **+15.5** |
+
+All gross profit is the carry of what was sold; every management/hedge layer subtracts on net.
+
+**2. No timing skill.** Algo sale times vs selling the ATM straddle at every minute of the same session and hour: D‑1 **−0.3 bp** (95 % CI −1.7 … +1.0), D0 **−3.0 bp** (−8.8 … +0.8). **No sizing skill** across sessions (Spearman lots vs carry +0.17, p = 0.34; D0 +0.14, p = 0.47).
+
+**3. The market premium itself is not significant in this sample.** ATM straddle sold on D‑1 and held to expiry: **+3.9 bp of spot**, CI **[−12.3, +19.3]**, 22/32 sessions positive (sign test p = 0.05), negative after removing the best 2 sessions; premium 69.5 bp vs realised |move| 65.7 bp → options roughly fairly priced. D0: +0.65 bp, CI [−10.2, +10.2]. NIFTY +15.8 bp, SENSEX −6.7 bp.
+
+**4. Direction.** Cycle P&L vs index move over the cycle: R² 0.02–0.05 (p 0.24–0.44); mild short-delta tilt at D‑1 close (median −7.6 lots, 57 % of cycles net short). But **by leg** the carry is directional: short **calls +₹53.8 L**, short **puts −₹22.7 L** (grid A CE +31.8 L, unchained CE +17.8 L; every PE module negative). Both indices fell over the window (NIFTY ≈ −7 %, SENSEX ≈ −5 %), and the off-grid modules' ITM-call tilt amplifies exposure to that.
+
+**Verdict [INFERRED, strong]:** Algo 8's return is **short-dated option-premium harvesting** (0–1 DTE, mainly the BTST carry), packaged as a clock-laddered hedged straddle book with leg and cycle stops. In this 4-month window the profit is the carry of sold calls in a falling market, net of hedge/management costs. **No informational alpha is detectable:** no timing skill, no sizing skill, no indicator, no significant directional skill, and the underlying premium is statistically indistinguishable from zero. Whether the design has a long-run edge can only be settled by running the decoded rules over a longer, independent history (the supplied screenshot covers 3 Mar 2025–27 May 2026, which is not in this data).
 
 ---
 
