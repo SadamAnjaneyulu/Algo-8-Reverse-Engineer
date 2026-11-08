@@ -190,11 +190,11 @@ def train_controller(CM, BM, o):
     X = prep(CMb); feats = [f for f in feats_of(X) if not f.startswith('y_')]
     dev, val = X[X.split == 'DEV'], X[X.split == 'VAL']
     ex = lgb.LGBMClassifier(n_estimators=2000, learning_rate=0.03, num_leaves=31, min_child_samples=30, subsample=0.8, subsample_freq=1, colsample_bytree=0.8, verbose=-1,
-                            random_state=0).fit(dev[feats].astype(float), dev.y_exit, eval_set=[(val[feats].astype(float), val.y_exit)], eval_metric='average_precision',
+                            random_state=0).fit(dev[feats].astype(float), dev.y_exit.astype(int), eval_set=[(val[feats].astype(float), val.y_exit.astype(int))], eval_metric='average_precision',
                                                 callbacks=[lgb.early_stopping(100, verbose=False)])
     thr = best_threshold(val.y_exit.astype(int).values, ex.predict_proba(val[feats].astype(float))[:, 1])
     def qcls(D): return np.where(D.closed >= D.n_lots, 0, np.where(D.closed == 1, 1, 2))
-    ed, ev = dev[dev.y_exit], val[val.y_exit]
+    ed, ev = dev[dev.y_exit.astype(bool)], val[val.y_exit.astype(bool)]        # prep() turns booleans into 0/1 floats
     part_frac = float((ed.closed / ed.n_lots)[qcls(ed) == 2].median())
     qm = lgb.LGBMClassifier(objective='multiclass', n_estimators=1000, learning_rate=0.03, num_leaves=15, min_child_samples=20, verbose=-1, random_state=0).fit(
         ed[feats].astype(float), qcls(ed), eval_set=[(ev[feats].astype(float), qcls(ev))], callbacks=[lgb.early_stopping(50, verbose=False)])
@@ -393,12 +393,13 @@ def actual_orders(o, u, e):
     oc = o[(o.und == u) & (o.expiry == e)].copy()
     return oc
 
-def main(mode='open', policies=('model', 'hold', 'clone'), entry_modes=('actual', 'auto')):
+def main(mode='open', policies=('model', 'hold', 'clone'), entry_modes=('actual', 'auto'), max_cycles=None):
     o = orders(); mk = markets(); CM, BM = bookstate.load()
     ctrl = train_controller(CM, BM, o); rules = dev_rules(o, mk)
     exo, _, _ = exogenous(o)
     rows = []
-    for (u, e), m in mk.items():
+    for ci, ((u, e), m) in enumerate(mk.items()):
+        if max_cycles is not None and ci >= max_cycles: break
         A = run_cycle(m, None, ctrl, rules, mode, 'teacher', teacher=actual_orders(o, u, e))
         for em in entry_modes:
             for pol in policies:
@@ -427,9 +428,11 @@ def summarise(D):
     return pd.DataFrame(out)
 
 if __name__ == '__main__':
-    ap = argparse.ArgumentParser(); ap.add_argument('--fill', default='open'); a = ap.parse_args()
+    ap = argparse.ArgumentParser(); ap.add_argument('--fill', default='open'); ap.add_argument('--smoke', action='store_true'); a = ap.parse_args()
     pd.set_option('display.width', 250); pd.set_option('display.max_columns', 60)
-    D, ctrl, rules = main(a.fill)
+    D, ctrl, rules = main(a.fill, max_cycles=2 if a.smoke else None)
+    if a.smoke:
+        print(D.T.to_string()); raise SystemExit(0)
     D.to_csv(os.path.join(RES, f'autonomous_replay_by_cycle_{a.fill}.csv'), index=False)
     S = summarise(D)
     S.to_csv(os.path.join(RES, f'autonomous_replay_metrics_{a.fill}.csv'), index=False)      # merged by run_all.py into autonomous_replay_metrics.csv
