@@ -110,3 +110,22 @@ def test_first_passage_ambiguity_classes_rederived():
         assert qc == r.quote_conf
         assert bool(cond[xm] and not cond[st:xm].any() and not qc) == r.ambiguous
         assert bool(not cond[st:xm + 1].any() and not qc) == r.never
+
+def test_order_key_is_unique_per_order():
+    """col 163 (tag) is the order key: one date / underlying / expiry / contract / side / module per tag; col 4 is NOT unique"""
+    from load import load_tagged
+    d = load_tagged()
+    g = d.groupby('tag')[['date', 'und', 'expiry', 'cp', 'strike', 'side', 'tp']].nunique()
+    assert (g == 1).all().all()
+    assert d.groupby('oid').tag.nunique().max() > 1          # documents the reuse of col 4
+    assert d.groupby(['oid', 'date']).ngroups == d.tag.nunique()
+
+@need('exit_orders.pkl')
+def test_exit_engine_orders_keyed_by_tag():
+    from common import orders
+    from load import load_tagged
+    o = orders(); d = load_tagged()
+    assert len(o) == d.tag.nunique() and o.oid.is_unique
+    assert set(o.oid) == set(d.tag)
+    a = d.groupby(['und', 'expiry']).lots.sum(); b = o.groupby(['und', 'expiry']).lots.sum()
+    assert np.allclose(a.sort_index().values, b.reindex(a.sort_index().index).values)

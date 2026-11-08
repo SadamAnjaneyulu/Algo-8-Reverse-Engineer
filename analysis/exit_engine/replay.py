@@ -9,12 +9,14 @@ Decisions it makes itself, in this order:
                          side / basket reductions emerge when several contracts fire in the same minute]
   4 wing release       : DEV-measured ratio of wing lots released per short lot bought back, same side; long salvage at <= Rs 1 on D0 (rule)
   5 re-entry/rebalance : episode-level re-entry model; strike = |delta| nearest the DEV median of re-entry sales; wings by the DEV wing rule
-Inputs it does NOT decide (exogenous, arrive at their own timestamp, never ahead of time): the base entry stream = actual opening orders
+Two modes, reported separately.  Mode A: inputs it does NOT decide (exogenous, arrive at their own timestamp, never ahead of time): the base entry stream = actual opening orders
 that are not re-entries (ladder sales + their h_ wings) and the v_ overnight-lump module.  Platform / manual orders (m_, AlgoId 152432,
-2.18811E+15) are external interventions and are not replayed.  It never receives actual exits, actual future inventory or labels.
+2.18811E+15) are external interventions and are not replayed.  Mode B: fully autonomous - entries come from the decoded clone rules
+(alpha_grid ladders, ATM strike, 1.2 % wing budget; engine.py) and no actual order of any kind is used.  Neither mode receives actual exits,
+actual future inventory or labels.  Policies: 'model' (ML controller), 'hold' (cycle-stop rule only), 'clone' (decoded rule exits).
 Abstention: a contract-minute whose top model features fall outside the DEV support (0.1-99.9 % range) is held and counted as abstained.
 Fills for replay decisions: 'open' (minute-m open), 'adverse' (buys at the minute high, sells at the low), 'delay1' (next minute open).
-python3 analysis/exit_engine/replay.py [--fill open|adverse|delay1] -> results/autonomous_replay_metrics.csv"""
+python3 analysis/exit_engine/replay.py [--fill open|adverse|delay1] -> results/autonomous_replay_metrics_<fill>.csv (+ by-cycle file)"""
 import sys, os, argparse, warnings
 HERE = os.path.dirname(os.path.abspath(__file__)); AN = os.path.dirname(HERE); sys.path.insert(0, AN); sys.path.insert(0, HERE)
 import numpy as np, pandas as pd
@@ -25,7 +27,9 @@ from common import orders, markets, minute_index, LOT, RES, C, SCHEDULED, split_
 import bookstate
 from models import prep, feats_of, BOOK_JOIN, best_threshold
 from side_basket import episodes
-from engine import COSTS
+from engine import COSTS, STEP
+from alpha_grid import LADDER_D1, LADDER_D0          # decoded entry ladder, unchanged (used by mode B only)
+WING_FRAC = 0.012                                    # decoded wing budget (fraction of the straddle premium, per side), as the registered clone
 CYCLE_STOP = 133000.0
 PLATFORM_IDS = {'152432', '2.18811E+15'}
 
@@ -214,7 +218,28 @@ def train_controller(CM, BM, o):
     return dict(exit=ex, thr=thr, feats=feats, qty=qm, part_frac=part_frac, top=top, lo=lo, hi=hi, final=fm, final_feats=ff, final_thr=fthr, re=rm, re_feats=rf, re_thr=rthr)
 
 # ---------------------------------------------------------------- one cycle
-def run_cycle(m, exo_c, ctrl, rules, mode='open', policy='model', teacher=None):
+def auto_entries(book, m, i, P, mode):
+    """mode B: the decoded clone's entry rules (engine.py): ladder lots per leg at its clock, ATM strike from the previous close,
+    one wing per lot at the nearest OTM strike whose previous close <= 1.2 % x straddle premium.  Fills: minute open (or previous close)."""
+    sched = {}
+    for d, L_ in ((0, LADDER_D1), (1, LADDER_D0)):
+        for hm, nl in L_: sched[(d, hm)] = sched.get((d, hm), 0) + nl
+    hm = m['grid'][i].strftime('%H:%M'); nl = sched.get((int(m['day'][i]), hm), 0)
+    if not nl or i == 0: return
+    step = STEP[m['und']]; K = round(m['S'][i - 1] / step) * step; k2i = m['k2i']
+    kc, kp = k2i.get(('CE', K)), k2i.get(('PE', K))
+    if kc is None or kp is None or not np.isfinite(m['Cf'][kc, i - 1]) or not np.isfinite(m['Cf'][kp, i - 1]): return
+    budget = WING_FRAC * (float(m['Cf'][kc, i - 1]) + float(m['Cf'][kp, i - 1]))
+    for cp, kk, sg in (('CE', kc, 1), ('PE', kp, -1)):
+        book.apply((cp, K), -1, nl, fill_px(m, kk, i, -1, 'open'), i, 'auto entry')
+        cand = sorted([k for c, k in m['keys'] if c == cp and (k - K) * sg > 0], key=lambda k: abs(k - K))
+        for k in cand:
+            v = m['Cf'][k2i[(cp, k)], i - 1]
+            if np.isfinite(v) and v <= budget:
+                book.apply((cp, k), 1, nl, fill_px(m, k2i[(cp, k)], i, 1, 'open'), i, 'auto wing'); break
+
+def run_cycle(m, exo_c, ctrl, rules, mode='open', policy='model', teacher=None, entries='actual'):
+    """entries: 'actual' (mode A: actual base opening orders arrive at their own time) | 'auto' (mode B: decoded clone entry rules)"""
     """policy: 'model' (autonomous), 'hold' (only cycle-stop rule + expiry settlement), 'clone' (1.55x own-entry lot stop at the minute high +
     cycle stop + 15:14 flatten), 'teacher' (apply the given actual orders exactly; used to validate accounting/features)"""
     P = prepare(m); n = len(m['grid']); book = Book(m); lot = book.lot; k2i = m['k2i']; d0 = P['d0']
@@ -229,8 +254,8 @@ def run_cycle(m, exo_c, ctrl, rules, mode='open', policy='model', teacher=None):
             if L_: pos_path[k2i[k], i] = sum(x['sgn'] for x in L_)
         mtm_path[i] = book.mtm_hist[-1]
         if i == 0 or stopped:
-            if not stopped:
-                for r in exo_by.get(i, []): book.apply((r.cp, r.strike), 1 if r.side == 'Buy' else -1, int(r.lots), r.vwap, i, 'exo')
+            if not stopped and entries == 'actual':
+                for r in exo_by.get(i, []): book.apply((r.cp, r.strike), 1 if r.side == 'Buy' else -1, int(r.lots), r.vwap, i, 'exo' if policy != 'teacher' else 'actual')
             continue
         rows, bm = features(book, i, P)
         greek_path[i] = [bm['net_delta'], bm['net_gamma'], bm['net_vega'], bm['net_theta']]
@@ -316,8 +341,10 @@ def run_cycle(m, exo_c, ctrl, rules, mode='open', policy='model', teacher=None):
                     wc = sorted([(abs(P['K'][j] - P['K'][kk]), j) for j, kj in enumerate(m['keys']) if kj[0] == cp and (P['K'][j] - P['K'][kk]) * sg > 0 and np.isfinite(P['mark'][j, i]) and P['mark'][j, i] <= budget])
                     if wl and wc:
                         j = wc[0][1]; book.apply(m['keys'][j], 1, wl, fill_px(m, j, i, 1, mode), i, 're-entry wing')
-        # exogenous actual entries of this minute
-        for r in exo_by.get(i, []): book.apply((r.cp, r.strike), 1 if r.side == 'Buy' else -1, int(r.lots), r.vwap, i, 'exo')
+        # entries of this minute: mode A = actual base opening orders (exogenous); mode B = decoded clone entry rules
+        if entries == 'auto': auto_entries(book, m, i, P, mode)
+        else:
+            for r in exo_by.get(i, []): book.apply((r.cp, r.strike), 1 if r.side == 'Buy' else -1, int(r.lots), r.vwap, i, 'exo')
     # settle at expiry intrinsic (or at the last mark if the cycle is cut before the expiry close)
     settle = m['S'][-1]; pnl = book.realised
     for k, L_ in book.lots.items():
@@ -366,24 +393,26 @@ def actual_orders(o, u, e):
     oc = o[(o.und == u) & (o.expiry == e)].copy()
     return oc
 
-def main(mode='open', policies=('model', 'hold', 'clone')):
+def main(mode='open', policies=('model', 'hold', 'clone'), entry_modes=('actual', 'auto')):
     o = orders(); mk = markets(); CM, BM = bookstate.load()
     ctrl = train_controller(CM, BM, o); rules = dev_rules(o, mk)
     exo, _, _ = exogenous(o)
     rows = []
     for (u, e), m in mk.items():
         A = run_cycle(m, None, ctrl, rules, mode, 'teacher', teacher=actual_orders(o, u, e))
-        for pol in policies:
-            R = run_cycle(m, exo[(exo.und == u) & (exo.expiry == e)], ctrl, rules, mode, pol)
-            r = compare(m, A, R); r.update(und=u, expiry=e, split=split_of(e), policy=pol, fill=mode); rows.append(r)
-        print(u, e.date(), split_of(e), {p: round(rr['pnl_replay'] / 1e5, 2) for p, rr in zip(policies, rows[-len(policies):])}, 'actual', round(A['pnl'] / 1e5, 2), flush=True)
+        for em in entry_modes:
+            for pol in policies:
+                R = run_cycle(m, exo[(exo.und == u) & (exo.expiry == e)], ctrl, rules, mode, pol, entries=em)
+                r = compare(m, A, R); r.update(und=u, expiry=e, split=split_of(e), policy=pol, fill=mode,
+                                               replay_mode='A actual entries + replayed exits' if em == 'actual' else 'B decoded entries + replayed exits'); rows.append(r)
+        print(u, e.date(), split_of(e), 'actual', round(A['pnl'] / 1e5, 2), {(rr['replay_mode'][0], rr['policy']): round(rr['pnl_replay'] / 1e5, 2) for rr in rows[-len(policies) * len(entry_modes):]}, flush=True)
     return pd.DataFrame(rows), ctrl, rules
 
 def summarise(D):
     num = [c for c in D.columns if D[c].dtype != object and c not in ('expiry',)]
     out = []
-    for (pol, fill, sp), g in D.groupby(['policy', 'fill', 'split']):
-        r = dict(policy=pol, fill=fill, split=sp, cycles=len(g))
+    for (rm, pol, fill, sp), g in D.groupby(['replay_mode', 'policy', 'fill', 'split']):
+        r = dict(replay_mode=rm, policy=pol, fill=fill, split=sp, cycles=len(g))
         for c in ['position_divergence_mean', 'position_divergence_end', 'ce_short_lots_corr', 'pe_short_lots_corr', 'ce_short_lots_mae', 'pe_short_lots_mae',
                   'delta_corr', 'gamma_corr', 'vega_corr', 'theta_corr', 'exit_match_precision', 'exit_match_recall', 'exit_qty_agreement', 'exit_time_offset_median_min']:
             if c in g: r[c] = g[c].mean()
@@ -403,9 +432,6 @@ if __name__ == '__main__':
     D, ctrl, rules = main(a.fill)
     D.to_csv(os.path.join(RES, f'autonomous_replay_by_cycle_{a.fill}.csv'), index=False)
     S = summarise(D)
-    p = os.path.join(RES, 'autonomous_replay_metrics.csv')
-    if os.path.exists(p):
-        old = pd.read_csv(p); old = old[old.fill != a.fill]; S = pd.concat([old, S], ignore_index=True)
-    S.to_csv(p, index=False)
+    S.to_csv(os.path.join(RES, f'autonomous_replay_metrics_{a.fill}.csv'), index=False)      # merged by run_all.py into autonomous_replay_metrics.csv
     print('rules (DEV):', {k: round(v, 4) for k, v in rules.items()}, '| thresholds exit/final/re-entry:', round(ctrl['thr'], 4), round(ctrl['final_thr'], 4), round(ctrl['re_thr'], 4))
     print(S[S.fill == a.fill].round(3).T.to_string())

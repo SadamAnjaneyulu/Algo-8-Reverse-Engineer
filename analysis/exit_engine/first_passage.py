@@ -14,9 +14,11 @@ OHLC evidence per minute m (never assumes intrabar order):
   intrabar ambiguous     : the first print beyond the threshold is in the decision minute itself and the quote L is inside
                            (cannot tell whether it traded before or after the decision)
   quote-confirmed        : the algo's own LTP at decision (recovered from the limit band) is beyond the threshold
-Precision  = up-crossing events followed by a buy-back of that contract with decision minute in [m, m+W]
-Recall     = exits whose contract had a definite up-crossing in [x-W, x-1] or a quote-confirmed state at decision
-False-trigger rate = 1 - precision ; missed-trigger rate = share of exits that were 'definitely not crossed'
+Exit-association rate = crossing events followed by ANY buy-back of that contract within [m, m+W]  (NOT a stop precision)
+Stop-consistent rate  = crossing events followed within W by a stop-consistent exit: not a scheduled/clock exit, the exit's own quote still
+                        beyond the threshold, quantity <= lots crossed (own-entry count for 'cheap').  False-trigger rate = 1 - stop-consistent rate.
+Stop-like exit coverage = stop-like exits (labels outside scheduled / clock classes) with a definite earlier up-crossing in [x-W, x-1] or a
+                        quote-confirmed state; missed-trigger rate = share of stop-like exits that were 'definitely not crossed'.
 Latency: trigger->decision bounds [t_dec_lo - (m+60s), t_dec - m]; decision->first fill exact for tagged orders, upper bound for body orders.
 python3 analysis/exit_engine/first_passage.py -> results/first_passage_results.csv, first_passage_quantity.csv, first_passage_latency.csv
 """
@@ -31,6 +33,7 @@ ADV = {'cheap': [1.2, 1.3, 1.4, 1.45, 1.5, 1.55, 1.6, 1.7, 1.8, 2.0, 2.5], 'avg'
 FAV = {'target_avg': [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6], 'runhigh_drop': [0.2, 0.3, 0.4, 0.5, 0.6, 0.7]}
 MTM_K = [1.0, 1.1, 1.2, 1.25, 1.3, 1.35, 1.4, 1.5]
 WINDOWS = [1, 3, 5]
+NONSTOP = SCHEDULED + ('8 clock-B rebalance', '6 clock-based exit (clock B, no replacement)', '8b grid rebalance (A/:00 clock)')
 GRID_SIZE = sum(len(v) for v in ADV.values()) * 2 + sum(len(v) for v in FAV.values()) * 2 + len(MTM_K)   # x2: high/close basis
 
 def contract_state(Lk, n, cut):
@@ -77,6 +80,8 @@ def run():
             seg = np.where(day == 0, 'D-1 fresh', np.where(nd1 == 0, 'D0 fresh', np.where(nd1 == cnt, 'D0 carried', 'D0 mixed')))
             ex = Bc[(Bc.cp == k[0]) & (Bc.strike == k[1]) & (Bc.mi < cut)]
             ex_mi = ex.mi.values
+            ex_labok = ~ex.label.isin(NONSTOP).values; ex_L = ex.L.values.astype(float); ex_lots = ex.lots.values
+            ex_ents = [Lk[(Lk.entry_mi < xm) & (Lk.exit_mi >= xm)].entry_px.values for xm in ex_mi]
             for fam, ks in list(ADV.items()) + list(FAV.items()):
                 if fam not in refs and fam not in ('target_avg', 'runhigh_drop'): continue
                 if fam == 'target_avg': ref = avg
@@ -91,10 +96,22 @@ def run():
                         cond = ok & ((px >= thr) if adverse else (px <= thr))
                         prev = np.concatenate([[False], cond[:-1]])
                         evm = np.where(cond & ~prev)[0]
+                        # stop-consistent response: an exit of THIS contract that (a) is not a scheduled/clock exit, (b) whose own quote at
+                        # decision is still beyond the threshold, (c) whose quantity <= lots crossed at the quote (own-entry count for 'cheap')
+                        sc_ok = np.zeros(len(ex_mi), bool)
+                        for j, xm in enumerate(ex_mi):
+                            if not ex_labok[j] or not np.isfinite(ex_L[j]) or not np.isfinite(thr[xm]): continue
+                            beyond = ex_L[j] >= thr[xm] if adverse else ex_L[j] <= thr[xm]
+                            if not beyond: continue
+                            if fam == 'cheap': qty = ex_lots[j] <= int((ex_L[j] >= kv * ex_ents[j]).sum())
+                            else: qty = ex_lots[j] <= len(ex_ents[j])
+                            sc_ok[j] = qty
                         for i in evm:
-                            ans = {W: bool(np.any((ex_mi >= i) & (ex_mi <= i + W))) for W in WINDOWS}
+                            win = {W: (ex_mi >= i) & (ex_mi <= i + W) for W in WINDOWS}
+                            ans = {W: bool(win[W].any()) for W in WINDOWS}; sca = {W: bool((win[W] & sc_ok).any()) for W in WINDOWS}
                             nxt = ex_mi[ex_mi >= i]; first = int(nxt.min() - i) if len(nxt) else -1
-                            ev_rows.append((u, e, k[0], k[1], fam, basis, kv, i, day[i], seg[i], ans[1], ans[3], ans[5], first))
+                            nsc = ex_mi[(ex_mi >= i) & sc_ok]; first_sc = int(nsc.min() - i) if len(nsc) else -1
+                            ev_rows.append((u, e, k[0], k[1], fam, basis, kv, i, day[i], seg[i], ans[1], ans[3], ans[5], sca[1], sca[3], sca[5], first, first_sc))
                         # exit-centric evidence
                         for r_, xm in zip(ex.itertuples(), ex_mi):
                             if not expo[xm] or not np.isfinite(thr[xm]): continue
@@ -109,7 +126,7 @@ def run():
                             last_up = int(xm - ups.max()) if len(ups) else -1
                             amb = bool(cond[xm] and not np.any(cond[st:xm]) and not qc)
                             never = bool(not len(cm) and not qc)
-                            ex_rows.append((u, e, k[0], k[1], fam, basis, kv, r_.oid, r_.label, xm, day[xm], seg[xm], qc, last_up, amb, never,
+                            ex_rows.append((u, e, k[0], k[1], fam, basis, kv, r_.oid, r_.label, xm, day[xm], seg[xm], qc, last_up, amb, never, r_.label not in NONSTOP,
                                             bool(np.any(cond[st:xm])), r_.t_dec, r_.t_dec_lo, grid[ups.max()] if len(ups) else pd.NaT))
             # quantity test at each exit order: how many open lots had crossed k x OWN entry at the quote
             for r_, xm in zip(ex.itertuples(), ex_mi):
@@ -119,9 +136,10 @@ def run():
                 for kv in (1.45, 1.5, 1.55):
                     q_rows.append((u, e, k[0], k[1], r_.oid, r_.label, xm, day[xm], seg[xm], kv, len(ent), int(r_.lots), int((r_.L >= kv * ent).sum()),
                                    len(ent) if r_.L >= kv * ent.mean() else 0, len(ent) if r_.L >= kv * ent.min() else 0))
-    E = pd.DataFrame(ev_rows, columns=['und', 'expiry', 'cp', 'strike', 'ref', 'basis', 'k', 'mi', 'day', 'segment', 'ans1', 'ans3', 'ans5', 'min_to_next_exit'])
+    E = pd.DataFrame(ev_rows, columns=['und', 'expiry', 'cp', 'strike', 'ref', 'basis', 'k', 'mi', 'day', 'segment', 'ans1', 'ans3', 'ans5', 'sc1', 'sc3', 'sc5',
+                                       'min_to_next_exit', 'min_to_next_sc_exit'])
     X = pd.DataFrame(ex_rows, columns=['und', 'expiry', 'cp', 'strike', 'ref', 'basis', 'k', 'oid', 'label', 'mi', 'day', 'segment', 'quote_conf', 'min_since_up',
-                                       'ambiguous', 'never', 'any_earlier', 't_dec', 't_dec_lo', 't_up'])
+                                       'ambiguous', 'never', 'stop_like', 'any_earlier', 't_dec', 't_dec_lo', 't_up'])
     Q = pd.DataFrame(q_rows, columns=['und', 'expiry', 'cp', 'strike', 'oid', 'label', 'mi', 'day', 'segment', 'k', 'open_lots', 'closed', 'n_cross_own', 'n_all_if_avg', 'n_all_if_cheap'])
     for D in (E, X, Q): D['split'] = D.expiry.map(split_of)
     return E, X, Q
@@ -160,40 +178,41 @@ def mtm_test():
     return pd.DataFrame(rows, columns=['und', 'expiry', 'split', 'k_lakh', 'stopped', 'first_close_cross_mi', 'first_worst_cross_mi', 'stop_mi', 'class', 'lat_hi_s'])
 
 def summarise(E, X, M):
+    """Names are deliberate: an 'exit-association rate' (any later buy-back of the contract) is NOT a stop precision.
+    stop_consistent_rate = share of crossing events followed within W by a stop-consistent exit (see run());  false_trigger_rate = 1 - that.
+    Coverage is measured on stop-like exits (labels outside scheduled / clock classes); for reference 'cheap' with k <= 1.45 it is partly
+    circular because the taxonomy's lot-stop label itself uses quote / cheapest >= 1.45."""
     out = []
-    pop = ~X.label.isin(SCHEDULED)
     for (ref, basis, kv, sp, sg), g in E.groupby(['ref', 'basis', 'k', 'split', 'segment']):
-        xx = X[(X.ref == ref) & (X.basis == basis) & (X.k == kv) & (X.split == sp) & (X.segment == sg) & pop]
+        xx = X[(X.ref == ref) & (X.basis == basis) & (X.k == kv) & (X.split == sp) & (X.segment == sg) & X.stop_like]
         for W in WINDOWS:
-            prec = g[f'ans{W}'].mean() if len(g) else np.nan
+            assoc = g[f'ans{W}'].mean() if len(g) else np.nan; scr = g[f'sc{W}'].mean() if len(g) else np.nan
             if len(xx):
-                rec_fp = ((xx.min_since_up >= 1) & (xx.min_since_up <= W)).mean(); rec_q = xx.quote_conf.mean()
-                rec = (((xx.min_since_up >= 1) & (xx.min_since_up <= W)) | xx.quote_conf).mean()
+                cov = (((xx.min_since_up >= 1) & (xx.min_since_up <= W)) | xx.quote_conf).mean(); cov_fp = ((xx.min_since_up >= 1) & (xx.min_since_up <= W)).mean()
                 amb = xx.ambiguous.mean(); nev = xx.never.mean()
-            else: rec_fp = rec_q = rec = amb = nev = np.nan
-            f1 = 2 * prec * rec / (prec + rec) if (prec and rec and np.isfinite(prec) and np.isfinite(rec) and prec + rec > 0) else np.nan
-            out.append(dict(reference=ref, basis=basis, k=kv, window_min=W, split=sp, segment=sg, n_events=len(g), precision=prec, false_trigger_rate=1 - prec if np.isfinite(prec) else np.nan,
-                            n_exits=len(xx), recall=rec, recall_firstpassage=rec_fp, recall_quote_state=rec_q, intrabar_ambiguous_share=amb,
-                            definitely_not_crossed_share=nev, missed_trigger_rate=nev, f1=f1))
+            else: cov = cov_fp = amb = nev = np.nan
+            f1 = 2 * scr * cov / (scr + cov) if (np.isfinite(scr) and np.isfinite(cov) and scr + cov > 0) else np.nan
+            out.append(dict(reference=ref, basis=basis, k=kv, window_min=W, split=sp, segment=sg, n_crossing_events=len(g),
+                            exit_association_rate=assoc, stop_consistent_rate=scr, false_trigger_rate=1 - scr if np.isfinite(scr) else np.nan,
+                            n_stop_like_exits=len(xx), stop_like_exit_coverage=cov, coverage_first_passage_only=cov_fp, intrabar_ambiguous_share=amb,
+                            definitely_not_crossed_share=nev, missed_trigger_rate=nev, f1_stop_consistent=f1))
     R = pd.DataFrame(out)
     for (kv, sp), g in M.groupby(['k_lakh', 'split']):
-        st = g[g.stopped]; ns = g[~g.stopped]
-        out2 = dict(reference='mtm', basis='close MTM', k=kv, window_min=np.nan, split=sp, segment='cycle', n_events=int(((g.first_close_cross_mi.notna()) & (~g.stopped | (g.first_close_cross_mi <= g.stop_mi))).sum()),
-                    n_exits=len(st), recall=(st['class'].str.startswith('definite (')).mean() if len(st) else np.nan,
-                    intrabar_ambiguous_share=(st['class'].str.startswith('ambiguous')).mean() if len(st) else np.nan,
-                    definitely_not_crossed_share=(st['class'] == 'definitely not crossed').mean() if len(st) else np.nan)
-        crossed = g[g.first_close_cross_mi.notna()]
-        out2['precision'] = crossed.stopped.mean() if len(crossed) else np.nan
-        out2['false_trigger_rate'] = 1 - out2['precision'] if np.isfinite(out2['precision']) else np.nan
-        out2['missed_trigger_rate'] = out2['definitely_not_crossed_share']
-        R = pd.concat([R, pd.DataFrame([out2])], ignore_index=True)
+        st = g[g.stopped]; crossed = g[g.first_close_cross_mi.notna()]
+        r = dict(reference='mtm', basis='close MTM', k=kv, window_min=np.nan, split=sp, segment='cycle', n_crossing_events=len(crossed),
+                 stop_consistent_rate=crossed.stopped.mean() if len(crossed) else np.nan, n_stop_like_exits=len(st),
+                 stop_like_exit_coverage=(st['class'].str.startswith('definite (')).mean() if len(st) else np.nan,
+                 intrabar_ambiguous_share=(st['class'].str.startswith('ambiguous')).mean() if len(st) else np.nan,
+                 definitely_not_crossed_share=(st['class'] == 'definitely not crossed').mean() if len(st) else np.nan)
+        r['false_trigger_rate'] = 1 - r['stop_consistent_rate'] if np.isfinite(r['stop_consistent_rate']) else np.nan; r['missed_trigger_rate'] = r['definitely_not_crossed_share']
+        R = pd.concat([R, pd.DataFrame([r])], ignore_index=True)
     return R
 
 def latency(X, E, best):
     """trigger->decision bounds for exits with a definite earlier up-crossing at the chosen thresholds; decision->fill for all buy-backs"""
     o = orders(); rows = []
     for (ref, basis, kv) in best:
-        xx = X[(X.ref == ref) & (X.basis == basis) & (X.k == kv) & (X.min_since_up >= 1) & (X.min_since_up <= 5) & ~X.label.isin(SCHEDULED)].copy()
+        xx = X[(X.ref == ref) & (X.basis == basis) & (X.k == kv) & (X.min_since_up >= 1) & (X.min_since_up <= 5) & X.stop_like].copy()
         xx['lat_hi_s'] = (pd.to_datetime(xx.t_dec) - pd.to_datetime(xx.t_up)).dt.total_seconds()
         xx['lat_lo_s'] = ((pd.to_datetime(xx.t_dec_lo) - (pd.to_datetime(xx.t_up) + pd.Timedelta('60s'))).dt.total_seconds()).clip(lower=0)
         for sg, g in xx.groupby('segment'):
@@ -220,15 +239,23 @@ if __name__ == '__main__':
     R.to_csv(os.path.join(RES, 'first_passage_results.csv'), index=False)
     print('grid size (reference x basis x k):', GRID_SIZE, '| events', len(E), '| exit evidences', len(X))
     # choose per (reference, segment) the k with best DEV F1 at W=5 (selection on DEV only), show VAL / TEST
-    sel = R[(R.split == 'DEV') & (R.window_min == 5) & (R.n_events >= 30)].sort_values('f1', ascending=False).groupby(['reference', 'basis', 'segment']).head(1)
+    sel = R[(R.split == 'DEV') & (R.window_min == 5) & (R.n_crossing_events >= 30)].sort_values('f1_stop_consistent', ascending=False).groupby(['reference', 'basis', 'segment']).head(1)
     show = []
     for r in sel.itertuples():
         for sp in ('DEV', 'VAL', 'TEST'):
             z = R[(R.reference == r.reference) & (R.basis == r.basis) & (R.k == r.k) & (R.segment == r.segment) & (R.split == sp) & (R.window_min == 5)]
             if len(z): show.append(z.iloc[0])
-    S = pd.DataFrame(show)[['reference', 'basis', 'k', 'segment', 'split', 'n_events', 'precision', 'n_exits', 'recall', 'recall_quote_state', 'intrabar_ambiguous_share', 'missed_trigger_rate', 'f1']]
-    print('\nBest k per reference/segment chosen on DEV (W=5 min), evaluated on VAL/TEST:'); print(S.round(3).to_string(index=False))
-    print('\nPortfolio MTM (cycle stop):'); print(R[R.reference == 'mtm'][['k', 'split', 'n_events', 'precision', 'n_exits', 'recall', 'intrabar_ambiguous_share', 'missed_trigger_rate']].round(3).to_string(index=False))
+    S = pd.DataFrame(show)[['reference', 'basis', 'k', 'segment', 'split', 'n_crossing_events', 'exit_association_rate', 'stop_consistent_rate', 'n_stop_like_exits',
+                            'stop_like_exit_coverage', 'intrabar_ambiguous_share', 'missed_trigger_rate', 'f1_stop_consistent']]
+    S.to_csv(os.path.join(RES, 'first_passage_selected.csv'), index=False)
+    print('\nBest k per reference/segment chosen on DEV by stop-consistent F1 (W=5 min), evaluated on VAL/TEST:'); print(S.round(3).to_string(index=False))
+    print('\nPortfolio MTM (cycle stop):'); print(R[R.reference == 'mtm'][['k', 'split', 'n_crossing_events', 'stop_consistent_rate', 'n_stop_like_exits', 'stop_like_exit_coverage', 'intrabar_ambiguous_share', 'missed_trigger_rate']].round(3).to_string(index=False))
+    # response curve: crossing -> first stop-consistent exit vs any exit, W up to 60 min (DEV+VAL), cheapest reference, minute high
+    cur = []
+    for (kv, sg), z in E[(E.ref == 'cheap') & (E.basis == 'high') & (E.split != 'TEST')].groupby(['k', 'segment']):
+        t1 = z.min_to_next_exit.where(z.min_to_next_exit >= 0, np.inf); t2 = z.min_to_next_sc_exit.where(z.min_to_next_sc_exit >= 0, np.inf)
+        for W in (0, 1, 2, 5, 10, 15, 30, 60): cur.append(dict(k=kv, segment=sg, window_min=W, n=len(z), any_exit=(t1 <= W).mean(), stop_consistent_exit=(t2 <= W).mean()))
+    pd.DataFrame(cur).to_csv(os.path.join(RES, 'first_passage_response_curve.csv'), index=False)
     # quantity test
     Q['pop'] = ~Q.label.isin(SCHEDULED)
     qq = Q[Q['pop'] & (Q.n_cross_own > 0)]
