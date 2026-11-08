@@ -1,0 +1,101 @@
+===== modules.py  (orig exit 0, fixed exit 0; changed lines 8/41) =====
+-h_  Buy   n= 1693 median=1.157
+-h_  Sell  n=  356 median=0.843
+-num Buy   n= 8765 median=1.146
+-num Sell  n=12059 median=0.852
+-s_  Buy   n=  123 median=1.157
+-s_  Sell  n=   43 median=0.842
+-v_  Buy   n=   50 median=1.036
+-v_  Sell  n=   25 median=0.848
++h_  Buy   n= 1787 median=1.157
++h_  Sell  n=  375 median=0.843
++num Buy   n= 9363 median=1.146
++num Sell  n=13193 median=0.852
++s_  Buy   n=  143 median=1.157
++s_  Sell  n=   44 median=0.842
++v_  Buy   n=   55 median=1.036
++v_  Sell  n=   28 median=0.846
+
+===== report.py  (orig exit 0, fixed exit 0; changed lines 3/76) =====
+- NIFTY 2026-08-18    True    True    568     461        0.0    -222118 08-18 09:15
+- NIFTY 2026-08-25    True    True   1460    1422        0.0     -17033 08-25 15:14
++ NIFTY 2026-08-18    True    True    568     495        0.0    -222118 08-18 09:15
++ NIFTY 2026-08-25    True    True   1460    1425        0.0     -17033 08-25 15:14
+-SENSEX 2026-08-20    True    True    491     424        0.0    -189732 08-20 09:17
++SENSEX 2026-08-20    True    True    491     448        0.0    -189732 08-20 09:17
+
+===== alpha_by_module.py  (orig exit 0, fixed exit 0; changed lines 24/36) =====
+-           clock B               302.0          0.98
+-           grid :00               64.0          0.16
+-           grid A                906.0         13.30
+-           unchained             481.0         -1.95
++           clock B               306.0          1.34
++           grid :00               63.0         -0.16
++           grid A                888.0         12.87
++           unchained             496.0         -1.56
+-           clock B               311.0         -1.33
+-           grid :00              203.0         -6.43
+-           grid A               1411.0         -0.82
+-           unchained            1136.0          2.95
++           clock B               311.0         -1.53
++           grid :00              229.0         -5.44
++           grid A               1407.0         -1.40
++           unchained            1114.0          2.75
+-           clock B               408.0         -0.36
+-           grid :00               98.0          0.95
+-           grid A               1129.0         -3.51
+-           unchained             750.0          6.50
++           clock B               373.0          1.31
++           grid :00               80.0          0.88
++           grid A               1165.0         -3.89
++           unchained             767.0          5.28
+-           clock B               758.0          2.31
+-           grid :00              245.0          2.40
+-           grid A               1831.0         10.53
+-           unchained            1878.0          4.39
++           clock B               737.0          3.61
++           grid :00              243.0          2.69
++           grid A               1866.0          9.48
++           unchained            1866.0          3.85
+-clock B              CE:   +4.04 L  CI [-9.98, +16.55]  sessions 54
+-clock B              PE:   -2.44 L  CI [-16.42, +9.02]  sessions 55
+-grid :00             CE:   -0.68 L  CI [-11.26, +7.33]  sessions 47
+-grid :00             PE:   -2.24 L  CI [-6.53, +1.69]  sessions 44
+-grid A               CE:  +31.76 L  CI [-0.65, +61.13]  sessions 57
+-grid A               PE:  -12.27 L  CI [-44.94, +19.78]  sessions 58
+-unchained            CE:  +17.78 L  CI [-7.49, +42.65]  sessions 55
+-unchained            PE:   -5.89 L  CI [-28.95, +15.27]  sessions 56
++clock B              CE:   +5.89 L  CI [-7.01, +17.62]  sessions 53
++clock B              PE:   -1.16 L  CI [-11.75, +8.29]  sessions 55
++grid :00             CE:   -0.23 L  CI [-10.97, +7.80]  sessions 46
++grid :00             PE:   -1.79 L  CI [-5.91, +1.64]  sessions 46
++grid A               CE:  +28.38 L  CI [-6.35, +59.46]  sessions 57
++grid A               PE:  -11.33 L  CI [-44.61, +20.74]  sessions 58
++unchained            CE:  +18.87 L  CI [-6.74, +42.87]  sessions 54
++unchained            PE:   -8.56 L  CI [-33.49, +14.08]  sessions 55
+
+===== p6_stop_metric.py  (orig exit 0, fixed exit 0; changed lines 3/44) =====
+- NIFTY 2026-08-18  True  D0  -213587.0           -226431.0 -114316.0         -114316.0           -221867.0     12844.0
+- NIFTY 2026-08-25 False   -   -35418.0           -349112.0 -144069.0         -349112.0            -62838.0    313693.0
++ NIFTY 2026-08-18  True  D0  -213587.0           -226431.0 -114316.0         -114316.0           -222387.0     12844.0
++ NIFTY 2026-08-25 False   -   -35418.0           -349112.0 -144069.0         -349112.0            -62898.0    313693.0
+-SENSEX 2026-08-20  True  D0  -252607.0           -313295.0 -313295.0         -313295.0           -259207.0     60687.0
++SENSEX 2026-08-20  True  D0  -252607.0           -313295.0 -313295.0         -313295.0           -259687.0     60687.0
+
+===== p4_strike.py  (orig exit 0, fixed exit 0; changed lines 5/8) =====
+-cur_close     0.361  0.683  0.437  0.536
+-cur_open      0.324  0.721  0.416  0.565
+-prev2_close   0.318  0.575  0.352  0.441
+-prev_close    0.324  0.722  0.398  0.561
+-syn_fwd_prev  0.252  0.488  0.369  0.524
++cur_close     0.362  0.690  0.436  0.529
++cur_open      0.319  0.731  0.416  0.567
++prev2_close   0.313  0.579  0.348  0.431
++prev_close    0.319  0.731  0.394  0.563
++syn_fwd_prev  0.246  0.483  0.365  0.527
+
+===== a7_transfer.py  (orig exit 0, fixed exit 0; changed lines 2/32) =====
+-share of body orders adding delta in the direction of the last 5-min move: 0.686 (n=19392)  [Algo 7: 0.588]
+-{('D-1', 'Buy'): 0.88, ('D-1', 'Sell'): 0.636, ('D0', 'Buy'): 0.702, ('D0', 'Sell'): 0.665}
++share of body orders adding delta in the direction of the last 5-min move: 0.686 (n=20369)  [Algo 7: 0.588]
++{('D-1', 'Buy'): 0.879, ('D-1', 'Sell'): 0.634, ('D0', 'Buy'): 0.703, ('D0', 'Sell'): 0.665}
