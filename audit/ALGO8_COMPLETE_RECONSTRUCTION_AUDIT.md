@@ -66,8 +66,8 @@ documentation only; no research logic, model, threshold or finding was changed f
 * Three research jobs from the previous task ran in that working copy while this audit was written (in a separate
   worktree, so they were not disturbed). The section 8 open-fill replay **completed**. The section 7 models and the
   section 3 trigger tests had been **stopped at the 2-hour background limit**; they were then re-run as split jobs.
-  The models are **complete** (11 jobs, TEST scored once) and section 3 is complete except the T4 ablation for four
-  categories, which was still running. Section 9 robustness and the adverse/delay-1 replays have **not been run**.
+  The models are **complete** (11 jobs, TEST scored once) and section 3 is **complete** (T4 ablation for all nine categories
+  merged). Section 9 robustness and the adverse/delay-1 replays have **not been run**.
 ### 2.2 Branch / PR table
 
 | Branch / PR | Purpose | Completed work | Important findings | Missing work | Status |
@@ -317,7 +317,7 @@ Full list: [data gaps](ALGO8_DATA_GAPS_AND_REQUIREMENTS.md).
   2. reconcile the stop-level contradiction
   3. time stops with the algo's own recovered quotes
   4. reconstruct allocation identity
-  5. finish the lineage Y T4 ablation (4 categories), section 9 robustness and the adverse/delay-1 replays
+  5. run lineage Y's section 9 robustness suite and the adverse/delay-1 replays
 
 ## 9. Roadmap (summary)
 
