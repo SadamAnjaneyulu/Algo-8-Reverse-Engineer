@@ -97,7 +97,7 @@ def t3_panel(o, L, mk, conv):
             cand = np.where(np.isfinite(R[REFS[0]]) & np.isfinite(pc) & (pc > 0))[0]
             for kk in cand:
                 cp, strike = inv[kk]
-                rec = dict(split=split_of(key[1]), day=int(m['day'][mi]), y=(key[0], key[1], cp, strike, mi) in stm)
+                rec = dict(split=split_of(key[1]), day=int(m['day'][mi]), y=(key[0], key[1], cp, strike, mi) in stm, cyc=f'{key[0]}|{key[1]}')
                 for ref in REFS: rec[ref] = pc[kk] / R[ref][kk]
                 rows.append(rec)
     return pd.DataFrame(rows)
