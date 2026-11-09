@@ -185,3 +185,19 @@ Full table with definitions and samples: [audit §7A](ALGO8_COMPLETE_RECONSTRUCT
 | REC-04 | Ladder size at 10:15 / 10:16 (X 4, Y 2–3) | **Resolved**: window start 10:15:58 vs 10:16:00; exact [10:15:58, 10:16:00) interval computed, zero per-session residual (3.16 + 1.34 = 4.50 CE) |
 | REC-05 | PR #1 abstention replay vs PR #3 replay | Not a contradiction; PR #1 gives no replay evidence |
 | REC-06 | Lineage X macro-F1 vs order / inventory reproduction | Different measures; order-level reproduction not achieved |
+
+## 14. Allocation-level reconstruction (PR #5)
+
+Details: [`analysis/allocation/ALLOCATION_FINDINGS.md`](../analysis/allocation/ALLOCATION_FINDINGS.md) (on the PR #5 branch).
+
+| ID | Finding | Class |
+|---|---|---|
+| ALC-01 | Allocation ids are not in the data; slot, chain and lot allocations were built as hypotheses (6,545 slot / 4,355 chain short allocations). | **CONFIRMED** (construction); identity **not identified in the available data** |
+| ALC-02 | The stop reference is an individual entry (or a very small allocation), not the contract average: contract-average reference is 6–7 points worse at choosing the contract bought back on D-1 (hit@1 0.49 vs 0.56) and never gives a tighter quote ratio on D0. | **STRONG EVIDENCE** |
+| ALC-03 | No single reference-price formula with one constant *k* explains stop buy-backs: 0 of 18 (convention × reference) global rules reach 0.80 precision and recall on VAL and TEST; best DEV-selected own-entry rule has TEST precision 0.27 / recall 0.63; oracle ceiling min(P, R) 0.52 (0.66 association-only). | **CONFIRMED** (negative); stop constant and reference remain **UNKNOWN** |
+| ALC-04 | About 95 % of stop buy-backs occur with the algo's own recovered quote ≥ 1.5× the lowest individual entry (5th percentile 1.47–1.51 on all splits except one VAL carried outlier); a necessary lower edge, not a sufficient trigger (precision ≤ 0.46 at usable recall; response lag spread over 0–5 minutes). | **STRONG EVIDENCE** |
+| ALC-05 | Slot and chain allocation averages cannot be separated from the individual entry at materially dispersed entries (exit-level and matched-hazard tests); chain shows a weak, underpowered counter-signal on D-1. | **HYPOTHESIS / unresolved** |
+| ALC-06 | Wings follow their own allocation's short modestly (slot 26.6 % vs null 17.7 %; chain 40.6 % vs 34.5 %). | **PARTIAL** |
+| ALC-07 | Lifecycle at contract / lot level reproduces observed short inventory after all 39,874 orders under every model × convention (0 mismatches); at allocation level the same flow fits slot, chain and event-inheritance stories equally (model agreement ≈ 0; ownership identified for 3.5 % of 3,611 replacement lot pairs). | **CONFIRMED** (lot level); allocation ownership **not identified in the available data** |
+| ALC-08 | Re-sale association is real only within ≈ 60 s: Clock-B rebalance 3.3× / 4.1× a time-shifted null (0–30 s / 30–60 s), lot stop 3.6× / 1.3×, basket 2.0× / 2.2×; side-level reductions and 'Clock-B no replacement' show none; beyond 1 min most groups are at or below the null. ≈ 70 % of Clock-B rebalance lots have a same-right re-sale within 60 s (31.5 % after capacity-constrained attribution); Clock-B re-sales are mostly at another strike but not strictly ATM (66 of 203 lots at 0 steps). | **STRONG EVIDENCE** (association); replace / no-replace trigger **UNKNOWN** |
+| ALC-09 | In 7 of 12 cycle-stop cycles, short-opening fills follow the `s_` liquidation within ≈ 0–140 s (603 lots linked within 38 s). Possibly in-flight orders; not re-tested against RSK-01's 'no new entries afterwards'. | **FLAG FOR REVIEW** |
