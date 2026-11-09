@@ -16,6 +16,12 @@ It is **not** original source code. Every rule carries a status and the register
 | **[U]** | UNKNOWN — do not fill with an assumption |
 | **[X]** | CONTRADICTED / INVALIDATED |
 
+**Snapshot:** 9 November 2026 (PR #3 head `6b4ef390`). **[U] means "not identified in the available data"** — it does not
+mean the strategy has no such rule. Conflicting measurements behind some tags are reconciled in the audit's
+[§7A](ALGO8_COMPLETE_RECONSTRUCTION_AUDIT.md#7a-reconciliation-of-conflicting-measurements): the per-lot stop level is
+tagged as a **band** (1.6–1.7× of the cheapest open entry on D-1), not a constant, and PR #2's 1.55× own-entry figure is
+not used.
+
 Times are IST. Data scope: 35 cycles, 22/23 June – 22 October 2026 (see the [register](ALGO8_MASTER_FINDINGS_REGISTER.md#how-to-read-this-register)).
 
 ---

@@ -38,7 +38,7 @@ Implementation levels used in the last two columns (defined before scoring):
 | 18 | **Final flattening** | 15:14 in 9/10 later-period late closures; 27/29 by 15:27:33; best later program 7/12 within 2 min | Earlier-period rule; residual wings; configuration history | Strong (later period) | Yes for the later period | **Approximate** (0.50) |
 | 19 | **Execution and order handling** | Tags, base-unit children, LTP × 1.15 / 0.85 limits, IOC/DAY, fills ≤ 57 s | Cancellations, rejections, retries, poll cadence, pending-order handling | Strong for what is logged | Yes | **Approximate – high** (0.75) |
 
-## 2. Estimated coverage score (not a probability)
+## 2. Estimated coverage score (a subjective evidence index, not a probability)
 
 **Calculation.** Unweighted mean of the scores in the matrix:
 
@@ -56,6 +56,13 @@ Implementation levels used in the last two columns (defined before scoring):
 **Sensitivity.** If "approximate – low" counts as 0 (only usable parts count), the score is 4.75 / 19 = **25 %**. If every
 implementable approximation counts as 1, the share of components that can be implemented at all is 14 / 19 = **74 %**.
 The share implemented **exactly** is **0 / 19**.
+
+**Methodology and limits.** The 19 components and the five levels were fixed before scoring. Each component was placed
+by judgement from the register's evidence (precision / recall, coverage, whether the trigger is known), then scored
+unweighted. It is therefore a **subjective, unweighted evidence-and-readiness index**. It is **not** the fraction of code or
+decision logic recovered, and it does not use PR #1's or PR #3's classifier metrics directly. Re-examining the matrix after the
+9 Nov reconciliation changed no component: the stop-definition check (audit §7A) left row 8 at Approximate – low, and
+PR #1's artifact (0 / 20 tasks at 75 %) left rows 7, 9, 10, 12 and 13 unchanged.
 
 **What the score means.** Read it as "about a third of the strategy's components are understood well enough to implement
 with fair-to-high fidelity". It is not a probability that a replica would behave like Algo 8, and components are not
@@ -81,10 +88,21 @@ equally important. Exits (rows 7–12, 17) carry most of the unexplained behavio
 7. **Can we build an autonomous model that makes similar decisions without seeing the actual future orders?** **Only a
    coarse one.** Lineage X's best autonomous controller reaches a later event macro-F1 of 23–24 %. Lineage Y's
    autonomous replay matches actual exits with precision 0.40 / recall 0.24 on TEST when given the actual entries, and
-   0.37 / 0.12 fully autonomously. Neither approaches the 80 % target.
+   0.37 / 0.12 fully autonomously. PR #1's replay abstained (0 orders). None approaches the 80 % target; these are
+   different measures (audit §7.0) and are not combined.
 8. **What percentage of the complete strategy is genuinely understood?** The estimated coverage score is **≈ 34 %**
    (25–34 % depending on how partial components are counted; 0 % exact), calculated above. It is not a probability of
    exact replication.
+
+## 3a. The same evidence partitioned by what can be done
+
+| Partition | Components / rules |
+|---|---|
+| **Implementable with high confidence** | 17 pre-expiry windows; 09:16 opening, ATM seed strikes, wings, 3-unit size; base-unit child orders, limit band, tags; cycle stop (constant approximate); 15:14 flatten (later period) |
+| **Only approximable** | D-1 per-lot stop band 1.6–1.7× of the cheapest entry (≈ 45 % coverage); later strikes; routine wings; modal ladder quantities; Clock-B timing / one-lot ATM re-sale; carry book |
+| **Triggers unknown** | extra sales; side-level / basket / partial reductions; Clock-B act / no-act and choice; D0 stop scope; re-entry |
+| **Blocked by missing data** | lump size; sizing and exposure ceiling; 4 % / 1 % denominators; eligibility; pending orders; allocation ownership; tick-level stop timing |
+| **Requires genuinely new historical observations** | out-of-sample validation of any decision rule; more cycle stops; no-trade sessions |
 
 ## 4. Approximate behavioural replica vs exact reconstruction
 
@@ -92,5 +110,7 @@ equally important. Exits (rows 7–12, 17) carry most of the unexplained behavio
   [executable approximation](ALGO8_STRATEGY_SPECIFICATION.md#executable-approximation-for-a-first-replica--clearly-labelled):
   same calendar, clocks, ATM strikes, wings, base units, a D-1 stop band, the cycle stop and the late flatten. The existing
   rule clone already does a subset of this and reaches per-cycle P&L correlation **0.48** (ALP-03).
+* **Is an approximate behavioural replica possible?** Yes, now, with explicit placeholders and per-component fidelity.
+  **Is exact reconstruction possible from the current data?** No.
 * An **exact reconstruction** cannot be built now. Five components have no usable rule and seven are only partly
   implementable. A replica that produces similar P&L or similar-looking orders would still not be the original strategy.

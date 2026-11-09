@@ -14,7 +14,7 @@ Part of the [complete reconstruction audit](ALGO8_COMPLETE_RECONSTRUCTION_AUDIT.
 | Breeze 1-min option candles | lineage X `data/breeze/` | 3,243 contract-days; 1,230,065 candles | OHLC, volume, OI | **Only contracts Algo 8 traded**, not the full chain; SENSEX OI is zero; no bid/ask; minute resolution; missing minutes where no trade |
 | Derived research outputs | lineage X `research/outputs/` (committed); lineage Y `analysis/_cache/` (699 MB, git-ignored, local) and `analysis/exit_engine/results/` (committed) | — | Parent ledgers, books, panels, model outputs | `_cache` exists only in this container; regenerable from the scripts |
 | Algo 7 report and dump | user uploads in this session (`ALGO7_FINAL_REPORT.pdf`, `Algo_7_Dump.xlsx`) | 13 Apr – 15 Sep 2026; 30,192 fills; client PCHNA531 | Same 168-column export **with a header** | **Not in the repository**; different strategy (supporting evidence for platform/column semantics only) |
-| PR #1 Actions artifacts | GitHub Actions run 41223605040 | — | dataset, action/quantity/replay folds, `algo8-research-report` | **Not reviewed; expire 30 Nov 2026**; download blocked from this session |
+| PR #1 Actions artifacts | GitHub Actions run 41223605040 | — | dataset, action/quantity/replay folds, `algo8-research-report` | **`algo8-research-report` reviewed 9 Nov** (0 / 20 tasks at 75 %; replay abstains); artifacts expire 30 Nov 2026 — download them before then if the fold CSVs are needed |
 | Prior backtest screenshot | referenced in lineage X docs | 3 Mar 2025 – 27 May 2026 | Return 47.22 %, CAGR 36.88 %, Sharpe 2.19 | Different period; not reproduced; no trades for it |
 | 2025–26 Breeze history (for the locked alpha OOS) | **not yet fetched** (user said they would pull it) | — | — | Needed only for the economic OOS test, not for reconstruction |
 
@@ -40,21 +40,21 @@ Only items tied to a specific unknown are listed. Register IDs in brackets.
 
 ## 3. Research that can still be done with existing data
 
-Ordered by expected information value about the **original** strategy. These are experiments for a later task; none was
-run during this audit.
+Ordered by expected information value about the **original** strategy. None was run during the audit. **Completed since the
+first audit:** PR #1 artifact review, the stop-definition reconciliation and the ladder-window reconciliation (audit §7A).
 
 | # | Experiment | Gap addressed | Why it is informative | Expected information value |
 |---|---|---|---|---|
-| 1 | **Read the PR #1 `algo8-research-report` artifact** (user download) and add its metrics to the ML audit | ML-02 | A completed, registered ML study already exists and has never been reviewed | High, cheap |
-| 2 | **Reconcile the stop-level contradiction**: re-derive `FINDINGS.md`'s "74 % within 2 min after ≥ 1.55× own entry" with the clean book and the exact same lot-level definition, next to the contract-level first-passage | EXT-02 conflict | Decides whether the D-1 stop is ≈ 1.55× own entry or ≈ 1.6–1.7× cheapest entry | High |
-| 3 | **Use the recovered decision quotes (limit/1.15, /0.85) as a sparse tick feed** to time stop crossings with the algo's own prices instead of Breeze minute highs | EXT-02, EXT-04, RSK-01 | Removes most intrabar ambiguity without new data | High |
-| 4 | **Allocation-identity reconstruction**: link each sale to its clock/slot chain and test per-allocation stops (does the stopped lot belong to the slot whose own entry crossed the level?) | EXT-03, EXT-05, MGT-04 | The one-lot-at-a-time stop suggests per-allocation logic; this tests it directly | Medium–high |
-| 5 | **Clean-build remainder: done** (sections 3, 7, 8 incl. adverse / delay-1 fills, and 9 robustness) — kept for the record; nothing left here | ML-03 | Required before any robustness statement about the lineage-Y models | Medium (likely confirms low fidelity) |
-| 6 | **D0 ladder and expiry quantity templates** with the clean book, reconciled with lineage X's quarter-window labels | SIZ-03, ENT-03 | Quantity is the weakest of the "known" parts | Medium |
-| 7 | **Locate or rewrite the P4 cache writer** and re-run `p4_ml.py` / `p4_book.py` with the correct order key | STK-03 | Verifies or retracts the 68.5 % strike-choice figure | Medium |
-| 8 | **Clock-B act/no-act with allocation-age and inventory-shape features** | MGT-03 | Current AUC 0.78; a sharper condition may exist in the book state | Medium |
-| 9 | **Lump size vs approximate margin proxies** (e.g. SPAN-like scenario loss of the carry book) | SIZ-04 | Tests the hypothesis that the lump is margin-driven | Low–medium (may still fail without true margin) |
-| 10 | Reconcile the two lineages' ladder modes at 10:15/10:16 and the 13:15/13:16 slot | SIZ-03 | Small definitional conflict | Low |
+| 1 | **Reconcile the exact per-lot stop reference using the recovered per-order quotes** (limit ÷ 1.15 / ÷ 0.85 as a sparse tick feed), comparing own-entry, cheapest-entry and per-allocation references | EXT-02, REC-01/02 | The one stop rule that is known to exist; removes most intrabar ambiguity without new data | High |
+| 2 | **Reconstruct allocation ownership and per-allocation state** (slot / clock chains; does the stopped lot belong to the slot whose own entry crossed?) | EXT-03, EXT-05, MGT-04 | The one-lot-at-a-time stop implies per-allocation logic; this tests it directly | High |
+| 3 | **Investigate Clock-B selection and act / no-act** with allocation-age and inventory-shape features | MGT-03 | Act / no-act AUC 0.78; contract choice hit@1 0.56–0.66 vs 0.35–0.41 random | Medium–high |
+| 4 | **Reconcile extra-sale triggers across both lineages** (one definition scored by both on the same later cycles) | ENT-04, REC-03 | Y's timer ranking and X's 13 / 93 are different targets | Medium |
+| 5 | **Obtain / review original configuration, risk settings and decision logs** (not an experiment: a data request) | all [U] | Would resolve most unknowns directly | Highest if obtainable |
+| 6 | **Obtain additional historical Algo 8 trade data** | validation | The only genuinely unseen test | High for validation |
+| 7 | Locate or rewrite the P4 cache writer and re-run `p4_ml.py` with the correct key | STK-03 | Verifies or retracts the 68.5 % figure | Low–medium |
+
+No general-purpose ML tuning is recommended: every model family tried fails at ≥ 0.75 / 0.75 and the limiting factor is
+missing information, not model capacity.
 
 The locked alpha OOS test (`analysis/oos_run.py`, frozen in `alpha_freeze/`) needs the 2025–26 history and lot sizes.
 It tests an **economic** hypothesis (H1), not a reconstruction of Algo 8's rules.
