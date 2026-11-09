@@ -1,0 +1,15 @@
+===== 8 final liquidation (D0 book-minute) (depth-3 tree, DEV fit) =====
+|--- hhmm <= 909.50
+|   |--- mv5 <= 1.05
+|   |   |--- class: 0
+|   |--- mv5 >  1.05
+|   |   |--- class: 0
+|--- hhmm >  909.50
+|   |--- hhmm <= 919.50
+|   |   |--- hhmm <= 914.50
+|   |   |   |--- class: 1
+|   |   |--- hhmm >  914.50
+|   |   |   |--- class: 1
+|   |--- hhmm >  919.50
+|   |   |--- class: 0
+
