@@ -1,0 +1,13 @@
+measure,n_events,within_2min,within_15min,exit_before_trigger_share,note
+"PR #2 as published (every lot, own entry, window opens 2 min before the trigger)",1045,0.7406698564593301,0.8200956937799043,0.22200956937799043,reproduces the ~74 % / ~82 % family of numbers on the clean order data
+"  same, only the FIRST crossing of each contract",194,0.5567010309278351,0.6855670103092784,0.08762886597938144,"one event per contract-day; the first crossing is the lowest-entry lot, i.e. the cheapest-entry reference"
+"  same, only LATER lots of a contract already crossed",851,0.782608695652174,0.8507638072855465,0.2526439482961222,follow-on lots whose own-entry level is crossed after the first one
+"  same, one event per contract-minute (shared triggers removed)",458,0.6375545851528385,0.75764192139738,0.18995633187772926,removes lots that cross in the same minute
+"  same, but exits before the trigger minute not credited",813,0.6666666666666666,0.7687576875768758,0.0,"strict window [trigger, ...]"
+"  same, FIRST crossing only, exits before the trigger minute not credited",194,0.4690721649484536,0.5979381443298969,0.0,"closest to the PR #3 definition (one event per exposure, cheapest-entry reference, window [m, m+W])"
+"PR #3 first passage (cheapest open entry x 1.55, minute high, D-1 fresh, any buy-back of the contract), all 35 cycles",438,0.4178082191780822,0.6210045662100456,0.0,"from analysis/_cache/fp_events.pkl (clean build); minutes, not seconds"
+POPULATION: PR #3 D-1 fresh events at k=1.55 (438 events),438,0.4178082191780822,0.6210045662100456,0.0,438 events come from 151 contracts (2.90 per contract): PR #3 emits repeated crossing events per contract
+POPULATION: PR #3 first event per contract (151 contracts),151,0.6754966887417219,0.8145695364238411,0.0,one event per contract; directly comparable with PR #2 first crossing per contract
+"POPULATION: PR #2 first crossing per contract, strict, restricted to the same 151 contracts",151,0.5827814569536424,0.7417218543046358,0.0,same contract set as above; same trigger minute in 133 of 151
+POPULATION: PR #2 first-crossing contracts absent from PR #3 D-1 fresh (43 contracts),43,0.06976744186046512,0.09302325581395349,0.0,29 of 43 had NO open lot in the contract at the trigger minute (PR #2 does not check that the lot is still open)
+POPULATION: PR #2 lot events with no open lot in the contract at the trigger minute,88,,,,of 1045 lot events; first-crossing contracts with no open lot: 30 of 194
