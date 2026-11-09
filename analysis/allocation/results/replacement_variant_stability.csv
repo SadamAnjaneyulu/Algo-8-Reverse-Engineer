@@ -1,0 +1,41 @@
+variant,cls,lots,share_of_sale_lots,lots_linked_within_60s
+"primary (recent, sched excluded, same day)",ATM re-centering,678,0.044278996865203764,265
+"primary (recent, sched excluded, same day)",independent off-grid entry (antecedent capacity exhausted),85,0.005551201671891327,0
+"primary (recent, sched excluded, same day)",independent off-grid entry (no eligible antecedent),2854,0.18638975966562174,0
+"primary (recent, sched excluded, same day)",independent scheduled entry,6813,0.4449451410658307,0
+"primary (recent, sched excluded, same day)",same-contract re-entry after full closure,57,0.0037225705329153604,31
+"primary (recent, sched excluded, same day)",same-contract replacement,524,0.034221525600835946,199
+"primary (recent, sched excluded, same day)","same-right, different-strike replacement",2360,0.15412748171368862,1472
+"primary (recent, sched excluded, same day)",unresolved association,1941,0.12676332288401254,0
+same-contract-first,ATM re-centering,460,0.030041797283176592,185
+same-contract-first,independent off-grid entry (antecedent capacity exhausted),85,0.005551201671891327,0
+same-contract-first,independent off-grid entry (no eligible antecedent),2854,0.18638975966562174,0
+same-contract-first,independent scheduled entry,6813,0.4449451410658307,0
+same-contract-first,partial position replenishment,6,0.00039184952978056425,1
+same-contract-first,same-contract re-entry after full closure,123,0.008032915360501568,40
+same-contract-first,same-contract replacement,1029,0.06720219435736677,275
+same-contract-first,"same-right, different-strike replacement",1701,0.11108934169278997,1148
+same-contract-first,unresolved association,2241,0.14635579937304075,0
+earliest-first,ATM re-centering,296,0.019331243469174503,74
+earliest-first,independent off-grid entry (antecedent capacity exhausted),70,0.004571577847439916,0
+earliest-first,independent off-grid entry (no eligible antecedent),2872,0.18756530825496343,0
+earliest-first,independent scheduled entry,6813,0.4449451410658307,0
+earliest-first,same-contract re-entry after full closure,14,0.0009143155694879833,3
+earliest-first,same-contract replacement,185,0.012082027168234064,32
+earliest-first,"same-right, different-strike replacement",1249,0.08157001044932079,667
+earliest-first,unresolved association,3813,0.2490203761755486,0
+scheduled sales consume capacity,ATM re-centering,602,0.03931556948798328,262
+scheduled sales consume capacity,independent off-grid entry (antecedent capacity exhausted),57,0.0037225705329153604,0
+scheduled sales consume capacity,independent off-grid entry (no eligible antecedent),4016,0.26227795193312436,0
+scheduled sales consume capacity,independent scheduled entry,6813,0.4449451410658307,808
+scheduled sales consume capacity,same-contract re-entry after full closure,52,0.0033960292580982234,31
+scheduled sales consume capacity,same-contract replacement,447,0.029192789968652037,199
+scheduled sales consume capacity,"same-right, different-strike replacement",2148,0.14028213166144202,1433
+scheduled sales consume capacity,unresolved association,1177,0.07686781609195402,0
+horizon 15 min,ATM re-centering,678,0.044278996865203764,265
+horizon 15 min,independent off-grid entry (antecedent capacity exhausted),33,0.0021551724137931034,0
+horizon 15 min,independent off-grid entry (no eligible antecedent),4847,0.3165491118077325,0
+horizon 15 min,independent scheduled entry,6813,0.4449451410658307,0
+horizon 15 min,same-contract re-entry after full closure,57,0.0037225705329153604,31
+horizon 15 min,same-contract replacement,524,0.034221525600835946,199
+horizon 15 min,"same-right, different-strike replacement",2360,0.15412748171368862,1472

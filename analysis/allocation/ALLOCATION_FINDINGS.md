@@ -215,3 +215,9 @@ Reading:
 * **Established:** a stable necessary lower edge ≈ 1.50 × lowest individual entry (D-1 fresh, D0 fresh and, with few observations, D0 carried); the reference is an individual entry or a small allocation, not the contract average.
 * **Readiness:** row 8 (individual stops) remains **Approximate – low (0.25)**; the 34 % index is unchanged (see the updated readiness matrix and register in `audit/`).
 * **Next:** (1) explain **non-response** (why most 1.5× crossings are not stopped within five minutes): candidates are poll cadence, one-lot-per-cycle throttling and portfolio-state gates; this needs per-order lifecycle data or timestamps finer than a minute; (2) replacement and re-entry continuity with a definition that can represent Clock-B re-sales; (3) additional historical trade data for unseen validation.
+
+---
+
+# Phase 3 — replacement and re-entry continuity
+
+See [`REPLACEMENT_REENTRY_FINDINGS.md`](REPLACEMENT_REENTRY_FINDINGS.md): lot-level lifecycle reproduced exactly; re-sale association real only within about 60 s; allocation ownership identified for 3.5 % of replacement lot pairs (not identified in the available data).
