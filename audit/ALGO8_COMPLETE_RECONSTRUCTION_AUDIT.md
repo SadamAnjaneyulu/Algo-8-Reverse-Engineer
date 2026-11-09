@@ -67,7 +67,7 @@ documentation only; no research logic, model, threshold or finding was changed f
   worktree, so they were not disturbed). The section 8 open-fill replay **completed**. The section 7 models and the
   section 3 trigger tests had been **stopped at the 2-hour background limit**; they were then re-run as split jobs.
   The models are **complete** (11 jobs, TEST scored once) and section 3 is **complete** (T4 ablation for all nine categories
-  merged). Section 9 robustness and the adverse/delay-1 replays have **not been run**.
+  merged). Section 9 robustness and the adverse / one-minute-delay replays were then run too (see §7).
 ### 2.2 Branch / PR table
 
 | Branch / PR | Purpose | Completed work | Important findings | Missing work | Status |
@@ -77,7 +77,7 @@ documentation only; no research logic, model, threshold or finding was changed f
 | `research/strong-findings` (no PR) | Consolidated strong-findings register | +1 file `STRONG_FINDINGS.md` v7 (F01–F34, C01/C02) + merge of the data branch (27 Oct) | As above, with denominators | — | Base of PR #1 |
 | `research/ml-decision-engine` — **PR #1** (draft, base `research/strong-findings`) | Resumable chronological ML reconstruction (registered 75 % precision/recall standard) | +20 files: `research/ml_decision_engine/` (18 files), CI workflow/action | No results committed; cloud run **41223605040 succeeded on 31 Oct** and uploaded a research report and fold artifacts | **Results never reviewed**; PR text still says no final assessment exists; artifacts expire 30 Nov 2026 | Open draft, unmerged |
 | `claude/friendly-galileo-r3zezw` — **PR #2** (draft, base `main`) | Lineage Y: decode, validate on market data, alpha anatomy, backtester, frozen OOS candidates | +59 files (14 commits, 6–8 Nov): `FINDINGS.md` v8, 51 files under `analysis/` (scripts + requirements), `alpha_freeze/` (7 files, SHA-256 `c0623b61…`, `21856dcb…`, commit `d695b777`) | Module tags; limit-band quote recovery; cycle stop ≈ −₹1.30–1.35 L; per-lot stop ≈ 1.55× (now contested); clocks incl. Clock B; no indicators; clone corr 0.48; no alpha; frozen H1 | Locked OOS awaits 2025–26 data and lot sizes; P4 chain unverified after the order-id issue | Open draft; depends on lineage X's `data/breeze` via `ALGO8_MARKET_DIR` (not contained in its own branch) |
-| `research/algo8-exit-engine` — **PR #3** (draft, base PR #2's branch) | Lineage Y exit-engine deep reconstruction (sections 1–10) | +40 files (18 commits, 8 Nov): `analysis/exit_engine/` (ledger, taxonomy, book state, first passage, side/basket, Clock-B, carried, models, replay, robustness, audits, tests, `run_all.py`) | Order-key audit; clean first-passage (D-1 stop ≈ 1.6–1.7×; one lot at a time); Clock-B = one-lot ATM re-centring; side/basket triggers unknown; 4 % SL unresolved | Sections 3, 7, 8, 9 re-runs; findings doc rewrite; PR description is **stale** (pre-fix numbers) | Open draft; **stacked on PR #2**, so merging it alone into `main` would bring PR #2 with it |
+| `research/algo8-exit-engine` — **PR #3** (draft, base PR #2's branch) | Lineage Y exit-engine deep reconstruction (sections 1–10) | +40 files (18 commits, 8 Nov): `analysis/exit_engine/` (ledger, taxonomy, book state, first passage, side/basket, Clock-B, carried, models, replay, robustness, audits, tests, `run_all.py`) | Order-key audit; clean first-passage (D-1 stop ≈ 1.6–1.7×; one lot at a time); Clock-B = one-lot ATM re-centring; side/basket triggers unknown; 4 % SL unresolved | Nothing material; the findings doc and PR description were rewritten on the clean build and all sections 3–9 are complete | Open draft; **stacked on PR #2**, so merging it alone into `main` would bring PR #2 with it |
 | `audit/algo8-reconstruction-audit` (this branch) | This audit | 6 documents in `audit/` | — | — | New; stacked on PR #3 |
 
 ### 2.3 Ancestry
@@ -291,7 +291,7 @@ These are correlates of when the algo acts, not a recovered decision rule. Three
 |---|---|---|
 | **Teacher-forced replay** (actual orders fed in) | The engine's accounting and causal features match the panel and the cash P&L exactly | Passed on 2 cycles (pre-clean caches; re-run pending) — validates software only |
 | **Smoke test** (2 DEV cycles, own decisions) | The pipeline runs end to end | Passed; in-sample; not an assessment |
-| **Autonomous replay** (own book; no actual exits or future inventory) | Fidelity of a reconstructed controller | Lineage X: macro-F1 23–24 %. Lineage Y (minute-open fills, TEST): Mode A exit-match P 0.40 / R 0.24; Mode B P 0.37 / R 0.12. Adverse-fill / delay-1 variants not run |
+| **Autonomous replay** (own book; no actual exits or future inventory) | Fidelity of a reconstructed controller | Lineage X: macro-F1 23–24 %. Lineage Y (minute-open fills, TEST): Mode A exit-match P 0.40 / R 0.24; Mode B P 0.37 / R 0.12. TEST P&L is very sensitive to fills in Mode A (+₹4.6 L minute-open, +₹5.7 L one-minute delay, −₹10.3 L adverse; actual +₹7.5 L), while exit matching is not (precision 0.36–0.47, recall 0.12–0.24) |
 
 ---
 
@@ -317,7 +317,7 @@ Full list: [data gaps](ALGO8_DATA_GAPS_AND_REQUIREMENTS.md).
   2. reconcile the stop-level contradiction
   3. time stops with the algo's own recovered quotes
   4. reconstruct allocation identity
-  5. run lineage Y's section 9 robustness suite and the adverse/delay-1 replays
+  5. (done) lineage Y's robustness suite and adverse / delay-1 replays: 90 % bootstrap intervals for lot-stop precision 0.25–0.30 and recall 0.63–0.74 on TEST
 
 ## 9. Roadmap (summary)
 

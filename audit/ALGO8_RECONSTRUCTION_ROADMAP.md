@@ -37,8 +37,8 @@ Priority is set by **how much a task reduces uncertainty about the original stra
 | Clean exit engine sections 4–6 | Done (first passage, side/basket, Clock-B, carried) | Write-up in `EXIT_ENGINE_FINDINGS.md` | — | Y | Doc updated with DEV/VAL/TEST numbers |
 | Section 7 models | **Done**: 11 jobs merged, TEST scored once, none reaches 80/80 | — | `models.py` | Y | Done (ML-03) |
 | Section 3 trigger re-run | **Done**: T1–T3, stop shape, carry stop and the T4 ablation for all nine categories | — | `triggers.py` | Y | Done (`t4_family_gains.csv`) |
-| Section 8 replay (Mode A actual entries; Mode B decoded entries) | Open-fill run complete (ML-06) | Adverse / delay-1 fills | `replay.py` | Y | Metrics for 3 fills × 2 modes × 3 policies |
-| Section 9 robustness | **Not run** | Run `robustness.py` (models are now saved in `_cache/exit_models.pkl`) | Section 7 models | Y | Segment, bootstrap, ablation and missing-data tables |
+| Section 8 replay (Mode A actual entries; Mode B decoded entries) | **Done** for minute-open, one-minute-delay and adverse fills (ML-06, ML-07) | — | `replay.py` | Y | Metrics for 3 fills × 2 modes × 3 policies |
+| Section 9 robustness | **Done** (4 headline models) | — | Section 7 models | Y | Done (ML-07) |
 | PR #1 ML decision engine | Cloud run finished; results unreviewed | Download and review `algo8-research-report` | Artifact (expires 30 Nov 2026) | X (PR #1) | Report metrics entered in the ML audit |
 
 ## 4. Still under investigation (existing data)
