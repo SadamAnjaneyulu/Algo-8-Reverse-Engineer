@@ -1,0 +1,24 @@
+===== 4 clock-B contract selection (candidate-level) (depth-3 tree, DEV fit) =====
+|--- share_side <= 0.13
+|   |--- px <= 6.00
+|   |   |--- vexp <= 69.91
+|   |   |   |--- class: 0
+|   |   |--- vexp >  69.91
+|   |   |   |--- class: 1
+|   |--- px >  6.00
+|   |   |--- net_theta <= 1714233.31
+|   |   |   |--- class: 0
+|   |   |--- net_theta >  1714233.31
+|   |   |   |--- class: 0
+|--- share_side >  0.13
+|   |--- hhmm <= 875.50
+|   |   |--- age_cheap <= 4.50
+|   |   |   |--- class: 1
+|   |   |--- age_cheap >  4.50
+|   |   |   |--- class: 0
+|   |--- hhmm >  875.50
+|   |   |--- theta <= -654.36
+|   |   |   |--- class: 1
+|   |   |--- theta >  -654.36
+|   |   |   |--- class: 1
+
