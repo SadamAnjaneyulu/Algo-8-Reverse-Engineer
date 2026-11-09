@@ -1,7 +1,7 @@
 # Algo 8 exit engine — findings on the corrected data
 
 Branch `research/algo8-exit-engine` (PR #3, stacked on PR #2). All new code is in `analysis/exit_engine/`; `alpha_freeze/`, its hashes, H1 and the OOS protocol are untouched.
-Reproduce: `python3 analysis/exit_engine/run_all.py` (clean rebuild), or the split jobs `run_split.py` (models, section 3). Numbers below are from the clean build on the
+Reproduce: `python3 analysis/exit_engine/run_all.py` (clean rebuild), or the split jobs `run_split.py` (models, section 3; it ran 253 minutes in total, 4 jobs at a time). The scheduler's last line lists three model jobs as failed: that is their first attempt, which crashed saving an unpicklable hazard closure; they were fixed and re-run by hand, and the merge uses the fixed re-runs. Numbers below are from the clean build on the
 **UniqueOrderIdentifier** key. This document **replaces** the first version, whose numbers were invalid (see §1).
 
 > **STATUS — read this first**
@@ -9,7 +9,7 @@ Reproduce: `python3 analysis/exit_engine/run_all.py` (clean rebuild), or the spl
 > |---|---|
 > | Sections 1–6 (taxonomy, trigger tests, first passage, side/basket, Clock B, carried positions) | **Final on the clean build** |
 > | Section 7 ML models (11 jobs, 5 algorithms) | **Final**: VAL and TEST scored once |
-> | Section 3 T4 feature-family ablation | **Categories 0–3 and 8 final; categories 4–7 (Clock-B rebalances, grid rebalances, Clock-B without replacement, salvage) still running** — rows marked PENDING |
+> | Section 3 T4 feature-family ablation | **Final**: all nine categories (split jobs merged) |
 > | Section 8 autonomous replay | **Minute-open fills only**, three policies × two modes. Adverse-fill and one-minute-delay variants were **not run** |
 > | Section 9 robustness suite (segments, bootstrap CIs, feature ablation, missing-data stress) | **Not run** |
 > | Automated tests on the clean build | **12 passed** (`python -m pytest analysis/exit_engine/tests`, 87 s) |
@@ -75,10 +75,13 @@ The D-1 step sits between **1.55× and 1.7×**; on D0 it never becomes crisp. IV
 | Partial buy-back (454) | 0.738 | +0.07 | +0.01 | +0.04 | +0.07 | −0.01 | +0.02 | +0.05 | +0.13 |
 | **Side-level (394)** | 0.660 | +0.20 | +0.07 | +0.20 | **+0.21** | +0.02 | +0.07 | +0.17 | +0.27 |
 | Basket (960) | 0.844 | +0.04 | +0.02 | +0.02 | +0.03 | 0.00 | +0.01 | +0.04 | +0.07 |
-| Clock-B rebalance / grid rebalance / Clock B without replacement / salvage | | PENDING | | | | | | | |
+| Clock-B rebalance (427) | 0.966 | +0.01 | 0.00 | +0.01 | +0.01 | 0.00 | 0.00 | +0.01 | +0.01 |
+| Grid rebalance (322) | 0.937 | +0.01 | −0.01 | 0.00 | +0.01 | 0.00 | +0.01 | +0.01 | +0.01 |
+| Clock B without replacement (185) | 0.950 | −0.01 | −0.02 | −0.10 | 0.00 | −0.01 | −0.01 | +0.02 | +0.02 |
+| Expiry-day salvage (716) | 0.963 | +0.02 | +0.01 | +0.01 | +0.01 | 0.00 | +0.01 | +0.01 | +0.03 |
 | Unexplained (48) | 0.922 | −0.08 | −0.21 | −0.02 | −0.20 | −0.09 | −0.04 | −0.03 | −0.47 |
 
-Price ratio, P&L, drawdown, spot move and Greeks are proxies of the same price move, so their gains are not independent. IV adds almost nothing. Side-level exits are the group that responds to the adverse spot move (+0.21); basket exits barely do (+0.03).
+Price ratio, P&L, drawdown, spot move and Greeks are proxies of the same price move, so their gains are not independent. IV adds almost nothing. Side-level exits are the group that responds to the adverse spot move (+0.21); basket exits barely do (+0.03). **Clock rebalances, Clock B without replacement and salvage are already predicted by timing and inventory alone (base AUC 0.94–0.97); no market feature adds more than +0.03.** The salvage label is price-defined (≤ ₹1 or ≤ 5 % of entry), so its predictability comes mostly from time to expiry rather than from a trigger. The unexplained class (48 events) gets worse with every added family, so nothing predicts it.
 
 ## 5. Section 4 — first-passage tests (contract level)
 
