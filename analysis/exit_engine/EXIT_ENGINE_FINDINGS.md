@@ -214,7 +214,7 @@ The replay keeps its own book and decides hold / partial buy-back / full exit / 
 
 ## 10. Section 9 — validation and robustness ([`robustness_results.csv`](results/robustness_results.csv))
 
-Headline models only (lot stop, label-free exit, D0 carried exit, salvage), LightGBM and CatBoost, thresholds fixed on VAL and never re-tuned. No result is a pass of the 80 % standard.
+Headline models only (lot stop, label-free exit, D0 carried exit, salvage). The tables below show LightGBM; the CatBoost and logistic rows are in the CSV. Thresholds fixed on VAL and never re-tuned. No result is a pass of the 80 % standard.
 
 **Cycle-level bootstrap, 90 % interval, resampling the TEST cycles (2,000 draws)**
 
