@@ -15,7 +15,8 @@ import lightgbm as lgb
 from sklearn.metrics import precision_score, recall_score, average_precision_score
 from common import markets, RES, C
 import bookstate
-from models import prep, feats_of, proba, build_cmb
+from models import prep, feats_of, proba, build_cmb, HazardFeatures
+import __main__; __main__.HazardFeatures = HazardFeatures      # models.py was run as a script, so its pickles name the class '__main__.HazardFeatures'
 
 FAM = {'premium ratio': lambda f: f.startswith('r_') or f in ('rh_prev', 'px', 'e_cheap', 'e_avg'),
        'P&L / drawdown': lambda f: f.startswith('upnl') or f.startswith('mtm') or f in ('up_basket',),
