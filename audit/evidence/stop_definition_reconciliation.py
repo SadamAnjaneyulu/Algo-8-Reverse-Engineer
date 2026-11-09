@@ -44,3 +44,27 @@ pd.DataFrame(rows).to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)
 pd.set_option('display.width', 220); pd.set_option('display.max_colwidth', 80)
 print(pd.DataFrame(rows).round(3).to_string(index=False))
 print('lots with a crossing:', len(pl), '| contract-days:', pl.ks.nunique(), '| mean lots per contract-day crossing:', round(len(pl) / pl.ks.nunique(), 2))
+
+# ---- population reconciliation (added after review): why 194 PR #2 first crossings vs 438 PR #3 events -------------------------------------------
+allfp = pd.read_pickle(os.path.join(C, 'fp_events.pkl'))
+allfp['ks'] = allfp.und + '|' + allfp.expiry.dt.date.astype(str) + '|' + allfp.cp + '|' + allfp.strike.astype(int).astype(str)
+base = allfp[(allfp.ref == 'cheap') & (allfp.basis == 'high') & (allfp.k == 1.55)]
+fp1 = base[base.segment == 'D-1 fresh']; f3 = fp1.sort_values('mi').groupby('ks').head(1).copy()
+f2 = pl.groupby('ks').head(1).copy()                                  # PR #2 first crossing per contract (pl is sorted by ks, pred)
+common = set(f2.ks) & set(f3.ks)
+sells = {k: sorted(g.t0.tolist()) for k, g in lots.groupby('ks')}; buys = {k: sorted(g.t.tolist()) for k, g in exits.groupby('ks')}
+openn = lambda ks, t: sum(1 for x in sells.get(ks, []) if x <= t) - sum(1 for x in buys.get(ks, []) if x <= t)
+pl['open_lots_at_trigger'] = [openn(r.ks, r.pred) for r in pl.itertuples()]; f2['open_lots_at_trigger'] = [openn(r.ks, r.pred) for r in f2.itertuples()]
+strict = lambda x: x.where(x >= 0, np.inf)
+def prow(name, x, n, note):
+    rows.append(dict(measure=name, n_events=n, within_2min=float((x <= 2).mean()), within_15min=float((x <= 15).mean()), exit_before_trigger_share=0.0, note=note))
+prow('POPULATION: PR #3 D-1 fresh events at k=1.55 (438 events)', strict(fp1.min_to_next_exit), len(fp1), f'{len(fp1)} events come from {fp1.ks.nunique()} contracts ({len(fp1) / fp1.ks.nunique():.2f} per contract): PR #3 emits repeated crossing events per contract')
+prow('POPULATION: PR #3 first event per contract (151 contracts)', strict(f3.min_to_next_exit), len(f3), 'one event per contract; directly comparable with PR #2 first crossing per contract')
+a = f2[f2.ks.isin(common)].copy(); a['x'] = strict(a.dl)
+prow('POPULATION: PR #2 first crossing per contract, strict, restricted to the same 151 contracts', a.x, len(a), f'same contract set as above; same trigger minute in {int(((a.set_index("ks").pred.dt.hour * 60 + a.set_index("ks").pred.dt.minute - 555) == f3.set_index("ks").mi.reindex(a.ks).values).sum())} of {len(a)}')
+o2 = f2[~f2.ks.isin(common)].copy(); o2['x'] = strict(o2.dl)
+prow('POPULATION: PR #2 first-crossing contracts absent from PR #3 D-1 fresh (43 contracts)', o2.x, len(o2), f'{int((o2.open_lots_at_trigger <= 0).sum())} of {len(o2)} had NO open lot in the contract at the trigger minute (PR #2 does not check that the lot is still open)')
+rows.append(dict(measure='POPULATION: PR #2 lot events with no open lot in the contract at the trigger minute', n_events=int((pl.open_lots_at_trigger <= 0).sum()), within_2min=np.nan, within_15min=np.nan, exit_before_trigger_share=np.nan,
+                 note=f'of {len(pl)} lot events; first-crossing contracts with no open lot: {int((f2.open_lots_at_trigger <= 0).sum())} of {len(f2)}'))
+pd.DataFrame(rows).to_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'stop_definition_reconciliation.csv'), index=False)
+print(pd.DataFrame(rows).tail(6).round(3).to_string(index=False))

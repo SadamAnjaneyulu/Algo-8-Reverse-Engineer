@@ -34,7 +34,7 @@ Priority is set by **how much a task reduces uncertainty about the original stra
 |---|---|---|---|---|---|---|
 | ~~Exit-engine sections 1–3 numbers~~ **DONE** | Rewritten on the clean build; section 3 complete | — | Y (PR #3) | No | Met | — |
 | P4 strike-choice model (68.5 %) | Reused key in an un-re-runnable chain (DAT-03) | Writer of `p4_orders_feat/prem/cons` caches (not in repo) | Y (PR #2) | No | Re-run with col-163 key; report the new top-1 vs nearest-ATM | Whether STK-03 becomes STRONG or is retracted |
-| `FINDINGS.md` per-lot stop statistics (74 % ≤ 2 min; 82 % ≤ 15 min) | **Reproduced 9 Nov** on the clean book with PR #2's own functions (74.1 % / 82.0 %) and shown next to the first-passage result (audit §7A); definition differences explain the gap; exact constant UNRESOLVED | `leg_stop.py`, clean lot book | Y (PR #2) | No | Met for the reproduction; the stop level is carried to priority task 1 below | The D-1 stop level (1.55× own vs 1.6–1.7× cheapest) |
+| `FINDINGS.md` per-lot stop statistics (74 % ≤ 2 min; 82 % ≤ 15 min) | **Reproduced 9 Nov** on the clean book with PR #2's own functions (74.1 % / 82.0 %) and shown next to the first-passage result (audit §7A); definition and population differences (pre-trigger exits, follow-on lots, closed-lot triggers) explain the gap; exact constant UNRESOLVED | `leg_stop.py`, clean lot book | Y (PR #2) | No | Met for the reproduction; the stop level is carried to priority task 1 below | The D-1 stop level (1.55× own vs 1.6–1.7× cheapest) |
 | ~~Teacher-forced replay test~~ **DONE** | 12 tests pass on the clean build | — | Y | No | Met | — |
 
 ## 3. Partially completed
