@@ -63,11 +63,11 @@ documentation only; no research logic, model, threshold or finding was changed f
 * Checked-out branch in the main working copy: `research/algo8-exit-engine` (PR #3), clean relative to origin except for
   in-progress run outputs.
 * Three research jobs from the previous task ran in that working copy while this audit was written (in a separate
-  worktree, so they were not disturbed). The section 8 open-fill replay **completed** and is reported in §7. The
-  section 7 models and the section 3 trigger re-run were **stopped at the 2-hour background limit**, so they have no
-  results; section 9 robustness and the adverse/delay-1 replays never ran.
-* Remote default branch: `main`.
-
+* Three research jobs from the previous task ran in that working copy while this audit was written (in a separate
+  worktree, so they were not disturbed). The section 8 open-fill replay **completed**. The section 7 models and the
+  section 3 trigger tests had been **stopped at the 2-hour background limit**; they were then re-run as split jobs.
+  The models are **complete** (11 jobs, TEST scored once) and section 3 is complete except the T4 ablation for four
+  categories, which was still running. Section 9 robustness and the adverse/delay-1 replays have **not been run**.
 ### 2.2 Branch / PR table
 
 | Branch / PR | Purpose | Completed work | Important findings | Missing work | Status |
@@ -254,7 +254,7 @@ been scored.
 | Y exit engine Clock-B act | Tick buys back anything | Book state one minute before the tick | DEV | LightGBM AUC 0.78; tree P 0.77 / R 0.55 | not scored | — | Medium for ranking; below target |
 | Y exit engine Clock-B selection | Which contract (candidate-level) | Contract features | DEV | Best criterion hit@1 0.66 vs 0.41 random; conditional logit 0.52 | not scored | — | Low–medium |
 | Y exit engine carried-stop rule | D0 stop-like exit at ≥ 1.5× | Age, premium, decay, TTE, moves, IV | DEV | Tree P 0.16 / R 0.80 | not scored | — | Rejected |
-| Y exit engine §7 (LR, LightGBM, CatBoost, depth-3 trees, discrete hazard; lot stop, label-free, side, basket, Clock-B, carried, salvage, profit-taking, re-entry, final liquidation, multiclass) | per model | causal CM/BM features | DEV, VAL thresholds | **No result**: run stopped at the 2-hour background limit | — | — | Not assessed |
+| Y exit engine §7 (LR, LightGBM, CatBoost, depth-3 trees, discrete hazard; 11 jobs: lot stop, label-free, side, basket, Clock-B, carried, salvage, profit-taking, re-entry, final liquidation, multiclass) | per model | 45 causal book/market features | DEV; thresholds on VAL | See [ML-03](ALGO8_MASTER_FINDINGS_REGISTER.md): e.g. lot stop LGBM P 0.27 / R 0.68 | **TEST (once)**: lot stop 0.27–0.37 / 0.52–0.68; side-level 0.21 / 0.40; basket 0.19 / 0.28; carried 0.32–0.38 / 0.25–0.32; re-entry 0.64–0.67 / 0.63–0.67; Clock-B top-1 0.56 vs 0.35 random; final liquidation 0.75 / 1.00 on 15 events | — | Low; none reaches 80/80; learns timing correlates, not a rule |
 | Y exit engine §8 autonomous replay, Mode A (actual base entries; own exits) | Own-book exits, re-entries, wing releases, liquidation | Contract-minute exit + quantity models, re-entry model, final-flatten model (DEV fit, VAL thresholds) | DEV | VAL exit-match P 0.39 / R 0.25 | **TEST P 0.40 / R 0.24**; quantity agreement 0.51; P&L corr 0.87 (₹4.6 L vs ₹7.5 L) | Genuine autonomous (own book); abstention 1–8 % | Low; P&L similarity driven by the supplied entries |
 | Y exit engine §8 autonomous replay, Mode B (decoded entries; own exits) | Full autonomous book | same + decoded clone entries | DEV | VAL P 0.45 / R 0.11 | **TEST P 0.37 / R 0.12**; P&L corr 0.59 (−₹3.5 L vs ₹7.5 L) | Fully autonomous | Low |
 | Y rule clone inside the replay (1.55× lot stop, cycle stop, 15:14) | — | — | — | Mode A VAL P 0.65 / R 0.16 | Mode A TEST P 0.63 / R 0.18 | Autonomous exits | Low recall |
@@ -271,7 +271,7 @@ been scored.
 - The only ≥ 80 % figures are either conditional on the actual book (X entry baseline), or structural and in-sample
   (schedule 544/544, C02 529/544).
 - No exit, reduction, Clock-B or quantity model reaches 80/80 on validation.
-- Lineage Y's autonomous replay on TEST: exit-match recall 0.12–0.24.
+- Lineage Y: the §7 models were scored on TEST once (best exit-class precision / recall 0.37 / 0.52 for the lot stop; side-level 0.21 / 0.40), and its autonomous replay on TEST has exit-match recall 0.12–0.24. None reaches 80 / 80.
 - PR #1's results are unread.
 
 There is also no genuine out-of-sample data. Every cycle has been inspected; the 2025–26 history planned for the alpha
@@ -317,7 +317,7 @@ Full list: [data gaps](ALGO8_DATA_GAPS_AND_REQUIREMENTS.md).
   2. reconcile the stop-level contradiction
   3. time stops with the algo's own recovered quotes
   4. reconstruct allocation identity
-  5. finish lineage Y sections 3/7/8/9
+  5. finish the lineage Y T4 ablation (4 categories), section 9 robustness and the adverse/delay-1 replays
 
 ## 9. Roadmap (summary)
 
