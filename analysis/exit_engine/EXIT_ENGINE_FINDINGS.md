@@ -10,8 +10,8 @@ Reproduce: `python3 analysis/exit_engine/run_all.py` (clean rebuild), or the spl
 > | Sections 1–6 (taxonomy, trigger tests, first passage, side/basket, Clock B, carried positions) | **Final on the clean build** |
 > | Section 7 ML models (11 jobs, 5 algorithms) | **Final**: VAL and TEST scored once |
 > | Section 3 T4 feature-family ablation | **Final**: all nine categories (split jobs merged) |
-> | Section 8 autonomous replay | **Minute-open fills only**, three policies × two modes. Adverse-fill and one-minute-delay variants were **not run** |
-> | Section 9 robustness suite (segments, bootstrap CIs, feature ablation, missing-data stress) | **Not run** |
+> | Section 8 autonomous replay | **Final**: three fill assumptions (minute-open, one-minute delay, adverse) × three policies × two modes |
+> | Section 9 robustness suite (segments, bootstrap CIs, feature ablation, missing-data stress) | **Final** (4 headline models) |
 > | Automated tests on the clean build | **12 passed** (`python -m pytest analysis/exit_engine/tests`, 87 s) |
 >
 > No result below is a claim of recovered strategy. Unresolved rules are marked **UNKNOWN**.
@@ -176,7 +176,7 @@ Logistic baseline, LightGBM, CatBoost, depth-3 tree and discrete-time hazard mod
 * Calibration is good for the rare-event models (ECE ≤ 0.015) because they rarely fire; that is not discrimination.
 * **Rule learning vs correlation:** the models rank mainly on time-to-expiry, time since the last trade, price ratio and exposure size. On the rare-event classes the depth-3 trees have TEST precision 0.04–0.25, and the hazard models are the weakest. None recovers a rule.
 
-## 9. Section 8 — autonomous portfolio replay (minute-open fills; [`autonomous_replay_metrics_open.csv`](results/autonomous_replay_metrics_open.csv))
+## 9. Section 8 — autonomous portfolio replay (three fill assumptions; main table below is minute-open fills, [`autonomous_replay_metrics_open.csv`](results/autonomous_replay_metrics_open.csv))
 
 The replay keeps its own book and decides hold / partial buy-back / full exit / wing release / re-entry / final liquidation / cycle liquidation itself, without actual future orders or inventory, and abstains outside the DEV feature support. **Mode A:** actual base entries arrive at their own times, exits are the replay's. **Mode B:** fully autonomous, entries come from the decoded clone ladder. Exit match = same contract within ±2 minutes.
 
@@ -197,9 +197,75 @@ The replay keeps its own book and decides hold / partial buy-back / full exit / 
 * TEST relative position divergence (|replay − actual| lots ÷ actual lots): 2.4 (A) and 6.4 (B), against 5.0 and 27.6 for hold-only. Values above 1 mean the positions differ by more than their own size.
 * Abstention: 1–11 % of decisions.
 * Teacher-forced replay (actual orders fed in) reproduces the panel features and cash-flow P&L; that validates the accounting, **not** any decision model.
-* **Not run:** adverse-fill, one-minute-delay and transaction-cost variants (`replay.py --fill adverse|delay1`). The conservative / adverse cost scenarios are computed in the by-cycle file but are not assessed here.
+**Execution and cost stress** (TEST, ML controller; minute-open = buys and sells at the minute's open, delay = next minute's open, adverse = buys at the minute high and sells at the minute low; [`autonomous_replay_metrics_*.csv`](results)):
 
-## 10. Verified, inferred and unresolved
+| Mode | Fills | Exit-match precision | recall | P&L corr | Replay P&L (₹ L) | Net after conservative / adverse costs (₹ L) | Actual P&L / net conservative / net adverse (₹ L) |
+|---|---|---:|---:|---:|---:|---|---|
+| A | minute-open | 0.40 | 0.24 | 0.87 | +4.6 | +0.9 / −1.1 | +7.5 / +4.3 / +2.3 |
+| A | one-minute delay | 0.40 | 0.22 | 0.85 | +5.7 | +2.0 / +0.1 | same |
+| A | **adverse** | 0.47 | 0.16 | 0.85 | **−10.3** | −12.8 / −14.0 | same |
+| B | minute-open | 0.37 | 0.12 | 0.59 | −3.5 | −4.6 / −5.1 | same |
+| B | one-minute delay | 0.36 | 0.12 | 0.63 | −3.5 | −4.6 / −5.1 | same |
+| B | **adverse** | 0.38 | 0.12 | 0.68 | **−6.1** | −7.1 / −7.7 | same |
+
+* **Which exits match is almost insensitive to execution** (precision 0.36–0.47, recall 0.12–0.24 under all three fill assumptions), so the low fidelity is a decision problem, not a fill problem.
+* **The money is very sensitive**: adverse fills cost the Mode-A controller about ₹15 L over 9 TEST cycles, because it buys back and re-sells many small lots. The actual book stays positive under the same cost scenarios (+₹4.3 L conservative, +₹2.3 L adverse), so the replay's trading pattern is not equivalent to the original.
+* The conservative and adverse cost scenarios are the fixed turnover / per-order / per-unit schedules used in the earlier study, not verified broker charges.
+
+## 10. Section 9 — validation and robustness ([`robustness_results.csv`](results/robustness_results.csv))
+
+Headline models only (lot stop, label-free exit, D0 carried exit, salvage), LightGBM and CatBoost, thresholds fixed on VAL and never re-tuned. No result is a pass of the 80 % standard.
+
+**Cycle-level bootstrap, 90 % interval, resampling the TEST cycles (2,000 draws)**
+
+| Model | Precision | Recall | Average precision | Cycles |
+|---|---|---|---|---:|
+| Lot stop | 0.25 – 0.30 | 0.63 – 0.74 | 0.37 – 0.49 | 9 |
+| Label-free unscheduled buy-back | 0.21 – 0.24 | 0.42 – 0.47 | 0.24 – 0.30 | 9 |
+| D0 carried-position exit | 0.25 – 0.50 | 0.19 – 0.33 | 0.18 – 0.31 | 7 |
+| Salvage | 0.14 – 0.21 | 0.59 – 0.81 | 0.21 – 0.30 | 7 |
+
+**Segments, lot-stop model on TEST (LightGBM precision / recall)**
+
+| Segment | Events | Precision | Recall |
+|---|---:|---:|---:|
+| All | 339 | 0.27 | 0.68 |
+| NIFTY / SENSEX | 71 / 268 | 0.30 / 0.26 | 0.66 / 0.68 |
+| **D-1** | 127 | **0.34** | **0.84** |
+| D0 | 212 | 0.23 | 0.58 |
+| Fresh / carried contracts | 240 / 99 | 0.28 / 0.24 | 0.71 / 0.60 |
+| Trend / sideways sessions | 122 / 217 | 0.28 / 0.26 | 0.66 / 0.68 |
+| High-vol cycles / low-vol cycles | 326 / **13** | 0.26 / (0.41) | 0.67 / (0.92) |
+
+D-1 has high recall (0.84) with low precision (0.34): the model over-fires where the stop is crisp. Most TEST cycles are high-volatility (the split uses the DEV median), so the low-volatility column has 13 events and means nothing. The label-free exit model shows the same pattern (D-1 0.33 / 0.49, D0 0.18 / 0.42).
+
+**Feature ablation (LightGBM, refit on DEV without one family; average precision on TEST, full model 0.39)**
+
+| Removed | Lot stop (VAL / TEST) | Label-free (VAL / TEST) |
+|---|---|---|
+| Premium ratio | 0.22 / **0.27** | 0.23 / 0.24 |
+| Spot move / ATR / RV | 0.23 / **0.33** | 0.21 / 0.22 |
+| P&L / drawdown | 0.34 / 0.36 | 0.24 / 0.25 |
+| Greeks / IV | 0.36 / 0.36 | 0.26 / 0.26 |
+| Inventory / concentration | 0.35 / 0.36 | 0.25 / 0.26 |
+| Timing since trades / age | 0.33 / 0.37 | 0.23 / 0.24 |
+| Clock / calendar | 0.31 / 0.40 | 0.21 / 0.25 |
+
+The lot-stop model depends on the price ratio and the spot move; removing Greeks, IV, inventory, timing or clock costs nothing on TEST. That is the same price-move signal as everywhere else, not a hidden extra rule.
+
+**Missing-data and incomplete-chain stress** (TEST; option bars removed, book-state features rebuilt from the damaged bars; stored models scored at their VAL thresholds). LightGBM lot stop, baseline 0.27 / 0.68:
+
+| Damage | Precision | Recall | AP |
+|---|---:|---:|---:|
+| 10 % of bars at random | 0.26 | 0.60 | 0.37 |
+| 25 % of bars at random | 0.26 | 0.50 | 0.33 |
+| 10 % of 15-minute blocks | 0.26 | 0.61 | 0.37 |
+
+Precision does not move; recall falls by 8–18 points. The model degrades gracefully, which is a property of a weak, price-driven classifier and not evidence that it has the right rule. The logistic baseline stays at precision ≈ 0.11.
+
+**Other robustness checks, and where they are:** execution and transaction-cost stress is in the replay (§9); per-index, D-1 vs D0 and fresh vs carried splits are above; the chronological split is DEV 18 / VAL 8 / TEST 9 whole cycles with no cross-cycle features. TEST was scored once and not used to choose any threshold or hyperparameter here.
+
+## 11. Verified, inferred and unresolved
 
 **Verified (observed in this sample)**
 * Orders are one column-163 tag each; the colour of an order's module is in its tag prefix.
@@ -222,17 +288,17 @@ The replay keeps its own book and decides hold / partial buy-back / full exit / 
 * Quantity in reductions beyond "usually a fraction"; wing-release quantity; lump hedge size.
 * Anything that needs decision logs, allocation ids or order lifecycle records.
 
-## 11. The four conclusions, kept separate
+## 12. The four conclusions, kept separate
 
 | Question | Answer |
 |---|---|
 | **Individual exit-rule reconstruction** | **Partial.** A D-1 per-lot stop near 1.6–1.7× and the cycle stop are real and approximately located. Neither is exact: the stop covers ≈ 45 % of stop-like exits, D0 scope is unknown, and the cycle-stop constant is bracketed, not derived. |
 | **Full exit-controller reconstruction** | **No.** No exit class reaches 80 % precision and 80 % recall on VAL or TEST; best TEST results are lot stop 0.27–0.37 / 0.52–0.68, side-level 0.21 / 0.40, basket 0.19 / 0.28, re-entry 0.64–0.67 / 0.63–0.67. |
-| **Portfolio replay fidelity** | **Low.** TEST exit match 0.40 / 0.24 with actual entries, 0.37 / 0.12 fully autonomous. |
+| **Portfolio replay fidelity** | **Low.** TEST exit match 0.36–0.47 precision and 0.12–0.24 recall under every fill assumption (0.40 / 0.24 with actual entries, 0.37 / 0.12 fully autonomous at minute-open fills). P&L is very sensitive to fills (Mode A: +₹4.6 L at minute-open, −₹10.3 L adverse; actual +₹7.5 L). |
 | **Economic profitability** | **Not assessed here** and not implied. The replay's P&L is a diagnostic of fidelity; earlier work finds no demonstrated alpha. |
 
 A strong result in one row is not evidence for another.
 
-## 12. Files
+## 13. Files
 
-Results: `results/` — `first_passage_*.csv`, `side_basket_*.csv`, `clock_b_selection_results.csv`, `carried_position_results.csv`, `newest_ref_results.csv`, `exit_model_metrics.csv`, `autonomous_replay_*_open.csv`, `order_key_audit.*`, `legacy_oid_audit*.{csv,txt}`, `stop_shape_report.txt`, `carry_stop_report.txt`, `triggers_t123_report.txt`, `t4_parts/`. Code: `common.py`, `ledger.py`, `taxonomy.py`, `bookstate.py`, `first_passage.py`, `side_basket.py`, `clock_b.py`, `carried.py`, `models.py`, `replay.py`, `robustness.py`, `run_all.py`, `run_split.py`, `tests/`.
+Results: `results/` — `robustness_results.csv`, `first_passage_*.csv`, `side_basket_*.csv`, `clock_b_selection_results.csv`, `carried_position_results.csv`, `newest_ref_results.csv`, `exit_model_metrics.csv`, `autonomous_replay_*_{open,adverse,delay1}.csv`, `order_key_audit.*`, `legacy_oid_audit*.{csv,txt}`, `stop_shape_report.txt`, `carry_stop_report.txt`, `triggers_t123_report.txt`, `t4_parts/`. Code: `common.py`, `ledger.py`, `taxonomy.py`, `bookstate.py`, `first_passage.py`, `side_basket.py`, `clock_b.py`, `carried.py`, `models.py`, `replay.py`, `robustness.py`, `run_all.py`, `run_split.py`, `tests/`.
