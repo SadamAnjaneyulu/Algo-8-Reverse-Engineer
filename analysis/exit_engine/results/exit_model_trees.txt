@@ -1,0 +1,231 @@
+===== 1 individual lot stop (depth-3 tree, DEV fit) =====
+|--- r_cheap <= 1.49
+|   |--- r_cheap <= 1.43
+|   |   |--- atr <= -497.77
+|   |   |   |--- class: 0
+|   |   |--- atr >  -497.77
+|   |   |   |--- class: 0
+|   |--- r_cheap >  1.43
+|   |   |--- age_cheap <= 23.50
+|   |   |   |--- class: 0
+|   |   |--- age_cheap >  23.50
+|   |   |   |--- class: 0
+|--- r_cheap >  1.49
+|   |--- adv_mv5 <= 1.38
+|   |   |--- since_sale_k <= 44.50
+|   |   |   |--- class: 0
+|   |   |--- since_sale_k >  44.50
+|   |   |   |--- class: 0
+|   |--- adv_mv5 >  1.38
+|   |   |--- since_bb_k <= 24.50
+|   |   |   |--- class: 0
+|   |   |--- since_bb_k >  24.50
+|   |   |   |--- class: 0
+
+===== 1b any unscheduled buy-back (label-free) (depth-3 tree, DEV fit) =====
+|--- tte_min <= 76.50
+|   |--- vexp <= 477.58
+|   |   |--- r_avg <= 0.04
+|   |   |   |--- class: 0
+|   |   |--- r_avg >  0.04
+|   |   |   |--- class: 0
+|   |--- vexp >  477.58
+|   |   |--- clockB <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- clockB >  0.50
+|   |   |   |--- class: 0
+|--- tte_min >  76.50
+|   |--- r_cheap <= 1.50
+|   |   |--- e_cheap <= 5.97
+|   |   |   |--- class: 0
+|   |   |--- e_cheap >  5.97
+|   |   |   |--- class: 0
+|   |--- r_cheap >  1.50
+|   |   |--- adv_mv5 <= 1.38
+|   |   |   |--- class: 0
+|   |   |--- adv_mv5 >  1.38
+|   |   |   |--- class: 0
+
+===== 2 side-level reduction (depth-3 tree, DEV fit) =====
+|--- max_r_cheap <= 1.57
+|   |--- lots_side <= 149.50
+|   |   |--- adv_mv5 <= 3.98
+|   |   |   |--- class: 0
+|   |   |--- adv_mv5 >  3.98
+|   |   |   |--- class: 0
+|   |--- lots_side >  149.50
+|   |   |--- adv_mv15 <= 1.44
+|   |   |   |--- class: 0
+|   |   |--- adv_mv15 >  1.44
+|   |   |   |--- class: 0
+|--- max_r_cheap >  1.57
+|   |--- adv_mv5 <= 1.03
+|   |   |--- max_r_avg <= 1.27
+|   |   |   |--- class: 0
+|   |   |--- max_r_avg >  1.27
+|   |   |   |--- class: 0
+|   |--- adv_mv5 >  1.03
+|   |   |--- lots_side <= 59.50
+|   |   |   |--- class: 0
+|   |   |--- lots_side >  59.50
+|   |   |   |--- class: 0
+
+===== 3 basket-level reduction (depth-3 tree, DEV fit) =====
+|--- tte_min <= 64.50
+|   |--- tte_min <= 24.50
+|   |   |--- hhmm <= 910.50
+|   |   |   |--- class: 0
+|   |   |--- hhmm >  910.50
+|   |   |   |--- class: 0
+|   |--- tte_min >  24.50
+|   |   |--- hhmm <= 883.50
+|   |   |   |--- class: 0
+|   |   |--- hhmm >  883.50
+|   |   |   |--- class: 0
+|--- tte_min >  64.50
+|   |--- up_pe <= 341664.00
+|   |   |--- up_pe <= -35766.25
+|   |   |   |--- class: 0
+|   |   |--- up_pe >  -35766.25
+|   |   |   |--- class: 0
+|   |--- up_pe >  341664.00
+|   |   |--- since_bb <= 5.50
+|   |   |   |--- class: 0
+|   |   |--- since_bb >  5.50
+|   |   |   |--- class: 0
+
+===== 4 clock-B contract selection (candidate-level) (depth-3 tree, DEV fit) =====
+|--- share_side <= 0.13
+|   |--- px <= 6.00
+|   |   |--- vexp <= 69.91
+|   |   |   |--- class: 0
+|   |   |--- vexp >  69.91
+|   |   |   |--- class: 1
+|   |--- px >  6.00
+|   |   |--- net_theta <= 1714233.31
+|   |   |   |--- class: 0
+|   |   |--- net_theta >  1714233.31
+|   |   |   |--- class: 0
+|--- share_side >  0.13
+|   |--- hhmm <= 875.50
+|   |   |--- age_cheap <= 4.50
+|   |   |   |--- class: 1
+|   |   |--- age_cheap >  4.50
+|   |   |   |--- class: 0
+|   |--- hhmm >  875.50
+|   |   |--- theta <= -654.36
+|   |   |   |--- class: 1
+|   |   |--- theta >  -654.36
+|   |   |   |--- class: 1
+
+===== 5 expiry-day carried-position exit (non-salvage, non-final) (depth-3 tree, DEV fit) =====
+|--- hhmm <= 868.50
+|   |--- r_cheap <= 1.57
+|   |   |--- mv_d0open <= -24.26
+|   |   |   |--- class: 0
+|   |   |--- mv_d0open >  -24.26
+|   |   |   |--- class: 0
+|   |--- r_cheap >  1.57
+|   |   |--- adv_mv5 <= 1.38
+|   |   |   |--- class: 0
+|   |   |--- adv_mv5 >  1.38
+|   |   |   |--- class: 0
+|--- hhmm >  868.50
+|   |--- vexp <= 529.78
+|   |   |--- r_avg <= 0.04
+|   |   |   |--- class: 0
+|   |   |--- r_avg >  0.04
+|   |   |   |--- class: 0
+|   |--- vexp >  529.78
+|   |   |--- clockB <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- clockB >  0.50
+|   |   |   |--- class: 1
+
+===== 6 expiry-day salvage (depth-3 tree, DEV fit) =====
+|--- r_avg <= 0.01
+|   |--- since_sale_k <= 170.50
+|   |   |--- since_bb <= 1.50
+|   |   |   |--- class: 0
+|   |   |--- since_bb >  1.50
+|   |   |   |--- class: 0
+|   |--- since_sale_k >  170.50
+|   |   |--- lots_pe <= 51.50
+|   |   |   |--- class: 0
+|   |   |--- lots_pe >  51.50
+|   |   |   |--- class: 0
+|--- r_avg >  0.01
+|   |--- px <= 3.12
+|   |   |--- share_side <= 0.09
+|   |   |   |--- class: 0
+|   |   |--- share_side >  0.09
+|   |   |   |--- class: 0
+|   |--- px >  3.12
+|   |   |--- r_avg <= 0.05
+|   |   |   |--- class: 0
+|   |   |--- r_avg >  0.05
+|   |   |   |--- class: 0
+
+===== 6b D0 in-profit unscheduled exit (profit-taking) (depth-3 tree, DEV fit) =====
+|--- hhmm <= 868.50
+|   |--- age_cheap <= 5.50
+|   |   |--- otm_atr <= 5.48
+|   |   |   |--- class: 0
+|   |   |--- otm_atr >  5.48
+|   |   |   |--- class: 0
+|   |--- age_cheap >  5.50
+|   |   |--- px <= 4.72
+|   |   |   |--- class: 0
+|   |   |--- px >  4.72
+|   |   |   |--- class: 0
+|--- hhmm >  868.50
+|   |--- vexp <= 487.24
+|   |   |--- vexp <= 129.60
+|   |   |   |--- class: 0
+|   |   |--- vexp >  129.60
+|   |   |   |--- class: 0
+|   |--- vexp >  487.24
+|   |   |--- clockB <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- clockB >  0.50
+|   |   |   |--- class: 1
+
+===== 7 re-entry (same-side sale within 60 s of a buy-back episode) (depth-3 tree, DEV fit) =====
+|--- since_sale <= 1.50
+|   |--- sideboth <= 0.50
+|   |   |--- up_basket <= 268692.12
+|   |   |   |--- class: 0
+|   |   |--- up_basket >  268692.12
+|   |   |   |--- class: 1
+|   |--- sideboth >  0.50
+|   |   |--- mv5 <= -0.58
+|   |   |   |--- class: 1
+|   |   |--- mv5 >  -0.58
+|   |   |   |--- class: 1
+|--- since_sale >  1.50
+|   |--- tte_min <= 305.00
+|   |   |--- since_sale <= 5.50
+|   |   |   |--- class: 1
+|   |   |--- since_sale >  5.50
+|   |   |   |--- class: 0
+|   |--- tte_min >  305.00
+|   |   |--- mv_prevclose <= -3.74
+|   |   |   |--- class: 0
+|   |   |--- mv_prevclose >  -3.74
+|   |   |   |--- class: 0
+
+===== 8 final liquidation (D0 book-minute) (depth-3 tree, DEV fit) =====
+|--- hhmm <= 909.50
+|   |--- mv5 <= 1.05
+|   |   |--- class: 0
+|   |--- mv5 >  1.05
+|   |   |--- class: 0
+|--- hhmm >  909.50
+|   |--- hhmm <= 919.50
+|   |   |--- hhmm <= 914.50
+|   |   |   |--- class: 1
+|   |   |--- hhmm >  914.50
+|   |   |   |--- class: 1
+|   |--- hhmm >  919.50
+|   |   |--- class: 0
+

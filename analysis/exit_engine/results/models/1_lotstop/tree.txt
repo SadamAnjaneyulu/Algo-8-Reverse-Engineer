@@ -1,0 +1,24 @@
+===== 1 individual lot stop (depth-3 tree, DEV fit) =====
+|--- r_cheap <= 1.49
+|   |--- r_cheap <= 1.43
+|   |   |--- atr <= -497.77
+|   |   |   |--- class: 0
+|   |   |--- atr >  -497.77
+|   |   |   |--- class: 0
+|   |--- r_cheap >  1.43
+|   |   |--- age_cheap <= 23.50
+|   |   |   |--- class: 0
+|   |   |--- age_cheap >  23.50
+|   |   |   |--- class: 0
+|--- r_cheap >  1.49
+|   |--- adv_mv5 <= 1.38
+|   |   |--- since_sale_k <= 44.50
+|   |   |   |--- class: 0
+|   |   |--- since_sale_k >  44.50
+|   |   |   |--- class: 0
+|   |--- adv_mv5 >  1.38
+|   |   |--- since_bb_k <= 24.50
+|   |   |   |--- class: 0
+|   |   |--- since_bb_k >  24.50
+|   |   |   |--- class: 0
+

@@ -1,0 +1,24 @@
+===== 5 expiry-day carried-position exit (non-salvage, non-final) (depth-3 tree, DEV fit) =====
+|--- hhmm <= 868.50
+|   |--- r_cheap <= 1.57
+|   |   |--- mv_d0open <= -24.26
+|   |   |   |--- class: 0
+|   |   |--- mv_d0open >  -24.26
+|   |   |   |--- class: 0
+|   |--- r_cheap >  1.57
+|   |   |--- adv_mv5 <= 1.38
+|   |   |   |--- class: 0
+|   |   |--- adv_mv5 >  1.38
+|   |   |   |--- class: 0
+|--- hhmm >  868.50
+|   |--- vexp <= 529.78
+|   |   |--- r_avg <= 0.04
+|   |   |   |--- class: 0
+|   |   |--- r_avg >  0.04
+|   |   |   |--- class: 0
+|   |--- vexp >  529.78
+|   |   |--- clockB <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- clockB >  0.50
+|   |   |   |--- class: 1
+

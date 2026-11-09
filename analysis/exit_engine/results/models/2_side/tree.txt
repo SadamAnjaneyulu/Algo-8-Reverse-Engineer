@@ -1,0 +1,24 @@
+===== 2 side-level reduction (depth-3 tree, DEV fit) =====
+|--- max_r_cheap <= 1.57
+|   |--- lots_side <= 149.50
+|   |   |--- adv_mv5 <= 3.98
+|   |   |   |--- class: 0
+|   |   |--- adv_mv5 >  3.98
+|   |   |   |--- class: 0
+|   |--- lots_side >  149.50
+|   |   |--- adv_mv15 <= 1.44
+|   |   |   |--- class: 0
+|   |   |--- adv_mv15 >  1.44
+|   |   |   |--- class: 0
+|--- max_r_cheap >  1.57
+|   |--- adv_mv5 <= 1.03
+|   |   |--- max_r_avg <= 1.27
+|   |   |   |--- class: 0
+|   |   |--- max_r_avg >  1.27
+|   |   |   |--- class: 0
+|   |--- adv_mv5 >  1.03
+|   |   |--- lots_side <= 59.50
+|   |   |   |--- class: 0
+|   |   |--- lots_side >  59.50
+|   |   |   |--- class: 0
+
