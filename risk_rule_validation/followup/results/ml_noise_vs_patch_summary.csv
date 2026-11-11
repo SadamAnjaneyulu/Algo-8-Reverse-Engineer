@@ -1,4 +1,9 @@
 file,metric,cells,noise_cells,noise_max,noise_median_nonzero,patch_cells,patch_max,patch_median_nonzero
+exit_model_metrics.csv,precision,116,21,0.5,0.026177562089637396,63,0.5,0.010015869931338198
+exit_model_metrics.csv,recall,110,20,0.052631578947368404,0.015639481000926804,58,0.1033382280959374,0.016692235071984914
+exit_model_metrics.csv,avg_precision,86,6,0.0007813897840406869,2.2667680366156295e-05,61,0.029192286608397983,0.001133014193967441
+exit_model_metrics.csv,macro_f1,88,6,0.00972697189990751,0.0007548009253206533,48,0.02964926094614473,0.0026350074388882816
+exit_model_metrics.csv,quantity_agreement,10,2,0.024162971531392685,0.014828032822543913,5,0.03376755694636496,0.003312754103297788
 autonomous_replay_metrics_open.csv,cycles,18,0,0.0,0.0,0,0.0,0.0
 autonomous_replay_metrics_open.csv,position_divergence_mean,18,0,0.0,0.0,18,2.505712691085529,3.7077304367194586e-05
 autonomous_replay_metrics_open.csv,position_divergence_end,18,0,0.0,0.0,7,48.75,2.875

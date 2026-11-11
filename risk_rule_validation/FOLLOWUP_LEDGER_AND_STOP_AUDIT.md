@@ -73,7 +73,9 @@ re-run outputs kept in [`results/pr3_rerun_outputs/`](results/pr3_rerun_outputs/
 | Side / basket selection (MGT-05, MGT-06) | indirect | 3,014 → 3,015 episodes; side-level hit@1 0.772 vs 0.471, basket 0.576 vs 0.351 unchanged; clogit coefficients ±0.03 | unchanged |
 | Clock-B selection (MGT-03, MGT-04) | indirect | exact-set share ±0.011 | unchanged |
 | Newest-reference hazards | direct | ±1 event, hazard ±0.00004 | unchanged |
-| Models, autonomous replay, robustness (ML-03, ML-06, ML-07) | indirect + run-to-run nondeterminism | **pending**: the unpatched control re-run is still computing; old-vs-new differences in these files cannot yet be attributed to the patch | pending |
+| Exit models, TEST (ML-03) | indirect | Control reproduces every headline TEST row exactly (run-to-run noise only in the multi-class per-class rows and logistic baselines). Patch effect: **carried-position exit** LightGBM P/R 0.38 / 0.25 → **0.26 / 0.31**, CatBoost 0.32 / 0.32 → 0.36 / 0.29; profit-taking (6b) CatBoost 0.20 / 0.22 → 0.13 / 0.18; any unscheduled buy-back ±0.06; lot stop, side-level ≤ 0.012, re-entry ≤ 0.03; basket, Clock-B, salvage, final liquidation identical. No model reaches 80 / 80 ([`rerun_model_TEST_headline_three_way.csv`](results/rerun_model_TEST_headline_three_way.csv)) | **conclusion unchanged** (none reaches 80 / 80); the ML-03 values for carried-position exit and profit-taking are superseded |
+| Autonomous replay (ML-06) | direct (Mode A injects late D-1 orders) | Control reproduces PR #3 exactly (deterministic). TEST, ML controller: Mode A minute-open P/R 0.40 / 0.24 → 0.40 / 0.22, replay P&L ₹4.6 L → ₹5.7 L (actual ₹7.5 L), cycle corr 0.87 → 0.82; Mode B 0.37 / 0.12 → 0.36 / 0.12, P&L −₹3.5 L → −₹4.2 L; adverse Mode A −₹10.3 L → −₹12.2 L; delay-1 Mode A ₹5.7 L → ₹8.5 L ([`rerun_replay_TEST_ml_controller_old_vs_new.csv`](results/rerun_replay_TEST_ml_controller_old_vs_new.csv)) | **match-rate conclusions unchanged**; replay **P&L sums are fragile** (move ₹0.7–2.8 L with a 1,024-lot timing correction) |
+| Robustness suite (ML-07) | indirect | **Not reconciled**: the patched run did not finish within the session's 2-hour job limit and the control run was stopped at that limit | unchanged, not re-verified |
 
 Deterministic layers were checked against an unpatched control: it reproduces PR #3's lot ledgers, contract/book-minute panels, `carried.py`, `newest_ref.py` and `clock_b.py` outputs exactly, so every change listed above for those files is the session-mapping correction alone.
 
@@ -155,7 +157,8 @@ Cumulative MTM at the first `s_` decision = cash of all fills before it + open p
 | Carried inventory per cycle | — (now equals fills) | NIFTY 29 Sep definition |
 | PR #3 headline exit findings (EXT-02 to EXT-06, MGT-05/06, RSK-02) | the session-mapping correction | — |
 | Carried / fresh split of D0 buybacks | — | ownership convention (2,903 lots differ) |
-| ML metrics (ML-03, ML-06, ML-07) | see §2 | run-to-run nondeterminism of the original pipeline |
+| ML conclusions (no model at 80 / 80; replay matches a fifth to a quarter of exits) | the correction and run-to-run noise | — |
+| Replay P&L sums and the carried-exit model values | — | the session mapping (they move materially) |
 
 ## 6. Files
 
@@ -169,3 +172,13 @@ Cumulative MTM at the first `s_` decision = cash of all fills before it + open p
 
 Re-run procedure: copy `analysis/` to a scratch sandbox (no links), apply `pr3_rerun_patch.diff`, run
 `analysis/exit_engine/run_all.py`, then `models.py --merge` and `robustness.py`; the control sandbox runs the same stages without the patch.
+
+## 7. Register and limits of this audit
+
+New register rows only: **DAT-11** (re-run reconciliation), **DAT-12** (order-number blocks; decision vs fill ordering),
+**DAT-13** (corrections to RSK-09 as first written), **RSK-10** (post-stop behaviour), **RSK-11** (stop-level sensitivity),
+**ML-08** (corrected ML values). Existing rows, client statements and classifications are unchanged.
+
+Not done in this audit: the PR #3 robustness suite (ML-07) was not reconciled. The patched run did not finish and the
+control run was stopped at the session's 2-hour background-job limit. PR #5 (allocation) also uses the PR #3 lot ledger
+and was not re-run. All data remain in-sample.
