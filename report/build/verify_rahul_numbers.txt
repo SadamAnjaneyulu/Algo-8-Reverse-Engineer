@@ -1,0 +1,30 @@
+PASS lot stop P 0.27-0.37 
+PASS lot stop R 0.52-0.68 
+PASS side 0.21/0.40 
+PASS basket 0.19/0.28 
+PASS final liq 15 events 
+PASS re-entry 0.64-0.67/0.63-0.67 
+PASS 88% at 1.7 within 1 min 
+PASS 0 of 18 rules 
+PASS own entry TEST P .27 [.21,.32] R .63 [.58,.68] k1.55 0.268 [0.212,0.315] 0.627 [0.583,0.680]
+PASS 5th pct 1.50-1.51 D-1 
+PASS 0 mismatches / 39,874 orders / 9 ledgers 
+PASS ownership identified 3.5% 
+PASS Clock-B 3.3/4.1 
+PASS hit@1 .560/.551/.556/.493 
+PASS Mode A open .40/.24 +4.6; Mode B .37/.12 -3.5 [('A', 0.4, 0.24, 4.6), ('B', 0.37, 0.12, -3.5)]
+PASS adverse A .47/.16 -10.3; B .38/.12 -6.1 
+PASS actual TEST P&L +7.5 
+PASS audit contains INDEX rows 63678 
+PASS audit contains OPTION rows 1230065 
+PASS audit contains provider_volume non-zero rows: 0 
+PASS audit contains total missing minutes: 72 
+PASS audit contains LEDGER orders 39874 
+PASS audit contains 97.3 
+PASS audit contains 0.9728 
+PASS 1,230,065 in MD 
+PASS opportunity counts present 
+PASS 12 mutants all CAUGHT 
+PASS 8 pairs >0.9 
+PASS 42 features 42
+failures: 0

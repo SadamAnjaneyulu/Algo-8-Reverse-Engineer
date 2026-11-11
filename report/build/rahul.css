@@ -1,0 +1,34 @@
+@page { size: A4; }
+html { font-family: 'Inter', 'DejaVu Sans', sans-serif; font-size: 9pt; color: #1f2933; line-height: 1.3; }
+body { margin: 0; max-width: none; padding: 0; }
+header#title-block-header { display: none; }
+p { margin: 3px 0 4px; } 
+.masthead { border-top: 3px solid #2b6cb0; border-bottom: 0.8px solid #b8c4d0; padding: 5px 0 5px; margin-bottom: 2px; }
+.masthead .mt { font-size: 17pt; font-weight: 700; color: #102a43; line-height: 1.15; }
+.masthead .ms { font-size: 7.8pt; color: #52606d; margin-top: 2px; }
+h1 { font-size: 13pt; color: #102a43; border-bottom: 1.2px solid #2b6cb0; padding-bottom: 2px; margin: 8px 0 5px; page-break-before: always; page-break-after: avoid; }
+.masthead + h1 { page-break-before: avoid; margin-top: 6px; }
+h2 { font-size: 10.2pt; color: #1c3d5a; margin: 7px 0 3px; page-break-after: avoid; }
+ul, ol { margin: 2px 0 4px; padding-left: 17px; } li { margin: 0.5px 0; }
+table { border-collapse: collapse; width: 100%; margin: 3px 0 6px; font-size: 0.878em; line-height: 1.22; }
+tr { page-break-inside: avoid; }
+th { background: #e8eef5; color: #102a43; text-align: left; font-weight: 600; }
+th, td { border: 0.4px solid #b8c4d0; padding: 1.6px 4px; vertical-align: top; }
+tbody tr:nth-child(even) td { background: #f7f9fb; }
+code { font-family: 'DejaVu Sans Mono', monospace; font-size: 0.82em; background: #f1f4f8; padding: 0 1px; }
+strong { color: #102a43; }
+em { color: #3e4c59; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; align-items: start; }
+.col > :first-child { margin-top: 0; }
+.col h2:first-child { margin-top: 3px; }
+.charts { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10px; margin: 2px 0 4px; }
+.charts p, .col p:has(img) { margin: 0; }
+img { width: 100%; display: block; }
+figure { margin: 0; } 
+p > em:only-child { font-size: 7.2pt; color: #6b7785; }
+.three { display: grid; grid-template-columns: 1fr 1fr 1fr; column-gap: 8px; margin: 3px 0 5px; }
+.box { border: 0.5px solid #b8c4d0; border-top: 2px solid #2b6cb0; padding: 3px 5px; font-size: 0.89em; line-height: 1.25; background: #f7f9fb; }
+.box p { margin: 0; }
+
+.pg2 { font-size: 9.3pt; } .pg3 { font-size: 9.75pt; } .pg4 { font-size: 9.65pt; } .pg5 { font-size: 9.55pt; }
+.pg2 h2, .pg3 h2, .pg4 h2, .pg5 h2 { font-size: 1.13em; } .pg2 h1, .pg3 h1, .pg4 h1, .pg5 h1 { font-size: 13pt; }
