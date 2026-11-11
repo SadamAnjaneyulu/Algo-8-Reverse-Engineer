@@ -1,0 +1,13 @@
+exit_label,lots,share_below_own_entry
+1 individual lot stop-loss,3456,0.0
+5 cycle stop & liquidation,2110,0.469
+7 expiry-day salvage,2041,0.845
+6 clock-based exit (final flatten),2005,0.785
+4 basket-level reduction,1804,0.551
+3 side-level reduction,871,0.313
+2 same-contract partial buy-back,811,0.544
+8 clock-B rebalance,744,0.542
+8b grid rebalance (A/:00 clock),698,0.441
+"6 clock-based exit (clock B, no replacement)",419,0.578
+10 manual / platform risk engine,252,0.361
+11 unexplained,87,0.621

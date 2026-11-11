@@ -1,0 +1,28 @@
+segment,split,lots,share_exit_below_own_entry,convention
+"D-1 entry carried, D0 exit",DEV,1583,0.646,cheap
+"D-1 entry carried, D0 exit",TEST,768,0.517,cheap
+"D-1 entry carried, D0 exit",VAL,660,0.715,cheap
+"D-1 entry, D-1 exit",DEV,658,0.091,cheap
+"D-1 entry, D-1 exit",TEST,429,0.156,cheap
+"D-1 entry, D-1 exit",VAL,355,0.242,cheap
+"D0 entry, D0 exit",DEV,6715,0.466,cheap
+"D0 entry, D0 exit",TEST,1781,0.424,cheap
+"D0 entry, D0 exit",VAL,2349,0.471,cheap
+"D-1 entry carried, D0 exit",DEV,1584,0.659,fifo
+"D-1 entry carried, D0 exit",TEST,768,0.518,fifo
+"D-1 entry carried, D0 exit",VAL,660,0.764,fifo
+"D-1 entry, D-1 exit",DEV,658,0.208,fifo
+"D-1 entry, D-1 exit",TEST,429,0.24,fifo
+"D-1 entry, D-1 exit",VAL,355,0.332,fifo
+"D0 entry, D0 exit",DEV,6714,0.58,fifo
+"D0 entry, D0 exit",TEST,1781,0.472,fifo
+"D0 entry, D0 exit",VAL,2349,0.576,fifo
+"D-1 entry carried, D0 exit",DEV,1583,0.647,lifo
+"D-1 entry carried, D0 exit",TEST,769,0.516,lifo
+"D-1 entry carried, D0 exit",VAL,660,0.73,lifo
+"D-1 entry, D-1 exit",DEV,658,0.1,lifo
+"D-1 entry, D-1 exit",TEST,429,0.159,lifo
+"D-1 entry, D-1 exit",VAL,355,0.248,lifo
+"D0 entry, D0 exit",DEV,6715,0.469,lifo
+"D0 entry, D0 exit",TEST,1780,0.423,lifo
+"D0 entry, D0 exit",VAL,2349,0.471,lifo
