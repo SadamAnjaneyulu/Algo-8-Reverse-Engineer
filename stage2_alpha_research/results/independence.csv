@@ -1,0 +1,15 @@
+item,value
+index session dates,85
+index underlying-sessions,170
+"NIFTY-SENSEX correlation, open-to-close log return",0.948
+"NIFTY-SENSEX correlation, close-to-close log return",0.965
+usable independent index sessions (cluster = date),85
+option underlying-sessions,67
+option session dates,67
+dates with option data for both indices,0
+option sessions D-1 / D0,32 / 35
+weekly expiry cycles with option data,35
+"index dates by legacy split (DEV / VAL / TEST, by date)",43 / 22 / 20
+option session dates by legacy split,34 / 15 / 18
+index dates by month,"{'2026-06': 6, '2026-07': 23, '2026-08': 21, '2026-09': 21, '2026-10': 14}"
+untouched (never inspected) dates,0

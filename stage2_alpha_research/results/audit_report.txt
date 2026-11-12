@@ -1,0 +1,88 @@
+[PASS] A1 earlier caches reproduce from the raw files: PR #6 cache index.pkl: identical; PR #6 cache options.pkl: identical; PR #3 cache idx_candles.pkl: identical
+[PASS] B1 index timestamps: one timezone, whole minutes: timezones ['+05:30']; off-minute rows 0
+[PASS] B2 index duplicate bars: 0 duplicate (und, ts) rows in the raw files
+[PASS] B3 index sessions: {'NIFTY': 85, 'SENSEX': 85} sessions, identical dates across indices: True; 2026-06-22 to 2026-10-22
+[PASS] B4 index OHLC sanity and session bounds: 0 inconsistent rows; 0 bars outside 09:15-15:29
+[RISK] B5 index missing bars: 72 missing minutes in 16 index-sessions (8 dates, 2026-10-12 to 2026-10-22); minutes: ['15:16', '15:17', '15:18', '15:19', '15:29']; never interpolated
+weekdays without a session: ['2026-06-26', '2026-09-14', '2026-10-02', '2026-10-20']
+[PASS] C1 option timestamps: one timezone, whole minutes: timezones ['+05:30']
+[PASS] C2 option duplicate bars: 0 duplicate rows in the raw files
+[PASS] C3 option OHLC sanity; post-close bars: 0 inconsistent rows; 19518 bars at or after 15:30 and 0 before 09:15 exist in the files and are dropped by the feature library
+[PASS] C4 expiry alignment: one expiry per (underlying, session): True; sessions to expiry {0: 35, 1: 32}; calendar days {0: 35, 1: 31, 3: 1}; every expiry date is an index session: True
+[PASS] C5 option tick grid and volume units: closes on the 0.05 tick 1.0000; volume a multiple of the lot 1.0000
+option contract-days 3243, with all 375 bars 0.952; zero-volume bars 0.0235 of in-session bars
+[RISK] C6 stale option prices: 2.350% of in-session option bars have zero volume (carried last price); option return / reversal features on thin strikes can be spurious
+[PASS] D1 bar timestamp = bar START: share of 41421 broker fills inside [low, high] of the bar labelled with the fill's own minute 0.973, next bar 0.613, previous bar 0.566
+[RISK] E1 ATM straddle coverage (both legs of the ATM strike have a completed bar): option sessions 67 ({'NIFTY': 33, 'SENSEX': 34}; {'D-1': 32, 'D0': 35}); mean coverage D-1 0.998, D0 0.875; 6 sessions below 90% (minimum 0.000)
+[RISK] E2 option universe is selected by Algo 8 trading (look-ahead in data availability): the files contain a contract-day only if Algo 8 traded or held it that day or the neighbouring day, with bars for the whole day; Spearman across sessions: D-1 universe room above the open vs the later maximum rise +0.69 (n=32); D-1 universe room below the open vs the later maximum fall +0.83 (n=32); D-1 universe centre minus open vs the open-to-close move +0.88 (n=32); D0 universe room above the open vs the later maximum rise +0.54 (n=35); D0 universe room below the open vs the later maximum fall +0.22 (n=35); D0 universe centre minus open vs the open-to-close move +0.38 (n=35). Coverage by |move since open|: D-1 0-25 bp 1.00; D-1 25-50 1.00; D-1 50-100 1.00; D-1 100-150 1.00; D-1 >150 0.98; D0 0-25 bp 0.91; D0 25-50 0.94; D0 50-100 0.85; D0 100-150 0.52; D0 >150 0.44
+[PASS] F1 PR #6 feature caches reproduce from the raw files: feat_index.pkl: identical; feat_straddle.pkl: identical; feat_option.pkl: identical
+                                             table              family              feature  available_share first_available_minute_median
+               index (underlying, decision minute)          B momentum            ret_1m_bp            0.997                         09:17
+               index (underlying, decision minute)          B momentum            ret_5m_bp            0.987                         09:21
+               index (underlying, decision minute)          B momentum           ret_15m_bp            0.960                         09:31
+               index (underlying, decision minute)          B momentum           ret_30m_bp            0.920                         09:46
+               index (underlying, decision minute)          B momentum           ret_60m_bp            0.840                         10:16
+               index (underlying, decision minute)          B momentum         ema_slope_5m            0.999                         09:16
+               index (underlying, decision minute)          B momentum             rsi14_5m            1.000                         09:16
+               index (underlying, decision minute)          B momentum      macd_hist_5m_bp            1.000                         09:16
+               index (underlying, decision minute)          B momentum             adx14_5m            1.000                         09:16
+               index (underlying, decision minute)    C mean reversion               z60_1m            0.922                         09:45
+               index (underlying, decision minute)    C mean reversion           bb_pctb_5m            0.997                         09:16
+               index (underlying, decision minute)    C mean reversion          ema_dist_5m            1.000                         09:16
+               index (underlying, decision minute)        A volatility          atr14_5m_bp            1.000                         09:16
+               index (underlying, decision minute)        A volatility              rv30_bp            0.960                         09:31
+               index (underlying, decision minute)        A volatility           hlvol30_bp            0.963                         09:30
+               index (underlying, decision minute)        A volatility            range_exp            0.906                         09:50
+               index (underlying, decision minute)        A volatility       bb_width_5m_bp            0.997                         09:16
+               index (underlying, decision minute)  D market structure          ret_open_bp            1.000                         09:16
+               index (underlying, decision minute)  D market structure               or_pos            0.963                         09:30
+               index (underlying, decision minute)  D market structure             or_break            0.963                         09:30
+               index (underlying, decision minute)  D market structure    dist_prev_high_bp            0.988                         09:16
+               index (underlying, decision minute)  D market structure     dist_prev_low_bp            0.988                         09:16
+               index (underlying, decision minute)  D market structure               gap_bp            0.988                         09:16
+               index (underlying, decision minute)  D market structure        sess_range_bp            0.999                         09:16
+               index (underlying, decision minute)  D market structure             sess_pos            0.999                         09:16
+ATM straddle (underlying, expiry, decision minute) E options / premium           atm_strike            0.934                         09:16
+ATM straddle (underlying, expiry, decision minute) E options / premium          straddle_bp            0.934                         09:16
+ATM straddle (underlying, expiry, decision minute) E options / premium  straddle_ret_5m_pct            0.921                         09:21
+ATM straddle (underlying, expiry, decision minute) E options / premium straddle_ret_15m_pct            0.896                         09:31
+ATM straddle (underlying, expiry, decision minute) E options / premium       cepe_log_ratio            0.934                         09:16
+ATM straddle (underlying, expiry, decision minute) E options / premium         atm_rel_vol5            0.848                         09:50
+       option contract (contract, decision minute) E options / premium      prem_ret_1m_pct            0.997                         09:17
+       option contract (contract, decision minute) E options / premium      prem_ret_5m_pct            0.986                         09:21
+       option contract (contract, decision minute) E options / premium     prem_ret_15m_pct            0.959                         09:31
+       option contract (contract, decision minute) E options / premium         prem_spot_bp            0.999                         09:16
+       option contract (contract, decision minute) E options / premium      prem_range5_pct            0.999                         09:16
+       option contract (contract, decision minute) E options / premium    opt_vwap_dist_pct            0.999                         09:16
+       option contract (contract, decision minute) E options / premium             rel_vol5            0.909                         09:50
+       option contract (contract, decision minute) E options / premium              vol_z60            0.922                         09:45
+       option contract (contract, decision minute) E options / premium            obv_imb15            0.962                         09:30
+       option contract (contract, decision minute) E options / premium                cmf20            0.949                         09:35
+       option contract (contract, decision minute) E options / premium          bar_age_min            1.000                         09:16
+[PASS] F2 feature availability: 42 market features; index features available in 0.840 to 1.000 of decision minutes; latest median warm-up 10:16
+[PASS] G1 prefix invariance: removing every bar from the decision minute onward changes no feature value at or before it: 6 sessions x 3 random cut minutes, 1,633,414 feature values compared, 0 differences
+ horizon_min  valid_decision_minutes_per_session first_decision last_decision  non_overlapping_per_session  non_overlapping_index_total  non_overlapping_option_sessions_total  decision_minutes_touching_a_missing_index_bar  of_which_non_overlapping  purge_radius_min
+           5                                 370          09:16         15:25                           74                        12580                                   4958                                            136                        16                 5
+          15                                 360          09:16         15:15                           24                         4080                                   1608                                            224                         0                15
+          30                                 345          09:16         15:00                           12                         2040                                    804                                            224                         0                30
+          60                                 315          09:16         14:30                            6                         1020                                    402                                            224                         0                60
+[PASS] H1 label windows start at the decision minute and are disjoint from the bars a feature may use; no label crosses the session end: candidate horizons [5, 15, 30, 60] min; overlapping labels inside a session require purging within the horizon (purge radius = horizon)
+                                                   item                                                                      value
+                                    index session dates                                                                         85
+                              index underlying-sessions                                                                        170
+     NIFTY-SENSEX correlation, open-to-close log return                                                                      0.948
+    NIFTY-SENSEX correlation, close-to-close log return                                                                      0.965
+     usable independent index sessions (cluster = date)                                                                         85
+                             option underlying-sessions                                                                         67
+                                   option session dates                                                                         67
+                dates with option data for both indices                                                                          0
+                               option sessions D-1 / D0                                                                    32 / 35
+                  weekly expiry cycles with option data                                                                         35
+index dates by legacy split (DEV / VAL / TEST, by date)                                                               43 / 22 / 20
+                   option session dates by legacy split                                                               34 / 15 / 18
+                                   index dates by month {'2026-06': 6, '2026-07': 23, '2026-08': 21, '2026-09': 21, '2026-10': 14}
+                      untouched (never inspected) dates                                                                          0
+[RISK] I1 cross-instrument dependence: NIFTY and SENSEX open-to-close returns correlate 0.95: one date is one independent observation (85 dates, not 170 underlying-sessions)
+[RISK] I2 no untouched data: every session in the sample was inspected by earlier work (see the prior-look ledger in DATA_AUDIT.md): all Stage 2 results are in-sample; external validation needs new data
+
+checks: {'PASS': 15, 'RISK': 6}  |  runtime 81s

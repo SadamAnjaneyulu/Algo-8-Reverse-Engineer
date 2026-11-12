@@ -1,0 +1,36 @@
+# Stage 2 configuration (Milestone 1). Values marked PROPOSED are not locked until Milestone 2 is authorised.
+version: 1
+seed: 20261112
+market:
+  env_var: ALGO8_MARKET_DIR          # raw Breeze 1-minute files (data/breeze/normalized of branch research/ml-decision-engine); REQUIRED, no fallback
+  session_open: "09:15:00"
+  session_bars: 375                  # bar starts 09:15 ... 15:29
+  bar_label: start                   # verified against broker fills in the audit
+  timezone_suffix: "+05:30"
+instruments:
+  NIFTY: {strike_step: 50, lot: 65}
+  SENSEX: {strike_step: 100, lot: 20}
+features:
+  library: ohlcv_research/features.py      # PR #6 causal library, reused unchanged
+  forward_fill_limit_min: 5
+targets:
+  candidate_horizons_min: [5, 15, 30, 60]  # PROPOSED candidates; final horizons are chosen and justified in Milestone 2
+  entry_reference: open_of_decision_bar    # PROPOSED: first price observable after the decision minute
+  cross_session_labels: false
+validation:
+  unit_of_independence: session_date       # NIFTY and SENSEX on one date are one cluster
+  legacy_split_dates: {dev_end: "2026-08-20", val_end: "2026-09-22"}   # earlier PRs' chronological cuts, kept for comparability
+  untouched_dates: 0                       # every session has been inspected by earlier work
+audit:
+  prefix_invariance_sessions: 6
+  prefix_invariance_cuts_per_session: 3
+  min_straddle_coverage_flag: 0.90
+excluded_provisional_inputs:
+  - analysis/_cache/exit_cm.pkl
+  - analysis/_cache/exit_bm.pkl
+  - analysis/_cache/exit_lots_cheap.pkl
+  - analysis/_cache/exit_lots_fifo.pkl
+  - analysis/_cache/exit_lots_lifo.pkl
+  - analysis/_cache/exit_models.pkl
+  - analysis/exit_engine/results/robustness_results.csv
+  - ohlcv_research/_cache/*                # PR #6 caches: compared with, never read as inputs
