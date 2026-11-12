@@ -1,0 +1,12 @@
+id,definition,hit,miss,false_trigger,correct_nontrigger,stop_cycles_missed_on_D1,median_minutes_cross_to_stop,max_minutes_cross_to_stop
+K0,Observed reference (RSK-01): cumulative MTM <= -Rs 1.33 L (not a hypothesis; harness check),12,0,0,23,0,0.0,1.0
+K1,"4 % x total capital Rs 2 Cr = Rs 8.0 L, D0-only MTM",0,12,0,23,1,,
+K2,"4 % x total capital Rs 2 Cr = Rs 8.0 L, cumulative cycle MTM",0,12,0,23,1,,
+K3,"4 % x 20 % utilised capital (Rs 40 L) = Rs 1.6 L, D0-only MTM",8,4,2,21,1,0.0,2.0
+K4,"4 % x 20 % utilised capital (Rs 40 L) = Rs 1.6 L, cumulative cycle MTM",2,10,0,23,1,0.0,0.0
+K5,"4 % x 20 % of a per-index half (Rs 20 L) = Rs 0.8 L, D0-only MTM",10,2,5,18,1,1.0,212.0
+K6,"4 % x 20 % of a per-index half (Rs 20 L) = Rs 0.8 L, cumulative cycle MTM",12,0,6,17,0,1.5,1229.0
+K7,"4 % of gross body premium sold in the cycle so far, cumulative cycle MTM",12,0,17,6,0,1422.0,4330.0
+K8,"4 % of gross body premium sold on D0 so far, D0-only MTM",10,2,13,10,1,1.5,213.0
+K9,D0 drawdown from the D0 running peak >= Rs 1.6 L (4 % x Rs 40 L),4,8,12,11,1,92.0,212.0
+K10,"Info.txt context: 1 % x Rs 2 Cr = Rs 2.0 L on expiry day, D0-only MTM (already RSK-03)",2,10,2,21,1,0.5,1.0

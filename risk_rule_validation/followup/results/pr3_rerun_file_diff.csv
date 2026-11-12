@@ -1,0 +1,30 @@
+file,rows_old,rows_new,cols_old,cols_new,status,numeric_cells,numeric_cells_changed,text_cells_changed,rows_changed,max_abs_change
+autonomous_replay_by_cycle_adverse.csv,210.0,210.0,46.0,46.0,changed,8400.0,2280.0,0.0,137.0,3786075.9967827797
+autonomous_replay_by_cycle_delay1.csv,210.0,210.0,46.0,46.0,changed,8400.0,2296.0,0.0,136.0,5394368.028469086
+autonomous_replay_by_cycle_open.csv,210.0,210.0,46.0,46.0,changed,8400.0,2297.0,0.0,136.0,4388207.023837566
+autonomous_replay_metrics_adverse.csv,18.0,18.0,37.0,37.0,changed,594.0,266.0,0.0,18.0,1089.0
+autonomous_replay_metrics_delay1.csv,18.0,18.0,37.0,37.0,changed,594.0,266.0,0.0,18.0,1118.0
+autonomous_replay_metrics_open.csv,18.0,18.0,37.0,37.0,changed,594.0,265.0,0.0,18.0,1002.0
+carried_carry_sl_by_cycle.csv,270.0,270.0,11.0,11.0,changed,1350.0,80.0,2.0,55.0,88.0
+carried_position_results.csv,154.0,154.0,33.0,33.0,changed,3234.0,164.0,1274.0,154.0,1410.4997946619987
+clock_b_selection_results.csv,125.0,125.0,10.0,10.0,changed,500.0,2.0,175.0,125.0,0.010638297872340385
+exit_model_metrics.csv,,,,,not produced by re-run,,,,,
+first_passage_latency.csv,27.0,27.0,7.0,7.0,changed,135.0,17.0,0.0,6.0,4.25
+first_passage_quantity.csv,36.0,36.0,11.0,11.0,changed,324.0,30.0,0.0,6.0,1.0
+first_passage_response_curve.csv,352.0,352.0,6.0,6.0,identical,1760.0,0.0,0.0,0.0,0.0
+first_passage_results.csv,4125.0,4125.0,17.0,17.0,changed,53625.0,8452.0,0.0,1230.0,8.0
+first_passage_selected.csv,156.0,156.0,13.0,13.0,changed,1404.0,235.0,0.0,49.0,5.0
+legacy_oid_audit.csv,,,,,not produced by re-run,,,,,
+newest_ref_results.csv,88.0,88.0,6.0,6.0,changed,176.0,22.0,0.0,14.0,1.0
+order_key_audit.csv,24.0,24.0,3.0,3.0,changed,0.0,0.0,8.0,8.0,0.0
+robustness_results.csv,,,,,not produced by re-run,,,,,
+side_basket_episodes.csv,3014.0,3015.0,19.0,19.0,changed (shape),,,,,
+side_basket_exit_results.csv,454.0,454.0,24.0,24.0,changed,7718.0,266.0,1232.0,454.0,13.0
+side_basket_selection.csv,324.0,324.0,14.0,14.0,changed,3564.0,182.0,0.0,70.0,13.0
+stop_formula_grid.csv,25.0,25.0,5.0,5.0,identical,125.0,0.0,0.0,0.0,0.0
+t4_family_gains.csv,9.0,9.0,11.0,11.0,changed,90.0,1.0,0.0,1.0,0.14599999999999996
+carry_stop_report.txt,,,,,identical,,,,,
+order_key_audit.txt,,,,,identical,,,,,
+stop_shape_report.txt,,,,,identical,,,,,
+triggers_report.txt,,,,,changed (text report),,,,,
+triggers_t123_report.txt,,,,,identical,,,,,

@@ -1,0 +1,36 @@
+file,kind,rows_committed,rows_control,rows_corrected,control_reproduces_committed,noise_cells,status,numeric_cells,numeric_cells_changed,text_cells_changed,rows_changed,max_abs_change
+allocation_T1_closure_granularity.csv,metric table,12.0,12.0,12.0,True,0.0,identical,84.0,0.0,0.0,0.0,0.0
+allocation_T2_contract_choice.csv,metric table,36.0,36.0,36.0,True,0.0,identical,180.0,0.0,0.0,0.0,0.0
+allocation_T2_contract_choice_by_split.csv,metric table,108.0,108.0,108.0,True,0.0,identical,324.0,0.0,0.0,0.0,0.0
+allocation_T2_paired_bootstrap.csv,metric table,30.0,30.0,30.0,True,0.0,identical,120.0,0.0,0.0,0.0,0.0
+allocation_T3_reference_sharpness.csv,metric table,36.0,36.0,36.0,True,0.0,changed,216.0,49.0,0.0,21.0,2.0
+allocation_T4_wing_coupling.csv,metric table,6.0,6.0,6.0,True,0.0,identical,30.0,0.0,0.0,0.0,0.0
+allocation_ledger_chain.csv,row-level ledger,4355.0,4355.0,4355.0,True,0.0,changed,100165.0,15.0,0.0,15.0,108.0
+allocation_ledger_slot.csv,row-level ledger,6545.0,6545.0,6545.0,True,0.0,changed,150535.0,16.0,0.0,16.0,54.0
+allocation_lots.csv.gz,row-level ledger,32196.0,32196.0,32196.0,True,0.0,changed,193176.0,945.0,0.0,945.0,1.0
+position_lifecycle_ledger.csv,row-level ledger,27531.0,27531.0,27531.0,True,0.0,identical,137655.0,0.0,0.0,0.0,0.0
+position_lifecycle_ledger.csv.gz,row-level ledger,245255.0,245255.0,245255.0,True,0.0,identical,1226275.0,0.0,0.0,0.0,0.0
+replacement_association_null.csv,metric table,40.0,40.0,40.0,True,0.0,identical,200.0,0.0,0.0,0.0,0.0
+replacement_by_reduction_label.csv,metric table,12.0,12.0,12.0,True,0.0,identical,120.0,0.0,0.0,0.0,0.0
+replacement_event_links.csv,row-level ledger,4654.0,4654.0,4654.0,True,0.0,changed,139620.0,6.0,0.0,6.0,0.14330000000001752
+replacement_hedge_links.csv,row-level ledger,6514.0,6514.0,6514.0,True,0.0,identical,19542.0,0.0,0.0,0.0,0.0
+replacement_ownership_pairs.csv.gz,row-level ledger,16656.0,16656.0,16656.0,True,0.0,identical,83280.0,0.0,0.0,0.0,0.0
+replacement_transition_matrix.csv,metric table,271.0,271.0,271.0,True,0.0,identical,3252.0,0.0,0.0,0.0,0.0
+replacement_variant_stability.csv,metric table,40.0,40.0,40.0,True,0.0,identical,120.0,0.0,0.0,0.0,0.0
+state_transition_metrics.csv,metric table,9.0,9.0,9.0,True,0.0,identical,225.0,0.0,0.0,0.0,0.0
+stop_discriminator.csv,metric table,57.0,57.0,57.0,True,0.0,changed,855.0,138.0,0.0,30.0,1.0
+stop_discriminator_exit_level.csv,metric table,27.0,27.0,27.0,True,0.0,identical,297.0,0.0,0.0,0.0,0.0
+stop_discriminator_matched_hazard.csv,metric table,32.0,32.0,32.0,True,0.0,changed,288.0,43.0,0.0,9.0,2.0
+stop_exit_refs.csv.gz,row-level ledger,9735.0,9735.0,9735.0,True,0.0,identical,68145.0,0.0,0.0,0.0,0.0
+stop_lag.csv,metric table,4.0,4.0,4.0,True,0.0,changed,24.0,8.0,0.0,4.0,0.0016077170418005993
+stop_ref_counts.csv.gz,row-level ledger,154281.0,154281.0,154281.0,True,0.0,changed,1234248.0,19535.0,0.0,9819.0,16.0
+stop_ref_eval.csv,metric table,2592.0,2592.0,2592.0,True,0.0,changed,67392.0,12698.0,0.0,1578.0,17.0
+stop_ref_exit_ratio_quantiles.csv,metric table,432.0,432.0,432.0,True,0.0,changed,4320.0,1205.0,0.0,180.0,9.0
+stop_ref_oracle_ceiling.csv,metric table,966.0,966.0,948.0,True,0.0,changed (rows or columns differ),,,,18.0,
+stop_ref_selected_k_global.csv,metric table,108.0,108.0,108.0,True,0.0,changed,216.0,42.0,0.0,42.0,0.00041093075816728275
+stop_ref_selected_k_per_segment.csv,metric table,324.0,324.0,324.0,True,0.0,changed,648.0,126.0,0.0,126.0,0.004636984797406402
+stop_ref_verdict.csv,metric table,18.0,18.0,18.0,True,0.0,changed,126.0,47.0,0.0,18.0,1.0
+unresolved_position_links.csv,row-level ledger,4550.0,4550.0,4550.0,True,0.0,changed,113750.0,6.0,0.0,6.0,0.14330000000001752
+allocation_falsification_report.txt,text report,,,,True,,changed,,,,,
+allocation_summary.txt,text report,,,,True,,identical,,,,,
+replacement_report.txt,text report,,,,True,,identical,,,,,

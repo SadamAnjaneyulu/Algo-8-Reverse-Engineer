@@ -1,0 +1,25 @@
+check,value,ok
+tags (orders),39874,True
+fill rows,41421,True
+tags mapping to >1 date,0,True
+tags mapping to >1 und,0,True
+tags mapping to >1 expiry,0,True
+tags mapping to >1 cp,0,True
+tags mapping to >1 strike,0,True
+tags mapping to >1 side,0,True
+tags mapping to >1 tp,0,True
+max fill span within a tag (s),57.0,True
+tags with fills spanning > 60 s,0,True
+empty tags,0,True
+"(oid, date) groups",39874,True
+"tag <-> (oid, date) one-to-one",True,True
+order lots == fill lots in every cycle (exit-engine order table),True,True
+exit-engine order table rows == tags,39874,True
+old key: oid groups,37258,
+old key: oid groups merging >1 real order,2224,
+old key: real orders inside merged groups,4840,
+old key: real orders lost by groupby(oid).first(),2616,
+old key: share of real orders lost by .first(),0.0656066609820936,
+old key: merged groups spanning >1 cycle (expiry),2200,
+old key: fill lots inside merged groups,7546.0,
+old key: max real orders behind one oid,6,
