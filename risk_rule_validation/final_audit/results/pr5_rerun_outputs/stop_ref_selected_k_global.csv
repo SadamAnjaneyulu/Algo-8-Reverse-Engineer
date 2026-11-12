@@ -1,0 +1,109 @@
+conv,ref,pool,variant,k_dev,dev_f1
+cheap,chain-allocation average,S,W2 association only,1.55,0.5092810457516339
+cheap,chain-allocation average,S,W2 quote-confirmed,1.5,0.42259513117466324
+cheap,chain-allocation average,S,W5 quote-confirmed,1.5,0.479319309855826
+cheap,chain-allocation average,U,W2 association only,1.5,0.35725728933034284
+cheap,chain-allocation average,U,W2 quote-confirmed,1.5,0.2896507529637936
+cheap,chain-allocation average,U,W5 quote-confirmed,1.45,0.3356080333476343
+cheap,cheapest open entry,S,W2 association only,1.65,0.2726921591348011
+cheap,cheapest open entry,S,W2 quote-confirmed,1.65,0.22711471610660489
+cheap,cheapest open entry,S,W5 quote-confirmed,1.55,0.2676399026763991
+cheap,cheapest open entry,U,W2 association only,1.55,0.1636661211129296
+cheap,cheapest open entry,U,W2 quote-confirmed,1.55,0.13297872340425532
+cheap,cheapest open entry,U,W5 quote-confirmed,1.5,0.16229231973783922
+cheap,lot-weighted contract average,S,W2 association only,1.5,0.16940581542351454
+cheap,lot-weighted contract average,S,W2 quote-confirmed,1.45,0.13996763754045308
+cheap,lot-weighted contract average,S,W5 quote-confirmed,1.45,0.1634304207119741
+cheap,lot-weighted contract average,U,W2 association only,1.4,0.0993652878091486
+cheap,lot-weighted contract average,U,W2 quote-confirmed,1.45,0.0776265893374972
+cheap,lot-weighted contract average,U,W5 quote-confirmed,1.4,0.09461111083076396
+cheap,order-average contract,S,W2 association only,1.5,0.16940581542351454
+cheap,order-average contract,S,W2 quote-confirmed,1.45,0.13996763754045308
+cheap,order-average contract,S,W5 quote-confirmed,1.45,0.1634304207119741
+cheap,order-average contract,U,W2 association only,1.4,0.0993652878091486
+cheap,order-average contract,U,W2 quote-confirmed,1.45,0.0776265893374972
+cheap,order-average contract,U,W5 quote-confirmed,1.4,0.09461111083076396
+cheap,own entry (per lot),S,W2 association only,1.65,0.5795866183677818
+cheap,own entry (per lot),S,W2 quote-confirmed,1.55,0.4545912371999329
+cheap,own entry (per lot),S,W5 quote-confirmed,1.55,0.5096525096525097
+cheap,own entry (per lot),U,W2 association only,1.6,0.4255667850314121
+cheap,own entry (per lot),U,W2 quote-confirmed,1.55,0.3463855421686747
+cheap,own entry (per lot),U,W5 quote-confirmed,1.55,0.3921954045266216
+cheap,slot-allocation average,S,W2 association only,1.6,0.5403758252920264
+cheap,slot-allocation average,S,W2 quote-confirmed,1.5,0.4429981104346
+cheap,slot-allocation average,S,W5 quote-confirmed,1.5,0.5093428511442367
+cheap,slot-allocation average,U,W2 association only,1.5,0.37968703867729553
+cheap,slot-allocation average,U,W2 quote-confirmed,1.5,0.3147328018895778
+cheap,slot-allocation average,U,W5 quote-confirmed,1.5,0.3623913476659433
+fifo,chain-allocation average,S,W2 association only,1.7,0.3943127962085308
+fifo,chain-allocation average,S,W2 quote-confirmed,1.7,0.3289099526066351
+fifo,chain-allocation average,S,W5 quote-confirmed,1.65,0.37345478204294075
+fifo,chain-allocation average,U,W2 association only,1.55,0.3306696059520529
+fifo,chain-allocation average,U,W2 quote-confirmed,1.5,0.26485213294948967
+fifo,chain-allocation average,U,W5 quote-confirmed,1.5,0.3220322959601284
+fifo,cheapest open entry,S,W2 association only,1.7,0.20883820384889523
+fifo,cheapest open entry,S,W2 quote-confirmed,1.7,0.1789023521026372
+fifo,cheapest open entry,S,W5 quote-confirmed,1.65,0.2057921635434412
+fifo,cheapest open entry,U,W2 association only,1.65,0.15204205418520017
+fifo,cheapest open entry,U,W2 quote-confirmed,1.65,0.11605337646583097
+fifo,cheapest open entry,U,W5 quote-confirmed,1.65,0.13999383179215588
+fifo,lot-weighted contract average,S,W2 association only,1.5,0.16521409624857902
+fifo,lot-weighted contract average,S,W2 quote-confirmed,1.45,0.13551912568306013
+fifo,lot-weighted contract average,S,W5 quote-confirmed,1.45,0.16976320582877957
+fifo,lot-weighted contract average,U,W2 association only,1.45,0.11269974768713202
+fifo,lot-weighted contract average,U,W2 quote-confirmed,1.45,0.08915054667788057
+fifo,lot-weighted contract average,U,W5 quote-confirmed,1.4,0.11123669480690196
+fifo,order-average contract,S,W2 association only,1.5,0.16521409624857902
+fifo,order-average contract,S,W2 quote-confirmed,1.45,0.13551912568306013
+fifo,order-average contract,S,W5 quote-confirmed,1.45,0.16976320582877957
+fifo,order-average contract,U,W2 association only,1.45,0.11269974768713202
+fifo,order-average contract,U,W2 quote-confirmed,1.45,0.08915054667788057
+fifo,order-average contract,U,W5 quote-confirmed,1.4,0.11123669480690196
+fifo,own entry (per lot),S,W2 association only,1.75,0.40333707684902936
+fifo,own entry (per lot),S,W2 quote-confirmed,1.7,0.34266252036132094
+fifo,own entry (per lot),S,W5 quote-confirmed,1.7,0.379683103805716
+fifo,own entry (per lot),U,W2 association only,1.7,0.37266088544043807
+fifo,own entry (per lot),U,W2 quote-confirmed,1.65,0.3008380184576217
+fifo,own entry (per lot),U,W5 quote-confirmed,1.65,0.34699965155519763
+fifo,slot-allocation average,S,W2 association only,1.7,0.4049792531120332
+fifo,slot-allocation average,S,W2 quote-confirmed,1.65,0.34359368988072336
+fifo,slot-allocation average,S,W5 quote-confirmed,1.65,0.38784147749134285
+fifo,slot-allocation average,U,W2 association only,1.6,0.34354370213889623
+fifo,slot-allocation average,U,W2 quote-confirmed,1.65,0.27632126508530996
+fifo,slot-allocation average,U,W5 quote-confirmed,1.55,0.3269146446671203
+lifo,chain-allocation average,S,W2 association only,1.6,0.4665078104315595
+lifo,chain-allocation average,S,W2 quote-confirmed,1.5,0.39523916460812936
+lifo,chain-allocation average,S,W5 quote-confirmed,1.5,0.45452503929934873
+lifo,chain-allocation average,U,W2 association only,1.5,0.34746287128712877
+lifo,chain-allocation average,U,W2 quote-confirmed,1.5,0.27908415841584155
+lifo,chain-allocation average,U,W5 quote-confirmed,1.45,0.32422435795942756
+lifo,cheapest open entry,S,W2 association only,1.65,0.24202898550724636
+lifo,cheapest open entry,S,W2 quote-confirmed,1.65,0.20072463768115942
+lifo,cheapest open entry,S,W5 quote-confirmed,1.5,0.2429906542056075
+lifo,cheapest open entry,U,W2 association only,1.6,0.15122251900554756
+lifo,cheapest open entry,U,W2 quote-confirmed,1.6,0.12122457365933842
+lifo,cheapest open entry,U,W5 quote-confirmed,1.5,0.1541771119852074
+lifo,lot-weighted contract average,S,W2 association only,1.45,0.16378964271376956
+lifo,lot-weighted contract average,S,W2 quote-confirmed,1.45,0.13568847852268168
+lifo,lot-weighted contract average,S,W5 quote-confirmed,1.45,0.16459253311922922
+lifo,lot-weighted contract average,U,W2 association only,1.4,0.09773123909249565
+lifo,lot-weighted contract average,U,W2 quote-confirmed,1.4,0.07897033158813263
+lifo,lot-weighted contract average,U,W5 quote-confirmed,1.4,0.09604794890612608
+lifo,order-average contract,S,W2 association only,1.45,0.16378964271376956
+lifo,order-average contract,S,W2 quote-confirmed,1.45,0.13568847852268168
+lifo,order-average contract,S,W5 quote-confirmed,1.45,0.16459253311922922
+lifo,order-average contract,U,W2 association only,1.4,0.09773123909249565
+lifo,order-average contract,U,W2 quote-confirmed,1.4,0.07897033158813263
+lifo,order-average contract,U,W5 quote-confirmed,1.4,0.09604794890612608
+lifo,own entry (per lot),S,W2 association only,1.7,0.5335352661185634
+lifo,own entry (per lot),S,W2 quote-confirmed,1.65,0.432495164410058
+lifo,own entry (per lot),S,W5 quote-confirmed,1.65,0.47698259187620895
+lifo,own entry (per lot),U,W2 association only,1.65,0.40356496309706164
+lifo,own entry (per lot),U,W2 quote-confirmed,1.55,0.32677400119260586
+lifo,own entry (per lot),U,W5 quote-confirmed,1.55,0.37865975665404494
+lifo,slot-allocation average,S,W2 association only,1.6,0.5009803921568627
+lifo,slot-allocation average,S,W2 quote-confirmed,1.55,0.41029143897996356
+lifo,slot-allocation average,S,W5 quote-confirmed,1.55,0.476775956284153
+lifo,slot-allocation average,U,W2 association only,1.5,0.3619685497961561
+lifo,slot-allocation average,U,W2 quote-confirmed,1.5,0.2958648806057077
+lifo,slot-allocation average,U,W5 quote-confirmed,1.5,0.3446206839283902

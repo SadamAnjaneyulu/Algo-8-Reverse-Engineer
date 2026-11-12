@@ -1,0 +1,19 @@
+convention,ledger,segment,lots,share_below_entry
+cheap,PR #3 ledger,"D-1 entry carried, D0 exit",3011,0.628
+cheap,PR #3 ledger,"D-1 entry, D-1 exit",1442,0.148
+cheap,PR #3 ledger,"D0 entry, D0 exit",10845,0.46
+cheap,session-aware ledger,"D-1 entry carried, D0 exit",3128,0.607
+cheap,session-aware ledger,"D-1 entry, D-1 exit",1442,0.148
+cheap,session-aware ledger,"D0 entry, D0 exit",10728,0.464
+fifo,PR #3 ledger,"D-1 entry carried, D0 exit",3012,0.646
+fifo,PR #3 ledger,"D-1 entry, D-1 exit",1442,0.248
+fifo,PR #3 ledger,"D0 entry, D0 exit",10844,0.561
+fifo,session-aware ledger,"D-1 entry carried, D0 exit",3129,0.624
+fifo,session-aware ledger,"D-1 entry, D-1 exit",1442,0.248
+fifo,session-aware ledger,"D0 entry, D0 exit",10727,0.567
+lifo,PR #3 ledger,"D-1 entry carried, D0 exit",3012,0.632
+lifo,PR #3 ledger,"D-1 entry, D-1 exit",1442,0.154
+lifo,PR #3 ledger,"D0 entry, D0 exit",10844,0.462
+lifo,session-aware ledger,"D-1 entry carried, D0 exit",3128,0.61
+lifo,session-aware ledger,"D-1 entry, D-1 exit",1442,0.154
+lifo,session-aware ledger,"D0 entry, D0 exit",10728,0.466
