@@ -138,3 +138,12 @@ result is exploratory until tested on new data.
 2. **No bid/ask.** Costs can only be scenario-based.
 3. **External validation needs new data.** None exists in the repository.
 4. The raw market files live on branch `research/ml-decision-engine`, not on this branch.
+
+## Addendum (12 Nov 2026, found during Milestone 2): frozen closing minutes
+
+Check B5 above reports only the 8 dates (12–22 Oct) on which the index minutes 15:16–15:19 are *missing*. A later scan found that on the
+other 96 underlying-sessions from 3 Aug to 9 Oct (48 NIFTY, 48 SENSEX) those minutes are present but **frozen**: flat bars (O = H = L = C =
+previous close) from bar 360–362 (15:15–15:17) through 15:19, followed by a 15:20 bar that jumps to the real level. 58 sessions (29 + 29, all
+of June and July) are clean. Cause not established; option bars not checked. Classification and effect on the Milestone 2 results:
+`results/m2_closing_zone_sessions.csv`, `results/m2_closing_zone_sensitivity.csv`, [`MILESTONE2_REPORT.md`](MILESTONE2_REPORT.md) §9, register row DAT-15.
+The original audit text above is left unchanged. B5 should be read as "missing or frozen".

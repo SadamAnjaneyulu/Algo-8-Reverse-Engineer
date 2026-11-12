@@ -3,19 +3,22 @@
 Question: does repeatable, statistically defensible and economically meaningful predictive information exist in the
 available market data? A negative answer is a valid result. This stage is independent of Algo 8's own trading logic.
 
-**Status: Milestone 1 (data and leakage audit) complete. No model has been trained and no signal has been evaluated.**
-Milestone 2 starts only after review.
+**Status: Milestones 1 (data and leakage audit) and 2 (targets, baselines, validation design) complete. No model has been trained and no alpha family has been tested.**
+Milestone 3 starts only after review and explicit authorisation.
 
 | File | Content |
 |---|---|
-| [`DATA_AUDIT.md`](DATA_AUDIT.md) | Milestone 1 result: data quality, feature availability, leakage audit, dataset manifest |
+| [`DATA_AUDIT.md`](DATA_AUDIT.md) | Milestone 1 result: data quality, feature availability, leakage audit, dataset manifest (+ addendum: frozen closing minutes) |
+| [`MILESTONE2_REPORT.md`](MILESTONE2_REPORT.md) | Milestone 2 result: locked targets and validation, five baselines, costs, limitations, open decisions |
 | [`RESEARCH_PLAN.md`](RESEARCH_PLAN.md) | Milestones, hypotheses, proposed targets and validation design, decisions needed |
 | [`EXPERIMENT_REGISTER.csv`](EXPERIMENT_REGISTER.csv) | One row per experiment; nothing is deleted |
 | [`configs/stage2.yaml`](configs/stage2.yaml) | Paths, session constants, candidate horizons, seed, excluded inputs |
 | [`s2common.py`](s2common.py) | Loaders: raw market files only, no fallback to caches |
-| [`targets/alignment.py`](targets/alignment.py) | Label-window definitions (no target evaluated yet) |
+| [`targets/alignment.py`](targets/alignment.py), [`targets/targets.py`](targets/targets.py) | Label windows; locked target definitions |
+| [`baselines/`](baselines/), [`validation/`](validation/) | Predictors and the five baselines; folds, purging, bootstrap, permutation, Holm/BH, cost scenarios |
 | [`audit/data_leakage_audit.py`](audit/data_leakage_audit.py) | The reproducible audit → [`results/`](results/) |
-| [`tests/test_data_integrity.py`](tests/test_data_integrity.py) | 16 tests of the critical data-integrity assumptions |
+| [`tests/`](tests/) | 16 data-integrity tests (Milestone 1) + 34 Milestone 2 tests |
+| [`audit/closing_zone_check.py`](audit/closing_zone_check.py) | Frozen / missing closing minutes and their effect on the sensitivities |
 
 ## Reproduce
 
@@ -28,6 +31,11 @@ export ALGO8_MARKET_DIR=/path/to/data/breeze/normalized
 
 ```bash
 python3 stage2_alpha_research/audit/data_leakage_audit.py --force
+```
+
+```bash
+python3 stage2_alpha_research/baselines/run_baselines.py
+python3 stage2_alpha_research/audit/closing_zone_check.py
 ```
 
 ```bash

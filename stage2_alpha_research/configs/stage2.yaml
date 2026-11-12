@@ -1,5 +1,5 @@
 # Stage 2 configuration (Milestone 1). Values marked PROPOSED are not locked until Milestone 2 is authorised.
-version: 1
+version: 2
 seed: 20261112
 market:
   env_var: ALGO8_MARKET_DIR          # raw Breeze 1-minute files (data/breeze/normalized of branch research/ml-decision-engine); REQUIRED, no fallback
@@ -13,14 +13,34 @@ instruments:
 features:
   library: ohlcv_research/features.py      # PR #6 causal library, reused unchanged
   forward_fill_limit_min: 5
-targets:
-  candidate_horizons_min: [5, 15, 30, 60]  # PROPOSED candidates; final horizons are chosen and justified in Milestone 2
-  entry_reference: open_of_decision_bar    # PROPOSED: first price observable after the decision minute
+targets:                                   # LOCKED at Milestone 2 (user decisions D1, D2; RESEARCH_PLAN.md section 3)
+  horizons_min: [15, 30, 60]               # D1: primary horizons
+  sensitivity_horizons_min: [5]            # D1: 5 minutes is sensitivity analysis only, never a basis for a verdict
+  candidate_horizons_min: [5, 15, 30, 60]  # union, used by the Milestone 1 alignment audit
+  entry_reference: open_of_decision_bar    # D2
   cross_session_labels: false
-validation:
-  unit_of_independence: session_date       # NIFTY and SENSEX on one date are one cluster
-  legacy_split_dates: {dev_end: "2026-08-20", val_end: "2026-09-22"}   # earlier PRs' chronological cuts, kept for comparability
-  untouched_dates: 0                       # every session has been inspected by earlier work
+  missing_bar_rule: any_missing_bar_in_label_window_invalidates_all_targets
+  reversal_dead_band_bp: 0.0               # NOT locked: the dead band is to be fixed when a family-C experiment is registered
+validation:                                # LOCKED at Milestone 2 (D3)
+  unit_of_independence: session_date       # NIFTY and SENSEX on one date are one cluster and always share a fold
+  primary_folds: {train: 43, validation: 22, test: 20}      # first 43 dates, next 22, final 20
+  stability_blocks: 4                      # four contiguous date blocks; expanding: train on blocks 1..k, test on block k+1 (k = 1..3)
+  purge: non_overlapping_decision_grid     # decisions spaced one horizon apart inside a session; first decision at 09:15 + (h + 1) min
+  shuffle: false
+  bootstrap: {unit: session_date, reps: 2000, ci: 0.95, sensitivity_block_len_dates: 5}
+  permutation: {unit: session_date, reps: 2000}
+  untouched_dates: 0                       # every session has been inspected by earlier work: all results are in-sample
+baselines:                                 # LOCKED at Milestone 2
+  time_of_day_bucket_min: 30               # clock buckets 09:15-09:45, ..., 15:15-15:30 of the decision minute
+  fit_segment: train                       # fitted baselines use the 43 training dates only
+options:                                   # LOCKED (D4)
+  d0_max_verdict: INCONCLUSIVE             # D0 option results are reported separately and cannot support more
+  universe_derived_features_allowed: false
+costs:                                     # LOCKED (D5): the four alpha_freeze scenarios, read from analysis/engine.py::COSTS and never redefined here
+  source: analysis/engine.py::COSTS
+  expected: {zero: [0.0, 0.0, 0.0], moderate: [0.0025, 20.0, 0.05], conservative: [0.005, 20.0, 0.10], adverse: [0.005, 40.0, 0.20]}
+execution:                                 # LOCKED (D6)
+  index_signals: predictive_evaluation_only   # the index is not tradable; feasibility unresolved until tradable-instrument data exist
 audit:
   prefix_invariance_sessions: 6
   prefix_invariance_cuts_per_session: 3

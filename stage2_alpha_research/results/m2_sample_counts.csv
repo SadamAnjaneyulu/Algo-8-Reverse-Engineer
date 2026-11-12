@@ -1,0 +1,5 @@
+horizon_min,role,underlying_sessions,session_dates,decisions_per_session_before_purging,decisions_per_session_on_grid,candidates_before_purging,kept_on_non_overlapping_grid,removed_by_purging,kept_with_complete_label,label_missing_bar,momentum_predictor_missing,volatility_predictor_missing,obs_TRAIN,dates_TRAIN,obs_VAL,dates_VAL,obs_TEST,dates_TEST
+15,primary,170,85,345,23,58650,3910,54740,3910,0,0,0,1978,43,1012,22,920,20
+30,primary,170,85,315,11,53550,1870,51680,1870,0,0,0,946,43,484,22,440,20
+60,primary,170,85,255,5,43350,850,42500,850,0,0,0,430,43,220,22,200,20
+5,sensitivity only,170,85,365,73,62050,12410,49640,12394,16,0,16,6278,43,3212,22,2904,20

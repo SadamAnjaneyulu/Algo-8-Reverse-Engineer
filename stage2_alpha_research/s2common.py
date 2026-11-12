@@ -77,3 +77,12 @@ def session_minute(ts):
 def fills():
     """raw broker fills (authoritative): analysis/load.py::load_tagged (column-163 order key in `tag`)"""
     return _module('algo8_load', os.path.join(REPO, 'analysis', 'load.py')).load_tagged()
+
+
+def feature_tables(force=False):
+    """PR #6 index and ATM-straddle feature tables rebuilt from the Stage 2 market tables (never from a PR #6 cache)."""
+    px, pz = os.path.join(CACHE, 's2_feat_index.pkl'), os.path.join(CACHE, 's2_feat_straddle.pkl')
+    if not force and os.path.exists(px) and os.path.exists(pz): return pd.read_pickle(px), pd.read_pickle(pz)
+    I, O, _ = build_market(); F = feature_library()
+    X = F.index_features(I[['und', 'ts', 'open', 'high', 'low', 'close']]); Z = F.straddle_features(O[['und', 'expiry', 'strike', 'cp', 'ts', 'open', 'high', 'low', 'close', 'volume']], I[['und', 'ts', 'open', 'high', 'low', 'close']], STEP)
+    X.to_pickle(px); Z.to_pickle(pz); return X, Z
