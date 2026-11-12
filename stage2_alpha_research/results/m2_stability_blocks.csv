@@ -1,0 +1,537 @@
+target,baseline,metric,value,n_obs,n_dates,fitted_on_train,headline,horizon_min,role,test_block,train_blocks,first_date,last_date
+r,BL1 no signal,mean_bp,-0.6988694749283557,1012,22,False,True,15,primary,1,,2026-06-22,2026-07-22
+r,BL1 no signal,sd_bp,9.949078001769328,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,ic,0.05640674239141998,1012,22,False,True,15,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,rank_ic,-0.027250602536942687,1012,22,False,True,15,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,hit_rate,0.466864490603363,1012,22,False,True,15,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,mean_signed_bp,0.022959808778391048,1012,22,False,True,15,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,ic,-0.05640674239141998,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,rank_ic,0.027250602536942687,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,hit_rate,0.533135509396637,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,mean_signed_bp,-0.022959808778391048,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+reversal,BL1 no signal,base_rate,0.533135509396637,1011,22,False,True,15,primary,1,,2026-06-22,2026-07-22
+rex,BL1 no signal,mean,1.103387260340878,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+rv,BL1 no signal,mean_bp,9.21695577831305,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,rank_ic,0.5341228344628983,1012,22,False,True,15,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,ic,0.5017702955063537,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,mae,3.0208599854104716,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+rg,BL1 no signal,mean_bp,14.009419868040096,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,rank_ic,0.38003019194542675,1012,22,False,True,15,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,ic,0.37441078045231924,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,mae,5.820155118564179,1012,22,False,False,15,primary,1,,2026-06-22,2026-07-22
+r,BL1 no signal,mean_bp,-0.1547428645485538,966,21,False,True,15,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,sd_bp,7.03256756805702,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,skill_trainmean_vs_zero,-0.005499660035864329,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+r,BL2 time of day,skill_vs_zero,-0.10954881791531634,966,21,True,True,15,primary,2,1,2026-07-23,2026-08-20
+r,BL2 time of day,ic,-0.07174281182435702,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,ic,0.02103953999163269,966,21,False,True,15,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,rank_ic,-0.002641017045259967,966,21,False,True,15,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,hit_rate,0.46790890269151136,966,21,False,True,15,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,mean_signed_bp,0.02057781611676311,966,21,False,True,15,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,ic,-0.02103953999163269,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,rank_ic,0.002641017045259967,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,hit_rate,0.5320910973084887,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,mean_signed_bp,-0.02057781611676311,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+reversal,BL1 no signal,base_rate,0.5320910973084886,966,21,False,True,15,primary,2,1,2026-07-23,2026-08-20
+reversal,BL1 no signal,brier_trainrate,0.24897125227014708,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+reversal,BL2 time of day,brier_skill_vs_BL1,-0.03222001753542081,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+rex,BL1 no signal,mean,1.0962209591202459,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+rex,BL2 time of day,skill_vs_BL1,0.013857564747112305,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mean_bp,7.029304519590233,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mse_trainmean,12.608338866334682,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mae_trainmean,3.0722875302904846,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL2 time of day,skill_vs_BL1,0.03574433473741179,966,21,True,True,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL2 time of day,rank_ic,0.30297960419244624,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,rank_ic,0.4619962179330782,966,21,False,True,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,ic,0.40301071519447335,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,skill_vs_BL1,0.19648518282795757,966,21,True,True,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,skill_vs_BL2,0.16669940751322687,966,21,True,True,15,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,mae,2.234683185031665,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mean_bp,10.98205410618147,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mse_trainmean,30.56554551865792,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mae_trainmean,4.759073585559402,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL2 time of day,skill_vs_BL1,0.01080516563242595,966,21,True,True,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL2 time of day,rank_ic,0.2084655659364721,966,21,True,False,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,rank_ic,0.3544747730358816,966,21,False,True,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,ic,0.3309831615669524,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,skill_vs_BL1,-0.020803385816463127,966,21,True,True,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,skill_vs_BL2,-0.03195381774218187,966,21,True,True,15,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,mae,4.111353744772049,966,21,False,False,15,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,mean_bp,-0.5602107292739353,966,21,False,True,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,sd_bp,7.592347604842459,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,skill_trainmean_vs_zero,0.005136297579278359,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL2 time of day,skill_vs_zero,-0.00731653564066348,966,21,True,True,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL2 time of day,ic,-0.011553353996262712,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,ic,-0.06639583483001921,966,21,False,True,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,rank_ic,-0.052835283866849755,966,21,False,True,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,hit_rate,0.47253886010362695,966,21,False,True,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,mean_signed_bp,-0.2894686612898681,966,21,False,True,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,ic,0.06639583483001921,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,rank_ic,0.052835283866849755,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,hit_rate,0.5274611398963731,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,mean_signed_bp,0.2894686612898681,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL1 no signal,base_rate,0.5274611398963731,965,21,False,True,15,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL1 no signal,brier_trainrate,0.24927255320577338,965,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL2 time of day,brier_skill_vs_BL1,-0.0074285679249535,965,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rex,BL1 no signal,mean,1.084172260452209,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rex,BL2 time of day,skill_vs_BL1,0.028844620282636457,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mean_bp,7.06637828052304,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mse_trainmean,9.902785894885278,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mae_trainmean,2.5336757740792657,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL2 time of day,skill_vs_BL1,0.02396438596884587,966,21,True,True,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL2 time of day,rank_ic,0.15585232949532085,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,rank_ic,0.5576008472692536,966,21,False,True,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,ic,0.5595624055369008,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,skill_vs_BL1,0.06757794966792685,966,21,True,True,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,skill_vs_BL2,0.0446843978560898,966,21,True,True,15,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,mae,2.1754819328232866,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mean_bp,11.368172350238195,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mse_trainmean,31.16278971159651,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mae_trainmean,4.264560246659634,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL2 time of day,skill_vs_BL1,0.04978192220460942,966,21,True,True,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL2 time of day,rank_ic,0.19075591570178896,966,21,True,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,rank_ic,0.4180934904232422,966,21,False,True,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,ic,0.4423136529159571,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,skill_vs_BL1,-0.22241686927581927,966,21,True,True,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,skill_vs_BL2,-0.28645928533790843,966,21,True,True,15,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,mae,4.371809137782163,966,21,False,False,15,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,mean_bp,-0.7217826700202022,966,21,False,True,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,sd_bp,12.60348420905381,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,skill_trainmean_vs_zero,0.0028862920986333362,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL2 time of day,skill_vs_zero,0.005779026101523477,966,21,True,True,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL2 time of day,ic,0.05470333360892198,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,ic,0.051655630568080986,966,21,False,True,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,rank_ic,0.059057772717952664,966,21,False,True,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,hit_rate,0.495850622406639,966,21,False,True,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,mean_signed_bp,0.8097119546905623,966,21,False,True,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,ic,-0.051655630568080986,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,rank_ic,-0.059057772717952664,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,hit_rate,0.504149377593361,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,mean_signed_bp,-0.8097119546905623,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL1 no signal,base_rate,0.504149377593361,964,21,False,True,15,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL1 no signal,brier_trainrate,0.2507000561344272,964,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL2 time of day,brier_skill_vs_BL1,-0.005158675370406707,964,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rex,BL1 no signal,mean,1.0968924077795061,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rex,BL2 time of day,skill_vs_BL1,0.008189003928172678,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mean_bp,11.002326869433837,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mse_trainmean,32.32516263040447,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mae_trainmean,4.072579114284073,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL2 time of day,skill_vs_BL1,0.03693067187843624,966,21,True,True,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL2 time of day,rank_ic,0.2112169772868421,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,rank_ic,0.6456021782245371,966,21,False,True,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,ic,0.631510114795031,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,skill_vs_BL1,0.35945030918227705,966,21,True,True,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,skill_vs_BL2,0.33488724839041983,966,21,True,True,15,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,mae,3.266030447154744,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mean_bp,17.904004590964245,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mse_trainmean,123.50096251385058,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mae_trainmean,7.3537121623668495,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL2 time of day,skill_vs_BL1,0.02893777012083898,966,21,True,True,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL2 time of day,rank_ic,0.18298597045250833,966,21,True,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,rank_ic,0.48911642201200084,966,21,False,True,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,ic,0.4796048301492638,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,skill_vs_BL1,0.11278953206015985,966,21,True,True,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,skill_vs_BL2,0.0863505544333193,966,21,True,True,15,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,mae,7.41617490091368,966,21,False,False,15,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,mean_bp,-1.41570024295499,484,22,False,True,30,primary,1,,2026-06-22,2026-07-22
+r,BL1 no signal,sd_bp,15.16140281567267,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,ic,0.016523991296752912,484,22,False,True,30,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,rank_ic,-0.010170946367515372,484,22,False,True,30,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,hit_rate,0.4854771784232365,484,22,False,True,30,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,mean_signed_bp,-0.34118761844639406,484,22,False,True,30,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,ic,-0.016523991296752912,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,rank_ic,0.010170946367515372,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,hit_rate,0.5145228215767634,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,mean_signed_bp,0.34118761844639406,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+reversal,BL1 no signal,base_rate,0.5145228215767634,482,22,False,True,30,primary,1,,2026-06-22,2026-07-22
+rex,BL1 no signal,mean,1.1378175034439304,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+rv,BL1 no signal,mean_bp,13.138542758980556,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,rank_ic,0.5509157482019222,484,22,False,True,30,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,ic,0.5049765059897271,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,mae,3.8160517693770535,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+rg,BL1 no signal,mean_bp,20.060199585215425,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,rank_ic,0.3134040728026303,484,22,False,True,30,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,ic,0.23985556909864095,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,mae,9.188312241409104,484,22,False,False,30,primary,1,,2026-06-22,2026-07-22
+r,BL1 no signal,mean_bp,-0.2804256599850772,462,21,False,True,30,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,sd_bp,9.817123830943778,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,skill_trainmean_vs_zero,-0.012546942749280587,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+r,BL2 time of day,skill_vs_zero,-0.2358644158103076,462,21,True,True,30,primary,2,1,2026-07-23,2026-08-20
+r,BL2 time of day,ic,-0.11332169270162426,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,ic,-0.0393854916754125,462,21,False,True,30,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,rank_ic,-0.0876488756297417,462,21,False,True,30,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,hit_rate,0.47288503253796094,462,21,False,True,30,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,mean_signed_bp,-0.14552015254324355,462,21,False,True,30,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,ic,0.0393854916754125,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,rank_ic,0.0876488756297417,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,hit_rate,0.527114967462039,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,mean_signed_bp,0.14552015254324355,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+reversal,BL1 no signal,base_rate,0.527114967462039,461,21,False,True,30,primary,2,1,2026-07-23,2026-08-20
+reversal,BL1 no signal,brier_trainrate,0.2494233406775286,461,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+reversal,BL2 time of day,brier_skill_vs_BL1,-0.00925050194046606,461,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+rex,BL1 no signal,mean,1.0906755307520402,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+rex,BL2 time of day,skill_vs_BL1,-0.02686659433416483,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mean_bp,10.000881442057496,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mse_trainmean,21.22547806870939,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mae_trainmean,4.084431353326433,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL2 time of day,skill_vs_BL1,0.030344629123991274,462,21,True,True,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL2 time of day,rank_ic,0.34495382860284557,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,rank_ic,0.5038649875866368,462,21,False,True,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,ic,0.4908962524528011,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,skill_vs_BL1,0.38095881661419473,462,21,True,True,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,skill_vs_BL2,0.361586392465862,462,21,True,True,30,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,mae,2.7186350259472136,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mean_bp,15.257488354564831,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mse_trainmean,61.41248460008773,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mae_trainmean,6.88338466643121,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL2 time of day,skill_vs_BL1,-0.030532175885706225,462,21,True,True,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL2 time of day,rank_ic,0.19607242747598103,462,21,True,False,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,rank_ic,0.3005894514494,462,21,False,True,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,ic,0.2617575071102303,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,skill_vs_BL1,-0.04393977961962059,462,21,True,True,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,skill_vs_BL2,-0.013010368863437982,462,21,True,True,30,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,mae,5.847362843895685,462,21,False,False,30,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,mean_bp,-0.9779783946482885,462,21,False,True,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,sd_bp,10.607333428820283,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,skill_trainmean_vs_zero,0.008308831654784021,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL2 time of day,skill_vs_zero,-0.015506311881846369,462,21,True,True,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL2 time of day,ic,-0.01712117928194091,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,ic,0.04538156466283837,462,21,False,True,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,rank_ic,0.05924310459479098,462,21,False,True,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,hit_rate,0.5043290043290043,462,21,False,True,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,mean_signed_bp,0.22085112022545456,462,21,False,True,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,ic,-0.04538156466283837,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,rank_ic,-0.05924310459479098,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,hit_rate,0.4956709956709957,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,mean_signed_bp,-0.22085112022545456,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL1 no signal,base_rate,0.49567099567099565,462,21,False,True,30,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL1 no signal,brier_trainrate,0.2506066442494822,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL2 time of day,brier_skill_vs_BL1,-0.016176829718569596,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rex,BL1 no signal,mean,1.080403264881513,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rex,BL2 time of day,skill_vs_BL1,0.04216549076141707,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mean_bp,9.971896005573479,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mse_trainmean,16.025949636326256,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mae_trainmean,3.302991167308313,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL2 time of day,skill_vs_BL1,-0.010134178353820023,462,21,True,True,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL2 time of day,rank_ic,0.1337463998540484,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,rank_ic,0.5626750558605901,462,21,False,True,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,ic,0.5914562370979876,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,skill_vs_BL1,0.12406923645742485,462,21,True,True,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,skill_vs_BL2,0.13285701809432038,462,21,True,True,30,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,mae,2.7414507929133003,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mean_bp,15.965115225290326,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mse_trainmean,57.89006001769381,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mae_trainmean,5.94007484397605,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL2 time of day,skill_vs_BL1,0.007945088864970806,462,21,True,True,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL2 time of day,rank_ic,0.11511633724966638,462,21,True,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,rank_ic,0.3797806415788734,462,21,False,True,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,ic,0.3969795687971726,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,skill_vs_BL1,-0.4296588048372425,462,21,True,True,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,skill_vs_BL2,-0.4411085402536259,462,21,True,True,30,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,mae,6.6065619889706815,462,21,False,False,30,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,mean_bp,-1.9229992683018282,462,21,False,True,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,sd_bp,17.460294697269777,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,skill_trainmean_vs_zero,0.00858990613150612,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL2 time of day,skill_vs_zero,0.008932678174825681,462,21,True,True,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL2 time of day,ic,0.034598593199947916,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,ic,0.09202130743055527,462,21,False,True,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,rank_ic,0.07435161222823503,462,21,False,True,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,hit_rate,0.5086580086580087,462,21,False,True,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,mean_signed_bp,0.665996495174963,462,21,False,True,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,ic,-0.09202130743055527,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,rank_ic,-0.07435161222823503,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,hit_rate,0.4913419913419913,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,mean_signed_bp,-0.665996495174963,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL1 no signal,base_rate,0.49134199134199136,462,21,False,True,30,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL1 no signal,brier_trainrate,0.25037081981016324,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL2 time of day,brier_skill_vs_BL1,0.0018077841918319182,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rex,BL1 no signal,mean,1.1062832104045748,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rex,BL2 time of day,skill_vs_BL1,-0.01712202405097596,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mean_bp,15.41085662118227,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mse_trainmean,51.04684833725359,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mae_trainmean,5.3415514413114416,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL2 time of day,skill_vs_BL1,0.0037771315189254473,462,21,True,True,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL2 time of day,rank_ic,0.17372148459937392,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,rank_ic,0.5982946510066163,462,21,False,True,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,ic,0.5561673528111581,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,skill_vs_BL1,0.15597570314741238,462,21,True,True,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,skill_vs_BL2,0.1527756252579724,462,21,True,True,30,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,mae,4.587547489474963,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mean_bp,24.981531392301193,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mse_trainmean,225.41717051659066,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mae_trainmean,10.009405191073693,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL2 time of day,skill_vs_BL1,-0.00195827302609497,462,21,True,True,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL2 time of day,rank_ic,0.08656050575358329,462,21,True,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,rank_ic,0.3763733022551536,462,21,False,True,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,ic,0.2919719231255692,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,skill_vs_BL1,-0.2825378225857935,462,21,True,True,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,skill_vs_BL2,-0.2800311720689703,462,21,True,True,30,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,mae,11.6519365968322,462,21,False,False,30,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,mean_bp,-3.9134556277992663,220,22,False,True,60,primary,1,,2026-06-22,2026-07-22
+r,BL1 no signal,sd_bp,20.807561333474123,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,ic,-0.015177975738666485,220,22,False,True,60,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,rank_ic,-0.027611389416385388,220,22,False,True,60,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,hit_rate,0.509090909090909,220,22,False,True,60,primary,1,,2026-06-22,2026-07-22
+r,BL3 momentum,mean_signed_bp,0.4433970193318223,220,22,False,True,60,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,ic,0.015177975738666485,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,rank_ic,0.027611389416385388,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,hit_rate,0.49090909090909096,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,mean_signed_bp,-0.4433970193318223,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+reversal,BL1 no signal,base_rate,0.4909090909090909,220,22,False,True,60,primary,1,,2026-06-22,2026-07-22
+rex,BL1 no signal,mean,1.1144179369113412,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+rv,BL1 no signal,mean_bp,18.85583303022208,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,rank_ic,0.4951950547438057,220,22,False,True,60,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,ic,0.4523550500455456,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,mae,5.459194662247624,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+rg,BL1 no signal,mean_bp,28.27313892396196,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,rank_ic,0.2659765697638381,220,22,False,True,60,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,ic,0.15960785108876405,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,mae,13.144716687487792,220,22,False,False,60,primary,1,,2026-06-22,2026-07-22
+r,BL1 no signal,mean_bp,0.22785087326461415,210,21,False,True,60,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,sd_bp,13.469726977453096,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,skill_trainmean_vs_zero,-0.09421417800394938,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+r,BL2 time of day,skill_vs_zero,-0.2640425349770974,210,21,True,True,60,primary,2,1,2026-07-23,2026-08-20
+r,BL2 time of day,ic,-0.06124250639306487,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,ic,0.08738581665749948,210,21,False,True,60,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,rank_ic,0.0027166148892265127,210,21,False,True,60,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,hit_rate,0.45714285714285713,210,21,False,True,60,primary,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,mean_signed_bp,0.04990893850022519,210,21,False,True,60,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,ic,-0.08738581665749948,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,rank_ic,-0.0027166148892265127,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,hit_rate,0.5428571428571429,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,mean_signed_bp,-0.04990893850022519,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+reversal,BL1 no signal,base_rate,0.5428571428571428,210,21,False,True,60,primary,2,1,2026-07-23,2026-08-20
+reversal,BL1 no signal,brier_trainrate,0.25086186540731986,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+reversal,BL2 time of day,brier_skill_vs_BL1,0.04441986696787126,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+rex,BL1 no signal,mean,1.0978225119542493,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+rex,BL2 time of day,skill_vs_BL1,0.011854572614706793,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mean_bp,14.130452169095909,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mse_trainmean,40.888920582955166,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mae_trainmean,5.727155376011737,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL2 time of day,skill_vs_BL1,0.04006323741892126,210,21,True,True,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL2 time of day,rank_ic,0.35420800895094795,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,rank_ic,0.3709296939030039,210,21,False,True,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,ic,0.40610475189411455,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,skill_vs_BL1,0.3973409272944406,210,21,True,True,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,skill_vs_BL2,0.37218877722202326,210,21,True,True,60,primary,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,mae,3.82604757442371,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mean_bp,21.487765106294916,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mse_trainmean,127.49604713738687,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mae_trainmean,10.159934113254867,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL2 time of day,skill_vs_BL1,-0.0345737987310315,210,21,True,True,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL2 time of day,rank_ic,0.015496947545446836,210,21,True,False,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,rank_ic,0.19172381621870274,210,21,False,True,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,ic,0.1969125158248576,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,skill_vs_BL1,-0.1729041312916617,210,21,True,True,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,skill_vs_BL2,-0.13370755448311256,210,21,True,True,60,primary,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,mae,9.30587658609896,210,21,False,False,60,primary,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,mean_bp,-1.8155394247242855,210,21,False,True,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,sd_bp,15.517642648287296,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,skill_trainmean_vs_zero,0.013480476532378383,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL2 time of day,skill_vs_zero,-0.008653002266262533,210,21,True,True,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL2 time of day,ic,-0.01314211110890922,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,ic,-0.09046771639011855,210,21,False,True,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,rank_ic,-0.059118282565526266,210,21,False,True,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,hit_rate,0.5023923444976076,210,21,False,True,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,mean_signed_bp,-0.16328030833906756,210,21,False,True,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,ic,0.09046771639011855,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,rank_ic,0.059118282565526266,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,hit_rate,0.4976076555023924,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,mean_signed_bp,0.16328030833906756,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL1 no signal,base_rate,0.49760765550239233,209,21,False,True,60,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL1 no signal,brier_trainrate,0.25034289839846185,209,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+reversal,BL2 time of day,brier_skill_vs_BL1,-0.05000880686058573,209,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rex,BL1 no signal,mean,1.048878778411464,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rex,BL2 time of day,skill_vs_BL1,0.06274620983875479,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mean_bp,13.980302015375656,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mse_trainmean,24.529183595486224,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mae_trainmean,4.216094227034463,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL2 time of day,skill_vs_BL1,-0.04227575475876044,210,21,True,True,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL2 time of day,rank_ic,0.13486232487578823,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,rank_ic,0.5099571418853035,210,21,False,True,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,ic,0.48151165028653725,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,skill_vs_BL1,-0.19750142089498524,210,21,True,True,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,skill_vs_BL2,-0.1489295567199993,210,21,True,True,60,primary,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,mae,3.7500013065502023,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mean_bp,22.546080676079562,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mse_trainmean,99.95498620720676,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mae_trainmean,8.114063435372302,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL2 time of day,skill_vs_BL1,-0.01819827300914767,210,21,True,True,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL2 time of day,rank_ic,-0.0624321471006532,210,21,True,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,rank_ic,0.21101417913590526,210,21,False,True,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,ic,0.24499230734704036,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,skill_vs_BL1,-0.7785948031683734,210,21,True,True,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,skill_vs_BL2,-0.7468059515677399,210,21,True,True,60,primary,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,mae,9.895115896585354,210,21,False,False,60,primary,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,mean_bp,-4.609362746690017,210,21,False,True,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,sd_bp,26.28852368994853,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,skill_trainmean_vs_zero,0.019262546287845406,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL2 time of day,skill_vs_zero,0.015736020551081698,210,21,True,True,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL2 time of day,ic,-0.006921735734752609,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,ic,-0.027889310218581712,210,21,False,True,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,rank_ic,0.06955065388589958,210,21,False,True,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,hit_rate,0.5619047619047619,210,21,False,True,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,mean_signed_bp,3.675997539335296,210,21,False,True,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,ic,0.027889310218581712,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,rank_ic,-0.06955065388589958,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,hit_rate,0.4380952380952381,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,mean_signed_bp,-3.675997539335296,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL1 no signal,base_rate,0.4380952380952381,210,21,False,True,60,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL1 no signal,brier_trainrate,0.25136288081470914,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+reversal,BL2 time of day,brier_skill_vs_BL1,0.0226781054510522,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rex,BL1 no signal,mean,1.0370436659879347,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rex,BL2 time of day,skill_vs_BL1,0.039756517402272484,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mean_bp,21.60439447567706,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mse_trainmean,82.71632653969422,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mae_trainmean,7.033692555449826,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL2 time of day,skill_vs_BL1,-0.023353133361089018,210,21,True,True,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL2 time of day,rank_ic,0.07415206083574025,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,rank_ic,0.5817073921339324,210,21,False,True,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,ic,0.5315571841417247,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,skill_vs_BL1,0.032608491735847345,210,21,True,True,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,skill_vs_BL2,0.05468456906281871,210,21,True,True,60,primary,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,mae,6.301784719610179,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mean_bp,35.63856065909946,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mse_trainmean,450.1929392252881,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mae_trainmean,14.21042899419914,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL2 time of day,skill_vs_BL1,-0.00947144318195825,210,21,True,True,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL2 time of day,rank_ic,-0.026105968983369223,210,21,True,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,rank_ic,0.3491060697845432,210,21,False,True,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,ic,0.2365278878798738,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,skill_vs_BL1,-0.45896282077524564,210,21,True,True,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,skill_vs_BL2,-0.44527399029381565,210,21,True,True,60,primary,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,mae,18.715333320752595,210,21,False,False,60,primary,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,mean_bp,-0.31173346700324883,3212,22,False,True,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL1 no signal,sd_bp,5.835317905242049,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL3 momentum,ic,0.014697902890614057,3212,22,False,True,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL3 momentum,rank_ic,-0.02455714804705967,3212,22,False,True,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL3 momentum,hit_rate,0.4811232449297972,3212,22,False,True,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL3 momentum,mean_signed_bp,-0.11264120821749134,3212,22,False,True,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,ic,-0.014697902890614057,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,rank_ic,0.02455714804705967,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,hit_rate,0.5188767550702028,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL4 mean reversion,mean_signed_bp,0.11264120821749134,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+reversal,BL1 no signal,base_rate,0.5188767550702028,3205,22,False,True,5,sensitivity only,1,,2026-06-22,2026-07-22
+rex,BL1 no signal,mean,1.1124097111543862,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+rv,BL1 no signal,mean_bp,5.095118411365746,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,rank_ic,0.3809454231439896,3212,22,False,True,5,sensitivity only,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,ic,0.4158017890549459,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+rv,BL5 volatility only,mae,2.2897064363652815,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+rg,BL1 no signal,mean_bp,8.134635630512943,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,rank_ic,0.3996050869050637,3212,22,False,True,5,sensitivity only,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,ic,0.44204942608363923,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+rg,BL5 volatility only,mae,3.177611233729152,3212,22,False,False,5,sensitivity only,1,,2026-06-22,2026-07-22
+r,BL1 no signal,mean_bp,-0.17866789813054984,3066,21,False,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,sd_bp,5.010026614285912,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,skill_trainmean_vs_zero,0.0005656377842510052,3066,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL2 time of day,skill_vs_zero,-0.023633621940549965,3066,21,True,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL2 time of day,ic,-0.04134651659782991,3066,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,ic,-0.13470506592580403,3066,21,False,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,rank_ic,-0.06536130969126532,3066,21,False,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,hit_rate,0.48009213557091146,3066,21,False,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL3 momentum,mean_signed_bp,-0.09238350708710494,3066,21,False,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,ic,0.13470506592580403,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,rank_ic,0.06536130969126532,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,hit_rate,0.5199078644290885,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL4 mean reversion,mean_signed_bp,0.09238350708710494,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+reversal,BL1 no signal,base_rate,0.5199078644290885,3039,21,False,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+reversal,BL1 no signal,brier_trainrate,0.249604740120383,3039,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+reversal,BL2 time of day,brier_skill_vs_BL1,-0.0055302921297788465,3039,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rex,BL1 no signal,mean,1.1279261779026497,3054,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rex,BL2 time of day,skill_vs_BL1,-0.0012139274180600346,3054,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mean_bp,4.075859616205261,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mse_trainmean,9.011713043546974,3066,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL1 no signal,mae_trainmean,2.1239998709686785,3066,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL2 time of day,skill_vs_BL1,0.009414627966779388,3066,21,True,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL2 time of day,rank_ic,0.24873887448435505,3066,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,rank_ic,0.396077496500394,3066,21,False,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,ic,0.36734292408290076,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,skill_vs_BL1,-0.10384142991626,3066,21,True,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,skill_vs_BL2,-0.1143324554153029,3066,21,True,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rv,BL5 volatility only,mae,1.8392865374442158,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mean_bp,6.821385265961596,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mse_trainmean,29.852259812661128,3066,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL1 no signal,mae_trainmean,3.2020854331567192,3066,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL2 time of day,skill_vs_BL1,0.010492410262327945,3066,21,True,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL2 time of day,rank_ic,0.26481777937580303,3066,21,True,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,rank_ic,0.4187582588609161,3066,21,False,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,ic,0.3269354787612464,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,skill_vs_BL1,-0.25866016127153113,3066,21,True,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,skill_vs_BL2,-0.27200657612460954,3066,21,True,True,5,sensitivity only,2,1,2026-07-23,2026-08-20
+rg,BL5 volatility only,mae,2.8600917112497446,3066,21,False,False,5,sensitivity only,2,1,2026-07-23,2026-08-20
+r,BL1 no signal,mean_bp,-0.3886276301477308,3066,21,False,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,sd_bp,11.184354954450427,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,skill_trainmean_vs_zero,0.0010451990465107919,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL2 time of day,skill_vs_zero,0.0005910644523158259,3066,21,True,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL2 time of day,ic,-0.00036804579737364525,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,ic,-0.4050357405453261,3066,21,False,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,rank_ic,-0.05754953772616406,3066,21,False,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,hit_rate,0.46749428291408035,3066,21,False,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL3 momentum,mean_signed_bp,-0.3018686932078341,3066,21,False,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,ic,0.4050357405453261,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,rank_ic,0.05754953772616406,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,hit_rate,0.5325057170859196,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL4 mean reversion,mean_signed_bp,0.3018686932078341,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+reversal,BL1 no signal,base_rate,0.5325057170859196,3061,21,False,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+reversal,BL1 no signal,brier_trainrate,0.2491156994688958,3061,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+reversal,BL2 time of day,brier_skill_vs_BL1,-0.004904076639640431,3061,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rex,BL1 no signal,mean,1.2000326640925318,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rex,BL2 time of day,skill_vs_BL1,0.028776932341202155,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mean_bp,4.866142143199658,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mse_trainmean,111.65421027169032,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL1 no signal,mae_trainmean,2.575694647819603,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL2 time of day,skill_vs_BL1,0.031151615413799516,3066,21,True,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL2 time of day,rank_ic,0.22164724999343655,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,rank_ic,0.42257863453445516,3066,21,False,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,ic,0.4566237226276322,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,skill_vs_BL1,0.069277518354937,3066,21,True,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,skill_vs_BL2,0.039351774279338114,3066,21,True,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rv,BL5 volatility only,mae,2.5721561347855824,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mean_bp,7.904560814698769,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mse_trainmean,185.57917555032614,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL1 no signal,mae_trainmean,3.8272845623823475,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL2 time of day,skill_vs_BL1,0.06733475559592583,3066,21,True,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL2 time of day,rank_ic,0.27919064932039295,3066,21,True,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,rank_ic,0.42753568345116866,3066,21,False,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,ic,0.46867927418983807,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,skill_vs_BL1,0.05951535394535701,3066,21,True,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,skill_vs_BL2,-0.008383931638371589,3066,21,True,True,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+rg,BL5 volatility only,mae,3.8614415085662404,3066,21,False,False,5,sensitivity only,3,1-2,2026-08-21,2026-09-21
+r,BL1 no signal,mean_bp,-0.3195088959972125,3050,21,False,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,sd_bp,11.07636569621411,3050,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL1 no signal,skill_trainmean_vs_zero,0.0008258068831583643,3050,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL2 time of day,skill_vs_zero,0.0007954903991884699,3050,21,True,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL2 time of day,ic,0.008252867873309188,3050,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,ic,-0.3309458944644679,3050,21,False,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,rank_ic,-0.06151278601652652,3050,21,False,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,hit_rate,0.473908762717427,3050,21,False,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL3 momentum,mean_signed_bp,-0.3797723312156519,3050,21,False,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,ic,0.3309458944644679,3050,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,rank_ic,0.06151278601652652,3050,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,hit_rate,0.526091237282573,3050,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+r,BL4 mean reversion,mean_signed_bp,0.3797723312156519,3050,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+reversal,BL1 no signal,base_rate,0.526091237282573,3047,21,False,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+reversal,BL1 no signal,brier_trainrate,0.2493249800102823,3047,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+reversal,BL2 time of day,brier_skill_vs_BL1,0.00026962596040081,3047,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rex,BL1 no signal,mean,1.1836188184753484,3034,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rex,BL2 time of day,skill_vs_BL1,0.10764468625510926,3034,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mean_bp,6.779206249464884,3050,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mse_trainmean,57.56501569516293,3050,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL1 no signal,mae_trainmean,3.167367824194459,3050,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL2 time of day,skill_vs_BL1,0.2015678446562431,3050,21,True,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL2 time of day,rank_ic,0.2373910403259701,3050,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,rank_ic,0.4652552684067236,3034,21,False,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,ic,0.45877183381968817,3034,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,skill_vs_BL1,0.06719679722148697,3034,21,True,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,skill_vs_BL2,-0.14190991652960205,3034,21,True,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rv,BL5 volatility only,mae,3.062697335196424,3034,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mean_bp,11.13774365601405,3050,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mse_trainmean,167.35449766371818,3050,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL1 no signal,mae_trainmean,5.073181984980158,3050,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL2 time of day,skill_vs_BL1,0.21685401731772636,3050,21,True,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL2 time of day,rank_ic,0.27471296416883506,3050,21,True,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,rank_ic,0.4866664705440065,3034,21,False,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,ic,0.438554848808353,3034,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,skill_vs_BL1,0.04712261909637727,3034,21,True,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,skill_vs_BL2,-0.21013222126021391,3034,21,True,True,5,sensitivity only,4,1-3,2026-09-22,2026-10-22
+rg,BL5 volatility only,mae,4.927649556545753,3034,21,False,False,5,sensitivity only,4,1-3,2026-09-22,2026-10-22

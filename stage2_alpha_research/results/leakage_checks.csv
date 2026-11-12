@@ -1,0 +1,22 @@
+check_id,check,status,detail
+A1,earlier caches reproduce from the raw files,PASS,PR #6 cache index.pkl: identical; PR #6 cache options.pkl: identical; PR #3 cache idx_candles.pkl: identical
+B1,"index timestamps: one timezone, whole minutes",PASS,timezones ['+05:30']; off-minute rows 0
+B2,index duplicate bars,PASS,"0 duplicate (und, ts) rows in the raw files"
+B3,index sessions,PASS,"{'NIFTY': 85, 'SENSEX': 85} sessions, identical dates across indices: True; 2026-06-22 to 2026-10-22"
+B4,index OHLC sanity and session bounds,PASS,0 inconsistent rows; 0 bars outside 09:15-15:29
+B5,index missing bars,RISK,"72 missing minutes in 16 index-sessions (8 dates, 2026-10-12 to 2026-10-22); minutes: ['15:16', '15:17', '15:18', '15:19', '15:29']; never interpolated"
+C1,"option timestamps: one timezone, whole minutes",PASS,timezones ['+05:30']
+C2,option duplicate bars,PASS,0 duplicate rows in the raw files
+C3,option OHLC sanity; post-close bars,PASS,0 inconsistent rows; 19518 bars at or after 15:30 and 0 before 09:15 exist in the files and are dropped by the feature library
+C4,expiry alignment,PASS,"one expiry per (underlying, session): True; sessions to expiry {0: 35, 1: 32}; calendar days {0: 35, 1: 31, 3: 1}; every expiry date is an index session: True"
+C5,option tick grid and volume units,PASS,closes on the 0.05 tick 1.0000; volume a multiple of the lot 1.0000
+C6,stale option prices,RISK,2.350% of in-session option bars have zero volume (carried last price); option return / reversal features on thin strikes can be spurious
+D1,bar timestamp = bar START,PASS,"share of 41421 broker fills inside [low, high] of the bar labelled with the fill's own minute 0.973, next bar 0.613, previous bar 0.566"
+E1,ATM straddle coverage (both legs of the ATM strike have a completed bar),RISK,"option sessions 67 ({'NIFTY': 33, 'SENSEX': 34}; {'D-1': 32, 'D0': 35}); mean coverage D-1 0.998, D0 0.875; 6 sessions below 90% (minimum 0.000)"
+E2,option universe is selected by Algo 8 trading (look-ahead in data availability),RISK,"the files contain a contract-day only if Algo 8 traded or held it that day or the neighbouring day, with bars for the whole day; Spearman across sessions: D-1 universe room above the open vs the later maximum rise +0.69 (n=32); D-1 universe room below the open vs the later maximum fall +0.83 (n=32); D-1 universe centre minus open vs the open-to-close move +0.88 (n=32); D0 universe room above the open vs the later maximum rise +0.54 (n=35); D0 universe room below the open vs the later maximum fall +0.22 (n=35); D0 universe centre minus open vs the open-to-close move +0.38 (n=35). Coverage by |move since open|: D-1 0-25 bp 1.00; D-1 25-50 1.00; D-1 50-100 1.00; D-1 100-150 1.00; D-1 >150 0.98; D0 0-25 bp 0.91; D0 25-50 0.94; D0 50-100 0.85; D0 100-150 0.52; D0 >150 0.44"
+F1,PR #6 feature caches reproduce from the raw files,PASS,feat_index.pkl: identical; feat_straddle.pkl: identical; feat_option.pkl: identical
+F2,feature availability,PASS,42 market features; index features available in 0.840 to 1.000 of decision minutes; latest median warm-up 10:16
+G1,prefix invariance: removing every bar from the decision minute onward changes no feature value at or before it,PASS,"6 sessions x 3 random cut minutes, 1,633,414 feature values compared, 0 differences"
+H1,label windows start at the decision minute and are disjoint from the bars a feature may use; no label crosses the session end,PASS,"candidate horizons [5, 15, 30, 60] min; overlapping labels inside a session require purging within the horizon (purge radius = horizon)"
+I1,cross-instrument dependence,RISK,"NIFTY and SENSEX open-to-close returns correlate 0.95: one date is one independent observation (85 dates, not 170 underlying-sessions)"
+I2,no untouched data,RISK,every session in the sample was inspected by earlier work (see the prior-look ledger in DATA_AUDIT.md): all Stage 2 results are in-sample; external validation needs new data

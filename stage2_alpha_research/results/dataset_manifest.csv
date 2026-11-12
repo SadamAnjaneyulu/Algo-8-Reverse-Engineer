@@ -1,0 +1,16 @@
+dataset,files,raw_rows,rows,bytes,sha256,first,last,role,path
+index 1-minute bars (raw Breeze),170.0,63678.0,63678.0,4585560.0,dc6dbf801919adfa61409347329cc3a2ebf985afe79eea5362e47fe148403577,2026-06-22 09:15:00,2026-10-22 15:29:00,AUTHORITATIVE input,$ALGO8_MARKET_DIR/indices
+option 1-minute bars (raw Breeze),3243.0,1230065.0,1230065.0,108730960.0,fb7e0b340973858628652c65e15a820fecb897a6a000dcc74c7082dcb4f78686,2026-06-23 09:15:00,2026-10-22 15:39:00,AUTHORITATIVE input,$ALGO8_MARKET_DIR/options
+broker fills (Trades_GKOHNP140.csv),1.0,41421.0,41421.0,40178049.0,86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528,,,AUTHORITATIVE (used here only to verify the bar-label convention),Trades_GKOHNP140.csv
+PR #6 feature library (code),1.0,,,,21542713ad83969c0e49124bd6e77a9673a75869e2b8ed787dc0bea9a03a93a3,,,"AUTHORITATIVE code, reused unchanged",ohlcv_research/features.py
+PR #6 cache index.pkl,,,,,,,,NOT USED (compared only): identical to the Stage 2 rebuild,ohlcv_research/_cache/index.pkl
+PR #6 cache options.pkl,,,,,,,,NOT USED (compared only): identical to the Stage 2 rebuild,ohlcv_research/_cache/options.pkl
+PR #3 cache idx_candles.pkl,,,,,,,,NOT USED (compared only): identical,analysis/_cache/idx_candles.pkl
+analysis/_cache/exit_cm.pkl,,,,,,,,EXCLUDED (provisional per FINAL_DEPENDENCY_AUDIT); never read by Stage 2,analysis/_cache/exit_cm.pkl
+analysis/_cache/exit_bm.pkl,,,,,,,,EXCLUDED (provisional per FINAL_DEPENDENCY_AUDIT); never read by Stage 2,analysis/_cache/exit_bm.pkl
+analysis/_cache/exit_lots_cheap.pkl,,,,,,,,EXCLUDED (provisional per FINAL_DEPENDENCY_AUDIT); never read by Stage 2,analysis/_cache/exit_lots_cheap.pkl
+analysis/_cache/exit_lots_fifo.pkl,,,,,,,,EXCLUDED (provisional per FINAL_DEPENDENCY_AUDIT); never read by Stage 2,analysis/_cache/exit_lots_fifo.pkl
+analysis/_cache/exit_lots_lifo.pkl,,,,,,,,EXCLUDED (provisional per FINAL_DEPENDENCY_AUDIT); never read by Stage 2,analysis/_cache/exit_lots_lifo.pkl
+analysis/_cache/exit_models.pkl,,,,,,,,EXCLUDED (provisional per FINAL_DEPENDENCY_AUDIT); never read by Stage 2,analysis/_cache/exit_models.pkl
+analysis/exit_engine/results/robustness_results.csv,,,,,,,,EXCLUDED (provisional per FINAL_DEPENDENCY_AUDIT); never read by Stage 2,analysis/exit_engine/results/robustness_results.csv
+ohlcv_research/_cache/*,,,,,,,,EXCLUDED (provisional per FINAL_DEPENDENCY_AUDIT); never read by Stage 2,ohlcv_research/_cache/*

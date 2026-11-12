@@ -1,0 +1,59 @@
+folds: {'TEST': {'min': Timestamp('2026-09-23 00:00:00'), 'max': Timestamp('2026-10-22 00:00:00'), 'size': 20}, 'TRAIN': {'min': Timestamp('2026-06-22 00:00:00'), 'max': Timestamp('2026-08-20 00:00:00'), 'size': 43}, 'VAL': {'min': Timestamp('2026-08-21 00:00:00'), 'max': Timestamp('2026-09-22 00:00:00'), 'size': 22}}
+blocks: {1: {'min': Timestamp('2026-06-22 00:00:00'), 'max': Timestamp('2026-07-22 00:00:00'), 'size': 22}, 2: {'min': Timestamp('2026-07-23 00:00:00'), 'max': Timestamp('2026-08-20 00:00:00'), 'size': 21}, 3: {'min': Timestamp('2026-08-21 00:00:00'), 'max': Timestamp('2026-09-21 00:00:00'), 'size': 21}, 4: {'min': Timestamp('2026-09-22 00:00:00'), 'max': Timestamp('2026-10-22 00:00:00'), 'size': 21}}
+h=15 (primary): grid obs 3910, complete labels 3910, 25s
+h=30 (primary): grid obs 1870, complete labels 1870, 42s
+h=60 (primary): grid obs 850, complete labels 850, 54s
+h=5 (sensitivity only): grid obs 12410, complete labels 12394, 87s
+ horizon_min                                             test  statistic  null_sd  p_two_sided  p_holm   p_bh
+          15        BL3 momentum: rank IC(trailing return, r)    -0.0046   0.0216       0.8281  1.0000 0.8281
+          15    BL5 volatility only: rank IC(trailing RV, RV)     0.6252   0.0481       0.0005  0.0045 0.0007
+          15 BL5 volatility only: rank IC(trailing range, RG)     0.4892   0.0404       0.0005  0.0045 0.0007
+          30        BL3 momentum: rank IC(trailing return, r)     0.0138   0.0319       0.6667  1.0000 0.8281
+          30    BL5 volatility only: rank IC(trailing RV, RV)     0.6487   0.0577       0.0005  0.0045 0.0007
+          30 BL5 volatility only: rank IC(trailing range, RG)     0.4310   0.0455       0.0005  0.0045 0.0007
+          60        BL3 momentum: rank IC(trailing return, r)     0.0138   0.0481       0.7651  1.0000 0.8281
+          60    BL5 volatility only: rank IC(trailing RV, RV)     0.6265   0.0691       0.0005  0.0045 0.0007
+          60 BL5 volatility only: rank IC(trailing range, RG)     0.3826   0.0576       0.0005  0.0045 0.0007
+                                            0        1        2                 3
+horizon_min                                15       30       60                 5
+role                                  primary  primary  primary  sensitivity only
+underlying_sessions                       170      170      170               170
+session_dates                              85       85       85                85
+decisions_per_session_before_purging      345      315      255               365
+decisions_per_session_on_grid              23       11        5                73
+candidates_before_purging               58650    53550    43350             62050
+kept_on_non_overlapping_grid             3910     1870      850             12410
+removed_by_purging                      54740    51680    42500             49640
+kept_with_complete_label                 3910     1870      850             12394
+label_missing_bar                           0        0        0                16
+momentum_predictor_missing                  0        0        0                 0
+volatility_predictor_missing                0        0        0                16
+obs_TRAIN                                1978      946      430              6278
+dates_TRAIN                                43       43       43                43
+obs_VAL                                  1012      484      220              3212
+dates_VAL                                  22       22       22                22
+obs_TEST                                  920      440      200              2904
+dates_TEST                                 20       20       20                20
+ horizon_min             role day  option_sessions  session_dates_with_target  grid_decisions_possible  target_available  available_share  BL1_mean_pct  sd_pct  dates_TRAIN  dates_VAL_TEST  BL1_skill_trainmean_vs_zero_VAL_TEST  BL2_tod_skill_vs_BL1_VAL_TEST                                             max_verdict  BL1_mean_ci_lo  BL1_mean_ci_hi
+           5 sensitivity only D-1               32                         32                     2336              2330            0.997        -0.059   2.066           16              16                                 0.000                         -0.014                           as evidence allows; in-sample          -0.130           0.035
+           5 sensitivity only  D0               35                         34                     2555              2244            0.878        -0.253  10.085           18              16                                -0.005                         -0.046 INCONCLUSIVE (D0: selection-biased sample, decision D4)          -0.733           0.194
+          15          primary D-1               32                         32                      736               736            1.000        -0.099   4.947           16              16                                 0.001                         -0.141                           as evidence allows; in-sample          -0.347           0.252
+          15          primary  D0               35                         34                      805               714            0.887        -0.033  15.874           18              16                                -0.001                         -0.242 INCONCLUSIVE (D0: selection-biased sample, decision D4)          -1.113           1.029
+          30          primary D-1               32                         32                      352               352            1.000         0.175  10.248           16              16                                -0.016                         -0.353                           as evidence allows; in-sample          -0.509           1.190
+          30          primary  D0               35                         33                      385               342            0.888        -0.050  20.413           18              15                                -0.009                         -0.155 INCONCLUSIVE (D0: selection-biased sample, decision D4)          -2.268           2.374
+          60          primary D-1               32                         32                      160               160            1.000         0.218  15.542           16              16                                -0.042                         -0.221                           as evidence allows; in-sample          -1.396           2.539
+          60          primary  D0               35                         33                      175               156            0.891         0.244  27.953           18              15                                -0.090                         -0.061 INCONCLUSIVE (D0: selection-biased sample, decision D4)          -4.134           4.849
+                                                                                                            0                                                                        1                                                                        2                                                                        3
+scenario                                                                                                 zero                                                                 moderate                                                             conservative                                                                  adverse
+share_of_premium_turnover                                                                                 0.0                                                                    0.002                                                                    0.005                                                                    0.005
+rupees_per_parent_order                                                                                   0.0                                                                     20.0                                                                     20.0                                                                     40.0
+rupees_per_unit                                                                                           0.0                                                                     0.05                                                                      0.1                                                                      0.2
+applies_to_index_only_prediction                                          trivially (all components are zero)  NO: an index level has no premium turnover, parent order or traded unit  NO: an index level has no premium turnover, parent order or traded unit  NO: an index level has no premium turnover, parent order or traded unit
+applies_to_option_trades               yes (premium turnover, orders and units are defined for option trades)   yes (premium turnover, orders and units are defined for option trades)   yes (premium turnover, orders and units are defined for option trades)   yes (premium turnover, orders and units are defined for option trades)
+NIFTY_median_D-1_ATM_straddle_points                                                                    155.1                                                                    155.1                                                                    155.1                                                                    155.1
+NIFTY_one_lot_round_trip_rupees                                                                           0.0                                                                  143.408                                                                  206.815                                                                  312.815
+NIFTY_round_trip_pct_of_premium                                                                           0.0                                                                    1.422                                                                    2.051                                                                    3.103
+SENSEX_median_D-1_ATM_straddle_points                                                                   539.4                                                                    539.4                                                                    539.4                                                                    539.4
+SENSEX_one_lot_round_trip_rupees                                                                          0.0                                                                   137.94                                                                   195.88                                                                   283.88
+SENSEX_round_trip_pct_of_premium                                                                          0.0                                                                    1.279                                                                    1.816                                                                    2.631
+done in 88s (bootstrap=True)
