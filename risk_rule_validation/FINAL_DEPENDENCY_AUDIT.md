@@ -128,7 +128,7 @@ the decision (NIFTY 13 Oct). On SENSEX 6 Aug two scheduled-slot sales 8 min afte
 | 1 (previous audit) | patched sandbox, default threads, alongside other jobs | stopped at the 1-hour job limit |
 | 2 (previous audit) | patched, restarted with a 2-hour limit; control queued behind its models | patched reached the second ablation after 120 CPU-minutes and was stopped; control stopped at the 2-hour limit |
 | 3 (this audit) | patched and control side by side, `timeout 110m`, 1 thread each | both killed by a container restart before any stage finished |
-| 4 (this audit) | same, 2 threads each, `timeout 110m` | **running when this document was committed**; if both finish, the comparison will be added as a separate commit and register row |
+| 4 (this audit) | same, 2 threads each, `timeout 110m` | started 02:42 UTC on 12 Nov; both runs were killed by a container restart after the first ablation block and before any result file was written (update of 12 Nov) |
 
 The suite re-fits 16 LightGBM models, bootstraps 12 model × algorithm pairs 2,000 times and rebuilds the minute panel three
 times. Under the session's limits (2-hour background jobs, container restarts) it has not completed. ML-07 therefore stays
