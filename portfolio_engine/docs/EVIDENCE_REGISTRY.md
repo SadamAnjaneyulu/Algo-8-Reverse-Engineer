@@ -43,3 +43,5 @@ Not implemented in M1 (so not registered): entries, strikes, sizing, hedges, exi
 Executed M2-B results (class): OA/CP decomposition and episode identity vs TP-01 — CONFIRMED_OBSERVATION (convention-independent); FIFO/LIFO attributions — UNRESOLVED (convention; 15,889 of 17,760 closing portions are convention-sensitive); AVG ownership — NOT_TESTABLE; episode identity under alternative tie orders — conditional in 5 instruments (documented).
 
 Executed M2-C results (class): closing-batch membership at each threshold — CONFIRMED_OBSERVATION of temporal clustering; "a batch is one decision / one basket" — UNRESOLVED; exit trigger — NOT_TESTABLE without decision logs; number-block grouping — NOT implemented.
+
+M2-C acceptance recorded (`reports/M2C_ACCEPTANCE_ADDENDUM.md`): C1 PASS, C2 PASS (convention-conditional), number-block audit accepted as complete with conclusion UNRESOLVED.

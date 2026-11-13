@@ -1,0 +1,514 @@
+{
+ "longest_chains": {
+  "2": [
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:SENSEX:2026-07-02:2026-07-02:533",
+    "parents": 3,
+    "closing_portions": 4,
+    "units": 400,
+    "contracts": 3,
+    "right_class": "PE_ONLY",
+    "start": "15:27:33",
+    "end": "15:28:30",
+    "duration_s": 57,
+    "max_link_gap_s": 0,
+    "session": "2026-07-02",
+    "roles": "LONG_BODY:380;SHORT_BODY:20"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:SENSEX:2026-07-09:2026-07-08:024",
+    "parents": 11,
+    "closing_portions": 11,
+    "units": 220,
+    "contracts": 5,
+    "right_class": "PE_ONLY",
+    "start": "13:46:53",
+    "end": "13:47:07",
+    "duration_s": 14,
+    "max_link_gap_s": 2,
+    "session": "2026-07-08",
+    "roles": "SHORT_BODY:220"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-06-23:2026-06-23:464",
+    "parents": 12,
+    "closing_portions": 17,
+    "units": 1820,
+    "contracts": 3,
+    "right_class": "MIXED",
+    "start": "15:03:36",
+    "end": "15:03:48",
+    "duration_s": 12,
+    "max_link_gap_s": 2,
+    "session": "2026-06-23",
+    "roles": "LONG_WING:390;SHORT_BODY:1430"
+   }
+  ],
+  "5": [
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_5S:NIFTY:2026-08-04:2026-08-04:090",
+    "parents": 75,
+    "closing_portions": 78,
+    "units": 8060,
+    "contracts": 11,
+    "right_class": "MIXED",
+    "start": "14:58:15",
+    "end": "14:59:21",
+    "duration_s": 66,
+    "max_link_gap_s": 5,
+    "session": "2026-08-04",
+    "roles": "LONG_BODY:65;LONG_WING:3965;SHORT_BODY:4030"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_5S:NIFTY:2026-07-07:2026-07-07:058",
+    "parents": 33,
+    "closing_portions": 33,
+    "units": 3120,
+    "contracts": 4,
+    "right_class": "PE_ONLY",
+    "start": "13:12:13",
+    "end": "13:13:10",
+    "duration_s": 57,
+    "max_link_gap_s": 4,
+    "session": "2026-07-07",
+    "roles": "LONG_WING:1560;SHORT_BODY:1560"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_5S:SENSEX:2026-07-02:2026-07-02:265",
+    "parents": 3,
+    "closing_portions": 4,
+    "units": 400,
+    "contracts": 3,
+    "right_class": "PE_ONLY",
+    "start": "15:27:33",
+    "end": "15:28:30",
+    "duration_s": 57,
+    "max_link_gap_s": 0,
+    "session": "2026-07-02",
+    "roles": "LONG_BODY:380;SHORT_BODY:20"
+   }
+  ],
+  "10": [
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-23:2026-06-23:036",
+    "parents": 52,
+    "closing_portions": 70,
+    "units": 8450,
+    "contracts": 5,
+    "right_class": "PE_ONLY",
+    "start": "11:46:23",
+    "end": "11:48:28",
+    "duration_s": 125,
+    "max_link_gap_s": 10,
+    "session": "2026-06-23",
+    "roles": "LONG_BODY:130;LONG_WING:3900;SHORT_BODY:4420"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-08-13:2026-08-12:012",
+    "parents": 83,
+    "closing_portions": 83,
+    "units": 2480,
+    "contracts": 18,
+    "right_class": "MIXED",
+    "start": "14:53:52",
+    "end": "14:55:50",
+    "duration_s": 118,
+    "max_link_gap_s": 9,
+    "session": "2026-08-12",
+    "roles": "LONG_WING:1220;SHORT_BODY:1260"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-30:2026-07-30:111",
+    "parents": 89,
+    "closing_portions": 89,
+    "units": 2980,
+    "contracts": 11,
+    "right_class": "MIXED",
+    "start": "15:18:08",
+    "end": "15:19:50",
+    "duration_s": 102,
+    "max_link_gap_s": 10,
+    "session": "2026-07-30",
+    "roles": "LONG_WING:1460;SHORT_BODY:1520"
+   }
+  ],
+  "30": [
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_30S:SENSEX:2026-06-25:2026-06-25:091",
+    "parents": 115,
+    "closing_portions": 115,
+    "units": 3200,
+    "contracts": 21,
+    "right_class": "MIXED",
+    "start": "14:10:54",
+    "end": "14:18:55",
+    "duration_s": 481,
+    "max_link_gap_s": 27,
+    "session": "2026-06-25",
+    "roles": "LONG_BODY:60;LONG_WING:540;OTHER_LONG_v_:980;OTHER_SHORT_h_:20;SHORT_BODY:1600"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_30S:SENSEX:2026-07-02:2026-07-02:117",
+    "parents": 100,
+    "closing_portions": 100,
+    "units": 2340,
+    "contracts": 22,
+    "right_class": "MIXED",
+    "start": "14:44:46",
+    "end": "14:52:27",
+    "duration_s": 461,
+    "max_link_gap_s": 28,
+    "session": "2026-07-02",
+    "roles": "LONG_WING:1060;SHORT_BODY:1280"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_30S:NIFTY:2026-07-07:2026-07-07:040",
+    "parents": 42,
+    "closing_portions": 42,
+    "units": 2990,
+    "contracts": 12,
+    "right_class": "MIXED",
+    "start": "14:10:01",
+    "end": "14:16:04",
+    "duration_s": 363,
+    "max_link_gap_s": 26,
+    "session": "2026-07-07",
+    "roles": "LONG_WING:975;OTHER_LONG_v_:520;SHORT_BODY:1495"
+   }
+  ],
+  "60": [
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_60S:NIFTY:2026-07-07:2026-07-07:031",
+    "parents": 112,
+    "closing_portions": 112,
+    "units": 7865,
+    "contracts": 17,
+    "right_class": "MIXED",
+    "start": "14:10:01",
+    "end": "14:29:36",
+    "duration_s": 1175,
+    "max_link_gap_s": 59,
+    "session": "2026-07-07",
+    "roles": "LONG_WING:2925;OTHER_LONG_v_:975;SHORT_BODY:3965"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_60S:SENSEX:2026-06-25:2026-06-25:077",
+    "parents": 198,
+    "closing_portions": 198,
+    "units": 6340,
+    "contracts": 22,
+    "right_class": "MIXED",
+    "start": "15:04:13",
+    "end": "15:20:41",
+    "duration_s": 988,
+    "max_link_gap_s": 59,
+    "session": "2026-06-25",
+    "roles": "LONG_WING:2980;OTHER_SHORT_h_:440;SHORT_BODY:2920"
+   },
+   {
+    "batch_id": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_60S:SENSEX:2026-07-30:2026-07-30:039",
+    "parents": 109,
+    "closing_portions": 109,
+    "units": 2940,
+    "contracts": 19,
+    "right_class": "MIXED",
+    "start": "14:53:29",
+    "end": "15:05:57",
+    "duration_s": 748,
+    "max_link_gap_s": 58,
+    "session": "2026-07-30",
+    "roles": "LONG_BODY:160;LONG_WING:600;OTHER_LONG_v_:560;OTHER_SHORT_h_:200;SHORT_BODY:1420"
+   }
+  ]
+ },
+ "alternative_rule_membership_differences": [
+  {
+   "threshold_s": 2,
+   "alternative": "tie_break_by_parent_id",
+   "approved_batches": 7127,
+   "alternative_batches": 7126,
+   "batches_only_in_approved": [
+    [
+     {
+      "parent": "10853054",
+      "session": "2026-07-02",
+      "first_ts": "15:28:03",
+      "last_ts": "15:28:03",
+      "und": "SENSEX"
+     }
+    ],
+    [
+     {
+      "parent": "10853055",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853056",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853057",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:28:30",
+      "und": "SENSEX"
+     }
+    ]
+   ],
+   "batches_only_in_alternative": [
+    [
+     "10853055",
+     "10853056",
+     "10853057",
+     "10853054"
+    ]
+   ]
+  },
+  {
+   "threshold_s": 2,
+   "alternative": "predecessor_reference_running_max",
+   "approved_batches": 7127,
+   "alternative_batches": 7126,
+   "batches_only_in_approved": [
+    [
+     {
+      "parent": "10853054",
+      "session": "2026-07-02",
+      "first_ts": "15:28:03",
+      "last_ts": "15:28:03",
+      "und": "SENSEX"
+     }
+    ],
+    [
+     {
+      "parent": "10853055",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853056",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853057",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:28:30",
+      "und": "SENSEX"
+     }
+    ]
+   ],
+   "batches_only_in_alternative": [
+    [
+     "10853055",
+     "10853056",
+     "10853057",
+     "10853054"
+    ]
+   ]
+  },
+  {
+   "threshold_s": 5,
+   "alternative": "tie_break_by_parent_id",
+   "approved_batches": 3777,
+   "alternative_batches": 3776,
+   "batches_only_in_approved": [
+    [
+     {
+      "parent": "10853054",
+      "session": "2026-07-02",
+      "first_ts": "15:28:03",
+      "last_ts": "15:28:03",
+      "und": "SENSEX"
+     }
+    ],
+    [
+     {
+      "parent": "10853055",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853056",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853057",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:28:30",
+      "und": "SENSEX"
+     }
+    ]
+   ],
+   "batches_only_in_alternative": [
+    [
+     "10853055",
+     "10853056",
+     "10853057",
+     "10853054"
+    ]
+   ]
+  },
+  {
+   "threshold_s": 5,
+   "alternative": "predecessor_reference_running_max",
+   "approved_batches": 3777,
+   "alternative_batches": 3776,
+   "batches_only_in_approved": [
+    [
+     {
+      "parent": "10853054",
+      "session": "2026-07-02",
+      "first_ts": "15:28:03",
+      "last_ts": "15:28:03",
+      "und": "SENSEX"
+     }
+    ],
+    [
+     {
+      "parent": "10853055",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853056",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853057",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:28:30",
+      "und": "SENSEX"
+     }
+    ]
+   ],
+   "batches_only_in_alternative": [
+    [
+     "10853055",
+     "10853056",
+     "10853057",
+     "10853054"
+    ]
+   ]
+  },
+  {
+   "threshold_s": 10,
+   "alternative": "tie_break_by_parent_id",
+   "approved_batches": 3065,
+   "alternative_batches": 3064,
+   "batches_only_in_approved": [
+    [
+     {
+      "parent": "10853054",
+      "session": "2026-07-02",
+      "first_ts": "15:28:03",
+      "last_ts": "15:28:03",
+      "und": "SENSEX"
+     }
+    ],
+    [
+     {
+      "parent": "10853055",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853056",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853057",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:28:30",
+      "und": "SENSEX"
+     }
+    ]
+   ],
+   "batches_only_in_alternative": [
+    [
+     "10853055",
+     "10853056",
+     "10853057",
+     "10853054"
+    ]
+   ]
+  },
+  {
+   "threshold_s": 10,
+   "alternative": "predecessor_reference_running_max",
+   "approved_batches": 3065,
+   "alternative_batches": 3064,
+   "batches_only_in_approved": [
+    [
+     {
+      "parent": "10853054",
+      "session": "2026-07-02",
+      "first_ts": "15:28:03",
+      "last_ts": "15:28:03",
+      "und": "SENSEX"
+     }
+    ],
+    [
+     {
+      "parent": "10853055",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853056",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:27:33",
+      "und": "SENSEX"
+     },
+     {
+      "parent": "10853057",
+      "session": "2026-07-02",
+      "first_ts": "15:27:33",
+      "last_ts": "15:28:30",
+      "und": "SENSEX"
+     }
+    ]
+   ],
+   "batches_only_in_alternative": [
+    [
+     "10853055",
+     "10853056",
+     "10853057",
+     "10853054"
+    ]
+   ]
+  }
+ ]
+}
