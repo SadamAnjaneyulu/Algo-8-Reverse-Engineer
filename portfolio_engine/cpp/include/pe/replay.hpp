@@ -14,6 +14,7 @@ inline ReplayResult replay(const std::vector<Fill>& fills, const std::map<std::s
   for (auto& m : kModes) okm = okm || (m == mode);
   if (!okm) throw EngineError("unknown mode " + mode);
   const Method method = parse_method(method_s); tie_key(tie, 1);
+  for (auto& f : fills) if (f.qty <= 0 || f.price <= 0 || f.price % kTickPaise || (f.side != 1 && f.side != -1)) throw EventValidationError("fill " + f.fill_id + ": invalid quantity / price / side");
   for (auto& f : fills) if (f.mode != mode) throw ModeContaminationError("fill " + f.fill_id + " has mode " + f.mode + ", run mode is " + mode);
   std::map<std::string, i64> warn; for (auto& k : kWarnCodes) warn[k] = 0;
   for (std::size_t i = 1; i < fills.size(); ++i) if (fills[i].ts < fills[i - 1].ts) warn["INPUT_NOT_TIME_ORDERED"]++;

@@ -1,4 +1,5 @@
 """Cross-language parity: C++ unit tests, fixtures through both implementations, full real ledger through both implementations."""
+import pytest as _pt
 import json, os, subprocess, pytest
 from conftest import PE, REPO
 import parity
@@ -42,3 +43,5 @@ def test_invalid_fixtures_rejected_by_both(tmp_path):
 def test_cpp_rejects_mode_contamination(tmp_path):
     ev = os.path.join(PE, 'fixtures', 'synthetic', 'open_close_full_events.tsv'); ip = ev.replace('_events', '_instruments')
     rc, err = parity.run_cpp(ev, ip, 'HISTORICAL_OBSERVED_REPLAY', 'FIFO', 'src', 0, str(tmp_path / 'x'), str(tmp_path / 'y')); assert rc == 2 and 'mode' in err.lower()
+
+pytestmark = _pt.mark.slow

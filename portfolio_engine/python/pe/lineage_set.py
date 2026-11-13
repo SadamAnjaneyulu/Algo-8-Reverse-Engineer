@@ -64,55 +64,76 @@ class LineageSet:
 
     # ---------------------------------------------------------------- invariants (independent re-derivation from the emitted tables)
     def check(self, fills=None):
-        """I1-I7, I10, I11 of docs/POSITION_LINEAGE_RULES.md; raises InvariantViolation with the first failure; returns the list of invariant ids that passed"""
+        """I1-I7, I10, I11 + row-level independence checks. Re-derives every identity from the EMITTED rows (lists, so duplicates are visible), the lifecycle events and the input fills; raises InvariantViolation on the first failure."""
         passed = []
         def ok(i, cond, msg=''):
             if not cond: raise InvariantViolation(f'{i}: {msg}')
             if i not in passed: passed.append(i)
-        st = self.runs['FIFO'].state
+        st = self.runs['FIFO'].state; rec = self.runs['FIFO'].lineage; rows = rec.observed
+        ids = [r[1] for r in rows]; ok('I-unique-observed-ids', len(ids) == len(set(ids)) == len(self.oa) + len(self.cp), 'duplicate OA/CP row emitted')
         oa_by_inst = defaultdict(int); cp_by_inst = defaultdict(int); oa_by_ep = defaultdict(int); cp_by_ep = defaultdict(int); per_fill = defaultdict(lambda: [0, 0, 0, 0])
-        for r in self.oa.values(): oa_by_inst[r[4]] += r[8]; oa_by_ep[r[5]] += r[8]; per_fill[r[2]][0] += 1; per_fill[r[2]][2] += r[8]
-        for r in self.cp.values(): cp_by_inst[r[4]] += r[8]; cp_by_ep[r[5]] += r[8]; per_fill[r[2]][1] += 1; per_fill[r[2]][3] += r[8]
+        for r in rows:
+            if r[0] == 'OA': oa_by_inst[r[4]] += r[8]; oa_by_ep[r[5]] += r[8]; per_fill[r[2]][0] += 1; per_fill[r[2]][2] += r[8]
+            else: cp_by_inst[r[4]] += r[8]; cp_by_ep[r[5]] += r[8]; per_fill[r[2]][1] += 1; per_fill[r[2]][3] += r[8]
         for iid in st.s: ok('I1', oa_by_inst[iid] - cp_by_inst[iid] == abs(st.signed_inventory(iid)), iid)
-        for eid, e in self.episodes.items(): ok('I2', oa_by_ep[eid] - cp_by_ep[eid] == e['opened'] - e['closed'], eid)
+        # I2 re-derived from the LIFECYCLE EVENTS (a different recorder path than the OA/CP rows) and the last event's signed inventory
+        ev_open = defaultdict(int); ev_close = defaultdict(int); last = {}
+        for e in self.events:
+            if e[3] in ('CREATED', 'ADDED'): ev_open[e[1]] += e[7]
+            else: ev_close[e[1]] += e[7]
+            last[e[1]] = e
+        for eid, e in self.episodes.items():
+            ok('I2', oa_by_ep[eid] == ev_open[eid] and cp_by_ep[eid] == ev_close[eid] and oa_by_ep[eid] - cp_by_ep[eid] == e['opened'] - e['closed'], eid)
+            ok('I2', abs(last[eid][8]) == e['opened'] - e['closed'] or last[eid][3] in ('CLOSED', 'REVERSED'), f'{eid} last-event inventory')
+        for ev in self.events:                                   # a REVERSED / CLOSED / PARTIALLY_REDUCED event carries exactly its closing portion; CREATED / ADDED its opening allocation
+            key = ('CP:' if ev[3] in ('PARTIALLY_REDUCED', 'CLOSED', 'REVERSED') else 'OA:') + ev[4]; row = self.cp.get(key) or self.oa.get(key)
+            ok('I11', row is not None and row[8] == ev[7] and row[5] == ev[1], f'event {ev[0]} vs {key}')
+        ok('I2', sum(1 for e in self.events if e[9] == 1) == sum(1 for e in self.episodes.values() if e['started_by_reversal']), 'started_by_reversal flags')
         for m in METHODS:
-            ca = self.ca[m]; cp_alloc = defaultdict(int)
+            ca = self.ca[m]; ok('I-unique-ca-ids', len({r[0] for r in ca}) == len(ca), m); cp_alloc = defaultdict(int)
             for r in ca: cp_alloc[r[2]] += r[4]
             for cp_id, r in self.cp.items(): ok('I4', cp_alloc[cp_id] == r[8], f'{m} {cp_id}')
+            for r in ca:                                         # row-level economics re-derived from the observed rows: exit price = CP price; FIFO/LIFO entry price = OA price; pnl = direction x (exit - entry) x qty
+                cp = self.cp[r[2]]; ok('I6', r[6] == cp[9], f'{m} {r[0]} exit price')
+                d = -cp[7]                                       # a buy (+1) closes a short (-1)
+                if m != 'AVG': oa = self.oa[r[3]]; ok('I6', r[5] == oa[9] and d == oa[7] and r[7] == d * (r[6] - r[5]) * r[4], f'{m} {r[0]} entry/pnl')
+                else: ok('I6', abs(r[7] - d * (r[6] - r[5]) * r[4]) <= 1e-6 * max(1.0, abs(r[7])), f'{m} {r[0]} pool pnl')
             if m != 'AVG':
                 alloc = defaultdict(int)
                 for r in ca: alloc[r[3]] += r[4]
-                rem = {x[3]: int(x[5]) for x in (t.split('\t') for t in ln.slices_tsv(self.runs[m].state, self.runs[m].lineage).splitlines()[1:])}
+                sl = [t.split('\t') for t in ln.slices_tsv(self.runs[m].state, self.runs[m].lineage).splitlines()[1:]]; rem = {x[3]: int(x[5]) for x in sl}
+                for x in sl: ok('I3', int(x[6]) == self.oa[x[3]][9] and x[4] == self.oa[x[3]][5], f'{m} slice {x[0]} price/episode')
                 for oa_id, r in self.oa.items(): ok('I3', r[8] == alloc[oa_id] + rem.get(oa_id, 0), f'{m} {oa_id}')
                 ok('I7', sum(rem.values()) == st.opened - st.closed, f'{m} remaining slices {sum(rem.values())}')
             else:
                 pool = defaultdict(int)
                 for r in ca: pool[r[3]] += r[4]
-                pool_rem = {x[3]: int(x[5]) for x in (t.split('\t') for t in ln.slices_tsv(self.runs['AVG'].state, self.runs['AVG'].lineage).splitlines()[1:])}
+                sl = [t.split('\t') for t in ln.slices_tsv(self.runs['AVG'].state, self.runs['AVG'].lineage).splitlines()[1:]]; pool_rem = {x[3]: int(x[5]) for x in sl}
                 for eid in self.episodes: ok('I3', oa_by_ep[eid] == pool[f'POOL:{eid}'] + pool_rem.get(f'POOL:{eid}', 0), f'AVG pool {eid}')
                 ok('I7', sum(pool_rem.values()) == st.opened - st.closed)
                 ok('I-AVG-no-ownership', all(r[9] == 'NOT_IDENTIFIABLE' and r[3].startswith('POOL:') for r in ca))
+            ok('I-ownership-label', all(r[9] == ('NOT_IDENTIFIABLE' if m == 'AVG' else 'IDENTIFIED_BY_CONVENTION') for r in ca), m)
             tot = sum(r[7] for r in ca) if m == 'AVG' else sum(int(r[7]) for r in ca)
-            m1 = self.runs[m].state.realized_total(); ok('I6', abs(tot - m1) <= 1e-6 * max(1, len(ca)) if m == 'AVG' else tot == m1, f'{m} {tot} vs {m1}')
-        for fid, (n_oa, n_cp, q_oa, q_cp) in per_fill.items():
-            ok('I5', n_oa <= 1 and n_cp <= 1, fid)
-        if fills is not None:
-            q = {f.fill_id: f.quantity for f in fills if not f.is_duplicate_fill}
-            for fid, qq in q.items(): ok('I5', per_fill[fid][2] + per_fill[fid][3] == qq, f'{fid} {per_fill[fid]} vs {qq}')
+            m1 = self.runs[m].state.realized_total(); ok('I6', abs(tot - m1) <= 1e-6 * max(1, len(ca)) + 1e-12 * max(1.0, abs(m1)) if m == 'AVG' else tot == m1, f'{m} {tot} vs {m1}')
+        for fid, (n_oa, n_cp, q_oa, q_cp) in per_fill.items(): ok('I5', n_oa <= 1 and n_cp <= 1, fid)
+        if fills is not None:                                    # observed rows must also agree with the INPUT fills (side, price, timestamp, parent, quantity)
+            byid = {f.fill_id: f for f in fills if not f.is_duplicate_fill}
+            for r in rows:
+                f = byid[r[2]]; ok('I5', (r[3], r[4], r[6], r[7], r[9], r[10]) == (f.parent_order_id, f.instrument_id, f.timestamp_s, f.side, f.price_paise, f.module_tag), f'{r[1]} does not match its fill')
+            for fid, f in byid.items(): ok('I5', per_fill[fid][2] + per_fill[fid][3] == f.quantity, f'{fid} {per_fill[fid]} vs {f.quantity}')
         for fid, (n_oa, n_cp, _, _) in per_fill.items():
             if n_oa and n_cp:
                 oa = self.oa[f'OA:{fid}']; cp = self.cp[f'CP:{fid}']
                 ok('I11', oa[5] != cp[5] and self.episodes[cp[5]]['ended_by'] == 'reversal' and self.episodes[oa[5]]['started_by_reversal'], fid)
-        # I10: an EXPIRED_UNCLOSED episode keeps its remaining units as slices and receives no settlement P&L: its realized P&L is exactly the sum of its closing allocations
-        last = self.runs['FIFO'].last_day
+        # I10: an EXPIRED_UNCLOSED episode keeps its remaining units as slices and receives no settlement P&L (realized = sum of its closing allocations)
+        lastday = self.runs['FIFO'].last_day
         for m in METHODS:
             cp_ep = {c: r[5] for c, r in self.cp.items()}; ca_pnl = defaultdict(float)
             for r in self.ca[m]: ca_pnl[cp_ep[r[2]]] += float(r[7])
             slices_ep = defaultdict(int)
             for t in ln.slices_tsv(self.runs[m].state, self.runs[m].lineage).splitlines()[1:]: x = t.split('\t'); slices_ep[x[4]] += int(x[5])
             for eid, e in self.runs[m].state.episodes.items():
-                if ln.terminal_status(self.runs[m].state, e, self.instruments, last) == 'EXPIRED_UNCLOSED':
+                if ln.terminal_status(self.runs[m].state, e, self.instruments, lastday) == 'EXPIRED_UNCLOSED':
                     ok('I10', abs(float(e['realized']) - ca_pnl[eid]) <= 1e-6 and slices_ep[eid] == e['opened'] - e['closed'], f'{m} {eid}')
-        ok('I10', True)
         ok('I-observed-layer-identical-across-conventions', all(self.files[m][n] == self.files['FIFO'][n] for m in ('LIFO', 'AVG') for n in ('observed_allocations.tsv', 'lifecycle.tsv', 'episodes.tsv')))
         return passed

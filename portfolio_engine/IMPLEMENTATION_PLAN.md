@@ -36,3 +36,7 @@ portfolio_engine/
 | M2-E | forensics on one NIFTY and one SENSEX cycle, six chart families with saved data | charts reproduce from CSV |
 | M2-F | independent adversarial audit, regression counterexamples, final reports | PASS / PARTIAL |
 Not in M2: cut/re-entry policies, alpha, new dependencies.
+
+
+### M2 status
+M2-A approved (D1–D7). Demonstration cycles frozen: NIFTY 2026-06-30, SENSEX 2026-07-16. **M2-B complete and independently reviewed (`reports/M2B_REPORT.md`): PASS.** M2-C (Models A/B/C) awaits authorization; the number-block semantics need a decision first.

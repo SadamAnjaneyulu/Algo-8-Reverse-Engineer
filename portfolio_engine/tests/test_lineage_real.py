@@ -1,4 +1,5 @@
 """M2-B on the REAL ledger: reference counts, TP-01 / TP-02 reconciliation, tie-order conditionality, parents.tsv. Reference counts come from existing research; they are checked, never forced."""
+import pytest as _pt
 import os, pytest
 import pandas as pd
 from conftest import REPO, PE
@@ -66,7 +67,8 @@ def test_tie_order_changes_identities_only_in_instruments_with_mixed_side_same_s
     diff = (base['src'] | base['sells_first'] | base['buys_first']) - (base['src'] & base['sells_first'] & base['buys_first']); inst = {f.fill_id: f.instrument_id for f in fills}
     grp = {}
     for f in fills: grp.setdefault((f.instrument_id, f.timestamp_s), set()).add(f.side)
-    mixed = {k[0] for k, v in grp.items() if len(v) == 2}; assert {inst[x[1].split(':', 1)[1]] for x in diff} <= mixed and len(diff) > 0
+    mixed = {k[0] for k, v in grp.items() if len(v) == 2}; di = {inst[x[1].split(':', 1)[1]] for x in diff}
+    assert di <= mixed and len(di) == 5 and len(diff) == 42 and len({x[1].split(':', 1)[1] for x in diff}) == 20           # documented: 20 fills (42 rows) in 5 instruments; fill-level differences include downstream fills of the same instrument
 
 
 def test_parents_tsv_from_the_real_export(real, tmp_path):
@@ -75,3 +77,5 @@ def test_parents_tsv_from_the_real_export(real, tmp_path):
     missing = {c: sum(1 for r in back.values() if r[c] is None) for c in pa.PARENT_COLUMNS}; assert {c: n for c, n in missing.items() if n} == {'algo_id': 1}             # the one empty raw cell stays NA
     assert not any(v == 'CONFLICT' for r in rows for v in r.values()) and all(r['app_key_last6'] == r['app_key_full'][-6:] for r in back.values())
     assert {r['parent_role'] for r in back.values()} == set(pa.ROLES)
+
+pytestmark = _pt.mark.slow

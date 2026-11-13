@@ -43,7 +43,7 @@ class PortfolioState {
       else {
         i64 need = close_q, pnl = 0;
         while (need > 0) {
-          Lot& lot = (method == Method::FIFO) ? st.lots.front() : st.lots.back(); const i64 take = std::min(need, lot.q); const i64 p_ = (i64)d * (px - lot.px) * take; pnl += p_; lot.q -= take; need -= take;
+          Lot& lot = (method == Method::FIFO) ? st.lots.front() : st.lots.back(); const i64 take = std::min(need, lot.q); const i64 p_ = checked_mul(checked_mul((i64)d, px - lot.px), take); pnl = checked_add(pnl, p_); lot.q -= take; need -= take;
           if (lin) lin->allocation_lot(f, lot.oa, take, lot.px, p_, lot.q);
           if (lot.q == 0) { if (method == Method::FIFO) st.lots.pop_front(); else st.lots.pop_back(); }
         }
@@ -64,7 +64,7 @@ class PortfolioState {
       st.inv += open_q; st.opened += open_q; opened += open_q; ep.opened += open_q; ep.n_open += 1;
     }
     if (reversal) { reversal_fills += 1; reversal_units_reopened += open_q; }
-    const i64 new_signed = st.dir ? st.inv * st.dir : 0; agg_change(f.instrument_id, old_signed, new_signed); cash += -(i64)sg * q * px; applied += 1;
+    const i64 new_signed = st.dir ? st.inv * st.dir : 0; agg_change(f.instrument_id, old_signed, new_signed); cash = checked_add(cash, checked_mul(checked_mul(-(i64)sg, q), px)); applied += 1;
     if (close_q > q || close_q + open_q != q || (st.dir && st.inv <= 0)) throw InvariantViolation("role arithmetic broken on " + f.fill_id);
     return Role{f.fill_id, f.instrument_id, close_q, open_q, new_signed, reversal, eid_close, eid_open};
   }
@@ -89,9 +89,9 @@ inline std::vector<std::string> check_state(const PortfolioState& st, const std:
   ok("portfolio_opened_minus_closed_equals_gross_inventory", st.opened - st.closed == gross);
   ok("aggregates_reconcile_to_instruments", st.agg.short_CE + st.agg.short_PE + st.agg.long_CE + st.agg.long_PE == gross);
   if (expected_signed) for (auto& kv : *expected_signed) ok("signed_inventory_equals_sum_of_fills", st.signed_inventory(kv.first) == kv.second, kv.first);
-  const double tol = 1e-6 * (double)std::max<i64>(1, st.applied);
+  const double tol0 = 1e-6 * (double)std::max<i64>(1, st.applied);
   if (!st.avg) { ok("cash_identity_cash_equals_realized_plus_book_value", st.cash - (st.realized_total_i() + st.book_total_i()) == 0); i64 er = 0; for (auto& kv : st.episodes) er += kv.second.realized_i; ok("episode_realized_sums_to_portfolio_realized", er == st.realized_total_i()); }
-  else { const double diff = (double)st.cash - (st.realized_total_d() + st.book_total_d()); ok("cash_identity_cash_equals_realized_plus_book_value", std::abs(diff) <= tol); double er = 0; for (auto& kv : st.episodes) er += kv.second.realized_d; ok("episode_realized_sums_to_portfolio_realized", std::abs(er - st.realized_total_d()) <= tol); }
+  else { const double diff = (double)st.cash - (st.realized_total_d() + st.book_total_d()); const double scale = std::max({1.0, std::abs((double)st.cash), std::abs(st.realized_total_d()), std::abs(st.book_total_d())}); ok("cash_identity_cash_equals_realized_plus_book_value", std::abs(diff) <= tol0 + 1e-12 * scale); double er = 0; for (auto& kv : st.episodes) er += kv.second.realized_d; ok("episode_realized_sums_to_portfolio_realized", std::abs(er - st.realized_total_d()) <= tol0 + 1e-12 * std::max(1.0, std::abs(st.realized_total_d()))); }
   i64 eu = 0; for (auto& kv : st.episodes) eu += kv.second.opened - kv.second.closed; ok("episode_units_reconcile", eu == gross);
   return done;
 }

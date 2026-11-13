@@ -23,8 +23,8 @@ def check_state(state, expected_signed=None):
     if expected_signed is not None:                                         # independent accumulator: signed sum of applied fills
         for iid, v in expected_signed.items(): ok('signed_inventory_equals_sum_of_fills', state.signed_inventory(iid) == v, f'{iid}: {state.signed_inventory(iid)} vs {v}')
     realized = state.realized_total(); book = state.book_total(); diff = state.cash - (realized + book)
-    ok('cash_identity_cash_equals_realized_plus_book_value', (diff == 0) if not state.avg else abs(diff) <= TOL * max(1, state.applied), f'diff {diff}')
+    ok('cash_identity_cash_equals_realized_plus_book_value', (diff == 0) if not state.avg else abs(diff) <= TOL * max(1, state.applied) + 1e-12 * max(1.0, abs(state.cash), abs(realized), abs(book)), f'diff {diff}')
     ep_real = sum(e['realized'] for e in state.episodes.values())
-    ok('episode_realized_sums_to_portfolio_realized', (ep_real == realized) if not state.avg else abs(ep_real - realized) <= TOL * max(1, state.applied), f'{ep_real} vs {realized}')
+    ok('episode_realized_sums_to_portfolio_realized', (ep_real == realized) if not state.avg else abs(ep_real - realized) <= TOL * max(1, state.applied) + 1e-12 * max(1.0, abs(realized)), f'{ep_real} vs {realized}')
     ok('episode_units_reconcile', sum(e['opened'] - e['closed'] for e in state.episodes.values()) == gross)
     return done

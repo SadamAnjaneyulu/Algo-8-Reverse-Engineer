@@ -38,6 +38,8 @@ inline void civil_from_days(i64 z, i64& y, i64& m, i64& d) {
   const i64 doy = doe - (365 * yoe + yoe / 4 - yoe / 100); const i64 mp = (5 * doy + 2) / 153; d = doy - (153 * mp + 2) / 5 + 1; m = mp + (mp < 10 ? 3 : -9); y += (m <= 2);
 }
 inline std::string fmt6(double x) { char b[64]; std::snprintf(b, sizeof b, "%.6f", x); return b; }
+inline i64 checked_mul(i64 a, i64 b) { i64 r; if (__builtin_mul_overflow(a, b, &r)) throw InvariantViolation("int64 overflow in P&L arithmetic"); return r; }
+inline i64 checked_add(i64 a, i64 b) { i64 r; if (__builtin_add_overflow(a, b, &r)) throw InvariantViolation("int64 overflow in P&L arithmetic"); return r; }
 inline i64 ist_day(i64 ts) { return (ts + kIstOffsetS) / 86400; }
 inline std::string day_iso(i64 day) { i64 y, m, d; civil_from_days(day, y, m, d); char b[64]; std::snprintf(b, sizeof b, "%04lld-%02lld-%02lld", (long long)y, (long long)m, (long long)d); return b; }
 inline i64 iso_day(const std::string& s) {

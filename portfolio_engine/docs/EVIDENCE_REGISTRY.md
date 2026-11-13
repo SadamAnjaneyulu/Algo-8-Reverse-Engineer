@@ -38,4 +38,6 @@ Not implemented in M1 (so not registered): entries, strikes, sizing, hedges, exi
 | Number-block variant | PARTIAL: text registered, **semantics ambiguous** | NO | methodology doc |
 | TP-02 ±5 s basket / ±10 s wing associations | YES (TP-02 config) | YES (TP-02 report) — separate analyses | `TP02_REPORT.md` |
 | Wing/body W1 same order-entry minute + right, ±60 s first-fill | YES (D6) | NO (TP-03 E6/E7 used a same-minute pairing for wing *selection* tests, not for lot links) | — |
-| FIFO/LIFO/AVG allocation, OA/CP decomposition | design (M2-A) | **M2-B in progress** | — |
+| FIFO/LIFO/AVG allocation, OA/CP decomposition, lifecycle, episodes | YES (M2-A design) | **YES (M2-B)**: 23,684 OA, 17,760 CP, 2,667 episodes, 26 mixed parents; reproduces TP-01 totals; Python/C++ byte-identical | `reports/M2B_RECONCILIATION_REPORT.md` |
+
+Executed M2-B results (class): OA/CP decomposition and episode identity vs TP-01 — CONFIRMED_OBSERVATION (convention-independent); FIFO/LIFO attributions — UNRESOLVED (convention; 15,889 of 17,760 closing portions are convention-sensitive); AVG ownership — NOT_TESTABLE; episode identity under alternative tie orders — conditional in 5 instruments (documented).

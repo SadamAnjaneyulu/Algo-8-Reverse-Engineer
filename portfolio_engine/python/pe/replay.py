@@ -22,6 +22,8 @@ def _fmt(x, avg): return f'{x:.6f}' if avg else str(int(x))
 def replay(fills, instruments, mode, method='FIFO', tie_order='src', snapshot_interval=0, strict=False, lineage=False):
     if mode not in MODES: raise EngineError(f'unknown mode {mode}')
     if method not in METHODS or tie_order not in TIE_ORDERS: raise EngineError('bad method / tie order')
+    for f in fills:                                                          # the in-memory API is as strict as the TSV loader
+        if f.quantity <= 0 or f.price_paise <= 0 or f.price_paise % TICK_PAISE or f.side not in (1, -1): raise EventValidationError(f'fill {f.fill_id}: invalid quantity / price / side')
     for f in fills:                                                          # contamination guard: checked BEFORE anything is applied
         if f.execution_mode != mode: raise ModeContaminationError(f'fill {f.fill_id} has mode {f.execution_mode}, run mode is {mode}')
     warn = {k: 0 for k in WARN_CODES}

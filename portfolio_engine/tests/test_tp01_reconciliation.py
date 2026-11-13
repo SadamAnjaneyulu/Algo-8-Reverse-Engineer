@@ -1,4 +1,5 @@
 """REAL data: the engine (re-implemented rules, not imported TP-01 code) must reproduce TP-01's published totals, all 2,667 episodes per method, every per-fill role, and the 6 tie-ambiguous fills."""
+import pytest as _pt
 import os, pytest
 import pandas as pd
 from conftest import REPO, PE
@@ -64,3 +65,5 @@ def test_expired_units_are_reported_not_settled(runs):
 def test_all_invariants_on_real_data(data):
     ins, fills, _ = data
     for m in METHODS: assert len(rp.replay(fills, ins, M, m, 'src').checks) >= 10
+
+pytestmark = _pt.mark.slow

@@ -35,5 +35,6 @@ int main() {
     std::vector<Fill> f = {F("a", 1, 0, -1, 100, 10000), F("b", 2, 60, 1, 130, 9000)}; auto r = replay(f, ins, "SYNTHETIC_TEST", "FIFO", "src", 0, true, true); const std::string& o = r.lineage_files["observed_allocations.tsv"];
     CHECK(o.find("CP\tCP:b\tb\tpb\tNIFTY|2026-01-08|CE|24000\tNIFTY|2026-01-08|CE|24000#1\t") != std::string::npos); CHECK(o.find("OA\tOA:b\tb\tpb\tNIFTY|2026-01-08|CE|24000\tNIFTY|2026-01-08|CE|24000#2\t") != std::string::npos);
     CHECK(r.lineage_files["lifecycle.tsv"].find("REVERSED") != std::string::npos && r.lineage_files["episodes.tsv"].find("REVERSED") != std::string::npos); }
+  { bool thrown = false; try { PortfolioState st(Method::FIFO, ins); st.apply_fill(F("a", 1, 0, -1, 100000000, 500000000000LL)); st.apply_fill(F("b", 2, 10, 1, 100000000, 5)); } catch (const InvariantViolation&) { thrown = true; } CHECK(thrown); }   // int64 overflow is an error, never a silent wrap
   std::cout << (checks - failures) << "/" << checks << " core checks passed\n"; return failures ? 1 : 0;
 }
