@@ -1,0 +1,75 @@
+{
+ "parents": 39874,
+ "order_no_unique_per_date": true,
+ "order_no_constant_within_parent": true,
+ "app_keys_last6": {
+  "632469": 38770,
+  "F88187": 1104
+ },
+ "app_key_full_length": [
+  32
+ ],
+ "blocks_with_jump_gt_500": 602,
+ "all_orders_consecutive_number_diff": {
+  "quantiles": {
+   "0.5": 2.0,
+   "0.75": 8.0,
+   "0.9": 27.0,
+   "0.95": 58.0,
+   "0.99": 2157.9299999999857
+  },
+  "share_le_20": 0.8699814079694488,
+  "share_le_500": 0.9866840862268228,
+  "n_gt_500": 530,
+  "n": 39802
+ },
+ "within_block_diff": {
+  "quantiles": {
+   "0.5": 2.0,
+   "0.75": 8.0,
+   "0.9": 24.0,
+   "0.95": 45.0,
+   "0.99": 145.0
+  },
+  "share_le_20": 0.8817223467101243
+ },
+ "closing_parents": 16817,
+ "closing_parents_by_app": {
+  "632469": 16429,
+  "F88187": 388
+ },
+ "closing_parents_by_module_and_app": {
+  "632469": {
+   "num": 11760,
+   "h_": 4104,
+   "s_": 283,
+   "v_": 276,
+   "m_": 6
+  },
+  "F88187": {
+   "h_": 319,
+   "v_": 35,
+   "s_": 34
+  }
+ },
+ "closing_parent_adjacent_pairs_in_block": 16290,
+ "closing_adjacent_number_diff": {
+  "quantiles": {
+   "0.5": 2.0,
+   "0.75": 13.0,
+   "0.9": 48.0,
+   "0.95": 93.0,
+   "0.99": 268.0
+  },
+  "share_le_20": 0.8052793124616329
+ },
+ "pair_cooccurrence_(adjacent closing parents in one block; NOT batches)": {
+  "number_le_20_and_first_fill_gap_le_10s": 10164,
+  "number_le_20_only": 2954,
+  "time_le_10s_only": 558,
+  "neither": 2614
+ },
+ "number_monotone_in_first_fill_time_within_block": {
+  "adjacent_inversions_share": 0.007297988664292521
+ }
+}

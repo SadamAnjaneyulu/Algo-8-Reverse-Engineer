@@ -1,0 +1,55 @@
+{
+ "created_utc": "2026-11-13T16:23:22Z",
+ "git_sha": "a4de4f22cb2f66f1113f8242038f914441fb9829",
+ "execution_mode": "HISTORICAL_OBSERVED_REPLAY",
+ "grouping_version": "CB1",
+ "source_hashes": {
+  "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "tp01_ledger_sha256": "3b47c55150d79535a43fcea485a41e8e7bd76b201384fd89eae9a88f2c736053"
+ },
+ "files": {
+  "closing_batches_C1.tsv.gz": {
+   "sha256_of_text": "5c09c4b3a19293cb4de7b28b2ccc6601c34e67500e39468a619b5b4ff70d9c01",
+   "rows": 17642,
+   "bytes_gz": 422019
+  },
+  "closing_batch_members_C1.tsv.gz": {
+   "sha256_of_text": "8ad36454a590d0c48d70cefb0c1921afbbffec5ad69f53c86e7133608850e0cf",
+   "rows": 84085,
+   "bytes_gz": 1072525
+  },
+  "closing_batch_portions_C1.tsv.gz": {
+   "sha256_of_text": "30be86118443eb5e4aff81e612fdec08b36423b0d6841c8feb4b3c6d04b7459d",
+   "rows": 88800,
+   "bytes_gz": 1599591
+  },
+  "closing_batches_C2.tsv.gz": {
+   "sha256_of_text": "8d632127edbf8cb5ddebb8fc1224746884dee5615b6fc133576e1ff62ae2f92f",
+   "rows": 17642,
+   "bytes_gz": 421867
+  },
+  "closing_batch_members_C2.tsv.gz": {
+   "sha256_of_text": "cfbfca991d151b7c0369a8b15c1c4987cb36a273de261dc75ffb31a7ea418517",
+   "rows": 84085,
+   "bytes_gz": 1076094
+  },
+  "closing_batch_portions_C2.tsv.gz": {
+   "sha256_of_text": "84cf301ef26d5ac31e4b224afc6fbf3ab8215b23b7851f2ed019e524d55621ee",
+   "rows": 88800,
+   "bytes_gz": 1601434
+  }
+ },
+ "views": {
+  "C1_2s": "f37f7bb2342754ac",
+  "C1_5s": "35b552d1997ac5ca",
+  "C1_10s": "7ec474da4e8d23c2",
+  "C1_30s": "e3e1b07f7dca9630",
+  "C1_60s": "1b82982663cc60fc",
+  "C2_2s": "f477c972d17ed359",
+  "C2_5s": "b2a4a8e3f5b860d2",
+  "C2_10s": "b22d5cf2e98f74c1",
+  "C2_30s": "6e3da85369812216",
+  "C2_60s": "3f6cc1ea75aad1da"
+ },
+ "reproduce": "python3 portfolio_engine/tools/m2c_closing_batches.py"
+}
