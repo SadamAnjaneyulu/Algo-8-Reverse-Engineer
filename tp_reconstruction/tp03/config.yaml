@@ -1,7 +1,8 @@
-# TP-03 pre-registration, amended after review (v2). Fixed BEFORE any entry or exit trigger test is run.
+# TP-03 pre-registration, amended after review (v3, FROZEN for Phase 1). Fixed BEFORE any entry or exit trigger test is run.
 # A value changed after a result has been seen is a deviation and must be recorded in the report.
-version: 2
-amendment_note: "v2 fixes the v1 YAML syntax error and implements review points 1-7 (see TP03_PHASE0_AUDIT.md, section 0)"
+version: 3
+frozen: true            # sha256 recorded in tp03/config.sha256; scripts refuse to run on a changed file and any later change is a recorded deviation
+amendment_note: "v2 fixed the v1 YAML syntax error and implemented review points 1-7; v3 adds the three final clarifications (threshold hierarchy, three count views, validated sequential permutation) and the exploratory labelling of E2 (see TP03_PHASE0_AUDIT.md, section 0)"
 inputs:
   tp01_dir: tp_reconstruction/data
   tp02_dir: tp_reconstruction/tp02/data
@@ -86,11 +87,19 @@ entry:
     NO_ACTION_ACTIVE: "no BODY_SHORT_OPEN attributed to the window AND no other-class opening AND any algo fill of the same underlying and cycle within +-30 min of the window AND index bars complete for the 60 minutes before the snapshot"
     NO_ACTION_UNCERTAIN: "no opening attributed AND (no algo activity within +-30 min OR incomplete bars)"
     NOT_APPLICABLE: "after a cycle-stop liquidation, before the first fill of the session, or (expiry day) no open short at the snapshot (ENT-03)"
+  reporting_views:                                     # clarification 2: structural fill-time counts and submission-attributed action counts are never merged
+    FILL_TIME_STRUCTURAL: "counts by fill time inside [T - 2 s, T + 3 min), the source (F07) definition; used only to reproduce earlier figures and as a reference"
+    SUBMISSION_ATTRIBUTED_INCLUDING_AMBIGUOUS: "an action = a body short opening parent order attributed to the window by submission class ENTERED_INSIDE_WINDOW, AMBIGUOUS_BOUNDARY_MINUTE or DECISION_IN_WINDOW_FILL_OUTSIDE"
+    SUBMISSION_ATTRIBUTED_EXCLUDING_AMBIGUOUS: "as above without AMBIGUOUS_BOUNDARY_MINUTE; a window whose only attributed orders are ambiguous is classed AMBIGUOUS_ACTION and dropped from this view (never counted as no-action)"
+    phase1_rule: "every Phase 1 window count, action rate and E2 / E3 result is reported in all three views side by side; a conclusion is robust only if it holds in views 2 and 3"
   testability_gates:                                   # set after the structural counts were seen, before any test; they restrict what may be claimed, not what is found
     min_minority_class_events_pooled: 30
     min_minority_class_events_per_underlying: 10
     min_cycles_per_underlying: 10
     on_failure: "the test is reported NOT_TESTABLE (not 'no effect')"
+    applies_to: "E2 on the binary action / no-action outcome. Both rules apply and both must be met: N >= min_events (general rule, N = window observations: 672 pre-expiry and 554 expiry-day applicable) AND the minority-class gates above. The minority gates are the binding rule for E2 action; the general min_events=100 is NOT applied to the minority class (it would make E2 untestable: minorities are 85 and 44)"
+    other_tests: "E2 / E3 on the quantity outcome and E3, E5, E6, E7, E8: N >= min_events=100 observations and >= 10 cycles per underlying; there is no minority class, so the minority gates do not apply"
+    evidence_ceiling: "E2 results on the pre-expiry design (21 candidate windows) are EXPLORATORY: the four control windows were identified from earlier observed behaviour (inconsistent in the earlier lineage), so they are not independent evidence. They are never presented as confirmation of a general state-gating rule. The 17 registered windows are descriptive (all 544 act). E2 may reach STRONGLY_SUPPORTED only if the same feature passes Holm with the same sign in BOTH the pre-expiry design and the expiry-day design; otherwise it is capped at WEAKLY_SUPPORTED"
   permutation_design:                                  # point 4
     invalid_scheme: "cycle x window strata: one observation per stratum (verified: 1.0), labels cannot be shuffled"
     exchangeability_unit: "expiry cycle (underlying x expiry)"
@@ -146,13 +155,15 @@ inference:
   permutations:
     exploratory_development_runs: 500
     final_inference: 10000
-    sequential_rule: "Besag-Clifford: draw permutations until 100 exceedances of the observed statistic or 10,000 draws, whichever comes first; p = (exceedances + 1) / (draws + 1). If a test ends the 10,000 draws with at most 10 exceedances it is extended to 100,000 draws under the same stopping rule (decided by the exceedance count only, before any significance claim)"
+    sequential_rule: "Besag-Clifford: draw permutations until h = 100 exceedances (statistic >= observed) at draw L, or N = 10,000 draws. Stopped at the h-th exceedance: p = h / L. Not stopped: p = (m + 1) / (N + 1) with m the exceedances. If a test ends the N = 10,000 draws with m <= 10 exceedances the SAME random stream is continued to N_ext = 100,000 draws under the same stopping rule (decided by the exceedance count only, never by a significance claim); then p = h / L if h is reached, else (m + 1) / (N_ext + 1)"
+    parameters: {h_stop: 100, n_max: 10000, extend_if_exceedances_at_most: 10, n_max_extended: 100000}
+    seed_policy: "each test draws from numpy SeedSequence([base_seed, crc32(test_id)]); the entropy, the number of draws actually made, the exceedances, the stopping reason and the extension flag are written to the permutation log for every test; implementation validated by tp03/tests/test_seqperm.py"
     resolution_requirement: "smallest attainable p must be at most half of the smallest Holm threshold of its family"
   holm_families:
     entry: {size_upper_bound: 120, smallest_threshold: 0.000417, note: "E1 (1) + E2 (25 features x {action, quantity} x {pre-expiry, expiry day} = 100) + E3 (3) + E5 (6) + E6 (6) + E7 (3) + E8 (1)"}
     exit: {size_upper_bound: 60, smallest_threshold: 0.000833, note: "X1 (8 position metrics x 3 conventions folded to 24) + X2 (4) + X3 (12) + X4 (full residue x 2 times + 7 clock minutes = 9) + X5 (4) + X6 (3) + wing release (4)"}
     why_500_is_not_enough: "with 500 permutations the smallest attainable p is 1/501 = 0.0020, above both smallest thresholds, so no test could ever survive Holm; with 10,000 it is 0.0001 (entry 0.5 x 0.000417 = 0.00021: satisfied)"
   effect_thresholds: {ratio: 1.5, auc: 0.55, excess_share: 0.10}
-  min_events: 100
+  min_events: 100            # general rule: number of observations N; see entry.testability_gates.applies_to for E2
   min_cycles: 10
 boundaries: [no alpha discovery, no supervised model, no threshold sweep, no future information, no invented Greeks / IV / margin]

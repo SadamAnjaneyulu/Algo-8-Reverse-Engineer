@@ -4,8 +4,8 @@ HERE = os.path.dirname(os.path.abspath(__file__)); TP03 = os.path.dirname(HERE)
 CFG = yaml.safe_load(open(os.path.join(TP03, 'config.yaml')))
 
 
-def test_config_parses_and_is_version_2():
-    assert CFG['version'] == 2 and 'claim_types' in CFG and 'cycle_stop_figures' in CFG
+def test_config_parses_and_is_version_3_frozen():
+    assert CFG['version'] == 3 and CFG['frozen'] is True and 'claim_types' in CFG and 'cycle_stop_figures' in CFG
 
 
 def test_entry_windows_and_controls_are_the_21_quarter_hours():
