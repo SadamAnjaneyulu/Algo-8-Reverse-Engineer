@@ -1,0 +1,15 @@
+item,value
+Pop 3 events,3415.0
+cycles,33.0
+registered union flag rate,0.9859443631039532
+chance union flag rate (time-shifted),0.7002962287797653
+excess over chance,0.2856481343241879
+"unexplained, registered flags (events)",48.0
+"unexplained, strict flags (events)",211.0
+"unexplained upper range: 1 - (flag rate - chance), events",2440.0
+strict unexplained and not in a multi-contract batch (events),113.0
+strict unexplained and not in a batch and not stop-adjacent (adverse >= 1.15x),100.0
+chance rate of flag: clock,0.11644069727697391
+chance rate of flag: expiry,0.49333485245528086
+chance rate of flag: replacement,0.27680300786145606
+chance rate of flag: wing,0.16138771789905434
