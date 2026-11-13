@@ -41,17 +41,20 @@ def param_hash(method, g):
                                           link='gap<=threshold (inclusive), adjacent parents, single linkage', precision='whole seconds'), sort_keys=True).encode()).hexdigest()[:16]
 
 
-def build_view(parents, method, g):
-    """one analytical view: list of batches; each batch = dict(batch_id, members=[ParentClose...], links=[(gap, overlap)...]). C1 gap = first(next) - first(prev); C2 gap = first(next) - last(prev)."""
-    token = METHODS_CB[method][0] + f'_{g}S'; streams = defaultdict(list)
+def build_view(parents, method, g, order='src', c2_ref='previous'):
+    """one analytical view: list of batches; each batch = dict(batch_id, members=[ParentClose...], links=[(gap, overlap)...]). C1 gap = first(next) - first(prev); C2 gap = first(next) - last(prev).
+    Defaults are the APPROVED rules. `order='parent_id'` (tie-break by parent id instead of source row) and `c2_ref='running_max'` (C2 reference = largest last_ts seen so far in the stream) exist ONLY to measure how much the result depends on rules the specification leaves open; such views are statistics, never written as outputs."""
+    token = METHODS_CB[method][0] + f'_{g}S' + ('' if (order, c2_ref) == ('src', 'previous') else f'__SENS_{order}_{c2_ref}'); streams = defaultdict(list)
     for p in parents: streams[p.stream].append(p)
     batches = []
     for stream in sorted(streams):
-        ps = sorted(streams[stream], key=lambda p: (p.first_ts, p.first_src, p.parent_id)); cur = None; n = 0
+        ps = sorted(streams[stream], key=(lambda p: (p.first_ts, p.first_src, p.parent_id)) if order == 'src' else (lambda p: (p.first_ts, p.parent_id))); cur = None; n = 0; run_max = None
         for prev, p in zip([None] + ps[:-1], ps):
             if prev is None: link = None
             else:
-                gap = p.first_ts - (prev.first_ts if method == 'C1' else prev.last_ts); link = (gap, p.first_ts <= prev.last_ts, p.first_ts < prev.last_ts) if gap <= g else None      # (gap, closed-interval overlap incl. same-second touching, strict overlap)
+                ref_last = prev.last_ts if c2_ref == 'previous' else run_max
+                gap = p.first_ts - (prev.first_ts if method == 'C1' else ref_last); link = (gap, p.first_ts <= ref_last, p.first_ts < ref_last) if gap <= g else None      # (gap, closed-interval overlap incl. same-second touching, strict overlap)
+            run_max = p.last_ts if run_max is None else max(run_max, p.last_ts)
             if link is None:
                 n += 1; cur = dict(batch_id=f'INF:CLOSING_BATCH@{token}:{stream[0]}:{stream[1]}:{stream[2]}:{n:03d}', members=[p], links=[], stream=stream, token=token); batches.append(cur)
             else: cur['members'].append(p); cur['links'].append(link)
@@ -63,24 +66,42 @@ def all_views(parents):
 
 
 # ----------------------------------------------------------------------------- invariants (partition + reconciliation); raise InvariantViolation
+def reference_partition(parents, method, g):
+    """INDEPENDENT second implementation of the approved rule (plain loops, different structure from build_view) used by check_view: returns the set of frozensets of parent keys"""
+    out = set(); by = defaultdict(list)
+    for p in parents: by[p.stream].append(p)
+    for st, ps in by.items():
+        ps = sorted(ps, key=lambda p: (p.first_ts, p.first_src, p.parent_id)); group = [ps[0]] if ps else []
+        for i in range(1, len(ps)):
+            a, b = ps[i - 1], ps[i]; gap = b.first_ts - a.first_ts if method == 'C1' else b.first_ts - a.last_ts
+            if gap <= g: group.append(b)
+            else: out.add(frozenset(x.key for x in group)); group = [b]
+        if group: out.add(frozenset(x.key for x in group))
+    return out
+
+
 def check_view(view, parents, cps, unattributable=()):
     seen_parent = set(); seen_cp = set(); total = 0; ids = set()
     by_key = {p.key: p for p in parents}
     for b in view['batches']:
         if b['batch_id'] in ids: raise InvariantViolation(f'duplicate batch id {b["batch_id"]}')
         ids.add(b['batch_id'])
+        if not b['batch_id'].startswith(f'INF:CLOSING_BATCH@{view["token"]}:'): raise InvariantViolation('batch id does not carry its convention token')
         for p in b['members']:
             if p.key in seen_parent: raise InvariantViolation(f'parent {p.key} in two batches of one view')
             seen_parent.add(p.key)
             if p.stream != b['stream']: raise InvariantViolation('member from another (underlying, expiry, session)')
             if not p.cps: raise InvariantViolation(f'parent {p.parent_id} has no closing portion (opening-only parents are not eligible)')
+            if p.qty != sum(r[8] for r in p.cps) or p.first_ts != min(r[6] for r in p.cps) or p.last_ts != max(r[6] for r in p.cps) or p.first_src != min(r[11] for r in p.cps): raise InvariantViolation(f'parent {p.parent_id} summary differs from its closing portions')
             for r in p.cps:
                 if r[0] != 'CP' or r[1] in seen_cp: raise InvariantViolation(f'closing portion {r[1]} missing / duplicated in one view')
                 if cps[r[1]] != r: raise InvariantViolation(f'closing portion {r[1]} differs from the observed layer')
+                if r[3] != p.parent_id: raise InvariantViolation(f'closing portion {r[1]} belongs to another parent')
                 seen_cp.add(r[1]); total += r[8]
     if seen_parent != set(by_key): raise InvariantViolation('eligible parents not represented exactly once')
     if seen_cp | set(unattributable) != set(cps) or seen_cp & set(unattributable): raise InvariantViolation('closing portions not represented exactly once (batched + unattributable != all)')
     if total + sum(cps[c][8] for c in unattributable) != sum(r[8] for r in cps.values()): raise InvariantViolation('closing quantity does not reconcile')
+    if {frozenset(p.key for p in b['members']) for b in view['batches']} != reference_partition(parents, view['method'], view['threshold_s']): raise InvariantViolation('batch memberships differ from the independent reference implementation of the approved rule')
     return True
 
 
@@ -169,3 +190,12 @@ def stability(views):
         s1, s2 = member_sets(views[('C1', g)]), member_sets(views[('C2', g)]); l1, l2 = link_pairs(views[('C1', g)]), link_pairs(views[('C2', g)])
         out['c1_vs_c2'].append(dict(threshold_s=g, c1_batches=len(s1), c2_batches=len(s2), identical_batches=len(s1 & s2), links_only_c1=len(l1 - l2), links_only_c2=len(l2 - l1), links_both=len(l1 & l2), c1_nested_in_c2=all(any(x <= y for y in s2) for x in s1)))
     return out
+
+
+def c2_rule_sensitivity(parents):
+    """how many batches C2 has under the approved rule vs the two rule variants the specification leaves open (tie order; predecessor reference). Statistics only."""
+    rows = []
+    for g in THRESHOLDS:
+        c1 = len(build_view(parents, 'C1', g)['batches']); a = len(build_view(parents, 'C2', g)['batches']); t = len(build_view(parents, 'C2', g, order='parent_id')['batches']); r = len(build_view(parents, 'C2', g, c2_ref='running_max')['batches'])
+        rows.append(dict(threshold_s=g, c1_batches=c1, c2_approved_rule=a, c2_tiebreak_parent_id=t, c2_running_max_reference=r, c2_approved_equals_c1=(a == c1)))
+    return rows

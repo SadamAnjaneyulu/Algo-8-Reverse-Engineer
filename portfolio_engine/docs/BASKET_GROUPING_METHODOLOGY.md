@@ -109,3 +109,9 @@ Primary candidate set: same underlying, same expiry, same right, **same parent o
 
 ## D7 — Demonstration cycles
 Frozen in `docs/DEMO_CYCLE_SELECTION.md` (formula) and `reports/DEMO_CYCLE_SELECTION_NOTE.md` (result) **before any grouping output exists**.
+
+
+## M2-C status (executed vs audited vs not implemented)
+* **Executed:** C1 first-fill chaining and C2 last-to-first chaining, thresholds 2/5/10/30/60 s, boundaries underlying × expiry × session, closing portions only (`reports/M2C_CLOSING_BATCH_REPORT.md`, data in `reports/m2c_data/`). Ordering `(first closing second, smallest closing source_row_id, parent_order_id)`; C2 predecessor = immediately preceding parent. Two points the approved text leaves open were **fixed by me and measured, not decided for you**: the tie order and the C2 predecessor reference (result: at most one link differs).
+* **Audited, `UNRESOLVED — REVIEW REQUIRED`, not implemented:** `CB_NUMBER_BLOCK_V1` (`reports/M2C_NUMBER_BLOCK_AUDIT.md`; interpretations N1–N5).
+* **Not implemented:** wing/body associations, Models A and B, cut/re-entry policies.

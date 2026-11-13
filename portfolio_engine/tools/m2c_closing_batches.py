@@ -11,18 +11,17 @@ ins, fills, src = H.generate(REPO); ls = LineageSet(fills, ins, 'HISTORICAL_OBSE
 before = {n: hashlib.sha256(ls.files['FIFO'][n].encode()).hexdigest() for n in ('observed_allocations.tsv', 'lifecycle.tsv', 'episodes.tsv')}
 parents, unattr, multi = cb.closing_parents(ls); views = cb.all_views(parents)
 for k, v in views.items(): cb.check_view(v, parents, ls.cp, unattr)                      # partition + reconciliation, every view
-after = {n: hashlib.sha256(LineageSet.__dict__ and ls.files['FIFO'][n].encode()).hexdigest() for n in before}
-import copy
 rec2 = LineageSet(fills, ins, 'HISTORICAL_OBSERVED_REPLAY', 'src'); assert all(hashlib.sha256(rec2.files['FIFO'][n].encode()).hexdigest() == before[n] for n in before)      # observed ledger unchanged by grouping
 S = dict(source_hashes=src, closing_parents=len(parents), closing_portions=len(ls.cp), closing_units=sum(r[8] for r in ls.cp.values()), unattributable_closing_portions=len(unattr), parents_in_multiple_streams=len(multi),
          mixed_parents_in_scope=sum(1 for p in parents if ls.roles[p.parent_id] == 'MIXED'), summary=cb.summarize(views, parents, ls), stability=cb.stability(views))
 mp = [p for p in parents if ls.roles[p.parent_id] == 'MIXED']; S['mixed_parents_closing_qty_vs_all_fill_qty'] = dict(closing_qty=sum(p.qty for p in mp), fill_qty=sum(f.quantity for f in fills if f.parent_order_id in {p.parent_id for p in mp}))
 ties = {}
 for p in parents: ties.setdefault((p.stream, p.first_ts), 0); ties[(p.stream, p.first_ts)] += 1
+S['c2_rule_sensitivity'] = cb.c2_rule_sensitivity(parents); S['parents_with_last_after_first'] = sum(1 for p in parents if p.last_ts > p.first_ts)
 S['equal_first_ts_groups'] = sum(1 for v in ties.values() if v > 1); S['parents_in_equal_first_ts_groups'] = sum(v for v in ties.values() if v > 1)
 files = {}
 for m in ('C1', 'C2'): files.update(cb.files_for_method(views, m, ls))
-man = dict(created_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), git_sha=provenance.git_sha(REPO), execution_mode='HISTORICAL_OBSERVED_REPLAY', grouping_version=cb.GROUPING_VERSION, source_hashes=src, files={}, views={f'{m}_{g}s': v['parameter_hash'] for (m, g), v in views.items()},
+man = dict(created_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), generated_at_head=provenance.git_sha(REPO), working_tree_dirty=bool(__import__('subprocess').run(['git', 'status', '--porcelain', '--', 'portfolio_engine/python', 'portfolio_engine/tools'], cwd=REPO, capture_output=True, text=True).stdout.strip()), execution_mode='HISTORICAL_OBSERVED_REPLAY', grouping_version=cb.GROUPING_VERSION, source_hashes=src, files={}, views={f'{m}_{g}s': v['parameter_hash'] for (m, g), v in views.items()},
            reproduce='python3 portfolio_engine/tools/m2c_closing_batches.py')
 for name, text in files.items():
     path = os.path.join(OUT, name + '.gz')

@@ -62,10 +62,10 @@ def test_different_contracts_and_both_rights_share_one_batch_and_are_only_descri
 def test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged():
     spec = [('open', CE, 0, 200, 'oa'), ('open', PE_, 0, 65, 'ob'), ('close', CE, 100, 65, 'A'), ('close', CE, 130, 65, 'A'), ('close', PE_, 110, 65, 'B')]
     ls, _ = make(spec); parents, un, multi, V = views_of(ls)
-    assert sets(V[('C1', 2)]) == [['A'], ['B']] and sets(V[('C2', 2)]) == [['A', 'B']]                                               # A spans 100..130; B starts at 110 inside it
+    assert sets(V[('C1', 2)]) == [['A'], ['B']] and sets(V[('C2', 2)]) == [['A', 'B']] and cb.stability(V)['c1_vs_c2'][0]['links_only_c2'] == 1 and cb.link_pairs(V[('C2', 2)]) == {(parents[0].key if parents[0].parent_id == 'A' else parents[1].key, parents[1].key if parents[1].parent_id == 'B' else parents[0].key)}                                               # A spans 100..130; B starts at 110 inside it
     link = V[('C2', 2)]['batches'][0]['links'][0]; assert link[0] == -20 and link[1] is True and link[2] is True
     rec = cb.batch_record(V[('C2', 2)]['batches'][0], V[('C2', 2)], ls); assert rec['has_interval_overlap'] == 1 and rec['n_strict_overlap_links'] == 1
-    assert V[('C1', 2)]['batch_id' if False else 'token'] != V[('C2', 2)]['token']                                                    # different families never share ids
+    assert V[('C1', 2)]['token'] != V[('C2', 2)]['token']                                                    # different families never share ids
     assert not ({b['batch_id'] for b in V[('C1', 2)]['batches']} & {b['batch_id'] for b in V[('C2', 2)]['batches']})
 
 
@@ -93,16 +93,26 @@ def test_inclusive_threshold_boundary_and_one_second_sensitivity_is_counted():
 
 def test_equal_first_timestamps_are_ordered_by_source_row_then_parent_id():
     spec = [('open', CE, 0, 195, 'o'), ('close', CE, 100, 65, 'B'), ('close', CE, 100, 65, 'A')]
-    ls, _ = make(spec); parents, *_ = views_of(ls); ordered = sorted(parents, key=lambda p: (p.first_ts, p.first_src, p.parent_id)); assert [p.parent_id for p in ordered] == ['B', 'A']          # source row decides, not the id
-    ties = [p for p in parents if p.first_ts == parents[0].first_ts]; assert len(ties) == 2
+    ls, _ = make(spec); parents, *_, V = views_of(ls); assert [p.parent_id for p in V[('C1', 10)]['batches'][0]['members']] == ['B', 'A']          # build_view itself: source row decides, not the id
+    assert [p.parent_id for p in cb.build_view(parents, 'C1', 10, order='parent_id')['batches'][0]['members']] == ['A', 'B']
+    row = next(r for r in cb.summarize(V, parents, ls) if (r['method'], r['threshold_s']) == ('C1', 10)); assert row['pairs_equal_first_ts'] == 1
 
 
-def test_C2_tie_dependence_is_deterministic_and_input_order_independent():
-    """A: first 0 last 5; B: first 0 last 0; C: first 3. Which of A/B precedes C (source-row order) decides the C2 gap; the rule is fixed, the result reproducible"""
-    spec = [('open', CE, 0, 300, 'o'), ('close', CE, 100, 65, 'A'), ('close', CE, 105, 65, 'A'), ('close', CE, 100, 65, 'B'), ('close', CE, 103, 65, 'C')]
-    ls, fills = make(spec); parents, *_ = views_of(ls); v1 = cb.build_view(parents, 'C2', 2)
-    ls2 = LineageSet(list(reversed(fills)), ls.instruments, M, 'src'); p2, *_ = cb.closing_parents(ls2); v2 = cb.build_view(p2, 'C2', 2)
-    assert [[p.parent_id for p in b['members']] for b in v1['batches']] == [[p.parent_id for p in b['members']] for b in v2['batches']]
+def _tie_scenario():
+    """PX: first 0, last 57 (earliest source row, id 'PX'); PA: first 0, last 0 (later source row, id 'PA'); PZ: first 30. Approved order (first_ts, source row): PX, PA, PZ -> PZ follows PA (last 0): gap 30. Order by parent id: PA, PX, PZ -> PZ follows PX (last 57): gap -27."""
+    spec = [('open', CE, 0, 300, 'o'), ('close', CE, 100, 65, 'PX'), ('close', CE, 157, 65, 'PX'), ('close', CE, 100, 65, 'PA'), ('close', CE, 130, 65, 'PZ')]
+    return make(spec)
+
+
+def test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured():
+    ls, fills = _tie_scenario(); parents, *_ , V = views_of(ls)
+    assert sets(V[('C2', 2)]) == [['PA', 'PX'], ['PZ']]                                                               # approved rule: PZ not linked
+    tb = cb.build_view(parents, 'C2', 2, order='parent_id'); rm = cb.build_view(parents, 'C2', 2, c2_ref='running_max')
+    assert sorted(sorted(p.parent_id for p in b['members']) for b in tb['batches']) == [['PA', 'PX', 'PZ']] and sorted(sorted(p.parent_id for p in b['members']) for b in rm['batches']) == [['PA', 'PX', 'PZ']]
+    row = cb.c2_rule_sensitivity(parents)[0]; assert (row['c1_batches'], row['c2_approved_rule'], row['c2_tiebreak_parent_id'], row['c2_running_max_reference']) == (2, 2, 1, 1)
+    with pytest.raises(InvariantViolation, match='independent reference'): cb.check_view(tb, parents, ls.cp, [])             # a view built with a non-approved rule is rejected by check_view
+    ls2 = LineageSet(list(reversed(fills)), ls.instruments, M, 'src'); p2, *_ = cb.closing_parents(ls2)
+    assert [[p.parent_id for p in b['members']] for b in cb.build_view(p2, 'C2', 2)['batches']] == [[p.parent_id for p in b['members']] for b in V[('C2', 2)]['batches']]
 
 
 def test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed():
@@ -187,7 +197,49 @@ def test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_o
 
 
 @pytest.mark.slow
+def test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds(real):
+    ins, fills, ls, parents, un, multi, V = real; rows = {r['threshold_s']: r for r in cb.c2_rule_sensitivity(parents)}
+    assert all(r['c2_approved_equals_c1'] for r in rows.values())                                                              # under the approved tie rule C2 == C1 ...
+    assert [rows[g]['c1_batches'] - rows[g]['c2_tiebreak_parent_id'] for g in (2, 5, 10, 30, 60)] == [1, 1, 1, 0, 0] and [rows[g]['c1_batches'] - rows[g]['c2_running_max_reference'] for g in (2, 5, 10, 30, 60)] == [1, 1, 1, 0, 0]   # ... but not under the other rules the spec leaves open
+    assert sum(1 for p in parents if p.last_ts > p.first_ts) == 1
+
+
+@pytest.mark.slow
 def test_real_outputs_reproduce_the_committed_manifest(real):
     ins, fills, ls, parents, un, multi, V = real; man = json.load(open(os.path.join(PE, 'reports', 'm2c_data', 'manifest.json')))
     for m in ('C1', 'C2'):
         for name, text in cb.files_for_method(V, m, ls).items(): assert hashlib.sha256(text.encode()).hexdigest() == man['files'][name + '.gz']['sha256_of_text'], name
+
+
+def test_overlap_flags_distinguish_touching_from_strict_overlap():
+    spec = [('open', CE, 0, 130, 'o'), ('open', PE_, 0, 130, 'o2'), ('close', CE, 100, 65, 'A'), ('close', PE_, 100, 65, 'B')]
+    ls, _ = make(spec); parents, *_ , V = views_of(ls); link = V[('C2', 2)]['batches'][0]['links'][0]; assert link[0] == 0 and link[1] is True and link[2] is False            # same second: closed intervals touch, no strict overlap
+    rec = cb.batch_record(V[('C2', 2)]['batches'][0], V[('C2', 2)], ls); assert rec['n_overlap_links'] == 1 and rec['n_strict_overlap_links'] == 0
+
+
+def test_batch_record_times_and_duration_and_nesting_detector():
+    spec = [('open', CE, 0, 325, 'o')] + [('close', CE, 100 + 10 * k, 65, f'P{k}') for k in range(5)]
+    ls, _ = make(spec); parents, *_ , V = views_of(ls); rec = cb.batch_record(V[('C1', 10)]['batches'][0], V[('C1', 10)], ls)
+    assert (rec['start_ts'], rec['end_ts'], rec['duration_s'], rec['n_parents'], rec['n_closing_portions'], rec['total_closing_qty'], rec['n_links']) == (BASE_TS + 100, BASE_TS + 140, 40, 5, 5, 325, 4)
+    W = dict(V); W[('C1', 2)] = V[('C1', 60)]; assert cb.stability(W)['across_thresholds'][0]['nested'] is False and cb.stability(V)['across_thresholds'][0]['nested'] is True      # the detector can say False
+
+
+def test_check_view_rejects_tampering_with_members_and_partitions():
+    spec = [('open', CE, 0, 195, 'o'), ('close', CE, 100, 65, 'A'), ('close', CE, 101, 65, 'B'), ('close', CE, 200, 65, 'C')]
+    ls, _ = make(spec); parents, un, multi, V = views_of(ls)
+    v = cb.build_view(parents, 'C1', 10); b0, b1 = v['batches']; b1['members'].append(b0['members'].pop())                       # move a parent to the neighbouring batch: still a partition, wrong rule
+    with pytest.raises(InvariantViolation, match='independent reference'): cb.check_view(v, parents, ls.cp, un)
+    v = cb.build_view(parents, 'C1', 10); v['batches'][0]['members'][0].qty += 1
+    try:
+        with pytest.raises(InvariantViolation): cb.check_view(v, parents, ls.cp, un)
+    finally: v['batches'][0]['members'][0].qty -= 1
+    v = cb.build_view(parents, 'C1', 10); v['batches'][0]['batch_id'] = v['batches'][0]['batch_id'].replace('CB_FIRST_FILL_GAP_10S', 'CB_FIRST_FILL_GAP_5S')
+    with pytest.raises(InvariantViolation, match='token'): cb.check_view(v, parents, ls.cp, un)
+
+
+def test_unattributable_parent_ids_in_both_spellings_are_excluded():
+    b = Builder('missing2'); i = b.add_inst(); b.fill(i, 0, -1, 260, 10000, parent='o')
+    for k, pid in enumerate(('x1', 'x2', 'x3', 'A')): b.fill(i, 100 + k, 1, 65, 9000, parent=pid)
+    ins, fills = b.out(); fills = [dc.replace(f, parent_order_id={'x1': '', 'x2': 'NA'}.get(f.parent_order_id, f.parent_order_id)) for f in fills]
+    ls = LineageSet(fills, ins, M, 'src'); parents, un, multi = cb.closing_parents(ls); assert len(un) == 2 and sorted(p.parent_id for p in parents) == ['A', 'x3']
+    for v in cb.all_views(parents).values(): cb.check_view(v, parents, ls.cp, un)

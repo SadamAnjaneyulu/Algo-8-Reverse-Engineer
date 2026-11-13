@@ -10,11 +10,11 @@ Question: are the displayed realized P&L values (₹2,100,552.00 FIFO, ₹2,096,
 
 **Independent source field:** `reconstructed_position_ledger.parquet` column `pnl` (price points × units = rupees, per the TP-01 `matching.py` docstring: "price points x units == rupees"), CLOSED pieces:
 
-| Convention | Σ `pnl` (₹) | field-level exact vs `realized_gross_pnl_rupees`? |
+| Convention | Σ `pnl` (₹) | vs `realized_gross_pnl_rupees` |
 |---|---:|---|
-| FIFO | 2,100,552.0000 | True |
-| LIFO | 2,096,874.5000 | True |
-| AVG | 2,100,111.6271 | True |
+| FIFO | 2,100,552.0000 | exact to the stored text |
+| LIFO | 2,096,874.5000 | exact to the stored text |
+| AVG | 2,100,111.6271 | within 0.005 (tolerance, not exact; TP-01 stores 2 decimals) |
 
 **Findings.** (1) TP-01's field is in **rupees** (field name and `matching.py` docstring); M1/M2-B store **paise × units** (price paise × quantity units), so rupees = paise ÷ 100. (2) For FIFO and LIFO the integer paise values equal the TP-01 rupee text × 100 **exactly** (₹2,100,552.00 = 210,055,200 paise; ₹2,096,874.50 = 209,687,450 paise); equality holds exactly before and after conversion. (3) AVG is floating point in both; TP-01 stores 2 decimals, so equality is to rounding. (4) The M1 test compared in rupees with abs tol 0.01; the audit here compares exact decimals. (5) The number shown as "₹2,100,552.00" is the **gross** realized P&L of closed quantity only: no charges (none in the data) and **no settlement P&L** for the 37,480 expired-unclosed units.
 

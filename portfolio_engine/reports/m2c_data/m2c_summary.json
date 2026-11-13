@@ -493,6 +493,49 @@
   "closing_qty": 7620,
   "fill_qty": 14105
  },
+ "c2_rule_sensitivity": [
+  {
+   "threshold_s": 2,
+   "c1_batches": 7127,
+   "c2_approved_rule": 7127,
+   "c2_tiebreak_parent_id": 7126,
+   "c2_running_max_reference": 7126,
+   "c2_approved_equals_c1": true
+  },
+  {
+   "threshold_s": 5,
+   "c1_batches": 3777,
+   "c2_approved_rule": 3777,
+   "c2_tiebreak_parent_id": 3776,
+   "c2_running_max_reference": 3776,
+   "c2_approved_equals_c1": true
+  },
+  {
+   "threshold_s": 10,
+   "c1_batches": 3065,
+   "c2_approved_rule": 3065,
+   "c2_tiebreak_parent_id": 3064,
+   "c2_running_max_reference": 3064,
+   "c2_approved_equals_c1": true
+  },
+  {
+   "threshold_s": 30,
+   "c1_batches": 2171,
+   "c2_approved_rule": 2171,
+   "c2_tiebreak_parent_id": 2171,
+   "c2_running_max_reference": 2171,
+   "c2_approved_equals_c1": true
+  },
+  {
+   "threshold_s": 60,
+   "c1_batches": 1502,
+   "c2_approved_rule": 1502,
+   "c2_tiebreak_parent_id": 1502,
+   "c2_running_max_reference": 1502,
+   "c2_approved_equals_c1": true
+  }
+ ],
+ "parents_with_last_after_first": 1,
  "equal_first_ts_groups": 3438,
  "parents_in_equal_first_ts_groups": 11139
 }

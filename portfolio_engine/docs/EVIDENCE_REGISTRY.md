@@ -33,11 +33,13 @@ Not implemented in M1 (so not registered): entries, strikes, sizing, hedges, exi
 |---|---|---|---|
 | Opening-cohort gap set {2,5,10,30,60} s (first-fill single linkage) | YES (D1, M2-A review) | NO | methodology doc |
 | TP-03 window attribution | YES (TP-03 config, frozen) | YES for entry-window rates (TP-03 Phase 1); **not** as basket cohorts | `TP03_ENTRY_REPORT.md` |
-| Closing-batch gaps 10 s primary / 2,5,30,60 s sensitivities | YES (TP-03 config `exit.batch`; D2) | **NO** (TP-03 Phase 2 never run) | methodology doc |
-| Last-to-first batch sensitivity | YES (D2) | NO | — |
-| Number-block variant | PARTIAL: text registered, **semantics ambiguous** | NO | methodology doc |
+| Closing-batch gaps 10 s primary / 2,5,30,60 s sensitivities (C1 first-fill chaining) | YES (TP-03 config `exit.batch`; D2) | **YES (M2-C)**: 3,065 batches at 10 s from 16,817 closing parents; TP-03 Phase 2 itself was never run | `reports/M2C_CLOSING_BATCH_REPORT.md` |
+| Last-to-first batch sensitivity (C2) | YES (D2) | **YES (M2-C)**: equals C1 under the approved tie rule; ±1 batch at ≤ 10 s under other open rules | same |
+| Number-block variant | PARTIAL: text registered, **semantics ambiguous** | **NO — source audit done, `UNRESOLVED — REVIEW REQUIRED`** | `reports/M2C_NUMBER_BLOCK_AUDIT.md` |
 | TP-02 ±5 s basket / ±10 s wing associations | YES (TP-02 config) | YES (TP-02 report) — separate analyses | `TP02_REPORT.md` |
 | Wing/body W1 same order-entry minute + right, ±60 s first-fill | YES (D6) | NO (TP-03 E6/E7 used a same-minute pairing for wing *selection* tests, not for lot links) | — |
 | FIFO/LIFO/AVG allocation, OA/CP decomposition, lifecycle, episodes | YES (M2-A design) | **YES (M2-B)**: 23,684 OA, 17,760 CP, 2,667 episodes, 26 mixed parents; reproduces TP-01 totals; Python/C++ byte-identical | `reports/M2B_RECONCILIATION_REPORT.md` |
 
 Executed M2-B results (class): OA/CP decomposition and episode identity vs TP-01 — CONFIRMED_OBSERVATION (convention-independent); FIFO/LIFO attributions — UNRESOLVED (convention; 15,889 of 17,760 closing portions are convention-sensitive); AVG ownership — NOT_TESTABLE; episode identity under alternative tie orders — conditional in 5 instruments (documented).
+
+Executed M2-C results (class): closing-batch membership at each threshold — CONFIRMED_OBSERVATION of temporal clustering; "a batch is one decision / one basket" — UNRESOLVED; exit trigger — NOT_TESTABLE without decision logs; number-block grouping — NOT implemented.

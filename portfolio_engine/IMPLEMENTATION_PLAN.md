@@ -40,3 +40,5 @@ Not in M2: cut/re-entry policies, alpha, new dependencies.
 
 ### M2 status
 M2-A approved (D1–D7). Demonstration cycles frozen: NIFTY 2026-06-30, SENSEX 2026-07-16. **M2-B complete and independently reviewed (`reports/M2B_REPORT.md`): PASS.** M2-C (Models A/B/C) awaits authorization; the number-block semantics need a decision first.
+
+M2-C (closing batches) executed for C1 and C2; number-block variant audited and left `UNRESOLVED — REVIEW REQUIRED`. Stopped for review; Models A and B, wing/body and later stages are not started.
