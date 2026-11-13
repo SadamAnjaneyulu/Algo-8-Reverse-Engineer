@@ -137,3 +137,8 @@ Layer 1 accounting invariants (synthetic + real); Layer 2 data-quality fixtures;
 
 ## 12. Evidence handling
 Each implemented Algo 8 behavior needs a registry row (source report, finding id if one exists, source field, evidence class, claim type, limitation, implementation mode). M1 implements **accounting only**; it implements no entry/exit/basket behavior, so no TRIGGER claim is made anywhere.
+
+
+---
+## 13. M2 extension (position lineage and baskets) — DRAFT
+Two layers (see `docs/POSITION_BASKET_ONTOLOGY.md`): **L1** observed, convention-independent (OpeningAllocation, ClosingPortion, InventoryEpisode, lifecycle) and **L2** analytical (ClosingAllocation, PositionSlice, three basket views, wing/body links). The core engine (C++ and Python reference) owns L1 and the convention-dependent allocation mechanics; Python owns Models B and C and the wing/body analytics (they need analytical inputs outside the core state). Rules: `docs/POSITION_LINEAGE_RULES.md`; grouping: `docs/BASKET_GROUPING_METHODOLOGY.md`; schema additions: `docs/SCHEMAS.md` (v1.1). Plugins and policies are **not** touched in M2: no cut or re-entry policy exists.

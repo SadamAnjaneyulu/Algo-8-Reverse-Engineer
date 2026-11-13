@@ -14,3 +14,15 @@ No finding identifier is invented: where TP-01 assigned none, the section of the
 | Synthetic fixtures | this project | generated | SYNTHETIC_TEST_ONLY | — | synthetic | never mixed with historical results |
 
 Not implemented in M1 (so not registered): entries, strikes, sizing, hedges, exits, basket cut, re-entry, any threshold such as the 4 % carry stop or the ₹2 lakh kill switch (they will be configurable *hypotheses*, not facts).
+
+
+## M2 entries (PLANNED — no claim is made until the corresponding test passes)
+| Planned behavior | Source | Class ceiling | Claim | Mode | Limitation |
+|---|---|---|---|---|---|
+| OpeningAllocation / ClosingPortion decomposition of fills | M1 role rule; TP-01 roles | CONFIRMED_OBSERVATION | OBSERVATION | observed replay | none beyond M1 (6 tie-ambiguous fills) |
+| FIFO / LIFO closing allocation | convention | UNRESOLVED (ownership not recorded) | OBSERVATION of a convention | observed replay | not a recorded fact |
+| AVG cost pool | convention | NOT_TESTABLE for individual ownership | — | observed replay | no lot ownership |
+| Model A cycle container | contract identity | CONFIRMED_OBSERVATION (membership); UNRESOLVED (basket) | ATTRIBUTION | observed replay | a container, not a basket |
+| Model B opening cohorts | TP-03 Phase 1 window attribution; module tags | CONFIRMED_ATTRIBUTION (membership); UNRESOLVED (decision unit) | ATTRIBUTION | observed replay | minute-precision submission time |
+| Model C closing batches | TP-03 Phase 0 registered gap rule (never executed) | CONFIRMED_OBSERVATION (clustering); UNRESOLVED (decision unit) | OBSERVATION | observed replay | exit trigger unknown |
+| Wing ↔ body links | TP-02 windows; TP-03 E6/E7 | WEAKLY_SUPPORTED (lot-level); STRONGLY_SUPPORTED (window-level 1:1, TP-03 E7) | ATTRIBUTION | observed replay | no leg identifiers in the export |

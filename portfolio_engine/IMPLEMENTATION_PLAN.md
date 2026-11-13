@@ -24,3 +24,15 @@ portfolio_engine/
   tools/       build + parity scripts
   runs/        (git-ignored) outputs by execution mode
 ```
+
+
+## Milestone 2 breakdown
+| Step | Scope | Gate |
+|---|---|---|
+| M2-A | ontology, lineage rules, grouping methodology, schema additions, branch reconciliation, decisions to approve | **review before any code** (this commit) |
+| M2-B | OA/CP/CA/slice/lifecycle in Python + C++, FIFO/LIFO/AVG, reversal handling, position query, I1–I7, I10–I11, parity | accounting tests + byte parity |
+| M2-C | Model A (both languages), Models B and C (Python), reconciliation I8/I9 | partition tests |
+| M2-D | wing/body methods W1–W5, unmatched/ambiguous quantification | uncertainty retained |
+| M2-E | forensics on one NIFTY and one SENSEX cycle, six chart families with saved data | charts reproduce from CSV |
+| M2-F | independent adversarial audit, regression counterexamples, final reports | PASS / PARTIAL |
+Not in M2: cut/re-entry policies, alpha, new dependencies.
