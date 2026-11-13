@@ -1,67 +1,158 @@
-# TP-03 pre-registration. Everything here is fixed BEFORE any entry or exit trigger test is run (TP03_PHASE0_AUDIT.md).
-# Changing a value after seeing a result is a deviation and must be recorded in the report.
-version: 1
-inputs:                       # read-only
+# TP-03 pre-registration, amended after review (v2). Fixed BEFORE any entry or exit trigger test is run.
+# A value changed after a result has been seen is a deviation and must be recorded in the report.
+version: 2
+amendment_note: "v2 fixes the v1 YAML syntax error and implements review points 1-7 (see TP03_PHASE0_AUDIT.md, section 0)"
+inputs:
   tp01_dir: tp_reconstruction/data
   tp02_dir: tp_reconstruction/tp02/data
   raw_trades: Trades_GKOHNP140.csv
   market_env_var: ALGO8_MARKET_DIR
+
+# ------------------------------------------------------------------ evidence standard (point 5)
+claim_types:
+  OBSERVATION: "a fact recorded in the data (a fill, a tag, a quantity multiple, an accounting identity)"
+  ATTRIBUTION: "which module issued an order, or when (tag, timestamp bounds); says nothing about WHY"
+  TRIGGER: "the condition that made the algorithm act (entry condition, selection rule, exit condition)"
 evidence_classes: [CONFIRMED, STRONGLY_SUPPORTED, WEAKLY_SUPPORTED, UNRESOLVED, NOT_TESTABLE]
 evidence_rubric:
-  CONFIRMED: direct decision evidence (decision timestamp or tag) or a deterministic reproduction >= 99 % of events in BOTH underlyings, with the registered falsifier failing to refute it
-  STRONGLY_SUPPORTED: >= 2 independent observations; effect in both underlyings and >= 60 % of cycles; Holm-adjusted p < 0.05 inside its family; effect size above the registered threshold; survives the decision-time and convention sensitivities
-  WEAKLY_SUPPORTED: effect present but fails one of the above
-  UNRESOLVED: the evidence cannot separate the competing explanations
-  NOT_TESTABLE: the required source data do not exist
-# ---------------------------------------------------------------- entry program
+  CONFIRMED_OBSERVATION_OR_ATTRIBUTION: "directly recorded: the fact or the module / timestamp itself"
+  CONFIRMED_TRIGGER: "requires (a) direct evidence of the condition itself (the condition value or its inputs recorded at the decision, for example the algorithm's own quote carried by an order) AND the rule linking it to the action, or (b) a deterministic reproduction of a rule that was specified before the fit (from an independent source such as a client statement), with no parameter fitted on the same data, reproduced in both underlyings with every exception explained, and a registered alternative rule matching materially worse. A match rate, however high, from a rule fitted or selected on these 65 inspected sessions is NEVER sufficient"
+  STRONGLY_SUPPORTED: "at least 2 independent observations; effect in both underlyings and in at least 60 percent of cycles; Holm-adjusted p < 0.05 inside its family; effect size above the registered threshold; survives the decision-time and convention sensitivities. This is the ceiling for an in-sample fitted trigger"
+  WEAKLY_SUPPORTED: "effect present but fails one of the above"
+  UNRESOLVED: "the evidence cannot separate the competing explanations"
+  NOT_TESTABLE: "the required source data do not exist"
+
+# ------------------------------------------------------------------ cycle-stop figures (point 7)
+cycle_stop_figures:
+  executed_mtm_at_trigger:
+    value_lakh_rupees: [-1.383, -1.419, -1.429]
+    meaning: "cumulative D-1 + D0 mark-to-market at the first s_ decision, 10 non-gap stops (SD 5.4-6.3 K)"
+    marks: "V4 s_ fill VWAP (-1.383); V1 recovered quotes of the s_ orders, else other orders' quotes within 60 s, else previous-minute close (-1.419); V3 same with a 300 s quote window (-1.429)"
+    source: "risk_rule_validation/FOLLOWUP_LEDGER_AND_STOP_AUDIT.md section 4; RISK_RULE_VALIDATION_REPORT.md section 5"
+  constant_identification_bounds:
+    value_lakh_rupees: [-1.22, -1.36]
+    meaning: "interval for the configured constant: lower magnitude = deepest MTM among cycles that did NOT stop (-1.218, MINUTE-CLOSE marks, non_stop_cycles_deepest_mtm.csv); upper magnitude = shallowest trigger quote among the stops (-1.356, quote marks)"
+    caveat: "the two ends use different mark conventions (minute closes understate trigger-time MTM: median -1.09 L one minute before the stops vs -1.42 L at the trigger), so the interval is a coarse bracket, not a calibrated one; the constant is UNRESOLVED"
+    source: "RISK_RULE_VALIDATION_REPORT.md section 5; FOLLOWUP_LEDGER_AND_STOP_AUDIT.md table of identification"
+  earlier_lineage_estimate:
+    value_lakh_rupees: [-1.30, -1.35]
+    meaning: "configured level estimated by lineage Y (register RSK-01) with executed MTM averaging -1.44 L (SD 6.8 K) because of 1-20 s check latency; superseded for the constant by the bounds above"
+  relation: "the executed MTM is deeper than the constant because of decision-to-fill latency and quote movement; the bounds constrain the constant, not the executed level"
+
+# ------------------------------------------------------------------ entry program
 entry:
-  d1_windows: ["09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:30", "13:30", "13:45", "14:00", "14:15", "14:30"]   # ENT-02 (17)
-  d1_control_windows: ["12:15", "12:45", "13:00", "13:15"]      # ENT-02 'inconsistent' windows: natural no-action / zero-quantity cases
+  window_definition: "[T - 2 s, T + 3 min), exclusive upper bound (source F07); an execution allowance, not a recovered signal timestamp"
+  d1_windows: ["09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:30", "13:30", "13:45", "14:00", "14:15", "14:30"]
+  d1_control_windows: ["12:15", "12:45", "13:00", "13:15"]
   opening_time: "09:16"
-  d0_windows: {start: "09:30", end: "15:00", step_minutes: 15}  # quarter windows on the expiry day (ENT-03); phase checked descriptively before any test
-  window_bounds_seconds: {before: 2, after: 180}                # T-2 s ... T+3 min
-  action_definition: opening short fill (role open, sell) by a body (num) parent order whose first fill lies inside the window
+  d0_windows: {start: "09:30", end: "15:00", step_minutes: 15}
+  window_bounds_seconds: {before: 2, after: 180}
+  window_accounting:                                   # point 1: every count is reported separately, never one merged percentage
+    denominators:
+      registered_17_windows: "17 windows x 32 pre-expiry sessions = 544 session-windows (selected because they recur: the 100 percent is selection-conditioned)"
+      control_windows: "4 windows x 32 = 128"
+      all_candidate_pre_expiry: "21 windows x 32 = 672 (unconditional)"
+      expiry_day: "23 windows x 33 expiry sessions = 759"
+    counters: [session_windows, any_new_short_any_module, body_new_short, paired_same_strike_CE_PE, partial_body_short, four_roles_new_quantity, net_short_growth, joint_four_roles_and_net_short_growth, no_action_active, no_action_uncertain, not_applicable]
+    source_figures:
+      F07_same_strike_pair_544_of_544: "reproduced by paired_same_strike_CE_PE on the 17 windows"
+      F09_four_roles_541_of_544: "reproduced by four_roles_new_quantity"
+      F10_net_short_growth_530_of_544: "this ledger gives 529 (definition difference of one window)"
+      joint_529_of_544: "source joint = retention + four roles + net short growth + Greek signs; the non-Greek joint (four roles AND net short growth) reproduces 529; the Greek components are source-only and are not recomputed (no Greeks are invented)"
+  attribution:                                         # point 2: decision attribution by submission, not by fill
+    submission_time_available: "body (num) orders: order-entry minute only (minute precision); tagged orders: validated tag time"
+    classes:
+      SUBMITTED_BEFORE_WINDOW: "order-entry minute < minute of (T - 2 s): decision belongs to an earlier time, not to this window"
+      AMBIGUOUS_BOUNDARY_MINUTE: "order-entry minute == minute of (T - 2 s): the order may have been submitted up to 58 s before the window opened"
+      ENTERED_INSIDE_WINDOW: "order-entry minute strictly inside the window minutes: decision attributable to the window"
+      DECISION_IN_WINDOW_FILL_OUTSIDE: "entered inside the window minutes but first fill after the window end: attributable to the window (fill-based counting would miss it)"
+    analysis_rule: "an action is attributed to a window by submission class, never by fill time alone; AMBIGUOUS_BOUNDARY_MINUTE is analysed both included and excluded"
+  state_snapshot:                                      # point 2: snapshot reconciled with S0 / S1
+    S0_earliest_decision_bound: "order-entry minute start (body orders) or tag time (tagged orders)"
+    S1_latest_decision_bound: "first fill of the attributed parent order"
+    primary_common_snapshot: "floor_minute(T - 2 s), identical for every window of every cycle so actions and no-actions share one rule"
+    guarantee: "every order attributed to the window (or ambiguous at the boundary) has S0 >= the snapshot time, so NO state measurement lies after the earliest possible decision time; fills strictly before the snapshot, bars completed at or before the snapshot minus one minute"
+    sensitivity_S1: "state at the last completed minute before the first fill of the attributed order (actions only; no-action windows use T); reported beside the primary, conclusions must hold under both"
+  action_classes:                                      # point 3: verified from the opening-fill counts by module (phase0_table3_opening_modules.csv)
+    BODY_SHORT_OPEN: "num sell opening a short (the scheduled / extra additions): pre-expiry 4,406 fills, expiry day 9,173"
+    BODY_LONG_OPEN: "num buy opening a long (203 pre-expiry, 977 expiry day): separate class"
+    WING_OPEN: "h_ buy opening a long (3,187 pre-expiry, 5,393 expiry day): hedge class"
+    LUMP_OPEN: "v_ buy opening a long (181 pre-expiry, 1 expiry day): v_ never opens a short; its sizing is a hedge question"
+    STOP_MODULE_SHORT_OPEN: "s_ sell opening a short (10 pre-expiry, 107 expiry day): stop-module overshoot, never a scheduled add"
+    OTHER_OPEN: "m_ and the single h_ sell opening (expiry day)"
+    rule: "a real opening order of ANY module is never NO_ACTION; a window containing only non-BODY_SHORT openings is ACTION_OTHER_CLASS. The scheduled-add analyses (E1-E3, E5) use BODY_SHORT_OPEN; the other classes are analysed under E6 / E7 / E8 and the stop work"
+    off_window_openings: "BODY_SHORT_OPEN fills outside every candidate window (44 percent of pre-expiry and 57 percent of expiry-day body short fills) are OFF_WINDOW_ACTION events, analysed under ENT-04 and not dropped"
   no_action_classes:
-    NO_ACTION_ACTIVE: no action AND (any algo fill in the same underlying and cycle within +-30 min of the window) AND index bars complete for [T-60, T]
-    NO_ACTION_UNCERTAIN: no action AND no algo activity within +-30 min, or incomplete bars
-    NOT_APPLICABLE: after a cycle-stop liquidation (s_), before the first entry of the cycle, or (expiry day) while the book holds no short (ENT-03)
-  strike_references:                                            # exact-match rates are reported under each, never chosen after the fact
-    R1: last completed 1-minute index close before the order-entry minute
-    R2: last completed 1-minute index close before the first fill
-    R3: 09:15 index close (opening only)
+    NO_ACTION_ACTIVE: "no BODY_SHORT_OPEN attributed to the window AND no other-class opening AND any algo fill of the same underlying and cycle within +-30 min of the window AND index bars complete for the 60 minutes before the snapshot"
+    NO_ACTION_UNCERTAIN: "no opening attributed AND (no algo activity within +-30 min OR incomplete bars)"
+    NOT_APPLICABLE: "after a cycle-stop liquidation, before the first fill of the session, or (expiry day) no open short at the snapshot (ENT-03)"
+  testability_gates:                                   # set after the structural counts were seen, before any test; they restrict what may be claimed, not what is found
+    min_minority_class_events_pooled: 30
+    min_minority_class_events_per_underlying: 10
+    min_cycles_per_underlying: 10
+    on_failure: "the test is reported NOT_TESTABLE (not 'no effect')"
+  permutation_design:                                  # point 4
+    invalid_scheme: "cycle x window strata: one observation per stratum (verified: 1.0), labels cannot be shuffled"
+    exchangeability_unit: "expiry cycle (underlying x expiry)"
+    primary_scheme: "cycle-block permutation: the whole outcome vector of one cycle is paired with the whole state vector of another cycle of the SAME underlying and day type; windows stay aligned so time-of-day and window effects are preserved; cells missing (NOT_APPLICABLE) in either cycle are dropped for that pair"
+    statistic: "per-window rank association between a state feature and the outcome across cycles, standardised within window and summed over windows (for binary outcomes: standardised mean difference)"
+    sensitivity_scheme: "within-window shuffle across cycles of the same underlying and day type (strata = underlying x window, 15-17 observations each on the pre-expiry day)"
+    verified_non_degenerate: "log10 of distinct cycle-block permutations is 8.7-14.6 (phase0_table4_permutation_design.csv), far above the number of permutations drawn"
+    registered_degeneracy: "E2 on the action outcome is degenerate on the 17 registered pre-expiry windows (544 of 544 act, 0 non-constant windows) and is therefore run on the 21 candidate windows (4 non-constant windows, 36 + 49 minority events) and on expiry-day applicable windows (5 and 7 non-constant windows, 17 + 27 minority events); quantity outcomes vary in every window"
+  strike_references: {R1: "last completed 1-minute index close before the order-entry minute", R2: "last completed 1-minute index close before the first fill", R3: "09:15 index close (opening only)"}
   strike_step: {NIFTY: 50, SENSEX: 100}
-  wing_budget_fraction: 0.025                                  # HDG-02, tested not assumed
-  wing_premium_references: [algo_quote_from_limit, last_completed_bar_close, fill_price]   # quote = limit / 1.15 (buy) or / 0.85 (sell); IOC wings and lump use the register's constants
+  wing_budget_fraction: 0.025
+  wing_premium_references: [algo_quote_from_limit, last_completed_bar_close, fill_price]
   base_units: {NIFTY: 65, SENSEX: 20}
-  state_times: {S0: earliest decision bound (order-entry minute start, or tag time), S1: latest bound (first fill)}
   state_features: [spot_ret_since_entry_bp, spot_ret_prev_window_bp, spot_ret_15m_bp, spot_ret_60m_bp, rv30_bp, range_expansion, dist_from_open_bp, minutes_to_expiry,
                    short_units_CE, short_units_PE, long_units_CE, long_units_PE, net_units_CE, net_units_PE, cycle_mtm, short_body_mtm, wing_mtm, atm_ce_premium, atm_pe_premium, atm_straddle_premium_change_since_entry,
                    ce_pe_premium_imbalance, adds_so_far, units_added_so_far, minutes_since_last_close, gross_short_notional]
-  margin_and_capital: NOT_TESTABLE                              # no margin, SPAN or capital data; only the proxy gross_short_notional is computed and labelled a proxy
-# ---------------------------------------------------------------- exit program
+  margin_and_capital: NOT_TESTABLE
+
+# ------------------------------------------------------------------ exit program
 exit:
   batch:
-    primary_gap_seconds: 10                                     # consecutive closing PARENT orders of one underlying closer than this are one batch
+    primary_gap_seconds: 10
     sensitivity_gap_seconds: [2, 5, 30, 60]
-    block_definition: closing parent orders of one app key and one order-number block with consecutive numbers (gap <= 20)
-    unit: parent order (partial fills of one parent are never counted as separate decisions)
-  decision_time_bounds: {num: [order_entry_minute, first_fill], tagged: tag time when validated}
-  state_times: [S0, S1]
+    block_definition: "closing parent orders of one app key and one order-number block with consecutive numbers (gap <= 20)"
+    unit: "parent order (partial fills of one parent are never counted as separate decisions)"
+  decision_time_bounds: {num: "[order_entry_minute start, first_fill]", tagged: "tag time when validated"}
+  state_rule: "state at S0 uses fills strictly before S0 and bars completed at or before minute(S0) - 1; S1 likewise at the first fill; a result is robust only if it holds at both"
   portfolio_metrics: [cycle_mtm, short_body_mtm, long_wing_mtm, side_mtm_CE, side_mtm_PE, open_short_units_CE, open_short_units_PE, open_long_units_CE, open_long_units_PE, minutes_to_expiry, units_closed_by_previous_batch, inventory_remaining]
-  position_metrics: [premium_ratio_to_reference (FIFO, LIFO, AVG), absolute_premium, position_mtm, position_age_minutes, position_lots, strike_distance_from_atm_steps]
-  selection_criteria_family: [position_metrics above]           # Holm family for 'which contracts are closed'
-  tick_minutes_of_15: [14, 29, 44, 59, 0, 15, 30, 45]           # residues examined; the maximum over all 15 residues is the test statistic
-  stop_readings: {source: risk_rule_validation, readings: [A, B, C, D, E], kill_switch_rupees: 200000, carry_pct: 0.04, capital_rupees: 20000000}   # unchanged from the risk-rule study; no threshold is tuned
+  position_metrics: [premium_ratio_FIFO, premium_ratio_LIFO, premium_ratio_AVG, absolute_premium, position_mtm, position_age_minutes, position_lots, strike_distance_from_atm_steps]
+  fifteen_minute:                                      # point 6: two separate tests, one consistent configuration
+    full_residue_test:
+      residues: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+      statistic: "maximum over all 15 minute-of-hour residues (mod 15) of the controlled closing hazard (residue vs the other residues)"
+      applied_to: [fill_minute, order_entry_minute]
+      strata: [day_type, phase, module, body_vs_wing, profit_vs_loss]
+      includes_pre_expiry_day: true
+    observed_clock_minute_candidates:                  # exact HH:MM candidates observed in TP-01 / TP-02; descriptive and tested separately, never used to select the residue
+      minutes: ["09:15", "14:29", "14:44", "14:58", "14:59", "15:14", "15:19"]
+      source: "tp_reconstruction/analysis/clock_minute_clusters.csv (TP-01 cluster rule)"
+    descriptive_grid_labels:
+      grid_A: [1, 16, 31, 46]
+      clock_B: [14, 29, 44, 59]
+      note: "labels from the register (MGT-02) used only for reporting; they are not test inputs"
+  stop_readings: {source: risk_rule_validation, readings: [A, B, C, D, E], kill_switch_rupees: 200000, carry_pct: 0.04, capital_rupees: 20000000}
   action_match_window_minutes: 5
-# ---------------------------------------------------------------- inference
+
+# ------------------------------------------------------------------ inference (point 7)
 inference:
   independence_unit: expiry_cycle
-  bootstrap_reps: 1000
-  permutations: 500
   seed: 20261114
-  permutation_strata: [cycle, day_type, hour]
-  families: {entry: Holm over all registered entry tests, exit: Holm over all registered exit tests}
-  effect_thresholds: {ratio: 1.5, auc: 0.55, excess_share: 0.10, exact_match_rate_confirm: 0.99}
+  bootstrap_reps: 2000
+  permutation_strata: "see entry.permutation_design; exit tests shuffle inside cycle x day-type x hour strata where the stratum holds more than one exposed minute"
+  permutations:
+    exploratory_development_runs: 500
+    final_inference: 10000
+    sequential_rule: "Besag-Clifford: draw permutations until 100 exceedances of the observed statistic or 10,000 draws, whichever comes first; p = (exceedances + 1) / (draws + 1). If a test ends the 10,000 draws with at most 10 exceedances it is extended to 100,000 draws under the same stopping rule (decided by the exceedance count only, before any significance claim)"
+    resolution_requirement: "smallest attainable p must be at most half of the smallest Holm threshold of its family"
+  holm_families:
+    entry: {size_upper_bound: 120, smallest_threshold: 0.000417, note: "E1 (1) + E2 (25 features x {action, quantity} x {pre-expiry, expiry day} = 100) + E3 (3) + E5 (6) + E6 (6) + E7 (3) + E8 (1)"}
+    exit: {size_upper_bound: 60, smallest_threshold: 0.000833, note: "X1 (8 position metrics x 3 conventions folded to 24) + X2 (4) + X3 (12) + X4 (full residue x 2 times + 7 clock minutes = 9) + X5 (4) + X6 (3) + wing release (4)"}
+    why_500_is_not_enough: "with 500 permutations the smallest attainable p is 1/501 = 0.0020, above both smallest thresholds, so no test could ever survive Holm; with 10,000 it is 0.0001 (entry 0.5 x 0.000417 = 0.00021: satisfied)"
+  effect_thresholds: {ratio: 1.5, auc: 0.55, excess_share: 0.10}
   min_events: 100
   min_cycles: 10
 boundaries: [no alpha discovery, no supervised model, no threshold sweep, no future information, no invented Greeks / IV / margin]
