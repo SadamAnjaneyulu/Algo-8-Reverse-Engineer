@@ -66,7 +66,13 @@ class Data:
         else: spot = np.nan
         f['minutes_to_expiry'] = (pd.Timestamp(expiry) + pd.Timedelta(hours=15, minutes=30) - t).total_seconds() / 60
         # --- inventory
-        last_fill = ev.groupby('contract_id').tail(1) if len(ev) else ev; inv = last_fill[last_fill.inventory_after != 0]
+        # net inventory per contract = signed sum of the fills before t (independent of the order of equal-second fills); the AVG-method reference price is taken from the latest fill whose FIFO inventory equals that net
+        if len(ev):
+            net = (ev.sgn * ev.qty_units).groupby(ev.contract_id).sum(); ev = ev.assign(_net=ev.contract_id.map(net)); last_fill = ev[ev.inventory_after == ev._net].groupby('contract_id').tail(1)
+            miss = set(net.index) - set(last_fill.contract_id); last_fill = pd.concat([last_fill, ev[ev.contract_id.isin(miss)].groupby('contract_id').tail(1)]) if miss else last_fill
+            last_fill = last_fill.assign(inventory_after=last_fill.contract_id.map(net))
+        else: last_fill = ev
+        inv = last_fill[last_fill.inventory_after != 0]
         for cp in ('CE', 'PE'):
             x = inv[inv.cp == cp]; f[f'short_units_{cp}'] = float((-x.inventory_after[x.inventory_after < 0]).sum()); f[f'long_units_{cp}'] = float(x.inventory_after[x.inventory_after > 0].sum()); f[f'net_units_{cp}'] = float(x.inventory_after.sum())
         # --- mark-to-market (average-cost basis) and the gross short notional proxy
@@ -98,6 +104,24 @@ class Data:
         add = self.parents[(self.parents.und == und) & (self.parents.expiry == expiry) & (self.parents.first_fill < t)]; f['adds_so_far'] = int(len(add)); f['units_added_so_far'] = float(add.base_units.sum())
         cl_ = ev[(ev.close_qty > 0)]; f['minutes_since_last_close'] = (t - cl_.t_fill.max()).total_seconds() / 60 if len(cl_) else np.nan
         return f
+
+    # ---------------------------------------------------------------- small helpers shared by the dataset and the tests
+    def idx_close(self, und, minute):
+        """index close of the bar that STARTS at `minute` (NaN if missing)"""
+        return float(self.idx[und].close.get(pd.Timestamp(minute), np.nan))
+
+    def opt_close(self, contract_id, minute):
+        ts, cl = self.opt.get(contract_id, (None, None))
+        if ts is None: return np.nan
+        j = np.searchsorted(ts, np.datetime64(pd.Timestamp(minute)), 'right') - 1
+        return float(cl[j]) if j >= 0 and ts[j] == np.datetime64(pd.Timestamp(minute)) else np.nan
+
+    def atm_straddle(self, und, expiry, last_minute):
+        """ATM CE + PE premium at the bar starting at last_minute (ATM from that bar's index close); NaN when either contract has no bar"""
+        spot = self.idx_close(und, last_minute)
+        if not np.isfinite(spot): return np.nan
+        K = int(round(spot / STEP[und]) * STEP[und]); a = self.opt_close(f'{und}|{pd.Timestamp(expiry):%Y-%m-%d}|CE|{K}', last_minute); b = self.opt_close(f'{und}|{pd.Timestamp(expiry):%Y-%m-%d}|PE|{K}', last_minute)
+        return a + b if np.isfinite(a) and np.isfinite(b) else np.nan
 
 
 FEATURES = ['spot_ret_since_entry_bp', 'spot_ret_prev_window_bp', 'spot_ret_15m_bp', 'spot_ret_60m_bp', 'rv30_bp', 'range_expansion', 'dist_from_open_bp', 'minutes_to_expiry', 'short_units_CE', 'short_units_PE', 'long_units_CE', 'long_units_PE', 'net_units_CE', 'net_units_PE',
