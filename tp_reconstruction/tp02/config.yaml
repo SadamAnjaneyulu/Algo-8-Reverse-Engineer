@@ -1,0 +1,50 @@
+# TP-02 pre-registration. Every definition below is fixed BEFORE any mechanism flag or hypothesis result was computed (TP02_PHASE0_AUDIT.md section 6).
+version: 1
+inputs:                                  # read-only TP-01 outputs (tp_reconstruction/data) and the raw trade file; Stage 2 / alpha files are never inputs
+  tp01_dir: tp_reconstruction/data
+  clock_clusters: tp_reconstruction/analysis/clock_minute_clusters.csv
+windows_seconds: [5, 30, 60, 120, 300]   # diagnostic windows (not assumed Algo 8 rules)
+stop:
+  confirmed: {module: s_}                # orders carrying the s_ tag (cycle-stop module)
+  cycle_window: {before_seconds: 60, after_seconds: 300}     # same underlying + expiry, around the first / last s_ execution of the cycle (execution time)
+  adverse_lookback_minutes: 15           # completed 1-minute marks of the contract before the closing fill
+  adverse_ratio: 1.25                    # mark / reference entry (any of FIFO, LIFO, AVG reference) >= this in the lookback -> STOP_POSSIBLE
+  adverse_ratio_sensitivity: [1.15, 1.50]
+  own_price_ratio: 1.25                  # exit price / reference >= this -> STOP_POSSIBLE (loss-side)
+clock:
+  registered_minutes_from: clock_clusters   # every is_cluster minute of TP-01 (not only 09:15 / 14:29 / 14:44)
+expiry:
+  phases: {OPEN: ["09:15", "09:30"], MIDDAY: ["09:30", "14:30"], LATE: ["14:30", "15:10"], FINAL: ["15:10", "15:30"], POST: ["15:30", "15:40"]}
+  expiry_management_flag: {day: EXPIRY_DAY, phases: [LATE, FINAL, POST]}
+replacement:
+  window_seconds: 60                     # an opening short fill (different parent order) in the same underlying and SAME RIGHT within this window after the closing fill
+  sequence_block_gap: 500                # order-number jump that starts a new concurrent number block (DAT-12); numbers are compared only inside a block
+  null_shifts_seconds: [-1800, -1200, -900, 900, 1200, 1800]   # time-shift null for association strength
+wing:
+  link_window_seconds: 10                # a long-direction (wing) closing fill in the same underlying and same right within +-10 s of a body closing
+  link_window_sensitivity: [60]
+basket:
+  window_seconds: 5                      # other short closings of other contracts in the same underlying within +-5 s
+  min_other_contracts: 2
+  used_in_unexplained_definition: false  # basket evidence is analysed (H4) but does not remove events from the unexplained population
+populations:
+  profit_stable: all three conventions label PROFIT (consensus_label == PROFIT)
+  clean_nonstop: [profit_stable, module == num, direction short, STOP_NOT_EVIDENCED, not order_ambiguous, no dq flag]
+  unexplained_body: clean_nonstop AND NOT (CLOCK registered minute OR EXPIRY_MANAGEMENT OR REPLACEMENT OR WING_LINKED)
+hypotheses:                              # operational definitions and the verdict rubric (section 7 of the audit)
+  H1_decay: {bins_pct: 5, min_count: 30, excess_ratio: 3.0, hazard_window_minutes: 5, strata: [day_type, hour]}
+  H2_schedule: {timer_period_seconds: 900, phase_bins: 15, minute_of_hour_period: 15}
+  H3_reduction: {rebuild_window_seconds: 300}
+  H4_basket: {mtm_bin_rupees: 25000}
+  H5_market: {features: [idx_ret_15m_bp, idx_ret_60m_bp, rv30_bp, range_expansion, dist_from_open_bp, minutes_to_expiry], strata: [day_type, hour]}
+  H6_replacement: {atm_step: {NIFTY: 50, SENSEX: 100}}
+verdict_rubric:
+  SUPPORTED: effect in all three conventions AND both underlyings AND >= 60 % of cycles AND Holm-adjusted bootstrap p < 0.05 AND >= 100 events
+  PARTIAL: effect present but fails at least one of the above
+  NOT_SUPPORTED: no elevation (controlled ratio within [0.8, 1.25]) or the opposite sign
+  INCONCLUSIVE: fewer than 100 events or fewer than 10 cycles
+inference:
+  bootstrap_unit: expiry_cycle           # (underlying, expiry); fills of one cycle are never treated as independent
+  bootstrap_reps: 1000
+  seed: 20261113
+  multiple_testing: Holm across the registered primary tests
