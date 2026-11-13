@@ -5,16 +5,17 @@
 #include <deque>
 #include <map>
 #include <set>
+#include "pe/lineage_recorder.hpp"
 #include "pe/types.hpp"
 namespace pe {
 enum class Method { FIFO, LIFO, AVG };
 inline Method parse_method(const std::string& s) { if (s == "FIFO") return Method::FIFO; if (s == "LIFO") return Method::LIFO; if (s == "AVG") return Method::AVG; throw EngineError("bad method " + s); }
 
-struct Lot { i64 q, px; };
+struct Lot { i64 q, px; std::string oa; };
 struct InstState {
   int dir = 0; i64 inv = 0; std::deque<Lot> lots; i64 pool_q = 0; double pool_px = 0.0; i64 opened = 0, closed = 0; i64 realized_i = 0; double realized_d = 0.0; i64 ep_n = 0; std::string eid;
 };
-struct Episode { std::string id; int dir = 0; i64 opened = 0, closed = 0; i64 realized_i = 0; double realized_d = 0.0; std::string ended_by = "open"; i64 n_open = 0, n_close = 0; };
+struct Episode { std::string id, instrument_id; bool started_by_reversal = false; i64 first_ts = 0, last_ts = 0; int dir = 0; i64 opened = 0, closed = 0; i64 realized_i = 0; double realized_d = 0.0; std::string ended_by = "open"; i64 n_open = 0, n_close = 0; };
 struct Role { std::string fill_id, instrument_id; i64 close_qty = 0, open_qty = 0, inventory_after = 0; bool reversal = false; std::string ep_closed, ep_opened; };
 struct Agg { i64 short_CE = 0, short_PE = 0, long_CE = 0, long_PE = 0, open_instruments = 0; };
 
@@ -22,7 +23,8 @@ class PortfolioState {
  public:
   Method method; bool avg; const std::map<std::string, Instrument>& ins;
   std::map<std::string, InstState> s; std::map<std::string, Episode> episodes; i64 opened = 0, closed = 0, reversal_fills = 0, reversal_units_reopened = 0, cash = 0, applied = 0; Agg agg; std::set<std::string> applied_ids;
-  PortfolioState(Method m, const std::map<std::string, Instrument>& i) : method(m), avg(m == Method::AVG), ins(i) {}
+  std::string method_name; LineageRecorder* lin = nullptr;
+  PortfolioState(Method m, const std::map<std::string, Instrument>& i, LineageRecorder* l = nullptr) : method(m), avg(m == Method::AVG), ins(i), method_name(m == Method::FIFO ? "FIFO" : (m == Method::LIFO ? "LIFO" : "AVG")), lin(l) {}
 
   void agg_change(const std::string& iid, i64 old_s, i64 new_s) {
     const bool call = ins.at(iid).is_call; i64& sh = call ? agg.short_CE : agg.short_PE; i64& lg = call ? agg.long_CE : agg.long_PE;
@@ -36,23 +38,29 @@ class PortfolioState {
     i64 close_q = 0, open_q = 0; std::string eid_close, eid_open; bool reversal = false;
     if (st.dir != 0 && sg == -st.dir) {
       close_q = std::min(q, st.inv); eid_close = st.eid; Episode& ep = episodes[eid_close]; const int d = st.dir;
-      if (avg) { const double pnl = (double)d * ((double)px - st.pool_px) * (double)close_q; st.pool_q -= close_q; st.realized_d += pnl; ep.realized_d += pnl; }
+      if (lin) lin->closing_portion(f, eid_close, close_q);
+      if (avg) { const double pnl = (double)d * ((double)px - st.pool_px) * (double)close_q; const double pool_before = st.pool_px; st.pool_q -= close_q; st.realized_d += pnl; ep.realized_d += pnl; if (lin) lin->allocation_pool(f, eid_close, close_q, pool_before, pnl, st.pool_q); }
       else {
         i64 need = close_q, pnl = 0;
         while (need > 0) {
-          Lot& lot = (method == Method::FIFO) ? st.lots.front() : st.lots.back(); const i64 take = std::min(need, lot.q); pnl += (i64)d * (px - lot.px) * take; lot.q -= take; need -= take;
+          Lot& lot = (method == Method::FIFO) ? st.lots.front() : st.lots.back(); const i64 take = std::min(need, lot.q); const i64 p_ = (i64)d * (px - lot.px) * take; pnl += p_; lot.q -= take; need -= take;
+          if (lin) lin->allocation_lot(f, lot.oa, take, lot.px, p_, lot.q);
           if (lot.q == 0) { if (method == Method::FIFO) st.lots.pop_front(); else st.lots.pop_back(); }
         }
         st.realized_i += pnl; ep.realized_i += pnl;
       }
       st.inv -= close_q; st.closed += close_q; closed += close_q; ep.closed += close_q; ep.n_close += 1;
+      ep.last_ts = f.ts;
       if (st.inv == 0) { ep.ended_by = (q == close_q) ? "flat" : "reversal"; st.dir = 0; st.lots.clear(); st.pool_q = 0; st.pool_px = 0.0; }
+      if (lin) lin->lifecycle(f, eid_close, st.inv > 0 ? "PARTIALLY_REDUCED" : (q == close_q ? "CLOSED" : "REVERSED"), close_q, st.inv == 0 ? 0 : st.inv * d, false);
       open_q = q - close_q; if (open_q > 0) reversal = true;
     } else open_q = q;
     if (open_q > 0) {
-      if (st.dir == 0) { st.dir = sg; st.ep_n += 1; st.eid = f.instrument_id + "#" + std::to_string(st.ep_n); Episode e; e.id = st.eid; e.dir = sg; episodes[st.eid] = e; }
-      eid_open = st.eid; Episode& ep = episodes[eid_open];
-      if (avg) { st.pool_px = (st.pool_px * (double)st.pool_q + (double)(px * open_q)) / (double)(st.pool_q + open_q); st.pool_q += open_q; } else st.lots.push_back({open_q, px});
+      const bool created = st.dir == 0;
+      if (created) { st.dir = sg; st.ep_n += 1; st.eid = f.instrument_id + "#" + std::to_string(st.ep_n); Episode e; e.id = st.eid; e.instrument_id = f.instrument_id; e.dir = sg; e.started_by_reversal = reversal; e.first_ts = f.ts; e.last_ts = f.ts; episodes[st.eid] = e; }
+      eid_open = st.eid; Episode& ep = episodes[eid_open]; ep.last_ts = f.ts;
+      if (avg) { st.pool_px = (st.pool_px * (double)st.pool_q + (double)(px * open_q)) / (double)(st.pool_q + open_q); st.pool_q += open_q; } else st.lots.push_back({open_q, px, "OA:" + f.fill_id});
+      if (lin) { lin->opening_allocation(f, eid_open, open_q); lin->lifecycle(f, eid_open, created ? "CREATED" : "ADDED", open_q, (st.inv + open_q) * st.dir, reversal && created); }
       st.inv += open_q; st.opened += open_q; opened += open_q; ep.opened += open_q; ep.n_open += 1;
     }
     if (reversal) { reversal_fills += 1; reversal_units_reopened += open_q; }

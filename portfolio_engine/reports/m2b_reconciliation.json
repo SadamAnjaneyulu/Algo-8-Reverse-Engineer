@@ -1,0 +1,128 @@
+{
+ "source_hashes": {
+  "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "tp01_ledger_sha256": "3b47c55150d79535a43fcea485a41e8e7bd76b201384fd89eae9a88f2c736053"
+ },
+ "events": 41421,
+ "invariants_passed": [
+  "I1",
+  "I2",
+  "I4",
+  "I3",
+  "I7",
+  "I6",
+  "I-AVG-no-ownership",
+  "I5",
+  "I11",
+  "I10",
+  "I-observed-layer-identical-across-conventions"
+ ],
+ "opening_allocations": 23684,
+ "closing_portions": 17760,
+ "episodes": 2667,
+ "episodes_FIFO_ids_equal_tp01": true,
+ "episodes_FIFO_fields_equal_tp01": true,
+ "episodes_LIFO_ids_equal_tp01": true,
+ "episodes_LIFO_fields_equal_tp01": true,
+ "episodes_AVG_ids_equal_tp01": true,
+ "episodes_AVG_fields_equal_tp01": true,
+ "opened_units": 1414545,
+ "closed_units": 1377065,
+ "remaining_units": 37480,
+ "oa_units": 1414545,
+ "cp_units": 1377065,
+ "realized_rupees_from_allocations": {
+  "FIFO": 2100552.0,
+  "LIFO": 2096874.5,
+  "AVG": 2100111.627140885
+ },
+ "realized_rupees_tp01": {
+  "FIFO": 2100552.0,
+  "LIFO": 2096874.5,
+  "AVG": 2100111.63
+ },
+ "tp02_timeline_rows": 17760,
+ "cp_source_rows_equal_tp02_close_rows": true,
+ "cp_quantities_equal_tp02_qty_closed": 0,
+ "parents_total": 39874,
+ "parent_roles": {
+  "OPENING_ONLY": 23057,
+  "CLOSING_ONLY": 16791,
+  "MIXED": 26
+ },
+ "mixed_parents": 26,
+ "mixed_parents_with_a_reversal_fill": 23,
+ "mixed_parents_without_reversal": 3,
+ "mixed_parent_double_count_check": true,
+ "mixed_parent_list": [
+  "11747185",
+  "11747186",
+  "12489618",
+  "h_01082836661112",
+  "h_08094212394937",
+  "h_09093824293799",
+  "h_23093122795492",
+  "h_23093312426291",
+  "h_25085351760551",
+  "h_25093109017177",
+  "h_25093610984178",
+  "h_30084825701151",
+  "h_30093142028251",
+  "h_30093557034905",
+  "s_06035240918762",
+  "s_16053046299662",
+  "s_18034507000846",
+  "s_20034413657253",
+  "s_20034413657345",
+  "s_20034413657423",
+  "s_20034413657763",
+  "s_22084429338804",
+  "s_24034500563733",
+  "s_24034500565627",
+  "s_31091625053407",
+  "s_31091625053962"
+ ],
+ "closing_portions_convention_sensitive_fifo_vs_lifo": 15889,
+ "closing_portion_units_convention_sensitive": 1193495,
+ "remaining_slices": {
+  "FIFO": 37480,
+  "LIFO": 37480,
+  "AVG": 37480
+ },
+ "terminal_status_counts": {
+  "CLOSED": 2563,
+  "EXPIRED_UNCLOSED": 81,
+  "REVERSED": 23
+ },
+ "observed_layer_hash": {
+  "FIFO": "c9ff014a5919e0fe",
+  "LIFO": "c9ff014a5919e0fe",
+  "AVG": "c9ff014a5919e0fe"
+ },
+ "tie_order_observed_rows_differing": 42,
+ "tie_order_fills_differing": 20,
+ "tie_order_instruments_differing": 5,
+ "instruments_with_mixed_side_same_second_fills": 46,
+ "ambiguous_instruments_tp01_close_qty_definition": 3,
+ "tie_order_differences_confined_to_mixed_side_instruments": true,
+ "tie_order_differences_confined_to_tp01_ambiguous_instruments": false,
+ "parents_tsv_rows": 39874,
+ "parents_tsv_missing": {
+  "algo_id": 1
+ },
+ "parents_tsv_conflicts": {},
+ "parent_units_equal_fill_units": true,
+ "targets": {
+  "opening_allocations": 23684,
+  "closing_portions": 17760,
+  "episodes": 2667,
+  "mixed_parents": 26
+ },
+ "targets_met": {
+  "opening_allocations": true,
+  "closing_portions": true,
+  "episodes": true,
+  "mixed_parents": true,
+  "tp02_rows": true
+ }
+}

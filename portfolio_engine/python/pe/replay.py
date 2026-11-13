@@ -7,7 +7,7 @@ TIE_KEY = {'src': lambda s: 0, 'sells_first': lambda s: 0 if s < 0 else 1, 'buys
 
 
 class RunResult:
-    def __init__(self): self.dump = ''; self.state = None; self.roles = []; self.snapshots = []; self.warnings = {}; self.meta = {}; self.checks = []
+    def __init__(self): self.lineage = None; self.last_day = 0; self.instruments = None; self.dump = ''; self.state = None; self.roles = []; self.snapshots = []; self.warnings = {}; self.meta = {}; self.checks = []
 
 
 def order_events(fills, tie_order):
@@ -19,7 +19,7 @@ def order_events(fills, tie_order):
 def _fmt(x, avg): return f'{x:.6f}' if avg else str(int(x))
 
 
-def replay(fills, instruments, mode, method='FIFO', tie_order='src', snapshot_interval=0, strict=False):
+def replay(fills, instruments, mode, method='FIFO', tie_order='src', snapshot_interval=0, strict=False, lineage=False):
     if mode not in MODES: raise EngineError(f'unknown mode {mode}')
     if method not in METHODS or tie_order not in TIE_ORDERS: raise EngineError('bad method / tie order')
     for f in fills:                                                          # contamination guard: checked BEFORE anything is applied
@@ -31,7 +31,9 @@ def replay(fills, instruments, mode, method='FIFO', tie_order='src', snapshot_in
     for f in live: groups.setdefault((f.instrument_id, f.timestamp_s), set()).add(f.side)
     warn['TIE_GROUP_MIXED_SIDE'] = sum(1 for v in groups.values() if len(v) == 2)
     warn['PARTIAL_FILL_ROWS'] = sum(1 for f in live if f.order_status == 'PartiallyFilled'); warn['MISSING_MARKS'] = 1
-    state = PortfolioState(method, instruments); res = RunResult(); signed = {}; parents = {}; snaps = []; roles = []
+    from .lineage import LineageRecorder
+    rec = LineageRecorder(method) if lineage else None
+    state = PortfolioState(method, instruments, rec); res = RunResult(); signed = {}; parents = {}; snaps = []; roles = []
     def snap(seq, ts):
         a = state.agg; short = a['short_CE'] + a['short_PE']; long = a['long_CE'] + a['long_PE']
         snaps.append(dict(seq=seq, timestamp_s=ts, date=day_iso(ist_day(ts)), open_instruments=a['open_instruments'], short_CE=a['short_CE'], short_PE=a['short_PE'], long_CE=a['long_CE'], long_PE=a['long_PE'],
@@ -69,6 +71,7 @@ def replay(fills, instruments, mode, method='FIFO', tie_order='src', snapshot_in
     for pid in sorted(parents):
         p = parents[pid]; status = 'COMPLETE' if p['units'] == p['requested'] else ('UNFILLED_REMAINDER' if p['units'] < p['requested'] else 'OVERFILLED'); L.append(f'PARENT\t{pid}\t{p["fills"]}\t{p["units"]}\t{p["requested"]}\t{status}')
     for k in WARN_CODES: L.append(f'WARN\t{k}\t{warn[k]}')
+    res.lineage = rec; res.last_day = last_day; res.instruments = instruments
     res.dump = '\n'.join(L) + '\n'; res.state = state; res.roles = roles; res.snapshots = snaps; res.warnings = warn; res.meta = dict(meta)
     return res
 
@@ -77,3 +80,11 @@ def roles_tsv(roles):
     L = ['fill_id\tinstrument_id\tclose_qty\topen_qty\tinventory_after\tis_reversal\tepisode_closed\tepisode_opened']
     for r in sorted(roles, key=lambda r: r.fill_id): L.append(f'{r.fill_id}\t{r.instrument_id}\t{r.close_qty}\t{r.open_qty}\t{r.inventory_after}\t{int(r.is_reversal)}\t{r.episode_closed or "-"}\t{r.episode_opened or "-"}')
     return '\n'.join(L) + '\n'
+
+
+def lineage_files(res):
+    """name -> text for the M2-B lineage outputs of one convention (observed files are convention-independent by construction and by test)"""
+    from . import lineage as ln
+    m = res.state.method
+    return {'observed_allocations.tsv': ln.observed_tsv(res.lineage), 'lifecycle.tsv': ln.lifecycle_tsv(res.lineage), 'episodes.tsv': ln.episodes_tsv(res.state, res.instruments, res.last_day),
+            f'ca_{m}.tsv': ln.ca_tsv(res.lineage, res.state.avg), f'slices_{m}.tsv': ln.slices_tsv(res.state, res.lineage)}

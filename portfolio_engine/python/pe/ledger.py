@@ -17,8 +17,9 @@ class Role:
 
 
 class PortfolioState:
-    def __init__(self, method, instruments):
+    def __init__(self, method, instruments, lineage=None):
         assert method in METHODS
+        self.lin = lineage                                   # optional LineageRecorder (M2-B); None = M1 behaviour exactly
         self.method = method; self.avg = method == 'AVG'; self.instruments = instruments; self.s = {}; self.episodes = {}
         self.opened = 0; self.closed = 0; self.reversal_fills = 0; self.reversal_units_reopened = 0; self.cash = 0; self.applied = 0
         self.agg = dict(short_CE=0, short_PE=0, long_CE=0, long_PE=0, open_instruments=0)
@@ -35,7 +36,7 @@ class PortfolioState:
 
     def _episode(self, iid, direction, ts, reversal):
         st = self.s[iid]; st.ep_n += 1; eid = f'{iid}#{st.ep_n}'
-        self.episodes[eid] = dict(episode_id=eid, direction=direction, opened=0, closed=0, realized=0.0 if self.avg else 0, ended_by='open', n_open_fills=0, n_close_fills=0, started_by_reversal=reversal)
+        self.episodes[eid] = dict(episode_id=eid, instrument_id=iid, direction=direction, opened=0, closed=0, realized=0.0 if self.avg else 0, ended_by='open', n_open_fills=0, n_close_fills=0, started_by_reversal=reversal, first_ts=ts, last_ts=ts)
         return eid
 
     def apply_fill(self, f):
@@ -48,24 +49,31 @@ class PortfolioState:
         close_q = 0; open_q = 0; eid_close = None; eid_open = None; reversal = False; m = self.method
         if st.dir != 0 and sg == -st.dir:                                        # against the inventory: close
             close_q = min(q, st.inv); eid_close = st.eid; ep = self.episodes[eid_close]; d = st.dir
+            if self.lin: self.lin.closing_portion(f, eid_close, close_q)
             if m == 'AVG':
-                pnl = d * (px - st.pool_px) * close_q; st.pool_q -= close_q
+                pnl = d * (px - st.pool_px) * close_q; pool_before = st.pool_px; st.pool_q -= close_q
+                if self.lin: self.lin.allocation_pool(f, eid_close, close_q, pool_before, pnl, st.pool_q)
             else:
                 need = close_q; pnl = 0
                 while need > 0:
-                    lot = st.lots[0] if m == 'FIFO' else st.lots[-1]; take = min(need, lot[0]); pnl += d * (px - lot[1]) * take; lot[0] -= take; need -= take
+                    lot = st.lots[0] if m == 'FIFO' else st.lots[-1]; take = min(need, lot[0]); p_ = d * (px - lot[1]) * take; pnl += p_; lot[0] -= take; need -= take
+                    if self.lin: self.lin.allocation_lot(f, eid_close, lot[2], take, lot[1], p_, lot[0])
                     if lot[0] == 0: st.lots.popleft() if m == 'FIFO' else st.lots.pop()
             st.realized += pnl; ep['realized'] += pnl; st.inv -= close_q; st.closed += close_q; self.closed += close_q; ep['closed'] += close_q; ep['n_close_fills'] += 1
+            ep['last_ts'] = f.timestamp_s
             if st.inv == 0:
                 ep['ended_by'] = 'flat' if q == close_q else 'reversal'; st.dir = 0; st.lots.clear(); st.pool_q = 0; st.pool_px = 0.0
+            if self.lin: self.lin.lifecycle(f, eid_close, 'PARTIALLY_REDUCED' if st.inv > 0 else ('CLOSED' if q == close_q else 'REVERSED'), close_q, 0 if st.inv == 0 else st.inv * st.dir, False)
             open_q = q - close_q
             if open_q > 0: reversal = True
         else: open_q = q
         if open_q > 0:
-            if st.dir == 0: st.dir = sg; st.eid = self._episode(iid, sg, f.timestamp_s, reversal)
-            eid_open = st.eid; ep = self.episodes[eid_open]
+            created = st.dir == 0
+            if created: st.dir = sg; st.eid = self._episode(iid, sg, f.timestamp_s, reversal)
+            eid_open = st.eid; ep = self.episodes[eid_open]; ep['last_ts'] = f.timestamp_s
             if m == 'AVG': st.pool_px = (st.pool_px * st.pool_q + px * open_q) / (st.pool_q + open_q); st.pool_q += open_q
-            else: st.lots.append([open_q, px])
+            else: st.lots.append([open_q, px, f'OA:{f.fill_id}'])
+            if self.lin: self.lin.opening_allocation(f, eid_open, open_q); self.lin.lifecycle(f, eid_open, 'CREATED' if created else 'ADDED', open_q, (st.inv + open_q) * st.dir, reversal and created)
             st.inv += open_q; st.opened += open_q; self.opened += open_q; ep['opened'] += open_q; ep['n_open_fills'] += 1
         if reversal: self.reversal_fills += 1; self.reversal_units_reopened += open_q
         new_signed = st.inv * st.dir if st.dir else 0

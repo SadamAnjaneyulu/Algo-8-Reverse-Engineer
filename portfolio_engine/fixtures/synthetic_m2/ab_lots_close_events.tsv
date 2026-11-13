@@ -1,0 +1,5 @@
+# SYNTHETIC_TEST M2-B fixture ab_lots_close; not Algo 8 data
+schema_version	execution_mode	fill_id	source_row_id	parent_order_id	module_tag	instrument_id	timestamp_s	side	quantity	price_paise	requested_quantity	order_status	is_duplicate_fill	evidence_source
+pe.fill.v1	SYNTHETIC_TEST	S000001	1	A	num	NIFTY|2026-01-08|CE|24000	1767584760	-1	65	10000	65	Filled	0	synthetic:ab_lots_close:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000002	2	B	num	NIFTY|2026-01-08|CE|24000	1767584820	-1	65	12000	65	Filled	0	synthetic:ab_lots_close:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000003	3	C	num	NIFTY|2026-01-08|CE|24000	1767584880	1	65	11000	65	Filled	0	synthetic:ab_lots_close:seed=0

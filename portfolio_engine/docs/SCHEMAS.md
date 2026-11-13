@@ -83,3 +83,10 @@ Member: `basket_id, member_type(EPISODE|OA|CP), member_id, quantity, provenance,
 `link_id, method(W1..W5), level(OPENING|CLOSING), wing_id, body_id, time_diff_s, units_ratio, right, strike_distance, wing_px_paise, body_px_paise, weight, alternatives, unmatched_wing_qty, evidence_class, provenance`
 
 Compatibility rule: any later change to an existing v1/v1.1 column is a **breaking change and needs review**.
+
+
+## v1.1 refinement recorded at M2-B implementation (before any consumer existed; approved scope D4)
+* `parents.tsv` final columns: `parent_order_id, module_tag, order_entry_minute_s, app_key_full, app_key_last6, order_number, algo_id, first_fill_ts, last_fill_ts, n_fills, filled_units, requested_units, first_source_row, last_source_row, parent_role`. Missing = literal `NA`; `CONFLICT` marks inconsistent metadata inside one parent (none exist). `app_key_last6` is the key TP-01/TP-02 used (last 6 characters of the 32-character raw column 166); `algo_id` = raw column 144.
+* Allocation files are split by layer so the observed layer is **byte-identical across conventions** (asserted by the engine): `observed_allocations.tsv` (OA, CP), `lifecycle.tsv`, `episodes.tsv` (observed); `ca_<CONV>.tsv`, `slices_<CONV>.tsv` (analytical). Column lists: `reports/M2_DATA_DICTIONARY.md`.
+* `allocation_uncertainty` is **not** a column of the CA rows (a single-convention run cannot know it); it is an analytical comparison between FIFO and LIFO (`LineageSet.sensitivity`, per ClosingPortion: `NONE` / `CONVENTION_SENSITIVE`).
+* M1 files and their semantics are unchanged; `replay(..., lineage=False)` is the M1 behaviour and a test proves lineage recording does not change any M1 dump.

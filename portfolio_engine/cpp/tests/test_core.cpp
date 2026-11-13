@@ -2,6 +2,7 @@
 #include <iostream>
 #include "pe/io.hpp"
 #include "pe/replay.hpp"
+#include "pe/lineage.hpp"
 using namespace pe;
 static int failures = 0, checks = 0;
 #define CHECK(c) do { ++checks; if (!(c)) { ++failures; std::cerr << "FAIL line " << __LINE__ << ": " #c "\n"; } } while (0)
@@ -23,5 +24,16 @@ int main() {
   { bool thrown = false; try { replay({F("a", 1, 0, -1, 65, 10000, false, "HISTORICAL_OBSERVED_REPLAY")}, ins, "SYNTHETIC_TEST", "FIFO", "src", 0, false); } catch (const ModeContaminationError&) { thrown = true; } CHECK(thrown); }
   { PortfolioState st(Method::FIFO, ins); st.apply_fill(F("a", 1, 0, -1, 65, 10000)); bool thrown = false; try { st.apply_fill(F("a", 1, 0, -1, 65, 10000)); } catch (const InvariantViolation&) { thrown = true; } CHECK(thrown); }     // a fill is applied exactly once
   { PortfolioState st(Method::FIFO, ins); st.apply_fill(F("a", 1, 0, -1, 65, 10000)); st.apply_fill(F("b", 2, 10, 1, 65, 9000)); CHECK(st.signed_inventory("NIFTY|2026-01-08|CE|24000") == 0); }
+  { // lineage: A 65@100, B 65@120, buy 65@110 -> FIFO closes A (-65000), LIFO closes B (+65000), AVG pool with no ownership; observed layer identical
+    std::vector<Fill> f = {F("a", 1, 0, -1, 65, 10000), F("b", 2, 60, -1, 65, 12000), F("c", 3, 120, 1, 65, 11000)};
+    auto rf = replay(f, ins, "SYNTHETIC_TEST", "FIFO", "src", 0, true, true), rl = replay(f, ins, "SYNTHETIC_TEST", "LIFO", "src", 0, true, true), ra = replay(f, ins, "SYNTHETIC_TEST", "AVG", "src", 0, true, true);
+    CHECK(rf.lineage_files["ca_FIFO.tsv"].find("OA:a\t65\t10000\t11000\t-65000") != std::string::npos); CHECK(rl.lineage_files["ca_LIFO.tsv"].find("OA:b\t65\t12000\t11000\t65000") != std::string::npos);
+    CHECK(ra.lineage_files["ca_AVG.tsv"].find("NOT_IDENTIFIABLE") != std::string::npos && ra.lineage_files["ca_AVG.tsv"].find("OA:") == std::string::npos);
+    CHECK(rf.lineage_files["observed_allocations.tsv"] == rl.lineage_files["observed_allocations.tsv"] && rf.lineage_files["observed_allocations.tsv"] == ra.lineage_files["observed_allocations.tsv"]);
+    CHECK(rf.lineage_files["lifecycle.tsv"] == ra.lineage_files["lifecycle.tsv"] && rf.lineage_files["episodes.tsv"] == rl.lineage_files["episodes.tsv"]); }
+  { // reversal: short 100, buy 130 -> CP 100 (episode #1 REVERSED) + OA 30 (new episode #2, started by reversal)
+    std::vector<Fill> f = {F("a", 1, 0, -1, 100, 10000), F("b", 2, 60, 1, 130, 9000)}; auto r = replay(f, ins, "SYNTHETIC_TEST", "FIFO", "src", 0, true, true); const std::string& o = r.lineage_files["observed_allocations.tsv"];
+    CHECK(o.find("CP\tCP:b\tb\tpb\tNIFTY|2026-01-08|CE|24000\tNIFTY|2026-01-08|CE|24000#1\t") != std::string::npos); CHECK(o.find("OA\tOA:b\tb\tpb\tNIFTY|2026-01-08|CE|24000\tNIFTY|2026-01-08|CE|24000#2\t") != std::string::npos);
+    CHECK(r.lineage_files["lifecycle.tsv"].find("REVERSED") != std::string::npos && r.lineage_files["episodes.tsv"].find("REVERSED") != std::string::npos); }
   std::cout << (checks - failures) << "/" << checks << " core checks passed\n"; return failures ? 1 : 0;
 }

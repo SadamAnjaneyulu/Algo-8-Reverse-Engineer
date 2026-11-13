@@ -44,7 +44,7 @@ Each event stores `fill_id` and `parent_order_id`, the quantity, inventory after
 
 ## 5. Worked examples (will be synthetic tests; not Algo 8 claims)
 * **Reversal:** short 100, buy 130 → CP 100 (episode ends `REVERSED`), OA 30 (new long episode); never "a 130-unit close".
-* **FIFO / LIFO / AVG:** short A = 65 @ 100, short B = 65 @ 120, buy 65 @ 110. FIFO closes A (P&L +10 × 65), LIFO closes B (−10 × 65); AVG pool 110 gives 0 and states no ownership.
+* **FIFO / LIFO / AVG:** short A = 65 @ 100, short B = 65 @ 120, buy 65 @ 110. FIFO closes A (short 100 bought back at 110: **−10 × 65**), LIFO closes B (short 120 bought back at 110: **+10 × 65**); AVG pool 110 gives 0 and states no ownership. (An earlier draft of this line had the signs reversed; the executed test `test_ab_lots_fifo_lifo_avg_confined_to_analytical_layer` caught it.)
 * **Partial fills:** parent P with fills 65 + 65 + 65 → three OAs, one ParentOrder; counted once as a decision.
 
 ## 6. Python / C++ boundary (proposal, needs approval)

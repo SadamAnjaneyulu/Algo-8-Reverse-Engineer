@@ -2,15 +2,14 @@
 #pragma once
 #include <cstdio>
 #include <sstream>
-#include "pe/ledger.hpp"
+#include "pe/lineage.hpp"
 namespace pe {
 struct Snap { i64 seq, ts; std::string date; i64 open_instruments, sCE, sPE, lCE, lPE, gross, net; i64 realized_i; double realized_d; i64 cash; };
-struct ReplayResult { std::string dump; std::string roles; std::vector<std::string> checks; std::map<std::string, i64> warnings; };
+struct ReplayResult { std::map<std::string, std::string> lineage_files; std::string dump; std::string roles; std::vector<std::string> checks; std::map<std::string, i64> warnings; };
 
-inline std::string fmt6(double x) { char b[64]; std::snprintf(b, sizeof b, "%.6f", x); return b; }
 inline int tie_key(const std::string& tie, int side) { if (tie == "src") return 0; if (tie == "sells_first") return side < 0 ? 0 : 1; if (tie == "buys_first") return side > 0 ? 0 : 1; throw EngineError("bad tie order " + tie); }
 
-inline ReplayResult replay(const std::vector<Fill>& fills, const std::map<std::string, Instrument>& ins, const std::string& mode, const std::string& method_s, const std::string& tie, i64 snapshot_interval, bool strict) {
+inline ReplayResult replay(const std::vector<Fill>& fills, const std::map<std::string, Instrument>& ins, const std::string& mode, const std::string& method_s, const std::string& tie, i64 snapshot_interval, bool strict, bool want_lineage = false) {
   bool okm = false;
   for (auto& m : kModes) okm = okm || (m == mode);
   if (!okm) throw EngineError("unknown mode " + mode);
@@ -30,7 +29,7 @@ inline ReplayResult replay(const std::vector<Fill>& fills, const std::map<std::s
   { std::map<std::pair<std::string, i64>, std::set<int>> g; for (auto* f : live) g[{f->instrument_id, f->ts}].insert(f->side); for (auto& kv : g) if (kv.second.size() == 2) warn["TIE_GROUP_MIXED_SIDE"]++; }
   for (auto* f : live) if (f->status == "PartiallyFilled") warn["PARTIAL_FILL_ROWS"]++;
   warn["MISSING_MARKS"] = 1;
-  PortfolioState state(method, ins); std::map<std::string, i64> signed_sum; struct P { i64 fills = 0, units = 0, requested = 0; std::set<i64> days; }; std::map<std::string, P> parents; std::vector<Snap> snaps; std::vector<Role> roles;
+  LineageRecorder rec(method_s); PortfolioState state(method, ins, want_lineage ? &rec : nullptr); std::map<std::string, i64> signed_sum; struct P { i64 fills = 0, units = 0, requested = 0; std::set<i64> days; }; std::map<std::string, P> parents; std::vector<Snap> snaps; std::vector<Role> roles;
   auto snap = [&](i64 seq, i64 ts) {
     const Agg& a = state.agg; const i64 sh = a.short_CE + a.short_PE, lg = a.long_CE + a.long_PE;
     snaps.push_back({seq, ts, day_iso(ist_day(ts)), a.open_instruments, a.short_CE, a.short_PE, a.long_CE, a.long_PE, sh + lg, lg - sh, state.realized_total_i(), state.realized_total_d(), state.cash}); };
@@ -64,6 +63,9 @@ inline ReplayResult replay(const std::vector<Fill>& fills, const std::map<std::s
   res.dump = o.str(); res.warnings = warn;
   std::sort(roles.begin(), roles.end(), [](const Role& a, const Role& b) { return a.fill_id < b.fill_id; }); std::ostringstream r; r << "fill_id\tinstrument_id\tclose_qty\topen_qty\tinventory_after\tis_reversal\tepisode_closed\tepisode_opened\n";
   for (auto& x : roles) r << x.fill_id << "\t" << x.instrument_id << "\t" << x.close_qty << "\t" << x.open_qty << "\t" << x.inventory_after << "\t" << (int)x.reversal << "\t" << (x.ep_closed.empty() ? "-" : x.ep_closed) << "\t" << (x.ep_opened.empty() ? "-" : x.ep_opened) << "\n";
-  res.roles = r.str(); return res;
+  res.roles = r.str();
+  if (want_lineage) { res.lineage_files["observed_allocations.tsv"] = observed_tsv(rec); res.lineage_files["lifecycle.tsv"] = lifecycle_tsv(rec); res.lineage_files["episodes.tsv"] = episodes_tsv(state, ins, last_day);
+    res.lineage_files["ca_" + method_s + ".tsv"] = ca_tsv(rec); res.lineage_files["slices_" + method_s + ".tsv"] = slices_tsv(state, rec); }
+  return res;
 }
 }  // namespace pe

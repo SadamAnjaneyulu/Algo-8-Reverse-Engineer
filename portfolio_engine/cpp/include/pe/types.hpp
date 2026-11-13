@@ -37,6 +37,7 @@ inline void civil_from_days(i64 z, i64& y, i64& m, i64& d) {
   z += 719468; const i64 era = (z >= 0 ? z : z - 146096) / 146097; const i64 doe = z - era * 146097; const i64 yoe = (doe - doe / 1460 + doe / 36524 - doe / 146096) / 365; y = yoe + era * 400;
   const i64 doy = doe - (365 * yoe + yoe / 4 - yoe / 100); const i64 mp = (5 * doy + 2) / 153; d = doy - (153 * mp + 2) / 5 + 1; m = mp + (mp < 10 ? 3 : -9); y += (m <= 2);
 }
+inline std::string fmt6(double x) { char b[64]; std::snprintf(b, sizeof b, "%.6f", x); return b; }
 inline i64 ist_day(i64 ts) { return (ts + kIstOffsetS) / 86400; }
 inline std::string day_iso(i64 day) { i64 y, m, d; civil_from_days(day, y, m, d); char b[64]; std::snprintf(b, sizeof b, "%04lld-%02lld-%02lld", (long long)y, (long long)m, (long long)d); return b; }
 inline i64 iso_day(const std::string& s) {
