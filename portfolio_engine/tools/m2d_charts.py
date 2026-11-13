@@ -15,6 +15,6 @@ dt = op1.dt_s.clip(-120, 120); h, e = np.histogram(dt, bins=np.arange(-120, 121,
 # 3 group ratio
 g = op1.groupby(['underlying', 'expiry', 'right', 'session', 'wing_item']).size()
 gr = items[(items.level == 'OPENING') & (items.entry_minute_s != 'NA')].copy(); gr['grp'] = gr.underlying + gr.expiry + gr.right + gr.entry_minute_s.astype(str); P = gr.pivot_table(index='grp', columns='role', values='qty', aggfunc='sum').dropna(); r = (P.WING / P.BODY).clip(upper=4); h2, e2 = np.histogram(r, bins=np.arange(0, 4.05, 0.1)); pd.DataFrame({'bin_left': e2[:-1], 'groups': h2}).to_csv(os.path.join(OUT, 'm2d_group_ratio_hist.csv'), index=False)
-ax[2].bar(e2[:-1], h2, width=0.1, align='edge'); ax[2].set_yscale('log'); ax[2].set_title(f'Observed wing/body unit ratio per group ({len(P)} groups; exactly 1: {(P.WING == P.BODY).mean():.1%})', fontsize=8); ax[2].set_xlabel('wing units / body units (clipped at 4)')
+ax[2].bar(e2[:-1], h2, width=0.1, align='edge'); ax[2].set_yscale('log'); ax[2].set_title(f'Observed wing/body unit ratio per group ({len(P)} groups; exactly 1:1 in {(P.WING == P.BODY).mean():.1%} of these groups with both sides; 7,958 groups in total)', fontsize=8); ax[2].set_xlabel('wing units / body units (clipped at 4)')
 fig.text(0.01, 0.005, STAMP, fontsize=6, wrap=True, va='bottom'); plt.tight_layout(rect=(0, 0.07, 1, 1)); plt.savefig(os.path.join(OUT, 'm2d_overview.png'), dpi=130); plt.close()
 print(sorted(os.listdir(OUT)))

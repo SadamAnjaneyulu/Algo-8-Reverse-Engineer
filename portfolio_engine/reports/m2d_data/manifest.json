@@ -1,6 +1,6 @@
 {
- "created_utc": "2026-11-13T17:51:52Z",
- "generated_at_head": "b48b0e68a35ba8670bd2bd80a2b53344380ef577",
+ "created_utc": "2026-11-13T18:05:39Z",
+ "generated_at_head": "77521fa75bc5e5edd8b4bcab1560799d27c65e5d",
  "execution_mode": "HISTORICAL_OBSERVED_REPLAY",
  "source_hashes": {
   "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
@@ -9,29 +9,29 @@
  "scope": "TAGGED primary (DIRECTION scope reported as summary sensitivity only)",
  "files": {
   "wing_body_links_W1.tsv.gz": {
-   "sha256_of_text": "5bcff1a54c745c14fb9bd2ff83907f4317f55ca5fa3a099ada5e9510940136f9",
+   "sha256_of_text": "e43bbe9de3e05b922be5da6fac91c1695e19ea41bd19760182da7703aa08fd93",
    "rows": 42777,
-   "bytes_gz": 1266454
+   "bytes_gz": 1285620
   },
   "wing_body_links_W2.tsv.gz": {
-   "sha256_of_text": "e23c86d5e63a5310a39fe0cd0868ec58bd48f49465e9a7e6b72ff2adb29cedba",
+   "sha256_of_text": "1836ad764bf7a7fdca7629cfdf9649d52feb73fca714ba9bc003aac9d43cb681",
    "rows": 42777,
-   "bytes_gz": 1288316
+   "bytes_gz": 1313444
   },
   "wing_body_links_W1_S60.tsv.gz": {
-   "sha256_of_text": "6fd1b1dc8a1be136b0667d9eaad297549a354d59bad2a7d3f79d139da8b988e7",
+   "sha256_of_text": "e16e81ed7d11d6a873824105057f96edeb29233935059532e8a35fc4aafbf31f",
    "rows": 65228,
-   "bytes_gz": 1886342
+   "bytes_gz": 1911192
   },
   "wing_body_links_W2_S60.tsv.gz": {
-   "sha256_of_text": "3f63580d7c76b294c0c98ce0bc7619d21b24bf3bd5ca3689490191ebaddfaa35",
+   "sha256_of_text": "f3db68ed892da76b87793afcb2860c521c0d3cb72ba67d651ff59edd5199181b",
    "rows": 65228,
-   "bytes_gz": 1918305
+   "bytes_gz": 1969850
   },
   "wing_body_links_W3.tsv.gz": {
-   "sha256_of_text": "e82e260c878e4ae0e17f72194c22d5b983ffd1a4765049cd201f933f0c9d081d",
+   "sha256_of_text": "0ee9ac40e0e18ac596458a328b6026bbbaec0249b49e32b3a92e3af113f13daa",
    "rows": 12096,
-   "bytes_gz": 537283
+   "bytes_gz": 536518
   },
   "wing_body_items.tsv.gz": {
    "sha256_of_text": "6e199d45a631c0f150084ec42354b15d5ff60e4bfa33e4331e4f9e791699dc9e",

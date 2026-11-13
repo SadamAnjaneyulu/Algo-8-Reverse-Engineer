@@ -37,7 +37,7 @@ Not implemented in M1 (so not registered): entries, strikes, sizing, hedges, exi
 | Last-to-first batch sensitivity (C2) | YES (D2) | **YES (M2-C)**: equals C1 under the approved tie rule; ±1 batch at ≤ 10 s under other open rules | same |
 | Number-block variant | PARTIAL: text registered, **semantics ambiguous** | **NO — source audit done, `UNRESOLVED — REVIEW REQUIRED`** | `reports/M2C_NUMBER_BLOCK_AUDIT.md` |
 | TP-02 ±5 s basket / ±10 s wing associations | YES (TP-02 config) | YES (TP-02 report) — separate analyses | `TP02_REPORT.md` |
-| Wing/body W1 same order-entry minute + right, ±60 s first-fill | YES (D6) | NO (TP-03 E6/E7 used a same-minute pairing for wing *selection* tests, not for lot links) | — |
+| Wing/body W1 same order-entry minute + right, ±60 s first-fill | YES (D6) | **YES (M2-D)**: 7,301 of 8,399 opening wings have a W1 candidate (equals TP-03 E6's pairing); lot-level ownership UNRESOLVED | `reports/M2D_WING_BODY_REPORT.md` |
 | FIFO/LIFO/AVG allocation, OA/CP decomposition, lifecycle, episodes | YES (M2-A design) | **YES (M2-B)**: 23,684 OA, 17,760 CP, 2,667 episodes, 26 mixed parents; reproduces TP-01 totals; Python/C++ byte-identical | `reports/M2B_RECONCILIATION_REPORT.md` |
 
 Executed M2-B results (class): OA/CP decomposition and episode identity vs TP-01 — CONFIRMED_OBSERVATION (convention-independent); FIFO/LIFO attributions — UNRESOLVED (convention; 15,889 of 17,760 closing portions are convention-sensitive); AVG ownership — NOT_TESTABLE; episode identity under alternative tie orders — conditional in 5 instruments (documented).
@@ -45,3 +45,5 @@ Executed M2-B results (class): OA/CP decomposition and episode identity vs TP-01
 Executed M2-C results (class): closing-batch membership at each threshold — CONFIRMED_OBSERVATION of temporal clustering; "a batch is one decision / one basket" — UNRESOLVED; exit trigger — NOT_TESTABLE without decision logs; number-block grouping — NOT implemented.
 
 M2-C acceptance recorded (`reports/M2C_ACCEPTANCE_ADDENDUM.md`): C1 PASS, C2 PASS (convention-conditional), number-block audit accepted as complete with conclusion UNRESOLVED.
+
+Executed M2-D results (class): item and group-level quantities, co-submission and proximity facts — CONFIRMED_OBSERVATION; W1 candidate relationship — WEAKLY_SUPPORTED; W1_S60 and W3 — UNRESOLVED; lot-to-lot ownership and protective intent — UNRESOLVED / NOT_TESTABLE; number-block matching (W4) — NOT implemented.

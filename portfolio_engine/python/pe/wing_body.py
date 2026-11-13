@@ -11,8 +11,10 @@ from .schema import *
 LEVELS = ('OPENING', 'CLOSING')
 LINK_METHODS = ('W1', 'W1_S60', 'W2', 'W2_S60', 'W3')
 S60 = 60
-EVIDENCE = {'W1': 'CONFIRMED_OBSERVATION (same underlying, expiry, right and parent entry minute)', 'W1_S60': 'CONFIRMED_OBSERVATION (execution-time proximity <= 60 s; NOT decision-time proximity)',
-            'W2': 'CONFIRMED_OBSERVATION of candidates; weights are arithmetic', 'W2_S60': 'CONFIRMED_OBSERVATION of candidates; weights are arithmetic', 'W3': 'ARITHMETIC PAIRING (queue); no timing or ownership claim'}
+OBSERVED_BASIS = {'W1': 'CONFIRMED_OBSERVATION: same underlying, expiry, right and parent entry minute (co-submission)', 'W1_S60': 'CONFIRMED_OBSERVATION: execution-time proximity <= 60 s (NOT decision-time proximity)',
+                  'W2': 'CONFIRMED_OBSERVATION of the W1 candidate set; weights are arithmetic', 'W2_S60': 'CONFIRMED_OBSERVATION of the W1_S60 candidate set; weights are arithmetic', 'W3': 'none: arithmetic queue pairing'}
+# evidence class of the INFERRED protective relationship (the observed basis above is a fact; the relationship is not). Ceiling for INFERRED:WING_BODY is WEAKLY_SUPPORTED.
+EVIDENCE = {'W1': 'WEAKLY_SUPPORTED (inferred candidate)', 'W1_S60': 'UNRESOLVED (execution proximity only)', 'W2': 'WEAKLY_SUPPORTED (inferred candidate; weights arithmetic)', 'W2_S60': 'UNRESOLVED (execution proximity only; weights arithmetic)', 'W3': 'UNRESOLVED (arithmetic pairing)'}
 
 
 class Item:
@@ -61,13 +63,13 @@ def _link(method, w, b, **extra):
     row = dict(link_id=f'WB:{method}:{w.level}:{w.item_id}->{b.item_id}', method=method, level=w.level, wing_item=w.item_id, body_item=b.item_id, wing_parent=w.parent_id, body_parent=b.parent_id, underlying=w.und, expiry=w.expiry, right=w.right, session=w.session,
                wing_first_ts=w.first_ts, body_first_ts=b.first_ts, dt_s=dt, same_entry_minute=int(w.e_minute is not None and w.e_minute == b.e_minute), wing_qty=w.qty, body_qty=b.qty, qty_ratio=round(w.qty / b.qty, 6),
                wing_strike=w.strike, body_strike=b.strike, otm_distance=otm_distance(w, b), wing_avg_px_paise=round(w.avg_px, 4), body_avg_px_paise=round(b.avg_px, 4), px_ratio=round(w.avg_px / b.avg_px, 6),
-               wing_app_key=w.app_key or 'NA', body_app_key=b.app_key or 'NA', membership_provenance=f'INFERRED:WING_BODY:{method}', evidence_class=EVIDENCE[method], protective_link='UNRESOLVED', claim_type='ATTRIBUTION')
+               wing_app_key=w.app_key or 'NA', body_app_key=b.app_key or 'NA', membership_provenance=f'INFERRED:WING_BODY:{method}', observation_basis=OBSERVED_BASIS[method], evidence_class=EVIDENCE[method], protective_link='UNRESOLVED', claim_type='ATTRIBUTION')
     row.update(extra); return row
 
 
 def _annotate(links, wings_with, bodies_with):
     for l in links:
-        l['n_candidates_for_wing'] = wings_with[l['wing_item']]; l['n_wings_for_body'] = bodies_with[l['body_item']]; l['link_status'] = 'UNIQUE_CANDIDATE' if wings_with[l['wing_item']] == 1 else 'MULTIPLE_CANDIDATES'
+        l['n_candidates_for_wing'] = wings_with[l['wing_item']]; l['n_wings_for_body'] = bodies_with[l['body_item']]; l['link_status'] = 'ARITHMETIC_SEGMENT' if l['method'] == 'W3' else ('UNIQUE_CANDIDATE' if wings_with[l['wing_item']] == 1 else 'MULTIPLE_CANDIDATES')
 
 
 def candidates_w1(items):
@@ -111,7 +113,7 @@ def proportional(base_links, name, items_by_id):
     for l in base_links: tot[l['wing_item']] += l['body_qty']
     out = []
     for l in base_links:
-        r = dict(l); r.update(method=name, link_id=l['link_id'].replace(f'WB:{l["method"]}:', f'WB:{name}:', 1), membership_provenance=f'INFERRED:WING_BODY:{name}', evidence_class=EVIDENCE[name], weight=round(l['body_qty'] / tot[l['wing_item']], 9), allocated_wing_units=round(l['wing_qty'] * l['body_qty'] / tot[l['wing_item']], 6)); out.append(r)
+        r = dict(l); r.update(method=name, link_id=l['link_id'].replace(f'WB:{l["method"]}:', f'WB:{name}:', 1), membership_provenance=f'INFERRED:WING_BODY:{name}', observation_basis=OBSERVED_BASIS[name], evidence_class=EVIDENCE[name], weight=round(l['body_qty'] / tot[l['wing_item']], 9), weighted_wing_units=round(l['wing_qty'] * l['body_qty'] / tot[l['wing_item']], 6)); out.append(r)
     return out
 
 
@@ -126,7 +128,7 @@ def queue_w3(items):
         ws, bs = groups[k]; ws.sort(key=lambda x: (x.first_ts, x.first_src, x.item_id)); bs.sort(key=lambda x: (x.first_ts, x.first_src, x.item_id)); wi = bi = 0; wl = ws[0].qty if ws else 0; bl = bs[0].qty if bs else 0; seg = 0
         while wi < len(ws) and bi < len(bs):
             u = min(wl, bl); seg += 1
-            links.append(_link('W3', ws[wi], bs[bi], allocated_wing_units=u, weight=round(u / ws[wi].qty, 9), segment=seg, nearest=0, nearest_tied=0, in_primary_candidate_set=int(ws[wi].e_minute is not None and ws[wi].e_minute == bs[bi].e_minute)))
+            links.append(_link('W3', ws[wi], bs[bi], queue_matched_units=u, weight=round(u / ws[wi].qty, 9), segment=seg, nearest='NA', nearest_tied='NA', in_primary_candidate_set=int(ws[wi].e_minute is not None and ws[wi].e_minute == bs[bi].e_minute)))
             wl -= u; bl -= u
             if wl == 0: wi += 1; wl = ws[wi].qty if wi < len(ws) else 0
             if bl == 0: bi += 1; bl = bs[bi].qty if bi < len(bs) else 0
@@ -173,12 +175,14 @@ def coverage(R, level, method):
                wing_items_no_candidate=len(wings) - len(wl), wing_units_with_candidate=sum(R.by_id[k].qty for k in wl), wing_units_unmatched=wu - sum(R.by_id[k].qty for k in wl), body_items_with_wing_candidate=len(bl), body_items_without_wing=len(bodies) - len(bl),
                body_units_with_wing_candidate=sum(R.by_id[k].qty for k in bl), body_units_without_wing=bu - sum(R.by_id[k].qty for k in bl), links=len(ls),
                candidates_per_wing=_dist(list(wl.values())), wings_per_body=_dist(list(bl.values())), qty_ratio=_dist([l['qty_ratio'] for l in ls]), dt_s=_dist([l['dt_s'] for l in ls]), abs_dt_s=_dist([abs(l['dt_s']) for l in ls]), otm_distance=_dist([l['otm_distance'] for l in ls]), px_ratio=_dist([l['px_ratio'] for l in ls]),
-               nearest_tied_links=sum(l['nearest_tied'] for l in ls) if ls and 'nearest_tied' in ls[0] else None)
+               nearest_tied_links=(sum(l['nearest_tied'] for l in ls) if method != 'W3' else 'NA'))
+    if method == 'W3':                                                                           # queue arithmetic: matched units, not 'item has any segment'
+        row['wing_units_unmatched'] = R.w3_residual['wing_units_unmatched']; row['body_units_without_wing'] = R.w3_residual['body_units_unmatched']; row['wing_units_with_candidate'] = wu - row['wing_units_unmatched']; row['body_units_with_wing_candidate'] = bu - row['body_units_without_wing']
     return row
 
 
 def group_level_ratios(R):
-    """OBSERVED relationship at group level (no lot assignment needed): per (level, underlying, expiry, right, parent entry minute): wing units vs body units"""
+    """OBSERVED relationship at group level (no lot assignment needed): per (level, underlying, expiry, right, parent entry minute): wing units vs body units. The 1:1 share is reported with THREE denominators."""
     g = defaultdict(lambda: [0, 0, 0, 0])
     for i in R.items:
         if i.e_minute is None: continue
@@ -187,10 +191,45 @@ def group_level_ratios(R):
         else: a[1] += i.qty; a[3] += 1
     out = {}
     for level in LEVELS:
-        both = [v for k, v in g.items() if k[0] == level and v[0] > 0 and v[1] > 0]; wo = [v for k, v in g.items() if k[0] == level and v[0] > 0 and v[1] == 0]; bo = [v for k, v in g.items() if k[0] == level and v[1] > 0 and v[0] == 0]
-        r = [v[0] / v[1] for v in both]
-        out[level] = dict(groups_with_both=len(both), groups_wing_only=len(wo), groups_body_only=len(bo), wing_units_in_wing_only_groups=sum(v[0] for v in wo), body_units_in_body_only_groups=sum(v[1] for v in bo), ratio=_dist(r), share_ratio_exactly_1=(sum(1 for x in r if x == 1) / len(r)) if r else None,
+        allg = [v for k, v in g.items() if k[0] == level]; both = [v for v in allg if v[0] > 0 and v[1] > 0]; wo = [v for v in allg if v[0] > 0 and v[1] == 0]; bo = [v for v in allg if v[1] > 0 and v[0] == 0]
+        r = [v[0] / v[1] for v in both]; exact = [v for v in both if v[0] == v[1]]
+        out[level] = dict(groups_total=len(allg), groups_with_both=len(both), groups_wing_only=len(wo), groups_body_only=len(bo), wing_units_in_wing_only_groups=sum(v[0] for v in wo), body_units_in_body_only_groups=sum(v[1] for v in bo), ratio=_dist(r),
+                          share_exactly_1_of_groups_with_both=(len(exact) / len(both)) if both else None, share_exactly_1_of_all_groups=(len(exact) / len(allg)) if allg else None, share_of_wing_units_in_exact_1to1_groups=(sum(v[0] for v in exact) / sum(v[0] for v in allg)) if allg else None,
                           share_ratio_lt_1=(sum(1 for x in r if x < 1) / len(r)) if r else None, share_ratio_gt_1=(sum(1 for x in r if x > 1) / len(r)) if r else None)
+    return out
+
+
+def scope_exclusions(ls):
+    """units NOT in the TAGGED wing/body sets, by level / side / module tag (reported so the scope is never silent); wing = long h_, body = short num"""
+    out = defaultdict(int)
+    for r in ls.oa.values():
+        if not ((r[7] == 1 and r[10] == 'h_') or (r[7] == -1 and r[10] == 'num')): out[('OPENING', 'LONG' if r[7] == 1 else 'SHORT', r[10])] += r[8]
+    for r in ls.cp.values():
+        d = ls.episodes[r[5]]['direction']
+        if not ((d == 1 and r[10] == 'h_') or (d == -1 and r[10] == 'num')): out[('CLOSING_of_' + ('LONG' if d == 1 else 'SHORT') + '_episode', 'closing_module', r[10])] += r[8]
+    return {f'{a}|{b}|{c}': v for (a, b, c), v in sorted(out.items())}
+
+
+def closing_wing_origin(R, ls):
+    """the closing 'wing' is defined by the tag of the CLOSING fill; this reports what the closed episodes were opened by (opening modules): units by origin class"""
+    ep_mods = defaultdict(set)
+    for r in ls.oa.values(): ep_mods[r[5]].add(r[10])
+    out = defaultdict(int); cp = {r[1]: r for r in ls.cp.values()}
+    for i in R.items:
+        if i.level != 'CLOSING' or i.role != 'WING': continue
+        for m in i.members:
+            r = cp[m]; mods = ep_mods[r[5]]; out['opened_only_by_h_' if mods == {'h_'} else ('opened_by_mixed_modules' if 'h_' in mods else 'opened_without_h_')] += r[8]
+    return dict(out)
+
+
+def body_weighted_coverage(R, method='W2'):
+    """W2 spreads WING units over bodies; per body the weighted wing units can exceed its own quantity. This reports that distribution (weighted wing units / body units) per level"""
+    w = defaultdict(float)
+    for l in R.links[method]: w[l['body_item']] += l['weighted_wing_units']
+    out = {}
+    for level in LEVELS:
+        v = [w[k] / R.by_id[k].qty for k in w if R.by_id[k].level == level]
+        out[level] = dict(bodies=len(v), share_gt_1=(sum(1 for x in v if x > 1.000001) / len(v)) if v else None, ratio=_dist(v))
     return out
 
 
@@ -284,10 +323,10 @@ def check(R, ls):
     for m, base in (('W2', 'W1'), ('W2_S60', 'W1_S60')):
         ok('I-W2-same-candidates-as-base', {(l['wing_item'], l['body_item']) for l in R.links[m]} == {(l['wing_item'], l['body_item']) for l in R.links[base]})
         w = defaultdict(float); a = defaultdict(float)
-        for l in R.links[m]: w[l['wing_item']] += l['weight']; a[l['wing_item']] += l['allocated_wing_units']
+        for l in R.links[m]: w[l['wing_item']] += l['weight']; a[l['wing_item']] += l['weighted_wing_units']
         for k in w: ok('I-W2-weights-sum-to-1-and-units-reconcile', abs(w[k] - 1) < 1e-6 and abs(a[k] - R.by_id[k].qty) < 1e-3 * max(1, len(R.links[m]) // 1000 + 1), k)
     pw = defaultdict(int); pb = defaultdict(int); gw = defaultdict(int); gb = defaultdict(int)
-    for l in R.links['W3']: pw[l['wing_item']] += l['allocated_wing_units']; pb[l['body_item']] += l['allocated_wing_units']
+    for l in R.links['W3']: pw[l['wing_item']] += l['queue_matched_units']; pb[l['body_item']] += l['queue_matched_units']
     for k, v in pw.items(): ok('I-W3-no-overallocation', v <= R.by_id[k].qty)
     for k, v in pb.items(): ok('I-W3-no-overallocation', v <= R.by_id[k].qty)
     grp = defaultdict(lambda: [0, 0, 0])
@@ -295,7 +334,7 @@ def check(R, ls):
         if i.level != 'OPENING': continue
         g = grp[i.group_key + (i.session,)]; g[0 if i.role == 'WING' else 1] += i.qty
     matched = defaultdict(int)
-    for l in R.links['W3']: matched[R.by_id[l['wing_item']].group_key + (R.by_id[l['wing_item']].session,)] += l['allocated_wing_units']
+    for l in R.links['W3']: matched[R.by_id[l['wing_item']].group_key + (R.by_id[l['wing_item']].session,)] += l['queue_matched_units']
     for k, (wu, bu, _) in grp.items(): ok('I-W3-matched-equals-min(wing,body)-per-group', matched.get(k, 0) == min(wu, bu), k)
     ok('I-W3-residual', R.w3_residual['wing_units_unmatched'] == sum(max(0, v[0] - v[1]) for v in grp.values()) and R.w3_residual['body_units_unmatched'] == sum(max(0, v[1] - v[0]) for v in grp.values()))
     return passed

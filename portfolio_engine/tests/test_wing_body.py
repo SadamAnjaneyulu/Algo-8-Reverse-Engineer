@@ -48,7 +48,7 @@ def test_multiple_candidate_bodies_are_all_kept_with_ties_flagged_and_proportion
     spec = [('wing', N('CE', 24800), 5, 65, 'W', 0), ('body', N('CE', 24000), 0, 65, 'B1', 0), ('body', N('CE', 24050), 10, 130, 'B2', 0)]
     ls, meta, _ = mk(spec); R = wb.analyse(ls, meta); L = {l['body_parent']: l for l in R.links['W1']}
     assert set(L) == {'B1', 'B2'} and L['B1']['link_status'] == 'MULTIPLE_CANDIDATES' and L['B1']['nearest_tied'] == 1 and L['B2']['nearest_tied'] == 1       # |dt| = 5 for both: ambiguous, not resolved
-    W2 = {l['body_parent']: l for l in R.links['W2']}; assert W2['B1']['weight'] == pytest.approx(1 / 3) and W2['B2']['weight'] == pytest.approx(2 / 3) and sum(l['allocated_wing_units'] for l in R.links['W2']) == pytest.approx(65)
+    W2 = {l['body_parent']: l for l in R.links['W2']}; assert W2['B1']['weight'] == pytest.approx(1 / 3) and W2['B2']['weight'] == pytest.approx(2 / 3) and sum(l['weighted_wing_units'] for l in R.links['W2']) == pytest.approx(65)
     wb.check(R, ls)
 
 
@@ -62,7 +62,7 @@ def test_partial_quantities_ratio_group_level_and_unmatched_units():
     ls, meta, _ = mk(spec); R = wb.analyse(ls, meta); l = R.links['W1'][0]
     assert l['qty_ratio'] == pytest.approx(1 / 3) and l['wing_qty'] == 65 and l['body_qty'] == 195 and l['otm_distance'] == 800 and l['px_ratio'] == pytest.approx(300 / 10000) and l['dt_s'] == 3
     c = wb.coverage(R, 'OPENING', 'W1'); assert (c['wing_units'], c['wing_units_unmatched'], c['body_units'], c['body_units_without_wing'], c['wing_items_no_candidate'], c['body_items_without_wing']) == (195, 130, 260, 65, 1, 1)
-    g = wb.group_level_ratios(R)['OPENING']; assert g['groups_with_both'] == 1 and g['groups_wing_only'] == 1 and g['groups_body_only'] == 1 and g['ratio']['median'] == pytest.approx(1 / 3)
+    g = wb.group_level_ratios(R)['OPENING']; assert g['groups_with_both'] == 1 and g['groups_wing_only'] == 1 and g['groups_body_only'] == 1 and g['ratio']['median'] == pytest.approx(1 / 3) and g['share_exactly_1_of_all_groups'] == 0
     wb.check(R, ls)
 
 
@@ -95,9 +95,10 @@ def test_many_to_many_is_preserved_and_never_forced_one_to_one():
 def test_W3_is_arithmetic_conserves_units_and_respects_sessions():
     d = 86400 - (9 * 3600 + 16 * 60)
     spec = [('body', N('CE'), 0, 130, 'B1', 0), ('wing', N('CE', 24800), 10, 65, 'W1', 0), ('wing', N('CE', 24900), 20, 130, 'W2', 0), ('body', N('CE', 24050), d + 10, 65, 'B_next', 400), ('wing', N('CE', 24800), d + 20, 65, 'W_next', 400)]
-    ls, meta, _ = mk(spec); R = wb.analyse(ls, meta); seg = [(l['wing_parent'], l['body_parent'], l['allocated_wing_units']) for l in R.links['W3']]
+    ls, meta, _ = mk(spec); R = wb.analyse(ls, meta); seg = [(l['wing_parent'], l['body_parent'], l['queue_matched_units']) for l in R.links['W3']]
     assert seg == [('W1', 'B1', 65), ('W2', 'B1', 65), ('W_next', 'B_next', 65)] and R.w3_residual == dict(wing_units_unmatched=65, body_units_unmatched=0)                  # W2 has 65 uncovered units; sessions never mixed
-    assert all(l['evidence_class'].startswith('ARITHMETIC') for l in R.links['W3']); wb.check(R, ls)
+    assert all(l['evidence_class'].startswith('UNRESOLVED') and l['nearest'] == 'NA' and l['link_status'] == 'ARITHMETIC_SEGMENT' for l in R.links['W3']); wb.check(R, ls)
+    c = wb.coverage(R, 'OPENING', 'W3'); assert (c['wing_units_unmatched'], c['body_units_without_wing']) == (65, 0)
 
 
 def test_methods_can_disagree_and_the_disagreement_is_counted_not_resolved():
@@ -126,6 +127,7 @@ def test_provenance_ids_and_no_explicit_or_number_block_rows():
     spec = [('wing', N('CE', 24800), 3, 65, 'W', 0), ('body', N('CE'), 0, 65, 'B', 0)]
     ls, meta, _ = mk(spec); R = wb.analyse(ls, meta); allrows = [l for v in R.links.values() for l in v]
     assert all(l['membership_provenance'] == f'INFERRED:WING_BODY:{l["method"]}' and l['protective_link'] == 'UNRESOLVED' and l['claim_type'] == 'ATTRIBUTION' for l in allrows) and 'W4' not in R.links
+    assert not any(l['evidence_class'].startswith('CONFIRMED') for l in allrows) and all(l['observation_basis'] for l in allrows)          # an inferred relationship is never labelled confirmed; the observed fact is a separate column
     assert len({l['link_id'] for l in allrows}) == len(allrows)
 
 
@@ -171,7 +173,7 @@ def test_real_items_invariants_and_cross_check_with_tp03_E6_pairing(real):
 @pytest.mark.slow
 def test_real_second_app_key_wings_are_eligible_and_group_level_ratio_is_observed_not_ownership(real):
     ls, meta, R = real; ak = wb.coverage_split(R, 'W1', 'app_key'); assert ak['F88187']['wing_items'] == 687 and ak['F88187']['wing_items_with_candidate'] > 0 and ak['F88187']['share_items_with_candidate'] > 0.8
-    g = wb.group_level_ratios(R)['OPENING']; assert g['groups_with_both'] == 5446 and abs(g['share_ratio_exactly_1'] - 0.8118) < 1e-3
+    g = wb.group_level_ratios(R)['OPENING']; assert g['groups_with_both'] == 5446 and abs(g['share_exactly_1_of_groups_with_both'] - 0.8118) < 1e-3 and g['groups_total'] == 7958 and abs(g['share_exactly_1_of_all_groups'] - 0.556) < 1e-3 and abs(g['share_of_wing_units_in_exact_1to1_groups'] - 0.531) < 2e-3
 
 
 @pytest.mark.slow
@@ -180,3 +182,53 @@ def test_real_outputs_reproduce_the_committed_manifest(real):
     for name in man['files']:
         text = gzip.open(os.path.join(PE, 'reports', 'm2d_data', name), 'rt').read(); assert hashlib.sha256(text.encode()).hexdigest() == man['files'][name]['sha256_of_text']
     assert len(R.links['W1']) == man['files']['wing_body_links_W1.tsv.gz']['rows']
+
+
+# ----------------------------------------------------------------------------- tests added after the independent review (mutants that survived)
+def test_PE_wing_otm_distance_sign_is_positive_when_the_wing_is_further_out():
+    spec = [('wing', N('PE', 23200), 3, 65, 'W', 0), ('body', N('PE', 24000), 0, 65, 'B', 0)]
+    ls, meta, _ = mk(spec); R = wb.analyse(ls, meta); assert R.links['W1'][0]['otm_distance'] == 800 and R.links['W1'][0]['right'] == 'PE'                                          # a lower strike is further OTM for a put
+    spec = [('wing', N('CE', 24800), 3, 65, 'W', 0), ('body', N('CE', 24000), 0, 65, 'B', 0)]; ls, meta, _ = mk(spec); assert wb.analyse(ls, meta).links['W1'][0]['otm_distance'] == 800
+
+
+def test_item_times_and_session_come_from_the_FIRST_fill():
+    d = 86400 - (9 * 3600 + 16 * 60)
+    b = Builder('wbt'); iw = b.add_inst(cp='CE', strike=24800); ib = b.add_inst(cp='CE', strike=24000)
+    b.fill(iw, d - 30, 1, 65, 300, parent='W', module='h_'); b.fill(iw, d + 30, 1, 65, 300, parent='W', module='h_'); b.fill(ib, d - 20, -1, 65, 10000, parent='B', module='num')
+    meta = {p: dict(order_entry_minute_s=BASE_TS + d - 60) for p in ('W', 'B')}; ins, fills = b.out(); ls = LineageSet(fills, ins, M, 'src'); R = wb.analyse(ls, meta); w = next(i for i in R.items if i.role == 'WING')
+    assert w.first_ts == BASE_TS + d - 30 and w.last_ts == BASE_TS + d + 30 and w.session == day_iso(ist_day(BASE_TS + d - 30)) and w.qty == 130 and len(R.links['W1_S60']) == 1 and R.links['W1_S60'][0]['dt_s'] == -10
+
+
+def test_S60_flags_the_primary_set_correctly_and_ignores_app_keys():
+    spec = [('wing', N('CE', 24800), 5, 65, 'W1', 0), ('wing', N('CE', 24900), 50, 65, 'W2', 1), ('body', N('CE'), 0, 65, 'B', 0)]
+    ls, meta, _ = mk(spec); meta['W2']['app_key_last6'] = 'F88187'; R = wb.analyse(ls, meta); f = {l['wing_parent']: l['in_primary_candidate_set'] for l in R.links['W1_S60']}
+    assert f == {'W1': 1, 'W2': 0}                                                                                    # the second-app-key wing is an S60 candidate; only the entry minute differs
+    R2 = wb.analyse(ls, {p: dict(m, app_key_last6=None) for p, m in meta.items()}); assert [l['link_id'] for l in R2.links['W1_S60']] == [l['link_id'] for l in R.links['W1_S60']]    # removing every app key changes nothing
+
+
+def test_W3_coverage_reports_queue_residual_units_not_item_counts():
+    spec = [('body', N('CE'), 0, 65, 'B', 0), ('wing', N('CE', 24800), 10, 130, 'W', 0)]
+    ls, meta, _ = mk(spec); R = wb.analyse(ls, meta); c = wb.coverage(R, 'OPENING', 'W3')
+    assert c['wing_items_with_candidate'] == 1 and c['wing_units_unmatched'] == 65 and c['wing_units_with_candidate'] == 65 and c['body_units_without_wing'] == 0                         # the wing item has a segment but only 65 of its 130 units are matched
+
+
+def test_W2_weighted_units_can_exceed_a_body_and_this_is_reported():
+    spec = [('wing', N('CE', 24800), 1, 130, 'W1', 0), ('wing', N('CE', 24900), 2, 130, 'W2', 0), ('body', N('CE'), 0, 65, 'B', 0)]
+    ls, meta, _ = mk(spec); R = wb.analyse(ls, meta); r = wb.body_weighted_coverage(R, 'W2')['OPENING']; assert r['share_gt_1'] == 1.0 and r['ratio']['max'] == 4.0           # 260 wing units weighted onto a 65-unit body
+
+
+def test_scope_exclusions_and_closing_origin_are_reported():
+    b = Builder('wbs'); i = b.add_inst(cp='CE', strike=24800); j = b.add_inst(cp='CE', strike=24000)
+    b.fill(i, 0, 1, 65, 300, parent='numlong', module='num'); b.fill(j, 0, -1, 65, 10000, parent='s', module='s_'); b.fill(i, 50, -1, 65, 400, parent='close_by_num', module='num')
+    ins, fills = b.out(); ls = LineageSet(fills, ins, M, 'src'); ex = wb.scope_exclusions(ls); assert ex['OPENING|LONG|num'] == 65 and ex['OPENING|SHORT|s_'] == 65 and ex['CLOSING_of_LONG_episode|closing_module|num'] == 65
+    spec = [('wing', N('CE', 24800), 0, 65, 'W', 0)]; ls2, meta, _ = mk(spec); assert wb.closing_wing_origin(wb.analyse(ls2, meta), ls2) == {}
+
+
+def test_closing_wing_and_body_are_defined_by_the_tag_of_the_closing_fill():
+    """a long episode closed by a `num` sell, or a short episode closed by an `h_` buy, is NOT a TAGGED closing item (reported as a scope exclusion); closed by h_ / num it is"""
+    b = Builder('wbc'); iw = b.add_inst(cp='CE', strike=24800); ib = b.add_inst(cp='CE', strike=24000)
+    b.fill(iw, 0, 1, 130, 300, parent='oW', module='h_'); b.fill(ib, 0, -1, 130, 10000, parent='oB', module='num')
+    b.fill(iw, 100, -1, 65, 500, parent='cW_num', module='num'); b.fill(iw, 101, -1, 65, 500, parent='cW_h', module='h_'); b.fill(ib, 102, 1, 65, 9000, parent='cB_h', module='h_'); b.fill(ib, 103, 1, 65, 9000, parent='cB_num', module='num')
+    meta = {p: dict(order_entry_minute_s=BASE_TS) for p in ('oW', 'oB', 'cW_num', 'cW_h', 'cB_h', 'cB_num')}; ins, fills = b.out(); ls = LineageSet(fills, ins, M, 'src'); R = wb.analyse(ls, meta)
+    assert sorted(i.parent_id for i in R.items if i.level == 'CLOSING' and i.role == 'WING') == ['cW_h'] and sorted(i.parent_id for i in R.items if i.level == 'CLOSING' and i.role == 'BODY') == ['cB_num']
+    Rd = wb.analyse(ls, meta, 'DIRECTION'); assert len([i for i in Rd.items if i.level == 'CLOSING' and i.role == 'WING']) == 2

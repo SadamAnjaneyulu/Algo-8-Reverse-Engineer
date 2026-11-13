@@ -46,7 +46,7 @@ Reported: group counts, size distributions, unit reconciliation, overlap of grou
 A wing is **never forced** into one body. Five methods run independently; each yields scored candidate links plus explicit `UNMATCHED` quantity. All links are `INFERRED:WING_BODY:<method>`.
 | # | Method | Level | Rule | Registered parameter | Limits |
 |---|---|---|---|---|---|
-| W1 | nearest-time, same underlying / expiry / right | opening (OA↔OA) and closing (CP↔CP) | for each long-wing item, the nearest short-body item by time | closing: ±10 s (sens. ±60 s), TP-02; opening: same order-entry minute (TP-03 E6 convention) with ±60 s sensitivity — **opening window to be approved** | proximity, not protection |
+| W1 | candidate set: same underlying / expiry / right / **parent entry minute** (approved D6); `nearest` flag by first-fill gap, ties flagged | opening and closing (parent×instrument items) | all candidates kept; no forced assignment | entry minute primary; ±60 s first-fill sensitivity (W1_S60, also same IST session) — **approved D6**; TP-02's ±10 s stays a separate historical analysis | proximity, not protection |
 | W2 | proportional quantity | opening, closing | wing units spread over all body candidates in the same window/right in proportion to their units (fractional weights, no integer ownership) | same windows as W1 | weights are arithmetic |
 | W3 | FIFO opening-lineage | opening | within `(und, expiry, right, session)` the cumulative wing units are queue-matched to cumulative body units in opening order | none | arithmetic pairing, no timing claim |
 | W4 | order-number block | opening, closing | parents sharing an app key and an order-number block (gap ≤ 20) | `exit.batch` block gap | valid only where app keys equal (hedge parents use a second app key in ≈ 7.8 % of `h_` fills) → otherwise `NOT_APPLICABLE` |
@@ -117,3 +117,7 @@ Frozen in `docs/DEMO_CYCLE_SELECTION.md` (formula) and `reports/DEMO_CYCLE_SELEC
 * **Not implemented:** wing/body associations, Models A and B, cut/re-entry policies.
 
 **Model C accepted** (see `reports/M2C_ACCEPTANCE_ADDENDUM.md`): C1 PASS; C2 PASS under the implemented tie-break / predecessor reference (identical to C1 only under that convention); outputs are time-connected closing-order clusters, not decisions; the number-block variant stays `UNRESOLVED — REVIEW REQUIRED` and is not implemented.
+
+
+## M2-D status (executed)
+Wing/body association analysis **executed** (`reports/M2D_WING_BODY_REPORT.md`): W1, W1_S60, W2, W2_S60, W3; W4 (number-block) **not implemented**; W5 = unmatched quantity reported per method. Roles are module-tag attribution (wing = long `h_`, body = short `num`; closing by the closing fill's tag) with a direction-based sensitivity. Clarification of the approved text: the ±60 s sensitivity also requires the same IST session. Not started: M2-E, Models A and B, cut/re-entry, M3. (The earlier "Not implemented: wing/body associations" line under *M2-C status* is superseded by this section.)
