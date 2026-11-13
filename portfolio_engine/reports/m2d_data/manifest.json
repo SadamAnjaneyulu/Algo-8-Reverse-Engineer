@@ -1,0 +1,43 @@
+{
+ "created_utc": "2026-11-13T17:51:52Z",
+ "generated_at_head": "b48b0e68a35ba8670bd2bd80a2b53344380ef577",
+ "execution_mode": "HISTORICAL_OBSERVED_REPLAY",
+ "source_hashes": {
+  "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "tp01_ledger_sha256": "3b47c55150d79535a43fcea485a41e8e7bd76b201384fd89eae9a88f2c736053"
+ },
+ "scope": "TAGGED primary (DIRECTION scope reported as summary sensitivity only)",
+ "files": {
+  "wing_body_links_W1.tsv.gz": {
+   "sha256_of_text": "5bcff1a54c745c14fb9bd2ff83907f4317f55ca5fa3a099ada5e9510940136f9",
+   "rows": 42777,
+   "bytes_gz": 1266454
+  },
+  "wing_body_links_W2.tsv.gz": {
+   "sha256_of_text": "e23c86d5e63a5310a39fe0cd0868ec58bd48f49465e9a7e6b72ff2adb29cedba",
+   "rows": 42777,
+   "bytes_gz": 1288316
+  },
+  "wing_body_links_W1_S60.tsv.gz": {
+   "sha256_of_text": "6fd1b1dc8a1be136b0667d9eaad297549a354d59bad2a7d3f79d139da8b988e7",
+   "rows": 65228,
+   "bytes_gz": 1886342
+  },
+  "wing_body_links_W2_S60.tsv.gz": {
+   "sha256_of_text": "3f63580d7c76b294c0c98ce0bc7619d21b24bf3bd5ca3689490191ebaddfaa35",
+   "rows": 65228,
+   "bytes_gz": 1918305
+  },
+  "wing_body_links_W3.tsv.gz": {
+   "sha256_of_text": "e82e260c878e4ae0e17f72194c22d5b983ffd1a4765049cd201f933f0c9d081d",
+   "rows": 12096,
+   "bytes_gz": 537283
+  },
+  "wing_body_items.tsv.gz": {
+   "sha256_of_text": "6e199d45a631c0f150084ec42354b15d5ff60e4bfa33e4331e4f9e791699dc9e",
+   "rows": 36784,
+   "bytes_gz": 735698
+  }
+ },
+ "reproduce": "python3 portfolio_engine/tools/m2d_wing_body.py"
+}
