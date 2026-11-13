@@ -1,0 +1,4 @@
+# INVALID fixture: mixed_modes
+schema_version	execution_mode	fill_id	source_row_id	parent_order_id	module_tag	instrument_id	timestamp_s	side	quantity	price_paise	requested_quantity	order_status	is_duplicate_fill	evidence_source
+pe.fill.v1	SYNTHETIC_TEST	S000001	1	syn_000001	num	NIFTY|2026-01-08|CE|24000	1767584760	-1	130	10000	130	Filled	0	synthetic:open_close_full:seed=0
+pe.fill.v1	HISTORICAL_OBSERVED_REPLAY	S000002	2	syn_000002	num	NIFTY|2026-01-08|CE|24000	1767584820	1	130	8000	130	Filled	0	synthetic:open_close_full:seed=0
