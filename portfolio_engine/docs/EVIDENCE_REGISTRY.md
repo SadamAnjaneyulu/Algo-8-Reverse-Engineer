@@ -26,3 +26,16 @@ Not implemented in M1 (so not registered): entries, strikes, sizing, hedges, exi
 | Model B opening cohorts | TP-03 Phase 1 window attribution; module tags | CONFIRMED_ATTRIBUTION (membership); UNRESOLVED (decision unit) | ATTRIBUTION | observed replay | minute-precision submission time |
 | Model C closing batches | TP-03 Phase 0 registered gap rule (never executed) | CONFIRMED_OBSERVATION (clustering); UNRESOLVED (decision unit) | OBSERVATION | observed replay | exit trigger unknown |
 | Wing ↔ body links | TP-02 windows; TP-03 E6/E7 | WEAKLY_SUPPORTED (lot-level); STRONGLY_SUPPORTED (window-level 1:1, TP-03 E7) | ATTRIBUTION | observed replay | no leg identifiers in the export |
+
+
+## Registered methodology vs executed results (separated after M2-A approval)
+| Item | Registered? | Executed? | Where |
+|---|---|---|---|
+| Opening-cohort gap set {2,5,10,30,60} s (first-fill single linkage) | YES (D1, M2-A review) | NO | methodology doc |
+| TP-03 window attribution | YES (TP-03 config, frozen) | YES for entry-window rates (TP-03 Phase 1); **not** as basket cohorts | `TP03_ENTRY_REPORT.md` |
+| Closing-batch gaps 10 s primary / 2,5,30,60 s sensitivities | YES (TP-03 config `exit.batch`; D2) | **NO** (TP-03 Phase 2 never run) | methodology doc |
+| Last-to-first batch sensitivity | YES (D2) | NO | — |
+| Number-block variant | PARTIAL: text registered, **semantics ambiguous** | NO | methodology doc |
+| TP-02 ±5 s basket / ±10 s wing associations | YES (TP-02 config) | YES (TP-02 report) — separate analyses | `TP02_REPORT.md` |
+| Wing/body W1 same order-entry minute + right, ±60 s first-fill | YES (D6) | NO (TP-03 E6/E7 used a same-minute pairing for wing *selection* tests, not for lot links) | — |
+| FIFO/LIFO/AVG allocation, OA/CP decomposition | design (M2-A) | **M2-B in progress** | — |

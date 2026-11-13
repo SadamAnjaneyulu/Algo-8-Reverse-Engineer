@@ -1,4 +1,4 @@
-# Basket grouping methodology (M2-A, DRAFT for review)
+# Basket grouping methodology (M2-A, APPROVED decisions D1–D7 recorded below; authoritative section at the end)
 
 Three independent views on the same fills. **None is an original Algo 8 basket.** Each is a partition of its own member universe; group counts are descriptive and are never a quality score. No parameter is chosen after looking at outputs.
 
@@ -7,7 +7,7 @@ Three independent views on the same fills. **None is an original Algo 8 basket.*
 |---|---|---|
 | Entry windows `[T−2 s, T+3 min)`, 17 registered + 4 control pre-expiry, 23 expiry-day windows, submission classes, snapshot rule | `tp_reconstruction/tp03/config.yaml` (frozen, sha256 `942e36d8…c2f8`), `TP03_PHASE0_AUDIT.md` §B4 | **REGISTERED** |
 | Closing-batch gap: primary 10 s, sensitivities 2, 5, 30, 60 s, plus order-number-block definition; unit = parent order | `tp03/config.yaml` `exit.batch`, `TP03_PHASE0_AUDIT.md` §C4 | **REGISTERED but never executed** — the brief calls it "TP-02 methodology"; TP-02 itself used per-closing ±5 s basket and ±10 s wing windows (`tp02/config.yaml`). TP-03 Phase 2 was not run, so there is **no existing batch output to reuse**; Model C is built fresh from the registered text |
-| Opening-cluster time gap | none | **NOT REGISTERED** — proposal below, needs approval before any grouping is run |
+| Opening-cluster time gap | none before M2-A | **APPROVED (D1) as a fixed sensitivity set** — see 'Approved decisions' below |
 | Wing link windows (closing) 10 s, sensitivity 60 s | `tp02/config.yaml` `wing` | REGISTERED (TP-02) |
 | Same-minute same-right wing↔body pairing | TP-03 Phase 1 E6 (`p1_structure_tests.py`) | used in Phase 1, not a registered rule |
 
@@ -68,3 +68,44 @@ Recorded per link: body and wing ids, time difference, units ratio, right, strik
 | 10 | partial fills mislead size | requested vs filled kept; unfilled remainder flagged |
 | 11 | fictitious expiry P&L | `EXPIRED_UNCLOSED` realized P&L stays 0 |
 | 12 | inferred id mistaken for broker id | all ids start `INF:`; zero `EXPLICIT` rows asserted |
+
+
+---
+# Approved decisions D1–D7 (authoritative; supersede any 'proposal' wording above)
+Approved by the reviewer after M2-A. **Status: REGISTERED methodology. No grouping has been executed.** Executed results will be recorded separately in the evidence registry.
+
+## Timestamp precision (all models)
+* Execution timestamps (`first fill`, `last fill`) are **whole UTC seconds** (export resolution); all gaps are integer seconds and the comparison is **`gap ≤ threshold`** (inclusive).
+* The order-entry minute is **minute precision**, is **not an execution time**, and is stored as the epoch second of the minute start. Decision-time statements may use it only at that precision.
+* Ties (equal timestamps) are broken by `first source_row_id` of the parent, then `parent_order_id` (string order). Tie counts are reported.
+
+## D1 — Opening cohorts
+* Primary = TP-03 window attribution (unchanged; never replaced by gap clustering).
+* Additional execution-time proximity groupings with `g ∈ {2, 5, 10, 30, 60}` s, fixed, never selected between.
+* Timestamp per parent = **first fill that carries an opening portion** (a mixed parent's closing executions never contribute). Deterministic **single linkage**: within each `(underlying, expiry, session date, opening role)` stream, sort parents by that timestamp and chain consecutive parents while `ts(next) − ts(previous) ≤ g`; a larger gap starts a new group. Underlying, expiry, session and role boundaries are never crossed.
+* Reported per `g`: group count, size distribution, **maximum cluster duration and maximum member count** (chaining effect is made visible), unit reconciliation to 1,414,545.
+* Window attribution = an **entry-window classification**; gap cohorts = **execution-time proximity**. Neither shows that one portfolio decision occurred.
+* Convention ids: `OPEN_FIRST_FILL_GAP_{2,5,10,30,60}S`; window variants `OC_WIN_INCL`, `OC_WIN_EXCL`.
+
+## D2 — Closing batches
+* Decision unit = parent order, represented **by its closing portions only**; timestamp = **first closing-portion fill**; opening executions of a mixed parent never contaminate it.
+* Primary `CB_FIRST_FILL_GAP_{10}S`; sensitivities 2, 5, 30, 60 s, same rule (first-fill single-linkage, consecutive parents of **one underlying**, `ts(next) − ts(previous) ≤ g`).
+* Independent sensitivity 1: `CB_LAST_TO_FIRST_GAP_{2,5,10,30,60}S`: `first_cp_fill(next) − last_cp_fill(previous) ≤ g` (a negative difference = overlap = linked).
+* Independent sensitivity 2: `CB_NUMBER_BLOCK_V1` (registered number-block variant). **Semantic ambiguity — recorded, not resolved:** `tp03/config.yaml exit.batch.block_definition` says "one app key and one order-number block with consecutive numbers (gap ≤ 20)", while the only block code (`tp02_common.number_blocks`, TP-02 `sequence_block_gap: 500`) starts a block when the number jumps by **more than 500** within `(date, app key)`; it is not stated whether the registered "gap ≤ 20" applies between consecutive *closing* parents only (order numbers are shared with interleaved opening orders), whether it is within a 500-block, or whether a time limit also applies. **Implementation of this variant stops for review before M2-C.**
+* The three method families have **separate ids, membership rows, counts and reports**; they are never merged.
+* TP-02's closing ±5 s basket and ±10 s wing associations are separate historical analyses; new batch results are **never** described as TP-02 results.
+
+## D3 — Identifiers
+`INF:<KIND>@<CONVENTION>:<UND>:<EXPIRY>[:<SESSION>]:<NNN>` with convention-specific tokens, e.g. `INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:…`, `INF:CLOSING_BATCH@CB_LAST_TO_FIRST_GAP_10S:…`, `INF:CLOSING_BATCH@CB_NUMBER_BLOCK_V1:…`, `INF:OPENING_COHORT@OPEN_FIRST_FILL_GAP_10S:…`. Membership rows carry `grouping_version` and `parameter_hash`. An id is never reused across conventions and never resembles a broker identifier.
+
+## D4 — Schema
+`ClosingPortion`, `parents.tsv` and the v1.1 files are approved (additive; M1 files and semantics unchanged). `parents.tsv` keeps missing values explicit (`NA`) and never derives an order number or app key from other fields. The 26 mixed parents are re-validated in M2-B.
+
+## D5 — Boundary
+Python **and** C++: position identity, lifecycle state, opening/closing quantity mechanics, shared allocation logic, Model A. **Python only**: Models B, C, wing/body, sensitivities, reports, chart orchestration. Shared logic has byte-parity tests; Python-only analytics are deterministic and fixture-tested. Analytical uncertainty never enters the deterministic accounting state.
+
+## D6 — Wing/body
+Primary candidate set: same underlying, same expiry, same right, **same parent order-entry minute**. Sensitivity: **±60 s on first-fill execution time** (labelled execution-time evidence, not decision-time proximity). Multiple candidates, unmatched quantity and alternatives are kept; no forced one-to-one matching. The ≈7.8 % of `h_` fills with the second app key stay eligible for every method that does not need the app key; the number-block method is `NOT_APPLICABLE` / `UNRESOLVED` for them. TP-02's ±10 s closing wing link stays a separate historical analysis.
+
+## D7 — Demonstration cycles
+Frozen in `docs/DEMO_CYCLE_SELECTION.md` (formula) and `reports/DEMO_CYCLE_SELECTION_NOTE.md` (result) **before any grouping output exists**.
