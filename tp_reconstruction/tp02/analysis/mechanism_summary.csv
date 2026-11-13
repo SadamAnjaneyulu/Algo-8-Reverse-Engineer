@@ -1,0 +1,96 @@
+population,item,events,units,share_of_events,share_of_units,chance_rate,excess_over_chance,cycles,note
+short closings (all),STOP_CONFIRMED (module s_),468,95485,0.0399453738477296,0.14535476701526845,,,12,
+short closings (all),STOP_POSSIBLE,6601,307170,0.5634175486514169,0.46759830113714207,,,35,
+short closings (all),STOP_NOT_EVIDENCED,4647,254255,0.39663707750085353,0.3870469318475895,,,35,not proof that no stop occurred
+short closings (all),sensitivity: adverse premium >= 1.15x reference in the previous 15 min,7174,354260,0.6123250256060089,0.5392823978931665,,,35,
+short closings (all),sensitivity: adverse premium >= 1.5x reference in the previous 15 min,3952,192840,0.3373164902697166,0.2935561949125451,,,35,
+short closings (all),  of which: inside a cycle-stop window,902,124140,0.07698873335609423,0.188975658766041,,,12,
+short closings (all),  of which: adverse premium >= 1.25x,6151,299060,0.5250085353362922,0.4552526221247964,,,35,
+short closings (all),  of which: exit price >= 1.25x reference,5291,243610,0.45160464322294297,0.3708422767197942,,,35,
+short closings (all),CLOCK (registered minute),2083,160245,0.17779105496756573,0.24393752568845048,0.017852966026855824,0.1599380889407099,31,chance = share of exposed short-inventory minutes at those minutes
+short closings (all),"EXPIRY_MGMT (expiry day, 14:30 onward)",4443,237145,0.3792249914646637,0.3610007459164878,0.05806510127023376,0.3211598901944299,21,chance = share of exposed minutes in those phases
+short closings (all),"REPLACEMENT (same right, <= 60 s, registered)",3850,229595,0.3286104472516217,0.34950754289019803,0.23669271904566022,0.09191772820596147,35,chance = time-shift null
+short closings (all),"REPLACEMENT_STRICT (+ later order number, same units)",2944,130095,0.2512803004438375,0.19804082751061788,,,35,post-hoc sensitivity
+short closings (all),WING_MODULE (h_),124,21175,0.010583817002389894,0.0322342482227398,,,13,
+short closings (all),"WING_LINKED (wing closing same right, +-10 s, registered)",9852,478290,0.8409013315124616,0.7280906060190894,0.11777869189633895,0.7231226396161227,35,chance = time-shift null (body closings only)
+short closings (all),WING_LINKED_STRICT (+ same units),5768,265310,0.49231819733697507,0.4038757211794614,,,35,post-hoc sensitivity
+short closings (all),"BASKET (>= 2 other contracts, +-5 s)",5966,377315,0.50921816319563,0.5743785297833798,0.05921842863019334,0.4499997345654366,35,"chance = time-shift null; analysed in H4, not used to remove events"
+short closings (all),any registered non-stop flag,11507,618690,0.9821611471491977,0.9418185139516829,,,35,
+short closings (all),any strict non-stop flag,9825,506410,0.8385967907135541,0.7708970787474693,,,35,
+short closings (all),no registered flag at all (unexplained),69,4655,0.005889382041652441,0.007086206634089906,,,18,
+"short, stable PROFIT",STOP_CONFIRMED (module s_),164,27875,0.03672189879086431,0.10608540112650328,,,12,
+"short, stable PROFIT",STOP_POSSIBLE,793,45850,0.17756381549484998,0.1744938346780332,,,29,
+"short, stable PROFIT",STOP_NOT_EVIDENCED,3509,189035,0.7857142857142857,0.7194207641954635,,,33,not proof that no stop occurred
+"short, stable PROFIT",sensitivity: adverse premium >= 1.15x reference in the previous 15 min,1162,70665,0.2601880877742947,0.26893362764499923,,,33,
+"short, stable PROFIT",sensitivity: adverse premium >= 1.5x reference in the previous 15 min,244,15440,0.05463502015226153,0.058760846399756435,,,21,
+"short, stable PROFIT",  of which: inside a cycle-stop window,246,37660,0.05508284818629646,0.14332470695691887,,,12,
+"short, stable PROFIT",  of which: adverse premium >= 1.25x,770,45045,0.1724137931034483,0.17143020246612878,,,28,
+"short, stable PROFIT",  of which: exit price >= 1.25x reference,0,0,0.0,0.0,,,0,
+"short, stable PROFIT",CLOCK (registered minute),1070,78695,0.23958799820868787,0.2994938346780332,0.017852966026855824,0.22173503218183205,29,chance = share of exposed short-inventory minutes at those minutes
+"short, stable PROFIT","EXPIRY_MGMT (expiry day, 14:30 onward)",2653,146485,0.5940438871473355,0.5574859187090881,0.05806510127023376,0.5359787858771017,21,chance = share of exposed minutes in those phases
+"short, stable PROFIT","REPLACEMENT (same right, <= 60 s, registered)",1608,97875,0.3600537393640842,0.37248820216166845,0.23669271904566022,0.12336102031842397,35,chance = time-shift null
+"short, stable PROFIT","REPLACEMENT_STRICT (+ later order number, same units)",1285,60720,0.2877295118674429,0.23108540112650328,,,35,post-hoc sensitivity
+"short, stable PROFIT",WING_MODULE (h_),103,5085,0.023063143752798925,0.0193522606180545,,,12,
+"short, stable PROFIT","WING_LINKED (wing closing same right, +-10 s, registered)",3446,194125,0.7716077026421854,0.7387920535850205,0.11777869189633895,0.6538290107458464,35,chance = time-shift null (body closings only)
+"short, stable PROFIT",WING_LINKED_STRICT (+ same units),1969,103810,0.4408866995073892,0.3950753539351499,,,33,post-hoc sensitivity
+"short, stable PROFIT","BASKET (>= 2 other contracts, +-5 s)",2375,156975,0.5317957904164801,0.5974082813213579,0.05921842863019334,0.47257736178628673,35,"chance = time-shift null; analysed in H4, not used to remove events"
+"short, stable PROFIT",any registered non-stop flag,4404,256755,0.9861173309449172,0.9771464454254833,,,35,
+"short, stable PROFIT",any strict non-stop flag,4148,226175,0.928795342588446,0.8607664789161211,,,35,
+"short, stable PROFIT",no registered flag at all (unexplained),48,3280,0.010747872816838333,0.012482874105647739,,,15,
+"short body, stable PROFIT, clean non-stop (Pop 3)",STOP_CONFIRMED (module s_),0,0,0.0,0.0,,,0,
+"short body, stable PROFIT, clean non-stop (Pop 3)",STOP_POSSIBLE,0,0,0.0,0.0,,,0,
+"short body, stable PROFIT, clean non-stop (Pop 3)",STOP_NOT_EVIDENCED,3415,184350,1.0,1.0,,,33,not proof that no stop occurred
+"short body, stable PROFIT, clean non-stop (Pop 3)",sensitivity: adverse premium >= 1.15x reference in the previous 15 min,377,24630,0.11039531478770132,0.1336045565500407,,,25,
+"short body, stable PROFIT, clean non-stop (Pop 3)",sensitivity: adverse premium >= 1.5x reference in the previous 15 min,0,0,0.0,0.0,,,0,
+"short body, stable PROFIT, clean non-stop (Pop 3)",  of which: inside a cycle-stop window,0,0,0.0,0.0,,,0,
+"short body, stable PROFIT, clean non-stop (Pop 3)",  of which: adverse premium >= 1.25x,0,0,0.0,0.0,,,0,
+"short body, stable PROFIT, clean non-stop (Pop 3)",  of which: exit price >= 1.25x reference,0,0,0.0,0.0,,,0,
+"short body, stable PROFIT, clean non-stop (Pop 3)",CLOCK (registered minute),791,57210,0.2316251830161054,0.31033360455655,0.017852966026855824,0.21377221698924959,25,chance = share of exposed short-inventory minutes at those minutes
+"short body, stable PROFIT, clean non-stop (Pop 3)","EXPIRY_MGMT (expiry day, 14:30 onward)",1978,110055,0.5792093704245974,0.5969894222945484,0.05806510127023376,0.5211442691543636,21,chance = share of exposed minutes in those phases
+"short body, stable PROFIT, clean non-stop (Pop 3)","REPLACEMENT (same right, <= 60 s, registered)",1120,56120,0.3279648609077599,0.3044209384323298,0.23669271904566022,0.09127214186209967,33,chance = time-shift null
+"short body, stable PROFIT, clean non-stop (Pop 3)","REPLACEMENT_STRICT (+ later order number, same units)",1038,49045,0.30395314787701316,0.2660428532682398,,,33,post-hoc sensitivity
+"short body, stable PROFIT, clean non-stop (Pop 3)",WING_MODULE (h_),0,0,0.0,0.0,,,0,
+"short body, stable PROFIT, clean non-stop (Pop 3)","WING_LINKED (wing closing same right, +-10 s, registered)",2821,157040,0.8260614934114202,0.8518578790344453,0.11777869189633895,0.7082828015150813,33,chance = time-shift null (body closings only)
+"short body, stable PROFIT, clean non-stop (Pop 3)",WING_LINKED_STRICT (+ same units),1655,84830,0.48462664714494874,0.4601573094656903,,,33,post-hoc sensitivity
+"short body, stable PROFIT, clean non-stop (Pop 3)","BASKET (>= 2 other contracts, +-5 s)",1724,97490,0.504831625183016,0.5288310279359913,0.05921842863019334,0.4456131965528227,32,"chance = time-shift null; analysed in H4, not used to remove events"
+"short body, stable PROFIT, clean non-stop (Pop 3)",any registered non-stop flag,3367,181070,0.9859443631039532,0.9822077569839979,,,33,
+"short body, stable PROFIT, clean non-stop (Pop 3)",any strict non-stop flag,3204,170245,0.9382137628111273,0.9234879305668565,,,33,
+"short body, stable PROFIT, clean non-stop (Pop 3)",no registered flag at all (unexplained),48,3280,0.014055636896046853,0.01779224301600217,,,15,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",STOP_CONFIRMED (module s_),164,27875,0.17136886102403343,0.37809426924381145,,,12,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",STOP_POSSIBLE,793,45850,0.8286311389759665,0.6219057307561885,,,29,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",STOP_NOT_EVIDENCED,0,0,0.0,0.0,,,0,not proof that no stop occurred
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",sensitivity: adverse premium >= 1.15x reference in the previous 15 min,784,45995,0.819226750261233,0.623872499152255,,,31,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",sensitivity: adverse premium >= 1.5x reference in the previous 15 min,244,15440,0.2549634273772205,0.20942692438114616,,,21,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",  of which: inside a cycle-stop window,246,37660,0.25705329153605017,0.5108172261783656,,,12,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",  of which: adverse premium >= 1.25x,770,45045,0.8045977011494253,0.6109867751780265,,,28,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",  of which: exit price >= 1.25x reference,0,0,0.0,0.0,,,0,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",CLOCK (registered minute),276,21425,0.2884012539184953,0.29060698541878605,0.017852966026855824,0.2705482878916395,20,chance = share of exposed short-inventory minutes at those minutes
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)","EXPIRY_MGMT (expiry day, 14:30 onward)",618,33450,0.64576802507837,0.4537131230925738,0.05806510127023376,0.5877029238081362,17,chance = share of exposed minutes in those phases
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)","REPLACEMENT (same right, <= 60 s, registered)",424,37930,0.4430512016718913,0.514479484571041,0.23669271904566022,0.2063584826262311,26,chance = time-shift null
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)","REPLACEMENT_STRICT (+ later order number, same units)",247,11675,0.258098223615465,0.15835876568328247,,,24,post-hoc sensitivity
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",WING_MODULE (h_),9,400,0.009404388714733543,0.0054255679891488644,,,3,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)","WING_LINKED (wing closing same right, +-10 s, registered)",625,37085,0.6530825496342738,0.503017972193964,0.11777869189633895,0.5353038577379349,29,chance = time-shift null (body closings only)
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",WING_LINKED_STRICT (+ same units),314,18980,0.3281086729362591,0.2574432010851136,,,25,post-hoc sensitivity
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)","BASKET (>= 2 other contracts, +-5 s)",644,58805,0.6729362591431557,0.7976263140047474,0.05921842863019334,0.6137178305129624,32,"chance = time-shift null; analysed in H4, not used to remove events"
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",any registered non-stop flag,943,71000,0.9853709508881923,0.9630383180739234,,,32,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",any strict non-stop flag,850,51245,0.8881922675026124,0.6950830790098338,,,31,
+"short, stable PROFIT, stop-related (Pop 2 ∩ profit)",no registered flag at all (unexplained),0,0,0.0,0.0,,,0,
+long closings (wings and other),STOP_CONFIRMED (module s_),145,44530,0.02399073461283918,0.061833910755323504,,,11,
+long closings (wings and other),STOP_POSSIBLE,223,56375,0.03689609530112508,0.07828175878803868,,,11,
+long closings (wings and other),STOP_NOT_EVIDENCED,5676,619250,0.9391131700860358,0.8598843304566378,,,35,not proof that no stop occurred
+long closings (wings and other),sensitivity: adverse premium >= 1.15x reference in the previous 15 min,0,0,0.0,0.0,,,0,
+long closings (wings and other),sensitivity: adverse premium >= 1.5x reference in the previous 15 min,0,0,0.0,0.0,,,0,
+long closings (wings and other),  of which: inside a cycle-stop window,368,100905,0.06088682991396426,0.1401156695433622,,,12,
+long closings (wings and other),  of which: adverse premium >= 1.25x,0,0,0.0,0.0,,,0,
+long closings (wings and other),  of which: exit price >= 1.25x reference,0,0,0.0,0.0,,,0,
+long closings (wings and other),CLOCK (registered minute),853,178350,0.14113170086035737,0.24765501871124967,0.017852966026855824,0.12327873483350155,31,chance = share of exposed short-inventory minutes at those minutes
+long closings (wings and other),"EXPIRY_MGMT (expiry day, 14:30 onward)",1687,213080,0.27911978821972205,0.2958807478945505,0.05806510127023376,0.2210546869494883,21,chance = share of exposed minutes in those phases
+long closings (wings and other),"REPLACEMENT (same right, <= 60 s, registered)",0,0,0.0,0.0,0.23669271904566022,-0.23669271904566022,0,chance = time-shift null
+long closings (wings and other),"REPLACEMENT_STRICT (+ later order number, same units)",0,0,0.0,0.0,,,0,post-hoc sensitivity
+long closings (wings and other),WING_MODULE (h_),4487,500775,0.7423891462607545,0.6953711353805778,,,35,
+long closings (wings and other),"WING_LINKED (wing closing same right, +-10 s, registered)",0,0,0.0,0.0,,,0,chance = time-shift null (body closings only)
+long closings (wings and other),WING_LINKED_STRICT (+ same units),0,0,0.0,0.0,,,0,post-hoc sensitivity
+long closings (wings and other),"BASKET (>= 2 other contracts, +-5 s)",0,0,0.0,0.0,0.05921842863019334,-0.05921842863019334,0,"chance = time-shift null; analysed in H4, not used to remove events"
+long closings (wings and other),any registered non-stop flag,5002,591425,0.8275976174718729,0.8212468149217876,,,35,
+long closings (wings and other),any strict non-stop flag,5002,591425,0.8275976174718729,0.8212468149217876,,,35,
+long closings (wings and other),no registered flag at all (unexplained),823,60840,0.13616810059563203,0.08448181294304698,,,35,
