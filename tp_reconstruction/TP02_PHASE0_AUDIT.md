@@ -20,7 +20,7 @@ Written and committed **before** any mechanism flag or hypothesis was computed. 
 | `data/fill_roles.parquet` | per fill and convention: inventory before / after, close and open quantity, reference price after the fill | 124,263 (3 × 41,421) |
 | `data/exit_events.parquet`, `exit_event_consensus.parquet` | closing fills (17,760) by convention; consensus label and stability | 53,280 / 17,760 |
 | `data/position_episodes.parquet` | inventory episodes | 8,001 (3 × 2,667) |
-| `data/short_exposure_panel.parquet` | contract-minute panel of short inventory with the previous-bar mark and the decay ratio under each convention | 209,131 |
+| `data/short_exposure_panel.parquet` | contract-minute panel of short inventory with the previous-bar mark and the decay ratio under each convention | 209,489 |
 | Raw Breeze 1-minute bars (`ALGO8_MARKET_DIR`) | index and option bars for the contracts Algo 8 traded (not a full chain) | — |
 | TP-01 analysis CSVs | clock clusters, hazard by decay, behaviour summary | — |
 

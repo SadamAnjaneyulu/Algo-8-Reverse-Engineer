@@ -48,3 +48,24 @@ inference:
   bootstrap_reps: 1000
   seed: 20261113
   multiple_testing: Holm across the registered primary tests
+
+# ---- Added AFTER the registered flags were first computed (documented deviation, see TP02_REPORT.md section 3):
+# the registered replacement / wing / expiry flags are near-saturated (most closings carry several), so presence alone is not an explanation.
+# Stricter variants and a time-shift chance baseline are therefore reported as SENSITIVITIES next to the registered definitions; the registered results are unchanged.
+strict_sensitivity:
+  replacement_strict: same registered flag AND opening order submitted after the closing order (same number block) AND opening units == closed units
+  wing_linked_strict: same registered flag AND a partner wing closing with the same units
+  chance_baseline: flags re-evaluated at the closing time shifted by each of replacement.null_shifts_seconds (kept inside the 09:15-15:30 session)
+  explained_range: [1 - flag_rate, 1 - (flag_rate - chance_rate)]   # unexplained share between "every flagged event is explained" and "only the excess over chance is"
+
+# ---- Effect thresholds used by the verdict rubric (fixed before test_hypotheses.py was run)
+effect_thresholds:
+  ratio_effect_present: 1.5            # controlled hazard / association ratio >= 1.5 (or <= 1/1.5)
+  ratio_not_supported_band: [0.8, 1.25]
+  auc_effect_present: 0.55             # stratified AUC >= 0.55 or <= 0.45
+  auc_not_supported_band: [0.48, 0.52]
+  excess_effect_present: 0.10          # excess over the chance baseline, in share of events
+  min_bin_rows: 200                    # a decay / mark-to-market bin must hold at least this many exposed minutes to enter a max statistic
+  permutations: 500
+  permutations_h5: 300
+  permutation_strata: [cycle, day_type, hour]   # labels are shuffled only inside a cycle x day-type x clock-hour stratum
