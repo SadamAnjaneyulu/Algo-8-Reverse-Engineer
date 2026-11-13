@@ -1,0 +1,16 @@
+item,value
+parent orders compared,39874.0
+order lots equal (Stage 1 lots == TP-01 open+close units / lot),1.0
+both closing,16660.0
+both opening,22984.0
+"Stage 1 closing, TP-01 opening only",73.0
+"Stage 1 opening, TP-01 closing (any part)",157.0
+TP-01 orders with both closing and opening parts (reversal / mixed),26.0
+difference: module h_ | Stage 1 label open | TP-01 closing=True,19.0
+difference: module num | Stage 1 label 5 cycle stop & liquidation | TP-01 closing=False,2.0
+difference: module num | Stage 1 label 7 expiry-day salvage | TP-01 closing=False,1.0
+difference: module num | Stage 1 label open | TP-01 closing=True,127.0
+difference: module s_ | Stage 1 label 10 manual / platform risk engine | TP-01 closing=False,9.0
+difference: module s_ | Stage 1 label 5 cycle stop & liquidation | TP-01 closing=False,61.0
+difference: module s_ | Stage 1 label open | TP-01 closing=True,5.0
+difference: module v_ | Stage 1 label open | TP-01 closing=True,6.0
