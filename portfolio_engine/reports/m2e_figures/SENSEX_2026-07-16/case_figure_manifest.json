@@ -1,0 +1,150 @@
+{
+ "cycle": "SENSEX_2026-07-16",
+ "version": "M2E_1",
+ "figures": [
+  {
+   "figure": "cases/CT1_INCREMENTAL_OPENING",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT1_INCREMENTAL_OPENING.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT1_INCREMENTAL_OPENING.csv",
+   "data_rows": 13,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "0399e0c87de8706eb542a35da948129b576f5f3458bdd17ebab8eff551aebdd9",
+   "png_sha256_informational": "0dac36b6284fa5d84d2d1390b7514a6894c6f41b39dc5b9020dadbcb0efb1821",
+   "scope_warning_shown": false,
+   "episodes": 1,
+   "filter": "episode_ids",
+   "case_type": "CT1_INCREMENTAL_OPENING"
+  },
+  {
+   "figure": "cases/CT2_PARTIAL_REDUCTION",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT2_PARTIAL_REDUCTION.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT2_PARTIAL_REDUCTION.csv",
+   "data_rows": 7,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "e7bb9602b601fbdc4c5e8f88b2bb34b431d72b31abc3bd4d72aebdee7d636f40",
+   "png_sha256_informational": "e668c89500b204795ae08949a9d1ce3eac1e0f4059c7ece00fc8b8390b95e8f8",
+   "scope_warning_shown": false,
+   "episodes": 1,
+   "filter": "episode_ids",
+   "case_type": "CT2_PARTIAL_REDUCTION"
+  },
+  {
+   "figure": "cases/CT3_FULL_CLOSURE",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT3_FULL_CLOSURE.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT3_FULL_CLOSURE.csv",
+   "data_rows": 3,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "167d5ef40d9e8d564e3a43922e342ce86d05c6b730e6a7ccd23227784f4914ed",
+   "png_sha256_informational": "4146a10e52d2049c2582e0ad16e8c49c5c2811debc3fad1610b0f5b874640da0",
+   "scope_warning_shown": false,
+   "episodes": 1,
+   "filter": "episode_ids",
+   "case_type": "CT3_FULL_CLOSURE"
+  },
+  {
+   "figure": "cases/CT6_MULTIPLE_CANDIDATE_WINGS",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT6_MULTIPLE_CANDIDATE_WINGS.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT6_MULTIPLE_CANDIDATE_WINGS.csv",
+   "data_rows": 54,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "ee0b1d5edd4e7d26b9d1508d86d1a1bad56058939746d5455e35f8cccd8d4fa4",
+   "png_sha256_informational": "ac306ef4200288fdcc8d92bb48331e4f33e7a9ca325e9c32c29b23b8928ed3d2",
+   "scope_warning_shown": false,
+   "episodes": 1,
+   "filter": "episode_ids",
+   "case_type": "CT6_MULTIPLE_CANDIDATE_WINGS"
+  },
+  {
+   "figure": "cases/CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES.csv",
+   "data_rows": 5,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "e26c2d2c0b54193eb9393b3737da7e1aca4708b80da16c9cf4171e6564d5db54",
+   "png_sha256_informational": "bf7aaeba824386d371261cc409fff0b72469d1fb412de6f7d65cafc43a38d2e0",
+   "scope_warning_shown": false,
+   "episodes": 1,
+   "filter": "episode_ids",
+   "case_type": "CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES"
+  },
+  {
+   "figure": "cases/CT7_NO_CANDIDATE_WING",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT7_NO_CANDIDATE_WING.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT7_NO_CANDIDATE_WING.csv",
+   "data_rows": 7,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "6a54cd8c35d73702e02e2b5264710d1fe93df781fa664a8e215e0f6c9a0f1640",
+   "png_sha256_informational": "929ad0d2f313a97e403805eae0f8717b11f7ca6a5d406999e06d1852af2fe36a",
+   "scope_warning_shown": false,
+   "episodes": 1,
+   "filter": "episode_ids",
+   "case_type": "CT7_NO_CANDIDATE_WING"
+  },
+  {
+   "figure": "cases/CT8_W1_VS_W1S60_DISAGREEMENT",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT8_W1_VS_W1S60_DISAGREEMENT.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT8_W1_VS_W1S60_DISAGREEMENT.csv",
+   "data_rows": 21,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "203a9ede3e6433a7cdc6a6c8a1daae009e28f386cb2d041752635a985b754fdb",
+   "png_sha256_informational": "c86909688e98b5f5e7b0f6e47a4c6b2ffee4034cbda075f032b1c7665da368ba",
+   "scope_warning_shown": false,
+   "episodes": 1,
+   "filter": "episode_ids",
+   "case_type": "CT8_W1_VS_W1S60_DISAGREEMENT"
+  },
+  {
+   "figure": "cases/CT9_MULTI_PARENT_CLOSING_BATCH",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT9_MULTI_PARENT_CLOSING_BATCH.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT9_MULTI_PARENT_CLOSING_BATCH.csv",
+   "data_rows": 59,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "5a1475dc241a530d39057a809e56efde0980e0f156ffee7f7d6f5042f4a81f9e",
+   "png_sha256_informational": "6203b098fe8e50666653351ef3d9d1465c5e46bad7b6323c45b7a923014ece47",
+   "scope_warning_shown": false,
+   "episodes": 1,
+   "filter": "episode_ids",
+   "case_type": "CT9_MULTI_PARENT_CLOSING_BATCH"
+  }
+ ]
+}

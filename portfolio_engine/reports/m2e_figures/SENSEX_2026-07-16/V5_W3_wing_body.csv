@@ -1,0 +1,20 @@
+panel,category,value,unit,evidence_class
+candidate_multiplicity,wing items with 0 candidate bodies,0,items,UNRESOLVED
+candidate_multiplicity,body items with 0 candidate wings,22,items,UNRESOLVED
+candidate_multiplicity,wing items with 1 candidate bodies,121,items,UNRESOLVED
+candidate_multiplicity,body items with 1 candidate wings,230,items,UNRESOLVED
+candidate_multiplicity,wing items with 2 candidate bodies,24,items,UNRESOLVED
+candidate_multiplicity,body items with 2 candidate wings,0,items,UNRESOLVED
+candidate_multiplicity,wing items with 3 candidate bodies,9,items,UNRESOLVED
+candidate_multiplicity,body items with 3 candidate wings,0,items,UNRESOLVED
+candidate_multiplicity,wing items with 4 candidate bodies,1,items,UNRESOLVED
+candidate_multiplicity,body items with 4 candidate wings,0,items,UNRESOLVED
+candidate_multiplicity,wing items with 5+ candidate bodies,5,items,UNRESOLVED
+candidate_multiplicity,body items with 5+ candidate wings,0,items,UNRESOLVED
+units,wing units: queue-matched,4600.0,units,UNRESOLVED
+units,wing units: queue residual,0.0,units,UNRESOLVED
+units,wing units: observed total,4600.0,units,OBSERVED
+units,body units: queue-matched,4600.0,units,UNRESOLVED
+units,body units: queue residual,440.0,units,UNRESOLVED
+units,body units: observed total,5040.0,units,OBSERVED
+w3_queue_matched_units_by_value,20,230,links,UNRESOLVED

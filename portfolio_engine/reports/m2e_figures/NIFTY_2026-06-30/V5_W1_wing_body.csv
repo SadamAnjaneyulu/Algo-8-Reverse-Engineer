@@ -1,0 +1,51 @@
+panel,category,value,unit,evidence_class
+candidate_multiplicity,wing items with 0 candidate bodies,17,items,WEAKLY_SUPPORTED
+candidate_multiplicity,body items with 0 candidate wings,27,items,WEAKLY_SUPPORTED
+candidate_multiplicity,wing items with 1 candidate bodies,130,items,WEAKLY_SUPPORTED
+candidate_multiplicity,body items with 1 candidate wings,220,items,WEAKLY_SUPPORTED
+candidate_multiplicity,wing items with 2 candidate bodies,44,items,WEAKLY_SUPPORTED
+candidate_multiplicity,body items with 2 candidate wings,85,items,WEAKLY_SUPPORTED
+candidate_multiplicity,wing items with 3 candidate bodies,29,items,WEAKLY_SUPPORTED
+candidate_multiplicity,body items with 3 candidate wings,25,items,WEAKLY_SUPPORTED
+candidate_multiplicity,wing items with 4 candidate bodies,12,items,WEAKLY_SUPPORTED
+candidate_multiplicity,body items with 4 candidate wings,49,items,WEAKLY_SUPPORTED
+candidate_multiplicity,wing items with 5+ candidate bodies,30,items,WEAKLY_SUPPORTED
+candidate_multiplicity,body items with 5+ candidate wings,0,items,WEAKLY_SUPPORTED
+units,wing units: exactly 1 candidate,8775,units,WEAKLY_SUPPORTED
+units,wing units: >=2 candidates (ambiguous),14430,units,WEAKLY_SUPPORTED
+units,wing units: no candidate (unmatched),1235,units,WEAKLY_SUPPORTED
+units,wing units: observed total,24440,units,OBSERVED
+units,body units: exactly 1 candidate,14300,units,WEAKLY_SUPPORTED
+units,body units: >=2 candidates (ambiguous),10335,units,WEAKLY_SUPPORTED
+units,body units: no candidate (unmatched),1755,units,WEAKLY_SUPPORTED
+units,body units: observed total,26390,units,OBSERVED
+dt_s_histogram,"[-120,-114)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-114,-108)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-108,-102)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-102,-96)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-96,-90)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-90,-84)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-84,-78)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-78,-72)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-72,-66)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-66,-60)",0,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-60,-54)",4,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-54,-48)",8,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-48,-42)",8,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-42,-36)",4,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-36,-30)",8,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-30,-24)",20,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-24,-18)",8,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-18,-12)",42,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-12,-6)",22,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[-6,0)",36,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[0,6)",289,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[6,12)",74,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[12,18)",41,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[18,24)",16,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[24,30)",38,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[30,36)",25,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[36,42)",8,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[42,48)",3,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[48,54)",5,links,WEAKLY_SUPPORTED
+dt_s_histogram,"[54,60)",2,links,WEAKLY_SUPPORTED

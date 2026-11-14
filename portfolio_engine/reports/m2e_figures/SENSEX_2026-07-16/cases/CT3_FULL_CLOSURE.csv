@@ -1,0 +1,4 @@
+record,episode_id,instrument_id,direction,terminal_status,opened,closed,remaining,row_index,event_type,fill_id,source_row_id,ts_ist,quantity,inventory_after
+EPISODE,SENSEX|2026-07-16|CE|79500#1,SENSEX|2026-07-16|CE|79500,LONG,CLOSED,40,40,0,0,,,,,,
+EVENT,SENSEX|2026-07-16|CE|79500#1,SENSEX|2026-07-16|CE|79500,LONG,,,,,0,CREATED,F011983,11983,2026-07-15 09:31:05,40,40
+EVENT,SENSEX|2026-07-16|CE|79500#1,SENSEX|2026-07-16|CE|79500,LONG,,,,,0,CLOSED,F012127,12127,2026-07-15 12:44:44,40,0

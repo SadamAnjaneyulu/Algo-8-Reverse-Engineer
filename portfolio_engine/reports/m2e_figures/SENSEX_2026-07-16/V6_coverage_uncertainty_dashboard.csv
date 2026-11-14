@@ -1,0 +1,81 @@
+section,metric,value,scope
+A_units_by_candidate_status,"wing units, W1: 1 candidate",1400,cycle
+A_units_by_candidate_status,"wing units, W1: >=2 candidates",2960,cycle
+A_units_by_candidate_status,"wing units, W1: none",240,cycle
+A_units_by_candidate_status,"wing units, W1_S60: 1 candidate",1120,cycle
+A_units_by_candidate_status,"wing units, W1_S60: >=2 candidates",3460,cycle
+A_units_by_candidate_status,"wing units, W1_S60: none",20,cycle
+A_units_by_candidate_status,"wing units, W3: 1 candidate",2420,cycle
+A_units_by_candidate_status,"wing units, W3: >=2 candidates",2180,cycle
+A_units_by_candidate_status,"wing units, W3: none",0,cycle
+A_units_by_candidate_status,"body units, W1: 1 candidate",3060,cycle
+A_units_by_candidate_status,"body units, W1: >=2 candidates",1660,cycle
+A_units_by_candidate_status,"body units, W1: none",320,cycle
+A_units_by_candidate_status,"body units, W1_S60: 1 candidate",1820,cycle
+A_units_by_candidate_status,"body units, W1_S60: >=2 candidates",3060,cycle
+A_units_by_candidate_status,"body units, W1_S60: none",160,cycle
+A_units_by_candidate_status,"body units, W3: 1 candidate",4600,cycle
+A_units_by_candidate_status,"body units, W3: >=2 candidates",0,cycle
+A_units_by_candidate_status,"body units, W3: none",440,cycle
+B_wing_multiplicity,W1: wing items with 0 candidate bodies,11,cycle
+B_wing_multiplicity,W1: wing items with 1 candidate bodies,69,cycle
+B_wing_multiplicity,W1: wing items with 2 candidate bodies,41,cycle
+B_wing_multiplicity,W1: wing items with 3 candidate bodies,13,cycle
+B_wing_multiplicity,W1: wing items with 4 candidate bodies,10,cycle
+B_wing_multiplicity,W1: wing items with 5+ candidate bodies,16,cycle
+B_wing_multiplicity,W1_S60: wing items with 0 candidate bodies,1,cycle
+B_wing_multiplicity,W1_S60: wing items with 1 candidate bodies,56,cycle
+B_wing_multiplicity,W1_S60: wing items with 2 candidate bodies,37,cycle
+B_wing_multiplicity,W1_S60: wing items with 3 candidate bodies,22,cycle
+B_wing_multiplicity,W1_S60: wing items with 4 candidate bodies,14,cycle
+B_wing_multiplicity,W1_S60: wing items with 5+ candidate bodies,30,cycle
+B_wing_multiplicity,W3: wing items with 0 candidate bodies,0,cycle
+B_wing_multiplicity,W3: wing items with 1 candidate bodies,121,cycle
+B_wing_multiplicity,W3: wing items with 2 candidate bodies,24,cycle
+B_wing_multiplicity,W3: wing items with 3 candidate bodies,9,cycle
+B_wing_multiplicity,W3: wing items with 4 candidate bodies,1,cycle
+B_wing_multiplicity,W3: wing items with 5+ candidate bodies,5,cycle
+C_role_exclusions_units,CLOSING_of_LONG_episode|closing_module|num,2680,cycle
+C_role_exclusions_units,CLOSING_of_SHORT_episode|closing_module|s_,1960,cycle
+C_role_exclusions_units,OPENING|SHORT|s_,1960,cycle
+C_role_exclusions_units,OPENING|LONG|v_,1640,cycle
+C_role_exclusions_units,CLOSING_of_LONG_episode|closing_module|v_,1060,cycle
+C_role_exclusions_units,OPENING|LONG|s_,480,cycle
+C_role_exclusions_units,OPENING|LONG|num,460,cycle
+D_unclassified_and_missing,"Opening units classified by tag: 9,640 of 14,180",,cycle
+D_unclassified_and_missing,"UNCLASSIFIED opening units: 4,540",,cycle
+D_unclassified_and_missing,"UNCLASSIFIED(num,BUY): 460",,cycle
+D_unclassified_and_missing,"UNCLASSIFIED(s_,BUY): 480",,cycle
+D_unclassified_and_missing,"UNCLASSIFIED(s_,SELL): 1,960",,cycle
+D_unclassified_and_missing,"UNCLASSIFIED(v_,BUY): 1,640",,cycle
+D_unclassified_and_missing,"Missing order metadata (parents): 0 of 4,290 field values",,cycle
+D_unclassified_and_missing,Historical marks: MISSING (source absent) -> unrealized P&L = NA,,cycle
+D_unclassified_and_missing,Expired-unclosed positions: 0,,cycle
+D_unclassified_and_missing,MIXED-role parents: 1,,cycle
+D_unclassified_and_missing,Partially-filled fills: 14,,cycle
+E_batch_count_sensitivity,C1 batches at 2 s,79,cycle
+E_batch_count_sensitivity,C1 batches at 5 s,33,cycle
+E_batch_count_sensitivity,C1 batches at 10 s,25,cycle
+E_batch_count_sensitivity,C1 batches at 30 s,22,cycle
+E_batch_count_sensitivity,C1 batches at 60 s,14,cycle
+E_batch_count_sensitivity,C2 batches at 2 s,79,cycle
+E_batch_count_sensitivity,C2 batches at 5 s,33,cycle
+E_batch_count_sensitivity,C2 batches at 10 s,25,cycle
+E_batch_count_sensitivity,C2 batches at 30 s,22,cycle
+E_batch_count_sensitivity,C2 batches at 60 s,14,cycle
+F_sensitivity_unresolved,UNRESOLVED / SENSITIVITY (cycle level): body items whose candidate-wing set differs between W1 and W1_S60: 125 of 252; wing items whose candidate-body set differs: 73 of 160.,,cycle
+F_sensitivity_unresolved,"Wing items with >=2 candidate bodies: W1 80, W1_S60 103, W3 39 of 160. Unmatched wing units: W1 240, W1_S60 20; W3 queue residual: wing 0, body 440 units.",,cycle
+F_sensitivity_unresolved,Evidence classes: W1 WEAKLY_SUPPORTED | W1_S60 UNRESOLVED | W3 UNRESOLVED | lot-level ownership and protective intent UNRESOLVED / NOT_TESTABLE (never upgraded here).,,cycle
+F_sensitivity_unresolved,body items with differing W1 vs W1_S60 candidate set,125,cycle
+F_sensitivity_unresolved,wing items with differing W1 vs W1_S60 candidate set,73,cycle
+G_scope_warning_numbers_full_ledger,wing_items_full_ledger_W1,8399,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,wing_items_with_candidate_full_ledger_W1,7301,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,wing_items_unique_full_ledger_W1,3501,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,wing_items_multiple_full_ledger_W1,3800,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,wing_items_none_full_ledger_W1,1098,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,wing_units_unmatched_full_ledger_W1,133640,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,wing_items_with_candidate_full_ledger_W1_S60,8204,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,wing_items_none_full_ledger_W1_S60,195,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,wing_units_unmatched_full_ledger_W1_S60,68720,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,closing_units_excluded_by_tag_roles_full_ledger,336040,full ledger (m2d_summary.json)
+G_scope_warning_numbers_full_ledger,closing_wing_units_in_mixed_module_episodes_full_ledger,107530,full ledger (m2d_summary.json)

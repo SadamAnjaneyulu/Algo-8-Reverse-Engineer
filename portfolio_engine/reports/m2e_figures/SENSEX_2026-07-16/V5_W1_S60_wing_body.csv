@@ -1,0 +1,52 @@
+panel,category,value,unit,evidence_class
+candidate_multiplicity,wing items with 0 candidate bodies,1,items,UNRESOLVED
+candidate_multiplicity,body items with 0 candidate wings,8,items,UNRESOLVED
+candidate_multiplicity,wing items with 1 candidate bodies,56,items,UNRESOLVED
+candidate_multiplicity,body items with 1 candidate wings,91,items,UNRESOLVED
+candidate_multiplicity,wing items with 2 candidate bodies,37,items,UNRESOLVED
+candidate_multiplicity,body items with 2 candidate wings,83,items,UNRESOLVED
+candidate_multiplicity,wing items with 3 candidate bodies,22,items,UNRESOLVED
+candidate_multiplicity,body items with 3 candidate wings,32,items,UNRESOLVED
+candidate_multiplicity,wing items with 4 candidate bodies,14,items,UNRESOLVED
+candidate_multiplicity,body items with 4 candidate wings,9,items,UNRESOLVED
+candidate_multiplicity,wing items with 5+ candidate bodies,30,items,UNRESOLVED
+candidate_multiplicity,body items with 5+ candidate wings,29,items,UNRESOLVED
+units,wing units: exactly 1 candidate,1120,units,UNRESOLVED
+units,wing units: >=2 candidates (ambiguous),3460,units,UNRESOLVED
+units,wing units: no candidate (unmatched),20,units,UNRESOLVED
+units,wing units: observed total,4600,units,OBSERVED
+units,body units: exactly 1 candidate,1820,units,UNRESOLVED
+units,body units: >=2 candidates (ambiguous),3060,units,UNRESOLVED
+units,body units: no candidate (unmatched),160,units,UNRESOLVED
+units,body units: observed total,5040,units,OBSERVED
+dt_s_histogram,"[-60,-56)",26,links,UNRESOLVED
+dt_s_histogram,"[-56,-52)",22,links,UNRESOLVED
+dt_s_histogram,"[-52,-48)",17,links,UNRESOLVED
+dt_s_histogram,"[-48,-44)",10,links,UNRESOLVED
+dt_s_histogram,"[-44,-40)",6,links,UNRESOLVED
+dt_s_histogram,"[-40,-36)",12,links,UNRESOLVED
+dt_s_histogram,"[-36,-32)",4,links,UNRESOLVED
+dt_s_histogram,"[-32,-28)",24,links,UNRESOLVED
+dt_s_histogram,"[-28,-24)",16,links,UNRESOLVED
+dt_s_histogram,"[-24,-20)",13,links,UNRESOLVED
+dt_s_histogram,"[-20,-16)",12,links,UNRESOLVED
+dt_s_histogram,"[-16,-12)",11,links,UNRESOLVED
+dt_s_histogram,"[-12,-8)",4,links,UNRESOLVED
+dt_s_histogram,"[-8,-4)",29,links,UNRESOLVED
+dt_s_histogram,"[-4,0)",23,links,UNRESOLVED
+dt_s_histogram,"[0,4)",112,links,UNRESOLVED
+dt_s_histogram,"[4,8)",118,links,UNRESOLVED
+dt_s_histogram,"[8,12)",40,links,UNRESOLVED
+dt_s_histogram,"[12,16)",26,links,UNRESOLVED
+dt_s_histogram,"[16,20)",10,links,UNRESOLVED
+dt_s_histogram,"[20,24)",5,links,UNRESOLVED
+dt_s_histogram,"[24,28)",15,links,UNRESOLVED
+dt_s_histogram,"[28,32)",10,links,UNRESOLVED
+dt_s_histogram,"[32,36)",12,links,UNRESOLVED
+dt_s_histogram,"[36,40)",12,links,UNRESOLVED
+dt_s_histogram,"[40,44)",11,links,UNRESOLVED
+dt_s_histogram,"[44,48)",13,links,UNRESOLVED
+dt_s_histogram,"[48,52)",13,links,UNRESOLVED
+dt_s_histogram,"[52,56)",5,links,UNRESOLVED
+dt_s_histogram,"[56,60)",19,links,UNRESOLVED
+links_in_primary_set,W1_S60 links also W1,441,links,UNRESOLVED

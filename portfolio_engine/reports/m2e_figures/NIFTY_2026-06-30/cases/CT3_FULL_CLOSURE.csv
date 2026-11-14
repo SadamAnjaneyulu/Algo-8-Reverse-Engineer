@@ -1,0 +1,4 @@
+record,episode_id,instrument_id,direction,terminal_status,opened,closed,remaining,row_index,event_type,fill_id,source_row_id,ts_ist,quantity,inventory_after
+EPISODE,NIFTY|2026-06-30|CE|26100#1,NIFTY|2026-06-30|CE|26100,LONG,CLOSED,65,65,0,0,,,,,,
+EVENT,NIFTY|2026-06-30|CE|26100#1,NIFTY|2026-06-30|CE|26100,LONG,,,,,0,CREATED,F004749,4749,2026-06-29 09:16:00,65,65
+EVENT,NIFTY|2026-06-30|CE|26100#1,NIFTY|2026-06-30|CE|26100,LONG,,,,,0,CLOSED,F005062,5062,2026-06-29 15:03:09,65,0

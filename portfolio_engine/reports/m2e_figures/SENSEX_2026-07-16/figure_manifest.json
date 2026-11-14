@@ -1,0 +1,235 @@
+{
+ "cycle": "SENSEX_2026-07-16",
+ "version": "M2E_1",
+ "figures": [
+  {
+   "figure": "V1_inventory_evolution",
+   "title": "V1 inventory evolution (short/long CE/PE, net, gross; D-1 | D0)",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V1_inventory_evolution.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V1_inventory_evolution.csv",
+   "data_rows": 731,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/inventory_series.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/session_carry.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/coverage.json"
+   ],
+   "data_csv_sha256": "83cb9f5d5444c64b7b18262598843403f1b984c18d3de8a5634984aa222bda1d",
+   "png_sha256_informational": "e663afdceb3cae99d035ae21ea2a41f5f1c079495f3e6d0fda949905834f3651",
+   "scope_warning_shown": false,
+   "reconciles_to": "M1/M2-B: series recomputed from side*quantity per fill in tests; cumulative opened/closed = M2-B OA/CP totals"
+  },
+  {
+   "figure": "V2_position_lifecycle_timeline",
+   "title": "V2 position lifecycle timeline",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V2_position_lifecycle_timeline.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V2_position_lifecycle_timeline.csv",
+   "data_rows": 799,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+   ],
+   "data_csv_sha256": "c4c469c36de575593977128faf8354c1cbe4879f65809826a5569154a37554af",
+   "png_sha256_informational": "57a082d492372cb3fa27f2855caf72181a0c0324f26edbf93cb4a20c1b15994c",
+   "scope_warning_shown": false,
+   "episodes": 70,
+   "filter": "all"
+  },
+  {
+   "figure": "V3_opening_activity_cohort_map",
+   "title": "V3 opening activity / cohort map",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V3_opening_activity_cohort_map.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V3_opening_activity_cohort_map.csv",
+   "data_rows": 452,
+   "additional_data_csv": [
+    {
+     "name": "entry_minute_cohorts",
+     "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V3_opening_activity_cohort_map__entry_minute_cohorts.csv",
+     "rows": 89,
+     "sha256": "1826fb788ed288aa4e82de5a722b26886d8d4dd00a9cd3424f1e1d5e00321e91"
+    },
+    {
+     "name": "tp03_windows_overlay",
+     "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V3_opening_activity_cohort_map__tp03_windows_overlay.csv",
+     "rows": 44,
+     "sha256": "b3fd8136b387a2dfb28f80bc9df23f1b6239ffb3107f8775c0b1cc78427c9636"
+    }
+   ],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/opening_items.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/tp03_windows.tsv"
+   ],
+   "data_csv_sha256": "5e0fa80afcc15b4320064607f006106b532ddc8c77973ecb5656987d112384d6",
+   "png_sha256_informational": "7921975748922900053d97ffb04a241383ad332f4f1db79bd176b545afbf5ab5",
+   "scope_warning_shown": true,
+   "items_without_entry_minute": 0
+  },
+  {
+   "figure": "V4_C1_closing_batches",
+   "title": "V4 closing batches C1",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches.csv",
+   "data_rows": 25,
+   "additional_data_csv": [
+    {
+     "name": "sensitivity_by_threshold",
+     "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches__sensitivity_by_threshold.csv",
+     "rows": 5,
+     "sha256": "c04acc9f345db10601c8d306eb7ef33bd06d175c43ae9778be1e85acc8dd45c8"
+    },
+    {
+     "name": "longest_chains",
+     "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches__longest_chains.csv",
+     "rows": 16,
+     "sha256": "c6b32900c8a2b8ff9ec8ab43dc6fcf03de5ddfc56f9b339567a0a80a8df8c889"
+    },
+    {
+     "name": "members_10s",
+     "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches__members_10s.csv",
+     "rows": 264,
+     "sha256": "6128f6ba7d822105a80b6b9e78d9d3bf8375004f89aed91882ce0f8a5d9b8a73"
+    }
+   ],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batches_C1.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batch_members_C1.tsv"
+   ],
+   "data_csv_sha256": "6024ba67313efcd9abc99cd337c79719b886119608dd525ae0119b7759ded687",
+   "png_sha256_informational": "7b7bcb597ad45951f9873116243c1a0137d59c71e8a6655973f4fe888fa20a0c",
+   "scope_warning_shown": true,
+   "method": "C1"
+  },
+  {
+   "figure": "V4_C2_closing_batches",
+   "title": "V4 closing batches C2",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches.csv",
+   "data_rows": 25,
+   "additional_data_csv": [
+    {
+     "name": "sensitivity_by_threshold",
+     "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches__sensitivity_by_threshold.csv",
+     "rows": 5,
+     "sha256": "c04acc9f345db10601c8d306eb7ef33bd06d175c43ae9778be1e85acc8dd45c8"
+    },
+    {
+     "name": "longest_chains",
+     "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches__longest_chains.csv",
+     "rows": 16,
+     "sha256": "7c028636797bcf4a611f7829924f23f20813672649d251096e49597b72c13e5e"
+    },
+    {
+     "name": "members_10s",
+     "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches__members_10s.csv",
+     "rows": 264,
+     "sha256": "64f5b770ab37638be0ad2df1602d0e66bb89f72e36e16bfd0ef9b4cd946be856"
+    }
+   ],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batches_C2.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batch_members_C2.tsv"
+   ],
+   "data_csv_sha256": "21bef94d6b8050c3bb1d84aa1aac206c208353d689565b916b0907090f8aa646",
+   "png_sha256_informational": "f442f185a27107c33a38f2a62ebad91387ad74c4755c4b3a2b74fbc42b1fe873",
+   "scope_warning_shown": true,
+   "method": "C2"
+  },
+  {
+   "figure": "V5_W1_wing_body",
+   "title": "V5 wing/body W1",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V5_W1_wing_body.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V5_W1_wing_body.csv",
+   "data_rows": 50,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_items.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W1.tsv"
+   ],
+   "data_csv_sha256": "a7bfc0c5f45967af8bd323362a6f7af4ca6173d0dd8cafa15325f6cebdd11f11",
+   "png_sha256_informational": "e45b70ebac423a8c62b0c41a385ebda236961e976348d52d0f045bc37642ade7",
+   "scope_warning_shown": true,
+   "method": "W1",
+   "evidence_class": "WEAKLY_SUPPORTED",
+   "wing_units_observed": 4600,
+   "body_units_observed": 5040
+  },
+  {
+   "figure": "V5_W1_S60_wing_body",
+   "title": "V5 wing/body W1_S60",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V5_W1_S60_wing_body.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V5_W1_S60_wing_body.csv",
+   "data_rows": 51,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_items.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W1_S60.tsv"
+   ],
+   "data_csv_sha256": "2ba500a5b68a06196a4ab5b7da14ab18def73448775cb64a632f65c458b7e2b2",
+   "png_sha256_informational": "eb04dbe2726accb39ba1d9b168db7e8fe3e6deefa1e76f203f2bb3a211b53df5",
+   "scope_warning_shown": true,
+   "method": "W1_S60",
+   "evidence_class": "UNRESOLVED",
+   "wing_units_observed": 4600,
+   "body_units_observed": 5040
+  },
+  {
+   "figure": "V5_W2_wing_body",
+   "title": "V5 wing/body W2",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V5_W2_wing_body.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V5_W2_wing_body.csv",
+   "data_rows": 256,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_items.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W2.tsv"
+   ],
+   "data_csv_sha256": "82ebe564b2f88a568f32a43ec01024d2edcc6c5bc77c34f457459d4aa7c4ef6a",
+   "png_sha256_informational": "615fbb2fa44adef632bb460464888e01b60e14449537b096f6f5a0d8082dbcca",
+   "scope_warning_shown": true,
+   "method": "W2",
+   "evidence_class": "WEAKLY_SUPPORTED (weights)",
+   "wing_units_observed": 4600,
+   "body_units_observed": 5040
+  },
+  {
+   "figure": "V5_W3_wing_body",
+   "title": "V5 wing/body W3",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V5_W3_wing_body.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V5_W3_wing_body.csv",
+   "data_rows": 19,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_items.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W3.tsv"
+   ],
+   "data_csv_sha256": "c60e8559dc27b491305aa83eaae3cec830b37e2138b90ab8118cd07233ecab07",
+   "png_sha256_informational": "1631493080140e62598fdd2a4e1c60700eb863a9a106d43f50c8a36e670e3593",
+   "scope_warning_shown": true,
+   "method": "W3",
+   "evidence_class": "UNRESOLVED",
+   "wing_units_observed": 4600,
+   "body_units_observed": 5040
+  },
+  {
+   "figure": "V6_coverage_uncertainty_dashboard",
+   "title": "V6 coverage and uncertainty dashboard",
+   "png": "reports/m2e_figures/SENSEX_2026-07-16/V6_coverage_uncertainty_dashboard.png",
+   "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V6_coverage_uncertainty_dashboard.csv",
+   "data_rows": 80,
+   "additional_data_csv": [],
+   "source_datasets": [
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_items.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W1.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W1_S60.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W3.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batches_C1.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batches_C2.tsv",
+    "reports/m2e_data/SENSEX_2026-07-16/coverage.json"
+   ],
+   "data_csv_sha256": "9693de1bf69fa1f20380a96475ddaafc8f6cd05cafaef0453888f5a55c53cff0",
+   "png_sha256_informational": "d90ad57cfff322a65ef507f9c99a943e719a3fa9737325677d8d770eb7c03411",
+   "scope_warning_shown": true
+  }
+ ]
+}

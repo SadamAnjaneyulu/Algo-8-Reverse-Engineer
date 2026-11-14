@@ -1,0 +1,530 @@
+{
+ "cycle": "SENSEX|2026-07-16",
+ "sessions": [
+  "2026-07-15",
+  "2026-07-16"
+ ],
+ "fills": {
+  "raw_fill_count": 729,
+  "duplicate_flagged": 0,
+  "partially_filled_status": 14,
+  "unique_parent_orders": 715,
+  "opening_fills": 453,
+  "closing_fills": 276,
+  "fills_with_both_opening_and_closing_quantity": 0,
+  "opening_units": 14180,
+  "closing_units": 14180,
+  "parent_roles": {
+   "CLOSING_ONLY": 263,
+   "OPENING_ONLY": 451,
+   "MIXED": 1
+  },
+  "mixed_parent_ids": [
+   "s_16053046299662"
+  ]
+ },
+ "episodes": {
+  "episode_count": 70,
+  "terminal_status": {
+   "CLOSED": 70
+  },
+  "started_by_reversal": 0,
+  "expired_unclosed": 0
+ },
+ "historical_marks": {
+  "source_env_var": "ALGO8_MARKET_DIR",
+  "source_present_in_this_environment": false,
+  "contracts_traded": 44,
+  "historical_mark_status": "NOT_COMPUTED: raw 1-minute option bars are absent from this environment; coverage unknown here, NO mark substituted, no unrealized P&L computed",
+  "recorded_at_cycle_selection_time": {
+   "C4_option_marks": "1.000000",
+   "C5_classification": "1.000000",
+   "C6_d1_d0": "1.000000"
+  },
+  "recorded_note": "selection-time C4 value is a recorded earlier measurement; it is not reproducible here and is not used for any M2-E number",
+  "prices_used_in_M2E": "EXECUTION prices only (fill price_paise); no market mark, no interpolation, unrealized P&L = NA",
+  "expired_unclosed_positions": 0
+ },
+ "role_classification": {
+  "opening_units_by_tag_role": {
+   "UNCLASSIFIED(num,BUY)": 460,
+   "BODY_SHORT_BY_TAG": 5040,
+   "WING_LONG_BY_TAG": 4600,
+   "UNCLASSIFIED(v_,BUY)": 1640,
+   "UNCLASSIFIED(s_,BUY)": 480,
+   "UNCLASSIFIED(s_,SELL)": 1960
+  },
+  "opening_units_total": 14180,
+  "opening_units_classified_by_tag": 9640,
+  "opening_units_unclassified": 4540,
+  "closing_units_by_M2C_role_10s": {
+   "SHORT_BODY": 5040,
+   "LONG_BODY": 2680,
+   "LONG_WING": 3440,
+   "OTHER_LONG_v_": 1060,
+   "STOP_SHORT": 1960
+  },
+  "m2d_tagged_scope_exclusions_units": {
+   "CLOSING_of_LONG_episode|closing_module|num": 2680,
+   "CLOSING_of_LONG_episode|closing_module|v_": 1060,
+   "CLOSING_of_SHORT_episode|closing_module|s_": 1960,
+   "OPENING|LONG|num": 460,
+   "OPENING|LONG|s_": 480,
+   "OPENING|LONG|v_": 1640,
+   "OPENING|SHORT|s_": 1960
+  }
+ },
+ "order_metadata": {
+  "parents": 715,
+  "metadata_rows": 715,
+  "field_available": {
+   "order_entry_minute_s": 715,
+   "app_key_full": 715,
+   "order_number": 715,
+   "algo_id": 715,
+   "requested_units": 715,
+   "first_fill_ts": 715
+  },
+  "field_missing": {
+   "order_entry_minute_s": 0,
+   "app_key_full": 0,
+   "order_number": 0,
+   "algo_id": 0,
+   "requested_units": 0,
+   "first_fill_ts": 0
+  }
+ },
+ "d1_d0": {
+  "2026-07-15": {
+   "d_label": "D-1",
+   "fills": 312,
+   "parents": 311,
+   "opening_units": 7340,
+   "closing_units": 1820,
+   "first_fill_ist": "2026-07-15 09:16:00",
+   "last_fill_ist": "2026-07-15 15:25:20",
+   "instruments": 34,
+   "episodes_started": 43,
+   "episodes_ended": 16
+  },
+  "2026-07-16": {
+   "d_label": "D0",
+   "fills": 417,
+   "parents": 404,
+   "opening_units": 6840,
+   "closing_units": 12360,
+   "first_fill_ist": "2026-07-16 09:15:11",
+   "last_fill_ist": "2026-07-16 11:01:17",
+   "instruments": 39,
+   "episodes_started": 27,
+   "episodes_ended": 54
+  }
+ },
+ "missing_or_ambiguous": {
+  "parents_with_mixed_role": 1,
+  "partially_filled_fills": 14,
+  "unattributable_closing_portions": 0,
+  "closing_parents_in_multiple_streams": 0,
+  "parents_without_metadata": 0,
+  "wing_items_without_W1_candidate": 11,
+  "wing_items_without_W1_S60_candidate": 1,
+  "body_items_without_wing_W1": 16,
+  "body_items_without_wing_W1_S60": 8
+ },
+ "wing_body_coverage_cycle_level": {
+  "OPENING|W1": {
+   "level": "OPENING",
+   "method": "W1",
+   "wing_items": 160,
+   "body_items": 252,
+   "wing_units": 4600,
+   "body_units": 5040,
+   "wing_items_with_candidate": 149,
+   "wing_items_unique_candidate": 69,
+   "wing_items_multiple_candidates": 80,
+   "wing_items_no_candidate": 11,
+   "wing_units_with_candidate": 4360,
+   "wing_units_unmatched": 240,
+   "body_items_with_wing_candidate": 236,
+   "body_items_without_wing": 16,
+   "body_units_with_wing_candidate": 4720,
+   "body_units_without_wing": 320,
+   "links": 441,
+   "candidates_per_wing": {
+    "n": 149,
+    "min": 1,
+    "p10": 1,
+    "median": 2,
+    "p90": 5,
+    "max": 20
+   },
+   "wings_per_body": {
+    "n": 236,
+    "min": 1,
+    "p10": 1,
+    "median": 1,
+    "p90": 4,
+    "max": 7
+   },
+   "qty_ratio": {
+    "n": 441,
+    "min": 1.0,
+    "p10": 1.0,
+    "median": 1.0,
+    "p90": 5.0,
+    "max": 9.0
+   },
+   "dt_s": {
+    "n": 441,
+    "min": -56,
+    "p10": -25,
+    "median": 3,
+    "p90": 16,
+    "max": 51
+   },
+   "abs_dt_s": {
+    "n": 441,
+    "min": 0,
+    "p10": 3,
+    "median": 6,
+    "p90": 30,
+    "max": 56
+   },
+   "otm_distance": {
+    "n": 441,
+    "min": 800,
+    "p10": 1200,
+    "median": 1900,
+    "p90": 2200,
+    "max": 2800
+   },
+   "px_ratio": {
+    "n": 441,
+    "min": 0.016425,
+    "p10": 0.018434,
+    "median": 0.022094,
+    "p90": 0.03287,
+    "max": 0.049101
+   },
+   "nearest_tied_links": 56
+  },
+  "OPENING|W1_S60": {
+   "level": "OPENING",
+   "method": "W1_S60",
+   "wing_items": 160,
+   "body_items": 252,
+   "wing_units": 4600,
+   "body_units": 5040,
+   "wing_items_with_candidate": 159,
+   "wing_items_unique_candidate": 56,
+   "wing_items_multiple_candidates": 103,
+   "wing_items_no_candidate": 1,
+   "wing_units_with_candidate": 4580,
+   "wing_units_unmatched": 20,
+   "body_items_with_wing_candidate": 244,
+   "body_items_without_wing": 8,
+   "body_units_with_wing_candidate": 4880,
+   "body_units_without_wing": 160,
+   "links": 650,
+   "candidates_per_wing": {
+    "n": 159,
+    "min": 1,
+    "p10": 1,
+    "median": 2,
+    "p90": 6,
+    "max": 29
+   },
+   "wings_per_body": {
+    "n": 244,
+    "min": 1,
+    "p10": 1,
+    "median": 2,
+    "p90": 8,
+    "max": 11
+   },
+   "qty_ratio": {
+    "n": 650,
+    "min": 1.0,
+    "p10": 1.0,
+    "median": 1.0,
+    "p90": 5.0,
+    "max": 9.0
+   },
+   "dt_s": {
+    "n": 650,
+    "min": -60,
+    "p10": -48,
+    "median": 3,
+    "p90": 38,
+    "max": 60
+   },
+   "abs_dt_s": {
+    "n": 650,
+    "min": 0,
+    "p10": 3,
+    "median": 12,
+    "p90": 53,
+    "max": 60
+   },
+   "otm_distance": {
+    "n": 650,
+    "min": 800,
+    "p10": 1200,
+    "median": 1900,
+    "p90": 2200,
+    "max": 2800
+   },
+   "px_ratio": {
+    "n": 650,
+    "min": 0.015448,
+    "p10": 0.018434,
+    "median": 0.021985,
+    "p90": 0.032591,
+    "max": 0.051867
+   },
+   "nearest_tied_links": 64
+  },
+  "OPENING|W3": {
+   "level": "OPENING",
+   "method": "W3",
+   "wing_items": 160,
+   "body_items": 252,
+   "wing_units": 4600,
+   "body_units": 5040,
+   "wing_items_with_candidate": 160,
+   "wing_items_unique_candidate": 121,
+   "wing_items_multiple_candidates": 39,
+   "wing_items_no_candidate": 0,
+   "wing_units_with_candidate": 4600,
+   "wing_units_unmatched": 0,
+   "body_items_with_wing_candidate": 230,
+   "body_items_without_wing": 22,
+   "body_units_with_wing_candidate": 4600,
+   "body_units_without_wing": 440,
+   "links": 230,
+   "candidates_per_wing": {
+    "n": 160,
+    "min": 1,
+    "p10": 1,
+    "median": 1,
+    "p90": 2,
+    "max": 9
+   },
+   "wings_per_body": {
+    "n": 230,
+    "min": 1,
+    "p10": 1,
+    "median": 1,
+    "p90": 1,
+    "max": 1
+   },
+   "qty_ratio": {
+    "n": 230,
+    "min": 1.0,
+    "p10": 1.0,
+    "median": 1.0,
+    "p90": 5.0,
+    "max": 9.0
+   },
+   "dt_s": {
+    "n": 230,
+    "min": 3,
+    "p10": 11,
+    "median": 830,
+    "p90": 1857,
+    "max": 3365
+   },
+   "abs_dt_s": {
+    "n": 230,
+    "min": 3,
+    "p10": 11,
+    "median": 830,
+    "p90": 1857,
+    "max": 3365
+   },
+   "otm_distance": {
+    "n": 230,
+    "min": 800,
+    "p10": 1100,
+    "median": 1700,
+    "p90": 2300,
+    "max": 2600
+   },
+   "px_ratio": {
+    "n": 230,
+    "min": 0.016425,
+    "p10": 0.019237,
+    "median": 0.023738,
+    "p90": 0.032258,
+    "max": 0.04426
+   },
+   "nearest_tied_links": "NA"
+  },
+  "CLOSING|W1": {
+   "level": "CLOSING",
+   "method": "W1",
+   "wing_items": 47,
+   "body_items": 166,
+   "wing_units": 3440,
+   "body_units": 5040,
+   "wing_items_with_candidate": 46,
+   "wing_items_unique_candidate": 2,
+   "wing_items_multiple_candidates": 44,
+   "wing_items_no_candidate": 1,
+   "wing_units_with_candidate": 3420,
+   "wing_units_unmatched": 20,
+   "body_items_with_wing_candidate": 140,
+   "body_items_without_wing": 26,
+   "body_units_with_wing_candidate": 2880,
+   "body_units_without_wing": 2160,
+   "links": 476,
+   "candidates_per_wing": {
+    "n": 46,
+    "min": 1,
+    "p10": 3,
+    "median": 8,
+    "p90": 26,
+    "max": 26
+   },
+   "wings_per_body": {
+    "n": 140,
+    "min": 1,
+    "p10": 1,
+    "median": 3,
+    "p90": 6,
+    "max": 6
+   },
+   "qty_ratio": {
+    "n": 476,
+    "min": 0.2,
+    "p10": 1.0,
+    "median": 2.0,
+    "p90": 20.0,
+    "max": 43.0
+   },
+   "dt_s": {
+    "n": 476,
+    "min": -51,
+    "p10": -21,
+    "median": 3,
+    "p90": 13,
+    "max": 38
+   },
+   "abs_dt_s": {
+    "n": 476,
+    "min": 0,
+    "p10": 2,
+    "median": 7,
+    "p90": 26,
+    "max": 51
+   },
+   "otm_distance": {
+    "n": 476,
+    "min": 800,
+    "p10": 1000,
+    "median": 2100,
+    "p90": 2400,
+    "max": 2700
+   },
+   "px_ratio": {
+    "n": 476,
+    "min": 0.003473,
+    "p10": 0.004904,
+    "median": 0.012614,
+    "p90": 0.024102,
+    "max": 0.050391
+   },
+   "nearest_tied_links": 71
+  },
+  "CLOSING|W1_S60": {
+   "level": "CLOSING",
+   "method": "W1_S60",
+   "wing_items": 47,
+   "body_items": 166,
+   "wing_units": 3440,
+   "body_units": 5040,
+   "wing_items_with_candidate": 46,
+   "wing_items_unique_candidate": 1,
+   "wing_items_multiple_candidates": 45,
+   "wing_items_no_candidate": 1,
+   "wing_units_with_candidate": 3420,
+   "wing_units_unmatched": 20,
+   "body_items_with_wing_candidate": 144,
+   "body_items_without_wing": 22,
+   "body_units_with_wing_candidate": 3720,
+   "body_units_without_wing": 1320,
+   "links": 662,
+   "candidates_per_wing": {
+    "n": 46,
+    "min": 1,
+    "p10": 5,
+    "median": 10,
+    "p90": 29,
+    "max": 33
+   },
+   "wings_per_body": {
+    "n": 144,
+    "min": 1,
+    "p10": 2,
+    "median": 5,
+    "p90": 6,
+    "max": 7
+   },
+   "qty_ratio": {
+    "n": 662,
+    "min": 0.030303,
+    "p10": 1.0,
+    "median": 2.0,
+    "p90": 13.0,
+    "max": 43.0
+   },
+   "dt_s": {
+    "n": 662,
+    "min": -60,
+    "p10": -39,
+    "median": 3,
+    "p90": 28,
+    "max": 58
+   },
+   "abs_dt_s": {
+    "n": 662,
+    "min": 0,
+    "p10": 2,
+    "median": 11,
+    "p90": 46,
+    "max": 60
+   },
+   "otm_distance": {
+    "n": 662,
+    "min": -300,
+    "p10": 1000,
+    "median": 2100,
+    "p90": 2400,
+    "max": 2800
+   },
+   "px_ratio": {
+    "n": 662,
+    "min": 0.003473,
+    "p10": 0.005179,
+    "median": 0.013993,
+    "p90": 0.02599,
+    "max": 1.953488
+   },
+   "nearest_tied_links": 71
+  }
+ },
+ "reconciliation": {
+  "fills": 729,
+  "opened_units": 14180,
+  "closed_units": 14180,
+  "episodes": 70,
+  "final_open_instruments": 0,
+  "independent_checks": "PASS"
+ },
+ "cycle_isolation": "cycle-only lineage identical to full-ledger lineage restricted to the cycle (events, episodes, OA, CP)",
+ "m2c_m2d_vs_recomputation": "IDENTICAL (M2-C 6 files byte-equal; M2-D items and all 5 link views equal)",
+ "tp03_overlay": {
+  "parents_listed_off_window_or_initial": 140,
+  "note": "TP-03 publishes window rows and per-parent OFF_WINDOW/INITIAL classes for body-short parents only; no per-parent window id; unlisted parents are NOT claimed to be in a window"
+ }
+}
