@@ -1,0 +1,46 @@
+{
+ "audit_start_utc": "2026-11-14T08:01:02Z",
+ "branch": "engineering/position-lifecycle-basket-reconstruction",
+ "head": "7117bbce638b94f309992218fc2d7a56eb2026da",
+ "origin_head": "7117bbce638b94f309992218fc2d7a56eb2026da",
+ "working_tree_dirty_files": 0,
+ "milestone_commits": [
+  "7117bbce|2026-11-14T07:48:29+00:00|portfolio_engine M2-E: independent-review fixes (case selection rule disclosure, reversal case episode split, W3 vocabulary, V1/legend layout, exec-price column names), 23 more tests, final M2-E report, plan and evidence registry updates",
+  "10e33962|2026-11-14T07:08:59+00:00|portfolio_engine M2-E: historical forensics datasets, V1-V6 visualizations, case studies, coverage report, reconciliation tests (pre-review checkpoint; independent review and final report pending)",
+  "f8200e0b|2026-11-13T18:09:25+00:00|portfolio_engine M2-D: independent-review fixes (W3 residual reconciliation, evidence classes, scope exclusions, column renames, ratio denominators), 7 mutation-killing tests, final M2-D report",
+  "77521fa7|2026-11-13T17:53:34+00:00|portfolio_engine M2-D: shorten chart title",
+  "f1b3f974|2026-11-13T17:52:42+00:00|portfolio_engine M2-D: wing/body association engine (W1, W1_S60, W2, W2_S60, W3), outputs, charts, tests",
+  "b48b0e68|2026-11-13T17:47:37+00:00|portfolio_engine: Model C acceptance addendum (decisions recorded, documentation checklist, longest chains, alternative-convention membership differences)",
+  "1b0a79f7|2026-11-13T16:39:41+00:00|portfolio_engine M2-C: independent-review fixes (independent reference check in check_view, C2 rule-sensitivity measured, 5 more tests, honest manifest), audit corrections, final M2-C report",
+  "5b2939ec|2026-11-13T16:27:17+00:00|portfolio_engine M2-C: closing-batch report DRAFT (independent-review section still pending)",
+  "9b6a496e|2026-11-13T16:26:17+00:00|portfolio_engine M2-C: closing batches C1 (first-fill) and C2 (last-to-first), number-block source audit (unresolved), unit audit, charts, tests",
+  "a4de4f22|2026-11-13T16:12:55+00:00|portfolio_engine M2-B: independent-review fixes (row-level check(), input validation, overflow guard, relative AVG tolerance), 16 mutation regressions, M2-B report",
+  "890b9360|2026-11-13T15:59:07+00:00|portfolio_engine M2-B: independent-reference differential test (40 seeded sequences with reversals)",
+  "9de52d9e|2026-11-13T15:57:05+00:00|portfolio_engine M2-B: position lineage engine (OA/CP/CA/slices/lifecycle), Python+C++ parity, real-ledger reconciliation, tests",
+  "e06a711e|2026-11-13T15:46:15+00:00|portfolio_engine M2: demonstration cycles selected and frozen (NIFTY 2026-06-30, SENSEX 2026-07-16) before any grouping"
+ ],
+ "source_sha256": {
+  "Trades_GKOHNP140.csv": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "tp_reconstruction/data/fill_event_ledger.parquet": "3b47c55150d79535a43fcea485a41e8e7bd76b201384fd89eae9a88f2c736053",
+  "tp_reconstruction/data/position_episodes.parquet": "c9a28937fa0235d9ae69e52c02e79ae1fee635701cb26cd7d9e114465a4951df",
+  "tp_reconstruction/data/reconstructed_position_ledger.parquet": "8b0e92b2facda931958b9ee02234a63861160361dcead3aca868be18a08be502",
+  "tp_reconstruction/data/fill_roles.parquet": "40f554a784be15503210f8f2b9f8d9a858d58acca06a73fa2bdc9bc8b6026c55",
+  "tp_reconstruction/tp03/config.yaml": "942e36d8148a3f1f7c3dd4bc333b6cb6017d90230d581ae0f9c610dcd5d4c2f8"
+ },
+ "manifests_checked": {
+  "m2c_data": "6 files, 0 hash mismatches",
+  "m2d_data": "6 files, 0 hash mismatches",
+  "m2e_data/NIFTY_2026-06-30": "19 files, 0 hash mismatches",
+  "m2e_data/SENSEX_2026-07-16": "19 files, 0 hash mismatches"
+ },
+ "manifest_source_hashes_match_files": true,
+ "stage2_alpha_research": "present; only .gitignore tracked; caches untracked and preserved",
+ "baseline_fast_tests": "236 passed, 38 deselected (slow) in 64 s, before any audit action",
+ "toolchain": {
+  "python": "Python 3.13.18",
+  "gxx": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
+ },
+ "frozen_cycles_commit": "e06a711e 2026-11-13T15:46:15Z (precedes M2-B code 9de52d9e 15:57 and the first grouping code 9b6a496e 16:26)",
+ "case_selection_first_in_git": "pe/cases.py first appears in 10e33962 (2026-11-14T07:08:59Z), after the M2-E datasets and figures existed; no earlier timestamped evidence of the case-selection rule",
+ "note": "Facts only; all other verification is in the track directories."
+}
