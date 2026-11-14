@@ -1,0 +1,475 @@
+{
+ "trade_id": {
+  "groups_where_file_order_differs": 173,
+  "of_which_mixed_side": 2,
+  "examples": [
+   [
+    [
+     "NIFTY|2026-06-23|PE|24050",
+     1782186388
+    ],
+    [
+     [
+      14,
+      -1,
+      65,
+      4240
+     ],
+     [
+      18,
+      -1,
+      65,
+      4240
+     ],
+     [
+      20,
+      -1,
+      65,
+      4240
+     ],
+     [
+      21,
+      -1,
+      65,
+      4235
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|CE|24050",
+     1782186392
+    ],
+    [
+     [
+      26,
+      -1,
+      65,
+      4740
+     ],
+     [
+      27,
+      -1,
+      130,
+      4735
+     ],
+     [
+      30,
+      -1,
+      65,
+      4740
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|PE|24050",
+     1782186410
+    ],
+    [
+     [
+      41,
+      -1,
+      130,
+      4015
+     ],
+     [
+      44,
+      -1,
+      65,
+      4005
+     ],
+     [
+      45,
+      -1,
+      130,
+      4005
+     ],
+     [
+      47,
+      -1,
+      65,
+      4005
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|CE|24050",
+     1782186410
+    ],
+    [
+     [
+      42,
+      -1,
+      65,
+      4810
+     ],
+     [
+      43,
+      -1,
+      130,
+      4810
+     ],
+     [
+      46,
+      -1,
+      65,
+      4810
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|CE|24050",
+     1782187806
+    ],
+    [
+     [
+      112,
+      1,
+      65,
+      9620
+     ],
+     [
+      113,
+      1,
+      65,
+      9620
+     ],
+     [
+      114,
+      1,
+      65,
+      9625
+     ],
+     [
+      115,
+      1,
+      65,
+      9625
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|PE|23850",
+     1782190740
+    ],
+    [
+     [
+      193,
+      1,
+      1690,
+      145
+     ],
+     [
+      194,
+      1,
+      780,
+      145
+     ],
+     [
+      195,
+      1,
+      65,
+      145
+     ]
+    ]
+   ]
+  ],
+  "FIFO": {
+   "instruments_changed": 2,
+   "episodes_identity_changed": 4,
+   "episodes_structure_changed": 4,
+   "n_episodes": 2667,
+   "fills_split_changed": 4,
+   "OA": 23682,
+   "CP": 17760,
+   "reversal_fills": 21,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  },
+  "LIFO": {
+   "instruments_changed": 2,
+   "episodes_identity_changed": 4,
+   "episodes_structure_changed": 4,
+   "n_episodes": 2667,
+   "fills_split_changed": 4,
+   "OA": 23682,
+   "CP": 17760,
+   "reversal_fills": 21,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  },
+  "AVG": {
+   "instruments_changed": 2,
+   "episodes_identity_changed": 4,
+   "episodes_structure_changed": 4,
+   "n_episodes": 2667,
+   "fills_split_changed": 4,
+   "OA": 23682,
+   "CP": 17760,
+   "reversal_fills": 21,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  }
+ },
+ "order_no": {
+  "groups_where_file_order_differs": 141,
+  "of_which_mixed_side": 1,
+  "examples": [
+   [
+    [
+     "NIFTY|2026-06-23|PE|24050",
+     1782186388
+    ],
+    [
+     [
+      14,
+      -1,
+      65,
+      4240
+     ],
+     [
+      18,
+      -1,
+      65,
+      4240
+     ],
+     [
+      20,
+      -1,
+      65,
+      4240
+     ],
+     [
+      21,
+      -1,
+      65,
+      4235
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|CE|24050",
+     1782186392
+    ],
+    [
+     [
+      26,
+      -1,
+      65,
+      4740
+     ],
+     [
+      27,
+      -1,
+      130,
+      4735
+     ],
+     [
+      30,
+      -1,
+      65,
+      4740
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|PE|24050",
+     1782186410
+    ],
+    [
+     [
+      41,
+      -1,
+      130,
+      4015
+     ],
+     [
+      44,
+      -1,
+      65,
+      4005
+     ],
+     [
+      45,
+      -1,
+      130,
+      4005
+     ],
+     [
+      47,
+      -1,
+      65,
+      4005
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|CE|24050",
+     1782186410
+    ],
+    [
+     [
+      42,
+      -1,
+      65,
+      4810
+     ],
+     [
+      43,
+      -1,
+      130,
+      4810
+     ],
+     [
+      46,
+      -1,
+      65,
+      4810
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|CE|24050",
+     1782187806
+    ],
+    [
+     [
+      112,
+      1,
+      65,
+      9620
+     ],
+     [
+      113,
+      1,
+      65,
+      9620
+     ],
+     [
+      114,
+      1,
+      65,
+      9625
+     ],
+     [
+      115,
+      1,
+      65,
+      9625
+     ]
+    ]
+   ],
+   [
+    [
+     "NIFTY|2026-06-23|PE|23850",
+     1782190740
+    ],
+    [
+     [
+      193,
+      1,
+      1690,
+      145
+     ],
+     [
+      194,
+      1,
+      780,
+      145
+     ],
+     [
+      195,
+      1,
+      65,
+      145
+     ]
+    ]
+   ]
+  ],
+  "FIFO": {
+   "instruments_changed": 2,
+   "episodes_identity_changed": 4,
+   "episodes_structure_changed": 4,
+   "n_episodes": 2667,
+   "fills_split_changed": 4,
+   "OA": 23682,
+   "CP": 17760,
+   "reversal_fills": 21,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  },
+  "LIFO": {
+   "instruments_changed": 2,
+   "episodes_identity_changed": 4,
+   "episodes_structure_changed": 4,
+   "n_episodes": 2667,
+   "fills_split_changed": 4,
+   "OA": 23682,
+   "CP": 17760,
+   "reversal_fills": 21,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  },
+  "AVG": {
+   "instruments_changed": 2,
+   "episodes_identity_changed": 4,
+   "episodes_structure_changed": 4,
+   "n_episodes": 2667,
+   "fills_split_changed": 4,
+   "OA": 23682,
+   "CP": 17760,
+   "reversal_fills": 21,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  }
+ },
+ "col1": {
+  "groups_where_file_order_differs": 0,
+  "of_which_mixed_side": 0,
+  "examples": [],
+  "FIFO": {
+   "instruments_changed": 0,
+   "episodes_identity_changed": 0,
+   "episodes_structure_changed": 0,
+   "n_episodes": 2667,
+   "fills_split_changed": 0,
+   "OA": 23684,
+   "CP": 17760,
+   "reversal_fills": 23,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  },
+  "LIFO": {
+   "instruments_changed": 0,
+   "episodes_identity_changed": 0,
+   "episodes_structure_changed": 0,
+   "n_episodes": 2667,
+   "fills_split_changed": 0,
+   "OA": 23684,
+   "CP": 17760,
+   "reversal_fills": 23,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  },
+  "AVG": {
+   "instruments_changed": 0,
+   "episodes_identity_changed": 0,
+   "episodes_structure_changed": 0,
+   "n_episodes": 2667,
+   "fills_split_changed": 0,
+   "OA": 23684,
+   "CP": 17760,
+   "reversal_fills": 23,
+   "realized_delta_paise": 0.0,
+   "final_inv_equal": true
+  }
+ }
+}

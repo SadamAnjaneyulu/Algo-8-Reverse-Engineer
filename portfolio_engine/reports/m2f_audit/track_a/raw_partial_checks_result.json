@@ -1,0 +1,204 @@
+{
+ "unfilled_parents": [
+  {
+   "parent": "h_09093103865285",
+   "fills": 1,
+   "units": 40,
+   "req": 340,
+   "last_status": "PartiallyFilled",
+   "last_remaining_col20": 300,
+   "rows": [
+    11262
+   ]
+  },
+  {
+   "parent": "h_17034505162509",
+   "fills": 2,
+   "units": 40,
+   "req": 160,
+   "last_status": "PartiallyFilled",
+   "last_remaining_col20": 120,
+   "rows": [
+    31507,
+    31509
+   ]
+  },
+  {
+   "parent": "h_16100811639836",
+   "fills": 1,
+   "units": 65,
+   "req": 1755,
+   "last_status": "PartiallyFilled",
+   "last_remaining_col20": 1690,
+   "rows": [
+    39711
+   ]
+  }
+ ],
+ "parents_where_col20_not_req_minus_cum": 0,
+ "examples_col20_mismatch": [],
+ "parents_last_status": {
+  "Filled": 39871,
+  "PartiallyFilled": 3
+ },
+ "parents_with_PartiallyFilled_last_row": 3,
+ "parents_multi_fill": 1059,
+ "parents_spanning_ist_dates": 0,
+ "module_by_parent_prefix": {
+  "num": 26954,
+  "h_": 13181,
+  "v_": 515,
+  "s_": 763,
+  "m_": 8
+ },
+ "same_instrument_second_groups_gt1": 4464,
+ "same_instrument_second_mixed_side_groups": 56,
+ "mixed_groups_examples": [
+  [
+   [
+    "NIFTY|6/23/2026|CE|24100",
+    1782197422
+   ],
+   [
+    [
+     726,
+     "Sell",
+     65,
+     "7.6",
+     "10639220"
+    ],
+    [
+     727,
+     "Buy",
+     130,
+     "7.6",
+     "10639274"
+    ],
+    [
+     728,
+     "Sell",
+     65,
+     "7.6",
+     "10639220"
+    ]
+   ]
+  ],
+  [
+   [
+    "NIFTY|6/23/2026|PE|23900",
+    1782204890
+   ],
+   [
+    [
+     1598,
+     "Sell",
+     130,
+     "12.85",
+     "10663664"
+    ],
+    [
+     1599,
+     "Buy",
+     130,
+     "12.8",
+     "10663697"
+    ]
+   ]
+  ],
+  [
+   [
+    "NIFTY|6/23/2026|CE|24000",
+    1782207901
+   ],
+   [
+    [
+     2092,
+     "Sell",
+     130,
+     "0.1",
+     "10678577"
+    ],
+    [
+     2093,
+     "Buy",
+     65,
+     "0.15",
+     "10678607"
+    ],
+    [
+     2094,
+     "Buy",
+     65,
+     "0.15",
+     "10678607"
+    ]
+   ]
+  ],
+  [
+   [
+    "SENSEX|6/25/2026|CE|77500",
+    1782359714
+   ],
+   [
+    [
+     2543,
+     "Buy",
+     20,
+     "136.3",
+     "10696441"
+    ],
+    [
+     2544,
+     "Sell",
+     20,
+     "137.45",
+     "10696455"
+    ]
+   ]
+  ],
+  [
+   [
+    "SENSEX|6/25/2026|CE|77800",
+    1782367251
+   ],
+   [
+    [
+     2834,
+     "Sell",
+     20,
+     "35.4",
+     "10704060"
+    ],
+    [
+     2835,
+     "Buy",
+     20,
+     "35.5",
+     "10704085"
+    ]
+   ]
+  ],
+  [
+   [
+    "SENSEX|6/25/2026|CE|77800",
+    1782375832
+   ],
+   [
+    [
+     3650,
+     "Buy",
+     20,
+     "19.8",
+     "10723934"
+    ],
+    [
+     3651,
+     "Sell",
+     20,
+     "19.75",
+     "10723937"
+    ]
+   ]
+  ]
+ ]
+}

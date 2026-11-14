@@ -1,0 +1,29 @@
+{
+ "open_instruments": 81,
+ "days_between_last_fill_and_expiry_day": {
+  "0": 54,
+  "1": 27
+ },
+ "last_fill_time": {
+  "before_1530": 68,
+  "last_fill_ist_hhmm_ge_1530": 13
+ },
+ "units": {
+  "abs": 37480
+ },
+ "direction": {
+  "long": 71,
+  "short": 10
+ },
+ "max_expiry": "2026-10-22",
+ "last_data_day": "2026-10-22",
+ "instruments_with_expiry_after_last_data_day": 0,
+ "by_underlying": {
+  "SENSEX": 40,
+  "NIFTY": 41
+ },
+ "max_ist_time_of_any_fill": 56367,
+ "min_ist_time_of_any_fill": 33300,
+ "n_expiry_dates": 35,
+ "fills_after_expiry": 0
+}

@@ -1,0 +1,1311 @@
+{
+ "cases": 1221,
+ "byte_identical": 1043,
+ "differ": [],
+ "cpp_rejected_py_accepted": [
+  {
+   "seed": 1006,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1006,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1006,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1013,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1013,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1013,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1020,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1027,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1027,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1027,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1034,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1034,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1034,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1041,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1048,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1048,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1048,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1055,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1055,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1055,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1062,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1069,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1069,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1069,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1076,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1076,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1076,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1083,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1090,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1090,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1090,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1097,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1097,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1097,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1104,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1111,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1111,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1111,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1118,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1118,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1118,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1125,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1132,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1132,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1132,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1139,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1139,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1139,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1146,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1153,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1153,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1153,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1160,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1160,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1160,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1167,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1174,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1174,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1174,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1181,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1181,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1181,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1188,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1195,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1195,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1195,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1202,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1202,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1202,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1209,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1216,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1216,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1216,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1223,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1223,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1223,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1230,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1237,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1237,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1237,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1244,
+   "profile": 6,
+   "method": "FIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1244,
+   "profile": 6,
+   "method": "LIFO",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  },
+  {
+   "seed": 1244,
+   "profile": 6,
+   "method": "AVG",
+   "tie": "src",
+   "err": "ERROR: int64 overflow in P&L arithmetic"
+  }
+ ],
+ "py_rejected": [
+  {
+   "seed": 1004,
+   "profile": 4,
+   "method": "AVG",
+   "tie": "src",
+   "err": "InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 21.0",
+   "cpp_also_rejected": true,
+   "cpp_err": "ERROR: cash_identity_cash_equals_realized_plus_book_value:"
+  },
+  {
+   "seed": 1074,
+   "profile": 4,
+   "method": "AVG",
+   "tie": "src",
+   "err": "InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -10.0",
+   "cpp_also_rejected": true,
+   "cpp_err": "ERROR: cash_identity_cash_equals_realized_plus_book_value:"
+  },
+  {
+   "seed": 1074,
+   "profile": 4,
+   "method": "AVG",
+   "tie": "sells_first",
+   "err": "InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -10.0",
+   "cpp_also_rejected": true,
+   "cpp_err": "ERROR: cash_identity_cash_equals_realized_plus_book_value:"
+  },
+  {
+   "seed": 1074,
+   "profile": 4,
+   "method": "AVG",
+   "tie": "buys_first",
+   "err": "InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -10.0",
+   "cpp_also_rejected": true,
+   "cpp_err": "ERROR: cash_identity_cash_equals_realized_plus_book_value:"
+  },
+  {
+   "seed": 1151,
+   "profile": 4,
+   "method": "AVG",
+   "tie": "src",
+   "err": "InvariantViolation: episode_realized_sums_to_portfolio_realized: -108979214338.08452 vs -108979214341.0",
+   "cpp_also_rejected": false,
+   "cpp_err": ""
+  },
+  {
+   "seed": 1186,
+   "profile": 4,
+   "method": "AVG",
+   "tie": "src",
+   "err": "InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -2.0",
+   "cpp_also_rejected": true,
+   "cpp_err": "ERROR: cash_identity_cash_equals_realized_plus_book_value:"
+  },
+  {
+   "seed": 1207,
+   "profile": 4,
+   "method": "AVG",
+   "tie": "src",
+   "err": "InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -5.0",
+   "cpp_also_rejected": true,
+   "cpp_err": "ERROR: cash_identity_cash_equals_realized_plus_book_value:"
+  }
+ ],
+ "ref_checked": 1043,
+ "ref_mismatch": [],
+ "by_profile": {
+  "0": {
+   "cases": 171,
+   "identical": 171
+  },
+  "1": {
+   "cases": 177,
+   "identical": 177
+  },
+  "2": {
+   "cases": 177,
+   "identical": 177
+  },
+  "3": {
+   "cases": 171,
+   "identical": 171
+  },
+  "4": {
+   "cases": 177,
+   "identical": 170
+  },
+  "5": {
+   "cases": 177,
+   "identical": 177
+  },
+  "6": {
+   "cases": 171,
+   "identical": 0
+  }
+ },
+ "summary": {
+  "cases": 1221,
+  "byte_identical": 1043,
+  "differ": 0,
+  "cpp_rejected_py_accepted": 171,
+  "py_rejected": 7,
+  "ref_checked": 1043,
+  "ref_mismatch": 0,
+  "sequences": 245
+ }
+}

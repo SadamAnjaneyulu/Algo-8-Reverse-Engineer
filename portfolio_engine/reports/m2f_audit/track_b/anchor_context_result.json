@@ -1,0 +1,42 @@
+{
+ "2": {
+  "anchor_batches": 7464,
+  "anchor_max_first_to_first_span": 2,
+  "anchor_max_parents": 30,
+  "linkage_batches": 7127,
+  "linkage_max_parents": 78,
+  "linkage_max_dur": 57
+ },
+ "5": {
+  "anchor_batches": 4732,
+  "anchor_max_first_to_first_span": 5,
+  "anchor_max_parents": 50,
+  "linkage_batches": 3777,
+  "linkage_max_parents": 96,
+  "linkage_max_dur": 66
+ },
+ "10": {
+  "anchor_batches": 3816,
+  "anchor_max_first_to_first_span": 10,
+  "anchor_max_parents": 78,
+  "linkage_batches": 3065,
+  "linkage_max_parents": 122,
+  "linkage_max_dur": 125
+ },
+ "30": {
+  "anchor_batches": 2779,
+  "anchor_max_first_to_first_span": 30,
+  "anchor_max_parents": 106,
+  "linkage_batches": 2171,
+  "linkage_max_parents": 128,
+  "linkage_max_dur": 481
+ },
+ "60": {
+  "anchor_batches": 2195,
+  "anchor_max_first_to_first_span": 60,
+  "anchor_max_parents": 122,
+  "linkage_batches": 1502,
+  "linkage_max_parents": 198,
+  "linkage_max_dur": 1175
+ }
+}

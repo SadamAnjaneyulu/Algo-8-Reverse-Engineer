@@ -1,0 +1,1061 @@
+[
+ {
+  "id": "M01",
+  "change": "threshold made exclusive: `gap <= g` -> `gap < g`",
+  "expected_detector": "boundary tests (gap==g) ; own: synthetic gap_exactly_threshold + real partition",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "tests/test_closing_batches.py::test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "tests/test_closing_batches.py::test_inclusive_threshold_boundary_and_one_second_sensitivity_is_counted",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+   "tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector"
+  ],
+  "pytest_error_lines": [
+   "E   assert ([1, 1, 1, 1, 0] == [1, 1, 1, 0, 0]",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M01/portfolio_engine/tests/test_closing_batches.py:203: assert ([1, 1, 1, 1, 0] == [1, 1, 1, 0, 0]",
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert '4fa665771547...c93096e8102f7' == '5c09c4b3a192...b5b4ff70d9c01'"
+  ],
+  "detector": {
+   "A": 349,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs",
+    "gap_exactly_threshold_and_plus_one C15: partition differs",
+    "gap_exactly_threshold_and_plus_one C110: partition differs"
+   ],
+   "B": 55,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C1_30",
+    "partition C1_60"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M02",
+  "change": "chain-transitivity break: C1 compares to batch ANCHOR (first member) instead of adjacent previous",
+  "expected_detector": "transitive-chain test; own: long_transitive_chain + real",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_over_seconds",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+   "tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector"
+  ],
+  "pytest_error_lines": [
+   "E   assert (False)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M02/portfolio_engine/tests/test_closing_batches.py:195: assert (False)",
+   "E   assert False",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M02/portfolio_engine/tests/test_closing_batches.py:202: assert False"
+  ],
+  "detector": {
+   "A": 775,
+   "A_sample": [
+    "multi_fill_parent_interval_overlap C160: batch attrs [(53, 35)]",
+    "multi_fill_parent_interval_overlap C160: member link row",
+    "multi_fill_parent_interval_overlap C160: member link row"
+   ],
+   "B": 33,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C1_30",
+    "partition C1_60"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M03",
+  "change": "tie-order reversal: sort key -first_src (C2-relevant)",
+  "expected_detector": "C2 tie dependence tests; reference_partition inside check_view",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_equal_first_timestamps_are_ordered_by_source_row_then_parent_id",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: assert ['A', 'B'] == ['B', 'A']",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M03/portfolio_engine/tests/test_closing_batches.py:96: AssertionError: assert ['A', 'B'] == ['B', 'A']",
+   "E   assert False",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M03/portfolio_engine/tests/test_closing_batches.py:202: assert False"
+  ],
+  "detector": {
+   "A": 138,
+   "A_sample": [
+    "tie_with_multi_fill_parent_c2 C12: batch attrs [(1, 2)]",
+    "tie_with_multi_fill_parent_c2 C12: member link row",
+    "tie_with_multi_fill_parent_c2 C12: member link row"
+   ],
+   "B": 25,
+   "B_sample": [
+    "partition C2_2",
+    "partition C2_5",
+    "partition C2_10",
+    "summary C1_2 strict_overlap_links",
+    "summary C1_5 strict_overlap_links"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M04",
+  "change": "C2 collapses to C1: gap uses prev.first_ts for both methods",
+  "expected_detector": "overlap test (C2 joins what C1 does not); own synthetic overlap cases (NOT detectable on real data since C2==C1 there)",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: assert ([['PA', 'PX'], ['PZ']] == [['PA', 'PX', 'PZ']]",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M04/portfolio_engine/tests/test_closing_batches.py:111: AssertionError: assert ([['PA', 'PX'], ['PZ']] == [['PA', 'PX', 'PZ']]",
+   "E   assert ([0, 0, 0, 0, 0] == [1, 1, 1, 0, 0]",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M04/portfolio_engine/tests/test_closing_batches.py:203: assert ([0, 0, 0, 0, 0] == [1, 1, 1, 0, 0]"
+  ],
+  "detector": {
+   "A": 308,
+   "A_sample": [
+    "multi_fill_parent_interval_overlap C22: partition differs",
+    "multi_fill_parent_interval_overlap C25: partition differs",
+    "multi_fill_parent_interval_overlap C210: batch attrs [(10, -40)]"
+   ],
+   "B": 3,
+   "B_sample": [
+    "c2sens 2",
+    "c2sens 5",
+    "c2sens 10"
+   ],
+   "REPRO": [
+    "closing_batch_members_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M05",
+  "change": "last/first swap for C2: gap = last(next) - first(prev)",
+  "expected_detector": "C2 overlap tests; own synthetic + real",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: assert ([['PA'], ['PX'], ['PZ']] == [['PA', 'PX', 'PZ']]",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M05/portfolio_engine/tests/test_closing_batches.py:111: AssertionError: assert ([['PA'], ['PX'], ['PZ']] == [['PA', 'PX', 'PZ']]",
+   "E   assert ([-1, -1, -1, -1, 0] == [1, 1, 1, 0, 0]",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M05/portfolio_engine/tests/test_closing_batches.py:203: assert ([-1, -1, -1, -1, 0] == [1, 1, 1, 0, 0]"
+  ],
+  "detector": {
+   "A": 313,
+   "A_sample": [
+    "multi_fill_parent_interval_overlap C22: partition differs",
+    "multi_fill_parent_interval_overlap C25: partition differs",
+    "multi_fill_parent_interval_overlap C210: batch attrs [(10, -40)]"
+   ],
+   "B": 4,
+   "B_sample": [
+    "c2sens 2",
+    "c2sens 5",
+    "c2sens 10",
+    "c2sens 30"
+   ],
+   "REPRO": [
+    "closing_batch_members_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M06",
+  "change": "drop one parent per stream (ps = ps[1:])",
+  "expected_detector": "check_view eligible-parent-once invariant; own: partition real",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_unattributable_parent_ids_in_both_spellings_are_excluded",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_C1_identical_timestamps_are_one_batch_and_order_independent",
+   "tests/test_closing_batches.py::test_COUNTEREXAMPLE_mixed_parent_contributes_only_its_closing_portions",
+   "tests/test_closing_batches.py::test_different_contracts_and_both_rights_share_one_batch_and_are_only_descriptive",
+   "tests/test_closing_batches.py::test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "tests/test_closing_batches.py::test_long_gap_then_tight_cluster",
+   "tests/test_closing_batches.py::test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "tests/test_closing_batches.py::test_inclusive_threshold_boundary_and_one_second_sensitivity_is_counted",
+   "tests/test_closing_batches.py::test_equal_first_timestamps_are_ordered_by_source_row_then_parent_id",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+   "tests/test_closing_batches.py::test_opening_only_parent_never_enters_and_a_duplicated_member_is_rejected",
+   "tests/test_closing_batches.py::test_grouping_never_mutates_the_observed_ledger_and_ignores_the_matching_convention",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_files_have_provenance_and_reconcile_to_closing_portions",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+   "tests/test_closing_batches.py::test_overlap_flags_distinguish_touching_from_strict_overlap",
+   "tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector",
+   "tests/test_closing_batches.py::test_check_view_rejects_tampering_with_members_and_partitions",
+   "tests/test_closing_batches.py::test_unattributable_parent_ids_in_both_spellings_are_excluded"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert 'ffa592c85f13...a2d5eaba16225' == '5c09c4b3a192...b5b4ff70d9c01'",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M06/portfolio_engine/tests/test_closing_batches.py:211: AssertionError: closing_batches_C1.tsv"
+  ],
+  "detector": {
+   "A": 1320,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs",
+    "gap_exactly_threshold_and_plus_one C15: partition differs",
+    "gap_exactly_threshold_and_plus_one C110: partition differs"
+   ],
+   "B": 63,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C1_30",
+    "partition C1_60"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M07",
+  "change": "merge across sessions: session label constant",
+  "expected_detector": "session-boundary tests (23:59:59 vs 00:00:01 IST)",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+   "tests/test_closing_batches.py::test_duplicate_parent_id_across_sessions_is_two_members_and_is_reported",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: assert (['N1', 'N2'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']] and ['N1', 'S1'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']] and ['L1', 'L2'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']])",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M07/portfolio_engine/tests/test_closing_batches.py:127: AssertionError: assert (['N1', 'N2'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']] and ['N1', 'S1'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']] and ['L1', 'L2'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']])",
+   "E   assert (1 == 2)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M07/portfolio_engine/tests/test_closing_batches.py:140: assert (1 == 2)"
+  ],
+  "detector": {
+   "A": 1330,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs",
+    "gap_exactly_threshold_and_plus_one C15: partition differs",
+    "gap_exactly_threshold_and_plus_one C110: partition differs"
+   ],
+   "B": 10,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C1_30",
+    "partition C1_60"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M08",
+  "change": "merge across expiries: stream expiry replaced by 'ALL'",
+  "expected_detector": "expiry boundary test",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: assert (['N1', 'N2'] not in [['N1', 'N2'], ['L1'], ['L2'], ['S1']])",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M08/portfolio_engine/tests/test_closing_batches.py:127: AssertionError: assert (['N1', 'N2'] not in [['N1', 'N2'], ['L1'], ['L2'], ['S1']])",
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert '5fe876957181...5a96a55418d69' == '5c09c4b3a192...b5b4ff70d9c01'"
+  ],
+  "detector": {
+   "A": 1330,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs",
+    "gap_exactly_threshold_and_plus_one C15: partition differs",
+    "gap_exactly_threshold_and_plus_one C110: partition differs"
+   ],
+   "B": 10,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C1_30",
+    "partition C1_60"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M09",
+  "change": "merge across underlyings: stream underlying replaced by 'ALL'",
+  "expected_detector": "underlying boundary test",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: assert (['N1', 'N2'] not in [['N1', 'S1'], ['L1'], ['L2'], ['N2']] and ['N1', 'S1'] not in [['N1', 'S1'], ['L1'], ['L2'], ['N2']])",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M09/portfolio_engine/tests/test_closing_batches.py:127: AssertionError: assert (['N1', 'N2'] not in [['N1', 'S1'], ['L1'], ['L2'], ['N2']] and ['N1', 'S1'] not in [['N1', 'S1'], ['L1'], ['L2'], ['N2']])",
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert 'a0c71083fac2...5db7cf6bbbb6b' == '5c09c4b3a192...b5b4ff70d9c01'"
+  ],
+  "detector": {
+   "A": 1330,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs",
+    "gap_exactly_threshold_and_plus_one C15: partition differs",
+    "gap_exactly_threshold_and_plus_one C110: partition differs"
+   ],
+   "B": 10,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C1_30",
+    "partition C1_60"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M10",
+  "change": "off-by-one second in gap (gap - 1)",
+  "expected_detector": "inclusive-boundary tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_overlap_flags_distinguish_touching_from_strict_overlap",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "tests/test_closing_batches.py::test_long_gap_then_tight_cluster",
+   "tests/test_closing_batches.py::test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+   "tests/test_closing_batches.py::test_overlap_flags_distinguish_touching_from_strict_overlap"
+  ],
+  "pytest_error_lines": [
+   "E   assert (-21 == -20)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M10/portfolio_engine/tests/test_closing_batches.py:66: assert (-21 == -20)",
+   "E   assert (40 == 40 and 9 == 10)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M10/portfolio_engine/tests/test_closing_batches.py:82: assert (40 == 40 and 9 == 10)"
+  ],
+  "detector": {
+   "A": 8041,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs",
+    "gap_exactly_threshold_and_plus_one C15: partition differs",
+    "gap_exactly_threshold_and_plus_one C110: partition differs"
+   ],
+   "B": 53,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C1_30",
+    "partition C1_60"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M11",
+  "change": "ignore MIXED parents (skip their closing portions)",
+  "expected_detector": "check_view portions-exactly-once; mixed-parent tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_COUNTEREXAMPLE_mixed_parent_contributes_only_its_closing_portions",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   assert (16791 == 16817)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M11/portfolio_engine/tests/test_closing_batches.py:186: assert (16791 == 16817)",
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert 'faabaf875136...3b333a0edaeda' == '5c09c4b3a192...b5b4ff70d9c01'"
+  ],
+  "detector": {
+   "A": 1180,
+   "A_sample": [
+    "mixed_open_close_parent C12: partition differs",
+    "mixed_open_close_parent C15: partition differs",
+    "mixed_open_close_parent C110: partition differs"
+   ],
+   "B": 83,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C1_30",
+    "partition C1_60"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M12",
+  "change": "duplicate a closing portion (every source row % 97 == 0)",
+  "expected_detector": "check_view duplicate-portion invariant",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert '906a5e5e1cf3...3701341d0ac03' == '5c09c4b3a192...b5b4ff70d9c01'",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M12/portfolio_engine/tests/test_closing_batches.py:211: AssertionError: closing_batches_C1.tsv"
+  ],
+  "detector": {
+   "A": 20,
+   "A_sample": [
+    "long_transitive_chain_each_gap_equals_threshold C12: batch attrs [(2, 1), (130, 65)]",
+    "long_transitive_chain_each_gap_equals_threshold C12: portion rows",
+    "long_transitive_chain_each_gap_equals_threshold C15: batch attrs [(2, 1), (130, 65)]"
+   ],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M13",
+  "change": "wrong closing-quantity attribution at parent level: qty += min(r[8], 65)",
+  "expected_detector": "check_view summary-vs-portions invariant",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_grouping_never_mutates_the_observed_ledger_and_ignores_the_matching_convention",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: closing_batch_members_C1.tsv",
+   "    assert '012b742e6c07...eca8b7b153cbd' == '8ad36454a590...133608850e0cf'",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M13/portfolio_engine/tests/test_closing_batches.py:211: AssertionError: closing_batch_members_C1.tsv"
+  ],
+  "detector": {
+   "A": 0,
+   "A_sample": [],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [
+    "closing_batch_members_C1.tsv",
+    "closing_batch_members_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M14",
+  "change": "wrong closing-quantity attribution in batch record: total_closing_qty counts BUY-side portions only",
+  "expected_detector": "batch_record tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert 'edc08abfa48b...595a59293685e' == '5c09c4b3a192...b5b4ff70d9c01'",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M14/portfolio_engine/tests/test_closing_batches.py:211: AssertionError: closing_batches_C1.tsv"
+  ],
+  "detector": {
+   "A": 9641,
+   "A_sample": [
+    "mixed_open_close_parent C12: batch attrs [(0, 65)]",
+    "mixed_open_close_parent C15: batch attrs [(0, 65)]",
+    "mixed_open_close_parent C110: batch attrs [(0, 65)]"
+   ],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batches_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M15",
+  "change": "interval_overlap flag `<=` -> `<`",
+  "expected_detector": "overlap-flag tests (same-second touching)",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_overlap_flags_distinguish_touching_from_strict_overlap",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+   "tests/test_closing_batches.py::test_overlap_flags_distinguish_touching_from_strict_overlap"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert '68785d242b94...73b6913e19fd4' == '5c09c4b3a192...b5b4ff70d9c01'",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M15/portfolio_engine/tests/test_closing_batches.py:211: AssertionError: closing_batches_C1.tsv",
+   "E   assert (0 == 0 and False is True)"
+  ],
+  "detector": {
+   "A": 1512,
+   "A_sample": [
+    "equal_timestamps_many_parents_unsorted_input C12: batch attrs [(0, 6), (0, 1)]",
+    "equal_timestamps_many_parents_unsorted_input C12: member link row",
+    "equal_timestamps_many_parents_unsorted_input C12: member link row"
+   ],
+   "B": 20,
+   "B_sample": [
+    "summary C1_2 overlap_links",
+    "summary C1_2 batches_with_overlap",
+    "summary C1_5 overlap_links",
+    "summary C1_5 batches_with_overlap",
+    "summary C1_10 overlap_links"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M16",
+  "change": "strict_overlap flag `<` -> `<=`",
+  "expected_detector": "strict overlap tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_overlap_flags_distinguish_touching_from_strict_overlap",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+   "tests/test_closing_batches.py::test_overlap_flags_distinguish_touching_from_strict_overlap"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert '09e11662b2cf...0731e5ab88f2d' == '5c09c4b3a192...b5b4ff70d9c01'",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M16/portfolio_engine/tests/test_closing_batches.py:211: AssertionError: closing_batches_C1.tsv",
+   "E   assert (0 == 0 and True is True and True is False)"
+  ],
+  "detector": {
+   "A": 1512,
+   "A_sample": [
+    "equal_timestamps_many_parents_unsorted_input C12: batch attrs [(6, 0)]",
+    "equal_timestamps_many_parents_unsorted_input C12: member link row",
+    "equal_timestamps_many_parents_unsorted_input C12: member link row"
+   ],
+   "B": 10,
+   "B_sample": [
+    "summary C1_2 strict_overlap_links",
+    "summary C1_5 strict_overlap_links",
+    "summary C1_10 strict_overlap_links",
+    "summary C1_30 strict_overlap_links",
+    "summary C1_60 strict_overlap_links"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M17",
+  "change": "parent last_ts never advances (last := first)",
+  "expected_detector": "multi-fill parent test; C2 overlap tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_several_partial_closing_fills_of_one_parent_are_one_decision",
+   "tests/test_closing_batches.py::test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_over_seconds",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   assert (0 == 1)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M17/portfolio_engine/tests/test_closing_batches.py:196: assert (0 == 1)",
+   "E   assert ([0, 0, 0, 0, 0] == [1, 1, 1, 0, 0]",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M17/portfolio_engine/tests/test_closing_batches.py:203: assert ([0, 0, 0, 0, 0] == [1, 1, 1, 0, 0]"
+  ],
+  "detector": {
+   "A": 863,
+   "A_sample": [
+    "multi_fill_parent_interval_overlap C12: batch attrs [(1767588360, 1767588410), (0, 50)]",
+    "multi_fill_parent_interval_overlap C15: batch attrs [(1767588360, 1767588410), (0, 50)]",
+    "multi_fill_parent_interval_overlap C110: batch attrs [(1767588370, 1767588410), (10, 50), (0, 1), (0, 1), (0, 1)]"
+   ],
+   "B": 15,
+   "B_sample": [
+    "summary C1_2 strict_overlap_links",
+    "summary C1_2 max_duration",
+    "summary C1_5 strict_overlap_links",
+    "summary C1_10 strict_overlap_links",
+    "summary C1_30 strict_overlap_links"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M18",
+  "change": "C2 default reference = running max of last fills (approved rule is previous parent)",
+  "expected_detector": "C2 rule sensitivity real test",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_grouping_never_mutates_the_observed_ledger_and_ignores_the_matching_convention",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   assert ('FIFO' not in \"{'batch_id'...BSERVATION'}\"",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M18/portfolio_engine/tests/test_closing_batches.py:158: assert ('FIFO' not in \"{'batch_id'...BSERVATION'}\"",
+   "E   assert False",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M18/portfolio_engine/tests/test_closing_batches.py:202: assert False"
+  ],
+  "detector": {
+   "A": 14195,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S__SENS_src_running_max:NIFTY:2026-02-01:2026-01-05:001 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-01:2026-01-05:001",
+    "gap_exactly_threshold_and_plus_one C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S__SENS_src_running_max:NIFTY:2026-02-02:2026-01-05:001 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-02:2026-01-05:001",
+    "gap_exactly_threshold_and_plus_one C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S__SENS_src_running_max:NIFTY:2026-02-03:2026-01-05:001 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-03:2026-01-05:001"
+   ],
+   "B": 32,
+   "B_sample": [
+    "partition C2_2",
+    "partition C2_5",
+    "partition C2_10",
+    "summary C1_2 strict_overlap_links",
+    "summary C1_5 strict_overlap_links"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M19",
+  "change": "session by UTC date instead of IST date",
+  "expected_detector": "IST-midnight test",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: assert (['N1', 'N2'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']] and ['N1', 'S1'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']] and ['L1', 'L2'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']])",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M19/portfolio_engine/tests/test_closing_batches.py:127: AssertionError: assert (['N1', 'N2'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']] and ['N1', 'S1'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']] and ['L1', 'L2'] not in [['N1'], ['L1', 'L2'], ['N2'], ['S1']])"
+  ],
+  "detector": {
+   "A": 20,
+   "A_sample": [
+    "ist_midnight_and_session_boundary C12: partition differs",
+    "ist_midnight_and_session_boundary C15: partition differs",
+    "ist_midnight_and_session_boundary C110: partition differs"
+   ],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [],
+   "errors": []
+  }
+ },
+ {
+  "id": "M20",
+  "change": "parent first_ts = LATEST closing fill (first_ts uses `>`)",
+  "expected_detector": "multi-fill parent test",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_several_partial_closing_fills_of_one_parent_are_one_decision",
+   "tests/test_closing_batches.py::test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_over_seconds",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   assert (0 == 1)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M20/portfolio_engine/tests/test_closing_batches.py:196: assert (0 == 1)",
+   "E   assert ([0, 0, 0, 0, 0] == [1, 1, 1, 0, 0]",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M20/portfolio_engine/tests/test_closing_batches.py:203: assert ([0, 0, 0, 0, 0] == [1, 1, 1, 0, 0]"
+  ],
+  "detector": {
+   "A": 805,
+   "A_sample": [
+    "multi_fill_parent_interval_overlap C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-01-08:2026-01-05:001 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-01-08:2026-01-05:002",
+    "multi_fill_parent_interval_overlap C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-01-08:2026-01-05:002 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-01-08:2026-01-05:003",
+    "multi_fill_parent_interval_overlap C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-01-08:2026-01-05:003 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-01-08:2026-01-05:001"
+   ],
+   "B": 63,
+   "B_sample": [
+    "partition C1_2",
+    "partition C1_5",
+    "partition C1_10",
+    "partition C2_2",
+    "partition C2_5"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M21",
+  "change": "tie-break by parent_id only (drop first_src) in build_view",
+  "expected_detector": "tie-order tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_equal_first_timestamps_are_ordered_by_source_row_then_parent_id",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: assert ['A', 'B'] == ['B', 'A']",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M21/portfolio_engine/tests/test_closing_batches.py:96: AssertionError: assert ['A', 'B'] == ['B', 'A']",
+   "E   assert False",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M21/portfolio_engine/tests/test_closing_batches.py:202: assert False"
+  ],
+  "detector": {
+   "A": 107,
+   "A_sample": [
+    "tie_with_multi_fill_parent_c2 C12: batch attrs [(1, 2)]",
+    "tie_with_multi_fill_parent_c2 C12: member link row",
+    "tie_with_multi_fill_parent_c2 C12: member link row"
+   ],
+   "B": 25,
+   "B_sample": [
+    "partition C2_2",
+    "partition C2_5",
+    "partition C2_10",
+    "summary C1_2 strict_overlap_links",
+    "summary C1_5 strict_overlap_links"
+   ],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M22",
+  "change": "summarize: pairs_linked uses `<` instead of `<=`",
+  "expected_detector": "real summary regression (report numbers)",
+  "pytest_summary": ".........................                                                [100%]",
+  "pytest_failed": [],
+  "pytest_error_lines": [],
+  "detector": {
+   "A": 0,
+   "A_sample": [],
+   "B": 10,
+   "B_sample": [
+    "summary C1_2 pairs_linked",
+    "summary C1_5 pairs_linked",
+    "summary C1_10 pairs_linked",
+    "summary C1_30 pairs_linked",
+    "summary C1_60 pairs_linked"
+   ],
+   "REPRO": [],
+   "errors": []
+  }
+ },
+ {
+  "id": "M23",
+  "change": "stability: nested forced True",
+  "expected_detector": "stability test",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector"
+  ],
+  "pytest_error_lines": [
+   "E   assert (True is False)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M23/portfolio_engine/tests/test_closing_batches.py:224: assert (True is False)"
+  ],
+  "detector": {
+   "A": 0,
+   "A_sample": [],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [],
+   "errors": []
+  }
+ },
+ {
+  "id": "M24",
+  "change": "batch record duration off by one (end - start + 1)",
+  "expected_detector": "duration tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+   "tests/test_closing_batches.py::test_batch_record_times_and_duration_and_nesting_detector"
+  ],
+  "pytest_error_lines": [
+   "E   assert (41 == 40)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M24/portfolio_engine/tests/test_closing_batches.py:82: assert (41 == 40)",
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert 'e54883cfe435...27cb49c743f62' == '5c09c4b3a192...b5b4ff70d9c01'"
+  ],
+  "detector": {
+   "A": 15469,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: batch attrs [(2, 1)]",
+    "gap_exactly_threshold_and_plus_one C12: batch attrs [(3, 2)]",
+    "gap_exactly_threshold_and_plus_one C12: batch attrs [(1, 0)]"
+   ],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batches_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M25",
+  "change": "members file join gap sign dropped (abs)",
+  "expected_detector": "member-row tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: closing_batch_members_C2.tsv",
+   "    assert 'b27cf515b810...f99ec4cc1ee78' == 'cfbfca991d15...b31a7ea418517'",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M25/portfolio_engine/tests/test_closing_batches.py:211: AssertionError: closing_batch_members_C2.tsv"
+  ],
+  "detector": {
+   "A": 290,
+   "A_sample": [
+    "multi_fill_parent_interval_overlap C22: member link row",
+    "multi_fill_parent_interval_overlap C25: member link row",
+    "multi_fill_parent_interval_overlap C210: member link row"
+   ],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [
+    "closing_batch_members_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M26",
+  "change": "batch numbering skips (n += 2)",
+  "expected_detector": "id tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   AssertionError: closing_batches_C1.tsv",
+   "    assert '9b1affaa6318...2a6ec6e7ea3e8' == '5c09c4b3a192...b5b4ff70d9c01'",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M26/portfolio_engine/tests/test_closing_batches.py:211: AssertionError: closing_batches_C1.tsv"
+  ],
+  "detector": {
+   "A": 15469,
+   "A_sample": [
+    "gap_exactly_threshold_and_plus_one C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-01:2026-01-05:002 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-01:2026-01-05:001",
+    "gap_exactly_threshold_and_plus_one C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-02:2026-01-05:002 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-02:2026-01-05:001",
+    "gap_exactly_threshold_and_plus_one C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-03:2026-01-05:002 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-03:2026-01-05:001"
+   ],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [
+    "closing_batches_C1.tsv",
+    "closing_batch_members_C1.tsv",
+    "closing_batch_portions_C1.tsv",
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M27",
+  "change": "C2 overlap negative gap not linked: gap clipped (abs(gap) for C2 link test)",
+  "expected_detector": "overlap tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "tests/test_closing_batches.py::test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "tests/test_closing_batches.py::test_real_scope_and_all_ten_views_partition_exactly",
+   "tests/test_closing_batches.py::test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_over_seconds",
+   "tests/test_closing_batches.py::test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "tests/test_closing_batches.py::test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "pytest_error_lines": [
+   "E   assert (True and False)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M27/portfolio_engine/tests/test_closing_batches.py:195: assert (True and False)",
+   "E   assert False",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M27/portfolio_engine/tests/test_closing_batches.py:202: assert False"
+  ],
+  "detector": {
+   "A": 198,
+   "A_sample": [
+    "multi_fill_parent_interval_overlap C22: partition differs",
+    "multi_fill_parent_interval_overlap C25: partition differs",
+    "multi_fill_parent_interval_overlap C210: partition differs"
+   ],
+   "B": 28,
+   "B_sample": [
+    "partition C2_2",
+    "partition C2_5",
+    "partition C2_10",
+    "partition C2_30",
+    "summary C2_2 batches"
+   ],
+   "REPRO": [
+    "closing_batches_C2.tsv",
+    "closing_batch_members_C2.tsv",
+    "closing_batch_portions_C2.tsv"
+   ],
+   "errors": []
+  }
+ },
+ {
+  "id": "M28",
+  "change": "closing portions without parent id pooled (unattributable check removed)",
+  "expected_detector": "missing parent id tests",
+  "pytest_summary": "FAILED tests/test_closing_batches.py::test_unattributable_parent_ids_in_both_spellings_are_excluded",
+  "pytest_failed": [
+   "tests/test_closing_batches.py::test_missing_parent_id_is_unattributable_never_pooled_and_reconciles",
+   "tests/test_closing_batches.py::test_unattributable_parent_ids_in_both_spellings_are_excluded"
+  ],
+  "pytest_error_lines": [
+   "E   assert (0 == 2)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M28/portfolio_engine/tests/test_closing_batches.py:133: assert (0 == 2)",
+   "E   assert (0 == 2)",
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_b/mut/M28/portfolio_engine/tests/test_closing_batches.py:244: assert (0 == 2)"
+  ],
+  "detector": {
+   "A": 0,
+   "A_sample": [],
+   "B": 0,
+   "B_sample": [],
+   "REPRO": [],
+   "errors": []
+  }
+ }
+]
