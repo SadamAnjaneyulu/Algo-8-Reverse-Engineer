@@ -91,6 +91,14 @@ def main():
             rel = {x['episode_id'] for x in rec['related_reversal_episodes']}
             exp_rel = {x['eid'] for x in E.values() if x['iid'] == e['iid'] and x['eid'] != eid and ((x['by_reversal'] and x['first_ts'] == e['last_ts'] and e['ended_by'] == 'reversal') or (e['by_reversal'] and x['ended_by'] == 'reversal' and x['last_ts'] == e['first_ts']))}
             ck(f'{cy} {name} related reversal episodes', rel == exp_rel, f'{rel} vs {exp_rel}')
+    for und, exp in T.CYCLES:                                   # case figure CSVs (single-episode V2) vs RAW events of the charted episodes
+        cy = f'{und}_{exp}'; t = T.truth(und, exp); CS = json.load(open(os.path.join(DATA, cy, 'case_studies.json')))
+        for name, rec in CS['records'].items():
+            if rec['status'] != 'AVAILABLE': continue
+            p = os.path.join(PE, 'reports', 'm2e_figures', cy, 'cases', f'{name}.csv'); rows = list(csv.DictReader(open(p, newline='')))
+            ids = set(rec['chart_episode_ids']); ev = [e for e in t['R']['events'] if e['eid'] in ids]
+            ck(f'{cy} {name} case-figure events', collections.Counter((r['episode_id'], r['event_type'], int(r['source_row_id']), int(r['quantity'])) for r in rows if r['record'] == 'EVENT') == collections.Counter((e['eid'], e['kind'], e['fill']['row'], e['qty']) for e in ev))
+            ck(f'{cy} {name} case-figure episodes', {r['episode_id'] for r in rows if r['record'] == 'EPISODE'} == ids)
     # special: mixed parents / reversing fill
     t = T.truth('NIFTY', '2026-06-30'); R = t['R']
     rev = [x for x in R['events'] if x['kind'] == 'REVERSED']; ck('NIFTY exactly one reversal', len(rev) == 1); f = rev[0]['fill']

@@ -214,6 +214,10 @@ if __name__ == '__main__':
     chk = {'W1 wing items': (fl['wing_items'], W1['wing_items']), 'W1 with cand': (fl['W1_with'], W1['wing_items_with_candidate']), 'W1 unique': (fl['W1_unique'], W1['wing_items_unique_candidate']), 'W1 multi': (fl['W1_multi'], W1['wing_items_multiple_candidates']), 'W1 none': (fl['W1_none'], W1['wing_items_no_candidate']), 'W1 unmatched units': (fl['W1_unmatched_units'], W1['wing_units_unmatched']),
            'S60 with': (fl['S60_with'], S['wing_items_with_candidate']), 'S60 none': (fl['S60_none'], S['wing_items_no_candidate']), 'S60 unmatched units': (fl['S60_unmatched_units'], S['wing_units_unmatched']), 'closing excluded units': (fl['closing_excl'], sum(v for k, v in sm['scope_exclusions_TAGGED_units'].items() if k.startswith('CLOSING')))}
     for k, (a, b) in chk.items(): ck(f'FULL-LEDGER {k}', a == b, f'raw-derived {a} vs M2-D summary {b}')
+    for und, exp in T.CYCLES:                                   # V6 section G (full-ledger numbers) vs M2-D summary AND raw-derived values
+        vm = {(r['section'], r['metric']): r['value'] for r in rd(os.path.join(FIG, f'{und}_{exp}', 'V6_coverage_uncertainty_dashboard.csv'), ',')}; gmap = {'wing_items_full_ledger_W1': 'W1 wing items', 'wing_items_with_candidate_full_ledger_W1': 'W1 with cand', 'wing_items_unique_full_ledger_W1': 'W1 unique', 'wing_items_multiple_full_ledger_W1': 'W1 multi', 'wing_items_none_full_ledger_W1': 'W1 none', 'wing_units_unmatched_full_ledger_W1': 'W1 unmatched units',
+                'wing_items_with_candidate_full_ledger_W1_S60': 'S60 with', 'wing_items_none_full_ledger_W1_S60': 'S60 none', 'wing_units_unmatched_full_ledger_W1_S60': 'S60 unmatched units', 'closing_units_excluded_by_tag_roles_full_ledger': 'closing excluded units'}
+        for k, ck_ in gmap.items(): ck(f'{und} V6 G {k} == raw-derived', int(vm[('G_scope_warning_numbers_full_ledger', k)]) == chk[ck_][0], f'{vm[("G_scope_warning_numbers_full_ledger", k)]} vs {chk[ck_][0]}')
     print('PASSED:', sum(OK.values()), 'checks in', len(OK), 'families; FAILED:', len(FAIL))
     for n, d in FAIL[:40]: print('  FAIL', n, d)
     sys.exit(1 if FAIL else 0)

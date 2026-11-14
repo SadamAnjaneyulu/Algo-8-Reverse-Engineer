@@ -99,6 +99,7 @@ def check_cycle(und, exp):
     V3 = rd(os.path.join(G, 'V3_opening_activity_cohort_map.csv'), ','); ck(f'{cy} V3 items', len(V3) == len(items))
     for r in V3:
         d = items.get((r['parent_order_id'], r['instrument_id']))
+        ck(f'{cy} V3 item role/side/tag/strike/right/instrument', d is not None and r['module_tag'] == d['tag'] and int(r['side']) == d['side'] and r['tag_role'] == ('BODY_SHORT_BY_TAG' if (d['tag'] == 'num' and d['side'] < 0) else 'WING_LONG_BY_TAG' if (d['tag'] == 'h_' and d['side'] > 0) else f"UNCLASSIFIED({d['tag']},{'SELL' if d['side'] < 0 else 'BUY'})") and r['right'] == d['iid'].split('|')[2] and int(r['strike']) == int(d['iid'].split('|')[3]), str(r))
         ck(f'{cy} V3 item', d is not None and int(r['quantity']) == d['qty'] and int(r['first_fill_ts_utc_s']) == d['first'] and r['first_fill_ts_ist'] == T.ist_str(d['first']) and r['order_entry_minute_ist'] == T.ist_str(d['em']) and r['session_ist'] == T.ist_date(d['first']) and r['d_label'] == T.d_label(ses, exp, T.ist_date(d['first'])), str(r))
     # cohorts: units per (session, entry minute) by tag-role class  (units of OPENING allocations grouped by the PARENT's order-entry minute)
     coh = collections.defaultdict(lambda: collections.Counter()); npar = collections.defaultdict(set)
