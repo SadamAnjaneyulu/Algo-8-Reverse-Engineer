@@ -8,7 +8,7 @@ sys.path.insert(0,'/home/user/Algo-8-Reverse-Engineer/portfolio_engine/python')
 import ref_model as RM
 from pe import tsvio, replay as rp
 from fractions import Fraction
-MODE='HISTORICAL_OBSERVED_REPLAY'; BIN=S+'/build/pe_replay'
+MODE='HISTORICAL_OBSERVED_REPLAY'; BIN=os.environ.get('PE_BIN',S+'/build/pe_replay')
 rows=RM.load_raw(); seg={}
 for i,r in enumerate(csv.reader(open(RM.RAW,newline=''))): seg[rows[i]['inst']]=r[3]
 def mod(p): return 'num' if p.isdigit() else p.split('_')[0]+'_'
@@ -55,5 +55,5 @@ for m in ('FIFO','LIFO','AVG'):
             out[f'{m}/cpp_CA_total_minus_ref_exact']=float(tot-R.realized_total)
             out[f'{m}/cpp_dump_realized']=[l for l in open(f'{d}/dump.tsv').read().splitlines() if l.startswith('TOTAL\trealized')]
 print(json.dumps(out,indent=1))
-json.dump(out,open(HERE+'/cpp_raw_run_result.json','w'),indent=1)
+json.dump(out,open(os.environ.get('OUT_JSON',HERE+'/cpp_raw_run_result.json'),'w'),indent=1)
 print('SHA events tsv', hashlib.sha256(open(EV,'rb').read()).hexdigest())
