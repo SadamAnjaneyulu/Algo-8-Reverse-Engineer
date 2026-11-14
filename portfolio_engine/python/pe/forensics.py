@@ -57,7 +57,7 @@ def sha(text): return hashlib.sha256(text.encode()).hexdigest()
 
 # ------------------------------------------------------------------------------------------------------------------------------ datasets (observed layer)
 def fills_table(c):
-    H = ['fill_id', 'source_row_id', 'parent_order_id', 'module_tag', 'instrument_id', 'right', 'strike', 'ts_utc_s', 'ts_ist', 'session_ist', 'd_label', 'side', 'quantity', 'price_paise', 'requested_quantity', 'order_status', 'is_duplicate_fill', 'opening_qty', 'closing_qty']
+    H = ['fill_id', 'source_row_id', 'parent_order_id', 'module_tag', 'instrument_id', 'right', 'strike', 'ts_utc_s', 'ts_ist', 'session_ist', 'd_label', 'side', 'quantity', 'exec_price_paise', 'requested_quantity', 'order_status', 'is_duplicate_fill', 'opening_qty', 'closing_qty']
     oq = defaultdict(int); cq = defaultdict(int)
     for r in c.ls.oa.values(): oq[r[2]] += r[8]
     for r in c.ls.cp.values(): cq[r[2]] += r[8]
@@ -129,15 +129,15 @@ def opening_items(c, tp03):
     for r in sorted(ls.oa.values(), key=lambda r: (r[6], r[11])):
         k = (r[3], r[4]); d = g.setdefault(k, dict(parent=r[3], inst=r[4], tag=r[10], side=r[7], qty=0, notional=0, first=r[6], last=r[6], n=0, oas=[], fills=[]))
         d['qty'] += r[8]; d['notional'] += r[8] * r[9]; d['last'] = max(d['last'], r[6]); d['n'] += 1; d['oas'].append(r[1]); d['fills'].append(r[2])
-    H = ['item_key', 'parent_order_id', 'instrument_id', 'right', 'strike', 'module_tag', 'side', 'tag_role', 'quantity', 'avg_price_paise', 'n_opening_fills', 'first_ts_utc_s', 'last_ts_utc_s', 'first_ts_ist', 'session_ist', 'd_label', 'order_entry_minute_s', 'order_entry_minute_ist', 'app_key_last6',
-         'order_number', 'requested_units', 'tp03_event_class', 'oa_ids']
+    H = ['item_key', 'parent_order_id', 'instrument_id', 'right', 'strike', 'module_tag', 'side', 'tag_role', 'quantity', 'avg_exec_price_paise', 'n_opening_fills', 'first_ts_utc_s', 'last_ts_utc_s', 'first_ts_ist', 'session_ist', 'd_label', 'order_entry_minute_s', 'order_entry_minute_ist', 'app_key_last6',
+         'order_number', 'requested_units', 'tp03_event_class', 'episode_ids', 'oa_ids']
     rows = []
     for k, d in sorted(g.items(), key=lambda kv: (kv[1]['first'], kv[0])):
         m = c.meta.get(d['parent']) or {}; em = m.get('order_entry_minute_s')
         role = 'BODY_SHORT_BY_TAG' if (d['tag'] == 'num' and d['side'] < 0) else 'WING_LONG_BY_TAG' if (d['tag'] == 'h_' and d['side'] > 0) else f"UNCLASSIFIED({d['tag']},{'SELL' if d['side'] < 0 else 'BUY'})"
         cls = tp03.get(d['parent'], 'NOT_LISTED_BY_TP03_AS_OFF_WINDOW')
         rows.append((f"{d['parent']}|{d['inst']}", d['parent'], d['inst'], c.right(d['inst']), c.strike(d['inst']), d['tag'], d['side'], role, d['qty'], round(d['notional'] / d['qty'], 4), d['n'], d['first'], d['last'], ist_str(d['first']), ist_date(d['first']), c.d_label(d['first']),
-                     'NA' if em is None else em, 'NA' if em is None else ist_str(em), m.get('app_key_last6') or 'NA', m.get('order_number') or 'NA', m.get('requested_units', 'NA'), cls, ','.join(d['oas'])))
+                     'NA' if em is None else em, 'NA' if em is None else ist_str(em), m.get('app_key_last6') or 'NA', m.get('order_number') or 'NA', m.get('requested_units', 'NA'), cls, ';'.join(sorted({ls.oa[o][5] for o in d['oas']})), ','.join(d['oas'])))
     return H, rows
 
 

@@ -4,7 +4,7 @@
 
 ## 1. Selection method (fixed before any case was looked at)
 
-Candidates are scanned **chronologically** (first fill time, then id) and the **first qualifying** one is taken. Profit, loss, price and every outcome are never consulted. A case type with no qualifying candidate in a cycle is **UNAVAILABLE** for that cycle (never borrowed from the other cycle). Cases prefer an episode not used by an earlier type; reuse is flagged. Rules (`pe/cases.py`, `RULES`):
+Candidates are scanned **chronologically** (first fill time, then id) and the **first qualifying candidate whose episode was not already used by an earlier case type** is taken (reuse only if every qualifying candidate was used; any skipped chronologically-first candidate is named in the case note). Profit, loss, price and every outcome are never consulted. A case type with no qualifying candidate in a cycle is **UNAVAILABLE** for that cycle (never borrowed from the other cycle). Rules (`pe/cases.py`, `RULES`):
 
 | Case type | Rule |
 |---|---|
@@ -30,9 +30,9 @@ Candidates are scanned **chronologically** (first fill time, then id) and the **
 | CT5_REVERSAL | `NIFTY\|2026-06-30\|CE\|24100#1` (reused) | **UNAVAILABLE** |
 | CT6_MULTIPLE_CANDIDATE_WINGS | `NIFTY\|2026-06-30\|CE\|24050#1` | `SENSEX\|2026-07-16\|CE\|77500#1` |
 | CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES | `NIFTY\|2026-06-30\|PE\|23200#1` | `SENSEX\|2026-07-16\|PE\|74900#1` |
-| CT7_NO_CANDIDATE_WING | `NIFTY\|2026-06-30\|PE\|24100#1` | `SENSEX\|2026-07-16\|CE\|77200#1` |
+| CT7_NO_CANDIDATE_WING | `NIFTY\|2026-06-30\|PE\|24100#1` (earlier-chronological candidate skipped; see case note) | `SENSEX\|2026-07-16\|CE\|77200#1` |
 | CT8_W1_VS_W1S60_DISAGREEMENT | `NIFTY\|2026-06-30\|CE\|24000#1` | `SENSEX\|2026-07-16\|CE\|77600#1` |
-| CT9_MULTI_PARENT_CLOSING_BATCH | `NIFTY\|2026-06-30\|PE\|24050#1` | `SENSEX\|2026-07-16\|CE\|77400#1` |
+| CT9_MULTI_PARENT_CLOSING_BATCH | `NIFTY\|2026-06-30\|PE\|24050#1` (earlier-chronological candidate skipped; see case note) | `SENSEX\|2026-07-16\|CE\|77400#1` (earlier-chronological candidate skipped; see case note) |
 
 UNAVAILABLE items are reported, not substituted. Neither frozen cycle has a position that expired unclosed; SENSEX has no reversal.
 
@@ -42,7 +42,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT1_INCREMENTAL_OPENING — NIFTY|2026-06-30|CE|24100#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first episode (by first fill time) with >= 3 ADDED lifecycle events
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode (by first fill time) with >= 3 ADDED lifecycle events
 * **Instrument:** NIFTY|2026-06-30|CE|24100 (SHORT); **lifecycle events:** ADDED 10, CREATED 1, PARTIALLY_REDUCED 4, REVERSED 1; started by reversal: False; ended by: reversal
 * **Quantity:** opened 715 · closed 715 · remaining 0 · terminal status **REVERSED**
 * **First → last event (IST):** 2026-06-29 09:16:01 (CREATED, inventory -65) → 2026-06-30 14:18:25 (REVERSED, inventory +0)
@@ -50,9 +50,10 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Opening parents (11):** 10758104, 10758174, 10758362, 10759275, 10759367, 10759458, 10759539, 10760306, 10760387, 10760479, 10760910
 * **Closing parents (4):** 10760055, 10772433, 10773504, h_30084825701151
 * **Convention:** identical under FIFO, LIFO, AVG; 5 closing portions, 5 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
+* **Related reversal episode:** `NIFTY|2026-06-30|CE|24100#2` (LONG, opened 390 · closed 390 · remaining 0; started by reversal: True; ended by: flat). The reversing fill is split between the two episodes; its opening portion belongs to the successor.
 * **Closing batch C1 (10 s):** 4 closing parents fall in 4 batch(es); batch sizes (parents) [1, 2, 15], durations (s) [0, 17]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:003`
 * **Closing batch C2 (10 s):** 4 closing parents fall in 4 batch(es); batch sizes (parents) [1, 2, 15], durations (s) [0, 17]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:003`
-* **Wing/body (opening items of this position):** 12 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 3, one for 6, several for 3; W1_S60: none 3, one 3, several 6
+* **Wing/body (opening items of this position):** 11 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 3, one for 6, several for 2; W1_S60: none 3, one 3, several 5
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
 * **Can conclude:** the fills, parents, times and quantities listed, and the lifecycle they imply; the position ended REVERSED with remaining 0 (observed); which closing parents are time-connected within 10 s (C1/C2), as a temporal fact
@@ -63,7 +64,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT2_PARTIAL_REDUCTION — NIFTY|2026-06-30|PE|22100#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first episode with >= 2 PARTIALLY_REDUCED events and terminal status CLOSED
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode with >= 2 PARTIALLY_REDUCED events and terminal status CLOSED
 * **Instrument:** NIFTY|2026-06-30|PE|22100 (LONG); **lifecycle events:** ADDED 2, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 2; started by reversal: False; ended by: flat
 * **Quantity:** opened 195 · closed 195 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:16:00 (CREATED, inventory +65) → 2026-06-29 12:18:00 (CLOSED, inventory +0)
@@ -73,7 +74,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 3 closing portions, 2 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 3 closing parents fall in 3 batch(es); batch sizes (parents) [2, 5, 11], durations (s) [0, 5, 6]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:001`
 * **Closing batch C2 (10 s):** 3 closing parents fall in 3 batch(es); batch sizes (parents) [2, 5, 11], durations (s) [0, 5, 6]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:001`
-* **Wing/body (opening items of this position):** 0 in M2-D tagged scope, 3 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 0, several for 0; W1_S60: none 0, one 0, several 0
+* **Wing/body (opening items of this position):** 0 in M2-D tagged scope (items with an opening allocation in this episode), 3 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 0, several for 0; W1_S60: none 0, one 0, several 0
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
 * **Can conclude:** the fills, parents, times and quantities listed, and the lifecycle they imply; the position ended CLOSED with remaining 0 (observed); which closing parents are time-connected within 10 s (C1/C2), as a temporal fact
@@ -84,7 +85,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT3_FULL_CLOSURE — NIFTY|2026-06-30|CE|26100#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first episode whose only closing event is a single CLOSED event (no PARTIALLY_REDUCED, no REVERSED)
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode whose only closing event is a single CLOSED event (no PARTIALLY_REDUCED, no REVERSED)
 * **Instrument:** NIFTY|2026-06-30|CE|26100 (LONG); **lifecycle events:** CLOSED 1, CREATED 1; started by reversal: False; ended by: flat
 * **Quantity:** opened 65 · closed 65 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:16:00 (CREATED, inventory +65) → 2026-06-29 15:03:09 (CLOSED, inventory +0)
@@ -94,7 +95,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 1 closing portions, 0 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 1 closing parents fall in 1 batch(es); batch sizes (parents) [1], durations (s) [0]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:016`
 * **Closing batch C2 (10 s):** 1 closing parents fall in 1 batch(es); batch sizes (parents) [1], durations (s) [0]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:016`
-* **Wing/body (opening items of this position):** 0 in M2-D tagged scope, 1 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 0, several for 0; W1_S60: none 0, one 0, several 0
+* **Wing/body (opening items of this position):** 0 in M2-D tagged scope (items with an opening allocation in this episode), 1 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 0, several for 0; W1_S60: none 0, one 0, several 0
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
 * **Can conclude:** the fills, parents, times and quantities listed, and the lifecycle they imply; the position ended CLOSED with remaining 0 (observed); which closing parents are time-connected within 10 s (C1/C2), as a temporal fact
@@ -111,7 +112,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT5_REVERSAL — NIFTY|2026-06-30|CE|24100#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first episode ended by a REVERSED event (extra case type: reversal timeline) — *reuses the episode of CT1_INCREMENTAL_OPENING (no distinct qualifying episode)*
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode ended by a REVERSED event (extra case type: reversal timeline) — *reuses the episode of CT1_INCREMENTAL_OPENING (no unused qualifying episode)*
 * **Instrument:** NIFTY|2026-06-30|CE|24100 (SHORT); **lifecycle events:** ADDED 10, CREATED 1, PARTIALLY_REDUCED 4, REVERSED 1; started by reversal: False; ended by: reversal
 * **Quantity:** opened 715 · closed 715 · remaining 0 · terminal status **REVERSED**
 * **First → last event (IST):** 2026-06-29 09:16:01 (CREATED, inventory -65) → 2026-06-30 14:18:25 (REVERSED, inventory +0)
@@ -119,9 +120,10 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Opening parents (11):** 10758104, 10758174, 10758362, 10759275, 10759367, 10759458, 10759539, 10760306, 10760387, 10760479, 10760910
 * **Closing parents (4):** 10760055, 10772433, 10773504, h_30084825701151
 * **Convention:** identical under FIFO, LIFO, AVG; 5 closing portions, 5 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
+* **Related reversal episode:** `NIFTY|2026-06-30|CE|24100#2` (LONG, opened 390 · closed 390 · remaining 0; started by reversal: True; ended by: flat). The reversing fill is split between the two episodes; its opening portion belongs to the successor.
 * **Closing batch C1 (10 s):** 4 closing parents fall in 4 batch(es); batch sizes (parents) [1, 2, 15], durations (s) [0, 17]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:003`
 * **Closing batch C2 (10 s):** 4 closing parents fall in 4 batch(es); batch sizes (parents) [1, 2, 15], durations (s) [0, 17]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:003`
-* **Wing/body (opening items of this position):** 12 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 3, one for 6, several for 3; W1_S60: none 3, one 3, several 6
+* **Wing/body (opening items of this position):** 11 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 3, one for 6, several for 2; W1_S60: none 3, one 3, several 5
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
 * **Can conclude:** the fills, parents, times and quantities listed, and the lifecycle they imply; the position ended REVERSED with remaining 0 (observed); which closing parents are time-connected within 10 s (C1/C2), as a temporal fact
@@ -132,7 +134,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT6_MULTIPLE_CANDIDATE_WINGS — NIFTY|2026-06-30|CE|24050#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first opening BODY item (W1) with >= 2 candidate wing items
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with >= 2 candidate wing items
 * **Instrument:** NIFTY|2026-06-30|CE|24050 (SHORT); **lifecycle events:** ADDED 18, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 14; started by reversal: False; ended by: flat
 * **Quantity:** opened 1,235 · closed 1,235 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:24:21 (CREATED, inventory -65) → 2026-06-30 14:25:17 (CLOSED, inventory +0)
@@ -142,7 +144,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 15 closing portions, 15 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 13 closing parents fall in 10 batch(es); batch sizes (parents) [3, 4, 6, 8, 10, 11, 15, 18, 92], durations (s) [3, 4, 5, 6, 7, 8, 14, 17, 53]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:004`
 * **Closing batch C2 (10 s):** 13 closing parents fall in 10 batch(es); batch sizes (parents) [3, 4, 6, 8, 10, 11, 15, 18, 92], durations (s) [3, 4, 5, 6, 7, 8, 14, 17, 53]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:004`
-* **Wing/body (opening items of this position):** 19 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 2, one for 8, several for 9; W1_S60: none 0, one 5, several 14
+* **Wing/body (opening items of this position):** 19 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 2, one for 8, several for 9; W1_S60: none 0, one 5, several 14
 * **Anchor item:** `10758587 CE24050` (BODY, 65 units, tag role BODY_SHORT_BY_TAG)
   * W1 candidates: 2 — h_29040104435735 CE24650 (dt +4s, qty ratio 2.00); h_29040156004143 CE24650 (dt +56s, qty ratio 1.00) — *WEAKLY_SUPPORTED (inferred candidate)*
   * W1_S60 candidates: 2 — h_29040104435735 CE24650 (dt +4s, qty ratio 2.00); h_29040156004143 CE24650 (dt +56s, qty ratio 1.00) — *UNRESOLVED (execution proximity only)*
@@ -157,7 +159,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES — NIFTY|2026-06-30|PE|23200#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first opening WING item (W1) with >= 2 candidate body items (extra)
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening WING item (W1) with >= 2 candidate body items (extra)
 * **Instrument:** NIFTY|2026-06-30|PE|23200 (LONG); **lifecycle events:** ADDED 7, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 4; started by reversal: False; ended by: flat
 * **Quantity:** opened 715 · closed 715 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:31:04 (CREATED, inventory +130) → 2026-06-29 12:20:06 (CLOSED, inventory +0)
@@ -167,7 +169,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 5 closing portions, 5 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 4 closing parents fall in 4 batch(es); batch sizes (parents) [3, 5, 6, 11], durations (s) [3, 5, 6]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:008`
 * **Closing batch C2 (10 s):** 4 closing parents fall in 4 batch(es); batch sizes (parents) [3, 5, 6, 11], durations (s) [3, 5, 6]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:008`
-* **Wing/body (opening items of this position):** 8 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 1, one for 3, several for 4; W1_S60: none 0, one 2, several 6
+* **Wing/body (opening items of this position):** 8 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 1, one for 3, several for 4; W1_S60: none 0, one 2, several 6
 * **Anchor item:** `h_29040104435632 PE23200` (WING, 130 units, tag role WING_LONG_BY_TAG)
   * W1 candidates: 2 — 10758654 PE24050 (dt +4s, qty ratio 2.00); 10758699 PE24050 (dt +4s, qty ratio 2.00) — *WEAKLY_SUPPORTED (inferred candidate)*
   * W1_S60 candidates: 2 — 10758654 PE24050 (dt +4s, qty ratio 2.00); 10758699 PE24050 (dt +4s, qty ratio 2.00) — *UNRESOLVED (execution proximity only)*
@@ -182,7 +184,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT7_NO_CANDIDATE_WING — NIFTY|2026-06-30|PE|24100#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first opening BODY item (W1) with 0 candidate wing items
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with 0 candidate wing items — *chronologically first qualifying candidate (WBI:OPENING:BODY:10758104:NIFTY|2026-06-30|CE|24100) skipped: its episode was already used by CT1_INCREMENTAL_OPENING*
 * **Instrument:** NIFTY|2026-06-30|PE|24100 (SHORT); **lifecycle events:** ADDED 12, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 12; started by reversal: False; ended by: flat
 * **Quantity:** opened 845 · closed 845 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:16:01 (CREATED, inventory -65) → 2026-06-29 12:20:00 (CLOSED, inventory +0)
@@ -192,10 +194,10 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 13 closing portions, 13 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 13 closing parents fall in 7 batch(es); batch sizes (parents) [2, 5, 6, 10, 11], durations (s) [0, 3, 5, 6, 7]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:001`
 * **Closing batch C2 (10 s):** 13 closing parents fall in 7 batch(es); batch sizes (parents) [2, 5, 6, 10, 11], durations (s) [0, 3, 5, 6, 7]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:001`
-* **Wing/body (opening items of this position):** 13 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 3, one for 8, several for 2; W1_S60: none 3, one 5, several 5
+* **Wing/body (opening items of this position):** 13 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 3, one for 8, several for 2; W1_S60: none 3, one 5, several 5
 * **Anchor item:** `10758144 PE24100` (BODY, 65 units, tag role BODY_SHORT_BY_TAG)
-  * W1 candidates: 0 (none) — *WEAKLY_SUPPORTED*
-  * W1_S60 candidates: 0 (none) — *UNRESOLVED*
+  * W1 candidates: 0 (none) — an empty candidate set is a finding about THIS method only; it does not show that no wing existed
+  * W1_S60 candidates: 0 (none) — an empty candidate set is a finding about THIS method only; it does not show that no wing existed
   * W2 weighted units (weights, not allocations): none; W3 queue-matched units (queue arithmetic, not ownership): h_29040104435632 PE23200 65
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
@@ -207,7 +209,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT8_W1_VS_W1S60_DISAGREEMENT — NIFTY|2026-06-30|CE|24000#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set
 * **Instrument:** NIFTY|2026-06-30|CE|24000 (SHORT); **lifecycle events:** ADDED 4, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 4; started by reversal: False; ended by: flat
 * **Quantity:** opened 325 · closed 325 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:25:20 (CREATED, inventory -65) → 2026-06-29 10:27:01 (CLOSED, inventory +0)
@@ -217,7 +219,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 5 closing portions, 4 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 5 closing parents fall in 2 batch(es); batch sizes (parents) [4], durations (s) [3, 4]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:002`
 * **Closing batch C2 (10 s):** 5 closing parents fall in 2 batch(es); batch sizes (parents) [4], durations (s) [3, 4]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:002`
-* **Wing/body (opening items of this position):** 5 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 3, several for 2; W1_S60: none 0, one 1, several 4
+* **Wing/body (opening items of this position):** 5 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 3, several for 2; W1_S60: none 0, one 1, several 4
 * **Anchor item:** `10758513 CE24000` (BODY, 65 units, tag role BODY_SHORT_BY_TAG)
   * W1 candidates: 1 — h_29035524496241 CE24650 (dt +4s, qty ratio 1.00) — *WEAKLY_SUPPORTED (inferred candidate)*
   * W1_S60 candidates: 2 — h_29035424195739 CE24700 (dt -56s, qty ratio 1.00); h_29035524496241 CE24650 (dt +4s, qty ratio 1.00) — *UNRESOLVED (execution proximity only)*
@@ -232,7 +234,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT9_MULTI_PARENT_CLOSING_BATCH — NIFTY|2026-06-30|PE|24050#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion — *chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING*
 * **Instrument:** NIFTY|2026-06-30|PE|24050 (SHORT); **lifecycle events:** ADDED 13, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 13; started by reversal: False; ended by: flat
 * **Quantity:** opened 910 · closed 910 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:31:00 (CREATED, inventory -65) → 2026-06-29 12:33:02 (CLOSED, inventory +0)
@@ -242,7 +244,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 14 closing portions, 14 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 14 closing parents fall in 6 batch(es); batch sizes (parents) [2, 3, 6, 8, 10, 11], durations (s) [3, 4, 6, 7, 8]; first: `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:005`
 * **Closing batch C2 (10 s):** 14 closing parents fall in 6 batch(es); batch sizes (parents) [2, 3, 6, 8, 10, 11], durations (s) [3, 4, 6, 7, 8]; first: `CB_LAST_TO_FIRST_GAP_10S:NIFTY:2026-06-30:2026-06-29:005`
-* **Wing/body (opening items of this position):** 14 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 2, one for 8, several for 4; W1_S60: none 0, one 6, several 8
+* **Wing/body (opening items of this position):** 14 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 2, one for 8, several for 4; W1_S60: none 0, one 6, several 8
 * **Anchor batch:** `CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:005`
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
@@ -256,7 +258,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT1_INCREMENTAL_OPENING — SENSEX|2026-07-16|PE|77400#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first episode (by first fill time) with >= 3 ADDED lifecycle events
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode (by first fill time) with >= 3 ADDED lifecycle events
 * **Instrument:** SENSEX|2026-07-16|PE|77400 (SHORT); **lifecycle events:** ADDED 5, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 5; started by reversal: False; ended by: flat
 * **Quantity:** opened 120 · closed 120 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:21:27 (CREATED, inventory -20) → 2026-07-15 12:39:47 (CLOSED, inventory +0)
@@ -266,7 +268,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 6 closing portions, 6 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 6 closing parents fall in 2 batch(es); batch sizes (parents) [5, 10], durations (s) [4, 7]; first: `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:004`
 * **Closing batch C2 (10 s):** 6 closing parents fall in 2 batch(es); batch sizes (parents) [5, 10], durations (s) [4, 7]; first: `CB_LAST_TO_FIRST_GAP_10S:SENSEX:2026-07-16:2026-07-15:004`
-* **Wing/body (opening items of this position):** 6 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 6, several for 0; W1_S60: none 0, one 6, several 0
+* **Wing/body (opening items of this position):** 6 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 6, several for 0; W1_S60: none 0, one 6, several 0
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
 * **Can conclude:** the fills, parents, times and quantities listed, and the lifecycle they imply; the position ended CLOSED with remaining 0 (observed); which closing parents are time-connected within 10 s (C1/C2), as a temporal fact
@@ -277,7 +279,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT2_PARTIAL_REDUCTION — SENSEX|2026-07-16|CE|81200#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first episode with >= 2 PARTIALLY_REDUCED events and terminal status CLOSED
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode with >= 2 PARTIALLY_REDUCED events and terminal status CLOSED
 * **Instrument:** SENSEX|2026-07-16|CE|81200 (LONG); **lifecycle events:** ADDED 2, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 2; started by reversal: False; ended by: flat
 * **Quantity:** opened 60 · closed 60 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:16:00 (CREATED, inventory +20) → 2026-07-15 09:26:02 (CLOSED, inventory +0)
@@ -287,7 +289,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 3 closing portions, 2 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 3 closing parents fall in 3 batch(es); batch sizes (parents) [2], durations (s) [2]; first: `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:001`
 * **Closing batch C2 (10 s):** 3 closing parents fall in 3 batch(es); batch sizes (parents) [2], durations (s) [2]; first: `CB_LAST_TO_FIRST_GAP_10S:SENSEX:2026-07-16:2026-07-15:001`
-* **Wing/body (opening items of this position):** 0 in M2-D tagged scope, 3 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 0, several for 0; W1_S60: none 0, one 0, several 0
+* **Wing/body (opening items of this position):** 0 in M2-D tagged scope (items with an opening allocation in this episode), 3 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 0, several for 0; W1_S60: none 0, one 0, several 0
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
 * **Can conclude:** the fills, parents, times and quantities listed, and the lifecycle they imply; the position ended CLOSED with remaining 0 (observed); which closing parents are time-connected within 10 s (C1/C2), as a temporal fact
@@ -298,7 +300,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT3_FULL_CLOSURE — SENSEX|2026-07-16|CE|79500#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first episode whose only closing event is a single CLOSED event (no PARTIALLY_REDUCED, no REVERSED)
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode whose only closing event is a single CLOSED event (no PARTIALLY_REDUCED, no REVERSED)
 * **Instrument:** SENSEX|2026-07-16|CE|79500 (LONG); **lifecycle events:** CLOSED 1, CREATED 1; started by reversal: False; ended by: flat
 * **Quantity:** opened 40 · closed 40 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:31:05 (CREATED, inventory +40) → 2026-07-15 12:44:44 (CLOSED, inventory +0)
@@ -308,7 +310,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 1 closing portions, 0 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 1 closing parents fall in 1 batch(es); batch sizes (parents) [3], durations (s) [4]; first: `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:006`
 * **Closing batch C2 (10 s):** 1 closing parents fall in 1 batch(es); batch sizes (parents) [3], durations (s) [4]; first: `CB_LAST_TO_FIRST_GAP_10S:SENSEX:2026-07-16:2026-07-15:006`
-* **Wing/body (opening items of this position):** 1 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 1, several for 0; W1_S60: none 0, one 0, several 1
+* **Wing/body (opening items of this position):** 1 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 1, several for 0; W1_S60: none 0, one 0, several 1
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
 * **Can conclude:** the fills, parents, times and quantities listed, and the lifecycle they imply; the position ended CLOSED with remaining 0 (observed); which closing parents are time-connected within 10 s (C1/C2), as a temporal fact
@@ -331,7 +333,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT6_MULTIPLE_CANDIDATE_WINGS — SENSEX|2026-07-16|CE|77500#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first opening BODY item (W1) with >= 2 candidate wing items
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with >= 2 candidate wing items
 * **Instrument:** SENSEX|2026-07-16|CE|77500 (SHORT); **lifecycle events:** ADDED 30, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 21; started by reversal: False; ended by: flat
 * **Quantity:** opened 620 · closed 620 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:46:00 (CREATED, inventory -20) → 2026-07-16 11:00:52 (CLOSED, inventory +0)
@@ -341,7 +343,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 22 closing portions, 22 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 18 closing parents fall in 5 batch(es); batch sizes (parents) [5, 7, 8, 16, 75], durations (s) [3, 9, 10, 24, 92]; first: `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-16:006`
 * **Closing batch C2 (10 s):** 18 closing parents fall in 5 batch(es); batch sizes (parents) [5, 7, 8, 16, 75], durations (s) [3, 9, 10, 24, 92]; first: `CB_LAST_TO_FIRST_GAP_10S:SENSEX:2026-07-16:2026-07-16:006`
-* **Wing/body (opening items of this position):** 31 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 2, one for 16, several for 13; W1_S60: none 0, one 11, several 20
+* **Wing/body (opening items of this position):** 31 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 2, one for 16, several for 13; W1_S60: none 0, one 11, several 20
 * **Anchor item:** `11020380 CE77500` (BODY, 20 units, tag role BODY_SHORT_BY_TAG)
   * W1 candidates: 2 — h_15041603157527 CE79300 (dt +3s, qty ratio 1.00); h_15041634697563 CE79400 (dt +35s, qty ratio 1.00) — *WEAKLY_SUPPORTED (inferred candidate)*
   * W1_S60 candidates: 2 — h_15041603157527 CE79300 (dt +3s, qty ratio 1.00); h_15041634697563 CE79400 (dt +35s, qty ratio 1.00) — *UNRESOLVED (execution proximity only)*
@@ -356,7 +358,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES — SENSEX|2026-07-16|PE|74900#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first opening WING item (W1) with >= 2 candidate body items (extra)
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening WING item (W1) with >= 2 candidate body items (extra)
 * **Instrument:** SENSEX|2026-07-16|PE|74900 (LONG); **lifecycle events:** ADDED 1, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 1; started by reversal: False; ended by: flat
 * **Quantity:** opened 60 · closed 60 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:21:30 (CREATED, inventory +20) → 2026-07-15 12:39:46 (CLOSED, inventory +0)
@@ -366,7 +368,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 2 closing portions, 2 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 2 closing parents fall in 2 batch(es); batch sizes (parents) [5, 10], durations (s) [4, 7]; first: `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:004`
 * **Closing batch C2 (10 s):** 2 closing parents fall in 2 batch(es); batch sizes (parents) [5, 10], durations (s) [4, 7]; first: `CB_LAST_TO_FIRST_GAP_10S:SENSEX:2026-07-16:2026-07-15:004`
-* **Wing/body (opening items of this position):** 2 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 1, several for 1; W1_S60: none 0, one 1, several 1
+* **Wing/body (opening items of this position):** 2 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 1, several for 1; W1_S60: none 0, one 1, several 1
 * **Anchor item:** `h_15040104603988 PE74900` (WING, 40 units, tag role WING_LONG_BY_TAG)
   * W1 candidates: 2 — 11020304 PE77600 (dt +3s, qty ratio 2.00); 11020234 PE77600 (dt +4s, qty ratio 2.00) — *WEAKLY_SUPPORTED (inferred candidate)*
   * W1_S60 candidates: 2 — 11020304 PE77600 (dt +3s, qty ratio 2.00); 11020234 PE77600 (dt +4s, qty ratio 2.00) — *UNRESOLVED (execution proximity only)*
@@ -381,7 +383,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT7_NO_CANDIDATE_WING — SENSEX|2026-07-16|CE|77200#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first opening BODY item (W1) with 0 candidate wing items
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with 0 candidate wing items
 * **Instrument:** SENSEX|2026-07-16|CE|77200 (SHORT); **lifecycle events:** ADDED 2, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 2; started by reversal: False; ended by: flat
 * **Quantity:** opened 60 · closed 60 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:16:02 (CREATED, inventory -20) → 2026-07-15 09:26:00 (CLOSED, inventory +0)
@@ -391,10 +393,10 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 3 closing portions, 2 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 3 closing parents fall in 3 batch(es); batch sizes (parents) [2], durations (s) [2]; first: `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:001`
 * **Closing batch C2 (10 s):** 3 closing parents fall in 3 batch(es); batch sizes (parents) [2], durations (s) [2]; first: `CB_LAST_TO_FIRST_GAP_10S:SENSEX:2026-07-16:2026-07-15:001`
-* **Wing/body (opening items of this position):** 3 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 3, one for 0, several for 0; W1_S60: none 3, one 0, several 0
+* **Wing/body (opening items of this position):** 3 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 3, one for 0, several for 0; W1_S60: none 3, one 0, several 0
 * **Anchor item:** `11019448 CE77200` (BODY, 20 units, tag role BODY_SHORT_BY_TAG)
-  * W1 candidates: 0 (none) — *WEAKLY_SUPPORTED*
-  * W1_S60 candidates: 0 (none) — *UNRESOLVED*
+  * W1 candidates: 0 (none) — an empty candidate set is a finding about THIS method only; it does not show that no wing existed
+  * W1_S60 candidates: 0 (none) — an empty candidate set is a finding about THIS method only; it does not show that no wing existed
   * W2 weighted units (weights, not allocations): none; W3 queue-matched units (queue arithmetic, not ownership): h_15040104604092 CE79500 20
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)
@@ -406,7 +408,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT8_W1_VS_W1S60_DISAGREEMENT — SENSEX|2026-07-16|CE|77600#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set
 * **Instrument:** SENSEX|2026-07-16|CE|77600 (SHORT); **lifecycle events:** ADDED 12, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 6; started by reversal: False; ended by: flat
 * **Quantity:** opened 260 · closed 260 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:31:00 (CREATED, inventory -20) → 2026-07-16 11:00:52 (CLOSED, inventory +0)
@@ -416,9 +418,9 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 7 closing portions, 6 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 6 closing parents fall in 2 batch(es); batch sizes (parents) [5, 75], durations (s) [10, 92]; first: `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-16:006`
 * **Closing batch C2 (10 s):** 6 closing parents fall in 2 batch(es); batch sizes (parents) [5, 75], durations (s) [10, 92]; first: `CB_LAST_TO_FIRST_GAP_10S:SENSEX:2026-07-16:2026-07-16:006`
-* **Wing/body (opening items of this position):** 13 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 2, one for 10, several for 1; W1_S60: none 0, one 9, several 4
+* **Wing/body (opening items of this position):** 13 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 2, one for 10, several for 1; W1_S60: none 0, one 9, several 4
 * **Anchor item:** `11020165 CE77600` (BODY, 20 units, tag role BODY_SHORT_BY_TAG)
-  * W1 candidates: 0 (none) — *WEAKLY_SUPPORTED*
+  * W1 candidates: 0 (none) — an empty candidate set is a finding about THIS method only; it does not show that no wing existed
   * W1_S60 candidates: 1 — h_15040104604092 CE79500 (dt +5s, qty ratio 2.00) — *UNRESOLVED (execution proximity only)*
   * W2 weighted units (weights, not allocations): none; W3 queue-matched units (queue arithmetic, not ownership): h_15041634697563 CE79400 20
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
@@ -431,7 +433,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT9_MULTI_PARENT_CLOSING_BATCH — SENSEX|2026-07-16|CE|77400#1
 
-* **Selection rule (predefined, chronological, no outcome used):** first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion
+* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion — *chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING*
 * **Instrument:** SENSEX|2026-07-16|CE|77400 (SHORT); **lifecycle events:** ADDED 30, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 26; started by reversal: False; ended by: flat
 * **Quantity:** opened 620 · closed 620 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 11:15:06 (CREATED, inventory -20) → 2026-07-16 11:00:52 (CLOSED, inventory +0)
@@ -441,7 +443,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 * **Convention:** identical under FIFO, LIFO, AVG; 27 closing portions, 27 attribute to different opening lots under FIFO vs LIFO; AVG pooled; lot attribution NOT_IDENTIFIABLE
 * **Closing batch C1 (10 s):** 24 closing parents fall in 13 batch(es); batch sizes (parents) [2, 3, 4, 5, 7, 8, 10, 16, 33, 75], durations (s) [0, 3, 4, 5, 9, 10, 13, 24, 92]; first: `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:006`
 * **Closing batch C2 (10 s):** 24 closing parents fall in 13 batch(es); batch sizes (parents) [2, 3, 4, 5, 7, 8, 10, 16, 33, 75], durations (s) [0, 3, 4, 5, 9, 10, 13, 24, 92]; first: `CB_LAST_TO_FIRST_GAP_10S:SENSEX:2026-07-16:2026-07-15:006`
-* **Wing/body (opening items of this position):** 31 in M2-D tagged scope, 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 28, several for 3; W1_S60: none 0, one 17, several 14
+* **Wing/body (opening items of this position):** 31 in M2-D tagged scope (items with an opening allocation in this episode), 0 outside it (module tag unclassified: not a claim of no wing). W1 candidates: none for 0, one for 28, several for 3; W1_S60: none 0, one 17, several 14
 * **Anchor batch:** `CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:006`
 * **Evidence class:** lifecycle CONFIRMED_OBSERVATION · batch = temporal clustering only (decision UNRESOLVED) · W1 WEAKLY_SUPPORTED · W1_S60 UNRESOLVED · W3 UNRESOLVED · lot ownership / protective intent UNRESOLVED
 * **Missing information:** historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only; TP-03 per-parent window id (not published); the decision/rationale for any order (never observable from fills)

@@ -1,7 +1,7 @@
 {
  "cycle": "NIFTY|2026-06-30",
  "version": "M2E_1",
- "generated_at_head": "f8200e0bffbda21499c8bad72e38a8c40d59288a",
+ "generated_at_head": "10e33962cb5d40970789fa50191505c50de6b015",
  "execution_mode": "HISTORICAL_OBSERVED_REPLAY",
  "source_hashes": {
   "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
@@ -10,9 +10,9 @@
  "timezone": "timestamps *_utc_s are UTC epoch seconds; *_ist columns are IST = UTC+05:30",
  "files": {
   "fills.tsv": {
-   "sha256": "77e26fae41f84556b3751cd4b6be2e913f0806a1b555cf28a67cccd0144fd3f9",
+   "sha256": "f6803598cea01a743342448f5ad43619f4ddb579c6f3cae9bc4da0f0453303d4",
    "rows": 1146,
-   "bytes": 157426
+   "bytes": 157431
   },
   "inventory_series.tsv": {
    "sha256": "0abb649b00bb6bb280849d2c3eace8258b182df2ce529b7be62fb64e58e38a20",
@@ -35,9 +35,9 @@
    "bytes": 13919
   },
   "opening_items.tsv": {
-   "sha256": "cd184b16ea3d2d3b6cc5d8e5a449aed10251eafe7130248853ee2e3c338e10c5",
+   "sha256": "4cd86fbe02d02e6b5810c59f663cc4d8f4d5c7eedcfa85948c0f66afc7eff45a",
    "rows": 699,
-   "bytes": 188534
+   "bytes": 208123
   },
   "tp03_windows.tsv": {
    "sha256": "ea9ed95ce3bf5ced66e525a21b6145ad6bc3bca25a03716ebe8a6f9f8ba71121",

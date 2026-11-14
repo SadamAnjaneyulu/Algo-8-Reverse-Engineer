@@ -44,3 +44,5 @@ M2-A approved (D1–D7). Demonstration cycles frozen: NIFTY 2026-06-30, SENSEX 2
 M2-C (closing batches) executed for C1 and C2; number-block variant audited and left `UNRESOLVED — REVIEW REQUIRED`. Stopped for review; Models A and B, wing/body and later stages are not started.
 
 M2-D (wing/body associations) executed and independently reviewed (`reports/M2D_WING_BODY_REPORT.md`). Stopped for review; M2-E and M3 not started.
+
+M2-E (historical position forensics and portfolio visualization) executed for the two frozen cycles and independently reviewed in two rounds (`reports/M2E_HISTORICAL_FORENSICS_REPORT.md`; gate 10/10 PASS with disclosed limitations: historical option marks absent in this environment, expired-unclosed case UNAVAILABLE in both cycles, reversal UNAVAILABLE for SENSEX). Assembled datasets `reports/m2e_data/`, figures V1–V6 `reports/m2e_figures/`, case studies, coverage report and visualization catalog delivered; no new grouping, no change to W1/W2/W3, no accounting change. Stopped for review; M3 not started.

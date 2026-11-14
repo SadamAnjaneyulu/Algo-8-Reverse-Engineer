@@ -49,7 +49,7 @@
    "rule": "first episode ended by a REVERSED event (extra case type: reversal timeline)",
    "episode_id": "NIFTY|2026-06-30|CE|24100#1",
    "anchor": null,
-   "note": "reuses the episode of CT1_INCREMENTAL_OPENING (no distinct qualifying episode)",
+   "note": "reuses the episode of CT1_INCREMENTAL_OPENING (no unused qualifying episode)",
    "n_qualifying": 1
   },
   "CT6_MULTIPLE_CANDIDATE_WINGS": {
@@ -73,7 +73,7 @@
    "rule": "first opening BODY item (W1) with 0 candidate wing items",
    "episode_id": "NIFTY|2026-06-30|PE|24100#1",
    "anchor": "WBI:OPENING:BODY:10758144:NIFTY|2026-06-30|PE|24100",
-   "note": "",
+   "note": "chronologically first qualifying candidate (WBI:OPENING:BODY:10758104:NIFTY|2026-06-30|CE|24100) skipped: its episode was already used by CT1_INCREMENTAL_OPENING",
    "n_qualifying": 27
   },
   "CT8_W1_VS_W1S60_DISAGREEMENT": {
@@ -89,7 +89,7 @@
    "rule": "first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion",
    "episode_id": "NIFTY|2026-06-30|PE|24050#1",
    "anchor": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:005",
-   "note": "",
+   "note": "chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING",
    "n_qualifying": 47
   }
  },
@@ -480,6 +480,17 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [
+    {
+     "episode_id": "NIFTY|2026-06-30|CE|24100#2",
+     "direction": "LONG",
+     "opened": 390,
+     "closed": 390,
+     "remaining": 0,
+     "started_by_reversal": true,
+     "ended_by": "flat"
+    }
+   ],
    "opened": 715,
    "closed": 715,
    "remaining": 0,
@@ -577,6 +588,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -593,6 +608,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -609,6 +628,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -625,6 +648,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041603704543:NIFTY|2026-06-30|CE|24700",
@@ -676,6 +703,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041603704543:NIFTY|2026-06-30|CE|24700",
@@ -733,6 +764,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041710373264:NIFTY|2026-06-30|CE|24700",
@@ -774,6 +809,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29043113457764:NIFTY|2026-06-30|CE|24700",
@@ -809,6 +848,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29050113795376:NIFTY|2026-06-30|CE|24700",
@@ -844,6 +887,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29051635010053:NIFTY|2026-06-30|CE|24700",
@@ -879,6 +926,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29051735131109:NIFTY|2026-06-30|CE|24700",
@@ -920,6 +971,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29054602464610:NIFTY|2026-06-30|CE|24650",
@@ -951,333 +1006,6 @@
      "W3_queue_matched_units": [
       {
        "counterpart": "WBI:OPENING:WING:h_29060239502389:NIFTY|2026-06-30|CE|24700",
-       "queue_matched_units": "65"
-      }
-     ]
-    },
-    {
-     "parent_order_id": "h_30084825701151",
-     "item_id": "WBI:OPENING:WING:h_30084825701151:NIFTY|2026-06-30|CE|24100",
-     "tag_role": "WING_LONG_BY_TAG",
-     "role": "WING",
-     "quantity": 130,
-     "W1": [
-      {
-       "counterpart": "WBI:OPENING:BODY:10788765:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 4,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788745:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788747:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788759:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788763:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788729:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788731:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788733:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788767:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -6,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788725:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 7,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788727:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 7,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788769:NIFTY|2026-06-30|CE|23850",
-       "dt_s": -13,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788771:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -14,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788773:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -14,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788723:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 23,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788715:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788717:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788719:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788721:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      }
-     ],
-     "W1_S60": [
-      {
-       "counterpart": "WBI:OPENING:BODY:10788765:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 4,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788745:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788747:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788759:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788763:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788729:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788731:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788733:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788767:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -6,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788725:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 7,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788727:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 7,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788769:NIFTY|2026-06-30|CE|23850",
-       "dt_s": -13,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788771:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -14,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788773:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -14,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788723:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 23,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788715:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788717:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788719:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788721:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      }
-     ],
-     "W2_weighted_units": [
-      {
-       "counterpart": "WBI:OPENING:BODY:10788765:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788745:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788747:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788759:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788763:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788729:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788731:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788733:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788767:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788725:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788727:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788769:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788771:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788773:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788723:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788715:NIFTY|2026-06-30|CE|23900",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788717:NIFTY|2026-06-30|CE|23900",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788719:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788721:NIFTY|2026-06-30|CE|23900",
-       "weighted_wing_units": "6.842105"
-      }
-     ],
-     "W3_queue_matched_units": [
-      {
-       "counterpart": "WBI:OPENING:BODY:10788725:NIFTY|2026-06-30|CE|23850",
-       "queue_matched_units": "65"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788727:NIFTY|2026-06-30|CE|23850",
        "queue_matched_units": "65"
       }
      ]
@@ -1468,6 +1196,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 195,
    "closed": 195,
    "remaining": 0,
@@ -1544,16 +1273,19 @@
     {
      "parent_order_id": "10757955",
      "tag_role": "UNCLASSIFIED(num,BUY)",
+     "quantity_in_this_episode": 65,
      "status": "NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)"
     },
     {
      "parent_order_id": "10758031",
      "tag_role": "UNCLASSIFIED(num,BUY)",
+     "quantity_in_this_episode": 65,
      "status": "NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)"
     },
     {
      "parent_order_id": "10758317",
      "tag_role": "UNCLASSIFIED(num,BUY)",
+     "quantity_in_this_episode": 65,
      "status": "NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)"
     }
    ],
@@ -1649,6 +1381,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 65,
    "closed": 65,
    "remaining": 0,
@@ -1689,6 +1422,7 @@
     {
      "parent_order_id": "10757908",
      "tag_role": "UNCLASSIFIED(num,BUY)",
+     "quantity_in_this_episode": 65,
      "status": "NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)"
     }
    ],
@@ -1729,7 +1463,7 @@
    "case_type": "CT5_REVERSAL",
    "status": "AVAILABLE",
    "selection_rule": "first episode ended by a REVERSED event (extra case type: reversal timeline)",
-   "selection_note": "reuses the episode of CT1_INCREMENTAL_OPENING (no distinct qualifying episode)",
+   "selection_note": "reuses the episode of CT1_INCREMENTAL_OPENING (no unused qualifying episode)",
    "anchor": null,
    "position_id": "NIFTY|2026-06-30|CE|24100#1",
    "instrument_id": "NIFTY|2026-06-30|CE|24100",
@@ -2111,6 +1845,17 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [
+    {
+     "episode_id": "NIFTY|2026-06-30|CE|24100#2",
+     "direction": "LONG",
+     "opened": 390,
+     "closed": 390,
+     "remaining": 0,
+     "started_by_reversal": true,
+     "ended_by": "flat"
+    }
+   ],
    "opened": 715,
    "closed": 715,
    "remaining": 0,
@@ -2208,6 +1953,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -2224,6 +1973,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -2240,6 +1993,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -2256,6 +2013,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041603704543:NIFTY|2026-06-30|CE|24700",
@@ -2307,6 +2068,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041603704543:NIFTY|2026-06-30|CE|24700",
@@ -2364,6 +2129,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041710373264:NIFTY|2026-06-30|CE|24700",
@@ -2405,6 +2174,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29043113457764:NIFTY|2026-06-30|CE|24700",
@@ -2440,6 +2213,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29050113795376:NIFTY|2026-06-30|CE|24700",
@@ -2475,6 +2252,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29051635010053:NIFTY|2026-06-30|CE|24700",
@@ -2510,6 +2291,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29051735131109:NIFTY|2026-06-30|CE|24700",
@@ -2551,6 +2336,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29054602464610:NIFTY|2026-06-30|CE|24650",
@@ -2582,333 +2371,6 @@
      "W3_queue_matched_units": [
       {
        "counterpart": "WBI:OPENING:WING:h_29060239502389:NIFTY|2026-06-30|CE|24700",
-       "queue_matched_units": "65"
-      }
-     ]
-    },
-    {
-     "parent_order_id": "h_30084825701151",
-     "item_id": "WBI:OPENING:WING:h_30084825701151:NIFTY|2026-06-30|CE|24100",
-     "tag_role": "WING_LONG_BY_TAG",
-     "role": "WING",
-     "quantity": 130,
-     "W1": [
-      {
-       "counterpart": "WBI:OPENING:BODY:10788765:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 4,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788745:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788747:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788759:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788763:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788729:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788731:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788733:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788767:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -6,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788725:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 7,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788727:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 7,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788769:NIFTY|2026-06-30|CE|23850",
-       "dt_s": -13,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788771:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -14,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788773:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -14,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788723:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 23,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788715:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788717:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788719:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788721:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "WEAKLY_SUPPORTED (inferred candidate)"
-      }
-     ],
-     "W1_S60": [
-      {
-       "counterpart": "WBI:OPENING:BODY:10788765:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 4,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788745:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788747:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788759:NIFTY|2026-06-30|CE|23800",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788763:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 5,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788729:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788731:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788733:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 6,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788767:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -6,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788725:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 7,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788727:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 7,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788769:NIFTY|2026-06-30|CE|23850",
-       "dt_s": -13,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788771:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -14,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788773:NIFTY|2026-06-30|CE|23800",
-       "dt_s": -14,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788723:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 23,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788715:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788717:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788719:NIFTY|2026-06-30|CE|23850",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788721:NIFTY|2026-06-30|CE|23900",
-       "dt_s": 24,
-       "qty_ratio": "2.0",
-       "evidence_class": "UNRESOLVED (execution proximity only)"
-      }
-     ],
-     "W2_weighted_units": [
-      {
-       "counterpart": "WBI:OPENING:BODY:10788765:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788745:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788747:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788759:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788763:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788729:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788731:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788733:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788767:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788725:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788727:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788769:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788771:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788773:NIFTY|2026-06-30|CE|23800",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788723:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788715:NIFTY|2026-06-30|CE|23900",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788717:NIFTY|2026-06-30|CE|23900",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788719:NIFTY|2026-06-30|CE|23850",
-       "weighted_wing_units": "6.842105"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788721:NIFTY|2026-06-30|CE|23900",
-       "weighted_wing_units": "6.842105"
-      }
-     ],
-     "W3_queue_matched_units": [
-      {
-       "counterpart": "WBI:OPENING:BODY:10788725:NIFTY|2026-06-30|CE|23850",
-       "queue_matched_units": "65"
-      },
-      {
-       "counterpart": "WBI:OPENING:BODY:10788727:NIFTY|2026-06-30|CE|23850",
        "queue_matched_units": "65"
       }
      ]
@@ -3741,6 +3203,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 1235,
    "closed": 1235,
    "remaining": 0,
@@ -4000,6 +3463,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29035424195739:NIFTY|2026-06-30|CE|24700",
@@ -4035,6 +3502,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29040104435735:NIFTY|2026-06-30|CE|24650",
@@ -4086,6 +3557,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29040104435735:NIFTY|2026-06-30|CE|24650",
@@ -4137,6 +3612,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29040409359570:NIFTY|2026-06-30|CE|24700",
@@ -4188,6 +3667,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -4211,6 +3694,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29044605279307:NIFTY|2026-06-30|CE|24700",
@@ -4252,6 +3739,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29044605279307:NIFTY|2026-06-30|CE|24700",
@@ -4293,6 +3784,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29044605279307:NIFTY|2026-06-30|CE|24700",
@@ -4334,6 +3829,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29053104276034:NIFTY|2026-06-30|CE|24700",
@@ -4385,6 +3884,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29053104276034:NIFTY|2026-06-30|CE|24700",
@@ -4436,6 +3939,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -4459,6 +3966,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29060113723603:NIFTY|2026-06-30|CE|24650",
@@ -4494,6 +4005,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29060324830489:NIFTY|2026-06-30|CE|24750",
@@ -4535,6 +4050,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29061604703056:NIFTY|2026-06-30|CE|24750",
@@ -4586,6 +4105,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29061604703056:NIFTY|2026-06-30|CE|24750",
@@ -4637,6 +4160,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29061735533593:NIFTY|2026-06-30|CE|24750",
@@ -4678,6 +4205,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29080232762386:NIFTY|2026-06-30|CE|24700",
@@ -4713,6 +4244,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29093014348346:NIFTY|2026-06-30|CE|24700",
@@ -4759,6 +4294,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29093014348346:NIFTY|2026-06-30|CE|24700",
@@ -5144,6 +4683,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 715,
    "closed": 715,
    "remaining": 0,
@@ -5241,6 +4781,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 130,
+     "quantity_in_this_episode": 130,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|23200#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:10758654:NIFTY|2026-06-30|PE|24050",
@@ -5296,6 +4840,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|23200#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:10759322:NIFTY|2026-06-30|PE|24100",
@@ -5347,6 +4895,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|23200#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:10759410:NIFTY|2026-06-30|PE|24100",
@@ -5404,6 +4956,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|23200#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:10759502:NIFTY|2026-06-30|PE|24100",
@@ -5445,6 +5001,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|23200#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:10759574:NIFTY|2026-06-30|PE|24100",
@@ -5480,6 +5040,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 195,
+     "quantity_in_this_episode": 195,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|23200#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:10759899:NIFTY|2026-06-30|PE|24050",
@@ -5561,6 +5125,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|23200#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -5596,6 +5164,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|23200#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:10760525:NIFTY|2026-06-30|PE|24100",
@@ -5657,7 +5229,7 @@
    "case_type": "CT7_NO_CANDIDATE_WING",
    "status": "AVAILABLE",
    "selection_rule": "first opening BODY item (W1) with 0 candidate wing items",
-   "selection_note": "",
+   "selection_note": "chronologically first qualifying candidate (WBI:OPENING:BODY:10758104:NIFTY|2026-06-30|CE|24100) skipped: its episode was already used by CT1_INCREMENTAL_OPENING",
    "anchor": "WBI:OPENING:BODY:10758144:NIFTY|2026-06-30|PE|24100",
    "position_id": "NIFTY|2026-06-30|PE|24100#1",
    "instrument_id": "NIFTY|2026-06-30|PE|24100",
@@ -6270,6 +5842,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 845,
    "closed": 845,
    "remaining": 0,
@@ -6529,6 +6102,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -6545,6 +6122,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -6561,6 +6142,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -6577,6 +6162,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041603704445:NIFTY|2026-06-30|PE|23200",
@@ -6628,6 +6217,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041603704445:NIFTY|2026-06-30|PE|23200",
@@ -6685,6 +6278,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29041710373191:NIFTY|2026-06-30|PE|23200",
@@ -6726,6 +6323,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29043113457644:NIFTY|2026-06-30|PE|23200",
@@ -6761,6 +6362,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29045419592934:NIFTY|2026-06-30|PE|23300",
@@ -6796,6 +6401,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29045645704121:NIFTY|2026-06-30|PE|23100",
@@ -6831,6 +6440,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29050113795278:NIFTY|2026-06-30|PE|23100",
@@ -6866,6 +6479,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29051635009975:NIFTY|2026-06-30|PE|23100",
@@ -6901,6 +6518,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29051735131026:NIFTY|2026-06-30|PE|23200",
@@ -6942,6 +6563,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24100#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29054602464521:NIFTY|2026-06-30|PE|23000",
@@ -7254,6 +6879,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 325,
    "closed": 325,
    "remaining": 0,
@@ -7369,6 +6995,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24000#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29035524496241:NIFTY|2026-06-30|CE|24650",
@@ -7410,6 +7040,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24000#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29035720959519:NIFTY|2026-06-30|CE|24650",
@@ -7445,6 +7079,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24000#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29040104435735:NIFTY|2026-06-30|CE|24650",
@@ -7502,6 +7140,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24000#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29040227042126:NIFTY|2026-06-30|CE|24700",
@@ -7543,6 +7185,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|CE|24000#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29040409359570:NIFTY|2026-06-30|CE|24700",
@@ -7620,7 +7266,7 @@
    "case_type": "CT9_MULTI_PARENT_CLOSING_BATCH",
    "status": "AVAILABLE",
    "selection_rule": "first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion",
-   "selection_note": "",
+   "selection_note": "chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING",
    "anchor": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:005",
    "position_id": "NIFTY|2026-06-30|PE|24050#1",
    "instrument_id": "NIFTY|2026-06-30|PE|24050",
@@ -8279,6 +7925,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 910,
    "closed": 910,
    "remaining": 0,
@@ -8556,6 +8203,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29040104435632:NIFTY|2026-06-30|PE|23200",
@@ -8591,6 +8242,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29040104435632:NIFTY|2026-06-30|PE|23200",
@@ -8626,6 +8281,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -8649,6 +8308,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29044605279217:NIFTY|2026-06-30|PE|23200",
@@ -8690,6 +8353,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29044605279217:NIFTY|2026-06-30|PE|23200",
@@ -8731,6 +8398,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29044605279217:NIFTY|2026-06-30|PE|23200",
@@ -8772,6 +8443,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29045645704121:NIFTY|2026-06-30|PE|23100",
@@ -8807,6 +8482,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29053104275952:NIFTY|2026-06-30|PE|23150",
@@ -8858,6 +8537,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29053104275952:NIFTY|2026-06-30|PE|23150",
@@ -8909,6 +8592,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -8932,6 +8619,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29060113723533:NIFTY|2026-06-30|PE|23050",
@@ -8967,6 +8658,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29061604702989:NIFTY|2026-06-30|PE|23350",
@@ -9018,6 +8713,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29061604702989:NIFTY|2026-06-30|PE|23350",
@@ -9069,6 +8768,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 65,
+     "quantity_in_this_episode": 65,
+     "episodes_with_opening_allocations": [
+      "NIFTY|2026-06-30|PE|24050#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_29061735533499:NIFTY|2026-06-30|PE|23300",

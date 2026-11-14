@@ -5,18 +5,16 @@ A_units_by_candidate_status,"wing units, W1: none",240,cycle
 A_units_by_candidate_status,"wing units, W1_S60: 1 candidate",1120,cycle
 A_units_by_candidate_status,"wing units, W1_S60: >=2 candidates",3460,cycle
 A_units_by_candidate_status,"wing units, W1_S60: none",20,cycle
-A_units_by_candidate_status,"wing units, W3: 1 candidate",2420,cycle
-A_units_by_candidate_status,"wing units, W3: >=2 candidates",2180,cycle
-A_units_by_candidate_status,"wing units, W3: none",0,cycle
+A_units_by_candidate_status,"wing units, W3: queue-matched (W3 arithmetic)",4600.0,cycle
+A_units_by_candidate_status,"wing units, W3: queue residual (W3)",0.0,cycle
 A_units_by_candidate_status,"body units, W1: 1 candidate",3060,cycle
 A_units_by_candidate_status,"body units, W1: >=2 candidates",1660,cycle
 A_units_by_candidate_status,"body units, W1: none",320,cycle
 A_units_by_candidate_status,"body units, W1_S60: 1 candidate",1820,cycle
 A_units_by_candidate_status,"body units, W1_S60: >=2 candidates",3060,cycle
 A_units_by_candidate_status,"body units, W1_S60: none",160,cycle
-A_units_by_candidate_status,"body units, W3: 1 candidate",4600,cycle
-A_units_by_candidate_status,"body units, W3: >=2 candidates",0,cycle
-A_units_by_candidate_status,"body units, W3: none",440,cycle
+A_units_by_candidate_status,"body units, W3: queue-matched (W3 arithmetic)",4600.0,cycle
+A_units_by_candidate_status,"body units, W3: queue residual (W3)",440.0,cycle
 B_wing_multiplicity,W1: wing items with 0 candidate bodies,11,cycle
 B_wing_multiplicity,W1: wing items with 1 candidate bodies,69,cycle
 B_wing_multiplicity,W1: wing items with 2 candidate bodies,41,cycle

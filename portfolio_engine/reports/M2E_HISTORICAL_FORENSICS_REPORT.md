@@ -1,0 +1,111 @@
+# M2-E — Historical Position Forensics & Portfolio Visualization: final report
+
+**Status: DELIVERED FOR REVIEW — acceptance gate 10/10 PASS (author assessment + two independent review rounds; limitations disclosed in section H).** Frozen cycles NIFTY 2026-06-30 and SENSEX 2026-07-16 (selected before grouping, not substituted). Base commit `10e33962`; M2-E work is the uncommitted/committed delta on branch `engineering/position-lifecycle-basket-reconstruction`. No M3, no new grouping, no change to W1/W2/W3, no accounting change.
+
+## A. Result first
+
+Both frozen cycles are reconstructed, reconciled and made inspectable: 10 figures per cycle (V1–V6, with C1/C2 and W1/W1_S60/W2/W3 as separate visuals), each with its plotted data, source datasets and manifest; 10 predefined case types per cycle (NIFTY 9 available, SENSEX 8; the others are UNAVAILABLE, not borrowed); a cycle coverage report written before any result. The observed layer was re-derived independently from the raw ledger by the reviewer (every fill of both cycles). **Historical option marks are not available in this environment**, so no mark, interpolation or unrealized P&L appears anywhere. Nothing in M2-E upgrades an inferred relation: W1 stays WEAKLY_SUPPORTED, W1_S60 / W3 UNRESOLVED, lot ownership and protective intent UNRESOLVED / NOT_TESTABLE.
+
+| | NIFTY 2026-06-30 | SENSEX 2026-07-16 |
+|---|---:|---:|
+| Raw fills / parent orders / episodes | 1,146 / 1,080 / 85 | 729 / 715 / 70 |
+| Units opened = closed (every position ended) | 66,170 | 14,180 |
+| Gross units carried overnight D-1 → D0 (short CE / short PE / long CE / long PE) | 17680 (4940 / 1495 / 9750 / 1495) | 5520 (1720 / 220 / 3360 / 220) |
+| Expired-unclosed positions | 0 | 0 |
+| Historical marks | MISSING (source absent) | MISSING (source absent) |
+| Closing batches C1 at 10 s (primary) / 60 s | 53 / 36 | 25 / 14 |
+| Widest 10 s batch (parent orders; seconds) | 92; 53 s | 75; 92 s |
+| Longest 60 s chain (parent orders spanned; seconds) | 106; 131 s | 75; 210 s |
+| Opening wing items: with W1 candidate / unique / multiple / none | 245 / 130 / 115 / 17 of 262 | 149 / 69 / 80 / 11 of 160 |
+| Opening wing items: with W1_S60 candidate / none | 260 / 2 of 262 | 159 / 1 of 160 |
+| Case types available (of 10) | 9 | 8 |
+
+## B. Deliverables
+
+| Item | Location |
+|---|---|
+| Cycle coverage report (stage 2) | `reports/M2E_CYCLE_COVERAGE_REPORT.md` |
+| Case studies (stage 4) | `reports/M2E_POSITION_CASE_STUDIES.md`, `reports/m2e_data/<cycle>/case_studies.json` |
+| Visualization catalog (stage 5) | `reports/M2E_VISUALIZATION_CATALOG.md` |
+| Assembled datasets + manifests | `reports/m2e_data/<cycle>/` (19 files + `coverage.json` + `manifest.json` each) |
+| Figures V1–V6 + data CSVs + manifests | `reports/m2e_figures/<cycle>/` (10 figures, 18 CSVs, `cases/` single-episode charts) |
+| Code | `python/pe/forensics.py`, `python/pe/cases.py`, `tools/m2e_build.py`, `m2e_charts.py`, `m2e_cases.py`, `m2e_catalog.py`, `m2e_coverage_report.py`, `m2e_report.py` |
+| Tests | `tests/test_forensics.py` |
+
+## C. What the visuals show (observed layer only; no rationale offered)
+
+* **Every position ended inside the cycle.** Opened units equal closed units in both cycles and no episode expired unclosed; the expired-unclosed case type is therefore UNAVAILABLE in both. Only NIFTY has a reversal (episode `CE 24100 #1` is closed by one 520-unit buy that closes 390 and opens 130 as episode #2, a separate episode).
+* **Inventory is carried overnight.** D-1 ends with substantial inventory (NIFTY gross 17,680 units; SENSEX 5,520: see the table above) that is present at the start of D0 (V1 CARRY_IN row). In both cycles the cycle's last fills come late in D0 (NIFTY 14:25:53 IST, SENSEX 11:01:17 IST), after which the position is flat.
+* **Closing batches are time-connected clusters and the 60 s rule chains them long.** C1 and C2 produce identical batch counts at every threshold in both cycles (consistent with the M2-C finding that C2 differs from C1 only through tie handling). Chain length grows with the threshold: the longest 10 s chain is 53 s (NIFTY) / 92 s (SENSEX); the longest 60 s chain is 131 s / 210 s. SENSEX's longest 60 s chain starts at the D0 open (09:15:11) and links 53 parent orders. These are temporal facts; a batch is **not** a decision.
+* **Wing/body: ambiguity is large and visible.** 59% (NIFTY) / 64% (SENSEX) of opening wing units sit in wing items with two or more W1 candidate bodies; under W1_S60 the share is 77% / 75% (fewer items with none, more with several). The two methods give different candidate-wing sets for 179 of 406 NIFTY and 125 of 252 SENSEX body items, and W3 queue arithmetic pairs differently again (NIFTY: 180 of 376 W3 links are also W1 links). None of this is evidence of ownership.
+* **Classification coverage is partial by construction.** 76.8% (NIFTY) and 68.0% (SENSEX) of opening units are classified by module tag as body-short or wing-long; the rest is shown as UNCLASSIFIED (`s_` stops, `v_`, `num` buys) in V3 and V6, together with the closing units the tag-based roles exclude.
+* **Case selection** is chronological and outcome-free; the reviewer verified it by brute force. Skipped chronologically-first candidates (NIFTY CT7, CT9; SENSEX CT9) are named in the notes. NIFTY CT1 and CT5 are the same episode (the only reversal).
+
+## D. Reconciliation performed (automated)
+
+* Observed layer re-derived from raw `side × quantity` (no lineage): V1 inventory equals the independent signed position after every fill (1,146 + 729 fills); opening + closing quantity = fill quantity for every fill; final positions flat; episode remaining = final position; every fill lies within 09:14–15:31 IST (rules out UTC read as IST).
+* Cycle-only lineage (events, episodes, OA, CP) is identical to the full-ledger lineage restricted to the cycle (`m2e_build.py` asserts it; a slow test repeats it).
+* M2-C: the six committed batch/member/portion files, filtered to each cycle, are byte-equal to a per-cycle recomputation; batch member quantities sum to batch totals; batch closing units equal the cycle's closing units at every threshold and each closing parent is in exactly one batch per view.
+* M2-D: committed items and all five link views equal a per-cycle recomputation; opening BODY / WING item units equal the tag-role units of the opening items; V5/V6 values equal recomputation from the links.
+* Execution prices in `fills.tsv` equal the raw per-fill price column for every fill; the order-average column differs for 20 NIFTY partial-fill rows and is not used.
+* Chart data: every figure CSV reproduces its dataset (V1–V6 and the single-episode case charts); every manifest hash is checked.
+
+## E. Adversarial validation by the author
+
+* **Caught by my own tests (fixed, kept as regressions):** (1) case records attributed a reversing fill's opening units to the old episode (845 vs 715): per-episode quantities added; (2) a lineage sign convention error (inventory is already signed) caught by the independent check before any chart; (3) an episode-id separator collision caught at build time.
+* **Test bugs found and fixed:** a prefix match that summed W1 and W1_S60 rows; a price test that used the order-average column instead of the per-fill column (the data were right, the test was wrong).
+* Mutation checks: UTC-read-as-IST fills, tampered inventory series, dropped fills / batch members, relabelled partial reductions, CONFIRMED labels on W1 rows, shifted TP-03 times, wrong case quantities.
+
+## F. Independent review
+
+**Round 1 (independent reviewer, read-only, re-implemented checks from the raw ledger).** Verified: chart populations (all 1,146 + 729 V1 rows), hidden exclusions, double counting, timezones (30+ hand conversions; entry-minute fields; 44 + 44 TP-03 window starts), reversal and partial-close reconciliation, marks absent, 10 coverage-report numbers, scope-warning numbers. Defects:
+| # | Severity | Finding | Disposition |
+|---|---|---|---|
+| 1 | HARD | Case headers said 'first qualifying' but the code prefers episodes unused by earlier case types (NIFTY CT7, CT9; SENSEX CT9 differed from the chronological first) | **Fixed**: rule text and every header state the preference; skipped candidates are named in the notes; tests brute-force CT1–CT3 and CT6–CT9 |
+| 2 | HARD | Reversal case record mixed episodes (an opening item of the reversing fill, 130 units, belonged to the successor episode) | **Fixed**: items are assigned by their own opening allocations (`episode_ids`); related reversal episodes listed; per-episode quantities; tests |
+| 3 | SOFT | Legends hid the reversal marker (V2/CT5), a V3 marker and V6 labels | **Fixed** (figure-level legends, V6 headroom); viewed |
+| 4 | SOFT | W3 shown in candidate vocabulary beside W1 (V6, V5); degenerate W3 histogram | **Fixed**: W3 shown as queue-matched/residual and queue partners; panel 3 = W3 vs W1/W1_S60 pair agreement |
+| 5 | SOFT | V1 overplotting (short under long), net flat on gross scale | **Fixed**: long above zero, short below, own net panel |
+| 6 | SOFT | Empty W1 candidate set stamped WEAKLY_SUPPORTED (CT7) | **Fixed** |
+| 7 | SOFT | Test gaps; 4 of 17 mutants survived (V6 stack, TP-03 overlay time shift, V2 event quantity, V5 multiplicity swap); CT5 availability hard-coded | **Fixed**: 23 new tests; all 19 mutants (reviewer's harness) now killed; availability derived from data |
+| 8–10 | NOTE | CT1 = CT5 (NIFTY); small footer with full-ledger numbers on single-cycle charts; selection-time mark value quoted next to 'marks absent' | Footer enlarged and re-labelled FULL-LEDGER SCOPE; the other two are disclosed |
+
+**Round 2 (same reviewer, re-verification).** Every AVAILABLE case record (9 NIFTY, 8 SENSEX) re-derived from the raw ledger: 0 mismatches; `episode_ids` correct for all 699 + 452 opening items; selection brute-forced for all 20 cases; PNGs viewed; **no HARD defect remains.** Remaining SOFT items, fixed afterwards: skipped candidates were labelled '(reused)' (now labelled correctly), `spans_episodes` misnamed (now `episodes_with_opening_allocations`), price test compared names only (now compares to the raw per-fill column). Cosmetic leftover accepted: large blank areas in V6; the reversal diamond overplots the partial-reduction marker at the same second in CT5.
+
+## G. Acceptance gate
+
+| # | Criterion | Result | Evidence |
+|---|---|---|---|
+| 1 | Both cycles reconstruct reproducibly from the committed pipeline | **PASS** | `m2e_build.py` regenerates datasets deterministically; tests re-derive them; cycle isolation vs the full ledger asserted |
+| 2 | M1 / M2-B reconciliation intact | **PASS** | independent re-derivation from raw fills; reviewer re-derived all fills; M1/M2-B code and artifacts unmodified (git diff adds files only) |
+| 3 | M2-C and M2-D memberships preserved | **PASS** | six M2-C files byte-equal, M2-D items and five link views equal per-cycle recomputation; committed manifests intact |
+| 4 | Every visualization has a data file, source datasets and manifest | **PASS** | 10 figures × 2 cycles + case charts: figure_manifest.json / case_figure_manifest.json with sha256; tests |
+| 5 | Exclusions disclosed | **PASS** | unclassified units, closing-role exclusions, missing marks, unavailable cases, tag scope: V3, V6, coverage report |
+| 6 | Timestamps consistent (IST not silently UTC) | **PASS** | IST helper tests; all `*_ist` columns checked; 30+ hand conversions and TP-03 window times verified by the reviewer |
+| 7 | No invented ownership, basket identity or strategy rationale | **PASS** | wording audited by the reviewer; cases state 'cannot conclude'; evidence classes never upgraded |
+| 8 | Observed vs inferred distinguishable | **PASS** | solid / hatched / pale-dotted treatment, per-row `evidence_class`; reviewer viewed the figures (SENSEX V2/V3 and some case PNGs not independently viewed) |
+| 9 | No unresolved hard review defect | **PASS** | 2 hard defects fixed and re-verified in round 2; soft items fixed or disclosed |
+| 10 | All tests pass | **PASS** | 274 passed (185 earlier + 89 M2-E; includes slow tests), C++ core 24/24; all 19 reviewer mutants killed |
+
+## H. Limits and unresolved items (not upgraded)
+
+* **Historical marks are missing** (raw 1-minute option bars absent here): no unrealized P&L, no price context charts, no mark-based case information. The selection-time mark-availability value (1.0) is a recorded earlier measurement and is not used.
+* **Two cycles only** (frozen). Nothing here is a statement about the other 33 cycles; the full-ledger numbers in the warnings are M2-D's.
+* **Unavailable case types:** expired-unclosed (both cycles), reversal (SENSEX). They are reported, not substituted.
+* **TP-03** publishes no per-parent window id; V3 shows TP-03 windows as a separate overlay and never claims a parent was 'in a window'.
+* **Not independently verified by the reviewer:** M2-C gap rules and M2-D matching internals (only equality and conservation), the absolute 336,040 / 107,530 figures (read from the summary), SENSEX V2/V3 and several case PNGs, the C++ parity and slow tests. The reviewer's tests of tests are partly circular (documented): dataset-vs-recompute checks use production code, mitigated by the raw-ledger V1 and price tests.
+* **Still UNRESOLVED / NOT_TESTABLE (unchanged):** lot-level ownership, protective intent, decision units, number-block grouping (not implemented), exit trigger.
+* The M2-E selection rule was written in code before cases were viewed, but git history can only show it from the checkpoint commit, not before.
+
+## I. Reproduce
+
+```bash
+python3 portfolio_engine/tools/m2e_build.py            # datasets + coverage + manifests (also asserts cycle isolation vs the full ledger)
+python3 portfolio_engine/tools/m2e_charts.py           # V1-V6 for both cycles
+python3 portfolio_engine/tools/m2e_cases.py            # case selection, records, case charts, case-study report
+python3 portfolio_engine/tools/m2e_catalog.py          # catalog
+python3 portfolio_engine/tools/m2e_coverage_report.py  # coverage report
+python3 -m pytest portfolio_engine/tests -q
+```
+
+**Stopped after M2-E for review. M3 is not started.**

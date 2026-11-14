@@ -15,7 +15,7 @@
     "reports/m2e_data/SENSEX_2026-07-16/coverage.json"
    ],
    "data_csv_sha256": "83cb9f5d5444c64b7b18262598843403f1b984c18d3de8a5634984aa222bda1d",
-   "png_sha256_informational": "e663afdceb3cae99d035ae21ea2a41f5f1c079495f3e6d0fda949905834f3651",
+   "png_sha256_informational": "36f795fffa718f66e807b6c8d33c1a2de2897d421784baa7bd4cc0db46ad312f",
    "scope_warning_shown": false,
    "reconciles_to": "M1/M2-B: series recomputed from side*quantity per fill in tests; cumulative opened/closed = M2-B OA/CP totals"
   },
@@ -31,7 +31,7 @@
     "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
    ],
    "data_csv_sha256": "c4c469c36de575593977128faf8354c1cbe4879f65809826a5569154a37554af",
-   "png_sha256_informational": "57a082d492372cb3fa27f2855caf72181a0c0324f26edbf93cb4a20c1b15994c",
+   "png_sha256_informational": "653edf6ed12fbdea25083e66b1030fa82b07f8d09a2eb3f6cbb6fc151de9d7cb",
    "scope_warning_shown": false,
    "episodes": 70,
    "filter": "all"
@@ -61,7 +61,7 @@
     "reports/m2e_data/SENSEX_2026-07-16/tp03_windows.tsv"
    ],
    "data_csv_sha256": "5e0fa80afcc15b4320064607f006106b532ddc8c77973ecb5656987d112384d6",
-   "png_sha256_informational": "7921975748922900053d97ffb04a241383ad332f4f1db79bd176b545afbf5ab5",
+   "png_sha256_informational": "413ba9e6fbbd2b8935a76d77e1432229a4dd0980e658de2ec2906720c95f7f34",
    "scope_warning_shown": true,
    "items_without_entry_minute": 0
   },
@@ -96,7 +96,7 @@
     "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batch_members_C1.tsv"
    ],
    "data_csv_sha256": "6024ba67313efcd9abc99cd337c79719b886119608dd525ae0119b7759ded687",
-   "png_sha256_informational": "7b7bcb597ad45951f9873116243c1a0137d59c71e8a6655973f4fe888fa20a0c",
+   "png_sha256_informational": "9f2bd715ea3429d40916dbcac1fcbd3d32bba6e6e94d2de131b4b1dd60ed29e9",
    "scope_warning_shown": true,
    "method": "C1"
   },
@@ -131,7 +131,7 @@
     "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batch_members_C2.tsv"
    ],
    "data_csv_sha256": "21bef94d6b8050c3bb1d84aa1aac206c208353d689565b916b0907090f8aa646",
-   "png_sha256_informational": "f442f185a27107c33a38f2a62ebad91387ad74c4755c4b3a2b74fbc42b1fe873",
+   "png_sha256_informational": "2969dd69756770d6ed2a70c9cf97bdae005b859bbfaa9e030b5e6f9873be6a6c",
    "scope_warning_shown": true,
    "method": "C2"
   },
@@ -147,7 +147,7 @@
     "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W1.tsv"
    ],
    "data_csv_sha256": "a7bfc0c5f45967af8bd323362a6f7af4ca6173d0dd8cafa15325f6cebdd11f11",
-   "png_sha256_informational": "e45b70ebac423a8c62b0c41a385ebda236961e976348d52d0f045bc37642ade7",
+   "png_sha256_informational": "da4bfd395366029210f7da1f24b33864e38d240c342181d05c80f9c43dc7cee1",
    "scope_warning_shown": true,
    "method": "W1",
    "evidence_class": "WEAKLY_SUPPORTED",
@@ -166,7 +166,7 @@
     "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W1_S60.tsv"
    ],
    "data_csv_sha256": "2ba500a5b68a06196a4ab5b7da14ab18def73448775cb64a632f65c458b7e2b2",
-   "png_sha256_informational": "eb04dbe2726accb39ba1d9b168db7e8fe3e6deefa1e76f203f2bb3a211b53df5",
+   "png_sha256_informational": "9291bba1d5a1e3ae733603a8dac365495561b7f4b660c30c2004deffdaace6cb",
    "scope_warning_shown": true,
    "method": "W1_S60",
    "evidence_class": "UNRESOLVED",
@@ -185,7 +185,7 @@
     "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W2.tsv"
    ],
    "data_csv_sha256": "82ebe564b2f88a568f32a43ec01024d2edcc6c5bc77c34f457459d4aa7c4ef6a",
-   "png_sha256_informational": "615fbb2fa44adef632bb460464888e01b60e14449537b096f6f5a0d8082dbcca",
+   "png_sha256_informational": "f3739f09133ef27535eaa2340df5909b78e6a9b26938958303164631dc3e01b9",
    "scope_warning_shown": true,
    "method": "W2",
    "evidence_class": "WEAKLY_SUPPORTED (weights)",
@@ -197,14 +197,14 @@
    "title": "V5 wing/body W3",
    "png": "reports/m2e_figures/SENSEX_2026-07-16/V5_W3_wing_body.png",
    "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V5_W3_wing_body.csv",
-   "data_rows": 19,
+   "data_rows": 21,
    "additional_data_csv": [],
    "source_datasets": [
     "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_items.tsv",
     "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W3.tsv"
    ],
-   "data_csv_sha256": "c60e8559dc27b491305aa83eaae3cec830b37e2138b90ab8118cd07233ecab07",
-   "png_sha256_informational": "1631493080140e62598fdd2a4e1c60700eb863a9a106d43f50c8a36e670e3593",
+   "data_csv_sha256": "04bf44e80b90750209e5a5c005a475b5d519835451fc838d1bb16d9cadd93d9c",
+   "png_sha256_informational": "0ef0d0490356f4291ee8828f4bbd79e405d04d047afc67709b78623e92baa25d",
    "scope_warning_shown": true,
    "method": "W3",
    "evidence_class": "UNRESOLVED",
@@ -216,7 +216,7 @@
    "title": "V6 coverage and uncertainty dashboard",
    "png": "reports/m2e_figures/SENSEX_2026-07-16/V6_coverage_uncertainty_dashboard.png",
    "data_csv": "reports/m2e_figures/SENSEX_2026-07-16/V6_coverage_uncertainty_dashboard.csv",
-   "data_rows": 80,
+   "data_rows": 78,
    "additional_data_csv": [],
    "source_datasets": [
     "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_items.tsv",
@@ -227,8 +227,8 @@
     "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batches_C2.tsv",
     "reports/m2e_data/SENSEX_2026-07-16/coverage.json"
    ],
-   "data_csv_sha256": "9693de1bf69fa1f20380a96475ddaafc8f6cd05cafaef0453888f5a55c53cff0",
-   "png_sha256_informational": "d90ad57cfff322a65ef507f9c99a943e719a3fa9737325677d8d770eb7c03411",
+   "data_csv_sha256": "74e975a7a09f17b45b91b08e650f719e869023e362da43a2fcd671479ca7b6c4",
+   "png_sha256_informational": "040abd82f07ec7b6ac86973bac762874212117fd48b4c81a01665d53b8a82e20",
    "scope_warning_shown": true
   }
  ]

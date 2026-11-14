@@ -17,7 +17,7 @@ EXCL_CLOSING_UNITS = sum(v for k, v in SUM_D['scope_exclusions_TAGGED_units'].it
 
 
 def pct(a, b): return f'{100 * a / b:.1f}%'
-SCOPE_WARNING = (f"SCOPE (full ledger, M2-D): W1 {FULL_W1['wing_items']:,} wing items, {FULL_W1['wing_items_with_candidate']:,} with >=1 candidate ({FULL_W1['wing_items_unique_candidate']:,} unique, {FULL_W1['wing_items_multiple_candidates']:,} multiple), {FULL_W1['wing_items_no_candidate']:,} none; "
+SCOPE_WARNING = (f"FULL-LEDGER SCOPE (all cycles, NOT this cycle; from M2-D): W1 {FULL_W1['wing_items']:,} wing items, {FULL_W1['wing_items_with_candidate']:,} with >=1 candidate ({FULL_W1['wing_items_unique_candidate']:,} unique, {FULL_W1['wing_items_multiple_candidates']:,} multiple), {FULL_W1['wing_items_no_candidate']:,} none; "
                  f"{FULL_W1['wing_units_unmatched']:,} unmatched wing units ({pct(FULL_W1['wing_units_unmatched'], FULL_W1['wing_units'])}). Group-level 1:1 is NOT lot ownership. "
                  f"W1_S60: {FULL_S60['wing_items_with_candidate']:,} with candidate, {FULL_S60['wing_items_no_candidate']:,} none, {FULL_S60['wing_units_unmatched']:,} unmatched units (first-fill execution times, same IST session; not decision-time evidence). "
                  f"Tag-based roles exclude {EXCL_CLOSING_UNITS:,} closing units; `s_` stop-closed bodies are not in short-body; `num` seed wings are not identified as wings; {FULL_CLOSING_WING_MIXED['opened_by_mixed_modules']:,} closing wing units sit in mixed-module episodes. "
@@ -48,7 +48,7 @@ class Fig:
         und = self.cycle.replace('_', ' ')
         foot = f'{und} | HISTORICAL_OBSERVED_REPLAY | times IST (UTC+05:30) | execution prices only, historical marks missing (source absent), unrealized P&L = NA | data: {self.vid}.csv'
         self.fig.text(0.005, 0.004, foot, fontsize=6, color='#555')
-        if warning: self.fig.text(0.005, 0.018, '\n'.join(textwrap.wrap(warning, 270)), fontsize=5.6, color='#7a1f1f', va='bottom')
+        if warning: self.fig.text(0.005, 0.018, '\n'.join(textwrap.wrap(warning, 235)), fontsize=6.4, color='#7a1f1f', va='bottom')
         png = os.path.join(self.dir, f'{self.vid}.png'); cs = os.path.join(self.dir, f'{self.vid}.csv'); os.makedirs(os.path.dirname(png), exist_ok=True); self.fig.savefig(png); plt.close(self.fig); wcsv(cs, header, data); add = []
         for name, (h2, r2) in (more or {}).items():
             p2 = os.path.join(self.dir, f'{self.vid}__{name}.csv'); wcsv(p2, h2, r2); add.append(dict(name=name, data_csv=os.path.relpath(p2, PE), rows=len(r2), sha256=sha_file(p2)))
@@ -80,16 +80,19 @@ def v1(cycle):
         for r in inv:
             if r['session_ist'] == s: chart.append(['FILL', s, cov[s]['d_label'], r['ts_ist'], int(r['ts_utc_s'])] + [int(r[k]) for k in cols]); prev = {k: int(r[k]) for k in cols}
     H = ['row_kind', 'session_ist', 'd_label', 'ts_ist', 'ts_utc_s'] + cols
-    F_ = Fig(cycle, 'V1_inventory_evolution', 'V1 inventory evolution (short/long CE/PE, net, gross; D-1 | D0)', (13, 9.6)); gs = F_.fig.add_gridspec(3, 1, hspace=0.45, top=0.87, bottom=0.075)
+    F_ = Fig(cycle, 'V1_inventory_evolution', 'V1 inventory evolution (short/long CE/PE, net, gross; D-1 | D0)', (13, 12.6)); gs = F_.fig.add_gridspec(4, 1, hspace=0.5, top=0.895, bottom=0.06)
     D = [dict(zip(H, r)) for r in chart]; idx = {k: i for i, k in enumerate(H)}
-    panels = [('Short and long inventory by right (units)', [('short_CE', 'short CE', C['short'], '-'), ('short_PE', 'short PE', C['orange'], '-'), ('long_CE', 'long CE', C['long'], '-'), ('long_PE', 'long PE', C['sky'], '-')]),
-              ('Net (long - short) and gross (long + short) units', [('net_CE', 'net CE', C['purple'], '-'), ('net_PE', 'net PE', C['green'], '-'), ('net_total', 'net total', C['dark'], '-'), ('gross_total', 'gross total', C['grey'], '--')]),
+    panels = [('Long inventory (above zero) and short inventory (below zero), units; the CSV columns are unsigned', [('long_CE', 'long CE (+)', C['long'], '-', 1), ('long_PE', 'long PE (+)', C['sky'], '-', 1), ('short_CE', 'short CE (plotted negative)', C['short'], '-', -1), ('short_PE', 'short PE (plotted negative)', C['orange'], '-', -1)]),
+              ('Gross units (long + short)', [('gross_total', 'gross total', C['dark'], '-')]),
+              ('Net units (long - short) on its own scale', [('net_CE', 'net CE', C['purple'], '-'), ('net_PE', 'net PE', C['green'], '-'), ('net_total', 'net total', C['dark'], '-')]),
               ('Cumulative units opened / closed (observed). Opened-by-class uses the MODULE TAG only: it is a label, not ownership; net inventory by role is NOT identifiable', [('cum_opened_units', 'opened (all)', C['dark'], '-'), ('cum_closed_units', 'closed (all)', C['grey'], '--'), ('cum_opened_num_short', 'opened: num short (body by tag)', C['short'], '-'), ('cum_opened_h_long', 'opened: h_ long (wing by tag)', C['long'], '-'), ('cum_opened_other', 'opened: other tags (unclassified)', C['purple'], ':')])]
     for pi, (ttl, ser) in enumerate(panels):
         axs, _, _ = two_panel(F_.fig, gs[pi], cycle); axs[0].set_ylabel('units')
         for ax, s in zip(axs, ss):
             sub = [d for d in D if d['session_ist'] == s]; x = [T(d['ts_utc_s']) for d in sub]
-            for k, lab, col, ls_ in ser: ax.step(x, [d[k] for d in sub], where='post', color=col, ls=ls_, lw=1.3, label=lab if ax is axs[0] else None)
+            for t in ser:
+                k, lab, col, ls_ = t[:4]; sg = t[4] if len(t) > 4 else 1; ax.step(x, [sg * d[k] for d in sub], where='post', color=col, ls=ls_, lw=1.3, label=lab if ax is axs[0] else None)
+            if pi == 0: ax.axhline(0, color='k', lw=0.6)
         axs[0].legend(fontsize=6.5, loc='upper left', ncol=3); axs[0].annotate(ttl, xy=(0.0, 1.13), xycoords='axes fraction', fontsize=8, fontweight='bold')
     c0 = carry[ss[0]]; F_.head(f"V1 inventory evolution | {cycle.replace('_', ' ')} | carried from {cov[ss[0]]['d_label']} into D0: short CE {c0['short_CE']}, short PE {c0['short_PE']}, long CE {c0['long_CE']}, long PE {c0['long_PE']} units (gross {c0['gross_total']}); a CARRY_IN row marks each session start", fontsize=9, x=0.01, y=0.985, ha='left')
     return F_.finish(H, chart, ['inventory_series.tsv', 'session_carry.tsv', 'coverage.json'], extra=dict(reconciles_to='M1/M2-B: series recomputed from side*quantity per fill in tests; cumulative opened/closed = M2-B OA/CP totals'))
@@ -102,7 +105,7 @@ MARK = {'CREATED': ('^', 'create'), 'ADDED': ('+', 'add'), 'PARTIALLY_REDUCED': 
 def v2(cycle, episode_ids=None, vid='V2_position_lifecycle_timeline'):
     ev = rows(cycle, 'lifecycle_events.tsv'); eps = rows(cycle, 'episodes.tsv'); cov = json.load(open(os.path.join(DATA, cycle, 'coverage.json')))['d1_d0']; ss = list(cov)
     eps = [e for e in sorted(eps, key=lambda r: (int(r['first_ts_utc_s']), r['episode_id'])) if (episode_ids is None or e['episode_id'] in episode_ids)]; order = {e['episode_id']: i for i, e in enumerate(eps)}; ev = [e for e in ev if e['episode_id'] in order]
-    n = len(eps); h = max(3.2, 0.2 * n + 1.8); F_ = Fig(cycle, vid, 'V2 position lifecycle timeline', (13, h)); gs = F_.fig.add_gridspec(1, 1, top=0.955 if n > 6 else 0.8, bottom=0.04 if n > 6 else 0.2)
+    n = len(eps); h = max(3.2, 0.2 * n + 1.8); F_ = Fig(cycle, vid, 'V2 position lifecycle timeline', (13, h)); gs = F_.fig.add_gridspec(1, 1, top=0.905 if n > 6 else 0.74, bottom=0.04 if n > 6 else 0.2)
     axs, _, _ = two_panel(F_.fig, gs[0], cycle); chart = []
     for e in eps:
         y = order[e['episode_id']]; col = C['short'] if e['direction'] == 'SHORT' else C['long']; chart.append(['EPISODE', e['episode_id'], e['instrument_id'], e['direction'], e['terminal_status'], e['opened'], e['closed'], e['remaining'], y, '', '', '', '', '', ''])
@@ -116,7 +119,7 @@ def v2(cycle, episode_ids=None, vid='V2_position_lifecycle_timeline'):
     for m, lab in [(v[0], v[1]) for v in MARK.values()]:
         if m == '+': axs[1].plot([], [], marker='+', color=C['grey'], ls='', label=lab)
         else: axs[1].scatter([], [], marker=m, facecolors='none' if 'partial' in lab else C['grey'], edgecolors=C['grey'], label=lab)
-    axs[1].plot([], [], marker='x', color='k', ls='', label='expired unclosed: none in this cycle'); axs[1].legend(fontsize=6.5, loc='upper right', ncol=2); axs[0].set_ylim(n - 0.5, -0.5)
+    axs[1].plot([], [], marker='x', color='k', ls='', label='expired unclosed: none in this cycle'); hh, ll = axs[1].get_legend_handles_labels(); F_.fig.legend(hh, ll, fontsize=6.5, ncol=6, loc='upper right', bbox_to_anchor=(0.995, 0.955 if n > 6 else 0.97)); axs[0].set_ylim(n - 0.5, -0.5)
     F_.head(f"V2 position lifecycle timeline | {cycle.replace('_', ' ')} | {n} episode{'s' if n != 1 else ''}. Red = short, blue = long. Hollow triangle-down = PARTIAL reduction (position remains); square = closure to flat. Rows ordered by first fill.", fontsize=8.5, x=0.01, y=0.99, ha='left')
     H = ['record', 'episode_id', 'instrument_id', 'direction', 'terminal_status', 'opened', 'closed', 'remaining', 'row_index', 'event_type', 'fill_id', 'source_row_id', 'ts_ist', 'quantity', 'inventory_after']
     return F_.finish(H, chart, ['lifecycle_events.tsv', 'episodes.tsv'], extra=dict(episodes=n, filter='episode_ids' if episode_ids else 'all'))
@@ -150,7 +153,7 @@ def v3(cycle):
                 ax.scatter([T(r['first_ts_utc_s'])], [int(r['strike'])], marker=m, s=5 + 6 * (int(r['quantity']) / minq) ** 0.5, color=col, alpha=0.75 if r['tag_role'] in ROLE_STYLE else 0.5, edgecolors='none')
         if ri == 0:
             for m, col, lab in ROLE_STYLE.values(): axs[0].scatter([], [], marker=m, color=col, label=lab)
-            axs[0].scatter([], [], marker='s', color=C['grey'], label='UNCLASSIFIED by tag (s_, v_, num buy ...)'); axs[0].legend(fontsize=6, loc='upper left', ncol=3)
+            axs[0].scatter([], [], marker='s', color=C['grey'], label='UNCLASSIFIED by tag (s_, v_, num buy ...)'); hh3, ll3 = axs[0].get_legend_handles_labels(); F_.fig.legend(hh3, ll3, fontsize=6, ncol=1, loc='upper left', bbox_to_anchor=(0.005, 0.945), title='marker = module-tag role (not ownership)', title_fontsize=5.5)
     for r in items: chart.append([r['item_key'], r['parent_order_id'], r['instrument_id'], r['right'], r['strike'], r['module_tag'], r['side'], r['tag_role'], r['quantity'], r['first_ts_ist'], r['first_ts_utc_s'], r['session_ist'], r['d_label'], r['order_entry_minute_ist'], r['tp03_event_class']])
     # row 3: entry-minute cohorts = items sharing the order-entry minute (observed parent metadata; the W1 group key). No gap clustering exists for openings.
     coh = defaultdict(lambda: Counter()); npar = defaultdict(set)
@@ -215,6 +218,7 @@ def v4(cycle, method):
 
 # ------------------------------------------------------------------------------------------------------------------------ V5 wing / body comparison (one figure per method)
 STYLE = {'OBSERVED': dict(hatch=None, ls='-', alpha=0.95), 'W1': dict(hatch='////', ls='-', alpha=0.6), 'W2': dict(hatch='////', ls='-', alpha=0.6), 'W1_S60': dict(hatch=None, ls=':', alpha=0.25), 'W3': dict(hatch=None, ls=':', alpha=0.25)}   # solid = observed, hatched = weakly supported, pale + dotted edge = unresolved
+LEG = {'W1': 'Solid = observed facts; hatched = inferred (weakly supported).', 'W2': 'Solid = observed facts; hatched = inferred weights (weakly supported).', 'W1_S60': 'Solid = observed facts; pale fill with dotted edge = unresolved.', 'W3': 'Solid = observed facts; pale fill with dotted edge = unresolved.'}
 CLASS = {'W1': 'WEAKLY_SUPPORTED', 'W2': 'WEAKLY_SUPPORTED (weights)', 'W1_S60': 'UNRESOLVED', 'W3': 'UNRESOLVED'}
 
 
@@ -239,8 +243,8 @@ def v5(cycle, method):
     a1 = F_.fig.add_subplot(gs[0]); cats = ['0', '1', '2', '3', '4', '5+']
     def mult(m, items): c = Counter(min(len(m.get(i['item_id'], ())), 5) for i in items); return [c.get(k, 0) for k in range(6)]
     mw, mb = mult(wmap, W), mult(bmap, Bd); x = list(range(6))
-    _bar(a1, [i - 0.2 for i in x], mw, C['long'], base, width=0.38, label='wing items by # candidate bodies'); _bar(a1, [i + 0.2 for i in x], mb, C['short'], base, width=0.38, label='body items by # candidate wings'); a1.set_xticks(x); a1.set_xticklabels(cats); a1.set_xlabel('number of candidates (0 = unmatched)'); a1.set_ylabel('opening items'); a1.legend(fontsize=6.5)
-    a1.set_title('Candidate multiplicity (opening items)', fontsize=8)
+    _bar(a1, [i - 0.2 for i in x], mw, C['long'], base, width=0.38, label='wing items by # queue-partner bodies' if method == 'W3' else 'wing items by # candidate bodies'); _bar(a1, [i + 0.2 for i in x], mb, C['short'], base, width=0.38, label='body items by # queue-partner wings' if method == 'W3' else 'body items by # candidate wings'); a1.set_xticks(x); a1.set_xticklabels(cats); a1.set_xlabel('number of queue partners (arithmetic, not candidates)' if method == 'W3' else 'number of candidates (0 = unmatched)'); a1.set_ylabel('opening items'); a1.legend(fontsize=6.5)
+    a1.set_title('Queue partners per item (opening; FIFO arithmetic)' if method == 'W3' else 'Candidate multiplicity (opening items)', fontsize=8)
     for k, c in enumerate(cats): data += [['candidate_multiplicity', f'wing items with {c} candidate bodies', mw[k], 'items', CLASS[method]], ['candidate_multiplicity', f'body items with {c} candidate wings', mb[k], 'items', CLASS[method]]]
     a2 = F_.fig.add_subplot(gs[1])
     def split(items, m): u = sum(int(i['qty']) for i in items if len(m.get(i['item_id'], ())) == 1); mu = sum(int(i['qty']) for i in items if len(m.get(i['item_id'], ())) >= 2); z = sum(int(i['qty']) for i in items if len(m.get(i['item_id'], ())) == 0); return u, mu, z
@@ -257,7 +261,7 @@ def v5(cycle, method):
                 _bar(a2, j, val, col, method, bottom=b0, label=nm if j == 0 else None); b0 += val; data.append(['units', f'{lab}: {nm}', val, 'units', CLASS[method]])
             a2.add_patch(plt.Rectangle((j - 0.3, 0), 0.6, tot, fill=False, ec='k', lw=1.0)); a2.text(j, tot, f'{tot:,}', ha='center', va='bottom', fontsize=7); data.append(['units', f'{lab}: observed total', tot, 'units', 'OBSERVED'])
         a2.set_xticks([0, 1]); a2.set_xticklabels(['wing units', 'body units'])
-    a2.set_title('Units by candidate status (black outline = observed total)', fontsize=8); a2.set_ylim(0, a2.get_ylim()[1] * 1.3); a2.legend(fontsize=6.5, loc='upper right'); a2.set_ylabel('units (opening)')
+    a2.set_title('Units by queue status (black outline = observed total)' if method == 'W3' else 'Units by candidate status (black outline = observed total)', fontsize=8); a2.set_ylim(0, a2.get_ylim()[1] * 1.3); a2.legend(fontsize=6.5, loc='upper right'); a2.set_ylabel('units (opening)')
     a3 = F_.fig.add_subplot(gs[2])
     if method in ('W1', 'W1_S60'):
         dts = [int(l['dt_s']) for l in L]; bins = range(-60, 62, 4) if method == 'W1_S60' else range(-120, 62, 6)
@@ -272,10 +276,12 @@ def v5(cycle, method):
         a3.scatter(xs, ys, s=8, facecolor='none', edgecolor=C['dark'], alpha=0.6); lim = max(xs + ys + [1]); a3.plot([0, lim], [0, lim], color=C['grey'], lw=0.8, ls='--'); a3.set_xlabel('body item units'); a3.set_ylabel('sum of weighted wing units (weights, NOT allocations)'); a3.set_title('W2 weights per body item (body items with a W1 candidate)', fontsize=8)
         data += [['w2_body_vs_weighted_units', r['item_id'], f'{sw[r["item_id"]]:.4f}', f'body_units={r["qty"]}', CLASS[method]] for r in Bd if r['item_id'] in sw]
     else:
-        q = Counter(f"{float(l['queue_matched_units']):g}" for l in L); ks = sorted(q, key=float); a3.bar(range(len(ks)), [q[k] for k in ks], facecolor=C['dark'], alpha=0.25, edgecolor='#222', ls=':', lw=1.3); a3.set_xticks(range(len(ks))); a3.set_xticklabels(ks, fontsize=7)
-        a3.set_xlabel('queue_matched_units per link (distinct values)'); a3.set_ylabel('links'); a3.set_title(f'W3 queue-matched links: n = {len(L):,} (queue arithmetic, not ownership)', fontsize=8)
-        data += [['w3_queue_matched_units_by_value', k, q[k], 'links', CLASS[method]] for k in ks]
-    F_.head(f"V5 {method} wing / body | {cycle.replace('_', ' ')}\n{EVID[method]}.  Solid bars/outlines = observed facts; hatched = inferred (weakly supported); dotted outline = unresolved.  Candidate multiplicity and unmatched units are shown, not resolved.", fontsize=8, x=0.01, y=0.985, ha='left')
+        w3 = {(l['wing_item'], l['body_item']) for l in L}; w1 = {(l['wing_item'], l['body_item']) for l in D['links']['W1'] if l['level'] == 'OPENING'}; w60 = {(l['wing_item'], l['body_item']) for l in D['links']['W1_S60'] if l['level'] == 'OPENING'}
+        cats3 = [('also a W1 link', len(w3 & w1)), ('W1_S60 only', len((w3 & w60) - w1)), ('in neither', len(w3 - w1 - w60))]
+        a3.bar(range(3), [c[1] for c in cats3], facecolor=C['dark'], alpha=0.25, edgecolor='#222', ls=':', lw=1.3); a3.set_xticks(range(3)); a3.set_xticklabels([c[0] for c in cats3], fontsize=7); [a3.text(i, c[1], str(c[1]), ha='center', va='bottom', fontsize=7) for i, c in enumerate(cats3)]
+        a3.set_ylabel('W3 queue links'); a3.set_title(f'W3 queue links (n = {len(L):,}) vs W1 / W1_S60 candidate sets', fontsize=8)
+        data += [['w3_links_vs_candidate_sets', c[0], c[1], 'links', CLASS[method]] for c in cats3]
+    F_.head(f"V5 {method} wing / body | {cycle.replace('_', ' ')}\n{EVID[method]}.  {LEG[method]}  Multiplicity and unmatched units are shown, not resolved. Agreement between methods is not confirmation.", fontsize=8, x=0.01, y=0.985, ha='left')
     extra_w = {'W1': '', 'W1_S60': 'W1_S60 uses first-fill execution timestamps within the same IST session: not decision-time evidence. ', 'W2': 'W2 weights are arithmetic, never allocation. ', 'W3': 'W3 = opening-level FIFO queue arithmetic, not ownership. '}[method]
     return F_.finish(['panel', 'category', 'value', 'unit', 'evidence_class'], data, ['m2d_wing_body_items.tsv', f'm2d_wing_body_links_{method}.tsv'], warning=extra_w + SCOPE_WARNING, extra=dict(method=method, evidence_class=CLASS[method], wing_units_observed=wu, body_units_observed=bu))
 
@@ -290,14 +296,14 @@ def v6(cycle):
     for pi, (role, items, idx) in enumerate((('wing', W, 1), ('body', Bd, 0))):
         ax = F_.fig.add_subplot(gs[0, pi]); 
         for j, m in enumerate(('W1', 'W1_S60', 'W3')):
-            u, mu, z = st(items, cm[m][idx]); b0 = 0
-            for val, col, nm in ((u, C['green'], '1 candidate'), (mu, C['orange'], '>=2 candidates'), (z, C['grey'], 'none')):
-                _bar(ax, j, val, col, m, bottom=b0, label=nm if j == 0 else None); b0 += val; sec.append(['A_units_by_candidate_status', f'{role} units, {m}: {nm}', val, 'cycle'])
-            ax.text(j, b0, f'{b0:,}', ha='center', va='bottom', fontsize=6.5)
-        ax.set_xticks(range(3)); ax.set_xticklabels(['W1\n(weak)', 'W1_S60\n(unresolved)', 'W3\n(unresolved)']); ax.set_title(f'Opening {role} units by candidate status', fontsize=8); ax.set_ylim(0, ax.get_ylim()[1] * 1.35); ax.legend(fontsize=6, loc='upper right')
+            u, mu, z = st(items, cm[m][idx]); b0 = 0; mq_ = sum(float(l['queue_matched_units']) for l in D['links']['W3'] if l['level'] == 'OPENING'); tot_ = sum(int(i['qty']) for i in items)
+            for val, col, nm in (((mq_, C['sky'], 'queue-matched (W3 arithmetic)'), (tot_ - mq_, C['grey'], 'queue residual (W3)')) if m == 'W3' else ((u, C['green'], '1 candidate'), (mu, C['orange'], '>=2 candidates'), (z, C['grey'], 'none'))):
+                _bar(ax, j, val, col, m, bottom=b0, label=nm if (j == 0 or m == 'W3') else None); b0 += val; sec.append(['A_units_by_candidate_status', f'{role} units, {m}: {nm}', val, 'cycle'])
+            ax.text(j, b0, f'{int(round(b0)):,}', ha='center', va='bottom', fontsize=6.5)
+        ax.set_xticks(range(3)); ax.set_xticklabels(['W1\n(weak)', 'W1_S60\n(unresolved)', 'W3\n(unresolved)']); ax.set_title(f'Opening {role} units by candidate status', fontsize=8); ax.set_ylim(0, ax.get_ylim()[1] * 1.8); ax.legend(fontsize=5.5, loc='upper right', ncol=2)
     ax = F_.fig.add_subplot(gs[0, 2]); wm = {m: Counter(min(len(cm[m][1].get(i['item_id'], ())), 5) for i in W) for m in ('W1', 'W1_S60', 'W3')}
     for j, m in enumerate(('W1', 'W1_S60', 'W3')): _bar(ax, [k + (j - 1) * 0.27 for k in range(6)], [wm[m].get(k, 0) for k in range(6)], (C['dark'], C['orange'], C['purple'])[j], m, width=0.26, label=m); [sec.append(['B_wing_multiplicity', f'{m}: wing items with {k if k < 5 else "5+"} candidate bodies', wm[m].get(k, 0), 'cycle']) for k in range(6)]
-    ax.set_xticks(range(6)); ax.set_xticklabels(['0', '1', '2', '3', '4', '5+']); ax.set_title('Wing candidate multiplicity (items)', fontsize=8); ax.legend(fontsize=6)
+    ax.set_xticks(range(6)); ax.set_xticklabels(['0', '1', '2', '3', '4', '5+']); ax.set_title('Wing candidates (W3: queue partners) per item', fontsize=8); ax.legend(fontsize=6)
     ax = F_.fig.add_subplot(gs[1, 0]); ex = cov['role_classification']['m2d_tagged_scope_exclusions_units']; ks = sorted(ex, key=lambda k: -ex[k]); ax.barh(range(len(ks)), [ex[k] for k in ks], color=C['grey']); ax.set_yticks(range(len(ks))); ax.set_yticklabels([k.replace('_episode|closing_module|', ' ep, closed by ').replace('CLOSING_of_', 'CLOSING of ').replace('OPENING|', 'OPENING ') for k in ks], fontsize=5.5); ax.invert_yaxis()
     ax.set_title('Units outside tag-based roles (closing exclusions and non-wing/body openings)', fontsize=7.5); [sec.append(['C_role_exclusions_units', k, ex[k], 'cycle']) for k in ks]
     ax = F_.fig.add_subplot(gs[1, 1]); ax.axis('off'); ro = cov['role_classification']; mt = cov['order_metadata']; lines = [f"Opening units classified by tag: {ro['opening_units_classified_by_tag']:,} of {ro['opening_units_total']:,}", f"UNCLASSIFIED opening units: {ro['opening_units_unclassified']:,}"]

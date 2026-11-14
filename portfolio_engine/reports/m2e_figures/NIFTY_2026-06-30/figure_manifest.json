@@ -15,7 +15,7 @@
     "reports/m2e_data/NIFTY_2026-06-30/coverage.json"
    ],
    "data_csv_sha256": "5a0e2df790b665eed1b8a6b41a56933537e42be02330c256656a68d3b2fc33ae",
-   "png_sha256_informational": "d67b5c095a16c35756dcc095a5b9d3a7837fbc1467ba9268821b0578389f68e9",
+   "png_sha256_informational": "a60337601525d7e91ef6b5599b3dc0a10e42d801614542bf90114d9458c749bb",
    "scope_warning_shown": false,
    "reconciles_to": "M1/M2-B: series recomputed from side*quantity per fill in tests; cumulative opened/closed = M2-B OA/CP totals"
   },
@@ -31,7 +31,7 @@
     "reports/m2e_data/NIFTY_2026-06-30/episodes.tsv"
    ],
    "data_csv_sha256": "0f30f13ee003a2e783639e9c652b3b06a11d9f9d8955dd426d5c4f8a87048043",
-   "png_sha256_informational": "97023f3dceb7a17cfd7f9b8cb751dc8306a63d86bb5caa47915815de9ff688b1",
+   "png_sha256_informational": "b7d18c3aca644d40f6db2fc868bad4787807053b4b7559d7567fa010286276e9",
    "scope_warning_shown": false,
    "episodes": 85,
    "filter": "all"
@@ -61,7 +61,7 @@
     "reports/m2e_data/NIFTY_2026-06-30/tp03_windows.tsv"
    ],
    "data_csv_sha256": "137eb3f2765fbc81e56ab87383d4ee63c96d5b69ff42967492b9a4a4b601eebb",
-   "png_sha256_informational": "827cc3be0e29fa087f3526a47a16adf4ec6603d236fba972d52f47734b5e416a",
+   "png_sha256_informational": "f0cc547cf07eb96ff849ce0c6b57b35b18497312014b5b36cd46d5e65ee9d5e1",
    "scope_warning_shown": true,
    "items_without_entry_minute": 0
   },
@@ -96,7 +96,7 @@
     "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batch_members_C1.tsv"
    ],
    "data_csv_sha256": "56a91d6723beeb0bf1dfd54908fc3648a460196b7f81e439f916d04843243c9a",
-   "png_sha256_informational": "8f31f8504ab595d301affe58ac5cda913d7608ef4bc97d0ab34e3e78657c1d94",
+   "png_sha256_informational": "a58e520e453112ef643ad6523ba01665f33060d37130a5ba249b244ecb4bcf69",
    "scope_warning_shown": true,
    "method": "C1"
   },
@@ -131,7 +131,7 @@
     "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batch_members_C2.tsv"
    ],
    "data_csv_sha256": "1b68c1ffbf1f44345ae313758208cd6a180f3c02553dc76adcea26e25596e8b4",
-   "png_sha256_informational": "d2363334bdfcff3b770bf335d33eeca654229772e421ebe80c6ad5229965eaaa",
+   "png_sha256_informational": "83619d6074b2dcbac3be265e118161906106505240dbf8638617fe7a95a1c851",
    "scope_warning_shown": true,
    "method": "C2"
   },
@@ -147,7 +147,7 @@
     "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W1.tsv"
    ],
    "data_csv_sha256": "df9f2f5d11fe2fa2a594d34ddeeb51e4d60e8ba850b9c2fcf179f4f646ddb86f",
-   "png_sha256_informational": "9795520b585d9498d1460574bf840a4f0feae1bb1fd5f6768fcb0da9e53e2faa",
+   "png_sha256_informational": "330d2dbe5a2ce91484f1151d80d7890fb7a4f16b8e0618c92c704b3270d78f34",
    "scope_warning_shown": true,
    "method": "W1",
    "evidence_class": "WEAKLY_SUPPORTED",
@@ -166,7 +166,7 @@
     "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W1_S60.tsv"
    ],
    "data_csv_sha256": "039148a7134e4a715dde28dad2c45a275450261681b57be7a961d8abce0a2478",
-   "png_sha256_informational": "9e469fcbdd5e199a83ad06885750560465826e5b74b39b8c987e3155565448cb",
+   "png_sha256_informational": "1a066649c0f9d6104e80bdc3a69650d37d9101df476f292dd72e513f1cf8f36d",
    "scope_warning_shown": true,
    "method": "W1_S60",
    "evidence_class": "UNRESOLVED",
@@ -185,7 +185,7 @@
     "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W2.tsv"
    ],
    "data_csv_sha256": "c38dbfafd29be44c184702c46545edea3ba39e69f1b7862798ef65e2a0e08e2d",
-   "png_sha256_informational": "f57cdb957094bc45f28890b4e6af7313c054bda1f1e014f548ec4a91f38a4853",
+   "png_sha256_informational": "0d653ca70e2fa5d3bf2a410189e63f787d5139b25c0bbda8c8e00fcde600c720",
    "scope_warning_shown": true,
    "method": "W2",
    "evidence_class": "WEAKLY_SUPPORTED (weights)",
@@ -197,14 +197,14 @@
    "title": "V5 wing/body W3",
    "png": "reports/m2e_figures/NIFTY_2026-06-30/V5_W3_wing_body.png",
    "data_csv": "reports/m2e_figures/NIFTY_2026-06-30/V5_W3_wing_body.csv",
-   "data_rows": 19,
+   "data_rows": 21,
    "additional_data_csv": [],
    "source_datasets": [
     "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_items.tsv",
     "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W3.tsv"
    ],
-   "data_csv_sha256": "35ab03a0b082c96cf58314b76cf51ce26c0f8535f7916371832ca59b4197eaed",
-   "png_sha256_informational": "403907de63153aa1242ac85627e8144f76f70837b6f780c325413d42ced8710d",
+   "data_csv_sha256": "0e3bd2e7b2ad186d2202885471e972bdc8b30bfff999f939156de35cd6163b5f",
+   "png_sha256_informational": "e9869f8391799cd23ac0614a9ef6c30506b49e6f5601f2ce8032497c0839c10c",
    "scope_warning_shown": true,
    "method": "W3",
    "evidence_class": "UNRESOLVED",
@@ -216,7 +216,7 @@
    "title": "V6 coverage and uncertainty dashboard",
    "png": "reports/m2e_figures/NIFTY_2026-06-30/V6_coverage_uncertainty_dashboard.png",
    "data_csv": "reports/m2e_figures/NIFTY_2026-06-30/V6_coverage_uncertainty_dashboard.csv",
-   "data_rows": 82,
+   "data_rows": 80,
    "additional_data_csv": [],
    "source_datasets": [
     "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_items.tsv",
@@ -227,8 +227,8 @@
     "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batches_C2.tsv",
     "reports/m2e_data/NIFTY_2026-06-30/coverage.json"
    ],
-   "data_csv_sha256": "fcd9a9c456bddbc3fc4149b0c9237462c91ea32fede89622b17987df489168a1",
-   "png_sha256_informational": "e5a40e65f9a9b8f5e8e5df5680401eb44101f431eb7240396ffcf668145eea9c",
+   "data_csv_sha256": "d169cc0c75ae1d32008081cb5f920bcc9af0c3ffe4a2a8b27ab1da8734bf786c",
+   "png_sha256_informational": "e7050f88ac660721c351871754240316d945c3c1e44ed9a5462fcd7eddcba649",
    "scope_warning_shown": true
   }
  ]

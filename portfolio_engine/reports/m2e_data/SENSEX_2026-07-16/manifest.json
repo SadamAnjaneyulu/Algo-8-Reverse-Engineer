@@ -1,7 +1,7 @@
 {
  "cycle": "SENSEX|2026-07-16",
  "version": "M2E_1",
- "generated_at_head": "f8200e0bffbda21499c8bad72e38a8c40d59288a",
+ "generated_at_head": "10e33962cb5d40970789fa50191505c50de6b015",
  "execution_mode": "HISTORICAL_OBSERVED_REPLAY",
  "source_hashes": {
   "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
@@ -10,9 +10,9 @@
  "timezone": "timestamps *_utc_s are UTC epoch seconds; *_ist columns are IST = UTC+05:30",
  "files": {
   "fills.tsv": {
-   "sha256": "bbd5e81ed88b8a7d43604326f898c8a493a838f9d31035c5139a323fa53db55d",
+   "sha256": "ca6bf719eb7b079dcd9922feca9702de279e40e10244a741b7031f7197cdbe2d",
    "rows": 729,
-   "bytes": 101502
+   "bytes": 101507
   },
   "inventory_series.tsv": {
    "sha256": "beeebcaaafc83f737ff1f772076168047c46a7d86adce3fd31b611d46dbd0457",
@@ -35,9 +35,9 @@
    "bytes": 11571
   },
   "opening_items.tsv": {
-   "sha256": "b693157c8e66e06ee61d2612b18c94332465be4e3115d6d03a5e3c31bf18a9d5",
+   "sha256": "66c02e08273e6d41085b8841592e234394a7b26851d8894aa67a35054333dfdd",
    "rows": 452,
-   "bytes": 122996
+   "bytes": 136121
   },
   "tp03_windows.tsv": {
    "sha256": "1782f9bd8d2692d2510ab2133b0ee29480241ba5c2ea5b8c751cf002d9d3636e",

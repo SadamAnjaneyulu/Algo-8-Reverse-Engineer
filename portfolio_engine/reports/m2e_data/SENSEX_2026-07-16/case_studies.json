@@ -88,7 +88,7 @@
    "rule": "first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion",
    "episode_id": "SENSEX|2026-07-16|CE|77400#1",
    "anchor": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:006",
-   "note": "",
+   "note": "chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING",
    "n_qualifying": 25
   }
  },
@@ -388,6 +388,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 120,
    "closed": 120,
    "remaining": 0,
@@ -521,6 +522,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|PE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15035130050844:SENSEX|2026-07-16|PE|74900",
@@ -556,6 +561,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|PE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15061506206542:SENSEX|2026-07-16|PE|75300",
@@ -591,6 +600,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|PE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15062207805526:SENSEX|2026-07-16|PE|75400",
@@ -626,6 +639,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|PE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15062207805526:SENSEX|2026-07-16|PE|75400",
@@ -661,6 +678,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|PE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15070403724586:SENSEX|2026-07-16|PE|75300",
@@ -696,6 +717,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|PE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15070403724586:SENSEX|2026-07-16|PE|75300",
@@ -910,6 +935,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 60,
    "closed": 60,
    "remaining": 0,
@@ -986,16 +1012,19 @@
     {
      "parent_order_id": "11019253",
      "tag_role": "UNCLASSIFIED(num,BUY)",
+     "quantity_in_this_episode": 20,
      "status": "NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)"
     },
     {
      "parent_order_id": "11019365",
      "tag_role": "UNCLASSIFIED(num,BUY)",
+     "quantity_in_this_episode": 20,
      "status": "NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)"
     },
     {
      "parent_order_id": "11019654",
      "tag_role": "UNCLASSIFIED(num,BUY)",
+     "quantity_in_this_episode": 20,
      "status": "NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)"
     }
    ],
@@ -1091,6 +1120,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 40,
    "closed": 40,
    "remaining": 0,
@@ -1134,6 +1164,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 40,
+     "quantity_in_this_episode": 40,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|79500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:11020230:SENSEX|2026-07-16|CE|77600",
@@ -2447,6 +2481,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 620,
    "closed": 620,
    "remaining": 0,
@@ -2796,6 +2831,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15041603157527:SENSEX|2026-07-16|CE|79300",
@@ -2847,6 +2886,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15043112933521:SENSEX|2026-07-16|CE|79200",
@@ -2882,6 +2925,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15053103625624:SENSEX|2026-07-16|CE|79200",
@@ -2933,6 +2980,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15053103625624:SENSEX|2026-07-16|CE|79200",
@@ -2984,6 +3035,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15054417746130:SENSEX|2026-07-16|CE|79200",
@@ -3025,6 +3080,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15054508104153:SENSEX|2026-07-16|CE|79100",
@@ -3066,6 +3125,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15054602659226:SENSEX|2026-07-16|CE|79100",
@@ -3107,6 +3170,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15061604240882:SENSEX|2026-07-16|CE|79100",
@@ -3164,6 +3231,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15061604240882:SENSEX|2026-07-16|CE|79100",
@@ -3215,6 +3286,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15061734387594:SENSEX|2026-07-16|CE|79200",
@@ -3256,6 +3331,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15063112940959:SENSEX|2026-07-16|CE|79100",
@@ -3291,6 +3370,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15070104122375:SENSEX|2026-07-16|CE|79100",
@@ -3342,6 +3425,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15070104122375:SENSEX|2026-07-16|CE|79100",
@@ -3393,6 +3480,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15070352000865:SENSEX|2026-07-16|CE|79100",
@@ -3434,6 +3525,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15070848446632:SENSEX|2026-07-16|CE|79100",
@@ -3469,6 +3564,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -3498,6 +3597,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16040104851679:SENSEX|2026-07-16|CE|78500",
@@ -3549,6 +3652,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16040104851679:SENSEX|2026-07-16|CE|78500",
@@ -3606,6 +3713,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16041609169832:SENSEX|2026-07-16|CE|78500",
@@ -3657,6 +3768,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16041609169832:SENSEX|2026-07-16|CE|78500",
@@ -3708,6 +3823,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16041609169832:SENSEX|2026-07-16|CE|78500",
@@ -3759,6 +3878,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16041609169832:SENSEX|2026-07-16|CE|78500",
@@ -3810,6 +3933,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16042903793137:SENSEX|2026-07-16|CE|78500",
@@ -3845,6 +3972,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -3868,6 +3999,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16043755765411:SENSEX|2026-07-16|CE|78600",
@@ -3903,6 +4038,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16044605287422:SENSEX|2026-07-16|CE|78500",
@@ -3938,6 +4077,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16044605287422:SENSEX|2026-07-16|CE|78500",
@@ -3973,6 +4116,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16044605287422:SENSEX|2026-07-16|CE|78500",
@@ -4008,6 +4155,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16045904232064:SENSEX|2026-07-16|CE|78300",
@@ -4049,6 +4200,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16051605997502:SENSEX|2026-07-16|CE|78500",
@@ -4079,6 +4234,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77500#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16051605997502:SENSEX|2026-07-16|CE|78500",
@@ -4242,6 +4401,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 60,
    "closed": 60,
    "remaining": 0,
@@ -4303,6 +4463,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|PE|74900#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:11019847:SENSEX|2026-07-16|PE|77400",
@@ -4338,6 +4502,10 @@
      "tag_role": "WING_LONG_BY_TAG",
      "role": "WING",
      "quantity": 40,
+     "quantity_in_this_episode": 40,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|PE|74900#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:BODY:11020304:SENSEX|2026-07-16|PE|77600",
@@ -4572,6 +4740,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 60,
    "closed": 60,
    "remaining": 0,
@@ -4651,6 +4820,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77200#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -4667,6 +4840,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77200#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -4683,6 +4860,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77200#1"
+     ],
      "W1": [],
      "W1_S60": [],
      "W2_weighted_units": [],
@@ -5199,6 +5380,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 260,
    "closed": 260,
    "remaining": 0,
@@ -5332,6 +5514,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -5355,6 +5541,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15040104604092:SENSEX|2026-07-16|CE|79500",
@@ -5390,6 +5580,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15041603157527:SENSEX|2026-07-16|CE|79300",
@@ -5447,6 +5641,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15041710049389:SENSEX|2026-07-16|CE|79400",
@@ -5488,6 +5686,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [],
      "W1_S60": [
       {
@@ -5511,6 +5713,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15044605124552:SENSEX|2026-07-16|CE|79300",
@@ -5546,6 +5752,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15044605124552:SENSEX|2026-07-16|CE|79300",
@@ -5581,6 +5791,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15044605124552:SENSEX|2026-07-16|CE|79300",
@@ -5622,6 +5836,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15050113227381:SENSEX|2026-07-16|CE|79300",
@@ -5657,6 +5875,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15051635117995:SENSEX|2026-07-16|CE|79300",
@@ -5692,6 +5914,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15051734322274:SENSEX|2026-07-16|CE|79200",
@@ -5733,6 +5959,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15060113630501:SENSEX|2026-07-16|CE|79200",
@@ -5768,6 +5998,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77600#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16052904373481:SENSEX|2026-07-16|CE|78500",
@@ -5824,7 +6058,7 @@
    "case_type": "CT9_MULTI_PARENT_CLOSING_BATCH",
    "status": "AVAILABLE",
    "selection_rule": "first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion",
-   "selection_note": "",
+   "selection_note": "chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING",
    "anchor": "INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:006",
    "position_id": "SENSEX|2026-07-16|CE|77400#1",
    "instrument_id": "SENSEX|2026-07-16|CE|77400",
@@ -7170,6 +7404,7 @@
      "inventory_after": 0
     }
    ],
+   "related_reversal_episodes": [],
    "opened": 620,
    "closed": 620,
    "remaining": 0,
@@ -7627,6 +7862,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15054508104153:SENSEX|2026-07-16|CE|79100",
@@ -7674,6 +7913,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15061506206664:SENSEX|2026-07-16|CE|79200",
@@ -7709,6 +7952,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15061506206664:SENSEX|2026-07-16|CE|79200",
@@ -7744,6 +7991,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15062207805779:SENSEX|2026-07-16|CE|79200",
@@ -7779,6 +8030,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15062207805779:SENSEX|2026-07-16|CE|79200",
@@ -7814,6 +8069,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15062207805779:SENSEX|2026-07-16|CE|79200",
@@ -7849,6 +8108,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15070352000865:SENSEX|2026-07-16|CE|79100",
@@ -7890,6 +8153,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15070352000865:SENSEX|2026-07-16|CE|79100",
@@ -7931,6 +8198,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15072409110166:SENSEX|2026-07-16|CE|79100",
@@ -8004,6 +8275,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_15091009934643:SENSEX|2026-07-16|CE|79100",
@@ -8039,6 +8314,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16034615219205:SENSEX|2026-07-16|CE|78700",
@@ -8074,6 +8353,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16034615219205:SENSEX|2026-07-16|CE|78700",
@@ -8109,6 +8392,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16034615219205:SENSEX|2026-07-16|CE|78700",
@@ -8144,6 +8431,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16034615219205:SENSEX|2026-07-16|CE|78700",
@@ -8179,6 +8470,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16034615219205:SENSEX|2026-07-16|CE|78700",
@@ -8214,6 +8509,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16034615219205:SENSEX|2026-07-16|CE|78700",
@@ -8249,6 +8548,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16035905853326:SENSEX|2026-07-16|CE|78400",
@@ -8290,6 +8593,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16040204334594:SENSEX|2026-07-16|CE|78500",
@@ -8337,6 +8644,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16040315568009:SENSEX|2026-07-16|CE|78500",
@@ -8372,6 +8683,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16041821864265:SENSEX|2026-07-16|CE|78500",
@@ -8407,6 +8722,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16042305875393:SENSEX|2026-07-16|CE|78300",
@@ -8442,6 +8761,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16043755765411:SENSEX|2026-07-16|CE|78600",
@@ -8477,6 +8800,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16044703994004:SENSEX|2026-07-16|CE|78500",
@@ -8518,6 +8845,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16045656580917:SENSEX|2026-07-16|CE|78600",
@@ -8565,6 +8896,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16045656580917:SENSEX|2026-07-16|CE|78600",
@@ -8612,6 +8947,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16045717739989:SENSEX|2026-07-16|CE|78300",
@@ -8669,6 +9008,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16045717739989:SENSEX|2026-07-16|CE|78300",
@@ -8726,6 +9069,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16045904232064:SENSEX|2026-07-16|CE|78300",
@@ -8761,6 +9108,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16050103711850:SENSEX|2026-07-16|CE|78600",
@@ -8797,6 +9148,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16050103711850:SENSEX|2026-07-16|CE|78600",
@@ -8833,6 +9188,10 @@
      "tag_role": "BODY_SHORT_BY_TAG",
      "role": "BODY",
      "quantity": 20,
+     "quantity_in_this_episode": 20,
+     "episodes_with_opening_allocations": [
+      "SENSEX|2026-07-16|CE|77400#1"
+     ],
      "W1": [
       {
        "counterpart": "WBI:OPENING:WING:h_16050205556200:SENSEX|2026-07-16|CE|78600",

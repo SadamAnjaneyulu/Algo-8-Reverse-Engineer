@@ -215,8 +215,8 @@ def test_case_selection_reproducible_and_matches_committed(cyc, D):
 
 def test_case_selection_ignores_prices_and_outcomes(cyc, D):
     D2 = copy.deepcopy(D)
-    for f in D2['fills'].values(): f['price_paise'] = str(int(f['price_paise']) * 7 + 13)
-    for it in D2['items']: it['avg_price_paise'] = '1'
+    for f in D2['fills'].values(): f['exec_price_paise'] = str(int(f['exec_price_paise']) * 7 + 13)
+    for it in D2['items']: it['avg_exec_price_paise'] = '1'
     assert K.select(D2) == K.select(D)
 
 
@@ -235,7 +235,7 @@ def test_case_is_first_qualifying_in_time(cyc, D):
 def test_unavailable_case_types_not_borrowed(cyc, D):
     S = K.select(D)
     assert S['CT4_REMAINING_AT_EXPIRY']['status'] == 'UNAVAILABLE' and S['CT4_REMAINING_AT_EXPIRY']['episode_id'] is None
-    assert (S['CT5_REVERSAL']['status'] == 'AVAILABLE') == (cyc.und == 'NIFTY')
+    assert (S['CT5_REVERSAL']['status'] == 'AVAILABLE') == any(e['event_type'] == 'REVERSED' for e in D['events']) == any(e['ended_by'] == 'reversal' for e in cyc.ls.episodes.values())
     for s in S.values():
         if s['status'] == 'AVAILABLE': assert s['episode_id'].startswith(f'{cyc.und}|{cyc.expiry}|')                       # an episode of THIS cycle only
     rec = json.load(open(os.path.join(DATA, cyc.key, 'case_studies.json')))['records']; assert rec['CT4_REMAINING_AT_EXPIRY']['status'] == 'UNAVAILABLE' and 'not borrowed' in rec['CT4_REMAINING_AT_EXPIRY']['reason']
@@ -280,3 +280,133 @@ def test_cycle_isolation_against_full_ledger(cyc):
     ins, fills, _ = H.generate(REPO); full = LineageSet(fills, ins, 'HISTORICAL_OBSERVED_REPLAY', 'src'); inst = set(cyc.ins)
     assert [e for e in full.events if full.episodes[e[1]]['instrument_id'] in inst] == list(cyc.ls.events)
     assert {k: v for k, v in full.episodes.items() if v['instrument_id'] in inst} == cyc.ls.episodes
+
+
+# ------------------------------------------------------------------------------------------------------------ review-driven additions (independent review of M2-E; each closes a gap or a surviving mutant)
+RAW = os.path.join(REPO, 'Trades_GKOHNP140.csv')
+
+
+def raw_cycle(und, exp):
+    """Independent parse of the raw ledger (no pe.* code): column indices found by the independent reviewer (side 11, und 12, strike 14, expiry 15, right 16, qty 33, epoch 161)."""
+    import datetime as dt
+    out = []
+    with open(RAW) as fh:
+        for i, r in enumerate(csv.reader(fh)):
+            if r[12] != und or dt.datetime.strptime(r[15], '%m/%d/%Y %H:%M').date().isoformat() != exp: continue
+            out.append((int(r[161]), i, 1 if r[11] == 'Buy' else -1, int(r[33]), f"{und}|{exp}|{r[16]}|{int(r[14])}", r[16]))
+    return sorted(out)
+
+
+def test_v1_matches_raw_ledger_independently(cyc):
+    raw = raw_cycle(cyc.und, cyc.expiry); ch = [r for r in frows(cyc.key, 'V1_inventory_evolution.csv') if r['row_kind'] == 'FILL']; assert len(raw) == len(ch)
+    pos = defaultdict(int)
+    for (ep, i, side, q, inst, cp), row in zip(raw, ch):
+        pos[inst] += side * q; s_ = Counter()
+        for k, p in pos.items():
+            if p: s_[('long' if p > 0 else 'short', k.split('|')[2])] += abs(p)
+        assert row['ts_utc_s'] == str(ep) and [int(row[c]) for c in ('short_CE', 'short_PE', 'long_CE', 'long_PE')] == [s_[('short', 'CE')], s_[('short', 'PE')], s_[('long', 'CE')], s_[('long', 'PE')]]
+    assert all(v == 0 for v in pos.values())
+
+
+def test_fill_prices_are_labelled_execution_and_equal_raw(cyc):
+    import datetime as dt
+    rawpx = {}
+    with open(RAW) as fh:
+        for i, r in enumerate(csv.reader(fh)):
+            if r[12] == cyc.und and dt.datetime.strptime(r[15], '%m/%d/%Y %H:%M').date().isoformat() == cyc.expiry: rawpx[i] = round(float(r[137]) * 100)
+    fl = drows(cyc.key, 'fills.tsv'); assert len(fl) == len(rawpx) and all(int(f['exec_price_paise']) == rawpx[int(f['source_row_id'])] for f in fl)      # execution prices equal the raw PER-FILL price column (col 137); col 18 is the order's running average and differs for partial fills
+    import glob
+    for p in glob.glob(os.path.join(DATA, cyc.key, '*.tsv')):
+        h = open(p).readline().rstrip('\n').split('\t'); assert 'price_paise' not in h and 'avg_price_paise' not in h, p
+    assert 'exec_price_paise' in open(os.path.join(DATA, cyc.key, 'fills.tsv')).readline()
+
+
+def test_v2_event_rows_equal_lifecycle_exactly(cyc):                           # kills mutant: V2 EVENT quantity changed
+    ev = [r for r in frows(cyc.key, 'V2_position_lifecycle_timeline.csv') if r['record'] == 'EVENT']; lc = drows(cyc.key, 'lifecycle_events.tsv'); assert len(ev) == len(lc)
+    key = lambda r: (r['episode_id'], r['event_type'], r['fill_id'], r['ts_ist'], r['quantity'], r['inventory_after'])
+    assert sorted(key(r) for r in ev) == sorted(key(r) for r in lc)
+
+
+def test_v3_tp03_overlay_equals_dataset(cyc):                                  # kills mutant: TP-03 window_start_ist shifted
+    ov = frows(cyc.key, 'V3_opening_activity_cohort_map__tp03_windows_overlay.csv'); ds = drows(cyc.key, 'tp03_windows.tsv'); assert len(ov) == len(ds)
+    for a, b in zip(ov, ds): assert (a['date'], a['window_ist'], a['window_start_ist'], a['view2_class'], a['control_window']) == (b['date'], b['window'], b['window_start_ist'], b['view2_class'], b['control_window'])
+    for b in ds: assert b['window_start_ist'] == f"{b['date']} {b['window']}:00" and F.ist_str(int(b['window_start_ts_utc_s'])) == b['window_start_ist']            # label is IST wall clock
+
+
+def _w_cands(cy, method):
+    items = drows(cy, 'm2d_wing_body_items.tsv'); L = [l for l in drows(cy, f'm2d_wing_body_links_{method}.tsv') if l['level'] == 'OPENING']; W = [r for r in items if r['level'] == 'OPENING' and r['role'] == 'WING']; B = [r for r in items if r['level'] == 'OPENING' and r['role'] == 'BODY']
+    cw = Counter(l['wing_item'] for l in L); cb = Counter(l['body_item'] for l in L); return W, B, cw, cb
+
+
+@pytest.mark.parametrize('m', ('W1', 'W1_S60', 'W3'))
+def test_v5_multiplicity_bars_and_v6_stacks_equal_recomputation(cyc, m):     # kills mutants: V5 multiplicity bars swapped, V6 unit stack moved
+    W, B, cw, cb = _w_cands(cyc.key, m); ch = {r['category']: float(r['value']) for r in frows(cyc.key, f'V5_{m}_wing_body.csv')}; mult = lambda items, c: [sum(1 for i in items if min(c.get(i['item_id'], 0), 5) == k) for k in range(6)]
+    for k, (a, b) in enumerate(zip(mult(W, cw), mult(B, cb))):
+        lab = '5+' if k == 5 else str(k); assert ch[f'wing items with {lab} candidate bodies'] == a and ch[f'body items with {lab} candidate wings'] == b
+    v6 = {(r['section'], r['metric']): float(r['value']) for r in frows(cyc.key, 'V6_coverage_uncertainty_dashboard.csv') if r['section'] == 'A_units_by_candidate_status'}
+    if m != 'W3':
+        for role, items, c in (('wing', W, cw), ('body', B, cb)):
+            for nm, pred in (('1 candidate', lambda n: n == 1), ('>=2 candidates', lambda n: n >= 2), ('none', lambda n: n == 0)): assert v6[('A_units_by_candidate_status', f'{role} units, {m}: {nm}')] == sum(int(i['qty']) for i in items if pred(c.get(i['item_id'], 0)))
+    else:
+        L = [l for l in drows(cyc.key, 'm2d_wing_body_links_W3.tsv') if l['level'] == 'OPENING']; mq = sum(float(l['queue_matched_units']) for l in L)
+        assert v6[('A_units_by_candidate_status', 'wing units, W3: queue-matched (W3 arithmetic)')] == mq and v6[('A_units_by_candidate_status', 'body units, W3: queue residual (W3)')] == sum(int(i['qty']) for i in B) - mq
+
+
+def test_v5_w2_scatter_rows_equal_link_sums(cyc):
+    sw = defaultdict(float)
+    for l in drows(cyc.key, 'm2d_wing_body_links_W2.tsv'):
+        if l['level'] == 'OPENING': sw[l['body_item']] += float(l['weighted_wing_units'])
+    ch = {r['category']: float(r['value']) for r in frows(cyc.key, 'V5_W2_wing_body.csv') if r['panel'] == 'w2_body_vs_weighted_units'}; assert ch and all(abs(ch[k] - sw[k]) < 1e-3 for k in ch)
+
+
+def test_case_chart_csv_equals_lifecycle_subset(cyc):
+    rec = json.load(open(os.path.join(DATA, cyc.key, 'case_studies.json')))['records']; lc = drows(cyc.key, 'lifecycle_events.tsv')
+    for n, r in rec.items():
+        if r['status'] != 'AVAILABLE': continue
+        ev = [x for x in frows(cyc.key, f'cases/{n}.csv') if x['record'] == 'EVENT']; ids = set(r['chart_episode_ids']); assert sorted(x['fill_id'] + x['event_type'] for x in ev) == sorted(x['fill_id'] + x['event_type'] for x in lc if x['episode_id'] in ids), n
+
+
+def test_case_selection_cases_6_to_9_brute_force_and_skips_disclosed(cyc, D):
+    S = K.select(D); used = [S[n]['episode_id'] for n in list(S)[:5] if S[n]['status'] == 'AVAILABLE']
+    items = {(r['parent_order_id'], r['instrument_id']): r for r in D['items']}; ep = lambda iid: items[(K.item_parts(iid)[2], K.item_parts(iid)[3])]['episode_ids'].split(';')[0]
+    b1 = defaultdict(set); w1 = defaultdict(set); b60 = defaultdict(set)
+    for l in D['links']['W1']:
+        if l['level'] == 'OPENING': b1[l['body_item']].add(l['wing_item']); w1[l['wing_item']].add(l['body_item'])
+    for l in D['links']['W1_S60']:
+        if l['level'] == 'OPENING': b60[l['body_item']].add(l['wing_item'])
+    bodies = sorted((r for r in D['wb_items'].values() if r['level'] == 'OPENING' and r['role'] == 'BODY'), key=lambda r: (int(r['first_ts']), r['item_id'])); wings = sorted((r for r in D['wb_items'].values() if r['level'] == 'OPENING' and r['role'] == 'WING'), key=lambda r: (int(r['first_ts']), r['item_id']))
+    efill = defaultdict(list)
+    for e in D['events']: efill[e['fill_id']].append(e['episode_id'])
+    cb = []
+    for b in sorted((b for b in D['batches']['C1'] if b['threshold_s'] == '10' and int(b['n_parents']) >= 2), key=lambda b: (int(b['start_ts']), b['batch_id'])):
+        p0 = sorted((x for x in D['portions']['C1'] if x['batch_id'] == b['batch_id']), key=lambda x: (int(x['timestamp_s']), int(x['source_row_id'])))[0]; cb.append((efill[p0['fill_id']][0], b['batch_id']))
+    cands = {'CT6_MULTIPLE_CANDIDATE_WINGS': [(ep(r['item_id']), r['item_id']) for r in bodies if len(b1.get(r['item_id'], ())) >= 2], 'CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES': [(ep(r['item_id']), r['item_id']) for r in wings if len(w1.get(r['item_id'], ())) >= 2],
+             'CT7_NO_CANDIDATE_WING': [(ep(r['item_id']), r['item_id']) for r in bodies if not b1.get(r['item_id'])], 'CT8_W1_VS_W1S60_DISAGREEMENT': [(ep(r['item_id']), r['item_id']) for r in bodies if b1.get(r['item_id'], set()) != b60.get(r['item_id'], set())], 'CT9_MULTI_PARENT_CLOSING_BATCH': cb}
+    for n, c in cands.items():
+        fresh = [x for x in c if x[0] not in used]; expect = (fresh or c)[0]; assert (S[n]['episode_id'], S[n]['anchor']) == expect, n
+        if expect != c[0]: assert 'chronologically first qualifying candidate' in S[n]['note'] and 'skipped' in S[n]['note']                  # a skipped chronologically-first candidate is always disclosed
+        used.append(expect[0])
+
+
+def test_reversal_case_record_does_not_mix_episodes():
+    r = json.load(open(os.path.join(DATA, 'NIFTY_2026-06-30', 'case_studies.json')))['records']['CT5_REVERSAL']; assert r['related_reversal_episodes'] and r['related_reversal_episodes'][0]['started_by_reversal'] and r['related_reversal_episodes'][0]['opened'] == 390
+    assert 'h_30084825701151' not in [w['parent_order_id'] for w in r['wing_body_candidates']]                      # the opening part of the reversing fill belongs to the successor episode
+    assert all('item_id' in w for w in r['wing_body_candidates']) and sum(w['quantity_in_this_episode'] for w in r['wing_body_candidates']) == r['opened']       # every opening item is in scope here: the episode's opened units are fully accounted for
+    assert all(r['position_id'] in w['episodes_with_opening_allocations'] for w in r['wing_body_candidates'] if 'item_id' in w)
+
+
+def test_case_markdown_states_selection_rule_and_numbers():
+    md = open(os.path.join(PE, 'reports', 'M2E_POSITION_CASE_STUDIES.md')).read(); assert 'not already used by an earlier case type' in md and 'skipped' in md and 'UNAVAILABLE' in md
+    assert md.count('\n### ') == 2 * len(K_RULES()); assert 'cannot be borrowed' not in md and 'Cannot conclude' in md
+    assert 'no wing existed' in md                                                                     # empty candidate sets are not read as 'no wing'
+
+
+def K_RULES(): return K.RULES
+
+
+def test_reports_numbers_come_from_coverage_json():
+    cov = {k: json.load(open(os.path.join(DATA, k, 'coverage.json'))) for k in KEYS}; md = open(os.path.join(PE, 'reports', 'M2E_CYCLE_COVERAGE_REPORT.md')).read()
+    for k in KEYS: assert f"{cov[k]['fills']['raw_fill_count']:,}" in md and f"{cov[k]['fills']['unique_parent_orders']:,}" in md and f"{cov[k]['fills']['opening_units']:,} / {cov[k]['fills']['closing_units']:,}" in md
+    assert 'NOT COMPUTED (source absent)' in md and 'UNAVAILABLE' in md
+    cat = open(os.path.join(PE, 'reports', 'M2E_VISUALIZATION_CATALOG.md')).read()
+    for t in ('8,399', '7,301', '3,501', '3,800', '1,098', '133,640', '8,204', '68,720', '336,040', '107,530', 'FULL-LEDGER SCOPE'): assert t in cat

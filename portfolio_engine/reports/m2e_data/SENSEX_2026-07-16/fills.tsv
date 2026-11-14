@@ -1,4 +1,4 @@
-fill_id	source_row_id	parent_order_id	module_tag	instrument_id	right	strike	ts_utc_s	ts_ist	session_ist	d_label	side	quantity	price_paise	requested_quantity	order_status	is_duplicate_fill	opening_qty	closing_qty
+fill_id	source_row_id	parent_order_id	module_tag	instrument_id	right	strike	ts_utc_s	ts_ist	session_ist	d_label	side	quantity	exec_price_paise	requested_quantity	order_status	is_duplicate_fill	opening_qty	closing_qty
 F011958	11958	11019253	num	SENSEX|2026-07-16|CE|81200	CE	81200	1784087160	2026-07-15 09:16:00	2026-07-15	D-1	1	20	170	20	Filled	0	20	0
 F011959	11959	11019302	num	SENSEX|2026-07-16|PE|73200	PE	73200	1784087161	2026-07-15 09:16:01	2026-07-15	D-1	1	20	230	20	Filled	0	20	0
 F011960	11960	11019365	num	SENSEX|2026-07-16|CE|81200	CE	81200	1784087161	2026-07-15 09:16:01	2026-07-15	D-1	1	20	180	20	Filled	0	20	0

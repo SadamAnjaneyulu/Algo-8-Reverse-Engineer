@@ -1,5 +1,6 @@
 """M2-E position case studies. Selection is PREDEFINED and structural: candidates are scanned in chronological order (first timestamp, then id) and the FIRST qualifying
-episode / item / batch is taken. Profit, loss, price and any outcome are never consulted. A case type with no qualifying candidate in THIS cycle is reported UNAVAILABLE
+episode / item / batch WHOSE EPISODE WAS NOT ALREADY USED BY AN EARLIER CASE TYPE is taken (if every qualifying candidate was used, the chronologically first is reused and flagged); a skipped
+chronologically-first candidate is always disclosed in the selection note. Profit, loss, price and any outcome are never consulted. A case type with no qualifying candidate in THIS cycle is reported UNAVAILABLE
 (never borrowed from the other cycle). Cases prefer an episode not already used by an earlier case type; if the only qualifying episode was used, it is reused and flagged.
 """
 import os
@@ -63,11 +64,12 @@ def select(D):
     b1, w1 = _cands(D, 'W1'); b60, _ = _cands(D, 'W1_S60')
     oi = {(r['parent_order_id'], r['instrument_id']): r for r in D['items']}
     def ep_of_item(item_id):
-        _, _, p, inst = item_parts(item_id); r = oi[(p, inst)]; fid = r['oa_ids'].split(',')[0].split(':')[1]; return efill[fid][0]
+        _, _, p, inst = item_parts(item_id); return oi[(p, inst)]['episode_ids'].split(';')[0]       # episode of the item's own opening allocations (a reversing fill's opening belongs to the SUCCESSOR episode)
     def pick(name, cands, anchor_fn=None):
         rule = dict(RULES)[name]
         if not cands: out[name] = dict(status='UNAVAILABLE', rule=rule, episode_id=None, anchor=None, note='no qualifying candidate in this cycle (not borrowed from another cycle)'); return
-        fresh = [c for c in cands if c[0] not in used]; chosen = (fresh or cands)[0]; note = '' if fresh else f'reuses the episode of {used[chosen[0]]} (no distinct qualifying episode)'
+        fresh = [c for c in cands if c[0] not in used]; chosen = (fresh or cands)[0]; note = '' if fresh else f'reuses the episode of {used[chosen[0]]} (no unused qualifying episode)'
+        if fresh and chosen != cands[0]: note = f'chronologically first qualifying candidate ({cands[0][1] or cands[0][0]}) skipped: its episode was already used by {used[cands[0][0]]}'
         used.setdefault(chosen[0], name); out[name] = dict(status='AVAILABLE', rule=rule, episode_id=chosen[0], anchor=chosen[1], note=note, n_qualifying=len(cands))
     pick('CT1_INCREMENTAL_OPENING', [(r['episode_id'], None) for r in eps if cnt[r['episode_id']]['ADDED'] >= 3])
     pick('CT2_PARTIAL_REDUCTION', [(r['episode_id'], None) for r in eps if cnt[r['episode_id']]['PARTIALLY_REDUCED'] >= 2 and r['terminal_status'] == 'CLOSED'])
@@ -106,23 +108,23 @@ def record(c, D, name, sel):
             if mem['threshold_s'] == '10' and mem['parent_order_id'] in close_parents:
                 b = bi[mem['batch_id']]; rows.append(dict(parent_order_id=mem['parent_order_id'], batch_id=mem['batch_id'], batch_n_parents=int(b['n_parents']), batch_duration_s=int(b['duration_s']), batch_start_ist=F.ist_str(int(b['start_ts'])), batch_end_ist=F.ist_str(int(b['end_ts'])), join_gap_s=mem['join_gap_s'] or 'first member'))
         batch[m] = rows
-    itm = [r for r in D['items'] if r['instrument_id'] == inst and any(f"OA:{f['fill_id']}" in r['oa_ids'].split(',') for f in fills)]; wb = []
+    itm = [r for r in D['items'] if eid in r['episode_ids'].split(';')]; wb = []                              # items with an opening allocation IN this episode
     for r in itm:
         iid = next((k for k, v in D['wb_items'].items() if v['level'] == 'OPENING' and v['parent_order_id'] == r['parent_order_id'] and v['instrument_id'] == r['instrument_id']), None)
-        if iid is None: wb.append(dict(parent_order_id=r['parent_order_id'], tag_role=r['tag_role'], status='NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)')); continue
-        d = dict(parent_order_id=r['parent_order_id'], item_id=iid, tag_role=r['tag_role'], role=D['wb_items'][iid]['role'], quantity=int(r['quantity']))
+        if iid is None: wb.append(dict(parent_order_id=r['parent_order_id'], tag_role=r['tag_role'], quantity_in_this_episode=sum(ls.oa[o][8] for o in r['oa_ids'].split(',') if ls.oa[o][5] == eid), status='NOT_IN_M2D_TAGGED_SCOPE (unclassified by module tag; NOT a claim that no wing existed)')); continue
+        d = dict(parent_order_id=r['parent_order_id'], item_id=iid, tag_role=r['tag_role'], role=D['wb_items'][iid]['role'], quantity=int(r['quantity']), quantity_in_this_episode=sum(ls.oa[o][8] for o in r['oa_ids'].split(',') if ls.oa[o][5] == eid), episodes_with_opening_allocations=r['episode_ids'].split(';'))
         for m in ('W1', 'W1_S60'):
             other = 'wing_item' if D['wb_items'][iid]['role'] == 'BODY' else 'body_item'; me = 'body_item' if other == 'wing_item' else 'wing_item'
             d[m] = [dict(counterpart=l[other], dt_s=int(l['dt_s']), qty_ratio=l['qty_ratio'], evidence_class=l['evidence_class']) for l in D['links'][m] if l['level'] == 'OPENING' and l[me] == iid]
         d['W2_weighted_units'] = [dict(counterpart=l['wing_item' if D['wb_items'][iid]['role'] == 'BODY' else 'body_item'], weighted_wing_units=l['weighted_wing_units']) for l in D['links']['W2'] if l['level'] == 'OPENING' and l['body_item' if D['wb_items'][iid]['role'] == 'BODY' else 'wing_item'] == iid]
         d['W3_queue_matched_units'] = [dict(counterpart=l['wing_item' if D['wb_items'][iid]['role'] == 'BODY' else 'body_item'], queue_matched_units=l['queue_matched_units']) for l in D['links']['W3'] if l['level'] == 'OPENING' and l['body_item' if D['wb_items'][iid]['role'] == 'BODY' else 'wing_item'] == iid]
         wb.append(d)
-    rem = int(E['remaining'])
+    rem = int(E['remaining']); rel = [dict(episode_id=e['episode_id'], direction=e['direction'], opened=int(e['opened']), closed=int(e['closed']), remaining=int(e['remaining']), started_by_reversal=bool(int(e['started_by_reversal'])), ended_by=e['ended_by']) for e in D['episodes'] if e['instrument_id'] == inst and e['episode_id'] != eid and ((e['started_by_reversal'] == '1' and e['first_ts_utc_s'] == E['last_ts_utc_s'] and E['ended_by'] == 'reversal') or (E['started_by_reversal'] == '1' and e['ended_by'] == 'reversal' and e['last_ts_utc_s'] == E['first_ts_utc_s']))]
     return dict(case_type=name, status='AVAILABLE', selection_rule=sel['rule'], selection_note=sel['note'], anchor=sel['anchor'], position_id=eid, instrument_id=inst, direction=E['direction'], right=E['right'], strike=E['strike'],
-                fills=[dict(fill_id=f['fill_id'], source_row_id=f['source_row_id'], parent_order_id=f['parent_order_id'], module_tag=f['module_tag'], side=f['side'], quantity=int(f['quantity']), fill_opening_qty=int(f['opening_qty']), fill_closing_qty=int(f['closing_qty']), opening_qty_in_episode=oq_ep.get(f['fill_id'], 0), closing_qty_in_episode=cq_ep.get(f['fill_id'], 0), exec_price_paise=int(f['price_paise']), ts_ist=f['ts_ist'], d_label=f['d_label']) for f in fills],
+                fills=[dict(fill_id=f['fill_id'], source_row_id=f['source_row_id'], parent_order_id=f['parent_order_id'], module_tag=f['module_tag'], side=f['side'], quantity=int(f['quantity']), fill_opening_qty=int(f['opening_qty']), fill_closing_qty=int(f['closing_qty']), opening_qty_in_episode=oq_ep.get(f['fill_id'], 0), closing_qty_in_episode=cq_ep.get(f['fill_id'], 0), exec_price_paise=int(f['exec_price_paise']), ts_ist=f['ts_ist'], d_label=f['d_label']) for f in fills],
                 opening_parents=open_parents, closing_parents=close_parents,
                 lifecycle=[dict(seq=int(e['seq']), event=e['event_type'], ts_ist=e['ts_ist'], quantity=int(e['quantity']), inventory_after=int(e['inventory_after'])) for e in ev],
-                opened=int(E['opened']), closed=int(E['closed']), remaining=rem, terminal_status=E['terminal_status'], started_by_reversal=bool(int(E['started_by_reversal'])), ended_by=E['ended_by'],
+                related_reversal_episodes=rel, opened=int(E['opened']), closed=int(E['closed']), remaining=rem, terminal_status=E['terminal_status'], started_by_reversal=bool(int(E['started_by_reversal'])), ended_by=E['ended_by'],
                 convention=dict(observed_layer='identical under FIFO, LIFO, AVG', closing_portions=len(cps), closing_portions_convention_sensitive_FIFO_vs_LIFO=cpsens.get('CONVENTION_SENSITIVE', 0), avg='pooled; lot attribution NOT_IDENTIFIABLE'),
                 closing_batch_association_10s=batch, wing_body_candidates=wb,
                 evidence=dict(EVIDENCE_LINES), missing_information=['historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only', 'TP-03 per-parent window id (not published)', 'the decision/rationale for any order (never observable from fills)'],
