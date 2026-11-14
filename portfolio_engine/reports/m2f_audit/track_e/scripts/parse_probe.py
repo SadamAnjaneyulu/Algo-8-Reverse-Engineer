@@ -22,7 +22,7 @@ V = [variant('baseline'), variant('crlf_events', lambda t: t.replace('\n', '\r\n
      variant('fullwidth_digit_qty', setcol('quantity', '１３０')), variant('float_qty', setcol('quantity', '130.0')), variant('hex_qty', setcol('quantity', '0x82')), variant('leading_zero_qty', setcol('quantity', '0130')),
      variant('empty_line_mid', lambda t: t.replace('\n', '\n\n', 2)), variant('comment_mid', lambda t: t.replace('\n', '\n# note\n', 2)), variant('no_trailing_newline', lambda t: t.rstrip('\n')), variant('lone_cr_newlines', lambda t: t.replace('\n', '\r')),
      variant('space_only_line', lambda t: t + '   \n'), variant('tab_only_extra_col', lambda t: t.replace('\n', '\textra\n', 3)), variant('minus_zero_side', setcol('side', '-0')), variant('side_plus1', setcol('side', '+1')),
-     variant('unicode_parent', setcol('parent_order_id', 'ÜÄ-é')), variant('ts_huge', setcol('timestamp_s', '99999999999999999999')), variant('dup_flag_2', setcol('is_duplicate_fill', '2')), variant('quote_in_field', setcol('evidence_source', '"x"'))]
+     variant('unicode_parent', setcol('parent_order_id', 'ÜÄ-é')), variant('ts_huge', setcol('timestamp_s', '99999999999999999999')), variant('dup_flag_2', setcol('is_duplicate_fill', '2')), variant('quote_in_field', setcol('evidence_source', '"x"')), variant('bad_schema_version', setcol('schema_version', 'pe.fill.v2'))]
 res = []
 for name, ev, ins in V:
     ep = os.path.join(a.work, name + '_ev.tsv'); ip = os.path.join(a.work, name + '_in.tsv'); open(ep, 'w', newline='', encoding='utf-8').write(ev); open(ip, 'w', newline='', encoding='utf-8').write(ins)

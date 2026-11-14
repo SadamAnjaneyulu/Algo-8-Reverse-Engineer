@@ -1,0 +1,122 @@
+[
+ {
+  "claim": "Raw columns 4,11,12,14,15,16,33,161,163 hold order no, side, underlying, strike, expiry, right, fill qty, UTC epoch, parent tag; 41,421 rows, all 167 fields, col 161 monotone",
+  "source": "prior reviewer / M1",
+  "independent_verification": "[RAW] inspected column values and monotonicity on raw CSV (field 137 vs 18 not needed)",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "col 163 is a tag, not always numeric (14,467 rows like h_23035028320863)"
+ },
+ {
+  "claim": "16,817 closing parents, 17,760 closing portions, 1,377,065 closing units, 26 mixed parents (7,620 of 14,105 units)",
+  "source": "M2C report \u00a71",
+  "independent_verification": "[RAW]+[IMPL] own replay and a separate minimal loop on the raw file",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "replay tie order = file order"
+ },
+ {
+  "claim": "All 10 committed views (C1/C2 x 2,5,10,30,60 s): batch membership, counts, sizes, start/end/duration, n_links, max gap, portion membership and quantities, join gaps and overlap flags, batch id numbering",
+  "source": "m2c_data",
+  "independent_verification": "[IMPL] independent reference (ref_closing.py) over the full ledger: 0 differences in all columns checked",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "shares the written spec with the author; spec misreading would not show"
+ },
+ {
+  "claim": "Chain durations 57/66/125/481/1,175 s; counts 7,127/3,777/3,065/2,171/1,502; pairs at g and g+1; equal-first-second groups 3,438 (11,139 parents); nesting; identical-batch counts 1,307/2,527/1,709/1,110",
+  "source": "M2C report \u00a72, addendum \u00a74",
+  "independent_verification": "[IMPL] recomputed (report_claims_check.py, chains_cycles.py), longest-3 table also matches",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": ""
+ },
+ {
+  "claim": "Unit conservation: every closing parent and portion exactly once per view; sum of batch units = total closing units",
+  "source": "M2C report \u00a74",
+  "independent_verification": "[RAW]+[IMPL] units from a raw-only loop = batch sums in all 10 views",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": ""
+ },
+ {
+  "claim": "Frozen cycles NIFTY 2026-06-30 and SENSEX 2026-07-16 batch counts (e.g. C1 10 s: 53 and 25 batches; 382 and 264 parents)",
+  "source": "own computation",
+  "independent_verification": "[IMPL] chains_cycles_result.json",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "not compared with any report table; each cycle spans two sessions (D-1, D0)"
+ },
+ {
+  "claim": "C2 equals C1 on this data under the approved convention",
+  "source": "M2C addendum \u00a71.5",
+  "independent_verification": "[IMPL] partitions identical at all thresholds; one parent (10853057) has last>first",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "convention-dependent: tie by parent id, last-then-row, or running-max reference gives one batch fewer at 2/5/10 s (4 parents), 0 at 30/60 s"
+ },
+ {
+  "claim": "Inclusive threshold gap<=g; whole-second precision matters at 2 s",
+  "source": "D2 text",
+  "independent_verification": "[IMPL] exclusive reading changes 1,214/840/153/50/63 batches (3,200/2,953/1,207/559/535 parents) at 2/5/10/30/60 s",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "inclusive is the approved text; sensitivity only"
+ },
+ {
+  "claim": "Excluding the 26 mixed parents changes membership",
+  "source": "M2C report \u00a71 scope",
+  "independent_verification": "[IMPL] 150/447/584/760/1,350 parents in changed batches",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "approved text includes them via closing portions"
+ },
+ {
+  "claim": "Stream definition, session boundary, unit = col 4 vs col 163, first/last any-fill timestamp for mixed parents have no effect on membership on the real data",
+  "source": "own measurement",
+  "independent_verification": "[IMPL] ambiguity_result.json",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "no mixed parent has an opening fill before its first closing fill; no parent spans sessions or instruments; effect could exist on other data"
+ },
+ {
+  "claim": "Synthetic boundaries (gap==g, g+1, ties, IST midnight, long chains, overlap, mixed, cross-expiry parents) agree between engine and reference; 600 fuzz scenarios x 10 views, 0 disagreements (175 with C1!=C2)",
+  "source": "own",
+  "independent_verification": "[IMPL] synthetic_boundaries.py",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "engine run only on synthetic input; fuzz is my generator"
+ },
+ {
+  "claim": "Missing/NaN timestamps are rejected by the engine",
+  "source": "own",
+  "independent_verification": "[IMPL] TypeError/ValueError raised",
+  "class": "Internal consistency only",
+  "status": "VERIFIED",
+  "limitation": "incidental exceptions, no explicit validation"
+ },
+ {
+  "claim": "Number-block variant CB_NUMBER_BLOCK_V1 is UNRESOLVED and not implemented",
+  "source": "BASKET_GROUPING_METHODOLOGY.md D2, M2C_NUMBER_BLOCK_AUDIT.md",
+  "independent_verification": "[INSPECTED] grep: no implementation in closing_batches.py, tools, tests, m2c_data (0 NUMBER_BLOCK hits in outputs); tools/number_block_diagnostics.py computes descriptive pair counts only. I did not interpret it.",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "diagnostics tool builds 500-jump blocks for description only"
+ },
+ {
+  "claim": "A closing batch is a decision / opening basket / recovered rule",
+  "source": "not claimed",
+  "independent_verification": "n/a",
+  "class": "Not testable with available data",
+  "status": "NOT VERIFIED",
+  "limitation": "correctly not claimed in the reports"
+ },
+ {
+  "claim": "Mutation suite: 28 mutants; existing tests kill 27/28, own reference kills 25/28",
+  "source": "own",
+  "independent_verification": "[IMPL]+[REPRO] mutations.json",
+  "class": "Internal consistency only",
+  "status": "VERIFIED",
+  "limitation": "survivors M13,M22,M23,M28 kept visible"
+ }
+]

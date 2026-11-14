@@ -7,7 +7,7 @@ import mutants
 S='/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_a'; MIR=S+'/mirror'; RES=HERE+'/mut_results'; os.makedirs(RES,exist_ok=True)
 TESTS=['tests/test_accounting.py','tests/test_lineage.py','tests/test_lineage_mutations.py','tests/test_lineage_parity.py','tests/test_lineage_real.py','tests/test_lineage_reference.py','tests/test_tp01_reconciliation.py','tests/test_parity.py']
 def run(mid):
-    m=[x for x in mutants.M if x['id']==mid][0]; d=f'{S}/mut/{mid}'; shutil.rmtree(d,ignore_errors=True); os.makedirs(d)
+    m=[x for x in mutants.M if x['id']==mid][0]; d=f'{S}/mut/{mid}'; shutil.rmtree(d,ignore_errors=True); os.makedirs(os.path.dirname(d),exist_ok=True)
     shutil.copytree(MIR,d,symlinks=True)
     p=f'{d}/portfolio_engine/{m["file"]}'; t=open(p).read()
     for o,n in m['edits']:
