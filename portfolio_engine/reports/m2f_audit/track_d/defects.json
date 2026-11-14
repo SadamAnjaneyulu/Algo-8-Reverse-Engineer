@@ -1,0 +1,178 @@
+[
+ {
+  "id": "D-01",
+  "severity": "Medium",
+  "title": "V4 (C1 and C2) legend hides the widest-batch marker in both cycles",
+  "location": "tools/m2e_charts.py:192 (axs[1].legend(loc=\"upper right\")); title at :193",
+  "evidence": "Figure title cites \"Widest batch: 92 parents, 53 s\" (NIFTY) / \"75 parents, 92 s\" (SENSEX) but that batch (NIFTY D0 14:25:00-14:25:53 at y=92; SENSEX D0 10:59-11:01 at y=75) plots inside the legend box and is not visible (inspected PNG crop; legend_overlap_probe.py counts 3 artists under the legend in all four V4 figures).",
+  "repro": "python3 legend_overlap_probe.py <scratch PE> ; open V4_C1_closing_batches.png D0 panel top right",
+  "impact": "The most important batch of the figure (the chain the title quotes) cannot be seen; reader sees only the small batches.",
+  "proposed_fix": "Place the legend outside the axes (e.g. bbox_to_anchor below the panel) or loc=\"lower right\"; mark the widest batch with an annotation.",
+  "proposed_test": "Render-time test: for every legend, assert no plotted point/segment lies inside its bbox (probe in legend_overlap_probe.py)."
+ },
+ {
+  "id": "D-02",
+  "severity": "Medium",
+  "title": "Case-study section claims the selection method was \"fixed before any case was looked at\" and each case says \"predefined, outcome-free\"; timestamped evidence does not support the first claim",
+  "location": "reports/M2E_POSITION_CASE_STUDIES.md:5 and :45,67,88,... (every case); tools/m2e_cases.py:16,42; python/pe/cases.py:1; reports/M2E_HISTORICAL_FORENSICS_REPORT.md:7,42; reports/m2e_data/review_dispositions.json:3,10",
+  "evidence": "git log --follow: pe/cases.py first exists in 10e33962 (2026-11-14T07:08:59Z), the same commit that first contains datasets, figures, case_studies.json and the case report; the rule text was edited again in 7117bbce (07:48:29Z, after review) although the 18 selected episodes/anchors are unchanged. The final report section H last bullet concedes history shows the rule only from the checkpoint, contradicting the heading. cycle freeze e06a711e (15:46:15Z, 2026-11-13) is solid but concerns cycles, not cases.",
+  "repro": "git log --follow --format=\"%h %ad %s\" --date=iso-strict -- portfolio_engine/python/pe/cases.py",
+  "impact": "Overstates pre-registration; reader may treat the case picks as outcome-blind and unbiased. (Selection was shown here to be price-independent and fully reproducible, so the substantive risk is wording, not results.)",
+  "proposed_fix": "Rename the heading to \"Selection method (structural rule; committed with the outputs; no timestamp evidence of being fixed earlier)\"; drop \"predefined\"/\"fixed before\" or add a commit that precedes the outputs for future runs.",
+  "proposed_test": "Doc-lint test: forbid \"fixed before any case\", \"predefined\" and \"outcome-blind\" in M2E_*.md unless a git commit timestamp earlier than the first output commit is referenced."
+ },
+ {
+  "id": "D-03",
+  "severity": "Medium",
+  "title": "Every selected case sits in the first part of D-1; rule structurally favours opening-minute (seed) structures and no D0 case exists",
+  "location": "python/pe/cases.py:11-20 (RULES), :68-73 (pick)",
+  "evidence": "case_selection_stats.json: all 9 NIFTY and 8 SENSEX selected episodes start on D-1; 16 of 17 start between 09:16 and 09:46 IST (exception: SENSEX CT9 at 11:15). 13 of 17 picks are the chronologically first qualifying candidate; 4 are not (NIFTY CT5 reuses the CT1 episode, NIFTY CT7 rank 2, NIFTY CT9 rank 5, SENSEX CT9 rank 6, all because the first candidate episode was already used). Qualifying candidates per type 16-179. Both NIFTY CT7 candidates (skipped rank 1, chosen rank 2) are 09:16:01 session-start bodies.",
+  "repro": "python3 verify_cases.py && cat case_selection_stats.json",
+  "impact": "Case studies are not representative of D0 (expiry day, where 69 of 85 NIFTY episodes end) or late-session behaviour; \"no candidate wing\" in CT7 may mainly describe session-start staging (first-minute bodies).",
+  "proposed_fix": "Add a stratified rule (e.g. first qualifying per D-label and time-of-day bucket) or state the concentration prominently in the case report.",
+  "proposed_test": "Test asserting each case-type pick is disclosed with its qualifying count and D-label; report generator prints the concentration."
+ },
+ {
+  "id": "D-04",
+  "severity": "Medium",
+  "title": "Case-study PNGs are generic single-episode V2 charts with no case-specific content (no case type, quantities, anchor item, counterpart, batch or price)",
+  "location": "tools/m2e_cases.py:~48 (CH.v2 per case), tools/m2e_charts.py:105-125",
+  "evidence": "Inspected NIFTY CT1,CT2,CT5,CT9 and SENSEX CT3,CT7,CT9 PNGs: title is \"V2 position lifecycle timeline\"; CT6/CT7/CT8/CT9 images show only the lifecycle markers of one episode, nothing about the wing/body candidates or batch that define the case; CT1 and CT5 (NIFTY) are the same episode and CT1 additionally shows the reversal successor; CT7 image (a lone short episode) invites reading \"no wing existed\".",
+  "repro": "open cases/CT7_NO_CANDIDATE_WING.png",
+  "impact": "Case figures do not make the case; the distinguishing evidence exists only in the markdown/JSON. Risk of mis-reading CT7.",
+  "proposed_fix": "Add case-type title, anchor item, quantities per event, counterpart list / batch bar; or label them \"lifecycle context of the case episode\".",
+  "proposed_test": "Check each case PNG manifest entry carries case_type in its title and an anchor annotation."
+ },
+ {
+  "id": "D-05",
+  "severity": "Low",
+  "title": "V4 C1 and C2 figures (and the V6 \"C1 vs C2 separate views\" panel) are identical in both cycles but present as two independent views",
+  "location": "tools/m2e_charts.py:210,317; verified by direct comparison",
+  "evidence": "All 304 NIFTY and 173 SENSEX batches (all thresholds), members and portions are identical between C1 and C2; V4_C1 and V4_C2 PNGs are visually the same. M2C_CLOSING_BATCH_REPORT.md:9,21,43 discloses this; the figures do not.",
+  "repro": "python3 (set comparison of m2c_closing_batches_C1/C2.tsv)",
+  "impact": "Two charts that agree because they share one dataset can be read as confirmation.",
+  "proposed_fix": "Add \"C2 == C1 on this cycle (M2-C \u00a73)\" to the V4/V6 titles or merge.",
+  "proposed_test": "Test: if C1 and C2 batch sets are identical the figure title must say so."
+ },
+ {
+  "id": "D-06",
+  "severity": "Low",
+  "title": "V5_W2 scatter: heavy overplotting and a y = x reference line",
+  "location": "tools/m2e_charts.py:276",
+  "evidence": "379 NIFTY body items collapse to 12 distinct points (14 in SENSEX); all x = 65 (or 20) so the scatter shows only y values; the dashed y = x line implies \"weights should equal body units\" although weights are not allocations.",
+  "repro": "open V5_W2_wing_body.png",
+  "impact": "Visual suggests allocation parity and hides multiplicity.",
+  "proposed_fix": "Replace by a bubble/count plot or histogram of sum-of-weights / body units; remove y = x or label it.",
+  "proposed_test": "Visual probe: count of distinct plotted points vs rows."
+ },
+ {
+  "id": "D-07",
+  "severity": "Low",
+  "title": "Legends / annotations overlap data in V5",
+  "location": "tools/m2e_charts.py:246,264,271 (legend and text placement)",
+  "evidence": "V5_W1_S60 (NIFTY) legend covers the top of the 2-candidate body bar and the text \"links also in the W1 primary set\" overlaps the central histogram bar; V5_W3 (both cycles) legend covers the top of the 1-queue-partner body bar (legend_overlap_probe: hidden artists 1).",
+  "repro": "legend_overlap_probe.py",
+  "impact": "Tallest bars partly hidden.",
+  "proposed_fix": "Move legends outside axes.",
+  "proposed_test": "Legend-overlap probe as a render test."
+ },
+ {
+  "id": "D-08",
+  "severity": "Low",
+  "title": "V3 bottom panel: stacked bars ~1 px wide and no legend for the colour classes",
+  "location": "tools/m2e_charts.py:168 (width = 1/1440*0.9)",
+  "evidence": "Bars invisible at figure scale; red/blue/grey class colours are only explained by the marker legend of another panel.",
+  "repro": "open V3 PNG bottom row",
+  "impact": "Cohort panel unreadable.",
+  "proposed_fix": "Use step/area or wider bars and add its own legend.",
+  "proposed_test": "n/a (visual)"
+ },
+ {
+  "id": "D-09",
+  "severity": "Low",
+  "title": "\"Red = short\" but the plotted colour is vermilion/orange; V1 \"wing/body by tag\" curves overlap",
+  "location": "tools/m2e_charts.py:12,123",
+  "evidence": "C[\"short\"] = #D55E00; text says Red.",
+  "repro": "",
+  "impact": "Minor mislabel.",
+  "proposed_fix": "Say \"orange\" or change colour.",
+  "proposed_test": "n/a"
+ },
+ {
+  "id": "D-10",
+  "severity": "Low",
+  "title": "W3 \"queue partners\" are labelled \"candidate bodies/wings\" in CSVs and drawn on the same axis as W1/W1_S60 candidates in V6; V6 title and fills use \"matched\"",
+  "location": "tools/m2e_charts.py:248,305,327",
+  "evidence": "V5_W3 CSV categories \"wing items with N candidate bodies\" (evidence UNRESOLVED) and V6 section B rows for W3; V6 title \"what is matched, unmatched...\", green \"queue-matched units\". The figure axis says queue partners.",
+  "repro": "read V5_W3_wing_body.csv",
+  "impact": "Loose vocabulary; arithmetic pairing could read as candidate matching.",
+  "proposed_fix": "Rename W3 categories to \"queue partner\" in CSV and V6 panel; use \"paired (arithmetic)\".",
+  "proposed_test": "Vocabulary lint over figure CSV categories per method."
+ },
+ {
+  "id": "D-11",
+  "severity": "Low",
+  "title": "TP-03 class label NOT_LISTED_BY_TP03_AS_OFF_WINDOW is attached to 494 NIFTY / 312 SENSEX items including wings and s_/v_ items TP-03 never classifies",
+  "location": "python/pe/forensics.py:138; opening_items.tsv; V3 CSV column tp03_event_class",
+  "evidence": "opening_items.tsv tp03_event_class counts NIFTY {NOT_LISTED 494, OFF_WINDOW_ACTION 199, INITIAL_ENTRY 6}; the label reads as a TP-03 judgement for items TP-03 does not cover. Report text (coverage \u00a75) explains it.",
+  "repro": "",
+  "impact": "Possible misreading of wings as \"not off-window\".",
+  "proposed_fix": "Use NA for items outside TP-03 scope.",
+  "proposed_test": "Test: tp03_event_class == NA for non BODY_SHORT_BY_TAG items."
+ },
+ {
+  "id": "D-12",
+  "severity": "Low",
+  "title": "Provenance gaps: figure manifests list source datasets without hashes; dataset manifests record generated_at_head 10e33962 not HEAD 7117bbce",
+  "location": "tools/m2e_charts.py:55; tools/m2e_build.py (manifest)",
+  "evidence": "Content regenerates identically (regen_compare.out), so the only issue is stale metadata.",
+  "repro": "python3 verify_manifests.py",
+  "impact": "A reader cannot bind a figure to the exact dataset version from the manifest alone.",
+  "proposed_fix": "Add source sha256 to figure manifest; regenerate at final HEAD.",
+  "proposed_test": "Manifest test: each source dataset hash equals dataset manifest hash."
+ },
+ {
+  "id": "D-13",
+  "severity": "Low",
+  "title": "W1_S60 histogram note says \"N links beyond the axis\" but those links are at |dt| = 60 s (inside the method definition)",
+  "location": "tools/m2e_charts.py:269",
+  "evidence": "SENSEX note \"7 links beyond the axis\" = links with dt = +60 (bin end); NIFTY 5.",
+  "repro": "read V5_W1_S60 PNG",
+  "impact": "Wording.",
+  "proposed_fix": "Say \"at the +/-60 s boundary\".",
+  "proposed_test": "n/a"
+ },
+ {
+  "id": "D-14",
+  "severity": "Low",
+  "title": "Latent: item -> episode mapping uses the lexicographically first episode id (sorted strings), \"#10\" < \"#2\"",
+  "location": "python/pe/forensics.py:140 (sorted set joined with ;); python/pe/cases.py:67 (episode_ids.split(\";\")[0])",
+  "evidence": "Max episodes per instrument is 4 (NIFTY) / 3 (SENSEX) so no current effect.",
+  "repro": "",
+  "impact": "Would mis-assign anchor episodes if an instrument had >= 10 episodes.",
+  "proposed_fix": "Sort by (instrument, numeric suffix).",
+  "proposed_test": "Unit test with 11 synthetic episodes."
+ },
+ {
+  "id": "D-15",
+  "severity": "Medium",
+  "title": "Existing selection tests are weak: test_case_selection_ignores_prices_and_outcomes perturbs only dataset columns that the datasets carry; it cannot detect an upstream dependence; coverage of figure-text, PNG, case-figure CSV and coverage.json values is partial",
+  "location": "tests/test_forensics.py:216-221 and mutation results (mutations.json)",
+  "evidence": "See mutations.json for survivors. An upstream perturbation (scrambled prices before the lineage engine) was needed to establish price independence (perturbation_selection_result.log).",
+  "repro": "mutation_harness.py",
+  "impact": "Validation is weaker than the 89-test count suggests for presentation-layer artefacts.",
+  "proposed_fix": "Add raw-derived checks (this track verify_*.py) to the test suite; add legend/footer probes.",
+  "proposed_test": "Port verify_datasets.py / verify_v4v5v6.py / verify_cases.py as tests."
+ },
+ {
+  "id": "D-16",
+  "severity": "Medium",
+  "title": "\"SENSEX has no reversal\" is definition-dependent: one parent flips a short into a long within a second but is not a REVERSED event",
+  "location": "reports/M2E_CYCLE_COVERAGE_REPORT.md:112; reports/M2E_POSITION_CASE_STUDIES.md:37 (tools/m2e_cases.py:61); reports/M2E_HISTORICAL_FORENSICS_REPORT.md:94; python/pe/ledger.py role rule (reversal = ONE fill crossing zero)",
+  "evidence": "Raw replay: SENSEX CE77600 short episode #1 is closed by fills 12632 (60) and 12638 (100) of parent s_16053046299662 at 11:00:52 and the SAME parent opens a long episode #2 (fill 12641, 20 units) in the same second (episode #2 started_by_reversal = 0, CT5 UNAVAILABLE). NIFTY PE23850 #1->#2 shows the same pattern with different parents. Only NIFTY CE24100 (single fill 5681 crossing zero) counts as a reversal.",
+  "repro": "python3 (raw_truth.py episodes on SENSEX CE|77600) ; see verify_cases.py STATS SENSEX_mixed_parent_s_16053046299662",
+  "impact": "A parent-level flip (short to long, same order, same second) is presented as a plain close plus a new open and the reversal case type is reported UNAVAILABLE for SENSEX; with a parent-level definition SENSEX would have a qualifying case and the NIFTY count would change. Methodology ambiguity: both definitions defensible, only one shown.",
+  "proposed_fix": "State the per-fill definition next to \"no reversal\" and list the parent-level same-second flips (SENSEX 1, NIFTY PE23850 cross-parent) as a measured alternative; do not pick one for the user.",
+  "proposed_test": "Test counting same-second zero-crossings by fill and by parent and asserting the report text mentions both counts."
+ }
+]

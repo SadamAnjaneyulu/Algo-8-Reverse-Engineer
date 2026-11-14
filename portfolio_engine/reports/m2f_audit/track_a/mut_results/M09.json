@@ -1,0 +1,79 @@
+{
+ "id": "M09",
+ "name": "wrong parent id on closing portions (stale parent of previous CP)",
+ "file": "python/pe/lineage.py",
+ "expected": "I5 row-vs-fill; parent roles",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+   "tests/test_lineage.py::test_parent_roles_are_convention_independent_and_complete",
+   "tests/test_lineage_mutations.py::test_M8_non_unique_ca_ids_and_flipped_ownership_label_are_detected",
+   "tests/test_lineage_mutations.py::test_M12_episode_timestamps_and_fill_counts_follow_the_events",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+   "tests/test_lineage_real.py::test_mixed_parents_are_23_reversals_plus_3_others_without_double_counting",
+   "tests/test_lineage_real.py::test_all_invariants_hold_on_real_data",
+   "tests/test_lineage_real.py::test_parents_tsv_from_the_real_export",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[0]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[1]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[2]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[3]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[4]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[5]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[6]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[7]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[8]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[9]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[10]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[11]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[12]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[13]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[14]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[15]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[16]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[17]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[18]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[19]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[20]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[21]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[22]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[23]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[24]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[25]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[26]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[27]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[28]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[29]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[30]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[31]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[32]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[33]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[34]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[35]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[36]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[37]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[38]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[39]"
+  ],
+  "summary": "49 failed, 78 passed in 170.13s (0:02:50)",
+  "seconds": 171
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {
+   "CP_fields": 17486,
+   "roles": 1
+  },
+  "false_flags": [
+   "parent_roles_identical",
+   "AVG_exact_total_is_integer"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 540,
+   "py_vs_ref_mismatch": 540
+  },
+  "killed": true
+ }
+}

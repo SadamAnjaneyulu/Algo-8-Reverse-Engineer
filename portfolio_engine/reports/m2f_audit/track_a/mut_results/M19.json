@@ -1,0 +1,27 @@
+{
+ "id": "M19",
+ "name": "expiry boundary < instead of <= in episode terminal status",
+ "file": "python/pe/lineage.py",
+ "expected": "terminal_status counts (81 EXPIRED_UNCLOSED)",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage_mutations.py::test_M11_expiry_boundary_is_exact[2026-01-05-EXPIRED_UNCLOSED]"
+  ],
+  "summary": "1 failed, 126 passed in 271.14s (0:04:31)",
+  "seconds": 272
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {},
+  "false_flags": [
+   "AVG_exact_total_is_integer"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 9,
+   "py_vs_ref_mismatch": 9
+  },
+  "killed": true
+ }
+}

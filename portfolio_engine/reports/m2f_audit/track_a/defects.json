@@ -1,0 +1,79 @@
+[
+ {
+  "id": "D-A01",
+  "severity": "High",
+  "title": "Observed layer (OA/CP/episodes/reversal counts) depends on an unresolved intra-second tie order; raw sequence keys contradict file order in 2 mixed-side groups; M2B limit disclosure understates the dependence",
+  "location": "python/pe/replay.py:13 order_events, TIE_KEY replay.py:6; reports/M2B_REPORT.md \"Limits\"; M2B_RECONCILIATION_REPORT (\"verified chronological\")",
+  "evidence": "[RAW]+[IMPL] tie_alt_keys_result.json, tie_order_result.json, tie_evidence_raw_result.json. Group NIFTY|2026-06-23|CE|24100 @1782197422: file rows 726 S65, 727 B130, 728 S65 but trade ids 11337383,11338401,11337384 and order numbers 1210370594,1210370597,1210370594 (both sells before the buy by id). Group NIFTY|2026-07-07|CE|24450 @1783416842: rows 9688 S65 / 9689 B65, trade ids 22609236 / 22608265 (buy first by id).",
+  "repro": "python3 tie_alt_keys.py ; python3 tie_order_analysis.py (track_a). Ordering by (ts, trade id) instead of (ts, file row): 2 instruments / 4 episodes / 4 fills change, OA 23,682 (not 23,684), reversal fills 21 (not 23); reversed src order: 18 instruments, 33 episodes, reversal fills 22; random same-second order (5 seeds): 10-17 instruments, 15-28 episode identities, reversal fills 20-23. Invariant in all variants: OA/CP total units, final inventory, cash. Realized P&L changes by 0 to -1,300 paise.",
+  "impact": "Headline counts (23,684 OA, 23 reversals, episode ids for ~2-18 instruments) are conditional on file order; the report only measured sells_first/buys_first (reproduced: 20 fills, 5 instruments). \"Verified chronological\" is true to the second only. No methodology choice is made here.",
+  "proposed_fix": "Report counts as ranges across tie conventions, name the 2 conflicting groups, and add trade-id / order-number / random orders to the tie-order sensitivity table. Leave the choice of authoritative order to the project owner.",
+  "proposed_test": "test: for every alternative order in {reversed, trade_id, order_no, random seeds} assert OA/CP unit totals, final inventory and cash invariant and assert the set of changed instruments is a subset of the 46 mixed-side-same-second instruments; snapshot the measured counts."
+ },
+ {
+  "id": "D-A02",
+  "severity": "Medium",
+  "title": "Historical generator trusts the TP-01 parquet; only the raw CSV hash is checked, never the parquet content against the raw file",
+  "location": "python/pe/generators/historical.py:14-16,24 (generate)",
+  "evidence": "[INSPECTED] raw hash compared to manifest; parquet sha256 only recorded in source_hashes, never verified; contract id, module tag, price and signed side come from the parquet. [RAW] I verified all 41,421 rows x 8 fields equal the raw CSV (0 mismatches) - the current parquet is consistent. Mutants M06/M07/M08/M11 (price tick, wrong price column, side flip, +19800 s) emulate a corrupted generator/parquet.",
+  "repro": "run_mutants.py M06 M07 M08 M11 (see mutations.json for which tests caught them).",
+  "impact": "A stale or altered parquet would silently drive all downstream reports while the raw-hash guard passes.",
+  "proposed_fix": "Add a generator self-check (or test) that re-parses raw columns 11,12,14,15,16,33,137,161,163 and compares to the parquet row by row; record the parquet hash in a pinned manifest.",
+  "proposed_test": "test_generator_equals_raw: parse the CSV with csv.reader and assert equality of (parent, instrument, ts, side, qty, price_paise, requested qty, status) for all rows."
+ },
+ {
+  "id": "D-A03",
+  "severity": "Low",
+  "title": "AVG realized P&L is IEEE-754 float, not integer paise; Sigma of 6-decimal printed allocation rows differs from the exact value",
+  "location": "python/pe/ledger.py:55,74; lineage.py ca_tsv _num; tools/unit_audit.py",
+  "evidence": "[IMPL] exact Fraction total 210,011,162.714088... paise; engine float total differs by 9.0e-9 paise; Sigma of the 6-decimal printed C++ CA rows differs from exact by 5.8e-5 paise (cpp_raw_run_result.json).",
+  "repro": "python3 compare_ref_vs_engine.py (CA_AVG_total_abs_diff_paise); python3 cpp_raw_run.py",
+  "impact": "Claim \"P&L is integer paise\" is true for FIFO/LIFO only; AVG totals compare only within tolerance (tests use 1e-6 relative/abs).",
+  "proposed_fix": "Document AVG as float/analytical; optionally carry AVG pool as exact rational (cost total, qty) and emit rounded paise.",
+  "proposed_test": "test_avg_total_matches_fraction_reference_to_1e-6 on the real ledger."
+ },
+ {
+  "id": "D-A04",
+  "severity": "Medium",
+  "title": "EXPIRED_UNCLOSED is an inference from absent closing fills, and the OPEN_AT_END_OF_DATA branch is unexercised on real data",
+  "location": "python/pe/lineage.py:50 terminal_status; replay.py status loop",
+  "evidence": "[RAW]+[IMPL] 81 instruments non-flat (71 long, 10 short, 37,480 units); last fill is 0 days before expiry for 54 and 1 day before for 27; 13 last fills at/after 15:30 IST (max 15:39:27); last data day == max expiry (2026-10-22) so no instrument has expiry after the last data day. No fills after expiry day. Realized equals sum of CA only (no settlement P&L inferred).",
+  "repro": "python3 expiry_analysis.py",
+  "impact": "Reporting risk: \"expired unclosed\" reads as an observed fact; it cannot distinguish held-to-expiry from missing/auto-squared-off fills. The `<=` boundary only matters for the final cycle on this data.",
+  "proposed_fix": "Rename to a neutral status (e.g. NON_FLAT_AT_EXPIRY_NO_SETTLEMENT_DATA) in reports, keep boundary test with a synthetic dataset ending before expiry.",
+  "proposed_test": "test_open_at_end_of_data_when_last_day_before_expiry (synthetic) and a real-data assertion on the 54/27 split."
+ },
+ {
+  "id": "D-A05",
+  "severity": "Low",
+  "title": "Python tsvio accepts integer tokens that C++ rejects (+1, 1_30, leading space, Unicode digits)",
+  "location": "python/pe/tsvio.py:36 _int vs cpp/include/pe/io.hpp to_int",
+  "evidence": "[XLANG] parse_parity_probe_result.json: Python ACCEPTED, C++ REJECTED for all four tokens. M1 report discloses +, space, underscore but not Unicode digits.",
+  "repro": "python3 parse_parity_probe.py",
+  "impact": "Parity claim holds only for canonical writer output; a hand-edited event file can be accepted by one language and rejected by the other.",
+  "proposed_fix": "Make Python parse with a strict regex ^-?[0-9]+$ (ASCII).",
+  "proposed_test": "test_malformed_integer_tokens_rejected_by_both."
+ },
+ {
+  "id": "D-A06",
+  "severity": "Low",
+  "title": "Parent-order identity is a choice of raw column (163 vs 4); documentation not explicit about the alternative count",
+  "location": "docs/SCHEMAS.md events table; reports/M2B_RECONCILIATION_REPORT.md",
+  "evidence": "[RAW] 39,874 distinct col 163 vs 37,258 distinct col 4; 2,224 order numbers map to >1 col-163 ids; col 163 never mixes side/instrument/requested qty/app key.",
+  "repro": "python3 explore2.py (scratch) / raw_partial_checks.py",
+  "impact": "A reader using order number would get a different parent count and different MIXED parent set.",
+  "proposed_fix": "State the choice and the alternative in the data dictionary.",
+  "proposed_test": "test asserting 1 side/instrument/qty per parent (already true) plus a documented count."
+ },
+ {
+  "id": "D-A07",
+  "severity": "Low",
+  "title": "Documentation nits",
+  "location": "docs/SCHEMAS.md \"instrument_id = UNDERLYING|YYYY-MM-DD|CE|strike\" (right is CE or PE); tools write into the repo (parity.py build dir, reports/, data_generated/)",
+  "evidence": "[INSPECTED]",
+  "repro": "n/a",
+  "impact": "Cosmetic; tools are not safe to run on a read-only checkout.",
+  "proposed_fix": "Fix text; add --out-dir to tools.",
+  "proposed_test": "n/a"
+ }
+]

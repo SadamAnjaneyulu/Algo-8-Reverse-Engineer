@@ -1,0 +1,113 @@
+{
+ "fill_ids": {
+  "n": 41421,
+  "unique": true,
+  "source_rows_unique": true,
+  "fill_id_is_F_plus_6digit_of_source_row": true,
+  "max_source_row": 41420,
+  "fill_id_width_overflow": false
+ },
+ "parent_ids": {
+  "n": 39874,
+  "with_colon": 0,
+  "with_pipe": 0,
+  "with_tab_or_newline": 0,
+  "empty_or_NA": 0,
+  "sample": [
+   "10613862",
+   "10613895",
+   "10614043"
+  ],
+  "types": [
+   "str"
+  ]
+ },
+ "text_fields_with_tab_nl": 0,
+ "lineage_files_invariant_under_input_reordering": {
+  "shuffle_seed1": true,
+  "shuffle_seed2": true,
+  "shuffle_seed3": true,
+  "reversed_input": true
+ },
+ "lifecycle_event_id_dupes": 0,
+ "oa_cp_id_dupes": 0,
+ "batch_ids": {
+  "C1_2": {
+   "n": 7127,
+   "unique": true
+  },
+  "C1_5": {
+   "n": 3777,
+   "unique": true
+  },
+  "C1_10": {
+   "n": 3065,
+   "unique": true
+  },
+  "C1_30": {
+   "n": 2171,
+   "unique": true
+  },
+  "C1_60": {
+   "n": 1502,
+   "unique": true
+  },
+  "C2_2": {
+   "n": 7127,
+   "unique": true
+  },
+  "C2_5": {
+   "n": 3777,
+   "unique": true
+  },
+  "C2_10": {
+   "n": 3065,
+   "unique": true
+  },
+  "C2_30": {
+   "n": 2171,
+   "unique": true
+  },
+  "C2_60": {
+   "n": 1502,
+   "unique": true
+  }
+ },
+ "batch_id_global_unique_across_views": true,
+ "m2d.wing_body_links_W1": {
+  "rows": 42777,
+  "distinct_ids": 42777,
+  "duplicate_ids": 0,
+  "max_multiplicity": 1
+ },
+ "m2d.wing_body_links_W1_S60": {
+  "rows": 65228,
+  "distinct_ids": 65228,
+  "duplicate_ids": 0,
+  "max_multiplicity": 1
+ },
+ "m2d.wing_body_links_W2": {
+  "rows": 42777,
+  "distinct_ids": 42777,
+  "duplicate_ids": 0,
+  "max_multiplicity": 1
+ },
+ "m2d.wing_body_links_W2_S60": {
+  "rows": 65228,
+  "distinct_ids": 65228,
+  "duplicate_ids": 0,
+  "max_multiplicity": 1
+ },
+ "m2d.wing_body_links_W3": {
+  "rows": 12096,
+  "distinct_ids": 12096,
+  "duplicate_ids": 0,
+  "max_multiplicity": 1
+ },
+ "m2d.wing_body_items": {
+  "rows": 36784,
+  "distinct_ids": 36784,
+  "duplicate_ids": 0,
+  "max_multiplicity": 1
+ }
+}

@@ -1,0 +1,207 @@
+{
+ "m2c_data": {
+  "manifest_keys": [
+   "created_utc",
+   "execution_mode",
+   "files",
+   "generated_at_head",
+   "grouping_version",
+   "reproduce",
+   "source_hashes",
+   "views",
+   "working_tree_dirty"
+  ],
+  "bad": [],
+  "ok": 6,
+  "hash_basis": "sha256 of UNCOMPRESSED payload text (gz bytes are not hashed; gz written with mtime=0)",
+  "files_on_disk": [
+   "closing_batch_members_C1.tsv.gz",
+   "closing_batch_members_C2.tsv.gz",
+   "closing_batch_portions_C1.tsv.gz",
+   "closing_batch_portions_C2.tsv.gz",
+   "closing_batches_C1.tsv.gz",
+   "closing_batches_C2.tsv.gz",
+   "m2c_summary.json",
+   "manifest.json"
+  ],
+  "not_covered_by_manifest": [
+   "m2c_summary.json",
+   "manifest.json"
+  ],
+  "runtime_metadata_fields": [
+   "created_utc",
+   "generated_at_head",
+   "working_tree_dirty"
+  ]
+ },
+ "m2d_data": {
+  "manifest_keys": [
+   "created_utc",
+   "execution_mode",
+   "files",
+   "generated_at_head",
+   "reproduce",
+   "scope",
+   "source_hashes"
+  ],
+  "bad": [],
+  "ok": 6,
+  "hash_basis": "sha256 of UNCOMPRESSED payload text (gz bytes are not hashed; gz written with mtime=0)",
+  "files_on_disk": [
+   "m2d_summary.json",
+   "manifest.json",
+   "wing_body_items.tsv.gz",
+   "wing_body_links_W1.tsv.gz",
+   "wing_body_links_W1_S60.tsv.gz",
+   "wing_body_links_W2.tsv.gz",
+   "wing_body_links_W2_S60.tsv.gz",
+   "wing_body_links_W3.tsv.gz"
+  ],
+  "not_covered_by_manifest": [
+   "m2d_summary.json",
+   "manifest.json"
+  ],
+  "runtime_metadata_fields": [
+   "created_utc",
+   "generated_at_head"
+  ]
+ },
+ "m2e_data": {
+  "per_cycle": {
+   "NIFTY_2026-06-30": {
+    "ok": 19,
+    "bad": [],
+    "not_covered_by_manifest": [
+     "case_studies.json",
+     "coverage.json",
+     "manifest.json"
+    ],
+    "runtime_metadata_fields": [
+     "generated_at_head"
+    ],
+    "has_created_utc": false
+   },
+   "SENSEX_2026-07-16": {
+    "ok": 19,
+    "bad": [],
+    "not_covered_by_manifest": [
+     "case_studies.json",
+     "coverage.json",
+     "manifest.json"
+    ],
+    "runtime_metadata_fields": [
+     "generated_at_head"
+    ],
+    "has_created_utc": false
+   }
+  }
+ },
+ "m2e_figures": {
+  "NIFTY_2026-06-30/figure_manifest.json": {
+   "csv_hash_checked": 18,
+   "bad": [],
+   "figure_keys": [
+    "additional_data_csv",
+    "body_units_observed",
+    "data_csv",
+    "data_csv_sha256",
+    "data_rows",
+    "episodes",
+    "evidence_class",
+    "figure",
+    "filter",
+    "items_without_entry_minute",
+    "method",
+    "png",
+    "png_sha256_informational",
+    "reconciles_to",
+    "scope_warning_shown",
+    "source_datasets",
+    "title",
+    "wing_units_observed"
+   ],
+   "top_level_keys": [
+    "cycle",
+    "figures",
+    "version"
+   ]
+  },
+  "NIFTY_2026-06-30/case_figure_manifest.json": {
+   "csv_hash_checked": 9,
+   "bad": [],
+   "figure_keys": [
+    "additional_data_csv",
+    "case_type",
+    "data_csv",
+    "data_csv_sha256",
+    "data_rows",
+    "episodes",
+    "figure",
+    "filter",
+    "png",
+    "png_sha256_informational",
+    "scope_warning_shown",
+    "source_datasets",
+    "title"
+   ],
+   "top_level_keys": [
+    "cycle",
+    "figures",
+    "version"
+   ]
+  },
+  "SENSEX_2026-07-16/figure_manifest.json": {
+   "csv_hash_checked": 18,
+   "bad": [],
+   "figure_keys": [
+    "additional_data_csv",
+    "body_units_observed",
+    "data_csv",
+    "data_csv_sha256",
+    "data_rows",
+    "episodes",
+    "evidence_class",
+    "figure",
+    "filter",
+    "items_without_entry_minute",
+    "method",
+    "png",
+    "png_sha256_informational",
+    "reconciles_to",
+    "scope_warning_shown",
+    "source_datasets",
+    "title",
+    "wing_units_observed"
+   ],
+   "top_level_keys": [
+    "cycle",
+    "figures",
+    "version"
+   ]
+  },
+  "SENSEX_2026-07-16/case_figure_manifest.json": {
+   "csv_hash_checked": 8,
+   "bad": [],
+   "figure_keys": [
+    "additional_data_csv",
+    "case_type",
+    "data_csv",
+    "data_csv_sha256",
+    "data_rows",
+    "episodes",
+    "figure",
+    "filter",
+    "png",
+    "png_sha256_informational",
+    "scope_warning_shown",
+    "source_datasets",
+    "title"
+   ],
+   "top_level_keys": [
+    "cycle",
+    "figures",
+    "version"
+   ]
+  }
+ }
+}

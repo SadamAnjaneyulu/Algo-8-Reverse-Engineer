@@ -1,0 +1,178 @@
+[
+ {
+  "claim": "Raw ledger columns 4/11/12/14/15/16/18/19/23/27/33/137/161/163/166 carry the stated semantics; col 137 is the per-fill execution price (rupees, paise grid, 5-paise tick), col 18 the order running average (differs from col 137 on 431 raw rows; 20 NIFTY and 13 SENSEX cycle fills); epoch col 161 is UTC (all cycle fills inside 09:14-15:31 IST).",
+  "source": "prior reviewer / TP-01",
+  "independent_verification": "[RAW] verify_raw_columns.py",
+  "status": "VERIFIED",
+  "limitation": "337 raw fills in the full ledger (not in the two cycles) fall outside 09:14-15:31 IST; not investigated (outside scope).",
+  "class": ""
+ },
+ {
+  "claim": "fills.tsv, inventory_series.tsv (V1 dataset), session_carry.tsv, lifecycle_events.tsv, episodes.tsv, opening_items.tsv equal an independent replay of the raw cycle fills (1146 + 729 fills, 85 + 70 episodes, 1147 + 729 events, 699 + 452 opening items).",
+  "source": "reports/m2e_data/*",
+  "independent_verification": "[RAW]+[IMPL] verify_datasets.py (own signed-position replay from raw CSV; no pe imports)",
+  "status": "VERIFIED",
+  "limitation": "Replay uses the stated convention (close = min(q,|inv|) against inventory, excess opens opposite side); ties ordered by (epoch, raw row). Same-second order is a convention, not an observation.",
+  "class": ""
+ },
+ {
+  "claim": "V1/V2/V3 figure CSVs equal the raw-derived values (every fill row, CARRY_IN rows, V2 events/episodes, V3 items and entry-minute cohorts).",
+  "source": "reports/m2e_figures/*/V1,V2,V3*.csv",
+  "independent_verification": "[RAW]+[IMPL] verify_datasets.py",
+  "status": "VERIFIED",
+  "limitation": "PNG rendering is checked by eye only (see visual defects).",
+  "class": ""
+ },
+ {
+  "claim": "V1 sign convention: short columns unsigned in CSV, plotted negative; net = long - short; gross = long + short; D-1 vs D0 labels from IST session date; carry-in row = previous state.",
+  "source": "V1 CSV / figure",
+  "independent_verification": "[RAW] verify_datasets.py",
+  "status": "VERIFIED",
+  "limitation": "",
+  "class": ""
+ },
+ {
+  "claim": "TP-03 window labels are IST wall-clock; tp03_windows.tsv window_start_ts_utc_s = label - 19800 s (44/44 windows per cycle reproduce the published n_body_short_fills_in_window from raw only under the IST reading; 6 and 19 under a UTC reading).",
+  "source": "tp03_windows.tsv, V3 overlay",
+  "independent_verification": "[RAW] verify_tp03_windows.py against p1_window_dataset.parquet",
+  "status": "VERIFIED",
+  "limitation": "Window label semantics inferred from the TP-03 config text and the reproduced counts; TP-03 publishes no per-parent window id.",
+  "class": ""
+ },
+ {
+  "claim": "TP-03 off-window parent classes (205 NIFTY / 140 SENSEX) are body-short opening parents of the cycle.",
+  "source": "opening_items.tsv tp03_event_class",
+  "independent_verification": "[RAW] verify_tp03_windows.py",
+  "status": "VERIFIED",
+  "limitation": "Label NOT_LISTED_BY_TP03_AS_OFF_WINDOW is also attached to wing / s_ / v_ items that TP-03 never classifies (see D-11).",
+  "class": ""
+ },
+ {
+  "claim": "V4: both closing-batch views (C1, C2) conserve closing units and portions at every threshold (66,170 / 14,180 units; 438 / 276 portions) against raw closing allocations; every closing parent is in exactly one batch; batch aggregates and sensitivity / longest-chain tables recompute from the committed portions; V4 CSVs equal the dataset.",
+  "source": "V4 CSVs, m2c slices",
+  "independent_verification": "[RAW] conservation + [IMPL] aggregation (verify_v4v5v6.py)",
+  "status": "VERIFIED",
+  "limitation": "M2-C grouping RULES (gap chaining) were NOT audited here (other track).",
+  "class": ""
+ },
+ {
+  "claim": "V4 C1 and C2 are identical in both cycles at all five thresholds (batches, members, timestamps), so the two V4 figures and the V6 C1/C2 panel are the same data twice.",
+  "source": "m2c slices",
+  "independent_verification": "[IMPL] direct set comparison",
+  "status": "VERIFIED",
+  "limitation": "M2-C report discloses C2 = C1 under the approved tie rule; the V4/V6 figures do not say so (D-02).",
+  "class": ""
+ },
+ {
+  "claim": "V5/V6: M2-D opening items and W1 / W1_S60 candidate sets in the committed slices equal an independent re-implementation from raw (tag + entry minute; tag + same session + |dt| <= 60 s); V5 multiplicity / units / dt histograms / W3 link overlaps and V6 panels A, B, C, E, F recompute from them.",
+  "source": "V5/V6 CSVs",
+  "independent_verification": "[RAW]+[IMPL] verify_v4v5v6.py",
+  "status": "VERIFIED",
+  "limitation": "W3 queue arithmetic and W2 weights taken from the committed slice (aggregated, not re-derived).",
+  "class": ""
+ },
+ {
+  "claim": "Full-ledger scope numbers quoted in every V3/V5/V6 warning (8,399 wing items; 7,301 / 3,501 / 3,800 / 1,098; 133,640; 8,204 / 195 / 68,720; 336,040 closing units) equal an independent raw re-derivation.",
+  "source": "SCOPE_WARNING, V6 section G",
+  "independent_verification": "[RAW]+[IMPL] verify_v4v5v6.py full_ledger()",
+  "status": "VERIFIED",
+  "limitation": "The 107,530 closing wing units in mixed-module episodes was NOT re-derived (NOT VERIFIED).",
+  "class": ""
+ },
+ {
+  "claim": "Cycle coverage report numbers (fills, parents, opening/closing fills, units, episodes, contracts, D-1/D0 table, role units, scope exclusions, no-candidate counts) match raw.",
+  "source": "reports/M2E_CYCLE_COVERAGE_REPORT.md, coverage.json",
+  "independent_verification": "[RAW]+[IMPL] verify_v4v5v6.py",
+  "status": "VERIFIED",
+  "limitation": "Metadata-completeness rows (1080 / 1080 fields) are checked only as counts present in the TP-01 ledger-derived parents table, not against raw parsing of col 144/166.",
+  "class": ""
+ },
+ {
+  "claim": "No mark, interpolated price or unrealized P&L exists in any dataset, figure CSV, manifest key or figure footer; prices are execution prices (paise).",
+  "source": "datasets / CSV headers",
+  "independent_verification": "[RAW]/[INV] header and key scan of all 103 data files + visual inspection of all PNG footers",
+  "status": "VERIFIED",
+  "limitation": "Scan is lexical; fills.tsv carries exec_price_paise (execution) and opening_items.tsv avg_exec_price_paise (quantity-weighted execution).",
+  "class": ""
+ },
+ {
+  "claim": "Committed datasets, figure CSVs, case JSON, manifests and reports regenerate content-identically in a scratch copy (103 non-PNG files; 37 PNGs byte-identical); only generated_at_head metadata and the report base-commit string differ because the scratch copy is not a git repo.",
+  "source": "m2e_* tools",
+  "independent_verification": "[REPRO] regen_compare.py",
+  "status": "VERIFIED",
+  "limitation": "Same Python / matplotlib 3.11.2 / pandas 3.0.5 environment; committed manifests record generated_at_head = 10e33962, not HEAD 7117bbce (data unchanged).",
+  "class": ""
+ },
+ {
+  "claim": "Manifests: every figure has PNG, data CSV(s), source dataset names and sha256 hashes; hashes verify; no figure file is outside the manifest.",
+  "source": "figure_manifest.json etc.",
+  "independent_verification": "[REPRO] verify_manifests.py (225 checks)",
+  "status": "VERIFIED",
+  "limitation": "Figure manifests do not carry source-dataset hashes (D-12).",
+  "class": ""
+ },
+ {
+  "claim": "Demonstration cycles were frozen (e06a711e, 2026-11-13T15:46:15Z) before any M2 grouping code existed (M2-B 15:57:05, M2-C 16:26:17, M2-D 17:52:42); the criteria document was committed one minute earlier (41ecbbb0, 15:45:26).",
+  "source": "git history",
+  "independent_verification": "[RAW] git log",
+  "status": "VERIFIED",
+  "limitation": "The score used TP-02/TP-03 outputs (C5) and the script and its output were committed together, so non-iteration cannot be proved; TP-03 entry-window analysis predates M2 and is itself a window grouping.",
+  "class": ""
+ },
+ {
+  "claim": "The individual case-study selection rules were fixed before any case was looked at / are prospectively predefined.",
+  "source": "reports/M2E_POSITION_CASE_STUDIES.md:5; tools/m2e_cases.py:42",
+  "independent_verification": "git: first appearance of pe/cases.py is 10e33962 (2026-11-14T07:08:59Z), the same commit that first contains the datasets, figures and case studies; rule text edited again in 7117bbce after review (selected episodes unchanged)",
+  "status": "NOT VERIFIED",
+  "limitation": "Not supported by timestamped evidence. The final report (section H) itself says history shows the rule only from the checkpoint.",
+  "class": "Unresolved"
+ },
+ {
+  "claim": "Case selection depends only on structure (lifecycle events, W1/W1_S60 candidate counts, C1 batch parent counts), not on price or P&L.",
+  "source": "pe/cases.py",
+  "independent_verification": "[IMPL] upstream perturbation: all fill prices scrambled before the lineage/M2-C/M2-D engines (tick-aligned), full m2e_build re-run in scratch, K.select compared: all 20 selections identical; plus independent re-implementation of all 10 rules from raw reproduces every selection",
+  "status": "VERIFIED",
+  "limitation": "Structural is not the same as unbiased: the rule always takes the chronologically first (or first unused) qualifying candidate, which concentrates every selected case in the first hours of D-1 (see D-04). Rules were selected from the engines output that were already visible.",
+  "class": ""
+ },
+ {
+  "claim": "Case records (fills, per-episode opening/closing quantities, parents, lifecycle, wing/body membership, W1/W1_S60 counterparts, related reversal episode) equal raw-derived values for all 17 available cases (9 NIFTY, 8 SENSEX) incl. the mixed parents h_30084825701151 (reversing fill row 5681: 390 closing in CE24100#1, 130 opening in CE24100#2) and s_16053046299662 (3 closing/opening fills).",
+  "source": "case_studies.json",
+  "independent_verification": "[RAW]+[IMPL] verify_cases.py (1,382 checks)",
+  "status": "VERIFIED",
+  "limitation": "CT4 (both cycles) and SENSEX CT5 are UNAVAILABLE (no qualifying candidate).",
+  "class": ""
+ },
+ {
+  "claim": "W1 is WEAKLY_SUPPORTED, W1_S60 UNRESOLVED, W2 weights WEAKLY_SUPPORTED, W3 UNRESOLVED, lot ownership / protective intent UNRESOLVED / NOT_TESTABLE; no figure upgrades these.",
+  "source": "V5/V6 titles, case text",
+  "independent_verification": "INSPECTED all 20 figure PNGs and 7 case PNGs; labels consistent",
+  "status": "INSPECTED",
+  "limitation": "Wording such as \"matched\" in the V6 title and green \"queue-matched units\" fill is loose (D-10).",
+  "class": ""
+ },
+ {
+  "claim": "Candidate links / batches / wing-body groupings reflect protective intent, hedging or a decision.",
+  "source": "",
+  "independent_verification": "",
+  "status": "NOT VERIFIED",
+  "limitation": "Not claimed by the figures; confirmed not claimed.",
+  "class": "Not testable with available data"
+ },
+ {
+  "claim": "Lot-level ownership of closing quantities (FIFO / LIFO / AVG) is identifiable.",
+  "source": "case records",
+  "independent_verification": "",
+  "status": "NOT VERIFIED",
+  "limitation": "Observed layer is convention-independent; allocation is convention-dependent.",
+  "class": "Not testable with available data"
+ },
+ {
+  "claim": "Order-level decision unit for closing batches.",
+  "source": "V4",
+  "independent_verification": "",
+  "status": "NOT VERIFIED",
+  "limitation": "Batch = time-connected cluster only.",
+  "class": "Unresolved"
+ }
+]
