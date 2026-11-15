@@ -2,7 +2,7 @@
  {
   "id": "BASELINE_unmutated",
   "outcome": "survived",
-  "summary": "12 passed in 0.31s"
+  "summary": "12 passed in 0.36s"
  },
  {
   "id": "MM01_manifest_wrong_convention_id",
@@ -11,7 +11,7 @@
   "failed_tests": [
    "test_delivered_manifest_carries_convention_and_nothing_else_changed[portfolio_engine/reports/m2c_data/manifest.json]"
   ],
-  "summary": "1 failed, 11 passed in 0.30s"
+  "summary": "1 failed, 11 passed in 0.31s"
  },
  {
   "id": "MM02_manifest_other_field_altered",
@@ -20,7 +20,7 @@
   "failed_tests": [
    "test_delivered_manifest_carries_convention_and_nothing_else_changed[portfolio_engine/reports/m2d_data/manifest.json]"
   ],
-  "summary": "1 failed, 11 passed in 0.34s"
+  "summary": "1 failed, 11 passed in 0.33s"
  },
  {
   "id": "MM03_delivered_dataset_byte_changed",
@@ -29,7 +29,7 @@
   "failed_tests": [
    "test_no_delivered_data_value_changed_since_the_r1_baseline"
   ],
-  "summary": "1 failed, 11 passed in 0.31s"
+  "summary": "1 failed, 11 passed in 0.35s"
  },
  {
   "id": "MM04_delivered_figure_byte_changed",
@@ -38,7 +38,7 @@
   "failed_tests": [
    "test_no_delivered_data_value_changed_since_the_r1_baseline"
   ],
-  "summary": "1 failed, 11 passed in 0.34s"
+  "summary": "1 failed, 11 passed in 0.32s"
  },
  {
   "id": "MM05_provenance_constant_convention",
@@ -47,7 +47,7 @@
   "failed_tests": [
    "test_run_manifest_states_the_convention"
   ],
-  "summary": "1 failed, 11 passed in 0.33s"
+  "summary": "1 failed, 11 passed in 0.31s"
  },
  {
   "id": "MM06_builder_drops_primary_guard",
@@ -56,7 +56,7 @@
   "failed_tests": [
    "test_delivered_output_builders_assert_primary_and_stamp_metadata[m2c_closing_batches.py]"
   ],
-  "summary": "1 failed, 11 passed in 0.30s"
+  "summary": "1 failed, 11 passed in 0.35s"
  },
  {
   "id": "MM07_builder_drops_stamp",
@@ -74,7 +74,7 @@
   "failed_tests": [
    "test_sensitivity_report_is_the_independent_reference_result"
   ],
-  "summary": "1 failed, 11 passed in 0.32s"
+  "summary": "1 failed, 11 passed in 0.31s"
  },
  {
   "id": "MM09_metadata_claims_verified_chronology",
@@ -86,7 +86,25 @@
    "test_delivered_manifest_carries_convention_and_nothing_else_changed[portfolio_engine/reports/m2d_data/manifest.json]",
    "test_delivered_manifest_carries_convention_and_nothing_else_changed[portfolio_engine/reports/m2e_data/NIFTY_2026-06-30/manifest.json]"
   ],
-  "summary": "5 failed, 7 passed in 0.33s"
+  "summary": "5 failed, 7 passed in 0.32s"
+ },
+ {
+  "id": "MM11_builder_guard_called_with_a_constant",
+  "expected_detector": "test_delivered_output_builders_assert_primary_and_stamp_metadata[m2c] (reviewer R2M09)",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_delivered_output_builders_assert_primary_and_stamp_metadata[m2c_closing_batches.py]"
+  ],
+  "summary": "1 failed, 11 passed in 0.31s"
+ },
+ {
+  "id": "MM12_parity_report_digit_changed",
+  "expected_detector": "test_no_delivered_data_value_changed_since_the_r1_baseline (inverse preservation rule; reviewer R2M17)",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_no_delivered_data_value_changed_since_the_r1_baseline"
+  ],
+  "summary": "1 failed, 11 passed in 0.34s"
  },
  {
   "id": "MM10_sensitivity_report_wing_body_links_changed",
@@ -95,6 +113,6 @@
   "failed_tests": [
    "test_sensitivity_report_is_the_independent_reference_result"
   ],
-  "summary": "1 failed, 11 passed in 0.33s"
+  "summary": "1 failed, 11 passed in 0.31s"
  }
 ]

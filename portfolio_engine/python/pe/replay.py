@@ -12,8 +12,10 @@ class RunResult:
 
 def order_events(fills, tie_order):
     """deterministic order (timestamp, tie key, source row, fill id); the first three are TP-01's per-contract order, the id only breaks exact ties between synthetic rows"""
+    if tie_order == 'source_row': tie_order = 'src'                          # alias of the primary convention
     if tie_order in KEYED_TIE_ORDERS:                                       # sensitivity-only policies: key attached by pe.tie_policy / the loader
         if any(f.tie_key is None for f in fills): raise EngineError(f'tie order {tie_order} needs Fill.tie_key on every fill')
+        if any(f.tie_key[0] != tie_order for f in fills): raise EngineError(f'Fill.tie_key was built for another policy than {tie_order}')
         return sorted(fills, key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))
     tk = TIE_KEY[tie_order]
     return sorted(fills, key=lambda f: (f.timestamp_s, tk(f.side), f.source_row_id, f.fill_id))

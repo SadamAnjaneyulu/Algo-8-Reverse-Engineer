@@ -5,14 +5,12 @@ REPO = '/home/user/Algo-8-Reverse-Engineer'; PE = REPO + '/portfolio_engine'; SC
 
 
 def prep(name):
-    d = os.path.join(SCR, name); shutil.rmtree(d, ignore_errors=True); P = d + '/portfolio_engine'; os.makedirs(P + '/reports/m2f_audit')
-    for sub in ('python', 'tests', 'tools', 'fixtures'): shutil.copytree(PE + '/' + sub, P + '/' + sub, ignore=shutil.ignore_patterns('__pycache__'))
-    shutil.copy(PE + '/pytest.ini', P + '/pytest.ini')
-    for x in os.listdir(PE + '/reports'):
-        s = PE + '/reports/' + x
-        if x == 'm2f_audit': shutil.copytree(s + '/r1', P + '/reports/m2f_audit/r1')
-        elif os.path.isdir(s): shutil.copytree(s, P + '/reports/' + x)
-        else: shutil.copy(s, P + '/reports/' + x)
+    """scratch mirror = every tracked + new non-ignored file of portfolio_engine (working-tree versions), tp_reconstruction and the raw csv symlinked"""
+    d = os.path.join(SCR, name); shutil.rmtree(d, ignore_errors=True); P = d + '/portfolio_engine'; os.makedirs(P)
+    files = subprocess.run(['git', 'ls-files', '-co', '--exclude-standard', 'portfolio_engine'], cwd=REPO, capture_output=True, text=True).stdout.split('\n')
+    for f in files:
+        if not f or '__pycache__' in f or not os.path.isfile(REPO + '/' + f): continue
+        os.makedirs(os.path.dirname(d + '/' + f), exist_ok=True); shutil.copy(REPO + '/' + f, d + '/' + f)
     os.symlink(REPO + '/tp_reconstruction', d + '/tp_reconstruction'); os.symlink(REPO + '/Trades_GKOHNP140.csv', d + '/Trades_GKOHNP140.csv'); return P
 
 
@@ -43,6 +41,8 @@ M = [
  ('MM07_builder_drops_stamp', text_edit('tools/m2d_wing_body.py', ", tie_order_convention=tp.CONVENTION_METADATA)", ")"), 'test_delivered_output_builders_assert_primary_and_stamp_metadata[m2d]'),
  ('MM08_sensitivity_report_number_changed', json_edit('reports/r1_tie_order/r1_tie_order_sensitivity.json', lambda o: o['policies']['trade_id']['3_episode_identity'].__setitem__('episodes_changed', 5)), 'test_sensitivity_report_is_the_independent_reference_result'),
  ('MM09_metadata_claims_verified_chronology', text_edit('python/pe/tie_policy.py', "'verified_intra_second_chronology': False", "'verified_intra_second_chronology': True"), 'test_convention_metadata_constant_states_the_limitation'),
+ ('MM11_builder_guard_called_with_a_constant', text_edit('tools/m2c_closing_batches.py', "tp.require_primary(ls.tie, 'M2-C delivered outputs')", "tp.require_primary('src', 'M2-C delivered outputs')"), 'test_delivered_output_builders_assert_primary_and_stamp_metadata[m2c] (reviewer R2M09)'),
+ ('MM12_parity_report_digit_changed', (lambda P: open(P + '/reports/parity_lineage_report.json', 'ab').write(b' ')), 'test_no_delivered_data_value_changed_since_the_r1_baseline (inverse preservation rule; reviewer R2M17)'),
  ('MM10_sensitivity_report_wing_body_links_changed', json_edit('reports/r1_tie_order/r1_tie_order_sensitivity.json', lambda o: o['policies']['sensex_trade_id_time']['5_wing_body_membership']['links_changed'].__setitem__('W1', 1)), 'test_sensitivity_report_is_the_independent_reference_result'),
 ]
 

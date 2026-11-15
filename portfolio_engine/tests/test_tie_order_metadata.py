@@ -8,7 +8,8 @@ from pe import tie_policy as tp
 BASE = json.load(open(os.path.join(PE, 'reports', 'm2f_audit', 'r1', 'baseline_sha256_before_R1.json')))['sha256']
 MANIFESTS = ['portfolio_engine/reports/m2c_data/manifest.json', 'portfolio_engine/reports/m2d_data/manifest.json', 'portfolio_engine/reports/m2e_data/NIFTY_2026-06-30/manifest.json', 'portfolio_engine/reports/m2e_data/SENSEX_2026-07-16/manifest.json']
 sha = lambda p: hashlib.sha256(open(os.path.join(REPO, p), 'rb').read()).hexdigest()
-PRESERVED = [p for p in BASE if p.startswith(('portfolio_engine/reports/m2b', 'portfolio_engine/reports/m2c_', 'portfolio_engine/reports/m2d_', 'portfolio_engine/reports/m2e_', 'portfolio_engine/fixtures', 'tp_reconstruction/')) or p == 'Trades_GKOHNP140.csv']
+ALLOWED_TO_CHANGE = lambda p: p.startswith(('portfolio_engine/python/', 'portfolio_engine/tests/', 'portfolio_engine/tools/', 'portfolio_engine/reports/m2f_audit/')) or p.endswith('.md') or p in MANIFESTS or p.startswith('portfolio_engine/IMPLEMENTATION')
+PRESERVED = [p for p in BASE if not ALLOWED_TO_CHANGE(p)]          # INVERSE rule: every baseline file that is not explicitly allowed to change must be byte-identical (covers data, figures, summaries, fixtures, parity reports, tp_reconstruction, raw csv)
 
 
 def test_convention_metadata_constant_states_the_limitation():
@@ -25,7 +26,7 @@ def test_delivered_manifest_carries_convention_and_nothing_else_changed(path):
 
 def test_no_delivered_data_value_changed_since_the_r1_baseline():
     changed = [p for p in PRESERVED if p not in MANIFESTS and (not os.path.exists(os.path.join(REPO, p)) or sha(p) != BASE[p])]
-    assert len(PRESERVED) > 300 and not changed, changed[:5]                                         # every dataset, summary, figure, CSV, fixture, tp_reconstruction file and the raw csv is byte-identical
+    assert len(PRESERVED) >= 400 and not changed, changed[:5]                                         # every dataset, summary, figure, CSV, fixture, tp_reconstruction file and the raw csv is byte-identical
 
 
 def test_raw_csv_hash_unchanged():
@@ -35,7 +36,8 @@ def test_raw_csv_hash_unchanged():
 @pytest.mark.parametrize('tool', ['m2c_closing_batches.py', 'm2d_wing_body.py', 'm2e_build.py'])
 def test_delivered_output_builders_assert_primary_and_stamp_metadata(tool):
     tree = ast.parse(open(os.path.join(PE, 'tools', tool)).read()); calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call)]
-    assert any(isinstance(c.func, ast.Attribute) and c.func.attr == 'require_primary' for c in calls)                                  # a sensitivity policy cannot reach a delivered builder
+    guards = [c for c in calls if isinstance(c.func, ast.Attribute) and c.func.attr == 'require_primary']
+    assert guards and all(isinstance(c.args[0], ast.Attribute) and c.args[0].attr == 'tie' for c in guards)          # the guard inspects the policy the LineageSet actually used (ls.tie), not a constant
     assert any(k.arg == 'tie_order_convention' and isinstance(k.value, ast.Attribute) and k.value.attr == 'CONVENTION_METADATA' for c in calls for k in c.keywords)
 
 

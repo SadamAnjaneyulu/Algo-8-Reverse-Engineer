@@ -89,8 +89,9 @@ def sensex_time_key(underlying, trade_id, epoch_s):
 
 
 def tie_key(policy, underlying, trade_id, order_no, epoch_s):
+    """the key stored in Fill.tie_key: LABELLED with its policy name as first element, so keys built for one policy can never be replayed silently under another (order_events rejects a mismatch)"""
     n = resolve(policy).name
-    if n == 'trade_id': return trade_id_key(trade_id)
-    if n == 'order_no': return order_no_key(order_no)
-    if n == 'sensex_trade_id_time': return sensex_time_key(underlying, trade_id, epoch_s)
+    if n == 'trade_id': return (n,) + trade_id_key(trade_id)
+    if n == 'order_no': return (n,) + order_no_key(order_no)
+    if n == 'sensex_trade_id_time': return (n,) + sensex_time_key(underlying, trade_id, epoch_s)
     return None

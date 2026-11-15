@@ -6,8 +6,11 @@ from . import tsvio, replay as rp, provenance
 def _run_cpp(a):
     import subprocess, tempfile
     from .schema import WARN_CODES
+    from . import tie_policy as tp
+    pol = tp.resolve(a.tie)
+    if not pol.cpp_supported: raise SystemExit(f'tie policy {pol.name!r} is Python-only (it needs raw-file keys); the C++ core supports source_row, sells_first and buys_first')
     binary = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'build', 'pe_replay'); tmp = tempfile.mkdtemp(); d = os.path.join(tmp, 'dump.tsv'); r = os.path.join(tmp, 'roles.tsv')
-    p = subprocess.run([binary, '--events', a.events, '--instruments', a.instruments, '--mode', a.mode, '--method', a.method, '--tie', a.tie, '--snapshot-interval', str(a.snapshot_interval), '--dump', d, '--roles', r] + (['--strict'] if a.strict else []), capture_output=True, text=True)
+    p = subprocess.run([binary, '--events', a.events, '--instruments', a.instruments, '--mode', a.mode, '--method', a.method, '--tie', pol.engine_order, '--snapshot-interval', str(a.snapshot_interval), '--dump', d, '--roles', r] + (['--strict'] if a.strict else []), capture_output=True, text=True)
     if p.returncode != 0: raise SystemExit(p.stderr.strip())
     res = rp.RunResult(); res.dump = open(d).read(); res.roles = []; res.checks = ['(checked inside the C++ core)']; res.meta = {}; res.warnings = {}
     for l in res.dump.splitlines():
