@@ -52,5 +52,12 @@
   "C2_30s": "6e3da85369812216",
   "C2_60s": "3f6cc1ea75aad1da"
  },
- "reproduce": "python3 portfolio_engine/tools/m2c_closing_batches.py"
+ "reproduce": "python3 portfolio_engine/tools/m2c_closing_batches.py",
+ "tie_order_convention": {
+  "id": "SOURCE_ROW_ORDER_CONVENTION",
+  "engine_policy": "src",
+  "verified_intra_second_chronology": false,
+  "statement": "same-instrument fills inside one second are processed in source-file row order; a deterministic convention, not verified execution chronology",
+  "sensitivity": "reports/R1_TIE_ORDER_CONVENTION.md"
+ }
 }
