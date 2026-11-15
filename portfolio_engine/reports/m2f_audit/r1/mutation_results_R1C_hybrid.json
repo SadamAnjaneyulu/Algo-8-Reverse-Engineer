@@ -1,0 +1,75 @@
+[
+ {
+  "id": "BASELINE_unmutated",
+  "outcome": "survived",
+  "summary": "6 passed, 25 deselected in 80.53s (0:01:20)"
+ },
+ {
+  "id": "HM01_sensex_uses_suffix",
+  "expected_detector": "test_hybrid_key_hand_calculated_cases_and_label",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_hybrid_key_hand_calculated_cases_and_label",
+   "test_hybrid_is_not_interchangeable_with_the_individual_policies"
+  ],
+  "summary": "2 failed, 4 passed, 25 deselected in 80.13s (0:01:20)"
+ },
+ {
+  "id": "HM02_nifty_left_in_source_order",
+  "expected_detector": "test_hybrid_key_hand_calculated_cases_and_label",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_real_ledger_exact_affected_rows_invariants_and_downstream[per_contract_id_sequence]",
+   "test_hybrid_key_hand_calculated_cases_and_label",
+   "test_hybrid_is_not_interchangeable_with_the_individual_policies"
+  ],
+  "summary": "3 failed, 3 passed, 25 deselected in 78.23s (0:01:18)"
+ },
+ {
+  "id": "HM03_nifty_key_off_by_one",
+  "expected_detector": "test_hybrid_key_hand_calculated_cases_and_label",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_hybrid_key_hand_calculated_cases_and_label",
+   "test_hybrid_is_not_interchangeable_with_the_individual_policies"
+  ],
+  "summary": "2 failed, 4 passed, 25 deselected in 87.68s (0:01:27)"
+ },
+ {
+  "id": "HM04_epoch_fallback_wrong",
+  "expected_detector": "test_hybrid_key_hand_calculated_cases_and_label",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_hybrid_key_hand_calculated_cases_and_label"
+  ],
+  "summary": "1 failed, 5 passed, 25 deselected in 81.87s (0:01:21)"
+ },
+ {
+  "id": "HM05_floor_instead_of_round_half_up",
+  "expected_detector": "test_hybrid_key_hand_calculated_cases_and_label",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_hybrid_key_hand_calculated_cases_and_label"
+  ],
+  "summary": "1 failed, 5 passed, 25 deselected in 89.90s (0:01:29)"
+ },
+ {
+  "id": "HM06_key_unlabelled",
+  "expected_detector": "test_hybrid_key_hand_calculated_cases_and_label",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_real_ledger_exact_affected_rows_invariants_and_downstream[per_contract_id_sequence]",
+   "test_hybrid_key_hand_calculated_cases_and_label"
+  ],
+  "summary": "2 failed, 4 passed, 25 deselected in 50.96s"
+ },
+ {
+  "id": "HM07_nifty_dash_id_accepted",
+  "expected_detector": "test_hybrid_key_hand_calculated_cases_and_label",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_hybrid_key_hand_calculated_cases_and_label"
+  ],
+  "summary": "1 failed, 5 passed, 25 deselected in 80.78s (0:01:20)"
+ }
+]

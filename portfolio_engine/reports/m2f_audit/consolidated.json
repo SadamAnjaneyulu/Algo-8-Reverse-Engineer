@@ -1005,9 +1005,13 @@
     {
      "date": "2026-11-15",
      "text": "R1 evidence refines the finding. The observed-layer dependence is real but narrow: under the approved sensitivity policies, 1-5 instruments, 1-12 episodes (ordinal-id definition; 1-7 by content) and 2-4 fills' open/close split change (sells_first 1/1/2, buys_first 5/12/4, trade_id and order_no 2/4/4, sensex_trade_id_time 0/0/0). Six populations are reported separately: (1) groups whose order differs: 29 / 29 / 173 / 141 / 21 of 4,464 multi-fill same-instrument-second groups; (2) groups that change open/close allocation: 1 / 2 / 2 / 2 / 0 (this also happens in SAME-SIDE groups: the two trade-id groups are NIFTY 2026-09-01 rows 27911/27917 and 27912/27916); (3) episode identity; (4) closing-batch membership (1-2 batches); (5) wing/body membership; (6) FIFO/LIFO lot attribution of closing fills (lot-sequence definition, equal to the reviewer's independent count; lot-set definition in brackets): FIFO 2 / 4 / 666 [654] / 598 [590] / 84 [81] and LIFO 65 / 74 / 662 [653] / 593 [588] / 80 [76] (sells_first / buys_first / trade_id / order_no / sensex_trade_id_time) of 17,760 closing fills. CORRECTION OF EVIDENCE: the first R1 document stated that NIFTY trade ids and order numbers are not time-monotone; that was an artefact of pooling across IST days and is WITHDRAWN. Per instrument and IST day, NIFTY trade ids have 0 inversions in 18,305 cross-second comparisons and SENSEX nanosecond ids 0 in 19,811; the file order contradicts them inside 172 groups (151 NIFTY, 21 SENSEX). The earlier statement that the trade id contradicts file order in only two mixed-side groups was incomplete. Disposition: SOURCE_ROW_ORDER_CONVENTION is a deterministic convention, NOT verified chronology, and the best available sub-second evidence partly contradicts it; the choice of primary convention is RE-PRESENTED to the project owner (reports/R1_TIE_ORDER_CONVENTION.md section 9). Disclosed, metadata stamped, sensitivities published. The ambiguity cannot be eliminated from the source data."
+    },
+    {
+     "date": "2026-11-15",
+     "text": "OWNER DECISION: Option C recorded. SOURCE_ROW_ORDER_CONVENTION stays primary; delivered outputs not regenerated; downstream research must evaluate both orderings; the hybrid scenario PER_CONTRACT_ID_SEQUENCE is implemented and compared in reports/R1C_DUAL_SCENARIO_COMPARISON.md (4 episodes / 2 instruments / 4 split fills / 1 batch per view / 6 W1-W2 links differ; totals stable). Neither ordering is verified chronology."
     }
    ],
-   "disposition": "REMEDIATED BY POLICY AND DISCLOSURE (R1, 2026-11-15): SOURCE_ROW_ORDER_CONVENTION approved as the primary deterministic convention; sensitivity-only policies added; convention stamped in four manifests; disclosure addenda appended; six populations reported separately. The ambiguity is not eliminated (whole-second timestamps). Independent R1 review done (14 findings; the HIGH one, a wrongly pooled NIFTY trade-id metric, corrected). Primary-convention choice re-presented to the owner; pending the owner's decision and the final M2 acceptance decision."
+   "disposition": "REMEDIATED BY POLICY AND DISCLOSURE (R1, 2026-11-15): SOURCE_ROW_ORDER_CONVENTION approved as the primary deterministic convention; sensitivity-only policies added; convention stamped in four manifests; disclosure addenda appended; six populations reported separately. The ambiguity is not eliminated (whole-second timestamps). Independent R1 review done (14 findings; the HIGH one, a wrongly pooled NIFTY trade-id metric, corrected). Owner decision Option C (2026-11-15): baseline kept, both orderings evaluated downstream, dual-scenario comparison published. Disposition stays REMEDIATED BY POLICY AND DISCLOSURE (not closed); the dependence is a documented limitation handled by mandatory dual-scenario research; pending the final M2 acceptance decision."
   },
   {
    "id": "D-A02",
@@ -1127,6 +1131,10 @@
     {
      "date": "2026-11-15",
      "text": "Population 4 (closing-batch membership) measured with the production pipeline: baseline batches not present under the alternative: sells_first 1, buys_first 2, trade_id 1, order_no 1, sensex_trade_id_time 0 at every threshold (C1 = C2). The earlier phrase '1-2 batches' is confirmed; the cause is the replay tie order that decides which fills are closing portions, distinct from the approved parent-ordering tie-break. Disclosed in the M2-C report addendum. Population 6 (lot attribution) is not a batch property and is reported separately."
+    },
+    {
+     "date": "2026-11-15",
+     "text": "OWNER DECISION: Option C recorded. SOURCE_ROW_ORDER_CONVENTION stays primary; delivered outputs not regenerated; downstream research must evaluate both orderings; the hybrid scenario PER_CONTRACT_ID_SEQUENCE is implemented and compared in reports/R1C_DUAL_SCENARIO_COMPARISON.md (4 episodes / 2 instruments / 4 split fills / 1 batch per view / 6 W1-W2 links differ; totals stable). Neither ordering is verified chronology."
     }
    ],
    "disposition": "REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; closing-batch sensitivity published (reports/R1_TIE_ORDER_CONVENTION.md section 3.4) and disclosed in the M2-C report addendum."
@@ -1230,6 +1238,10 @@
     {
      "date": "2026-11-15",
      "text": "Population 5 (wing/body membership) measured with the production pipeline: items only in one policy 2 (sells_first), 4 (buys_first), 2 (trade_id, order_no), 0 (SENSEX); W1 links changed 1 / 1 / 6 / 6 / 0, W1_S60 2 / 7 / 6 / 6 / 0; opening body units 626,830 / 626,680 / 625,985 / 625,985 / 626,765 (primary 626,765). Disclosed in the M2-D report addendum; no evidence class changed."
+    },
+    {
+     "date": "2026-11-15",
+     "text": "OWNER DECISION: Option C recorded. SOURCE_ROW_ORDER_CONVENTION stays primary; delivered outputs not regenerated; downstream research must evaluate both orderings; the hybrid scenario PER_CONTRACT_ID_SEQUENCE is implemented and compared in reports/R1C_DUAL_SCENARIO_COMPARISON.md (4 episodes / 2 instruments / 4 split fills / 1 batch per view / 6 W1-W2 links differ; totals stable). Neither ordering is verified chronology."
     }
    ],
    "disposition": "REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; wing/body sensitivity published (section 3.5) and disclosed in the M2-D report addendum."

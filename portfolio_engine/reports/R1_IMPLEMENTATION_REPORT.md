@@ -109,3 +109,9 @@ Evidence now available that the approval was not based on: the id orders are tim
 | **C** | Keep A now; run downstream research conditional on both conventions until the id semantics are documented externally | extra analysis; no output change |
 
 My recommendation is **C**: it changes no historical number, does not claim certainty either way, and keeps the choice reversible. This is a recommendation, not a decision. I am stopping here as instructed: the remaining Medium/Low defect fixes, Phase Two methodology decisions and M3 have not been started.
+
+## 10. DECISION RECORDED (2026-11-15): Option C
+
+**Formal project decision (owner, 2026-11-15): OPTION C.** `SOURCE_ROW_ORDER_CONVENTION` remains the primary convention of the existing historical reconstruction; the delivered M2-B to M2-E outputs are **not** regenerated or replaced. Downstream research must evaluate **both** ordering assumptions: the baseline `SOURCE_ROW_ORDER_CONVENTION` and the sensitivity scenario `PER_CONTRACT_ID_SEQUENCE` (NIFTY numeric trade id; SENSEX embedded nanosecond trade-id time with epoch fallback for the exceptional row 8079; source-row order as the final tie-break), which is kept distinct from the individual `trade_id`, `order_no` and `sensex_trade_id_time` policies. Both result sets are preserved, and conclusions are labelled ordering-stable or ordering-dependent. **Neither ordering is claimed to be verified exchange execution chronology; the true intra-second sequence is UNRESOLVED.** Evidence and comparison: `reports/R1C_DUAL_SCENARIO_COMPARISON.md`.
+
+Section 9 above is kept as written; its recommendation (C) was adopted. Deliverables of the Option C step: `reports/R1C_DUAL_SCENARIO_COMPARISON.md`, `reports/r1c_dual_scenario/dual_scenario_results.json`, the policy `per_contract_id_sequence`, and the records listed in the Option C change list.

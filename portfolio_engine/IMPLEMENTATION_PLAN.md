@@ -50,3 +50,21 @@ M2-E (historical position forensics and portfolio visualization) executed for th
 M2-F (final independent audit of M1/M2-A..M2-E) executed with five independent tracks; decision **CONDITIONAL PASS** (`reports/M2F_FINAL_AUDIT_REPORT.md`). No Critical defect; one High (D-A01) unresolved and blocking an unconditional PASS: the observed position layer (episode identity, reversal count, FIFO/LIFO attribution, and through them closing-batch and wing/body membership) depends on an unresolved intra-second fill-order convention (file order used). Unsupported M2-E wording on case-selection history recorded as D-02 (addendum in `reports/M2F_METHODOLOGY_LIMITATIONS.md`; earlier reports not edited). 49 defects (0 Critical / 1 High / 19 Medium / 29 Low), 97 claims classified, 123 mutants run. Decisions required from the user are listed in `M2F_METHODOLOGY_LIMITATIONS.md` section 12. M3 not started; stopped for approval.
 
 R1 (tie-order convention) executed after the M2-F CONDITIONAL PASS: `SOURCE_ROW_ORDER_CONVENTION` approved as the primary deterministic convention (not verified chronology); sensitivity-only policies (`source_row`, `sells_first`, `buys_first`, `trade_id`, `order_no`, `sensex_trade_id_time`) added to the Python engine (C++ unchanged); convention metadata stamped into four manifests; disclosure addenda appended to M2-B/M2-C/M2-D/M2-F; five sensitivity populations reported separately (`reports/R1_TIE_ORDER_CONVENTION.md`); primary outputs verified byte-identical to the pre-R1 baseline. Remaining M2-closure items (Medium/Low defects, acceptance gate) and M3 are NOT started; stopped for review.
+
+R1-C (decision recorded 2026-11-15): **Formal project decision (owner, 2026-11-15): OPTION C.** `SOURCE_ROW_ORDER_CONVENTION` remains the primary convention of the existing historical reconstruction; the delivered M2-B to M2-E outputs are **not** regenerated or replaced. Downstream research must evaluate **both** ordering assumptions: the baseline `SOURCE_ROW_ORDER_CONVENTION` and the sensitivity scenario `PER_CONTRACT_ID_SEQUENCE` (NIFTY numeric trade id; SENSEX embedded nanosecond trade-id time with epoch fallback for the exceptional row 8079; source-row order as the final tie-break), which is kept distinct from the individual `trade_id`, `order_no` and `sensex_trade_id_time` policies. Both result sets are preserved, and conclusions are labelled ordering-stable or ordering-dependent. **Neither ordering is claimed to be verified exchange execution chronology; the true intra-second sequence is UNRESOLVED.** Evidence and comparison: `reports/R1C_DUAL_SCENARIO_COMPARISON.md`.
+
+### M2 closing sequence (authorized order; each step stops for owner review)
+1. **R1-C record (done):** Option C recorded; hybrid scenario implemented and compared; nothing delivered regenerated.
+2. Phase Two methodology decisions (case-selection wording; reversal definitions; closing-batch threshold inclusivity; other recorded choices).
+3. Phase Three Medium-defect remediation (defect-by-defect ledger; C-02 engine-level W3 test, D-A08 and E-D03 reopened items).
+4. Low-defect dispositions (FIXED / ACCEPTED / DEFERRED / OPEN).
+5. Regression and mutation testing (a test is called mutant-killing only after the mutant was executed and failed).
+6. Fresh-context final audit.
+7. Final M2 acceptance decision: exactly one of PASS / CONDITIONAL PASS / FAIL.
+8. **M3 starts only when the owner authorizes it.** Not started.
+
+### M3 architecture requirements recorded by Option C (not started)
+* Fill-order conventions are **configurable** (a registry such as `pe.tie_policy`), selected per run, stamped into every manifest and output; the baseline is `SOURCE_ROW_ORDER_CONVENTION`.
+* **Dual-scenario research:** every research result is produced under the baseline and under `PER_CONTRACT_ID_SEQUENCE`, stored side by side, with an explicit ordering-stable / ordering-dependent label.
+* Source data (the raw trade file and the TP-01 ledger) is **never modified**; ordering keys are derived at load time from the raw columns and checked against the manifest hash.
+* Plugins cannot mutate state (existing M3 gate); a plugin may not choose the ordering convention silently.

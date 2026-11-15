@@ -12,6 +12,7 @@ from pe.generators import historical as H
 OUT = os.path.join(PE, 'reports', 'r1_tie_order'); os.makedirs(OUT, exist_ok=True)
 POLICIES = ['source_row', 'sells_first', 'buys_first', 'trade_id', 'order_no', 'sensex_trade_id_time']
 args = [a for a in sys.argv[1:] if a in tp.POLICIES] or POLICIES
+OUT_NAME = next((a.split('=', 1)[1] for a in sys.argv[1:] if a.startswith('--out=')), 'r1_tie_order_sensitivity.json')      # a scenario run writes its own file; the R1 five-policy result is never overwritten
 ins, fills, src = H.generate(REPO); fills.sort(key=lambda f: f.source_row_id)
 G = collections.defaultdict(list)
 for f in fills: G[(f.instrument_id, f.timestamp_s)].append(f)
@@ -85,4 +86,4 @@ for p in args:
     alt = run(p); out['policies'][p] = dict(convention=tp.convention_id(p), sensitivity_only=True, **compare(base, alt)); r = out['policies'][p]
     print(p, round(time.time() - t0), 's | groups differing', r['1_groups_differing_in_order']['differing'], '| split groups', r['2_groups_changing_open_close_allocation']['groups'], '| episodes', r['3_episode_identity']['episodes_changed'],
           '| C1@10 changed', r['4_closing_batch_membership']['C1@10s']['baseline_batches_not_in_alternative'], '| W1 links', r['5_wing_body_membership']['links_changed']['W1'], flush=True)
-json.dump(out, open(os.path.join(OUT, 'r1_tie_order_sensitivity.json'), 'w'), indent=1, sort_keys=True)
+json.dump(out, open(os.path.join(OUT, OUT_NAME), 'w'), indent=1, sort_keys=True)

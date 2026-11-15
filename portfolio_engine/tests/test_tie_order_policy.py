@@ -1,6 +1,6 @@
 """R1 tests: intra-second tie-order policies. SOURCE_ROW_ORDER_CONVENTION is the primary deterministic convention (NOT verified execution chronology); every other policy is sensitivity-only.
 Expected values are hand-calculated (synthetic) or pinned from the INDEPENDENT M2-F reference run on the raw csv (reports/m2f_audit/r1 + track_a/b/c; no pe imports), never produced by the code under test."""
-import dataclasses as dc, os
+import json, dataclasses as dc, os
 import pytest
 from conftest import PE, REPO
 from pe import tie_policy as tp, replay as rp
@@ -41,9 +41,9 @@ def test_default_convention_is_source_row_order():
 
 
 def test_policy_registry_is_exactly_the_approved_set_and_only_source_row_is_primary():
-    assert set(tp.POLICIES) == {'source_row', 'sells_first', 'buys_first', 'trade_id', 'order_no', 'sensex_trade_id_time'}
+    assert set(tp.POLICIES) == {'source_row', 'sells_first', 'buys_first', 'trade_id', 'order_no', 'sensex_trade_id_time', 'per_contract_id_sequence'}
     assert [n for n, p in tp.POLICIES.items() if p.primary] == ['source_row'] and all(tp.POLICIES[n].sensitivity_only for n in tp.POLICIES if n != 'source_row')
-    assert {n for n, p in tp.POLICIES.items() if p.cpp_supported} == {'source_row', 'sells_first', 'buys_first'} and set(tp.KEYED) == {'trade_id', 'order_no', 'sensex_trade_id_time'}
+    assert {n for n, p in tp.POLICIES.items() if p.cpp_supported} == {'source_row', 'sells_first', 'buys_first'} and set(tp.KEYED) == {'trade_id', 'order_no', 'sensex_trade_id_time', 'per_contract_id_sequence'}
     assert set(TIE_ORDERS) == {'src', 'sells_first', 'buys_first'} and set(KEYED_TIE_ORDERS) == set(tp.KEYED)         # the C++-parity list is unchanged; new policies are Python-only
     for n in tp.POLICIES:
         if n != 'source_row': assert tp.convention_id(n) == 'SENSITIVITY_ONLY:' + n != tp.SOURCE_ROW_ORDER_CONVENTION
@@ -51,7 +51,7 @@ def test_policy_registry_is_exactly_the_approved_set_and_only_source_row_is_prim
 
 def test_sensitivity_policy_cannot_silently_replace_the_primary_convention():
     assert tp.require_primary('src') == 'SOURCE_ROW_ORDER_CONVENTION' and tp.require_primary('source_row') == 'SOURCE_ROW_ORDER_CONVENTION'
-    for n in ('sells_first', 'buys_first', 'trade_id', 'order_no', 'sensex_trade_id_time'):
+    for n in ('sells_first', 'buys_first', 'trade_id', 'order_no', 'sensex_trade_id_time', 'per_contract_id_sequence'):
         with pytest.raises(EngineError, match='must use SOURCE_ROW_ORDER_CONVENTION'): tp.require_primary(n, 'delivered output')
     ins, fills = flip_same_side(); ls = LineageSet(fills, ins, M, 'sells_first'); assert ls.convention == 'SENSITIVITY_ONLY:sells_first'
     with pytest.raises(EngineError): tp.require_primary(ls.tie)
@@ -208,6 +208,7 @@ PINS = {   # independent reference (M2-F tracks A/B/C, raw csv, exact arithmetic
     'trade_id': dict(instruments={'NIFTY|2026-09-01|CE|24600', 'NIFTY|2026-09-01|PE|23200'}, rows=[27911, 27912, 27916, 27917], episodes=4, items_only=2, W1=6, W1_S60=6, W2=6, W2_S60=6, W3=0, batches=1, body=(625985, 540250)),
     'sensex_trade_id_time': dict(instruments=set(), rows=[], episodes=0, items_only=0, W1=0, W1_S60=0, W2=0, W2_S60=0, W3=0, batches=0, body=BASE_BODY)}
 PINS['order_no'] = PINS['trade_id']
+PINS['per_contract_id_sequence'] = PINS['trade_id']        # independent reference run of the HYBRID ordering (reports/m2f_audit/r1/independent_per_contract_id_sequence_result.json) gives the same exact values on this ledger; the two policies are still different orderings (see the key tests)
 
 
 def _episode_sigs(ls):
@@ -238,7 +239,7 @@ def real():
 
 
 @pytest.mark.slow
-@pytest.mark.parametrize('policy', ['sells_first', 'buys_first', 'trade_id', 'order_no', 'sensex_trade_id_time'])
+@pytest.mark.parametrize('policy', ['sells_first', 'buys_first', 'trade_id', 'order_no', 'sensex_trade_id_time', 'per_contract_id_sequence'])
 def test_real_ledger_exact_affected_rows_invariants_and_downstream(real, policy):
     base, alt, pin = real('source_row'), real(policy), PINS[policy]
     assert base['ls'].convention == 'SOURCE_ROW_ORDER_CONVENTION' and alt['ls'].convention == 'SENSITIVITY_ONLY:' + policy
@@ -249,3 +250,46 @@ def test_real_ledger_exact_affected_rows_invariants_and_downstream(real, policy)
     for k, bset in base['part'].items(): assert len(bset - alt['part'][k]) == pin['batches'], k                                               # closing-batch membership (C1 and C2, all 5 thresholds)
     assert len(base['items'] ^ alt['items']) == pin['items_only'] and alt['body'] == pin['body']
     for m in ('W1', 'W1_S60', 'W2', 'W2_S60', 'W3'): assert len(base['links'][m] ^ alt['links'][m]) == pin[m], m                              # wing/body link membership
+
+
+# ------------------------------------------------------------------------------------------------------------- R1-C: HYBRID scenario PER_CONTRACT_ID_SEQUENCE (project decision Option C)
+def test_hybrid_key_hand_calculated_cases_and_label():
+    k = tp.per_contract_id_sequence_key
+    assert k('NIFTY', '3109354', 1) == (3109354,) and tp.tie_key('per_contract_id_sequence', 'NIFTY', '3109354', '9', 1) == ('per_contract_id_sequence', 3109354)           # NIFTY: numeric trade id, labelled
+    ns = 1782381102528692637; ep = 1782381103                                                                                                  # fraction .5287 s -> round-half-up gives the +1 epoch
+    assert k('SENSEX', f'{ns}-125721890', ep) == (ns,) and k('SENSEX', f'{ns}-5', ep) == (ns,)                                                    # SENSEX: embedded ns time; the suffix is ignored
+    assert k('SENSEX', f'{ns}-5', ep + 60) == ((ep + 60) * 10**9,)                                                                             # inconsistent id (as row 8079) -> epoch fallback
+    with pytest.raises(EngineError, match='non-numeric NIFTY'): k('NIFTY', f'{ns}-5', ep)
+
+
+def test_hybrid_is_not_interchangeable_with_the_individual_policies():
+    ns = 1782381102528692637; ep = 1782381103; a, b = f'{ns}-125721890', f'{ns}-125721880'
+    assert tp.trade_id_key(a) != tp.trade_id_key(b) and tp.per_contract_id_sequence_key('SENSEX', a, ep) == tp.per_contract_id_sequence_key('SENSEX', b, ep)      # unlike trade_id: SENSEX suffix ignored
+    assert tp.sensex_time_key('NIFTY', '3109354', 1) == (0,) and tp.per_contract_id_sequence_key('NIFTY', '3109354', 1) == (3109354,)                                # unlike sensex_trade_id_time: orders NIFTY
+    assert tp.order_no_key('1210048527') != tp.per_contract_id_sequence_key('NIFTY', '3109354', 1)                                                           # unlike order_no: trade id, not order number
+    assert tp.convention_id('per_contract_id_sequence') == 'SENSITIVITY_ONLY:per_contract_id_sequence'
+    with pytest.raises(EngineError, match='another policy'): LineageSet(keyed(flip_same_side()[1], [(1,), (9,), (5,)], 'trade_id'), flip_same_side()[0], M, 'per_contract_id_sequence')
+
+
+def test_hybrid_reorders_a_same_side_flip_like_a_key_ordering_and_keeps_totals():
+    ins, fills = flip_same_side(); alt = keyed(fills, [(1,), (9,), (5,)], 'per_contract_id_sequence'); a = LineageSet(alt, ins, M, 'per_contract_id_sequence')
+    assert a.convention == 'SENSITIVITY_ONLY:per_contract_id_sequence'
+    assert sorted(f.source_row_id for f in rp.order_events(alt, 'per_contract_id_sequence')) == sorted(f.source_row_id for f in fills)
+
+
+@pytest.mark.slow
+def test_hybrid_group_counts_from_the_raw_csv_independently_of_the_policy_code():
+    """independent of tie_policy: key and group counts re-derived here from raw csv columns"""
+    import csv, collections
+    from pe.generators import historical as H
+    ins, fills, _ = H.generate(REPO); raw = list(csv.reader(open(os.path.join(REPO, 'Trades_GKOHNP140.csv'), newline='')))
+    def hk(f):
+        rr = raw[f.source_row_id]
+        if rr[12] == 'SENSEX': ns = int(rr[28].split('-')[0]); return ns if (ns + 500_000_000) // 10**9 == f.timestamp_s else f.timestamp_s * 10**9
+        return int(rr[28])
+    G = collections.defaultdict(list)
+    for f in fills: G[(f.instrument_id, f.timestamp_s)].append(f)
+    G = {k: v for k, v in G.items() if len(v) > 1}; assert len(G) == 4464
+    differs = [k for k, v in G.items() if [f.source_row_id for f in sorted(v, key=lambda f: (hk(f), f.source_row_id))] != sorted(f.source_row_id for f in v)]
+    assert len(differs) == 172 and collections.Counter(ins[k[0]].underlying for k in differs) == {'NIFTY': 151, 'SENSEX': 21}           # independent count == production report
+    pj = json.load(open(os.path.join(PE, 'reports', 'r1_tie_order', 'per_contract_id_sequence_sensitivity.json')))['policies']['per_contract_id_sequence']; assert pj['1_groups_differing_in_order']['differing'] == 172

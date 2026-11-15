@@ -11,6 +11,7 @@ buys_first          'buys_first'   no       no     inside a second, buys before 
 trade_id            'trade_id'     no       yes    raw trade-id column (numeric for NIFTY; '<ns>-<suffix>' for SENSEX), then source row   [Python only]
 order_no            'order_no'     no       yes    raw order-number column, then source row                   [Python only]
 sensex_trade_id_time 'sensex_trade_id_time' no yes SENSEX only: the nanosecond timestamp embedded in the trade id (validated in reports/m2f_audit/r1), then source row; NIFTY stays source row   [Python only]
+per_contract_id_sequence 'per_contract_id_sequence' no yes HYBRID scenario (project decision Option C): NIFTY = numeric trade id; SENSEX = embedded nanosecond trade-id time with the epoch-derived fallback for an inconsistent id (row 8079); source row is the final tie-break. Distinct from trade_id / order_no / sensex_trade_id_time (not interchangeable: it ignores the SENSEX suffix, unlike trade_id, and orders NIFTY, unlike sensex_trade_id_time)   [Python only]
 NIFTY trade ids are NOT assumed to share SENSEX semantics: they are plain integers whose meaning is undocumented (they are per-contract-per-IST-day non-decreasing across seconds, but not proven to be execution chronology).
 """
 import re
@@ -39,7 +40,8 @@ POLICIES = {p.name: p for p in (
     TiePolicy('buys_first', 'buys_first', False, False, True, 'buys before sells within a second, then source row'),
     TiePolicy('trade_id', 'trade_id', False, True, False, 'raw trade id, then source row'),
     TiePolicy('order_no', 'order_no', False, True, False, 'raw order number, then source row'),
-    TiePolicy('sensex_trade_id_time', 'sensex_trade_id_time', False, True, False, 'SENSEX nanosecond trade-id time (epoch-derived fallback for an inconsistent id), NIFTY source row'))}
+    TiePolicy('sensex_trade_id_time', 'sensex_trade_id_time', False, True, False, 'SENSEX nanosecond trade-id time (epoch-derived fallback for an inconsistent id), NIFTY source row'),
+    TiePolicy('per_contract_id_sequence', 'per_contract_id_sequence', False, True, False, 'HYBRID: NIFTY numeric trade id; SENSEX nanosecond trade-id time with epoch fallback; then source row'))}
 ALIASES = {'src': 'source_row'}
 KEYED = tuple(p.name for p in POLICIES.values() if p.keyed)
 
@@ -88,10 +90,19 @@ def sensex_time_key(underlying, trade_id, epoch_s):
     return (epoch_s * 10**9,)
 
 
+def per_contract_id_sequence_key(underlying, trade_id, epoch_s):
+    """HYBRID scenario: NIFTY -> numeric trade id (a per-contract, per-IST-day non-decreasing counter; meaning undocumented); SENSEX -> sensex_time_key (embedded ns time, epoch fallback). The SENSEX suffix is NOT used.
+    Source-row order is the final tie-break (applied by the replay sort, not here). Keys are only compared inside one instrument (hence one underlying) and one second."""
+    if underlying == 'SENSEX': return sensex_time_key(underlying, trade_id, epoch_s)
+    if '-' in trade_id: raise EngineError(f'non-numeric NIFTY trade id {trade_id!r}')
+    return (int(trade_id),)
+
+
 def tie_key(policy, underlying, trade_id, order_no, epoch_s):
     """the key stored in Fill.tie_key: LABELLED with its policy name as first element, so keys built for one policy can never be replayed silently under another (order_events rejects a mismatch)"""
     n = resolve(policy).name
     if n == 'trade_id': return (n,) + trade_id_key(trade_id)
     if n == 'order_no': return (n,) + order_no_key(order_no)
     if n == 'sensex_trade_id_time': return (n,) + sensex_time_key(underlying, trade_id, epoch_s)
+    if n == 'per_contract_id_sequence': return (n,) + per_contract_id_sequence_key(underlying, trade_id, epoch_s)
     return None
