@@ -1,10 +1,10 @@
 {
- "D-A01": "OPEN - BLOCKS UNCONDITIONAL PASS. Root cause R1 (also B-01, C-01): intra-second fill order is an unresolved convention. No order chosen by the audit; measured sensitivity in M2F_METHODOLOGY_LIMITATIONS.md section 1. Requires a user decision.",
- "B-01": "OPEN - same root cause as D-A01 (R1). Not fixable without a methodology decision.",
- "C-01": "OPEN - same root cause as D-A01 (R1). Not fixable without a methodology decision.",
- "C-02": "FIXED (test only): tests/test_m2f_regressions.py::test_w3_weight_is_queue_matched_over_wing_quantity. No delivered output changed. Not re-run against the mutant.",
- "D-A08": "PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_generator_fields_equal_raw_ledger compares generator fields to the raw csv (closes mutant M11). Other non-independent detectors remain.",
- "E-D03": "PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_committed_manifests_match_files covers m2c/m2d. Missing manifest coverage and differing hash bases remain.",
+ "D-A01": "REMEDIATED BY POLICY AND DISCLOSURE (R1, 2026-11-15): SOURCE_ROW_ORDER_CONVENTION approved as the primary deterministic convention; sensitivity-only policies added; convention stamped in four manifests; disclosure addenda appended; five populations reported separately. The ambiguity is not eliminated (whole-second timestamps). Pending independent R1 review and the final M2 acceptance decision.",
+ "B-01": "REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; closing-batch sensitivity published (reports/R1_TIE_ORDER_CONVENTION.md section 3.4) and disclosed in the M2-C report addendum.",
+ "C-01": "REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; wing/body sensitivity published (section 3.5) and disclosed in the M2-D report addendum.",
+ "C-02": "OPEN (corrected): the added test reads the committed output and cannot kill a wing_body.py mutation; an engine-level synthetic W3 test is still required (remediation phase).",
+ "D-A08": "OPEN (corrected): generator test added but not run against the mutant and uses float price conversion; remediation phase.",
+ "E-D03": "OPEN (corrected): manifest test covers only listed entries; completeness not proven; remediation phase.",
  "D-02": "OPEN - superseded by addendum (M2F_METHODOLOGY_LIMITATIONS.md section 4). The earlier report is preserved unmodified; a wording change in tools/m2e_cases.py is proposed and awaits approval.",
  "D-16": "OPEN - requires a definition decision (per-fill REVERSED vs net sign flip across parents); both definitions to be reported. No choice made.",
  "D-A04": "OPEN - label is an inference by design; proposal: disclose as inference in reports and add a synthetic expiry-boundary test on the OPEN_AT_END_OF_DATA path."

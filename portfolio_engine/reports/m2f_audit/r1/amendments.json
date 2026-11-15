@@ -1,0 +1,38 @@
+{
+ "D-A01": [
+  {
+   "date": "2026-11-15",
+   "text": "R1 evidence refines the finding. The observed-layer dependence is real but narrow: under the approved sensitivity policies, 1-5 instruments, 1-12 episodes and 2-4 fills' open/close split change (sells_first 1/1/2, buys_first 5/12/4, trade_id and order_no 2/4/4, sensex_trade_id_time 0/0/0). Orders differ in 21-173 of 4,464 multi-fill same-instrument-second groups, but the allocation changes only where inventory crosses zero inside the second, which includes SAME-SIDE groups (the accounting-relevant trade-id disagreements are two same-side groups at rows 27911/27917 and 27912/27916). The earlier statement that trade id contradicts file order in only two mixed-side groups was incomplete. NIFTY trade ids and order numbers are not time-monotone; the SENSEX trade id embeds a nanosecond time (sensitivity-only). Disposition: policy approved (SOURCE_ROW_ORDER_CONVENTION, not verified chronology), disclosed, metadata stamped, sensitivities published. The ambiguity itself cannot be eliminated from the source data."
+  }
+ ],
+ "B-01": [
+  {
+   "date": "2026-11-15",
+   "text": "Population 4 (closing-batch membership) measured with the production pipeline: baseline batches not present under the alternative: sells_first 1, buys_first 2, trade_id 1, order_no 1, sensex_trade_id_time 0 at every threshold (C1 = C2). The earlier phrase '1-2 batches' is confirmed; the cause is the replay tie order that decides which fills are closing portions, distinct from the approved parent-ordering tie-break. Disclosed in the M2-C report addendum."
+  }
+ ],
+ "C-01": [
+  {
+   "date": "2026-11-15",
+   "text": "Population 5 (wing/body membership) measured with the production pipeline: items only in one policy 2 (sells_first), 4 (buys_first), 2 (trade_id, order_no), 0 (SENSEX); W1 links changed 1 / 1 / 6 / 6 / 0, W1_S60 2 / 7 / 6 / 6 / 0; opening body units 626,830 / 626,680 / 625,985 / 625,985 / 626,765 (primary 626,765). Disclosed in the M2-D report addendum; no evidence class changed."
+  }
+ ],
+ "C-02": [
+  {
+   "date": "2026-11-15",
+   "text": "CORRECTION of an earlier disposition: the disposition 'FIXED (test only)' and the final-report phrase 'W3-weight survivor now pinned' overstated the work. The added test reads the committed .gz and cannot kill a mutation in wing_body.py. Status is OPEN until an engine-level synthetic W3 test with unequal quantities exists (remediation phase)."
+  }
+ ],
+ "D-A08": [
+  {
+   "date": "2026-11-15",
+   "text": "CORRECTION: 'closes mutant M11' is unproven; the added generator test converts prices with float rounding (Decimal preferred) and has not been run against the mutant. Status OPEN until verified (remediation phase)."
+  }
+ ],
+ "E-D03": [
+  {
+   "date": "2026-11-15",
+   "text": "CORRECTION: the added manifest test checks only entries already listed in each manifest; it does not prove every generated output is covered. Status OPEN (remediation phase)."
+  }
+ ]
+}

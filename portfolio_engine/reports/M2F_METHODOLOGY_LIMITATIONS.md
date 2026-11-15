@@ -90,3 +90,8 @@ M2-C chaining internals beyond equality and the independent reference; W2 weight
 3. **Reversal definition** for reporting (per-fill vs net sign flip across parents).
 4. **Exclusive vs inclusive closing-batch threshold:** confirm the inclusive reading (the approved text), or record the exclusive reading as an alternative sensitivity.
 5. Whether to approve the proposed Medium-defect fixes (legend placement, manifest coverage, pinned dependencies, additional tests) listed in `M2F_DEFECT_REGISTER.md`.
+
+## R1 ADDENDUM — corrections to section 1 (2026-11-15; earlier text unchanged)
+1. **"Trade id and order number contradict file order in two [mixed-side] groups."** True as stated (rows 726-728 and 9688-9689 for trade id; one of them for order number) but incomplete: those groups do not change any allocation. The accounting-relevant disagreements are two **same-side** groups at a position flip (NIFTY 2026-09-01 CE24600 rows 27911/27917 and PE23200 rows 27912/27916). Populations (order differs / allocation changes / episode identity / batches / wing-body) are reported separately in `reports/R1_TIE_ORDER_CONVENTION.md`.
+2. **"M2-B disclosed ... (20 fills, 5 instruments; reproduced exactly)."** Only the 5-instrument count matches R1's `buys_first` result; the "20 fills / 42 rows" count was **not** reproduced under R1's populations (2 and 4 fills whose open/close split changes). The "reproduced exactly" wording was not verified and is withdrawn.
+3. **Stress orders** (reversed, seeded random) in the table above remain valid as stress tests, not candidate chronologies. The sensitivity-only policies approved in R1 (including `sensex_trade_id_time`) are quantified in R1 section 3.

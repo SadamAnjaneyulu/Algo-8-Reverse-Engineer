@@ -1001,7 +1001,13 @@
    "proposed_fix": "Report counts as ranges across tie conventions, name the 2 conflicting groups, and add trade-id / order-number / random orders to the tie-order sensitivity table. Leave the choice of authoritative order to the project owner.",
    "proposed_test": "test: for every alternative order in {reversed, trade_id, order_no, random seeds} assert OA/CP unit totals, final inventory and cash invariant and assert the set of changed instruments is a subset of the 46 mixed-side-same-second instruments; snapshot the measured counts.",
    "track": "A",
-   "disposition": "OPEN - BLOCKS UNCONDITIONAL PASS. Root cause R1 (also B-01, C-01): intra-second fill order is an unresolved convention. No order chosen by the audit; measured sensitivity in M2F_METHODOLOGY_LIMITATIONS.md section 1. Requires a user decision."
+   "amendments": [
+    {
+     "date": "2026-11-15",
+     "text": "R1 evidence refines the finding. The observed-layer dependence is real but narrow: under the approved sensitivity policies, 1-5 instruments, 1-12 episodes and 2-4 fills' open/close split change (sells_first 1/1/2, buys_first 5/12/4, trade_id and order_no 2/4/4, sensex_trade_id_time 0/0/0). Orders differ in 21-173 of 4,464 multi-fill same-instrument-second groups, but the allocation changes only where inventory crosses zero inside the second, which includes SAME-SIDE groups (the accounting-relevant trade-id disagreements are two same-side groups at rows 27911/27917 and 27912/27916). The earlier statement that trade id contradicts file order in only two mixed-side groups was incomplete. NIFTY trade ids and order numbers are not time-monotone; the SENSEX trade id embeds a nanosecond time (sensitivity-only). Disposition: policy approved (SOURCE_ROW_ORDER_CONVENTION, not verified chronology), disclosed, metadata stamped, sensitivities published. The ambiguity itself cannot be eliminated from the source data."
+    }
+   ],
+   "disposition": "REMEDIATED BY POLICY AND DISCLOSURE (R1, 2026-11-15): SOURCE_ROW_ORDER_CONVENTION approved as the primary deterministic convention; sensitivity-only policies added; convention stamped in four manifests; disclosure addenda appended; five populations reported separately. The ambiguity is not eliminated (whole-second timestamps). Pending independent R1 review and the final M2 acceptance decision."
   },
   {
    "id": "D-A02",
@@ -1014,6 +1020,7 @@
    "proposed_fix": "Add a generator self-check (or test) that re-parses raw columns 11,12,14,15,16,33,137,161,163 and compares to the parquet row by row; record the parquet hash in a pinned manifest.",
    "proposed_test": "test_generator_equals_raw: parse the CSV with csv.reader and assert equality of (parent, instrument, ts, side, qty, price_paise, requested qty, status) for all rows.",
    "track": "A",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1027,6 +1034,7 @@
    "proposed_fix": "Document AVG as float/analytical; optionally carry AVG pool as exact rational (cost total, qty) and emit rounded paise.",
    "proposed_test": "test_avg_total_matches_fraction_reference_to_1e-6 on the real ledger.",
    "track": "A",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1040,6 +1048,7 @@
    "proposed_fix": "Rename to a neutral status (e.g. NON_FLAT_AT_EXPIRY_NO_SETTLEMENT_DATA) in reports, keep boundary test with a synthetic dataset ending before expiry.",
    "proposed_test": "test_open_at_end_of_data_when_last_day_before_expiry (synthetic) and a real-data assertion on the 54/27 split.",
    "track": "A",
+   "amendments": [],
    "disposition": "OPEN - label is an inference by design; proposal: disclose as inference in reports and add a synthetic expiry-boundary test on the OPEN_AT_END_OF_DATA path."
   },
   {
@@ -1053,6 +1062,7 @@
    "proposed_fix": "Make Python parse with a strict regex ^-?[0-9]+$ (ASCII).",
    "proposed_test": "test_malformed_integer_tokens_rejected_by_both.",
    "track": "A",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1066,6 +1076,7 @@
    "proposed_fix": "State the choice and the alternative in the data dictionary.",
    "proposed_test": "test asserting 1 side/instrument/qty per parent (already true) plus a documented count.",
    "track": "A",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1079,6 +1090,7 @@
    "proposed_fix": "Fix text; add --out-dir to tools.",
    "proposed_test": "n/a",
    "track": "A",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1092,7 +1104,13 @@
    "proposed_fix": "Add a raw-vs-generator field equality test (see D-A02) including timestamp_s; add a real-data check that the IST session date of every fill equals the date implied by raw epoch + 19800 and that all fills lie in 09:15-15:40 IST.",
    "proposed_test": "test_all_fill_times_in_ist_session_window and test_generator_equals_raw.",
    "track": "A",
-   "disposition": "PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_generator_fields_equal_raw_ledger compares generator fields to the raw csv (closes mutant M11). Other non-independent detectors remain."
+   "amendments": [
+    {
+     "date": "2026-11-15",
+     "text": "CORRECTION: 'closes mutant M11' is unproven; the added generator test converts prices with float rounding (Decimal preferred) and has not been run against the mutant. Status OPEN until verified (remediation phase)."
+    }
+   ],
+   "disposition": "OPEN (corrected): generator test added but not run against the mutant and uses float price conversion; remediation phase."
   },
   {
    "id": "B-01",
@@ -1105,7 +1123,13 @@
    "proposed_fix": "Add a sentence + the measured table to M2C report \u00a73/\u00a78 and the evidence registry; keep file order (src) as the stated convention.",
    "proposed_test": "Regression test building a synthetic same-second buy/sell on a closed contract and asserting the documented tie convention and the number of affected closing portions.",
    "track": "B",
-   "disposition": "OPEN - same root cause as D-A01 (R1). Not fixable without a methodology decision."
+   "amendments": [
+    {
+     "date": "2026-11-15",
+     "text": "Population 4 (closing-batch membership) measured with the production pipeline: baseline batches not present under the alternative: sells_first 1, buys_first 2, trade_id 1, order_no 1, sensex_trade_id_time 0 at every threshold (C1 = C2). The earlier phrase '1-2 batches' is confirmed; the cause is the replay tie order that decides which fills are closing portions, distinct from the approved parent-ordering tie-break. Disclosed in the M2-C report addendum."
+    }
+   ],
+   "disposition": "REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; closing-batch sensitivity published (reports/R1_TIE_ORDER_CONVENTION.md section 3.4) and disclosed in the M2-C report addendum."
   },
   {
    "id": "B-02",
@@ -1118,6 +1142,7 @@
    "proposed_fix": "Record the stream definition as an interpretation of D2 with the nil measured impact.",
    "proposed_test": "Synthetic two-expiry same-session case asserting the documented boundary behaviour (already partly covered).",
    "track": "B",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1131,6 +1156,7 @@
    "proposed_fix": "State the implemented reading explicitly in D2 together with the measured table.",
    "proposed_test": "Existing equal-timestamp tests suffice; add one with a mixed parent whose opening row precedes its closing rows.",
    "track": "B",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1144,6 +1170,7 @@
    "proposed_fix": "Assert summarize() rows against a hand-built synthetic expectation; assert total_closing_qty, join_gap_s and numbering directly.",
    "proposed_test": "Synthetic 3-parent scenario with known gaps 0/g/g+1 checking pairs_linked, pairs_gap_exactly_threshold, pairs_gap_threshold_plus_1s.",
    "track": "B",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1157,6 +1184,7 @@
    "proposed_fix": "Explicit validation with a named error.",
    "proposed_test": "Test that a None/NaN timestamp raises a specific, documented exception.",
    "track": "B",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1170,6 +1198,7 @@
    "proposed_fix": "Add c2_reference to the hash payload (changes hashes; needs decision).",
    "proposed_test": "Assert param_hash differs between c2_ref variants.",
    "track": "B",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1183,6 +1212,7 @@
    "proposed_fix": "Regenerate from a clean tree at the audited commit if a clean stamp is wanted.",
    "proposed_test": "n/a",
    "track": "B",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1196,7 +1226,13 @@
    "proposed_fix": "State the tie-order convention beside the M2-D headline integers and add the measured sensitivity table (above) to the report.",
    "proposed_test": "test: run wb.analyse on the 6 ambiguous fills under src/sells_first/buys_first and assert the documented deltas.",
    "track": "C",
-   "disposition": "OPEN - same root cause as D-A01 (R1). Not fixable without a methodology decision."
+   "amendments": [
+    {
+     "date": "2026-11-15",
+     "text": "Population 5 (wing/body membership) measured with the production pipeline: items only in one policy 2 (sells_first), 4 (buys_first), 2 (trade_id, order_no), 0 (SENSEX); W1 links changed 1 / 1 / 6 / 6 / 0, W1_S60 2 / 7 / 6 / 6 / 0; opening body units 626,830 / 626,680 / 625,985 / 625,985 / 626,765 (primary 626,765). Disclosed in the M2-D report addendum; no evidence class changed."
+    }
+   ],
+   "disposition": "REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; wing/body sensitivity published (section 3.5) and disclosed in the M2-D report addendum."
   },
   {
    "id": "C-02",
@@ -1209,7 +1245,13 @@
    "proposed_fix": "Assert W3 weight == queue_matched_units / wing_qty in the unequal-quantity W3 test.",
    "proposed_test": "extend test_W3_is_arithmetic_conserves_units...: for each segment assert weight == pytest.approx(units / wing_qty); add a W3 case with wing qty != body qty.",
    "track": "C",
-   "disposition": "FIXED (test only): tests/test_m2f_regressions.py::test_w3_weight_is_queue_matched_over_wing_quantity. No delivered output changed. Not re-run against the mutant."
+   "amendments": [
+    {
+     "date": "2026-11-15",
+     "text": "CORRECTION of an earlier disposition: the disposition 'FIXED (test only)' and the final-report phrase 'W3-weight survivor now pinned' overstated the work. The added test reads the committed .gz and cannot kill a mutation in wing_body.py. Status is OPEN until an engine-level synthetic W3 test with unequal quantities exists (remediation phase)."
+    }
+   ],
+   "disposition": "OPEN (corrected): the added test reads the committed output and cannot kill a wing_body.py mutation; an engine-level synthetic W3 test is still required (remediation phase)."
   },
   {
    "id": "C-03",
@@ -1222,6 +1264,7 @@
    "proposed_fix": "Add the origin-based table to section 6 and label closing-level coverage as closing-tag-scope only.",
    "proposed_test": "none needed beyond a report-number regression of the table.",
    "track": "C",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1235,6 +1278,7 @@
    "proposed_fix": "Add a column same_instrument / otm_distance_le_0 flag; keep links (no filtering).",
    "proposed_test": "synthetic: long h_ then close then short num same contract in one minute -> flagged.",
    "track": "C",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1248,6 +1292,7 @@
    "proposed_fix": "Mention in limitations; add a count of entry_minute > first_fill items to the summary.",
    "proposed_test": "real-ledger assertion that the count equals 2 (documented).",
    "track": "C",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1261,6 +1306,7 @@
    "proposed_fix": "Quote denominators with each percentage; mark the TP-03 E6 equality as reported, not re-verified.",
    "proposed_test": "none",
    "track": "C",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1274,6 +1320,7 @@
    "proposed_fix": "Place the legend outside the axes (e.g. bbox_to_anchor below the panel) or loc=\"lower right\"; mark the widest batch with an annotation.",
    "proposed_test": "Render-time test: for every legend, assert no plotted point/segment lies inside its bbox (probe in legend_overlap_probe.py).",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1287,6 +1334,7 @@
    "proposed_fix": "Rename the heading to \"Selection method (structural rule; committed with the outputs; no timestamp evidence of being fixed earlier)\"; drop \"predefined\"/\"fixed before\" or add a commit that precedes the outputs for future runs.",
    "proposed_test": "Doc-lint test: forbid \"fixed before any case\", \"predefined\" and \"outcome-blind\" in M2E_*.md unless a git commit timestamp earlier than the first output commit is referenced.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN - superseded by addendum (M2F_METHODOLOGY_LIMITATIONS.md section 4). The earlier report is preserved unmodified; a wording change in tools/m2e_cases.py is proposed and awaits approval."
   },
   {
@@ -1300,6 +1348,7 @@
    "proposed_fix": "Add a stratified rule (e.g. first qualifying per D-label and time-of-day bucket) or state the concentration prominently in the case report.",
    "proposed_test": "Test asserting each case-type pick is disclosed with its qualifying count and D-label; report generator prints the concentration.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1313,6 +1362,7 @@
    "proposed_fix": "Add case-type title, anchor item, quantities per event, counterpart list / batch bar; or label them \"lifecycle context of the case episode\".",
    "proposed_test": "Check each case PNG manifest entry carries case_type in its title and an anchor annotation.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1326,6 +1376,7 @@
    "proposed_fix": "Add \"C2 == C1 on this cycle (M2-C \u00a73)\" to the V4/V6 titles or merge.",
    "proposed_test": "Test: if C1 and C2 batch sets are identical the figure title must say so.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1339,6 +1390,7 @@
    "proposed_fix": "Replace by a bubble/count plot or histogram of sum-of-weights / body units; remove y = x or label it.",
    "proposed_test": "Visual probe: count of distinct plotted points vs rows.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1352,6 +1404,7 @@
    "proposed_fix": "Move legends outside axes.",
    "proposed_test": "Legend-overlap probe as a render test.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1365,6 +1418,7 @@
    "proposed_fix": "Use step/area or wider bars and add its own legend.",
    "proposed_test": "n/a (visual)",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1378,6 +1432,7 @@
    "proposed_fix": "Say \"orange\" or change colour.",
    "proposed_test": "n/a",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1391,6 +1446,7 @@
    "proposed_fix": "Rename W3 categories to \"queue partner\" in CSV and V6 panel; use \"paired (arithmetic)\".",
    "proposed_test": "Vocabulary lint over figure CSV categories per method.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1404,6 +1460,7 @@
    "proposed_fix": "Use NA for items outside TP-03 scope.",
    "proposed_test": "Test: tp03_event_class == NA for non BODY_SHORT_BY_TAG items.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1417,6 +1474,7 @@
    "proposed_fix": "Add source sha256 to figure manifest; regenerate at final HEAD.",
    "proposed_test": "Manifest test: each source dataset hash equals dataset manifest hash.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1430,6 +1488,7 @@
    "proposed_fix": "Say \"at the +/-60 s boundary\".",
    "proposed_test": "n/a",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1443,6 +1502,7 @@
    "proposed_fix": "Sort by (instrument, numeric suffix).",
    "proposed_test": "Unit test with 11 synthetic episodes.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1456,6 +1516,7 @@
    "proposed_fix": "Add raw-derived checks (this track verify_*.py) to the test suite; add legend/footer probes.",
    "proposed_test": "Port verify_datasets.py / verify_v4v5v6.py / verify_cases.py as tests.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1469,6 +1530,7 @@
    "proposed_fix": "State the per-fill definition next to \"no reversal\" and list the parent-level same-second flips (SENSEX 1, NIFTY PE23850 cross-parent) as a measured alternative; do not pick one for the user.",
    "proposed_test": "Test counting same-second zero-crossings by fill and by parent and asserting the report text mentions both counts.",
    "track": "D",
+   "amendments": [],
    "disposition": "OPEN - requires a definition decision (per-fill REVERSED vs net sign flip across parents); both definitions to be reported. No choice made."
   },
   {
@@ -1482,6 +1544,7 @@
    "proposed_fix": "Build parent_roles from sorted keys: dict(sorted(Counter(...).items())); write JSON with sort_keys=True; add coverage.json, case_studies.json and the summaries to the manifest.",
    "proposed_test": "Test: run the m2e builders in two subprocesses with different PYTHONHASHSEED and assert byte equality of every output file.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1495,6 +1558,7 @@
    "proposed_fix": "Record the code hash (git tree hash of python/, tools/, cpp/) and a full dirty flag in every manifest; exclude the sha from run_id or document it; hash the C++ binary.",
    "proposed_test": "Test: provenance.manifest() under two different git shas/dirty states -> same run_id for identical inputs; manifest contains tree hash.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1508,7 +1572,13 @@
    "proposed_fix": "Hash every file in the output directory (except the manifest) with one stated method (raw bytes); verify in a test.",
    "proposed_test": "Test: listdir(output dir) minus manifest.json == manifest file set.",
    "track": "E",
-   "disposition": "PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_committed_manifests_match_files covers m2c/m2d. Missing manifest coverage and differing hash bases remain."
+   "amendments": [
+    {
+     "date": "2026-11-15",
+     "text": "CORRECTION: the added manifest test checks only entries already listed in each manifest; it does not prove every generated output is covered. Status OPEN (remediation phase)."
+    }
+   ],
+   "disposition": "OPEN (corrected): manifest test covers only listed entries; completeness not proven; remediation phase."
   },
   {
    "id": "E-D04",
@@ -1521,6 +1591,7 @@
    "proposed_fix": "Pass encoding=\"utf-8\", newline=\"\\n\" to every open() that writes.",
    "proposed_test": "Test: run the report tools with PYTHONUTF8=0 LC_ALL=C.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1534,6 +1605,7 @@
    "proposed_fix": "Use a strict regex ^-?[0-9]+$ in Python; strip \\r or reject it in C++; reject a file with no header and rows; fail if the first non-comment line is absent.",
    "proposed_test": "Test: fixtures with CRLF/+/space/underscore tokens must be rejected (or accepted) identically by both engines.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1547,6 +1619,7 @@
    "proposed_fix": "Document the domain; add an overflow guard or Python check mirroring C++; replace sum() over floats by an explicit loop in invariants/lineage_set; make AVG tolerance relative to intermediate magnitudes.",
    "proposed_test": "Test: q=3e9, px=3e9 sequence must raise in both engines.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1560,6 +1633,7 @@
    "proposed_fix": "Add tests that run the stage scripts on a small cycle into a temp dir and verify manifest vs files; test cli replay --out-dir and manifest().",
    "proposed_test": "Test: execute m2c tool with OUT redirected; verify every manifest entry against bytes.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1573,6 +1647,7 @@
    "proposed_fix": "Mark real-ledger fixtures slow or add a \"real\" marker.",
    "proposed_test": "Check marker assignment in CI.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1586,6 +1661,7 @@
    "proposed_fix": "Add a lock/requirements file and record versions in manifests.",
    "proposed_test": "CI job on the pinned versions.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   },
   {
@@ -1599,6 +1675,7 @@
    "proposed_fix": "Add a version comment line/field to every shared file.",
    "proposed_test": "Test: every output file declares a schema version matched to SCHEMAS.md.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1612,6 +1689,7 @@
    "proposed_fix": "Merge or reference the branch; correct the commit description.",
    "proposed_test": "n/a",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN (Low) - documented; correction proposed, not applied"
   },
   {
@@ -1625,6 +1703,7 @@
    "proposed_fix": "Add synthetic fixtures with fills at 18:29:59 / 18:30:00 UTC and 23:59:59 UTC to the parity set; add an invalid-fixture for schema_version; unit-test git_sha against `git rev-parse`; run each stage script in a temp dir in a test and verify its manifest.",
    "proposed_test": "Test: parity fixture straddling IST midnight; invalid_schema_version fixture rejected by both engines.",
    "track": "E",
+   "amendments": [],
    "disposition": "OPEN - correction proposed, not applied (no delivered artefact modified); approval requested"
   }
  ],

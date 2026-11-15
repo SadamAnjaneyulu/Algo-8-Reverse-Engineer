@@ -13,7 +13,8 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Impact:** Headline counts (23,684 OA, 23 reversals, episode ids for ~2-18 instruments) are conditional on file order; the report only measured sells_first/buys_first (reproduced: 20 fills, 5 instruments). "Verified chronological" is true to the second only. No methodology choice is made here.
 * **Proposed correction:** Report counts as ranges across tie conventions, name the 2 conflicting groups, and add trade-id / order-number / random orders to the tie-order sensitivity table. Leave the choice of authoritative order to the project owner.
 * **Regression test:** test: for every alternative order in {reversed, trade_id, order_no, random seeds} assert OA/CP unit totals, final inventory and cash invariant and assert the set of changed instruments is a subset of the 46 mixed-side-same-second instruments; snapshot the measured counts.
-* **Disposition:** OPEN - BLOCKS UNCONDITIONAL PASS. Root cause R1 (also B-01, C-01): intra-second fill order is an unresolved convention. No order chosen by the audit; measured sensitivity in M2F_METHODOLOGY_LIMITATIONS.md section 1. Requires a user decision.
+* **Disposition:** REMEDIATED BY POLICY AND DISCLOSURE (R1, 2026-11-15): SOURCE_ROW_ORDER_CONVENTION approved as the primary deterministic convention; sensitivity-only policies added; convention stamped in four manifests; disclosure addenda appended; five populations reported separately. The ambiguity is not eliminated (whole-second timestamps). Pending independent R1 review and the final M2 acceptance decision.
+* **Amendment (2026-11-15, appended; the evidence text above is unchanged; the disposition line shows the current status, the earlier one is in git at 562d7eb6):** R1 evidence refines the finding. The observed-layer dependence is real but narrow: under the approved sensitivity policies, 1-5 instruments, 1-12 episodes and 2-4 fills' open/close split change (sells_first 1/1/2, buys_first 5/12/4, trade_id and order_no 2/4/4, sensex_trade_id_time 0/0/0). Orders differ in 21-173 of 4,464 multi-fill same-instrument-second groups, but the allocation changes only where inventory crosses zero inside the second, which includes SAME-SIDE groups (the accounting-relevant trade-id disagreements are two same-side groups at rows 27911/27917 and 27912/27916). The earlier statement that trade id contradicts file order in only two mixed-side groups was incomplete. NIFTY trade ids and order numbers are not time-monotone; the SENSEX trade id embeds a nanosecond time (sensitivity-only). Disposition: policy approved (SOURCE_ROW_ORDER_CONVENTION, not verified chronology), disclosed, metadata stamped, sensitivities published. The ambiguity itself cannot be eliminated from the source data.
 
 ## Medium (19)
 
@@ -42,7 +43,8 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Impact:** A systematic time-base error (UTC vs IST) in the generator would not be detected by the current suite; session-day assignment is insensitive to it on this data (max IST fill time 15:39 + 5:30 < 24:00). Parity cannot prove correctness.
 * **Proposed correction:** Add a raw-vs-generator field equality test (see D-A02) including timestamp_s; add a real-data check that the IST session date of every fill equals the date implied by raw epoch + 19800 and that all fills lie in 09:15-15:40 IST.
 * **Regression test:** test_all_fill_times_in_ist_session_window and test_generator_equals_raw.
-* **Disposition:** PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_generator_fields_equal_raw_ledger compares generator fields to the raw csv (closes mutant M11). Other non-independent detectors remain.
+* **Disposition:** OPEN (corrected): generator test added but not run against the mutant and uses float price conversion; remediation phase.
+* **Amendment (2026-11-15, appended; the evidence text above is unchanged; the disposition line shows the current status, the earlier one is in git at 562d7eb6):** CORRECTION: 'closes mutant M11' is unproven; the added generator test converts prices with float rounding (Decimal preferred) and has not been run against the mutant. Status OPEN until verified (remediation phase).
 
 ### B-01 (track B): Closing identification (hence C1/C2 membership) depends on the order of same-second opposite-side fills in one instrument; not disclosed or measured in the M2-C reports
 * **Location:** portfolio_engine/reports/M2C_CLOSING_BATCH_REPORT.md (§1,§3,§8 silent); docs/POSITION_BASKET_ONTOLOGY.md §3.3 (documents it for episode numbering only)
@@ -51,7 +53,8 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Impact:** Result stated as convention-independent observed layer; batch membership is in fact sensitive to a documented M1 tie convention for 1-2 batches (up to 322 closing portions at 30/60 s). Small, but undisclosed in Model C.
 * **Proposed correction:** Add a sentence + the measured table to M2C report §3/§8 and the evidence registry; keep file order (src) as the stated convention.
 * **Regression test:** Regression test building a synthetic same-second buy/sell on a closed contract and asserting the documented tie convention and the number of affected closing portions.
-* **Disposition:** OPEN - same root cause as D-A01 (R1). Not fixable without a methodology decision.
+* **Disposition:** REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; closing-batch sensitivity published (reports/R1_TIE_ORDER_CONVENTION.md section 3.4) and disclosed in the M2-C report addendum.
+* **Amendment (2026-11-15, appended; the evidence text above is unchanged; the disposition line shows the current status, the earlier one is in git at 562d7eb6):** Population 4 (closing-batch membership) measured with the production pipeline: baseline batches not present under the alternative: sells_first 1, buys_first 2, trade_id 1, order_no 1, sensex_trade_id_time 0 at every threshold (C1 = C2). The earlier phrase '1-2 batches' is confirmed; the cause is the replay tie order that decides which fills are closing portions, distinct from the approved parent-ordering tie-break. Disclosed in the M2-C report addendum.
 
 ### B-04 (track B): Existing test suite lets a reporting-layer mutation survive and kills three others only through a committed-output hash snapshot
 * **Location:** portfolio_engine/tests/test_closing_batches.py; python/pe/closing_batches.py:177-179 (summarize), 132 (total_closing_qty), 154 (join gap), 59 (batch numbering)
@@ -69,7 +72,8 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Impact:** Tiny (<= 0.014 % of body units, <= 4 items, <= 7 links) but the exact headline integers (626,765; 540,250; 66,055) are convention-conditional facts, presented without that label.
 * **Proposed correction:** State the tie-order convention beside the M2-D headline integers and add the measured sensitivity table (above) to the report.
 * **Regression test:** test: run wb.analyse on the 6 ambiguous fills under src/sells_first/buys_first and assert the documented deltas.
-* **Disposition:** OPEN - same root cause as D-A01 (R1). Not fixable without a methodology decision.
+* **Disposition:** REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; wing/body sensitivity published (section 3.5) and disclosed in the M2-D report addendum.
+* **Amendment (2026-11-15, appended; the evidence text above is unchanged; the disposition line shows the current status, the earlier one is in git at 562d7eb6):** Population 5 (wing/body membership) measured with the production pipeline: items only in one policy 2 (sells_first), 4 (buys_first), 2 (trade_id, order_no), 0 (SENSEX); W1 links changed 1 / 1 / 6 / 6 / 0, W1_S60 2 / 7 / 6 / 6 / 0; opening body units 626,830 / 626,680 / 625,985 / 625,985 / 626,765 (primary 626,765). Disclosed in the M2-D report addendum; no evidence class changed.
 
 ### C-02 (track C): W3 weight column is not pinned by any existing test (mutant M19 survives all 33 tests)
 * **Location:** portfolio_engine/python/pe/wing_body.py:~120 (weight=round(u / ws[wi].qty, 9)); portfolio_engine/tests/test_wing_body.py
@@ -78,7 +82,8 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Impact:** A wrong W3 weight would pass the suite; weight is a published column of wing_body_links_W3.
 * **Proposed correction:** Assert W3 weight == queue_matched_units / wing_qty in the unequal-quantity W3 test.
 * **Regression test:** extend test_W3_is_arithmetic_conserves_units...: for each segment assert weight == pytest.approx(units / wing_qty); add a W3 case with wing qty != body qty.
-* **Disposition:** FIXED (test only): tests/test_m2f_regressions.py::test_w3_weight_is_queue_matched_over_wing_quantity. No delivered output changed. Not re-run against the mutant.
+* **Disposition:** OPEN (corrected): the added test reads the committed output and cannot kill a wing_body.py mutation; an engine-level synthetic W3 test is still required (remediation phase).
+* **Amendment (2026-11-15, appended; the evidence text above is unchanged; the disposition line shows the current status, the earlier one is in git at 562d7eb6):** CORRECTION of an earlier disposition: the disposition 'FIXED (test only)' and the final-report phrase 'W3-weight survivor now pinned' overstated the work. The added test reads the committed .gz and cannot kill a mutation in wing_body.py. Status is OPEN until an engine-level synthetic W3 test with unequal quantities exists (remediation phase).
 
 ### D-01 (track D): V4 (C1 and C2) legend hides the widest-batch marker in both cycles
 * **Location:** tools/m2e_charts.py:192 (axs[1].legend(loc="upper right")); title at :193
@@ -159,7 +164,8 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Impact:** Summaries that feed the reports (m2c/m2d/m2e summaries, coverage.json) can change without any manifest test failing.
 * **Proposed correction:** Hash every file in the output directory (except the manifest) with one stated method (raw bytes); verify in a test.
 * **Regression test:** Test: listdir(output dir) minus manifest.json == manifest file set.
-* **Disposition:** PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_committed_manifests_match_files covers m2c/m2d. Missing manifest coverage and differing hash bases remain.
+* **Disposition:** OPEN (corrected): manifest test covers only listed entries; completeness not proven; remediation phase.
+* **Amendment (2026-11-15, appended; the evidence text above is unchanged; the disposition line shows the current status, the earlier one is in git at 562d7eb6):** CORRECTION: the added manifest test checks only entries already listed in each manifest; it does not prove every generated output is covered. Status OPEN (remediation phase).
 
 ### E-D07 (track E): Infrastructure code is untested: pe.cli 0 %, provenance.manifest, tool scripts, cases.record
 * **Location:** portfolio_engine/python/pe/cli.py; provenance.py:20-31; tools/m2c_closing_batches.py, m2d_wing_body.py, m2e_build.py (manifest writing); pe/cases.py:96-123
