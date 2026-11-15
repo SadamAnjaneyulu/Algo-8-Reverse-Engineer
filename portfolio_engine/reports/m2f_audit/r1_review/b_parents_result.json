@@ -1,0 +1,31 @@
+{
+ "SENSEX": {
+  "multi_fill_parents": 114,
+  "fills_in_multi": 300,
+  "parents_with_identical_ns_across_fills": 113,
+  "parents_with_ns_nondecreasing_in_file_order": 114,
+  "parents_with_ns_strictly_increasing_in_file_order": 1,
+  "ns_span_seconds_max": 0.0024519,
+  "ns_span_gt60s": 0,
+  "parents_tied_remaining(not testable)": 0,
+  "parents_testable": 114,
+  "remaining_equals_orderqty_minus_cum_fill(all fills in parent, sorted by remaining)": 114,
+  "file_order_contradicts_remaining_sequence": 0,
+  "epoch_contradicts_remaining_sequence(earlier epoch for later-in-sequence fill)": 0,
+  "ns_contradicts_remaining_sequence": 0,
+  "file_vs_rem_examples": [],
+  "ep_vs_rem_examples": []
+ },
+ "NIFTY": {
+  "multi_fill_parents": 945,
+  "fills_in_multi": 2306,
+  "parents_tied_remaining(not testable)": 0,
+  "parents_testable": 945,
+  "remaining_equals_orderqty_minus_cum_fill(all fills in parent, sorted by remaining)": 945,
+  "file_order_contradicts_remaining_sequence": 0,
+  "epoch_contradicts_remaining_sequence(earlier epoch for later-in-sequence fill)": 0,
+  "file_vs_rem_examples": [],
+  "ep_vs_rem_examples": []
+ },
+ "minute_cols_on_non_last_fills_of_multi_minute_parents": {}
+}

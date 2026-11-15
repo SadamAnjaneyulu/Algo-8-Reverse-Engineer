@@ -51,7 +51,7 @@ def test_run_manifest_states_the_convention(tmp_path):
 
 
 def test_sensitivity_report_is_the_independent_reference_result():
-    """reports/r1_tie_order (production pipeline) must equal the independent M2-F reference run (raw csv; no pe imports) on every compared quantity"""
+    """reports/r1_tie_order (production pipeline) must equal the independent references (M2-F reference run and the R1 reviewer's lot-attribution run; raw csv, no pe imports) on every compared quantity. It compares two committed JSON files: it does not re-run either pipeline (the slow real-ledger tests do)."""
     prod = json.load(open(os.path.join(PE, 'reports', 'r1_tie_order', 'r1_tie_order_sensitivity.json')))['policies']; ind = json.load(open(os.path.join(PE, 'reports', 'm2f_audit', 'r1', 'independent_tie_sensitivity_result.json')))
     names = {'sells_first': 'sells_first', 'buys_first': 'buys_first', 'trade_id': 'trade_id_asc', 'order_no': 'order_no_asc'}
     for pol, iname in names.items():
@@ -62,5 +62,8 @@ def test_sensitivity_report_is_the_independent_reference_result():
         for k, v in p['4_closing_batch_membership'].items(): assert v['baseline_batches_not_in_alternative'] == i['batches'][k]['baseline_batches_not_in_alternative']
         for m_ in ('W1', 'W1_S60', 'W2', 'W2_S60', 'W3'): assert p['5_wing_body_membership']['links_changed'][m_] == i['wing_body']['links_changed'][m_]
         assert p['5_wing_body_membership']['opening_body_units'] == i['wing_body']['headline']['opening_body_units'] and p['invariants']['final_inventory_equal'] and p['invariants']['opening_units_equal']
+    att = json.load(open(os.path.join(PE, 'reports', 'm2f_audit', 'r1_review', 'a_attribution_result.json')))      # the reviewer's own implementation (raw csv, no pe imports)
+    for pol, rname in (('sells_first', 'sells_first'), ('buys_first', 'buys_first'), ('trade_id', 'trade_id'), ('order_no', 'order_no'), ('sensex_trade_id_time', 'sensex_ns')):
+        for m_ in ('FIFO', 'LIFO'): assert prod[pol]['6_lot_attribution'][m_]['closing_fills_with_changed_consumption_sequence'] == att[f'{m_}|{rname}']['closing_fills_with_different_source_lots'], (pol, m_)
     s = prod['sensex_trade_id_time']; assert s['2_groups_changing_open_close_allocation']['fills_changed'] == 0 and s['3_episode_identity']['episodes_changed'] == 0 and all(v['baseline_batches_not_in_alternative'] == 0 for v in s['4_closing_batch_membership'].values())
     assert all(n == 0 for n in s['5_wing_body_membership']['links_changed'].values()) and s['5_wing_body_membership']['items_only_in_one'] == 0

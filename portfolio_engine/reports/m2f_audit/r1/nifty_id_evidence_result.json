@@ -3,30 +3,158 @@
   "numeric|NIFTY": 19904,
   "dash|SENSEX": 21517
  },
- "nifty_trade_id_vs_time_per_IST_day": {
-  "fills_compared": 19808,
-  "fills_with_key_below_max_of_earlier_seconds": 14004
+ "PER_INSTRUMENT_PER_IST_DAY": {
+  "nifty_trade_id": {
+   "fills_compared": 18305,
+   "fills_with_key_below_max_of_earlier_seconds": 0
+  },
+  "nifty_order_number": {
+   "fills_compared": 18305,
+   "fills_with_key_below_max_of_earlier_seconds": 541
+  },
+  "sensex_order_number": {
+   "fills_compared": 19811,
+   "fills_with_key_below_max_of_earlier_seconds": 609
+  },
+  "sensex_ns": {
+   "fills_compared": 19811,
+   "fills_with_key_below_max_of_earlier_seconds": 0
+  },
+  "nifty_trade_id_adjacent_file_order": {
+   "cross_second_pairs": 14579,
+   "cross_second_decreases": 0,
+   "same_second_pairs": 4194,
+   "same_second_decreases": 212
+  },
+  "sensex_ns_adjacent_file_order": {
+   "cross_second_pairs": 16971,
+   "cross_second_decreases": 0,
+   "same_second_pairs": 3186,
+   "same_second_decreases": 33
+  },
+  "sensex_suffix_when_sorted_by_ns": {
+   "adjacent_pairs": 20157,
+   "suffix_decreases": 0
+  }
  },
- "nifty_trade_id_vs_time_per_instrument": {
-  "fills_compared": 18858,
-  "fills_with_key_below_max_of_earlier_seconds": 3519
+ "instruments_trading_on_more_than_one_IST_day": {
+  "instruments": 1674,
+  "multi_day": 817
  },
- "nifty_order_number_vs_time_per_IST_day": {
-  "fills_compared": 19808,
-  "fills_with_key_below_max_of_earlier_seconds": 8226
+ "WITHDRAWN_pooled_across_IST_days_artefact": {
+  "note": "ids restart each IST day, so pooling days manufactures inversions; this metric was reported in the first R1 document and is WITHDRAWN",
+  "nifty_trade_id_per_instrument_pooled": {
+   "fills_compared": 18858,
+   "fills_with_key_below_max_of_earlier_seconds": 3519
+  },
+  "nifty_trade_id_per_IST_day_all_instruments": {
+   "fills_compared": 19808,
+   "fills_with_key_below_max_of_earlier_seconds": 14004
+  }
  },
- "sensex_order_number_vs_time_per_IST_day": {
-  "fills_compared": 21409,
-  "fills_with_key_below_max_of_earlier_seconds": 8963
+ "groups": {
+  "nifty_multi_fill": 2365,
+  "nifty_trade_id_order_differs": 151,
+  "nifty_differing_with_a_shared_parent": 134,
+  "sensex_multi_fill": 2099,
+  "sensex_ns_order_differs": 21,
+  "sensex_differing_with_a_shared_parent": 4,
+  "total_differing": 172
  },
- "nifty_multi_fill_groups": {
-  "groups": 2365,
-  "file_order_differs_from_trade_id_order": 151
+ "nifty_same_parent_same_second_consecutive_pairs": {
+  "pairs": 1361,
+  "trade_id_increases_in_file_order": 1361
  },
  "mixed_side_groups_all_instruments": {
   "groups": 56,
   "trade_id_order_differs_from_file": 2,
-  "order_number_differs_from_file": 1
+  "order_number_order_differs_from_file": 1
+ },
+ "position_flip_groups_where_trade_id_changes_allocation": [
+  [
+   {
+    "row": 27908,
+    "side": "S",
+    "qty": 390,
+    "trade_id": "3109390",
+    "order_number": 1210048529,
+    "parent": "11747185"
+   },
+   {
+    "row": 27911,
+    "side": "S",
+    "qty": 520,
+    "trade_id": "3109424",
+    "order_number": 1210048532,
+    "parent": "s_31091625053407"
+   },
+   {
+    "row": 27917,
+    "side": "S",
+    "qty": 260,
+    "trade_id": "3109391",
+    "order_number": 1210048529,
+    "parent": "11747185"
+   }
+  ],
+  [
+   {
+    "row": 27906,
+    "side": "S",
+    "qty": 130,
+    "trade_id": "3109353",
+    "order_number": 1210048527,
+    "parent": "11747186"
+   },
+   {
+    "row": 27912,
+    "side": "S",
+    "qty": 650,
+    "trade_id": "3109598",
+    "order_number": 1210048533,
+    "parent": "s_31091625053962"
+   },
+   {
+    "row": 27916,
+    "side": "S",
+    "qty": 520,
+    "trade_id": "3109354",
+    "order_number": 1210048527,
+    "parent": "11747186"
+   }
+  ]
+ ],
+ "row_8079": {
+  "instrument": "SENSEX|2026-07-02|PE|75900",
+  "parent": "10853057",
+  "epoch_utc": 1782986253,
+  "epoch_ist": "15:27:33",
+  "id_time_ist": "15:28:29.637",
+  "id_minus_epoch_s": 56.637,
+  "time_like_columns": {
+   "15": "7/2/2026 0:00",
+   "23": "7/2/2026 15:27",
+   "69": "7/2/2026 15:28",
+   "70": "7/2/2026 15:28",
+   "78": "7/2/2026 15:27",
+   "79": "7/2/2026 15:28",
+   "83": "7/2/2026 15:28",
+   "84": "7/2/2026 15:28",
+   "92": "7/2/2026 15:28",
+   "119": "7/2/2026 15:28",
+   "127": "7/2/2026 15:27",
+   "130": "7/2/2026 15:28",
+   "131": "0001-01-01 00:00:00",
+   "138": "7/2/2026 15:27"
+  },
+  "parent_other_fills": [
+   {
+    "row": 8083,
+    "epoch_ist": "15:28:30",
+    "id_time_ist": "15:28:29.639"
+   }
+  ],
+  "note": "which clock is right for this fill is UNKNOWN; the sensitivity policy never trusts an id whose rounded time differs from the epoch"
  },
  "columns_with_time_like_values": [
   {

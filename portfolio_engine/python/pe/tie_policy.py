@@ -11,7 +11,7 @@ buys_first          'buys_first'   no       no     inside a second, buys before 
 trade_id            'trade_id'     no       yes    raw trade-id column (numeric for NIFTY; '<ns>-<suffix>' for SENSEX), then source row   [Python only]
 order_no            'order_no'     no       yes    raw order-number column, then source row                   [Python only]
 sensex_trade_id_time 'sensex_trade_id_time' no yes SENSEX only: the nanosecond timestamp embedded in the trade id (validated in reports/m2f_audit/r1), then source row; NIFTY stays source row   [Python only]
-NIFTY trade ids are NOT assumed to share SENSEX semantics (they are not time-monotone).
+NIFTY trade ids are NOT assumed to share SENSEX semantics: they are plain integers whose meaning is undocumented (they are per-contract-per-IST-day non-decreasing across seconds, but not proven to be execution chronology).
 """
 import re
 from dataclasses import dataclass

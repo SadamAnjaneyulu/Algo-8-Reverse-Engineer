@@ -38,6 +38,11 @@ for pol in ('sells_first', 'buys_first', 'trade_id', 'order_no', 'sensex_ns'):
     wb = {i: collections.Counter(weak(e) for e in v) for i, v in base['episodes'].items()}; wa = {i: collections.Counter(weak(e) for e in v) for i, v in alt['episodes'].items()}
     r['p3_weak_instruments_changed'] = sorted(i for i in wb if wb[i] != wa[i])
     r['p3_weak_episodes_base_not_alt'] = sum(sum((wb[i] - wa[i]).values()) for i in wb)
+    # ordinal-id identity (episode id = instrument#ordinal): positions whose record differs + ordinals present on only one side
+    def ordcount(i):
+        B = [R.ep_sig(e) for e in base['episodes'][i]]; A = [R.ep_sig(e) for e in alt['episodes'][i]]
+        n = max(len(A), len(B)); return sum(1 for k in range(n) if (B[k] if k < len(B) else None) != (A[k] if k < len(A) else None))
+    r['p3_episodes_changed_by_ordinal_id'] = sum(ordcount(i) for i in changed_inst)
     r['reversal_ended_episodes_base'] = res['base']['reversal_ended_episodes']
     r['reversal_ended_episodes_alt'] = sum(1 for v in alt['episodes'].values() for e in v if e['end'] == 'REVERSAL')
     r['n_episodes_alt'] = sum(len(v) for v in alt['episodes'].values())

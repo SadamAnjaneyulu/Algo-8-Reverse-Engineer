@@ -21,7 +21,7 @@ A sensitivity policy never replaces the primary convention: the delivered-output
 
 ## 3. What changes under each alternative (full ledger, production pipeline vs source-row order)
 
-The five populations below are **different things and must not be conflated**.
+The six populations below are **different things and must not be conflated**.
 
 ### 3.1 Population 1: groups whose ORDER differs
 
@@ -61,13 +61,13 @@ A group matters only when inventory crosses zero inside the second. This happens
 
 ### 3.3 Population 3: episodes and instruments whose identity changes
 
-| Policy | Episodes changed | Instruments changed | Instruments | Reversal-ended episodes (primary -> alternative) |
-|---|---:|---:|---|---|
-| `sells_first` | 1 | 1 | NIFTY|2026-10-13|PE|22400 | 23 -> 23 |
-| `buys_first` | 12 | 5 | NIFTY|2026-06-23|CE|24000, NIFTY|2026-10-13|PE|22400, NIFTY|2026-10-13|PE|22450, NIFTY|2026-10-19|CE|23000, SENSEX|2026-08-20|PE|76900 | 23 -> 23 |
-| `trade_id` | 4 | 2 | NIFTY|2026-09-01|CE|24600, NIFTY|2026-09-01|PE|23200 | 23 -> 21 |
-| `order_no` | 4 | 2 | NIFTY|2026-09-01|CE|24600, NIFTY|2026-09-01|PE|23200 | 23 -> 21 |
-| `sensex_trade_id_time` | 0 | 0 | - | 23 -> 23 |
+| Policy | Episodes changed (ordinal id definition) | Episodes changed (by content) | Instruments changed | Instruments | Reversal-ended episodes (primary -> alternative) |
+|---|---:|---:|---:|---|---|
+| `sells_first` | 1 | 1 | 1 | NIFTY|2026-10-13|PE|22400 | 23 -> 23 |
+| `buys_first` | 12 | 7 | 5 | NIFTY|2026-06-23|CE|24000, NIFTY|2026-10-13|PE|22400, NIFTY|2026-10-13|PE|22450, NIFTY|2026-10-19|CE|23000, SENSEX|2026-08-20|PE|76900 | 23 -> 23 |
+| `trade_id` | 4 | 4 | 2 | NIFTY|2026-09-01|CE|24600, NIFTY|2026-09-01|PE|23200 | 23 -> 21 |
+| `order_no` | 4 | 4 | 2 | NIFTY|2026-09-01|CE|24600, NIFTY|2026-09-01|PE|23200 | 23 -> 21 |
+| `sensex_trade_id_time` | 0 | 0 | 0 | - | 23 -> 23 |
 
 ### 3.4 Population 4: closing-batch membership (C1 and C2 are identical in every row)
 
@@ -91,6 +91,22 @@ Baseline links: W1 42,777, W1_S60 65,228, W2 42,777, W2_S60 65,228, W3 12,096.
 | `trade_id` | 2 | 6 | 6 | 6 | 6 | 0 | 625,985 | 540,250 |
 | `order_no` | 2 | 6 | 6 | 6 | 6 | 0 | 625,985 | 540,250 |
 | `sensex_trade_id_time` | 0 | 0 | 0 | 0 | 0 | 0 | 626,765 | 540,250 |
+
+Two definitions are shown because they differ: the **ordinal id** definition counts an episode `instrument#n` as changed when its signature differs (an early change relabels later episodes of the same instrument); the **content** definition counts baseline episodes whose full content signature (instrument, direction, opened, closed, ended-by, reversal, fill counts, opening-fill set) is absent under the alternative.
+
+### 3.5b Population 6: FIFO / LIFO lot attribution of closing fills (analytical layer)
+
+Which opening lots a closing fill consumed. The first R1 document omitted this population and said the SENSEX policy "changes nothing"; it changes lot attribution for a number of closing fills although units, inventory, episodes, batches and links are unchanged.
+
+Two definitions are shown because they differ. **Lot set**: the set of (opening lot, quantity) pairs a closing fill consumed differs. **Lot sequence**: the pairs or the order in which they were consumed differ (the reviewer's independent count uses this definition and matches it exactly). Both count closing fills (of 17,760).
+
+| Policy | FIFO: lot set | FIFO: lot sequence | LIFO: lot set | LIFO: lot sequence |
+|---|---:|---:|---:|---:|
+| `sells_first` | 2 | 2 | 65 | 65 |
+| `buys_first` | 4 | 4 | 74 | 74 |
+| `trade_id` | 654 | 666 | 653 | 662 |
+| `order_no` | 590 | 598 | 588 | 593 |
+| `sensex_trade_id_time` | 81 | 84 | 76 | 80 |
 
 ### 3.6 Invariants (every policy)
 
@@ -117,36 +133,51 @@ Reversed source order and five fixed-seed random within-second permutations (see
 | random_seed14 | 13 | 19 | 29 | 18 | 0 | 0 | 6 | 19 / 30 |
 | random_seed15 | 11 | 21 | 27 | 20 | 0 | 0 | 6 | 8 / 24 |
 
-## 4. SENSEX trade-id timestamp: separate validation (sensitivity-only)
+## 4. SENSEX trade-id timestamp: separate check (supports a sensitivity-only policy)
 
-* **Extraction rule.** All 21,517 SENSEX trade ids match `^<19 digits>-<1..9 digits>$` (21,517); the 19-digit prefix is a nanosecond epoch timestamp. NIFTY trade ids are plain integers with no dash: **different semantics, never assumed to carry time.**
-* **Relation to the raw epoch column.** `epoch == round-half-up(ns/1e9)` for 21,516 of 21,517 fills (10,803 where the fraction is below .5, 10,713 where it is at least .5); ns minus epoch lies in about -500..+500 ms (p01 -489.4 ms, median 3.2 ms, p99 489.1 ms).
-* **The exceptional fill.** Row 8079 (`SENSEX|2026-07-02|PE|75900`, parent 10853057, sell 340): its id time is 56.6 s AFTER its epoch. The policy never trusts an id whose rounded time differs from the epoch: it falls back to the epoch-derived time for that fill.
-* **Duplicates and collisions.** 0 duplicate full trade ids; 141 duplicate nanosecond prefixes overall, 130 inside same-instrument-second groups (several fills from one matching event; their relative order is not decidable from the id and falls back to source-row order).
-* **Ordering consistency.** 2,099 same-instrument-second groups with >=2 fills; the nanosecond order differs from file order in 21 (all same-side; 0 of 24 mixed-side groups; no group shares a parent). Across instruments within a second the file is not ns-sorted (8,759 of 9,753 adjacent pairs non-decreasing), which is why the policy compares only within an instrument.
-* **Semantics.** Of 114 multi-fill parents, ns is non-decreasing in file order in 114: consistent with per-fill match/report time, not order-placement time. It is **not proven** to be execution chronology.
-* **Effect.** Applying it to SENSEX (NIFTY stays source-row) changes **nothing**: 0 fills, 0 episodes, 0 batches, 0 wing/body links.
-* **Conclusion.** The evidence supports a SENSEX-only **sensitivity** policy (`sensex_trade_id_time`). It is not the primary convention: nothing in the data proves the embedded time is the exchange execution order, and the effect on every result is nil.
+* **Extraction rule.** All 21,517 SENSEX trade ids match `^<19 digits>-<1..9 digits>$`; the 19-digit prefix is a nanosecond epoch timestamp (the suffix is a counter). NIFTY trade ids are plain integers with no dash: a different format, **not assumed to carry time**.
+* **Relation to the raw epoch column.** `epoch == round-half-up(ns/1e9)` for 21,516 of 21,517 fills (10,803 where the fraction is below .5, 10,713 where it is at least .5). Floor would hold for only 10,803: the epoch is a **rounded copy** of a sub-second time.
+* **The exceptional fill.** Row 8079 (`SENSEX|2026-07-02|PE|75900`, parent 10853057): epoch 15:27:33 IST but id time 15:28:29.637 IST (56.637 s later). Eight other time columns of that row (69, 70, 79, 83, 84, 92, 119, 130) read 15:28, i.e. agree with the id time, and the parent's other fill (row 8083) has epoch 15:28:30 / id 15:28:29.639. **Which clock is right for this fill is UNKNOWN.** The sensitivity policy never trusts an id whose rounded time differs from the epoch (it falls back to the epoch-derived time); the primary replay uses the epoch.
+* **Duplicates and collisions.** 0 duplicate full ids; 141 duplicate nanosecond prefixes overall, 130 inside same-instrument-second groups (several fills of one matching event; their relative order falls back to source-row order). The `trade_id` policy additionally orders such equal-nanosecond fills by the suffix, which is why it differs from file order in 173 groups (151 NIFTY + 22 SENSEX) while the nanosecond-time order differs in 172 (151 + 21; the extra group is SENSEX CE77500 on 2026-06-25, rows 4745-4747, equal ns, different suffix). Sorted by nanosecond inside one instrument and IST day, the suffix has 0 decreases in 20,157 adjacent pairs.
+* **Time-consistency.** Per instrument and IST day the nanosecond time has **0 inversions in 19,811 cross-second comparisons**; file order never decreases across seconds (0 of 16,971) but decreases inside a second in 33 of 3,186 adjacent pairs.
+* **Ordering.** 2,099 same-instrument-second groups with >=2 fills; the nanosecond order differs from file order in 21 (all same-side; 0 of 24 mixed-side groups); 4 of those 21 contain two fills of one parent (their relative order is unchanged by the ns order). Across instruments inside a second the file is not ns-sorted (8,759 of 9,753 adjacent pairs non-decreasing), which is why the policy compares only within an instrument.
+* **What the id time is.** Probable: a per-contract trade-event sequence (match or report time) rather than an order-placement time. Most multi-fill parents have the same ns on every fill (one matching event), so parent-level monotonicity says little; the informative evidence is the per-contract monotonicity above and the epoch relation. **Not proven** to be exchange execution chronology.
+* **Effect on results.** Applying it to SENSEX (NIFTY stays source-row) leaves fills' open/close splits (0), episodes (0), batches (0), wing/body links (0), units, inventory and realized P&L **unchanged**, but it **does change lot attribution** for 81 closing fills under FIFO and 76 under LIFO (Population 6).
+* **Conclusion.** The evidence supports a SENSEX-only **sensitivity** policy (`sensex_trade_id_time`). It is not the primary convention, and nothing here shows that the embedded time is the exchange execution order.
 
-## 5. NIFTY trade id and order number: not chronology
+## 5. NIFTY trade id and order number (CORRECTED after the independent review)
 
-* NIFTY trade ids are not time-monotone: 14,004 of 19,808 later-second fills have an id below the maximum id of earlier seconds in the same IST day (3,519 of 18,858 within one instrument).
-* Order numbers are not time-monotone either: NIFTY 8,226 of 19,808; SENSEX 8,963 of 21,409.
-* NIFTY same-instrument-second groups with >=2 fills: 2,365; file order differs from trade-id order in 151.
-* Mixed-side groups (all instruments): 56; trade-id order differs from file order in 2, order-number order in 1.
-* Columns scanned for sub-second values: none (14 time-like columns, all minute resolution).
+* **The first version of this document was wrong.** It said NIFTY trade ids are not time-monotone, using a metric that pooled one contract across IST days. Ids restart every IST day, so pooling manufactured the inversions (3,519 of 18,858). That claim is **withdrawn**.
+* **Correct measurement.** Per instrument and IST day, the NIFTY trade id has **0 inversions in 18,305 cross-second comparisons**: it behaves as a per-contract counter that increases with time. Across seconds file order never decreases (0 of 14,579), but inside a second the file order decreases against the id in 212 of 4,194 adjacent pairs (5.05 %).
+* Order numbers are only approximately time-ordered: per instrument and IST day 541 of 18,305 NIFTY and 609 of 19,811 SENSEX fills sit below the maximum of earlier seconds (an order number is an order identity, and one order can fill over time).
+* **Within a parent order the id agrees with file order.** NIFTY same-parent consecutive fills inside one second: the id increases in file order in 1,361 of 1,361. Where the file and the id disagree it is between different parents: of the 151 NIFTY groups (of 2,365) whose trade-id order differs from file order, 134 contain two fills of one parent that the file separates by another order's fill.
+* **The two groups that change accounting.** Both are NIFTY 2026-09-01 same-side groups at a position flip. In each, one parent's two partial fills have adjacent trade ids (3109390 / 3109391 and 3109353 / 3109354) and the file order interleaves a fill of a different order (trade id 3109424 in CE24600, order 1210048532; 3109598 in PE23200, order 1210048533; both larger ids) between them. The trade-id order keeps the parent's partials consecutive and puts the other order's fill after both; the file order does not. (Whether that other fill is a stop fill is not established here.)
+* Mixed-side groups (all instruments): 56; trade-id order differs from file order in 2, order-number order in 1. Columns scanned for sub-second values: none (14 time-like columns, all minute resolution).
 
-## 6. Correction of the earlier audit statement
+## 6. Correction of earlier statements
 
-The M2-F report said trade id contradicts file order in "only two mixed-side groups". That is **true but incomplete** as an explanation of accounting sensitivity: those two groups (rows 726-728 and 9688-9689) do not change any opening/closing allocation. The accounting-relevant disagreements are **two same-side groups at a position flip** (CE24600 rows 27911 / 27917 and PE23200 rows 27912 / 27916 on 2026-09-01), where trade id and order number agree with each other against file order. Population 1 (order differs), 2 (allocation changes), 3 (episode identity), 4 (batches) and 5 (wing/body) above are reported separately for that reason. Amendments to D-A01, B-01 and C-01: `reports/m2f_audit/r1/amendments.json`.
+* **"Trade id contradicts file order in only two mixed-side groups" (M2-F)** is true but incomplete: those two groups change no allocation. The accounting-relevant disagreements are the two same-side position-flip groups above. Populations 1-6 are reported separately for that reason.
+* **"NIFTY trade ids are not chronology" (first version of this document, and the brief on which Option A was approved)** is withdrawn (section 5). The recommendation to keep `SOURCE_ROW_ORDER_CONVENTION` as primary rested partly on it and is re-presented for the project owner in section 9.
+* **"Applying the SENSEX policy changes nothing"** is withdrawn: it changes FIFO/LIFO lot attribution (Population 6).
+* **"No group shares a parent" / "114 parents non-decreasing"** (first version, SENSEX section) were false / uninformative and are replaced above.
+* **M2-B "20 fills (42 rows)"** was not reproduced under these populations; see the M2-B addendum.
 
 ## 7. What must not be concluded
 
 * Episode identities, reversal counts, opening/closing allocation membership, FIFO/LIFO attribution, closing-batch membership and wing/body membership are **not order-independent facts**; they are conditional on `SOURCE_ROW_ORDER_CONVENTION`.
 * Aggregate opening/closing units, final inventory per instrument and cash are invariant under every tested order.
-* No alternative order is claimed to be the historical truth.
-* The true intra-second order of NIFTY fills is not recoverable from the source.
+* No alternative order is claimed to be the historical truth, and `SOURCE_ROW_ORDER_CONVENTION` is not claimed to be.
 
 ## 8. Delivered outputs affected by the convention (values unchanged; listed so users know what is conditional)
 
 M2-B lineage (episode identity, reversal count, OA/CP membership, FIFO/LIFO CA); M2-C closing batches (all 10 views); M2-D items and links (W1, W1_S60, W2, W2_S60, W3); M2-E datasets, V1-V6, case studies and records. Metadata change: `tie_order_convention` added to four manifests (`reports/m2f_audit/r1/affected_files_plan.md`); no data value changed.
+
+## 9. Evidence AGAINST the primary convention, and the decision re-presented
+
+The independent review showed that the per-contract trade id (NIFTY) and the nanosecond time (SENSEX) are time-consistent across seconds (0 and 0 cross-second inversions) and that file order disagrees with them inside 172 same-instrument-second groups (151 NIFTY, 21 SENSEX). So `SOURCE_ROW_ORDER_CONVENTION` is **contradicted by the best available sub-second evidence in those groups**, although in only the two NIFTY same-side groups above does the contradiction change any open/close allocation (SENSEX: none). What the evidence does not show: that the id order is the exchange execution order (the clocks are unidentified, row 8079 shows one inconsistent case).
+
+Options for the project owner (no option has been applied beyond the approved primary convention):
+
+* **A. Keep `SOURCE_ROW_ORDER_CONVENTION` as primary** (as approved), disclose the evidence above prominently, and treat `trade_id` / `sensex_trade_id_time` as the best-supported sensitivities. Delivered numbers unchanged.
+* **B. Change the primary to a per-contract id-sequence convention** (NIFTY trade id; SENSEX nanosecond time with epoch fallback; source row as tie-break). Output-changing: it would alter episode identity for 2 NIFTY instruments (4 episodes), 4 fills' open/close split, reversal-ended episodes 23 -> 21, 1 closing batch per view, 6 W1 links, and FIFO/LIFO lot attribution for hundreds of closing fills (Population 6); M2-B..M2-E outputs would be regenerated with before/after comparison. The project owner previously instructed that historical results must not change merely to make another ordering look more authoritative, so this needs an explicit decision.
+* **C. Keep A for now and run the downstream research conditional on both conventions** until the id semantics can be documented externally.

@@ -1,0 +1,252 @@
+{
+ "baseline_units": 16817,
+ "baseline_batches": {
+  "2": 7127,
+  "5": 3777,
+  "10": 3065,
+  "30": 2171,
+  "60": 1502
+ },
+ "policies": {
+  "sells_first": {
+   "units_equal_set": false,
+   "2s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 8,
+    "parents_in_alt_changed": 8,
+    "parents_union": 9,
+    "units_in_changed_base_batches": 8,
+    "units_in_changed_alt_batches": 8
+   },
+   "5s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 8,
+    "parents_in_alt_changed": 8,
+    "parents_union": 9,
+    "units_in_changed_base_batches": 8,
+    "units_in_changed_alt_batches": 8
+   },
+   "10s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 8,
+    "parents_in_alt_changed": 8,
+    "parents_union": 9,
+    "units_in_changed_base_batches": 8,
+    "units_in_changed_alt_batches": 8
+   },
+   "30s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 124,
+    "parents_in_alt_changed": 124,
+    "parents_union": 125,
+    "units_in_changed_base_batches": 124,
+    "units_in_changed_alt_batches": 124
+   },
+   "60s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 124,
+    "parents_in_alt_changed": 124,
+    "parents_union": 125,
+    "units_in_changed_base_batches": 124,
+    "units_in_changed_alt_batches": 124
+   }
+  },
+  "buys_first": {
+   "units_equal_set": false,
+   "2s": {
+    "base_not_in_alt": 2,
+    "alt_not_in_base": 2,
+    "parents_in_base_changed": 9,
+    "parents_in_alt_changed": 9,
+    "parents_union": 11,
+    "units_in_changed_base_batches": 9,
+    "units_in_changed_alt_batches": 9
+   },
+   "5s": {
+    "base_not_in_alt": 2,
+    "alt_not_in_base": 2,
+    "parents_in_base_changed": 14,
+    "parents_in_alt_changed": 14,
+    "parents_union": 16,
+    "units_in_changed_base_batches": 14,
+    "units_in_changed_alt_batches": 14
+   },
+   "10s": {
+    "base_not_in_alt": 2,
+    "alt_not_in_base": 2,
+    "parents_in_base_changed": 14,
+    "parents_in_alt_changed": 14,
+    "parents_union": 16,
+    "units_in_changed_base_batches": 14,
+    "units_in_changed_alt_batches": 14
+   },
+   "30s": {
+    "base_not_in_alt": 2,
+    "alt_not_in_base": 2,
+    "parents_in_base_changed": 252,
+    "parents_in_alt_changed": 252,
+    "parents_union": 254,
+    "units_in_changed_base_batches": 252,
+    "units_in_changed_alt_batches": 252
+   },
+   "60s": {
+    "base_not_in_alt": 2,
+    "alt_not_in_base": 2,
+    "parents_in_base_changed": 252,
+    "parents_in_alt_changed": 252,
+    "parents_union": 254,
+    "units_in_changed_base_batches": 252,
+    "units_in_changed_alt_batches": 252
+   }
+  },
+  "trade_id": {
+   "units_equal_set": false,
+   "2s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 25,
+    "parents_in_alt_changed": 23,
+    "parents_union": 25,
+    "units_in_changed_base_batches": 25,
+    "units_in_changed_alt_batches": 23
+   },
+   "5s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 35,
+    "parents_in_alt_changed": 33,
+    "parents_union": 35,
+    "units_in_changed_base_batches": 35,
+    "units_in_changed_alt_batches": 33
+   },
+   "10s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 35,
+    "parents_in_alt_changed": 33,
+    "parents_union": 35,
+    "units_in_changed_base_batches": 35,
+    "units_in_changed_alt_batches": 33
+   },
+   "30s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 35,
+    "parents_in_alt_changed": 33,
+    "parents_union": 35,
+    "units_in_changed_base_batches": 35,
+    "units_in_changed_alt_batches": 33
+   },
+   "60s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 35,
+    "parents_in_alt_changed": 33,
+    "parents_union": 35,
+    "units_in_changed_base_batches": 35,
+    "units_in_changed_alt_batches": 33
+   }
+  },
+  "order_no": {
+   "units_equal_set": false,
+   "2s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 25,
+    "parents_in_alt_changed": 23,
+    "parents_union": 25,
+    "units_in_changed_base_batches": 25,
+    "units_in_changed_alt_batches": 23
+   },
+   "5s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 35,
+    "parents_in_alt_changed": 33,
+    "parents_union": 35,
+    "units_in_changed_base_batches": 35,
+    "units_in_changed_alt_batches": 33
+   },
+   "10s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 35,
+    "parents_in_alt_changed": 33,
+    "parents_union": 35,
+    "units_in_changed_base_batches": 35,
+    "units_in_changed_alt_batches": 33
+   },
+   "30s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 35,
+    "parents_in_alt_changed": 33,
+    "parents_union": 35,
+    "units_in_changed_base_batches": 35,
+    "units_in_changed_alt_batches": 33
+   },
+   "60s": {
+    "base_not_in_alt": 1,
+    "alt_not_in_base": 1,
+    "parents_in_base_changed": 35,
+    "parents_in_alt_changed": 33,
+    "parents_union": 35,
+    "units_in_changed_base_batches": 35,
+    "units_in_changed_alt_batches": 33
+   }
+  },
+  "sensex_ns": {
+   "units_equal_set": true,
+   "2s": {
+    "base_not_in_alt": 0,
+    "alt_not_in_base": 0,
+    "parents_in_base_changed": 0,
+    "parents_in_alt_changed": 0,
+    "parents_union": 0,
+    "units_in_changed_base_batches": 0,
+    "units_in_changed_alt_batches": 0
+   },
+   "5s": {
+    "base_not_in_alt": 0,
+    "alt_not_in_base": 0,
+    "parents_in_base_changed": 0,
+    "parents_in_alt_changed": 0,
+    "parents_union": 0,
+    "units_in_changed_base_batches": 0,
+    "units_in_changed_alt_batches": 0
+   },
+   "10s": {
+    "base_not_in_alt": 0,
+    "alt_not_in_base": 0,
+    "parents_in_base_changed": 0,
+    "parents_in_alt_changed": 0,
+    "parents_union": 0,
+    "units_in_changed_base_batches": 0,
+    "units_in_changed_alt_batches": 0
+   },
+   "30s": {
+    "base_not_in_alt": 0,
+    "alt_not_in_base": 0,
+    "parents_in_base_changed": 0,
+    "parents_in_alt_changed": 0,
+    "parents_union": 0,
+    "units_in_changed_base_batches": 0,
+    "units_in_changed_alt_batches": 0
+   },
+   "60s": {
+    "base_not_in_alt": 0,
+    "alt_not_in_base": 0,
+    "parents_in_base_changed": 0,
+    "parents_in_alt_changed": 0,
+    "parents_union": 0,
+    "units_in_changed_base_batches": 0,
+    "units_in_changed_alt_batches": 0
+   }
+  }
+ }
+}

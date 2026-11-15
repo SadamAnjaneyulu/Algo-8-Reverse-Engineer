@@ -1,0 +1,229 @@
+[
+ {
+  "id": "BASELINE_unmutated",
+  "outcome": "survived",
+  "summary": "24 passed, 5 deselected in 3.81s"
+ },
+ {
+  "id": "R2M01_attach_passes_wrong_epoch_to_sensex_key",
+  "file": "python/pe/generators/historical.py",
+  "change": "'tp.tie_key(pol.name, und, tid, ono, f.timestamp_s)' -> 'tp.tie_key(pol.name, und, tid, ono, f.timestamp_s + 1)'",
+  "what": "sensex key silently falls back to epoch*1e9 for every fill (policy disabled)",
+  "outcome": "KILLED",
+  "stage": "fast",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_attach_tie_keys_reads_raw_rows_and_leaves_primary_untouched"
+  ],
+  "summary": "1 failed, 23 passed, 5 deselected in 1.30s",
+  "failure_kind": "assertion (AssertionError on exact key of row 8079)",
+  "detector_note": "detector pins one fill (row 8079); a wrong epoch on every OTHER fill is invisible (see R2M18)"
+ },
+ {
+  "id": "R2M02_sensex_round_half_down",
+  "file": "python/pe/tie_policy.py",
+  "change": "'(ns + 500_000_000) // 10**9 == epoch_s' -> '(ns + 499_999_999) // 10**9 == epoch_s'",
+  "what": "rounding boundary off by 1 ns",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 4.13s",
+  "survivor_analysis": "half-ns rounding boundary not exercised"
+ },
+ {
+  "id": "R2M03_sensex_tolerance_60s",
+  "file": "python/pe/tie_policy.py",
+  "change": "'if (ns + 500_000_000) // 10**9 == epoch_s: return (ns,)' -> 'if abs((ns + 500_000_000) // 10**9 - epoch_s) <= 60: return (ns,)'",
+  "what": "would trust row 8079 (56.6 s off)",
+  "outcome": "KILLED",
+  "stage": "fast",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions",
+   "tests/test_tie_order_policy.py::test_attach_tie_keys_reads_raw_rows_and_leaves_primary_untouched"
+  ],
+  "summary": "2 failed, 22 passed, 5 deselected in 1.37s",
+  "failure_kind": "assertion",
+  "detector_note": "hard-coded expected tuples in test_key_functions and row-8079 key: independent of mutated code"
+ },
+ {
+  "id": "R2M04_keyed_sort_key_before_timestamp",
+  "file": "python/pe/replay.py",
+  "change": "'key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))' -> 'key=lambda f: (f.tie_key, f.timestamp_s, f.source_row_id, f.fill_id))'",
+  "what": "keyed policies sort by key across seconds",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 4.24s",
+  "survivor_analysis": "keyed sort with key before timestamp survives fast tier; synthetic keys are ordered consistently with time"
+ },
+ {
+  "id": "R2M05_keyed_guard_all_instead_of_any",
+  "file": "python/pe/replay.py",
+  "change": "'if any(f.tie_key is None for f in fills): raise EngineError' -> 'if all(f.tie_key is None for f in fills): raise EngineError'",
+  "what": "partially-keyed input no longer rejected",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 3.92s",
+  "survivor_analysis": "partial-key rejection untested (any->all); runtime would TypeError on None vs tuple, not EngineError"
+ },
+ {
+  "id": "R2M06_keyed_drop_source_row_tiebreak",
+  "file": "python/pe/replay.py",
+  "change": "'key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))' -> 'key=lambda f: (f.timestamp_s, f.tie_key))'",
+  "what": "equal-key fills depend on input order (stable sort), not source row",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 3.76s",
+  "survivor_analysis": "equal-key fallback to source row untested (relies on stable sort + sorted input)"
+ },
+ {
+  "id": "R2M07_attach_hash_guard_removed",
+  "file": "python/pe/generators/historical.py",
+  "change": "\"if provenance.sha256_file(raw) != man['sha256']: raise EngineError('raw trade file hash differs from the TP-01 manifest')\" -> 'pass'",
+  "what": "raw file hash guard removed in attach_tie_keys",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 3.80s",
+  "survivor_analysis": "raw-hash guard in attach_tie_keys untested"
+ },
+ {
+  "id": "R2M08_attach_offbyone_for_late_rows",
+  "file": "python/pe/generators/historical.py",
+  "change": "'und, tid, ono = keys[f.source_row_id]' -> 'und, tid, ono = keys[f.source_row_id - 1 if f.source_row_id >= 20000 and f.source_row_id - 1 in keys else f.source_row_id]'",
+  "what": "source_row_id -> raw row mapping wrong for rows >= 20000 only",
+  "outcome": "KILLED",
+  "stage": "fast+slow",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_real_ledger_exact_affected_rows_invariants_and_downstream[trade_id]",
+   "tests/test_tie_order_policy.py::test_real_ledger_exact_affected_rows_invariants_and_downstream[order_no]",
+   "tests/test_tie_order_policy.py::test_real_ledger_exact_affected_rows_invariants_and_downstream[sensex_trade_id_time]"
+  ],
+  "summary": "3 failed, 26 passed in 228.90s (0:03:48)",
+  "failure_kind": "assertion (slow tier: exact changed rows for trade_id/order_no/sensex)",
+  "detector_note": "pins come from the same author's reference, independent of the mutated path; fast tier did NOT detect it"
+ },
+ {
+  "id": "R2M09_m2c_guard_vacuous",
+  "file": "tools/m2c_closing_batches.py",
+  "change": "\"tp.require_primary(ls.tie, 'M2-C delivered outputs')\" -> \"tp.require_primary('src', 'M2-C delivered outputs')\"",
+  "what": "delivered-output guard always passes",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 4.16s",
+  "survivor_analysis": "AST test only checks that require_primary is called, not with ls.tie"
+ },
+ {
+  "id": "R2M10_provenance_manifest_constant_convention",
+  "file": "python/pe/provenance.py",
+  "change": "\"tie_order_convention=tie_policy.convention_id(config['tie_order'])\" -> 'tie_order_convention=tie_policy.SOURCE_ROW_ORDER_CONVENTION'",
+  "what": "run manifest always claims primary",
+  "outcome": "KILLED",
+  "stage": "fast",
+  "failed_tests": [
+   "tests/test_tie_order_metadata.py::test_run_manifest_states_the_convention"
+  ],
+  "summary": "1 failed, 23 passed, 5 deselected in 4.21s",
+  "failure_kind": "assertion",
+  "detector_note": "hand-written expected convention strings"
+ },
+ {
+  "id": "R2M11_trade_id_key_nifty_as_string",
+  "file": "python/pe/tie_policy.py",
+  "change": "'return (int(trade_id), 0)' -> 'return (trade_id, 0)'",
+  "what": "NIFTY ids compared lexicographically",
+  "outcome": "KILLED",
+  "stage": "fast",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "summary": "1 failed, 23 passed, 5 deselected in 3.86s",
+  "failure_kind": "assertion",
+  "detector_note": "hand-written expected tuple (117849, 0)"
+ },
+ {
+  "id": "R2M12_sensex_key_nifty_nonzero",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"    if underlying != 'SENSEX': return (0,)\\n\" -> \"    if underlying != 'SENSEX': return (1,)\\n\"",
+  "what": "NIFTY constant key changed; only relative order across NIFTY/SENSEX in a second",
+  "outcome": "KILLED",
+  "stage": "fast",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "summary": "1 failed, 23 passed, 5 deselected in 4.16s",
+  "failure_kind": "assertion",
+  "detector_note": "hand-written expected tuple (0,)"
+ },
+ {
+  "id": "R2M13_sells_first_ignores_sell_flag_for_zero",
+  "file": "python/pe/replay.py",
+  "change": "\"'sells_first': lambda s: 0 if s < 0 else 1\" -> \"'sells_first': lambda s: 0 if s <= 0 else 1\"",
+  "what": "equivalent mutant (side is +-1)",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 3.99s",
+  "survivor_analysis": "EQUIVALENT mutant (side is +-1)"
+ },
+ {
+  "id": "R2M14_alias_src_to_source_row_removed",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"ALIASES = {'src': 'source_row'}\" -> \"ALIASES = {'src': 'source_row', 'primary': 'sells_first'}\"",
+  "what": "extra alias silently maps a name onto a sensitivity policy",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 3.71s",
+  "survivor_analysis": "extra alias to a sensitivity policy not detected (registry test checks policies, not ALIASES)"
+ },
+ {
+  "id": "R2M15_order_events_stable_but_unsorted_input",
+  "file": "python/pe/replay.py",
+  "change": "'return sorted(fills, key=lambda f: (f.timestamp_s, tk(f.side), f.source_row_id, f.fill_id))' -> 'return sorted(fills, key=lambda f: (f.timestamp_s, tk(f.side)))'",
+  "what": "PRIMARY ordering depends on input order instead of source_row_id",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 3.92s",
+  "survivor_analysis": "primary order depends on input order if source_row_id tie-break is dropped; all tests feed source-ordered input"
+ },
+ {
+  "id": "R2M18_sensex_policy_disabled_except_row8079",
+  "file": "python/pe/generators/historical.py",
+  "change": "'tp.tie_key(pol.name, und, tid, ono, f.timestamp_s)' -> 'tp.tie_key(pol.name, und, tid, ono, f.timestamp_s + (0 if f.source_row_id == 8079 else 1))'",
+  "what": "sensex_trade_id_time silently equals source_row for every fill except the pinned row 8079",
+  "outcome": "SURVIVED",
+  "stage": "fast+slow",
+  "failed_tests": [],
+  "summary": "29 passed in 221.48s (0:03:41)",
+  "survivor_analysis": "sensex_trade_id_time silently disabled for every fill except row 8079: survives fast AND slow tiers because its real-ledger pin is \"no change\""
+ },
+ {
+  "id": "R2M16_preserved_summary_edited",
+  "file": "COPY:m2c_data/m2c_summary.json",
+  "change": "edited first number 256 -> 257",
+  "what": "delivered summary edited (one digit)",
+  "outcome": "KILLED",
+  "stage": "fast",
+  "failed_tests": [
+   "tests/test_tie_order_metadata.py::test_no_delivered_data_value_changed_since_the_r1_baseline"
+  ],
+  "summary": "1 failed, 23 passed, 5 deselected in 3.99s",
+  "failure_kind": "assertion",
+  "detector_note": "pre-R1 baseline hashes (taken at 562d7eb6): independent of mutated code"
+ },
+ {
+  "id": "R2M17_unpreserved_report_edited",
+  "file": "COPY:parity_lineage_report.json",
+  "change": "edited first number 225 -> 226",
+  "what": "delivered parity report edited (file outside the test PRESERVED prefixes)",
+  "outcome": "SURVIVED",
+  "stage": "fast",
+  "failed_tests": [],
+  "summary": "24 passed, 5 deselected in 3.87s",
+  "survivor_analysis": "file outside PRESERVED prefixes (87 data files unguarded)"
+ }
+]

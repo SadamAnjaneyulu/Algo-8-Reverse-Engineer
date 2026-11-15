@@ -1,0 +1,74 @@
+{
+ "identical": true,
+ "alias_identical": true,
+ "base": {
+  "AVG": {
+   "dump": "c7ccaf9009e5f5c7569b67f998b14d2f455c9bd7bbe2e8274b267f902d88f9b2",
+   "lineage": {
+    "ca_AVG.tsv": "8f41ec65b6dc1158837ff6e48505eaf84e2cf9a98851ec6e1e6367511fba942a",
+    "episodes.tsv": "d1e5cad509faef1e4c1834a1770f8975b5b35187de555d45c8eb48b85831a87a",
+    "lifecycle.tsv": "55f03ed6956959127887c760db5bcc2c600620b72737333988985fa2eef69706",
+    "observed_allocations.tsv": "d093747da79b20f8ca2cfbfeb85587ae3fa5e0eb128c9b55cc9da122b3e951c3",
+    "slices_AVG.tsv": "16af7c89854da358799ee5b5c44be09458aafee695c1ccf1339efc8118630481"
+   },
+   "roles": "3d86a3ca9128e6dbbf9f46e14a9723c9353cd004898773d7a3913a978371ef89"
+  },
+  "FIFO": {
+   "dump": "e775e35132f95d5d8bae7124781e65122a92bced85f684e6775e4ee2e380487a",
+   "lineage": {
+    "ca_FIFO.tsv": "915375f6f0f47acb60e153a1f7ac6baf311b582efd35a20ca70f647c05095a6b",
+    "episodes.tsv": "d1e5cad509faef1e4c1834a1770f8975b5b35187de555d45c8eb48b85831a87a",
+    "lifecycle.tsv": "55f03ed6956959127887c760db5bcc2c600620b72737333988985fa2eef69706",
+    "observed_allocations.tsv": "d093747da79b20f8ca2cfbfeb85587ae3fa5e0eb128c9b55cc9da122b3e951c3",
+    "slices_FIFO.tsv": "f15813c067f18a1b4b76b4fae41a463ee30d204268a9c9473ff06c79306fd7db"
+   },
+   "roles": "3d86a3ca9128e6dbbf9f46e14a9723c9353cd004898773d7a3913a978371ef89"
+  },
+  "LIFO": {
+   "dump": "8fb2df7497b2bf0c99dc7b451911434151640893e28803ca6e71215a0319dffd",
+   "lineage": {
+    "ca_LIFO.tsv": "527a0f5c09e903d753e8bfc6eea2d46052cec0131d87994456dc160dbb033814",
+    "episodes.tsv": "d1e5cad509faef1e4c1834a1770f8975b5b35187de555d45c8eb48b85831a87a",
+    "lifecycle.tsv": "55f03ed6956959127887c760db5bcc2c600620b72737333988985fa2eef69706",
+    "observed_allocations.tsv": "d093747da79b20f8ca2cfbfeb85587ae3fa5e0eb128c9b55cc9da122b3e951c3",
+    "slices_LIFO.tsv": "27c8b5938773571d526a4843c00e9e41ad1353c27d587a902565dd36073eef4a"
+   },
+   "roles": "3d86a3ca9128e6dbbf9f46e14a9723c9353cd004898773d7a3913a978371ef89"
+  }
+ },
+ "head": {
+  "AVG": {
+   "dump": "c7ccaf9009e5f5c7569b67f998b14d2f455c9bd7bbe2e8274b267f902d88f9b2",
+   "lineage": {
+    "ca_AVG.tsv": "8f41ec65b6dc1158837ff6e48505eaf84e2cf9a98851ec6e1e6367511fba942a",
+    "episodes.tsv": "d1e5cad509faef1e4c1834a1770f8975b5b35187de555d45c8eb48b85831a87a",
+    "lifecycle.tsv": "55f03ed6956959127887c760db5bcc2c600620b72737333988985fa2eef69706",
+    "observed_allocations.tsv": "d093747da79b20f8ca2cfbfeb85587ae3fa5e0eb128c9b55cc9da122b3e951c3",
+    "slices_AVG.tsv": "16af7c89854da358799ee5b5c44be09458aafee695c1ccf1339efc8118630481"
+   },
+   "roles": "3d86a3ca9128e6dbbf9f46e14a9723c9353cd004898773d7a3913a978371ef89"
+  },
+  "FIFO": {
+   "dump": "e775e35132f95d5d8bae7124781e65122a92bced85f684e6775e4ee2e380487a",
+   "lineage": {
+    "ca_FIFO.tsv": "915375f6f0f47acb60e153a1f7ac6baf311b582efd35a20ca70f647c05095a6b",
+    "episodes.tsv": "d1e5cad509faef1e4c1834a1770f8975b5b35187de555d45c8eb48b85831a87a",
+    "lifecycle.tsv": "55f03ed6956959127887c760db5bcc2c600620b72737333988985fa2eef69706",
+    "observed_allocations.tsv": "d093747da79b20f8ca2cfbfeb85587ae3fa5e0eb128c9b55cc9da122b3e951c3",
+    "slices_FIFO.tsv": "f15813c067f18a1b4b76b4fae41a463ee30d204268a9c9473ff06c79306fd7db"
+   },
+   "roles": "3d86a3ca9128e6dbbf9f46e14a9723c9353cd004898773d7a3913a978371ef89"
+  },
+  "LIFO": {
+   "dump": "8fb2df7497b2bf0c99dc7b451911434151640893e28803ca6e71215a0319dffd",
+   "lineage": {
+    "ca_LIFO.tsv": "527a0f5c09e903d753e8bfc6eea2d46052cec0131d87994456dc160dbb033814",
+    "episodes.tsv": "d1e5cad509faef1e4c1834a1770f8975b5b35187de555d45c8eb48b85831a87a",
+    "lifecycle.tsv": "55f03ed6956959127887c760db5bcc2c600620b72737333988985fa2eef69706",
+    "observed_allocations.tsv": "d093747da79b20f8ca2cfbfeb85587ae3fa5e0eb128c9b55cc9da122b3e951c3",
+    "slices_LIFO.tsv": "27c8b5938773571d526a4843c00e9e41ad1353c27d587a902565dd36073eef4a"
+   },
+   "roles": "3d86a3ca9128e6dbbf9f46e14a9723c9353cd004898773d7a3913a978371ef89"
+  }
+ }
+}

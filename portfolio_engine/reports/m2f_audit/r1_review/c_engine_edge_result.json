@@ -1,0 +1,22 @@
+{
+ "sensex_policy_lineage_files_identical_to_primary": {
+  "observed_allocations.tsv": false,
+  "lifecycle.tsv": false,
+  "episodes.tsv": true,
+  "ca_FIFO.tsv": false,
+  "slices_FIFO.tsv": true
+ },
+ "sensex_policy_dump_identical_except_tie_order_meta": true,
+ "sensex_policy_roles_identical": false,
+ "sensex_policy_global_event_sequence_differs_from_primary": true,
+ "sensex_policy_global_positions_moved": 2344,
+ "trade_id_keys_replayed_as_order_no_accepted_silently": true,
+ "  ...and the result equals true order_no replay": true,
+ "  ...dump tie_order meta says": "META\ttie_order\torder_no",
+ "  ...(order_no-labelled run with trade_id keys) equals true trade_id replay": true,
+ "order_events(source_row)": "KeyError: 'source_row'",
+ "partial_None_keys": "EngineError: tie order trade_id needs Fill.tie_key on every fill",
+ "no_keys": "EngineError: tie order order_no needs Fill.tie_key on every fill",
+ "all_equal_keys_equals_primary_dump_modulo_label": true,
+ "primary_dump_independent_of_input_order(except INPUT_NOT_TIME_ORDERED warn)": true
+}

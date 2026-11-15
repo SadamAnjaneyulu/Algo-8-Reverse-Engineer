@@ -1,0 +1,41 @@
+{
+ "NIFTY trade id | per IST day": {
+  "fills_compared": 19808,
+  "key_below_max_of_earlier_seconds": 14004
+ },
+ "NIFTY trade id | per instrument (days pooled)  [author metric]": {
+  "fills_compared": 18858,
+  "key_below_max_of_earlier_seconds": 3519
+ },
+ "NIFTY trade id | per instrument x IST day": {
+  "fills_compared": 18305,
+  "key_below_max_of_earlier_seconds": 0
+ },
+ "NIFTY order no | per instrument x IST day": {
+  "fills_compared": 18305,
+  "key_below_max_of_earlier_seconds": 541
+ },
+ "SENSEX ns | per instrument x IST day": {
+  "fills_compared": 19811,
+  "key_below_max_of_earlier_seconds": 0
+ },
+ "SENSEX order no | per instrument x IST day": {
+  "fills_compared": 19811,
+  "key_below_max_of_earlier_seconds": 609
+ },
+ "SENSEX ns | per IST day": {
+  "fills_compared": 21409,
+  "key_below_max_of_earlier_seconds": 1
+ },
+ "NIFTY instruments traded on >1 IST day": 356,
+ "NIFTY instruments": 775,
+ "NIFTY same-second groups": {
+  "same_parent_pairs_in_groups": 2761,
+  "  id increasing in file order": 2761,
+  "  remaining decreasing in file order": 2761,
+  "groups_id_order_differs_file": 151,
+  "  ...group contains >1 parent": 151,
+  "  ...mixed side": 2,
+  "n_groups": 2365
+ }
+}

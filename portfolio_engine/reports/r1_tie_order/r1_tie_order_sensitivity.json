@@ -1,6 +1,6 @@
 {
  "convention": "SOURCE_ROW_ORDER_CONVENTION",
- "generated_at_head": "68bbeb1389a3fef4bedd3a12e045f19e27541dff",
+ "generated_at_head": "46c549853f96debaa7223ee76d1f408989317265",
  "note_realized_pnl": "realized P&L deltas are reported by the independent exact-arithmetic reference (reports/m2f_audit/r1/independent_tie_sensitivity_result.json), not by this tool",
  "policies": {
   "buys_first": {
@@ -46,6 +46,9 @@
    },
    "3_episode_identity": {
     "episodes_changed": 12,
+    "episodes_changed_by_content": 7,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
     "instruments": [
      "NIFTY|2026-06-23|CE|24000",
      "NIFTY|2026-10-13|PE|22400",
@@ -140,6 +143,19 @@
     "opening_body_units": 626680,
     "opening_wing_units": 617130
    },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 4,
+     "closing_fills_with_changed_source_lots": 4
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 74,
+     "closing_fills_with_changed_source_lots": 74
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
    "attribution": {
     "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
     "split_changing_groups_whose_parents_appear_in_changed_batches": 2,
@@ -198,6 +214,9 @@
    },
    "3_episode_identity": {
     "episodes_changed": 4,
+    "episodes_changed_by_content": 4,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
     "instruments": [
      "NIFTY|2026-09-01|CE|24600",
      "NIFTY|2026-09-01|PE|23200"
@@ -289,6 +308,19 @@
     "opening_body_units": 625985,
     "opening_wing_units": 617130
    },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 598,
+     "closing_fills_with_changed_source_lots": 590
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 593,
+     "closing_fills_with_changed_source_lots": 588
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
    "attribution": {
     "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
     "split_changing_groups_whose_parents_appear_in_changed_batches": 2,
@@ -335,6 +367,9 @@
    },
    "3_episode_identity": {
     "episodes_changed": 1,
+    "episodes_changed_by_content": 1,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
     "instruments": [
      "NIFTY|2026-10-13|PE|22400"
     ],
@@ -425,6 +460,19 @@
     "opening_body_units": 626830,
     "opening_wing_units": 617130
    },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 2,
+     "closing_fills_with_changed_source_lots": 2
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 65,
+     "closing_fills_with_changed_source_lots": 65
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
    "attribution": {
     "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
     "split_changing_groups_whose_parents_appear_in_changed_batches": 1,
@@ -457,6 +505,9 @@
    },
    "3_episode_identity": {
     "episodes_changed": 0,
+    "episodes_changed_by_content": 0,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
     "instruments": [],
     "instruments_changed": 0,
     "reversal_episodes_alt": 23,
@@ -545,6 +596,19 @@
     "opening_body_units": 626765,
     "opening_wing_units": 617130
    },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 84,
+     "closing_fills_with_changed_source_lots": 81
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 80,
+     "closing_fills_with_changed_source_lots": 76
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
    "attribution": {
     "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
     "split_changing_groups_whose_parents_appear_in_changed_batches": 0,
@@ -603,6 +667,9 @@
    },
    "3_episode_identity": {
     "episodes_changed": 4,
+    "episodes_changed_by_content": 4,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
     "instruments": [
      "NIFTY|2026-09-01|CE|24600",
      "NIFTY|2026-09-01|PE|23200"
@@ -693,6 +760,19 @@
     },
     "opening_body_units": 625985,
     "opening_wing_units": 617130
+   },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 666,
+     "closing_fills_with_changed_source_lots": 654
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 662,
+     "closing_fills_with_changed_source_lots": 653
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
    },
    "attribution": {
     "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",

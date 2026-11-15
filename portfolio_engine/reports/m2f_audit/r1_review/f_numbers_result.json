@@ -1,0 +1,771 @@
+[
+ {
+  "claim": "3.1 multi-fill same-instrument same-second groups",
+  "quoted": 4464,
+  "reviewer": 4464,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.1 sells_first groups order differs / mixed / same-side",
+  "quoted": [
+   29,
+   29,
+   0
+  ],
+  "reviewer": [
+   29,
+   29,
+   0
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.1 buys_first groups order differs / mixed / same-side",
+  "quoted": [
+   29,
+   29,
+   0
+  ],
+  "reviewer": [
+   29,
+   29,
+   0
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.1 trade_id groups order differs / mixed / same-side",
+  "quoted": [
+   173,
+   2,
+   171
+  ],
+  "reviewer": [
+   173,
+   2,
+   171
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.1 order_no groups order differs / mixed / same-side",
+  "quoted": [
+   141,
+   1,
+   140
+  ],
+  "reviewer": [
+   141,
+   1,
+   140
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.1 sensex_ns groups order differs / mixed / same-side",
+  "quoted": [
+   21,
+   0,
+   21
+  ],
+  "reviewer": [
+   21,
+   0,
+   21
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.2 sells_first (mixed groups, same-side groups, fills changed, rows)",
+  "quoted": [
+   1,
+   0,
+   2,
+   [
+    39039,
+    39042
+   ]
+  ],
+  "reviewer": [
+   1,
+   0,
+   2,
+   [
+    39039,
+    39042
+   ]
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.2 buys_first (mixed groups, same-side groups, fills changed, rows)",
+  "quoted": [
+   2,
+   0,
+   4,
+   [
+    24730,
+    24732,
+    39038,
+    39041
+   ]
+  ],
+  "reviewer": [
+   2,
+   0,
+   4,
+   [
+    24730,
+    24732,
+    39038,
+    39041
+   ]
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.2 trade_id (mixed groups, same-side groups, fills changed, rows)",
+  "quoted": [
+   0,
+   2,
+   4,
+   [
+    27911,
+    27912,
+    27916,
+    27917
+   ]
+  ],
+  "reviewer": [
+   0,
+   2,
+   4,
+   [
+    27911,
+    27912,
+    27916,
+    27917
+   ]
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.2 order_no (mixed groups, same-side groups, fills changed, rows)",
+  "quoted": [
+   0,
+   2,
+   4,
+   [
+    27911,
+    27912,
+    27916,
+    27917
+   ]
+  ],
+  "reviewer": [
+   0,
+   2,
+   4,
+   [
+    27911,
+    27912,
+    27916,
+    27917
+   ]
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.2 sensex_ns (mixed groups, same-side groups, fills changed, rows)",
+  "quoted": [
+   0,
+   0,
+   0,
+   []
+  ],
+  "reviewer": [
+   0,
+   0,
+   0,
+   []
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 sells_first episodes changed (ORDINAL-ID definition) / instruments",
+  "quoted": [
+   1,
+   1
+  ],
+  "reviewer": [
+   1,
+   1
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 sells_first episodes changed (CONTENT definition: base episodes with no identical alt episode)",
+  "quoted": 1,
+  "reviewer": 1,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 buys_first episodes changed (ORDINAL-ID definition) / instruments",
+  "quoted": [
+   12,
+   5
+  ],
+  "reviewer": [
+   12,
+   5
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 buys_first episodes changed (CONTENT definition: base episodes with no identical alt episode)",
+  "quoted": 12,
+  "reviewer": 7,
+  "verdict": "DIFFERS (definition-dependent)"
+ },
+ {
+  "claim": "3.3 trade_id episodes changed (ORDINAL-ID definition) / instruments",
+  "quoted": [
+   4,
+   2
+  ],
+  "reviewer": [
+   4,
+   2
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 trade_id episodes changed (CONTENT definition: base episodes with no identical alt episode)",
+  "quoted": 4,
+  "reviewer": 4,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 order_no episodes changed (ORDINAL-ID definition) / instruments",
+  "quoted": [
+   4,
+   2
+  ],
+  "reviewer": [
+   4,
+   2
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 order_no episodes changed (CONTENT definition: base episodes with no identical alt episode)",
+  "quoted": 4,
+  "reviewer": 4,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 sensex_ns episodes changed (ORDINAL-ID definition) / instruments",
+  "quoted": [
+   0,
+   0
+  ],
+  "reviewer": [
+   0,
+   0
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 sensex_ns episodes changed (CONTENT definition: base episodes with no identical alt episode)",
+  "quoted": 0,
+  "reviewer": 0,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 sells_first reversal-ended episodes alt (base 23)",
+  "quoted": 23,
+  "reviewer": 23,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 buys_first reversal-ended episodes alt (base 23)",
+  "quoted": 23,
+  "reviewer": 23,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 trade_id reversal-ended episodes alt (base 23)",
+  "quoted": 21,
+  "reviewer": 21,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 order_no reversal-ended episodes alt (base 23)",
+  "quoted": 21,
+  "reviewer": 21,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 sensex_ns reversal-ended episodes alt (base 23)",
+  "quoted": 23,
+  "reviewer": 23,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.3 base reversal-ended episodes",
+  "quoted": 23,
+  "reviewer": 23,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 baseline batches @2/5/10/30/60",
+  "quoted": [
+   7127,
+   3777,
+   3065,
+   2171,
+   1502
+  ],
+  "reviewer": [
+   7127,
+   3777,
+   3065,
+   2171,
+   1502
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 sells_first batches not in alternative @2/5/10/30/60",
+  "quoted": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "reviewer": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 sells_first parents in changed batches @10/@60 (reviewer: baseline-side count)",
+  "quoted": [
+   8,
+   124
+  ],
+  "reviewer": [
+   8,
+   124
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 buys_first batches not in alternative @2/5/10/30/60",
+  "quoted": [
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "reviewer": [
+   2,
+   2,
+   2,
+   2,
+   2
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 buys_first parents in changed batches @10/@60 (reviewer: baseline-side count)",
+  "quoted": [
+   14,
+   252
+  ],
+  "reviewer": [
+   14,
+   252
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 trade_id batches not in alternative @2/5/10/30/60",
+  "quoted": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "reviewer": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 trade_id parents in changed batches @10/@60 (reviewer: baseline-side count)",
+  "quoted": [
+   35,
+   35
+  ],
+  "reviewer": [
+   35,
+   35
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 order_no batches not in alternative @2/5/10/30/60",
+  "quoted": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "reviewer": [
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 order_no parents in changed batches @10/@60 (reviewer: baseline-side count)",
+  "quoted": [
+   35,
+   35
+  ],
+  "reviewer": [
+   35,
+   35
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 sensex_ns batches not in alternative @2/5/10/30/60",
+  "quoted": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "reviewer": [
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.4 sensex_ns parents in changed batches @10/@60 (reviewer: baseline-side count)",
+  "quoted": [
+   0,
+   0
+  ],
+  "reviewer": [
+   0,
+   0
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 sells_first opening/closing units equal 1,414,545 / 1,377,065, final inventory equal",
+  "quoted": [
+   1414545,
+   1377065,
+   true
+  ],
+  "reviewer": [
+   1414545,
+   1377065,
+   true
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 sells_first FIFO realized delta (paise)",
+  "quoted": 0,
+  "reviewer": 0,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 buys_first opening/closing units equal 1,414,545 / 1,377,065, final inventory equal",
+  "quoted": [
+   1414545,
+   1377065,
+   true
+  ],
+  "reviewer": [
+   1414545,
+   1377065,
+   true
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 buys_first FIFO realized delta (paise)",
+  "quoted": 0,
+  "reviewer": 0,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 trade_id opening/closing units equal 1,414,545 / 1,377,065, final inventory equal",
+  "quoted": [
+   1414545,
+   1377065,
+   true
+  ],
+  "reviewer": [
+   1414545,
+   1377065,
+   true
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 trade_id FIFO realized delta (paise)",
+  "quoted": 0,
+  "reviewer": 0,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 order_no opening/closing units equal 1,414,545 / 1,377,065, final inventory equal",
+  "quoted": [
+   1414545,
+   1377065,
+   true
+  ],
+  "reviewer": [
+   1414545,
+   1377065,
+   true
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 order_no FIFO realized delta (paise)",
+  "quoted": 0,
+  "reviewer": 0,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 sensex_ns opening/closing units equal 1,414,545 / 1,377,065, final inventory equal",
+  "quoted": [
+   1414545,
+   1377065,
+   true
+  ],
+  "reviewer": [
+   1414545,
+   1377065,
+   true
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "3.6 sensex_ns FIFO realized delta (paise)",
+  "quoted": 0,
+  "reviewer": 0,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 SENSEX ids matching ^19digits-1..9digits$",
+  "quoted": 21517,
+  "reviewer": 21517,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 epoch==round-half-up(ns/1e9)",
+  "quoted": 21516,
+  "reviewer": 21516,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 ... fraction below .5 / at least .5",
+  "quoted": [
+   10803,
+   10713
+  ],
+  "reviewer": [
+   10803,
+   10713
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 ns-epoch ms p01 -489.4 / median 3.2 / p99 489.1",
+  "quoted": [
+   -489.4,
+   3.2,
+   489.1
+  ],
+  "reviewer": [
+   -489.4,
+   3.2,
+   489.1
+  ],
+  "verdict": "VERIFIED (index convention)"
+ },
+ {
+  "claim": "4 exceptional fill row / delta s / parent / qty",
+  "quoted": [
+   8079,
+   56.6,
+   "10853057",
+   340
+  ],
+  "reviewer": [
+   8079,
+   56.6,
+   "10853057",
+   340
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 duplicate full SENSEX trade ids",
+  "quoted": 0,
+  "reviewer": 0,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 duplicate ns prefix values (141 quoted \"duplicate nanosecond prefixes overall\")",
+  "quoted": 141,
+  "reviewer": 141,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 duplicate ns prefixes inside same-instrument-second groups (130 quoted; reviewer counts GROUPS having a tie)",
+  "quoted": 130,
+  "reviewer": 130,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 SENSEX same-instrument-second groups >=2 fills",
+  "quoted": 2099,
+  "reviewer": 2099,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 ns order differs from file order",
+  "quoted": 21,
+  "reviewer": 21,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 mixed-side SENSEX groups",
+  "quoted": 24,
+  "reviewer": 24,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 \"no group shares a parent\" (21 differing groups)",
+  "quoted": 0,
+  "reviewer": 4,
+  "verdict": "DIFFERS (4 of the 21 groups contain two fills of one parent)"
+ },
+ {
+  "claim": "4 across instruments within a second: adjacent pairs ns non-decreasing 8,759 of 9,753",
+  "quoted": [
+   8759,
+   9753
+  ],
+  "reviewer": [
+   8759,
+   9753
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "4 multi-fill parents: 114; ns non-decreasing in file order 114",
+  "quoted": [
+   114,
+   114
+  ],
+  "reviewer": [
+   114,
+   114
+  ],
+  "verdict": "VERIFIED (but vacuous: 113 of 114 parents have IDENTICAL ns across fills; 1 informative parent)"
+ },
+ {
+  "claim": "5 NIFTY id below max of earlier seconds per IST day",
+  "quoted": [
+   14004,
+   19808
+  ],
+  "reviewer": [
+   14004,
+   19808
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "5 NIFTY id ... within one instrument (author metric pools days)",
+  "quoted": [
+   3519,
+   18858
+  ],
+  "reviewer": [
+   3519,
+   18858
+  ],
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "5 same metric per instrument x IST day (reviewer; NOT in report)",
+  "quoted": null,
+  "reviewer": [
+   18305,
+   0
+  ],
+  "verdict": "NEW: 0 inversions out of 18,305"
+ },
+ {
+  "claim": "5 NIFTY same-instrument-second groups >=2",
+  "quoted": 2365,
+  "reviewer": 2365,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "5 NIFTY file order differs from trade-id order",
+  "quoted": 151,
+  "reviewer": 151,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "5 mixed-side groups all instruments",
+  "quoted": 56,
+  "reviewer": 56,
+  "verdict": "VERIFIED"
+ },
+ {
+  "claim": "5 mixed-side: trade-id order differs / order-number order differs",
+  "quoted": [
+   2,
+   1
+  ],
+  "reviewer": [
+   2,
+   1
+  ],
+  "verdict": "VERIFIED"
+ }
+]
