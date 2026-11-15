@@ -1,0 +1,878 @@
+[
+ {
+  "id": "m00",
+  "change": "CONTROL: no change, manifests refreshed",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 0,
+   "summary": "89 passed in 273.05s (0:04:33)",
+   "first_failure": []
+  }
+ },
+ {
+  "id": "m01",
+  "change": "V3 entry-minute cohort CSV: body units +65 in one (session, minute) row (wrong per-minute aggregation)",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY_2026-06-30 V3 cohort row {'session_ist': '2026-06-29', 'order_entry_minute_ist': '2026-06-29 09:16:00', 'body_units_by_tag': '455', 'wing_units_by_ta"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 14 passed in 137.38s (0:02:17)",
+   "first_failure": [
+    "E   assert 66235 == 66170",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m01/portfolio_engine/tests/test_forensics.py:119: assert 66235 == 66170",
+    "FAILED tests/test_forensics.py::test_v3_items_cover_every_opening_allocation_once[NIFTY_2026-06-30]"
+   ]
+  }
+ },
+ {
+  "id": "m02",
+  "change": "V1 CSV: one FILL row duplicated",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 1106,
+    "first": [
+     "FAIL NIFTY_2026-06-30 V1 FILL rows",
+     "FAIL NIFTY_2026-06-30 V1 fill row {'row_kind': 'FILL', 'session_ist': '2026-06-29', 'd_label': 'D-1', 'ts_ist': '2026-06-29 09:46:03', 'ts_utc_s': '1782706563',"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 12 passed in 133.00s (0:02:13)",
+   "first_failure": [
+    "E   AssertionError: assert 1147 == 1146",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m02/portfolio_engine/tests/test_forensics.py:101: AssertionError: assert 1147 == 1146",
+    "FAILED tests/test_forensics.py::test_v1_chart_data_equals_dataset[NIFTY_2026-06-30]"
+   ]
+  }
+ },
+ {
+  "id": "m03",
+  "change": "V2 CSV: REVERSED event row dropped",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY_2026-06-30 V2 events multiset"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 13 passed in 137.80s (0:02:17)",
+   "first_failure": [
+    "E   AssertionError: assert 1146 == 1147",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m03/portfolio_engine/tests/test_forensics.py:108: AssertionError: assert 1146 == 1147",
+    "FAILED tests/test_forensics.py::test_v2_partial_reduction_never_a_full_close[NIFTY_2026-06-30]"
+   ]
+  }
+ },
+ {
+  "id": "m04",
+  "change": "V3 CSV: one body item labelled WING_LONG_BY_TAG (role label swap)",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL SENSEX_2026-07-16 V3 item role/side/tag/strike/right/instrument {'item_key': '11019448|SENSEX|2026-07-16|CE|77200', 'parent_order_id': '11019448', 'instrum"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 0,
+   "summary": "89 passed in 248.48s (0:04:08)",
+   "first_failure": []
+  }
+ },
+ {
+  "id": "m05",
+  "change": "V4_C1 CSV: duration_s +1 for one batch",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL SENSEX_2026-07-16 C1 V4 row {'batch_id': 'INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:001', 'grouping_convention': 'CB_FIRST_FILL_"
+    ],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 0,
+   "summary": "89 passed in 239.35s (0:03:59)",
+   "first_failure": []
+  }
+ },
+ {
+  "id": "m06",
+  "change": "V5_W1 CSV: wing units no-candidate (unmatched) set to 0, total unchanged",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY_2026-06-30 V5 W1 wing units"
+    ],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 0,
+   "summary": "89 passed in 246.23s (0:04:06)",
+   "first_failure": []
+  }
+ },
+ {
+  "id": "m07",
+  "change": "V6 CSV: full-ledger scope number wing_items_with_candidate_full_ledger_W1 +1",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY V6 G wing_items_with_candidate_full_ledger_W1 == raw-derived 7302 vs 7301"
+    ],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 23 passed in 110.54s (0:01:50)",
+   "first_failure": [
+    "E   AssertionError: wing_items_with_candidate_full_ledger_W1",
+    "    assert 7302 == 7301",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m07/portfolio_engine/tests/test_forensics.py:178: AssertionError: wing_items_with_candidate_full_ledger_W1"
+   ]
+  }
+ },
+ {
+  "id": "m08",
+  "change": "V1 CSV: D-1/D0 labels swapped (SENSEX)",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 729,
+    "first": [
+     "FAIL SENSEX_2026-07-16 V1 fill row {'row_kind': 'FILL', 'session_ist': '2026-07-15', 'd_label': 'D0', 'ts_ist': '2026-07-15 09:16:00', 'ts_utc_s': '1784087160',",
+     "FAIL SENSEX_2026-07-16 V1 fill row {'row_kind': 'FILL', 'session_ist': '2026-07-15', 'd_label': 'D0', 'ts_ist': '2026-07-15 09:16:01', 'ts_utc_s': '1784087161',"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 0,
+   "summary": "89 passed in 308.65s (0:05:08)",
+   "first_failure": []
+  }
+ },
+ {
+  "id": "m09",
+  "change": "V1 CSV: short_CE sign flipped on 5 rows",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 5,
+    "first": [
+     "FAIL NIFTY_2026-06-30 V1 fill row {'row_kind': 'FILL', 'session_ist': '2026-06-29', 'd_label': 'D-1', 'ts_ist': '2026-06-29 09:16:01', 'ts_utc_s': '1782704761',",
+     "FAIL NIFTY_2026-06-30 V1 fill row {'row_kind': 'FILL', 'session_ist': '2026-06-29', 'd_label': 'D-1', 'ts_ist': '2026-06-29 09:16:01', 'ts_utc_s': '1782704761',"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 12 passed in 124.04s (0:02:04)",
+   "first_failure": [
+    "E   AssertionError: assert '-65' == '65'",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m09/portfolio_engine/tests/test_forensics.py:103: AssertionError: assert '-65' == '65'",
+    "FAILED tests/test_forensics.py::test_v1_chart_data_equals_dataset[NIFTY_2026-06-30]"
+   ]
+  }
+ },
+ {
+  "id": "m10",
+  "change": "fills.tsv: exec_price_paise replaced by raw order running-average column (col 18) for all NIFTY fills",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 20,
+    "first": [
+     "FAIL NIFTY_2026-06-30 fills row row 5781: {'fill_id': 'F005781', 'source_row_id': '5781', 'parent_order_id': 's_30085513715102', 'module_tag': 's_', 'instrument",
+     "FAIL NIFTY_2026-06-30 fills row row 5782: {'fill_id': 'F005782', 'source_row_id': '5782', 'parent_order_id': 's_30085513715455', 'module_tag': 's_', 'instrument"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 4 passed in 120.66s (0:02:00)",
+   "first_failure": [
+    "E   AssertionError: fills.tsv",
+    "    assert 'fill_id\\tsou...t0\\t0\\t1365\\n' == 'fill_id\\tsou...t0\\t0\\t1365\\n'",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m10/portfolio_engine/tests/test_forensics.py:45: AssertionError: fills.tsv"
+   ]
+  }
+ },
+ {
+  "id": "m11",
+  "change": "m2e_charts footer drops the execution-price/marks/unit annotation; V1 re-rendered (PNG only)",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY_2026-06-30 V1_inventory_evolution png hash (informational)"
+    ],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 0,
+   "summary": "89 passed in 304.06s (0:05:04)",
+   "first_failure": []
+  }
+ },
+ {
+  "id": "m12",
+  "change": "case_studies.json CT6 record: opening_parents[0] replaced by a closing parent",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY_2026-06-30 CT6_MULTIPLE_CANDIDATE_WINGS opening parents"
+    ],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 0,
+   "summary": "89 passed in 251.11s (0:04:11)",
+   "first_failure": []
+  }
+ },
+ {
+  "id": "m13",
+  "change": "lifecycle_events.tsv (SENSEX): one event quantity +65",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 2,
+    "first": [
+     "FAIL SENSEX_2026-07-16 lifecycle row {'event_id': 'LE:SENSEX|2026-07-16|CE|77200#1:3', 'episode_id': 'SENSEX|2026-07-16|CE|77200#1', 'instrument_id': 'SENSEX|20",
+     "FAIL SENSEX_2026-07-16 lifecycle event multiset"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 44 passed in 224.10s (0:03:44)",
+   "first_failure": [
+    "E   AssertionError: lifecycle_events.tsv",
+    "    assert 'event_id\\tep...\\t100\\t0\\t0\\n' == 'event_id\\tep...\\t100\\t0\\t0\\n'",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m13/portfolio_engine/tests/test_forensics.py:45: AssertionError: lifecycle_events.tsv"
+   ]
+  }
+ },
+ {
+  "id": "m14",
+  "change": "episodes.tsv (NIFTY): n_parents +1 on one episode",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY_2026-06-30 episode row {'episode_id': 'NIFTY|2026-06-30|CE|26050#1', 'instrument_id': 'NIFTY|2026-06-30|CE|26050', 'right': 'CE', 'strike': '26050', "
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 4 passed in 103.04s (0:01:43)",
+   "first_failure": [
+    "E   AssertionError: episodes.tsv",
+    "    assert 'episode_id\\t...53\\t2\\t1\\t2\\n' == 'episode_id\\t...53\\t2\\t1\\t2\\n'",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m14/portfolio_engine/tests/test_forensics.py:45: AssertionError: episodes.tsv"
+   ]
+  }
+ },
+ {
+  "id": "m15",
+  "change": "coverage.json (SENSEX): fills.opening_units +65",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL SENSEX_2026-07-16 cov fills {'raw_fill_count': 729, 'duplicate_flagged': 0, 'partially_filled_status': 14, 'unique_parent_orders': 715, 'opening_fills': 45"
+    ],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 47 passed in 236.52s (0:03:56)",
+   "first_failure": [
+    "E   assert (14180 == 14245)",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m15/portfolio_engine/tests/test_forensics.py:63: assert (14180 == 14245)",
+    "FAILED tests/test_forensics.py::test_totals_equal_m2b_and_coverage[SENSEX_2026-07-16]"
+   ]
+  }
+ },
+ {
+  "id": "m16",
+  "change": "session_carry.tsv (NIFTY): D-1 short_CE +65",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY_2026-06-30 carry row {'session_ist': '2026-06-29', 'd_label': 'D-1', 'last_fill_id': 'F005076', 'last_fill_ts_ist': '2026-06-29 15:28:02', 'short_CE'"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 4 passed in 113.68s (0:01:53)",
+   "first_failure": [
+    "E   AssertionError: session_carry.tsv",
+    "    assert 'session_ist\\...t0\\t0\\t0\\t0\\n' == 'session_ist\\...t0\\t0\\t0\\t0\\n'",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m16/portfolio_engine/tests/test_forensics.py:45: AssertionError: session_carry.tsv"
+   ]
+  }
+ },
+ {
+  "id": "m17",
+  "change": "V5_W1_S60 CSV: 5 links moved to the adjacent dt_s histogram bin",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 1,
+    "failed": 2,
+    "first": [
+     "FAIL SENSEX_2026-07-16 V5 W1_S60 hist bin 0 -60 21 vs 26",
+     "FAIL SENSEX_2026-07-16 V5 W1_S60 hist bin 1 -56 27 vs 22"
+    ],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 0,
+   "summary": "89 passed in 260.52s (0:04:20)",
+   "first_failure": []
+  }
+ },
+ {
+  "id": "m18",
+  "change": "m2c_closing_batches_C1.tsv slice (NIFTY): total_closing_qty +65 for one batch",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 1,
+    "failed": 2,
+    "first": [
+     "FAIL NIFTY_2026-06-30 C1@2 units conserved",
+     "FAIL NIFTY_2026-06-30 C1@2 batch aggregates {'batch_id': 'INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-06-30:2026-06-29:004', 'grouping_method': 'C1', 'thr"
+    ],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 5 passed in 117.56s (0:01:57)",
+   "first_failure": [
+    "E   AssertionError: assert 'batch_id\\tgr...OBSERVATION\\n' == 'batch_id\\tgr...OBSERVATION\\n'",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m18/portfolio_engine/tests/test_forensics.py:49: AssertionError: assert 'batch_id\\tgr...OBSERVATION\\n' == 'batch_id\\tgr...OBSERVATION\\n'",
+    "FAILED tests/test_forensics.py::test_m2c_m2d_slices_are_the_committed_memberships[NIFTY_2026-06-30]"
+   ]
+  }
+ },
+ {
+  "id": "m19",
+  "change": "opening_items.tsv (NIFTY): avg_exec_price_paise written in rupees (/100)",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 699,
+    "first": [
+     "FAIL NIFTY_2026-06-30 item row {'item_key': '10757908|NIFTY|2026-06-30|CE|26100', 'parent_order_id': '10757908', 'instrument_id': 'NIFTY|2026-06-30|CE|26100', '",
+     "FAIL NIFTY_2026-06-30 item row {'item_key': '10757955|NIFTY|2026-06-30|PE|22100', 'parent_order_id': '10757955', 'instrument_id': 'NIFTY|2026-06-30|PE|22100', '"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 4 passed in 101.57s (0:01:41)",
+   "first_failure": [
+    "E   AssertionError: opening_items.tsv",
+    "    assert 'item_key\\tpa...,OA:F005889\\n' == 'item_key\\tpa...,OA:F005889\\n'",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m19/portfolio_engine/tests/test_forensics.py:45: AssertionError: opening_items.tsv"
+   ]
+  }
+ },
+ {
+  "id": "m20",
+  "change": "cases/CT5_REVERSAL.csv: REVERSED event dropped",
+  "own": {
+   "verify_datasets": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL NIFTY_2026-06-30 CT5_REVERSAL case-figure events"
+    ],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 42 passed in 101.91s (0:01:41)",
+   "first_failure": [
+    "E   AssertionError: CT5_REVERSAL",
+    "    assert ['F004753CREA...95ADDED', ...] == ['F004753CREA...95ADDED', ...]",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m20/portfolio_engine/tests/test_forensics.py:366: AssertionError: CT5_REVERSAL"
+   ]
+  }
+ },
+ {
+  "id": "m21",
+  "change": "V2 CSV (SENSEX): inventory_after sign flipped on one ADDED event",
+  "own": {
+   "verify_datasets": {
+    "rc": 1,
+    "failed": 1,
+    "first": [
+     "FAIL SENSEX_2026-07-16 V2 event ts_ist {'record': 'EVENT', 'episode_id': 'SENSEX|2026-07-16|CE|81200#1', 'instrument_id': 'SENSEX|2026-07-16|CE|81200', 'directi"
+    ],
+    "crash": ""
+   },
+   "verify_v4v5v6": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_cases": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   },
+   "verify_manifests": {
+    "rc": 0,
+    "failed": 0,
+    "first": [],
+    "crash": ""
+   }
+  },
+  "pytest": {
+   "rc": 1,
+   "summary": "1 failed, 76 passed in 124.37s (0:02:04)",
+   "first_failure": [
+    "E   AssertionError: assert [('SENSEX|202..., '-20'), ...] == [('SENSEX|202..., '-20'), ...]",
+    "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/m2f_d/mut/m21/portfolio_engine/tests/test_forensics.py:327: AssertionError: assert [('SENSEX|202..., '-20'), ...] == [('SENSEX|202..., '-20'), ...]",
+    "FAILED tests/test_forensics.py::test_v2_event_rows_equal_lifecycle_exactly[SENSEX_2026-07-16]"
+   ]
+  }
+ }
+]

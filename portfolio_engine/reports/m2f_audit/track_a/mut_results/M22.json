@@ -1,0 +1,30 @@
+{
+ "id": "M22",
+ "name": "tie-order keys sells_first/buys_first swapped (Python only)",
+ "file": "python/pe/replay.py",
+ "expected": "cross-language parity; tie-order tests",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+   "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+   "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+  ],
+  "summary": "4 failed, 123 passed in 211.56s (0:03:31)",
+  "seconds": 213
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {},
+  "false_flags": [
+   "AVG_exact_total_is_integer"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 360,
+   "py_vs_ref_mismatch": 920
+  },
+  "killed": true
+ }
+}

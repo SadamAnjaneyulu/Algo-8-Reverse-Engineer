@@ -1,0 +1,200 @@
+[
+ {
+  "id": "M-D-00",
+  "change": "CONTROL: no change, manifests refreshed",
+  "expected_detector": "(control) nothing should fail",
+  "existing_tests_caught": false,
+  "own_check_caught": false,
+  "detector_independent": "n/a (control)",
+  "notes": "pytest: 89 passed in 273.05s (0:04:33); first failure: ; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-01",
+  "change": "V3 entry-minute cohort CSV: body units +65 in one (session, minute) row (wrong per-minute aggregation)",
+  "expected_detector": "V3 cohort CSV == aggregation of opening_items by (session, order-entry minute) and tag role",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 14 passed in 137.38s (0:02:17); first failure: E   assert 66235 == 66170; own failed counts {'verify_datasets': 1, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-02",
+  "change": "V1 CSV: one FILL row duplicated",
+  "expected_detector": "V1 CSV FILL rows == number of fills",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 12 passed in 133.00s (0:02:13); first failure: E   AssertionError: assert 1147 == 1146; own failed counts {'verify_datasets': 1106, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-03",
+  "change": "V2 CSV: REVERSED event row dropped",
+  "expected_detector": "V2 CSV events == lifecycle events",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 13 passed in 137.80s (0:02:17); first failure: E   AssertionError: assert 1146 == 1147; own failed counts {'verify_datasets': 1, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-04",
+  "change": "V3 CSV: one body item labelled WING_LONG_BY_TAG (role label swap)",
+  "expected_detector": "V3 CSV tag_role == tag/side rule",
+  "existing_tests_caught": false,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: n/a (not detected)",
+  "notes": "pytest: 89 passed in 248.48s (0:04:08); first failure: ; own failed counts {'verify_datasets': 1, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-05",
+  "change": "V4_C1 CSV: duration_s +1 for one batch",
+  "expected_detector": "V4 CSV row == m2c batch row (duration)",
+  "existing_tests_caught": false,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: n/a (not detected)",
+  "notes": "pytest: 89 passed in 239.35s (0:03:59); first failure: ; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 1, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-06",
+  "change": "V5_W1 CSV: wing units no-candidate (unmatched) set to 0, total unchanged",
+  "expected_detector": "V5 units: unmatched + 1 + >=2 == observed total, and vs candidate sets",
+  "existing_tests_caught": false,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: n/a (not detected)",
+  "notes": "pytest: 89 passed in 246.23s (0:04:06); first failure: ; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 1, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-07",
+  "change": "V6 CSV: full-ledger scope number wing_items_with_candidate_full_ledger_W1 +1",
+  "expected_detector": "V6 section G == m2d_summary / raw full-ledger numbers",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 23 passed in 110.54s (0:01:50); first failure: E   AssertionError: wing_items_with_candidate_full_ledger_W1; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 1, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-08",
+  "change": "V1 CSV: D-1/D0 labels swapped (SENSEX)",
+  "expected_detector": "V1 d_label == IST session ordinal",
+  "existing_tests_caught": false,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: n/a (not detected)",
+  "notes": "pytest: 89 passed in 308.65s (0:05:08); first failure: ; own failed counts {'verify_datasets': 729, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-09",
+  "change": "V1 CSV: short_CE sign flipped on 5 rows",
+  "expected_detector": "V1 short_* unsigned == raw signed replay",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 12 passed in 124.04s (0:02:04); first failure: E   AssertionError: assert '-65' == '65'; own failed counts {'verify_datasets': 5, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-10",
+  "change": "fills.tsv: exec_price_paise replaced by raw order running-average column (col 18) for all NIFTY fills",
+  "expected_detector": "fills.tsv exec price == raw col 137 (not col 18)",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 4 passed in 120.66s (0:02:00); first failure: E   AssertionError: fills.tsv; own failed counts {'verify_datasets': 20, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-11",
+  "change": "m2e_charts footer drops the execution-price/marks/unit annotation; V1 re-rendered (PNG only)",
+  "expected_detector": "PNG footer states execution-price-only / marks missing (text inside PNG)",
+  "existing_tests_caught": false,
+  "own_check_caught": true,
+  "detector_independent": "n/a: no detector in either suite reads PNG text",
+  "notes": "pytest: 89 passed in 304.06s (0:05:04); first failure: ; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 1}"
+ },
+ {
+  "id": "M-D-12",
+  "change": "case_studies.json CT6 record: opening_parents[0] replaced by a closing parent",
+  "expected_detector": "case record parents == raw per-episode parents",
+  "existing_tests_caught": false,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: n/a (not detected)",
+  "notes": "pytest: 89 passed in 251.11s (0:04:11); first failure: ; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 0, 'verify_cases': 1, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-13",
+  "change": "lifecycle_events.tsv (SENSEX): one event quantity +65",
+  "expected_detector": "lifecycle event qty == raw replay",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 44 passed in 224.10s (0:03:44); first failure: E   AssertionError: lifecycle_events.tsv; own failed counts {'verify_datasets': 2, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-14",
+  "change": "episodes.tsv (NIFTY): n_parents +1 on one episode",
+  "expected_detector": "episode n_parents == distinct parents of its OA/CP",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 4 passed in 103.04s (0:01:43); first failure: E   AssertionError: episodes.tsv; own failed counts {'verify_datasets': 1, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-15",
+  "change": "coverage.json (SENSEX): fills.opening_units +65",
+  "expected_detector": "coverage.json fills == raw counts",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 47 passed in 236.52s (0:03:56); first failure: E   assert (14180 == 14245); own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 1, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-16",
+  "change": "session_carry.tsv (NIFTY): D-1 short_CE +65",
+  "expected_detector": "session_carry == last-fill state",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 4 passed in 113.68s (0:01:53); first failure: E   AssertionError: session_carry.tsv; own failed counts {'verify_datasets': 1, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-17",
+  "change": "V5_W1_S60 CSV: 5 links moved to the adjacent dt_s histogram bin",
+  "expected_detector": "V5 dt_s histogram == binned slice link dt",
+  "existing_tests_caught": false,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: n/a (not detected)",
+  "notes": "pytest: 89 passed in 260.52s (0:04:20); first failure: ; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 2, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-18",
+  "change": "m2c_closing_batches_C1.tsv slice (NIFTY): total_closing_qty +65 for one batch",
+  "expected_detector": "M2-C slice batch qty == portions sum == raw closing units",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 5 passed in 117.56s (0:01:57); first failure: E   AssertionError: assert 'batch_id\\tgr...OBSERVATION\\n' == 'batch_id\\tgr...OBSERVATION\\n'; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 2, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-19",
+  "change": "opening_items.tsv (NIFTY): avg_exec_price_paise written in rupees (/100)",
+  "expected_detector": "opening_items avg price paise == notional/qty",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 4 passed in 101.57s (0:01:41); first failure: E   AssertionError: opening_items.tsv; own failed counts {'verify_datasets': 699, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-20",
+  "change": "cases/CT5_REVERSAL.csv: REVERSED event dropped",
+  "expected_detector": "case figure CSV events == lifecycle events of charted episodes",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 42 passed in 101.91s (0:01:41); first failure: E   AssertionError: CT5_REVERSAL; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 0, 'verify_cases': 1, 'verify_manifests': 0}"
+ },
+ {
+  "id": "M-D-21",
+  "change": "V2 CSV (SENSEX): inventory_after sign flipped on one ADDED event",
+  "expected_detector": "V2 CSV inventory_after == lifecycle table",
+  "existing_tests_caught": true,
+  "own_check_caught": true,
+  "detector_independent": "own: yes (raw ledger, no pe imports); existing: partly (re-derives via production engine, not through the mutated file)",
+  "notes": "pytest: 1 failed, 76 passed in 124.37s (0:02:04); first failure: E   AssertionError: assert [('SENSEX|202..., '-20'), ...] == [('SENSEX|202..., '-20'), ...]; own failed counts {'verify_datasets': 1, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 0}"
+ }
+]

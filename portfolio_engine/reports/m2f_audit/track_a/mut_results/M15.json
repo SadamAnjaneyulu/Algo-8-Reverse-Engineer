@@ -1,0 +1,32 @@
+{
+ "id": "M15",
+ "name": "remaining expired-unclosed units off by one lot in dump",
+ "file": "python/pe/replay.py",
+ "expected": "TOTAL remaining_expired_unclosed_units vs 37,480",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_accounting.py::test_expired_contract_inventory_has_no_invented_settlement",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[FIFO]",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[LIFO]",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[AVG]",
+   "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+   "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+  ],
+  "summary": "6 failed, 121 passed in 143.16s (0:02:23)",
+  "seconds": 144
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {},
+  "false_flags": [
+   "AVG_exact_total_is_integer"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 513,
+   "py_vs_ref_mismatch": 0
+  },
+  "killed": true
+ }
+}

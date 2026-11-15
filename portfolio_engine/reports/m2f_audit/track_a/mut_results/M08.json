@@ -1,0 +1,74 @@
+{
+ "id": "M08",
+ "name": "buy/sell reversed on 1 in 4001 historical fills",
+ "file": "python/pe/generators/historical.py",
+ "expected": "fill side vs raw col 11; roles; realized P&L",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage_real.py::test_reference_counts",
+   "tests/test_lineage_real.py::test_mixed_parents_are_23_reversals_plus_3_others_without_double_counting",
+   "tests/test_lineage_real.py::test_realized_pnl_from_allocations_equals_tp01_for_every_convention",
+   "tests/test_lineage_real.py::test_episode_identity_and_fields_equal_tp01_for_every_convention",
+   "tests/test_lineage_real.py::test_closing_portions_match_tp02_timeline_rows_without_assuming_identical_semantics",
+   "tests/test_lineage_real.py::test_observed_layer_identical_across_conventions_and_remaining_slices_reconcile",
+   "tests/test_lineage_real.py::test_tie_order_changes_identities_only_in_instruments_with_mixed_side_same_second_fills",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[FIFO]",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[LIFO]",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[AVG]",
+   "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[FIFO]",
+   "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[LIFO]",
+   "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[AVG]",
+   "tests/test_tp01_reconciliation.py::test_every_fill_role_matches_tp01[FIFO]",
+   "tests/test_tp01_reconciliation.py::test_every_fill_role_matches_tp01[LIFO]",
+   "tests/test_tp01_reconciliation.py::test_every_fill_role_matches_tp01[AVG]",
+   "tests/test_tp01_reconciliation.py::test_role_ambiguity_set_equals_tp01_six_fills",
+   "tests/test_tp01_reconciliation.py::test_expired_units_are_reported_not_settled"
+  ],
+  "summary": "18 failed, 109 passed in 230.18s (0:03:50)",
+  "seconds": 231
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {
+   "fill_field_vs_raw": 11,
+   "OA_fields": 40,
+   "OA_membership": 32,
+   "CP_membership": 30,
+   "CP_fields": 45,
+   "episode_membership": 11,
+   "episode_fields": 14,
+   "lifecycle": 2,
+   "roles": 10,
+   "CA_FIFO_row": 22460,
+   "CA_FIFO_total": 1,
+   "CA_LIFO_row": 24912,
+   "CA_LIFO_total": 1,
+   "CA_AVG_value": 16176,
+   "fill_role": 272
+  },
+  "false_flags": [
+   "engine_OA_ids_equal_ref",
+   "engine_CP_ids_equal_ref",
+   "lifecycle_events_identical",
+   "parent_roles_identical",
+   "slices_FIFO_identical",
+   "final_inventory_FIFO_identical",
+   "cash_equal_ref_FIFO",
+   "slices_LIFO_identical",
+   "final_inventory_LIFO_identical",
+   "cash_equal_ref_LIFO",
+   "AVG_exact_total_is_integer",
+   "slices_AVG_identical",
+   "final_inventory_AVG_identical",
+   "cash_equal_ref_AVG",
+   "sensitive_sets_identical"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 0,
+   "py_vs_ref_mismatch": 0
+  },
+  "killed": true
+ }
+}

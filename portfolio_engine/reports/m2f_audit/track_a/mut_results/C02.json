@@ -1,0 +1,28 @@
+{
+ "id": "C02",
+ "name": "C++ tie keys swapped",
+ "file": "cpp/include/pe/replay.hpp",
+ "expected": "parity tests; fuzz",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+   "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+   "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+  ],
+  "summary": "4 failed, 123 passed in 143.58s (0:02:23)",
+  "seconds": 144
+ },
+ "own": {
+  "cpp_raw_vs_ref_false_keys": [],
+  "cpp_vs_py_byte_diff_files": 36,
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 360,
+   "cpp_vs_ref_mismatch": 360,
+   "py_vs_ref_mismatch": 0
+  },
+  "killed": true
+ }
+}

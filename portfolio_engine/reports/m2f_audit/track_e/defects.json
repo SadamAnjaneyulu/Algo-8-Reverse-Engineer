@@ -1,0 +1,123 @@
+[
+ {
+  "id": "E-D01",
+  "severity": "Medium",
+  "title": "coverage.json key order depends on PYTHONHASHSEED (byte-nondeterministic output, unhashed)",
+  "location": "portfolio_engine/python/pe/forensics.py:264 (parent_roles=dict(Counter(ls.roles[p] for p in parents)), parents is a set); written by tools/m2e_build.py:36",
+  "evidence": "Reran m2e_build from clean output dirs in 5 clones: g2 (random seed), g3 (PYTHONHASHSEED=1), g4 (987654) produced coverage.json that differs in BYTES from the committed file (parent_roles key order OPENING_ONLY/CLOSING_ONLY/MIXED permuted) while json.loads() is equal; g1 happened to match. Only manifests/summary differ otherwise.",
+  "repro": "cd <clone>; for s in 1 2 3 4; do PYTHONHASHSEED=$s python3 portfolio_engine/tools/m2e_build.py; sha256sum portfolio_engine/reports/m2e_data/*/coverage.json; done",
+  "impact": "Committed coverage.json is not reproducible byte-for-byte; the file is not in any manifest so the drift is invisible to the manifest tests. Values unaffected (parsed-equal).",
+  "proposed_fix": "Build parent_roles from sorted keys: dict(sorted(Counter(...).items())); write JSON with sort_keys=True; add coverage.json, case_studies.json and the summaries to the manifest.",
+  "proposed_test": "Test: run the m2e builders in two subprocesses with different PYTHONHASHSEED and assert byte equality of every output file."
+ },
+ {
+  "id": "E-D02",
+  "severity": "Medium",
+  "title": "Provenance heads in committed manifests do not identify the generating code; run_id depends on git HEAD; dirty check is partial",
+  "location": "portfolio_engine/python/pe/provenance.py:15-27; tools/m2c_closing_batches.py:24; tools/m2d_wing_body.py:37; tools/m2e_build.py:10,33",
+  "evidence": "Committed m2c manifest: generated_at_head=5b2939ec, working_tree_dirty=true (outputs committed later in 1b0a79f7); m2d: 77521fa7 (committed in f8200e0b); m2e: 10e33962 (final outputs committed in 7117bbce). m2d/m2e manifests carry no dirty flag; m2c dirty check covers only portfolio_engine/python and tools (not cpp, tests, docs, fixtures). provenance.manifest() run_id hashes the git sha, so run_id changes with every commit although inputs/config are identical; git_sha(cwd=dirname(events_path)) reports whichever repo holds the events file or UNAVAILABLE. No C++ binary hash is recorded for implementation=cpp.",
+  "repro": "python3 portfolio_engine/reports/m2f_audit/track_e/scripts/manifest_check.py portfolio_engine; git log -1 --format=%h -- portfolio_engine/reports/m2d_data/manifest.json",
+  "impact": "A reader cannot rely on generated_at_head to reconstruct the code that produced an artifact. Mitigation VERIFIED: regenerating at current HEAD reproduces all data bytes (only runtime metadata and the unhashed coverage.json order differ).",
+  "proposed_fix": "Record the code hash (git tree hash of python/, tools/, cpp/) and a full dirty flag in every manifest; exclude the sha from run_id or document it; hash the C++ binary.",
+  "proposed_test": "Test: provenance.manifest() under two different git shas/dirty states -> same run_id for identical inputs; manifest contains tree hash."
+ },
+ {
+  "id": "E-D03",
+  "severity": "Medium",
+  "title": "Output manifests do not cover every output file; hash bases differ between stages",
+  "location": "tools/m2c_closing_batches.py:26-31; tools/m2d_wing_body.py:38-43; tools/m2e_build.py:34-36",
+  "evidence": "manifest_check.py (executed, [INV]): m2c manifest covers 6/8 files (not manifest.json, m2c_summary.json); m2d 6/8 (not m2d_summary.json); m2e per cycle 19/22 (not case_studies.json, coverage.json, manifest.json); m2e_summary.json and review_dispositions.json unhashed. m2c/m2d hash is sha256 of the UNCOMPRESSED text (sha256_of_text; gz bytes are not hashed, gz written with mtime=0 so bytes are reproducible); m2e hashes text and equals file bytes on Linux only because open(...,\"w\") does not translate newlines on Linux. All 19+19+6+6 listed hashes VERIFIED correct for the committed files; 26 figure CSV hashes verified; PNG hashes are informational.",
+  "repro": "python3 portfolio_engine/reports/m2f_audit/track_e/scripts/manifest_check.py portfolio_engine",
+  "impact": "Summaries that feed the reports (m2c/m2d/m2e summaries, coverage.json) can change without any manifest test failing.",
+  "proposed_fix": "Hash every file in the output directory (except the manifest) with one stated method (raw bytes); verify in a test.",
+  "proposed_test": "Test: listdir(output dir) minus manifest.json == manifest file set."
+ },
+ {
+  "id": "E-D04",
+  "severity": "Low",
+  "title": "Writers use locale-default encoding/newline; ASCII-locale run fails and leaves truncated reports",
+  "location": "portfolio_engine/tools/m2e_cases.py:65, m2e_catalog.py:32, m2e_coverage_report.py, m2e_build.py:35 (open(path, \"w\") without encoding/newline)",
+  "evidence": "g5 clone with PYTHONUTF8=0 PYTHONCOERCECLOCALE=0 LC_ALL=C: m2c, m2d, m2e_build, m2e_charts rc=0 but m2e_cases/m2e_catalog/m2e_coverage_report rc=1 (UnicodeEncodeError for U+2014); the three markdown reports were left missing/empty. Default environment (C.UTF-8 coercion) unaffected. TZ (UTC, Asia/Kolkata, America/New_York) and LC_ALL=C/C.UTF-8 produced identical data bytes (g1-g4).",
+  "repro": "PYTHONUTF8=0 PYTHONCOERCECLOCALE=0 LC_ALL=C python3 portfolio_engine/tools/m2e_cases.py",
+  "impact": "Non-UTF-8 environments fail; on Windows hashes (computed on \"\\n\" text) would not equal file bytes (SUSPECTED, not run).",
+  "proposed_fix": "Pass encoding=\"utf-8\", newline=\"\\n\" to every open() that writes.",
+  "proposed_test": "Test: run the report tools with PYTHONUTF8=0 LC_ALL=C."
+ },
+ {
+  "id": "E-D05",
+  "severity": "Low",
+  "title": "Python and C++ TSV readers accept different token sets; io.hpp claims identical validation",
+  "location": "portfolio_engine/python/pe/tsvio.py:35-37 (int()); cpp/include/pe/io.hpp:1,10-14,18-25 (from_chars, getline)",
+  "evidence": "parse_probe.py (executed): Python accepts and C++ rejects: CRLF files, \"+130\", \" 130\", \"130 \", \"1_30\", full-width digits, \"+1\" side, timestamp 99999999999999999999 (Python unbounded). Lone-CR line endings: Python parses the file, C++ reads one comment line and silently accepts ZERO events (outputs differ). UTF-8 BOM rejected by both. No Python or C++ test covers these. Schema-version check is enforced identically (v2 rejected by both).",
+  "repro": "python3 portfolio_engine/reports/m2f_audit/track_e/scripts/parse_probe.py --root <scratch tree> --work <dir>",
+  "impact": "No effect on committed data (files are machine-written by write_events and parity is byte-exact on them); a hand-edited or foreign-produced file could be accepted by one engine only.",
+  "proposed_fix": "Use a strict regex ^-?[0-9]+$ in Python; strip \\r or reject it in C++; reject a file with no header and rows; fail if the first non-comment line is absent.",
+  "proposed_test": "Test: fixtures with CRLF/+/space/underscore tokens must be rejected (or accepted) identically by both engines."
+ },
+ {
+  "id": "E-D06",
+  "severity": "Low",
+  "title": "Overflow and float-sum semantics differ between engines at extreme magnitudes",
+  "location": "portfolio_engine/python/pe/ledger.py (no overflow guard) vs cpp/include/pe/ledger.hpp (checked_mul/add); python/pe/invariants.py:27 and lineage_set.py:116 use float sum() (compensated on Python >= 3.12) while cpp sums left to right",
+  "evidence": "parity_fuzz.py (executed, 245 own random sequences, 1,221 cases): 1,043 byte-identical; 171 cases with quantity*price near/over int64: Python computes exact big ints, C++ rejects with \"int64 overflow in P&L arithmetic\"; 7 AVG strict-mode cases at q~1e9, px~5e8 paise: Python rejects on cash-identity or episode-realized-sum tolerance, 6 of 7 also rejected by C++, 1 (seed 1151 episode_realized_sums_to_portfolio_realized: -108979214338.08452 vs -108979214341.0) rejected by Python only. Real-ledger magnitude: max |cash| 3.8e8 paise, headroom 2.4e10 x to int64. Outputs identical across Python 3.11/3.12/3.13 (23 hashes).",
+  "repro": "python3 portfolio_engine/reports/m2f_audit/track_e/scripts/parity_fuzz.py --root <tree> --work <dir> --n 245",
+  "impact": "None for real data. The parity statements hold on the domain |q*px| << 9e18; outside it the engines differ in behaviour (C++ fails safe).",
+  "proposed_fix": "Document the domain; add an overflow guard or Python check mirroring C++; replace sum() over floats by an explicit loop in invariants/lineage_set; make AVG tolerance relative to intermediate magnitudes.",
+  "proposed_test": "Test: q=3e9, px=3e9 sequence must raise in both engines."
+ },
+ {
+  "id": "E-D07",
+  "severity": "Medium",
+  "title": "Infrastructure code is untested: pe.cli 0 %, provenance.manifest, tool scripts, cases.record",
+  "location": "portfolio_engine/python/pe/cli.py; provenance.py:20-31; tools/m2c_closing_batches.py, m2d_wing_body.py, m2e_build.py (manifest writing); pe/cases.py:96-123",
+  "evidence": "Traced coverage: cli.py 0 % (30/30 stmts missed), provenance.py 55 % (manifest, git_sha failure path, run_dir missed), cases.py 63 % (record() builder, 28 lines, missed), forensics.py 84 %. No test runs any generator script. Mutations E05 (manifest hash over wrong bytes, m2c tool), E14 (m2e tool), E07 (git_sha returns a constant) see mutations.json for survivors.",
+  "repro": "PYTHONPATH=<scratch>/pylib python3 -m coverage run --rcfile=<scratch rc> -m pytest ... (scratch copy)",
+  "impact": "Manifest/provenance bugs in the stage scripts can ship with a green suite.",
+  "proposed_fix": "Add tests that run the stage scripts on a small cycle into a temp dir and verify manifest vs files; test cli replay --out-dir and manifest().",
+  "proposed_test": "Test: execute m2c tool with OUT redirected; verify every manifest entry against bytes."
+ },
+ {
+  "id": "E-D08",
+  "severity": "Low",
+  "title": "Test tiering: \"slow\" marker does not describe real-data tests",
+  "location": "portfolio_engine/pytest.ini; tests/test_forensics.py (87 of 89 tests use real-ledger fixtures)",
+  "evidence": "pytest -m \"not slow\": 236 tests, 90.7 s (README implies seconds); setup fixtures 25 s each for the two cycles; still requires tp_reconstruction parquet. Full suite 274 passed in 212.9 s on a clean scratch tree.",
+  "repro": "python3 -m pytest -p no:cacheprovider portfolio_engine/tests -m \"not slow\" -q --durations=10",
+  "impact": "Developers cannot get a truly fast tier; documentation of runtime (\"about 30-60 s\") is inaccurate.",
+  "proposed_fix": "Mark real-ledger fixtures slow or add a \"real\" marker.",
+  "proposed_test": "Check marker assignment in CI."
+ },
+ {
+  "id": "E-D09",
+  "severity": "Medium",
+  "title": "Dependencies unpinned; reproducibility asserted only for the present environment",
+  "location": "portfolio_engine/docs/DEPENDENCY_AUDIT.md; no requirements/pyproject/lock file",
+  "evidence": "Python core (ledger, replay, lineage, lineage_set, invariants, closing_batches, wing_body, cases, tsvio, provenance) imports stdlib only (AST scan, VERIFIED); pandas (3.0.5) + pyarrow (26.0.1) are needed by generators/historical.py and forensics.py; matplotlib 3.11.2 by tools/m2e_charts.py (PNG bytes identical to committed under this version only); numpy/pandas by older tools; `market_data` (external) by select_demo_cycles.py. Core outputs identical under Python 3.11, 3.12 and 3.13 (VERIFIED, 23 hashes). Float sum() over floats exists only in invariants.py:27 / lineage_set.py:116 (check paths; do not enter outputs).",
+  "repro": "python3.11/3.12/3.13 pyver_compat.py <tree>",
+  "impact": "A different pandas/matplotlib version may change generator input handling or PNG bytes (SUSPECTED).",
+  "proposed_fix": "Add a lock/requirements file and record versions in manifests.",
+  "proposed_test": "CI job on the pinned versions."
+ },
+ {
+  "id": "E-D10",
+  "severity": "Low",
+  "title": "Inconsistent schema versioning across files",
+  "location": "portfolio_engine/docs/SCHEMAS.md; python/pe/lineage.py (observed_tsv/lifecycle_tsv headers); parents.py; tools/m2d_wing_body.py",
+  "evidence": "Only events carry schema_version (pe.fill.v1) and the dump carries \"#PE_STATE_DUMP v1\". Lineage TSVs, parents.tsv, m2d links/items have no version field/header; m2c has grouping_version CB1; m2e manifest version M2E_1; m2d manifest none. SCHEMAS.md retains superseded draft sections (allocations.tsv, lifecycle terminal_status, wing_body.tsv) with \"supersedes\" notes. Shared column constants are duplicated in Python and C++ headers (kEventColumns etc.), kept consistent only by parity tests.",
+  "repro": "inspect headers of reports/m2d_data/*.tsv.gz",
+  "impact": "A consumer cannot detect a layout change by version.",
+  "proposed_fix": "Add a version comment line/field to every shared file.",
+  "proposed_test": "Test: every output file declares a schema version matched to SCHEMAS.md."
+ },
+ {
+  "id": "E-D11",
+  "severity": "Low",
+  "title": "stage2_alpha_research evidence: commit message claims sources added; only .gitignore is tracked, no .py exists in the tree",
+  "location": "commit e32ff484; stage2_alpha_research/",
+  "evidence": "`git ls-files stage2_alpha_research` = .gitignore only; on disk 20 files = pickles (_cache) + bytecode; zero .py; message says \"Add stage2_alpha_research sources\". Sources exist on branch research/stage2-independent-alpha (commits 3a36d0a4, d63db9c0), not an ancestor of HEAD. git diff e06a711e..7117bbce outside portfolio_engine: no changes.",
+  "repro": "git ls-files stage2_alpha_research; find stage2_alpha_research -name \"*.py\"",
+  "impact": "Evidence for that stage is recoverable only from another branch.",
+  "proposed_fix": "Merge or reference the branch; correct the commit description.",
+  "proposed_test": "n/a"
+ }
+]
