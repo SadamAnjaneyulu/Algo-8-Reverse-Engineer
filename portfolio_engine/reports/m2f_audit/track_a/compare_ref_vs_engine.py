@@ -92,6 +92,9 @@ for r in rows:
     if f.module_tag != ('?'): pass
 mt = Counter((byrow[r['row']].module_tag, r['module']) for r in rows); rec('module_tag_map_engine_vs_raw166', {f'{a}<-{b}': n for (a, b), n in mt.items()})
 # 1) OA / CP rows
+n_emit = len(LS.runs['FIFO'].lineage.observed); rec('engine_emitted_observed_rows_list_length', n_emit); rec('emitted_observed_rows_equal_ref_OA_plus_CP', n_emit == len(R.oa) + len(R.cp))
+for _m in ('FIFO', 'LIFO', 'AVG'):
+    _n = len(LS.runs[_m].lineage.observed); chk('emitted_rows_' + _m, _n == len(R.oa) + len(R.cp), _n)
 eoa = {int(k[4:]): v for k, v in LS.oa.items()}; ecp = {int(k[4:]): v for k, v in LS.cp.items()}   # id 'OA:F000123' -> 123
 rec('engine_OA', len(eoa)); rec('engine_CP', len(ecp)); rec('engine_episodes', len(LS.episodes)); rec('engine_mixed_parents', len(LS.mixed_parents()))
 rec('engine_OA_ids_equal_ref', set(eoa) == set(R.oa)); rec('engine_CP_ids_equal_ref', set(ecp) == set(R.cp))

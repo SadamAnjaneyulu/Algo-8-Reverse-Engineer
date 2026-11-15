@@ -50,7 +50,7 @@ def canon_files(F,m):
     sl={}
     for l in F[f'slices_{m}.tsv'].splitlines()[1:]:
         x=l.split('\t'); sl[x[4] if m=='AVG' else int(x[3][4:])]=(int(x[5]),Fraction(x[6]),x[4])
-    return dict(oa=oa,cp=cp,ev=ev,ep=ep,ca=ca,sl=sl)
+    return dict(oa=oa,cp=cp,ev=ev,ep=ep,ca=ca,sl=sl,nobs=len(obs),nev=len(F['lifecycle.tsv'].splitlines())-1)
 def canon_ref(R,m,last_day_fn):
     rf=lambda D:{k:(v['parent'],v['ep'],v['ts'],v['side'],v['qty'],v['px']) for k,v in D.items()}
     ep=[]
@@ -60,11 +60,11 @@ def canon_ref(R,m,last_day_fn):
     ca=[(x[0],x[1],x[2],x[3],x[4],x[5],x[6]) for x in R.ca]
     sl={}
     for k,v in R.slices.items(): sl[k]=(v[1],Fraction(v[2]) if m!='AVG' else v[2],v[3] if m!='AVG' else k)
-    return dict(oa=rf(R.oa),cp=rf(R.cp),ev=sorted((e[0],e[1],e[2],e[3],e[4],e[5],e[6]) for e in R.events),ep=sorted(ep),ca=ca,sl=sl)
+    return dict(nobs=len(R.oa)+len(R.cp),nev=len(R.events),oa=rf(R.oa),cp=rf(R.cp),ev=sorted((e[0],e[1],e[2],e[3],e[4],e[5],e[6]) for e in R.events),ep=sorted(ep),ca=ca,sl=sl)
 def same(a,b,m):
     """returns list of mismatching sections. AVG numeric fields: abs tol 1e-5 (C++/Python print 6 decimals of a binary float; reference is exact rational)"""
     bad=[]
-    for k in ('oa','cp','ev','ep'):
+    for k in ('oa','cp','ev','ep','nobs','nev'):
         if a[k]!=b[k]: bad.append(k)
     if len(a['ca'])!=len(b['ca']): bad.append('ca_len')
     else:

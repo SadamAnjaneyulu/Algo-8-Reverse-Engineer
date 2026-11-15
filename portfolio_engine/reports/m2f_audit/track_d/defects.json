@@ -158,7 +158,7 @@
   "severity": "Medium",
   "title": "Existing selection tests are weak: test_case_selection_ignores_prices_and_outcomes perturbs only dataset columns that the datasets carry; it cannot detect an upstream dependence; coverage of figure-text, PNG, case-figure CSV and coverage.json values is partial",
   "location": "tests/test_forensics.py:216-221 and mutation results (mutations.json)",
-  "evidence": "See mutations.json for survivors. An upstream perturbation (scrambled prices before the lineage engine) was needed to establish price independence (perturbation_selection_result.log).",
+  "evidence": "Mutation run (mutations.json): existing 89 tests miss 7 of 21 new mutants (V3 role label swap, V4_C1 CSV duration +1, V5 unmatched units omitted, V1 d_label swap, removed price/marks footer annotation, case-record parent swap, V5 histogram bin shift). test_case_selection_ignores_prices_and_outcomes (tests/test_forensics.py:216-221) perturbs only dataset price columns (the datasets contain no P&L) so it cannot detect an upstream dependence; an upstream perturbation was needed (perturbation_selection_result.log). Footer/annotation text and legend overlaps are untested.",
   "repro": "mutation_harness.py",
   "impact": "Validation is weaker than the 89-test count suggests for presentation-layer artefacts.",
   "proposed_fix": "Add raw-derived checks (this track verify_*.py) to the test suite; add legend/footer probes.",

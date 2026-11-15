@@ -60,7 +60,7 @@
   "source": "m2c slices",
   "independent_verification": "[IMPL] direct set comparison",
   "status": "VERIFIED",
-  "limitation": "M2-C report discloses C2 = C1 under the approved tie rule; the V4/V6 figures do not say so (D-02).",
+  "limitation": "M2-C report discloses C2 = C1 under the approved tie rule; the V4/V6 figures do not say so (D-05).",
   "class": ""
  },
  {
@@ -132,7 +132,7 @@
   "source": "pe/cases.py",
   "independent_verification": "[IMPL] upstream perturbation: all fill prices scrambled before the lineage/M2-C/M2-D engines (tick-aligned), full m2e_build re-run in scratch, K.select compared: all 20 selections identical; plus independent re-implementation of all 10 rules from raw reproduces every selection",
   "status": "VERIFIED",
-  "limitation": "Structural is not the same as unbiased: the rule always takes the chronologically first (or first unused) qualifying candidate, which concentrates every selected case in the first hours of D-1 (see D-04). Rules were selected from the engines output that were already visible.",
+  "limitation": "Structural is not the same as unbiased: the rule always takes the chronologically first (or first unused) qualifying candidate, which concentrates every selected case in the first hours of D-1 (see D-03). Rules were selected from the engines output that were already visible.",
   "class": ""
  },
  {

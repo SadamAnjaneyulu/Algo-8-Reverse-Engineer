@@ -9,12 +9,15 @@ EXP = {'m01': ('V3 cohort CSV == aggregation of opening_items by (session, order
 out = []; rows = []
 for mid in sorted(R):
     r = R[mid]; own = r['own']; ownfail = {k: v['failed'] for k, v in own.items()}; crash = [k for k, v in own.items() if v['failed'] is None]
-    own_caught = any((v['failed'] or 0) > 0 for v in own.values()); pt = r['pytest']; ex_caught = pt['rc'] != 0
-    note = f"pytest: {pt['summary'][-110:]}; first failure: {(pt['first_failure'] or [''])[0][:160]}; own failed counts {ownfail}" + (f"; CRASH (not a kill) in {crash}" if crash else '')
+    own_caught = any((v['failed'] or 0) > 0 for v in own.values())
+    if mid == 'm11': own_caught = False; incidental = 'verify_manifests flagged the informational PNG hash (png_sha256_informational not refreshed by the harness): INCIDENTAL, no check reads the footer text, so the semantic change (price/marks/unit annotation removed) is NOT detected by either suite'
+    else: incidental = ''
+    pt = r['pytest']; ex_caught = pt['rc'] != 0
+    note = (incidental + '; ' if incidental else '') + f"pytest: {pt['summary'][-110:]}; first failure: {(pt['first_failure'] or [''])[0][:160]}; own failed counts {ownfail}" + (f"; CRASH (not a kill) in {crash}" if crash else '')
     if mid in ('m11',): indep = 'n/a: no detector in either suite reads PNG text'
     elif mid == 'm00': indep = 'n/a (control)'
     else: indep = 'own: yes (raw ledger, no pe imports); existing: ' + ('partly (re-derives via production engine, not through the mutated file)' if ex_caught else 'n/a (not detected)')
     out.append(dict(id=mid.upper().replace('M', 'M-D-'), change=r['change'], expected_detector=EXP[mid][0], existing_tests_caught=ex_caught, own_check_caught=own_caught, detector_independent=indep, notes=note))
-    rows.append((mid, r['change'], 'killed' if ex_caught else 'SURVIVED', 'killed' if own_caught else 'SURVIVED'))
+    rows.append((mid, r['change'], 'control: passes (expected)' if mid == 'm00' else 'killed' if ex_caught else 'SURVIVED', 'control: passes (expected)' if mid == 'm00' else 'killed' if own_caught else 'SURVIVED'))
 json.dump(out, open(os.path.join(HERE, 'mutations.json'), 'w'), indent=1)
 print('| id | change | existing tests | Track D checks |\n|---|---|---|---|'); [print('| %s | %s | %s | %s |' % r) for r in rows]

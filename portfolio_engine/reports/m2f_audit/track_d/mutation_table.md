@@ -1,6 +1,6 @@
 | id | change | existing tests | Track D checks |
 |---|---|---|---|
-| m00 | CONTROL: no change, manifests refreshed | SURVIVED | SURVIVED |
+| m00 | CONTROL: no change, manifests refreshed | control: passes (expected) | control: passes (expected) |
 | m01 | V3 entry-minute cohort CSV: body units +65 in one (session, minute) row (wrong per-minute aggregation) | killed | killed |
 | m02 | V1 CSV: one FILL row duplicated | killed | killed |
 | m03 | V2 CSV: REVERSED event row dropped | killed | killed |
@@ -11,7 +11,7 @@
 | m08 | V1 CSV: D-1/D0 labels swapped (SENSEX) | SURVIVED | killed |
 | m09 | V1 CSV: short_CE sign flipped on 5 rows | killed | killed |
 | m10 | fills.tsv: exec_price_paise replaced by raw order running-average column (col 18) for all NIFTY fills | killed | killed |
-| m11 | m2e_charts footer drops the execution-price/marks/unit annotation; V1 re-rendered (PNG only) | SURVIVED | killed |
+| m11 | m2e_charts footer drops the execution-price/marks/unit annotation; V1 re-rendered (PNG only) | SURVIVED | SURVIVED |
 | m12 | case_studies.json CT6 record: opening_parents[0] replaced by a closing parent | SURVIVED | killed |
 | m13 | lifecycle_events.tsv (SENSEX): one event quantity +65 | killed | killed |
 | m14 | episodes.tsv (NIFTY): n_parents +1 on one episode | killed | killed |

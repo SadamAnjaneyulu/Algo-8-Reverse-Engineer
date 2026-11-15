@@ -103,9 +103,9 @@
   "change": "m2e_charts footer drops the execution-price/marks/unit annotation; V1 re-rendered (PNG only)",
   "expected_detector": "PNG footer states execution-price-only / marks missing (text inside PNG)",
   "existing_tests_caught": false,
-  "own_check_caught": true,
+  "own_check_caught": false,
   "detector_independent": "n/a: no detector in either suite reads PNG text",
-  "notes": "pytest: 89 passed in 304.06s (0:05:04); first failure: ; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 1}"
+  "notes": "verify_manifests flagged the informational PNG hash (png_sha256_informational not refreshed by the harness): INCIDENTAL, no check reads the footer text, so the semantic change (price/marks/unit annotation removed) is NOT detected by either suite; pytest: 89 passed in 304.06s (0:05:04); first failure: ; own failed counts {'verify_datasets': 0, 'verify_v4v5v6': 0, 'verify_cases': 0, 'verify_manifests': 1}"
  },
  {
   "id": "M-D-12",

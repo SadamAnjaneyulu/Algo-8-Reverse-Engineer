@@ -3,10 +3,10 @@
 Scope: NIFTY 2026-06-30 and SENSEX 2026-07-16 (HEAD 7117bbce, read-only). Verification classes: **[RAW]** raw-source, **[IMPL]** independent re-implementation, **[INV]** internal invariant, **[REPRO]** reproducibility. Labels: VERIFIED / INSPECTED / SUSPECTED / NOT VERIFIED. All scripts are in this directory; none import pe.* (anti-circularity). Scratch mirrors lived under the session scratchpad (`m2f_d/`).
 
 ## 0. Bottom line
-* **Numbers: justified.** Every dataset row, V1/V2/V3 CSV row, V4 aggregate and conservation total, V5/V6 value, coverage-report number and quoted full-ledger scope number that was re-derived from the raw ledger agrees (about 12,000 independent checks, 0 failures). No mark, interpolated price or unrealized P&L exists anywhere.
+* **Numbers: justified.** Every dataset row, V1/V2/V3 CSV row, V4 aggregate and conservation total, V5/V6 value, coverage-report number and quoted full-ledger scope number that was re-derived from the raw ledger agrees (about 24,500 independent checks: 13,564 dataset/V1-V3 + 9,344 V4-V6/coverage/scope + 1,382 case + 225 manifest; 0 failures). No mark, interpolated price or unrealized P&L exists anywhere.
 * **Case-selection narrative: NOT justified as written.** Cycle freeze (e06a711e) is timestamp-supported; individual case selection is *not* shown to be fixed before inspection, yet one heading and every case block say "fixed before any case was looked at / predefined, outcome-free". Selection is nevertheless price-independent (executed perturbation) and fully reproducible, but concentrates every case on D-1 session-start positions.
 * **Visuals: two real presentation defects** (legend hides the widest batch in all four V4 figures; case PNGs carry no case-specific information) plus several Low items. No figure implies ownership, hedging or intent beyond the evidence labels.
-* **Test suite (89 tests) is weaker than it looks for presentation artefacts**; see mutation table (section 6).
+* **Test suite (89 tests) is weaker than it looks for presentation artefacts**; see section 6: 7 of 21 new mutants survive the existing tests.
 
 ## 1. Raw recomputation (task 1)
 | Check | Script | Class | Result |
@@ -48,7 +48,47 @@ Scratch copy of the repo (portfolio_engine without build/, raw CSV, tp_reconstru
 | M2E_CYCLE_COVERAGE_REPORT.md:3, tools/m2e_coverage_report.py:9, forensics.py:11 | "selected before any grouping, e06a711e" | YES for M2 grouping code; TP-03 windows predate |
 | tests/test_forensics.py:206-221 | "outcome-free" / "ignores prices and outcomes" | weak: perturbs dataset columns only |
 **Executed perturbation (IMPL).** All fill prices scrambled (x7/5 + row offset, tick-aligned) *before* the lineage, M2-C and M2-D engines; full m2e_build re-run in scratch (reconciliation PASS); `K.select` on the rebuilt datasets: **all 20 selections identical** (perturbation_selection_result.log). So selection is structural; limitation: structure itself (timing of fills, tags) is what the cases are chosen on, and rules were visible to the author when written.
-**Selection effects.** Rule = first qualifying candidate not already used. 13 of 17 picks equal the chronological first; 4 do not (NIFTY CT5 reuses CT1's episode - the only reversal; NIFTY CT7 rank 2, CT9 rank 5; SENSEX CT9 rank 6). 16 of 17 episodes start 09:16-09:46 on D-1; none on D0 (D-3). Type order matters (earlier types consume episodes).
+**Selection effects.** Rule = first qualifying candidate not already used. 13 of 17 picks equal the chronological first; 4 do not (NIFTY CT5 reuses CT1's episode - the only reversal; NIFTY CT7 rank 2, CT9 rank 5; SENSEX CT9 rank 6). 16 of 17 episodes start 09:16-09:46 on D-1; none on D0 (D-03). Type order matters (earlier types consume episodes).
 
 ## 5. Case records (task 5)
 All 17 available cases re-derived from raw (fills, per-episode opening/closing quantities, opening/closing parents, lifecycle, wing/body membership = items with an opening allocation in the episode, in/out of M2-D tagged scope, W1/W1_S60 counterparts and dt, related reversal episodes), plus case figure CSVs: **VERIFIED**. NIFTY reversing fill row 5681 (parent h_30084825701151, BUY 520): 390 closing in CE24100#1, 130 opening in CE24100#2; the preceding fill 5680 (130) closes #1. SENSEX mixed parent s_16053046299662: fills 12632 (60) and 12638 (100) close CE77600#1, 12641 (20) opens CE77600#2 (no reversing fill: separate fills). ID/episode assignment of reversing fills is consistent in datasets, case JSON and V2/case CSV.
+
+## 6. Mutation testing (task 6)
+Method: mutate COPIES only (light mutant trees in scratch; symlinks to the repo-sized inputs, copies of tests/tools/python/m2e_data/m2e_figures), refresh manifest hashes to simulate a generator that writes consistent manifests, run the existing `tests/test_forensics.py` (89 tests, `-x`) and Track D's raw-derived verifiers. 21 new mutants + 1 control (control: 89 passed, all own checks pass). None coincides with the previous reviewer's set (dropped fill, +19800 s, CE/PE swap, +1 lot V3, partial->CLOSED, CONFIRMED label, dropped batch member, V4 sensitivity value, V6 stack move, V1 ts as UTC, TP-03 overlay shift, V2 qty, case JSON qty, V5 multiplicity swap). A crash for another reason is not counted as a kill (no crashes occurred; failure lines recorded in mutations.json).
+| id | change | existing tests | Track D checks |
+|---|---|---|---|
+| m00 | CONTROL: no change, manifests refreshed | control: passes (expected) | control: passes (expected) |
+| m01 | V3 entry-minute cohort CSV: body units +65 in one (session, minute) row (wrong per-minute aggregation) | killed | killed |
+| m02 | V1 CSV: one FILL row duplicated | killed | killed |
+| m03 | V2 CSV: REVERSED event row dropped | killed | killed |
+| m04 | V3 CSV: one body item labelled WING_LONG_BY_TAG (role label swap) | SURVIVED | killed |
+| m05 | V4_C1 CSV: duration_s +1 for one batch | SURVIVED | killed |
+| m06 | V5_W1 CSV: wing units no-candidate (unmatched) set to 0, total unchanged | SURVIVED | killed |
+| m07 | V6 CSV: full-ledger scope number wing_items_with_candidate_full_ledger_W1 +1 | killed | killed |
+| m08 | V1 CSV: D-1/D0 labels swapped (SENSEX) | SURVIVED | killed |
+| m09 | V1 CSV: short_CE sign flipped on 5 rows | killed | killed |
+| m10 | fills.tsv: exec_price_paise replaced by raw order running-average column (col 18) for all NIFTY fills | killed | killed |
+| m11 | m2e_charts footer drops the execution-price/marks/unit annotation; V1 re-rendered (PNG only) | SURVIVED | SURVIVED |
+| m12 | case_studies.json CT6 record: opening_parents[0] replaced by a closing parent | SURVIVED | killed |
+| m13 | lifecycle_events.tsv (SENSEX): one event quantity +65 | killed | killed |
+| m14 | episodes.tsv (NIFTY): n_parents +1 on one episode | killed | killed |
+| m15 | coverage.json (SENSEX): fills.opening_units +65 | killed | killed |
+| m16 | session_carry.tsv (NIFTY): D-1 short_CE +65 | killed | killed |
+| m17 | V5_W1_S60 CSV: 5 links moved to the adjacent dt_s histogram bin | SURVIVED | killed |
+| m18 | m2c_closing_batches_C1.tsv slice (NIFTY): total_closing_qty +65 for one batch | killed | killed |
+| m19 | opening_items.tsv (NIFTY): avg_exec_price_paise written in rupees (/100) | killed | killed |
+| m20 | cases/CT5_REVERSAL.csv: REVERSED event dropped | killed | killed |
+| m21 | V2 CSV (SENSEX): inventory_after sign flipped on one ADDED event | killed | killed |
+
+**Survivors of the existing test-suite (7 of 21): M-D-04 (V3 role label swap), M-D-05 (V4 duration +1), M-D-06 (V5 unmatched units omitted), M-D-08 (V1 D-1/D0 label swap), M-D-11 (footer/price-unit annotation removed), M-D-12 (case record opening parent replaced), M-D-17 (V5 histogram bin shift).** The existing tests check figure CSVs against manifests/hashes and a few recomputations, but not role labels, V4 CSV values, V5 category values, V1 d_label, case-record parents or V5 histogram bins. Detector independence: the existing tests that did kill (e.g. M-D-09, 10, 14, 16, 18, 19) regenerate through the production engine (independent of the mutated file, not of the engine); Track D checks use only the raw CSV and are independent of every mutated path.
+**Survivors of Track D checks: M-D-11** (the PNG footer text is not read by any check; the harness's informational PNG-hash mismatch flagged verify_manifests only incidentally and is not counted). Disclosure: my V3 role/side check, V6 section-G check and case-figure-CSV check were added after the first clean run and before the mutation run; the first version of my V3 figure check would have missed M-D-04 (it did not compare tag_role). Caveat: mutants are single-point edits; no mutant touched PNG pixels other than M-D-11.
+
+## 7. Not inspected / limits
+* M2-C chaining rules and M2-D matching internals (only equality, conservation and a raw re-implementation of W1 / W1_S60 candidate sets); W3 queue arithmetic and W2 weights not re-derived; 107,530 mixed-module closing-wing units NOT VERIFIED.
+* Individual PNG pixel content beyond the 20 figures + 7 case PNGs inspected (10 case PNGs not viewed: NIFTY CT3, CT6, CT6b, CT7, CT8; SENSEX CT1, CT2, CT6, CT6b, CT8); the M2-E markdown catalog and final report prose was grepped, not proofread line by line.
+* No market bars exist in this environment (ALGO8_MARKET_DIR absent): mark coverage NOT VERIFIED either way; C++ parity and slow tests not run beyond tests/test_forensics.py.
+* Same-second fill ordering uses raw row order (convention).
+* 337 raw fills outside 09:14-15:31 IST in the full ledger (none in the two cycles) not investigated.
+
+## 8. Defects (severity)
+Critical: none. High: none. Medium: D-01 (V4 legend hides widest batch), D-02 (case selection "fixed before" claim), D-03 (selection concentrated on D-1 session start), D-04 (case PNGs generic), D-15 (weak existing selection / presentation tests), D-16 (SENSEX "no reversal" definition-dependent). Low: D-05 .. D-14. Details with repro / fix / test in defects.json.
