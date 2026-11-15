@@ -2,12 +2,12 @@
 python3 portfolio_engine/tools/m2e_build.py  -> reports/m2e_data/<UND>_<expiry>/*.tsv, coverage.json, manifest.json ; reports/m2e_data/m2e_summary.json"""
 import hashlib, json, os, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); REPO = os.path.dirname(PE); sys.path.insert(0, os.path.join(PE, 'python'))
-from pe import forensics as F, provenance, wing_body as wb
+from pe import forensics as F, provenance, wing_body as wb, tie_policy as tp
 from pe.lineage_set import LineageSet
 from pe.generators import historical as H
 OUT = os.path.join(PE, 'reports', 'm2e_data'); os.makedirs(OUT, exist_ok=True)
 ins_all, fills_all, src = H.generate(REPO); full = LineageSet(fills_all, ins_all, 'HISTORICAL_OBSERVED_REPLAY', 'src')       # full-ledger run, used ONLY to check cycle isolation
-S = dict(cycles={}, source_hashes=src, generated_at_head=provenance.git_sha(REPO), version=F.VERSION)
+tp.require_primary(full.tie, 'M2-E delivered outputs'); S = dict(cycles={}, source_hashes=src, generated_at_head=provenance.git_sha(REPO), version=F.VERSION)
 for und, exp in F.CYCLES:
     c = F.Cycle(REPO, und, exp); d = os.path.join(OUT, c.key); os.makedirs(d, exist_ok=True)
     # ---- cycle isolation: cycle-only lineage == full-ledger lineage restricted to the cycle's instruments
@@ -30,7 +30,7 @@ for und, exp in F.CYCLES:
     cov = F.cycle_coverage(c, sc, sd, R, rm); cov['reconciliation'] = rec; cov['cycle_isolation'] = 'cycle-only lineage identical to full-ledger lineage restricted to the cycle (events, episodes, OA, CP)'
     cov['m2c_m2d_vs_recomputation'] = 'IDENTICAL (M2-C 6 files byte-equal; M2-D items and all 5 link views equal)'
     cov['tp03_overlay'] = dict(parents_listed_off_window_or_initial=len(cls), note='TP-03 publishes window rows and per-parent OFF_WINDOW/INITIAL classes for body-short parents only; no per-parent window id; unlisted parents are NOT claimed to be in a window')
-    man = dict(cycle=f'{c.und}|{c.expiry}', version=F.VERSION, generated_at_head=provenance.git_sha(REPO), execution_mode='HISTORICAL_OBSERVED_REPLAY', source_hashes=src, timezone='timestamps *_utc_s are UTC epoch seconds; *_ist columns are IST = UTC+05:30', files={}, reproduce='python3 portfolio_engine/tools/m2e_build.py')
+    man = dict(cycle=f'{c.und}|{c.expiry}', version=F.VERSION, generated_at_head=provenance.git_sha(REPO), execution_mode='HISTORICAL_OBSERVED_REPLAY', source_hashes=src, timezone='timestamps *_utc_s are UTC epoch seconds; *_ist columns are IST = UTC+05:30', files={}, reproduce='python3 portfolio_engine/tools/m2e_build.py', tie_order_convention=tp.CONVENTION_METADATA)
     for n, t in texts.items():
         open(os.path.join(d, n), 'w').write(t); man['files'][n] = dict(sha256=F.sha(t), rows=t.count('\n') - 1, bytes=len(t.encode()))
     json.dump(cov, open(os.path.join(d, 'coverage.json'), 'w'), indent=1, default=str); json.dump(man, open(os.path.join(d, 'manifest.json'), 'w'), indent=1)

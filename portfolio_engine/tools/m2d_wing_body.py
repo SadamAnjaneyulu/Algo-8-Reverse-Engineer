@@ -4,13 +4,13 @@ import gzip, hashlib, json, os, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); REPO = os.path.dirname(PE); sys.path.insert(0, os.path.join(PE, 'python'))
 from pe.schema import *
 from pe.lineage_set import LineageSet
-from pe import wing_body as wb, provenance
+from pe import wing_body as wb, provenance, tie_policy as tp
 from pe.generators import historical as H
 OUT = os.path.join(PE, 'reports', 'm2d_data'); os.makedirs(OUT, exist_ok=True)
 ins, fills, src = H.generate(REPO); ls = LineageSet(fills, ins, 'HISTORICAL_OBSERVED_REPLAY', 'src')
 h0 = hashlib.sha256(''.join(ls.files['FIFO'][n] for n in ('observed_allocations.tsv', 'lifecycle.tsv', 'episodes.tsv')).encode()).hexdigest()
 rows = H.generate_parents(REPO, ls.roles); meta = {r['parent_order_id']: r for r in rows}
-R = wb.analyse(ls, meta, 'TAGGED'); passed = wb.check(R, ls); RD = wb.analyse(ls, meta, 'DIRECTION'); wb.check(RD, ls)
+tp.require_primary(ls.tie, 'M2-D delivered outputs'); R = wb.analyse(ls, meta, 'TAGGED'); passed = wb.check(R, ls); RD = wb.analyse(ls, meta, 'DIRECTION'); wb.check(RD, ls)
 h1 = hashlib.sha256(''.join(ls.files['FIFO'][n] for n in ('observed_allocations.tsv', 'lifecycle.tsv', 'episodes.tsv')).encode()).hexdigest(); assert h0 == h1       # associations never touch the observed layer
 S = dict(source_hashes=src, invariants_passed=passed, items=len(R.items), links={m: len(v) for m, v in R.links.items()}, w4_number_block='NOT_IMPLEMENTED (number-block semantics UNRESOLVED; not implemented without new evidence or stakeholder confirmation)',
          missing_entry_minute={l: len(v) for l, v in R.no_entry_minute.items()}, observed_layer_hash=h0[:16])
@@ -34,7 +34,7 @@ c1 = {}; c60 = {}
 for l in R.links['W1']: c1[(l['wing_item'] if True else 0)] = c1.get(l['wing_item'], 0) + 1; c1[l['body_item']] = c1.get(l['body_item'], 0) + 1
 for l in R.links['W1_S60']: c60[l['wing_item']] = c60.get(l['wing_item'], 0) + 1; c60[l['body_item']] = c60.get(l['body_item'], 0) + 1
 files['wing_body_items.tsv'] = '\n'.join(['\t'.join(IC)] + ['\t'.join(str(x) for x in (i.item_id, i.level, i.role, i.parent_id, i.instrument_id, i.und, i.expiry, i.right, i.strike, i.session, i.first_ts, i.last_ts, i.qty, round(i.avg_px, 4), len(i.members), 'NA' if i.e_minute is None else i.e_minute, i.app_key or 'NA', i.module, c1.get(i.item_id, 0), c60.get(i.item_id, 0))) for i in R.items]) + '\n'
-man = dict(created_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), generated_at_head=provenance.git_sha(REPO), execution_mode='HISTORICAL_OBSERVED_REPLAY', source_hashes=src, scope='TAGGED primary (DIRECTION scope reported as summary sensitivity only)', files={}, reproduce='python3 portfolio_engine/tools/m2d_wing_body.py')
+man = dict(created_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), generated_at_head=provenance.git_sha(REPO), execution_mode='HISTORICAL_OBSERVED_REPLAY', source_hashes=src, scope='TAGGED primary (DIRECTION scope reported as summary sensitivity only)', files={}, reproduce='python3 portfolio_engine/tools/m2d_wing_body.py', tie_order_convention=tp.CONVENTION_METADATA)
 for name, text in files.items():
     path = os.path.join(OUT, name + '.gz')
     with open(path, 'wb') as raw:

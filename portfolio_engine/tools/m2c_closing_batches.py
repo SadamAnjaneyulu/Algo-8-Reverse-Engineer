@@ -4,12 +4,12 @@ import gzip, hashlib, json, os, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); REPO = os.path.dirname(PE); sys.path.insert(0, os.path.join(PE, 'python'))
 from pe.schema import *
 from pe.lineage_set import LineageSet
-from pe import closing_batches as cb, provenance
+from pe import closing_batches as cb, provenance, tie_policy as tp
 from pe.generators import historical as H
 OUT = os.path.join(PE, 'reports', 'm2c_data'); os.makedirs(OUT, exist_ok=True)
 ins, fills, src = H.generate(REPO); ls = LineageSet(fills, ins, 'HISTORICAL_OBSERVED_REPLAY', 'src'); ls.check(fills)
 before = {n: hashlib.sha256(ls.files['FIFO'][n].encode()).hexdigest() for n in ('observed_allocations.tsv', 'lifecycle.tsv', 'episodes.tsv')}
-parents, unattr, multi = cb.closing_parents(ls); views = cb.all_views(parents)
+tp.require_primary(ls.tie, 'M2-C delivered outputs'); parents, unattr, multi = cb.closing_parents(ls); views = cb.all_views(parents)
 for k, v in views.items(): cb.check_view(v, parents, ls.cp, unattr)                      # partition + reconciliation, every view
 rec2 = LineageSet(fills, ins, 'HISTORICAL_OBSERVED_REPLAY', 'src'); assert all(hashlib.sha256(rec2.files['FIFO'][n].encode()).hexdigest() == before[n] for n in before)      # observed ledger unchanged by grouping
 S = dict(source_hashes=src, closing_parents=len(parents), closing_portions=len(ls.cp), closing_units=sum(r[8] for r in ls.cp.values()), unattributable_closing_portions=len(unattr), parents_in_multiple_streams=len(multi),
@@ -22,7 +22,7 @@ S['equal_first_ts_groups'] = sum(1 for v in ties.values() if v > 1); S['parents_
 files = {}
 for m in ('C1', 'C2'): files.update(cb.files_for_method(views, m, ls))
 man = dict(created_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()), generated_at_head=provenance.git_sha(REPO), working_tree_dirty=bool(__import__('subprocess').run(['git', 'status', '--porcelain', '--', 'portfolio_engine/python', 'portfolio_engine/tools'], cwd=REPO, capture_output=True, text=True).stdout.strip()), execution_mode='HISTORICAL_OBSERVED_REPLAY', grouping_version=cb.GROUPING_VERSION, source_hashes=src, files={}, views={f'{m}_{g}s': v['parameter_hash'] for (m, g), v in views.items()},
-           reproduce='python3 portfolio_engine/tools/m2c_closing_batches.py')
+           reproduce='python3 portfolio_engine/tools/m2c_closing_batches.py', tie_order_convention=tp.CONVENTION_METADATA)
 for name, text in files.items():
     path = os.path.join(OUT, name + '.gz')
     with open(path, 'wb') as raw:

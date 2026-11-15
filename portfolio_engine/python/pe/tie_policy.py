@@ -19,6 +19,9 @@ from .schema import EngineError
 
 SOURCE_ROW_ORDER_CONVENTION = 'SOURCE_ROW_ORDER_CONVENTION'
 PRIMARY_POLICY = 'source_row'
+CONVENTION_METADATA = {'id': SOURCE_ROW_ORDER_CONVENTION, 'engine_policy': 'src', 'verified_intra_second_chronology': False,
+                       'statement': 'same-instrument fills inside one second are processed in source-file row order; a deterministic convention, not verified execution chronology',
+                       'sensitivity': 'reports/R1_TIE_ORDER_CONVENTION.md'}    # stamped identically into every delivered manifest (tools/r1_stamp_convention.py and the builders)
 SENSITIVITY_PREFIX = 'SENSITIVITY_ONLY:'
 
 
