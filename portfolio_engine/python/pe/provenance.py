@@ -22,7 +22,8 @@ def manifest(result, *, events_path, instruments_path, extra_sources=None, confi
     cfg_hash = sha256_text(json.dumps(config, sort_keys=True)); sha = git_sha(os.path.dirname(os.path.abspath(events_path)))
     run_id = sha256_text(json.dumps([cfg_hash, src, sha, implementation], sort_keys=True))[:16]
     m = result.meta
-    return dict(run_id=run_id, execution_mode=config['mode'], implementation=implementation, config=config, config_hash=cfg_hash, source_hashes=src, git_sha=sha, matching_convention=config['method'], tie_order=config['tie_order'],
+    from . import tie_policy
+    return dict(run_id=run_id, execution_mode=config['mode'], tie_order_convention=tie_policy.convention_id(config['tie_order']), implementation=implementation, config=config, config_hash=cfg_hash, source_hashes=src, git_sha=sha, matching_convention=config['method'], tie_order=config['tie_order'],
                 timestamp_range=[int(m['first_ts']), int(m['last_ts'])], warnings={k: v for k, v in result.warnings.items() if v}, invariants_checked=sorted(set(result.checks)), dump_sha256=sha256_text(result.dump),
                 reproduce_command=reproduce, created_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()))
 

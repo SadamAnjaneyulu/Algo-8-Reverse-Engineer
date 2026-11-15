@@ -4,7 +4,8 @@ from dataclasses import dataclass
 SCHEMA_FILL = 'pe.fill.v1'
 MODES = ('HISTORICAL_OBSERVED_REPLAY', 'RESEARCH_POLICY_SIMULATION', 'SYNTHETIC_TEST')
 METHODS = ('FIFO', 'LIFO', 'AVG')
-TIE_ORDERS = ('src', 'sells_first', 'buys_first')
+TIE_ORDERS = ('src', 'sells_first', 'buys_first')                        # shared with the C++ core (parity-tested)
+KEYED_TIE_ORDERS = ('trade_id', 'order_no', 'sensex_trade_id_time')      # Python-only sensitivity policies (need Fill.tie_key)
 IST_OFFSET_S = 19800
 TICK_PAISE = 5
 EVENT_COLUMNS = ['schema_version', 'execution_mode', 'fill_id', 'source_row_id', 'parent_order_id', 'module_tag', 'instrument_id', 'timestamp_s', 'side', 'quantity', 'price_paise',
@@ -30,6 +31,7 @@ class Instrument:
 class Fill:
     fill_id: str; source_row_id: int; parent_order_id: str; module_tag: str; instrument_id: str; timestamp_s: int; side: int; quantity: int; price_paise: int
     requested_quantity: int; order_status: str; is_duplicate_fill: bool; execution_mode: str; evidence_source: str; line: int = 0
+    tie_key: tuple = None            # SENSITIVITY-ONLY intra-second key (pe.tie_policy); None for the primary convention; never read by the C++ core
 
 
 def days_from_civil(y, m, d):

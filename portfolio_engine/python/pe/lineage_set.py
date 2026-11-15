@@ -8,6 +8,8 @@ from .parents import parent_roles
 
 class LineageSet:
     def __init__(self, fills, instruments, mode, tie_order='src', parents=None):
+        from . import tie_policy
+        self.convention = tie_policy.convention_id(tie_order)           # SOURCE_ROW_ORDER_CONVENTION or SENSITIVITY_ONLY:<policy>; delivered builders assert the former
         self.mode = mode; self.tie = tie_order; self.instruments = instruments; self.parents_meta = parents or {}; self.runs = {}; self.files = {}
         for m in METHODS:
             r = rp.replay(fills, instruments, mode, m, tie_order, lineage=True); self.runs[m] = r; self.files[m] = rp.lineage_files(r)

@@ -12,6 +12,9 @@ class RunResult:
 
 def order_events(fills, tie_order):
     """deterministic order (timestamp, tie key, source row, fill id); the first three are TP-01's per-contract order, the id only breaks exact ties between synthetic rows"""
+    if tie_order in KEYED_TIE_ORDERS:                                       # sensitivity-only policies: key attached by pe.tie_policy / the loader
+        if any(f.tie_key is None for f in fills): raise EngineError(f'tie order {tie_order} needs Fill.tie_key on every fill')
+        return sorted(fills, key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))
     tk = TIE_KEY[tie_order]
     return sorted(fills, key=lambda f: (f.timestamp_s, tk(f.side), f.source_row_id, f.fill_id))
 
@@ -21,7 +24,8 @@ def _fmt(x, avg): return f'{x:.6f}' if avg else str(int(x))
 
 def replay(fills, instruments, mode, method='FIFO', tie_order='src', snapshot_interval=0, strict=False, lineage=False):
     if mode not in MODES: raise EngineError(f'unknown mode {mode}')
-    if method not in METHODS or tie_order not in TIE_ORDERS: raise EngineError('bad method / tie order')
+    if tie_order == 'source_row': tie_order = 'src'                          # canonical name of the primary convention; the dump keeps the legacy token so delivered bytes are unchanged
+    if method not in METHODS or tie_order not in TIE_ORDERS + KEYED_TIE_ORDERS: raise EngineError('bad method / tie order')
     for f in fills:                                                          # the in-memory API is as strict as the TSV loader
         if f.quantity <= 0 or f.price_paise <= 0 or f.price_paise % TICK_PAISE or f.side not in (1, -1): raise EventValidationError(f'fill {f.fill_id}: invalid quantity / price / side')
     for f in fills:                                                          # contamination guard: checked BEFORE anything is applied
