@@ -40,7 +40,7 @@ d('D-A03','Low','AVG realized P&L is IEEE-754 float, not integer paise; Sigma of
  'Document AVG as float/analytical; optionally carry AVG pool as exact rational (cost total, qty) and emit rounded paise.',
  'test_avg_total_matches_fraction_reference_to_1e-6 on the real ledger.')
 d('D-A04','Medium','EXPIRED_UNCLOSED is an inference from absent closing fills, and the OPEN_AT_END_OF_DATA branch is unexercised on real data','python/pe/lineage.py:50 terminal_status; replay.py status loop',
- '[RAW]+[IMPL] 81 instruments non-flat (71 long, 10 short, 37,480 units); last fill is 0 days before expiry for 54 and 1 day before for 27; 13 last fills at/after 15:30 IST (max 15:39:27); last data day == max expiry (2026-10-22) so no instrument has expiry after the last data day. No fills after expiry day. Realized equals sum of CA only (no settlement P&L inferred).',
+ '[RAW]+[IMPL] 81 instruments non-flat (71 long, 10 short, 37,480 units); last fill is 0 days before expiry for 54 and 1 day before for 27; 13 last fills at/after 15:30 IST (max 15:39:27); last data day == max expiry (2026-10-22) so no instrument has expiry after the last data day. No fills after expiry day. No non-flat instrument has expiry == last data day (72 instruments expire 2026-10-22, all flat), so the `<=` boundary has ZERO effect on the real ledger: mutant M19 (`<`) survives my real-data comparison and is caught only by synthetic/fuzz data. Realized equals sum of CA only (no settlement P&L inferred).',
  'python3 expiry_analysis.py',
  'Reporting risk: "expired unclosed" reads as an observed fact; it cannot distinguish held-to-expiry from missing/auto-squared-off fills. The `<=` boundary only matters for the final cycle on this data.',
  'Rename to a neutral status (e.g. NON_FLAT_AT_EXPIRY_NO_SETTLEMENT_DATA) in reports, keep boundary test with a synthetic dataset ending before expiry.',
@@ -59,4 +59,10 @@ d('D-A06','Low','Parent-order identity is a choice of raw column (163 vs 4); doc
  'test asserting 1 side/instrument/qty per parent (already true) plus a documented count.')
 d('D-A07','Low','Documentation nits','docs/SCHEMAS.md "instrument_id = UNDERLYING|YYYY-MM-DD|CE|strike" (right is CE or PE); tools write into the repo (parity.py build dir, reports/, data_generated/)',
  '[INSPECTED]','n/a','Cosmetic; tools are not safe to run on a read-only checkout.','Fix text; add --out-dir to tools.','n/a')
+d('D-A08','Medium','Existing test suite has a surviving mutant and several detectors that are not independent of the code under test','portfolio_engine/tests/* (test_accounting, test_lineage*, test_tp01_reconciliation, test_parity); generator python/pe/generators/historical.py',
+ '[REPRO] mutation run (mutations.json): M11 (+19800 s shift of every timestamp in the generator) passed all 127 existing tests; only a comparison of timestamp_s to raw column 161 detects it. M22 (Python tie-key swap), C01/C02/C03 (C++ mutations) are detected only by the parity tests (XLANG: same author, same structure); M19 only by one synthetic test; M20/M03 are data-dependent (no duplicates / 1-in-997 rows).',
+ 'python3 run_mutants.py M11 (mirror in scratch; see run_mutants.py)',
+ 'A systematic time-base error (UTC vs IST) in the generator would not be detected by the current suite; session-day assignment is insensitive to it on this data (max IST fill time 15:39 + 5:30 < 24:00). Parity cannot prove correctness.',
+ 'Add a raw-vs-generator field equality test (see D-A02) including timestamp_s; add a real-data check that the IST session date of every fill equals the date implied by raw epoch + 19800 and that all fills lie in 09:15-15:40 IST.',
+ 'test_all_fill_times_in_ist_session_window and test_generator_equals_raw.')
 json.dump(D,open('defects.json','w'),indent=1)

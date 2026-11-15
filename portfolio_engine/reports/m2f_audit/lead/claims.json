@@ -1,0 +1,58 @@
+[
+ {
+  "claim": "Earlier independent reviews of M2-B, M2-C, M2-D and M2-E establish correctness of the reconstruction.",
+  "source": "M2B/M2C/M2D/M2E reports (review sections)",
+  "independent_verification": "M2-F re-derived the headline numbers independently from the raw ledger (tracks A-D): they reproduce. The earlier verdicts themselves were NOT used as evidence.",
+  "class": "Reproduced result with limited independent verification",
+  "status": "NUMBERS REPRODUCED; VERDICTS NOT RELIED ON",
+  "limitation": "Earlier reviewers were same-model subagents working in the authoring session; their independence was partial. This audit's tracks share that limitation (same model family) but received no author conclusions."
+ },
+ {
+  "claim": "M2-E case selection was 'fixed before any case was looked at' / 'predefined'.",
+  "source": "reports/M2E_POSITION_CASE_STUDIES.md:5 and per-case headers; pe/cases.py:1-3; M2E_HISTORICAL_FORENSICS_REPORT.md",
+  "independent_verification": "Git history (Track D): pe/cases.py, tools/m2e_cases.py and the case-study report first appear in 10e33962, the same commit as the datasets, figures and case JSON; rule text edited again in 7117bbce.",
+  "class": "Unresolved",
+  "status": "NOT SUPPORTED by the record",
+  "limitation": "'Outcome-free' IS supported by an executed price-scramble test and an independent re-implementation of all 10 rules. 'Predefined / fixed before inspection' is not shown. The frozen demonstration CYCLES are supported (e06a711e precedes all grouping code)."
+ },
+ {
+  "claim": "The observed layer (OA/CP, episodes, lifecycle) is independent of intra-second fill order.",
+  "source": "Implicit in 'chronological' ordering; M2B discloses sells-first/buys-first sensitivity of 20 fills / 5 instruments",
+  "independent_verification": "Track A measured six alternative orders on the full ledger: OA/CP unit totals, final inventory, cash and AVG realized are invariant; episode identities, reversal count (20-23), OA/CP row membership and FIFO/LIFO attribution are NOT.",
+  "class": "Method-dependent result",
+  "status": "NOT INDEPENDENT OF TIE ORDER (D-A01)",
+  "limitation": "Raw timestamps are whole seconds; intra-second order is undecidable from the file. Trade id / order number agree with file order in 54-55 of 56 mixed-side groups and contradict it in two. No order was chosen."
+ },
+ {
+  "claim": "Test counts: 274 tests pass (185 earlier + 89 M2-E), C++ core 24/24.",
+  "source": "M2E report, session record",
+  "independent_verification": "Track E re-ran the suite in a clean scratch tree: 274 passed, 0 skipped, 0 warnings (236 fast + 38 slow); C++ 24/24. M2-F added 4 test cases afterwards (3 functions).",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED (REPRO)",
+  "limitation": "Re-execution is reproducibility, not correctness: 5 of 19 system mutants and 7-8 of 21 presentation mutants survive the existing suite (see mutation records)."
+ },
+ {
+  "claim": "Mutation testing demonstrates the suites are strong.",
+  "source": "M2B/M2D/M2E reports (mutation sections)",
+  "independent_verification": "Across the five tracks 124 fresh mutation records were run; existing tests missed about 1 of 26 (A), 1 of 28 (B), 1 of 29 (C), 7 of 21 (D) and 5 of 19 (E) mutants. Several kills were incidental (internal guards, hash snapshots, crashes).",
+  "class": "Method-dependent result",
+  "status": "PARTIALLY SUPPORTED",
+  "limitation": "Presentation and infrastructure layers are the weakest; survivors are listed in M2F_TEST_COVERAGE.md."
+ },
+ {
+  "claim": "The reports and figures do not claim original-basket ownership, protective intent, decision triggers or alpha.",
+  "source": "M1/M2 reports, M2E figures",
+  "independent_verification": "Tracks C and D grepped reports, titles, legends and captions and viewed 20 figures and 7 case PNGs; no such claim found. Visual wording defects (D-10, C-06, D-04) are recorded.",
+  "class": "Reproduced result with limited independent verification",
+  "status": "SUPPORTED (INSPECTION)",
+  "limitation": "Inspection, not proof of absence: 10 case PNGs were not viewed."
+ },
+ {
+  "claim": "stage2_alpha_research/ is preserved.",
+  "source": "M0 notes, session record",
+  "independent_verification": "Track E: the directory exists with only pickles and bytecode on disk; git tracks only .gitignore. The sources are on branch research/stage2-independent-alpha, not an ancestor of HEAD; commit e32ff484's message says 'Add sources' but adds only .gitignore.",
+  "class": "Independently verified fact",
+  "status": "PRESERVED AS FOUND; SOURCES NOT ON THIS BRANCH (E-D11)",
+  "limitation": "Not a defect of M2; flagged because the evidence cannot be re-derived from this branch."
+ }
+]

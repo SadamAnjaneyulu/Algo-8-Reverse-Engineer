@@ -37,7 +37,7 @@
   "severity": "Medium",
   "title": "EXPIRED_UNCLOSED is an inference from absent closing fills, and the OPEN_AT_END_OF_DATA branch is unexercised on real data",
   "location": "python/pe/lineage.py:50 terminal_status; replay.py status loop",
-  "evidence": "[RAW]+[IMPL] 81 instruments non-flat (71 long, 10 short, 37,480 units); last fill is 0 days before expiry for 54 and 1 day before for 27; 13 last fills at/after 15:30 IST (max 15:39:27); last data day == max expiry (2026-10-22) so no instrument has expiry after the last data day. No fills after expiry day. Realized equals sum of CA only (no settlement P&L inferred).",
+  "evidence": "[RAW]+[IMPL] 81 instruments non-flat (71 long, 10 short, 37,480 units); last fill is 0 days before expiry for 54 and 1 day before for 27; 13 last fills at/after 15:30 IST (max 15:39:27); last data day == max expiry (2026-10-22) so no instrument has expiry after the last data day. No fills after expiry day. No non-flat instrument has expiry == last data day (72 instruments expire 2026-10-22, all flat), so the `<=` boundary has ZERO effect on the real ledger: mutant M19 (`<`) survives my real-data comparison and is caught only by synthetic/fuzz data. Realized equals sum of CA only (no settlement P&L inferred).",
   "repro": "python3 expiry_analysis.py",
   "impact": "Reporting risk: \"expired unclosed\" reads as an observed fact; it cannot distinguish held-to-expiry from missing/auto-squared-off fills. The `<=` boundary only matters for the final cycle on this data.",
   "proposed_fix": "Rename to a neutral status (e.g. NON_FLAT_AT_EXPIRY_NO_SETTLEMENT_DATA) in reports, keep boundary test with a synthetic dataset ending before expiry.",
@@ -75,5 +75,16 @@
   "impact": "Cosmetic; tools are not safe to run on a read-only checkout.",
   "proposed_fix": "Fix text; add --out-dir to tools.",
   "proposed_test": "n/a"
+ },
+ {
+  "id": "D-A08",
+  "severity": "Medium",
+  "title": "Existing test suite has a surviving mutant and several detectors that are not independent of the code under test",
+  "location": "portfolio_engine/tests/* (test_accounting, test_lineage*, test_tp01_reconciliation, test_parity); generator python/pe/generators/historical.py",
+  "evidence": "[REPRO] mutation run (mutations.json): M11 (+19800 s shift of every timestamp in the generator) passed all 127 existing tests; only a comparison of timestamp_s to raw column 161 detects it. M22 (Python tie-key swap), C01/C02/C03 (C++ mutations) are detected only by the parity tests (XLANG: same author, same structure); M19 only by one synthetic test; M20/M03 are data-dependent (no duplicates / 1-in-997 rows).",
+  "repro": "python3 run_mutants.py M11 (mirror in scratch; see run_mutants.py)",
+  "impact": "A systematic time-base error (UTC vs IST) in the generator would not be detected by the current suite; session-day assignment is insensitive to it on this data (max IST fill time 15:39 + 5:30 < 24:00). Parity cannot prove correctness.",
+  "proposed_fix": "Add a raw-vs-generator field equality test (see D-A02) including timestamp_s; add a real-data check that the IST session date of every fill equals the date implied by raw epoch + 19800 and that all fills lie in 09:15-15:40 IST.",
+  "proposed_test": "test_all_fill_times_in_ist_session_window and test_generator_equals_raw."
  }
 ]

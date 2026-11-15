@@ -184,7 +184,7 @@
    "caught_only_by_xlang": false,
    "detail": [
     "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 420110400",
-    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
    ]
   },
   "detector_independent": {
@@ -241,7 +241,7 @@
    "caught_only_by_xlang": false,
    "detail": [
     "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 420022325.428",
-    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
    ]
   },
   "detector_independent": {
@@ -825,7 +825,7 @@
    "caught_only_by_xlang": false,
    "detail": [
     "engine exception: IndexError: deque index out of range",
-    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
    ]
   },
   "detector_independent": {
@@ -882,7 +882,7 @@
    "caught_only_by_xlang": false,
    "detail": [
     "engine exception: InvariantViolation: role arithmetic broken on F001901",
-    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
    ]
   },
   "detector_independent": {
@@ -972,7 +972,7 @@
    "caught_only_by_crash_or_internal_guard": true,
    "caught_only_by_xlang": false,
    "detail": [
-    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
    ]
   },
   "detector_independent": {
@@ -1119,7 +1119,7 @@
    "caught_only_by_xlang": false,
    "detail": [
     "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -557496400",
-    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
    ]
   },
   "detector_independent": {

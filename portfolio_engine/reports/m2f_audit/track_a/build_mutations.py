@@ -31,7 +31,7 @@ for m in mutants.M:
     if ff: ownd.append('false flags '+','.join(ff[:6]))
     if fz.get('py_vs_ref_mismatch') or fz.get('cpp_vs_ref_mismatch'): ownd.append(f"fuzz vs reference mismatches py={fz.get('py_vs_ref_mismatch')} cpp={fz.get('cpp_vs_ref_mismatch')} of {fz.get('cases')}")
     if xl: ownd.append('cross-language byte mismatch (XLANG only)')
-    if own.get('fuzz_error'): ownd.append('fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)')
+    if own.get('fuzz_error'): ownd.append('fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)')
     if m['id'] in OVR: impl=OVR[m['id']][0]; ownd.append(OVR[m['id']][1])
     indep = bool(c['independent_reference_tests']) or (not caught and bool(own['killed']))
     out.append(dict(id=m['id'],change=f"{m['name']} [{m['file']}]",expected_detector=m['expected'],

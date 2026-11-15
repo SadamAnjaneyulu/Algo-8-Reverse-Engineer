@@ -3,13 +3,13 @@ classes are the auditors' own; this tool only normalises, sorts and renders (and
 python3 portfolio_engine/tools/m2f_consolidate.py  -> reports/M2F_CLAIM_EVIDENCE_REGISTER.md, M2F_DEFECT_REGISTER.md, m2f_audit/consolidated.json"""
 import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); A = os.path.join(PE, 'reports', 'm2f_audit')
-TRACKS = {'A': 'accounting and lineage', 'B': 'closing batches', 'C': 'wing/body', 'D': 'forensics and visualization', 'E': 'system and reproducibility'}
+TRACKS = {'F': 'lead auditor (report claims)', 'A': 'accounting and lineage', 'B': 'closing batches', 'C': 'wing/body', 'D': 'forensics and visualization', 'E': 'system and reproducibility'}
 CLASSES = ['Independently verified fact', 'Reproduced result with limited independent verification', 'Internal consistency only', 'Method-dependent result', 'Inferred association', 'Unresolved', 'Not testable with available data']
 SEV = ['Critical', 'High', 'Medium', 'Low']
 
 
 def load(t, name):
-    p = os.path.join(A, f'track_{t.lower()}', name)
+    p = os.path.join(A, 'lead' if t == 'F' else f'track_{t.lower()}', name)
     if not os.path.exists(p): return None
     d = json.load(open(p)); return d if isinstance(d, list) else d.get('items') or d.get('claims') or d.get('defects') or d.get('mutations') or list(d.values())
 
@@ -22,14 +22,24 @@ def main():
     for t in TRACKS:
         for name, bucket in (('claims.json', C), ('defects.json', Dd), ('mutations.json', M)):
             r = load(t, name)
-            if r is None: missing.append(f'track_{t.lower()}/{name}'); continue
-            for i, x in enumerate(r): x = dict(x) if isinstance(x, dict) else {'raw': x}; x['track'] = t; x.setdefault('id', f'{t}-{name[0].upper()}{i + 1:03d}'); bucket.append(x)
+            if r is None:
+                if t != 'F': missing.append(f'track_{t.lower()}/{name}')
+                continue
+            for i, x in enumerate(r):
+                x = dict(x) if isinstance(x, dict) else {'raw': x}; x['track'] = t; x.setdefault('id', f'{t}-{name[0].upper()}{i + 1:03d}')
+                if name == 'claims.json' and not x.get('class'):        # derived mechanically from the track's own verification tag; flagged so it is never mistaken for the auditor's classification
+                    st, v = str(x.get('status', '')), str(x.get('independent_verification', ''))
+                    x['class'] = 'Unresolved' if 'NOT VERIFIED' in st else 'Internal consistency only' if 'INSPECTED' in st else 'Independently verified fact' if ('[RAW]' in v or '[IMPL]' in v) else 'Reproduced result with limited independent verification'
+                    x['class_derived_by_lead'] = True
+                bucket.append(x)
+    disp = json.load(open(os.path.join(A, 'dispositions.json'))) if os.path.exists(os.path.join(A, 'dispositions.json')) else {}
+    for x in Dd: x['disposition'] = disp.get(x['id'], 'OPEN (Low) - documented; correction proposed, not applied' if str(x.get('severity')).lower() == 'low' else 'OPEN - correction proposed, not applied (no delivered artefact modified); approval requested')
     json.dump(dict(claims=C, defects=Dd, mutations=M, missing_inputs=missing), open(os.path.join(A, 'consolidated.json'), 'w'), indent=1, default=str)
-    L = ['# M2-F — Claim-to-evidence register', '', 'Merged from the five independent audit tracks (`reports/m2f_audit/track_*/claims.json`). Classes are the auditors\' own and use the registered vocabulary. A claim repeated in several reports is registered once per verification, never upgraded by repetition.', '']
+    L = ['# M2-F — Claim-to-evidence register', '', 'Merged from the five independent audit tracks (`reports/m2f_audit/track_*/claims.json`, 90 claims) and the lead auditor\'s claims about what the reports assert (track F, `reports/m2f_audit/lead/claims.json`). Classes are the auditors\' own and use the registered vocabulary, EXCEPT where a row is marked "class derived by lead" (Track D left the class field empty: derived mechanically from its verification tag and status). A claim repeated in several reports is registered once per verification, never upgraded by repetition.', '']
     if missing: L += [f'**Missing track inputs (audit incomplete for these):** {", ".join(missing)}', '']
     cnt = {c: sum(1 for x in C if x.get('class') == c) for c in CLASSES}; other = sum(1 for x in C if x.get('class') not in CLASSES)
     L += ['| Class | Count |', '|---|---:|'] + [f'| {c} | {n} |' for c, n in cnt.items()] + ([f'| (unclassified / non-standard) | {other} |'] if other else []) + ['', '| # | Track | Claim | Source | Independent verification | Class | Status | Limitation |', '|---|---|---|---|---|---|---|---|']
-    for i, x in enumerate(sorted(C, key=lambda x: (x['track'], str(x.get('claim')))), 1): L.append(f"| {i} | {x['track']} | {esc(x.get('claim'))} | {esc(x.get('source'))} | {esc(x.get('independent_verification'))} | {esc(x.get('class'))} | {esc(x.get('status'))} | {esc(x.get('limitation'))} |")
+    for i, x in enumerate(sorted(C, key=lambda x: (x['track'], str(x.get('claim')))), 1): L.append(f"| {i} | {x['track']} | {esc(x.get('claim'))} | {esc(x.get('source'))} | {esc(x.get('independent_verification'))} | {esc(x.get('class'))} | {esc(x.get('status'))} | {esc(x.get('limitation'))}{' [class derived by lead from the track verification tag]' if x.get('class_derived_by_lead') else ''} |")
     open(os.path.join(PE, 'reports', 'M2F_CLAIM_EVIDENCE_REGISTER.md'), 'w').write('\n'.join(L) + '\n')
     L = ['# M2-F — Defect register', '', 'Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Critical** corrupts observed inventory, accounting, position identity or material research results; **High** changes memberships, methodology interpretation or significant reported conclusions; **Medium** weakens validation, reproducibility or scope reporting; **Low** documentation, presentation or non-material maintainability.', '']
     for s in SEV:

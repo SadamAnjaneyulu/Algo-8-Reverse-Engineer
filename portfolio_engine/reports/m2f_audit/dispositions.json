@@ -1,0 +1,11 @@
+{
+ "D-A01": "OPEN - BLOCKS UNCONDITIONAL PASS. Root cause R1 (also B-01, C-01): intra-second fill order is an unresolved convention. No order chosen by the audit; measured sensitivity in M2F_METHODOLOGY_LIMITATIONS.md section 1. Requires a user decision.",
+ "B-01": "OPEN - same root cause as D-A01 (R1). Not fixable without a methodology decision.",
+ "C-01": "OPEN - same root cause as D-A01 (R1). Not fixable without a methodology decision.",
+ "C-02": "FIXED (test only): tests/test_m2f_regressions.py::test_w3_weight_is_queue_matched_over_wing_quantity. No delivered output changed. Not re-run against the mutant.",
+ "D-A08": "PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_generator_fields_equal_raw_ledger compares generator fields to the raw csv (closes mutant M11). Other non-independent detectors remain.",
+ "E-D03": "PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_committed_manifests_match_files covers m2c/m2d. Missing manifest coverage and differing hash bases remain.",
+ "D-02": "OPEN - superseded by addendum (M2F_METHODOLOGY_LIMITATIONS.md section 4). The earlier report is preserved unmodified; a wording change in tools/m2e_cases.py is proposed and awaits approval.",
+ "D-16": "OPEN - requires a definition decision (per-fill REVERSED vs net sign flip across parents); both definitions to be reported. No choice made.",
+ "D-A04": "OPEN - label is an inference by design; proposal: disclose as inference in reports and add a synthetic expiry-boundary test on the OPEN_AT_END_OF_DATA path."
+}
