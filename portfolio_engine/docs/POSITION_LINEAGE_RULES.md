@@ -55,3 +55,15 @@ Each event stores `fill_id` and `parent_order_id`, the quantity, inventory after
 | Model B (opening cohorts) and Model C (closing batches) | **Python only** | need order-entry minute, app key, order-number blocks, TP-03 window attribution — analytical inputs outside the core state; outputs labelled ANALYTICAL; reconciled against the core totals |
 | Wing/body associations, forensics, charts | **Python only** | research analytics |
 M1 files (`events.tsv`, `state_dump.tsv`, `roles.tsv`) and the M1 parity artifacts are **unchanged**; M2 adds new files only (`parents.tsv`, `allocations.tsv`, `lifecycle.tsv`, `slices.tsv`, `baskets.tsv`).
+
+## R1 ADDENDUM — intra-second fill-order convention (appended 2026-11-15; earlier text unchanged)
+
+**Rule.** The fill-order rule inside one second is the declared convention **`SOURCE_ROW_ORDER_CONVENTION`** (source-file row order), implemented as the engine tie order `src` (alias `source_row`). Source timestamps have one-second resolution. All lineage, closing-batch, wing/body and forensic outputs use **`SOURCE_ROW_ORDER_CONVENTION`**: fills of the same instrument within the same second are processed in source-file row order. This is a deterministic convention, **not verified intra-second execution chronology**. Under the sensitivity-only policies (`sells_first`, `buys_first`, `trade_id`, `order_no`, `sensex_trade_id_time`) aggregate opening/closing units, final inventory and cash are unchanged, but episode identity, reversal counts, opening/closing allocation membership, FIFO/LIFO attribution, closing-batch membership and wing/body membership can change for a small number of instruments. These must not be treated as order-independent facts. **No number in this report changed**; the delivered outputs are byte-identical to the pre-R1 baseline except for a `tie_order_convention` field added to four manifests. Full evidence and the five separately reported populations: `reports/R1_TIE_ORDER_CONVENTION.md`.
+
+| Policy | Fills whose open/close split changes | Episodes changed | Instruments changed | Reversal-ended episodes (primary 23) |
+|---|---:|---:|---:|---:|
+| `sells_first` | 2 | 1 | 1 | 23 |
+| `buys_first` | 4 | 12 | 5 | 23 |
+| `trade_id` | 4 | 4 | 2 | 21 |
+| `order_no` | 4 | 4 | 2 | 21 |
+| `sensex_trade_id_time` | 0 | 0 | 0 | 23 |

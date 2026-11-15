@@ -66,3 +66,19 @@ Remaining weakness: my independent checker and the reviewer's code share the sam
 
 ## 8. Remaining uncertainty
 Which wing (if any) protects which body — needs leg or allocation identifiers or decision logs; the intent of the entry-minute coincidence; the number-block semantics (unresolved); stop-closed bodies and non-`h_` long items are outside the tagged scope by design.
+
+## R1 ADDENDUM — intra-second fill-order convention (appended 2026-11-15; earlier text unchanged)
+
+**Convention.** Source timestamps have one-second resolution. All lineage, closing-batch, wing/body and forensic outputs use **`SOURCE_ROW_ORDER_CONVENTION`**: fills of the same instrument within the same second are processed in source-file row order. This is a deterministic convention, **not verified intra-second execution chronology**. Under the sensitivity-only policies (`sells_first`, `buys_first`, `trade_id`, `order_no`, `sensex_trade_id_time`) aggregate opening/closing units, final inventory and cash are unchanged, but episode identity, reversal counts, opening/closing allocation membership, FIFO/LIFO attribution, closing-batch membership and wing/body membership can change for a small number of instruments. These must not be treated as order-independent facts. **No number in this report changed**; the delivered outputs are byte-identical to the pre-R1 baseline except for a `tie_order_convention` field added to four manifests. Full evidence and the five separately reported populations: `reports/R1_TIE_ORDER_CONVENTION.md`.
+
+**Wing/body consequence.** Items and links are built from opening/closing portions, so membership and the headline integers (e.g. 626,765 opening body units) are conditional on the convention.
+
+| Policy | Items only in one | W1 | W1_S60 | W2 | W2_S60 | W3 links changed | Opening / closing body units (primary 626,765 / 540,250) |
+|---|---:|---:|---:|---:|---:|---:|---|
+| `sells_first` | 2 | 1 | 2 | 1 | 2 | 0 | 626,830 / 540,315 |
+| `buys_first` | 4 | 1 | 7 | 1 | 7 | 0 | 626,680 / 540,165 |
+| `trade_id` | 2 | 6 | 6 | 6 | 6 | 0 | 625,985 / 540,250 |
+| `order_no` | 2 | 6 | 6 | 6 | 6 | 0 | 625,985 / 540,250 |
+| `sensex_trade_id_time` | 0 | 0 | 0 | 0 | 0 | 0 | 626,765 / 540,250 |
+
+No evidence class changes: W1 stays WEAKLY_SUPPORTED, W1_S60 and W3 UNRESOLVED, lot ownership and protective intent UNRESOLVED / NOT_TESTABLE.

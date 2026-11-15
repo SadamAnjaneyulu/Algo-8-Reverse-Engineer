@@ -22,3 +22,17 @@ Source: `Trades_GKOHNP140.csv` sha256 `86e65ab6ece492a7…` → TP-01 ledger sha
 **Identity vs tie order (documented limit, not hidden):** identities are invariant to FIFO/LIFO/AVG, but **conditional on the tie-order convention**: under `sells_first` / `buys_first` 20 fills in 5 instruments change their episode/portion rows (42 rows). All of them lie in the 46 instruments with mixed-side same-second fills (confined: True); they are a **superset** of TP-01's 3 close-quantity-ambiguous instruments (False that they are confined to those): a same-second buy and sell can change episode numbering without changing any fill's close quantity. The primary `src` order (file order, verified chronological) stays authoritative.
 
 **Invariants executed on the real data:** I-unique-observed-ids, I1, I2, I11, I-unique-ca-ids, I4, I6, I3, I7, I-ownership-label, I-AVG-no-ownership, I5, I10, I-observed-layer-identical-across-conventions (row-level re-derivation from emitted rows, lifecycle events and input fills after the independent review).
+
+## R1 ADDENDUM — intra-second fill-order convention (appended 2026-11-15; earlier text unchanged)
+
+**Convention.** Source timestamps have one-second resolution. All lineage, closing-batch, wing/body and forensic outputs use **`SOURCE_ROW_ORDER_CONVENTION`**: fills of the same instrument within the same second are processed in source-file row order. This is a deterministic convention, **not verified intra-second execution chronology**. Under the sensitivity-only policies (`sells_first`, `buys_first`, `trade_id`, `order_no`, `sensex_trade_id_time`) aggregate opening/closing units, final inventory and cash are unchanged, but episode identity, reversal counts, opening/closing allocation membership, FIFO/LIFO attribution, closing-batch membership and wing/body membership can change for a small number of instruments. These must not be treated as order-independent facts. **No number in this report changed**; the delivered outputs are byte-identical to the pre-R1 baseline except for a `tie_order_convention` field added to four manifests. Full evidence and the five separately reported populations: `reports/R1_TIE_ORDER_CONVENTION.md`.
+
+**What this supersedes.** The sentence above that quotes "20 fills (42 rows) in 5 instruments" under `sells_first` / `buys_first` counted a broader, differently defined population (it states that it includes downstream fills of the affected instruments). R1 did **not** reproduce the "20 fills / 42 rows" count under its populations (`sells_first`: 2 fills whose open/close split changes; `buys_first`: 4); its 5-instrument count equals R1's `buys_first` instrument count. The M2-F note that this figure "reproduced exactly" was not verified. Use the R1 populations below for interpretation.
+
+| Policy | Fills whose open/close split changes | Episodes changed | Instruments changed | Reversal-ended episodes (primary 23) |
+|---|---:|---:|---:|---:|
+| `sells_first` | 2 | 1 | 1 | 23 |
+| `buys_first` | 4 | 12 | 5 | 23 |
+| `trade_id` | 4 | 4 | 2 | 21 |
+| `order_no` | 4 | 4 | 2 | 21 |
+| `sensex_trade_id_time` | 0 | 0 | 0 | 23 |

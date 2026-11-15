@@ -64,3 +64,19 @@ CONFIRMED_OBSERVATION: closing portions, their parents and timestamps, and the t
 
 ## 8. Remaining uncertainty
 Whole-second timestamps; the exit trigger and whether batches are one decision (needs decision logs); the number-block semantics (`M2C_NUMBER_BLOCK_AUDIT.md`); the tie order and C2 predecessor rule (specification gaps, measured in §3); the chaining effect at larger thresholds.
+
+## R1 ADDENDUM — intra-second fill-order convention (appended 2026-11-15; earlier text unchanged)
+
+**Convention.** Source timestamps have one-second resolution. All lineage, closing-batch, wing/body and forensic outputs use **`SOURCE_ROW_ORDER_CONVENTION`**: fills of the same instrument within the same second are processed in source-file row order. This is a deterministic convention, **not verified intra-second execution chronology**. Under the sensitivity-only policies (`sells_first`, `buys_first`, `trade_id`, `order_no`, `sensex_trade_id_time`) aggregate opening/closing units, final inventory and cash are unchanged, but episode identity, reversal counts, opening/closing allocation membership, FIFO/LIFO attribution, closing-batch membership and wing/body membership can change for a small number of instruments. These must not be treated as order-independent facts. **No number in this report changed**; the delivered outputs are byte-identical to the pre-R1 baseline except for a `tie_order_convention` field added to four manifests. Full evidence and the five separately reported populations: `reports/R1_TIE_ORDER_CONVENTION.md`.
+
+**Closing-batch consequence (replay-level tie order).** Which fills are closing portions depends on the replay order of same-second fills, so batch membership is conditional on the convention. This is **distinct** from the approved parent-ordering tie-break and the C2 predecessor reference measured in §3 of this report.
+
+| Policy | Batches not in the alternative @2 / 5 / 10 / 30 / 60 s (C1 = C2; baseline 7,127 / 3,777 / 3,065 / 2,171 / 1,502) |
+|---|---|
+| `sells_first` | 1 / 1 / 1 / 1 / 1 |
+| `buys_first` | 2 / 2 / 2 / 2 / 2 |
+| `trade_id` | 1 / 1 / 1 / 1 / 1 |
+| `order_no` | 1 / 1 / 1 / 1 / 1 |
+| `sensex_trade_id_time` | 0 / 0 / 0 / 0 / 0 |
+
+C1 and C2 change identically. Thresholds, rules and all primary outputs are unchanged.

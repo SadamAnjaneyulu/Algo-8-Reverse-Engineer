@@ -48,3 +48,17 @@ Docs: `docs/{BASKET_GROUPING_METHODOLOGY,EVIDENCE_REGISTRY,POSITION_LINEAGE_RULE
 
 ## Go / No-Go
 M2-B is safe to accept. **M2-C may begin only after your review and authorization**, and the number-block variant needs your answer on its semantics first.
+
+## R1 ADDENDUM — intra-second fill-order convention (appended 2026-11-15; earlier text unchanged)
+
+**Convention.** Source timestamps have one-second resolution. All lineage, closing-batch, wing/body and forensic outputs use **`SOURCE_ROW_ORDER_CONVENTION`**: fills of the same instrument within the same second are processed in source-file row order. This is a deterministic convention, **not verified intra-second execution chronology**. Under the sensitivity-only policies (`sells_first`, `buys_first`, `trade_id`, `order_no`, `sensex_trade_id_time`) aggregate opening/closing units, final inventory and cash are unchanged, but episode identity, reversal counts, opening/closing allocation membership, FIFO/LIFO attribution, closing-batch membership and wing/body membership can change for a small number of instruments. These must not be treated as order-independent facts. **No number in this report changed**; the delivered outputs are byte-identical to the pre-R1 baseline except for a `tie_order_convention` field added to four manifests. Full evidence and the five separately reported populations: `reports/R1_TIE_ORDER_CONVENTION.md`.
+
+**What this supersedes.** The sentence above that quotes "20 fills (42 rows) in 5 instruments" under `sells_first` / `buys_first` counted a broader, differently defined population (it states that it includes downstream fills of the affected instruments). R1 did **not** reproduce the "20 fills / 42 rows" count under its populations (`sells_first`: 2 fills whose open/close split changes; `buys_first`: 4); its 5-instrument count equals R1's `buys_first` instrument count. The M2-F note that this figure "reproduced exactly" was not verified. Use the R1 populations below for interpretation.
+
+| Policy | Fills whose open/close split changes | Episodes changed | Instruments changed | Reversal-ended episodes (primary 23) |
+|---|---:|---:|---:|---:|
+| `sells_first` | 2 | 1 | 1 | 23 |
+| `buys_first` | 4 | 12 | 5 | 23 |
+| `trade_id` | 4 | 4 | 2 | 21 |
+| `order_no` | 4 | 4 | 2 | 21 |
+| `sensex_trade_id_time` | 0 | 0 | 0 | 23 |
