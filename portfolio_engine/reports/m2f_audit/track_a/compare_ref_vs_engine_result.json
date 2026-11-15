@@ -114,6 +114,14 @@
   "final_inventory_AVG_identical": true,
   "engine_cash_AVG": 278748200,
   "cash_equal_ref_AVG": true,
+  "dump_totals_checked": [
+   "cash_flow_paise",
+   "closed_units",
+   "opened_units",
+   "remaining_expired_unclosed_units",
+   "remaining_open_at_end_units",
+   "reversal_fills"
+  ],
   "engine_sensitive_CP": 15889,
   "sensitive_sets_identical": true,
   "fill_roles_exact_match": 41421,

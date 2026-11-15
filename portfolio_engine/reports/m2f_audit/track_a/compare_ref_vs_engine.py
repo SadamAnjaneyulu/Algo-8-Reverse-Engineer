@@ -66,6 +66,7 @@ rec('raw_distinct_ist_days', len({(r['ts'] + 19800) // 86400 for r in rows}))
 # episodes crossing sessions
 rec('ref_episodes_spanning_days', sum(1 for e in R.episodes.values() if (e['first_ts'] + 19800) // 86400 != (e['last_ts'] + 19800) // 86400))
 
+R_OPEN = OUT['ref_OA_units']; R_CLOSE = OUT['ref_CP_units']; R_EXPU = OUT['ref_remaining_expired_unclosed_units']; R_REV = OUT['ref_reversal_fills']; R_CASH = OUT['ref_cash_paise']
 # ================= engine outputs (LOAD ONLY)
 from pe.generators import historical as H
 from pe.lineage_set import LineageSet
@@ -169,6 +170,12 @@ for m in ('FIFO', 'LIFO', 'AVG'):
         if p[0] == 'INSTR': inv_e[p[1]] = int(p[2])
     rec(f'final_inventory_{m}_identical', inv_e == X.final_inv)
     rec(f'engine_cash_{m}', LS.runs[m].state.cash); rec(f'cash_equal_ref_{m}', LS.runs[m].state.cash == X.cash)
+# 5b) dump TOTALs and episode terminal status vs reference [IMPL]
+_tot = {l.split('\t')[1]: l.split('\t')[2] for l in LS.runs['FIFO'].dump.splitlines() if l.startswith('TOTAL')}
+_exp = {'opened_units': R_OPEN, 'closed_units': R_CLOSE, 'remaining_expired_unclosed_units': R_EXPU, 'remaining_open_at_end_units': 0, 'reversal_fills': R_REV, 'cash_flow_paise': R_CASH}
+for _k, _v in _exp.items(): chk('dump_total_' + _k, int(_tot[_k]) == _v, (_tot[_k], _v))
+rec('dump_totals_checked', sorted(_exp))
+_ts = Counter(l.split('\t')[8] for l in LS.files['FIFO']['episodes.tsv'].splitlines()[1:]); chk('episode_terminal_status_counts', dict(_ts) == OUT['ref_episode_terminal_status'], dict(_ts))
 # 6) sensitivity
 n_sens_e = sum(1 for v in LS.sensitivity.values() if v == 'CONVENTION_SENSITIVE'); rec('engine_sensitive_CP', n_sens_e)
 sens_ref = {f'CP:{RM.to_fill_id(cp)}' for cp in R.cp if fa[cp] != la[cp]}; rec('sensitive_sets_identical', sens_ref == {k for k, v in LS.sensitivity.items() if v == 'CONVENTION_SENSITIVE'})

@@ -25,9 +25,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "false flags AVG_exact_total_is_integer",
-    "fuzz xlang byte mismatch 540"
+    "cross-language byte mismatch (XLANG only)",
+    "RERUN after adding emitted-row-list length check to compare_ref_vs_engine.py: 65,128 observed rows vs reference 41,444. My ORIGINAL comparison was blind (dict keyed by fill id) and caught M01 only through XLANG."
    ]
   },
   "detector_independent": {
@@ -43,7 +46,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -73,11 +76,14 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"CP_membership\": 23, \"roles\": 10}",
-    "false flags engine_CP_ids_equal_ref,parent_roles_identical,AVG_exact_total_is_integer,sensitive_sets_identical",
-    "fuzz vs ref mismatches py=522 cpp=None",
-    "fuzz xlang byte mismatch 522"
+    "raw-reference mismatches {\"CP_membership\": 23, \"roles\": 10}",
+    "false flags engine_CP_ids_equal_ref,parent_roles_identical,sensitive_sets_identical",
+    "fuzz vs reference mismatches py=522 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -93,7 +99,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -121,9 +127,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"CP_membership\": 22, \"roles\": 10}",
-    "false flags engine_CP_ids_equal_ref,parent_roles_identical,AVG_exact_total_is_integer,sensitive_sets_identical"
+    "raw-reference mismatches {\"CP_membership\": 22, \"roles\": 10}",
+    "false flags engine_CP_ids_equal_ref,parent_roles_identical,sensitive_sets_identical"
    ]
   },
   "detector_independent": {
@@ -137,9 +146,9 @@
    "internal_files": [
     "test_lineage.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
-  "notes": ""
+  "notes": "Data-dependent: only 1 in 997 source rows; fuzz sequences (<997 rows) cannot hit it; detected on the real ledger only (test_lineage_real, my raw comparison)."
  },
  {
   "id": "M04",
@@ -170,8 +179,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
    "detail": [
-    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 420"
+    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 420110400",
+    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
    ]
   },
   "detector_independent": {
@@ -190,7 +203,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[INV]/crash"
   },
   "notes": ""
  },
@@ -223,8 +236,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
    "detail": [
-    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 420"
+    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 420022325.428",
+    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
    ]
   },
   "detector_independent": {
@@ -243,7 +260,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[INV]/crash"
   },
   "notes": ""
  },
@@ -270,9 +287,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"fill_field_vs_raw\": 42, \"OA_fields\": 23, \"CP_fields\": 19, \"CA_FIFO_row\": 57, \"CA_FIFO_total\": 1, \"CA_LIFO_row\": 51, \"CA_LIFO_total\": 1, \"CA_AVG_value\": 514}",
-    "false flags cash_equal_ref_FIFO,cash_equal_ref_LIFO,AVG_exact_total_is_integer,cash_equal_ref_AVG"
+    "raw-reference mismatches {\"fill_field_vs_raw\": 42, \"OA_fields\": 23, \"CP_fields\": 19, \"CA_FIFO_row\": 57, \"CA_FIFO_total\": 1, \"CA_LIFO_row\": 51, \"CA_LIFO_total\": 1, \"CA_AVG_valu",
+    "false flags cash_equal_ref_FIFO,cash_equal_ref_LIFO,cash_equal_ref_AVG"
    ]
   },
   "detector_independent": {
@@ -283,7 +303,7 @@
    ],
    "xlang_only_files": [],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -312,6 +332,9 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
    "detail": [
     "engine exception: EngineError: price off the paise grid at row 21"
    ]
@@ -327,7 +350,7 @@
     "test_parity.py"
    ],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[INV]/crash"
   },
   "notes": ""
  },
@@ -354,8 +377,11 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"fill_field_vs_raw\": 11, \"OA_fields\": 40, \"OA_membership\": 32, \"CP_membership\": 30, \"CP_fields\": 45, \"episode_membership\": 11, \"episode_fields\": 14, \"lifecycle\": 2, \"roles\": 10, \"CA_FIFO_row\": 22460, \"CA_FIFO_total\": 1, \"CA_LIFO_row\": 24912, \"CA_LIFO_total\": 1, \"CA_AVG_value\": 16176, \"fill_role\": 272}",
+    "raw-reference mismatches {\"fill_field_vs_raw\": 11, \"OA_fields\": 40, \"OA_membership\": 32, \"CP_membership\": 30, \"CP_fields\": 45, \"episode_membership\": 11, \"episode_fields\": 14, ",
     "false flags engine_OA_ids_equal_ref,engine_CP_ids_equal_ref,lifecycle_events_identical,parent_roles_identical,slices_FIFO_identical,final_inventory_FIFO_identical"
    ]
   },
@@ -367,7 +393,7 @@
    ],
    "xlang_only_files": [],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -397,11 +423,14 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"CP_fields\": 17486, \"roles\": 1}",
-    "false flags parent_roles_identical,AVG_exact_total_is_integer",
-    "fuzz vs ref mismatches py=540 cpp=None",
-    "fuzz xlang byte mismatch 540"
+    "raw-reference mismatches {\"CP_fields\": 17486, \"roles\": 1}",
+    "false flags parent_roles_identical",
+    "fuzz vs reference mismatches py=540 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -417,7 +446,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -447,11 +476,14 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"OA_fields\": 20, \"OA_membership\": 38, \"CP_fields\": 17, \"CP_membership\": 39, \"episode_fields\": 22, \"episode_membership\": 4, \"lifecycle\": 2, \"roles\": 10, \"CA_FIFO_row\": 24099, \"CA_FIFO_total\": 1, \"CA_LIFO_row\": 24892, \"CA_LIFO_total\": 1, \"CA_AVG_value\": 13841, \"fill_role\": 11041}",
+    "raw-reference mismatches {\"OA_fields\": 20, \"OA_membership\": 38, \"CP_fields\": 17, \"CP_membership\": 39, \"episode_fields\": 22, \"episode_membership\": 4, \"lifecycle\": 2, \"roles\": 1",
     "false flags engine_OA_ids_equal_ref,engine_CP_ids_equal_ref,lifecycle_events_identical,parent_roles_identical,slices_FIFO_identical,slices_LIFO_identical",
-    "fuzz vs ref mismatches py=1496 cpp=None",
-    "fuzz xlang byte mismatch 540"
+    "fuzz vs reference mismatches py=1496 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -466,7 +498,7 @@
     "test_parity.py"
    ],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -483,9 +515,11 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"fill_field_vs_raw\": 41421, \"OA_fields\": 23684, \"CP_fields\": 17760, \"episode_fields\": 2667}",
-    "false flags AVG_exact_total_is_integer"
+    "raw-reference mismatches {\"fill_field_vs_raw\": 41421, \"OA_fields\": 23684, \"CP_fields\": 17760, \"episode_fields\": 2667}"
    ]
   },
   "detector_independent": {
@@ -493,7 +527,7 @@
    "independent_reference_test_files": [],
    "xlang_only_files": [],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": "SURVIVOR of all 127 existing tests: the shift is uniform so ordering, day assignment (max IST time 15:39+5:30 < 24:00) and all aggregates are unchanged; only a comparison of timestamp_s against raw column 161 (my compare_ref_vs_engine) detects it."
  },
@@ -523,11 +557,13 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"OA_fields\": 23}",
-    "false flags AVG_exact_total_is_integer",
-    "fuzz vs ref mismatches py=522 cpp=None",
-    "fuzz xlang byte mismatch 522"
+    "raw-reference mismatches {\"OA_fields\": 23}",
+    "fuzz vs reference mismatches py=522 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -543,7 +579,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -575,11 +611,14 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"CA_FIFO_row\": 24940, \"CA_FIFO_total\": 1}",
-    "false flags slices_FIFO_identical,AVG_exact_total_is_integer,sensitive_sets_identical",
-    "fuzz vs ref mismatches py=351 cpp=None",
-    "fuzz xlang byte mismatch 177"
+    "raw-reference mismatches {\"CA_FIFO_row\": 24940, \"CA_FIFO_total\": 1}",
+    "false flags slices_FIFO_identical,sensitive_sets_identical",
+    "fuzz vs reference mismatches py=351 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -597,7 +636,7 @@
     "test_accounting.py",
     "test_lineage.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -627,10 +666,13 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "false flags slices_FIFO_identical,slices_LIFO_identical,AVG_exact_total_is_integer",
-    "fuzz vs ref mismatches py=360 cpp=None",
-    "fuzz xlang byte mismatch 360"
+    "false flags slices_FIFO_identical,slices_LIFO_identical",
+    "fuzz vs reference mismatches py=360 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -646,7 +688,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -674,9 +716,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "false flags AVG_exact_total_is_integer",
-    "fuzz xlang byte mismatch 513"
+    "cross-language byte mismatch (XLANG only)",
+    "RERUN after adding dump TOTAL checks: remaining_expired_unclosed_units mismatch. ORIGINAL comparison did not compare dump totals (only XLANG fuzz caught it)."
    ]
   },
   "detector_independent": {
@@ -690,7 +735,7 @@
    "internal_files": [
     "test_accounting.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -720,10 +765,13 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "engine exception: InvariantViolation: observed layer observed_allocations.tsv differs between FIFO",
-    "fuzz vs ref mismatches py=180 cpp=None",
-    "fuzz xlang byte mismatch 180"
+    "engine exception: InvariantViolation: observed layer observed_allocations.tsv differs between FIFO and AVG: ",
+    "fuzz vs reference mismatches py=180 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -739,7 +787,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": "Convention leak is caught by the LineageSet separation guard (a cross-convention comparison of outputs) and by reference comparison."
  },
@@ -772,8 +820,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
    "detail": [
-    "engine exception: IndexError: deque index out of range"
+    "engine exception: IndexError: deque index out of range",
+    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
    ]
   },
   "detector_independent": {
@@ -792,7 +844,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[INV]/crash"
   },
   "notes": "Existing-test failures are a consequence of an IndexError crash (deque index out of range) after the wrong lot is popped, i.e. a crash, not a designed invariant detector; counted as crash-not-kill for the existing suite. My reference comparison reports ENGINE_EXCEPTION as well, so also crash-only for own check on the Python engine; fuzz kill compares C++ output to reference only for C-mutants, Python mutants are compared in-process (py_vs_ref) and the crash is flagged."
  },
@@ -825,8 +877,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
    "detail": [
-    "engine exception: InvariantViolation: role arithmetic broken on F001901"
+    "engine exception: InvariantViolation: role arithmetic broken on F001901",
+    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
    ]
   },
   "detector_independent": {
@@ -845,7 +901,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[INV]/crash"
   },
   "notes": "Killed by the designed role-arithmetic InvariantViolation guard (an internal invariant [INV], same code path family as the mutation but a purpose-built check); not an independent detector."
  },
@@ -866,10 +922,13 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "false flags AVG_exact_total_is_integer",
-    "fuzz vs ref mismatches py=9 cpp=None",
-    "fuzz xlang byte mismatch 9"
+    "fuzz vs reference mismatches py=9 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)",
+    "Real-data comparison cannot detect it (no non-flat instrument has expiry == last data day 2026-10-22; 72 instruments expire that day, all flat); fuzz vs reference (9 of 540 cases) does."
    ]
   },
   "detector_independent": {
@@ -879,9 +938,9 @@
    "internal_files": [
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
-  "notes": ""
+  "notes": "Existing suite: 1 test (synthetic exact expiry boundary). Real ledger does not exercise the boundary."
  },
  {
   "id": "M20",
@@ -909,8 +968,11 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
    "detail": [
-    "false flags AVG_exact_total_is_integer"
+    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
    ]
   },
   "detector_independent": {
@@ -926,9 +988,9 @@
     "test_accounting.py",
     "test_lineage.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[INV]/crash"
   },
-  "notes": ""
+  "notes": "Real data contains no flagged duplicates, so only synthetic duplicate fixtures can detect it."
  },
  {
   "id": "M21",
@@ -956,11 +1018,13 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "ref mismatches {\"episode_fields\": 23}",
-    "false flags AVG_exact_total_is_integer",
-    "fuzz vs ref mismatches py=522 cpp=None",
-    "fuzz xlang byte mismatch 522"
+    "raw-reference mismatches {\"episode_fields\": 23}",
+    "fuzz vs reference mismatches py=522 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -976,7 +1040,7 @@
    "internal_files": [
     "test_lineage.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -1001,10 +1065,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "false flags AVG_exact_total_is_integer",
-    "fuzz vs ref mismatches py=920 cpp=None",
-    "fuzz xlang byte mismatch 360"
+    "fuzz vs reference mismatches py=920 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -1015,9 +1081,9 @@
     "test_parity.py"
    ],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
-  "notes": ""
+  "notes": "Python-only tie-key swap; real-data src order never uses the key, so detection needs sells_first/buys_first runs (parity vs C++, fuzz)."
  },
  {
   "id": "M23",
@@ -1048,8 +1114,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
    "detail": [
-    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -55"
+    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -557496400",
+    "fuzz harness crashed (KeyError: engine emitted a role for a fill the reference excluded)"
    ]
   },
   "detector_independent": {
@@ -1068,7 +1138,7 @@
     "test_lineage.py",
     "test_lineage_mutations.py"
    ],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[INV]/crash"
   },
   "notes": ""
  },
@@ -1094,11 +1164,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "fuzz vs ref mismatches py=0 cpp=177",
-    "fuzz xlang byte mismatch 177",
-    "C++ raw run vs ref: FIFO/cpp_CA_equals_ref",
-    "cpp vs py byte diffs 9"
+    "fuzz vs reference mismatches py=0 cpp=177 of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -1109,7 +1180,7 @@
     "test_parity.py"
    ],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -1134,10 +1205,12 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
    "detail": [
-    "fuzz vs ref mismatches py=0 cpp=360",
-    "fuzz xlang byte mismatch 360",
-    "cpp vs py byte diffs 36"
+    "fuzz vs reference mismatches py=0 cpp=360 of 540",
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -1148,7 +1221,7 @@
     "test_parity.py"
    ],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
   },
   "notes": ""
  },
@@ -1173,9 +1246,11 @@
   },
   "own_check_caught": {
    "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": true,
    "detail": [
-    "fuzz xlang byte mismatch 180",
-    "cpp vs py byte diffs 12"
+    "cross-language byte mismatch (XLANG only)"
    ]
   },
   "detector_independent": {
@@ -1186,7 +1261,7 @@
     "test_parity.py"
    ],
    "internal_files": [],
-   "own_check_is_raw_or_impl": true
+   "own_check_class": "[XLANG] only"
   },
   "notes": ""
  }
