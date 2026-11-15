@@ -1,0 +1,132 @@
+{
+ "trade_id_formats": {
+  "numeric|NIFTY": 19904,
+  "dash|SENSEX": 21517
+ },
+ "nifty_trade_id_vs_time_per_IST_day": {
+  "fills_compared": 19808,
+  "fills_with_key_below_max_of_earlier_seconds": 14004
+ },
+ "nifty_trade_id_vs_time_per_instrument": {
+  "fills_compared": 18858,
+  "fills_with_key_below_max_of_earlier_seconds": 3519
+ },
+ "nifty_order_number_vs_time_per_IST_day": {
+  "fills_compared": 19808,
+  "fills_with_key_below_max_of_earlier_seconds": 8226
+ },
+ "sensex_order_number_vs_time_per_IST_day": {
+  "fills_compared": 21409,
+  "fills_with_key_below_max_of_earlier_seconds": 8963
+ },
+ "nifty_multi_fill_groups": {
+  "groups": 2365,
+  "file_order_differs_from_trade_id_order": 151
+ },
+ "mixed_side_groups_all_instruments": {
+  "groups": 56,
+  "trade_id_order_differs_from_file": 2,
+  "order_number_differs_from_file": 1
+ },
+ "columns_with_time_like_values": [
+  {
+   "col": 15,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 14:30"
+  },
+  {
+   "col": 23,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 69,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 70,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 78,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 79,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 83,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 84,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 92,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 119,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 127,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 130,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  },
+  {
+   "col": 131,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "0001-01-01 00:00:00"
+  },
+  {
+   "col": 138,
+   "fractional_seconds": 0.0,
+   "integer_19digit": 0.0,
+   "time_like": 1.0,
+   "sample": "6/23/2026 9:16"
+  }
+ ],
+ "columns_with_sub_second_values": []
+}
