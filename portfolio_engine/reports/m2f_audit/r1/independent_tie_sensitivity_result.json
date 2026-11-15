@@ -1,0 +1,2223 @@
+{
+ "src": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 0,
+    "episodes_identity_changed": 0,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 0,
+    "reversal_fills": 23,
+    "OA_membership_diff": 0,
+    "CP_membership_diff": 0,
+    "CA_pairs_diff": 0,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [],
+    "_split_rows": []
+   },
+   "LIFO": {
+    "instruments_changed": 0,
+    "episodes_identity_changed": 0,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 0,
+    "reversal_fills": 23,
+    "OA_membership_diff": 0,
+    "CP_membership_diff": 0,
+    "CA_pairs_diff": 0,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [],
+    "_split_rows": []
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 0,
+    "alternative_batches_not_in_baseline": 0,
+    "parents_in_changed_baseline_batches": 0
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13325,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626765,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540250,
+    "links": {
+     "W1": 42777,
+     "W1_S60": 65228,
+     "W2": 42777,
+     "W2_S60": 65228,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 0,
+   "items_qty_or_first_ts_changed": 0,
+   "links_changed": {
+    "W1": 0,
+    "W1_S60": 0,
+    "W2": 0,
+    "W2_S60": 0,
+    "W3": 0
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "sells_first": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 1,
+    "episodes_identity_changed": 1,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 2,
+    "reversal_fills": 23,
+    "OA_membership_diff": 2,
+    "CP_membership_diff": 2,
+    "CA_pairs_diff": 2,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-10-13|PE|22400"
+    ],
+    "_split_rows": [
+     39039,
+     39042
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 1,
+    "episodes_identity_changed": 1,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 2,
+    "reversal_fills": 23,
+    "OA_membership_diff": 2,
+    "CP_membership_diff": 2,
+    "CA_pairs_diff": 129,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-10-13|PE|22400"
+    ],
+    "_split_rows": [
+     39039,
+     39042
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 8
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 8
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 8
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 124
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 124
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 8
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 8
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 8
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 124
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 124
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13326,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626830,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540315,
+    "links": {
+     "W1": 42778,
+     "W1_S60": 65230,
+     "W2": 42778,
+     "W2_S60": 65230,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 2,
+   "items_qty_or_first_ts_changed": 0,
+   "links_changed": {
+    "W1": 1,
+    "W1_S60": 2,
+    "W2": 1,
+    "W2_S60": 2,
+    "W3": 0
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "buys_first": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 5,
+    "episodes_identity_changed": 12,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 4,
+    "reversal_fills": 23,
+    "OA_membership_diff": 4,
+    "CP_membership_diff": 4,
+    "CA_pairs_diff": 4,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-23|CE|24000",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "NIFTY|2026-10-19|CE|23000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     24730,
+     24732,
+     39038,
+     39041
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 5,
+    "episodes_identity_changed": 12,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 4,
+    "reversal_fills": 23,
+    "OA_membership_diff": 4,
+    "CP_membership_diff": 4,
+    "CA_pairs_diff": 145,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-23|CE|24000",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "NIFTY|2026-10-19|CE|23000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     24730,
+     24732,
+     39038,
+     39041
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 9
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 14
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 14
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 252
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 252
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 9
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 14
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 14
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 252
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 2,
+    "alternative_batches_not_in_baseline": 2,
+    "parents_in_changed_baseline_batches": 252
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13323,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626680,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540165,
+    "links": {
+     "W1": 42776,
+     "W1_S60": 65221,
+     "W2": 42776,
+     "W2_S60": 65221,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 4,
+   "items_qty_or_first_ts_changed": 0,
+   "links_changed": {
+    "W1": 1,
+    "W1_S60": 7,
+    "W2": 1,
+    "W2_S60": 7,
+    "W3": 0
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "trade_id_asc": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 2,
+    "episodes_identity_changed": 4,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 4,
+    "reversal_fills": 21,
+    "OA_membership_diff": 2,
+    "CP_membership_diff": 4,
+    "CA_pairs_diff": 2068,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200"
+    ],
+    "_split_rows": [
+     27911,
+     27912,
+     27916,
+     27917
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 2,
+    "episodes_identity_changed": 4,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 4,
+    "reversal_fills": 21,
+    "OA_membership_diff": 2,
+    "CP_membership_diff": 4,
+    "CA_pairs_diff": 2063,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200"
+    ],
+    "_split_rows": [
+     27911,
+     27912,
+     27916,
+     27917
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 25
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 25
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13323,
+    "opening_wing_units": 617130,
+    "opening_body_units": 625985,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540250,
+    "links": {
+     "W1": 42771,
+     "W1_S60": 65222,
+     "W2": 42771,
+     "W2_S60": 65222,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 2,
+   "items_qty_or_first_ts_changed": 0,
+   "links_changed": {
+    "W1": 6,
+    "W1_S60": 6,
+    "W2": 6,
+    "W2_S60": 6,
+    "W3": 0
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "order_no_asc": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 2,
+    "episodes_identity_changed": 4,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 4,
+    "reversal_fills": 21,
+    "OA_membership_diff": 2,
+    "CP_membership_diff": 4,
+    "CA_pairs_diff": 1938,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200"
+    ],
+    "_split_rows": [
+     27911,
+     27912,
+     27916,
+     27917
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 2,
+    "episodes_identity_changed": 4,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 4,
+    "reversal_fills": 21,
+    "OA_membership_diff": 2,
+    "CP_membership_diff": 4,
+    "CA_pairs_diff": 1933,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200"
+    ],
+    "_split_rows": [
+     27911,
+     27912,
+     27916,
+     27917
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 25
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 25
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 1,
+    "alternative_batches_not_in_baseline": 1,
+    "parents_in_changed_baseline_batches": 35
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13323,
+    "opening_wing_units": 617130,
+    "opening_body_units": 625985,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540250,
+    "links": {
+     "W1": 42771,
+     "W1_S60": 65222,
+     "W2": 42771,
+     "W2_S60": 65222,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 2,
+   "items_qty_or_first_ts_changed": 0,
+   "links_changed": {
+    "W1": 6,
+    "W1_S60": 6,
+    "W2": 6,
+    "W2_S60": 6,
+    "W3": 0
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "reversed_src": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 18,
+    "episodes_identity_changed": 33,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 49,
+    "reversal_fills": 22,
+    "OA_membership_diff": 38,
+    "CP_membership_diff": 39,
+    "CA_pairs_diff": 18101,
+    "realized_delta_paise": -400.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-23|CE|24000",
+     "NIFTY|2026-06-30|CE|24100",
+     "NIFTY|2026-06-30|PE|23850",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23100",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "NIFTY|2026-10-19|CE|23000",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-07-23|PE|74900",
+     "SENSEX|2026-08-06|CE|78700",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4665,
+     4667,
+     4668,
+     5680,
+     5681,
+     5828,
+     5832,
+     12632,
+     12641,
+     15190,
+     15191,
+     17528,
+     17530,
+     21321,
+     21330,
+     24158,
+     24164,
+     24181,
+     24621,
+     24624,
+     24625,
+     24631,
+     24632,
+     24637,
+     24638,
+     24642,
+     24643,
+     24646,
+     24647,
+     24650,
+     24730,
+     24732,
+     27906,
+     27907,
+     27908,
+     27911,
+     27912,
+     27914,
+     27916,
+     27917,
+     33688,
+     33717,
+     34139,
+     34140,
+     39038,
+     39041,
+     40009,
+     40018
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 18,
+    "episodes_identity_changed": 33,
+    "n_episodes": 2667,
+    "fills_open_close_split_changed": 49,
+    "reversal_fills": 22,
+    "OA_membership_diff": 38,
+    "CP_membership_diff": 39,
+    "CA_pairs_diff": 18158,
+    "realized_delta_paise": -1300.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-23|CE|24000",
+     "NIFTY|2026-06-30|CE|24100",
+     "NIFTY|2026-06-30|PE|23850",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23100",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "NIFTY|2026-10-19|CE|23000",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-07-23|PE|74900",
+     "SENSEX|2026-08-06|CE|78700",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4665,
+     4667,
+     4668,
+     5680,
+     5681,
+     5828,
+     5832,
+     12632,
+     12641,
+     15190,
+     15191,
+     17528,
+     17530,
+     21321,
+     21330,
+     24158,
+     24164,
+     24181,
+     24621,
+     24624,
+     24625,
+     24631,
+     24632,
+     24637,
+     24638,
+     24642,
+     24643,
+     24646,
+     24647,
+     24650,
+     24730,
+     24732,
+     27906,
+     27907,
+     27908,
+     27911,
+     27912,
+     27914,
+     27916,
+     27917,
+     33688,
+     33717,
+     34139,
+     34140,
+     39038,
+     39041,
+     40009,
+     40018
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 93
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 141
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 234
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 561
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 834
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 93
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 141
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 234
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 561
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 8,
+    "alternative_batches_not_in_baseline": 8,
+    "parents_in_changed_baseline_batches": 834
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13324,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626485,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540035,
+    "links": {
+     "W1": 42779,
+     "W1_S60": 65224,
+     "W2": 42779,
+     "W2_S60": 65224,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 14,
+   "items_qty_or_first_ts_changed": 4,
+   "links_changed": {
+    "W1": 16,
+    "W1_S60": 36,
+    "W2": 16,
+    "W2_S60": 36,
+    "W3": 2
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "random_seed11": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 14,
+    "episodes_identity_changed": 25,
+    "n_episodes": 2665,
+    "fills_open_close_split_changed": 32,
+    "reversal_fills": 21,
+    "OA_membership_diff": 24,
+    "CP_membership_diff": 26,
+    "CA_pairs_diff": 13276,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-30|CE|24100",
+     "NIFTY|2026-06-30|PE|23850",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-07-23|PE|74900",
+     "SENSEX|2026-08-06|CE|78700",
+     "SENSEX|2026-08-20|CE|76900",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4668,
+     5680,
+     5681,
+     5828,
+     5832,
+     12632,
+     12641,
+     15190,
+     15191,
+     17529,
+     17530,
+     21321,
+     21330,
+     24621,
+     24624,
+     24631,
+     24636,
+     24637,
+     24638,
+     24642,
+     24647,
+     24730,
+     24732,
+     27912,
+     27916,
+     33715,
+     33717,
+     39038,
+     39041,
+     40009,
+     40016
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 14,
+    "episodes_identity_changed": 25,
+    "n_episodes": 2665,
+    "fills_open_close_split_changed": 32,
+    "reversal_fills": 21,
+    "OA_membership_diff": 24,
+    "CP_membership_diff": 26,
+    "CA_pairs_diff": 13298,
+    "realized_delta_paise": -1300.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-30|CE|24100",
+     "NIFTY|2026-06-30|PE|23850",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-07-23|PE|74900",
+     "SENSEX|2026-08-06|CE|78700",
+     "SENSEX|2026-08-20|CE|76900",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4668,
+     5680,
+     5681,
+     5828,
+     5832,
+     12632,
+     12641,
+     15190,
+     15191,
+     17529,
+     17530,
+     21321,
+     21330,
+     24621,
+     24624,
+     24631,
+     24636,
+     24637,
+     24638,
+     24642,
+     24647,
+     24730,
+     24732,
+     27912,
+     27916,
+     33715,
+     33717,
+     39038,
+     39041,
+     40009,
+     40016
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 61
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 97
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 177
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 493
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 766
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 61
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 97
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 177
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 493
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 7,
+    "alternative_batches_not_in_baseline": 7,
+    "parents_in_changed_baseline_batches": 766
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13322,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626160,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540035,
+    "links": {
+     "W1": 42773,
+     "W1_S60": 65218,
+     "W2": 42773,
+     "W2_S60": 65218,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 12,
+   "items_qty_or_first_ts_changed": 0,
+   "links_changed": {
+    "W1": 12,
+    "W1_S60": 28,
+    "W2": 12,
+    "W2_S60": 28,
+    "W3": 2
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "random_seed12": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 13,
+    "episodes_identity_changed": 23,
+    "n_episodes": 2665,
+    "fills_open_close_split_changed": 33,
+    "reversal_fills": 21,
+    "OA_membership_diff": 23,
+    "CP_membership_diff": 27,
+    "CA_pairs_diff": 13360,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-30|PE|23850",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-07-23|PE|74900",
+     "SENSEX|2026-08-20|CE|76900",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4667,
+     5828,
+     5832,
+     12632,
+     12641,
+     15190,
+     15191,
+     17529,
+     17530,
+     24171,
+     24179,
+     24181,
+     24621,
+     24631,
+     24637,
+     24642,
+     24643,
+     24645,
+     24647,
+     24730,
+     24732,
+     27908,
+     27911,
+     27912,
+     27916,
+     27917,
+     33696,
+     33717,
+     34139,
+     34140,
+     40009,
+     40016
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 13,
+    "episodes_identity_changed": 23,
+    "n_episodes": 2665,
+    "fills_open_close_split_changed": 33,
+    "reversal_fills": 21,
+    "OA_membership_diff": 23,
+    "CP_membership_diff": 27,
+    "CA_pairs_diff": 13315,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-30|PE|23850",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-07-23|PE|74900",
+     "SENSEX|2026-08-20|CE|76900",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4667,
+     5828,
+     5832,
+     12632,
+     12641,
+     15190,
+     15191,
+     17529,
+     17530,
+     24171,
+     24179,
+     24181,
+     24621,
+     24631,
+     24637,
+     24642,
+     24643,
+     24645,
+     24647,
+     24730,
+     24732,
+     27908,
+     27911,
+     27912,
+     27916,
+     27917,
+     33696,
+     33717,
+     34139,
+     34140,
+     40009,
+     40016
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 53
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 89
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 169
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 369
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 642
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 53
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 89
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 169
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 369
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 642
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13323,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626355,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540100,
+    "links": {
+     "W1": 42774,
+     "W1_S60": 65220,
+     "W2": 42774,
+     "W2_S60": 65220,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 10,
+   "items_qty_or_first_ts_changed": 1,
+   "links_changed": {
+    "W1": 11,
+    "W1_S60": 26,
+    "W2": 11,
+    "W2_S60": 26,
+    "W3": 2
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "random_seed13": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 13,
+    "episodes_identity_changed": 26,
+    "n_episodes": 2668,
+    "fills_open_close_split_changed": 28,
+    "reversal_fills": 24,
+    "OA_membership_diff": 23,
+    "CP_membership_diff": 20,
+    "CA_pairs_diff": 13415,
+    "realized_delta_paise": -400.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-23|CE|24000",
+     "NIFTY|2026-06-30|PE|23850",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23100",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-19|CE|23000",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4667,
+     5828,
+     5832,
+     12632,
+     12641,
+     17529,
+     17530,
+     24168,
+     24181,
+     24624,
+     24631,
+     24637,
+     24638,
+     24643,
+     24646,
+     24647,
+     24730,
+     24732,
+     27907,
+     27908,
+     27911,
+     27914,
+     27917,
+     33706,
+     33717,
+     40009,
+     40014
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 13,
+    "episodes_identity_changed": 26,
+    "n_episodes": 2668,
+    "fills_open_close_split_changed": 28,
+    "reversal_fills": 24,
+    "OA_membership_diff": 23,
+    "CP_membership_diff": 20,
+    "CA_pairs_diff": 13406,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-23|CE|24000",
+     "NIFTY|2026-06-30|PE|23850",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23100",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-19|CE|23000",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4667,
+     5828,
+     5832,
+     12632,
+     12641,
+     17529,
+     17530,
+     24168,
+     24181,
+     24624,
+     24631,
+     24637,
+     24638,
+     24643,
+     24646,
+     24647,
+     24730,
+     24732,
+     27907,
+     27908,
+     27911,
+     27914,
+     27917,
+     33706,
+     33717,
+     40009,
+     40014
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 83
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 124
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 214
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 421
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 680
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 83
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 124
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 214
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 421
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 680
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13325,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626940,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540100,
+    "links": {
+     "W1": 42780,
+     "W1_S60": 65226,
+     "W2": 42780,
+     "W2_S60": 65226,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 8,
+   "items_qty_or_first_ts_changed": 3,
+   "links_changed": {
+    "W1": 11,
+    "W1_S60": 20,
+    "W2": 11,
+    "W2_S60": 20,
+    "W3": 0
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "random_seed14": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 13,
+    "episodes_identity_changed": 19,
+    "n_episodes": 2666,
+    "fills_open_close_split_changed": 29,
+    "reversal_fills": 18,
+    "OA_membership_diff": 25,
+    "CP_membership_diff": 22,
+    "CA_pairs_diff": 13237,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-30|CE|24100",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23100",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-08-06|CE|78700",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4667,
+     5680,
+     5681,
+     17529,
+     17530,
+     21321,
+     21330,
+     24158,
+     24171,
+     24181,
+     24624,
+     24637,
+     24730,
+     24732,
+     27907,
+     27911,
+     27912,
+     27914,
+     27916,
+     27917,
+     33698,
+     33717,
+     39038,
+     39039,
+     39041,
+     39042,
+     40009,
+     40014
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 13,
+    "episodes_identity_changed": 19,
+    "n_episodes": 2666,
+    "fills_open_close_split_changed": 29,
+    "reversal_fills": 18,
+    "OA_membership_diff": 25,
+    "CP_membership_diff": 22,
+    "CA_pairs_diff": 13268,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-06-30|CE|24100",
+     "NIFTY|2026-07-28|PE|24000",
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23100",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-08-06|CE|78700",
+     "SENSEX|2026-08-20|CE|77000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4664,
+     4667,
+     5680,
+     5681,
+     17529,
+     17530,
+     21321,
+     21330,
+     24158,
+     24171,
+     24181,
+     24624,
+     24637,
+     24730,
+     24732,
+     27907,
+     27911,
+     27912,
+     27914,
+     27916,
+     27917,
+     33698,
+     33717,
+     39038,
+     39039,
+     39041,
+     39042,
+     40009,
+     40014
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 87
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 114
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 130
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 453
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 698
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 87
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 114
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 130
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 453
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 698
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13323,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626030,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540230,
+    "links": {
+     "W1": 42774,
+     "W1_S60": 65220,
+     "W2": 42774,
+     "W2_S60": 65220,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 13,
+   "items_qty_or_first_ts_changed": 2,
+   "links_changed": {
+    "W1": 19,
+    "W1_S60": 30,
+    "W2": 19,
+    "W2_S60": 30,
+    "W3": 0
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ },
+ "random_seed15": {
+  "accounting": {
+   "FIFO": {
+    "instruments_changed": 11,
+    "episodes_identity_changed": 21,
+    "n_episodes": 2665,
+    "fills_open_close_split_changed": 27,
+    "reversal_fills": 20,
+    "OA_membership_diff": 20,
+    "CP_membership_diff": 21,
+    "CA_pairs_diff": 13451,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-07-23|PE|74900",
+     "SENSEX|2026-08-20|CE|76900",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4665,
+     4667,
+     12638,
+     12641,
+     15190,
+     15191,
+     24179,
+     24180,
+     24181,
+     24621,
+     24630,
+     24637,
+     24638,
+     24646,
+     24647,
+     24730,
+     24732,
+     27906,
+     27911,
+     27912,
+     27917,
+     33708,
+     33717,
+     39038,
+     39041,
+     40009,
+     40014
+    ]
+   },
+   "LIFO": {
+    "instruments_changed": 11,
+    "episodes_identity_changed": 21,
+    "n_episodes": 2665,
+    "fills_open_close_split_changed": 27,
+    "reversal_fills": 20,
+    "OA_membership_diff": 20,
+    "CP_membership_diff": 21,
+    "CA_pairs_diff": 13359,
+    "realized_delta_paise": 0.0,
+    "OA_units": 1414545,
+    "CP_units": 1377065,
+    "final_inv_equal": true,
+    "cash_equal": true,
+    "_instruments": [
+     "NIFTY|2026-08-18|PE|24250",
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200",
+     "NIFTY|2026-09-22|CE|23300",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "SENSEX|2026-06-25|CE|77400",
+     "SENSEX|2026-07-16|CE|77600",
+     "SENSEX|2026-07-23|PE|74900",
+     "SENSEX|2026-08-20|CE|76900",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "_split_rows": [
+     4665,
+     4667,
+     12638,
+     12641,
+     15190,
+     15191,
+     24179,
+     24180,
+     24181,
+     24621,
+     24630,
+     24637,
+     24638,
+     24646,
+     24647,
+     24730,
+     24732,
+     27906,
+     27911,
+     27912,
+     27917,
+     33708,
+     33717,
+     39038,
+     39041,
+     40009,
+     40014
+    ]
+   }
+  },
+  "batches": {
+   "C1@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 82
+   },
+   "C1@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 116
+   },
+   "C1@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 135
+   },
+   "C1@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 392
+   },
+   "C1@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 583
+   },
+   "C2@2s": {
+    "n_batches": 7127,
+    "n_batches_baseline": 7127,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 82
+   },
+   "C2@5s": {
+    "n_batches": 3777,
+    "n_batches_baseline": 3777,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 116
+   },
+   "C2@10s": {
+    "n_batches": 3065,
+    "n_batches_baseline": 3065,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 135
+   },
+   "C2@30s": {
+    "n_batches": 2171,
+    "n_batches_baseline": 2171,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 392
+   },
+   "C2@60s": {
+    "n_batches": 1502,
+    "n_batches_baseline": 1502,
+    "baseline_batches_not_in_alternative": 6,
+    "alternative_batches_not_in_baseline": 6,
+    "parents_in_changed_baseline_batches": 583
+   }
+  },
+  "wing_body": {
+   "headline": {
+    "opening_wing_items": 8399,
+    "opening_body_items": 13322,
+    "opening_wing_units": 617130,
+    "opening_body_units": 626550,
+    "closing_wing_units": 500775,
+    "closing_body_units": 540165,
+    "links": {
+     "W1": 42773,
+     "W1_S60": 65218,
+     "W2": 42773,
+     "W2_S60": 65218,
+     "W3": 12096
+    }
+   },
+   "items_only_in_one": 9,
+   "items_qty_or_first_ts_changed": 3,
+   "links_changed": {
+    "W1": 8,
+    "W1_S60": 24,
+    "W2": 8,
+    "W2_S60": 24,
+    "W3": 2
+   },
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   }
+  }
+ }
+}
