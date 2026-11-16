@@ -1,0 +1,122 @@
+{
+ "FIFO/src/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_FIFO.tsv": true,
+  "slices_FIFO.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "FIFO/src/rc": 0,
+ "FIFO/cpp_OA_equals_ref": true,
+ "FIFO/cpp_CP_equals_ref": true,
+ "FIFO/cpp_lifecycle_equals_ref": true,
+ "FIFO/cpp_episodes_equals_ref": true,
+ "FIFO/cpp_CA_equals_ref": true,
+ "FIFO/cpp_CA_total_paise": 210055200,
+ "FIFO/cpp_CA_total_minus_ref_exact": 0.0,
+ "FIFO/cpp_dump_realized": [
+  "TOTAL\trealized_pnl_paise\t210055200"
+ ],
+ "FIFO/sells_first/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_FIFO.tsv": true,
+  "slices_FIFO.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "FIFO/sells_first/rc": 0,
+ "FIFO/buys_first/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_FIFO.tsv": true,
+  "slices_FIFO.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "FIFO/buys_first/rc": 0,
+ "LIFO/src/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_LIFO.tsv": true,
+  "slices_LIFO.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "LIFO/src/rc": 0,
+ "LIFO/cpp_OA_equals_ref": true,
+ "LIFO/cpp_CP_equals_ref": true,
+ "LIFO/cpp_lifecycle_equals_ref": true,
+ "LIFO/cpp_episodes_equals_ref": true,
+ "LIFO/cpp_CA_equals_ref": true,
+ "LIFO/cpp_CA_total_paise": 209687450,
+ "LIFO/cpp_CA_total_minus_ref_exact": 0.0,
+ "LIFO/cpp_dump_realized": [
+  "TOTAL\trealized_pnl_paise\t209687450"
+ ],
+ "LIFO/sells_first/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_LIFO.tsv": true,
+  "slices_LIFO.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "LIFO/sells_first/rc": 0,
+ "LIFO/buys_first/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_LIFO.tsv": true,
+  "slices_LIFO.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "LIFO/buys_first/rc": 0,
+ "AVG/src/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_AVG.tsv": true,
+  "slices_AVG.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "AVG/src/rc": 0,
+ "AVG/cpp_OA_equals_ref": true,
+ "AVG/cpp_CP_equals_ref": true,
+ "AVG/cpp_lifecycle_equals_ref": true,
+ "AVG/cpp_episodes_equals_ref": true,
+ "AVG/cpp_CA_equals_ref": true,
+ "AVG/cpp_CA_total_paise": "210011162714147/1000000",
+ "AVG/cpp_CA_total_minus_ref_exact": 5.848523518990793e-05,
+ "AVG/cpp_dump_realized": [
+  "TOTAL\trealized_pnl_paise\t210011162.714088"
+ ],
+ "AVG/sells_first/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_AVG.tsv": true,
+  "slices_AVG.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "AVG/sells_first/rc": 0,
+ "AVG/buys_first/cpp_vs_py_byte_identical": {
+  "observed_allocations.tsv": true,
+  "lifecycle.tsv": true,
+  "episodes.tsv": true,
+  "ca_AVG.tsv": true,
+  "slices_AVG.tsv": true,
+  "dump.tsv": true,
+  "roles.tsv": true
+ },
+ "AVG/buys_first/rc": 0
+}

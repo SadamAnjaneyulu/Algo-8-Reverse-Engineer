@@ -1,0 +1,28 @@
+{
+ "id": "C03",
+ "name": "C++ AVG pool average floored",
+ "file": "cpp/include/pe/ledger.hpp",
+ "expected": "parity tests; fuzz",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+   "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+   "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+  ],
+  "summary": "4 failed, 123 passed in 97.09s (0:01:37)",
+  "seconds": 98
+ },
+ "own": {
+  "cpp_raw_vs_ref_false_keys": [],
+  "cpp_vs_py_byte_diff_files": 12,
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 180,
+   "cpp_vs_ref_mismatch": 0,
+   "py_vs_ref_mismatch": 0
+  },
+  "killed": true
+ }
+}

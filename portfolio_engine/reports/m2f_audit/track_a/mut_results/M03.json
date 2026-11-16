@@ -1,0 +1,39 @@
+{
+ "id": "M03",
+ "name": "dropped closing portion sparse (1 in 997 source rows)",
+ "file": "python/pe/lineage.py",
+ "expected": "I4/I5; CP membership vs raw reference",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+   "tests/test_lineage_real.py::test_reference_counts",
+   "tests/test_lineage_real.py::test_all_invariants_hold_on_real_data",
+   "tests/test_lineage_real.py::test_closing_portions_match_tp02_timeline_rows_without_assuming_identical_semantics",
+   "tests/test_lineage_real.py::test_parents_tsv_from_the_real_export"
+  ],
+  "summary": "7 failed, 120 passed in 212.60s (0:03:32)",
+  "seconds": 214
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {
+   "CP_membership": 22,
+   "roles": 10
+  },
+  "false_flags": [
+   "engine_CP_ids_equal_ref",
+   "parent_roles_identical",
+   "AVG_exact_total_is_integer",
+   "sensitive_sets_identical"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 0,
+   "py_vs_ref_mismatch": 0
+  },
+  "killed": true
+ }
+}

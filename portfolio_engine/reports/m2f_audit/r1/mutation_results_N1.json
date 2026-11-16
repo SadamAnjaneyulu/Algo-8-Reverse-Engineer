@@ -1,0 +1,97 @@
+[
+ {
+  "id": "BASELINE_unmutated",
+  "outcome": "survived",
+  "summary": "6 passed, 29 deselected in 0.07s | "
+ },
+ {
+  "id": "N1M01_global_keyed_sort_across_instruments",
+  "expected_detector": "test_keyed_order_never_compares_keys_across_instruments_hand_calculated",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_keyed_order_never_compares_keys_across_instruments_hand_calculated",
+   "test_hybrid_keys_built_by_the_policy_function_keep_nifty_and_sensex_separate",
+   "test_other_keyed_policies_are_also_local"
+  ],
+  "summary": "3 failed, 3 passed, 29 deselected in 0.11s | test_tie_order_policy.py:309: assert ([12, 10, 13, 11] == [12, 13, 10, 11] || test_tie_order_policy.py:324: assert [3, 1, 4, 2] == [3, 4, 1, 2]"
+ },
+ {
+  "id": "N1M02_source_row_tiebreak_reversed",
+  "expected_detector": "test_keyed_order_is_bounded_by_the_second_and_ties_fall_back_to_ascending_source_row",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_keyed_order_is_timestamp_first_then_key_then_source_row",
+   "test_keyed_order_is_bounded_by_the_second_and_ties_fall_back_to_ascending_source_row"
+  ],
+  "summary": "2 failed, 4 passed, 29 deselected in 0.12s | test_tie_order_policy.py:143: AssertionError: assert ['S000001', '...3', 'S000002'] == ['S000001', '...2', 'S000003'] || test_tie_order_policy.py:316: assert [4, 1, 3, 2] == [4, 1, 2, 3]"
+ },
+ {
+  "id": "N1M03_policy_name_dropped_from_key",
+  "expected_detector": "test_hybrid_key_hand_calculated_cases_and_label",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_hybrid_key_hand_calculated_cases_and_label",
+   "test_hybrid_keys_built_by_the_policy_function_keep_nifty_and_sensex_separate"
+  ],
+  "summary": "2 failed, 4 passed, 29 deselected in 0.09s | test_tie_order_policy.py:258: AssertionError: assert ((3109354,) == (3109354,)"
+ },
+ {
+  "id": "N1M04_sensex_keyed_by_its_numeric_suffix_like_a_nifty_counter",
+  "expected_detector": "test_hybrid_keys_built_by_the_policy_function_keep_nifty_and_sensex_separate",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_hybrid_key_hand_calculated_cases_and_label",
+   "test_hybrid_keys_built_by_the_policy_function_keep_nifty_and_sensex_separate"
+  ],
+  "summary": "2 failed, 4 passed, 29 deselected in 0.08s | test_tie_order_policy.py:260: assert ((125721890,) == (1782381102528692637,) || test_tie_order_policy.py:324: assert [3, 2, 1, 4] == [3, 4, 1, 2]"
+ },
+ {
+  "id": "N1M05_sensex_time_rule_applied_to_nifty",
+  "expected_detector": "test_hybrid_keys_built_by_the_policy_function_keep_nifty_and_sensex_separate",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_hybrid_key_hand_calculated_cases_and_label",
+   "test_hybrid_keys_built_by_the_policy_function_keep_nifty_and_sensex_separate"
+  ],
+  "summary": "2 failed, 4 passed, 29 deselected in 0.09s | test_tie_order_policy.py:258: assert ((1000000000,) == (3109354,) || test_tie_order_policy.py:324: assert [1, 4, 3, 2] == [3, 4, 1, 2]"
+ },
+ {
+  "id": "N1M06_second_bucket_boundary_widened_to_two_seconds",
+  "expected_detector": "test_keyed_order_is_bounded_by_the_second_and_ties_fall_back_to_ascending_source_row",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_keyed_order_is_bounded_by_the_second_and_ties_fall_back_to_ascending_source_row"
+  ],
+  "summary": "1 failed, 5 passed, 29 deselected in 0.08s | test_tie_order_policy.py:316: assert [2, 3, 4, 1] == [4, 1, 2, 3]"
+ },
+ {
+  "id": "N1M07_bucket_ignores_the_second",
+  "expected_detector": "test_keyed_order_is_bounded_by_the_second_and_ties_fall_back_to_ascending_source_row",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_keyed_order_is_timestamp_first_then_key_then_source_row",
+   "test_keyed_order_is_bounded_by_the_second_and_ties_fall_back_to_ascending_source_row"
+  ],
+  "summary": "2 failed, 4 passed, 29 deselected in 0.08s | test_tie_order_policy.py:142: AssertionError: assert 'S000002' == 'S000001' || test_tie_order_policy.py:316: assert [2, 3, 4, 1] == [4, 1, 2, 3]"
+ },
+ {
+  "id": "N1M08_bucket_ignores_the_instrument",
+  "expected_detector": "test_keyed_order_never_compares_keys_across_instruments_hand_calculated",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_keyed_order_never_compares_keys_across_instruments_hand_calculated",
+   "test_hybrid_keys_built_by_the_policy_function_keep_nifty_and_sensex_separate",
+   "test_other_keyed_policies_are_also_local"
+  ],
+  "summary": "3 failed, 3 passed, 29 deselected in 0.08s | test_tie_order_policy.py:309: assert ([12, 10, 13, 11] == [12, 13, 10, 11] || test_tie_order_policy.py:324: assert [3, 1, 4, 2] == [3, 4, 1, 2]"
+ },
+ {
+  "id": "N1M09_trade_id_policy_left_global",
+  "expected_detector": "test_other_keyed_policies_are_also_local",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_other_keyed_policies_are_also_local"
+  ],
+  "summary": "1 failed, 5 passed, 29 deselected in 0.08s | test_tie_order_policy.py:329: assert [12, 10, 13, 11] == [12, 13, 10, 11]"
+ }
+]

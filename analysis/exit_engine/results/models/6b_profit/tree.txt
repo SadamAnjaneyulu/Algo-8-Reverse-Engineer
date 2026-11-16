@@ -1,0 +1,24 @@
+===== 6b D0 in-profit unscheduled exit (profit-taking) (depth-3 tree, DEV fit) =====
+|--- hhmm <= 868.50
+|   |--- age_cheap <= 5.50
+|   |   |--- otm_atr <= 5.48
+|   |   |   |--- class: 0
+|   |   |--- otm_atr >  5.48
+|   |   |   |--- class: 0
+|   |--- age_cheap >  5.50
+|   |   |--- px <= 4.72
+|   |   |   |--- class: 0
+|   |   |--- px >  4.72
+|   |   |   |--- class: 0
+|--- hhmm >  868.50
+|   |--- vexp <= 487.24
+|   |   |--- vexp <= 129.60
+|   |   |   |--- class: 0
+|   |   |--- vexp >  129.60
+|   |   |   |--- class: 0
+|   |--- vexp >  487.24
+|   |   |--- clockB <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- clockB >  0.50
+|   |   |   |--- class: 1
+

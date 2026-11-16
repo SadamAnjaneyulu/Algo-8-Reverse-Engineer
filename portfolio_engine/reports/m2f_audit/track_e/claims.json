@@ -1,0 +1,114 @@
+[
+ {
+  "claim": "274 tests pass (236 fast + 38 slow); C++ core 24 checks pass",
+  "source": "M2-D/E reports; initial-state evidence",
+  "independent_verification": "[REPRO] full suite incl. slow in a clean scratch tree (no data_generated/runs): 274 passed, 0 skipped, 0 warnings, 212.9 s; -m \"not slow\" 236 passed 90.7 s; pe_core_tests 24/24, fresh build, 0 warnings",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "Re-execution of the same tests; many tests compare to committed files"
+ },
+ {
+  "claim": "Python and C++ cores produce byte-identical dumps, roles and lineage files",
+  "source": "parity_report*.json, tools/parity*.py",
+  "independent_verification": "[XLANG] fresh C++ build; full ledger (41,421 fills) x 3 conventions x 3 tie orders + both frozen cycles x 3 conventions: 15/15 byte-identical (7 files each); own 245 random sequences, 1,221 cases: 1,043 identical, 0 differing, remainder = rejections at overflow/extreme-AVG (see E-D06)",
+  "class": "Internal consistency only",
+  "status": "VERIFIED",
+  "limitation": "Both engines implement one written specification by the same author: agreement is not economic validation; domain limited to |q*px| << int64"
+ },
+ {
+  "claim": "Python engine accounting is correct",
+  "source": "tests; TP-01",
+  "independent_verification": "[IMPL] own exact-arithmetic reference (Fractions, plain lot lists): 1,043 cases (FIFO/LIFO/AVG, tie orders, reversals, multi-day, expiries) 0 mismatches on realized P&L, cash, inventory, reversal and unit counts",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "Synthetic inputs; real ledger validated only against TP-01 (same project) not raw"
+ },
+ {
+  "claim": "Fills in the ledger equal the raw trade file",
+  "source": "M1/TP-01",
+  "independent_verification": "Only the sha256 binding of tp01 ledger to Trades_GKOHNP140.csv (checked by generator) was exercised; no [RAW] re-parse by Track E",
+  "class": "Unresolved",
+  "status": "NOT VERIFIED",
+  "limitation": "Out of this track; hash binding is not content validation"
+ },
+ {
+  "claim": "Committed M2-C/M2-D/M2-E data are reproducible from HEAD",
+  "source": "manifests, tests",
+  "independent_verification": "[REPRO] 5 clones: regenerated all 7 generators from deleted outputs; every .gz/.tsv/.csv/.png byte-identical to committed; only manifest runtime fields (created_utc, generated_at_head, working_tree_dirty) and coverage.json key order differ",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "Reproducibility is not correctness; coverage.json byte order is hash-seed dependent (E-D01)"
+ },
+ {
+  "claim": "Outputs are independent of TZ, locale and working directory",
+  "source": "design (IST explicit)",
+  "independent_verification": "[REPRO] runs under TZ=UTC / America/New_York / Asia/Kolkata, LC_ALL=C / C.UTF-8, different PYTHONHASHSEED, cwd=/ : data identical; en_US locale not installed (NOT VERIFIED); ASCII-only encoding fails (E-D04)",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "TZ independence holds by construction (gmtime + fixed offset); detectors for a wrong offset are weak for C++ (E-D12)"
+ },
+ {
+  "claim": "Stable ids are deterministic functions of the source and unique",
+  "source": "M2-B..E design",
+  "independent_verification": "[INV] real ledger: fill/OA/CP/LE/episode/batch/link/item ids unique; lineage files byte-identical under 3 shuffles + reversal of input order; parent ids contain no : | tab",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "Uniqueness + order invariance, not semantic correctness; LE-id uniqueness is not an engine invariant (mutation E02)"
+ },
+ {
+  "claim": "Manifest hashes match the files they list",
+  "source": "manifests",
+  "independent_verification": "[INV] manifest_check.py: m2c 6/6, m2d 6/6, m2e 19/19 per cycle, 53 figure-CSV hashes (as listed) correct",
+  "class": "Internal consistency only",
+  "status": "VERIFIED",
+  "limitation": "Coverage incomplete (summaries, coverage.json, case_studies.json, manifest.json unhashed); hash basis differs by stage (E-D03)"
+ },
+ {
+  "claim": "Provenance (git sha, dirty flag) identifies the code that generated an artifact",
+  "source": "manifests",
+  "independent_verification": "Committed manifests record older heads (5b2939ec dirty / 77521fa7 / 10e33962) than the commits holding the final outputs; regeneration at HEAD records HEAD correctly",
+  "class": "Unresolved",
+  "status": "SUSPECTED",
+  "limitation": "E-D02; content reproducibility mitigates"
+ },
+ {
+  "claim": "Engine core (accounting, lineage, batches, wing/body) is pure standard library",
+  "source": "DEPENDENCY_AUDIT.md",
+  "independent_verification": "[INV] AST import scan of portfolio_engine/python and tools; outputs identical under Python 3.11/3.12/3.13 (23 hashes)",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "pandas/pyarrow needed by historical generator and forensics; matplotlib by charts; deps unpinned (E-D09)"
+ },
+ {
+  "claim": "Earlier-stage artifacts are unchanged across milestone commits",
+  "source": "audit rule",
+  "independent_verification": "git diff --stat e06a711e..7117bbce outside portfolio_engine: empty; earlier M2-B engine files changed after 9de52d9e only by small reviewed edits (ledger.hpp, lineage_set.py, invariants.py, replay.py, cpp tests) listed by diff --stat",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "Diff shows change sets, not their semantics; HEAD is now d8ca687d (adds only 00_initial_state.json)"
+ },
+ {
+  "claim": "stage2_alpha_research is preserved",
+  "source": "audit rule",
+  "independent_verification": "Only .gitignore tracked; on disk pickles and bytecode, no .py; sources exist only on branch research/stage2-independent-alpha; commit e32ff484 message claims sources were added",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "Preservation is via another branch (E-D11)"
+ },
+ {
+  "claim": "Python and C++ readers validate identically",
+  "source": "io.hpp header comment",
+  "independent_verification": "[XLANG] parse_probe: they differ on CRLF, +, whitespace, underscores, full-width digits, huge ints, lone CR",
+  "class": "Not testable with available data",
+  "status": "VERIFIED (claim false for non-canonical inputs)",
+  "limitation": "No effect on machine-written files (E-D05)"
+ },
+ {
+  "claim": "A test suite green implies the infrastructure is pinned",
+  "source": "n/a",
+  "independent_verification": "19 mutations: 5 survivors (E05, E07, E08, E14, E17); own detectors catch all 5",
+  "class": "Internal consistency only",
+  "status": "VERIFIED",
+  "limitation": "See mutations.json"
+ }
+]

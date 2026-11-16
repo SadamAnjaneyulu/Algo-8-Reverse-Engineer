@@ -1,0 +1,19 @@
+rows 41421 cols Counter({167: 41421})
+col11 side in Buy/Sell -> Counter({'Buy': 21684, 'Sell': 19737})
+col27 status -> Counter({'Filled': 39871, 'PartiallyFilled': 1550})
+epoch backward steps -> 0
+epoch IST vs entry-minute (fill >= entry minute) -> 0
+fills outside 09:14-15:31 IST -> 337
+col137 != col18 (fill px vs order running-average) -> 431
+col137 on paise grid -> 0
+col137 on 5-paise tick -> 0
+px min/max col137 (rupees) -> (0.05, 878.8)
+col33 != col19 (fill qty vs order qty) -> 2608
+PartiallyFilled with col33==col19 -> 0
+Filled with col33!=col19 -> 1058
+NIFTY qty %65 -> Counter({True: 19904})
+SENSEX qty %20 -> Counter({True: 21517})
+col163 prefix -> Counter({'num': 26954, 'h_': 13181, 's_': 763, 'v_': 515, 'm_': 8})
+underlyings -> Counter({'SENSEX': 21517, 'NIFTY': 19904})
+expiry col vs col15 day-of-week -> (Counter({'Tue': 19302, 'Mon': 602}), Counter({'Thu': 21517}))
+parent consistency: entry text constant per parent: True

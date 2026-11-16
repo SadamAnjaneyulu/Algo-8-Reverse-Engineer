@@ -1,0 +1,385 @@
+[
+ {
+  "id": "BASELINE_unmutated",
+  "outcome": "survived",
+  "failed": [],
+  "summary": "21 passed, 5 deselected in 5.36s"
+ },
+ {
+  "id": "R1M01_replay_default_not_primary",
+  "file": "python/pe/replay.py",
+  "change": "\"method='FIFO', tie_order='src'\" -> \"method='FIFO', tie_order='sells_first'\"",
+  "expected_detector": "test_default_convention_is_source_row_order",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_default_convention_is_source_row_order"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 5 deselected in 0.12s"
+ },
+ {
+  "id": "R1M02_lineageset_default_not_primary",
+  "file": "python/pe/lineage_set.py",
+  "change": "\"def __init__(self, fills, instruments, mode, tie_order='src'\" -> \"def __init__(self, fills, instruments, mode, tie_order='buys_first'\"",
+  "expected_detector": "test_default_convention_is_source_row_order",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_default_convention_is_source_row_order"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 5 deselected in 0.08s"
+ },
+ {
+  "id": "R1M03_alias_maps_to_wrong_policy",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"ALIASES = {'src': 'source_row'}\" -> \"ALIASES = {'src': 'sells_first'}\"",
+  "expected_detector": "test_default_convention_is_source_row_order / alias byte-identity",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_default_convention_is_source_row_order"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 5 deselected in 0.10s"
+ },
+ {
+  "id": "R1M04_sells_first_marked_primary",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"TiePolicy('sells_first', 'sells_first', False, False, True,\" -> \"TiePolicy('sells_first', 'sells_first', True, False, True,\"",
+  "expected_detector": "test_policy_registry_is_exactly_the_approved_set_and_only_source_row_is_primary",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_policy_registry_is_exactly_the_approved_set_and_only_source_row_is_primary"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 1 passed, 5 deselected in 0.11s"
+ },
+ {
+  "id": "R1M05_convention_id_hides_sensitivity",
+  "file": "python/pe/tie_policy.py",
+  "change": "'return SOURCE_ROW_ORDER_CONVENTION if p.primary else SENSITIVITY_PREFIX + p.name' -> 'return SOURCE_ROW_ORDER_CONVENTION'",
+  "expected_detector": "test_policy_registry... / test_sensitivity_policy_cannot_silently_replace",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_policy_registry_is_exactly_the_approved_set_and_only_source_row_is_primary"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 1 passed, 5 deselected in 0.11s"
+ },
+ {
+  "id": "R1M06_require_primary_noop",
+  "file": "python/pe/tie_policy.py",
+  "change": "'    if not is_primary(name): raise EngineError(' -> '    if False: raise EngineError('",
+  "expected_detector": "test_sensitivity_policy_cannot_silently_replace_the_primary_convention",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_sensitivity_policy_cannot_silently_replace_the_primary_convention"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 2 passed, 5 deselected in 0.12s"
+ },
+ {
+  "id": "R1M07_keyed_sort_descending",
+  "file": "python/pe/replay.py",
+  "change": "'return sorted(fills, key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))' -> 'return sorted(fills, key=lambda f: (f.timestamp_s, tuple(-v for v in f.tie_key), f.source_row_id, f.fill_id))'",
+  "expected_detector": "test_keyed_policies_reorder_a_same_side_flip",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_keyed_policies_reorder_a_same_side_flip[trade_id-keys0]"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 5 passed, 5 deselected in 0.10s"
+ },
+ {
+  "id": "R1M08_keyed_ignored",
+  "file": "python/pe/replay.py",
+  "change": "'return sorted(fills, key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))' -> 'return sorted(fills, key=lambda f: (f.timestamp_s, f.source_row_id, f.fill_id))'",
+  "expected_detector": "test_keyed_policies_reorder_a_same_side_flip",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_keyed_policies_reorder_a_same_side_flip[trade_id-keys0]"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 5 passed, 5 deselected in 0.09s"
+ },
+ {
+  "id": "R1M09_sensex_floor_not_round",
+  "file": "python/pe/tie_policy.py",
+  "change": "'if (ns + 500_000_000) // 10**9 == epoch_s: return (ns,)' -> 'if ns // 10**9 == epoch_s: return (ns,)'",
+  "expected_detector": "test_key_functions",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 10 passed, 5 deselected in 0.12s"
+ },
+ {
+  "id": "R1M10_sensex_no_consistency_check",
+  "file": "python/pe/tie_policy.py",
+  "change": "'if (ns + 500_000_000) // 10**9 == epoch_s: return (ns,)' -> 'if True: return (ns,)'",
+  "expected_detector": "test_key_functions / test_attach_tie_keys_reads_raw_rows",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 10 passed, 5 deselected in 0.10s"
+ },
+ {
+  "id": "R1M11_sensex_policy_applies_to_nifty",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"    if underlying != 'SENSEX': return (0,)\\n\" -> ''",
+  "expected_detector": "test_key_functions",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 10 passed, 5 deselected in 0.09s"
+ },
+ {
+  "id": "R1M12_trade_id_drops_suffix",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"a, b = trade_id.split('-', 1); return (int(a), int(b))\" -> \"a, b = trade_id.split('-', 1); return (int(a), 0)\"",
+  "expected_detector": "test_key_functions",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 10 passed, 5 deselected in 0.09s"
+ },
+ {
+  "id": "R1M13_order_no_lexicographic",
+  "file": "python/pe/tie_policy.py",
+  "change": "'def order_no_key(order_no): return (int(order_no),)' -> 'def order_no_key(order_no): return (order_no,)'",
+  "expected_detector": "test_key_functions",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 10 passed, 5 deselected in 0.10s"
+ },
+ {
+  "id": "R1M14_primary_gets_a_key",
+  "file": "python/pe/tie_policy.py",
+  "change": "'    return None\\n' -> '    return (0,)\\n'",
+  "expected_detector": "test_attach_tie_keys_reads_raw_rows_and_leaves_primary_untouched / test_key_functions",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 10 passed, 5 deselected in 0.09s"
+ },
+ {
+  "id": "R1M15_alias_not_normalised_in_replay",
+  "file": "python/pe/replay.py",
+  "change": "\"    if tie_order == 'source_row': tie_order = 'src'\" -> \"    if False: tie_order = 'src'\"",
+  "expected_detector": "test_source_row_alias_is_byte_identical_to_legacy_src",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_alias_table_is_exactly_the_legacy_token_and_order_events_accepts_the_alias"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 16 passed, 5 deselected in 3.85s"
+ },
+ {
+  "id": "R1M16_attach_off_by_one_row",
+  "file": "python/pe/generators/historical.py",
+  "change": "'und, tid, ono = keys[f.source_row_id]' -> 'und, tid, ono = keys[max(f.source_row_id - 1, 0) if f.source_row_id in keys and f.source_row_id - 1 in keys else f.source_row_id]'",
+  "expected_detector": "test_attach_tie_keys_reads_raw_rows (REAL ledger rows)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_attach_tie_keys_reads_raw_rows_and_leaves_primary_untouched"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 11 passed, 5 deselected in 2.64s"
+ },
+ {
+  "id": "R1M18_half_ns_boundary_shifted",
+  "file": "python/pe/tie_policy.py",
+  "change": "'if (ns + 500_000_000) // 10**9 == epoch_s: return (ns,)' -> 'if (ns + 499_999_999) // 10**9 == epoch_s: return (ns,)'",
+  "expected_detector": "test_sensex_time_rounding_boundary_is_half_up_at_the_half_nanosecond (reviewer R2M02)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_sensex_time_rounding_boundary_is_half_up_at_the_half_nanosecond"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 15 passed, 5 deselected in 3.76s"
+ },
+ {
+  "id": "R1M19_keyed_key_before_timestamp",
+  "file": "python/pe/replay.py",
+  "change": "'key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))\\n    tk' -> 'key=lambda f: (f.tie_key, f.timestamp_s, f.source_row_id, f.fill_id))\\n    tk'",
+  "expected_detector": "test_keyed_order_is_timestamp_first_then_key_then_source_row (reviewer R2M04)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_keyed_order_is_timestamp_first_then_key_then_source_row"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 13 passed, 5 deselected in 3.57s"
+ },
+ {
+  "id": "R1M20_partial_key_guard_any_to_all",
+  "file": "python/pe/replay.py",
+  "change": "\"if any(f.tie_key is None for f in fills): raise EngineError(f'tie order\" -> \"if all(f.tie_key is None for f in fills): raise EngineError(f'tie order\"",
+  "expected_detector": "test_partial_or_missing_keys_are_rejected... (reviewer R2M05)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_partial_or_missing_keys_are_rejected_even_when_only_one_fill_lacks_one"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 14 passed, 5 deselected in 3.57s"
+ },
+ {
+  "id": "R1M21_keyed_source_row_tiebreak_dropped",
+  "file": "python/pe/replay.py",
+  "change": "'key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))\\n    tk' -> 'key=lambda f: (f.timestamp_s, f.tie_key))\\n    tk'",
+  "expected_detector": "test_keyed_order_is_timestamp_first_then_key_then_source_row (reviewer R2M06)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_keyed_order_is_timestamp_first_then_key_then_source_row"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 13 passed, 5 deselected in 3.56s"
+ },
+ {
+  "id": "R1M22_raw_hash_guard_removed",
+  "file": "python/pe/generators/historical.py",
+  "change": "\"    if provenance.sha256_file(raw) != man['sha256']: raise EngineError('raw trade file hash differs from the TP-01 manifest')\\n    need\" -> '    need'",
+  "expected_detector": "test_attach_tie_keys_refuses_a_raw_file_that_does_not_match_the_manifest (reviewer R2M07)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_attach_tie_keys_refuses_a_raw_file_that_does_not_match_the_manifest"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 18 passed, 5 deselected in 3.39s"
+ },
+ {
+  "id": "R1M23_extra_alias_onto_sensitivity_policy",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"ALIASES = {'src': 'source_row'}\" -> \"ALIASES = {'src': 'source_row', 'latest': 'trade_id'}\"",
+  "expected_detector": "test_alias_table_is_exactly_the_legacy_token... (reviewer R2M14)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_alias_table_is_exactly_the_legacy_token_and_order_events_accepts_the_alias"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 16 passed, 5 deselected in 3.54s"
+ },
+ {
+  "id": "R1M24_primary_order_depends_on_input_order",
+  "file": "python/pe/replay.py",
+  "change": "'    return sorted(fills, key=lambda f: (f.timestamp_s, tk(f.side), f.source_row_id, f.fill_id))' -> '    return sorted(fills, key=lambda f: (f.timestamp_s, tk(f.side)))'",
+  "expected_detector": "test_primary_order_does_not_depend_on_input_order (reviewer R2M15)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_primary_order_does_not_depend_on_input_order"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 17 passed, 5 deselected in 3.57s"
+ },
+ {
+  "id": "R1M25_sensex_policy_disabled_for_all_but_the_exception",
+  "file": "python/pe/tie_policy.py",
+  "change": "'if (ns + 500_000_000) // 10**9 == epoch_s: return (ns,)' -> 'if (ns + 500_000_000) // 10**9 == epoch_s: return (epoch_s * 10**9,)'",
+  "expected_detector": "test_sensex_policy_orders_by_the_embedded_nanosecond_time... (reviewer R2M18)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_key_functions"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 10 passed, 5 deselected in 0.11s"
+ },
+ {
+  "id": "R1M26_keys_unlabelled",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"if n == 'trade_id': return (n,) + trade_id_key(trade_id)\" -> \"if n == 'trade_id': return trade_id_key(trade_id)\"",
+  "expected_detector": "test_keys_are_labelled_and_a_foreign_policy_key_is_rejected (R1R-08)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_attach_tie_keys_reads_raw_rows_and_leaves_primary_untouched"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 11 passed, 5 deselected in 2.74s"
+ },
+ {
+  "id": "R1M27_foreign_key_check_removed",
+  "file": "python/pe/replay.py",
+  "change": "\"        if any(f.tie_key[0] != tie_order for f in fills): raise EngineError(f'Fill.tie_key was built for another policy than {tie_order}')\\n\" -> ''",
+  "expected_detector": "test_keys_are_labelled_and_a_foreign_policy_key_is_rejected (R1R-08)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_keys_are_labelled_and_a_foreign_policy_key_is_rejected"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 12 passed, 5 deselected in 3.56s"
+ },
+ {
+  "id": "R1M28_order_events_alias_not_normalised",
+  "file": "python/pe/replay.py",
+  "change": "\"    if tie_order == 'source_row': tie_order = 'src'                          # alias of the primary convention\\n\" -> ''",
+  "expected_detector": "test_alias_table_is_exactly_the_legacy_token... (R1R-09)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_alias_table_is_exactly_the_legacy_token_and_order_events_accepts_the_alias"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 16 passed, 5 deselected in 3.62s"
+ },
+ {
+  "id": "R1M29_cli_cpp_guard_removed",
+  "file": "python/pe/cli.py",
+  "change": "'    if not pol.cpp_supported: raise SystemExit(' -> '    if False: raise SystemExit('",
+  "expected_detector": "test_cli_refuses_python_only_policies_for_the_cpp_core (R1R-09)",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_cli_refuses_python_only_policies_for_the_cpp_core"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 19 passed, 5 deselected in 3.58s"
+ },
+ {
+  "id": "R1M17_real_trade_id_sorted_by_sell_side",
+  "file": "python/pe/tie_policy.py",
+  "change": "\"    if n == 'trade_id': return (n,) + trade_id_key(trade_id)\" -> \"    if n == 'trade_id': return (n, 0)\"",
+  "expected_detector": "test_attach_tie_keys_reads_raw_rows / slow real-ledger pins",
+  "outcome": "failed",
+  "failed_tests": [
+   "tests/test_tie_order_policy.py::test_attach_tie_keys_reads_raw_rows_and_leaves_primary_untouched"
+  ],
+  "errors": [],
+  "stage": "fast",
+  "summary": "1 failed, 11 passed, 5 deselected in 2.25s"
+ }
+]

@@ -1,0 +1,60 @@
+{
+ "W1": {
+  "links": 42777,
+  "cross_session": 0,
+  "same_instrument": 6,
+  "wing_before_body": 11818,
+  "otm_nonpos": 24,
+  "otm_pos_share": 0.9994389508380672
+ },
+ "W1_S60": {
+  "links": 65228,
+  "cross_session": 0,
+  "same_instrument": 7,
+  "wing_before_body": 22130,
+  "otm_nonpos": 32,
+  "otm_pos_share": 0.9995094131354633
+ },
+ "W3": {
+  "links": 12096,
+  "cross_session": 0,
+  "same_instrument": 8,
+  "wing_before_body": 962,
+  "otm_nonpos": 27,
+  "otm_pos_share": 0.9977678571428571
+ },
+ "entry_minute_day_mismatch_items": 0,
+ "entry_minute_after_first_fill": 2,
+ "W1_open": {
+  "links": 18823,
+  "le5": 0.4926951070498858,
+  "median": 6,
+  "p90": 34,
+  "max": 383,
+  "tied": 2887,
+  "otm_pos": 0.9988312171279817,
+  "px_le_005": 0.9020878712213781,
+  "qty_ratio_min": 0.125,
+  "qty_ratio_max": 27.0
+ },
+ "S60_open": {
+  "links": 29079,
+  "outside_primary": 0.3530726641218749,
+  "wing_before": 0.31369716977887824,
+  "med": 11,
+  "p90": 51
+ },
+ "W2_body_ratio_gt1_share": 0.09126729588564098,
+ "W2_body_ratio_max": 31.5,
+ "W2_bodies": 10913,
+ "disagreements": {
+  "nearest_equal": 6848,
+  "W3_outside_W1": 6689,
+  "W1none_S60has": 903,
+  "W3_body_W1none": 1050,
+  "nearest_differ": 453,
+  "W3_in_W1": 437,
+  "none_both": 195,
+  "W1_W3unmatched": 175
+ }
+}

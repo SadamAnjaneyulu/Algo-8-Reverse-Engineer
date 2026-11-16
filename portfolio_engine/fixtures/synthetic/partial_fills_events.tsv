@@ -1,0 +1,5 @@
+# SYNTHETIC_TEST fixture partial_fills; generator synthetic v1; not Algo 8 data
+schema_version	execution_mode	fill_id	source_row_id	parent_order_id	module_tag	instrument_id	timestamp_s	side	quantity	price_paise	requested_quantity	order_status	is_duplicate_fill	evidence_source
+pe.fill.v1	SYNTHETIC_TEST	S000001	1	P1	num	NIFTY|2026-01-08|CE|24000	1767584760	-1	65	10000	195	PartiallyFilled	0	synthetic:partial_fills:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000002	2	P1	num	NIFTY|2026-01-08|CE|24000	1767584765	-1	65	10005	195	PartiallyFilled	0	synthetic:partial_fills:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000003	3	P2	num	NIFTY|2026-01-08|CE|24000	1767584820	1	130	9000	195	PartiallyFilled	0	synthetic:partial_fills:seed=0

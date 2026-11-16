@@ -1,0 +1,48 @@
+# TP-01 configuration. Fixed BEFORE any classification was run (PHASE0_AUDIT.md section 6).
+version: 1
+source:
+  raw_trades: Trades_GKOHNP140.csv          # canonical raw fill file, read-only, no header
+  market_env_var: ALGO8_MARKET_DIR          # raw Breeze 1-minute bars, used only for market-context analysis (Phase 5D / 6)
+columns:                                    # 0-based positions in the raw file (no header); verified in PHASE0_AUDIT.md
+  status_code: 1
+  segment: 3
+  order_no: 4
+  side: 11
+  und: 12
+  strike: 14
+  expiry_text: 15
+  cp: 16
+  px_limit: 17
+  px_order_avg: 18        # RUNNING ORDER-AVERAGE price repeated on each fill row (NOT the per-fill price)
+  qty_order: 19
+  qty_remaining: 20
+  order_entry_text: 23    # order ENTRY minute, never used as an execution time
+  status: 27
+  trade_id: 28
+  desc: 32
+  qty_fill: 33            # units of this fill (multiples of the lot size)
+  token: 143
+  symbol: 153
+  px_fill: 137            # PER-FILL price (100 % on the 0.05 tick grid)
+  epoch_trade: 161        # execution time, whole seconds, UTC epoch; IST = +5:30
+  parent_oid: 163         # UniqueOrderIdentifier (parent order)
+  app_key: 166
+units:
+  lot_units: {NIFTY: 65, SENSEX: 20}        # reporting only; quantities are already in units, so P&L = points x units, no multiplier
+  tick: 0.05
+classification:
+  breakeven_tolerance_points_per_unit: 0.025   # half a tick; |gross P&L per unit| <= tolerance -> BREAKEVEN. Fixed before classification.
+matching:
+  methods: [FIFO, LIFO, AVG]
+  tie_orders: [src, sells_first, buys_first]    # alternative orderings inside one (contract, second); primary = src (file order, verified chronological)
+  primary_tie_order: src
+charges:
+  available: false                              # the raw file has no brokerage / tax / charge field; net P&L is therefore not computed
+candidate_rules:        # fixed before any exit-pattern table was inspected (Phase 5 -> Phase 6 hand-off); candidates are hypotheses, never confirmed triggers
+  decay_bin_width_pct: 5            # exit premium as % of entry premium, bins of 5 percentage points
+  cluster_min_count: 100            # a bin needs at least this many closures ...
+  cluster_excess_ratio: 3.0         # ... and >= this multiple of the median count of the 3 bins on each side (itself excluded)
+  clock_cluster_min_count: 100      # same rule for clock minutes (5 minutes on each side)
+  clock_cluster_excess_ratio: 3.0
+  max_candidates: 3                 # at most the strongest 3 clusters are carried into Phase 6
+  hazard_window_minutes: 5          # Phase 6: closing within this many minutes after a condition is observed

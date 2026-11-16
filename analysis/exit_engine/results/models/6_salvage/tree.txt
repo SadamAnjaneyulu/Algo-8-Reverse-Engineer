@@ -1,0 +1,24 @@
+===== 6 expiry-day salvage (depth-3 tree, DEV fit) =====
+|--- r_avg <= 0.01
+|   |--- since_sale_k <= 170.50
+|   |   |--- since_bb <= 1.50
+|   |   |   |--- class: 0
+|   |   |--- since_bb >  1.50
+|   |   |   |--- class: 0
+|   |--- since_sale_k >  170.50
+|   |   |--- lots_pe <= 51.50
+|   |   |   |--- class: 0
+|   |   |--- lots_pe >  51.50
+|   |   |   |--- class: 0
+|--- r_avg >  0.01
+|   |--- px <= 3.12
+|   |   |--- share_side <= 0.09
+|   |   |   |--- class: 0
+|   |   |--- share_side >  0.09
+|   |   |   |--- class: 0
+|   |--- px >  3.12
+|   |   |--- r_avg <= 0.05
+|   |   |   |--- class: 0
+|   |   |--- r_avg >  0.05
+|   |   |   |--- class: 0
+

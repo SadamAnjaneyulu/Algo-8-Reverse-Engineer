@@ -1,0 +1,798 @@
+{
+ "convention": "SOURCE_ROW_ORDER_CONVENTION",
+ "generated_at_head": "46c549853f96debaa7223ee76d1f408989317265",
+ "note_realized_pnl": "realized P&L deltas are reported by the independent exact-arithmetic reference (reports/m2f_audit/r1/independent_tie_sensitivity_result.json), not by this tool",
+ "policies": {
+  "buys_first": {
+   "1_groups_differing_in_order": {
+    "differing": 29,
+    "differing_mixed_side": 29,
+    "differing_same_side": 0,
+    "multi_fill_groups": 4464
+   },
+   "2_groups_changing_open_close_allocation": {
+    "fill_rows": [
+     24730,
+     24732,
+     39038,
+     39041
+    ],
+    "fills_changed": 4,
+    "groups": 2,
+    "groups_detail": [
+     {
+      "instrument": "SENSEX|2026-08-20|PE|76900",
+      "rows": [
+       24730,
+       24732,
+       24733,
+       24735
+      ],
+      "sides": "SBBB",
+      "ts": 1787197571
+     },
+     {
+      "instrument": "NIFTY|2026-10-13|PE|22450",
+      "rows": [
+       39038,
+       39041
+      ],
+      "sides": "SB",
+      "ts": 1791863315
+     }
+    ],
+    "mixed_side": 2,
+    "same_side": 0
+   },
+   "3_episode_identity": {
+    "episodes_changed": 12,
+    "episodes_changed_by_content": 7,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
+    "instruments": [
+     "NIFTY|2026-06-23|CE|24000",
+     "NIFTY|2026-10-13|PE|22400",
+     "NIFTY|2026-10-13|PE|22450",
+     "NIFTY|2026-10-19|CE|23000",
+     "SENSEX|2026-08-20|PE|76900"
+    ],
+    "instruments_changed": 5,
+    "reversal_episodes_alt": 23,
+    "reversal_episodes_base": 23
+   },
+   "4_closing_batch_membership": {
+    "C1@10s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 14
+    },
+    "C1@2s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 9
+    },
+    "C1@30s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 252
+    },
+    "C1@5s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 14
+    },
+    "C1@60s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 252
+    },
+    "C2@10s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 14
+    },
+    "C2@2s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 9
+    },
+    "C2@30s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 252
+    },
+    "C2@5s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 14
+    },
+    "C2@60s": {
+     "alternative_batches_not_in_baseline": 2,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 2,
+     "parents_in_changed_batches": 252
+    }
+   },
+   "5_wing_body_membership": {
+    "closing_body_units": 540165,
+    "closing_wing_units": 500775,
+    "items_only_in_one": 4,
+    "links_baseline": {
+     "W1": 42777,
+     "W1_S60": 65228,
+     "W2": 42777,
+     "W2_S60": 65228,
+     "W3": 12096
+    },
+    "links_changed": {
+     "W1": 1,
+     "W1_S60": 7,
+     "W2": 1,
+     "W2_S60": 7,
+     "W3": 0
+    },
+    "opening_body_units": 626680,
+    "opening_wing_units": 617130
+   },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 4,
+     "closing_fills_with_changed_source_lots": 4
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 74,
+     "closing_fills_with_changed_source_lots": 74
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
+   "attribution": {
+    "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
+    "split_changing_groups_whose_parents_appear_in_changed_batches": 2,
+    "split_changing_groups_whose_parents_appear_in_changed_wing_body_items_or_links": 2
+   },
+   "convention": "SENSITIVITY_ONLY:buys_first",
+   "invariants": {
+    "closing_units": 1377065,
+    "closing_units_equal": true,
+    "final_inventory_equal": true,
+    "opening_units": 1414545,
+    "opening_units_equal": true
+   },
+   "sensitivity_only": true
+  },
+  "order_no": {
+   "1_groups_differing_in_order": {
+    "differing": 141,
+    "differing_mixed_side": 1,
+    "differing_same_side": 140,
+    "multi_fill_groups": 4464
+   },
+   "2_groups_changing_open_close_allocation": {
+    "fill_rows": [
+     27911,
+     27912,
+     27916,
+     27917
+    ],
+    "fills_changed": 4,
+    "groups": 2,
+    "groups_detail": [
+     {
+      "instrument": "NIFTY|2026-09-01|PE|23200",
+      "rows": [
+       27906,
+       27912,
+       27916
+      ],
+      "sides": "SSS",
+      "ts": 1788167791
+     },
+     {
+      "instrument": "NIFTY|2026-09-01|CE|24600",
+      "rows": [
+       27908,
+       27911,
+       27917
+      ],
+      "sides": "SSS",
+      "ts": 1788167791
+     }
+    ],
+    "mixed_side": 0,
+    "same_side": 2
+   },
+   "3_episode_identity": {
+    "episodes_changed": 4,
+    "episodes_changed_by_content": 4,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
+    "instruments": [
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200"
+    ],
+    "instruments_changed": 2,
+    "reversal_episodes_alt": 21,
+    "reversal_episodes_base": 23
+   },
+   "4_closing_batch_membership": {
+    "C1@10s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C1@2s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 25
+    },
+    "C1@30s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C1@5s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C1@60s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C2@10s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C2@2s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 25
+    },
+    "C2@30s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C2@5s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C2@60s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    }
+   },
+   "5_wing_body_membership": {
+    "closing_body_units": 540250,
+    "closing_wing_units": 500775,
+    "items_only_in_one": 2,
+    "links_baseline": {
+     "W1": 42777,
+     "W1_S60": 65228,
+     "W2": 42777,
+     "W2_S60": 65228,
+     "W3": 12096
+    },
+    "links_changed": {
+     "W1": 6,
+     "W1_S60": 6,
+     "W2": 6,
+     "W2_S60": 6,
+     "W3": 0
+    },
+    "opening_body_units": 625985,
+    "opening_wing_units": 617130
+   },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 598,
+     "closing_fills_with_changed_source_lots": 590
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 593,
+     "closing_fills_with_changed_source_lots": 588
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
+   "attribution": {
+    "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
+    "split_changing_groups_whose_parents_appear_in_changed_batches": 2,
+    "split_changing_groups_whose_parents_appear_in_changed_wing_body_items_or_links": 2
+   },
+   "convention": "SENSITIVITY_ONLY:order_no",
+   "invariants": {
+    "closing_units": 1377065,
+    "closing_units_equal": true,
+    "final_inventory_equal": true,
+    "opening_units": 1414545,
+    "opening_units_equal": true
+   },
+   "sensitivity_only": true
+  },
+  "sells_first": {
+   "1_groups_differing_in_order": {
+    "differing": 29,
+    "differing_mixed_side": 29,
+    "differing_same_side": 0,
+    "multi_fill_groups": 4464
+   },
+   "2_groups_changing_open_close_allocation": {
+    "fill_rows": [
+     39039,
+     39042
+    ],
+    "fills_changed": 2,
+    "groups": 1,
+    "groups_detail": [
+     {
+      "instrument": "NIFTY|2026-10-13|PE|22400",
+      "rows": [
+       39037,
+       39039,
+       39042
+      ],
+      "sides": "SBS",
+      "ts": 1791863315
+     }
+    ],
+    "mixed_side": 1,
+    "same_side": 0
+   },
+   "3_episode_identity": {
+    "episodes_changed": 1,
+    "episodes_changed_by_content": 1,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
+    "instruments": [
+     "NIFTY|2026-10-13|PE|22400"
+    ],
+    "instruments_changed": 1,
+    "reversal_episodes_alt": 23,
+    "reversal_episodes_base": 23
+   },
+   "4_closing_batch_membership": {
+    "C1@10s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 8
+    },
+    "C1@2s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 8
+    },
+    "C1@30s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 124
+    },
+    "C1@5s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 8
+    },
+    "C1@60s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 124
+    },
+    "C2@10s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 8
+    },
+    "C2@2s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 8
+    },
+    "C2@30s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 124
+    },
+    "C2@5s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 8
+    },
+    "C2@60s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 124
+    }
+   },
+   "5_wing_body_membership": {
+    "closing_body_units": 540315,
+    "closing_wing_units": 500775,
+    "items_only_in_one": 2,
+    "links_baseline": {
+     "W1": 42777,
+     "W1_S60": 65228,
+     "W2": 42777,
+     "W2_S60": 65228,
+     "W3": 12096
+    },
+    "links_changed": {
+     "W1": 1,
+     "W1_S60": 2,
+     "W2": 1,
+     "W2_S60": 2,
+     "W3": 0
+    },
+    "opening_body_units": 626830,
+    "opening_wing_units": 617130
+   },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 2,
+     "closing_fills_with_changed_source_lots": 2
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 65,
+     "closing_fills_with_changed_source_lots": 65
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
+   "attribution": {
+    "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
+    "split_changing_groups_whose_parents_appear_in_changed_batches": 1,
+    "split_changing_groups_whose_parents_appear_in_changed_wing_body_items_or_links": 1
+   },
+   "convention": "SENSITIVITY_ONLY:sells_first",
+   "invariants": {
+    "closing_units": 1377065,
+    "closing_units_equal": true,
+    "final_inventory_equal": true,
+    "opening_units": 1414545,
+    "opening_units_equal": true
+   },
+   "sensitivity_only": true
+  },
+  "sensex_trade_id_time": {
+   "1_groups_differing_in_order": {
+    "differing": 21,
+    "differing_mixed_side": 0,
+    "differing_same_side": 21,
+    "multi_fill_groups": 4464
+   },
+   "2_groups_changing_open_close_allocation": {
+    "fill_rows": [],
+    "fills_changed": 0,
+    "groups": 0,
+    "groups_detail": [],
+    "mixed_side": 0,
+    "same_side": 0
+   },
+   "3_episode_identity": {
+    "episodes_changed": 0,
+    "episodes_changed_by_content": 0,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
+    "instruments": [],
+    "instruments_changed": 0,
+    "reversal_episodes_alt": 23,
+    "reversal_episodes_base": 23
+   },
+   "4_closing_batch_membership": {
+    "C1@10s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C1@2s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C1@30s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C1@5s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C1@60s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C2@10s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C2@2s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C2@30s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C2@5s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    },
+    "C2@60s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 0,
+     "parents_in_changed_batches": 0
+    }
+   },
+   "5_wing_body_membership": {
+    "closing_body_units": 540250,
+    "closing_wing_units": 500775,
+    "items_only_in_one": 0,
+    "links_baseline": {
+     "W1": 42777,
+     "W1_S60": 65228,
+     "W2": 42777,
+     "W2_S60": 65228,
+     "W3": 12096
+    },
+    "links_changed": {
+     "W1": 0,
+     "W1_S60": 0,
+     "W2": 0,
+     "W2_S60": 0,
+     "W3": 0
+    },
+    "opening_body_units": 626765,
+    "opening_wing_units": 617130
+   },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 84,
+     "closing_fills_with_changed_source_lots": 81
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 80,
+     "closing_fills_with_changed_source_lots": 76
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
+   "attribution": {
+    "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
+    "split_changing_groups_whose_parents_appear_in_changed_batches": 0,
+    "split_changing_groups_whose_parents_appear_in_changed_wing_body_items_or_links": 0
+   },
+   "convention": "SENSITIVITY_ONLY:sensex_trade_id_time",
+   "invariants": {
+    "closing_units": 1377065,
+    "closing_units_equal": true,
+    "final_inventory_equal": true,
+    "opening_units": 1414545,
+    "opening_units_equal": true
+   },
+   "sensitivity_only": true
+  },
+  "trade_id": {
+   "1_groups_differing_in_order": {
+    "differing": 173,
+    "differing_mixed_side": 2,
+    "differing_same_side": 171,
+    "multi_fill_groups": 4464
+   },
+   "2_groups_changing_open_close_allocation": {
+    "fill_rows": [
+     27911,
+     27912,
+     27916,
+     27917
+    ],
+    "fills_changed": 4,
+    "groups": 2,
+    "groups_detail": [
+     {
+      "instrument": "NIFTY|2026-09-01|PE|23200",
+      "rows": [
+       27906,
+       27912,
+       27916
+      ],
+      "sides": "SSS",
+      "ts": 1788167791
+     },
+     {
+      "instrument": "NIFTY|2026-09-01|CE|24600",
+      "rows": [
+       27908,
+       27911,
+       27917
+      ],
+      "sides": "SSS",
+      "ts": 1788167791
+     }
+    ],
+    "mixed_side": 0,
+    "same_side": 2
+   },
+   "3_episode_identity": {
+    "episodes_changed": 4,
+    "episodes_changed_by_content": 4,
+    "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+    "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
+    "instruments": [
+     "NIFTY|2026-09-01|CE|24600",
+     "NIFTY|2026-09-01|PE|23200"
+    ],
+    "instruments_changed": 2,
+    "reversal_episodes_alt": 21,
+    "reversal_episodes_base": 23
+   },
+   "4_closing_batch_membership": {
+    "C1@10s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C1@2s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 25
+    },
+    "C1@30s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C1@5s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C1@60s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C2@10s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3065,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C2@2s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 7127,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 25
+    },
+    "C2@30s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 2171,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C2@5s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 3777,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    },
+    "C2@60s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches": 1502,
+     "baseline_batches_not_in_alternative": 1,
+     "parents_in_changed_batches": 35
+    }
+   },
+   "5_wing_body_membership": {
+    "closing_body_units": 540250,
+    "closing_wing_units": 500775,
+    "items_only_in_one": 2,
+    "links_baseline": {
+     "W1": 42777,
+     "W1_S60": 65228,
+     "W2": 42777,
+     "W2_S60": 65228,
+     "W3": 12096
+    },
+    "links_changed": {
+     "W1": 6,
+     "W1_S60": 6,
+     "W2": 6,
+     "W2_S60": 6,
+     "W3": 0
+    },
+    "opening_body_units": 625985,
+    "opening_wing_units": 617130
+   },
+   "6_lot_attribution": {
+    "FIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 666,
+     "closing_fills_with_changed_source_lots": 654
+    },
+    "LIFO": {
+     "closing_fills_compared": 17760,
+     "closing_fills_with_changed_consumption_sequence": 662,
+     "closing_fills_with_changed_source_lots": 653
+    },
+    "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+   },
+   "attribution": {
+    "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
+    "split_changing_groups_whose_parents_appear_in_changed_batches": 2,
+    "split_changing_groups_whose_parents_appear_in_changed_wing_body_items_or_links": 2
+   },
+   "convention": "SENSITIVITY_ONLY:trade_id",
+   "invariants": {
+    "closing_units": 1377065,
+    "closing_units_equal": true,
+    "final_inventory_equal": true,
+    "opening_units": 1414545,
+    "opening_units_equal": true
+   },
+   "sensitivity_only": true
+  }
+ },
+ "source_hashes": {
+  "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "tp01_ledger_sha256": "3b47c55150d79535a43fcea485a41e8e7bd76b201384fd89eae9a88f2c736053"
+ },
+ "statement": "deterministic source-row convention, NOT verified intra-second execution chronology"
+}

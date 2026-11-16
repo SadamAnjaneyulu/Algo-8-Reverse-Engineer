@@ -1,0 +1,12 @@
+# SYNTHETIC_TEST fixture cut_reentry_195; generator synthetic v1; not Algo 8 data
+schema_version	execution_mode	fill_id	source_row_id	parent_order_id	module_tag	instrument_id	timestamp_s	side	quantity	price_paise	requested_quantity	order_status	is_duplicate_fill	evidence_source
+pe.fill.v1	SYNTHETIC_TEST	S000001	1	basketA_ce	num	NIFTY|2026-01-08|CE|24000	1767584760	-1	65	10000	195	PartiallyFilled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000002	2	basketA_pe	num	NIFTY|2026-01-08|PE|24000	1767584760	-1	65	9000	195	PartiallyFilled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000003	3	basketA_ce	num	NIFTY|2026-01-08|CE|24000	1767584761	-1	65	10050	195	PartiallyFilled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000004	4	basketA_pe	num	NIFTY|2026-01-08|PE|24000	1767584761	-1	65	9050	195	PartiallyFilled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000005	5	basketA_ce	num	NIFTY|2026-01-08|CE|24000	1767584762	-1	65	10100	195	Filled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000006	6	basketA_pe	num	NIFTY|2026-01-08|PE|24000	1767584762	-1	65	9100	195	Filled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000007	7	basketA_wce	num	NIFTY|2026-01-08|CE|24800	1767584770	1	195	200	195	Filled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000008	8	basketA_wpe	num	NIFTY|2026-01-08|PE|23200	1767584770	1	195	250	195	Filled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000009	9	cut1	num	NIFTY|2026-01-08|CE|24000	1767585360	1	65	8000	65	Filled	0	synthetic:cut_reentry_195:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000010	10	reentry1	num	NIFTY|2026-01-08|CE|24000	1767585960	-1	65	8500	65	Filled	0	synthetic:cut_reentry_195:seed=0

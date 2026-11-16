@@ -1,0 +1,69 @@
+{
+ "a_synthetic_same_instrument_second": {
+  "FIFO|src": {
+   "second_end_gross": 10,
+   "cash": -110000,
+   "realized_paise": 10000,
+   "book_value": -120000,
+   "reversal_fills": 0
+  },
+  "FIFO|sells_first": {
+   "second_end_gross": 10,
+   "cash": -110000,
+   "realized_paise": 10000,
+   "book_value": -120000,
+   "reversal_fills": 0
+  },
+  "LIFO|src": {
+   "second_end_gross": 10,
+   "cash": -110000,
+   "realized_paise": -10000,
+   "book_value": -100000,
+   "reversal_fills": 0
+  },
+  "LIFO|sells_first": {
+   "second_end_gross": 10,
+   "cash": -110000,
+   "realized_paise": 10000,
+   "book_value": -120000,
+   "reversal_fills": 0
+  }
+ },
+ "b1_order_dependence": {
+  "A_then_B": {
+   "PER_FILL_ZERO_CROSSING_REVERSAL": 0,
+   "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 0
+  },
+  "B_then_A": {
+   "PER_FILL_ZERO_CROSSING_REVERSAL": 1,
+   "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 1
+  }
+ },
+ "b2_attribution": {
+  "counts": {
+   "PER_FILL_ZERO_CROSSING_REVERSAL": 1,
+   "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 2
+  },
+  "parent_level": [
+   {
+    "parent": "PA",
+    "before": 5,
+    "after": -4
+   },
+   {
+    "parent": "PB",
+    "before": 6,
+    "after": -5
+   }
+  ],
+  "per_fill": [
+   {
+    "parent": "PB"
+   }
+  ]
+ },
+ "b3_flip_without_per_fill": {
+  "PER_FILL_ZERO_CROSSING_REVERSAL": 0,
+  "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 1
+ }
+}

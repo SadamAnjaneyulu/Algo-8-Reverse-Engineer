@@ -1,0 +1,27 @@
+check,value,status,note
+raw rows,41421,INFO,
+parent orders (col 163),39874,INFO,
+"order numbers (col 4), reused across days",37258,INFO,not an order identity
+sessions,65,INFO,2026-06-23 to 2026-10-22
+contracts,1674,INFO,
+file order chronological (execution second),0,PASS,number of backward steps
+duplicate raw rows,0,PASS,
+"duplicate fills (order, trade id, time, qty, price, side, contract)",0,PASS,
+trade id not unique (rows sharing an id),44,FLAG,"trade id is a reference, never a key"
+missing / unparseable key fields,0,PASS,
+non-positive or non-lot-multiple quantity,0,PASS,
+non-positive or off-tick fill price (col 137),0,PASS,tick 0.05
+instrument fields inconsistent with description,0,PASS,
+exchange tokens mapping to >1 contract,8,FLAG,"token reused across expiries; identity uses (underlying, expiry, type, strike)"
+fills dated after the contract expiry,0,PASS,
+fills outside 09:15-15:40,0,PASS,
+fills after 15:30 (post-close),420,INFO,
+price min / max (col 137),0.05 / 878.8,INFO,
+fills whose per-fill price differs from the running order average (col 18),431,INFO,col 18 is a running order average; col 137 is the fill price
+orders with several fills,1059,INFO,
+partially-filled rows,1550,INFO,
+orders whose fills do not add up to the order quantity,3,FLAG,unfilled remainder; fill rows are kept as executed
+contract-seconds with >= 2 fills,4464,INFO,
+contract-seconds mixing buys and sells (ordering ambiguity),56,FLAG,alternative orderings are run in the sensitivity
+module tags,num:26954; h_:13181; s_:763; v_:515; m_:8,INFO,"num = body, h_ wing, s_ cycle stop, v_ lump, m_ manual"
+charge / brokerage fields in the raw file,0,FLAG,none exist: net P&L is not computed

@@ -1,0 +1,112 @@
+[
+ {
+  "id": "BASELINE_unmutated",
+  "outcome": "survived",
+  "summary": "12 passed, 1 deselected in 0.06s | "
+ },
+ {
+  "id": "DB01_per_fill_counts_reaching_zero",
+  "expected_detector": "exact_zero",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_neither_measure_is_a_subset_of_the_other",
+   "test_exact_zero_boundary_is_not_a_crossing",
+   "test_negative_to_positive_flip_and_partial_fills",
+   "test_the_delivered_fills_table_gives_the_same_measures_as_the_engine_order"
+  ],
+  "summary": "4 failed, 8 passed, 1 deselected in 0.06s | test_reversals.py:33: assert (1, 1) == (0, 1) || test_reversals.py:37: assert (1, 0) == (0, 0)"
+ },
+ {
+  "id": "DB02_parent_level_groups_ignore_the_second",
+  "expected_detector": "different_seconds",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_different_seconds_are_different_groups_for_the_parent_level_measure"
+  ],
+  "summary": "1 failed, 11 passed, 1 deselected in 0.07s | test_reversals.py:50: assert (2, 0) == (2, 2)"
+ },
+ {
+  "id": "DB03_parent_level_uses_only_the_parents_own_fills",
+  "expected_detector": "interleaved",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_interleaved_parents_make_the_measures_differ"
+  ],
+  "summary": "1 failed, 11 passed, 1 deselected in 0.08s | test_reversals.py:25: assert ((1, 1) == (1, 2)"
+ },
+ {
+  "id": "DB04_parent_level_only_where_a_per_fill_event_exists",
+  "expected_detector": "not_a_subset",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_interleaved_parents_make_the_measures_differ",
+   "test_neither_measure_is_a_subset_of_the_other",
+   "test_negative_to_positive_flip_and_partial_fills",
+   "test_the_delivered_fills_table_gives_the_same_measures_as_the_engine_order"
+  ],
+  "summary": "4 failed, 8 passed, 1 deselected in 0.08s | test_reversals.py:25: assert ((1, 1) == (1, 2) || test_reversals.py:33: assert (0, 0) == (0, 1)"
+ },
+ {
+  "id": "DB05_counts_merged_into_one_number",
+  "expected_detector": "directive_example",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_directive_example_one_parent_two_fills_crossing_zero",
+   "test_interleaved_parents_make_the_measures_differ",
+   "test_neither_measure_is_a_subset_of_the_other",
+   "test_negative_to_positive_flip_and_partial_fills"
+  ],
+  "summary": "7 failed, 5 passed, 1 deselected in 0.06s | test_reversals.py:18: assert ((2, 1) == (1, 1) || test_reversals.py:25: assert ((3, 2) == (1, 2)"
+ },
+ {
+  "id": "DB06_sign_treats_zero_as_positive",
+  "expected_detector": "exact_zero",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_neither_measure_is_a_subset_of_the_other",
+   "test_exact_zero_boundary_is_not_a_crossing",
+   "test_negative_to_positive_flip_and_partial_fills",
+   "test_the_delivered_fills_table_gives_the_same_measures_as_the_engine_order"
+  ],
+  "summary": "4 failed, 8 passed, 1 deselected in 0.06s | test_reversals.py:33: assert (1, 1) == (0, 1) || test_reversals.py:38: assert (1, 1) == (0, 0)"
+ },
+ {
+  "id": "DB07_parent_level_uses_the_last_fills_before_inventory",
+  "expected_detector": "directive_example",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_directive_example_one_parent_two_fills_crossing_zero",
+   "test_interleaved_parents_make_the_measures_differ",
+   "test_neither_measure_is_a_subset_of_the_other",
+   "test_negative_to_positive_flip_and_partial_fills"
+  ],
+  "summary": "5 failed, 7 passed, 1 deselected in 0.06s | test_reversals.py:18: assert ((1, 0) == (1, 1) || test_reversals.py:25: assert ((1, 1) == (1, 2)"
+ },
+ {
+  "id": "DB08_approved_sentence_altered",
+  "expected_detector": "sentence_is_exact",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_the_measures_are_not_nested_in_the_published_data_and_sentence_is_exact"
+  ],
+  "summary": "1 failed, 11 passed, 1 deselected in 0.07s | test_decision_b.py:56: AssertionError: assert ('No per-fill ...d definition.' == 'No per-fill ...c definition.'"
+ },
+ {
+  "id": "DB09_report_json_count_changed",
+  "expected_detector": "published",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_published_counts_are_the_owner_table_fast_pin"
+  ],
+  "summary": "1 failed, 11 passed, 1 deselected in 0.06s | test_decision_b.py:98: AssertionError: ('SENSEX_2026-07-16', 'baseline')"
+ },
+ {
+  "id": "DB10_old_unqualified_claim_reintroduced",
+  "expected_detector": "old_unqualified",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_published_tables_use_the_two_measures_and_never_the_old_unqualified_claim"
+  ],
+  "summary": "1 failed, 11 passed, 1 deselected in 0.07s | test_decision_b.py:62: AssertionError: reports/M2E_POSITION_CASE_STUDIES.md"
+ }
+]

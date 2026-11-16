@@ -1,0 +1,53 @@
+{
+ "closing_exclusion_by_episode_origin": {
+  "long_episodes_closed_by_num|other": 65165,
+  "long_episodes_closed_by_num|opened_only_by_h_": 67070,
+  "long_episodes_closed_by_v_|opened_by_h_+num+v_": 8415,
+  "long_episodes_closed_by_v_|opened_by_h_+v_": 25500,
+  "short_episodes_closed_by_s_|opened_only_by_num": 59065,
+  "short_episodes_closed_by_s_|opened_by_other_or_mixed": 36420,
+  "long_episodes_closed_by_s_|opened_by_s_": 2690,
+  "long_episodes_closed_by_v_|opened_by_h_+m_+num+v_": 4030,
+  "long_episodes_closed_by_v_|opened_by_v_": 3305,
+  "long_episodes_closed_by_s_|opened_by_num": 10555,
+  "long_episodes_closed_by_s_|opened_by_h_": 22075,
+  "long_episodes_closed_by_s_|opened_by_v_": 2525,
+  "long_episodes_closed_by_v_|opened_by_num+v_": 325,
+  "long_episodes_closed_by_s_|opened_by_h_+v_": 6685
+ },
+ "opening_wing_parents": 8399,
+ "opening_wing_items": 8399,
+ "wing_parents_with_multiple_instruments": 0,
+ "opening_body_parents": 13325,
+ "body_parents_multi_instr": 0,
+ "distribution_equal_to_committed_summary": {
+  "OPENING|W1": {
+   "candidates_per_wing": true,
+   "wings_per_body": true,
+   "abs_dt": true,
+   "otm": true,
+   "qty_ratio": true
+  },
+  "OPENING|W1_S60": {
+   "candidates_per_wing": true,
+   "wings_per_body": true,
+   "abs_dt": true,
+   "otm": true,
+   "qty_ratio": true
+  },
+  "CLOSING|W1": {
+   "candidates_per_wing": true,
+   "wings_per_body": true,
+   "abs_dt": true,
+   "otm": true,
+   "qty_ratio": true
+  },
+  "CLOSING|W1_S60": {
+   "candidates_per_wing": true,
+   "wings_per_body": true,
+   "abs_dt": true,
+   "otm": true,
+   "qty_ratio": true
+  }
+ }
+}

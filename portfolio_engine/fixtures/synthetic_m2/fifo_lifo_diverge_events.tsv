@@ -1,0 +1,9 @@
+# SYNTHETIC_TEST M2-B fixture fifo_lifo_diverge; not Algo 8 data
+schema_version	execution_mode	fill_id	source_row_id	parent_order_id	module_tag	instrument_id	timestamp_s	side	quantity	price_paise	requested_quantity	order_status	is_duplicate_fill	evidence_source
+pe.fill.v1	SYNTHETIC_TEST	S000001	1	syn_000001	num	NIFTY|2026-01-08|CE|24000	1767584760	-1	65	10000	65	Filled	0	synthetic:fifo_lifo_diverge:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000002	2	syn_000002	num	NIFTY|2026-01-08|CE|24000	1767584770	-1	65	11000	65	Filled	0	synthetic:fifo_lifo_diverge:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000003	3	syn_000003	num	NIFTY|2026-01-08|CE|24000	1767584780	-1	65	12000	65	Filled	0	synthetic:fifo_lifo_diverge:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000004	4	syn_000004	num	NIFTY|2026-01-08|CE|24000	1767584790	-1	65	13000	65	Filled	0	synthetic:fifo_lifo_diverge:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000005	5	syn_000005	num	NIFTY|2026-01-08|CE|24000	1767584860	1	100	9000	100	Filled	0	synthetic:fifo_lifo_diverge:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000006	6	syn_000006	num	NIFTY|2026-01-08|CE|24000	1767584870	1	60	9100	60	Filled	0	synthetic:fifo_lifo_diverge:seed=0
+pe.fill.v1	SYNTHETIC_TEST	S000007	7	syn_000007	num	NIFTY|2026-01-08|CE|24000	1767584880	1	80	9200	80	Filled	0	synthetic:fifo_lifo_diverge:seed=0

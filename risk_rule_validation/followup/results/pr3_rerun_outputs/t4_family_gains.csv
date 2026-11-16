@@ -1,0 +1,10 @@
+category,positives,base_auc,premium_ratio,pnl,drawdown/trailing,spot_atr,iv,greeks,since_trades,all
+1 individual lot stop-loss,1398,0.669,0.32,0.278,0.291,0.285,0.059,0.258,0.189,0.323
+2 same-contract partial buy-back,454,0.738,0.069,0.012,0.039,0.067,-0.007,0.024,0.054,0.129
+3 side-level reduction,394,0.66,0.198,0.07,0.202,0.208,0.017,0.073,0.169,0.265
+4 basket-level reduction,960,0.844,0.035,0.021,0.022,0.033,-0.001,0.008,0.044,0.066
+8 clock-B rebalance,427,0.966,0.01,0.003,0.005,0.007,0.003,0.003,0.007,0.013
+8b grid rebalance (A/:00 clock),322,0.937,0.014,-0.006,0.001,0.011,-0.001,0.006,0.011,0.014
+"6 clock-based exit (clock B, no replacement)",185,0.95,-0.01,-0.019,-0.1,0.001,-0.008,-0.013,0.021,0.023
+7 expiry-day salvage,716,0.963,0.022,0.009,0.012,0.013,-0.004,0.012,0.012,0.027
+11 unexplained,48,0.922,-0.08,-0.214,-0.024,-0.197,-0.087,-0.041,-0.026,-0.323

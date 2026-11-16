@@ -1,0 +1,142 @@
+[
+ {
+  "id": "R1R-01",
+  "severity": "High",
+  "title": "NIFTY trade-id \"not time-monotone\" claim rests on a pooled metric; per instrument x IST day the id has 0 inversions in 18,305 cross-second comparisons",
+  "location": "reports/R1_TIE_ORDER_CONVENTION.md section 5 (title and first bullet) and section 4 last sentence; tools/r1_report.py line 51ff; reports/m2f_audit/r1/nifty_id_evidence.py inversions(..., by=lambda f: f[\"inst\"]); python/pe/tie_policy.py docstring last line",
+  "evidence": "[RAW]+[IMPL] c_nifty_monotone_result.json: the report numbers 14,004/19,808 (per IST day) and 3,519/18,858 (\"within one instrument\") REPRODUCE EXACTLY, but the second pools one contract across IST days (356 of 775 NIFTY instruments trade on >1 IST day) while the id is a per-contract-per-day sequence. Same metric per (instrument, IST day): 0 of 18,305 (NIFTY id), 0 of 19,811 (SENSEX ns). Adjacent pairs per (instrument, IST day): NIFTY id decreases 0/14,579 across seconds but 212/4,194 inside a second (5.1%); equal ids 0. Same-parent same-second pairs: id increasing in file order 2,761/2,761. Across instruments the id is not comparable (34% decreases), i.e. it is a per-contract counter. Order number per instrument x day: 541/18,305 (NIFTY) and 609/19,811 (SENSEX) inversions (about 3%), not the 41-42% quoted per IST day.",
+  "repro": "python3 reports/m2f_audit/r1_review/c_nifty_monotone.py ; c_nifty_ids.py",
+  "impact": "The stated reason for treating trade_id as \"not chronology\" is invalid. At second resolution the NIFTY trade id is as time-consistent as the SENSEX suffix, so the file-order-vs-id disagreements (151 NIFTY groups, 2 mixed-side) are evidence against SOURCE_ROW order, not noise. The two accounting-relevant groups (rows 27911/27917, 27912/27916) are exactly where id and order number agree against file order. The owner approved Option A on a report that told them the opposite. The convention may still be chosen on determinism grounds, but the evidence statement must be corrected and the decision re-presented.",
+  "proposed_fix": "Correct section 5 and the tie_policy docstring (state per-instrument-day monotonicity, 0 cross-second inversions, 5.1% within-second discordance with file order); relabel trade_id as \"per-contract-day id sequence\" sensitivity; re-present the decision to the owner with the corrected evidence. Do not change the primary outputs unless the owner so decides."
+ },
+ {
+  "id": "R1R-02",
+  "severity": "Medium",
+  "title": "Primary convention is contradicted by a strongly time-consistent id in 172 groups; the report presents the evidence as neutral",
+  "location": "reports/R1_TIE_ORDER_CONVENTION.md sections 1, 4, 5, 7",
+  "evidence": "[RAW] 151 NIFTY same-second groups (all multi-parent; 2 mixed-side) and 21 SENSEX groups (all same-side) have id/ns order different from file order. In the two flip groups the same parent (11747185 / 11747186) has two partial fills with ids 3109390,3109391 and 3109353,3109354 (adjacent) and file order places a different order's stop fill (ids 3109424 and 3109598) between them. Under a per-contract counter (R1R-01) that interleaving is impossible. File order is, however, consistent with the partial-fill remaining-quantity sequence in 100% of same-parent pairs (NIFTY 2,761; SENSEX 114 parents).",
+  "repro": "c_nifty_ids.py (flip_groups, context_*) ; b_parents.py",
+  "impact": "SOURCE_ROW is defensible only as a deterministic convention (reproducible, byte-stable). It is not supported as the better chronology estimate; the alternatives that change reversal identity (trade_id/order_no: reversal-ended episodes 23 -> 21) are the better-supported ones. This is a PROBABLE inference, not proven (the id semantics are not documented).",
+  "proposed_fix": "State the contradiction counts and the flip-group id adjacency in section 7; keep the \"not chronology\" wording; label trade_id/order_no flip results as the most-supported sensitivity."
+ },
+ {
+  "id": "R1R-03",
+  "severity": "Medium",
+  "title": "\"114 multi-fill parents, ns non-decreasing in 114\" is vacuous and does not support \"per-fill time, not order-placement time\"",
+  "location": "reports/R1_TIE_ORDER_CONVENTION.md section 4 \"Semantics\"; tools/r1_report.py line 48",
+  "evidence": "[RAW] b_parents_result.json: 113 of the 114 SENSEX multi-fill parents carry the IDENTICAL ns prefix on every fill; the maximum ns span inside a parent is 2.45 ms; exactly one parent (10853057, rows 8079/8083) has two different ns values. \"Non-decreasing\" is trivially true for constants. Constant ns across a parent is equally what an order-level timestamp would show.",
+  "repro": "b_parents.py",
+  "impact": "The distinguishing evidence for fill-event time exists but is different and is not in the report: (a) 28 events where fills of DIFFERENT parents share one ns with distinct near-consecutive suffixes and consecutive order numbers (one aggressor hitting several resting orders); (b) 107 SENSEX rows where the ns minute is 1-9 minutes after the order-entry minute (col 23), so ns tracks the fill, not the entry; (c) the per-contract-day suffix sequence (0 decreases in 19,928 adjacent pairs). The report claims an inference its own statistic cannot make.",
+  "proposed_fix": "Replace the statistic with (a)-(c) and state that the parent test has one informative case."
+ },
+ {
+  "id": "R1R-04",
+  "severity": "Medium",
+  "title": "\"no group shares a parent\" is false: 4 of the 21 ns-vs-file differing groups contain two fills of one parent; hard-coded prose",
+  "location": "reports/R1_TIE_ORDER_CONVENTION.md section 4 \"Ordering consistency\"; tools/r1_report.py line 47 (literal text, not generated from data)",
+  "evidence": "[RAW]+[IMPL] b_more_result.json: groups with a shared parent among the 21: 4 (instruments SENSEX 2026-06-25 PE75700, 2026-07-16 CE78400, 2026-09-10 CE75900 (two parents), 2026-10-22 CE75300 (two parents)). The same-parent fills keep their relative order under ns order (checked).",
+  "repro": "b_more.py",
+  "impact": "Incorrect factual sentence in the canonical document; the substantive conclusion (no mechanical contradiction for same-parent pairs) still holds.",
+  "proposed_fix": "Compute the sentence from data; reword to \"4 groups contain two fills of one parent, whose relative order is unchanged\"."
+ },
+ {
+  "id": "R1R-05",
+  "severity": "Medium",
+  "title": "\"Applying it to SENSEX changes nothing\" omits the lot-attribution (CA) layer; a sixth population is not reported for any policy",
+  "location": "reports/R1_TIE_ORDER_CONVENTION.md section 4 \"Effect\", sections 3.2-3.6",
+  "evidence": "[IMPL]+[REPRO] a_attribution_result.json (own FIFO/LIFO replay) and c_sensex_lineage_diff*_result.json (engine under test): under sensex_trade_id_time 84 closing fills (FIFO; 80 LIFO) consume different opening lots; in the engine output 81 closing portions have a different FIFO source lot, 66 lifecycle lines and 136/140 ca_FIFO lines differ, observed_allocations rows are re-ordered at 2,352 positions, and the global event sequence moves 2,344 positions (NIFTY sorts before SENSEX inside a second because the NIFTY key is (0,)). trade_id: 666 closing fills (FIFO) with different source lots; order_no 598; buys_first 4; sells_first 2. Totals unchanged: opening/closing units, final inventory and FIFO/LIFO realized P&L (0 paise per instrument) all equal.",
+  "repro": "a_attribution.py ; c_sensex_lineage_diff.py",
+  "impact": "The M2-B lot attribution (CA) is a delivered output the document itself lists as conditional (section 8). \"Changes nothing\" is true for the four measured populations only. The pins in test_tie_order_policy.py cannot see this layer.",
+  "proposed_fix": "Add a CA/lot-attribution population to section 3 (count of closing fills whose source lots change, FIFO and LIFO) and qualify \"changes nothing\"."
+ },
+ {
+  "id": "R1R-06",
+  "severity": "Medium",
+  "title": "\"Episodes changed\" counts ordinal episode ids, not episodes whose content changed",
+  "location": "reports/R1_TIE_ORDER_CONVENTION.md 3.3 and 3.7; tools/r1_tie_sensitivity.py episodes signature (keyed by episode id instrument#ordinal)",
+  "evidence": "[IMPL] a_sensitivity_result.json: buys_first 12 reproduces only under the ordinal-id definition; episodes whose content (direction, row/qty pieces, end) has no identical counterpart in the alternative: 7. When an instrument gains/loses an episode the ordinals after it shift and are all counted (NIFTY 2026-06-23 CE24000: 9 -> 10 episodes counts 5). sells_first/trade_id/order_no coincide (1/4/4). Stress reversed_src: report 18 instruments / 33 episodes reproduce under the author's identity (direction, opened, closed, ended_by, started_by_reversal, n_open, n_close, opening rows); a content signature gives 21 / 41.",
+  "repro": "a_sensitivity.py",
+  "impact": "The headline count is definition-dependent and not disclosed; \"12\" overstates content change for buys_first by 5.",
+  "proposed_fix": "State the identity definition; report both counts."
+ },
+ {
+  "id": "R1R-07",
+  "severity": "Medium",
+  "title": "Exceptional fill (row 8079): the policy keeps the epoch, but 8 other time columns side with the id time; the primary replay places the fill 56.6 s early if the id is right",
+  "location": "reports/R1_TIE_ORDER_CONVENTION.md section 4 \"The exceptional fill\"; python/pe/tie_policy.py sensex_time_key",
+  "evidence": "[RAW] b_columns_result.json: row 8079 cols 69,70,79,83,84,92,119,130 = 15:28 (= id time 15:28:29.637), cols 23,78,127,138 and epoch = 15:27. Cols 78/127/138 equal the epoch minute in 100% of rows (derived from the epoch); cols 69-119 and 130 do not. The same parent's second fill (row 8083, qty 20, remaining 0) has ns 2.45 ms later and suffix +20 (15980320 -> 15980340) and epoch 15:28:30. Quantities: 340+20 = 360 = order quantity. [IMPL] b_row8079_effect_result.json (hypothetical, id time used for this one fill): 1 closing batch at 2/5/10 s differs.",
+  "repro": "b_columns.py ; b_row8079_effect.py",
+  "impact": "Not a tie-order issue, but the report presents the fallback as safe (\"never trusts an id whose rounded time differs\"); which clock is right for this fill is UNKNOWN and the evidence leans to the id. Affects a timestamp, not just an intra-second order.",
+  "proposed_fix": "Disclose as an open data-quality item (one fill, one batch) rather than as a resolved fallback."
+ },
+ {
+  "id": "R1R-08",
+  "severity": "Low",
+  "title": "Fill.tie_key carries no policy label: keys of policy A replay silently under policy B",
+  "location": "python/pe/schema.py Fill.tie_key; python/pe/replay.py order_events",
+  "evidence": "[REPRO] c_engine_edge_result.json: fills keyed with trade_id keys replayed with tie_order=\"order_no\" are accepted, the dump says tie_order=order_no, the result equals the true TRADE_ID replay. Only None keys are rejected.",
+  "repro": "c_engine_edge.py",
+  "impact": "A mislabelled sensitivity run is possible; never reaches delivered outputs (require_primary) but could mislabel sensitivity tables.",
+  "proposed_fix": "Store (policy, key) in tie_key or add a Fill.tie_policy field and assert equality in order_events."
+ },
+ {
+  "id": "R1R-09",
+  "severity": "Low",
+  "title": "Alias \"source_row\" is normalised only inside replay(); order_events(\"source_row\") raises KeyError; CLI passes the unnormalised token to the C++ binary",
+  "location": "python/pe/replay.py order_events / replay; python/pe/cli.py line 10 and 25",
+  "evidence": "[REPRO] c_engine_edge_result.json: order_events(fills, \"source_row\") -> KeyError. [INSPECTED] cli.py passes a.tie unchanged to the C++ binary and writes config.tie_order=\"source_row\" while the dump says \"src\" (cpp binary not run: NOT VERIFIED).",
+  "repro": "c_engine_edge.py",
+  "impact": "Fails closed, no silent order change; manifest tie_order (\"source_row\") and dump tie_order (\"src\") differ in wording.",
+  "proposed_fix": "Normalise in order_events and in cli before dispatch."
+ },
+ {
+  "id": "R1R-10",
+  "severity": "Medium",
+  "title": "Test gaps: 11 of 18 reviewer mutants survive (1 equivalent); one test is a tautology; the sensex policy can be disabled without any test failing",
+  "location": "tests/test_tie_order_policy.py, tests/test_tie_order_metadata.py",
+  "evidence": "mutations.json: survivors R2M02, R2M04, R2M05, R2M06, R2M07, R2M09, R2M14, R2M15, R2M17, R2M18 (+ R2M13 equivalent). R2M18 (sensex policy keys wrong for every fill except row 8079) survives BOTH the fast and the slow tiers (29 passed). test_sensitivity_report_is_the_independent_reference_result compares two committed JSON files written by the same author and executes no code under test; the real-ledger PINS are the same numbers; sensex_trade_id_time pins \"no change\", so no result-level test can detect it being disabled.",
+  "repro": "e_mutants.py",
+  "impact": "Silent breakage of: keyed sort precedence (timestamp vs key), equal-key tie-break, partial-key guard, raw-hash guard in attach_tie_keys, require_primary arguments in delivered builders (AST test only checks the call exists), the rounding boundary.",
+  "proposed_fix": "Add: a mixed-seconds keyed-order test; a partially-keyed rejection test; a hash-mismatch test; an AST test asserting require_primary receives ls.tie; a half-ns boundary key test; an all-rows sensex key check (not just row 8079)."
+ },
+ {
+  "id": "R1R-11",
+  "severity": "Low",
+  "title": "Preservation test covers 399 of the 666 baseline files; 87 non-code data files outside its prefixes are unguarded",
+  "location": "tests/test_tie_order_metadata.py PRESERVED",
+  "evidence": "e_preserved_gap.json; reviewer mutant R2M17 (edit parity_lineage_report.json) survives. The baseline JSON itself covers all 666; the independent hash check (d_preservation_result.json) confirms nothing else changed.",
+  "repro": "d_preservation.py",
+  "impact": "A future edit to parity_*.json, demo_cycle_scores.csv or m2f_audit JSON would not trip the test.",
+  "proposed_fix": "Check every baseline path that is not code/tests/tools/docs."
+ },
+ {
+  "id": "R1R-12",
+  "severity": "Low",
+  "title": "r1_tie_order_sensitivity.json generated_at_head (68bbeb13) predates the code it reports",
+  "location": "reports/r1_tie_order/r1_tie_order_sensitivity.json; tools/r1_tie_sensitivity.py line 71",
+  "evidence": "[INSPECTED]+[VERIFIED git] tie_policy.py does not exist at 68bbeb13; no dirty-tree flag recorded.",
+  "repro": "git cat-file -e 68bbeb13:portfolio_engine/python/pe/tie_policy.py",
+  "impact": "Provenance stamp is wrong (numbers themselves reproduced independently).",
+  "proposed_fix": "Record HEAD and dirty flag; regenerate."
+ },
+ {
+  "id": "R1R-13",
+  "severity": "Low",
+  "title": "Over-claiming wording",
+  "location": "reports/R1_TIE_ORDER_CONVENTION.md headers and section 4",
+  "evidence": "\"separate validation\" / \"validated\" for the SENSEX timestamp (it is a consistency check by the same author, with no external anchor); \"independent references that import no pe code\" (nifty_id_evidence.py imports track_a/ref_model written within the same audit); section 5 title \"not chronology\" (see R1R-01); \"changes nothing\" (R1R-05); \"Of 114 ... consistent with per-fill time\" (R1R-03); section 1 \"no raw column carries sub-second time\" omits cols 9/67/68, which hold Excel-truncated (6 significant digits, ~2.8 h resolution) ns-like values for SENSEX (useless for ordering, but evidence that ns clocks are native to the SENSEX source).",
+  "repro": "b_columns.py; f_numbers.py",
+  "impact": "Reader may over-trust the evidence.",
+  "proposed_fix": "Reword as listed."
+ },
+ {
+  "id": "R1R-14",
+  "severity": "Low",
+  "title": "Disclosed process incident (reviewer): harness bug briefly modified two repository files",
+  "location": "portfolio_engine/reports/m2c_data/m2c_summary.json and portfolio_engine/reports/parity_lineage_report.json",
+  "evidence": "My e_mutants.py R2M16/R2M17 first version wrote through a symlinked directory into the live repository (one digit edited in each file). Detected via git status, restored from the git object (git show HEAD:path written to the file; no git mutation), and both files re-verified byte-identical to baseline_sha256_before_R1.json and clean in git status. The harness now asserts the write target is a scratch copy.",
+  "repro": "n/a",
+  "impact": "None remaining (hash-verified); mtimes changed. Reported because the rules required read-only access.",
+  "proposed_fix": "n/a"
+ }
+]

@@ -1,0 +1,6 @@
+{
+ "created": "before receiving OOS history",
+ "dev_sample": "2026-06-22..2026-10-22, 30 complete cycles (Algo-8-traded contracts only)",
+ "oos_rule": "Run EVERY frozen config on the new history unchanged; report the 7 metrics under zero/moderate/conservative/adverse costs; test (1) Spearman(dev rank, OOS rank) of conservative Sharpe, (2) OOS mean of dev top-decile vs the rest, (3) White reality check on OOS, (4) PBO on dev+OOS; no re-optimisation on OOS. Lot sizes for the OOS period must be confirmed by the user before costs are applied.",
+ "n_configs": 4512
+}

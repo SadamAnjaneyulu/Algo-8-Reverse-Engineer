@@ -1,0 +1,56 @@
+{
+ "ca_pairs_base": 25023,
+ "ca_pairs_only_base": 83,
+ "ca_pairs_only_sx": 87,
+ "example_only_base": [
+  [
+   "CP:F003597",
+   "OA:F002451",
+   "20"
+  ],
+  [
+   "CP:F003938",
+   "OA:F002452",
+   "80"
+  ],
+  [
+   "CP:F004666",
+   "OA:F004363",
+   "20"
+  ]
+ ],
+ "example_only_sx": [
+  [
+   "CP:F003597",
+   "OA:F002452",
+   "20"
+  ],
+  [
+   "CP:F003938",
+   "OA:F002451",
+   "20"
+  ],
+  [
+   "CP:F003938",
+   "OA:F002452",
+   "60"
+  ]
+ ],
+ "closing_portions_with_different_FIFO_source_lots": 81,
+ "closing_portion_fill_ids_sample": [
+  "CP:F003597",
+  "CP:F003938",
+  "CP:F004666",
+  "CP:F004711",
+  "CP:F008044",
+  "CP:F008046"
+ ],
+ "lifecycle_example_only_base": [
+  "LE:SENSEX|2026-06-25|PE|75700#1:2\tSENSEX|2026-06-25|PE|75700#1\t2\tADDED\tF002451\tv_24094332842998\t1782294213\t20\t60\t0",
+  "LE:SENSEX|2026-06-25|PE|75700#1:3\tSENSEX|2026-06-25|PE|75700#1\t3\tADDED\tF002452\tv_24094332843104\t1782294213\t960\t1020\t0"
+ ],
+ "lifecycle_example_only_sx": [
+  "LE:SENSEX|2026-06-25|PE|75700#1:2\tSENSEX|2026-06-25|PE|75700#1\t2\tADDED\tF002452\tv_24094332843104\t1782294213\t960\t1000\t0",
+  "LE:SENSEX|2026-06-25|PE|75700#1:3\tSENSEX|2026-06-25|PE|75700#1\t3\tADDED\tF002451\tv_24094332842998\t1782294213\t20\t1020\t0"
+ ]
+}

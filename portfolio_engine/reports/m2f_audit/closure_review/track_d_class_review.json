@@ -1,0 +1,25 @@
+{
+ "note": "Review of the 18 Track D claim classes that were derived mechanically by the lead from the verification tag (class_derived_by_lead), re-read conservatively at closure. Rule applied: two implementations that share the same written rule do not upgrade a claim.",
+ "unchanged": 15,
+ "downgraded": [
+  {
+   "claim": "Case selection depends only on structure (lifecycle events, W1/W1_S60 candidate counts, C1 batch parents) \u2014 price perturbation + independent re-implementation",
+   "from": "Independently verified fact",
+   "to": "Reproduced result with limited independent verification",
+   "why": "the independent re-implementation shares the written rules; \"outcome-free\" means P&L-free (selection conditions on terminal status and lifecycle shape); the scrambling test covers the ledger px_fill path only (closure review CR-06), complemented by a static lint"
+  },
+  {
+   "claim": "Full-ledger scope numbers quoted in every V3/V5/V6 warning (8,399 wing items; 7,301 / 3,501 / 3,800 ...)",
+   "from": "Independently verified fact",
+   "to": "Reproduced result with limited independent verification",
+   "why": "the independent M2-D reference implements the same approved text"
+  },
+  {
+   "claim": "V5/V6: M2-D opening items and W1 / W1_S60 candidate sets equal an independent re-derivation",
+   "from": "Independently verified fact",
+   "to": "Reproduced result with limited independent verification",
+   "why": "same shared written rule (D6); a misreading would appear in both"
+  }
+ ],
+ "note_on_git_time_claim": "\"Demonstration cycles were frozen (e06a711e) before any M2 grouping code existed\" rests on git commit timestamps, which the author controls: kept as verified from the repository history, not as tamper-proof evidence."
+}

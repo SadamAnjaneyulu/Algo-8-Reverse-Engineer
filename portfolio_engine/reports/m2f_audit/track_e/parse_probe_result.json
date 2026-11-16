@@ -1,0 +1,177 @@
+[
+ {
+  "variant": "baseline",
+  "python": "ACCEPT",
+  "cpp": "ACCEPT",
+  "outputs_identical": true,
+  "cpp_err": ""
+ },
+ {
+  "variant": "crlf_events",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "crlf_both",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "utf8_bom_events",
+  "python": "REJECT:EventValidationError",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "plus_sign_qty",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "leading_space_qty",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "underscore_qty",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "trailing_space_qty",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "fullwidth_digit_qty",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "float_qty",
+  "python": "REJECT:EventValidationError",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "hex_qty",
+  "python": "REJECT:EventValidationError",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "leading_zero_qty",
+  "python": "ACCEPT",
+  "cpp": "ACCEPT",
+  "outputs_identical": true,
+  "cpp_err": ""
+ },
+ {
+  "variant": "empty_line_mid",
+  "python": "ACCEPT",
+  "cpp": "ACCEPT",
+  "outputs_identical": true,
+  "cpp_err": ""
+ },
+ {
+  "variant": "comment_mid",
+  "python": "ACCEPT",
+  "cpp": "ACCEPT",
+  "outputs_identical": true,
+  "cpp_err": ""
+ },
+ {
+  "variant": "no_trailing_newline",
+  "python": "ACCEPT",
+  "cpp": "ACCEPT",
+  "outputs_identical": true,
+  "cpp_err": ""
+ },
+ {
+  "variant": "lone_cr_newlines",
+  "python": "ACCEPT",
+  "cpp": "ACCEPT",
+  "outputs_identical": false,
+  "cpp_err": ""
+ },
+ {
+  "variant": "space_only_line",
+  "python": "REJECT:EventValidationError",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "tab_only_extra_col",
+  "python": "REJECT:EventValidationError",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "minus_zero_side",
+  "python": "REJECT:EventValidationError",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "side_plus1",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "unicode_parent",
+  "python": "ACCEPT",
+  "cpp": "ACCEPT",
+  "outputs_identical": true,
+  "cpp_err": ""
+ },
+ {
+  "variant": "ts_huge",
+  "python": "ACCEPT",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "dup_flag_2",
+  "python": "REJECT:EventValidationError",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ },
+ {
+  "variant": "quote_in_field",
+  "python": "ACCEPT",
+  "cpp": "ACCEPT",
+  "outputs_identical": true,
+  "cpp_err": ""
+ },
+ {
+  "variant": "bad_schema_version",
+  "python": "REJECT:EventValidationError",
+  "cpp": "REJECT",
+  "outputs_identical": null,
+  "cpp_err": "ERROR: /tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratch"
+ }
+]

@@ -1,0 +1,326 @@
+{
+ "note": "Re-run by the lead on the merged tree (subagent mutants, same definitions). KILLED_BY_ASSERTION counts; ERROR_NOT_ASSERTION entries are stopped by the generators own self-check (not counted as kills).",
+ "results": {
+  "exp": [
+   {
+    "id": "E1_replay_le_to_lt",
+    "desc": "replay.py: expiry <= last_day -> < (audit M19 style)",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ({'NIFTY|2026-..._END_OF_DATA'} == {'NIFTY|2026-...RED_UNCLOSED'}",
+     "E"
+    ]
+   },
+   {
+    "id": "E2_lineage_le_to_lt",
+    "desc": "lineage.py terminal_status: <= -> <",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('-1', '65', ..._END_OF_DATA') == ('-1', '65', ...RED_UNCLOSED')",
+     "E"
+    ]
+   },
+   {
+    "id": "E3_replay_plus1_day",
+    "desc": "replay.py: <= last_day + 1",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ({'NIFTY|2026-...RED_UNCLOSED'} == {'NIFTY|2026-..._END_OF_DATA'}",
+     "E"
+    ]
+   },
+   {
+    "id": "E4_lineage_plus1_day",
+    "desc": "lineage.py: <= last_day + 1",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('EXPIRED_UNCLOSED' == 'OPEN_AT_END_OF_DATA'",
+     "E"
+    ]
+   },
+   {
+    "id": "E5_replay_always_expired",
+    "desc": "replay.py: every non-flat instrument EXPIRED_UNCLOSED (OPEN_AT_END branch dead)",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('EXPIRED_UNCLOSED' == 'EXPIRED_UNCLOSED'",
+     "E"
+    ]
+   },
+   {
+    "id": "E6_lineage_always_expired",
+    "desc": "lineage.py: every non-flat episode EXPIRED_UNCLOSED",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert {'NIFTY|2026-...RED_UNCLOSED'} == {'NIFTY|2026-..._END_OF_DATA'}",
+     "E"
+    ]
+   },
+   {
+    "id": "E7_replay_last_day_utc",
+    "desc": "replay.py: last data day from the UTC day instead of the IST day",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert {'NIFTY|2026-..._END_OF_DATA'} == {'NIFTY|2026-...RED_UNCLOSED'}",
+     "E"
+    ]
+   },
+   {
+    "id": "E8_replay_last_day_counts_duplicates",
+    "desc": "replay.py: last data day taken from the last event including duplicate-flagged fills",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('2026-01-12' == '2026-01-05'",
+     "E"
+    ]
+   },
+   {
+    "id": "E9_lineage_closed_reversed_swapped",
+    "desc": "lineage.py: CLOSED and REVERSED swapped",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('REVERSED' == 'CLOSED'",
+     "E"
+    ]
+   },
+   {
+    "id": "E10_replay_flat_after_expiry_marked_expired",
+    "desc": "replay.py: a flat instrument whose expiry has passed is no longer CLOSED",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('2026-01-20' == '2026-01-20'",
+     "E"
+    ]
+   },
+   {
+    "id": "E11_lineage_flat_after_expiry_marked_expired",
+    "desc": "lineage.py: a flat episode whose expiry has passed is no longer CLOSED/REVERSED",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('EXPIRED_UNCLOSED' == 'CLOSED'",
+     "E"
+    ]
+   },
+   {
+    "id": "E12_replay_expired_units_double",
+    "desc": "replay.py: expired units double counted",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('130' == '65'",
+     "E"
+    ]
+   },
+   {
+    "id": "E13_replay_open_branch_labelled_expired",
+    "desc": "replay.py: OPEN_AT_END instruments counted in the expired-warning code via label rename of the OPEN token",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert ('65' == '65'",
+     "E"
+    ]
+   },
+   {
+    "id": "E14_lineage_reserved_token_produced",
+    "desc": "lineage.py: non-flat episodes with expiry after the data become INCOMPLETE_SOURCE_HISTORY",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: assert {'NIFTY|2026-...URCE_HISTORY'} == {'NIFTY|2026-..._END_OF_DATA'}",
+     "E"
+    ]
+   }
+  ],
+  "ver": [
+   {
+    "id": "V1_price_check_removed",
+    "desc": "verify: price comparison disabled",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   },
+   {
+    "id": "V2_price_float_round",
+    "desc": "verify: ledger price compared via float rounding round(float(px)*100) vs raw paise, i.e. the D-A08 float method",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   },
+   {
+    "id": "V3_qty_check_removed",
+    "desc": "verify: quantity comparison disabled",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   },
+   {
+    "id": "V4_side_check_removed",
+    "desc": "verify: side comparison disabled",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   },
+   {
+    "id": "V5_parent_check_removed",
+    "desc": "verify: parent order id comparison disabled",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   },
+   {
+    "id": "V6_epoch_check_removed",
+    "desc": "verify: epoch comparison disabled",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   },
+   {
+    "id": "V7_epoch_tolerance_ist",
+    "desc": "verify: epoch compared modulo the IST offset (accepts +19800)",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   },
+   {
+    "id": "V8_first_row_not_lowest",
+    "desc": "verify: rows not sorted, first mismatch in input order",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: ledger row differs from the raw csv at source row 250: quantity (units): ledger 131 != raw 130",
+     "E   assert ('ledger row differs from the raw csv at source row 250: quantity (units): ledger 131 != raw 130' is not None and 'source row 20:' in 'ledger row differs from the raw csv at source row 250: quantity (units): ledger 131 != raw 130')"
+    ]
+   },
+   {
+    "id": "V9_price_tolerance_1paise",
+    "desc": "verify: price accepted within 1 paise",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   TypeError: unsupported operand type(s) for -: 'NoneType' and 'int'",
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger"
+    ]
+   },
+   {
+    "id": "V10_generate_does_not_call_verify",
+    "desc": "generate(): verification call removed",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: generate() returned fills from a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   },
+   {
+    "id": "V11_strike_check_removed",
+    "desc": "verify: strike comparison disabled",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: verify_ledger_against_raw accepted a corrupted ledger",
+     "E   assert None is not None"
+    ]
+   }
+  ],
+  "gen": [
+   {
+    "id": "G1_trunc_grid_intact",
+    "desc": "px = int(float(px)*100) (truncation), generator's own paise-grid self-check left intact",
+    "verdict": "ERROR_NOT_ASSERTION",
+    "evidence": [
+     "E   pe.schema.EngineError: price off the paise grid at row 11",
+     "E   pe.schema.EngineError: price off the paise grid at row 11"
+    ]
+   },
+   {
+    "id": "G2_trunc_grid_off",
+    "desc": "truncation AND generator's grid self-check neutralised (> 1e-6 -> > 1e9)",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: (11, 229, '2.3')",
+     "E   assert 229 == 230"
+    ]
+   },
+   {
+    "id": "G3_plus1_row12345_grid_intact",
+    "desc": "px = round(...)+1 for source row 12345 only, grid self-check intact",
+    "verdict": "ERROR_NOT_ASSERTION",
+    "evidence": [
+     "E   pe.schema.EngineError: price off the paise grid at row 12345",
+     "E   pe.schema.EngineError: price off the paise grid at row 12345"
+    ]
+   },
+   {
+    "id": "G4_plus1_row12345_grid_off",
+    "desc": "px = round(...)+1 for source row 12345 only AND grid self-check neutralised",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: (12345, 22351, '223.5')",
+     "E   assert 22351 == 22350"
+    ]
+   },
+   {
+    "id": "G5_plus1_all_grid_off",
+    "desc": "px = round(...)+1 for every row AND grid self-check neutralised",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: (0, 246, '2.45')",
+     "E   assert 246 == 245"
+    ]
+   },
+   {
+    "id": "G6_epoch_plus19800",
+    "desc": "audit mutant M11: timestamp +19800 s",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: 0",
+     "E   assert 1782206164 == 1782186364"
+    ]
+   },
+   {
+    "id": "G7_side_flip",
+    "desc": "audit mutant M08: side flipped",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: 0",
+     "E   assert -1 == 1"
+    ]
+   },
+   {
+    "id": "G8_wrong_price_col",
+    "desc": "audit mutant M07: price from px_limit instead of px_fill, grid check intact",
+    "verdict": "ERROR_NOT_ASSERTION",
+    "evidence": [
+     "E   pe.schema.EngineError: price off the paise grid at row 0",
+     "E   pe.schema.EngineError: price off the paise grid at row 0"
+    ]
+   },
+   {
+    "id": "G9_parent_dropped",
+    "desc": "parent order id replaced by order number",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: 0",
+     "E   assert '1210301773' == '10613862'"
+    ]
+   },
+   {
+    "id": "G10_qty_lots",
+    "desc": "quantity from lots*lot (qty_lots rounded) : quantity off by one unit on row 0",
+    "verdict": "KILLED_BY_ASSERTION",
+    "evidence": [
+     "E   AssertionError: 0",
+     "E   assert 131 == 130"
+    ]
+   }
+  ]
+ }
+}

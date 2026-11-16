@@ -1,0 +1,768 @@
+[
+ {
+  "id": "M01",
+  "change": "wrong CE/PE matching: group_key drops the right (CE wing may link PE body)",
+  "expected_detector": "I-same-underlying-expiry-right invariant; own right-separation scenarios",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_false_matches_different_right_expiry_underlying_are_never_linked",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing",
+    "test_real_outputs_reproduce_the_committed_manifest",
+    "test_real_second_app_key_wings_are_eligible_and_group_level_ratio_is_observed_not_ownership"
+   ],
+   "n_failed": 4,
+   "summary": "4 failed, 29 passed in 187.79s (0:03:07)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "links:W3",
+    "w3_resid",
+    "coverage",
+    "group_ratio",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "detector independent of the mutated path: raw-ledger own replay + own group keys"
+ },
+ {
+  "id": "M02",
+  "change": "strike distance sign: always wing.strike - body.strike (PE sign wrong)",
+  "expected_detector": "otm_distance reference: CE wing>body, PE body>wing",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_PE_wing_otm_distance_sign_is_positive_when_the_wing_is_further_out"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 190.52s (0:03:10)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "links:W3",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M03",
+  "change": "IST session boundary replaced by UTC day",
+  "expected_detector": "S60 same-session rule; W3 session grouping",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_W3_is_arithmetic_conserves_units_and_respects_sessions",
+    "test_session_boundary_is_not_crossed_by_the_sixty_second_window"
+   ],
+   "n_failed": 2,
+   "summary": "2 failed, 31 passed in 191.65s (0:03:11)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "real ledger cannot discriminate (all fills 09:14-15:31 IST = same UTC and IST day); detection only by synthetic IST-midnight scenarios (existing and mine)"
+ },
+ {
+  "id": "M04",
+  "change": "entry minute off by one minute in the W1 body index",
+  "expected_detector": "I-W1-same-entry-minute; own W1 candidate set",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_PE_wing_otm_distance_sign_is_positive_when_the_wing_is_further_out",
+    "test_W2_weighted_units_can_exceed_a_body_and_this_is_reported",
+    "test_W3_is_arithmetic_conserves_units_and_respects_sessions",
+    "test_check_rejects_corrupted_results[drop_link]",
+    "test_check_rejects_corrupted_results[dup_id]",
+    "test_check_rejects_corrupted_results[outside_window]",
+    "test_check_rejects_corrupted_results[weights]",
+    "test_check_rejects_corrupted_results[wrong_right]"
+   ],
+   "n_failed": 25,
+   "summary": "25 failed, 8 passed in 192.66s (0:03:12)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1",
+    "links:W2",
+    "coverage",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M05",
+  "change": "60 s boundary exclusive (|gap| < 60)",
+  "expected_detector": "S60 inclusive boundary at exactly 60 s",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_primary_requires_same_entry_minute_and_S60_is_inclusive_at_60_and_excludes_61",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing"
+   ],
+   "n_failed": 2,
+   "summary": "2 failed, 31 passed in 108.08s (0:01:48)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1_S60",
+    "links:W2_S60",
+    "coverage",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M06a",
+  "change": "W2 weights equal (1/n) instead of proportional to body units (still sum to 1)",
+  "expected_detector": "proportional-weight reference (body_qty / sum body_qty)",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_multiple_candidate_bodies_are_all_kept_with_ties_flagged_and_proportional_weights"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 111.41s (0:01:51)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W2",
+    "links:W2_S60",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "invariants (weights sum to 1, units reconcile) hold under equal weights; only the proportionality test and own reference detect"
+ },
+ {
+  "id": "M06b",
+  "change": "W2 weights normalised with an extra unit (do not sum to 1)",
+  "expected_detector": "I-W2-weights-sum-to-1; reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_W3_is_arithmetic_conserves_units_and_respects_sessions",
+    "test_check_rejects_corrupted_results[drop_link]",
+    "test_check_rejects_corrupted_results[dup_id]",
+    "test_check_rejects_corrupted_results[outside_window]",
+    "test_check_rejects_corrupted_results[weights]",
+    "test_check_rejects_corrupted_results[wrong_right]",
+    "test_check_rejects_corrupted_results[wrong_role]",
+    "test_closing_level_uses_closing_portions_of_long_h_and_short_num_episodes"
+   ],
+   "n_failed": 13,
+   "summary": "13 failed, 20 passed in 110.75s (0:01:50)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W2",
+    "links:W2_S60",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M06c",
+  "change": "W2 weighted_wing_units not scaled by wing quantity (weights right, units wrong)",
+  "expected_detector": "weighted units must sum to the wing quantity",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_W2_weighted_units_can_exceed_a_body_and_this_is_reported",
+    "test_W3_is_arithmetic_conserves_units_and_respects_sessions",
+    "test_check_rejects_corrupted_results[drop_link]",
+    "test_check_rejects_corrupted_results[dup_id]",
+    "test_check_rejects_corrupted_results[outside_window]",
+    "test_check_rejects_corrupted_results[weights]",
+    "test_check_rejects_corrupted_results[wrong_right]",
+    "test_check_rejects_corrupted_results[wrong_role]"
+   ],
+   "n_failed": 14,
+   "summary": "14 failed, 19 passed in 111.72s (0:01:51)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W2",
+    "links:W2_S60",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M07a",
+  "change": "unmatched wing units omitted from coverage()",
+  "expected_detector": "coverage unmatched units = wing units - units in wings with a candidate",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_partial_quantities_ratio_group_level_and_unmatched_units",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing",
+    "test_wing_uncovered_by_primary_is_recovered_only_as_sensitivity_and_reported_as_unmatched_in_primary"
+   ],
+   "n_failed": 3,
+   "summary": "3 failed, 30 passed in 110.11s (0:01:50)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "coverage"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M07b",
+  "change": "W3 wing residual not accumulated",
+  "expected_detector": "W3 residual = sum max(0, wing - body) per group (I-W3-residual)",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_W3_coverage_reports_queue_residual_units_not_item_counts",
+    "test_W3_is_arithmetic_conserves_units_and_respects_sessions",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing"
+   ],
+   "n_failed": 3,
+   "summary": "3 failed, 30 passed in 108.51s (0:01:48)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "w3_resid",
+    "coverage",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M08a",
+  "change": "W1 candidate multiplicity suppressed: only the nearest body is kept",
+  "expected_detector": "brute-force candidate-set invariant; own candidate sets",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_check_rejects_corrupted_results[drop_link]",
+    "test_check_rejects_corrupted_results[dup_id]",
+    "test_check_rejects_corrupted_results[outside_window]",
+    "test_check_rejects_corrupted_results[weights]",
+    "test_check_rejects_corrupted_results[wrong_right]",
+    "test_check_rejects_corrupted_results[wrong_role]",
+    "test_many_to_many_is_preserved_and_never_forced_one_to_one",
+    "test_multiple_candidate_bodies_are_all_kept_with_ties_flagged_and_proportional_weights"
+   ],
+   "n_failed": 11,
+   "summary": "11 failed, 22 passed in 107.42s (0:01:47)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1",
+    "links:W2",
+    "coverage",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "existing tests kill it only through the corrupted-results fixtures (their setup calls wb.check on a 2-candidate scenario); no dedicated multiplicity test for W1 was needed because the brute-force set invariant fires"
+ },
+ {
+  "id": "M08b",
+  "change": "W1_S60 candidate multiplicity suppressed (nearest only)",
+  "expected_detector": "brute-force candidate-set invariant; own candidate sets",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_check_rejects_corrupted_results[drop_link]",
+    "test_check_rejects_corrupted_results[dup_id]",
+    "test_check_rejects_corrupted_results[outside_window]",
+    "test_check_rejects_corrupted_results[weights]",
+    "test_check_rejects_corrupted_results[wrong_right]",
+    "test_check_rejects_corrupted_results[wrong_role]",
+    "test_methods_can_disagree_and_the_disagreement_is_counted_not_resolved",
+    "test_multiple_candidate_bodies_are_all_kept_with_ties_flagged_and_proportional_weights"
+   ],
+   "n_failed": 10,
+   "summary": "10 failed, 23 passed in 105.60s (0:01:45)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1_S60",
+    "links:W2_S60",
+    "coverage",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "as M08a"
+ },
+ {
+  "id": "M09",
+  "change": "excluded closing-role population dropped from scope_exclusions (denominator disclosure)",
+  "expected_detector": "closing exclusion total 336,040 (own replay)",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_scope_exclusions_and_closing_origin_are_reported"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 68.65s (0:01:08)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "scope_exclusions_equal"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "existing test exercises scope_exclusions on a tiny synthetic case; own check compares the full-ledger exclusion dict (closing 336,040 units)"
+ },
+ {
+  "id": "M10a",
+  "change": "app-key filter introduced in W1 (candidate must share the app key)",
+  "expected_detector": "app keys must not filter; real second-key wings; own candidate sets",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_missing_entry_minute_excludes_from_primary_only_and_missing_app_key_never_blocks",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing",
+    "test_real_outputs_reproduce_the_committed_manifest",
+    "test_real_second_app_key_wings_are_eligible_and_group_level_ratio_is_observed_not_ownership",
+    "test_second_app_key_wings_stay_eligible"
+   ],
+   "n_failed": 5,
+   "summary": "5 failed, 28 passed in 67.98s (0:01:07)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1",
+    "links:W2",
+    "coverage"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "app keys perturbation on real ledger (own engine_live.py) shows no key dependence in the unmutated code"
+ },
+ {
+  "id": "M10b",
+  "change": "app-key filter introduced in W1_S60",
+  "expected_detector": "app keys must not filter; own candidate sets",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_S60_flags_the_primary_set_correctly_and_ignores_app_keys",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing"
+   ],
+   "n_failed": 2,
+   "summary": "2 failed, 31 passed in 69.02s (0:01:09)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1_S60",
+    "links:W2_S60",
+    "coverage"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M11",
+  "change": "role swap: long h_ items labelled BODY, short num items labelled WING (all four add() calls)",
+  "expected_detector": "role/level invariant; own roles",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_PE_wing_otm_distance_sign_is_positive_when_the_wing_is_further_out",
+    "test_S60_flags_the_primary_set_correctly_and_ignores_app_keys",
+    "test_W2_weighted_units_can_exceed_a_body_and_this_is_reported",
+    "test_W3_coverage_reports_queue_residual_units_not_item_counts",
+    "test_W3_is_arithmetic_conserves_units_and_respects_sessions",
+    "test_check_rejects_corrupted_results[drop_link]",
+    "test_check_rejects_corrupted_results[dup_id]",
+    "test_check_rejects_corrupted_results[outside_window]"
+   ],
+   "n_failed": 26,
+   "summary": "26 failed, 7 passed in 67.20s (0:01:07)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "items",
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "links:W3",
+    "w3_resid",
+    "coverage",
+    "group_ratio",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M12",
+  "change": "W3 queue order reversed for bodies (newest body first)",
+  "expected_detector": "own W3 cumulative-sum queue (time ordered)",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_many_to_many_is_preserved_and_never_forced_one_to_one"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 69.99s (0:01:09)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W3",
+    "coverage",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M13",
+  "change": "closing level merged into opening: closing items labelled OPENING",
+  "expected_detector": "level separation tests; own item counts",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_closing_level_uses_closing_portions_of_long_h_and_short_num_episodes",
+    "test_closing_wing_and_body_are_defined_by_the_tag_of_the_closing_fill",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing",
+    "test_real_outputs_reproduce_the_committed_manifest",
+    "test_real_second_app_key_wings_are_eligible_and_group_level_ratio_is_observed_not_ownership"
+   ],
+   "n_failed": 5,
+   "summary": "5 failed, 28 passed in 56.14s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "items",
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "links:W3",
+    "w3_resid",
+    "coverage",
+    "group_ratio",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M14",
+  "change": "duplicate link rows in W2_S60 (every 500th, plus the first)",
+  "expected_detector": "I-unique-link-ids; own row-count / duplicate-key check",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_W3_is_arithmetic_conserves_units_and_respects_sessions",
+    "test_check_rejects_corrupted_results[drop_link]",
+    "test_check_rejects_corrupted_results[dup_id]",
+    "test_check_rejects_corrupted_results[outside_window]",
+    "test_check_rejects_corrupted_results[weights]",
+    "test_check_rejects_corrupted_results[wrong_right]",
+    "test_check_rejects_corrupted_results[wrong_role]",
+    "test_closing_level_uses_closing_portions_of_long_h_and_short_num_episodes"
+   ],
+   "n_failed": 14,
+   "summary": "14 failed, 19 passed in 70.07s (0:01:10)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W2_S60",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "sparse duplicate; own detector counts duplicate keys"
+ },
+ {
+  "id": "M15",
+  "change": "W1_S60 same-session requirement dropped",
+  "expected_detector": "IST-midnight scenario; real ledger candidate set",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_session_boundary_is_not_crossed_by_the_sixty_second_window"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 69.88s (0:01:09)"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "real ledger cannot discriminate (no cross-session candidates exist: 0 cross-session links); detection only by synthetic IST-midnight tests"
+ },
+ {
+  "id": "M16",
+  "change": "nearest tie flag always 0",
+  "expected_detector": "own nearest_tied reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_multiple_candidate_bodies_are_all_kept_with_ties_flagged_and_proportional_weights"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 53.11s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M17",
+  "change": "item first timestamp taken from the LAST fill",
+  "expected_detector": "first-fill timestamp (own replay); S60 / dt_s",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_item_times_and_session_come_from_the_FIRST_fill"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 51.08s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M18",
+  "change": "dt_s sign flipped (body - wing)",
+  "expected_detector": "dt_s sign convention wing - body",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_item_times_and_session_come_from_the_FIRST_fill",
+    "test_partial_quantities_ratio_group_level_and_unmatched_units"
+   ],
+   "n_failed": 2,
+   "summary": "2 failed, 31 passed in 49.50s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "links:W3",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M19",
+  "change": "W3 weight denominators use body quantity instead of wing quantity",
+  "expected_detector": "W3 weight = matched / wing_qty",
+  "existing_tests_caught": {
+   "caught": false,
+   "failed_tests": [],
+   "n_failed": 0,
+   "summary": "33 passed in 49.09s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W3"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "SURVIVED all 33 existing tests: no test pins the W3 weight column. Killed only by own reference"
+ },
+ {
+  "id": "M20",
+  "change": "qty_ratio inverted (body / wing)",
+  "expected_detector": "qty_ratio = wing / body",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_partial_quantities_ratio_group_level_and_unmatched_units"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 34.71s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "links:W3",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M21",
+  "change": "closing role derived from closing-fill side instead of the closed episode direction",
+  "expected_detector": "closing item set; item conservation invariant",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_closing_level_uses_closing_portions_of_long_h_and_short_num_episodes",
+    "test_closing_wing_and_body_are_defined_by_the_tag_of_the_closing_fill",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing",
+    "test_real_outputs_reproduce_the_committed_manifest"
+   ],
+   "n_failed": 4,
+   "summary": "4 failed, 29 passed in 31.32s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "items",
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "coverage",
+    "group_ratio",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M22",
+  "change": "W3 queue ignores the IST session (one queue per underlying/expiry/right)",
+  "expected_detector": "W3 per-session queue; I-W3-matched-equals-min per group",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_W3_is_arithmetic_conserves_units_and_respects_sessions",
+    "test_real_items_invariants_and_cross_check_with_tp03_E6_pairing"
+   ],
+   "n_failed": 2,
+   "summary": "2 failed, 31 passed in 32.98s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "links:W3",
+    "w3_resid",
+    "coverage",
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M23",
+  "change": "item average price unweighted by quantity (px_sum += price)",
+  "expected_detector": "wing/body avg price and px_ratio (own VWAP)",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_partial_quantities_ratio_group_level_and_unmatched_units"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 33.20s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "items",
+    "links:W1",
+    "links:W1_S60",
+    "links:W2",
+    "links:W2_S60",
+    "links:W3"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "own detector = independent reference (own raw replay, own link construction) on full ledger + 18 hand-built scenarios x 2 scopes + 150 fuzz x 2 scopes; classification [IMPL]/[RAW]. Existing tests = pe.tests.test_wing_body.py run on the mirror (33 tests incl. 3 slow real-ledger tests)."
+ },
+ {
+  "id": "M24",
+  "change": "missing entry minute treated as a match key (None == None)",
+  "expected_detector": "missing-entry-minute rule (primary excludes)",
+  "existing_tests_caught": {
+   "caught": true,
+   "failed_tests": [
+    "test_missing_entry_minute_excludes_from_primary_only_and_missing_app_key_never_blocks"
+   ],
+   "n_failed": 1,
+   "summary": "1 failed, 32 passed in 32.96s"
+  },
+  "own_check_caught": {
+   "caught": true,
+   "reasons": [
+    "synthetic/fuzz"
+   ]
+  },
+  "detector_independent": true,
+  "notes": "real ledger has 0 missing entry minutes so only synthetic scenarios can detect"
+ }
+]

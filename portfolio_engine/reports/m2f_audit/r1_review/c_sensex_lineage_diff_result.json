@@ -1,0 +1,72 @@
+{
+ "observed_allocations.tsv": {
+  "lines": 41445,
+  "identical": false,
+  "same_multiset": true,
+  "differing_positions": 2352,
+  "only_in_base": 0,
+  "only_in_sx": 0,
+  "example": [
+   [
+    "OA\tOA:F002172\tF002172\th_24040103276934\tSENSEX|2026-06-25|PE|74500\tSENSEX|2026-06-25|PE|74500#1\t1782273663\t1\t40\t815\th_\t2172\tHISTORICAL_OBSERVED_REPLAY",
+    "OA\tOA:F002173\tF002173\th_24040103277025\tSENSEX|2026-06-25|CE|78500\tSENSEX|2026-06-25|CE|78500#1\t1782273663\t1\t40\t600\th_\t2173\tHISTORICAL_OBSERVED_REPLAY"
+   ],
+   [
+    "OA\tOA:F002173\tF002173\th_24040103277025\tSENSEX|2026-06-25|CE|78500\tSENSEX|2026-06-25|CE|78500#1\t1782273663\t1\t40\t600\th_\t2173\tHISTORICAL_OBSERVED_REPLAY",
+    "OA\tOA:F002172\tF002172\th_24040103276934\tSENSEX|2026-06-25|PE|74500\tSENSEX|2026-06-25|PE|74500#1\t1782273663\t1\t40\t815\th_\t2172\tHISTORICAL_OBSERVED_REPLAY"
+   ]
+  ]
+ },
+ "lifecycle.tsv": {
+  "lines": 41445,
+  "identical": false,
+  "same_multiset": false,
+  "differing_positions": 2353,
+  "only_in_base": 66,
+  "only_in_sx": 66,
+  "example": [
+   [
+    "LE:SENSEX|2026-06-25|PE|74500#1:1\tSENSEX|2026-06-25|PE|74500#1\t1\tCREATED\tF002172\th_24040103276934\t1782273663\t40\t40\t0",
+    "LE:SENSEX|2026-06-25|CE|78500#1:1\tSENSEX|2026-06-25|CE|78500#1\t1\tCREATED\tF002173\th_24040103277025\t1782273663\t40\t40\t0"
+   ],
+   [
+    "LE:SENSEX|2026-06-25|CE|78500#1:1\tSENSEX|2026-06-25|CE|78500#1\t1\tCREATED\tF002173\th_24040103277025\t1782273663\t40\t40\t0",
+    "LE:SENSEX|2026-06-25|PE|74500#1:1\tSENSEX|2026-06-25|PE|74500#1\t1\tCREATED\tF002172\th_24040103276934\t1782273663\t40\t40\t0"
+   ]
+  ]
+ },
+ "episodes.tsv": {
+  "lines": 2668,
+  "identical": true,
+  "same_multiset": true,
+  "differing_positions": 0,
+  "only_in_base": 0,
+  "only_in_sx": 0
+ },
+ "ca_FIFO.tsv": {
+  "lines": 25024,
+  "identical": false,
+  "same_multiset": false,
+  "differing_positions": 22573,
+  "only_in_base": 136,
+  "only_in_sx": 140,
+  "example": [
+   [
+    "CA:FIFO:F002237:1\tFIFO\tCP:F002237\tOA:F002222\t20\t31200\t29550\t33000\t0\tIDENTIFIED_BY_CONVENTION",
+    "CA:FIFO:F002238:1\tFIFO\tCP:F002238\tOA:F002195\t20\t650\t1110\t9200\t0\tIDENTIFIED_BY_CONVENTION"
+   ],
+   [
+    "CA:FIFO:F002238:1\tFIFO\tCP:F002238\tOA:F002195\t20\t650\t1110\t9200\t0\tIDENTIFIED_BY_CONVENTION",
+    "CA:FIFO:F002237:1\tFIFO\tCP:F002237\tOA:F002222\t20\t31200\t29550\t33000\t0\tIDENTIFIED_BY_CONVENTION"
+   ]
+  ]
+ },
+ "slices_FIFO.tsv": {
+  "lines": 527,
+  "identical": true,
+  "same_multiset": true,
+  "differing_positions": 0,
+  "only_in_base": 0,
+  "only_in_sx": 0
+ }
+}

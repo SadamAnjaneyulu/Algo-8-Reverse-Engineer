@@ -1,0 +1,131 @@
+{
+ "NIFTY_2026-06-30": {
+  "CT1_INCREMENTAL_OPENING": {
+   "position": "NIFTY|2026-06-30|CE|24100#1",
+   "d_label": "D-1",
+   "ist": "09:16:01"
+  },
+  "CT2_PARTIAL_REDUCTION": {
+   "position": "NIFTY|2026-06-30|PE|22100#1",
+   "d_label": "D-1",
+   "ist": "09:16:00"
+  },
+  "CT3_FULL_CLOSURE": {
+   "position": "NIFTY|2026-06-30|CE|26100#1",
+   "d_label": "D-1",
+   "ist": "09:16:00"
+  },
+  "CT4_REMAINING_AT_EXPIRY": "UNAVAILABLE",
+  "CT5_REVERSAL": {
+   "position": "NIFTY|2026-06-30|CE|24100#1",
+   "d_label": "D-1",
+   "ist": "09:16:01"
+  },
+  "CT6_MULTIPLE_CANDIDATE_WINGS": {
+   "position": "NIFTY|2026-06-30|CE|24050#1",
+   "d_label": "D-1",
+   "ist": "09:24:21"
+  },
+  "CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES": {
+   "position": "NIFTY|2026-06-30|PE|23200#1",
+   "d_label": "D-1",
+   "ist": "09:31:04"
+  },
+  "CT7_NO_CANDIDATE_WING": {
+   "position": "NIFTY|2026-06-30|PE|24100#1",
+   "d_label": "D-1",
+   "ist": "09:16:01"
+  },
+  "CT8_W1_VS_W1S60_DISAGREEMENT": {
+   "position": "NIFTY|2026-06-30|CE|24000#1",
+   "d_label": "D-1",
+   "ist": "09:25:20"
+  },
+  "CT9_MULTI_PARENT_CLOSING_BATCH": {
+   "position": "NIFTY|2026-06-30|PE|24050#1",
+   "d_label": "D-1",
+   "ist": "09:31:00"
+  }
+ },
+ "SENSEX_2026-07-16": {
+  "CT1_INCREMENTAL_OPENING": {
+   "position": "SENSEX|2026-07-16|PE|77400#1",
+   "d_label": "D-1",
+   "ist": "09:21:27"
+  },
+  "CT2_PARTIAL_REDUCTION": {
+   "position": "SENSEX|2026-07-16|CE|81200#1",
+   "d_label": "D-1",
+   "ist": "09:16:00"
+  },
+  "CT3_FULL_CLOSURE": {
+   "position": "SENSEX|2026-07-16|CE|79500#1",
+   "d_label": "D-1",
+   "ist": "09:31:05"
+  },
+  "CT4_REMAINING_AT_EXPIRY": "UNAVAILABLE",
+  "CT5_REVERSAL": "UNAVAILABLE",
+  "CT6_MULTIPLE_CANDIDATE_WINGS": {
+   "position": "SENSEX|2026-07-16|CE|77500#1",
+   "d_label": "D-1",
+   "ist": "09:46:00"
+  },
+  "CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES": {
+   "position": "SENSEX|2026-07-16|PE|74900#1",
+   "d_label": "D-1",
+   "ist": "09:21:30"
+  },
+  "CT7_NO_CANDIDATE_WING": {
+   "position": "SENSEX|2026-07-16|CE|77200#1",
+   "d_label": "D-1",
+   "ist": "09:16:02"
+  },
+  "CT8_W1_VS_W1S60_DISAGREEMENT": {
+   "position": "SENSEX|2026-07-16|CE|77600#1",
+   "d_label": "D-1",
+   "ist": "09:31:00"
+  },
+  "CT9_MULTI_PARENT_CLOSING_BATCH": {
+   "position": "SENSEX|2026-07-16|CE|77400#1",
+   "d_label": "D-1",
+   "ist": "11:15:06"
+  }
+ },
+ "summary": {
+  "n": 17,
+  "by_d_label": {
+   "D-1": 17
+  },
+  "by_ist_hour": {
+   "09": 16,
+   "11": 1
+  },
+  "distinct_positions": 16
+ },
+ "columns_read_by_select": [
+  "batch_id",
+  "batches",
+  "episode_id",
+  "episode_ids",
+  "episodes",
+  "event_type",
+  "events",
+  "fill_id",
+  "first_ts",
+  "first_ts_utc_s",
+  "instrument_id",
+  "item_id",
+  "items",
+  "level",
+  "n_parents",
+  "parent_order_id",
+  "portions",
+  "role",
+  "source_row_id",
+  "start_ts",
+  "terminal_status",
+  "threshold_s",
+  "timestamp_s",
+  "wb_items"
+ ]
+}

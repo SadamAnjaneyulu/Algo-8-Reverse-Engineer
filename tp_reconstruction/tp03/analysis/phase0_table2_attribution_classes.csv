@@ -1,0 +1,6 @@
+kind,view,cls,parent_orders,share_within_view
+D0,"entered inside window, first fill outside",DECISION_IN_WINDOW_FILL_OUTSIDE,3,1.0
+D0,fill inside window,AMBIGUOUS_BOUNDARY_MINUTE,119,0.03139013452914798
+D0,fill inside window,ENTERED_INSIDE_WINDOW,3672,0.968609865470852
+PRE,fill inside window,AMBIGUOUS_BOUNDARY_MINUTE,166,0.07198612315698179
+PRE,fill inside window,ENTERED_INSIDE_WINDOW,2140,0.9280138768430182

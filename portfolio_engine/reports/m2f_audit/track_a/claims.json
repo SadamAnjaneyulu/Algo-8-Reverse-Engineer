@@ -1,0 +1,130 @@
+[
+ {
+  "claim": "41,421 fills in the source",
+  "source": "M1_REPORT; manifest",
+  "independent_verification": "[RAW] csv.reader over Trades_GKOHNP140.csv: 41,421 rows x 167 columns, 0 validation failures (side, qty>0, price on 5-paise grid, qty multiple of lot, ts monotone non-decreasing); engine fills equal raw on 8 fields for all rows (compare_ref_vs_engine.py)",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "All rows are accepted; none are excluded (is_duplicate flagged 0; no identical rows; trade ids differ in every same-key group). Raw column map verified by inspection, not against vendor documentation."
+ },
+ {
+  "claim": "Parent-order count 39,874",
+  "source": "M2B_RECONCILIATION_REPORT (parents.tsv rows)",
+  "independent_verification": "[RAW] 39,874 distinct values of column 163; each maps to exactly one side, instrument, requested qty and app key. Column 4 (order number) has 37,258 distinct values and is reused across parents (2,224 order numbers map to >1 col-163 ids, 2,222 across instruments).",
+  "class": "Method-dependent result",
+  "status": "VERIFIED (count) / definition is a choice",
+  "limitation": "Parent = column 163 (UniqueOrderIdentifier). Alternative key column 4 gives 37,258 but is demonstrably not a unique order identity. Not decided here."
+ },
+ {
+  "claim": "23,684 opening allocations / 17,760 closing portions / 2,667 episodes",
+  "source": "M2B_REPORT",
+  "independent_verification": "[RAW]+[IMPL] independent re-implementation on raw rows: OA 23,684 (sum 1,414,545 units), CP 17,760 (sum 1,377,065), episodes 2,667; exact row-by-row match of OA (23,684/23,684), CP (17,760/17,760), episodes (2,667/2,667), lifecycle events (41,444/41,444), per-fill roles (41,421/41,421) against engine outputs",
+  "class": "Method-dependent result",
+  "status": "VERIFIED under src tie order",
+  "limitation": "All counts are conditional on the same-second tie order (file order). Under trade-id or order-number tie order OA=23,682 and reversal fills=21 (see D-A01)."
+ },
+ {
+  "claim": "23 reversal fills, 26 mixed parents (23 with a reversal + 3 multi-fill without)",
+  "source": "M2B_REPORT",
+  "independent_verification": "[IMPL] ref: 23 split fills; 26 MIXED parents of which 23 contain a reversal fill and 3 do not",
+  "class": "Method-dependent result",
+  "status": "VERIFIED under src tie order",
+  "limitation": "Reversal count is 20-23 under other tie orders."
+ },
+ {
+  "claim": "15,889 of 17,760 closing portions are FIFO-vs-LIFO convention-sensitive",
+  "source": "M2B_RECONCILIATION_REPORT",
+  "independent_verification": "[IMPL] independent FIFO and LIFO allocation maps: 15,889 CPs whose {source OA: qty} map differs; identical set to engine",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "Descriptive; depends on the definition (map of OA->qty differs)."
+ },
+ {
+  "claim": "Observed layer identical across FIFO/LIFO/AVG",
+  "source": "M2B_REPORT",
+  "independent_verification": "[IMPL] in the reference itself: OA, CP, lifecycle, episodes identical for the 3 conventions (observed layer has no convention input by construction); engine guard + byte comparison of C++ files also identical",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "By construction the decomposition uses only net signed inventory; this is a structural property, not an empirical finding."
+ },
+ {
+  "claim": "Reproduces TP-01 totals (opened 1,414,545 / closed 1,377,065 / remaining 37,480; realized FIFO 2,100,552.00 / LIFO 2,096,874.50 / AVG 2,100,111.63 rupees)",
+  "source": "M1/M2B reports",
+  "independent_verification": "[IMPL]+[RAW] my reference vs TP-01 position_episodes (2,667 exact per method), reconstructed_position_ledger pieces (FIFO 25,023 and LIFO 24,948 pieces equal as sorted (close_row, open_row, qty, pnl paise); AVG per-close max diff 3.6e-11 rupees), fill_roles (0 mismatches x 3 methods), reconciliation_summary realized",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "TP-01 is an earlier implementation of the same matching rule by the same project: agreement is reproduction, not economic validation."
+ },
+ {
+  "claim": "P&L is integer paise = (exit-entry)*qty*direction, no hidden multiplier; price paise, qty = units",
+  "source": "SCHEMAS.md; M2C_UNIT_AUDIT",
+  "independent_verification": "[RAW] FIFO realized from raw rupee price text with Decimal and no paise: 2,100,552.00 rupees; x100 equals reference integer paise 210,055,200 exactly; NIFTY qty gcd 65 (min 65), SENSEX gcd 20 (min 20)",
+  "class": "Independently verified fact",
+  "status": "VERIFIED for FIFO/LIFO",
+  "limitation": "AVG is fractional paise (exact total 210,011,162.714...), stored as float; lot sizes 65/20 are data-derived multiples, not an exchange source."
+ },
+ {
+  "claim": "Remaining inventory 37,480 units, all EXPIRED_UNCLOSED (81 instruments); no settlement P&L inferred",
+  "source": "M1/M2B reports",
+  "independent_verification": "[RAW]+[IMPL] 81 instruments non-flat at end (71 long, 10 short), 37,480 abs units; realized equals sum of closing allocations only (engine CA total == reference CA total); code inspection: no settlement field or valuation in pe/ (grep)",
+  "class": "Internal consistency only",
+  "status": "VERIFIED (units, no settlement P&L) / label is inferential",
+  "limitation": "The label asserts the position was held to expiry from the absence of closing fills; for 27 of 81 the last fill is the day BEFORE expiry day, 13 last fills are at/after 15:30 IST. No settlement/exercise data exist."
+ },
+ {
+  "claim": "Python and C++ outputs are byte-identical",
+  "source": "M1/M2B reports",
+  "independent_verification": "[XLANG] scratch-built C++ vs Python on raw-derived TSV (my own events file, not the TP-01 parquet): 5 lineage files + dump + roles byte-identical for 3 conventions x 3 tie orders (9 cases x 7 files, 0 diffs); fresh fuzz 400 sequences x 3 ties x 3 methods = 3,600 cases 0 byte diffs",
+  "class": "Internal consistency only",
+  "status": "VERIFIED",
+  "limitation": "Cross-language consistency of a port; it is not historical/economic validation. C++ and Python were written by the same author with the same structure."
+ },
+ {
+  "claim": "Independent reference agrees with C++ and Python on random sequences",
+  "source": "M2B_REPORT (differential tests)",
+  "independent_verification": "[IMPL] fuzz_diff.py: 400 random sequences (40,802 fills, 2,791 reversals, 15,206 partial reductions, 4,866 same-second mixed-side groups, 892 flagged duplicates), 3,600 cases: 0 mismatches C++ vs reference, 0 Python vs reference",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "Generator is mine; covers prices on 5-paise grid and bounded sizes, not int64 overflow."
+ },
+ {
+  "claim": "Identity (episodes/OA/CP) is stable under same-second tie order",
+  "source": "M2B_REPORT (\"conditional on tie order\", sells_first/buys_first: 20 fills, 5 instruments)",
+  "independent_verification": "[IMPL] the 20 fills / 5 instruments figure reproduces exactly. Wider alternatives: reversed src 18 instruments, random 10-17, trade-id order 2 instruments, order-number order 2 instruments; totals of OA/CP units, final inventory and cash are invariant in every variant",
+  "class": "Method-dependent result",
+  "status": "VERIFIED (disclosure accurate for the 2 orders tested; incomplete)",
+  "limitation": "Raw sequence keys (trade id, order number) contradict file order in 2 mixed-side groups; see D-A01. Which order is \"true\" is NOT decidable from the file."
+ },
+ {
+  "claim": "src (file) order is chronological",
+  "source": "M2B_RECONCILIATION_REPORT (\"verified chronological\")",
+  "independent_verification": "[RAW] timestamps are non-decreasing in file order (0 decreases). Within a second: trade id (col 28) is ascending in file order in 54/56 mixed-side groups and order number (col 4) in 55/56; 173 same-instrument-second groups disagree with ascending trade id in total",
+  "class": "Unresolved",
+  "status": "PARTIALLY VERIFIED (to the second only)",
+  "limitation": "Intra-second chronology is not verifiable from the file; only second resolution exists."
+ },
+ {
+  "claim": "Partially filled orders are consistent",
+  "source": "M1_REPORT",
+  "independent_verification": "[RAW] col 20 (remaining) == order qty - cumulative filled for every parent; 39,871 parents Filled with sum == order qty; 3 parents end PartiallyFilled with unfilled remainder (units 40/340, 40/160, 65/1755)",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "Cause of the 3 unfilled remainders (cancel vs truncated export) is not testable."
+ },
+ {
+  "claim": "No duplicate fills in source",
+  "source": "manifest flagged_rows 0",
+  "independent_verification": "[RAW] 0 fully identical rows; 561 groups share (parent, qty, price, second) but all have distinct trade ids and consecutive partial/filled status",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "Duplicate handling is exercised only on synthetic/fuzz data, never on real data."
+ },
+ {
+  "claim": "Settlement value / exercise outcomes of the 81 open instruments",
+  "source": "n/a",
+  "independent_verification": "none",
+  "class": "Not testable with available data",
+  "status": "NOT TESTABLE",
+  "limitation": "No settlement prices in the data."
+ }
+]

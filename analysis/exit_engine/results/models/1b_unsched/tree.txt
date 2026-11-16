@@ -1,0 +1,24 @@
+===== 1b any unscheduled buy-back (label-free) (depth-3 tree, DEV fit) =====
+|--- tte_min <= 76.50
+|   |--- vexp <= 477.58
+|   |   |--- r_avg <= 0.04
+|   |   |   |--- class: 0
+|   |   |--- r_avg >  0.04
+|   |   |   |--- class: 0
+|   |--- vexp >  477.58
+|   |   |--- clockB <= 0.50
+|   |   |   |--- class: 0
+|   |   |--- clockB >  0.50
+|   |   |   |--- class: 0
+|--- tte_min >  76.50
+|   |--- r_cheap <= 1.50
+|   |   |--- e_cheap <= 5.97
+|   |   |   |--- class: 0
+|   |   |--- e_cheap >  5.97
+|   |   |   |--- class: 0
+|   |--- r_cheap >  1.50
+|   |   |--- adv_mv5 <= 1.38
+|   |   |   |--- class: 0
+|   |   |--- adv_mv5 >  1.38
+|   |   |   |--- class: 0
+

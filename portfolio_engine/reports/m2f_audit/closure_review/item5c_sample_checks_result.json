@@ -1,0 +1,28 @@
+{
+ "D-A06": {
+  "parents_col163": 39874,
+  "distinct_order_no_col4": 37258,
+  "max_parents_per_order_no": 6,
+  "order_numbers_shared": 2224,
+  "parents_with_more_than_one_order_no": 0
+ },
+ "D-A04": {
+  "nonflat": 81,
+  "long": 71,
+  "short": 10,
+  "units": 37480,
+  "last_data_day": "2026-10-22",
+  "max_expiry": "2026-10-22",
+  "nonflat_expiring_on_last_data_day": 0
+ },
+ "m2d_files": [
+  "m2d_summary.json",
+  "manifest.json",
+  "wing_body_items.tsv.gz",
+  "wing_body_links_W1.tsv.gz",
+  "wing_body_links_W1_S60.tsv.gz",
+  "wing_body_links_W2.tsv.gz",
+  "wing_body_links_W2_S60.tsv.gz",
+  "wing_body_links_W3.tsv.gz"
+ ]
+}

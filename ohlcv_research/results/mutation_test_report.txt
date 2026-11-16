@@ -1,0 +1,13 @@
+mutant | result | first failing test (synthetic tests only, real-data tests skipped)
+M1 row keyed by the bar start (uses the forming candle) | CAUGHT | test_row_at_decision_minute_uses_only_bars_completed_before_it
+M2 5-minute bar released at its start | CAUGHT | test_truncation_invariance_index[m0]
+M3 centred rolling window (looks 30 bars ahead) | CAUGHT | test_truncation_invariance_index[m1]
+M4 full-session high/low instead of running | CAUGHT | test_row_at_decision_minute_uses_only_bars_completed_before_it
+M5 opening range usable before 09:30 | CAUGHT | test_truncation_invariance_index[m2]
+M6 straddle return across strikes (lagged leg from the earlier ATM strike) | CAUGHT | test_straddle_return_keeps_the_strike_fixed_when_atm_moves
+M7 post-close bars kept | CAUGHT | test_post_close_index_bars_never_enter_any_timeframe
+M8 volume window crossing into the future (shift -5) | CAUGHT | test_truncation_invariance_options_and_straddle[m1]
+M9 global z-score (full-sample mean and std) | CAUGHT | test_truncation_invariance_index[m0]
+M10 option close carried without limit (stale prices) | CAUGHT | test_volume_features_exist_only_for_options_and_bar_age_reports_gaps
+M11 previous-day level taken from the SAME day | CAUGHT | test_truncation_invariance_index[m0]
+M12 decision minute of a tagged order rounded UP | CAUGHT | test_calendar_and_decision_minute

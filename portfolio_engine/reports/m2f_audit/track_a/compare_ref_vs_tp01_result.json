@@ -1,0 +1,71 @@
+{
+ "episodes_methods": {
+  "FIFO": 2667,
+  "LIFO": 2667,
+  "AVG": 2667
+ },
+ "ledger_methods_ties": "{('AVG', 'src'): 17760, ('FIFO', 'src'): 25023, ('LIFO', 'src'): 24948}",
+ "fill_roles_methods": {
+  "FIFO": 41421,
+  "LIFO": 41421,
+  "AVG": 41421
+ },
+ "ledger_row_type": {
+  "CLOSED": 67731,
+  "REMAINING": 1108
+ },
+ "FIFO/src_episodes": {
+  "ref": 2667,
+  "tp01": 2667,
+  "exact": 2667,
+  "bad": [],
+  "extra_in_tp01": 0
+ },
+ "FIFO/src_pieces": {
+  "ref": 25023,
+  "tp01": 25023,
+  "equal": true
+ },
+ "FIFO/src_realized_rupees": 2100552.0,
+ "FIFO/src_fill_roles_mismatch": 0,
+ "LIFO/src_episodes": {
+  "ref": 2667,
+  "tp01": 2667,
+  "exact": 2667,
+  "bad": [],
+  "extra_in_tp01": 0
+ },
+ "LIFO/src_pieces": {
+  "ref": 24948,
+  "tp01": 24948,
+  "equal": true
+ },
+ "LIFO/src_realized_rupees": 2096874.5,
+ "LIFO/src_fill_roles_mismatch": 0,
+ "AVG/src_episodes": {
+  "ref": 2667,
+  "tp01": 2667,
+  "exact": 2667,
+  "bad": [],
+  "extra_in_tp01": 0
+ },
+ "AVG/src_pieces": {
+  "ref": 17760,
+  "tp01": 17760,
+  "max_abs_diff_rupees_per_close": 3.637978807091713e-11,
+  "same_keys": true
+ },
+ "AVG/src_realized_rupees": 2100111.627140885,
+ "AVG/src_fill_roles_mismatch": 0,
+ "FIFO/sells_first_realized_rupees": 2100552.0,
+ "LIFO/sells_first_realized_rupees": 2096874.5,
+ "AVG/sells_first_realized_rupees": 2100111.627140885,
+ "FIFO/buys_first_realized_rupees": 2100552.0,
+ "LIFO/buys_first_realized_rupees": 2096874.5,
+ "AVG/buys_first_realized_rupees": 2100111.627140885,
+ "tp01_summary_realized_rupees": {
+  "FIFO": 2100552.0,
+  "LIFO": 2096874.5,
+  "AVG": 2100111.63
+ }
+}

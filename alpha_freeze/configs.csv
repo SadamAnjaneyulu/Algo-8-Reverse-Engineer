@@ -1,0 +1,4513 @@
+group,entry,exit,wing,leg,cyc,vrp,id
+BTST,ladder,D0 09:16,,,,,0
+BTST,ladder,D0 09:16,,,,1.0,1
+BTST,ladder,D0 09:16,,,,1.2,2
+BTST,ladder,D0 09:16,,,on,,3
+BTST,ladder,D0 09:16,,,on,1.0,4
+BTST,ladder,D0 09:16,,,on,1.2,5
+BTST,ladder,D0 09:16,,1.3,,,6
+BTST,ladder,D0 09:16,,1.3,,1.0,7
+BTST,ladder,D0 09:16,,1.3,,1.2,8
+BTST,ladder,D0 09:16,,1.3,on,,9
+BTST,ladder,D0 09:16,,1.3,on,1.0,10
+BTST,ladder,D0 09:16,,1.3,on,1.2,11
+BTST,ladder,D0 09:16,,1.55,,,12
+BTST,ladder,D0 09:16,,1.55,,1.0,13
+BTST,ladder,D0 09:16,,1.55,,1.2,14
+BTST,ladder,D0 09:16,,1.55,on,,15
+BTST,ladder,D0 09:16,,1.55,on,1.0,16
+BTST,ladder,D0 09:16,,1.55,on,1.2,17
+BTST,ladder,D0 09:16,,2.0,,,18
+BTST,ladder,D0 09:16,,2.0,,1.0,19
+BTST,ladder,D0 09:16,,2.0,,1.2,20
+BTST,ladder,D0 09:16,,2.0,on,,21
+BTST,ladder,D0 09:16,,2.0,on,1.0,22
+BTST,ladder,D0 09:16,,2.0,on,1.2,23
+BTST,ladder,D0 09:16,0.006,,,,24
+BTST,ladder,D0 09:16,0.006,,,1.0,25
+BTST,ladder,D0 09:16,0.006,,,1.2,26
+BTST,ladder,D0 09:16,0.006,,on,,27
+BTST,ladder,D0 09:16,0.006,,on,1.0,28
+BTST,ladder,D0 09:16,0.006,,on,1.2,29
+BTST,ladder,D0 09:16,0.006,1.3,,,30
+BTST,ladder,D0 09:16,0.006,1.3,,1.0,31
+BTST,ladder,D0 09:16,0.006,1.3,,1.2,32
+BTST,ladder,D0 09:16,0.006,1.3,on,,33
+BTST,ladder,D0 09:16,0.006,1.3,on,1.0,34
+BTST,ladder,D0 09:16,0.006,1.3,on,1.2,35
+BTST,ladder,D0 09:16,0.006,1.55,,,36
+BTST,ladder,D0 09:16,0.006,1.55,,1.0,37
+BTST,ladder,D0 09:16,0.006,1.55,,1.2,38
+BTST,ladder,D0 09:16,0.006,1.55,on,,39
+BTST,ladder,D0 09:16,0.006,1.55,on,1.0,40
+BTST,ladder,D0 09:16,0.006,1.55,on,1.2,41
+BTST,ladder,D0 09:16,0.006,2.0,,,42
+BTST,ladder,D0 09:16,0.006,2.0,,1.0,43
+BTST,ladder,D0 09:16,0.006,2.0,,1.2,44
+BTST,ladder,D0 09:16,0.006,2.0,on,,45
+BTST,ladder,D0 09:16,0.006,2.0,on,1.0,46
+BTST,ladder,D0 09:16,0.006,2.0,on,1.2,47
+BTST,ladder,D0 09:16,0.012,,,,48
+BTST,ladder,D0 09:16,0.012,,,1.0,49
+BTST,ladder,D0 09:16,0.012,,,1.2,50
+BTST,ladder,D0 09:16,0.012,,on,,51
+BTST,ladder,D0 09:16,0.012,,on,1.0,52
+BTST,ladder,D0 09:16,0.012,,on,1.2,53
+BTST,ladder,D0 09:16,0.012,1.3,,,54
+BTST,ladder,D0 09:16,0.012,1.3,,1.0,55
+BTST,ladder,D0 09:16,0.012,1.3,,1.2,56
+BTST,ladder,D0 09:16,0.012,1.3,on,,57
+BTST,ladder,D0 09:16,0.012,1.3,on,1.0,58
+BTST,ladder,D0 09:16,0.012,1.3,on,1.2,59
+BTST,ladder,D0 09:16,0.012,1.55,,,60
+BTST,ladder,D0 09:16,0.012,1.55,,1.0,61
+BTST,ladder,D0 09:16,0.012,1.55,,1.2,62
+BTST,ladder,D0 09:16,0.012,1.55,on,,63
+BTST,ladder,D0 09:16,0.012,1.55,on,1.0,64
+BTST,ladder,D0 09:16,0.012,1.55,on,1.2,65
+BTST,ladder,D0 09:16,0.012,2.0,,,66
+BTST,ladder,D0 09:16,0.012,2.0,,1.0,67
+BTST,ladder,D0 09:16,0.012,2.0,,1.2,68
+BTST,ladder,D0 09:16,0.012,2.0,on,,69
+BTST,ladder,D0 09:16,0.012,2.0,on,1.0,70
+BTST,ladder,D0 09:16,0.012,2.0,on,1.2,71
+BTST,ladder,D0 09:16,0.025,,,,72
+BTST,ladder,D0 09:16,0.025,,,1.0,73
+BTST,ladder,D0 09:16,0.025,,,1.2,74
+BTST,ladder,D0 09:16,0.025,,on,,75
+BTST,ladder,D0 09:16,0.025,,on,1.0,76
+BTST,ladder,D0 09:16,0.025,,on,1.2,77
+BTST,ladder,D0 09:16,0.025,1.3,,,78
+BTST,ladder,D0 09:16,0.025,1.3,,1.0,79
+BTST,ladder,D0 09:16,0.025,1.3,,1.2,80
+BTST,ladder,D0 09:16,0.025,1.3,on,,81
+BTST,ladder,D0 09:16,0.025,1.3,on,1.0,82
+BTST,ladder,D0 09:16,0.025,1.3,on,1.2,83
+BTST,ladder,D0 09:16,0.025,1.55,,,84
+BTST,ladder,D0 09:16,0.025,1.55,,1.0,85
+BTST,ladder,D0 09:16,0.025,1.55,,1.2,86
+BTST,ladder,D0 09:16,0.025,1.55,on,,87
+BTST,ladder,D0 09:16,0.025,1.55,on,1.0,88
+BTST,ladder,D0 09:16,0.025,1.55,on,1.2,89
+BTST,ladder,D0 09:16,0.025,2.0,,,90
+BTST,ladder,D0 09:16,0.025,2.0,,1.0,91
+BTST,ladder,D0 09:16,0.025,2.0,,1.2,92
+BTST,ladder,D0 09:16,0.025,2.0,on,,93
+BTST,ladder,D0 09:16,0.025,2.0,on,1.0,94
+BTST,ladder,D0 09:16,0.025,2.0,on,1.2,95
+BTST,ladder,D0 10:01,,,,,96
+BTST,ladder,D0 10:01,,,,1.0,97
+BTST,ladder,D0 10:01,,,,1.2,98
+BTST,ladder,D0 10:01,,,on,,99
+BTST,ladder,D0 10:01,,,on,1.0,100
+BTST,ladder,D0 10:01,,,on,1.2,101
+BTST,ladder,D0 10:01,,1.3,,,102
+BTST,ladder,D0 10:01,,1.3,,1.0,103
+BTST,ladder,D0 10:01,,1.3,,1.2,104
+BTST,ladder,D0 10:01,,1.3,on,,105
+BTST,ladder,D0 10:01,,1.3,on,1.0,106
+BTST,ladder,D0 10:01,,1.3,on,1.2,107
+BTST,ladder,D0 10:01,,1.55,,,108
+BTST,ladder,D0 10:01,,1.55,,1.0,109
+BTST,ladder,D0 10:01,,1.55,,1.2,110
+BTST,ladder,D0 10:01,,1.55,on,,111
+BTST,ladder,D0 10:01,,1.55,on,1.0,112
+BTST,ladder,D0 10:01,,1.55,on,1.2,113
+BTST,ladder,D0 10:01,,2.0,,,114
+BTST,ladder,D0 10:01,,2.0,,1.0,115
+BTST,ladder,D0 10:01,,2.0,,1.2,116
+BTST,ladder,D0 10:01,,2.0,on,,117
+BTST,ladder,D0 10:01,,2.0,on,1.0,118
+BTST,ladder,D0 10:01,,2.0,on,1.2,119
+BTST,ladder,D0 10:01,0.006,,,,120
+BTST,ladder,D0 10:01,0.006,,,1.0,121
+BTST,ladder,D0 10:01,0.006,,,1.2,122
+BTST,ladder,D0 10:01,0.006,,on,,123
+BTST,ladder,D0 10:01,0.006,,on,1.0,124
+BTST,ladder,D0 10:01,0.006,,on,1.2,125
+BTST,ladder,D0 10:01,0.006,1.3,,,126
+BTST,ladder,D0 10:01,0.006,1.3,,1.0,127
+BTST,ladder,D0 10:01,0.006,1.3,,1.2,128
+BTST,ladder,D0 10:01,0.006,1.3,on,,129
+BTST,ladder,D0 10:01,0.006,1.3,on,1.0,130
+BTST,ladder,D0 10:01,0.006,1.3,on,1.2,131
+BTST,ladder,D0 10:01,0.006,1.55,,,132
+BTST,ladder,D0 10:01,0.006,1.55,,1.0,133
+BTST,ladder,D0 10:01,0.006,1.55,,1.2,134
+BTST,ladder,D0 10:01,0.006,1.55,on,,135
+BTST,ladder,D0 10:01,0.006,1.55,on,1.0,136
+BTST,ladder,D0 10:01,0.006,1.55,on,1.2,137
+BTST,ladder,D0 10:01,0.006,2.0,,,138
+BTST,ladder,D0 10:01,0.006,2.0,,1.0,139
+BTST,ladder,D0 10:01,0.006,2.0,,1.2,140
+BTST,ladder,D0 10:01,0.006,2.0,on,,141
+BTST,ladder,D0 10:01,0.006,2.0,on,1.0,142
+BTST,ladder,D0 10:01,0.006,2.0,on,1.2,143
+BTST,ladder,D0 10:01,0.012,,,,144
+BTST,ladder,D0 10:01,0.012,,,1.0,145
+BTST,ladder,D0 10:01,0.012,,,1.2,146
+BTST,ladder,D0 10:01,0.012,,on,,147
+BTST,ladder,D0 10:01,0.012,,on,1.0,148
+BTST,ladder,D0 10:01,0.012,,on,1.2,149
+BTST,ladder,D0 10:01,0.012,1.3,,,150
+BTST,ladder,D0 10:01,0.012,1.3,,1.0,151
+BTST,ladder,D0 10:01,0.012,1.3,,1.2,152
+BTST,ladder,D0 10:01,0.012,1.3,on,,153
+BTST,ladder,D0 10:01,0.012,1.3,on,1.0,154
+BTST,ladder,D0 10:01,0.012,1.3,on,1.2,155
+BTST,ladder,D0 10:01,0.012,1.55,,,156
+BTST,ladder,D0 10:01,0.012,1.55,,1.0,157
+BTST,ladder,D0 10:01,0.012,1.55,,1.2,158
+BTST,ladder,D0 10:01,0.012,1.55,on,,159
+BTST,ladder,D0 10:01,0.012,1.55,on,1.0,160
+BTST,ladder,D0 10:01,0.012,1.55,on,1.2,161
+BTST,ladder,D0 10:01,0.012,2.0,,,162
+BTST,ladder,D0 10:01,0.012,2.0,,1.0,163
+BTST,ladder,D0 10:01,0.012,2.0,,1.2,164
+BTST,ladder,D0 10:01,0.012,2.0,on,,165
+BTST,ladder,D0 10:01,0.012,2.0,on,1.0,166
+BTST,ladder,D0 10:01,0.012,2.0,on,1.2,167
+BTST,ladder,D0 10:01,0.025,,,,168
+BTST,ladder,D0 10:01,0.025,,,1.0,169
+BTST,ladder,D0 10:01,0.025,,,1.2,170
+BTST,ladder,D0 10:01,0.025,,on,,171
+BTST,ladder,D0 10:01,0.025,,on,1.0,172
+BTST,ladder,D0 10:01,0.025,,on,1.2,173
+BTST,ladder,D0 10:01,0.025,1.3,,,174
+BTST,ladder,D0 10:01,0.025,1.3,,1.0,175
+BTST,ladder,D0 10:01,0.025,1.3,,1.2,176
+BTST,ladder,D0 10:01,0.025,1.3,on,,177
+BTST,ladder,D0 10:01,0.025,1.3,on,1.0,178
+BTST,ladder,D0 10:01,0.025,1.3,on,1.2,179
+BTST,ladder,D0 10:01,0.025,1.55,,,180
+BTST,ladder,D0 10:01,0.025,1.55,,1.0,181
+BTST,ladder,D0 10:01,0.025,1.55,,1.2,182
+BTST,ladder,D0 10:01,0.025,1.55,on,,183
+BTST,ladder,D0 10:01,0.025,1.55,on,1.0,184
+BTST,ladder,D0 10:01,0.025,1.55,on,1.2,185
+BTST,ladder,D0 10:01,0.025,2.0,,,186
+BTST,ladder,D0 10:01,0.025,2.0,,1.0,187
+BTST,ladder,D0 10:01,0.025,2.0,,1.2,188
+BTST,ladder,D0 10:01,0.025,2.0,on,,189
+BTST,ladder,D0 10:01,0.025,2.0,on,1.0,190
+BTST,ladder,D0 10:01,0.025,2.0,on,1.2,191
+BTST,ladder,D0 12:01,,,,,192
+BTST,ladder,D0 12:01,,,,1.0,193
+BTST,ladder,D0 12:01,,,,1.2,194
+BTST,ladder,D0 12:01,,,on,,195
+BTST,ladder,D0 12:01,,,on,1.0,196
+BTST,ladder,D0 12:01,,,on,1.2,197
+BTST,ladder,D0 12:01,,1.3,,,198
+BTST,ladder,D0 12:01,,1.3,,1.0,199
+BTST,ladder,D0 12:01,,1.3,,1.2,200
+BTST,ladder,D0 12:01,,1.3,on,,201
+BTST,ladder,D0 12:01,,1.3,on,1.0,202
+BTST,ladder,D0 12:01,,1.3,on,1.2,203
+BTST,ladder,D0 12:01,,1.55,,,204
+BTST,ladder,D0 12:01,,1.55,,1.0,205
+BTST,ladder,D0 12:01,,1.55,,1.2,206
+BTST,ladder,D0 12:01,,1.55,on,,207
+BTST,ladder,D0 12:01,,1.55,on,1.0,208
+BTST,ladder,D0 12:01,,1.55,on,1.2,209
+BTST,ladder,D0 12:01,,2.0,,,210
+BTST,ladder,D0 12:01,,2.0,,1.0,211
+BTST,ladder,D0 12:01,,2.0,,1.2,212
+BTST,ladder,D0 12:01,,2.0,on,,213
+BTST,ladder,D0 12:01,,2.0,on,1.0,214
+BTST,ladder,D0 12:01,,2.0,on,1.2,215
+BTST,ladder,D0 12:01,0.006,,,,216
+BTST,ladder,D0 12:01,0.006,,,1.0,217
+BTST,ladder,D0 12:01,0.006,,,1.2,218
+BTST,ladder,D0 12:01,0.006,,on,,219
+BTST,ladder,D0 12:01,0.006,,on,1.0,220
+BTST,ladder,D0 12:01,0.006,,on,1.2,221
+BTST,ladder,D0 12:01,0.006,1.3,,,222
+BTST,ladder,D0 12:01,0.006,1.3,,1.0,223
+BTST,ladder,D0 12:01,0.006,1.3,,1.2,224
+BTST,ladder,D0 12:01,0.006,1.3,on,,225
+BTST,ladder,D0 12:01,0.006,1.3,on,1.0,226
+BTST,ladder,D0 12:01,0.006,1.3,on,1.2,227
+BTST,ladder,D0 12:01,0.006,1.55,,,228
+BTST,ladder,D0 12:01,0.006,1.55,,1.0,229
+BTST,ladder,D0 12:01,0.006,1.55,,1.2,230
+BTST,ladder,D0 12:01,0.006,1.55,on,,231
+BTST,ladder,D0 12:01,0.006,1.55,on,1.0,232
+BTST,ladder,D0 12:01,0.006,1.55,on,1.2,233
+BTST,ladder,D0 12:01,0.006,2.0,,,234
+BTST,ladder,D0 12:01,0.006,2.0,,1.0,235
+BTST,ladder,D0 12:01,0.006,2.0,,1.2,236
+BTST,ladder,D0 12:01,0.006,2.0,on,,237
+BTST,ladder,D0 12:01,0.006,2.0,on,1.0,238
+BTST,ladder,D0 12:01,0.006,2.0,on,1.2,239
+BTST,ladder,D0 12:01,0.012,,,,240
+BTST,ladder,D0 12:01,0.012,,,1.0,241
+BTST,ladder,D0 12:01,0.012,,,1.2,242
+BTST,ladder,D0 12:01,0.012,,on,,243
+BTST,ladder,D0 12:01,0.012,,on,1.0,244
+BTST,ladder,D0 12:01,0.012,,on,1.2,245
+BTST,ladder,D0 12:01,0.012,1.3,,,246
+BTST,ladder,D0 12:01,0.012,1.3,,1.0,247
+BTST,ladder,D0 12:01,0.012,1.3,,1.2,248
+BTST,ladder,D0 12:01,0.012,1.3,on,,249
+BTST,ladder,D0 12:01,0.012,1.3,on,1.0,250
+BTST,ladder,D0 12:01,0.012,1.3,on,1.2,251
+BTST,ladder,D0 12:01,0.012,1.55,,,252
+BTST,ladder,D0 12:01,0.012,1.55,,1.0,253
+BTST,ladder,D0 12:01,0.012,1.55,,1.2,254
+BTST,ladder,D0 12:01,0.012,1.55,on,,255
+BTST,ladder,D0 12:01,0.012,1.55,on,1.0,256
+BTST,ladder,D0 12:01,0.012,1.55,on,1.2,257
+BTST,ladder,D0 12:01,0.012,2.0,,,258
+BTST,ladder,D0 12:01,0.012,2.0,,1.0,259
+BTST,ladder,D0 12:01,0.012,2.0,,1.2,260
+BTST,ladder,D0 12:01,0.012,2.0,on,,261
+BTST,ladder,D0 12:01,0.012,2.0,on,1.0,262
+BTST,ladder,D0 12:01,0.012,2.0,on,1.2,263
+BTST,ladder,D0 12:01,0.025,,,,264
+BTST,ladder,D0 12:01,0.025,,,1.0,265
+BTST,ladder,D0 12:01,0.025,,,1.2,266
+BTST,ladder,D0 12:01,0.025,,on,,267
+BTST,ladder,D0 12:01,0.025,,on,1.0,268
+BTST,ladder,D0 12:01,0.025,,on,1.2,269
+BTST,ladder,D0 12:01,0.025,1.3,,,270
+BTST,ladder,D0 12:01,0.025,1.3,,1.0,271
+BTST,ladder,D0 12:01,0.025,1.3,,1.2,272
+BTST,ladder,D0 12:01,0.025,1.3,on,,273
+BTST,ladder,D0 12:01,0.025,1.3,on,1.0,274
+BTST,ladder,D0 12:01,0.025,1.3,on,1.2,275
+BTST,ladder,D0 12:01,0.025,1.55,,,276
+BTST,ladder,D0 12:01,0.025,1.55,,1.0,277
+BTST,ladder,D0 12:01,0.025,1.55,,1.2,278
+BTST,ladder,D0 12:01,0.025,1.55,on,,279
+BTST,ladder,D0 12:01,0.025,1.55,on,1.0,280
+BTST,ladder,D0 12:01,0.025,1.55,on,1.2,281
+BTST,ladder,D0 12:01,0.025,2.0,,,282
+BTST,ladder,D0 12:01,0.025,2.0,,1.0,283
+BTST,ladder,D0 12:01,0.025,2.0,,1.2,284
+BTST,ladder,D0 12:01,0.025,2.0,on,,285
+BTST,ladder,D0 12:01,0.025,2.0,on,1.0,286
+BTST,ladder,D0 12:01,0.025,2.0,on,1.2,287
+BTST,ladder,D0 15:14,,,,,288
+BTST,ladder,D0 15:14,,,,1.0,289
+BTST,ladder,D0 15:14,,,,1.2,290
+BTST,ladder,D0 15:14,,,on,,291
+BTST,ladder,D0 15:14,,,on,1.0,292
+BTST,ladder,D0 15:14,,,on,1.2,293
+BTST,ladder,D0 15:14,,1.3,,,294
+BTST,ladder,D0 15:14,,1.3,,1.0,295
+BTST,ladder,D0 15:14,,1.3,,1.2,296
+BTST,ladder,D0 15:14,,1.3,on,,297
+BTST,ladder,D0 15:14,,1.3,on,1.0,298
+BTST,ladder,D0 15:14,,1.3,on,1.2,299
+BTST,ladder,D0 15:14,,1.55,,,300
+BTST,ladder,D0 15:14,,1.55,,1.0,301
+BTST,ladder,D0 15:14,,1.55,,1.2,302
+BTST,ladder,D0 15:14,,1.55,on,,303
+BTST,ladder,D0 15:14,,1.55,on,1.0,304
+BTST,ladder,D0 15:14,,1.55,on,1.2,305
+BTST,ladder,D0 15:14,,2.0,,,306
+BTST,ladder,D0 15:14,,2.0,,1.0,307
+BTST,ladder,D0 15:14,,2.0,,1.2,308
+BTST,ladder,D0 15:14,,2.0,on,,309
+BTST,ladder,D0 15:14,,2.0,on,1.0,310
+BTST,ladder,D0 15:14,,2.0,on,1.2,311
+BTST,ladder,D0 15:14,0.006,,,,312
+BTST,ladder,D0 15:14,0.006,,,1.0,313
+BTST,ladder,D0 15:14,0.006,,,1.2,314
+BTST,ladder,D0 15:14,0.006,,on,,315
+BTST,ladder,D0 15:14,0.006,,on,1.0,316
+BTST,ladder,D0 15:14,0.006,,on,1.2,317
+BTST,ladder,D0 15:14,0.006,1.3,,,318
+BTST,ladder,D0 15:14,0.006,1.3,,1.0,319
+BTST,ladder,D0 15:14,0.006,1.3,,1.2,320
+BTST,ladder,D0 15:14,0.006,1.3,on,,321
+BTST,ladder,D0 15:14,0.006,1.3,on,1.0,322
+BTST,ladder,D0 15:14,0.006,1.3,on,1.2,323
+BTST,ladder,D0 15:14,0.006,1.55,,,324
+BTST,ladder,D0 15:14,0.006,1.55,,1.0,325
+BTST,ladder,D0 15:14,0.006,1.55,,1.2,326
+BTST,ladder,D0 15:14,0.006,1.55,on,,327
+BTST,ladder,D0 15:14,0.006,1.55,on,1.0,328
+BTST,ladder,D0 15:14,0.006,1.55,on,1.2,329
+BTST,ladder,D0 15:14,0.006,2.0,,,330
+BTST,ladder,D0 15:14,0.006,2.0,,1.0,331
+BTST,ladder,D0 15:14,0.006,2.0,,1.2,332
+BTST,ladder,D0 15:14,0.006,2.0,on,,333
+BTST,ladder,D0 15:14,0.006,2.0,on,1.0,334
+BTST,ladder,D0 15:14,0.006,2.0,on,1.2,335
+BTST,ladder,D0 15:14,0.012,,,,336
+BTST,ladder,D0 15:14,0.012,,,1.0,337
+BTST,ladder,D0 15:14,0.012,,,1.2,338
+BTST,ladder,D0 15:14,0.012,,on,,339
+BTST,ladder,D0 15:14,0.012,,on,1.0,340
+BTST,ladder,D0 15:14,0.012,,on,1.2,341
+BTST,ladder,D0 15:14,0.012,1.3,,,342
+BTST,ladder,D0 15:14,0.012,1.3,,1.0,343
+BTST,ladder,D0 15:14,0.012,1.3,,1.2,344
+BTST,ladder,D0 15:14,0.012,1.3,on,,345
+BTST,ladder,D0 15:14,0.012,1.3,on,1.0,346
+BTST,ladder,D0 15:14,0.012,1.3,on,1.2,347
+BTST,ladder,D0 15:14,0.012,1.55,,,348
+BTST,ladder,D0 15:14,0.012,1.55,,1.0,349
+BTST,ladder,D0 15:14,0.012,1.55,,1.2,350
+BTST,ladder,D0 15:14,0.012,1.55,on,,351
+BTST,ladder,D0 15:14,0.012,1.55,on,1.0,352
+BTST,ladder,D0 15:14,0.012,1.55,on,1.2,353
+BTST,ladder,D0 15:14,0.012,2.0,,,354
+BTST,ladder,D0 15:14,0.012,2.0,,1.0,355
+BTST,ladder,D0 15:14,0.012,2.0,,1.2,356
+BTST,ladder,D0 15:14,0.012,2.0,on,,357
+BTST,ladder,D0 15:14,0.012,2.0,on,1.0,358
+BTST,ladder,D0 15:14,0.012,2.0,on,1.2,359
+BTST,ladder,D0 15:14,0.025,,,,360
+BTST,ladder,D0 15:14,0.025,,,1.0,361
+BTST,ladder,D0 15:14,0.025,,,1.2,362
+BTST,ladder,D0 15:14,0.025,,on,,363
+BTST,ladder,D0 15:14,0.025,,on,1.0,364
+BTST,ladder,D0 15:14,0.025,,on,1.2,365
+BTST,ladder,D0 15:14,0.025,1.3,,,366
+BTST,ladder,D0 15:14,0.025,1.3,,1.0,367
+BTST,ladder,D0 15:14,0.025,1.3,,1.2,368
+BTST,ladder,D0 15:14,0.025,1.3,on,,369
+BTST,ladder,D0 15:14,0.025,1.3,on,1.0,370
+BTST,ladder,D0 15:14,0.025,1.3,on,1.2,371
+BTST,ladder,D0 15:14,0.025,1.55,,,372
+BTST,ladder,D0 15:14,0.025,1.55,,1.0,373
+BTST,ladder,D0 15:14,0.025,1.55,,1.2,374
+BTST,ladder,D0 15:14,0.025,1.55,on,,375
+BTST,ladder,D0 15:14,0.025,1.55,on,1.0,376
+BTST,ladder,D0 15:14,0.025,1.55,on,1.2,377
+BTST,ladder,D0 15:14,0.025,2.0,,,378
+BTST,ladder,D0 15:14,0.025,2.0,,1.0,379
+BTST,ladder,D0 15:14,0.025,2.0,,1.2,380
+BTST,ladder,D0 15:14,0.025,2.0,on,,381
+BTST,ladder,D0 15:14,0.025,2.0,on,1.0,382
+BTST,ladder,D0 15:14,0.025,2.0,on,1.2,383
+BTST,ladder,expiry,,,,,384
+BTST,ladder,expiry,,,,1.0,385
+BTST,ladder,expiry,,,,1.2,386
+BTST,ladder,expiry,,,on,,387
+BTST,ladder,expiry,,,on,1.0,388
+BTST,ladder,expiry,,,on,1.2,389
+BTST,ladder,expiry,,1.3,,,390
+BTST,ladder,expiry,,1.3,,1.0,391
+BTST,ladder,expiry,,1.3,,1.2,392
+BTST,ladder,expiry,,1.3,on,,393
+BTST,ladder,expiry,,1.3,on,1.0,394
+BTST,ladder,expiry,,1.3,on,1.2,395
+BTST,ladder,expiry,,1.55,,,396
+BTST,ladder,expiry,,1.55,,1.0,397
+BTST,ladder,expiry,,1.55,,1.2,398
+BTST,ladder,expiry,,1.55,on,,399
+BTST,ladder,expiry,,1.55,on,1.0,400
+BTST,ladder,expiry,,1.55,on,1.2,401
+BTST,ladder,expiry,,2.0,,,402
+BTST,ladder,expiry,,2.0,,1.0,403
+BTST,ladder,expiry,,2.0,,1.2,404
+BTST,ladder,expiry,,2.0,on,,405
+BTST,ladder,expiry,,2.0,on,1.0,406
+BTST,ladder,expiry,,2.0,on,1.2,407
+BTST,ladder,expiry,0.006,,,,408
+BTST,ladder,expiry,0.006,,,1.0,409
+BTST,ladder,expiry,0.006,,,1.2,410
+BTST,ladder,expiry,0.006,,on,,411
+BTST,ladder,expiry,0.006,,on,1.0,412
+BTST,ladder,expiry,0.006,,on,1.2,413
+BTST,ladder,expiry,0.006,1.3,,,414
+BTST,ladder,expiry,0.006,1.3,,1.0,415
+BTST,ladder,expiry,0.006,1.3,,1.2,416
+BTST,ladder,expiry,0.006,1.3,on,,417
+BTST,ladder,expiry,0.006,1.3,on,1.0,418
+BTST,ladder,expiry,0.006,1.3,on,1.2,419
+BTST,ladder,expiry,0.006,1.55,,,420
+BTST,ladder,expiry,0.006,1.55,,1.0,421
+BTST,ladder,expiry,0.006,1.55,,1.2,422
+BTST,ladder,expiry,0.006,1.55,on,,423
+BTST,ladder,expiry,0.006,1.55,on,1.0,424
+BTST,ladder,expiry,0.006,1.55,on,1.2,425
+BTST,ladder,expiry,0.006,2.0,,,426
+BTST,ladder,expiry,0.006,2.0,,1.0,427
+BTST,ladder,expiry,0.006,2.0,,1.2,428
+BTST,ladder,expiry,0.006,2.0,on,,429
+BTST,ladder,expiry,0.006,2.0,on,1.0,430
+BTST,ladder,expiry,0.006,2.0,on,1.2,431
+BTST,ladder,expiry,0.012,,,,432
+BTST,ladder,expiry,0.012,,,1.0,433
+BTST,ladder,expiry,0.012,,,1.2,434
+BTST,ladder,expiry,0.012,,on,,435
+BTST,ladder,expiry,0.012,,on,1.0,436
+BTST,ladder,expiry,0.012,,on,1.2,437
+BTST,ladder,expiry,0.012,1.3,,,438
+BTST,ladder,expiry,0.012,1.3,,1.0,439
+BTST,ladder,expiry,0.012,1.3,,1.2,440
+BTST,ladder,expiry,0.012,1.3,on,,441
+BTST,ladder,expiry,0.012,1.3,on,1.0,442
+BTST,ladder,expiry,0.012,1.3,on,1.2,443
+BTST,ladder,expiry,0.012,1.55,,,444
+BTST,ladder,expiry,0.012,1.55,,1.0,445
+BTST,ladder,expiry,0.012,1.55,,1.2,446
+BTST,ladder,expiry,0.012,1.55,on,,447
+BTST,ladder,expiry,0.012,1.55,on,1.0,448
+BTST,ladder,expiry,0.012,1.55,on,1.2,449
+BTST,ladder,expiry,0.012,2.0,,,450
+BTST,ladder,expiry,0.012,2.0,,1.0,451
+BTST,ladder,expiry,0.012,2.0,,1.2,452
+BTST,ladder,expiry,0.012,2.0,on,,453
+BTST,ladder,expiry,0.012,2.0,on,1.0,454
+BTST,ladder,expiry,0.012,2.0,on,1.2,455
+BTST,ladder,expiry,0.025,,,,456
+BTST,ladder,expiry,0.025,,,1.0,457
+BTST,ladder,expiry,0.025,,,1.2,458
+BTST,ladder,expiry,0.025,,on,,459
+BTST,ladder,expiry,0.025,,on,1.0,460
+BTST,ladder,expiry,0.025,,on,1.2,461
+BTST,ladder,expiry,0.025,1.3,,,462
+BTST,ladder,expiry,0.025,1.3,,1.0,463
+BTST,ladder,expiry,0.025,1.3,,1.2,464
+BTST,ladder,expiry,0.025,1.3,on,,465
+BTST,ladder,expiry,0.025,1.3,on,1.0,466
+BTST,ladder,expiry,0.025,1.3,on,1.2,467
+BTST,ladder,expiry,0.025,1.55,,,468
+BTST,ladder,expiry,0.025,1.55,,1.0,469
+BTST,ladder,expiry,0.025,1.55,,1.2,470
+BTST,ladder,expiry,0.025,1.55,on,,471
+BTST,ladder,expiry,0.025,1.55,on,1.0,472
+BTST,ladder,expiry,0.025,1.55,on,1.2,473
+BTST,ladder,expiry,0.025,2.0,,,474
+BTST,ladder,expiry,0.025,2.0,,1.0,475
+BTST,ladder,expiry,0.025,2.0,,1.2,476
+BTST,ladder,expiry,0.025,2.0,on,,477
+BTST,ladder,expiry,0.025,2.0,on,1.0,478
+BTST,ladder,expiry,0.025,2.0,on,1.2,479
+BTST,uniform15,D0 09:16,,,,,480
+BTST,uniform15,D0 09:16,,,,1.0,481
+BTST,uniform15,D0 09:16,,,,1.2,482
+BTST,uniform15,D0 09:16,,,on,,483
+BTST,uniform15,D0 09:16,,,on,1.0,484
+BTST,uniform15,D0 09:16,,,on,1.2,485
+BTST,uniform15,D0 09:16,,1.3,,,486
+BTST,uniform15,D0 09:16,,1.3,,1.0,487
+BTST,uniform15,D0 09:16,,1.3,,1.2,488
+BTST,uniform15,D0 09:16,,1.3,on,,489
+BTST,uniform15,D0 09:16,,1.3,on,1.0,490
+BTST,uniform15,D0 09:16,,1.3,on,1.2,491
+BTST,uniform15,D0 09:16,,1.55,,,492
+BTST,uniform15,D0 09:16,,1.55,,1.0,493
+BTST,uniform15,D0 09:16,,1.55,,1.2,494
+BTST,uniform15,D0 09:16,,1.55,on,,495
+BTST,uniform15,D0 09:16,,1.55,on,1.0,496
+BTST,uniform15,D0 09:16,,1.55,on,1.2,497
+BTST,uniform15,D0 09:16,,2.0,,,498
+BTST,uniform15,D0 09:16,,2.0,,1.0,499
+BTST,uniform15,D0 09:16,,2.0,,1.2,500
+BTST,uniform15,D0 09:16,,2.0,on,,501
+BTST,uniform15,D0 09:16,,2.0,on,1.0,502
+BTST,uniform15,D0 09:16,,2.0,on,1.2,503
+BTST,uniform15,D0 09:16,0.006,,,,504
+BTST,uniform15,D0 09:16,0.006,,,1.0,505
+BTST,uniform15,D0 09:16,0.006,,,1.2,506
+BTST,uniform15,D0 09:16,0.006,,on,,507
+BTST,uniform15,D0 09:16,0.006,,on,1.0,508
+BTST,uniform15,D0 09:16,0.006,,on,1.2,509
+BTST,uniform15,D0 09:16,0.006,1.3,,,510
+BTST,uniform15,D0 09:16,0.006,1.3,,1.0,511
+BTST,uniform15,D0 09:16,0.006,1.3,,1.2,512
+BTST,uniform15,D0 09:16,0.006,1.3,on,,513
+BTST,uniform15,D0 09:16,0.006,1.3,on,1.0,514
+BTST,uniform15,D0 09:16,0.006,1.3,on,1.2,515
+BTST,uniform15,D0 09:16,0.006,1.55,,,516
+BTST,uniform15,D0 09:16,0.006,1.55,,1.0,517
+BTST,uniform15,D0 09:16,0.006,1.55,,1.2,518
+BTST,uniform15,D0 09:16,0.006,1.55,on,,519
+BTST,uniform15,D0 09:16,0.006,1.55,on,1.0,520
+BTST,uniform15,D0 09:16,0.006,1.55,on,1.2,521
+BTST,uniform15,D0 09:16,0.006,2.0,,,522
+BTST,uniform15,D0 09:16,0.006,2.0,,1.0,523
+BTST,uniform15,D0 09:16,0.006,2.0,,1.2,524
+BTST,uniform15,D0 09:16,0.006,2.0,on,,525
+BTST,uniform15,D0 09:16,0.006,2.0,on,1.0,526
+BTST,uniform15,D0 09:16,0.006,2.0,on,1.2,527
+BTST,uniform15,D0 09:16,0.012,,,,528
+BTST,uniform15,D0 09:16,0.012,,,1.0,529
+BTST,uniform15,D0 09:16,0.012,,,1.2,530
+BTST,uniform15,D0 09:16,0.012,,on,,531
+BTST,uniform15,D0 09:16,0.012,,on,1.0,532
+BTST,uniform15,D0 09:16,0.012,,on,1.2,533
+BTST,uniform15,D0 09:16,0.012,1.3,,,534
+BTST,uniform15,D0 09:16,0.012,1.3,,1.0,535
+BTST,uniform15,D0 09:16,0.012,1.3,,1.2,536
+BTST,uniform15,D0 09:16,0.012,1.3,on,,537
+BTST,uniform15,D0 09:16,0.012,1.3,on,1.0,538
+BTST,uniform15,D0 09:16,0.012,1.3,on,1.2,539
+BTST,uniform15,D0 09:16,0.012,1.55,,,540
+BTST,uniform15,D0 09:16,0.012,1.55,,1.0,541
+BTST,uniform15,D0 09:16,0.012,1.55,,1.2,542
+BTST,uniform15,D0 09:16,0.012,1.55,on,,543
+BTST,uniform15,D0 09:16,0.012,1.55,on,1.0,544
+BTST,uniform15,D0 09:16,0.012,1.55,on,1.2,545
+BTST,uniform15,D0 09:16,0.012,2.0,,,546
+BTST,uniform15,D0 09:16,0.012,2.0,,1.0,547
+BTST,uniform15,D0 09:16,0.012,2.0,,1.2,548
+BTST,uniform15,D0 09:16,0.012,2.0,on,,549
+BTST,uniform15,D0 09:16,0.012,2.0,on,1.0,550
+BTST,uniform15,D0 09:16,0.012,2.0,on,1.2,551
+BTST,uniform15,D0 09:16,0.025,,,,552
+BTST,uniform15,D0 09:16,0.025,,,1.0,553
+BTST,uniform15,D0 09:16,0.025,,,1.2,554
+BTST,uniform15,D0 09:16,0.025,,on,,555
+BTST,uniform15,D0 09:16,0.025,,on,1.0,556
+BTST,uniform15,D0 09:16,0.025,,on,1.2,557
+BTST,uniform15,D0 09:16,0.025,1.3,,,558
+BTST,uniform15,D0 09:16,0.025,1.3,,1.0,559
+BTST,uniform15,D0 09:16,0.025,1.3,,1.2,560
+BTST,uniform15,D0 09:16,0.025,1.3,on,,561
+BTST,uniform15,D0 09:16,0.025,1.3,on,1.0,562
+BTST,uniform15,D0 09:16,0.025,1.3,on,1.2,563
+BTST,uniform15,D0 09:16,0.025,1.55,,,564
+BTST,uniform15,D0 09:16,0.025,1.55,,1.0,565
+BTST,uniform15,D0 09:16,0.025,1.55,,1.2,566
+BTST,uniform15,D0 09:16,0.025,1.55,on,,567
+BTST,uniform15,D0 09:16,0.025,1.55,on,1.0,568
+BTST,uniform15,D0 09:16,0.025,1.55,on,1.2,569
+BTST,uniform15,D0 09:16,0.025,2.0,,,570
+BTST,uniform15,D0 09:16,0.025,2.0,,1.0,571
+BTST,uniform15,D0 09:16,0.025,2.0,,1.2,572
+BTST,uniform15,D0 09:16,0.025,2.0,on,,573
+BTST,uniform15,D0 09:16,0.025,2.0,on,1.0,574
+BTST,uniform15,D0 09:16,0.025,2.0,on,1.2,575
+BTST,uniform15,D0 10:01,,,,,576
+BTST,uniform15,D0 10:01,,,,1.0,577
+BTST,uniform15,D0 10:01,,,,1.2,578
+BTST,uniform15,D0 10:01,,,on,,579
+BTST,uniform15,D0 10:01,,,on,1.0,580
+BTST,uniform15,D0 10:01,,,on,1.2,581
+BTST,uniform15,D0 10:01,,1.3,,,582
+BTST,uniform15,D0 10:01,,1.3,,1.0,583
+BTST,uniform15,D0 10:01,,1.3,,1.2,584
+BTST,uniform15,D0 10:01,,1.3,on,,585
+BTST,uniform15,D0 10:01,,1.3,on,1.0,586
+BTST,uniform15,D0 10:01,,1.3,on,1.2,587
+BTST,uniform15,D0 10:01,,1.55,,,588
+BTST,uniform15,D0 10:01,,1.55,,1.0,589
+BTST,uniform15,D0 10:01,,1.55,,1.2,590
+BTST,uniform15,D0 10:01,,1.55,on,,591
+BTST,uniform15,D0 10:01,,1.55,on,1.0,592
+BTST,uniform15,D0 10:01,,1.55,on,1.2,593
+BTST,uniform15,D0 10:01,,2.0,,,594
+BTST,uniform15,D0 10:01,,2.0,,1.0,595
+BTST,uniform15,D0 10:01,,2.0,,1.2,596
+BTST,uniform15,D0 10:01,,2.0,on,,597
+BTST,uniform15,D0 10:01,,2.0,on,1.0,598
+BTST,uniform15,D0 10:01,,2.0,on,1.2,599
+BTST,uniform15,D0 10:01,0.006,,,,600
+BTST,uniform15,D0 10:01,0.006,,,1.0,601
+BTST,uniform15,D0 10:01,0.006,,,1.2,602
+BTST,uniform15,D0 10:01,0.006,,on,,603
+BTST,uniform15,D0 10:01,0.006,,on,1.0,604
+BTST,uniform15,D0 10:01,0.006,,on,1.2,605
+BTST,uniform15,D0 10:01,0.006,1.3,,,606
+BTST,uniform15,D0 10:01,0.006,1.3,,1.0,607
+BTST,uniform15,D0 10:01,0.006,1.3,,1.2,608
+BTST,uniform15,D0 10:01,0.006,1.3,on,,609
+BTST,uniform15,D0 10:01,0.006,1.3,on,1.0,610
+BTST,uniform15,D0 10:01,0.006,1.3,on,1.2,611
+BTST,uniform15,D0 10:01,0.006,1.55,,,612
+BTST,uniform15,D0 10:01,0.006,1.55,,1.0,613
+BTST,uniform15,D0 10:01,0.006,1.55,,1.2,614
+BTST,uniform15,D0 10:01,0.006,1.55,on,,615
+BTST,uniform15,D0 10:01,0.006,1.55,on,1.0,616
+BTST,uniform15,D0 10:01,0.006,1.55,on,1.2,617
+BTST,uniform15,D0 10:01,0.006,2.0,,,618
+BTST,uniform15,D0 10:01,0.006,2.0,,1.0,619
+BTST,uniform15,D0 10:01,0.006,2.0,,1.2,620
+BTST,uniform15,D0 10:01,0.006,2.0,on,,621
+BTST,uniform15,D0 10:01,0.006,2.0,on,1.0,622
+BTST,uniform15,D0 10:01,0.006,2.0,on,1.2,623
+BTST,uniform15,D0 10:01,0.012,,,,624
+BTST,uniform15,D0 10:01,0.012,,,1.0,625
+BTST,uniform15,D0 10:01,0.012,,,1.2,626
+BTST,uniform15,D0 10:01,0.012,,on,,627
+BTST,uniform15,D0 10:01,0.012,,on,1.0,628
+BTST,uniform15,D0 10:01,0.012,,on,1.2,629
+BTST,uniform15,D0 10:01,0.012,1.3,,,630
+BTST,uniform15,D0 10:01,0.012,1.3,,1.0,631
+BTST,uniform15,D0 10:01,0.012,1.3,,1.2,632
+BTST,uniform15,D0 10:01,0.012,1.3,on,,633
+BTST,uniform15,D0 10:01,0.012,1.3,on,1.0,634
+BTST,uniform15,D0 10:01,0.012,1.3,on,1.2,635
+BTST,uniform15,D0 10:01,0.012,1.55,,,636
+BTST,uniform15,D0 10:01,0.012,1.55,,1.0,637
+BTST,uniform15,D0 10:01,0.012,1.55,,1.2,638
+BTST,uniform15,D0 10:01,0.012,1.55,on,,639
+BTST,uniform15,D0 10:01,0.012,1.55,on,1.0,640
+BTST,uniform15,D0 10:01,0.012,1.55,on,1.2,641
+BTST,uniform15,D0 10:01,0.012,2.0,,,642
+BTST,uniform15,D0 10:01,0.012,2.0,,1.0,643
+BTST,uniform15,D0 10:01,0.012,2.0,,1.2,644
+BTST,uniform15,D0 10:01,0.012,2.0,on,,645
+BTST,uniform15,D0 10:01,0.012,2.0,on,1.0,646
+BTST,uniform15,D0 10:01,0.012,2.0,on,1.2,647
+BTST,uniform15,D0 10:01,0.025,,,,648
+BTST,uniform15,D0 10:01,0.025,,,1.0,649
+BTST,uniform15,D0 10:01,0.025,,,1.2,650
+BTST,uniform15,D0 10:01,0.025,,on,,651
+BTST,uniform15,D0 10:01,0.025,,on,1.0,652
+BTST,uniform15,D0 10:01,0.025,,on,1.2,653
+BTST,uniform15,D0 10:01,0.025,1.3,,,654
+BTST,uniform15,D0 10:01,0.025,1.3,,1.0,655
+BTST,uniform15,D0 10:01,0.025,1.3,,1.2,656
+BTST,uniform15,D0 10:01,0.025,1.3,on,,657
+BTST,uniform15,D0 10:01,0.025,1.3,on,1.0,658
+BTST,uniform15,D0 10:01,0.025,1.3,on,1.2,659
+BTST,uniform15,D0 10:01,0.025,1.55,,,660
+BTST,uniform15,D0 10:01,0.025,1.55,,1.0,661
+BTST,uniform15,D0 10:01,0.025,1.55,,1.2,662
+BTST,uniform15,D0 10:01,0.025,1.55,on,,663
+BTST,uniform15,D0 10:01,0.025,1.55,on,1.0,664
+BTST,uniform15,D0 10:01,0.025,1.55,on,1.2,665
+BTST,uniform15,D0 10:01,0.025,2.0,,,666
+BTST,uniform15,D0 10:01,0.025,2.0,,1.0,667
+BTST,uniform15,D0 10:01,0.025,2.0,,1.2,668
+BTST,uniform15,D0 10:01,0.025,2.0,on,,669
+BTST,uniform15,D0 10:01,0.025,2.0,on,1.0,670
+BTST,uniform15,D0 10:01,0.025,2.0,on,1.2,671
+BTST,uniform15,D0 12:01,,,,,672
+BTST,uniform15,D0 12:01,,,,1.0,673
+BTST,uniform15,D0 12:01,,,,1.2,674
+BTST,uniform15,D0 12:01,,,on,,675
+BTST,uniform15,D0 12:01,,,on,1.0,676
+BTST,uniform15,D0 12:01,,,on,1.2,677
+BTST,uniform15,D0 12:01,,1.3,,,678
+BTST,uniform15,D0 12:01,,1.3,,1.0,679
+BTST,uniform15,D0 12:01,,1.3,,1.2,680
+BTST,uniform15,D0 12:01,,1.3,on,,681
+BTST,uniform15,D0 12:01,,1.3,on,1.0,682
+BTST,uniform15,D0 12:01,,1.3,on,1.2,683
+BTST,uniform15,D0 12:01,,1.55,,,684
+BTST,uniform15,D0 12:01,,1.55,,1.0,685
+BTST,uniform15,D0 12:01,,1.55,,1.2,686
+BTST,uniform15,D0 12:01,,1.55,on,,687
+BTST,uniform15,D0 12:01,,1.55,on,1.0,688
+BTST,uniform15,D0 12:01,,1.55,on,1.2,689
+BTST,uniform15,D0 12:01,,2.0,,,690
+BTST,uniform15,D0 12:01,,2.0,,1.0,691
+BTST,uniform15,D0 12:01,,2.0,,1.2,692
+BTST,uniform15,D0 12:01,,2.0,on,,693
+BTST,uniform15,D0 12:01,,2.0,on,1.0,694
+BTST,uniform15,D0 12:01,,2.0,on,1.2,695
+BTST,uniform15,D0 12:01,0.006,,,,696
+BTST,uniform15,D0 12:01,0.006,,,1.0,697
+BTST,uniform15,D0 12:01,0.006,,,1.2,698
+BTST,uniform15,D0 12:01,0.006,,on,,699
+BTST,uniform15,D0 12:01,0.006,,on,1.0,700
+BTST,uniform15,D0 12:01,0.006,,on,1.2,701
+BTST,uniform15,D0 12:01,0.006,1.3,,,702
+BTST,uniform15,D0 12:01,0.006,1.3,,1.0,703
+BTST,uniform15,D0 12:01,0.006,1.3,,1.2,704
+BTST,uniform15,D0 12:01,0.006,1.3,on,,705
+BTST,uniform15,D0 12:01,0.006,1.3,on,1.0,706
+BTST,uniform15,D0 12:01,0.006,1.3,on,1.2,707
+BTST,uniform15,D0 12:01,0.006,1.55,,,708
+BTST,uniform15,D0 12:01,0.006,1.55,,1.0,709
+BTST,uniform15,D0 12:01,0.006,1.55,,1.2,710
+BTST,uniform15,D0 12:01,0.006,1.55,on,,711
+BTST,uniform15,D0 12:01,0.006,1.55,on,1.0,712
+BTST,uniform15,D0 12:01,0.006,1.55,on,1.2,713
+BTST,uniform15,D0 12:01,0.006,2.0,,,714
+BTST,uniform15,D0 12:01,0.006,2.0,,1.0,715
+BTST,uniform15,D0 12:01,0.006,2.0,,1.2,716
+BTST,uniform15,D0 12:01,0.006,2.0,on,,717
+BTST,uniform15,D0 12:01,0.006,2.0,on,1.0,718
+BTST,uniform15,D0 12:01,0.006,2.0,on,1.2,719
+BTST,uniform15,D0 12:01,0.012,,,,720
+BTST,uniform15,D0 12:01,0.012,,,1.0,721
+BTST,uniform15,D0 12:01,0.012,,,1.2,722
+BTST,uniform15,D0 12:01,0.012,,on,,723
+BTST,uniform15,D0 12:01,0.012,,on,1.0,724
+BTST,uniform15,D0 12:01,0.012,,on,1.2,725
+BTST,uniform15,D0 12:01,0.012,1.3,,,726
+BTST,uniform15,D0 12:01,0.012,1.3,,1.0,727
+BTST,uniform15,D0 12:01,0.012,1.3,,1.2,728
+BTST,uniform15,D0 12:01,0.012,1.3,on,,729
+BTST,uniform15,D0 12:01,0.012,1.3,on,1.0,730
+BTST,uniform15,D0 12:01,0.012,1.3,on,1.2,731
+BTST,uniform15,D0 12:01,0.012,1.55,,,732
+BTST,uniform15,D0 12:01,0.012,1.55,,1.0,733
+BTST,uniform15,D0 12:01,0.012,1.55,,1.2,734
+BTST,uniform15,D0 12:01,0.012,1.55,on,,735
+BTST,uniform15,D0 12:01,0.012,1.55,on,1.0,736
+BTST,uniform15,D0 12:01,0.012,1.55,on,1.2,737
+BTST,uniform15,D0 12:01,0.012,2.0,,,738
+BTST,uniform15,D0 12:01,0.012,2.0,,1.0,739
+BTST,uniform15,D0 12:01,0.012,2.0,,1.2,740
+BTST,uniform15,D0 12:01,0.012,2.0,on,,741
+BTST,uniform15,D0 12:01,0.012,2.0,on,1.0,742
+BTST,uniform15,D0 12:01,0.012,2.0,on,1.2,743
+BTST,uniform15,D0 12:01,0.025,,,,744
+BTST,uniform15,D0 12:01,0.025,,,1.0,745
+BTST,uniform15,D0 12:01,0.025,,,1.2,746
+BTST,uniform15,D0 12:01,0.025,,on,,747
+BTST,uniform15,D0 12:01,0.025,,on,1.0,748
+BTST,uniform15,D0 12:01,0.025,,on,1.2,749
+BTST,uniform15,D0 12:01,0.025,1.3,,,750
+BTST,uniform15,D0 12:01,0.025,1.3,,1.0,751
+BTST,uniform15,D0 12:01,0.025,1.3,,1.2,752
+BTST,uniform15,D0 12:01,0.025,1.3,on,,753
+BTST,uniform15,D0 12:01,0.025,1.3,on,1.0,754
+BTST,uniform15,D0 12:01,0.025,1.3,on,1.2,755
+BTST,uniform15,D0 12:01,0.025,1.55,,,756
+BTST,uniform15,D0 12:01,0.025,1.55,,1.0,757
+BTST,uniform15,D0 12:01,0.025,1.55,,1.2,758
+BTST,uniform15,D0 12:01,0.025,1.55,on,,759
+BTST,uniform15,D0 12:01,0.025,1.55,on,1.0,760
+BTST,uniform15,D0 12:01,0.025,1.55,on,1.2,761
+BTST,uniform15,D0 12:01,0.025,2.0,,,762
+BTST,uniform15,D0 12:01,0.025,2.0,,1.0,763
+BTST,uniform15,D0 12:01,0.025,2.0,,1.2,764
+BTST,uniform15,D0 12:01,0.025,2.0,on,,765
+BTST,uniform15,D0 12:01,0.025,2.0,on,1.0,766
+BTST,uniform15,D0 12:01,0.025,2.0,on,1.2,767
+BTST,uniform15,D0 15:14,,,,,768
+BTST,uniform15,D0 15:14,,,,1.0,769
+BTST,uniform15,D0 15:14,,,,1.2,770
+BTST,uniform15,D0 15:14,,,on,,771
+BTST,uniform15,D0 15:14,,,on,1.0,772
+BTST,uniform15,D0 15:14,,,on,1.2,773
+BTST,uniform15,D0 15:14,,1.3,,,774
+BTST,uniform15,D0 15:14,,1.3,,1.0,775
+BTST,uniform15,D0 15:14,,1.3,,1.2,776
+BTST,uniform15,D0 15:14,,1.3,on,,777
+BTST,uniform15,D0 15:14,,1.3,on,1.0,778
+BTST,uniform15,D0 15:14,,1.3,on,1.2,779
+BTST,uniform15,D0 15:14,,1.55,,,780
+BTST,uniform15,D0 15:14,,1.55,,1.0,781
+BTST,uniform15,D0 15:14,,1.55,,1.2,782
+BTST,uniform15,D0 15:14,,1.55,on,,783
+BTST,uniform15,D0 15:14,,1.55,on,1.0,784
+BTST,uniform15,D0 15:14,,1.55,on,1.2,785
+BTST,uniform15,D0 15:14,,2.0,,,786
+BTST,uniform15,D0 15:14,,2.0,,1.0,787
+BTST,uniform15,D0 15:14,,2.0,,1.2,788
+BTST,uniform15,D0 15:14,,2.0,on,,789
+BTST,uniform15,D0 15:14,,2.0,on,1.0,790
+BTST,uniform15,D0 15:14,,2.0,on,1.2,791
+BTST,uniform15,D0 15:14,0.006,,,,792
+BTST,uniform15,D0 15:14,0.006,,,1.0,793
+BTST,uniform15,D0 15:14,0.006,,,1.2,794
+BTST,uniform15,D0 15:14,0.006,,on,,795
+BTST,uniform15,D0 15:14,0.006,,on,1.0,796
+BTST,uniform15,D0 15:14,0.006,,on,1.2,797
+BTST,uniform15,D0 15:14,0.006,1.3,,,798
+BTST,uniform15,D0 15:14,0.006,1.3,,1.0,799
+BTST,uniform15,D0 15:14,0.006,1.3,,1.2,800
+BTST,uniform15,D0 15:14,0.006,1.3,on,,801
+BTST,uniform15,D0 15:14,0.006,1.3,on,1.0,802
+BTST,uniform15,D0 15:14,0.006,1.3,on,1.2,803
+BTST,uniform15,D0 15:14,0.006,1.55,,,804
+BTST,uniform15,D0 15:14,0.006,1.55,,1.0,805
+BTST,uniform15,D0 15:14,0.006,1.55,,1.2,806
+BTST,uniform15,D0 15:14,0.006,1.55,on,,807
+BTST,uniform15,D0 15:14,0.006,1.55,on,1.0,808
+BTST,uniform15,D0 15:14,0.006,1.55,on,1.2,809
+BTST,uniform15,D0 15:14,0.006,2.0,,,810
+BTST,uniform15,D0 15:14,0.006,2.0,,1.0,811
+BTST,uniform15,D0 15:14,0.006,2.0,,1.2,812
+BTST,uniform15,D0 15:14,0.006,2.0,on,,813
+BTST,uniform15,D0 15:14,0.006,2.0,on,1.0,814
+BTST,uniform15,D0 15:14,0.006,2.0,on,1.2,815
+BTST,uniform15,D0 15:14,0.012,,,,816
+BTST,uniform15,D0 15:14,0.012,,,1.0,817
+BTST,uniform15,D0 15:14,0.012,,,1.2,818
+BTST,uniform15,D0 15:14,0.012,,on,,819
+BTST,uniform15,D0 15:14,0.012,,on,1.0,820
+BTST,uniform15,D0 15:14,0.012,,on,1.2,821
+BTST,uniform15,D0 15:14,0.012,1.3,,,822
+BTST,uniform15,D0 15:14,0.012,1.3,,1.0,823
+BTST,uniform15,D0 15:14,0.012,1.3,,1.2,824
+BTST,uniform15,D0 15:14,0.012,1.3,on,,825
+BTST,uniform15,D0 15:14,0.012,1.3,on,1.0,826
+BTST,uniform15,D0 15:14,0.012,1.3,on,1.2,827
+BTST,uniform15,D0 15:14,0.012,1.55,,,828
+BTST,uniform15,D0 15:14,0.012,1.55,,1.0,829
+BTST,uniform15,D0 15:14,0.012,1.55,,1.2,830
+BTST,uniform15,D0 15:14,0.012,1.55,on,,831
+BTST,uniform15,D0 15:14,0.012,1.55,on,1.0,832
+BTST,uniform15,D0 15:14,0.012,1.55,on,1.2,833
+BTST,uniform15,D0 15:14,0.012,2.0,,,834
+BTST,uniform15,D0 15:14,0.012,2.0,,1.0,835
+BTST,uniform15,D0 15:14,0.012,2.0,,1.2,836
+BTST,uniform15,D0 15:14,0.012,2.0,on,,837
+BTST,uniform15,D0 15:14,0.012,2.0,on,1.0,838
+BTST,uniform15,D0 15:14,0.012,2.0,on,1.2,839
+BTST,uniform15,D0 15:14,0.025,,,,840
+BTST,uniform15,D0 15:14,0.025,,,1.0,841
+BTST,uniform15,D0 15:14,0.025,,,1.2,842
+BTST,uniform15,D0 15:14,0.025,,on,,843
+BTST,uniform15,D0 15:14,0.025,,on,1.0,844
+BTST,uniform15,D0 15:14,0.025,,on,1.2,845
+BTST,uniform15,D0 15:14,0.025,1.3,,,846
+BTST,uniform15,D0 15:14,0.025,1.3,,1.0,847
+BTST,uniform15,D0 15:14,0.025,1.3,,1.2,848
+BTST,uniform15,D0 15:14,0.025,1.3,on,,849
+BTST,uniform15,D0 15:14,0.025,1.3,on,1.0,850
+BTST,uniform15,D0 15:14,0.025,1.3,on,1.2,851
+BTST,uniform15,D0 15:14,0.025,1.55,,,852
+BTST,uniform15,D0 15:14,0.025,1.55,,1.0,853
+BTST,uniform15,D0 15:14,0.025,1.55,,1.2,854
+BTST,uniform15,D0 15:14,0.025,1.55,on,,855
+BTST,uniform15,D0 15:14,0.025,1.55,on,1.0,856
+BTST,uniform15,D0 15:14,0.025,1.55,on,1.2,857
+BTST,uniform15,D0 15:14,0.025,2.0,,,858
+BTST,uniform15,D0 15:14,0.025,2.0,,1.0,859
+BTST,uniform15,D0 15:14,0.025,2.0,,1.2,860
+BTST,uniform15,D0 15:14,0.025,2.0,on,,861
+BTST,uniform15,D0 15:14,0.025,2.0,on,1.0,862
+BTST,uniform15,D0 15:14,0.025,2.0,on,1.2,863
+BTST,uniform15,expiry,,,,,864
+BTST,uniform15,expiry,,,,1.0,865
+BTST,uniform15,expiry,,,,1.2,866
+BTST,uniform15,expiry,,,on,,867
+BTST,uniform15,expiry,,,on,1.0,868
+BTST,uniform15,expiry,,,on,1.2,869
+BTST,uniform15,expiry,,1.3,,,870
+BTST,uniform15,expiry,,1.3,,1.0,871
+BTST,uniform15,expiry,,1.3,,1.2,872
+BTST,uniform15,expiry,,1.3,on,,873
+BTST,uniform15,expiry,,1.3,on,1.0,874
+BTST,uniform15,expiry,,1.3,on,1.2,875
+BTST,uniform15,expiry,,1.55,,,876
+BTST,uniform15,expiry,,1.55,,1.0,877
+BTST,uniform15,expiry,,1.55,,1.2,878
+BTST,uniform15,expiry,,1.55,on,,879
+BTST,uniform15,expiry,,1.55,on,1.0,880
+BTST,uniform15,expiry,,1.55,on,1.2,881
+BTST,uniform15,expiry,,2.0,,,882
+BTST,uniform15,expiry,,2.0,,1.0,883
+BTST,uniform15,expiry,,2.0,,1.2,884
+BTST,uniform15,expiry,,2.0,on,,885
+BTST,uniform15,expiry,,2.0,on,1.0,886
+BTST,uniform15,expiry,,2.0,on,1.2,887
+BTST,uniform15,expiry,0.006,,,,888
+BTST,uniform15,expiry,0.006,,,1.0,889
+BTST,uniform15,expiry,0.006,,,1.2,890
+BTST,uniform15,expiry,0.006,,on,,891
+BTST,uniform15,expiry,0.006,,on,1.0,892
+BTST,uniform15,expiry,0.006,,on,1.2,893
+BTST,uniform15,expiry,0.006,1.3,,,894
+BTST,uniform15,expiry,0.006,1.3,,1.0,895
+BTST,uniform15,expiry,0.006,1.3,,1.2,896
+BTST,uniform15,expiry,0.006,1.3,on,,897
+BTST,uniform15,expiry,0.006,1.3,on,1.0,898
+BTST,uniform15,expiry,0.006,1.3,on,1.2,899
+BTST,uniform15,expiry,0.006,1.55,,,900
+BTST,uniform15,expiry,0.006,1.55,,1.0,901
+BTST,uniform15,expiry,0.006,1.55,,1.2,902
+BTST,uniform15,expiry,0.006,1.55,on,,903
+BTST,uniform15,expiry,0.006,1.55,on,1.0,904
+BTST,uniform15,expiry,0.006,1.55,on,1.2,905
+BTST,uniform15,expiry,0.006,2.0,,,906
+BTST,uniform15,expiry,0.006,2.0,,1.0,907
+BTST,uniform15,expiry,0.006,2.0,,1.2,908
+BTST,uniform15,expiry,0.006,2.0,on,,909
+BTST,uniform15,expiry,0.006,2.0,on,1.0,910
+BTST,uniform15,expiry,0.006,2.0,on,1.2,911
+BTST,uniform15,expiry,0.012,,,,912
+BTST,uniform15,expiry,0.012,,,1.0,913
+BTST,uniform15,expiry,0.012,,,1.2,914
+BTST,uniform15,expiry,0.012,,on,,915
+BTST,uniform15,expiry,0.012,,on,1.0,916
+BTST,uniform15,expiry,0.012,,on,1.2,917
+BTST,uniform15,expiry,0.012,1.3,,,918
+BTST,uniform15,expiry,0.012,1.3,,1.0,919
+BTST,uniform15,expiry,0.012,1.3,,1.2,920
+BTST,uniform15,expiry,0.012,1.3,on,,921
+BTST,uniform15,expiry,0.012,1.3,on,1.0,922
+BTST,uniform15,expiry,0.012,1.3,on,1.2,923
+BTST,uniform15,expiry,0.012,1.55,,,924
+BTST,uniform15,expiry,0.012,1.55,,1.0,925
+BTST,uniform15,expiry,0.012,1.55,,1.2,926
+BTST,uniform15,expiry,0.012,1.55,on,,927
+BTST,uniform15,expiry,0.012,1.55,on,1.0,928
+BTST,uniform15,expiry,0.012,1.55,on,1.2,929
+BTST,uniform15,expiry,0.012,2.0,,,930
+BTST,uniform15,expiry,0.012,2.0,,1.0,931
+BTST,uniform15,expiry,0.012,2.0,,1.2,932
+BTST,uniform15,expiry,0.012,2.0,on,,933
+BTST,uniform15,expiry,0.012,2.0,on,1.0,934
+BTST,uniform15,expiry,0.012,2.0,on,1.2,935
+BTST,uniform15,expiry,0.025,,,,936
+BTST,uniform15,expiry,0.025,,,1.0,937
+BTST,uniform15,expiry,0.025,,,1.2,938
+BTST,uniform15,expiry,0.025,,on,,939
+BTST,uniform15,expiry,0.025,,on,1.0,940
+BTST,uniform15,expiry,0.025,,on,1.2,941
+BTST,uniform15,expiry,0.025,1.3,,,942
+BTST,uniform15,expiry,0.025,1.3,,1.0,943
+BTST,uniform15,expiry,0.025,1.3,,1.2,944
+BTST,uniform15,expiry,0.025,1.3,on,,945
+BTST,uniform15,expiry,0.025,1.3,on,1.0,946
+BTST,uniform15,expiry,0.025,1.3,on,1.2,947
+BTST,uniform15,expiry,0.025,1.55,,,948
+BTST,uniform15,expiry,0.025,1.55,,1.0,949
+BTST,uniform15,expiry,0.025,1.55,,1.2,950
+BTST,uniform15,expiry,0.025,1.55,on,,951
+BTST,uniform15,expiry,0.025,1.55,on,1.0,952
+BTST,uniform15,expiry,0.025,1.55,on,1.2,953
+BTST,uniform15,expiry,0.025,2.0,,,954
+BTST,uniform15,expiry,0.025,2.0,,1.0,955
+BTST,uniform15,expiry,0.025,2.0,,1.2,956
+BTST,uniform15,expiry,0.025,2.0,on,,957
+BTST,uniform15,expiry,0.025,2.0,on,1.0,958
+BTST,uniform15,expiry,0.025,2.0,on,1.2,959
+BTST,single0916,D0 09:16,,,,,960
+BTST,single0916,D0 09:16,,,,1.0,961
+BTST,single0916,D0 09:16,,,,1.2,962
+BTST,single0916,D0 09:16,,,on,,963
+BTST,single0916,D0 09:16,,,on,1.0,964
+BTST,single0916,D0 09:16,,,on,1.2,965
+BTST,single0916,D0 09:16,,1.3,,,966
+BTST,single0916,D0 09:16,,1.3,,1.0,967
+BTST,single0916,D0 09:16,,1.3,,1.2,968
+BTST,single0916,D0 09:16,,1.3,on,,969
+BTST,single0916,D0 09:16,,1.3,on,1.0,970
+BTST,single0916,D0 09:16,,1.3,on,1.2,971
+BTST,single0916,D0 09:16,,1.55,,,972
+BTST,single0916,D0 09:16,,1.55,,1.0,973
+BTST,single0916,D0 09:16,,1.55,,1.2,974
+BTST,single0916,D0 09:16,,1.55,on,,975
+BTST,single0916,D0 09:16,,1.55,on,1.0,976
+BTST,single0916,D0 09:16,,1.55,on,1.2,977
+BTST,single0916,D0 09:16,,2.0,,,978
+BTST,single0916,D0 09:16,,2.0,,1.0,979
+BTST,single0916,D0 09:16,,2.0,,1.2,980
+BTST,single0916,D0 09:16,,2.0,on,,981
+BTST,single0916,D0 09:16,,2.0,on,1.0,982
+BTST,single0916,D0 09:16,,2.0,on,1.2,983
+BTST,single0916,D0 09:16,0.006,,,,984
+BTST,single0916,D0 09:16,0.006,,,1.0,985
+BTST,single0916,D0 09:16,0.006,,,1.2,986
+BTST,single0916,D0 09:16,0.006,,on,,987
+BTST,single0916,D0 09:16,0.006,,on,1.0,988
+BTST,single0916,D0 09:16,0.006,,on,1.2,989
+BTST,single0916,D0 09:16,0.006,1.3,,,990
+BTST,single0916,D0 09:16,0.006,1.3,,1.0,991
+BTST,single0916,D0 09:16,0.006,1.3,,1.2,992
+BTST,single0916,D0 09:16,0.006,1.3,on,,993
+BTST,single0916,D0 09:16,0.006,1.3,on,1.0,994
+BTST,single0916,D0 09:16,0.006,1.3,on,1.2,995
+BTST,single0916,D0 09:16,0.006,1.55,,,996
+BTST,single0916,D0 09:16,0.006,1.55,,1.0,997
+BTST,single0916,D0 09:16,0.006,1.55,,1.2,998
+BTST,single0916,D0 09:16,0.006,1.55,on,,999
+BTST,single0916,D0 09:16,0.006,1.55,on,1.0,1000
+BTST,single0916,D0 09:16,0.006,1.55,on,1.2,1001
+BTST,single0916,D0 09:16,0.006,2.0,,,1002
+BTST,single0916,D0 09:16,0.006,2.0,,1.0,1003
+BTST,single0916,D0 09:16,0.006,2.0,,1.2,1004
+BTST,single0916,D0 09:16,0.006,2.0,on,,1005
+BTST,single0916,D0 09:16,0.006,2.0,on,1.0,1006
+BTST,single0916,D0 09:16,0.006,2.0,on,1.2,1007
+BTST,single0916,D0 09:16,0.012,,,,1008
+BTST,single0916,D0 09:16,0.012,,,1.0,1009
+BTST,single0916,D0 09:16,0.012,,,1.2,1010
+BTST,single0916,D0 09:16,0.012,,on,,1011
+BTST,single0916,D0 09:16,0.012,,on,1.0,1012
+BTST,single0916,D0 09:16,0.012,,on,1.2,1013
+BTST,single0916,D0 09:16,0.012,1.3,,,1014
+BTST,single0916,D0 09:16,0.012,1.3,,1.0,1015
+BTST,single0916,D0 09:16,0.012,1.3,,1.2,1016
+BTST,single0916,D0 09:16,0.012,1.3,on,,1017
+BTST,single0916,D0 09:16,0.012,1.3,on,1.0,1018
+BTST,single0916,D0 09:16,0.012,1.3,on,1.2,1019
+BTST,single0916,D0 09:16,0.012,1.55,,,1020
+BTST,single0916,D0 09:16,0.012,1.55,,1.0,1021
+BTST,single0916,D0 09:16,0.012,1.55,,1.2,1022
+BTST,single0916,D0 09:16,0.012,1.55,on,,1023
+BTST,single0916,D0 09:16,0.012,1.55,on,1.0,1024
+BTST,single0916,D0 09:16,0.012,1.55,on,1.2,1025
+BTST,single0916,D0 09:16,0.012,2.0,,,1026
+BTST,single0916,D0 09:16,0.012,2.0,,1.0,1027
+BTST,single0916,D0 09:16,0.012,2.0,,1.2,1028
+BTST,single0916,D0 09:16,0.012,2.0,on,,1029
+BTST,single0916,D0 09:16,0.012,2.0,on,1.0,1030
+BTST,single0916,D0 09:16,0.012,2.0,on,1.2,1031
+BTST,single0916,D0 09:16,0.025,,,,1032
+BTST,single0916,D0 09:16,0.025,,,1.0,1033
+BTST,single0916,D0 09:16,0.025,,,1.2,1034
+BTST,single0916,D0 09:16,0.025,,on,,1035
+BTST,single0916,D0 09:16,0.025,,on,1.0,1036
+BTST,single0916,D0 09:16,0.025,,on,1.2,1037
+BTST,single0916,D0 09:16,0.025,1.3,,,1038
+BTST,single0916,D0 09:16,0.025,1.3,,1.0,1039
+BTST,single0916,D0 09:16,0.025,1.3,,1.2,1040
+BTST,single0916,D0 09:16,0.025,1.3,on,,1041
+BTST,single0916,D0 09:16,0.025,1.3,on,1.0,1042
+BTST,single0916,D0 09:16,0.025,1.3,on,1.2,1043
+BTST,single0916,D0 09:16,0.025,1.55,,,1044
+BTST,single0916,D0 09:16,0.025,1.55,,1.0,1045
+BTST,single0916,D0 09:16,0.025,1.55,,1.2,1046
+BTST,single0916,D0 09:16,0.025,1.55,on,,1047
+BTST,single0916,D0 09:16,0.025,1.55,on,1.0,1048
+BTST,single0916,D0 09:16,0.025,1.55,on,1.2,1049
+BTST,single0916,D0 09:16,0.025,2.0,,,1050
+BTST,single0916,D0 09:16,0.025,2.0,,1.0,1051
+BTST,single0916,D0 09:16,0.025,2.0,,1.2,1052
+BTST,single0916,D0 09:16,0.025,2.0,on,,1053
+BTST,single0916,D0 09:16,0.025,2.0,on,1.0,1054
+BTST,single0916,D0 09:16,0.025,2.0,on,1.2,1055
+BTST,single0916,D0 10:01,,,,,1056
+BTST,single0916,D0 10:01,,,,1.0,1057
+BTST,single0916,D0 10:01,,,,1.2,1058
+BTST,single0916,D0 10:01,,,on,,1059
+BTST,single0916,D0 10:01,,,on,1.0,1060
+BTST,single0916,D0 10:01,,,on,1.2,1061
+BTST,single0916,D0 10:01,,1.3,,,1062
+BTST,single0916,D0 10:01,,1.3,,1.0,1063
+BTST,single0916,D0 10:01,,1.3,,1.2,1064
+BTST,single0916,D0 10:01,,1.3,on,,1065
+BTST,single0916,D0 10:01,,1.3,on,1.0,1066
+BTST,single0916,D0 10:01,,1.3,on,1.2,1067
+BTST,single0916,D0 10:01,,1.55,,,1068
+BTST,single0916,D0 10:01,,1.55,,1.0,1069
+BTST,single0916,D0 10:01,,1.55,,1.2,1070
+BTST,single0916,D0 10:01,,1.55,on,,1071
+BTST,single0916,D0 10:01,,1.55,on,1.0,1072
+BTST,single0916,D0 10:01,,1.55,on,1.2,1073
+BTST,single0916,D0 10:01,,2.0,,,1074
+BTST,single0916,D0 10:01,,2.0,,1.0,1075
+BTST,single0916,D0 10:01,,2.0,,1.2,1076
+BTST,single0916,D0 10:01,,2.0,on,,1077
+BTST,single0916,D0 10:01,,2.0,on,1.0,1078
+BTST,single0916,D0 10:01,,2.0,on,1.2,1079
+BTST,single0916,D0 10:01,0.006,,,,1080
+BTST,single0916,D0 10:01,0.006,,,1.0,1081
+BTST,single0916,D0 10:01,0.006,,,1.2,1082
+BTST,single0916,D0 10:01,0.006,,on,,1083
+BTST,single0916,D0 10:01,0.006,,on,1.0,1084
+BTST,single0916,D0 10:01,0.006,,on,1.2,1085
+BTST,single0916,D0 10:01,0.006,1.3,,,1086
+BTST,single0916,D0 10:01,0.006,1.3,,1.0,1087
+BTST,single0916,D0 10:01,0.006,1.3,,1.2,1088
+BTST,single0916,D0 10:01,0.006,1.3,on,,1089
+BTST,single0916,D0 10:01,0.006,1.3,on,1.0,1090
+BTST,single0916,D0 10:01,0.006,1.3,on,1.2,1091
+BTST,single0916,D0 10:01,0.006,1.55,,,1092
+BTST,single0916,D0 10:01,0.006,1.55,,1.0,1093
+BTST,single0916,D0 10:01,0.006,1.55,,1.2,1094
+BTST,single0916,D0 10:01,0.006,1.55,on,,1095
+BTST,single0916,D0 10:01,0.006,1.55,on,1.0,1096
+BTST,single0916,D0 10:01,0.006,1.55,on,1.2,1097
+BTST,single0916,D0 10:01,0.006,2.0,,,1098
+BTST,single0916,D0 10:01,0.006,2.0,,1.0,1099
+BTST,single0916,D0 10:01,0.006,2.0,,1.2,1100
+BTST,single0916,D0 10:01,0.006,2.0,on,,1101
+BTST,single0916,D0 10:01,0.006,2.0,on,1.0,1102
+BTST,single0916,D0 10:01,0.006,2.0,on,1.2,1103
+BTST,single0916,D0 10:01,0.012,,,,1104
+BTST,single0916,D0 10:01,0.012,,,1.0,1105
+BTST,single0916,D0 10:01,0.012,,,1.2,1106
+BTST,single0916,D0 10:01,0.012,,on,,1107
+BTST,single0916,D0 10:01,0.012,,on,1.0,1108
+BTST,single0916,D0 10:01,0.012,,on,1.2,1109
+BTST,single0916,D0 10:01,0.012,1.3,,,1110
+BTST,single0916,D0 10:01,0.012,1.3,,1.0,1111
+BTST,single0916,D0 10:01,0.012,1.3,,1.2,1112
+BTST,single0916,D0 10:01,0.012,1.3,on,,1113
+BTST,single0916,D0 10:01,0.012,1.3,on,1.0,1114
+BTST,single0916,D0 10:01,0.012,1.3,on,1.2,1115
+BTST,single0916,D0 10:01,0.012,1.55,,,1116
+BTST,single0916,D0 10:01,0.012,1.55,,1.0,1117
+BTST,single0916,D0 10:01,0.012,1.55,,1.2,1118
+BTST,single0916,D0 10:01,0.012,1.55,on,,1119
+BTST,single0916,D0 10:01,0.012,1.55,on,1.0,1120
+BTST,single0916,D0 10:01,0.012,1.55,on,1.2,1121
+BTST,single0916,D0 10:01,0.012,2.0,,,1122
+BTST,single0916,D0 10:01,0.012,2.0,,1.0,1123
+BTST,single0916,D0 10:01,0.012,2.0,,1.2,1124
+BTST,single0916,D0 10:01,0.012,2.0,on,,1125
+BTST,single0916,D0 10:01,0.012,2.0,on,1.0,1126
+BTST,single0916,D0 10:01,0.012,2.0,on,1.2,1127
+BTST,single0916,D0 10:01,0.025,,,,1128
+BTST,single0916,D0 10:01,0.025,,,1.0,1129
+BTST,single0916,D0 10:01,0.025,,,1.2,1130
+BTST,single0916,D0 10:01,0.025,,on,,1131
+BTST,single0916,D0 10:01,0.025,,on,1.0,1132
+BTST,single0916,D0 10:01,0.025,,on,1.2,1133
+BTST,single0916,D0 10:01,0.025,1.3,,,1134
+BTST,single0916,D0 10:01,0.025,1.3,,1.0,1135
+BTST,single0916,D0 10:01,0.025,1.3,,1.2,1136
+BTST,single0916,D0 10:01,0.025,1.3,on,,1137
+BTST,single0916,D0 10:01,0.025,1.3,on,1.0,1138
+BTST,single0916,D0 10:01,0.025,1.3,on,1.2,1139
+BTST,single0916,D0 10:01,0.025,1.55,,,1140
+BTST,single0916,D0 10:01,0.025,1.55,,1.0,1141
+BTST,single0916,D0 10:01,0.025,1.55,,1.2,1142
+BTST,single0916,D0 10:01,0.025,1.55,on,,1143
+BTST,single0916,D0 10:01,0.025,1.55,on,1.0,1144
+BTST,single0916,D0 10:01,0.025,1.55,on,1.2,1145
+BTST,single0916,D0 10:01,0.025,2.0,,,1146
+BTST,single0916,D0 10:01,0.025,2.0,,1.0,1147
+BTST,single0916,D0 10:01,0.025,2.0,,1.2,1148
+BTST,single0916,D0 10:01,0.025,2.0,on,,1149
+BTST,single0916,D0 10:01,0.025,2.0,on,1.0,1150
+BTST,single0916,D0 10:01,0.025,2.0,on,1.2,1151
+BTST,single0916,D0 12:01,,,,,1152
+BTST,single0916,D0 12:01,,,,1.0,1153
+BTST,single0916,D0 12:01,,,,1.2,1154
+BTST,single0916,D0 12:01,,,on,,1155
+BTST,single0916,D0 12:01,,,on,1.0,1156
+BTST,single0916,D0 12:01,,,on,1.2,1157
+BTST,single0916,D0 12:01,,1.3,,,1158
+BTST,single0916,D0 12:01,,1.3,,1.0,1159
+BTST,single0916,D0 12:01,,1.3,,1.2,1160
+BTST,single0916,D0 12:01,,1.3,on,,1161
+BTST,single0916,D0 12:01,,1.3,on,1.0,1162
+BTST,single0916,D0 12:01,,1.3,on,1.2,1163
+BTST,single0916,D0 12:01,,1.55,,,1164
+BTST,single0916,D0 12:01,,1.55,,1.0,1165
+BTST,single0916,D0 12:01,,1.55,,1.2,1166
+BTST,single0916,D0 12:01,,1.55,on,,1167
+BTST,single0916,D0 12:01,,1.55,on,1.0,1168
+BTST,single0916,D0 12:01,,1.55,on,1.2,1169
+BTST,single0916,D0 12:01,,2.0,,,1170
+BTST,single0916,D0 12:01,,2.0,,1.0,1171
+BTST,single0916,D0 12:01,,2.0,,1.2,1172
+BTST,single0916,D0 12:01,,2.0,on,,1173
+BTST,single0916,D0 12:01,,2.0,on,1.0,1174
+BTST,single0916,D0 12:01,,2.0,on,1.2,1175
+BTST,single0916,D0 12:01,0.006,,,,1176
+BTST,single0916,D0 12:01,0.006,,,1.0,1177
+BTST,single0916,D0 12:01,0.006,,,1.2,1178
+BTST,single0916,D0 12:01,0.006,,on,,1179
+BTST,single0916,D0 12:01,0.006,,on,1.0,1180
+BTST,single0916,D0 12:01,0.006,,on,1.2,1181
+BTST,single0916,D0 12:01,0.006,1.3,,,1182
+BTST,single0916,D0 12:01,0.006,1.3,,1.0,1183
+BTST,single0916,D0 12:01,0.006,1.3,,1.2,1184
+BTST,single0916,D0 12:01,0.006,1.3,on,,1185
+BTST,single0916,D0 12:01,0.006,1.3,on,1.0,1186
+BTST,single0916,D0 12:01,0.006,1.3,on,1.2,1187
+BTST,single0916,D0 12:01,0.006,1.55,,,1188
+BTST,single0916,D0 12:01,0.006,1.55,,1.0,1189
+BTST,single0916,D0 12:01,0.006,1.55,,1.2,1190
+BTST,single0916,D0 12:01,0.006,1.55,on,,1191
+BTST,single0916,D0 12:01,0.006,1.55,on,1.0,1192
+BTST,single0916,D0 12:01,0.006,1.55,on,1.2,1193
+BTST,single0916,D0 12:01,0.006,2.0,,,1194
+BTST,single0916,D0 12:01,0.006,2.0,,1.0,1195
+BTST,single0916,D0 12:01,0.006,2.0,,1.2,1196
+BTST,single0916,D0 12:01,0.006,2.0,on,,1197
+BTST,single0916,D0 12:01,0.006,2.0,on,1.0,1198
+BTST,single0916,D0 12:01,0.006,2.0,on,1.2,1199
+BTST,single0916,D0 12:01,0.012,,,,1200
+BTST,single0916,D0 12:01,0.012,,,1.0,1201
+BTST,single0916,D0 12:01,0.012,,,1.2,1202
+BTST,single0916,D0 12:01,0.012,,on,,1203
+BTST,single0916,D0 12:01,0.012,,on,1.0,1204
+BTST,single0916,D0 12:01,0.012,,on,1.2,1205
+BTST,single0916,D0 12:01,0.012,1.3,,,1206
+BTST,single0916,D0 12:01,0.012,1.3,,1.0,1207
+BTST,single0916,D0 12:01,0.012,1.3,,1.2,1208
+BTST,single0916,D0 12:01,0.012,1.3,on,,1209
+BTST,single0916,D0 12:01,0.012,1.3,on,1.0,1210
+BTST,single0916,D0 12:01,0.012,1.3,on,1.2,1211
+BTST,single0916,D0 12:01,0.012,1.55,,,1212
+BTST,single0916,D0 12:01,0.012,1.55,,1.0,1213
+BTST,single0916,D0 12:01,0.012,1.55,,1.2,1214
+BTST,single0916,D0 12:01,0.012,1.55,on,,1215
+BTST,single0916,D0 12:01,0.012,1.55,on,1.0,1216
+BTST,single0916,D0 12:01,0.012,1.55,on,1.2,1217
+BTST,single0916,D0 12:01,0.012,2.0,,,1218
+BTST,single0916,D0 12:01,0.012,2.0,,1.0,1219
+BTST,single0916,D0 12:01,0.012,2.0,,1.2,1220
+BTST,single0916,D0 12:01,0.012,2.0,on,,1221
+BTST,single0916,D0 12:01,0.012,2.0,on,1.0,1222
+BTST,single0916,D0 12:01,0.012,2.0,on,1.2,1223
+BTST,single0916,D0 12:01,0.025,,,,1224
+BTST,single0916,D0 12:01,0.025,,,1.0,1225
+BTST,single0916,D0 12:01,0.025,,,1.2,1226
+BTST,single0916,D0 12:01,0.025,,on,,1227
+BTST,single0916,D0 12:01,0.025,,on,1.0,1228
+BTST,single0916,D0 12:01,0.025,,on,1.2,1229
+BTST,single0916,D0 12:01,0.025,1.3,,,1230
+BTST,single0916,D0 12:01,0.025,1.3,,1.0,1231
+BTST,single0916,D0 12:01,0.025,1.3,,1.2,1232
+BTST,single0916,D0 12:01,0.025,1.3,on,,1233
+BTST,single0916,D0 12:01,0.025,1.3,on,1.0,1234
+BTST,single0916,D0 12:01,0.025,1.3,on,1.2,1235
+BTST,single0916,D0 12:01,0.025,1.55,,,1236
+BTST,single0916,D0 12:01,0.025,1.55,,1.0,1237
+BTST,single0916,D0 12:01,0.025,1.55,,1.2,1238
+BTST,single0916,D0 12:01,0.025,1.55,on,,1239
+BTST,single0916,D0 12:01,0.025,1.55,on,1.0,1240
+BTST,single0916,D0 12:01,0.025,1.55,on,1.2,1241
+BTST,single0916,D0 12:01,0.025,2.0,,,1242
+BTST,single0916,D0 12:01,0.025,2.0,,1.0,1243
+BTST,single0916,D0 12:01,0.025,2.0,,1.2,1244
+BTST,single0916,D0 12:01,0.025,2.0,on,,1245
+BTST,single0916,D0 12:01,0.025,2.0,on,1.0,1246
+BTST,single0916,D0 12:01,0.025,2.0,on,1.2,1247
+BTST,single0916,D0 15:14,,,,,1248
+BTST,single0916,D0 15:14,,,,1.0,1249
+BTST,single0916,D0 15:14,,,,1.2,1250
+BTST,single0916,D0 15:14,,,on,,1251
+BTST,single0916,D0 15:14,,,on,1.0,1252
+BTST,single0916,D0 15:14,,,on,1.2,1253
+BTST,single0916,D0 15:14,,1.3,,,1254
+BTST,single0916,D0 15:14,,1.3,,1.0,1255
+BTST,single0916,D0 15:14,,1.3,,1.2,1256
+BTST,single0916,D0 15:14,,1.3,on,,1257
+BTST,single0916,D0 15:14,,1.3,on,1.0,1258
+BTST,single0916,D0 15:14,,1.3,on,1.2,1259
+BTST,single0916,D0 15:14,,1.55,,,1260
+BTST,single0916,D0 15:14,,1.55,,1.0,1261
+BTST,single0916,D0 15:14,,1.55,,1.2,1262
+BTST,single0916,D0 15:14,,1.55,on,,1263
+BTST,single0916,D0 15:14,,1.55,on,1.0,1264
+BTST,single0916,D0 15:14,,1.55,on,1.2,1265
+BTST,single0916,D0 15:14,,2.0,,,1266
+BTST,single0916,D0 15:14,,2.0,,1.0,1267
+BTST,single0916,D0 15:14,,2.0,,1.2,1268
+BTST,single0916,D0 15:14,,2.0,on,,1269
+BTST,single0916,D0 15:14,,2.0,on,1.0,1270
+BTST,single0916,D0 15:14,,2.0,on,1.2,1271
+BTST,single0916,D0 15:14,0.006,,,,1272
+BTST,single0916,D0 15:14,0.006,,,1.0,1273
+BTST,single0916,D0 15:14,0.006,,,1.2,1274
+BTST,single0916,D0 15:14,0.006,,on,,1275
+BTST,single0916,D0 15:14,0.006,,on,1.0,1276
+BTST,single0916,D0 15:14,0.006,,on,1.2,1277
+BTST,single0916,D0 15:14,0.006,1.3,,,1278
+BTST,single0916,D0 15:14,0.006,1.3,,1.0,1279
+BTST,single0916,D0 15:14,0.006,1.3,,1.2,1280
+BTST,single0916,D0 15:14,0.006,1.3,on,,1281
+BTST,single0916,D0 15:14,0.006,1.3,on,1.0,1282
+BTST,single0916,D0 15:14,0.006,1.3,on,1.2,1283
+BTST,single0916,D0 15:14,0.006,1.55,,,1284
+BTST,single0916,D0 15:14,0.006,1.55,,1.0,1285
+BTST,single0916,D0 15:14,0.006,1.55,,1.2,1286
+BTST,single0916,D0 15:14,0.006,1.55,on,,1287
+BTST,single0916,D0 15:14,0.006,1.55,on,1.0,1288
+BTST,single0916,D0 15:14,0.006,1.55,on,1.2,1289
+BTST,single0916,D0 15:14,0.006,2.0,,,1290
+BTST,single0916,D0 15:14,0.006,2.0,,1.0,1291
+BTST,single0916,D0 15:14,0.006,2.0,,1.2,1292
+BTST,single0916,D0 15:14,0.006,2.0,on,,1293
+BTST,single0916,D0 15:14,0.006,2.0,on,1.0,1294
+BTST,single0916,D0 15:14,0.006,2.0,on,1.2,1295
+BTST,single0916,D0 15:14,0.012,,,,1296
+BTST,single0916,D0 15:14,0.012,,,1.0,1297
+BTST,single0916,D0 15:14,0.012,,,1.2,1298
+BTST,single0916,D0 15:14,0.012,,on,,1299
+BTST,single0916,D0 15:14,0.012,,on,1.0,1300
+BTST,single0916,D0 15:14,0.012,,on,1.2,1301
+BTST,single0916,D0 15:14,0.012,1.3,,,1302
+BTST,single0916,D0 15:14,0.012,1.3,,1.0,1303
+BTST,single0916,D0 15:14,0.012,1.3,,1.2,1304
+BTST,single0916,D0 15:14,0.012,1.3,on,,1305
+BTST,single0916,D0 15:14,0.012,1.3,on,1.0,1306
+BTST,single0916,D0 15:14,0.012,1.3,on,1.2,1307
+BTST,single0916,D0 15:14,0.012,1.55,,,1308
+BTST,single0916,D0 15:14,0.012,1.55,,1.0,1309
+BTST,single0916,D0 15:14,0.012,1.55,,1.2,1310
+BTST,single0916,D0 15:14,0.012,1.55,on,,1311
+BTST,single0916,D0 15:14,0.012,1.55,on,1.0,1312
+BTST,single0916,D0 15:14,0.012,1.55,on,1.2,1313
+BTST,single0916,D0 15:14,0.012,2.0,,,1314
+BTST,single0916,D0 15:14,0.012,2.0,,1.0,1315
+BTST,single0916,D0 15:14,0.012,2.0,,1.2,1316
+BTST,single0916,D0 15:14,0.012,2.0,on,,1317
+BTST,single0916,D0 15:14,0.012,2.0,on,1.0,1318
+BTST,single0916,D0 15:14,0.012,2.0,on,1.2,1319
+BTST,single0916,D0 15:14,0.025,,,,1320
+BTST,single0916,D0 15:14,0.025,,,1.0,1321
+BTST,single0916,D0 15:14,0.025,,,1.2,1322
+BTST,single0916,D0 15:14,0.025,,on,,1323
+BTST,single0916,D0 15:14,0.025,,on,1.0,1324
+BTST,single0916,D0 15:14,0.025,,on,1.2,1325
+BTST,single0916,D0 15:14,0.025,1.3,,,1326
+BTST,single0916,D0 15:14,0.025,1.3,,1.0,1327
+BTST,single0916,D0 15:14,0.025,1.3,,1.2,1328
+BTST,single0916,D0 15:14,0.025,1.3,on,,1329
+BTST,single0916,D0 15:14,0.025,1.3,on,1.0,1330
+BTST,single0916,D0 15:14,0.025,1.3,on,1.2,1331
+BTST,single0916,D0 15:14,0.025,1.55,,,1332
+BTST,single0916,D0 15:14,0.025,1.55,,1.0,1333
+BTST,single0916,D0 15:14,0.025,1.55,,1.2,1334
+BTST,single0916,D0 15:14,0.025,1.55,on,,1335
+BTST,single0916,D0 15:14,0.025,1.55,on,1.0,1336
+BTST,single0916,D0 15:14,0.025,1.55,on,1.2,1337
+BTST,single0916,D0 15:14,0.025,2.0,,,1338
+BTST,single0916,D0 15:14,0.025,2.0,,1.0,1339
+BTST,single0916,D0 15:14,0.025,2.0,,1.2,1340
+BTST,single0916,D0 15:14,0.025,2.0,on,,1341
+BTST,single0916,D0 15:14,0.025,2.0,on,1.0,1342
+BTST,single0916,D0 15:14,0.025,2.0,on,1.2,1343
+BTST,single0916,expiry,,,,,1344
+BTST,single0916,expiry,,,,1.0,1345
+BTST,single0916,expiry,,,,1.2,1346
+BTST,single0916,expiry,,,on,,1347
+BTST,single0916,expiry,,,on,1.0,1348
+BTST,single0916,expiry,,,on,1.2,1349
+BTST,single0916,expiry,,1.3,,,1350
+BTST,single0916,expiry,,1.3,,1.0,1351
+BTST,single0916,expiry,,1.3,,1.2,1352
+BTST,single0916,expiry,,1.3,on,,1353
+BTST,single0916,expiry,,1.3,on,1.0,1354
+BTST,single0916,expiry,,1.3,on,1.2,1355
+BTST,single0916,expiry,,1.55,,,1356
+BTST,single0916,expiry,,1.55,,1.0,1357
+BTST,single0916,expiry,,1.55,,1.2,1358
+BTST,single0916,expiry,,1.55,on,,1359
+BTST,single0916,expiry,,1.55,on,1.0,1360
+BTST,single0916,expiry,,1.55,on,1.2,1361
+BTST,single0916,expiry,,2.0,,,1362
+BTST,single0916,expiry,,2.0,,1.0,1363
+BTST,single0916,expiry,,2.0,,1.2,1364
+BTST,single0916,expiry,,2.0,on,,1365
+BTST,single0916,expiry,,2.0,on,1.0,1366
+BTST,single0916,expiry,,2.0,on,1.2,1367
+BTST,single0916,expiry,0.006,,,,1368
+BTST,single0916,expiry,0.006,,,1.0,1369
+BTST,single0916,expiry,0.006,,,1.2,1370
+BTST,single0916,expiry,0.006,,on,,1371
+BTST,single0916,expiry,0.006,,on,1.0,1372
+BTST,single0916,expiry,0.006,,on,1.2,1373
+BTST,single0916,expiry,0.006,1.3,,,1374
+BTST,single0916,expiry,0.006,1.3,,1.0,1375
+BTST,single0916,expiry,0.006,1.3,,1.2,1376
+BTST,single0916,expiry,0.006,1.3,on,,1377
+BTST,single0916,expiry,0.006,1.3,on,1.0,1378
+BTST,single0916,expiry,0.006,1.3,on,1.2,1379
+BTST,single0916,expiry,0.006,1.55,,,1380
+BTST,single0916,expiry,0.006,1.55,,1.0,1381
+BTST,single0916,expiry,0.006,1.55,,1.2,1382
+BTST,single0916,expiry,0.006,1.55,on,,1383
+BTST,single0916,expiry,0.006,1.55,on,1.0,1384
+BTST,single0916,expiry,0.006,1.55,on,1.2,1385
+BTST,single0916,expiry,0.006,2.0,,,1386
+BTST,single0916,expiry,0.006,2.0,,1.0,1387
+BTST,single0916,expiry,0.006,2.0,,1.2,1388
+BTST,single0916,expiry,0.006,2.0,on,,1389
+BTST,single0916,expiry,0.006,2.0,on,1.0,1390
+BTST,single0916,expiry,0.006,2.0,on,1.2,1391
+BTST,single0916,expiry,0.012,,,,1392
+BTST,single0916,expiry,0.012,,,1.0,1393
+BTST,single0916,expiry,0.012,,,1.2,1394
+BTST,single0916,expiry,0.012,,on,,1395
+BTST,single0916,expiry,0.012,,on,1.0,1396
+BTST,single0916,expiry,0.012,,on,1.2,1397
+BTST,single0916,expiry,0.012,1.3,,,1398
+BTST,single0916,expiry,0.012,1.3,,1.0,1399
+BTST,single0916,expiry,0.012,1.3,,1.2,1400
+BTST,single0916,expiry,0.012,1.3,on,,1401
+BTST,single0916,expiry,0.012,1.3,on,1.0,1402
+BTST,single0916,expiry,0.012,1.3,on,1.2,1403
+BTST,single0916,expiry,0.012,1.55,,,1404
+BTST,single0916,expiry,0.012,1.55,,1.0,1405
+BTST,single0916,expiry,0.012,1.55,,1.2,1406
+BTST,single0916,expiry,0.012,1.55,on,,1407
+BTST,single0916,expiry,0.012,1.55,on,1.0,1408
+BTST,single0916,expiry,0.012,1.55,on,1.2,1409
+BTST,single0916,expiry,0.012,2.0,,,1410
+BTST,single0916,expiry,0.012,2.0,,1.0,1411
+BTST,single0916,expiry,0.012,2.0,,1.2,1412
+BTST,single0916,expiry,0.012,2.0,on,,1413
+BTST,single0916,expiry,0.012,2.0,on,1.0,1414
+BTST,single0916,expiry,0.012,2.0,on,1.2,1415
+BTST,single0916,expiry,0.025,,,,1416
+BTST,single0916,expiry,0.025,,,1.0,1417
+BTST,single0916,expiry,0.025,,,1.2,1418
+BTST,single0916,expiry,0.025,,on,,1419
+BTST,single0916,expiry,0.025,,on,1.0,1420
+BTST,single0916,expiry,0.025,,on,1.2,1421
+BTST,single0916,expiry,0.025,1.3,,,1422
+BTST,single0916,expiry,0.025,1.3,,1.0,1423
+BTST,single0916,expiry,0.025,1.3,,1.2,1424
+BTST,single0916,expiry,0.025,1.3,on,,1425
+BTST,single0916,expiry,0.025,1.3,on,1.0,1426
+BTST,single0916,expiry,0.025,1.3,on,1.2,1427
+BTST,single0916,expiry,0.025,1.55,,,1428
+BTST,single0916,expiry,0.025,1.55,,1.0,1429
+BTST,single0916,expiry,0.025,1.55,,1.2,1430
+BTST,single0916,expiry,0.025,1.55,on,,1431
+BTST,single0916,expiry,0.025,1.55,on,1.0,1432
+BTST,single0916,expiry,0.025,1.55,on,1.2,1433
+BTST,single0916,expiry,0.025,2.0,,,1434
+BTST,single0916,expiry,0.025,2.0,,1.0,1435
+BTST,single0916,expiry,0.025,2.0,,1.2,1436
+BTST,single0916,expiry,0.025,2.0,on,,1437
+BTST,single0916,expiry,0.025,2.0,on,1.0,1438
+BTST,single0916,expiry,0.025,2.0,on,1.2,1439
+BTST,single1116,D0 09:16,,,,,1440
+BTST,single1116,D0 09:16,,,,1.0,1441
+BTST,single1116,D0 09:16,,,,1.2,1442
+BTST,single1116,D0 09:16,,,on,,1443
+BTST,single1116,D0 09:16,,,on,1.0,1444
+BTST,single1116,D0 09:16,,,on,1.2,1445
+BTST,single1116,D0 09:16,,1.3,,,1446
+BTST,single1116,D0 09:16,,1.3,,1.0,1447
+BTST,single1116,D0 09:16,,1.3,,1.2,1448
+BTST,single1116,D0 09:16,,1.3,on,,1449
+BTST,single1116,D0 09:16,,1.3,on,1.0,1450
+BTST,single1116,D0 09:16,,1.3,on,1.2,1451
+BTST,single1116,D0 09:16,,1.55,,,1452
+BTST,single1116,D0 09:16,,1.55,,1.0,1453
+BTST,single1116,D0 09:16,,1.55,,1.2,1454
+BTST,single1116,D0 09:16,,1.55,on,,1455
+BTST,single1116,D0 09:16,,1.55,on,1.0,1456
+BTST,single1116,D0 09:16,,1.55,on,1.2,1457
+BTST,single1116,D0 09:16,,2.0,,,1458
+BTST,single1116,D0 09:16,,2.0,,1.0,1459
+BTST,single1116,D0 09:16,,2.0,,1.2,1460
+BTST,single1116,D0 09:16,,2.0,on,,1461
+BTST,single1116,D0 09:16,,2.0,on,1.0,1462
+BTST,single1116,D0 09:16,,2.0,on,1.2,1463
+BTST,single1116,D0 09:16,0.006,,,,1464
+BTST,single1116,D0 09:16,0.006,,,1.0,1465
+BTST,single1116,D0 09:16,0.006,,,1.2,1466
+BTST,single1116,D0 09:16,0.006,,on,,1467
+BTST,single1116,D0 09:16,0.006,,on,1.0,1468
+BTST,single1116,D0 09:16,0.006,,on,1.2,1469
+BTST,single1116,D0 09:16,0.006,1.3,,,1470
+BTST,single1116,D0 09:16,0.006,1.3,,1.0,1471
+BTST,single1116,D0 09:16,0.006,1.3,,1.2,1472
+BTST,single1116,D0 09:16,0.006,1.3,on,,1473
+BTST,single1116,D0 09:16,0.006,1.3,on,1.0,1474
+BTST,single1116,D0 09:16,0.006,1.3,on,1.2,1475
+BTST,single1116,D0 09:16,0.006,1.55,,,1476
+BTST,single1116,D0 09:16,0.006,1.55,,1.0,1477
+BTST,single1116,D0 09:16,0.006,1.55,,1.2,1478
+BTST,single1116,D0 09:16,0.006,1.55,on,,1479
+BTST,single1116,D0 09:16,0.006,1.55,on,1.0,1480
+BTST,single1116,D0 09:16,0.006,1.55,on,1.2,1481
+BTST,single1116,D0 09:16,0.006,2.0,,,1482
+BTST,single1116,D0 09:16,0.006,2.0,,1.0,1483
+BTST,single1116,D0 09:16,0.006,2.0,,1.2,1484
+BTST,single1116,D0 09:16,0.006,2.0,on,,1485
+BTST,single1116,D0 09:16,0.006,2.0,on,1.0,1486
+BTST,single1116,D0 09:16,0.006,2.0,on,1.2,1487
+BTST,single1116,D0 09:16,0.012,,,,1488
+BTST,single1116,D0 09:16,0.012,,,1.0,1489
+BTST,single1116,D0 09:16,0.012,,,1.2,1490
+BTST,single1116,D0 09:16,0.012,,on,,1491
+BTST,single1116,D0 09:16,0.012,,on,1.0,1492
+BTST,single1116,D0 09:16,0.012,,on,1.2,1493
+BTST,single1116,D0 09:16,0.012,1.3,,,1494
+BTST,single1116,D0 09:16,0.012,1.3,,1.0,1495
+BTST,single1116,D0 09:16,0.012,1.3,,1.2,1496
+BTST,single1116,D0 09:16,0.012,1.3,on,,1497
+BTST,single1116,D0 09:16,0.012,1.3,on,1.0,1498
+BTST,single1116,D0 09:16,0.012,1.3,on,1.2,1499
+BTST,single1116,D0 09:16,0.012,1.55,,,1500
+BTST,single1116,D0 09:16,0.012,1.55,,1.0,1501
+BTST,single1116,D0 09:16,0.012,1.55,,1.2,1502
+BTST,single1116,D0 09:16,0.012,1.55,on,,1503
+BTST,single1116,D0 09:16,0.012,1.55,on,1.0,1504
+BTST,single1116,D0 09:16,0.012,1.55,on,1.2,1505
+BTST,single1116,D0 09:16,0.012,2.0,,,1506
+BTST,single1116,D0 09:16,0.012,2.0,,1.0,1507
+BTST,single1116,D0 09:16,0.012,2.0,,1.2,1508
+BTST,single1116,D0 09:16,0.012,2.0,on,,1509
+BTST,single1116,D0 09:16,0.012,2.0,on,1.0,1510
+BTST,single1116,D0 09:16,0.012,2.0,on,1.2,1511
+BTST,single1116,D0 09:16,0.025,,,,1512
+BTST,single1116,D0 09:16,0.025,,,1.0,1513
+BTST,single1116,D0 09:16,0.025,,,1.2,1514
+BTST,single1116,D0 09:16,0.025,,on,,1515
+BTST,single1116,D0 09:16,0.025,,on,1.0,1516
+BTST,single1116,D0 09:16,0.025,,on,1.2,1517
+BTST,single1116,D0 09:16,0.025,1.3,,,1518
+BTST,single1116,D0 09:16,0.025,1.3,,1.0,1519
+BTST,single1116,D0 09:16,0.025,1.3,,1.2,1520
+BTST,single1116,D0 09:16,0.025,1.3,on,,1521
+BTST,single1116,D0 09:16,0.025,1.3,on,1.0,1522
+BTST,single1116,D0 09:16,0.025,1.3,on,1.2,1523
+BTST,single1116,D0 09:16,0.025,1.55,,,1524
+BTST,single1116,D0 09:16,0.025,1.55,,1.0,1525
+BTST,single1116,D0 09:16,0.025,1.55,,1.2,1526
+BTST,single1116,D0 09:16,0.025,1.55,on,,1527
+BTST,single1116,D0 09:16,0.025,1.55,on,1.0,1528
+BTST,single1116,D0 09:16,0.025,1.55,on,1.2,1529
+BTST,single1116,D0 09:16,0.025,2.0,,,1530
+BTST,single1116,D0 09:16,0.025,2.0,,1.0,1531
+BTST,single1116,D0 09:16,0.025,2.0,,1.2,1532
+BTST,single1116,D0 09:16,0.025,2.0,on,,1533
+BTST,single1116,D0 09:16,0.025,2.0,on,1.0,1534
+BTST,single1116,D0 09:16,0.025,2.0,on,1.2,1535
+BTST,single1116,D0 10:01,,,,,1536
+BTST,single1116,D0 10:01,,,,1.0,1537
+BTST,single1116,D0 10:01,,,,1.2,1538
+BTST,single1116,D0 10:01,,,on,,1539
+BTST,single1116,D0 10:01,,,on,1.0,1540
+BTST,single1116,D0 10:01,,,on,1.2,1541
+BTST,single1116,D0 10:01,,1.3,,,1542
+BTST,single1116,D0 10:01,,1.3,,1.0,1543
+BTST,single1116,D0 10:01,,1.3,,1.2,1544
+BTST,single1116,D0 10:01,,1.3,on,,1545
+BTST,single1116,D0 10:01,,1.3,on,1.0,1546
+BTST,single1116,D0 10:01,,1.3,on,1.2,1547
+BTST,single1116,D0 10:01,,1.55,,,1548
+BTST,single1116,D0 10:01,,1.55,,1.0,1549
+BTST,single1116,D0 10:01,,1.55,,1.2,1550
+BTST,single1116,D0 10:01,,1.55,on,,1551
+BTST,single1116,D0 10:01,,1.55,on,1.0,1552
+BTST,single1116,D0 10:01,,1.55,on,1.2,1553
+BTST,single1116,D0 10:01,,2.0,,,1554
+BTST,single1116,D0 10:01,,2.0,,1.0,1555
+BTST,single1116,D0 10:01,,2.0,,1.2,1556
+BTST,single1116,D0 10:01,,2.0,on,,1557
+BTST,single1116,D0 10:01,,2.0,on,1.0,1558
+BTST,single1116,D0 10:01,,2.0,on,1.2,1559
+BTST,single1116,D0 10:01,0.006,,,,1560
+BTST,single1116,D0 10:01,0.006,,,1.0,1561
+BTST,single1116,D0 10:01,0.006,,,1.2,1562
+BTST,single1116,D0 10:01,0.006,,on,,1563
+BTST,single1116,D0 10:01,0.006,,on,1.0,1564
+BTST,single1116,D0 10:01,0.006,,on,1.2,1565
+BTST,single1116,D0 10:01,0.006,1.3,,,1566
+BTST,single1116,D0 10:01,0.006,1.3,,1.0,1567
+BTST,single1116,D0 10:01,0.006,1.3,,1.2,1568
+BTST,single1116,D0 10:01,0.006,1.3,on,,1569
+BTST,single1116,D0 10:01,0.006,1.3,on,1.0,1570
+BTST,single1116,D0 10:01,0.006,1.3,on,1.2,1571
+BTST,single1116,D0 10:01,0.006,1.55,,,1572
+BTST,single1116,D0 10:01,0.006,1.55,,1.0,1573
+BTST,single1116,D0 10:01,0.006,1.55,,1.2,1574
+BTST,single1116,D0 10:01,0.006,1.55,on,,1575
+BTST,single1116,D0 10:01,0.006,1.55,on,1.0,1576
+BTST,single1116,D0 10:01,0.006,1.55,on,1.2,1577
+BTST,single1116,D0 10:01,0.006,2.0,,,1578
+BTST,single1116,D0 10:01,0.006,2.0,,1.0,1579
+BTST,single1116,D0 10:01,0.006,2.0,,1.2,1580
+BTST,single1116,D0 10:01,0.006,2.0,on,,1581
+BTST,single1116,D0 10:01,0.006,2.0,on,1.0,1582
+BTST,single1116,D0 10:01,0.006,2.0,on,1.2,1583
+BTST,single1116,D0 10:01,0.012,,,,1584
+BTST,single1116,D0 10:01,0.012,,,1.0,1585
+BTST,single1116,D0 10:01,0.012,,,1.2,1586
+BTST,single1116,D0 10:01,0.012,,on,,1587
+BTST,single1116,D0 10:01,0.012,,on,1.0,1588
+BTST,single1116,D0 10:01,0.012,,on,1.2,1589
+BTST,single1116,D0 10:01,0.012,1.3,,,1590
+BTST,single1116,D0 10:01,0.012,1.3,,1.0,1591
+BTST,single1116,D0 10:01,0.012,1.3,,1.2,1592
+BTST,single1116,D0 10:01,0.012,1.3,on,,1593
+BTST,single1116,D0 10:01,0.012,1.3,on,1.0,1594
+BTST,single1116,D0 10:01,0.012,1.3,on,1.2,1595
+BTST,single1116,D0 10:01,0.012,1.55,,,1596
+BTST,single1116,D0 10:01,0.012,1.55,,1.0,1597
+BTST,single1116,D0 10:01,0.012,1.55,,1.2,1598
+BTST,single1116,D0 10:01,0.012,1.55,on,,1599
+BTST,single1116,D0 10:01,0.012,1.55,on,1.0,1600
+BTST,single1116,D0 10:01,0.012,1.55,on,1.2,1601
+BTST,single1116,D0 10:01,0.012,2.0,,,1602
+BTST,single1116,D0 10:01,0.012,2.0,,1.0,1603
+BTST,single1116,D0 10:01,0.012,2.0,,1.2,1604
+BTST,single1116,D0 10:01,0.012,2.0,on,,1605
+BTST,single1116,D0 10:01,0.012,2.0,on,1.0,1606
+BTST,single1116,D0 10:01,0.012,2.0,on,1.2,1607
+BTST,single1116,D0 10:01,0.025,,,,1608
+BTST,single1116,D0 10:01,0.025,,,1.0,1609
+BTST,single1116,D0 10:01,0.025,,,1.2,1610
+BTST,single1116,D0 10:01,0.025,,on,,1611
+BTST,single1116,D0 10:01,0.025,,on,1.0,1612
+BTST,single1116,D0 10:01,0.025,,on,1.2,1613
+BTST,single1116,D0 10:01,0.025,1.3,,,1614
+BTST,single1116,D0 10:01,0.025,1.3,,1.0,1615
+BTST,single1116,D0 10:01,0.025,1.3,,1.2,1616
+BTST,single1116,D0 10:01,0.025,1.3,on,,1617
+BTST,single1116,D0 10:01,0.025,1.3,on,1.0,1618
+BTST,single1116,D0 10:01,0.025,1.3,on,1.2,1619
+BTST,single1116,D0 10:01,0.025,1.55,,,1620
+BTST,single1116,D0 10:01,0.025,1.55,,1.0,1621
+BTST,single1116,D0 10:01,0.025,1.55,,1.2,1622
+BTST,single1116,D0 10:01,0.025,1.55,on,,1623
+BTST,single1116,D0 10:01,0.025,1.55,on,1.0,1624
+BTST,single1116,D0 10:01,0.025,1.55,on,1.2,1625
+BTST,single1116,D0 10:01,0.025,2.0,,,1626
+BTST,single1116,D0 10:01,0.025,2.0,,1.0,1627
+BTST,single1116,D0 10:01,0.025,2.0,,1.2,1628
+BTST,single1116,D0 10:01,0.025,2.0,on,,1629
+BTST,single1116,D0 10:01,0.025,2.0,on,1.0,1630
+BTST,single1116,D0 10:01,0.025,2.0,on,1.2,1631
+BTST,single1116,D0 12:01,,,,,1632
+BTST,single1116,D0 12:01,,,,1.0,1633
+BTST,single1116,D0 12:01,,,,1.2,1634
+BTST,single1116,D0 12:01,,,on,,1635
+BTST,single1116,D0 12:01,,,on,1.0,1636
+BTST,single1116,D0 12:01,,,on,1.2,1637
+BTST,single1116,D0 12:01,,1.3,,,1638
+BTST,single1116,D0 12:01,,1.3,,1.0,1639
+BTST,single1116,D0 12:01,,1.3,,1.2,1640
+BTST,single1116,D0 12:01,,1.3,on,,1641
+BTST,single1116,D0 12:01,,1.3,on,1.0,1642
+BTST,single1116,D0 12:01,,1.3,on,1.2,1643
+BTST,single1116,D0 12:01,,1.55,,,1644
+BTST,single1116,D0 12:01,,1.55,,1.0,1645
+BTST,single1116,D0 12:01,,1.55,,1.2,1646
+BTST,single1116,D0 12:01,,1.55,on,,1647
+BTST,single1116,D0 12:01,,1.55,on,1.0,1648
+BTST,single1116,D0 12:01,,1.55,on,1.2,1649
+BTST,single1116,D0 12:01,,2.0,,,1650
+BTST,single1116,D0 12:01,,2.0,,1.0,1651
+BTST,single1116,D0 12:01,,2.0,,1.2,1652
+BTST,single1116,D0 12:01,,2.0,on,,1653
+BTST,single1116,D0 12:01,,2.0,on,1.0,1654
+BTST,single1116,D0 12:01,,2.0,on,1.2,1655
+BTST,single1116,D0 12:01,0.006,,,,1656
+BTST,single1116,D0 12:01,0.006,,,1.0,1657
+BTST,single1116,D0 12:01,0.006,,,1.2,1658
+BTST,single1116,D0 12:01,0.006,,on,,1659
+BTST,single1116,D0 12:01,0.006,,on,1.0,1660
+BTST,single1116,D0 12:01,0.006,,on,1.2,1661
+BTST,single1116,D0 12:01,0.006,1.3,,,1662
+BTST,single1116,D0 12:01,0.006,1.3,,1.0,1663
+BTST,single1116,D0 12:01,0.006,1.3,,1.2,1664
+BTST,single1116,D0 12:01,0.006,1.3,on,,1665
+BTST,single1116,D0 12:01,0.006,1.3,on,1.0,1666
+BTST,single1116,D0 12:01,0.006,1.3,on,1.2,1667
+BTST,single1116,D0 12:01,0.006,1.55,,,1668
+BTST,single1116,D0 12:01,0.006,1.55,,1.0,1669
+BTST,single1116,D0 12:01,0.006,1.55,,1.2,1670
+BTST,single1116,D0 12:01,0.006,1.55,on,,1671
+BTST,single1116,D0 12:01,0.006,1.55,on,1.0,1672
+BTST,single1116,D0 12:01,0.006,1.55,on,1.2,1673
+BTST,single1116,D0 12:01,0.006,2.0,,,1674
+BTST,single1116,D0 12:01,0.006,2.0,,1.0,1675
+BTST,single1116,D0 12:01,0.006,2.0,,1.2,1676
+BTST,single1116,D0 12:01,0.006,2.0,on,,1677
+BTST,single1116,D0 12:01,0.006,2.0,on,1.0,1678
+BTST,single1116,D0 12:01,0.006,2.0,on,1.2,1679
+BTST,single1116,D0 12:01,0.012,,,,1680
+BTST,single1116,D0 12:01,0.012,,,1.0,1681
+BTST,single1116,D0 12:01,0.012,,,1.2,1682
+BTST,single1116,D0 12:01,0.012,,on,,1683
+BTST,single1116,D0 12:01,0.012,,on,1.0,1684
+BTST,single1116,D0 12:01,0.012,,on,1.2,1685
+BTST,single1116,D0 12:01,0.012,1.3,,,1686
+BTST,single1116,D0 12:01,0.012,1.3,,1.0,1687
+BTST,single1116,D0 12:01,0.012,1.3,,1.2,1688
+BTST,single1116,D0 12:01,0.012,1.3,on,,1689
+BTST,single1116,D0 12:01,0.012,1.3,on,1.0,1690
+BTST,single1116,D0 12:01,0.012,1.3,on,1.2,1691
+BTST,single1116,D0 12:01,0.012,1.55,,,1692
+BTST,single1116,D0 12:01,0.012,1.55,,1.0,1693
+BTST,single1116,D0 12:01,0.012,1.55,,1.2,1694
+BTST,single1116,D0 12:01,0.012,1.55,on,,1695
+BTST,single1116,D0 12:01,0.012,1.55,on,1.0,1696
+BTST,single1116,D0 12:01,0.012,1.55,on,1.2,1697
+BTST,single1116,D0 12:01,0.012,2.0,,,1698
+BTST,single1116,D0 12:01,0.012,2.0,,1.0,1699
+BTST,single1116,D0 12:01,0.012,2.0,,1.2,1700
+BTST,single1116,D0 12:01,0.012,2.0,on,,1701
+BTST,single1116,D0 12:01,0.012,2.0,on,1.0,1702
+BTST,single1116,D0 12:01,0.012,2.0,on,1.2,1703
+BTST,single1116,D0 12:01,0.025,,,,1704
+BTST,single1116,D0 12:01,0.025,,,1.0,1705
+BTST,single1116,D0 12:01,0.025,,,1.2,1706
+BTST,single1116,D0 12:01,0.025,,on,,1707
+BTST,single1116,D0 12:01,0.025,,on,1.0,1708
+BTST,single1116,D0 12:01,0.025,,on,1.2,1709
+BTST,single1116,D0 12:01,0.025,1.3,,,1710
+BTST,single1116,D0 12:01,0.025,1.3,,1.0,1711
+BTST,single1116,D0 12:01,0.025,1.3,,1.2,1712
+BTST,single1116,D0 12:01,0.025,1.3,on,,1713
+BTST,single1116,D0 12:01,0.025,1.3,on,1.0,1714
+BTST,single1116,D0 12:01,0.025,1.3,on,1.2,1715
+BTST,single1116,D0 12:01,0.025,1.55,,,1716
+BTST,single1116,D0 12:01,0.025,1.55,,1.0,1717
+BTST,single1116,D0 12:01,0.025,1.55,,1.2,1718
+BTST,single1116,D0 12:01,0.025,1.55,on,,1719
+BTST,single1116,D0 12:01,0.025,1.55,on,1.0,1720
+BTST,single1116,D0 12:01,0.025,1.55,on,1.2,1721
+BTST,single1116,D0 12:01,0.025,2.0,,,1722
+BTST,single1116,D0 12:01,0.025,2.0,,1.0,1723
+BTST,single1116,D0 12:01,0.025,2.0,,1.2,1724
+BTST,single1116,D0 12:01,0.025,2.0,on,,1725
+BTST,single1116,D0 12:01,0.025,2.0,on,1.0,1726
+BTST,single1116,D0 12:01,0.025,2.0,on,1.2,1727
+BTST,single1116,D0 15:14,,,,,1728
+BTST,single1116,D0 15:14,,,,1.0,1729
+BTST,single1116,D0 15:14,,,,1.2,1730
+BTST,single1116,D0 15:14,,,on,,1731
+BTST,single1116,D0 15:14,,,on,1.0,1732
+BTST,single1116,D0 15:14,,,on,1.2,1733
+BTST,single1116,D0 15:14,,1.3,,,1734
+BTST,single1116,D0 15:14,,1.3,,1.0,1735
+BTST,single1116,D0 15:14,,1.3,,1.2,1736
+BTST,single1116,D0 15:14,,1.3,on,,1737
+BTST,single1116,D0 15:14,,1.3,on,1.0,1738
+BTST,single1116,D0 15:14,,1.3,on,1.2,1739
+BTST,single1116,D0 15:14,,1.55,,,1740
+BTST,single1116,D0 15:14,,1.55,,1.0,1741
+BTST,single1116,D0 15:14,,1.55,,1.2,1742
+BTST,single1116,D0 15:14,,1.55,on,,1743
+BTST,single1116,D0 15:14,,1.55,on,1.0,1744
+BTST,single1116,D0 15:14,,1.55,on,1.2,1745
+BTST,single1116,D0 15:14,,2.0,,,1746
+BTST,single1116,D0 15:14,,2.0,,1.0,1747
+BTST,single1116,D0 15:14,,2.0,,1.2,1748
+BTST,single1116,D0 15:14,,2.0,on,,1749
+BTST,single1116,D0 15:14,,2.0,on,1.0,1750
+BTST,single1116,D0 15:14,,2.0,on,1.2,1751
+BTST,single1116,D0 15:14,0.006,,,,1752
+BTST,single1116,D0 15:14,0.006,,,1.0,1753
+BTST,single1116,D0 15:14,0.006,,,1.2,1754
+BTST,single1116,D0 15:14,0.006,,on,,1755
+BTST,single1116,D0 15:14,0.006,,on,1.0,1756
+BTST,single1116,D0 15:14,0.006,,on,1.2,1757
+BTST,single1116,D0 15:14,0.006,1.3,,,1758
+BTST,single1116,D0 15:14,0.006,1.3,,1.0,1759
+BTST,single1116,D0 15:14,0.006,1.3,,1.2,1760
+BTST,single1116,D0 15:14,0.006,1.3,on,,1761
+BTST,single1116,D0 15:14,0.006,1.3,on,1.0,1762
+BTST,single1116,D0 15:14,0.006,1.3,on,1.2,1763
+BTST,single1116,D0 15:14,0.006,1.55,,,1764
+BTST,single1116,D0 15:14,0.006,1.55,,1.0,1765
+BTST,single1116,D0 15:14,0.006,1.55,,1.2,1766
+BTST,single1116,D0 15:14,0.006,1.55,on,,1767
+BTST,single1116,D0 15:14,0.006,1.55,on,1.0,1768
+BTST,single1116,D0 15:14,0.006,1.55,on,1.2,1769
+BTST,single1116,D0 15:14,0.006,2.0,,,1770
+BTST,single1116,D0 15:14,0.006,2.0,,1.0,1771
+BTST,single1116,D0 15:14,0.006,2.0,,1.2,1772
+BTST,single1116,D0 15:14,0.006,2.0,on,,1773
+BTST,single1116,D0 15:14,0.006,2.0,on,1.0,1774
+BTST,single1116,D0 15:14,0.006,2.0,on,1.2,1775
+BTST,single1116,D0 15:14,0.012,,,,1776
+BTST,single1116,D0 15:14,0.012,,,1.0,1777
+BTST,single1116,D0 15:14,0.012,,,1.2,1778
+BTST,single1116,D0 15:14,0.012,,on,,1779
+BTST,single1116,D0 15:14,0.012,,on,1.0,1780
+BTST,single1116,D0 15:14,0.012,,on,1.2,1781
+BTST,single1116,D0 15:14,0.012,1.3,,,1782
+BTST,single1116,D0 15:14,0.012,1.3,,1.0,1783
+BTST,single1116,D0 15:14,0.012,1.3,,1.2,1784
+BTST,single1116,D0 15:14,0.012,1.3,on,,1785
+BTST,single1116,D0 15:14,0.012,1.3,on,1.0,1786
+BTST,single1116,D0 15:14,0.012,1.3,on,1.2,1787
+BTST,single1116,D0 15:14,0.012,1.55,,,1788
+BTST,single1116,D0 15:14,0.012,1.55,,1.0,1789
+BTST,single1116,D0 15:14,0.012,1.55,,1.2,1790
+BTST,single1116,D0 15:14,0.012,1.55,on,,1791
+BTST,single1116,D0 15:14,0.012,1.55,on,1.0,1792
+BTST,single1116,D0 15:14,0.012,1.55,on,1.2,1793
+BTST,single1116,D0 15:14,0.012,2.0,,,1794
+BTST,single1116,D0 15:14,0.012,2.0,,1.0,1795
+BTST,single1116,D0 15:14,0.012,2.0,,1.2,1796
+BTST,single1116,D0 15:14,0.012,2.0,on,,1797
+BTST,single1116,D0 15:14,0.012,2.0,on,1.0,1798
+BTST,single1116,D0 15:14,0.012,2.0,on,1.2,1799
+BTST,single1116,D0 15:14,0.025,,,,1800
+BTST,single1116,D0 15:14,0.025,,,1.0,1801
+BTST,single1116,D0 15:14,0.025,,,1.2,1802
+BTST,single1116,D0 15:14,0.025,,on,,1803
+BTST,single1116,D0 15:14,0.025,,on,1.0,1804
+BTST,single1116,D0 15:14,0.025,,on,1.2,1805
+BTST,single1116,D0 15:14,0.025,1.3,,,1806
+BTST,single1116,D0 15:14,0.025,1.3,,1.0,1807
+BTST,single1116,D0 15:14,0.025,1.3,,1.2,1808
+BTST,single1116,D0 15:14,0.025,1.3,on,,1809
+BTST,single1116,D0 15:14,0.025,1.3,on,1.0,1810
+BTST,single1116,D0 15:14,0.025,1.3,on,1.2,1811
+BTST,single1116,D0 15:14,0.025,1.55,,,1812
+BTST,single1116,D0 15:14,0.025,1.55,,1.0,1813
+BTST,single1116,D0 15:14,0.025,1.55,,1.2,1814
+BTST,single1116,D0 15:14,0.025,1.55,on,,1815
+BTST,single1116,D0 15:14,0.025,1.55,on,1.0,1816
+BTST,single1116,D0 15:14,0.025,1.55,on,1.2,1817
+BTST,single1116,D0 15:14,0.025,2.0,,,1818
+BTST,single1116,D0 15:14,0.025,2.0,,1.0,1819
+BTST,single1116,D0 15:14,0.025,2.0,,1.2,1820
+BTST,single1116,D0 15:14,0.025,2.0,on,,1821
+BTST,single1116,D0 15:14,0.025,2.0,on,1.0,1822
+BTST,single1116,D0 15:14,0.025,2.0,on,1.2,1823
+BTST,single1116,expiry,,,,,1824
+BTST,single1116,expiry,,,,1.0,1825
+BTST,single1116,expiry,,,,1.2,1826
+BTST,single1116,expiry,,,on,,1827
+BTST,single1116,expiry,,,on,1.0,1828
+BTST,single1116,expiry,,,on,1.2,1829
+BTST,single1116,expiry,,1.3,,,1830
+BTST,single1116,expiry,,1.3,,1.0,1831
+BTST,single1116,expiry,,1.3,,1.2,1832
+BTST,single1116,expiry,,1.3,on,,1833
+BTST,single1116,expiry,,1.3,on,1.0,1834
+BTST,single1116,expiry,,1.3,on,1.2,1835
+BTST,single1116,expiry,,1.55,,,1836
+BTST,single1116,expiry,,1.55,,1.0,1837
+BTST,single1116,expiry,,1.55,,1.2,1838
+BTST,single1116,expiry,,1.55,on,,1839
+BTST,single1116,expiry,,1.55,on,1.0,1840
+BTST,single1116,expiry,,1.55,on,1.2,1841
+BTST,single1116,expiry,,2.0,,,1842
+BTST,single1116,expiry,,2.0,,1.0,1843
+BTST,single1116,expiry,,2.0,,1.2,1844
+BTST,single1116,expiry,,2.0,on,,1845
+BTST,single1116,expiry,,2.0,on,1.0,1846
+BTST,single1116,expiry,,2.0,on,1.2,1847
+BTST,single1116,expiry,0.006,,,,1848
+BTST,single1116,expiry,0.006,,,1.0,1849
+BTST,single1116,expiry,0.006,,,1.2,1850
+BTST,single1116,expiry,0.006,,on,,1851
+BTST,single1116,expiry,0.006,,on,1.0,1852
+BTST,single1116,expiry,0.006,,on,1.2,1853
+BTST,single1116,expiry,0.006,1.3,,,1854
+BTST,single1116,expiry,0.006,1.3,,1.0,1855
+BTST,single1116,expiry,0.006,1.3,,1.2,1856
+BTST,single1116,expiry,0.006,1.3,on,,1857
+BTST,single1116,expiry,0.006,1.3,on,1.0,1858
+BTST,single1116,expiry,0.006,1.3,on,1.2,1859
+BTST,single1116,expiry,0.006,1.55,,,1860
+BTST,single1116,expiry,0.006,1.55,,1.0,1861
+BTST,single1116,expiry,0.006,1.55,,1.2,1862
+BTST,single1116,expiry,0.006,1.55,on,,1863
+BTST,single1116,expiry,0.006,1.55,on,1.0,1864
+BTST,single1116,expiry,0.006,1.55,on,1.2,1865
+BTST,single1116,expiry,0.006,2.0,,,1866
+BTST,single1116,expiry,0.006,2.0,,1.0,1867
+BTST,single1116,expiry,0.006,2.0,,1.2,1868
+BTST,single1116,expiry,0.006,2.0,on,,1869
+BTST,single1116,expiry,0.006,2.0,on,1.0,1870
+BTST,single1116,expiry,0.006,2.0,on,1.2,1871
+BTST,single1116,expiry,0.012,,,,1872
+BTST,single1116,expiry,0.012,,,1.0,1873
+BTST,single1116,expiry,0.012,,,1.2,1874
+BTST,single1116,expiry,0.012,,on,,1875
+BTST,single1116,expiry,0.012,,on,1.0,1876
+BTST,single1116,expiry,0.012,,on,1.2,1877
+BTST,single1116,expiry,0.012,1.3,,,1878
+BTST,single1116,expiry,0.012,1.3,,1.0,1879
+BTST,single1116,expiry,0.012,1.3,,1.2,1880
+BTST,single1116,expiry,0.012,1.3,on,,1881
+BTST,single1116,expiry,0.012,1.3,on,1.0,1882
+BTST,single1116,expiry,0.012,1.3,on,1.2,1883
+BTST,single1116,expiry,0.012,1.55,,,1884
+BTST,single1116,expiry,0.012,1.55,,1.0,1885
+BTST,single1116,expiry,0.012,1.55,,1.2,1886
+BTST,single1116,expiry,0.012,1.55,on,,1887
+BTST,single1116,expiry,0.012,1.55,on,1.0,1888
+BTST,single1116,expiry,0.012,1.55,on,1.2,1889
+BTST,single1116,expiry,0.012,2.0,,,1890
+BTST,single1116,expiry,0.012,2.0,,1.0,1891
+BTST,single1116,expiry,0.012,2.0,,1.2,1892
+BTST,single1116,expiry,0.012,2.0,on,,1893
+BTST,single1116,expiry,0.012,2.0,on,1.0,1894
+BTST,single1116,expiry,0.012,2.0,on,1.2,1895
+BTST,single1116,expiry,0.025,,,,1896
+BTST,single1116,expiry,0.025,,,1.0,1897
+BTST,single1116,expiry,0.025,,,1.2,1898
+BTST,single1116,expiry,0.025,,on,,1899
+BTST,single1116,expiry,0.025,,on,1.0,1900
+BTST,single1116,expiry,0.025,,on,1.2,1901
+BTST,single1116,expiry,0.025,1.3,,,1902
+BTST,single1116,expiry,0.025,1.3,,1.0,1903
+BTST,single1116,expiry,0.025,1.3,,1.2,1904
+BTST,single1116,expiry,0.025,1.3,on,,1905
+BTST,single1116,expiry,0.025,1.3,on,1.0,1906
+BTST,single1116,expiry,0.025,1.3,on,1.2,1907
+BTST,single1116,expiry,0.025,1.55,,,1908
+BTST,single1116,expiry,0.025,1.55,,1.0,1909
+BTST,single1116,expiry,0.025,1.55,,1.2,1910
+BTST,single1116,expiry,0.025,1.55,on,,1911
+BTST,single1116,expiry,0.025,1.55,on,1.0,1912
+BTST,single1116,expiry,0.025,1.55,on,1.2,1913
+BTST,single1116,expiry,0.025,2.0,,,1914
+BTST,single1116,expiry,0.025,2.0,,1.0,1915
+BTST,single1116,expiry,0.025,2.0,,1.2,1916
+BTST,single1116,expiry,0.025,2.0,on,,1917
+BTST,single1116,expiry,0.025,2.0,on,1.0,1918
+BTST,single1116,expiry,0.025,2.0,on,1.2,1919
+BTST,single1316,D0 09:16,,,,,1920
+BTST,single1316,D0 09:16,,,,1.0,1921
+BTST,single1316,D0 09:16,,,,1.2,1922
+BTST,single1316,D0 09:16,,,on,,1923
+BTST,single1316,D0 09:16,,,on,1.0,1924
+BTST,single1316,D0 09:16,,,on,1.2,1925
+BTST,single1316,D0 09:16,,1.3,,,1926
+BTST,single1316,D0 09:16,,1.3,,1.0,1927
+BTST,single1316,D0 09:16,,1.3,,1.2,1928
+BTST,single1316,D0 09:16,,1.3,on,,1929
+BTST,single1316,D0 09:16,,1.3,on,1.0,1930
+BTST,single1316,D0 09:16,,1.3,on,1.2,1931
+BTST,single1316,D0 09:16,,1.55,,,1932
+BTST,single1316,D0 09:16,,1.55,,1.0,1933
+BTST,single1316,D0 09:16,,1.55,,1.2,1934
+BTST,single1316,D0 09:16,,1.55,on,,1935
+BTST,single1316,D0 09:16,,1.55,on,1.0,1936
+BTST,single1316,D0 09:16,,1.55,on,1.2,1937
+BTST,single1316,D0 09:16,,2.0,,,1938
+BTST,single1316,D0 09:16,,2.0,,1.0,1939
+BTST,single1316,D0 09:16,,2.0,,1.2,1940
+BTST,single1316,D0 09:16,,2.0,on,,1941
+BTST,single1316,D0 09:16,,2.0,on,1.0,1942
+BTST,single1316,D0 09:16,,2.0,on,1.2,1943
+BTST,single1316,D0 09:16,0.006,,,,1944
+BTST,single1316,D0 09:16,0.006,,,1.0,1945
+BTST,single1316,D0 09:16,0.006,,,1.2,1946
+BTST,single1316,D0 09:16,0.006,,on,,1947
+BTST,single1316,D0 09:16,0.006,,on,1.0,1948
+BTST,single1316,D0 09:16,0.006,,on,1.2,1949
+BTST,single1316,D0 09:16,0.006,1.3,,,1950
+BTST,single1316,D0 09:16,0.006,1.3,,1.0,1951
+BTST,single1316,D0 09:16,0.006,1.3,,1.2,1952
+BTST,single1316,D0 09:16,0.006,1.3,on,,1953
+BTST,single1316,D0 09:16,0.006,1.3,on,1.0,1954
+BTST,single1316,D0 09:16,0.006,1.3,on,1.2,1955
+BTST,single1316,D0 09:16,0.006,1.55,,,1956
+BTST,single1316,D0 09:16,0.006,1.55,,1.0,1957
+BTST,single1316,D0 09:16,0.006,1.55,,1.2,1958
+BTST,single1316,D0 09:16,0.006,1.55,on,,1959
+BTST,single1316,D0 09:16,0.006,1.55,on,1.0,1960
+BTST,single1316,D0 09:16,0.006,1.55,on,1.2,1961
+BTST,single1316,D0 09:16,0.006,2.0,,,1962
+BTST,single1316,D0 09:16,0.006,2.0,,1.0,1963
+BTST,single1316,D0 09:16,0.006,2.0,,1.2,1964
+BTST,single1316,D0 09:16,0.006,2.0,on,,1965
+BTST,single1316,D0 09:16,0.006,2.0,on,1.0,1966
+BTST,single1316,D0 09:16,0.006,2.0,on,1.2,1967
+BTST,single1316,D0 09:16,0.012,,,,1968
+BTST,single1316,D0 09:16,0.012,,,1.0,1969
+BTST,single1316,D0 09:16,0.012,,,1.2,1970
+BTST,single1316,D0 09:16,0.012,,on,,1971
+BTST,single1316,D0 09:16,0.012,,on,1.0,1972
+BTST,single1316,D0 09:16,0.012,,on,1.2,1973
+BTST,single1316,D0 09:16,0.012,1.3,,,1974
+BTST,single1316,D0 09:16,0.012,1.3,,1.0,1975
+BTST,single1316,D0 09:16,0.012,1.3,,1.2,1976
+BTST,single1316,D0 09:16,0.012,1.3,on,,1977
+BTST,single1316,D0 09:16,0.012,1.3,on,1.0,1978
+BTST,single1316,D0 09:16,0.012,1.3,on,1.2,1979
+BTST,single1316,D0 09:16,0.012,1.55,,,1980
+BTST,single1316,D0 09:16,0.012,1.55,,1.0,1981
+BTST,single1316,D0 09:16,0.012,1.55,,1.2,1982
+BTST,single1316,D0 09:16,0.012,1.55,on,,1983
+BTST,single1316,D0 09:16,0.012,1.55,on,1.0,1984
+BTST,single1316,D0 09:16,0.012,1.55,on,1.2,1985
+BTST,single1316,D0 09:16,0.012,2.0,,,1986
+BTST,single1316,D0 09:16,0.012,2.0,,1.0,1987
+BTST,single1316,D0 09:16,0.012,2.0,,1.2,1988
+BTST,single1316,D0 09:16,0.012,2.0,on,,1989
+BTST,single1316,D0 09:16,0.012,2.0,on,1.0,1990
+BTST,single1316,D0 09:16,0.012,2.0,on,1.2,1991
+BTST,single1316,D0 09:16,0.025,,,,1992
+BTST,single1316,D0 09:16,0.025,,,1.0,1993
+BTST,single1316,D0 09:16,0.025,,,1.2,1994
+BTST,single1316,D0 09:16,0.025,,on,,1995
+BTST,single1316,D0 09:16,0.025,,on,1.0,1996
+BTST,single1316,D0 09:16,0.025,,on,1.2,1997
+BTST,single1316,D0 09:16,0.025,1.3,,,1998
+BTST,single1316,D0 09:16,0.025,1.3,,1.0,1999
+BTST,single1316,D0 09:16,0.025,1.3,,1.2,2000
+BTST,single1316,D0 09:16,0.025,1.3,on,,2001
+BTST,single1316,D0 09:16,0.025,1.3,on,1.0,2002
+BTST,single1316,D0 09:16,0.025,1.3,on,1.2,2003
+BTST,single1316,D0 09:16,0.025,1.55,,,2004
+BTST,single1316,D0 09:16,0.025,1.55,,1.0,2005
+BTST,single1316,D0 09:16,0.025,1.55,,1.2,2006
+BTST,single1316,D0 09:16,0.025,1.55,on,,2007
+BTST,single1316,D0 09:16,0.025,1.55,on,1.0,2008
+BTST,single1316,D0 09:16,0.025,1.55,on,1.2,2009
+BTST,single1316,D0 09:16,0.025,2.0,,,2010
+BTST,single1316,D0 09:16,0.025,2.0,,1.0,2011
+BTST,single1316,D0 09:16,0.025,2.0,,1.2,2012
+BTST,single1316,D0 09:16,0.025,2.0,on,,2013
+BTST,single1316,D0 09:16,0.025,2.0,on,1.0,2014
+BTST,single1316,D0 09:16,0.025,2.0,on,1.2,2015
+BTST,single1316,D0 10:01,,,,,2016
+BTST,single1316,D0 10:01,,,,1.0,2017
+BTST,single1316,D0 10:01,,,,1.2,2018
+BTST,single1316,D0 10:01,,,on,,2019
+BTST,single1316,D0 10:01,,,on,1.0,2020
+BTST,single1316,D0 10:01,,,on,1.2,2021
+BTST,single1316,D0 10:01,,1.3,,,2022
+BTST,single1316,D0 10:01,,1.3,,1.0,2023
+BTST,single1316,D0 10:01,,1.3,,1.2,2024
+BTST,single1316,D0 10:01,,1.3,on,,2025
+BTST,single1316,D0 10:01,,1.3,on,1.0,2026
+BTST,single1316,D0 10:01,,1.3,on,1.2,2027
+BTST,single1316,D0 10:01,,1.55,,,2028
+BTST,single1316,D0 10:01,,1.55,,1.0,2029
+BTST,single1316,D0 10:01,,1.55,,1.2,2030
+BTST,single1316,D0 10:01,,1.55,on,,2031
+BTST,single1316,D0 10:01,,1.55,on,1.0,2032
+BTST,single1316,D0 10:01,,1.55,on,1.2,2033
+BTST,single1316,D0 10:01,,2.0,,,2034
+BTST,single1316,D0 10:01,,2.0,,1.0,2035
+BTST,single1316,D0 10:01,,2.0,,1.2,2036
+BTST,single1316,D0 10:01,,2.0,on,,2037
+BTST,single1316,D0 10:01,,2.0,on,1.0,2038
+BTST,single1316,D0 10:01,,2.0,on,1.2,2039
+BTST,single1316,D0 10:01,0.006,,,,2040
+BTST,single1316,D0 10:01,0.006,,,1.0,2041
+BTST,single1316,D0 10:01,0.006,,,1.2,2042
+BTST,single1316,D0 10:01,0.006,,on,,2043
+BTST,single1316,D0 10:01,0.006,,on,1.0,2044
+BTST,single1316,D0 10:01,0.006,,on,1.2,2045
+BTST,single1316,D0 10:01,0.006,1.3,,,2046
+BTST,single1316,D0 10:01,0.006,1.3,,1.0,2047
+BTST,single1316,D0 10:01,0.006,1.3,,1.2,2048
+BTST,single1316,D0 10:01,0.006,1.3,on,,2049
+BTST,single1316,D0 10:01,0.006,1.3,on,1.0,2050
+BTST,single1316,D0 10:01,0.006,1.3,on,1.2,2051
+BTST,single1316,D0 10:01,0.006,1.55,,,2052
+BTST,single1316,D0 10:01,0.006,1.55,,1.0,2053
+BTST,single1316,D0 10:01,0.006,1.55,,1.2,2054
+BTST,single1316,D0 10:01,0.006,1.55,on,,2055
+BTST,single1316,D0 10:01,0.006,1.55,on,1.0,2056
+BTST,single1316,D0 10:01,0.006,1.55,on,1.2,2057
+BTST,single1316,D0 10:01,0.006,2.0,,,2058
+BTST,single1316,D0 10:01,0.006,2.0,,1.0,2059
+BTST,single1316,D0 10:01,0.006,2.0,,1.2,2060
+BTST,single1316,D0 10:01,0.006,2.0,on,,2061
+BTST,single1316,D0 10:01,0.006,2.0,on,1.0,2062
+BTST,single1316,D0 10:01,0.006,2.0,on,1.2,2063
+BTST,single1316,D0 10:01,0.012,,,,2064
+BTST,single1316,D0 10:01,0.012,,,1.0,2065
+BTST,single1316,D0 10:01,0.012,,,1.2,2066
+BTST,single1316,D0 10:01,0.012,,on,,2067
+BTST,single1316,D0 10:01,0.012,,on,1.0,2068
+BTST,single1316,D0 10:01,0.012,,on,1.2,2069
+BTST,single1316,D0 10:01,0.012,1.3,,,2070
+BTST,single1316,D0 10:01,0.012,1.3,,1.0,2071
+BTST,single1316,D0 10:01,0.012,1.3,,1.2,2072
+BTST,single1316,D0 10:01,0.012,1.3,on,,2073
+BTST,single1316,D0 10:01,0.012,1.3,on,1.0,2074
+BTST,single1316,D0 10:01,0.012,1.3,on,1.2,2075
+BTST,single1316,D0 10:01,0.012,1.55,,,2076
+BTST,single1316,D0 10:01,0.012,1.55,,1.0,2077
+BTST,single1316,D0 10:01,0.012,1.55,,1.2,2078
+BTST,single1316,D0 10:01,0.012,1.55,on,,2079
+BTST,single1316,D0 10:01,0.012,1.55,on,1.0,2080
+BTST,single1316,D0 10:01,0.012,1.55,on,1.2,2081
+BTST,single1316,D0 10:01,0.012,2.0,,,2082
+BTST,single1316,D0 10:01,0.012,2.0,,1.0,2083
+BTST,single1316,D0 10:01,0.012,2.0,,1.2,2084
+BTST,single1316,D0 10:01,0.012,2.0,on,,2085
+BTST,single1316,D0 10:01,0.012,2.0,on,1.0,2086
+BTST,single1316,D0 10:01,0.012,2.0,on,1.2,2087
+BTST,single1316,D0 10:01,0.025,,,,2088
+BTST,single1316,D0 10:01,0.025,,,1.0,2089
+BTST,single1316,D0 10:01,0.025,,,1.2,2090
+BTST,single1316,D0 10:01,0.025,,on,,2091
+BTST,single1316,D0 10:01,0.025,,on,1.0,2092
+BTST,single1316,D0 10:01,0.025,,on,1.2,2093
+BTST,single1316,D0 10:01,0.025,1.3,,,2094
+BTST,single1316,D0 10:01,0.025,1.3,,1.0,2095
+BTST,single1316,D0 10:01,0.025,1.3,,1.2,2096
+BTST,single1316,D0 10:01,0.025,1.3,on,,2097
+BTST,single1316,D0 10:01,0.025,1.3,on,1.0,2098
+BTST,single1316,D0 10:01,0.025,1.3,on,1.2,2099
+BTST,single1316,D0 10:01,0.025,1.55,,,2100
+BTST,single1316,D0 10:01,0.025,1.55,,1.0,2101
+BTST,single1316,D0 10:01,0.025,1.55,,1.2,2102
+BTST,single1316,D0 10:01,0.025,1.55,on,,2103
+BTST,single1316,D0 10:01,0.025,1.55,on,1.0,2104
+BTST,single1316,D0 10:01,0.025,1.55,on,1.2,2105
+BTST,single1316,D0 10:01,0.025,2.0,,,2106
+BTST,single1316,D0 10:01,0.025,2.0,,1.0,2107
+BTST,single1316,D0 10:01,0.025,2.0,,1.2,2108
+BTST,single1316,D0 10:01,0.025,2.0,on,,2109
+BTST,single1316,D0 10:01,0.025,2.0,on,1.0,2110
+BTST,single1316,D0 10:01,0.025,2.0,on,1.2,2111
+BTST,single1316,D0 12:01,,,,,2112
+BTST,single1316,D0 12:01,,,,1.0,2113
+BTST,single1316,D0 12:01,,,,1.2,2114
+BTST,single1316,D0 12:01,,,on,,2115
+BTST,single1316,D0 12:01,,,on,1.0,2116
+BTST,single1316,D0 12:01,,,on,1.2,2117
+BTST,single1316,D0 12:01,,1.3,,,2118
+BTST,single1316,D0 12:01,,1.3,,1.0,2119
+BTST,single1316,D0 12:01,,1.3,,1.2,2120
+BTST,single1316,D0 12:01,,1.3,on,,2121
+BTST,single1316,D0 12:01,,1.3,on,1.0,2122
+BTST,single1316,D0 12:01,,1.3,on,1.2,2123
+BTST,single1316,D0 12:01,,1.55,,,2124
+BTST,single1316,D0 12:01,,1.55,,1.0,2125
+BTST,single1316,D0 12:01,,1.55,,1.2,2126
+BTST,single1316,D0 12:01,,1.55,on,,2127
+BTST,single1316,D0 12:01,,1.55,on,1.0,2128
+BTST,single1316,D0 12:01,,1.55,on,1.2,2129
+BTST,single1316,D0 12:01,,2.0,,,2130
+BTST,single1316,D0 12:01,,2.0,,1.0,2131
+BTST,single1316,D0 12:01,,2.0,,1.2,2132
+BTST,single1316,D0 12:01,,2.0,on,,2133
+BTST,single1316,D0 12:01,,2.0,on,1.0,2134
+BTST,single1316,D0 12:01,,2.0,on,1.2,2135
+BTST,single1316,D0 12:01,0.006,,,,2136
+BTST,single1316,D0 12:01,0.006,,,1.0,2137
+BTST,single1316,D0 12:01,0.006,,,1.2,2138
+BTST,single1316,D0 12:01,0.006,,on,,2139
+BTST,single1316,D0 12:01,0.006,,on,1.0,2140
+BTST,single1316,D0 12:01,0.006,,on,1.2,2141
+BTST,single1316,D0 12:01,0.006,1.3,,,2142
+BTST,single1316,D0 12:01,0.006,1.3,,1.0,2143
+BTST,single1316,D0 12:01,0.006,1.3,,1.2,2144
+BTST,single1316,D0 12:01,0.006,1.3,on,,2145
+BTST,single1316,D0 12:01,0.006,1.3,on,1.0,2146
+BTST,single1316,D0 12:01,0.006,1.3,on,1.2,2147
+BTST,single1316,D0 12:01,0.006,1.55,,,2148
+BTST,single1316,D0 12:01,0.006,1.55,,1.0,2149
+BTST,single1316,D0 12:01,0.006,1.55,,1.2,2150
+BTST,single1316,D0 12:01,0.006,1.55,on,,2151
+BTST,single1316,D0 12:01,0.006,1.55,on,1.0,2152
+BTST,single1316,D0 12:01,0.006,1.55,on,1.2,2153
+BTST,single1316,D0 12:01,0.006,2.0,,,2154
+BTST,single1316,D0 12:01,0.006,2.0,,1.0,2155
+BTST,single1316,D0 12:01,0.006,2.0,,1.2,2156
+BTST,single1316,D0 12:01,0.006,2.0,on,,2157
+BTST,single1316,D0 12:01,0.006,2.0,on,1.0,2158
+BTST,single1316,D0 12:01,0.006,2.0,on,1.2,2159
+BTST,single1316,D0 12:01,0.012,,,,2160
+BTST,single1316,D0 12:01,0.012,,,1.0,2161
+BTST,single1316,D0 12:01,0.012,,,1.2,2162
+BTST,single1316,D0 12:01,0.012,,on,,2163
+BTST,single1316,D0 12:01,0.012,,on,1.0,2164
+BTST,single1316,D0 12:01,0.012,,on,1.2,2165
+BTST,single1316,D0 12:01,0.012,1.3,,,2166
+BTST,single1316,D0 12:01,0.012,1.3,,1.0,2167
+BTST,single1316,D0 12:01,0.012,1.3,,1.2,2168
+BTST,single1316,D0 12:01,0.012,1.3,on,,2169
+BTST,single1316,D0 12:01,0.012,1.3,on,1.0,2170
+BTST,single1316,D0 12:01,0.012,1.3,on,1.2,2171
+BTST,single1316,D0 12:01,0.012,1.55,,,2172
+BTST,single1316,D0 12:01,0.012,1.55,,1.0,2173
+BTST,single1316,D0 12:01,0.012,1.55,,1.2,2174
+BTST,single1316,D0 12:01,0.012,1.55,on,,2175
+BTST,single1316,D0 12:01,0.012,1.55,on,1.0,2176
+BTST,single1316,D0 12:01,0.012,1.55,on,1.2,2177
+BTST,single1316,D0 12:01,0.012,2.0,,,2178
+BTST,single1316,D0 12:01,0.012,2.0,,1.0,2179
+BTST,single1316,D0 12:01,0.012,2.0,,1.2,2180
+BTST,single1316,D0 12:01,0.012,2.0,on,,2181
+BTST,single1316,D0 12:01,0.012,2.0,on,1.0,2182
+BTST,single1316,D0 12:01,0.012,2.0,on,1.2,2183
+BTST,single1316,D0 12:01,0.025,,,,2184
+BTST,single1316,D0 12:01,0.025,,,1.0,2185
+BTST,single1316,D0 12:01,0.025,,,1.2,2186
+BTST,single1316,D0 12:01,0.025,,on,,2187
+BTST,single1316,D0 12:01,0.025,,on,1.0,2188
+BTST,single1316,D0 12:01,0.025,,on,1.2,2189
+BTST,single1316,D0 12:01,0.025,1.3,,,2190
+BTST,single1316,D0 12:01,0.025,1.3,,1.0,2191
+BTST,single1316,D0 12:01,0.025,1.3,,1.2,2192
+BTST,single1316,D0 12:01,0.025,1.3,on,,2193
+BTST,single1316,D0 12:01,0.025,1.3,on,1.0,2194
+BTST,single1316,D0 12:01,0.025,1.3,on,1.2,2195
+BTST,single1316,D0 12:01,0.025,1.55,,,2196
+BTST,single1316,D0 12:01,0.025,1.55,,1.0,2197
+BTST,single1316,D0 12:01,0.025,1.55,,1.2,2198
+BTST,single1316,D0 12:01,0.025,1.55,on,,2199
+BTST,single1316,D0 12:01,0.025,1.55,on,1.0,2200
+BTST,single1316,D0 12:01,0.025,1.55,on,1.2,2201
+BTST,single1316,D0 12:01,0.025,2.0,,,2202
+BTST,single1316,D0 12:01,0.025,2.0,,1.0,2203
+BTST,single1316,D0 12:01,0.025,2.0,,1.2,2204
+BTST,single1316,D0 12:01,0.025,2.0,on,,2205
+BTST,single1316,D0 12:01,0.025,2.0,on,1.0,2206
+BTST,single1316,D0 12:01,0.025,2.0,on,1.2,2207
+BTST,single1316,D0 15:14,,,,,2208
+BTST,single1316,D0 15:14,,,,1.0,2209
+BTST,single1316,D0 15:14,,,,1.2,2210
+BTST,single1316,D0 15:14,,,on,,2211
+BTST,single1316,D0 15:14,,,on,1.0,2212
+BTST,single1316,D0 15:14,,,on,1.2,2213
+BTST,single1316,D0 15:14,,1.3,,,2214
+BTST,single1316,D0 15:14,,1.3,,1.0,2215
+BTST,single1316,D0 15:14,,1.3,,1.2,2216
+BTST,single1316,D0 15:14,,1.3,on,,2217
+BTST,single1316,D0 15:14,,1.3,on,1.0,2218
+BTST,single1316,D0 15:14,,1.3,on,1.2,2219
+BTST,single1316,D0 15:14,,1.55,,,2220
+BTST,single1316,D0 15:14,,1.55,,1.0,2221
+BTST,single1316,D0 15:14,,1.55,,1.2,2222
+BTST,single1316,D0 15:14,,1.55,on,,2223
+BTST,single1316,D0 15:14,,1.55,on,1.0,2224
+BTST,single1316,D0 15:14,,1.55,on,1.2,2225
+BTST,single1316,D0 15:14,,2.0,,,2226
+BTST,single1316,D0 15:14,,2.0,,1.0,2227
+BTST,single1316,D0 15:14,,2.0,,1.2,2228
+BTST,single1316,D0 15:14,,2.0,on,,2229
+BTST,single1316,D0 15:14,,2.0,on,1.0,2230
+BTST,single1316,D0 15:14,,2.0,on,1.2,2231
+BTST,single1316,D0 15:14,0.006,,,,2232
+BTST,single1316,D0 15:14,0.006,,,1.0,2233
+BTST,single1316,D0 15:14,0.006,,,1.2,2234
+BTST,single1316,D0 15:14,0.006,,on,,2235
+BTST,single1316,D0 15:14,0.006,,on,1.0,2236
+BTST,single1316,D0 15:14,0.006,,on,1.2,2237
+BTST,single1316,D0 15:14,0.006,1.3,,,2238
+BTST,single1316,D0 15:14,0.006,1.3,,1.0,2239
+BTST,single1316,D0 15:14,0.006,1.3,,1.2,2240
+BTST,single1316,D0 15:14,0.006,1.3,on,,2241
+BTST,single1316,D0 15:14,0.006,1.3,on,1.0,2242
+BTST,single1316,D0 15:14,0.006,1.3,on,1.2,2243
+BTST,single1316,D0 15:14,0.006,1.55,,,2244
+BTST,single1316,D0 15:14,0.006,1.55,,1.0,2245
+BTST,single1316,D0 15:14,0.006,1.55,,1.2,2246
+BTST,single1316,D0 15:14,0.006,1.55,on,,2247
+BTST,single1316,D0 15:14,0.006,1.55,on,1.0,2248
+BTST,single1316,D0 15:14,0.006,1.55,on,1.2,2249
+BTST,single1316,D0 15:14,0.006,2.0,,,2250
+BTST,single1316,D0 15:14,0.006,2.0,,1.0,2251
+BTST,single1316,D0 15:14,0.006,2.0,,1.2,2252
+BTST,single1316,D0 15:14,0.006,2.0,on,,2253
+BTST,single1316,D0 15:14,0.006,2.0,on,1.0,2254
+BTST,single1316,D0 15:14,0.006,2.0,on,1.2,2255
+BTST,single1316,D0 15:14,0.012,,,,2256
+BTST,single1316,D0 15:14,0.012,,,1.0,2257
+BTST,single1316,D0 15:14,0.012,,,1.2,2258
+BTST,single1316,D0 15:14,0.012,,on,,2259
+BTST,single1316,D0 15:14,0.012,,on,1.0,2260
+BTST,single1316,D0 15:14,0.012,,on,1.2,2261
+BTST,single1316,D0 15:14,0.012,1.3,,,2262
+BTST,single1316,D0 15:14,0.012,1.3,,1.0,2263
+BTST,single1316,D0 15:14,0.012,1.3,,1.2,2264
+BTST,single1316,D0 15:14,0.012,1.3,on,,2265
+BTST,single1316,D0 15:14,0.012,1.3,on,1.0,2266
+BTST,single1316,D0 15:14,0.012,1.3,on,1.2,2267
+BTST,single1316,D0 15:14,0.012,1.55,,,2268
+BTST,single1316,D0 15:14,0.012,1.55,,1.0,2269
+BTST,single1316,D0 15:14,0.012,1.55,,1.2,2270
+BTST,single1316,D0 15:14,0.012,1.55,on,,2271
+BTST,single1316,D0 15:14,0.012,1.55,on,1.0,2272
+BTST,single1316,D0 15:14,0.012,1.55,on,1.2,2273
+BTST,single1316,D0 15:14,0.012,2.0,,,2274
+BTST,single1316,D0 15:14,0.012,2.0,,1.0,2275
+BTST,single1316,D0 15:14,0.012,2.0,,1.2,2276
+BTST,single1316,D0 15:14,0.012,2.0,on,,2277
+BTST,single1316,D0 15:14,0.012,2.0,on,1.0,2278
+BTST,single1316,D0 15:14,0.012,2.0,on,1.2,2279
+BTST,single1316,D0 15:14,0.025,,,,2280
+BTST,single1316,D0 15:14,0.025,,,1.0,2281
+BTST,single1316,D0 15:14,0.025,,,1.2,2282
+BTST,single1316,D0 15:14,0.025,,on,,2283
+BTST,single1316,D0 15:14,0.025,,on,1.0,2284
+BTST,single1316,D0 15:14,0.025,,on,1.2,2285
+BTST,single1316,D0 15:14,0.025,1.3,,,2286
+BTST,single1316,D0 15:14,0.025,1.3,,1.0,2287
+BTST,single1316,D0 15:14,0.025,1.3,,1.2,2288
+BTST,single1316,D0 15:14,0.025,1.3,on,,2289
+BTST,single1316,D0 15:14,0.025,1.3,on,1.0,2290
+BTST,single1316,D0 15:14,0.025,1.3,on,1.2,2291
+BTST,single1316,D0 15:14,0.025,1.55,,,2292
+BTST,single1316,D0 15:14,0.025,1.55,,1.0,2293
+BTST,single1316,D0 15:14,0.025,1.55,,1.2,2294
+BTST,single1316,D0 15:14,0.025,1.55,on,,2295
+BTST,single1316,D0 15:14,0.025,1.55,on,1.0,2296
+BTST,single1316,D0 15:14,0.025,1.55,on,1.2,2297
+BTST,single1316,D0 15:14,0.025,2.0,,,2298
+BTST,single1316,D0 15:14,0.025,2.0,,1.0,2299
+BTST,single1316,D0 15:14,0.025,2.0,,1.2,2300
+BTST,single1316,D0 15:14,0.025,2.0,on,,2301
+BTST,single1316,D0 15:14,0.025,2.0,on,1.0,2302
+BTST,single1316,D0 15:14,0.025,2.0,on,1.2,2303
+BTST,single1316,expiry,,,,,2304
+BTST,single1316,expiry,,,,1.0,2305
+BTST,single1316,expiry,,,,1.2,2306
+BTST,single1316,expiry,,,on,,2307
+BTST,single1316,expiry,,,on,1.0,2308
+BTST,single1316,expiry,,,on,1.2,2309
+BTST,single1316,expiry,,1.3,,,2310
+BTST,single1316,expiry,,1.3,,1.0,2311
+BTST,single1316,expiry,,1.3,,1.2,2312
+BTST,single1316,expiry,,1.3,on,,2313
+BTST,single1316,expiry,,1.3,on,1.0,2314
+BTST,single1316,expiry,,1.3,on,1.2,2315
+BTST,single1316,expiry,,1.55,,,2316
+BTST,single1316,expiry,,1.55,,1.0,2317
+BTST,single1316,expiry,,1.55,,1.2,2318
+BTST,single1316,expiry,,1.55,on,,2319
+BTST,single1316,expiry,,1.55,on,1.0,2320
+BTST,single1316,expiry,,1.55,on,1.2,2321
+BTST,single1316,expiry,,2.0,,,2322
+BTST,single1316,expiry,,2.0,,1.0,2323
+BTST,single1316,expiry,,2.0,,1.2,2324
+BTST,single1316,expiry,,2.0,on,,2325
+BTST,single1316,expiry,,2.0,on,1.0,2326
+BTST,single1316,expiry,,2.0,on,1.2,2327
+BTST,single1316,expiry,0.006,,,,2328
+BTST,single1316,expiry,0.006,,,1.0,2329
+BTST,single1316,expiry,0.006,,,1.2,2330
+BTST,single1316,expiry,0.006,,on,,2331
+BTST,single1316,expiry,0.006,,on,1.0,2332
+BTST,single1316,expiry,0.006,,on,1.2,2333
+BTST,single1316,expiry,0.006,1.3,,,2334
+BTST,single1316,expiry,0.006,1.3,,1.0,2335
+BTST,single1316,expiry,0.006,1.3,,1.2,2336
+BTST,single1316,expiry,0.006,1.3,on,,2337
+BTST,single1316,expiry,0.006,1.3,on,1.0,2338
+BTST,single1316,expiry,0.006,1.3,on,1.2,2339
+BTST,single1316,expiry,0.006,1.55,,,2340
+BTST,single1316,expiry,0.006,1.55,,1.0,2341
+BTST,single1316,expiry,0.006,1.55,,1.2,2342
+BTST,single1316,expiry,0.006,1.55,on,,2343
+BTST,single1316,expiry,0.006,1.55,on,1.0,2344
+BTST,single1316,expiry,0.006,1.55,on,1.2,2345
+BTST,single1316,expiry,0.006,2.0,,,2346
+BTST,single1316,expiry,0.006,2.0,,1.0,2347
+BTST,single1316,expiry,0.006,2.0,,1.2,2348
+BTST,single1316,expiry,0.006,2.0,on,,2349
+BTST,single1316,expiry,0.006,2.0,on,1.0,2350
+BTST,single1316,expiry,0.006,2.0,on,1.2,2351
+BTST,single1316,expiry,0.012,,,,2352
+BTST,single1316,expiry,0.012,,,1.0,2353
+BTST,single1316,expiry,0.012,,,1.2,2354
+BTST,single1316,expiry,0.012,,on,,2355
+BTST,single1316,expiry,0.012,,on,1.0,2356
+BTST,single1316,expiry,0.012,,on,1.2,2357
+BTST,single1316,expiry,0.012,1.3,,,2358
+BTST,single1316,expiry,0.012,1.3,,1.0,2359
+BTST,single1316,expiry,0.012,1.3,,1.2,2360
+BTST,single1316,expiry,0.012,1.3,on,,2361
+BTST,single1316,expiry,0.012,1.3,on,1.0,2362
+BTST,single1316,expiry,0.012,1.3,on,1.2,2363
+BTST,single1316,expiry,0.012,1.55,,,2364
+BTST,single1316,expiry,0.012,1.55,,1.0,2365
+BTST,single1316,expiry,0.012,1.55,,1.2,2366
+BTST,single1316,expiry,0.012,1.55,on,,2367
+BTST,single1316,expiry,0.012,1.55,on,1.0,2368
+BTST,single1316,expiry,0.012,1.55,on,1.2,2369
+BTST,single1316,expiry,0.012,2.0,,,2370
+BTST,single1316,expiry,0.012,2.0,,1.0,2371
+BTST,single1316,expiry,0.012,2.0,,1.2,2372
+BTST,single1316,expiry,0.012,2.0,on,,2373
+BTST,single1316,expiry,0.012,2.0,on,1.0,2374
+BTST,single1316,expiry,0.012,2.0,on,1.2,2375
+BTST,single1316,expiry,0.025,,,,2376
+BTST,single1316,expiry,0.025,,,1.0,2377
+BTST,single1316,expiry,0.025,,,1.2,2378
+BTST,single1316,expiry,0.025,,on,,2379
+BTST,single1316,expiry,0.025,,on,1.0,2380
+BTST,single1316,expiry,0.025,,on,1.2,2381
+BTST,single1316,expiry,0.025,1.3,,,2382
+BTST,single1316,expiry,0.025,1.3,,1.0,2383
+BTST,single1316,expiry,0.025,1.3,,1.2,2384
+BTST,single1316,expiry,0.025,1.3,on,,2385
+BTST,single1316,expiry,0.025,1.3,on,1.0,2386
+BTST,single1316,expiry,0.025,1.3,on,1.2,2387
+BTST,single1316,expiry,0.025,1.55,,,2388
+BTST,single1316,expiry,0.025,1.55,,1.0,2389
+BTST,single1316,expiry,0.025,1.55,,1.2,2390
+BTST,single1316,expiry,0.025,1.55,on,,2391
+BTST,single1316,expiry,0.025,1.55,on,1.0,2392
+BTST,single1316,expiry,0.025,1.55,on,1.2,2393
+BTST,single1316,expiry,0.025,2.0,,,2394
+BTST,single1316,expiry,0.025,2.0,,1.0,2395
+BTST,single1316,expiry,0.025,2.0,,1.2,2396
+BTST,single1316,expiry,0.025,2.0,on,,2397
+BTST,single1316,expiry,0.025,2.0,on,1.0,2398
+BTST,single1316,expiry,0.025,2.0,on,1.2,2399
+BTST,single1501,D0 09:16,,,,,2400
+BTST,single1501,D0 09:16,,,,1.0,2401
+BTST,single1501,D0 09:16,,,,1.2,2402
+BTST,single1501,D0 09:16,,,on,,2403
+BTST,single1501,D0 09:16,,,on,1.0,2404
+BTST,single1501,D0 09:16,,,on,1.2,2405
+BTST,single1501,D0 09:16,,1.3,,,2406
+BTST,single1501,D0 09:16,,1.3,,1.0,2407
+BTST,single1501,D0 09:16,,1.3,,1.2,2408
+BTST,single1501,D0 09:16,,1.3,on,,2409
+BTST,single1501,D0 09:16,,1.3,on,1.0,2410
+BTST,single1501,D0 09:16,,1.3,on,1.2,2411
+BTST,single1501,D0 09:16,,1.55,,,2412
+BTST,single1501,D0 09:16,,1.55,,1.0,2413
+BTST,single1501,D0 09:16,,1.55,,1.2,2414
+BTST,single1501,D0 09:16,,1.55,on,,2415
+BTST,single1501,D0 09:16,,1.55,on,1.0,2416
+BTST,single1501,D0 09:16,,1.55,on,1.2,2417
+BTST,single1501,D0 09:16,,2.0,,,2418
+BTST,single1501,D0 09:16,,2.0,,1.0,2419
+BTST,single1501,D0 09:16,,2.0,,1.2,2420
+BTST,single1501,D0 09:16,,2.0,on,,2421
+BTST,single1501,D0 09:16,,2.0,on,1.0,2422
+BTST,single1501,D0 09:16,,2.0,on,1.2,2423
+BTST,single1501,D0 09:16,0.006,,,,2424
+BTST,single1501,D0 09:16,0.006,,,1.0,2425
+BTST,single1501,D0 09:16,0.006,,,1.2,2426
+BTST,single1501,D0 09:16,0.006,,on,,2427
+BTST,single1501,D0 09:16,0.006,,on,1.0,2428
+BTST,single1501,D0 09:16,0.006,,on,1.2,2429
+BTST,single1501,D0 09:16,0.006,1.3,,,2430
+BTST,single1501,D0 09:16,0.006,1.3,,1.0,2431
+BTST,single1501,D0 09:16,0.006,1.3,,1.2,2432
+BTST,single1501,D0 09:16,0.006,1.3,on,,2433
+BTST,single1501,D0 09:16,0.006,1.3,on,1.0,2434
+BTST,single1501,D0 09:16,0.006,1.3,on,1.2,2435
+BTST,single1501,D0 09:16,0.006,1.55,,,2436
+BTST,single1501,D0 09:16,0.006,1.55,,1.0,2437
+BTST,single1501,D0 09:16,0.006,1.55,,1.2,2438
+BTST,single1501,D0 09:16,0.006,1.55,on,,2439
+BTST,single1501,D0 09:16,0.006,1.55,on,1.0,2440
+BTST,single1501,D0 09:16,0.006,1.55,on,1.2,2441
+BTST,single1501,D0 09:16,0.006,2.0,,,2442
+BTST,single1501,D0 09:16,0.006,2.0,,1.0,2443
+BTST,single1501,D0 09:16,0.006,2.0,,1.2,2444
+BTST,single1501,D0 09:16,0.006,2.0,on,,2445
+BTST,single1501,D0 09:16,0.006,2.0,on,1.0,2446
+BTST,single1501,D0 09:16,0.006,2.0,on,1.2,2447
+BTST,single1501,D0 09:16,0.012,,,,2448
+BTST,single1501,D0 09:16,0.012,,,1.0,2449
+BTST,single1501,D0 09:16,0.012,,,1.2,2450
+BTST,single1501,D0 09:16,0.012,,on,,2451
+BTST,single1501,D0 09:16,0.012,,on,1.0,2452
+BTST,single1501,D0 09:16,0.012,,on,1.2,2453
+BTST,single1501,D0 09:16,0.012,1.3,,,2454
+BTST,single1501,D0 09:16,0.012,1.3,,1.0,2455
+BTST,single1501,D0 09:16,0.012,1.3,,1.2,2456
+BTST,single1501,D0 09:16,0.012,1.3,on,,2457
+BTST,single1501,D0 09:16,0.012,1.3,on,1.0,2458
+BTST,single1501,D0 09:16,0.012,1.3,on,1.2,2459
+BTST,single1501,D0 09:16,0.012,1.55,,,2460
+BTST,single1501,D0 09:16,0.012,1.55,,1.0,2461
+BTST,single1501,D0 09:16,0.012,1.55,,1.2,2462
+BTST,single1501,D0 09:16,0.012,1.55,on,,2463
+BTST,single1501,D0 09:16,0.012,1.55,on,1.0,2464
+BTST,single1501,D0 09:16,0.012,1.55,on,1.2,2465
+BTST,single1501,D0 09:16,0.012,2.0,,,2466
+BTST,single1501,D0 09:16,0.012,2.0,,1.0,2467
+BTST,single1501,D0 09:16,0.012,2.0,,1.2,2468
+BTST,single1501,D0 09:16,0.012,2.0,on,,2469
+BTST,single1501,D0 09:16,0.012,2.0,on,1.0,2470
+BTST,single1501,D0 09:16,0.012,2.0,on,1.2,2471
+BTST,single1501,D0 09:16,0.025,,,,2472
+BTST,single1501,D0 09:16,0.025,,,1.0,2473
+BTST,single1501,D0 09:16,0.025,,,1.2,2474
+BTST,single1501,D0 09:16,0.025,,on,,2475
+BTST,single1501,D0 09:16,0.025,,on,1.0,2476
+BTST,single1501,D0 09:16,0.025,,on,1.2,2477
+BTST,single1501,D0 09:16,0.025,1.3,,,2478
+BTST,single1501,D0 09:16,0.025,1.3,,1.0,2479
+BTST,single1501,D0 09:16,0.025,1.3,,1.2,2480
+BTST,single1501,D0 09:16,0.025,1.3,on,,2481
+BTST,single1501,D0 09:16,0.025,1.3,on,1.0,2482
+BTST,single1501,D0 09:16,0.025,1.3,on,1.2,2483
+BTST,single1501,D0 09:16,0.025,1.55,,,2484
+BTST,single1501,D0 09:16,0.025,1.55,,1.0,2485
+BTST,single1501,D0 09:16,0.025,1.55,,1.2,2486
+BTST,single1501,D0 09:16,0.025,1.55,on,,2487
+BTST,single1501,D0 09:16,0.025,1.55,on,1.0,2488
+BTST,single1501,D0 09:16,0.025,1.55,on,1.2,2489
+BTST,single1501,D0 09:16,0.025,2.0,,,2490
+BTST,single1501,D0 09:16,0.025,2.0,,1.0,2491
+BTST,single1501,D0 09:16,0.025,2.0,,1.2,2492
+BTST,single1501,D0 09:16,0.025,2.0,on,,2493
+BTST,single1501,D0 09:16,0.025,2.0,on,1.0,2494
+BTST,single1501,D0 09:16,0.025,2.0,on,1.2,2495
+BTST,single1501,D0 10:01,,,,,2496
+BTST,single1501,D0 10:01,,,,1.0,2497
+BTST,single1501,D0 10:01,,,,1.2,2498
+BTST,single1501,D0 10:01,,,on,,2499
+BTST,single1501,D0 10:01,,,on,1.0,2500
+BTST,single1501,D0 10:01,,,on,1.2,2501
+BTST,single1501,D0 10:01,,1.3,,,2502
+BTST,single1501,D0 10:01,,1.3,,1.0,2503
+BTST,single1501,D0 10:01,,1.3,,1.2,2504
+BTST,single1501,D0 10:01,,1.3,on,,2505
+BTST,single1501,D0 10:01,,1.3,on,1.0,2506
+BTST,single1501,D0 10:01,,1.3,on,1.2,2507
+BTST,single1501,D0 10:01,,1.55,,,2508
+BTST,single1501,D0 10:01,,1.55,,1.0,2509
+BTST,single1501,D0 10:01,,1.55,,1.2,2510
+BTST,single1501,D0 10:01,,1.55,on,,2511
+BTST,single1501,D0 10:01,,1.55,on,1.0,2512
+BTST,single1501,D0 10:01,,1.55,on,1.2,2513
+BTST,single1501,D0 10:01,,2.0,,,2514
+BTST,single1501,D0 10:01,,2.0,,1.0,2515
+BTST,single1501,D0 10:01,,2.0,,1.2,2516
+BTST,single1501,D0 10:01,,2.0,on,,2517
+BTST,single1501,D0 10:01,,2.0,on,1.0,2518
+BTST,single1501,D0 10:01,,2.0,on,1.2,2519
+BTST,single1501,D0 10:01,0.006,,,,2520
+BTST,single1501,D0 10:01,0.006,,,1.0,2521
+BTST,single1501,D0 10:01,0.006,,,1.2,2522
+BTST,single1501,D0 10:01,0.006,,on,,2523
+BTST,single1501,D0 10:01,0.006,,on,1.0,2524
+BTST,single1501,D0 10:01,0.006,,on,1.2,2525
+BTST,single1501,D0 10:01,0.006,1.3,,,2526
+BTST,single1501,D0 10:01,0.006,1.3,,1.0,2527
+BTST,single1501,D0 10:01,0.006,1.3,,1.2,2528
+BTST,single1501,D0 10:01,0.006,1.3,on,,2529
+BTST,single1501,D0 10:01,0.006,1.3,on,1.0,2530
+BTST,single1501,D0 10:01,0.006,1.3,on,1.2,2531
+BTST,single1501,D0 10:01,0.006,1.55,,,2532
+BTST,single1501,D0 10:01,0.006,1.55,,1.0,2533
+BTST,single1501,D0 10:01,0.006,1.55,,1.2,2534
+BTST,single1501,D0 10:01,0.006,1.55,on,,2535
+BTST,single1501,D0 10:01,0.006,1.55,on,1.0,2536
+BTST,single1501,D0 10:01,0.006,1.55,on,1.2,2537
+BTST,single1501,D0 10:01,0.006,2.0,,,2538
+BTST,single1501,D0 10:01,0.006,2.0,,1.0,2539
+BTST,single1501,D0 10:01,0.006,2.0,,1.2,2540
+BTST,single1501,D0 10:01,0.006,2.0,on,,2541
+BTST,single1501,D0 10:01,0.006,2.0,on,1.0,2542
+BTST,single1501,D0 10:01,0.006,2.0,on,1.2,2543
+BTST,single1501,D0 10:01,0.012,,,,2544
+BTST,single1501,D0 10:01,0.012,,,1.0,2545
+BTST,single1501,D0 10:01,0.012,,,1.2,2546
+BTST,single1501,D0 10:01,0.012,,on,,2547
+BTST,single1501,D0 10:01,0.012,,on,1.0,2548
+BTST,single1501,D0 10:01,0.012,,on,1.2,2549
+BTST,single1501,D0 10:01,0.012,1.3,,,2550
+BTST,single1501,D0 10:01,0.012,1.3,,1.0,2551
+BTST,single1501,D0 10:01,0.012,1.3,,1.2,2552
+BTST,single1501,D0 10:01,0.012,1.3,on,,2553
+BTST,single1501,D0 10:01,0.012,1.3,on,1.0,2554
+BTST,single1501,D0 10:01,0.012,1.3,on,1.2,2555
+BTST,single1501,D0 10:01,0.012,1.55,,,2556
+BTST,single1501,D0 10:01,0.012,1.55,,1.0,2557
+BTST,single1501,D0 10:01,0.012,1.55,,1.2,2558
+BTST,single1501,D0 10:01,0.012,1.55,on,,2559
+BTST,single1501,D0 10:01,0.012,1.55,on,1.0,2560
+BTST,single1501,D0 10:01,0.012,1.55,on,1.2,2561
+BTST,single1501,D0 10:01,0.012,2.0,,,2562
+BTST,single1501,D0 10:01,0.012,2.0,,1.0,2563
+BTST,single1501,D0 10:01,0.012,2.0,,1.2,2564
+BTST,single1501,D0 10:01,0.012,2.0,on,,2565
+BTST,single1501,D0 10:01,0.012,2.0,on,1.0,2566
+BTST,single1501,D0 10:01,0.012,2.0,on,1.2,2567
+BTST,single1501,D0 10:01,0.025,,,,2568
+BTST,single1501,D0 10:01,0.025,,,1.0,2569
+BTST,single1501,D0 10:01,0.025,,,1.2,2570
+BTST,single1501,D0 10:01,0.025,,on,,2571
+BTST,single1501,D0 10:01,0.025,,on,1.0,2572
+BTST,single1501,D0 10:01,0.025,,on,1.2,2573
+BTST,single1501,D0 10:01,0.025,1.3,,,2574
+BTST,single1501,D0 10:01,0.025,1.3,,1.0,2575
+BTST,single1501,D0 10:01,0.025,1.3,,1.2,2576
+BTST,single1501,D0 10:01,0.025,1.3,on,,2577
+BTST,single1501,D0 10:01,0.025,1.3,on,1.0,2578
+BTST,single1501,D0 10:01,0.025,1.3,on,1.2,2579
+BTST,single1501,D0 10:01,0.025,1.55,,,2580
+BTST,single1501,D0 10:01,0.025,1.55,,1.0,2581
+BTST,single1501,D0 10:01,0.025,1.55,,1.2,2582
+BTST,single1501,D0 10:01,0.025,1.55,on,,2583
+BTST,single1501,D0 10:01,0.025,1.55,on,1.0,2584
+BTST,single1501,D0 10:01,0.025,1.55,on,1.2,2585
+BTST,single1501,D0 10:01,0.025,2.0,,,2586
+BTST,single1501,D0 10:01,0.025,2.0,,1.0,2587
+BTST,single1501,D0 10:01,0.025,2.0,,1.2,2588
+BTST,single1501,D0 10:01,0.025,2.0,on,,2589
+BTST,single1501,D0 10:01,0.025,2.0,on,1.0,2590
+BTST,single1501,D0 10:01,0.025,2.0,on,1.2,2591
+BTST,single1501,D0 12:01,,,,,2592
+BTST,single1501,D0 12:01,,,,1.0,2593
+BTST,single1501,D0 12:01,,,,1.2,2594
+BTST,single1501,D0 12:01,,,on,,2595
+BTST,single1501,D0 12:01,,,on,1.0,2596
+BTST,single1501,D0 12:01,,,on,1.2,2597
+BTST,single1501,D0 12:01,,1.3,,,2598
+BTST,single1501,D0 12:01,,1.3,,1.0,2599
+BTST,single1501,D0 12:01,,1.3,,1.2,2600
+BTST,single1501,D0 12:01,,1.3,on,,2601
+BTST,single1501,D0 12:01,,1.3,on,1.0,2602
+BTST,single1501,D0 12:01,,1.3,on,1.2,2603
+BTST,single1501,D0 12:01,,1.55,,,2604
+BTST,single1501,D0 12:01,,1.55,,1.0,2605
+BTST,single1501,D0 12:01,,1.55,,1.2,2606
+BTST,single1501,D0 12:01,,1.55,on,,2607
+BTST,single1501,D0 12:01,,1.55,on,1.0,2608
+BTST,single1501,D0 12:01,,1.55,on,1.2,2609
+BTST,single1501,D0 12:01,,2.0,,,2610
+BTST,single1501,D0 12:01,,2.0,,1.0,2611
+BTST,single1501,D0 12:01,,2.0,,1.2,2612
+BTST,single1501,D0 12:01,,2.0,on,,2613
+BTST,single1501,D0 12:01,,2.0,on,1.0,2614
+BTST,single1501,D0 12:01,,2.0,on,1.2,2615
+BTST,single1501,D0 12:01,0.006,,,,2616
+BTST,single1501,D0 12:01,0.006,,,1.0,2617
+BTST,single1501,D0 12:01,0.006,,,1.2,2618
+BTST,single1501,D0 12:01,0.006,,on,,2619
+BTST,single1501,D0 12:01,0.006,,on,1.0,2620
+BTST,single1501,D0 12:01,0.006,,on,1.2,2621
+BTST,single1501,D0 12:01,0.006,1.3,,,2622
+BTST,single1501,D0 12:01,0.006,1.3,,1.0,2623
+BTST,single1501,D0 12:01,0.006,1.3,,1.2,2624
+BTST,single1501,D0 12:01,0.006,1.3,on,,2625
+BTST,single1501,D0 12:01,0.006,1.3,on,1.0,2626
+BTST,single1501,D0 12:01,0.006,1.3,on,1.2,2627
+BTST,single1501,D0 12:01,0.006,1.55,,,2628
+BTST,single1501,D0 12:01,0.006,1.55,,1.0,2629
+BTST,single1501,D0 12:01,0.006,1.55,,1.2,2630
+BTST,single1501,D0 12:01,0.006,1.55,on,,2631
+BTST,single1501,D0 12:01,0.006,1.55,on,1.0,2632
+BTST,single1501,D0 12:01,0.006,1.55,on,1.2,2633
+BTST,single1501,D0 12:01,0.006,2.0,,,2634
+BTST,single1501,D0 12:01,0.006,2.0,,1.0,2635
+BTST,single1501,D0 12:01,0.006,2.0,,1.2,2636
+BTST,single1501,D0 12:01,0.006,2.0,on,,2637
+BTST,single1501,D0 12:01,0.006,2.0,on,1.0,2638
+BTST,single1501,D0 12:01,0.006,2.0,on,1.2,2639
+BTST,single1501,D0 12:01,0.012,,,,2640
+BTST,single1501,D0 12:01,0.012,,,1.0,2641
+BTST,single1501,D0 12:01,0.012,,,1.2,2642
+BTST,single1501,D0 12:01,0.012,,on,,2643
+BTST,single1501,D0 12:01,0.012,,on,1.0,2644
+BTST,single1501,D0 12:01,0.012,,on,1.2,2645
+BTST,single1501,D0 12:01,0.012,1.3,,,2646
+BTST,single1501,D0 12:01,0.012,1.3,,1.0,2647
+BTST,single1501,D0 12:01,0.012,1.3,,1.2,2648
+BTST,single1501,D0 12:01,0.012,1.3,on,,2649
+BTST,single1501,D0 12:01,0.012,1.3,on,1.0,2650
+BTST,single1501,D0 12:01,0.012,1.3,on,1.2,2651
+BTST,single1501,D0 12:01,0.012,1.55,,,2652
+BTST,single1501,D0 12:01,0.012,1.55,,1.0,2653
+BTST,single1501,D0 12:01,0.012,1.55,,1.2,2654
+BTST,single1501,D0 12:01,0.012,1.55,on,,2655
+BTST,single1501,D0 12:01,0.012,1.55,on,1.0,2656
+BTST,single1501,D0 12:01,0.012,1.55,on,1.2,2657
+BTST,single1501,D0 12:01,0.012,2.0,,,2658
+BTST,single1501,D0 12:01,0.012,2.0,,1.0,2659
+BTST,single1501,D0 12:01,0.012,2.0,,1.2,2660
+BTST,single1501,D0 12:01,0.012,2.0,on,,2661
+BTST,single1501,D0 12:01,0.012,2.0,on,1.0,2662
+BTST,single1501,D0 12:01,0.012,2.0,on,1.2,2663
+BTST,single1501,D0 12:01,0.025,,,,2664
+BTST,single1501,D0 12:01,0.025,,,1.0,2665
+BTST,single1501,D0 12:01,0.025,,,1.2,2666
+BTST,single1501,D0 12:01,0.025,,on,,2667
+BTST,single1501,D0 12:01,0.025,,on,1.0,2668
+BTST,single1501,D0 12:01,0.025,,on,1.2,2669
+BTST,single1501,D0 12:01,0.025,1.3,,,2670
+BTST,single1501,D0 12:01,0.025,1.3,,1.0,2671
+BTST,single1501,D0 12:01,0.025,1.3,,1.2,2672
+BTST,single1501,D0 12:01,0.025,1.3,on,,2673
+BTST,single1501,D0 12:01,0.025,1.3,on,1.0,2674
+BTST,single1501,D0 12:01,0.025,1.3,on,1.2,2675
+BTST,single1501,D0 12:01,0.025,1.55,,,2676
+BTST,single1501,D0 12:01,0.025,1.55,,1.0,2677
+BTST,single1501,D0 12:01,0.025,1.55,,1.2,2678
+BTST,single1501,D0 12:01,0.025,1.55,on,,2679
+BTST,single1501,D0 12:01,0.025,1.55,on,1.0,2680
+BTST,single1501,D0 12:01,0.025,1.55,on,1.2,2681
+BTST,single1501,D0 12:01,0.025,2.0,,,2682
+BTST,single1501,D0 12:01,0.025,2.0,,1.0,2683
+BTST,single1501,D0 12:01,0.025,2.0,,1.2,2684
+BTST,single1501,D0 12:01,0.025,2.0,on,,2685
+BTST,single1501,D0 12:01,0.025,2.0,on,1.0,2686
+BTST,single1501,D0 12:01,0.025,2.0,on,1.2,2687
+BTST,single1501,D0 15:14,,,,,2688
+BTST,single1501,D0 15:14,,,,1.0,2689
+BTST,single1501,D0 15:14,,,,1.2,2690
+BTST,single1501,D0 15:14,,,on,,2691
+BTST,single1501,D0 15:14,,,on,1.0,2692
+BTST,single1501,D0 15:14,,,on,1.2,2693
+BTST,single1501,D0 15:14,,1.3,,,2694
+BTST,single1501,D0 15:14,,1.3,,1.0,2695
+BTST,single1501,D0 15:14,,1.3,,1.2,2696
+BTST,single1501,D0 15:14,,1.3,on,,2697
+BTST,single1501,D0 15:14,,1.3,on,1.0,2698
+BTST,single1501,D0 15:14,,1.3,on,1.2,2699
+BTST,single1501,D0 15:14,,1.55,,,2700
+BTST,single1501,D0 15:14,,1.55,,1.0,2701
+BTST,single1501,D0 15:14,,1.55,,1.2,2702
+BTST,single1501,D0 15:14,,1.55,on,,2703
+BTST,single1501,D0 15:14,,1.55,on,1.0,2704
+BTST,single1501,D0 15:14,,1.55,on,1.2,2705
+BTST,single1501,D0 15:14,,2.0,,,2706
+BTST,single1501,D0 15:14,,2.0,,1.0,2707
+BTST,single1501,D0 15:14,,2.0,,1.2,2708
+BTST,single1501,D0 15:14,,2.0,on,,2709
+BTST,single1501,D0 15:14,,2.0,on,1.0,2710
+BTST,single1501,D0 15:14,,2.0,on,1.2,2711
+BTST,single1501,D0 15:14,0.006,,,,2712
+BTST,single1501,D0 15:14,0.006,,,1.0,2713
+BTST,single1501,D0 15:14,0.006,,,1.2,2714
+BTST,single1501,D0 15:14,0.006,,on,,2715
+BTST,single1501,D0 15:14,0.006,,on,1.0,2716
+BTST,single1501,D0 15:14,0.006,,on,1.2,2717
+BTST,single1501,D0 15:14,0.006,1.3,,,2718
+BTST,single1501,D0 15:14,0.006,1.3,,1.0,2719
+BTST,single1501,D0 15:14,0.006,1.3,,1.2,2720
+BTST,single1501,D0 15:14,0.006,1.3,on,,2721
+BTST,single1501,D0 15:14,0.006,1.3,on,1.0,2722
+BTST,single1501,D0 15:14,0.006,1.3,on,1.2,2723
+BTST,single1501,D0 15:14,0.006,1.55,,,2724
+BTST,single1501,D0 15:14,0.006,1.55,,1.0,2725
+BTST,single1501,D0 15:14,0.006,1.55,,1.2,2726
+BTST,single1501,D0 15:14,0.006,1.55,on,,2727
+BTST,single1501,D0 15:14,0.006,1.55,on,1.0,2728
+BTST,single1501,D0 15:14,0.006,1.55,on,1.2,2729
+BTST,single1501,D0 15:14,0.006,2.0,,,2730
+BTST,single1501,D0 15:14,0.006,2.0,,1.0,2731
+BTST,single1501,D0 15:14,0.006,2.0,,1.2,2732
+BTST,single1501,D0 15:14,0.006,2.0,on,,2733
+BTST,single1501,D0 15:14,0.006,2.0,on,1.0,2734
+BTST,single1501,D0 15:14,0.006,2.0,on,1.2,2735
+BTST,single1501,D0 15:14,0.012,,,,2736
+BTST,single1501,D0 15:14,0.012,,,1.0,2737
+BTST,single1501,D0 15:14,0.012,,,1.2,2738
+BTST,single1501,D0 15:14,0.012,,on,,2739
+BTST,single1501,D0 15:14,0.012,,on,1.0,2740
+BTST,single1501,D0 15:14,0.012,,on,1.2,2741
+BTST,single1501,D0 15:14,0.012,1.3,,,2742
+BTST,single1501,D0 15:14,0.012,1.3,,1.0,2743
+BTST,single1501,D0 15:14,0.012,1.3,,1.2,2744
+BTST,single1501,D0 15:14,0.012,1.3,on,,2745
+BTST,single1501,D0 15:14,0.012,1.3,on,1.0,2746
+BTST,single1501,D0 15:14,0.012,1.3,on,1.2,2747
+BTST,single1501,D0 15:14,0.012,1.55,,,2748
+BTST,single1501,D0 15:14,0.012,1.55,,1.0,2749
+BTST,single1501,D0 15:14,0.012,1.55,,1.2,2750
+BTST,single1501,D0 15:14,0.012,1.55,on,,2751
+BTST,single1501,D0 15:14,0.012,1.55,on,1.0,2752
+BTST,single1501,D0 15:14,0.012,1.55,on,1.2,2753
+BTST,single1501,D0 15:14,0.012,2.0,,,2754
+BTST,single1501,D0 15:14,0.012,2.0,,1.0,2755
+BTST,single1501,D0 15:14,0.012,2.0,,1.2,2756
+BTST,single1501,D0 15:14,0.012,2.0,on,,2757
+BTST,single1501,D0 15:14,0.012,2.0,on,1.0,2758
+BTST,single1501,D0 15:14,0.012,2.0,on,1.2,2759
+BTST,single1501,D0 15:14,0.025,,,,2760
+BTST,single1501,D0 15:14,0.025,,,1.0,2761
+BTST,single1501,D0 15:14,0.025,,,1.2,2762
+BTST,single1501,D0 15:14,0.025,,on,,2763
+BTST,single1501,D0 15:14,0.025,,on,1.0,2764
+BTST,single1501,D0 15:14,0.025,,on,1.2,2765
+BTST,single1501,D0 15:14,0.025,1.3,,,2766
+BTST,single1501,D0 15:14,0.025,1.3,,1.0,2767
+BTST,single1501,D0 15:14,0.025,1.3,,1.2,2768
+BTST,single1501,D0 15:14,0.025,1.3,on,,2769
+BTST,single1501,D0 15:14,0.025,1.3,on,1.0,2770
+BTST,single1501,D0 15:14,0.025,1.3,on,1.2,2771
+BTST,single1501,D0 15:14,0.025,1.55,,,2772
+BTST,single1501,D0 15:14,0.025,1.55,,1.0,2773
+BTST,single1501,D0 15:14,0.025,1.55,,1.2,2774
+BTST,single1501,D0 15:14,0.025,1.55,on,,2775
+BTST,single1501,D0 15:14,0.025,1.55,on,1.0,2776
+BTST,single1501,D0 15:14,0.025,1.55,on,1.2,2777
+BTST,single1501,D0 15:14,0.025,2.0,,,2778
+BTST,single1501,D0 15:14,0.025,2.0,,1.0,2779
+BTST,single1501,D0 15:14,0.025,2.0,,1.2,2780
+BTST,single1501,D0 15:14,0.025,2.0,on,,2781
+BTST,single1501,D0 15:14,0.025,2.0,on,1.0,2782
+BTST,single1501,D0 15:14,0.025,2.0,on,1.2,2783
+BTST,single1501,expiry,,,,,2784
+BTST,single1501,expiry,,,,1.0,2785
+BTST,single1501,expiry,,,,1.2,2786
+BTST,single1501,expiry,,,on,,2787
+BTST,single1501,expiry,,,on,1.0,2788
+BTST,single1501,expiry,,,on,1.2,2789
+BTST,single1501,expiry,,1.3,,,2790
+BTST,single1501,expiry,,1.3,,1.0,2791
+BTST,single1501,expiry,,1.3,,1.2,2792
+BTST,single1501,expiry,,1.3,on,,2793
+BTST,single1501,expiry,,1.3,on,1.0,2794
+BTST,single1501,expiry,,1.3,on,1.2,2795
+BTST,single1501,expiry,,1.55,,,2796
+BTST,single1501,expiry,,1.55,,1.0,2797
+BTST,single1501,expiry,,1.55,,1.2,2798
+BTST,single1501,expiry,,1.55,on,,2799
+BTST,single1501,expiry,,1.55,on,1.0,2800
+BTST,single1501,expiry,,1.55,on,1.2,2801
+BTST,single1501,expiry,,2.0,,,2802
+BTST,single1501,expiry,,2.0,,1.0,2803
+BTST,single1501,expiry,,2.0,,1.2,2804
+BTST,single1501,expiry,,2.0,on,,2805
+BTST,single1501,expiry,,2.0,on,1.0,2806
+BTST,single1501,expiry,,2.0,on,1.2,2807
+BTST,single1501,expiry,0.006,,,,2808
+BTST,single1501,expiry,0.006,,,1.0,2809
+BTST,single1501,expiry,0.006,,,1.2,2810
+BTST,single1501,expiry,0.006,,on,,2811
+BTST,single1501,expiry,0.006,,on,1.0,2812
+BTST,single1501,expiry,0.006,,on,1.2,2813
+BTST,single1501,expiry,0.006,1.3,,,2814
+BTST,single1501,expiry,0.006,1.3,,1.0,2815
+BTST,single1501,expiry,0.006,1.3,,1.2,2816
+BTST,single1501,expiry,0.006,1.3,on,,2817
+BTST,single1501,expiry,0.006,1.3,on,1.0,2818
+BTST,single1501,expiry,0.006,1.3,on,1.2,2819
+BTST,single1501,expiry,0.006,1.55,,,2820
+BTST,single1501,expiry,0.006,1.55,,1.0,2821
+BTST,single1501,expiry,0.006,1.55,,1.2,2822
+BTST,single1501,expiry,0.006,1.55,on,,2823
+BTST,single1501,expiry,0.006,1.55,on,1.0,2824
+BTST,single1501,expiry,0.006,1.55,on,1.2,2825
+BTST,single1501,expiry,0.006,2.0,,,2826
+BTST,single1501,expiry,0.006,2.0,,1.0,2827
+BTST,single1501,expiry,0.006,2.0,,1.2,2828
+BTST,single1501,expiry,0.006,2.0,on,,2829
+BTST,single1501,expiry,0.006,2.0,on,1.0,2830
+BTST,single1501,expiry,0.006,2.0,on,1.2,2831
+BTST,single1501,expiry,0.012,,,,2832
+BTST,single1501,expiry,0.012,,,1.0,2833
+BTST,single1501,expiry,0.012,,,1.2,2834
+BTST,single1501,expiry,0.012,,on,,2835
+BTST,single1501,expiry,0.012,,on,1.0,2836
+BTST,single1501,expiry,0.012,,on,1.2,2837
+BTST,single1501,expiry,0.012,1.3,,,2838
+BTST,single1501,expiry,0.012,1.3,,1.0,2839
+BTST,single1501,expiry,0.012,1.3,,1.2,2840
+BTST,single1501,expiry,0.012,1.3,on,,2841
+BTST,single1501,expiry,0.012,1.3,on,1.0,2842
+BTST,single1501,expiry,0.012,1.3,on,1.2,2843
+BTST,single1501,expiry,0.012,1.55,,,2844
+BTST,single1501,expiry,0.012,1.55,,1.0,2845
+BTST,single1501,expiry,0.012,1.55,,1.2,2846
+BTST,single1501,expiry,0.012,1.55,on,,2847
+BTST,single1501,expiry,0.012,1.55,on,1.0,2848
+BTST,single1501,expiry,0.012,1.55,on,1.2,2849
+BTST,single1501,expiry,0.012,2.0,,,2850
+BTST,single1501,expiry,0.012,2.0,,1.0,2851
+BTST,single1501,expiry,0.012,2.0,,1.2,2852
+BTST,single1501,expiry,0.012,2.0,on,,2853
+BTST,single1501,expiry,0.012,2.0,on,1.0,2854
+BTST,single1501,expiry,0.012,2.0,on,1.2,2855
+BTST,single1501,expiry,0.025,,,,2856
+BTST,single1501,expiry,0.025,,,1.0,2857
+BTST,single1501,expiry,0.025,,,1.2,2858
+BTST,single1501,expiry,0.025,,on,,2859
+BTST,single1501,expiry,0.025,,on,1.0,2860
+BTST,single1501,expiry,0.025,,on,1.2,2861
+BTST,single1501,expiry,0.025,1.3,,,2862
+BTST,single1501,expiry,0.025,1.3,,1.0,2863
+BTST,single1501,expiry,0.025,1.3,,1.2,2864
+BTST,single1501,expiry,0.025,1.3,on,,2865
+BTST,single1501,expiry,0.025,1.3,on,1.0,2866
+BTST,single1501,expiry,0.025,1.3,on,1.2,2867
+BTST,single1501,expiry,0.025,1.55,,,2868
+BTST,single1501,expiry,0.025,1.55,,1.0,2869
+BTST,single1501,expiry,0.025,1.55,,1.2,2870
+BTST,single1501,expiry,0.025,1.55,on,,2871
+BTST,single1501,expiry,0.025,1.55,on,1.0,2872
+BTST,single1501,expiry,0.025,1.55,on,1.2,2873
+BTST,single1501,expiry,0.025,2.0,,,2874
+BTST,single1501,expiry,0.025,2.0,,1.0,2875
+BTST,single1501,expiry,0.025,2.0,,1.2,2876
+BTST,single1501,expiry,0.025,2.0,on,,2877
+BTST,single1501,expiry,0.025,2.0,on,1.0,2878
+BTST,single1501,expiry,0.025,2.0,on,1.2,2879
+D0only,ladderD0,D0 12:01,,,,,2880
+D0only,ladderD0,D0 12:01,,,,1.0,2881
+D0only,ladderD0,D0 12:01,,,,1.2,2882
+D0only,ladderD0,D0 12:01,,,on,,2883
+D0only,ladderD0,D0 12:01,,,on,1.0,2884
+D0only,ladderD0,D0 12:01,,,on,1.2,2885
+D0only,ladderD0,D0 12:01,,1.3,,,2886
+D0only,ladderD0,D0 12:01,,1.3,,1.0,2887
+D0only,ladderD0,D0 12:01,,1.3,,1.2,2888
+D0only,ladderD0,D0 12:01,,1.3,on,,2889
+D0only,ladderD0,D0 12:01,,1.3,on,1.0,2890
+D0only,ladderD0,D0 12:01,,1.3,on,1.2,2891
+D0only,ladderD0,D0 12:01,,1.55,,,2892
+D0only,ladderD0,D0 12:01,,1.55,,1.0,2893
+D0only,ladderD0,D0 12:01,,1.55,,1.2,2894
+D0only,ladderD0,D0 12:01,,1.55,on,,2895
+D0only,ladderD0,D0 12:01,,1.55,on,1.0,2896
+D0only,ladderD0,D0 12:01,,1.55,on,1.2,2897
+D0only,ladderD0,D0 12:01,,2.0,,,2898
+D0only,ladderD0,D0 12:01,,2.0,,1.0,2899
+D0only,ladderD0,D0 12:01,,2.0,,1.2,2900
+D0only,ladderD0,D0 12:01,,2.0,on,,2901
+D0only,ladderD0,D0 12:01,,2.0,on,1.0,2902
+D0only,ladderD0,D0 12:01,,2.0,on,1.2,2903
+D0only,ladderD0,D0 12:01,0.006,,,,2904
+D0only,ladderD0,D0 12:01,0.006,,,1.0,2905
+D0only,ladderD0,D0 12:01,0.006,,,1.2,2906
+D0only,ladderD0,D0 12:01,0.006,,on,,2907
+D0only,ladderD0,D0 12:01,0.006,,on,1.0,2908
+D0only,ladderD0,D0 12:01,0.006,,on,1.2,2909
+D0only,ladderD0,D0 12:01,0.006,1.3,,,2910
+D0only,ladderD0,D0 12:01,0.006,1.3,,1.0,2911
+D0only,ladderD0,D0 12:01,0.006,1.3,,1.2,2912
+D0only,ladderD0,D0 12:01,0.006,1.3,on,,2913
+D0only,ladderD0,D0 12:01,0.006,1.3,on,1.0,2914
+D0only,ladderD0,D0 12:01,0.006,1.3,on,1.2,2915
+D0only,ladderD0,D0 12:01,0.006,1.55,,,2916
+D0only,ladderD0,D0 12:01,0.006,1.55,,1.0,2917
+D0only,ladderD0,D0 12:01,0.006,1.55,,1.2,2918
+D0only,ladderD0,D0 12:01,0.006,1.55,on,,2919
+D0only,ladderD0,D0 12:01,0.006,1.55,on,1.0,2920
+D0only,ladderD0,D0 12:01,0.006,1.55,on,1.2,2921
+D0only,ladderD0,D0 12:01,0.006,2.0,,,2922
+D0only,ladderD0,D0 12:01,0.006,2.0,,1.0,2923
+D0only,ladderD0,D0 12:01,0.006,2.0,,1.2,2924
+D0only,ladderD0,D0 12:01,0.006,2.0,on,,2925
+D0only,ladderD0,D0 12:01,0.006,2.0,on,1.0,2926
+D0only,ladderD0,D0 12:01,0.006,2.0,on,1.2,2927
+D0only,ladderD0,D0 12:01,0.012,,,,2928
+D0only,ladderD0,D0 12:01,0.012,,,1.0,2929
+D0only,ladderD0,D0 12:01,0.012,,,1.2,2930
+D0only,ladderD0,D0 12:01,0.012,,on,,2931
+D0only,ladderD0,D0 12:01,0.012,,on,1.0,2932
+D0only,ladderD0,D0 12:01,0.012,,on,1.2,2933
+D0only,ladderD0,D0 12:01,0.012,1.3,,,2934
+D0only,ladderD0,D0 12:01,0.012,1.3,,1.0,2935
+D0only,ladderD0,D0 12:01,0.012,1.3,,1.2,2936
+D0only,ladderD0,D0 12:01,0.012,1.3,on,,2937
+D0only,ladderD0,D0 12:01,0.012,1.3,on,1.0,2938
+D0only,ladderD0,D0 12:01,0.012,1.3,on,1.2,2939
+D0only,ladderD0,D0 12:01,0.012,1.55,,,2940
+D0only,ladderD0,D0 12:01,0.012,1.55,,1.0,2941
+D0only,ladderD0,D0 12:01,0.012,1.55,,1.2,2942
+D0only,ladderD0,D0 12:01,0.012,1.55,on,,2943
+D0only,ladderD0,D0 12:01,0.012,1.55,on,1.0,2944
+D0only,ladderD0,D0 12:01,0.012,1.55,on,1.2,2945
+D0only,ladderD0,D0 12:01,0.012,2.0,,,2946
+D0only,ladderD0,D0 12:01,0.012,2.0,,1.0,2947
+D0only,ladderD0,D0 12:01,0.012,2.0,,1.2,2948
+D0only,ladderD0,D0 12:01,0.012,2.0,on,,2949
+D0only,ladderD0,D0 12:01,0.012,2.0,on,1.0,2950
+D0only,ladderD0,D0 12:01,0.012,2.0,on,1.2,2951
+D0only,ladderD0,D0 12:01,0.025,,,,2952
+D0only,ladderD0,D0 12:01,0.025,,,1.0,2953
+D0only,ladderD0,D0 12:01,0.025,,,1.2,2954
+D0only,ladderD0,D0 12:01,0.025,,on,,2955
+D0only,ladderD0,D0 12:01,0.025,,on,1.0,2956
+D0only,ladderD0,D0 12:01,0.025,,on,1.2,2957
+D0only,ladderD0,D0 12:01,0.025,1.3,,,2958
+D0only,ladderD0,D0 12:01,0.025,1.3,,1.0,2959
+D0only,ladderD0,D0 12:01,0.025,1.3,,1.2,2960
+D0only,ladderD0,D0 12:01,0.025,1.3,on,,2961
+D0only,ladderD0,D0 12:01,0.025,1.3,on,1.0,2962
+D0only,ladderD0,D0 12:01,0.025,1.3,on,1.2,2963
+D0only,ladderD0,D0 12:01,0.025,1.55,,,2964
+D0only,ladderD0,D0 12:01,0.025,1.55,,1.0,2965
+D0only,ladderD0,D0 12:01,0.025,1.55,,1.2,2966
+D0only,ladderD0,D0 12:01,0.025,1.55,on,,2967
+D0only,ladderD0,D0 12:01,0.025,1.55,on,1.0,2968
+D0only,ladderD0,D0 12:01,0.025,1.55,on,1.2,2969
+D0only,ladderD0,D0 12:01,0.025,2.0,,,2970
+D0only,ladderD0,D0 12:01,0.025,2.0,,1.0,2971
+D0only,ladderD0,D0 12:01,0.025,2.0,,1.2,2972
+D0only,ladderD0,D0 12:01,0.025,2.0,on,,2973
+D0only,ladderD0,D0 12:01,0.025,2.0,on,1.0,2974
+D0only,ladderD0,D0 12:01,0.025,2.0,on,1.2,2975
+D0only,ladderD0,D0 15:14,,,,,2976
+D0only,ladderD0,D0 15:14,,,,1.0,2977
+D0only,ladderD0,D0 15:14,,,,1.2,2978
+D0only,ladderD0,D0 15:14,,,on,,2979
+D0only,ladderD0,D0 15:14,,,on,1.0,2980
+D0only,ladderD0,D0 15:14,,,on,1.2,2981
+D0only,ladderD0,D0 15:14,,1.3,,,2982
+D0only,ladderD0,D0 15:14,,1.3,,1.0,2983
+D0only,ladderD0,D0 15:14,,1.3,,1.2,2984
+D0only,ladderD0,D0 15:14,,1.3,on,,2985
+D0only,ladderD0,D0 15:14,,1.3,on,1.0,2986
+D0only,ladderD0,D0 15:14,,1.3,on,1.2,2987
+D0only,ladderD0,D0 15:14,,1.55,,,2988
+D0only,ladderD0,D0 15:14,,1.55,,1.0,2989
+D0only,ladderD0,D0 15:14,,1.55,,1.2,2990
+D0only,ladderD0,D0 15:14,,1.55,on,,2991
+D0only,ladderD0,D0 15:14,,1.55,on,1.0,2992
+D0only,ladderD0,D0 15:14,,1.55,on,1.2,2993
+D0only,ladderD0,D0 15:14,,2.0,,,2994
+D0only,ladderD0,D0 15:14,,2.0,,1.0,2995
+D0only,ladderD0,D0 15:14,,2.0,,1.2,2996
+D0only,ladderD0,D0 15:14,,2.0,on,,2997
+D0only,ladderD0,D0 15:14,,2.0,on,1.0,2998
+D0only,ladderD0,D0 15:14,,2.0,on,1.2,2999
+D0only,ladderD0,D0 15:14,0.006,,,,3000
+D0only,ladderD0,D0 15:14,0.006,,,1.0,3001
+D0only,ladderD0,D0 15:14,0.006,,,1.2,3002
+D0only,ladderD0,D0 15:14,0.006,,on,,3003
+D0only,ladderD0,D0 15:14,0.006,,on,1.0,3004
+D0only,ladderD0,D0 15:14,0.006,,on,1.2,3005
+D0only,ladderD0,D0 15:14,0.006,1.3,,,3006
+D0only,ladderD0,D0 15:14,0.006,1.3,,1.0,3007
+D0only,ladderD0,D0 15:14,0.006,1.3,,1.2,3008
+D0only,ladderD0,D0 15:14,0.006,1.3,on,,3009
+D0only,ladderD0,D0 15:14,0.006,1.3,on,1.0,3010
+D0only,ladderD0,D0 15:14,0.006,1.3,on,1.2,3011
+D0only,ladderD0,D0 15:14,0.006,1.55,,,3012
+D0only,ladderD0,D0 15:14,0.006,1.55,,1.0,3013
+D0only,ladderD0,D0 15:14,0.006,1.55,,1.2,3014
+D0only,ladderD0,D0 15:14,0.006,1.55,on,,3015
+D0only,ladderD0,D0 15:14,0.006,1.55,on,1.0,3016
+D0only,ladderD0,D0 15:14,0.006,1.55,on,1.2,3017
+D0only,ladderD0,D0 15:14,0.006,2.0,,,3018
+D0only,ladderD0,D0 15:14,0.006,2.0,,1.0,3019
+D0only,ladderD0,D0 15:14,0.006,2.0,,1.2,3020
+D0only,ladderD0,D0 15:14,0.006,2.0,on,,3021
+D0only,ladderD0,D0 15:14,0.006,2.0,on,1.0,3022
+D0only,ladderD0,D0 15:14,0.006,2.0,on,1.2,3023
+D0only,ladderD0,D0 15:14,0.012,,,,3024
+D0only,ladderD0,D0 15:14,0.012,,,1.0,3025
+D0only,ladderD0,D0 15:14,0.012,,,1.2,3026
+D0only,ladderD0,D0 15:14,0.012,,on,,3027
+D0only,ladderD0,D0 15:14,0.012,,on,1.0,3028
+D0only,ladderD0,D0 15:14,0.012,,on,1.2,3029
+D0only,ladderD0,D0 15:14,0.012,1.3,,,3030
+D0only,ladderD0,D0 15:14,0.012,1.3,,1.0,3031
+D0only,ladderD0,D0 15:14,0.012,1.3,,1.2,3032
+D0only,ladderD0,D0 15:14,0.012,1.3,on,,3033
+D0only,ladderD0,D0 15:14,0.012,1.3,on,1.0,3034
+D0only,ladderD0,D0 15:14,0.012,1.3,on,1.2,3035
+D0only,ladderD0,D0 15:14,0.012,1.55,,,3036
+D0only,ladderD0,D0 15:14,0.012,1.55,,1.0,3037
+D0only,ladderD0,D0 15:14,0.012,1.55,,1.2,3038
+D0only,ladderD0,D0 15:14,0.012,1.55,on,,3039
+D0only,ladderD0,D0 15:14,0.012,1.55,on,1.0,3040
+D0only,ladderD0,D0 15:14,0.012,1.55,on,1.2,3041
+D0only,ladderD0,D0 15:14,0.012,2.0,,,3042
+D0only,ladderD0,D0 15:14,0.012,2.0,,1.0,3043
+D0only,ladderD0,D0 15:14,0.012,2.0,,1.2,3044
+D0only,ladderD0,D0 15:14,0.012,2.0,on,,3045
+D0only,ladderD0,D0 15:14,0.012,2.0,on,1.0,3046
+D0only,ladderD0,D0 15:14,0.012,2.0,on,1.2,3047
+D0only,ladderD0,D0 15:14,0.025,,,,3048
+D0only,ladderD0,D0 15:14,0.025,,,1.0,3049
+D0only,ladderD0,D0 15:14,0.025,,,1.2,3050
+D0only,ladderD0,D0 15:14,0.025,,on,,3051
+D0only,ladderD0,D0 15:14,0.025,,on,1.0,3052
+D0only,ladderD0,D0 15:14,0.025,,on,1.2,3053
+D0only,ladderD0,D0 15:14,0.025,1.3,,,3054
+D0only,ladderD0,D0 15:14,0.025,1.3,,1.0,3055
+D0only,ladderD0,D0 15:14,0.025,1.3,,1.2,3056
+D0only,ladderD0,D0 15:14,0.025,1.3,on,,3057
+D0only,ladderD0,D0 15:14,0.025,1.3,on,1.0,3058
+D0only,ladderD0,D0 15:14,0.025,1.3,on,1.2,3059
+D0only,ladderD0,D0 15:14,0.025,1.55,,,3060
+D0only,ladderD0,D0 15:14,0.025,1.55,,1.0,3061
+D0only,ladderD0,D0 15:14,0.025,1.55,,1.2,3062
+D0only,ladderD0,D0 15:14,0.025,1.55,on,,3063
+D0only,ladderD0,D0 15:14,0.025,1.55,on,1.0,3064
+D0only,ladderD0,D0 15:14,0.025,1.55,on,1.2,3065
+D0only,ladderD0,D0 15:14,0.025,2.0,,,3066
+D0only,ladderD0,D0 15:14,0.025,2.0,,1.0,3067
+D0only,ladderD0,D0 15:14,0.025,2.0,,1.2,3068
+D0only,ladderD0,D0 15:14,0.025,2.0,on,,3069
+D0only,ladderD0,D0 15:14,0.025,2.0,on,1.0,3070
+D0only,ladderD0,D0 15:14,0.025,2.0,on,1.2,3071
+D0only,ladderD0,expiry,,,,,3072
+D0only,ladderD0,expiry,,,,1.0,3073
+D0only,ladderD0,expiry,,,,1.2,3074
+D0only,ladderD0,expiry,,,on,,3075
+D0only,ladderD0,expiry,,,on,1.0,3076
+D0only,ladderD0,expiry,,,on,1.2,3077
+D0only,ladderD0,expiry,,1.3,,,3078
+D0only,ladderD0,expiry,,1.3,,1.0,3079
+D0only,ladderD0,expiry,,1.3,,1.2,3080
+D0only,ladderD0,expiry,,1.3,on,,3081
+D0only,ladderD0,expiry,,1.3,on,1.0,3082
+D0only,ladderD0,expiry,,1.3,on,1.2,3083
+D0only,ladderD0,expiry,,1.55,,,3084
+D0only,ladderD0,expiry,,1.55,,1.0,3085
+D0only,ladderD0,expiry,,1.55,,1.2,3086
+D0only,ladderD0,expiry,,1.55,on,,3087
+D0only,ladderD0,expiry,,1.55,on,1.0,3088
+D0only,ladderD0,expiry,,1.55,on,1.2,3089
+D0only,ladderD0,expiry,,2.0,,,3090
+D0only,ladderD0,expiry,,2.0,,1.0,3091
+D0only,ladderD0,expiry,,2.0,,1.2,3092
+D0only,ladderD0,expiry,,2.0,on,,3093
+D0only,ladderD0,expiry,,2.0,on,1.0,3094
+D0only,ladderD0,expiry,,2.0,on,1.2,3095
+D0only,ladderD0,expiry,0.006,,,,3096
+D0only,ladderD0,expiry,0.006,,,1.0,3097
+D0only,ladderD0,expiry,0.006,,,1.2,3098
+D0only,ladderD0,expiry,0.006,,on,,3099
+D0only,ladderD0,expiry,0.006,,on,1.0,3100
+D0only,ladderD0,expiry,0.006,,on,1.2,3101
+D0only,ladderD0,expiry,0.006,1.3,,,3102
+D0only,ladderD0,expiry,0.006,1.3,,1.0,3103
+D0only,ladderD0,expiry,0.006,1.3,,1.2,3104
+D0only,ladderD0,expiry,0.006,1.3,on,,3105
+D0only,ladderD0,expiry,0.006,1.3,on,1.0,3106
+D0only,ladderD0,expiry,0.006,1.3,on,1.2,3107
+D0only,ladderD0,expiry,0.006,1.55,,,3108
+D0only,ladderD0,expiry,0.006,1.55,,1.0,3109
+D0only,ladderD0,expiry,0.006,1.55,,1.2,3110
+D0only,ladderD0,expiry,0.006,1.55,on,,3111
+D0only,ladderD0,expiry,0.006,1.55,on,1.0,3112
+D0only,ladderD0,expiry,0.006,1.55,on,1.2,3113
+D0only,ladderD0,expiry,0.006,2.0,,,3114
+D0only,ladderD0,expiry,0.006,2.0,,1.0,3115
+D0only,ladderD0,expiry,0.006,2.0,,1.2,3116
+D0only,ladderD0,expiry,0.006,2.0,on,,3117
+D0only,ladderD0,expiry,0.006,2.0,on,1.0,3118
+D0only,ladderD0,expiry,0.006,2.0,on,1.2,3119
+D0only,ladderD0,expiry,0.012,,,,3120
+D0only,ladderD0,expiry,0.012,,,1.0,3121
+D0only,ladderD0,expiry,0.012,,,1.2,3122
+D0only,ladderD0,expiry,0.012,,on,,3123
+D0only,ladderD0,expiry,0.012,,on,1.0,3124
+D0only,ladderD0,expiry,0.012,,on,1.2,3125
+D0only,ladderD0,expiry,0.012,1.3,,,3126
+D0only,ladderD0,expiry,0.012,1.3,,1.0,3127
+D0only,ladderD0,expiry,0.012,1.3,,1.2,3128
+D0only,ladderD0,expiry,0.012,1.3,on,,3129
+D0only,ladderD0,expiry,0.012,1.3,on,1.0,3130
+D0only,ladderD0,expiry,0.012,1.3,on,1.2,3131
+D0only,ladderD0,expiry,0.012,1.55,,,3132
+D0only,ladderD0,expiry,0.012,1.55,,1.0,3133
+D0only,ladderD0,expiry,0.012,1.55,,1.2,3134
+D0only,ladderD0,expiry,0.012,1.55,on,,3135
+D0only,ladderD0,expiry,0.012,1.55,on,1.0,3136
+D0only,ladderD0,expiry,0.012,1.55,on,1.2,3137
+D0only,ladderD0,expiry,0.012,2.0,,,3138
+D0only,ladderD0,expiry,0.012,2.0,,1.0,3139
+D0only,ladderD0,expiry,0.012,2.0,,1.2,3140
+D0only,ladderD0,expiry,0.012,2.0,on,,3141
+D0only,ladderD0,expiry,0.012,2.0,on,1.0,3142
+D0only,ladderD0,expiry,0.012,2.0,on,1.2,3143
+D0only,ladderD0,expiry,0.025,,,,3144
+D0only,ladderD0,expiry,0.025,,,1.0,3145
+D0only,ladderD0,expiry,0.025,,,1.2,3146
+D0only,ladderD0,expiry,0.025,,on,,3147
+D0only,ladderD0,expiry,0.025,,on,1.0,3148
+D0only,ladderD0,expiry,0.025,,on,1.2,3149
+D0only,ladderD0,expiry,0.025,1.3,,,3150
+D0only,ladderD0,expiry,0.025,1.3,,1.0,3151
+D0only,ladderD0,expiry,0.025,1.3,,1.2,3152
+D0only,ladderD0,expiry,0.025,1.3,on,,3153
+D0only,ladderD0,expiry,0.025,1.3,on,1.0,3154
+D0only,ladderD0,expiry,0.025,1.3,on,1.2,3155
+D0only,ladderD0,expiry,0.025,1.55,,,3156
+D0only,ladderD0,expiry,0.025,1.55,,1.0,3157
+D0only,ladderD0,expiry,0.025,1.55,,1.2,3158
+D0only,ladderD0,expiry,0.025,1.55,on,,3159
+D0only,ladderD0,expiry,0.025,1.55,on,1.0,3160
+D0only,ladderD0,expiry,0.025,1.55,on,1.2,3161
+D0only,ladderD0,expiry,0.025,2.0,,,3162
+D0only,ladderD0,expiry,0.025,2.0,,1.0,3163
+D0only,ladderD0,expiry,0.025,2.0,,1.2,3164
+D0only,ladderD0,expiry,0.025,2.0,on,,3165
+D0only,ladderD0,expiry,0.025,2.0,on,1.0,3166
+D0only,ladderD0,expiry,0.025,2.0,on,1.2,3167
+D0only,uniform15,D0 12:01,,,,,3168
+D0only,uniform15,D0 12:01,,,,1.0,3169
+D0only,uniform15,D0 12:01,,,,1.2,3170
+D0only,uniform15,D0 12:01,,,on,,3171
+D0only,uniform15,D0 12:01,,,on,1.0,3172
+D0only,uniform15,D0 12:01,,,on,1.2,3173
+D0only,uniform15,D0 12:01,,1.3,,,3174
+D0only,uniform15,D0 12:01,,1.3,,1.0,3175
+D0only,uniform15,D0 12:01,,1.3,,1.2,3176
+D0only,uniform15,D0 12:01,,1.3,on,,3177
+D0only,uniform15,D0 12:01,,1.3,on,1.0,3178
+D0only,uniform15,D0 12:01,,1.3,on,1.2,3179
+D0only,uniform15,D0 12:01,,1.55,,,3180
+D0only,uniform15,D0 12:01,,1.55,,1.0,3181
+D0only,uniform15,D0 12:01,,1.55,,1.2,3182
+D0only,uniform15,D0 12:01,,1.55,on,,3183
+D0only,uniform15,D0 12:01,,1.55,on,1.0,3184
+D0only,uniform15,D0 12:01,,1.55,on,1.2,3185
+D0only,uniform15,D0 12:01,,2.0,,,3186
+D0only,uniform15,D0 12:01,,2.0,,1.0,3187
+D0only,uniform15,D0 12:01,,2.0,,1.2,3188
+D0only,uniform15,D0 12:01,,2.0,on,,3189
+D0only,uniform15,D0 12:01,,2.0,on,1.0,3190
+D0only,uniform15,D0 12:01,,2.0,on,1.2,3191
+D0only,uniform15,D0 12:01,0.006,,,,3192
+D0only,uniform15,D0 12:01,0.006,,,1.0,3193
+D0only,uniform15,D0 12:01,0.006,,,1.2,3194
+D0only,uniform15,D0 12:01,0.006,,on,,3195
+D0only,uniform15,D0 12:01,0.006,,on,1.0,3196
+D0only,uniform15,D0 12:01,0.006,,on,1.2,3197
+D0only,uniform15,D0 12:01,0.006,1.3,,,3198
+D0only,uniform15,D0 12:01,0.006,1.3,,1.0,3199
+D0only,uniform15,D0 12:01,0.006,1.3,,1.2,3200
+D0only,uniform15,D0 12:01,0.006,1.3,on,,3201
+D0only,uniform15,D0 12:01,0.006,1.3,on,1.0,3202
+D0only,uniform15,D0 12:01,0.006,1.3,on,1.2,3203
+D0only,uniform15,D0 12:01,0.006,1.55,,,3204
+D0only,uniform15,D0 12:01,0.006,1.55,,1.0,3205
+D0only,uniform15,D0 12:01,0.006,1.55,,1.2,3206
+D0only,uniform15,D0 12:01,0.006,1.55,on,,3207
+D0only,uniform15,D0 12:01,0.006,1.55,on,1.0,3208
+D0only,uniform15,D0 12:01,0.006,1.55,on,1.2,3209
+D0only,uniform15,D0 12:01,0.006,2.0,,,3210
+D0only,uniform15,D0 12:01,0.006,2.0,,1.0,3211
+D0only,uniform15,D0 12:01,0.006,2.0,,1.2,3212
+D0only,uniform15,D0 12:01,0.006,2.0,on,,3213
+D0only,uniform15,D0 12:01,0.006,2.0,on,1.0,3214
+D0only,uniform15,D0 12:01,0.006,2.0,on,1.2,3215
+D0only,uniform15,D0 12:01,0.012,,,,3216
+D0only,uniform15,D0 12:01,0.012,,,1.0,3217
+D0only,uniform15,D0 12:01,0.012,,,1.2,3218
+D0only,uniform15,D0 12:01,0.012,,on,,3219
+D0only,uniform15,D0 12:01,0.012,,on,1.0,3220
+D0only,uniform15,D0 12:01,0.012,,on,1.2,3221
+D0only,uniform15,D0 12:01,0.012,1.3,,,3222
+D0only,uniform15,D0 12:01,0.012,1.3,,1.0,3223
+D0only,uniform15,D0 12:01,0.012,1.3,,1.2,3224
+D0only,uniform15,D0 12:01,0.012,1.3,on,,3225
+D0only,uniform15,D0 12:01,0.012,1.3,on,1.0,3226
+D0only,uniform15,D0 12:01,0.012,1.3,on,1.2,3227
+D0only,uniform15,D0 12:01,0.012,1.55,,,3228
+D0only,uniform15,D0 12:01,0.012,1.55,,1.0,3229
+D0only,uniform15,D0 12:01,0.012,1.55,,1.2,3230
+D0only,uniform15,D0 12:01,0.012,1.55,on,,3231
+D0only,uniform15,D0 12:01,0.012,1.55,on,1.0,3232
+D0only,uniform15,D0 12:01,0.012,1.55,on,1.2,3233
+D0only,uniform15,D0 12:01,0.012,2.0,,,3234
+D0only,uniform15,D0 12:01,0.012,2.0,,1.0,3235
+D0only,uniform15,D0 12:01,0.012,2.0,,1.2,3236
+D0only,uniform15,D0 12:01,0.012,2.0,on,,3237
+D0only,uniform15,D0 12:01,0.012,2.0,on,1.0,3238
+D0only,uniform15,D0 12:01,0.012,2.0,on,1.2,3239
+D0only,uniform15,D0 12:01,0.025,,,,3240
+D0only,uniform15,D0 12:01,0.025,,,1.0,3241
+D0only,uniform15,D0 12:01,0.025,,,1.2,3242
+D0only,uniform15,D0 12:01,0.025,,on,,3243
+D0only,uniform15,D0 12:01,0.025,,on,1.0,3244
+D0only,uniform15,D0 12:01,0.025,,on,1.2,3245
+D0only,uniform15,D0 12:01,0.025,1.3,,,3246
+D0only,uniform15,D0 12:01,0.025,1.3,,1.0,3247
+D0only,uniform15,D0 12:01,0.025,1.3,,1.2,3248
+D0only,uniform15,D0 12:01,0.025,1.3,on,,3249
+D0only,uniform15,D0 12:01,0.025,1.3,on,1.0,3250
+D0only,uniform15,D0 12:01,0.025,1.3,on,1.2,3251
+D0only,uniform15,D0 12:01,0.025,1.55,,,3252
+D0only,uniform15,D0 12:01,0.025,1.55,,1.0,3253
+D0only,uniform15,D0 12:01,0.025,1.55,,1.2,3254
+D0only,uniform15,D0 12:01,0.025,1.55,on,,3255
+D0only,uniform15,D0 12:01,0.025,1.55,on,1.0,3256
+D0only,uniform15,D0 12:01,0.025,1.55,on,1.2,3257
+D0only,uniform15,D0 12:01,0.025,2.0,,,3258
+D0only,uniform15,D0 12:01,0.025,2.0,,1.0,3259
+D0only,uniform15,D0 12:01,0.025,2.0,,1.2,3260
+D0only,uniform15,D0 12:01,0.025,2.0,on,,3261
+D0only,uniform15,D0 12:01,0.025,2.0,on,1.0,3262
+D0only,uniform15,D0 12:01,0.025,2.0,on,1.2,3263
+D0only,uniform15,D0 15:14,,,,,3264
+D0only,uniform15,D0 15:14,,,,1.0,3265
+D0only,uniform15,D0 15:14,,,,1.2,3266
+D0only,uniform15,D0 15:14,,,on,,3267
+D0only,uniform15,D0 15:14,,,on,1.0,3268
+D0only,uniform15,D0 15:14,,,on,1.2,3269
+D0only,uniform15,D0 15:14,,1.3,,,3270
+D0only,uniform15,D0 15:14,,1.3,,1.0,3271
+D0only,uniform15,D0 15:14,,1.3,,1.2,3272
+D0only,uniform15,D0 15:14,,1.3,on,,3273
+D0only,uniform15,D0 15:14,,1.3,on,1.0,3274
+D0only,uniform15,D0 15:14,,1.3,on,1.2,3275
+D0only,uniform15,D0 15:14,,1.55,,,3276
+D0only,uniform15,D0 15:14,,1.55,,1.0,3277
+D0only,uniform15,D0 15:14,,1.55,,1.2,3278
+D0only,uniform15,D0 15:14,,1.55,on,,3279
+D0only,uniform15,D0 15:14,,1.55,on,1.0,3280
+D0only,uniform15,D0 15:14,,1.55,on,1.2,3281
+D0only,uniform15,D0 15:14,,2.0,,,3282
+D0only,uniform15,D0 15:14,,2.0,,1.0,3283
+D0only,uniform15,D0 15:14,,2.0,,1.2,3284
+D0only,uniform15,D0 15:14,,2.0,on,,3285
+D0only,uniform15,D0 15:14,,2.0,on,1.0,3286
+D0only,uniform15,D0 15:14,,2.0,on,1.2,3287
+D0only,uniform15,D0 15:14,0.006,,,,3288
+D0only,uniform15,D0 15:14,0.006,,,1.0,3289
+D0only,uniform15,D0 15:14,0.006,,,1.2,3290
+D0only,uniform15,D0 15:14,0.006,,on,,3291
+D0only,uniform15,D0 15:14,0.006,,on,1.0,3292
+D0only,uniform15,D0 15:14,0.006,,on,1.2,3293
+D0only,uniform15,D0 15:14,0.006,1.3,,,3294
+D0only,uniform15,D0 15:14,0.006,1.3,,1.0,3295
+D0only,uniform15,D0 15:14,0.006,1.3,,1.2,3296
+D0only,uniform15,D0 15:14,0.006,1.3,on,,3297
+D0only,uniform15,D0 15:14,0.006,1.3,on,1.0,3298
+D0only,uniform15,D0 15:14,0.006,1.3,on,1.2,3299
+D0only,uniform15,D0 15:14,0.006,1.55,,,3300
+D0only,uniform15,D0 15:14,0.006,1.55,,1.0,3301
+D0only,uniform15,D0 15:14,0.006,1.55,,1.2,3302
+D0only,uniform15,D0 15:14,0.006,1.55,on,,3303
+D0only,uniform15,D0 15:14,0.006,1.55,on,1.0,3304
+D0only,uniform15,D0 15:14,0.006,1.55,on,1.2,3305
+D0only,uniform15,D0 15:14,0.006,2.0,,,3306
+D0only,uniform15,D0 15:14,0.006,2.0,,1.0,3307
+D0only,uniform15,D0 15:14,0.006,2.0,,1.2,3308
+D0only,uniform15,D0 15:14,0.006,2.0,on,,3309
+D0only,uniform15,D0 15:14,0.006,2.0,on,1.0,3310
+D0only,uniform15,D0 15:14,0.006,2.0,on,1.2,3311
+D0only,uniform15,D0 15:14,0.012,,,,3312
+D0only,uniform15,D0 15:14,0.012,,,1.0,3313
+D0only,uniform15,D0 15:14,0.012,,,1.2,3314
+D0only,uniform15,D0 15:14,0.012,,on,,3315
+D0only,uniform15,D0 15:14,0.012,,on,1.0,3316
+D0only,uniform15,D0 15:14,0.012,,on,1.2,3317
+D0only,uniform15,D0 15:14,0.012,1.3,,,3318
+D0only,uniform15,D0 15:14,0.012,1.3,,1.0,3319
+D0only,uniform15,D0 15:14,0.012,1.3,,1.2,3320
+D0only,uniform15,D0 15:14,0.012,1.3,on,,3321
+D0only,uniform15,D0 15:14,0.012,1.3,on,1.0,3322
+D0only,uniform15,D0 15:14,0.012,1.3,on,1.2,3323
+D0only,uniform15,D0 15:14,0.012,1.55,,,3324
+D0only,uniform15,D0 15:14,0.012,1.55,,1.0,3325
+D0only,uniform15,D0 15:14,0.012,1.55,,1.2,3326
+D0only,uniform15,D0 15:14,0.012,1.55,on,,3327
+D0only,uniform15,D0 15:14,0.012,1.55,on,1.0,3328
+D0only,uniform15,D0 15:14,0.012,1.55,on,1.2,3329
+D0only,uniform15,D0 15:14,0.012,2.0,,,3330
+D0only,uniform15,D0 15:14,0.012,2.0,,1.0,3331
+D0only,uniform15,D0 15:14,0.012,2.0,,1.2,3332
+D0only,uniform15,D0 15:14,0.012,2.0,on,,3333
+D0only,uniform15,D0 15:14,0.012,2.0,on,1.0,3334
+D0only,uniform15,D0 15:14,0.012,2.0,on,1.2,3335
+D0only,uniform15,D0 15:14,0.025,,,,3336
+D0only,uniform15,D0 15:14,0.025,,,1.0,3337
+D0only,uniform15,D0 15:14,0.025,,,1.2,3338
+D0only,uniform15,D0 15:14,0.025,,on,,3339
+D0only,uniform15,D0 15:14,0.025,,on,1.0,3340
+D0only,uniform15,D0 15:14,0.025,,on,1.2,3341
+D0only,uniform15,D0 15:14,0.025,1.3,,,3342
+D0only,uniform15,D0 15:14,0.025,1.3,,1.0,3343
+D0only,uniform15,D0 15:14,0.025,1.3,,1.2,3344
+D0only,uniform15,D0 15:14,0.025,1.3,on,,3345
+D0only,uniform15,D0 15:14,0.025,1.3,on,1.0,3346
+D0only,uniform15,D0 15:14,0.025,1.3,on,1.2,3347
+D0only,uniform15,D0 15:14,0.025,1.55,,,3348
+D0only,uniform15,D0 15:14,0.025,1.55,,1.0,3349
+D0only,uniform15,D0 15:14,0.025,1.55,,1.2,3350
+D0only,uniform15,D0 15:14,0.025,1.55,on,,3351
+D0only,uniform15,D0 15:14,0.025,1.55,on,1.0,3352
+D0only,uniform15,D0 15:14,0.025,1.55,on,1.2,3353
+D0only,uniform15,D0 15:14,0.025,2.0,,,3354
+D0only,uniform15,D0 15:14,0.025,2.0,,1.0,3355
+D0only,uniform15,D0 15:14,0.025,2.0,,1.2,3356
+D0only,uniform15,D0 15:14,0.025,2.0,on,,3357
+D0only,uniform15,D0 15:14,0.025,2.0,on,1.0,3358
+D0only,uniform15,D0 15:14,0.025,2.0,on,1.2,3359
+D0only,uniform15,expiry,,,,,3360
+D0only,uniform15,expiry,,,,1.0,3361
+D0only,uniform15,expiry,,,,1.2,3362
+D0only,uniform15,expiry,,,on,,3363
+D0only,uniform15,expiry,,,on,1.0,3364
+D0only,uniform15,expiry,,,on,1.2,3365
+D0only,uniform15,expiry,,1.3,,,3366
+D0only,uniform15,expiry,,1.3,,1.0,3367
+D0only,uniform15,expiry,,1.3,,1.2,3368
+D0only,uniform15,expiry,,1.3,on,,3369
+D0only,uniform15,expiry,,1.3,on,1.0,3370
+D0only,uniform15,expiry,,1.3,on,1.2,3371
+D0only,uniform15,expiry,,1.55,,,3372
+D0only,uniform15,expiry,,1.55,,1.0,3373
+D0only,uniform15,expiry,,1.55,,1.2,3374
+D0only,uniform15,expiry,,1.55,on,,3375
+D0only,uniform15,expiry,,1.55,on,1.0,3376
+D0only,uniform15,expiry,,1.55,on,1.2,3377
+D0only,uniform15,expiry,,2.0,,,3378
+D0only,uniform15,expiry,,2.0,,1.0,3379
+D0only,uniform15,expiry,,2.0,,1.2,3380
+D0only,uniform15,expiry,,2.0,on,,3381
+D0only,uniform15,expiry,,2.0,on,1.0,3382
+D0only,uniform15,expiry,,2.0,on,1.2,3383
+D0only,uniform15,expiry,0.006,,,,3384
+D0only,uniform15,expiry,0.006,,,1.0,3385
+D0only,uniform15,expiry,0.006,,,1.2,3386
+D0only,uniform15,expiry,0.006,,on,,3387
+D0only,uniform15,expiry,0.006,,on,1.0,3388
+D0only,uniform15,expiry,0.006,,on,1.2,3389
+D0only,uniform15,expiry,0.006,1.3,,,3390
+D0only,uniform15,expiry,0.006,1.3,,1.0,3391
+D0only,uniform15,expiry,0.006,1.3,,1.2,3392
+D0only,uniform15,expiry,0.006,1.3,on,,3393
+D0only,uniform15,expiry,0.006,1.3,on,1.0,3394
+D0only,uniform15,expiry,0.006,1.3,on,1.2,3395
+D0only,uniform15,expiry,0.006,1.55,,,3396
+D0only,uniform15,expiry,0.006,1.55,,1.0,3397
+D0only,uniform15,expiry,0.006,1.55,,1.2,3398
+D0only,uniform15,expiry,0.006,1.55,on,,3399
+D0only,uniform15,expiry,0.006,1.55,on,1.0,3400
+D0only,uniform15,expiry,0.006,1.55,on,1.2,3401
+D0only,uniform15,expiry,0.006,2.0,,,3402
+D0only,uniform15,expiry,0.006,2.0,,1.0,3403
+D0only,uniform15,expiry,0.006,2.0,,1.2,3404
+D0only,uniform15,expiry,0.006,2.0,on,,3405
+D0only,uniform15,expiry,0.006,2.0,on,1.0,3406
+D0only,uniform15,expiry,0.006,2.0,on,1.2,3407
+D0only,uniform15,expiry,0.012,,,,3408
+D0only,uniform15,expiry,0.012,,,1.0,3409
+D0only,uniform15,expiry,0.012,,,1.2,3410
+D0only,uniform15,expiry,0.012,,on,,3411
+D0only,uniform15,expiry,0.012,,on,1.0,3412
+D0only,uniform15,expiry,0.012,,on,1.2,3413
+D0only,uniform15,expiry,0.012,1.3,,,3414
+D0only,uniform15,expiry,0.012,1.3,,1.0,3415
+D0only,uniform15,expiry,0.012,1.3,,1.2,3416
+D0only,uniform15,expiry,0.012,1.3,on,,3417
+D0only,uniform15,expiry,0.012,1.3,on,1.0,3418
+D0only,uniform15,expiry,0.012,1.3,on,1.2,3419
+D0only,uniform15,expiry,0.012,1.55,,,3420
+D0only,uniform15,expiry,0.012,1.55,,1.0,3421
+D0only,uniform15,expiry,0.012,1.55,,1.2,3422
+D0only,uniform15,expiry,0.012,1.55,on,,3423
+D0only,uniform15,expiry,0.012,1.55,on,1.0,3424
+D0only,uniform15,expiry,0.012,1.55,on,1.2,3425
+D0only,uniform15,expiry,0.012,2.0,,,3426
+D0only,uniform15,expiry,0.012,2.0,,1.0,3427
+D0only,uniform15,expiry,0.012,2.0,,1.2,3428
+D0only,uniform15,expiry,0.012,2.0,on,,3429
+D0only,uniform15,expiry,0.012,2.0,on,1.0,3430
+D0only,uniform15,expiry,0.012,2.0,on,1.2,3431
+D0only,uniform15,expiry,0.025,,,,3432
+D0only,uniform15,expiry,0.025,,,1.0,3433
+D0only,uniform15,expiry,0.025,,,1.2,3434
+D0only,uniform15,expiry,0.025,,on,,3435
+D0only,uniform15,expiry,0.025,,on,1.0,3436
+D0only,uniform15,expiry,0.025,,on,1.2,3437
+D0only,uniform15,expiry,0.025,1.3,,,3438
+D0only,uniform15,expiry,0.025,1.3,,1.0,3439
+D0only,uniform15,expiry,0.025,1.3,,1.2,3440
+D0only,uniform15,expiry,0.025,1.3,on,,3441
+D0only,uniform15,expiry,0.025,1.3,on,1.0,3442
+D0only,uniform15,expiry,0.025,1.3,on,1.2,3443
+D0only,uniform15,expiry,0.025,1.55,,,3444
+D0only,uniform15,expiry,0.025,1.55,,1.0,3445
+D0only,uniform15,expiry,0.025,1.55,,1.2,3446
+D0only,uniform15,expiry,0.025,1.55,on,,3447
+D0only,uniform15,expiry,0.025,1.55,on,1.0,3448
+D0only,uniform15,expiry,0.025,1.55,on,1.2,3449
+D0only,uniform15,expiry,0.025,2.0,,,3450
+D0only,uniform15,expiry,0.025,2.0,,1.0,3451
+D0only,uniform15,expiry,0.025,2.0,,1.2,3452
+D0only,uniform15,expiry,0.025,2.0,on,,3453
+D0only,uniform15,expiry,0.025,2.0,on,1.0,3454
+D0only,uniform15,expiry,0.025,2.0,on,1.2,3455
+D0only,single0916,D0 12:01,,,,,3456
+D0only,single0916,D0 12:01,,,,1.0,3457
+D0only,single0916,D0 12:01,,,,1.2,3458
+D0only,single0916,D0 12:01,,,on,,3459
+D0only,single0916,D0 12:01,,,on,1.0,3460
+D0only,single0916,D0 12:01,,,on,1.2,3461
+D0only,single0916,D0 12:01,,1.3,,,3462
+D0only,single0916,D0 12:01,,1.3,,1.0,3463
+D0only,single0916,D0 12:01,,1.3,,1.2,3464
+D0only,single0916,D0 12:01,,1.3,on,,3465
+D0only,single0916,D0 12:01,,1.3,on,1.0,3466
+D0only,single0916,D0 12:01,,1.3,on,1.2,3467
+D0only,single0916,D0 12:01,,1.55,,,3468
+D0only,single0916,D0 12:01,,1.55,,1.0,3469
+D0only,single0916,D0 12:01,,1.55,,1.2,3470
+D0only,single0916,D0 12:01,,1.55,on,,3471
+D0only,single0916,D0 12:01,,1.55,on,1.0,3472
+D0only,single0916,D0 12:01,,1.55,on,1.2,3473
+D0only,single0916,D0 12:01,,2.0,,,3474
+D0only,single0916,D0 12:01,,2.0,,1.0,3475
+D0only,single0916,D0 12:01,,2.0,,1.2,3476
+D0only,single0916,D0 12:01,,2.0,on,,3477
+D0only,single0916,D0 12:01,,2.0,on,1.0,3478
+D0only,single0916,D0 12:01,,2.0,on,1.2,3479
+D0only,single0916,D0 12:01,0.006,,,,3480
+D0only,single0916,D0 12:01,0.006,,,1.0,3481
+D0only,single0916,D0 12:01,0.006,,,1.2,3482
+D0only,single0916,D0 12:01,0.006,,on,,3483
+D0only,single0916,D0 12:01,0.006,,on,1.0,3484
+D0only,single0916,D0 12:01,0.006,,on,1.2,3485
+D0only,single0916,D0 12:01,0.006,1.3,,,3486
+D0only,single0916,D0 12:01,0.006,1.3,,1.0,3487
+D0only,single0916,D0 12:01,0.006,1.3,,1.2,3488
+D0only,single0916,D0 12:01,0.006,1.3,on,,3489
+D0only,single0916,D0 12:01,0.006,1.3,on,1.0,3490
+D0only,single0916,D0 12:01,0.006,1.3,on,1.2,3491
+D0only,single0916,D0 12:01,0.006,1.55,,,3492
+D0only,single0916,D0 12:01,0.006,1.55,,1.0,3493
+D0only,single0916,D0 12:01,0.006,1.55,,1.2,3494
+D0only,single0916,D0 12:01,0.006,1.55,on,,3495
+D0only,single0916,D0 12:01,0.006,1.55,on,1.0,3496
+D0only,single0916,D0 12:01,0.006,1.55,on,1.2,3497
+D0only,single0916,D0 12:01,0.006,2.0,,,3498
+D0only,single0916,D0 12:01,0.006,2.0,,1.0,3499
+D0only,single0916,D0 12:01,0.006,2.0,,1.2,3500
+D0only,single0916,D0 12:01,0.006,2.0,on,,3501
+D0only,single0916,D0 12:01,0.006,2.0,on,1.0,3502
+D0only,single0916,D0 12:01,0.006,2.0,on,1.2,3503
+D0only,single0916,D0 12:01,0.012,,,,3504
+D0only,single0916,D0 12:01,0.012,,,1.0,3505
+D0only,single0916,D0 12:01,0.012,,,1.2,3506
+D0only,single0916,D0 12:01,0.012,,on,,3507
+D0only,single0916,D0 12:01,0.012,,on,1.0,3508
+D0only,single0916,D0 12:01,0.012,,on,1.2,3509
+D0only,single0916,D0 12:01,0.012,1.3,,,3510
+D0only,single0916,D0 12:01,0.012,1.3,,1.0,3511
+D0only,single0916,D0 12:01,0.012,1.3,,1.2,3512
+D0only,single0916,D0 12:01,0.012,1.3,on,,3513
+D0only,single0916,D0 12:01,0.012,1.3,on,1.0,3514
+D0only,single0916,D0 12:01,0.012,1.3,on,1.2,3515
+D0only,single0916,D0 12:01,0.012,1.55,,,3516
+D0only,single0916,D0 12:01,0.012,1.55,,1.0,3517
+D0only,single0916,D0 12:01,0.012,1.55,,1.2,3518
+D0only,single0916,D0 12:01,0.012,1.55,on,,3519
+D0only,single0916,D0 12:01,0.012,1.55,on,1.0,3520
+D0only,single0916,D0 12:01,0.012,1.55,on,1.2,3521
+D0only,single0916,D0 12:01,0.012,2.0,,,3522
+D0only,single0916,D0 12:01,0.012,2.0,,1.0,3523
+D0only,single0916,D0 12:01,0.012,2.0,,1.2,3524
+D0only,single0916,D0 12:01,0.012,2.0,on,,3525
+D0only,single0916,D0 12:01,0.012,2.0,on,1.0,3526
+D0only,single0916,D0 12:01,0.012,2.0,on,1.2,3527
+D0only,single0916,D0 12:01,0.025,,,,3528
+D0only,single0916,D0 12:01,0.025,,,1.0,3529
+D0only,single0916,D0 12:01,0.025,,,1.2,3530
+D0only,single0916,D0 12:01,0.025,,on,,3531
+D0only,single0916,D0 12:01,0.025,,on,1.0,3532
+D0only,single0916,D0 12:01,0.025,,on,1.2,3533
+D0only,single0916,D0 12:01,0.025,1.3,,,3534
+D0only,single0916,D0 12:01,0.025,1.3,,1.0,3535
+D0only,single0916,D0 12:01,0.025,1.3,,1.2,3536
+D0only,single0916,D0 12:01,0.025,1.3,on,,3537
+D0only,single0916,D0 12:01,0.025,1.3,on,1.0,3538
+D0only,single0916,D0 12:01,0.025,1.3,on,1.2,3539
+D0only,single0916,D0 12:01,0.025,1.55,,,3540
+D0only,single0916,D0 12:01,0.025,1.55,,1.0,3541
+D0only,single0916,D0 12:01,0.025,1.55,,1.2,3542
+D0only,single0916,D0 12:01,0.025,1.55,on,,3543
+D0only,single0916,D0 12:01,0.025,1.55,on,1.0,3544
+D0only,single0916,D0 12:01,0.025,1.55,on,1.2,3545
+D0only,single0916,D0 12:01,0.025,2.0,,,3546
+D0only,single0916,D0 12:01,0.025,2.0,,1.0,3547
+D0only,single0916,D0 12:01,0.025,2.0,,1.2,3548
+D0only,single0916,D0 12:01,0.025,2.0,on,,3549
+D0only,single0916,D0 12:01,0.025,2.0,on,1.0,3550
+D0only,single0916,D0 12:01,0.025,2.0,on,1.2,3551
+D0only,single0916,D0 15:14,,,,,3552
+D0only,single0916,D0 15:14,,,,1.0,3553
+D0only,single0916,D0 15:14,,,,1.2,3554
+D0only,single0916,D0 15:14,,,on,,3555
+D0only,single0916,D0 15:14,,,on,1.0,3556
+D0only,single0916,D0 15:14,,,on,1.2,3557
+D0only,single0916,D0 15:14,,1.3,,,3558
+D0only,single0916,D0 15:14,,1.3,,1.0,3559
+D0only,single0916,D0 15:14,,1.3,,1.2,3560
+D0only,single0916,D0 15:14,,1.3,on,,3561
+D0only,single0916,D0 15:14,,1.3,on,1.0,3562
+D0only,single0916,D0 15:14,,1.3,on,1.2,3563
+D0only,single0916,D0 15:14,,1.55,,,3564
+D0only,single0916,D0 15:14,,1.55,,1.0,3565
+D0only,single0916,D0 15:14,,1.55,,1.2,3566
+D0only,single0916,D0 15:14,,1.55,on,,3567
+D0only,single0916,D0 15:14,,1.55,on,1.0,3568
+D0only,single0916,D0 15:14,,1.55,on,1.2,3569
+D0only,single0916,D0 15:14,,2.0,,,3570
+D0only,single0916,D0 15:14,,2.0,,1.0,3571
+D0only,single0916,D0 15:14,,2.0,,1.2,3572
+D0only,single0916,D0 15:14,,2.0,on,,3573
+D0only,single0916,D0 15:14,,2.0,on,1.0,3574
+D0only,single0916,D0 15:14,,2.0,on,1.2,3575
+D0only,single0916,D0 15:14,0.006,,,,3576
+D0only,single0916,D0 15:14,0.006,,,1.0,3577
+D0only,single0916,D0 15:14,0.006,,,1.2,3578
+D0only,single0916,D0 15:14,0.006,,on,,3579
+D0only,single0916,D0 15:14,0.006,,on,1.0,3580
+D0only,single0916,D0 15:14,0.006,,on,1.2,3581
+D0only,single0916,D0 15:14,0.006,1.3,,,3582
+D0only,single0916,D0 15:14,0.006,1.3,,1.0,3583
+D0only,single0916,D0 15:14,0.006,1.3,,1.2,3584
+D0only,single0916,D0 15:14,0.006,1.3,on,,3585
+D0only,single0916,D0 15:14,0.006,1.3,on,1.0,3586
+D0only,single0916,D0 15:14,0.006,1.3,on,1.2,3587
+D0only,single0916,D0 15:14,0.006,1.55,,,3588
+D0only,single0916,D0 15:14,0.006,1.55,,1.0,3589
+D0only,single0916,D0 15:14,0.006,1.55,,1.2,3590
+D0only,single0916,D0 15:14,0.006,1.55,on,,3591
+D0only,single0916,D0 15:14,0.006,1.55,on,1.0,3592
+D0only,single0916,D0 15:14,0.006,1.55,on,1.2,3593
+D0only,single0916,D0 15:14,0.006,2.0,,,3594
+D0only,single0916,D0 15:14,0.006,2.0,,1.0,3595
+D0only,single0916,D0 15:14,0.006,2.0,,1.2,3596
+D0only,single0916,D0 15:14,0.006,2.0,on,,3597
+D0only,single0916,D0 15:14,0.006,2.0,on,1.0,3598
+D0only,single0916,D0 15:14,0.006,2.0,on,1.2,3599
+D0only,single0916,D0 15:14,0.012,,,,3600
+D0only,single0916,D0 15:14,0.012,,,1.0,3601
+D0only,single0916,D0 15:14,0.012,,,1.2,3602
+D0only,single0916,D0 15:14,0.012,,on,,3603
+D0only,single0916,D0 15:14,0.012,,on,1.0,3604
+D0only,single0916,D0 15:14,0.012,,on,1.2,3605
+D0only,single0916,D0 15:14,0.012,1.3,,,3606
+D0only,single0916,D0 15:14,0.012,1.3,,1.0,3607
+D0only,single0916,D0 15:14,0.012,1.3,,1.2,3608
+D0only,single0916,D0 15:14,0.012,1.3,on,,3609
+D0only,single0916,D0 15:14,0.012,1.3,on,1.0,3610
+D0only,single0916,D0 15:14,0.012,1.3,on,1.2,3611
+D0only,single0916,D0 15:14,0.012,1.55,,,3612
+D0only,single0916,D0 15:14,0.012,1.55,,1.0,3613
+D0only,single0916,D0 15:14,0.012,1.55,,1.2,3614
+D0only,single0916,D0 15:14,0.012,1.55,on,,3615
+D0only,single0916,D0 15:14,0.012,1.55,on,1.0,3616
+D0only,single0916,D0 15:14,0.012,1.55,on,1.2,3617
+D0only,single0916,D0 15:14,0.012,2.0,,,3618
+D0only,single0916,D0 15:14,0.012,2.0,,1.0,3619
+D0only,single0916,D0 15:14,0.012,2.0,,1.2,3620
+D0only,single0916,D0 15:14,0.012,2.0,on,,3621
+D0only,single0916,D0 15:14,0.012,2.0,on,1.0,3622
+D0only,single0916,D0 15:14,0.012,2.0,on,1.2,3623
+D0only,single0916,D0 15:14,0.025,,,,3624
+D0only,single0916,D0 15:14,0.025,,,1.0,3625
+D0only,single0916,D0 15:14,0.025,,,1.2,3626
+D0only,single0916,D0 15:14,0.025,,on,,3627
+D0only,single0916,D0 15:14,0.025,,on,1.0,3628
+D0only,single0916,D0 15:14,0.025,,on,1.2,3629
+D0only,single0916,D0 15:14,0.025,1.3,,,3630
+D0only,single0916,D0 15:14,0.025,1.3,,1.0,3631
+D0only,single0916,D0 15:14,0.025,1.3,,1.2,3632
+D0only,single0916,D0 15:14,0.025,1.3,on,,3633
+D0only,single0916,D0 15:14,0.025,1.3,on,1.0,3634
+D0only,single0916,D0 15:14,0.025,1.3,on,1.2,3635
+D0only,single0916,D0 15:14,0.025,1.55,,,3636
+D0only,single0916,D0 15:14,0.025,1.55,,1.0,3637
+D0only,single0916,D0 15:14,0.025,1.55,,1.2,3638
+D0only,single0916,D0 15:14,0.025,1.55,on,,3639
+D0only,single0916,D0 15:14,0.025,1.55,on,1.0,3640
+D0only,single0916,D0 15:14,0.025,1.55,on,1.2,3641
+D0only,single0916,D0 15:14,0.025,2.0,,,3642
+D0only,single0916,D0 15:14,0.025,2.0,,1.0,3643
+D0only,single0916,D0 15:14,0.025,2.0,,1.2,3644
+D0only,single0916,D0 15:14,0.025,2.0,on,,3645
+D0only,single0916,D0 15:14,0.025,2.0,on,1.0,3646
+D0only,single0916,D0 15:14,0.025,2.0,on,1.2,3647
+D0only,single0916,expiry,,,,,3648
+D0only,single0916,expiry,,,,1.0,3649
+D0only,single0916,expiry,,,,1.2,3650
+D0only,single0916,expiry,,,on,,3651
+D0only,single0916,expiry,,,on,1.0,3652
+D0only,single0916,expiry,,,on,1.2,3653
+D0only,single0916,expiry,,1.3,,,3654
+D0only,single0916,expiry,,1.3,,1.0,3655
+D0only,single0916,expiry,,1.3,,1.2,3656
+D0only,single0916,expiry,,1.3,on,,3657
+D0only,single0916,expiry,,1.3,on,1.0,3658
+D0only,single0916,expiry,,1.3,on,1.2,3659
+D0only,single0916,expiry,,1.55,,,3660
+D0only,single0916,expiry,,1.55,,1.0,3661
+D0only,single0916,expiry,,1.55,,1.2,3662
+D0only,single0916,expiry,,1.55,on,,3663
+D0only,single0916,expiry,,1.55,on,1.0,3664
+D0only,single0916,expiry,,1.55,on,1.2,3665
+D0only,single0916,expiry,,2.0,,,3666
+D0only,single0916,expiry,,2.0,,1.0,3667
+D0only,single0916,expiry,,2.0,,1.2,3668
+D0only,single0916,expiry,,2.0,on,,3669
+D0only,single0916,expiry,,2.0,on,1.0,3670
+D0only,single0916,expiry,,2.0,on,1.2,3671
+D0only,single0916,expiry,0.006,,,,3672
+D0only,single0916,expiry,0.006,,,1.0,3673
+D0only,single0916,expiry,0.006,,,1.2,3674
+D0only,single0916,expiry,0.006,,on,,3675
+D0only,single0916,expiry,0.006,,on,1.0,3676
+D0only,single0916,expiry,0.006,,on,1.2,3677
+D0only,single0916,expiry,0.006,1.3,,,3678
+D0only,single0916,expiry,0.006,1.3,,1.0,3679
+D0only,single0916,expiry,0.006,1.3,,1.2,3680
+D0only,single0916,expiry,0.006,1.3,on,,3681
+D0only,single0916,expiry,0.006,1.3,on,1.0,3682
+D0only,single0916,expiry,0.006,1.3,on,1.2,3683
+D0only,single0916,expiry,0.006,1.55,,,3684
+D0only,single0916,expiry,0.006,1.55,,1.0,3685
+D0only,single0916,expiry,0.006,1.55,,1.2,3686
+D0only,single0916,expiry,0.006,1.55,on,,3687
+D0only,single0916,expiry,0.006,1.55,on,1.0,3688
+D0only,single0916,expiry,0.006,1.55,on,1.2,3689
+D0only,single0916,expiry,0.006,2.0,,,3690
+D0only,single0916,expiry,0.006,2.0,,1.0,3691
+D0only,single0916,expiry,0.006,2.0,,1.2,3692
+D0only,single0916,expiry,0.006,2.0,on,,3693
+D0only,single0916,expiry,0.006,2.0,on,1.0,3694
+D0only,single0916,expiry,0.006,2.0,on,1.2,3695
+D0only,single0916,expiry,0.012,,,,3696
+D0only,single0916,expiry,0.012,,,1.0,3697
+D0only,single0916,expiry,0.012,,,1.2,3698
+D0only,single0916,expiry,0.012,,on,,3699
+D0only,single0916,expiry,0.012,,on,1.0,3700
+D0only,single0916,expiry,0.012,,on,1.2,3701
+D0only,single0916,expiry,0.012,1.3,,,3702
+D0only,single0916,expiry,0.012,1.3,,1.0,3703
+D0only,single0916,expiry,0.012,1.3,,1.2,3704
+D0only,single0916,expiry,0.012,1.3,on,,3705
+D0only,single0916,expiry,0.012,1.3,on,1.0,3706
+D0only,single0916,expiry,0.012,1.3,on,1.2,3707
+D0only,single0916,expiry,0.012,1.55,,,3708
+D0only,single0916,expiry,0.012,1.55,,1.0,3709
+D0only,single0916,expiry,0.012,1.55,,1.2,3710
+D0only,single0916,expiry,0.012,1.55,on,,3711
+D0only,single0916,expiry,0.012,1.55,on,1.0,3712
+D0only,single0916,expiry,0.012,1.55,on,1.2,3713
+D0only,single0916,expiry,0.012,2.0,,,3714
+D0only,single0916,expiry,0.012,2.0,,1.0,3715
+D0only,single0916,expiry,0.012,2.0,,1.2,3716
+D0only,single0916,expiry,0.012,2.0,on,,3717
+D0only,single0916,expiry,0.012,2.0,on,1.0,3718
+D0only,single0916,expiry,0.012,2.0,on,1.2,3719
+D0only,single0916,expiry,0.025,,,,3720
+D0only,single0916,expiry,0.025,,,1.0,3721
+D0only,single0916,expiry,0.025,,,1.2,3722
+D0only,single0916,expiry,0.025,,on,,3723
+D0only,single0916,expiry,0.025,,on,1.0,3724
+D0only,single0916,expiry,0.025,,on,1.2,3725
+D0only,single0916,expiry,0.025,1.3,,,3726
+D0only,single0916,expiry,0.025,1.3,,1.0,3727
+D0only,single0916,expiry,0.025,1.3,,1.2,3728
+D0only,single0916,expiry,0.025,1.3,on,,3729
+D0only,single0916,expiry,0.025,1.3,on,1.0,3730
+D0only,single0916,expiry,0.025,1.3,on,1.2,3731
+D0only,single0916,expiry,0.025,1.55,,,3732
+D0only,single0916,expiry,0.025,1.55,,1.0,3733
+D0only,single0916,expiry,0.025,1.55,,1.2,3734
+D0only,single0916,expiry,0.025,1.55,on,,3735
+D0only,single0916,expiry,0.025,1.55,on,1.0,3736
+D0only,single0916,expiry,0.025,1.55,on,1.2,3737
+D0only,single0916,expiry,0.025,2.0,,,3738
+D0only,single0916,expiry,0.025,2.0,,1.0,3739
+D0only,single0916,expiry,0.025,2.0,,1.2,3740
+D0only,single0916,expiry,0.025,2.0,on,,3741
+D0only,single0916,expiry,0.025,2.0,on,1.0,3742
+D0only,single0916,expiry,0.025,2.0,on,1.2,3743
+D0only,single1116,D0 12:01,,,,,3744
+D0only,single1116,D0 12:01,,,,1.0,3745
+D0only,single1116,D0 12:01,,,,1.2,3746
+D0only,single1116,D0 12:01,,,on,,3747
+D0only,single1116,D0 12:01,,,on,1.0,3748
+D0only,single1116,D0 12:01,,,on,1.2,3749
+D0only,single1116,D0 12:01,,1.3,,,3750
+D0only,single1116,D0 12:01,,1.3,,1.0,3751
+D0only,single1116,D0 12:01,,1.3,,1.2,3752
+D0only,single1116,D0 12:01,,1.3,on,,3753
+D0only,single1116,D0 12:01,,1.3,on,1.0,3754
+D0only,single1116,D0 12:01,,1.3,on,1.2,3755
+D0only,single1116,D0 12:01,,1.55,,,3756
+D0only,single1116,D0 12:01,,1.55,,1.0,3757
+D0only,single1116,D0 12:01,,1.55,,1.2,3758
+D0only,single1116,D0 12:01,,1.55,on,,3759
+D0only,single1116,D0 12:01,,1.55,on,1.0,3760
+D0only,single1116,D0 12:01,,1.55,on,1.2,3761
+D0only,single1116,D0 12:01,,2.0,,,3762
+D0only,single1116,D0 12:01,,2.0,,1.0,3763
+D0only,single1116,D0 12:01,,2.0,,1.2,3764
+D0only,single1116,D0 12:01,,2.0,on,,3765
+D0only,single1116,D0 12:01,,2.0,on,1.0,3766
+D0only,single1116,D0 12:01,,2.0,on,1.2,3767
+D0only,single1116,D0 12:01,0.006,,,,3768
+D0only,single1116,D0 12:01,0.006,,,1.0,3769
+D0only,single1116,D0 12:01,0.006,,,1.2,3770
+D0only,single1116,D0 12:01,0.006,,on,,3771
+D0only,single1116,D0 12:01,0.006,,on,1.0,3772
+D0only,single1116,D0 12:01,0.006,,on,1.2,3773
+D0only,single1116,D0 12:01,0.006,1.3,,,3774
+D0only,single1116,D0 12:01,0.006,1.3,,1.0,3775
+D0only,single1116,D0 12:01,0.006,1.3,,1.2,3776
+D0only,single1116,D0 12:01,0.006,1.3,on,,3777
+D0only,single1116,D0 12:01,0.006,1.3,on,1.0,3778
+D0only,single1116,D0 12:01,0.006,1.3,on,1.2,3779
+D0only,single1116,D0 12:01,0.006,1.55,,,3780
+D0only,single1116,D0 12:01,0.006,1.55,,1.0,3781
+D0only,single1116,D0 12:01,0.006,1.55,,1.2,3782
+D0only,single1116,D0 12:01,0.006,1.55,on,,3783
+D0only,single1116,D0 12:01,0.006,1.55,on,1.0,3784
+D0only,single1116,D0 12:01,0.006,1.55,on,1.2,3785
+D0only,single1116,D0 12:01,0.006,2.0,,,3786
+D0only,single1116,D0 12:01,0.006,2.0,,1.0,3787
+D0only,single1116,D0 12:01,0.006,2.0,,1.2,3788
+D0only,single1116,D0 12:01,0.006,2.0,on,,3789
+D0only,single1116,D0 12:01,0.006,2.0,on,1.0,3790
+D0only,single1116,D0 12:01,0.006,2.0,on,1.2,3791
+D0only,single1116,D0 12:01,0.012,,,,3792
+D0only,single1116,D0 12:01,0.012,,,1.0,3793
+D0only,single1116,D0 12:01,0.012,,,1.2,3794
+D0only,single1116,D0 12:01,0.012,,on,,3795
+D0only,single1116,D0 12:01,0.012,,on,1.0,3796
+D0only,single1116,D0 12:01,0.012,,on,1.2,3797
+D0only,single1116,D0 12:01,0.012,1.3,,,3798
+D0only,single1116,D0 12:01,0.012,1.3,,1.0,3799
+D0only,single1116,D0 12:01,0.012,1.3,,1.2,3800
+D0only,single1116,D0 12:01,0.012,1.3,on,,3801
+D0only,single1116,D0 12:01,0.012,1.3,on,1.0,3802
+D0only,single1116,D0 12:01,0.012,1.3,on,1.2,3803
+D0only,single1116,D0 12:01,0.012,1.55,,,3804
+D0only,single1116,D0 12:01,0.012,1.55,,1.0,3805
+D0only,single1116,D0 12:01,0.012,1.55,,1.2,3806
+D0only,single1116,D0 12:01,0.012,1.55,on,,3807
+D0only,single1116,D0 12:01,0.012,1.55,on,1.0,3808
+D0only,single1116,D0 12:01,0.012,1.55,on,1.2,3809
+D0only,single1116,D0 12:01,0.012,2.0,,,3810
+D0only,single1116,D0 12:01,0.012,2.0,,1.0,3811
+D0only,single1116,D0 12:01,0.012,2.0,,1.2,3812
+D0only,single1116,D0 12:01,0.012,2.0,on,,3813
+D0only,single1116,D0 12:01,0.012,2.0,on,1.0,3814
+D0only,single1116,D0 12:01,0.012,2.0,on,1.2,3815
+D0only,single1116,D0 12:01,0.025,,,,3816
+D0only,single1116,D0 12:01,0.025,,,1.0,3817
+D0only,single1116,D0 12:01,0.025,,,1.2,3818
+D0only,single1116,D0 12:01,0.025,,on,,3819
+D0only,single1116,D0 12:01,0.025,,on,1.0,3820
+D0only,single1116,D0 12:01,0.025,,on,1.2,3821
+D0only,single1116,D0 12:01,0.025,1.3,,,3822
+D0only,single1116,D0 12:01,0.025,1.3,,1.0,3823
+D0only,single1116,D0 12:01,0.025,1.3,,1.2,3824
+D0only,single1116,D0 12:01,0.025,1.3,on,,3825
+D0only,single1116,D0 12:01,0.025,1.3,on,1.0,3826
+D0only,single1116,D0 12:01,0.025,1.3,on,1.2,3827
+D0only,single1116,D0 12:01,0.025,1.55,,,3828
+D0only,single1116,D0 12:01,0.025,1.55,,1.0,3829
+D0only,single1116,D0 12:01,0.025,1.55,,1.2,3830
+D0only,single1116,D0 12:01,0.025,1.55,on,,3831
+D0only,single1116,D0 12:01,0.025,1.55,on,1.0,3832
+D0only,single1116,D0 12:01,0.025,1.55,on,1.2,3833
+D0only,single1116,D0 12:01,0.025,2.0,,,3834
+D0only,single1116,D0 12:01,0.025,2.0,,1.0,3835
+D0only,single1116,D0 12:01,0.025,2.0,,1.2,3836
+D0only,single1116,D0 12:01,0.025,2.0,on,,3837
+D0only,single1116,D0 12:01,0.025,2.0,on,1.0,3838
+D0only,single1116,D0 12:01,0.025,2.0,on,1.2,3839
+D0only,single1116,D0 15:14,,,,,3840
+D0only,single1116,D0 15:14,,,,1.0,3841
+D0only,single1116,D0 15:14,,,,1.2,3842
+D0only,single1116,D0 15:14,,,on,,3843
+D0only,single1116,D0 15:14,,,on,1.0,3844
+D0only,single1116,D0 15:14,,,on,1.2,3845
+D0only,single1116,D0 15:14,,1.3,,,3846
+D0only,single1116,D0 15:14,,1.3,,1.0,3847
+D0only,single1116,D0 15:14,,1.3,,1.2,3848
+D0only,single1116,D0 15:14,,1.3,on,,3849
+D0only,single1116,D0 15:14,,1.3,on,1.0,3850
+D0only,single1116,D0 15:14,,1.3,on,1.2,3851
+D0only,single1116,D0 15:14,,1.55,,,3852
+D0only,single1116,D0 15:14,,1.55,,1.0,3853
+D0only,single1116,D0 15:14,,1.55,,1.2,3854
+D0only,single1116,D0 15:14,,1.55,on,,3855
+D0only,single1116,D0 15:14,,1.55,on,1.0,3856
+D0only,single1116,D0 15:14,,1.55,on,1.2,3857
+D0only,single1116,D0 15:14,,2.0,,,3858
+D0only,single1116,D0 15:14,,2.0,,1.0,3859
+D0only,single1116,D0 15:14,,2.0,,1.2,3860
+D0only,single1116,D0 15:14,,2.0,on,,3861
+D0only,single1116,D0 15:14,,2.0,on,1.0,3862
+D0only,single1116,D0 15:14,,2.0,on,1.2,3863
+D0only,single1116,D0 15:14,0.006,,,,3864
+D0only,single1116,D0 15:14,0.006,,,1.0,3865
+D0only,single1116,D0 15:14,0.006,,,1.2,3866
+D0only,single1116,D0 15:14,0.006,,on,,3867
+D0only,single1116,D0 15:14,0.006,,on,1.0,3868
+D0only,single1116,D0 15:14,0.006,,on,1.2,3869
+D0only,single1116,D0 15:14,0.006,1.3,,,3870
+D0only,single1116,D0 15:14,0.006,1.3,,1.0,3871
+D0only,single1116,D0 15:14,0.006,1.3,,1.2,3872
+D0only,single1116,D0 15:14,0.006,1.3,on,,3873
+D0only,single1116,D0 15:14,0.006,1.3,on,1.0,3874
+D0only,single1116,D0 15:14,0.006,1.3,on,1.2,3875
+D0only,single1116,D0 15:14,0.006,1.55,,,3876
+D0only,single1116,D0 15:14,0.006,1.55,,1.0,3877
+D0only,single1116,D0 15:14,0.006,1.55,,1.2,3878
+D0only,single1116,D0 15:14,0.006,1.55,on,,3879
+D0only,single1116,D0 15:14,0.006,1.55,on,1.0,3880
+D0only,single1116,D0 15:14,0.006,1.55,on,1.2,3881
+D0only,single1116,D0 15:14,0.006,2.0,,,3882
+D0only,single1116,D0 15:14,0.006,2.0,,1.0,3883
+D0only,single1116,D0 15:14,0.006,2.0,,1.2,3884
+D0only,single1116,D0 15:14,0.006,2.0,on,,3885
+D0only,single1116,D0 15:14,0.006,2.0,on,1.0,3886
+D0only,single1116,D0 15:14,0.006,2.0,on,1.2,3887
+D0only,single1116,D0 15:14,0.012,,,,3888
+D0only,single1116,D0 15:14,0.012,,,1.0,3889
+D0only,single1116,D0 15:14,0.012,,,1.2,3890
+D0only,single1116,D0 15:14,0.012,,on,,3891
+D0only,single1116,D0 15:14,0.012,,on,1.0,3892
+D0only,single1116,D0 15:14,0.012,,on,1.2,3893
+D0only,single1116,D0 15:14,0.012,1.3,,,3894
+D0only,single1116,D0 15:14,0.012,1.3,,1.0,3895
+D0only,single1116,D0 15:14,0.012,1.3,,1.2,3896
+D0only,single1116,D0 15:14,0.012,1.3,on,,3897
+D0only,single1116,D0 15:14,0.012,1.3,on,1.0,3898
+D0only,single1116,D0 15:14,0.012,1.3,on,1.2,3899
+D0only,single1116,D0 15:14,0.012,1.55,,,3900
+D0only,single1116,D0 15:14,0.012,1.55,,1.0,3901
+D0only,single1116,D0 15:14,0.012,1.55,,1.2,3902
+D0only,single1116,D0 15:14,0.012,1.55,on,,3903
+D0only,single1116,D0 15:14,0.012,1.55,on,1.0,3904
+D0only,single1116,D0 15:14,0.012,1.55,on,1.2,3905
+D0only,single1116,D0 15:14,0.012,2.0,,,3906
+D0only,single1116,D0 15:14,0.012,2.0,,1.0,3907
+D0only,single1116,D0 15:14,0.012,2.0,,1.2,3908
+D0only,single1116,D0 15:14,0.012,2.0,on,,3909
+D0only,single1116,D0 15:14,0.012,2.0,on,1.0,3910
+D0only,single1116,D0 15:14,0.012,2.0,on,1.2,3911
+D0only,single1116,D0 15:14,0.025,,,,3912
+D0only,single1116,D0 15:14,0.025,,,1.0,3913
+D0only,single1116,D0 15:14,0.025,,,1.2,3914
+D0only,single1116,D0 15:14,0.025,,on,,3915
+D0only,single1116,D0 15:14,0.025,,on,1.0,3916
+D0only,single1116,D0 15:14,0.025,,on,1.2,3917
+D0only,single1116,D0 15:14,0.025,1.3,,,3918
+D0only,single1116,D0 15:14,0.025,1.3,,1.0,3919
+D0only,single1116,D0 15:14,0.025,1.3,,1.2,3920
+D0only,single1116,D0 15:14,0.025,1.3,on,,3921
+D0only,single1116,D0 15:14,0.025,1.3,on,1.0,3922
+D0only,single1116,D0 15:14,0.025,1.3,on,1.2,3923
+D0only,single1116,D0 15:14,0.025,1.55,,,3924
+D0only,single1116,D0 15:14,0.025,1.55,,1.0,3925
+D0only,single1116,D0 15:14,0.025,1.55,,1.2,3926
+D0only,single1116,D0 15:14,0.025,1.55,on,,3927
+D0only,single1116,D0 15:14,0.025,1.55,on,1.0,3928
+D0only,single1116,D0 15:14,0.025,1.55,on,1.2,3929
+D0only,single1116,D0 15:14,0.025,2.0,,,3930
+D0only,single1116,D0 15:14,0.025,2.0,,1.0,3931
+D0only,single1116,D0 15:14,0.025,2.0,,1.2,3932
+D0only,single1116,D0 15:14,0.025,2.0,on,,3933
+D0only,single1116,D0 15:14,0.025,2.0,on,1.0,3934
+D0only,single1116,D0 15:14,0.025,2.0,on,1.2,3935
+D0only,single1116,expiry,,,,,3936
+D0only,single1116,expiry,,,,1.0,3937
+D0only,single1116,expiry,,,,1.2,3938
+D0only,single1116,expiry,,,on,,3939
+D0only,single1116,expiry,,,on,1.0,3940
+D0only,single1116,expiry,,,on,1.2,3941
+D0only,single1116,expiry,,1.3,,,3942
+D0only,single1116,expiry,,1.3,,1.0,3943
+D0only,single1116,expiry,,1.3,,1.2,3944
+D0only,single1116,expiry,,1.3,on,,3945
+D0only,single1116,expiry,,1.3,on,1.0,3946
+D0only,single1116,expiry,,1.3,on,1.2,3947
+D0only,single1116,expiry,,1.55,,,3948
+D0only,single1116,expiry,,1.55,,1.0,3949
+D0only,single1116,expiry,,1.55,,1.2,3950
+D0only,single1116,expiry,,1.55,on,,3951
+D0only,single1116,expiry,,1.55,on,1.0,3952
+D0only,single1116,expiry,,1.55,on,1.2,3953
+D0only,single1116,expiry,,2.0,,,3954
+D0only,single1116,expiry,,2.0,,1.0,3955
+D0only,single1116,expiry,,2.0,,1.2,3956
+D0only,single1116,expiry,,2.0,on,,3957
+D0only,single1116,expiry,,2.0,on,1.0,3958
+D0only,single1116,expiry,,2.0,on,1.2,3959
+D0only,single1116,expiry,0.006,,,,3960
+D0only,single1116,expiry,0.006,,,1.0,3961
+D0only,single1116,expiry,0.006,,,1.2,3962
+D0only,single1116,expiry,0.006,,on,,3963
+D0only,single1116,expiry,0.006,,on,1.0,3964
+D0only,single1116,expiry,0.006,,on,1.2,3965
+D0only,single1116,expiry,0.006,1.3,,,3966
+D0only,single1116,expiry,0.006,1.3,,1.0,3967
+D0only,single1116,expiry,0.006,1.3,,1.2,3968
+D0only,single1116,expiry,0.006,1.3,on,,3969
+D0only,single1116,expiry,0.006,1.3,on,1.0,3970
+D0only,single1116,expiry,0.006,1.3,on,1.2,3971
+D0only,single1116,expiry,0.006,1.55,,,3972
+D0only,single1116,expiry,0.006,1.55,,1.0,3973
+D0only,single1116,expiry,0.006,1.55,,1.2,3974
+D0only,single1116,expiry,0.006,1.55,on,,3975
+D0only,single1116,expiry,0.006,1.55,on,1.0,3976
+D0only,single1116,expiry,0.006,1.55,on,1.2,3977
+D0only,single1116,expiry,0.006,2.0,,,3978
+D0only,single1116,expiry,0.006,2.0,,1.0,3979
+D0only,single1116,expiry,0.006,2.0,,1.2,3980
+D0only,single1116,expiry,0.006,2.0,on,,3981
+D0only,single1116,expiry,0.006,2.0,on,1.0,3982
+D0only,single1116,expiry,0.006,2.0,on,1.2,3983
+D0only,single1116,expiry,0.012,,,,3984
+D0only,single1116,expiry,0.012,,,1.0,3985
+D0only,single1116,expiry,0.012,,,1.2,3986
+D0only,single1116,expiry,0.012,,on,,3987
+D0only,single1116,expiry,0.012,,on,1.0,3988
+D0only,single1116,expiry,0.012,,on,1.2,3989
+D0only,single1116,expiry,0.012,1.3,,,3990
+D0only,single1116,expiry,0.012,1.3,,1.0,3991
+D0only,single1116,expiry,0.012,1.3,,1.2,3992
+D0only,single1116,expiry,0.012,1.3,on,,3993
+D0only,single1116,expiry,0.012,1.3,on,1.0,3994
+D0only,single1116,expiry,0.012,1.3,on,1.2,3995
+D0only,single1116,expiry,0.012,1.55,,,3996
+D0only,single1116,expiry,0.012,1.55,,1.0,3997
+D0only,single1116,expiry,0.012,1.55,,1.2,3998
+D0only,single1116,expiry,0.012,1.55,on,,3999
+D0only,single1116,expiry,0.012,1.55,on,1.0,4000
+D0only,single1116,expiry,0.012,1.55,on,1.2,4001
+D0only,single1116,expiry,0.012,2.0,,,4002
+D0only,single1116,expiry,0.012,2.0,,1.0,4003
+D0only,single1116,expiry,0.012,2.0,,1.2,4004
+D0only,single1116,expiry,0.012,2.0,on,,4005
+D0only,single1116,expiry,0.012,2.0,on,1.0,4006
+D0only,single1116,expiry,0.012,2.0,on,1.2,4007
+D0only,single1116,expiry,0.025,,,,4008
+D0only,single1116,expiry,0.025,,,1.0,4009
+D0only,single1116,expiry,0.025,,,1.2,4010
+D0only,single1116,expiry,0.025,,on,,4011
+D0only,single1116,expiry,0.025,,on,1.0,4012
+D0only,single1116,expiry,0.025,,on,1.2,4013
+D0only,single1116,expiry,0.025,1.3,,,4014
+D0only,single1116,expiry,0.025,1.3,,1.0,4015
+D0only,single1116,expiry,0.025,1.3,,1.2,4016
+D0only,single1116,expiry,0.025,1.3,on,,4017
+D0only,single1116,expiry,0.025,1.3,on,1.0,4018
+D0only,single1116,expiry,0.025,1.3,on,1.2,4019
+D0only,single1116,expiry,0.025,1.55,,,4020
+D0only,single1116,expiry,0.025,1.55,,1.0,4021
+D0only,single1116,expiry,0.025,1.55,,1.2,4022
+D0only,single1116,expiry,0.025,1.55,on,,4023
+D0only,single1116,expiry,0.025,1.55,on,1.0,4024
+D0only,single1116,expiry,0.025,1.55,on,1.2,4025
+D0only,single1116,expiry,0.025,2.0,,,4026
+D0only,single1116,expiry,0.025,2.0,,1.0,4027
+D0only,single1116,expiry,0.025,2.0,,1.2,4028
+D0only,single1116,expiry,0.025,2.0,on,,4029
+D0only,single1116,expiry,0.025,2.0,on,1.0,4030
+D0only,single1116,expiry,0.025,2.0,on,1.2,4031
+D0only,single1316,D0 12:01,,,,,4032
+D0only,single1316,D0 12:01,,,,1.0,4033
+D0only,single1316,D0 12:01,,,,1.2,4034
+D0only,single1316,D0 12:01,,,on,,4035
+D0only,single1316,D0 12:01,,,on,1.0,4036
+D0only,single1316,D0 12:01,,,on,1.2,4037
+D0only,single1316,D0 12:01,,1.3,,,4038
+D0only,single1316,D0 12:01,,1.3,,1.0,4039
+D0only,single1316,D0 12:01,,1.3,,1.2,4040
+D0only,single1316,D0 12:01,,1.3,on,,4041
+D0only,single1316,D0 12:01,,1.3,on,1.0,4042
+D0only,single1316,D0 12:01,,1.3,on,1.2,4043
+D0only,single1316,D0 12:01,,1.55,,,4044
+D0only,single1316,D0 12:01,,1.55,,1.0,4045
+D0only,single1316,D0 12:01,,1.55,,1.2,4046
+D0only,single1316,D0 12:01,,1.55,on,,4047
+D0only,single1316,D0 12:01,,1.55,on,1.0,4048
+D0only,single1316,D0 12:01,,1.55,on,1.2,4049
+D0only,single1316,D0 12:01,,2.0,,,4050
+D0only,single1316,D0 12:01,,2.0,,1.0,4051
+D0only,single1316,D0 12:01,,2.0,,1.2,4052
+D0only,single1316,D0 12:01,,2.0,on,,4053
+D0only,single1316,D0 12:01,,2.0,on,1.0,4054
+D0only,single1316,D0 12:01,,2.0,on,1.2,4055
+D0only,single1316,D0 12:01,0.006,,,,4056
+D0only,single1316,D0 12:01,0.006,,,1.0,4057
+D0only,single1316,D0 12:01,0.006,,,1.2,4058
+D0only,single1316,D0 12:01,0.006,,on,,4059
+D0only,single1316,D0 12:01,0.006,,on,1.0,4060
+D0only,single1316,D0 12:01,0.006,,on,1.2,4061
+D0only,single1316,D0 12:01,0.006,1.3,,,4062
+D0only,single1316,D0 12:01,0.006,1.3,,1.0,4063
+D0only,single1316,D0 12:01,0.006,1.3,,1.2,4064
+D0only,single1316,D0 12:01,0.006,1.3,on,,4065
+D0only,single1316,D0 12:01,0.006,1.3,on,1.0,4066
+D0only,single1316,D0 12:01,0.006,1.3,on,1.2,4067
+D0only,single1316,D0 12:01,0.006,1.55,,,4068
+D0only,single1316,D0 12:01,0.006,1.55,,1.0,4069
+D0only,single1316,D0 12:01,0.006,1.55,,1.2,4070
+D0only,single1316,D0 12:01,0.006,1.55,on,,4071
+D0only,single1316,D0 12:01,0.006,1.55,on,1.0,4072
+D0only,single1316,D0 12:01,0.006,1.55,on,1.2,4073
+D0only,single1316,D0 12:01,0.006,2.0,,,4074
+D0only,single1316,D0 12:01,0.006,2.0,,1.0,4075
+D0only,single1316,D0 12:01,0.006,2.0,,1.2,4076
+D0only,single1316,D0 12:01,0.006,2.0,on,,4077
+D0only,single1316,D0 12:01,0.006,2.0,on,1.0,4078
+D0only,single1316,D0 12:01,0.006,2.0,on,1.2,4079
+D0only,single1316,D0 12:01,0.012,,,,4080
+D0only,single1316,D0 12:01,0.012,,,1.0,4081
+D0only,single1316,D0 12:01,0.012,,,1.2,4082
+D0only,single1316,D0 12:01,0.012,,on,,4083
+D0only,single1316,D0 12:01,0.012,,on,1.0,4084
+D0only,single1316,D0 12:01,0.012,,on,1.2,4085
+D0only,single1316,D0 12:01,0.012,1.3,,,4086
+D0only,single1316,D0 12:01,0.012,1.3,,1.0,4087
+D0only,single1316,D0 12:01,0.012,1.3,,1.2,4088
+D0only,single1316,D0 12:01,0.012,1.3,on,,4089
+D0only,single1316,D0 12:01,0.012,1.3,on,1.0,4090
+D0only,single1316,D0 12:01,0.012,1.3,on,1.2,4091
+D0only,single1316,D0 12:01,0.012,1.55,,,4092
+D0only,single1316,D0 12:01,0.012,1.55,,1.0,4093
+D0only,single1316,D0 12:01,0.012,1.55,,1.2,4094
+D0only,single1316,D0 12:01,0.012,1.55,on,,4095
+D0only,single1316,D0 12:01,0.012,1.55,on,1.0,4096
+D0only,single1316,D0 12:01,0.012,1.55,on,1.2,4097
+D0only,single1316,D0 12:01,0.012,2.0,,,4098
+D0only,single1316,D0 12:01,0.012,2.0,,1.0,4099
+D0only,single1316,D0 12:01,0.012,2.0,,1.2,4100
+D0only,single1316,D0 12:01,0.012,2.0,on,,4101
+D0only,single1316,D0 12:01,0.012,2.0,on,1.0,4102
+D0only,single1316,D0 12:01,0.012,2.0,on,1.2,4103
+D0only,single1316,D0 12:01,0.025,,,,4104
+D0only,single1316,D0 12:01,0.025,,,1.0,4105
+D0only,single1316,D0 12:01,0.025,,,1.2,4106
+D0only,single1316,D0 12:01,0.025,,on,,4107
+D0only,single1316,D0 12:01,0.025,,on,1.0,4108
+D0only,single1316,D0 12:01,0.025,,on,1.2,4109
+D0only,single1316,D0 12:01,0.025,1.3,,,4110
+D0only,single1316,D0 12:01,0.025,1.3,,1.0,4111
+D0only,single1316,D0 12:01,0.025,1.3,,1.2,4112
+D0only,single1316,D0 12:01,0.025,1.3,on,,4113
+D0only,single1316,D0 12:01,0.025,1.3,on,1.0,4114
+D0only,single1316,D0 12:01,0.025,1.3,on,1.2,4115
+D0only,single1316,D0 12:01,0.025,1.55,,,4116
+D0only,single1316,D0 12:01,0.025,1.55,,1.0,4117
+D0only,single1316,D0 12:01,0.025,1.55,,1.2,4118
+D0only,single1316,D0 12:01,0.025,1.55,on,,4119
+D0only,single1316,D0 12:01,0.025,1.55,on,1.0,4120
+D0only,single1316,D0 12:01,0.025,1.55,on,1.2,4121
+D0only,single1316,D0 12:01,0.025,2.0,,,4122
+D0only,single1316,D0 12:01,0.025,2.0,,1.0,4123
+D0only,single1316,D0 12:01,0.025,2.0,,1.2,4124
+D0only,single1316,D0 12:01,0.025,2.0,on,,4125
+D0only,single1316,D0 12:01,0.025,2.0,on,1.0,4126
+D0only,single1316,D0 12:01,0.025,2.0,on,1.2,4127
+D0only,single1316,D0 15:14,,,,,4128
+D0only,single1316,D0 15:14,,,,1.0,4129
+D0only,single1316,D0 15:14,,,,1.2,4130
+D0only,single1316,D0 15:14,,,on,,4131
+D0only,single1316,D0 15:14,,,on,1.0,4132
+D0only,single1316,D0 15:14,,,on,1.2,4133
+D0only,single1316,D0 15:14,,1.3,,,4134
+D0only,single1316,D0 15:14,,1.3,,1.0,4135
+D0only,single1316,D0 15:14,,1.3,,1.2,4136
+D0only,single1316,D0 15:14,,1.3,on,,4137
+D0only,single1316,D0 15:14,,1.3,on,1.0,4138
+D0only,single1316,D0 15:14,,1.3,on,1.2,4139
+D0only,single1316,D0 15:14,,1.55,,,4140
+D0only,single1316,D0 15:14,,1.55,,1.0,4141
+D0only,single1316,D0 15:14,,1.55,,1.2,4142
+D0only,single1316,D0 15:14,,1.55,on,,4143
+D0only,single1316,D0 15:14,,1.55,on,1.0,4144
+D0only,single1316,D0 15:14,,1.55,on,1.2,4145
+D0only,single1316,D0 15:14,,2.0,,,4146
+D0only,single1316,D0 15:14,,2.0,,1.0,4147
+D0only,single1316,D0 15:14,,2.0,,1.2,4148
+D0only,single1316,D0 15:14,,2.0,on,,4149
+D0only,single1316,D0 15:14,,2.0,on,1.0,4150
+D0only,single1316,D0 15:14,,2.0,on,1.2,4151
+D0only,single1316,D0 15:14,0.006,,,,4152
+D0only,single1316,D0 15:14,0.006,,,1.0,4153
+D0only,single1316,D0 15:14,0.006,,,1.2,4154
+D0only,single1316,D0 15:14,0.006,,on,,4155
+D0only,single1316,D0 15:14,0.006,,on,1.0,4156
+D0only,single1316,D0 15:14,0.006,,on,1.2,4157
+D0only,single1316,D0 15:14,0.006,1.3,,,4158
+D0only,single1316,D0 15:14,0.006,1.3,,1.0,4159
+D0only,single1316,D0 15:14,0.006,1.3,,1.2,4160
+D0only,single1316,D0 15:14,0.006,1.3,on,,4161
+D0only,single1316,D0 15:14,0.006,1.3,on,1.0,4162
+D0only,single1316,D0 15:14,0.006,1.3,on,1.2,4163
+D0only,single1316,D0 15:14,0.006,1.55,,,4164
+D0only,single1316,D0 15:14,0.006,1.55,,1.0,4165
+D0only,single1316,D0 15:14,0.006,1.55,,1.2,4166
+D0only,single1316,D0 15:14,0.006,1.55,on,,4167
+D0only,single1316,D0 15:14,0.006,1.55,on,1.0,4168
+D0only,single1316,D0 15:14,0.006,1.55,on,1.2,4169
+D0only,single1316,D0 15:14,0.006,2.0,,,4170
+D0only,single1316,D0 15:14,0.006,2.0,,1.0,4171
+D0only,single1316,D0 15:14,0.006,2.0,,1.2,4172
+D0only,single1316,D0 15:14,0.006,2.0,on,,4173
+D0only,single1316,D0 15:14,0.006,2.0,on,1.0,4174
+D0only,single1316,D0 15:14,0.006,2.0,on,1.2,4175
+D0only,single1316,D0 15:14,0.012,,,,4176
+D0only,single1316,D0 15:14,0.012,,,1.0,4177
+D0only,single1316,D0 15:14,0.012,,,1.2,4178
+D0only,single1316,D0 15:14,0.012,,on,,4179
+D0only,single1316,D0 15:14,0.012,,on,1.0,4180
+D0only,single1316,D0 15:14,0.012,,on,1.2,4181
+D0only,single1316,D0 15:14,0.012,1.3,,,4182
+D0only,single1316,D0 15:14,0.012,1.3,,1.0,4183
+D0only,single1316,D0 15:14,0.012,1.3,,1.2,4184
+D0only,single1316,D0 15:14,0.012,1.3,on,,4185
+D0only,single1316,D0 15:14,0.012,1.3,on,1.0,4186
+D0only,single1316,D0 15:14,0.012,1.3,on,1.2,4187
+D0only,single1316,D0 15:14,0.012,1.55,,,4188
+D0only,single1316,D0 15:14,0.012,1.55,,1.0,4189
+D0only,single1316,D0 15:14,0.012,1.55,,1.2,4190
+D0only,single1316,D0 15:14,0.012,1.55,on,,4191
+D0only,single1316,D0 15:14,0.012,1.55,on,1.0,4192
+D0only,single1316,D0 15:14,0.012,1.55,on,1.2,4193
+D0only,single1316,D0 15:14,0.012,2.0,,,4194
+D0only,single1316,D0 15:14,0.012,2.0,,1.0,4195
+D0only,single1316,D0 15:14,0.012,2.0,,1.2,4196
+D0only,single1316,D0 15:14,0.012,2.0,on,,4197
+D0only,single1316,D0 15:14,0.012,2.0,on,1.0,4198
+D0only,single1316,D0 15:14,0.012,2.0,on,1.2,4199
+D0only,single1316,D0 15:14,0.025,,,,4200
+D0only,single1316,D0 15:14,0.025,,,1.0,4201
+D0only,single1316,D0 15:14,0.025,,,1.2,4202
+D0only,single1316,D0 15:14,0.025,,on,,4203
+D0only,single1316,D0 15:14,0.025,,on,1.0,4204
+D0only,single1316,D0 15:14,0.025,,on,1.2,4205
+D0only,single1316,D0 15:14,0.025,1.3,,,4206
+D0only,single1316,D0 15:14,0.025,1.3,,1.0,4207
+D0only,single1316,D0 15:14,0.025,1.3,,1.2,4208
+D0only,single1316,D0 15:14,0.025,1.3,on,,4209
+D0only,single1316,D0 15:14,0.025,1.3,on,1.0,4210
+D0only,single1316,D0 15:14,0.025,1.3,on,1.2,4211
+D0only,single1316,D0 15:14,0.025,1.55,,,4212
+D0only,single1316,D0 15:14,0.025,1.55,,1.0,4213
+D0only,single1316,D0 15:14,0.025,1.55,,1.2,4214
+D0only,single1316,D0 15:14,0.025,1.55,on,,4215
+D0only,single1316,D0 15:14,0.025,1.55,on,1.0,4216
+D0only,single1316,D0 15:14,0.025,1.55,on,1.2,4217
+D0only,single1316,D0 15:14,0.025,2.0,,,4218
+D0only,single1316,D0 15:14,0.025,2.0,,1.0,4219
+D0only,single1316,D0 15:14,0.025,2.0,,1.2,4220
+D0only,single1316,D0 15:14,0.025,2.0,on,,4221
+D0only,single1316,D0 15:14,0.025,2.0,on,1.0,4222
+D0only,single1316,D0 15:14,0.025,2.0,on,1.2,4223
+D0only,single1316,expiry,,,,,4224
+D0only,single1316,expiry,,,,1.0,4225
+D0only,single1316,expiry,,,,1.2,4226
+D0only,single1316,expiry,,,on,,4227
+D0only,single1316,expiry,,,on,1.0,4228
+D0only,single1316,expiry,,,on,1.2,4229
+D0only,single1316,expiry,,1.3,,,4230
+D0only,single1316,expiry,,1.3,,1.0,4231
+D0only,single1316,expiry,,1.3,,1.2,4232
+D0only,single1316,expiry,,1.3,on,,4233
+D0only,single1316,expiry,,1.3,on,1.0,4234
+D0only,single1316,expiry,,1.3,on,1.2,4235
+D0only,single1316,expiry,,1.55,,,4236
+D0only,single1316,expiry,,1.55,,1.0,4237
+D0only,single1316,expiry,,1.55,,1.2,4238
+D0only,single1316,expiry,,1.55,on,,4239
+D0only,single1316,expiry,,1.55,on,1.0,4240
+D0only,single1316,expiry,,1.55,on,1.2,4241
+D0only,single1316,expiry,,2.0,,,4242
+D0only,single1316,expiry,,2.0,,1.0,4243
+D0only,single1316,expiry,,2.0,,1.2,4244
+D0only,single1316,expiry,,2.0,on,,4245
+D0only,single1316,expiry,,2.0,on,1.0,4246
+D0only,single1316,expiry,,2.0,on,1.2,4247
+D0only,single1316,expiry,0.006,,,,4248
+D0only,single1316,expiry,0.006,,,1.0,4249
+D0only,single1316,expiry,0.006,,,1.2,4250
+D0only,single1316,expiry,0.006,,on,,4251
+D0only,single1316,expiry,0.006,,on,1.0,4252
+D0only,single1316,expiry,0.006,,on,1.2,4253
+D0only,single1316,expiry,0.006,1.3,,,4254
+D0only,single1316,expiry,0.006,1.3,,1.0,4255
+D0only,single1316,expiry,0.006,1.3,,1.2,4256
+D0only,single1316,expiry,0.006,1.3,on,,4257
+D0only,single1316,expiry,0.006,1.3,on,1.0,4258
+D0only,single1316,expiry,0.006,1.3,on,1.2,4259
+D0only,single1316,expiry,0.006,1.55,,,4260
+D0only,single1316,expiry,0.006,1.55,,1.0,4261
+D0only,single1316,expiry,0.006,1.55,,1.2,4262
+D0only,single1316,expiry,0.006,1.55,on,,4263
+D0only,single1316,expiry,0.006,1.55,on,1.0,4264
+D0only,single1316,expiry,0.006,1.55,on,1.2,4265
+D0only,single1316,expiry,0.006,2.0,,,4266
+D0only,single1316,expiry,0.006,2.0,,1.0,4267
+D0only,single1316,expiry,0.006,2.0,,1.2,4268
+D0only,single1316,expiry,0.006,2.0,on,,4269
+D0only,single1316,expiry,0.006,2.0,on,1.0,4270
+D0only,single1316,expiry,0.006,2.0,on,1.2,4271
+D0only,single1316,expiry,0.012,,,,4272
+D0only,single1316,expiry,0.012,,,1.0,4273
+D0only,single1316,expiry,0.012,,,1.2,4274
+D0only,single1316,expiry,0.012,,on,,4275
+D0only,single1316,expiry,0.012,,on,1.0,4276
+D0only,single1316,expiry,0.012,,on,1.2,4277
+D0only,single1316,expiry,0.012,1.3,,,4278
+D0only,single1316,expiry,0.012,1.3,,1.0,4279
+D0only,single1316,expiry,0.012,1.3,,1.2,4280
+D0only,single1316,expiry,0.012,1.3,on,,4281
+D0only,single1316,expiry,0.012,1.3,on,1.0,4282
+D0only,single1316,expiry,0.012,1.3,on,1.2,4283
+D0only,single1316,expiry,0.012,1.55,,,4284
+D0only,single1316,expiry,0.012,1.55,,1.0,4285
+D0only,single1316,expiry,0.012,1.55,,1.2,4286
+D0only,single1316,expiry,0.012,1.55,on,,4287
+D0only,single1316,expiry,0.012,1.55,on,1.0,4288
+D0only,single1316,expiry,0.012,1.55,on,1.2,4289
+D0only,single1316,expiry,0.012,2.0,,,4290
+D0only,single1316,expiry,0.012,2.0,,1.0,4291
+D0only,single1316,expiry,0.012,2.0,,1.2,4292
+D0only,single1316,expiry,0.012,2.0,on,,4293
+D0only,single1316,expiry,0.012,2.0,on,1.0,4294
+D0only,single1316,expiry,0.012,2.0,on,1.2,4295
+D0only,single1316,expiry,0.025,,,,4296
+D0only,single1316,expiry,0.025,,,1.0,4297
+D0only,single1316,expiry,0.025,,,1.2,4298
+D0only,single1316,expiry,0.025,,on,,4299
+D0only,single1316,expiry,0.025,,on,1.0,4300
+D0only,single1316,expiry,0.025,,on,1.2,4301
+D0only,single1316,expiry,0.025,1.3,,,4302
+D0only,single1316,expiry,0.025,1.3,,1.0,4303
+D0only,single1316,expiry,0.025,1.3,,1.2,4304
+D0only,single1316,expiry,0.025,1.3,on,,4305
+D0only,single1316,expiry,0.025,1.3,on,1.0,4306
+D0only,single1316,expiry,0.025,1.3,on,1.2,4307
+D0only,single1316,expiry,0.025,1.55,,,4308
+D0only,single1316,expiry,0.025,1.55,,1.0,4309
+D0only,single1316,expiry,0.025,1.55,,1.2,4310
+D0only,single1316,expiry,0.025,1.55,on,,4311
+D0only,single1316,expiry,0.025,1.55,on,1.0,4312
+D0only,single1316,expiry,0.025,1.55,on,1.2,4313
+D0only,single1316,expiry,0.025,2.0,,,4314
+D0only,single1316,expiry,0.025,2.0,,1.0,4315
+D0only,single1316,expiry,0.025,2.0,,1.2,4316
+D0only,single1316,expiry,0.025,2.0,on,,4317
+D0only,single1316,expiry,0.025,2.0,on,1.0,4318
+D0only,single1316,expiry,0.025,2.0,on,1.2,4319
+both,ladder+ladderD0,D0 15:14,,,,,4320
+both,ladder+ladderD0,D0 15:14,,,,1.0,4321
+both,ladder+ladderD0,D0 15:14,,,,1.2,4322
+both,ladder+ladderD0,D0 15:14,,,on,,4323
+both,ladder+ladderD0,D0 15:14,,,on,1.0,4324
+both,ladder+ladderD0,D0 15:14,,,on,1.2,4325
+both,ladder+ladderD0,D0 15:14,,1.3,,,4326
+both,ladder+ladderD0,D0 15:14,,1.3,,1.0,4327
+both,ladder+ladderD0,D0 15:14,,1.3,,1.2,4328
+both,ladder+ladderD0,D0 15:14,,1.3,on,,4329
+both,ladder+ladderD0,D0 15:14,,1.3,on,1.0,4330
+both,ladder+ladderD0,D0 15:14,,1.3,on,1.2,4331
+both,ladder+ladderD0,D0 15:14,,1.55,,,4332
+both,ladder+ladderD0,D0 15:14,,1.55,,1.0,4333
+both,ladder+ladderD0,D0 15:14,,1.55,,1.2,4334
+both,ladder+ladderD0,D0 15:14,,1.55,on,,4335
+both,ladder+ladderD0,D0 15:14,,1.55,on,1.0,4336
+both,ladder+ladderD0,D0 15:14,,1.55,on,1.2,4337
+both,ladder+ladderD0,D0 15:14,,2.0,,,4338
+both,ladder+ladderD0,D0 15:14,,2.0,,1.0,4339
+both,ladder+ladderD0,D0 15:14,,2.0,,1.2,4340
+both,ladder+ladderD0,D0 15:14,,2.0,on,,4341
+both,ladder+ladderD0,D0 15:14,,2.0,on,1.0,4342
+both,ladder+ladderD0,D0 15:14,,2.0,on,1.2,4343
+both,ladder+ladderD0,D0 15:14,0.006,,,,4344
+both,ladder+ladderD0,D0 15:14,0.006,,,1.0,4345
+both,ladder+ladderD0,D0 15:14,0.006,,,1.2,4346
+both,ladder+ladderD0,D0 15:14,0.006,,on,,4347
+both,ladder+ladderD0,D0 15:14,0.006,,on,1.0,4348
+both,ladder+ladderD0,D0 15:14,0.006,,on,1.2,4349
+both,ladder+ladderD0,D0 15:14,0.006,1.3,,,4350
+both,ladder+ladderD0,D0 15:14,0.006,1.3,,1.0,4351
+both,ladder+ladderD0,D0 15:14,0.006,1.3,,1.2,4352
+both,ladder+ladderD0,D0 15:14,0.006,1.3,on,,4353
+both,ladder+ladderD0,D0 15:14,0.006,1.3,on,1.0,4354
+both,ladder+ladderD0,D0 15:14,0.006,1.3,on,1.2,4355
+both,ladder+ladderD0,D0 15:14,0.006,1.55,,,4356
+both,ladder+ladderD0,D0 15:14,0.006,1.55,,1.0,4357
+both,ladder+ladderD0,D0 15:14,0.006,1.55,,1.2,4358
+both,ladder+ladderD0,D0 15:14,0.006,1.55,on,,4359
+both,ladder+ladderD0,D0 15:14,0.006,1.55,on,1.0,4360
+both,ladder+ladderD0,D0 15:14,0.006,1.55,on,1.2,4361
+both,ladder+ladderD0,D0 15:14,0.006,2.0,,,4362
+both,ladder+ladderD0,D0 15:14,0.006,2.0,,1.0,4363
+both,ladder+ladderD0,D0 15:14,0.006,2.0,,1.2,4364
+both,ladder+ladderD0,D0 15:14,0.006,2.0,on,,4365
+both,ladder+ladderD0,D0 15:14,0.006,2.0,on,1.0,4366
+both,ladder+ladderD0,D0 15:14,0.006,2.0,on,1.2,4367
+both,ladder+ladderD0,D0 15:14,0.012,,,,4368
+both,ladder+ladderD0,D0 15:14,0.012,,,1.0,4369
+both,ladder+ladderD0,D0 15:14,0.012,,,1.2,4370
+both,ladder+ladderD0,D0 15:14,0.012,,on,,4371
+both,ladder+ladderD0,D0 15:14,0.012,,on,1.0,4372
+both,ladder+ladderD0,D0 15:14,0.012,,on,1.2,4373
+both,ladder+ladderD0,D0 15:14,0.012,1.3,,,4374
+both,ladder+ladderD0,D0 15:14,0.012,1.3,,1.0,4375
+both,ladder+ladderD0,D0 15:14,0.012,1.3,,1.2,4376
+both,ladder+ladderD0,D0 15:14,0.012,1.3,on,,4377
+both,ladder+ladderD0,D0 15:14,0.012,1.3,on,1.0,4378
+both,ladder+ladderD0,D0 15:14,0.012,1.3,on,1.2,4379
+both,ladder+ladderD0,D0 15:14,0.012,1.55,,,4380
+both,ladder+ladderD0,D0 15:14,0.012,1.55,,1.0,4381
+both,ladder+ladderD0,D0 15:14,0.012,1.55,,1.2,4382
+both,ladder+ladderD0,D0 15:14,0.012,1.55,on,,4383
+both,ladder+ladderD0,D0 15:14,0.012,1.55,on,1.0,4384
+both,ladder+ladderD0,D0 15:14,0.012,1.55,on,1.2,4385
+both,ladder+ladderD0,D0 15:14,0.012,2.0,,,4386
+both,ladder+ladderD0,D0 15:14,0.012,2.0,,1.0,4387
+both,ladder+ladderD0,D0 15:14,0.012,2.0,,1.2,4388
+both,ladder+ladderD0,D0 15:14,0.012,2.0,on,,4389
+both,ladder+ladderD0,D0 15:14,0.012,2.0,on,1.0,4390
+both,ladder+ladderD0,D0 15:14,0.012,2.0,on,1.2,4391
+both,ladder+ladderD0,D0 15:14,0.025,,,,4392
+both,ladder+ladderD0,D0 15:14,0.025,,,1.0,4393
+both,ladder+ladderD0,D0 15:14,0.025,,,1.2,4394
+both,ladder+ladderD0,D0 15:14,0.025,,on,,4395
+both,ladder+ladderD0,D0 15:14,0.025,,on,1.0,4396
+both,ladder+ladderD0,D0 15:14,0.025,,on,1.2,4397
+both,ladder+ladderD0,D0 15:14,0.025,1.3,,,4398
+both,ladder+ladderD0,D0 15:14,0.025,1.3,,1.0,4399
+both,ladder+ladderD0,D0 15:14,0.025,1.3,,1.2,4400
+both,ladder+ladderD0,D0 15:14,0.025,1.3,on,,4401
+both,ladder+ladderD0,D0 15:14,0.025,1.3,on,1.0,4402
+both,ladder+ladderD0,D0 15:14,0.025,1.3,on,1.2,4403
+both,ladder+ladderD0,D0 15:14,0.025,1.55,,,4404
+both,ladder+ladderD0,D0 15:14,0.025,1.55,,1.0,4405
+both,ladder+ladderD0,D0 15:14,0.025,1.55,,1.2,4406
+both,ladder+ladderD0,D0 15:14,0.025,1.55,on,,4407
+both,ladder+ladderD0,D0 15:14,0.025,1.55,on,1.0,4408
+both,ladder+ladderD0,D0 15:14,0.025,1.55,on,1.2,4409
+both,ladder+ladderD0,D0 15:14,0.025,2.0,,,4410
+both,ladder+ladderD0,D0 15:14,0.025,2.0,,1.0,4411
+both,ladder+ladderD0,D0 15:14,0.025,2.0,,1.2,4412
+both,ladder+ladderD0,D0 15:14,0.025,2.0,on,,4413
+both,ladder+ladderD0,D0 15:14,0.025,2.0,on,1.0,4414
+both,ladder+ladderD0,D0 15:14,0.025,2.0,on,1.2,4415
+both,ladder+ladderD0,expiry,,,,,4416
+both,ladder+ladderD0,expiry,,,,1.0,4417
+both,ladder+ladderD0,expiry,,,,1.2,4418
+both,ladder+ladderD0,expiry,,,on,,4419
+both,ladder+ladderD0,expiry,,,on,1.0,4420
+both,ladder+ladderD0,expiry,,,on,1.2,4421
+both,ladder+ladderD0,expiry,,1.3,,,4422
+both,ladder+ladderD0,expiry,,1.3,,1.0,4423
+both,ladder+ladderD0,expiry,,1.3,,1.2,4424
+both,ladder+ladderD0,expiry,,1.3,on,,4425
+both,ladder+ladderD0,expiry,,1.3,on,1.0,4426
+both,ladder+ladderD0,expiry,,1.3,on,1.2,4427
+both,ladder+ladderD0,expiry,,1.55,,,4428
+both,ladder+ladderD0,expiry,,1.55,,1.0,4429
+both,ladder+ladderD0,expiry,,1.55,,1.2,4430
+both,ladder+ladderD0,expiry,,1.55,on,,4431
+both,ladder+ladderD0,expiry,,1.55,on,1.0,4432
+both,ladder+ladderD0,expiry,,1.55,on,1.2,4433
+both,ladder+ladderD0,expiry,,2.0,,,4434
+both,ladder+ladderD0,expiry,,2.0,,1.0,4435
+both,ladder+ladderD0,expiry,,2.0,,1.2,4436
+both,ladder+ladderD0,expiry,,2.0,on,,4437
+both,ladder+ladderD0,expiry,,2.0,on,1.0,4438
+both,ladder+ladderD0,expiry,,2.0,on,1.2,4439
+both,ladder+ladderD0,expiry,0.006,,,,4440
+both,ladder+ladderD0,expiry,0.006,,,1.0,4441
+both,ladder+ladderD0,expiry,0.006,,,1.2,4442
+both,ladder+ladderD0,expiry,0.006,,on,,4443
+both,ladder+ladderD0,expiry,0.006,,on,1.0,4444
+both,ladder+ladderD0,expiry,0.006,,on,1.2,4445
+both,ladder+ladderD0,expiry,0.006,1.3,,,4446
+both,ladder+ladderD0,expiry,0.006,1.3,,1.0,4447
+both,ladder+ladderD0,expiry,0.006,1.3,,1.2,4448
+both,ladder+ladderD0,expiry,0.006,1.3,on,,4449
+both,ladder+ladderD0,expiry,0.006,1.3,on,1.0,4450
+both,ladder+ladderD0,expiry,0.006,1.3,on,1.2,4451
+both,ladder+ladderD0,expiry,0.006,1.55,,,4452
+both,ladder+ladderD0,expiry,0.006,1.55,,1.0,4453
+both,ladder+ladderD0,expiry,0.006,1.55,,1.2,4454
+both,ladder+ladderD0,expiry,0.006,1.55,on,,4455
+both,ladder+ladderD0,expiry,0.006,1.55,on,1.0,4456
+both,ladder+ladderD0,expiry,0.006,1.55,on,1.2,4457
+both,ladder+ladderD0,expiry,0.006,2.0,,,4458
+both,ladder+ladderD0,expiry,0.006,2.0,,1.0,4459
+both,ladder+ladderD0,expiry,0.006,2.0,,1.2,4460
+both,ladder+ladderD0,expiry,0.006,2.0,on,,4461
+both,ladder+ladderD0,expiry,0.006,2.0,on,1.0,4462
+both,ladder+ladderD0,expiry,0.006,2.0,on,1.2,4463
+both,ladder+ladderD0,expiry,0.012,,,,4464
+both,ladder+ladderD0,expiry,0.012,,,1.0,4465
+both,ladder+ladderD0,expiry,0.012,,,1.2,4466
+both,ladder+ladderD0,expiry,0.012,,on,,4467
+both,ladder+ladderD0,expiry,0.012,,on,1.0,4468
+both,ladder+ladderD0,expiry,0.012,,on,1.2,4469
+both,ladder+ladderD0,expiry,0.012,1.3,,,4470
+both,ladder+ladderD0,expiry,0.012,1.3,,1.0,4471
+both,ladder+ladderD0,expiry,0.012,1.3,,1.2,4472
+both,ladder+ladderD0,expiry,0.012,1.3,on,,4473
+both,ladder+ladderD0,expiry,0.012,1.3,on,1.0,4474
+both,ladder+ladderD0,expiry,0.012,1.3,on,1.2,4475
+both,ladder+ladderD0,expiry,0.012,1.55,,,4476
+both,ladder+ladderD0,expiry,0.012,1.55,,1.0,4477
+both,ladder+ladderD0,expiry,0.012,1.55,,1.2,4478
+both,ladder+ladderD0,expiry,0.012,1.55,on,,4479
+both,ladder+ladderD0,expiry,0.012,1.55,on,1.0,4480
+both,ladder+ladderD0,expiry,0.012,1.55,on,1.2,4481
+both,ladder+ladderD0,expiry,0.012,2.0,,,4482
+both,ladder+ladderD0,expiry,0.012,2.0,,1.0,4483
+both,ladder+ladderD0,expiry,0.012,2.0,,1.2,4484
+both,ladder+ladderD0,expiry,0.012,2.0,on,,4485
+both,ladder+ladderD0,expiry,0.012,2.0,on,1.0,4486
+both,ladder+ladderD0,expiry,0.012,2.0,on,1.2,4487
+both,ladder+ladderD0,expiry,0.025,,,,4488
+both,ladder+ladderD0,expiry,0.025,,,1.0,4489
+both,ladder+ladderD0,expiry,0.025,,,1.2,4490
+both,ladder+ladderD0,expiry,0.025,,on,,4491
+both,ladder+ladderD0,expiry,0.025,,on,1.0,4492
+both,ladder+ladderD0,expiry,0.025,,on,1.2,4493
+both,ladder+ladderD0,expiry,0.025,1.3,,,4494
+both,ladder+ladderD0,expiry,0.025,1.3,,1.0,4495
+both,ladder+ladderD0,expiry,0.025,1.3,,1.2,4496
+both,ladder+ladderD0,expiry,0.025,1.3,on,,4497
+both,ladder+ladderD0,expiry,0.025,1.3,on,1.0,4498
+both,ladder+ladderD0,expiry,0.025,1.3,on,1.2,4499
+both,ladder+ladderD0,expiry,0.025,1.55,,,4500
+both,ladder+ladderD0,expiry,0.025,1.55,,1.0,4501
+both,ladder+ladderD0,expiry,0.025,1.55,,1.2,4502
+both,ladder+ladderD0,expiry,0.025,1.55,on,,4503
+both,ladder+ladderD0,expiry,0.025,1.55,on,1.0,4504
+both,ladder+ladderD0,expiry,0.025,1.55,on,1.2,4505
+both,ladder+ladderD0,expiry,0.025,2.0,,,4506
+both,ladder+ladderD0,expiry,0.025,2.0,,1.0,4507
+both,ladder+ladderD0,expiry,0.025,2.0,,1.2,4508
+both,ladder+ladderD0,expiry,0.025,2.0,on,,4509
+both,ladder+ladderD0,expiry,0.025,2.0,on,1.0,4510
+both,ladder+ladderD0,expiry,0.025,2.0,on,1.2,4511

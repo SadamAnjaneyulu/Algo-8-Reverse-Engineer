@@ -1,0 +1,9 @@
+design,view,outcome,N,cycles_NIFTY,cycles_SENSEX,testable,reasons,rule,minority_pooled,minority_NIFTY,minority_SENSEX
+PRE,V2,action,671,15,17,True,,E2 minority gates + N>=min_events,84.0,36.0,48.0
+PRE,V2,quantity,587,15,17,True,,N>=min_events and cycles,,,
+PRE,V3,action,626,15,17,True,,E2 minority gates + N>=min_events,84.0,36.0,48.0
+PRE,V3,quantity,542,15,17,True,,N>=min_events and cycles,,,
+D0,V2,action,543,12,14,True,,E2 minority gates + N>=min_events,33.0,16.0,17.0
+D0,V2,quantity,510,12,14,True,,N>=min_events and cycles,,,
+D0,V3,action,534,12,14,True,,E2 minority gates + N>=min_events,33.0,16.0,17.0
+D0,V3,quantity,501,12,14,True,,N>=min_events and cycles,,,
