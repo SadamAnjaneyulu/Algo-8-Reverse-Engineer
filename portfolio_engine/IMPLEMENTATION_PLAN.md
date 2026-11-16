@@ -75,3 +75,7 @@ R1-C (decision recorded 2026-11-15): **Formal project decision (owner, 2026-11-1
 * **Dual-scenario research:** every research result is produced under the baseline and under `PER_CONTRACT_ID_SEQUENCE`, stored side by side, with an explicit ordering-stable / ordering-dependent label.
 * Source data (the raw trade file and the TP-01 ledger) is **never modified**; ordering keys are derived at load time from the raw columns and checked against the manifest hash.
 * Plugins cannot mutate state (existing M3 gate); a plugin may not choose the ordering convention silently.
+
+### M2 closure status (2026-11-16; supersedes the "authorized order" list above, which is kept as history)
+Steps 1-7 are **done** and documented in `reports/M2_CLOSURE_FINAL_REPORT.md`: R1-C record and completeness (N1 fixed, N2 resolved, inventory reconciled to 170 paths), Phase Two decisions A-D implemented with tests and mutants, Medium and Low dispositions for all 49 defects (0 open Medium), regression and mutation testing, fresh-context review (no Critical/High; CR-01..08 fixed or dispositioned). **Proposed final decision: M2 CONDITIONAL PASS - awaiting the owner's approval.** Standing conditions: both scenarios in every downstream result; no portfolio-level intra-second event-path interpretation; deferred items D-01, D-04, E-D02, E-D03 and open Lows C-06, E-D11 stay disclosed. **M3, M4, M5, M6: not started.**
+
