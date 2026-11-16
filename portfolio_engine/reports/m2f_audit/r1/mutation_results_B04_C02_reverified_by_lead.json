@@ -1,0 +1,170 @@
+[
+ {
+  "mutant": "M-B1 summarize pairs_linked `<` instead of `<=`",
+  "killed_by_assertion": true,
+  "summary": "11 failed, 24 passed in 0.36s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:89: assert (2 == 3)"
+  ]
+ },
+ {
+  "mutant": "M-B2 total_closing_qty drops a portion (cps[1:])",
+  "killed_by_assertion": true,
+  "summary": "6 failed, 29 passed in 0.33s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:152: AssertionError: assert (3 == 3 and 32 == 42)"
+  ]
+ },
+ {
+  "mutant": "M-B2b total_closing_qty drops the last portion (cps[:-1])",
+  "killed_by_assertion": true,
+  "summary": "6 failed, 29 passed in 0.37s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:152: AssertionError: assert (3 == 3 and 35 == 42)"
+  ]
+ },
+ {
+  "mutant": "M-B3 join_gap_s off by one (lk[0]+1)",
+  "killed_by_assertion": true,
+  "summary": "6 failed, 29 passed in 0.33s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:163: AssertionError: assert [('INF:CLOSIN...', None), ...] == [('INF:CLOSIN...', None), ...]"
+  ]
+ },
+ {
+  "mutant": "M-B3b join_gap_s sign dropped (abs)",
+  "killed_by_assertion": true,
+  "summary": "3 failed, 32 passed in 0.40s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:163: AssertionError: assert [('INF:CLOSIN...', None), ...] == [('INF:CLOSIN...', None), ...]"
+  ]
+ },
+ {
+  "mutant": "M-B4 batch numbering starts at 0 (n = -1)",
+  "killed_by_assertion": true,
+  "summary": "22 failed, 13 passed in 0.27s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:150: AssertionError: ('C1', 2, ('2026-01-08', '2026-01-05'), 1)"
+  ]
+ },
+ {
+  "mutant": "M-B4b batch numbering skips (n += 2)",
+  "killed_by_assertion": true,
+  "summary": "22 failed, 13 passed in 0.33s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:150: AssertionError: ('C1', 2, ('2026-01-08', '2026-01-05'), 1)"
+  ]
+ },
+ {
+  "mutant": "M-B5 summarize pairs_gap_exactly_threshold uses g+1",
+  "killed_by_assertion": true,
+  "summary": "2 failed, 33 passed in 0.36s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:89: assert (4 == 4 and 0 == 1)"
+  ]
+ },
+ {
+  "mutant": "M-B6 summarize pairs_gap_threshold_plus_1s uses g+2",
+  "killed_by_assertion": true,
+  "summary": "7 failed, 28 passed in 0.37s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:89: assert (6 == 6 and 1 == 1 and 0 == 1)"
+  ]
+ },
+ {
+  "mutant": "M-B7 summarize adjacent_pairs = len(pairs)-1",
+  "killed_by_assertion": true,
+  "summary": "10 failed, 25 passed in 0.35s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:87: assert (16 == 16 and 18 == 18 and 12 == 13)"
+  ]
+ },
+ {
+  "mutant": "M-B8 summarize closing_portions drops one",
+  "killed_by_assertion": true,
+  "summary": "10 failed, 25 passed in 0.38s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:87: assert (16 == 16 and 17 == 18)"
+  ]
+ },
+ {
+  "mutant": "M-B9 summarize singleton_batches counts size<=2",
+  "killed_by_assertion": true,
+  "summary": "10 failed, 25 passed in 0.36s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_closing_batches_reporting.py:88: assert (13 == 13 and 12 == 11)"
+  ]
+ },
+ {
+  "mutant": "M-C1 W3 weight = matched / body_qty (register M19)",
+  "killed_by_assertion": true,
+  "summary": "1 failed, 4 passed in 0.09s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:62: AssertionError: assert [('W1', 'B1',...1', 1.0), ...] == [('W1', 'B1',...3333333), ...]"
+  ]
+ },
+ {
+  "mutant": "M-C2 W3 weight = wing_qty / body_qty",
+  "killed_by_assertion": true,
+  "summary": "1 failed, 4 passed in 0.08s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:62: AssertionError: assert [('W1', 'B1',...1', 3.0), ...] == [('W1', 'B1',...3333333), ...]"
+  ]
+ },
+ {
+  "mutant": "M-C3 W3 queue order reversed (bodies newest first)",
+  "killed_by_assertion": true,
+  "summary": "5 failed in 0.08s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:55: AssertionError: assert [('W1', 'B4',..., 10, 6), ...] == [('W1', 'B1',..., 30, 1), ...]"
+  ]
+ },
+ {
+  "mutant": "M-C3b W3 queue order reversed (wings newest first)",
+  "killed_by_assertion": true,
+  "summary": "4 failed, 1 passed in 0.08s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:55: AssertionError: assert [('W3', 'B1',..., 25, 1), ...] == [('W1', 'B1',..., 30, 1), ...]"
+  ]
+ },
+ {
+  "mutant": "M-C4 W3 weight = u / wing units still open",
+  "killed_by_assertion": true,
+  "summary": "1 failed, 4 passed in 0.08s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:62: AssertionError: assert [('W1', 'B1',...3333333), ...] == [('W1', 'B1',...3333333), ...]"
+  ]
+ },
+ {
+  "mutant": "M-C5 W3 weight = 1.0 always",
+  "killed_by_assertion": true,
+  "summary": "1 failed, 4 passed in 0.08s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:62: AssertionError: assert [('W1', 'B1',...1', 1.0), ...] == [('W1', 'B1',...3333333), ...]"
+  ]
+ },
+ {
+  "mutant": "M-C6 W3 u = max instead of min",
+  "killed_by_assertion": true,
+  "summary": "5 failed in 0.08s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:55: AssertionError: assert [('W1', 'B1',... 'BE', 80, 1)] == [('W1', 'B1',..., 30, 1), ...]"
+  ]
+ },
+ {
+  "mutant": "M-C7 W3 segment numbering from 0",
+  "killed_by_assertion": true,
+  "summary": "2 failed, 3 passed in 0.08s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:55: AssertionError: assert [('W1', 'B1',..., 30, 0), ...] == [('W1', 'B1',..., 30, 1), ...]"
+  ]
+ },
+ {
+  "mutant": "M-C8 W3 body residual omits trailing bodies",
+  "killed_by_assertion": true,
+  "summary": "2 failed, 3 passed in 0.08s",
+  "first_assertion": [
+   "/tmp/claude-0/-home-user-Algo-8-Reverse-Engineer/065db6a7-1cda-57f8-842a-8a8064e9a7d5/scratchpad/reverify/copy/tests/test_wing_body_w3_engine.py:85: AssertionError: assert {'wing_units_...nmatched': 65} == {'wing_units_...nmatched': 95}"
+  ]
+ }
+]
