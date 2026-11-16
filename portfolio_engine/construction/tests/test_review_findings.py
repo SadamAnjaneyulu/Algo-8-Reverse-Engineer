@@ -146,6 +146,17 @@ def test_decision_info_ts_records_the_newest_data_actually_used():
     _, f = run(scn(body)); a = acts(f); assert {x['info_ts'] for x in a} == {str(T0 + 100)} and len(a) == 4                       # basket scope: every action carries the newest mark that triggered it
 
 
+def test_info_ts_is_the_newest_mark_used_even_when_older_than_the_evaluation_time():
+    _, f = run(scn(plugins(True, False, False) + cfg('basket_cut', 'trigger_bp', 2000) + cfg('basket_cut', 'leg_side_filter', 'SHORT') + mark(0, SCE, 10000) + mark(0, SPE, 9000) + tick(300)))
+    d = [x for x in decs(f) if x['reason'] == 'NO_TRIGGER'][0]; assert d['ts'] == str(T0 + 300) and d['info_ts'] == str(T0)                  # last data used was the mark at t+0
+
+
+def test_basket_scope_action_info_ts_is_the_newest_of_all_triggering_marks():
+    body = (plugins(True, False, False) + cfg('basket_cut', 'scope', 'BASKET') + cfg('basket_cut', 'units', 65) + mark(0, SPE, 9000) + mark(0, WCE, 200) + mark(0, WPE, 250) + mark(100, SCE, 12500) + mark(200, SPE, 11250) + mark(0, SCE, 10000) + tick(0) + tick(300))
+    _, f = run(scn(body)); a = {x['leg_id']: x['info_ts'] for x in acts(f)}
+    assert a == {'SCE': str(T0 + 100), 'SPE': str(T0 + 200), 'WCE': str(T0 + 200), 'WPE': str(T0 + 200)}           # untriggered legs carry the newest trigger data (+200)
+
+
 def test_cut_of_a_fully_cut_basket_is_an_invalid_basket_state_not_just_missing_inventory():
     pre = plugins(False, False, True) + mark(0, SCE, 10000) + tick(0)
     full = ''.join(action(0, f'c{k}', 'CUT', leg, 195) for k, leg in enumerate(('SCE', 'SPE', 'WCE', 'WPE')))

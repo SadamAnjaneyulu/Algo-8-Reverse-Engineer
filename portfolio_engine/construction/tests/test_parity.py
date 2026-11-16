@@ -60,6 +60,13 @@ def test_permuted_files_and_configuration_sweeps_identical(tmp_path, build):
     variants += [scn(pre + ga('g1', 'SCE', 130) + ga('g2', 'SCE', 130)), scn(pre + ga('g1', 'SCE', 65) + ga('g2', 'SPE', 65)), scn(pre + action(0, 'c1', 'CUT', 'SCE', 65) + action(0, 'c2', 'CUT', 'SCE', 65) + action(0, 'r1', 'REENTRY', 'SCE', 130, 'c1'))]
     variants += [scn(pre + action(0, 'c', 'CUT', 'SPE', 65) + action(0, 'r', 'REENTRY', 'SCE', 65, 'c')), scn(pre + action(0, 'c', 'CUT', 'SCE', 260) + action(0, 'r', 'REENTRY', 'SCE', 65, 'c'))]
     variants += [scn(example_body()).replace(f'MARK\t{T0 + 1200}\t{SCE}\t11000\n', f'MARK\t{T0 + 1200}\t{SCE}\t{px}\n') for px in (10620, 10625, 14375, 14380)]
+    longleg = scn('').replace(L('LEG', 'f3', 'B1', 'WCE', WCE, 1, 195, 200, T0), L('LEG', 'f3', 'B1', 'WCE', WCE, 1, 195, 10000, T0))
+    for px in (8005, 8000, 7995): variants.append(longleg + plugins(True, False, False) + cfg('basket_cut', 'trigger_bp', 2000) + cfg('basket_cut', 'leg_side_filter', 'LONG') + cfg('basket_cut', 'option_type_filter', 'CE') + mark(0, WCE, 10000) + mark(300, WCE, px) + tick(0) + tick(300))
+    for wait in (299, 300, 600): variants.append(scn(example_body(cfg('basket_reentry', 'cooldown_s', 300) + cfg('basket_reentry', 'price_condition', 'NONE') + cfg('basket_reentry', 'max_wait_s', wait))))
+    two = scn('') + L('LEG', 'g1', 'B2', 'SCE', SCE, -1, 130, 10000, T0)
+    for flt in ('B1', 'B2', '*'): variants.append(two + plugins() + cfg('basket_cut', 'policy', 'SCHEDULED') + cfg('basket_cut', 'basket_filter', flt) + cfg('basket_cut', 'leg_side_filter', 'SHORT') + cfg('basket_cut', 'option_type_filter', 'CE') + cfg('basket_cut', 'units', 65) + cfg('basket_reentry', 'basket_filter', flt) + cfg('basket_reentry', 'cooldown_s', 0) + mark(0, SCE, 10000) + tick(0) + tick(300))
+    variants.append(scn(plugins(True, False, False) + cfg('basket_cut', 'scope', 'BASKET') + cfg('basket_cut', 'units', 65) + mark(0, SPE, 9000) + mark(0, WCE, 200) + mark(0, WPE, 250) + mark(100, SCE, 12500) + mark(200, SPE, 11250) + mark(0, SCE, 10000) + tick(0) + tick(300)))
+    variants.append(scn(plugins(True, False, False) + cfg('basket_cut', 'trigger_bp', 2000) + mark(0, SCE, 10000) + mark(0, SPE, 9000) + tick(300)))
     for pol in ('SCHEDULED',): variants.append(scn(example_body().replace(L('CONFIG', 'basket_cut', 'policy', 'MARK_ADVERSE_MOVE'), L('CONFIG', 'basket_cut', 'policy', pol))))
     for rk in ('max_short_units', 'max_gross_units'): variants.append(scn(example_body('', risk(rk, 330))))
     for i, t in enumerate(variants): py, cp = both(tmp_path, t, f'v{i}'); compare(py, cp, f'variant{i}')
@@ -87,7 +94,7 @@ def test_cpp_refuses_every_malformed_scenario_python_refuses(tmp_path, build):
 
 
 def test_cpp_creates_the_output_directory_like_python(tmp_path, build):
-    p = tmp_path / 's.scn'; p.write_text(G.s05_reentry_success().to_text()); out = tmp_path / 'a' / 'b'; assert cpp_run(str(p), str(out)).returncode == 0 and (out / 'summary.tsv').exists()
+    p = tmp_path / 's.scn'; p.write_text(G.s05_reentry_success().to_text()); out = tmp_path / 'a' / 'b'; assert cpp_run(str(p), str(out), make_dir=False).returncode == 0 and (out / 'summary.tsv').exists()
 
 
 def test_no_mark_fill_price_and_distinct_reentry_ids_identical_in_both_languages(tmp_path, build):

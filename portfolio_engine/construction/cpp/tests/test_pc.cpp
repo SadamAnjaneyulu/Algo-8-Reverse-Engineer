@@ -160,6 +160,20 @@ static void test_plugin_isolation_and_output_validation() {
   { Catalog c; c["bad"] = [] { return std::make_shared<BadM<6>>(); }; CHECK(one(c).second == "1"); }
   MarkStore m; m.add(100, "x", 5); m.add(101, "x", 7); m.finish(); auto v = m.truncated(100); CHECK(!v->at("x", 101).has_value() || v->at("x", 101)->first == 5); CHECK(v->at("x", 1000000)->first == 5);       // the context copy cannot reveal later marks
 }
+static void test_boundaries_filters_and_info_ts() {
+  std::string longleg = scn(""); { std::string from = L({"LEG", "f3", "B1", "WCE", WCE, "1", "195", "200", T(T0)}), to = L({"LEG", "f3", "B1", "WCE", WCE, "1", "195", "10000", T(T0)}); longleg.replace(longleg.find(from), from.size(), to); }
+  auto n = [&](i64 px) { auto f = run(longleg + plugins(true, false, false) + cfg("basket_cut", "trigger_bp", "2000") + cfg("basket_cut", "leg_side_filter", "LONG") + cfg("basket_cut", "option_type_filter", "CE") + mark(0, WCE, 10000) + mark(300, WCE, px) + tick(0) + tick(300)); return rows(f["actions.tsv"]).size(); };
+  CHECK(n(8005) == 0 && n(8000) == 1 && n(7995) == 1);                                                       // long entry 10000: inclusive at mark <= 8000
+  auto re = [&](i64 wait) { std::size_t k = 0; for (auto& r : rows(run(scn(example_body(cfg("basket_reentry", "cooldown_s", "300") + cfg("basket_reentry", "price_condition", "NONE") + cfg("basket_reentry", "max_wait_s", T(wait)))))["actions.tsv"])) k += r[5] == "REENTRY"; return k; };
+  CHECK(re(299) == 0 && re(300) == 1 && re(600) == 1);                                                       // exactly cut + max_wait is inside the window
+  const std::string two = scn("") + L({"LEG", "g1", "B2", "SCE", SCE, "-1", "130", "10000", T(T0)});
+  auto filt = [&](const std::string& f) { auto r = rows(run(two + plugins() + cfg("basket_cut", "policy", "SCHEDULED") + cfg("basket_cut", "basket_filter", f) + cfg("basket_cut", "leg_side_filter", "SHORT") + cfg("basket_cut", "option_type_filter", "CE") + cfg("basket_cut", "units", "65") + cfg("basket_reentry", "basket_filter", f) + cfg("basket_reentry", "cooldown_s", "0") + mark(0, SCE, 10000) + tick(0) + tick(300))["actions.tsv"]);
+    std::string s; for (auto& x : r) s += x[7] + ":" + x[5] + " "; return s; };
+  CHECK(filt("B2") == "B2:CUT B2:REENTRY " && filt("B1") == "B1:CUT B1:REENTRY " && filt("*") == "B1:CUT B2:CUT B1:REENTRY B2:REENTRY ");
+  { auto f = run(scn(plugins(true, false, false) + cfg("basket_cut", "scope", "BASKET") + cfg("basket_cut", "units", "65") + mark(0, SPE, 9000) + mark(0, WCE, 200) + mark(0, WPE, 250) + mark(100, SCE, 12500) + mark(200, SPE, 11250) + mark(0, SCE, 10000) + tick(0) + tick(300)));
+    std::map<std::string, std::string> info; for (auto& r : rows(f["actions.tsv"])) info[r[8]] = r[11]; CHECK(info["SCE"] == T(T0 + 100) && info["SPE"] == T(T0 + 200) && info["WCE"] == T(T0 + 200) && info["WPE"] == T(T0 + 200)); }
+  { auto f = run(scn(plugins(true, false, false) + cfg("basket_cut", "trigger_bp", "2000") + mark(0, SCE, 10000) + mark(0, SPE, 9000) + tick(300))); for (auto& r : rows(f["decisions.tsv"])) if (r[7] == "NO_TRIGGER") CHECK(r[10] == T(T0)); }
+}
 static void test_lookahead_and_errors() {
   EvalContext c; c.ts = 100; MarkStore m; m.add(100, "x", 5); m.add(101, "x", 7); m.finish(); c.marks = m.truncated(100);
   CHECK(c.mark("x")->first == 5); THROWS(c.mark("x", 101), LookAheadError); CHECK(!c.mark("y").has_value());
@@ -185,6 +199,6 @@ static void test_scenario_rules() {
   THROWS(Scenario::parse(scn(L({"LEG", "f9", "B1", "SCE", SCE, "-1", "70", "10000", T(T0)}))), ScenarioError);                                  // not a lot multiple
 }
 int main() {
-  test_registry(); test_example_by_hand(); test_cut_variants(); test_risk(); test_boundaries_and_groups(); test_lineage_and_reconciliation(); test_plugin_isolation_and_output_validation(); test_lookahead_and_errors(); test_new_plugin_without_core_change(); test_scenario_rules();
+  test_registry(); test_example_by_hand(); test_cut_variants(); test_risk(); test_boundaries_and_groups(); test_lineage_and_reconciliation(); test_plugin_isolation_and_output_validation(); test_boundaries_filters_and_info_ts(); test_lookahead_and_errors(); test_new_plugin_without_core_change(); test_scenario_rules();
   std::cout << (failures ? "FAILED " : "") << (checks - failures) << "/" << checks << " plugin checks passed\n"; return failures ? 1 : 0;
 }

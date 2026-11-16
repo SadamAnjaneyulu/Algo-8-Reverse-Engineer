@@ -50,5 +50,6 @@ def cpp_build():
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); d = tempfile.mkdtemp(prefix='pcbuild_')
     subprocess.check_call(['cmake', '-S', os.path.join(root, 'cpp'), '-B', d, '-DCMAKE_BUILD_TYPE=Release'], stdout=subprocess.DEVNULL); subprocess.check_call(['cmake', '--build', d], stdout=subprocess.DEVNULL)
     _BUILD['dir'] = d; return d
-def cpp_run(scn_path, out_dir):
-    os.makedirs(out_dir, exist_ok=True); return subprocess.run([os.path.join(cpp_build(), 'pc_run'), scn_path, out_dir], capture_output=True, text=True)
+def cpp_run(scn_path, out_dir, make_dir=True):
+    if make_dir: os.makedirs(out_dir, exist_ok=True)
+    return subprocess.run([os.path.join(cpp_build(), 'pc_run'), scn_path, out_dir], capture_output=True, text=True)
