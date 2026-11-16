@@ -1,0 +1,115 @@
+{
+ "statement": "Exclusive reading of the approved threshold, published as a sensitivity. The primary results use gap <= threshold.",
+ "rows": [
+  {
+   "method": "C1",
+   "threshold_s": 2,
+   "inclusive_batches": 7127,
+   "exclusive_batches": 7788,
+   "pairs_with_gap_exactly_threshold": 661,
+   "inclusive_batches_not_in_exclusive": 553,
+   "exclusive_batches_not_in_inclusive": 1214,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C1",
+   "threshold_s": 5,
+   "inclusive_batches": 3777,
+   "exclusive_batches": 4218,
+   "pairs_with_gap_exactly_threshold": 441,
+   "inclusive_batches_not_in_exclusive": 399,
+   "exclusive_batches_not_in_inclusive": 840,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C1",
+   "threshold_s": 10,
+   "inclusive_batches": 3065,
+   "exclusive_batches": 3144,
+   "pairs_with_gap_exactly_threshold": 79,
+   "inclusive_batches_not_in_exclusive": 74,
+   "exclusive_batches_not_in_inclusive": 153,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C1",
+   "threshold_s": 30,
+   "inclusive_batches": 2171,
+   "exclusive_batches": 2196,
+   "pairs_with_gap_exactly_threshold": 25,
+   "inclusive_batches_not_in_exclusive": 25,
+   "exclusive_batches_not_in_inclusive": 50,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C1",
+   "threshold_s": 60,
+   "inclusive_batches": 1502,
+   "exclusive_batches": 1535,
+   "pairs_with_gap_exactly_threshold": 33,
+   "inclusive_batches_not_in_exclusive": 30,
+   "exclusive_batches_not_in_inclusive": 63,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C2",
+   "threshold_s": 2,
+   "inclusive_batches": 7127,
+   "exclusive_batches": 7788,
+   "pairs_with_gap_exactly_threshold": 661,
+   "inclusive_batches_not_in_exclusive": 553,
+   "exclusive_batches_not_in_inclusive": 1214,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C2",
+   "threshold_s": 5,
+   "inclusive_batches": 3777,
+   "exclusive_batches": 4218,
+   "pairs_with_gap_exactly_threshold": 441,
+   "inclusive_batches_not_in_exclusive": 399,
+   "exclusive_batches_not_in_inclusive": 840,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C2",
+   "threshold_s": 10,
+   "inclusive_batches": 3065,
+   "exclusive_batches": 3144,
+   "pairs_with_gap_exactly_threshold": 79,
+   "inclusive_batches_not_in_exclusive": 74,
+   "exclusive_batches_not_in_inclusive": 153,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C2",
+   "threshold_s": 30,
+   "inclusive_batches": 2171,
+   "exclusive_batches": 2196,
+   "pairs_with_gap_exactly_threshold": 25,
+   "inclusive_batches_not_in_exclusive": 25,
+   "exclusive_batches_not_in_inclusive": 50,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  },
+  {
+   "method": "C2",
+   "threshold_s": 60,
+   "inclusive_batches": 1502,
+   "exclusive_batches": 1535,
+   "pairs_with_gap_exactly_threshold": 33,
+   "inclusive_batches_not_in_exclusive": 30,
+   "exclusive_batches_not_in_inclusive": 63,
+   "link_semantics_primary": "inclusive: gap <= threshold",
+   "link_semantics_this_artifact": "EXCLUSIVE: gap < threshold (sensitivity only)"
+  }
+ ]
+}

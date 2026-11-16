@@ -36,15 +36,18 @@ def closing_parents(ls):
     return list(d.values()), unattr, sorted(pid for pid, s in streams.items() if len(s) > 1)
 
 
-def param_hash(method, g):
+LINK_TEXT = {True: 'gap<=threshold (inclusive), adjacent parents, single linkage', False: 'gap<threshold (EXCLUSIVE sensitivity), adjacent parents, single linkage'}
+
+
+def param_hash(method, g, inclusive=True):
     return hashlib.sha256(json.dumps(dict(version=GROUPING_VERSION, method=method, threshold_s=g, boundaries=['underlying', 'expiry', 'session(IST date)'], unit='parent order (closing portions only)', order='first_ts,first_src,parent_id',
-                                          link='gap<=threshold (inclusive), adjacent parents, single linkage', precision='whole seconds'), sort_keys=True).encode()).hexdigest()[:16]
+                                          link=LINK_TEXT[inclusive], precision='whole seconds'), sort_keys=True).encode()).hexdigest()[:16]
 
 
-def build_view(parents, method, g, order='src', c2_ref='previous'):
+def build_view(parents, method, g, order='src', c2_ref='previous', inclusive=True):
     """one analytical view: list of batches; each batch = dict(batch_id, members=[ParentClose...], links=[(gap, overlap)...]). C1 gap = first(next) - first(prev); C2 gap = first(next) - last(prev).
     Defaults are the APPROVED rules. `order='parent_id'` (tie-break by parent id instead of source row) and `c2_ref='running_max'` (C2 reference = largest last_ts seen so far in the stream) exist ONLY to measure how much the result depends on rules the specification leaves open; such views are statistics, never written as outputs."""
-    token = METHODS_CB[method][0] + f'_{g}S' + ('' if (order, c2_ref) == ('src', 'previous') else f'__SENS_{order}_{c2_ref}'); streams = defaultdict(list)
+    token = METHODS_CB[method][0] + f'_{g}S' + ('' if (order, c2_ref) == ('src', 'previous') else f'__SENS_{order}_{c2_ref}') + ('' if inclusive else '__SENS_exclusive'); streams = defaultdict(list)
     for p in parents: streams[p.stream].append(p)
     batches = []
     for stream in sorted(streams):
@@ -53,20 +56,25 @@ def build_view(parents, method, g, order='src', c2_ref='previous'):
             if prev is None: link = None
             else:
                 ref_last = prev.last_ts if c2_ref == 'previous' else run_max
-                gap = p.first_ts - (prev.first_ts if method == 'C1' else ref_last); link = (gap, p.first_ts <= ref_last, p.first_ts < ref_last) if gap <= g else None      # (gap, closed-interval overlap incl. same-second touching, strict overlap)
+                gap = p.first_ts - (prev.first_ts if method == 'C1' else ref_last); link = (gap, p.first_ts <= ref_last, p.first_ts < ref_last) if (gap <= g if inclusive else gap < g) else None      # (gap, closed-interval overlap incl. same-second touching, strict overlap)
             run_max = p.last_ts if run_max is None else max(run_max, p.last_ts)
             if link is None:
                 n += 1; cur = dict(batch_id=f'INF:CLOSING_BATCH@{token}:{stream[0]}:{stream[1]}:{stream[2]}:{n:03d}', members=[p], links=[], stream=stream, token=token); batches.append(cur)
             else: cur['members'].append(p); cur['links'].append(link)
-    return dict(method=method, threshold_s=g, token=token, batches=batches, parameter_hash=param_hash(method, g))
+    return dict(method=method, threshold_s=g, token=token, batches=batches, parameter_hash=param_hash(method, g, inclusive), inclusive=inclusive)
 
 
 def all_views(parents):
     return {(m, g): build_view(parents, m, g) for m in ('C1', 'C2') for g in THRESHOLDS}
 
 
+def all_views_exclusive(parents):
+    """SENSITIVITY ONLY (never replaces the primary views): the same ten views with the exclusive link rule `gap < threshold`; tokens end in __SENS_exclusive, parameter hashes differ"""
+    return {(m, g): build_view(parents, m, g, inclusive=False) for m in ('C1', 'C2') for g in THRESHOLDS}
+
+
 # ----------------------------------------------------------------------------- invariants (partition + reconciliation); raise InvariantViolation
-def reference_partition(parents, method, g):
+def reference_partition(parents, method, g, inclusive=True):
     """INDEPENDENT second implementation of the approved rule (plain loops, different structure from build_view) used by check_view: returns the set of frozensets of parent keys"""
     out = set(); by = defaultdict(list)
     for p in parents: by[p.stream].append(p)
@@ -74,7 +82,7 @@ def reference_partition(parents, method, g):
         ps = sorted(ps, key=lambda p: (p.first_ts, p.first_src, p.parent_id)); group = [ps[0]] if ps else []
         for i in range(1, len(ps)):
             a, b = ps[i - 1], ps[i]; gap = b.first_ts - a.first_ts if method == 'C1' else b.first_ts - a.last_ts
-            if gap <= g: group.append(b)
+            if (gap <= g if inclusive else gap < g): group.append(b)
             else: out.add(frozenset(x.key for x in group)); group = [b]
         if group: out.add(frozenset(x.key for x in group))
     return out
@@ -101,7 +109,7 @@ def check_view(view, parents, cps, unattributable=()):
     if seen_parent != set(by_key): raise InvariantViolation('eligible parents not represented exactly once')
     if seen_cp | set(unattributable) != set(cps) or seen_cp & set(unattributable): raise InvariantViolation('closing portions not represented exactly once (batched + unattributable != all)')
     if total + sum(cps[c][8] for c in unattributable) != sum(r[8] for r in cps.values()): raise InvariantViolation('closing quantity does not reconcile')
-    if {frozenset(p.key for p in b['members']) for b in view['batches']} != reference_partition(parents, view['method'], view['threshold_s']): raise InvariantViolation('batch memberships differ from the independent reference implementation of the approved rule')
+    if {frozenset(p.key for p in b['members']) for b in view['batches']} != reference_partition(parents, view['method'], view['threshold_s'], view.get('inclusive', True)): raise InvariantViolation('batch memberships differ from the independent reference implementation of the approved rule')
     return True
 
 
