@@ -37,7 +37,7 @@ Date: 2026-11-16 · Branch `engineering/position-lifecycle-basket-reconstruction
 
 # 3. Test and mutation evidence (all executed in this session)
 
-* Python: FULL_SUITE_RESULT.
+* Python: **511 passed** in 1,047 s (`pytest tests`, including the slow real-ledger, reproduction, price-scrambling and manifest tests; run on the final tree).
 * C++ core: `ctest` passed; `pe_core_tests` 24 of 24. Python / C++ parity tests are part of the Python suite (shared logic only; the hybrid and the keyed policies are Python-only by design).
 * Mutation, kill = an **assertion failure** (an error, import failure or the engine's own invariant check raising is not a kill):
 
