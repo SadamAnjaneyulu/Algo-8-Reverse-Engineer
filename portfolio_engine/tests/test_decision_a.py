@@ -88,6 +88,8 @@ def test_case_selection_is_invariant_under_upstream_price_scrambling(tmp_path):
     root = tmp_path / 'repo'; pe = root / 'portfolio_engine'; os.makedirs(pe / 'reports')
     for d in ('python', 'tools'): shutil.copytree(os.path.join(PE, d), pe / d, ignore=shutil.ignore_patterns('__pycache__'))
     shutil.copy(os.path.join(PE, 'reports', 'demo_cycle_scores.csv'), pe / 'reports' / 'demo_cycle_scores.csv')
+    gen = pe / 'python' / 'pe' / 'generators' / 'historical.py'; src = gen.read_text(); call = '    verify_ledger_against_raw(repo_root, list(L.itertuples()))'
+    assert src.count(call) == 1; gen.write_text(src.replace(call, '    pass'))       # D-A02: the production generator rightly REJECTS a ledger that differs from the raw csv; this counterfactual experiment needs the unverified path, so only the MIRROR's copy has the check removed
     tp = root / 'tp_reconstruction'; os.makedirs(tp / 'data')
     for n in os.listdir(os.path.join(REPO, 'tp_reconstruction')):
         if n != 'data': os.symlink(os.path.join(REPO, 'tp_reconstruction', n), tp / n)

@@ -1,11 +1,58 @@
 """HISTORICAL generator: TP-01 normalised fill ledger (read-only) -> canonical events / instruments (mode HISTORICAL_OBSERVED_REPLAY).
 It reads `tp_reconstruction/data/fill_event_ledger.parquet` and never writes anywhere near it. Optional cycle filter (underlying + expiry) for small real samples."""
 import hashlib, json, os
+from decimal import Decimal
 from ..schema import *
 from .. import tsvio, provenance
 
 GENERATOR = 'historical_tp01_ledger'; VERSION = '1'
 LOT_SOURCE = 'TP01_config_units_verified_multiples'
+
+
+# raw csv column indices (audited by M2-F, same as tests/test_m2f_regressions.py): 3 segment, 11 side, 12 underlying, 14 strike, 15 expiry (m/d/Y H:M), 16 right, 33 quantity (units), 137 per-fill price (rupees), 161 UTC epoch s, 163 parent order id
+def _paise_exact(text):
+    """integer paise from a rupee decimal text, exactly (Decimal, never float); None when the text is not a decimal or not on the paise grid"""
+    try: d = Decimal(str(text).strip()) * 100
+    except Exception: return None
+    return int(d) if d.is_finite() and d == d.to_integral_value() else None
+
+
+def verify_ledger_against_raw(repo_root, ledger_rows):
+    """D-A02: compare EVERY ledger row used (source row id, contract / instrument fields, side, quantity in units, epoch seconds, parent order id, PRICE) with the raw csv row `src_row` (0-based csv row index).
+    Prices: the raw rupee text -> integer paise with decimal.Decimal; the ledger float is turned into its shortest round-trip decimal text (repr) and compared as Decimal paise; no float rounding anywhere.
+    Raises EngineError naming the first mismatching source row (lowest src_row) and field. Returns {src_row: raw_price_paise}. Reads the raw file only."""
+    import csv, datetime as dt
+    rows = sorted(ledger_rows, key=lambda r: int(r.src_row)); need = {int(r.src_row) for r in rows}
+    if len(need) != len(rows): raise EngineError('ledger has duplicate source row ids')
+    if not rows: return {}
+    raw = {}
+    with open(os.path.join(repo_root, 'Trades_GKOHNP140.csv'), newline='') as fh:
+        for i, rr in enumerate(csv.reader(fh)):
+            if i in need: raw[i] = rr
+    paise = {}
+    for r in rows:
+        i = int(r.src_row)
+        def bad(field, ledger_v, raw_v): raise EngineError(f'ledger row differs from the raw csv at source row {i}: {field}: ledger {ledger_v!r} != raw {raw_v!r}')
+        if i not in raw: bad('source row id', i, 'no such raw row')
+        c = raw[i]
+        try: exp = dt.datetime.strptime(c[15], '%m/%d/%Y %H:%M').date().isoformat(); strike = int(c[14]); units = int(c[33]); epoch = int(c[161])
+        except (ValueError, IndexError) as e: bad('raw row not parseable', None, repr(e))
+        if r.segment != c[3]: bad('segment', r.segment, c[3])
+        if r.und != c[12]: bad('underlying', r.und, c[12])
+        if r.cp != c[16]: bad('option right', r.cp, c[16])
+        if int(r.strike) != strike: bad('strike', int(r.strike), strike)
+        if r.expiry.strftime('%Y-%m-%d') != exp: bad('expiry', r.expiry.strftime('%Y-%m-%d'), exp)
+        if r.contract_id != f'{c[12]}|{exp}|{c[16]}|{strike}': bad('contract id', r.contract_id, f'{c[12]}|{exp}|{c[16]}|{strike}')
+        side = {'Buy': 1, 'Sell': -1}.get(c[11])
+        if side is None or int(r.sgn) != side: bad('side', int(r.sgn), c[11])
+        if int(r.qty_units) != units: bad('quantity (units)', int(r.qty_units), units)
+        if int(r.epoch) != epoch: bad('epoch seconds', int(r.epoch), epoch)
+        if str(r.parent_oid) != c[163]: bad('parent order id', str(r.parent_oid), c[163])
+        rp = _paise_exact(c[137]); lp = _paise_exact(repr(float(r.px_fill)))
+        if rp is None: bad('raw price not on the paise grid', None, c[137])
+        if lp != rp: bad('price (paise)', lp, rp)
+        paise[i] = rp
+    return paise
 
 
 def generate(repo_root, cycle=None):
@@ -16,6 +63,7 @@ def generate(repo_root, cycle=None):
     if raw_hash != man['sha256']: raise EngineError(f'raw trade file hash {raw_hash} != TP-01 manifest {man["sha256"]}')
     L = pd.read_parquet(pq)
     if cycle: L = L[(L.und == cycle[0]) & (L.expiry == pd.Timestamp(cycle[1]))]
+    verify_ledger_against_raw(repo_root, list(L.itertuples()))               # D-A02: every ledger row used is compared with the raw csv before anything is built
     lots = {'NIFTY': 65, 'SENSEX': 20}; ins = {}
     for r in L.drop_duplicates('contract_id').itertuples():
         ins[r.contract_id] = Instrument(r.contract_id, r.und, r.segment, 'OPTION', r.cp, int(r.strike), r.expiry.strftime('%Y-%m-%d'), lots[r.und], TICK_PAISE, LOT_SOURCE)
