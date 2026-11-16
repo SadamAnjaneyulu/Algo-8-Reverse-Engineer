@@ -39,7 +39,7 @@ M = [
  ('DA05_case_record_changed_in_delivered_json', json_edit('reports/m2e_data/NIFTY_2026-06-30/case_studies.json', lambda o: o['selection']['CT1_INCREMENTAL_OPENING'].__setitem__('episode_id', 'X')), 'not scrambling'),
  ('DA06_unapproved_line_changed_in_case_markdown', text_edit('reports/M2E_POSITION_CASE_STUDIES.md', '**Purpose:** make single positions inspectable.', '**Purpose:** make single positions comparable.'), 'not scrambling'),
  ('DA07_dataset_changed_after_wording_fix', append_bytes('reports/m2e_data/SENSEX_2026-07-16/episodes.tsv'), 'not scrambling'),
- ('DA08_concentration_disclosure_dropped', text_edit('tools/m2e_cases.py', "md += ['', '### 1.1 Sample concentration (computed from the selected case records)', '',", "md += ['', '### 1.1 Notes (computed from the selected case records)', '',"), 'not scrambling'),
+ ('DA08_concentration_disclosure_dropped', text_edit('python/pe/cases.py', "'### 1.1 Sample concentration (computed from the selected case records)'", "'### 1.1 Notes (computed from the selected case records)'"), 'not scrambling'),
 ]
 
 

@@ -150,3 +150,12 @@ def d0_eligibility(D, d_label_of_ts):
     d0 = [r for r in D['episodes'] if d_label_of_ts(int(r['first_ts_utc_s'])) == 'D0']
     return dict(d0_episodes=len(d0), CT1=sum(1 for r in d0 if ev[r['episode_id']]['ADDED'] >= 3), CT2=sum(1 for r in d0 if ev[r['episode_id']]['PARTIALLY_REDUCED'] >= 2 and r['terminal_status'] == 'CLOSED'),
                 CT3=sum(1 for r in d0 if ev[r['episode_id']]['CLOSED'] == 1 and not ev[r['episode_id']]['PARTIALLY_REDUCED'] and not ev[r['episode_id']]['REVERSED']))
+
+
+def concentration_section(P, D0E):
+    """the Markdown lines of section 1.1 of the case report; every number is computed (P from sample_profile, D0E from d0_eligibility per cycle)"""
+    dl = ', '.join(f"{v} begin in {k}" for k, v in P['by_d_label'].items()); hh = ', '.join(f"{v} during {h}:xx IST" for h, v in P['d_minus_1_by_ist_hour'].items())
+    return ['', '### 1.1 Sample concentration (computed from the selected case records)', '',
+            f"Of the {P['n']} selected case records, {dl}" + ("; **no selected case begins on D0**, so this sample provides no D0 examples." if P['no_d0'] else '.') + f" The D-1 episodes begin {hh}. "
+            + 'D0 episodes that satisfy the structural rule of CT1 / CT2 / CT3: ' + '; '.join(f"{cy.replace('_', ' ')}: {v['CT1']} / {v['CT2']} / {v['CT3']} of {v['d0_episodes']} D0 episodes" for cy, v in D0E.items())
+            + '. They were **not** used: the original sample is not replaced. A D0 diagnostic may be produced later only if labelled POST-HOC and kept separate from this case study.']

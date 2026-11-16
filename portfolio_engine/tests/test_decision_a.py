@@ -47,6 +47,13 @@ def test_sample_profile_and_d0_eligibility_hand_calculated():
     assert K.d0_eligibility(D, lab) == dict(d0_episodes=3, CT1=1, CT2=1, CT3=2)               # e1 (three ADDED, one CLOSED, no partial/reversal) and e3 both satisfy the CT3 predicate
 
 
+def test_concentration_section_is_computed_and_matches_the_delivered_paragraph():
+    P = K.sample_profile([('N', 'D-1', '09')] * 16 + [('S', 'D-1', '11')]); d0 = {'NIFTY_2026-06-30': dict(d0_episodes=51, CT1=17, CT2=14, CT3=21), 'SENSEX_2026-07-16': dict(d0_episodes=27, CT1=9, CT2=5, CT3=21)}
+    lines = K.concentration_section(P, d0); assert lines[1] == '### 1.1 Sample concentration (computed from the selected case records)'
+    md = open(os.path.join(PE, 'reports', 'M2E_POSITION_CASE_STUDIES.md')).read(); assert '\n'.join(lines[1:]) in md           # the delivered paragraph is exactly what the function produces for the 17 records and the measured D0 counts
+    assert '**no selected case begins on D0**' in lines[3] and '**no selected case begins on D0**' not in K.concentration_section(K.sample_profile([('N', 'D0', '09')]), d0)[3]
+
+
 def test_case_records_and_datasets_are_unchanged_since_before_decision_a():
     import hashlib
     base = json.load(open(os.path.join(PE, 'reports', 'm2f_audit', 'r1', 'baseline_sha256_before_R1.json')))['sha256']

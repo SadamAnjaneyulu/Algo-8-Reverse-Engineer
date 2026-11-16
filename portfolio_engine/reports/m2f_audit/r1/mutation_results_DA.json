@@ -12,5 +12,75 @@
    "test_case_selection_is_invariant_under_upstream_price_scrambling"
   ],
   "summary": "1 failed, 11 deselected in 142.47s (0:02:22) | test_decision_a.py:92: AssertionError:"
+ },
+ {
+  "id": "DA02_selection_prefers_profitable_episodes_outcome",
+  "expected_detector": "scrambling",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_case_selection_is_invariant_under_upstream_price_scrambling"
+  ],
+  "summary": "1 failed, 11 deselected in 189.92s (0:03:09) | test_decision_a.py:95: AssertionError: assert ({'CT1_INCREME...ne, ...}, ...} == {'CT1_INCREME...ne, ...}, ...}"
+ },
+ {
+  "id": "DA03_unsupported_wording_reintroduced_in_generator",
+  "expected_detector": "not scrambling",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_wording_lint_no_unsupported_prospective_selection_claim[tools/m2e_cases.py]",
+   "test_generated_case_header_uses_the_corrected_wording"
+  ],
+  "summary": "2 failed, 9 passed, 1 deselected in 0.32s | test_decision_a.py:18: AssertionError: tools/m2e_cases.py: unsupported wording '\\\\bpredefined\\\\b' || test_decision_a.py:35: AssertionError: assert ('Selection rule (structural, price-free, outcome-free (tested)' in '### CT1_INCREMENTAL_OPENING \u2014 NIFTY|2026-06-30|CE|24100"
+ },
+ {
+  "id": "DA04_approved_statement_altered",
+  "expected_detector": "not scrambling",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_terminology_and_statement_are_exactly_the_approved_text"
+  ],
+  "summary": "1 failed, 10 passed, 1 deselected in 0.39s | test_decision_a.py:26: AssertionError: assert 'Cases were s...e inspection.' == 'Cases were s...e inspection.'"
+ },
+ {
+  "id": "DA05_case_record_changed_in_delivered_json",
+  "expected_detector": "not scrambling",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_case_records_and_datasets_are_unchanged_since_before_decision_a"
+  ],
+  "summary": "1 failed, 10 passed, 1 deselected in 0.34s | test_decision_a.py:56: AssertionError: portfolio_engine/reports/m2e_data/NIFTY_2026-06-30/case_studies.json"
+ },
+ {
+  "id": "DA06_unapproved_line_changed_in_case_markdown",
+  "expected_detector": "not scrambling",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_only_approved_documentation_lines_changed"
+  ],
+  "summary": "1 failed, 10 passed, 1 deselected in 0.35s | test_decision_a.py:72: AssertionError: portfolio_engine/reports/M2E_POSITION_CASE_STUDIES.md: removed line is not an approved wording line: -**Purpose:** make single posi"
+ },
+ {
+  "id": "DA07_dataset_changed_after_wording_fix",
+  "expected_detector": "not scrambling",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_case_records_and_datasets_are_unchanged_since_before_decision_a"
+  ],
+  "summary": "1 failed, 10 passed, 1 deselected in 0.53s | test_decision_a.py:56: AssertionError: portfolio_engine/reports/m2e_data/SENSEX_2026-07-16/episodes.tsv"
+ },
+ {
+  "id": "DA08_concentration_disclosure_dropped",
+  "expected_detector": "python/pe/cases.py concentration_section (mutant retargeted)",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_concentration_section_is_computed_and_matches_the_delivered_paragraph"
+  ],
+  "summary": "1 failed, 11 passed, 1 deselected | test_decision_a.py:52: AssertionError: assert '### 1.1 Notes...case records)' == '### 1.1 Samp...case records)'",
+  "first_full_run": {
+   "outcome": "survived",
+   "summary": "11 passed, 1 deselected in 0.50s | ",
+   "note": "survived: the check lived in the generator text, not in a function a test could call"
+  },
+  "note": "killed in an individual re-run after the section text was moved into pe.cases.concentration_section; the other 7 entries come from the full harness run"
  }
 ]

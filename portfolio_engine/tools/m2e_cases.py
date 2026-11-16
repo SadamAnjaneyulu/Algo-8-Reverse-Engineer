@@ -56,11 +56,7 @@ def main():
         json.dump(dict(cycle=cy, version=F.VERSION, figures=cman[cy]), open(os.path.join(CH.FIG, cy, 'case_figure_manifest.json'), 'w'), indent=1)
         json.dump(dict(cycle=cy, selection_rules=dict(K.RULES), selection=S, records=recs), open(os.path.join(DATA, cy, 'case_studies.json'), 'w'), indent=1, default=str)
 
-    P = K.sample_profile(PROFILE); dl = ', '.join(f"{v} begin in {k}" for k, v in P['by_d_label'].items()); hh = ', '.join(f"{v} during {h}:xx IST" for h, v in P['d_minus_1_by_ist_hour'].items())
-    md += ['', '### 1.1 Sample concentration (computed from the selected case records)', '',
-           f"Of the {P['n']} selected case records, {dl}" + ("; **no selected case begins on D0**, so this sample provides no D0 examples." if P['no_d0'] else '.') + f" The D-1 episodes begin {hh}. "
-           + 'D0 episodes that satisfy the structural rule of CT1 / CT2 / CT3: ' + '; '.join(f"{cy.replace('_', ' ')}: {v['CT1']} / {v['CT2']} / {v['CT3']} of {v['d0_episodes']} D0 episodes" for cy, v in D0E.items())
-           + '. They were **not** used: the original sample is not replaced. A D0 diagnostic may be produced later only if labelled POST-HOC and kept separate from this case study.']
+    md += K.concentration_section(K.sample_profile(PROFILE), D0E)
     md += ['', '## 2. Availability by cycle', '', '| Case type | ' + ' | '.join(F.cycle_key(*c) for c in F.CYCLES) + ' |', '|---|' + '---|' * len(F.CYCLES)]
     for n, _ in K.RULES:
         cells = []
