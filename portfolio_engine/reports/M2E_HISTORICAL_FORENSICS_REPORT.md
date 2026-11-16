@@ -4,7 +4,7 @@
 
 ## A. Result first
 
-Both frozen cycles are reconstructed, reconciled and made inspectable: 10 figures per cycle (V1–V6, with C1/C2 and W1/W1_S60/W2/W3 as separate visuals), each with its plotted data, source datasets and manifest; 10 predefined case types per cycle (NIFTY 9 available, SENSEX 8; the others are UNAVAILABLE, not borrowed); a cycle coverage report written before any result. The observed layer was re-derived independently from the raw ledger by the reviewer (every fill of both cycles). **Historical option marks are not available in this environment**, so no mark, interpolation or unrealized P&L appears anywhere. Nothing in M2-E upgrades an inferred relation: W1 stays WEAKLY_SUPPORTED, W1_S60 / W3 UNRESOLVED, lot ownership and protective intent UNRESOLVED / NOT_TESTABLE.
+Both frozen cycles are reconstructed, reconciled and made inspectable: 10 figures per cycle (V1–V6, with C1/C2 and W1/W1_S60/W2/W3 as separate visuals), each with its plotted data, source datasets and manifest; 10 case types per cycle selected by structural, price-free, outcome-free (tested) rules that were committed with the outputs and are not shown to have been prospectively fixed (NIFTY 9 available, SENSEX 8; the others are UNAVAILABLE, not borrowed; all 17 selected case records begin in D-1); a cycle coverage report written before any result. The observed layer was re-derived independently from the raw ledger by the reviewer (every fill of both cycles). **Historical option marks are not available in this environment**, so no mark, interpolation or unrealized P&L appears anywhere. Nothing in M2-E upgrades an inferred relation: W1 stays WEAKLY_SUPPORTED, W1_S60 / W3 UNRESOLVED, lot ownership and protective intent UNRESOLVED / NOT_TESTABLE.
 
 | | NIFTY 2026-06-30 | SENSEX 2026-07-16 |
 |---|---:|---:|
@@ -95,7 +95,7 @@ Both frozen cycles are reconstructed, reconciled and made inspectable: 10 figure
 * **TP-03** publishes no per-parent window id; V3 shows TP-03 windows as a separate overlay and never claims a parent was 'in a window'.
 * **Not independently verified by the reviewer:** M2-C gap rules and M2-D matching internals (only equality and conservation), the absolute 336,040 / 107,530 figures (read from the summary), SENSEX V2/V3 and several case PNGs, the C++ parity and slow tests. The reviewer's tests of tests are partly circular (documented): dataset-vs-recompute checks use production code, mitigated by the raw-ledger V1 and price tests.
 * **Still UNRESOLVED / NOT_TESTABLE (unchanged):** lot-level ownership, protective intent, decision units, number-block grouping (not implemented), exit trigger.
-* The M2-E selection rule was written in code before cases were viewed, but git history can only show it from the checkpoint commit, not before.
+* The M2-E selection rules are structural, price-free, outcome-free (tested); they were committed with the outputs, and available Git history does not establish that the individual case rules were prospectively fixed before the cases were inspected.
 
 ## I. Reproduce
 

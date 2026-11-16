@@ -1,11 +1,16 @@
-"""M2-E position case studies. Selection is PREDEFINED and structural: candidates are scanned in chronological order (first timestamp, then id) and the FIRST qualifying
+"""M2-E position case studies. Selection is STRUCTURAL and PRICE-FREE: candidates are scanned in chronological order (first timestamp, then id) and the FIRST qualifying
 episode / item / batch WHOSE EPISODE WAS NOT ALREADY USED BY AN EARLIER CASE TYPE is taken (if every qualifying candidate was used, the chronologically first is reused and flagged); a skipped
 chronologically-first candidate is always disclosed in the selection note. Profit, loss, price and any outcome are never consulted. A case type with no qualifying candidate in THIS cycle is reported UNAVAILABLE
 (never borrowed from the other cycle). Cases prefer an episode not already used by an earlier case type; if the only qualifying episode was used, it is reused and flagged.
+Provenance of the rules: they were committed with the outputs; the available Git history does NOT show that they were fixed before the cases were inspected (see SELECTION_STATEMENT).
 """
 import os
 from collections import Counter, defaultdict
 from . import forensics as F
+
+SELECTION_TERMINOLOGY = 'STRUCTURAL, PRICE-FREE, OUTCOME-FREE (TESTED); SELECTION RULES COMMITTED WITH THE OUTPUTS; NOT SHOWN TO HAVE BEEN PROSPECTIVELY FIXED.'
+SELECTION_STATEMENT = ('Cases were selected using structural, price-independent rules. Outcome-free behavior was tested by perturbing fill prices, and all selections remained unchanged. '
+                       'The selection code was committed with the outputs; available Git history does not establish that the individual case rules were prospectively fixed before inspection.')
 
 RULES = [
     ('CT1_INCREMENTAL_OPENING', 'first episode (by first fill time) with >= 3 ADDED lifecycle events'),
@@ -130,3 +135,18 @@ def record(c, D, name, sel):
                 evidence=dict(EVIDENCE_LINES), missing_information=['historical market marks (source absent): no mark-to-market, unrealized P&L = NA; execution prices only', 'TP-03 per-parent window id (not published)', 'the decision/rationale for any order (never observable from fills)'],
                 can_conclude=['the fills, parents, times and quantities listed, and the lifecycle they imply', f'the position ended {E["terminal_status"]} with remaining {rem} (observed)', 'which closing parents are time-connected within 10 s (C1/C2), as a temporal fact'],
                 cannot_conclude=['why any order was placed or closed', 'that a candidate wing/body is the protective counterpart of this position', 'which opening lot a closing portion consumed (convention-dependent)', 'that a position lacked a wing merely because it is outside the role-specific analysis'])
+
+
+def sample_profile(rows):
+    """rows = [(cycle_key, d_label, ist_hour_text)] for every AVAILABLE case record. Computed, never typed: how the selected sample is distributed over session labels and IST hours."""
+    by_d = Counter(d for _, d, _ in rows); by_h = Counter(h for _, d, h in rows if d != 'D0'); n = len(rows)
+    return dict(n=n, by_d_label=dict(sorted(by_d.items())), d_minus_1_by_ist_hour=dict(sorted(by_h.items())), no_d0=by_d.get('D0', 0) == 0)
+
+
+def d0_eligibility(D, d_label_of_ts):
+    """Number of D0 episodes that satisfy the STRUCTURAL rule of CT1, CT2 and CT3 (same predicates as `select`; never used to change the canonical sample)."""
+    ev = defaultdict(Counter)
+    for e in D['events']: ev[e['episode_id']][e['event_type']] += 1
+    d0 = [r for r in D['episodes'] if d_label_of_ts(int(r['first_ts_utc_s'])) == 'D0']
+    return dict(d0_episodes=len(d0), CT1=sum(1 for r in d0 if ev[r['episode_id']]['ADDED'] >= 3), CT2=sum(1 for r in d0 if ev[r['episode_id']]['PARTIALLY_REDUCED'] >= 2 and r['terminal_status'] == 'CLOSED'),
+                CT3=sum(1 for r in d0 if ev[r['episode_id']]['CLOSED'] == 1 and not ev[r['episode_id']]['PARTIALLY_REDUCED'] and not ev[r['episode_id']]['REVERSED']))

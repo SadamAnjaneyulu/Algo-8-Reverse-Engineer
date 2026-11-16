@@ -2,7 +2,11 @@
 
 **Purpose:** make single positions inspectable. **Not** an explanation of why Algo 8 acted: no rationale is offered or inferred.
 
-## 1. Selection method (fixed before any case was looked at)
+## 1. Selection method (structural, price-free, outcome-free (tested); not shown to have been prospectively fixed)
+
+**Terminology:** `STRUCTURAL, PRICE-FREE, OUTCOME-FREE (TESTED); SELECTION RULES COMMITTED WITH THE OUTPUTS; NOT SHOWN TO HAVE BEEN PROSPECTIVELY FIXED.`
+
+Cases were selected using structural, price-independent rules. Outcome-free behavior was tested by perturbing fill prices, and all selections remained unchanged. The selection code was committed with the outputs; available Git history does not establish that the individual case rules were prospectively fixed before inspection.
 
 Candidates are scanned **chronologically** (first fill time, then id) and the **first qualifying candidate whose episode was not already used by an earlier case type** is taken (reuse only if every qualifying candidate was used; any skipped chronologically-first candidate is named in the case note). Profit, loss, price and every outcome are never consulted. A case type with no qualifying candidate in a cycle is **UNAVAILABLE** for that cycle (never borrowed from the other cycle). Rules (`pe/cases.py`, `RULES`):
 
@@ -18,6 +22,10 @@ Candidates are scanned **chronologically** (first fill time, then id) and the **
 | CT7_NO_CANDIDATE_WING | first opening BODY item (W1) with 0 candidate wing items |
 | CT8_W1_VS_W1S60_DISAGREEMENT | first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set |
 | CT9_MULTI_PARENT_CLOSING_BATCH | first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion |
+
+### 1.1 Sample concentration (computed from the selected case records)
+
+Of the 17 selected case records, 17 begin in D-1; **no selected case begins on D0**, so this sample provides no D0 examples. The D-1 episodes begin 16 during 09:xx IST, 1 during 11:xx IST. D0 episodes that satisfy the structural rule of CT1 / CT2 / CT3: NIFTY 2026-06-30: 17 / 14 / 21 of 51 D0 episodes; SENSEX 2026-07-16: 9 / 5 / 21 of 27 D0 episodes. They were **not** used: the original sample is not replaced. A D0 diagnostic may be produced later only if labelled POST-HOC and kept separate from this case study.
 
 ## 2. Availability by cycle
 
@@ -42,7 +50,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT1_INCREMENTAL_OPENING — NIFTY|2026-06-30|CE|24100#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode (by first fill time) with >= 3 ADDED lifecycle events
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode (by first fill time) with >= 3 ADDED lifecycle events
 * **Instrument:** NIFTY|2026-06-30|CE|24100 (SHORT); **lifecycle events:** ADDED 10, CREATED 1, PARTIALLY_REDUCED 4, REVERSED 1; started by reversal: False; ended by: reversal
 * **Quantity:** opened 715 · closed 715 · remaining 0 · terminal status **REVERSED**
 * **First → last event (IST):** 2026-06-29 09:16:01 (CREATED, inventory -65) → 2026-06-30 14:18:25 (REVERSED, inventory +0)
@@ -64,7 +72,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT2_PARTIAL_REDUCTION — NIFTY|2026-06-30|PE|22100#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode with >= 2 PARTIALLY_REDUCED events and terminal status CLOSED
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode with >= 2 PARTIALLY_REDUCED events and terminal status CLOSED
 * **Instrument:** NIFTY|2026-06-30|PE|22100 (LONG); **lifecycle events:** ADDED 2, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 2; started by reversal: False; ended by: flat
 * **Quantity:** opened 195 · closed 195 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:16:00 (CREATED, inventory +65) → 2026-06-29 12:18:00 (CLOSED, inventory +0)
@@ -85,7 +93,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT3_FULL_CLOSURE — NIFTY|2026-06-30|CE|26100#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode whose only closing event is a single CLOSED event (no PARTIALLY_REDUCED, no REVERSED)
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode whose only closing event is a single CLOSED event (no PARTIALLY_REDUCED, no REVERSED)
 * **Instrument:** NIFTY|2026-06-30|CE|26100 (LONG); **lifecycle events:** CLOSED 1, CREATED 1; started by reversal: False; ended by: flat
 * **Quantity:** opened 65 · closed 65 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:16:00 (CREATED, inventory +65) → 2026-06-29 15:03:09 (CLOSED, inventory +0)
@@ -112,7 +120,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT5_REVERSAL — NIFTY|2026-06-30|CE|24100#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode ended by a REVERSED event (extra case type: reversal timeline) — *reuses the episode of CT1_INCREMENTAL_OPENING (no unused qualifying episode)*
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode ended by a REVERSED event (extra case type: reversal timeline) — *reuses the episode of CT1_INCREMENTAL_OPENING (no unused qualifying episode)*
 * **Instrument:** NIFTY|2026-06-30|CE|24100 (SHORT); **lifecycle events:** ADDED 10, CREATED 1, PARTIALLY_REDUCED 4, REVERSED 1; started by reversal: False; ended by: reversal
 * **Quantity:** opened 715 · closed 715 · remaining 0 · terminal status **REVERSED**
 * **First → last event (IST):** 2026-06-29 09:16:01 (CREATED, inventory -65) → 2026-06-30 14:18:25 (REVERSED, inventory +0)
@@ -134,7 +142,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT6_MULTIPLE_CANDIDATE_WINGS — NIFTY|2026-06-30|CE|24050#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with >= 2 candidate wing items
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with >= 2 candidate wing items
 * **Instrument:** NIFTY|2026-06-30|CE|24050 (SHORT); **lifecycle events:** ADDED 18, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 14; started by reversal: False; ended by: flat
 * **Quantity:** opened 1,235 · closed 1,235 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:24:21 (CREATED, inventory -65) → 2026-06-30 14:25:17 (CLOSED, inventory +0)
@@ -159,7 +167,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES — NIFTY|2026-06-30|PE|23200#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening WING item (W1) with >= 2 candidate body items (extra)
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening WING item (W1) with >= 2 candidate body items (extra)
 * **Instrument:** NIFTY|2026-06-30|PE|23200 (LONG); **lifecycle events:** ADDED 7, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 4; started by reversal: False; ended by: flat
 * **Quantity:** opened 715 · closed 715 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:31:04 (CREATED, inventory +130) → 2026-06-29 12:20:06 (CLOSED, inventory +0)
@@ -184,7 +192,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT7_NO_CANDIDATE_WING — NIFTY|2026-06-30|PE|24100#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with 0 candidate wing items — *chronologically first qualifying candidate (WBI:OPENING:BODY:10758104:NIFTY|2026-06-30|CE|24100) skipped: its episode was already used by CT1_INCREMENTAL_OPENING*
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with 0 candidate wing items — *chronologically first qualifying candidate (WBI:OPENING:BODY:10758104:NIFTY|2026-06-30|CE|24100) skipped: its episode was already used by CT1_INCREMENTAL_OPENING*
 * **Instrument:** NIFTY|2026-06-30|PE|24100 (SHORT); **lifecycle events:** ADDED 12, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 12; started by reversal: False; ended by: flat
 * **Quantity:** opened 845 · closed 845 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:16:01 (CREATED, inventory -65) → 2026-06-29 12:20:00 (CLOSED, inventory +0)
@@ -209,7 +217,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT8_W1_VS_W1S60_DISAGREEMENT — NIFTY|2026-06-30|CE|24000#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set
 * **Instrument:** NIFTY|2026-06-30|CE|24000 (SHORT); **lifecycle events:** ADDED 4, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 4; started by reversal: False; ended by: flat
 * **Quantity:** opened 325 · closed 325 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:25:20 (CREATED, inventory -65) → 2026-06-29 10:27:01 (CLOSED, inventory +0)
@@ -234,7 +242,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT9_MULTI_PARENT_CLOSING_BATCH — NIFTY|2026-06-30|PE|24050#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion — *chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING*
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion — *chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:NIFTY:2026-06-30:2026-06-29:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING*
 * **Instrument:** NIFTY|2026-06-30|PE|24050 (SHORT); **lifecycle events:** ADDED 13, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 13; started by reversal: False; ended by: flat
 * **Quantity:** opened 910 · closed 910 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-06-29 09:31:00 (CREATED, inventory -65) → 2026-06-29 12:33:02 (CLOSED, inventory +0)
@@ -258,7 +266,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT1_INCREMENTAL_OPENING — SENSEX|2026-07-16|PE|77400#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode (by first fill time) with >= 3 ADDED lifecycle events
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode (by first fill time) with >= 3 ADDED lifecycle events
 * **Instrument:** SENSEX|2026-07-16|PE|77400 (SHORT); **lifecycle events:** ADDED 5, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 5; started by reversal: False; ended by: flat
 * **Quantity:** opened 120 · closed 120 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:21:27 (CREATED, inventory -20) → 2026-07-15 12:39:47 (CLOSED, inventory +0)
@@ -279,7 +287,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT2_PARTIAL_REDUCTION — SENSEX|2026-07-16|CE|81200#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode with >= 2 PARTIALLY_REDUCED events and terminal status CLOSED
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode with >= 2 PARTIALLY_REDUCED events and terminal status CLOSED
 * **Instrument:** SENSEX|2026-07-16|CE|81200 (LONG); **lifecycle events:** ADDED 2, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 2; started by reversal: False; ended by: flat
 * **Quantity:** opened 60 · closed 60 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:16:00 (CREATED, inventory +20) → 2026-07-15 09:26:02 (CLOSED, inventory +0)
@@ -300,7 +308,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT3_FULL_CLOSURE — SENSEX|2026-07-16|CE|79500#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode whose only closing event is a single CLOSED event (no PARTIALLY_REDUCED, no REVERSED)
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first episode whose only closing event is a single CLOSED event (no PARTIALLY_REDUCED, no REVERSED)
 * **Instrument:** SENSEX|2026-07-16|CE|79500 (LONG); **lifecycle events:** CLOSED 1, CREATED 1; started by reversal: False; ended by: flat
 * **Quantity:** opened 40 · closed 40 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:31:05 (CREATED, inventory +40) → 2026-07-15 12:44:44 (CLOSED, inventory +0)
@@ -333,7 +341,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT6_MULTIPLE_CANDIDATE_WINGS — SENSEX|2026-07-16|CE|77500#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with >= 2 candidate wing items
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with >= 2 candidate wing items
 * **Instrument:** SENSEX|2026-07-16|CE|77500 (SHORT); **lifecycle events:** ADDED 30, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 21; started by reversal: False; ended by: flat
 * **Quantity:** opened 620 · closed 620 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:46:00 (CREATED, inventory -20) → 2026-07-16 11:00:52 (CLOSED, inventory +0)
@@ -358,7 +366,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES — SENSEX|2026-07-16|PE|74900#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening WING item (W1) with >= 2 candidate body items (extra)
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening WING item (W1) with >= 2 candidate body items (extra)
 * **Instrument:** SENSEX|2026-07-16|PE|74900 (LONG); **lifecycle events:** ADDED 1, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 1; started by reversal: False; ended by: flat
 * **Quantity:** opened 60 · closed 60 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:21:30 (CREATED, inventory +20) → 2026-07-15 12:39:46 (CLOSED, inventory +0)
@@ -383,7 +391,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT7_NO_CANDIDATE_WING — SENSEX|2026-07-16|CE|77200#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with 0 candidate wing items
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item (W1) with 0 candidate wing items
 * **Instrument:** SENSEX|2026-07-16|CE|77200 (SHORT); **lifecycle events:** ADDED 2, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 2; started by reversal: False; ended by: flat
 * **Quantity:** opened 60 · closed 60 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:16:02 (CREATED, inventory -20) → 2026-07-15 09:26:00 (CLOSED, inventory +0)
@@ -408,7 +416,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT8_W1_VS_W1S60_DISAGREEMENT — SENSEX|2026-07-16|CE|77600#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first opening BODY item whose W1 candidate-wing set differs from its W1_S60 candidate-wing set
 * **Instrument:** SENSEX|2026-07-16|CE|77600 (SHORT); **lifecycle events:** ADDED 12, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 6; started by reversal: False; ended by: flat
 * **Quantity:** opened 260 · closed 260 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 09:31:00 (CREATED, inventory -20) → 2026-07-16 11:00:52 (CLOSED, inventory +0)
@@ -433,7 +441,7 @@ Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/
 
 ### CT9_MULTI_PARENT_CLOSING_BATCH — SENSEX|2026-07-16|CE|77400#1
 
-* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion — *chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING*
+* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** first C1 10 s closing batch (by start time) with >= 2 parent orders; the case episode is the episode of its first member portion — *chronologically first qualifying candidate (INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_10S:SENSEX:2026-07-16:2026-07-15:001) skipped: its episode was already used by CT7_NO_CANDIDATE_WING*
 * **Instrument:** SENSEX|2026-07-16|CE|77400 (SHORT); **lifecycle events:** ADDED 30, CLOSED 1, CREATED 1, PARTIALLY_REDUCED 26; started by reversal: False; ended by: flat
 * **Quantity:** opened 620 · closed 620 · remaining 0 · terminal status **CLOSED**
 * **First → last event (IST):** 2026-07-15 11:15:06 (CREATED, inventory -20) → 2026-07-16 11:00:52 (CLOSED, inventory +0)

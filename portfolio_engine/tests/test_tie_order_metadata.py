@@ -8,7 +8,8 @@ from pe import tie_policy as tp
 BASE = json.load(open(os.path.join(PE, 'reports', 'm2f_audit', 'r1', 'baseline_sha256_before_R1.json')))['sha256']
 MANIFESTS = ['portfolio_engine/reports/m2c_data/manifest.json', 'portfolio_engine/reports/m2d_data/manifest.json', 'portfolio_engine/reports/m2e_data/NIFTY_2026-06-30/manifest.json', 'portfolio_engine/reports/m2e_data/SENSEX_2026-07-16/manifest.json']
 sha = lambda p: hashlib.sha256(open(os.path.join(REPO, p), 'rb').read()).hexdigest()
-ALLOWED_TO_CHANGE = lambda p: p.startswith(('portfolio_engine/python/', 'portfolio_engine/tests/', 'portfolio_engine/tools/', 'portfolio_engine/reports/m2f_audit/')) or p.endswith('.md') or p in MANIFESTS or p.startswith('portfolio_engine/IMPLEMENTATION')
+APPROVED_DOC_EDITS = {'portfolio_engine/reports/m2e_data/review_dispositions.json'}          # Decision A (owner-approved): wording lines only; checked line by line in tests/test_decision_a.py
+ALLOWED_TO_CHANGE = lambda p: p in APPROVED_DOC_EDITS or p.startswith(('portfolio_engine/python/', 'portfolio_engine/tests/', 'portfolio_engine/tools/', 'portfolio_engine/reports/m2f_audit/')) or p.endswith('.md') or p in MANIFESTS or p.startswith('portfolio_engine/IMPLEMENTATION')
 PRESERVED = [p for p in BASE if not ALLOWED_TO_CHANGE(p)]          # INVERSE rule: every baseline file that is not explicitly allowed to change must be byte-identical (covers data, figures, summaries, fixtures, parity reports, tp_reconstruction, raw csv)
 
 

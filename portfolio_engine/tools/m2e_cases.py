@@ -1,4 +1,4 @@
-"""M2-E case studies: predefined structural selection (pe.cases), forensic records, per-case episode charts, and reports/M2E_POSITION_CASE_STUDIES.md (generated; no hand-typed numbers).
+"""M2-E case studies: structural, price-free selection (pe.cases), forensic records, per-case episode charts, and reports/M2E_POSITION_CASE_STUDIES.md (generated; no hand-typed numbers).
 python3 portfolio_engine/tools/m2e_cases.py"""
 import json, os, sys, importlib
 HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); REPO = os.path.dirname(PE); sys.path.insert(0, os.path.join(PE, 'python')); sys.path.insert(0, HERE)
@@ -13,7 +13,7 @@ def short(item_id): _, _, p, i = K.item_parts(item_id); x = i.split('|'); return
 def render(rec, cy):
     if rec['status'] != 'AVAILABLE': return f"### {rec['case_type']} — **UNAVAILABLE**\n\n* Rule: {rec['selection_rule']}\n* Reason: {rec['reason']}\n"
     lc = rec['lifecycle']; from collections import Counter; ev = Counter(e['event'] for e in lc); fl = rec['fills']
-    o = [f"### {rec['case_type']} — {rec['position_id']}", '', f"* **Selection rule (predefined, outcome-free; chronological first qualifying candidate whose episode was not already used by an earlier case type):** {rec['selection_rule']}" + (f" — *{rec['selection_note']}*" if rec['selection_note'] else ''),
+    o = [f"### {rec['case_type']} — {rec['position_id']}", '', f"* **Selection rule (structural, price-free, outcome-free (tested); chronological first qualifying candidate whose episode was not already used by an earlier case type):** {rec['selection_rule']}" + (f" — *{rec['selection_note']}*" if rec['selection_note'] else ''),
          f"* **Instrument:** {rec['instrument_id']} ({rec['direction']}); **lifecycle events:** " + ', '.join(f'{k} {v}' for k, v in sorted(ev.items())) + f"; started by reversal: {rec['started_by_reversal']}; ended by: {rec['ended_by']}",
          f"* **Quantity:** opened {rec['opened']:,} · closed {rec['closed']:,} · remaining {rec['remaining']:,} · terminal status **{rec['terminal_status']}**",
          f"* **First → last event (IST):** {lc[0]['ts_ist']} ({lc[0]['event']}, inventory {lc[0]['inventory_after']:+d}) → {lc[-1]['ts_ist']} ({lc[-1]['event']}, inventory {lc[-1]['inventory_after']:+d})",
@@ -39,10 +39,14 @@ def render(rec, cy):
 
 def main():
     out = {}; md = ['# M2-E — Position case studies', '', '**Purpose:** make single positions inspectable. **Not** an explanation of why Algo 8 acted: no rationale is offered or inferred.', '',
-                    '## 1. Selection method (fixed before any case was looked at)', '', 'Candidates are scanned **chronologically** (first fill time, then id) and the **first qualifying candidate whose episode was not already used by an earlier case type** is taken (reuse only if every qualifying candidate was used; any skipped chronologically-first candidate is named in the case note). Profit, loss, price and every outcome are never consulted. A case type with no qualifying candidate in a cycle is **UNAVAILABLE** for that cycle (never borrowed from the other cycle). Rules (`pe/cases.py`, `RULES`):', '', '| Case type | Rule |', '|---|---|'] + [f'| {n} | {r} |' for n, r in K.RULES]
+                    '## 1. Selection method (structural, price-free, outcome-free (tested); not shown to have been prospectively fixed)', '', f'**Terminology:** `{K.SELECTION_TERMINOLOGY}`', '', K.SELECTION_STATEMENT, '', 'Candidates are scanned **chronologically** (first fill time, then id) and the **first qualifying candidate whose episode was not already used by an earlier case type** is taken (reuse only if every qualifying candidate was used; any skipped chronologically-first candidate is named in the case note). Profit, loss, price and every outcome are never consulted. A case type with no qualifying candidate in a cycle is **UNAVAILABLE** for that cycle (never borrowed from the other cycle). Rules (`pe/cases.py`, `RULES`):', '', '| Case type | Rule |', '|---|---|'] + [f'| {n} | {r} |' for n, r in K.RULES]
+    PROFILE = []; D0E = {}
     avail = {}; cman = {}
     for und, exp in F.CYCLES:
         cy = F.cycle_key(und, exp); c = F.Cycle(REPO, und, exp, SCN); D = K.load_data(os.path.join(DATA, cy)); S = K.select(D); recs = {n: K.record(c, D, n, S[n]) for n in S}; out[cy] = recs; avail[cy] = S; cman[cy] = []
+        EP = {e['episode_id']: e for e in D['episodes']}; D0E[cy] = K.d0_eligibility(D, c.d_label)
+        for n_, r_ in recs.items():
+            if r_['status'] == 'AVAILABLE': ts_ = int(EP[r_['position_id']]['first_ts_utc_s']); PROFILE.append((cy, c.d_label(ts_), F.ist_str(ts_)[11:13]))
         for n, r in recs.items():
             if r['status'] == 'AVAILABLE':
                 E = {e['episode_id']: e for e in D['episodes']}; me = E[r['position_id']]; ids = {r['position_id']}
@@ -52,6 +56,11 @@ def main():
         json.dump(dict(cycle=cy, version=F.VERSION, figures=cman[cy]), open(os.path.join(CH.FIG, cy, 'case_figure_manifest.json'), 'w'), indent=1)
         json.dump(dict(cycle=cy, selection_rules=dict(K.RULES), selection=S, records=recs), open(os.path.join(DATA, cy, 'case_studies.json'), 'w'), indent=1, default=str)
 
+    P = K.sample_profile(PROFILE); dl = ', '.join(f"{v} begin in {k}" for k, v in P['by_d_label'].items()); hh = ', '.join(f"{v} during {h}:xx IST" for h, v in P['d_minus_1_by_ist_hour'].items())
+    md += ['', '### 1.1 Sample concentration (computed from the selected case records)', '',
+           f"Of the {P['n']} selected case records, {dl}" + ("; **no selected case begins on D0**, so this sample provides no D0 examples." if P['no_d0'] else '.') + f" The D-1 episodes begin {hh}. "
+           + 'D0 episodes that satisfy the structural rule of CT1 / CT2 / CT3: ' + '; '.join(f"{cy.replace('_', ' ')}: {v['CT1']} / {v['CT2']} / {v['CT3']} of {v['d0_episodes']} D0 episodes" for cy, v in D0E.items())
+           + '. They were **not** used: the original sample is not replaced. A D0 diagnostic may be produced later only if labelled POST-HOC and kept separate from this case study.']
     md += ['', '## 2. Availability by cycle', '', '| Case type | ' + ' | '.join(F.cycle_key(*c) for c in F.CYCLES) + ' |', '|---|' + '---|' * len(F.CYCLES)]
     for n, _ in K.RULES:
         cells = []
