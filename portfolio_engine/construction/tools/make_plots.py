@@ -48,7 +48,7 @@ save_csv('01_architecture_components.tsv', ['component', 'part', 'language', 'ro
 fig, ax = plt.subplots(figsize=(15.5, 8.4)); ax.set_xlim(0, 15.5); ax.set_ylim(0, 8.4); ax.axis('off')
 ax.text(7.75, 8.2, 'Architecture: historical position reconstruction + portfolio-construction prototype', ha='center', va='top', fontsize=15, fontweight='bold', color=INK)
 ax.text(7.75, 7.72, 'Left: positions rebuilt from the observed Algo 8 fills. Right: the prototype, which runs on synthetic scenarios. The two parts meet at the ledger (PortfolioState.apply_fill).', ha='center', va='top', fontsize=10, color=MUTED)
-ax.add_patch(FancyBboxPatch((0.3, 0.5), 4.4, 6.8, boxstyle='round,pad=0.02,rounding_size=0.12', fc='#f8fafc', ec='#94a3b8', lw=1.2)); ax.text(2.5, 7.12, 'Historical position reconstruction (observed fills)', ha='center', fontsize=11, fontweight='bold', color=INK)
+ax.add_patch(FancyBboxPatch((0.3, 0.5), 4.4, 6.8, boxstyle='round,pad=0.02,rounding_size=0.12', fc='#f8fafc', ec='#94a3b8', lw=1.2)); ax.text(2.5, 7.12, 'Historical position reconstruction', ha='center', fontsize=11, fontweight='bold', color=INK)
 for k, (t, b, c) in enumerate([('Historical fills (observed)', 'trade export + ledger (external, not in this ZIP)', GREY), ('Validation + ordering', 'Python + C++', GREEN), ('Replay / accounting', 'apply_fill (Python + C++):\nthe only place inventory changes', GREEN), ('Reconstruction outputs', 'lineage, closing batches, wing/body, case studies (Python)', BLUE)]):
     box(ax, 0.55, 5.55 - k * 1.5, 3.9, 1.25, t, b, c, wrap=34); (arrow(ax, 2.5, 5.55 - k * 1.5, 2.5, 5.55 - k * 1.5 - 0.2) if k < 3 else None)
 ax.add_patch(FancyBboxPatch((5.4, 0.5), 9.8, 6.8, boxstyle='round,pad=0.02,rounding_size=0.12', fc='#fffbeb', ec='#d97706', lw=1.2)); ax.text(10.3, 7.12, 'Portfolio-construction prototype (synthetic scenarios)', ha='center', fontsize=11, fontweight='bold', color=INK)
@@ -77,12 +77,12 @@ save_csv('02_basket_lifecycle.tsv', ['minutes_since_creation', 'basket_total_uni
 fig, ax = plt.subplots(figsize=(12, 5.6)); colors = {'ACTIVE': '#34d399', 'PARTIALLY_CUT': '#fbbf24', 'FULLY_CUT': '#f87171'}; shapes = {'scenario seed fill': 's', 'basket_cut': 'o', 'scripted_actions': 'D', 'basket_reentry': '^'}
 xs = [x[0] for x in life]; ys = [x[1] for x in life]; ax.step(xs, ys, where='post', color=EDGE, lw=1.6)
 for x, y, s_, ev, aid, src in life: ax.scatter([x], [y], color=colors[s_], marker=shapes[src], s=60, zorder=3, edgecolor=EDGE)
-for lab, minute in (('creation\n(seed fills from the scenario)', 0), ('partial cut\n(basket_cut plugin, 1/3 of each leg)', 5), ('full cut\n(scripted_actions, rest of each leg)', 15), ('re-entry\n(scripted_actions, 65 units of the\nshort CE, cites the first cut)', 25)):
-    ax.axvline(minute, color='#cbd5e1', ls=':'); ax.text(minute + 0.2, max(ys) * 1.03, lab, fontsize=8.5, color=MUTED, va='bottom')
-leg1 = ax.legend(handles=[plt.Line2D([], [], marker='o', ls='', color=c, markeredgecolor=EDGE, label=s_) for s_, c in colors.items()], title='basket status after the event', fontsize=8.5, loc='center right'); ax.add_artist(leg1)
-ax.legend(handles=[plt.Line2D([], [], marker=m, ls='', color='#cbd5e1', markeredgecolor=EDGE, label=k) for k, m in shapes.items() if k in {x[5] for x in life}], title='who produced the event', fontsize=8.5, loc='upper right', bbox_to_anchor=(1.0, 0.8))
-ax.set_xlabel('minutes since basket creation (synthetic clock)'); ax.set_ylabel('total units held by the basket (sum over legs)'); ax.set_ylim(-30, max(ys) * 1.3)
-ax.set_title('Basket lifecycle: creation, partial cut, full cut, re-entry (s11_basket_lifecycle_demo)', fontsize=12.5, fontweight='bold', color=INK, loc='left'); fig.text(0.01, -0.04, SYN, fontsize=8.5, color='#b45309')
+for (lab, minute), lift in zip((('creation\n(seed fills from the scenario)', 0), ('partial cut\n(basket_cut plugin, 1/3 of each leg)', 5), ('full cut\n(scripted_actions, rest of each leg)', 15), ('re-entry\n(scripted_actions, 65 units of the\nshort CE, cites the first cut)', 25)), (1.03, 1.17, 1.03, 1.17)):
+    ax.axvline(minute, color='#cbd5e1', ls=':'); ax.text(minute + 0.2, max(ys) * lift, lab, fontsize=8.5, color=MUTED, va='bottom')
+leg1 = ax.legend(handles=[plt.Line2D([], [], marker='o', ls='', color=c, markeredgecolor=EDGE, label=s_) for s_, c in colors.items()], title='basket status after the event', fontsize=8.5, loc='upper center', bbox_to_anchor=(0.30, -0.14), ncol=3); ax.add_artist(leg1)
+ax.legend(handles=[plt.Line2D([], [], marker=m, ls='', color='#cbd5e1', markeredgecolor=EDGE, label=k) for k, m in shapes.items() if k in {x[5] for x in life}], title='who produced the event', fontsize=8.5, loc='upper center', bbox_to_anchor=(0.78, -0.14), ncol=2)
+ax.set_xlabel('minutes since basket creation (synthetic clock)'); ax.set_ylabel('total units held by the basket (sum over legs)'); ax.set_ylim(-30, max(ys) * 1.38); ax.set_xlim(-1, 33)
+ax.set_title('Basket lifecycle: creation, partial cut, full cut, re-entry (s11_basket_lifecycle_demo)', fontsize=12.5, fontweight='bold', color=INK, loc='left'); fig.text(0.01, -0.2, SYN, fontsize=8.5, color='#b45309')
 fig.savefig(os.path.join(OUT, '02_basket_lifecycle.png'), dpi=160, bbox_inches='tight', facecolor='white'); plt.close(fig)
 
 # ---------------------------------------------------------------- 3. exposure over time
