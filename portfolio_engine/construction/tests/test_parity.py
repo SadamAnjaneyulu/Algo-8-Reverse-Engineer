@@ -121,14 +121,6 @@ def test_clean_refusal_ignores_environment_output_but_not_application_tracebacks
     assert not clean_refusal('') and not clean_refusal('warning only\n')
 
 
-def test_the_refusal_check_ignores_noise_printed_by_the_python_environment():
-    noise = 'Traceback (most recent call last):\n  File "<hook>", line 1\nRuntimeWarning: injected\n'
-    assert clean_refusal(noise + 'ERROR: scenario refused\n')                                                             # environment noise before the program's own message
-    assert not clean_refusal(noise)                                                                                       # no program message: not a clean refusal
-    assert not clean_refusal('ERROR: x\nTraceback (most recent call last):\n  File "/x/pc/engine.py", line 9\nKeyError: 1\n')  # a crash inside our code is never clean
-    assert not clean_refusal('')
-
-
 def test_a_refused_scenario_gives_a_clean_refusal_with_the_environment_switched_off(tmp_path):
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     env = dict(os.environ, PYTHONPATH=os.path.join(root, 'python'))

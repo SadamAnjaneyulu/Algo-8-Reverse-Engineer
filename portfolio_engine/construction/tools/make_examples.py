@@ -18,9 +18,9 @@ def walkthrough(name, sc, sim):
     L = [f'WALKTHROUGH {name}  [SYNTHETIC_TEST_ONLY - an illustration of the machinery, not an assertion about Algo 8]', sc.description, '',
          'Units are option units (one NIFTY lot = 65). Prices are in paise (rupees x 100). t+N = N seconds after basket creation.', '']
     cfgs = [f'  {p}.{k} = {v}' for p in sorted(sc.configs) for k, v in sorted(sc.configs[p].items())] + [f'  risk.{k} = {v}' for k, v in sorted(sc.risk.items())]
-    L += ['CONFIGURED BY THE USER (not decided by any plugin; every other setting keeps the default in the plugin CONFIG_SPEC):'] + (cfgs or ['  (defaults)']) + ['']
+    L += ['CONFIGURED FOR THIS EXAMPLE (not decided by any plugin; every other setting keeps the default in the plugin CONFIG_SPEC):'] + (cfgs or ['  (defaults)']) + ['']
     seeds = [r for r in st if r['action_id'] == 'SEED']
-    L += ['Step 0  t+0   BASKET CREATED (seed fills applied through the historical engine's ledger)']
+    L += ['Step 0  t+0   BASKET CREATED (seed fills applied through the the historical ledger)']
     last = {}
     for r in seeds: last[(r['basket_id'], r['leg_id'])] = r
     for (b, l), r in sorted(last.items()): L += [f'        {b}:{l:<4} {"short" if r["leg_side"] == "-1" else "long "} {r["qty_after"]:>4} units   ({r["instrument_id"]})']
