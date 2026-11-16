@@ -1,0 +1,4 @@
+# Python 3.13 was used. The plugin framework itself needs only the standard library.
+pytest==9.2.0          # tests
+matplotlib==3.11.2     # plots only (tools/make_plots.py)
+# C++: g++ 13 (C++17) and cmake >= 3.16. The unchanged M2 engine must sit next to this folder (see README in 04_Documentation).
