@@ -1,5 +1,5 @@
 {
- "note": "Closure dispositions (M2 closure, 2026-11-16). The original M2-F dispositions are never replaced; they are rendered beside these. D-A02, D-A04 and D-A08 are added when their remediation is merged.",
+ "note": "Closure dispositions (M2 closure, 2026-11-16). The original M2-F dispositions are never replaced; they are rendered beside these.",
  "defects": {
   "B-01": {
    "status": "ACCEPTED WITH EVIDENCE",
@@ -225,6 +225,26 @@
    "status": "OPEN",
    "rationale": "stage2_alpha_research is outside portfolio_engine and outside the M2 scope; its evidence discrepancy (commit message vs tracked files) is unchanged and untouched by rule.",
    "evidence": "M2F_DEFECT_REGISTER.md E-D11"
+  },
+  "D-A02": {
+   "status": "FIXED",
+   "rationale": "generate() now verifies EVERY ledger row used against the raw CSV (segment, underlying, right, strike, expiry, contract id, side, quantity, epoch, parent id, price) with Decimal paise (no float rounding) and raises EngineError naming the lowest mismatching source row; the real ledger passes (0 mismatches over 41,421 rows); generate() output is byte-identical before and after (fills sha256 26a0da63..., instruments 90c9c7ee...). Consistent corruption of both CSV and parquet is not detectable (raw integrity still rests on the manifest hash).",
+   "evidence": "python/pe/generators/historical.py verify_ledger_against_raw; tests/test_historical_generator_raw.py (21 tests); 11 verifier mutants killed by assertion in the subagent run; commit (cherry-pick of 2a511c25)"
+  },
+  "D-A08": {
+   "status": "FIXED",
+   "rationale": "Independent generator-vs-raw test: the test reads the CSV itself and converts prices with Decimal paise; compares all 41,421 fills (price, timestamp, side, quantity, parent, instrument, fill id) and 1,674 instruments; float truncation is shown to differ from exact paise on this data. Generator mutants: truncation with grid check neutralised, +1 on one row, +1 everywhere, epoch +19800 (audit M11), side flip, parent = order number, quantity +1: all killed by assertion. Three mutants were stopped by the generator own grid self-check (an ERROR, not an assertion) and are NOT counted as kills.",
+   "evidence": "tests/test_historical_generator_raw.py; commit (cherry-pick of 2a511c25)"
+  },
+  "D-A04": {
+   "status": "FIXED",
+   "rationale": "Synthetic boundary tests pin the rule (flat -> CLOSED/REVERSED; non-flat with expiry <= last IST data day -> EXPIRED_UNCLOSED; later expiry -> OPEN_AT_END_OF_DATA) incl. IST-vs-UTC day, duplicate-flagged fills, reversal on the expiry day, FIFO/LIFO/AVG agreement; 14 mutants killed by assertion. EXPIRED_UNCLOSED stays a schema token and an INFERENCE (no settlement data). The real ledger never exercises the <= boundary (81 instruments expired unclosed; none expires on the last data day).",
+   "evidence": "tests/test_expiry_status.py (15 tests); docs/BASKET_GROUPING_METHODOLOGY.md (Decision D); commit (cherry-pick of 2a511c25)"
+  },
+  "D-A01": {
+   "status": "ACCEPTED WITH EVIDENCE",
+   "rationale": "The root cause (whole-second timestamps: intra-second order unobservable) cannot be removed from the source data. Option C: baseline SOURCE_ROW_ORDER_CONVENTION kept, hybrid PER_CONTRACT_ID_SEQUENCE evaluated side by side, both conditional results labelled; sensitivity populations 1-6 measured; N1 fixed so keyed orders are local to (instrument, second); portfolio-level intra-second path interpretation prohibited. Conditions (1) of the M2-F report (decision + disclosure addendum quantifying the sensitivity) are met.",
+   "evidence": "reports/R1_TIE_ORDER_CONVENTION.md; reports/R1C_DUAL_SCENARIO_COMPARISON.md; docs/ORDERING_SEMANTICS.md; reports/r1c_dual_scenario/file_inventory.json; M2F_METHODOLOGY_LIMITATIONS.md ledger"
   }
  }
 }

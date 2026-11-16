@@ -17,6 +17,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Amendment 1 (2026-11-15, commit 4231867f; text revised in a44edfe4; R1_EVIDENCE):** R1 evidence refines the finding. The observed-layer dependence is real but narrow: under the approved sensitivity policies, 1-5 instruments, 1-12 episodes (ordinal-id definition; 1-7 by content) and 2-4 fills' open/close split change (sells_first 1/1/2, buys_first 5/12/4, trade_id and order_no 2/4/4, sensex_trade_id_time 0/0/0). Six populations are reported separately: (1) groups whose order differs: 29 / 29 / 173 / 141 / 21 of 4,464 multi-fill same-instrument-second groups; (2) groups that change open/close allocation: 1 / 2 / 2 / 2 / 0 (this also happens in SAME-SIDE groups: the two trade-id groups are NIFTY 2026-09-01 rows 27911/27917 and 27912/27916); (3) episode identity; (4) closing-batch membership (1-2 batches); (5) wing/body membership; (6) FIFO/LIFO lot attribution of closing fills (lot-sequence definition, equal to the reviewer's independent count; lot-set definition in brackets): FIFO 2 / 4 / 666 [654] / 598 [590] / 84 [81] and LIFO 65 / 74 / 662 [653] / 593 [588] / 80 [76] (sells_first / buys_first / trade_id / order_no / sensex_trade_id_time) of 17,760 closing fills. CORRECTION OF EVIDENCE: the first R1 document stated that NIFTY trade ids and order numbers are not time-monotone; that was an artefact of pooling across IST days and is WITHDRAWN. Per instrument and IST day, NIFTY trade ids have 0 inversions in 18,305 cross-second comparisons and SENSEX nanosecond ids 0 in 19,811; the file order contradicts them inside 172 groups (151 NIFTY, 21 SENSEX). The earlier statement that the trade id contradicts file order in only two mixed-side groups was incomplete. Disposition: SOURCE_ROW_ORDER_CONVENTION is a deterministic convention, NOT verified chronology, and the best available sub-second evidence partly contradicts it; the choice of primary convention is RE-PRESENTED to the project owner (reports/R1_TIE_ORDER_CONVENTION.md section 9). Disclosed, metadata stamped, sensitivities published. The ambiguity cannot be eliminated from the source data. *Evidence:* reports/R1_TIE_ORDER_CONVENTION.md; reports/r1_tie_order/r1_tie_order_sensitivity.json; reports/m2f_audit/r1/independent_tie_sensitivity_result.json; reports/m2f_audit/r1_review/
 * **Amendment 2 (2026-11-15, commit 7d16504c; OPTION_C_DECISION):** OWNER DECISION: Option C recorded. SOURCE_ROW_ORDER_CONVENTION stays primary; delivered outputs not regenerated; downstream research must evaluate both orderings; the hybrid scenario PER_CONTRACT_ID_SEQUENCE is implemented and compared in reports/R1C_DUAL_SCENARIO_COMPARISON.md (4 episodes / 2 instruments / 4 split fills / 1 batch per view / 6 W1-W2 links differ; totals stable). Neither ordering is verified chronology. *Evidence:* reports/R1C_DUAL_SCENARIO_COMPARISON.md; reports/r1c_dual_scenario/dual_scenario_results.json; reports/r1_tie_order/per_contract_id_sequence_sensitivity.json
 * **Current state:** REMEDIATED BY POLICY AND DISCLOSURE (R1, 2026-11-15): SOURCE_ROW_ORDER_CONVENTION approved as the primary deterministic convention; sensitivity-only policies added; convention stamped in four manifests; disclosure addenda appended; six populations reported separately. The ambiguity is not eliminated (whole-second timestamps). Independent R1 review done (14 findings; the HIGH one, a wrongly pooled NIFTY trade-id metric, corrected). Owner decision Option C (2026-11-15): baseline kept, both orderings evaluated downstream, dual-scenario comparison published. Disposition stays REMEDIATED BY POLICY AND DISCLOSURE (not closed); the dependence is a documented limitation handled by mandatory dual-scenario research; pending the final M2 acceptance decision.
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH EVIDENCE.** The root cause (whole-second timestamps: intra-second order unobservable) cannot be removed from the source data. Option C: baseline SOURCE_ROW_ORDER_CONVENTION kept, hybrid PER_CONTRACT_ID_SEQUENCE evaluated side by side, both conditional results labelled; sensitivity populations 1-6 measured; N1 fixed so keyed orders are local to (instrument, second); portfolio-level intra-second path interpretation prohibited. Conditions (1) of the M2-F report (decision + disclosure addendum quantifying the sensitivity) are met. *Evidence:* reports/R1_TIE_ORDER_CONVENTION.md; reports/R1C_DUAL_SCENARIO_COMPARISON.md; docs/ORDERING_SEMANTICS.md; reports/r1c_dual_scenario/file_inventory.json; M2F_METHODOLOGY_LIMITATIONS.md ledger
 
 ## Medium (19)
 
@@ -28,6 +29,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add a generator self-check (or test) that re-parses raw columns 11,12,14,15,16,33,137,161,163 and compares to the parquet row by row; record the parquet hash in a pinned manifest.
 * **Regression test:** test_generator_equals_raw: parse the CSV with csv.reader and assert equality of (parent, instrument, ts, side, qty, price_paise, requested qty, status) for all rows.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** generate() now verifies EVERY ledger row used against the raw CSV (segment, underlying, right, strike, expiry, contract id, side, quantity, epoch, parent id, price) with Decimal paise (no float rounding) and raises EngineError naming the lowest mismatching source row; the real ledger passes (0 mismatches over 41,421 rows); generate() output is byte-identical before and after (fills sha256 26a0da63..., instruments 90c9c7ee...). Consistent corruption of both CSV and parquet is not detectable (raw integrity still rests on the manifest hash). *Evidence:* python/pe/generators/historical.py verify_ledger_against_raw; tests/test_historical_generator_raw.py (21 tests); 11 verifier mutants killed by assertion in the subagent run; commit (cherry-pick of 2a511c25)
 
 ### D-A04 (track A): EXPIRED_UNCLOSED is an inference from absent closing fills, and the OPEN_AT_END_OF_DATA branch is unexercised on real data
 * **Location:** python/pe/lineage.py:50 terminal_status; replay.py status loop
@@ -37,6 +39,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Rename to a neutral status (e.g. NON_FLAT_AT_EXPIRY_NO_SETTLEMENT_DATA) in reports, keep boundary test with a synthetic dataset ending before expiry.
 * **Regression test:** test_open_at_end_of_data_when_last_day_before_expiry (synthetic) and a real-data assertion on the 54/27 split.
 * **Disposition:** OPEN - label is an inference by design; proposal: disclose as inference in reports and add a synthetic expiry-boundary test on the OPEN_AT_END_OF_DATA path.
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Synthetic boundary tests pin the rule (flat -> CLOSED/REVERSED; non-flat with expiry <= last IST data day -> EXPIRED_UNCLOSED; later expiry -> OPEN_AT_END_OF_DATA) incl. IST-vs-UTC day, duplicate-flagged fills, reversal on the expiry day, FIFO/LIFO/AVG agreement; 14 mutants killed by assertion. EXPIRED_UNCLOSED stays a schema token and an INFERENCE (no settlement data). The real ledger never exercises the <= boundary (81 instruments expired unclosed; none expires on the last data day). *Evidence:* tests/test_expiry_status.py (15 tests); docs/BASKET_GROUPING_METHODOLOGY.md (Decision D); commit (cherry-pick of 2a511c25)
 
 ### D-A08 (track A): Existing test suite has a surviving mutant and several detectors that are not independent of the code under test
 * **Location:** portfolio_engine/tests/* (test_accounting, test_lineage*, test_tp01_reconciliation, test_parity); generator python/pe/generators/historical.py
@@ -48,6 +51,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Original disposition (M2-F audit, commit 562d7eb6, verbatim):** PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_generator_fields_equal_raw_ledger compares generator fields to the raw csv (closes mutant M11). Other non-independent detectors remain.
 * **Amendment 1 (2026-11-15, commit 4231867f; CORRECTION_OF_OVERSTATED_DISPOSITION):** CORRECTION: 'closes mutant M11' is unproven; the added generator test converts prices with float rounding (Decimal preferred) and has not been run against the mutant. Status OPEN until verified (remediation phase). *Evidence:* tests/test_m2f_regressions.py as inspected in the R1 review (reports/m2f_audit/r1/amendments.json); mutants not executed against the added tests
 * **Current state:** OPEN (corrected): generator test added but not run against the mutant and uses float price conversion; remediation phase.
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Independent generator-vs-raw test: the test reads the CSV itself and converts prices with Decimal paise; compares all 41,421 fills (price, timestamp, side, quantity, parent, instrument, fill id) and 1,674 instruments; float truncation is shown to differ from exact paise on this data. Generator mutants: truncation with grid check neutralised, +1 on one row, +1 everywhere, epoch +19800 (audit M11), side flip, parent = order number, quantity +1: all killed by assertion. Three mutants were stopped by the generator own grid self-check (an ERROR, not an assertion) and are NOT counted as kills. *Evidence:* tests/test_historical_generator_raw.py; commit (cherry-pick of 2a511c25)
 
 ### B-01 (track B): Closing identification (hence C1/C2 membership) depends on the order of same-second opposite-side fills in one instrument; not disclosed or measured in the M2-C reports
 * **Location:** portfolio_engine/reports/M2C_CLOSING_BATCH_REPORT.md (§1,§3,§8 silent); docs/POSITION_BASKET_ONTOLOGY.md §3.3 (documents it for episode numbering only)
@@ -60,6 +64,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Amendment 1 (2026-11-15, commit 4231867f; text revised in a44edfe4; R1_EVIDENCE):** Population 4 (closing-batch membership) measured with the production pipeline: baseline batches not present under the alternative: sells_first 1, buys_first 2, trade_id 1, order_no 1, sensex_trade_id_time 0 at every threshold (C1 = C2). The earlier phrase '1-2 batches' is confirmed; the cause is the replay tie order that decides which fills are closing portions, distinct from the approved parent-ordering tie-break. Disclosed in the M2-C report addendum. Population 6 (lot attribution) is not a batch property and is reported separately. *Evidence:* reports/R1_TIE_ORDER_CONVENTION.md; reports/r1_tie_order/r1_tie_order_sensitivity.json; reports/m2f_audit/r1/independent_tie_sensitivity_result.json; reports/m2f_audit/r1_review/
 * **Amendment 2 (2026-11-15, commit 7d16504c; OPTION_C_DECISION):** OWNER DECISION: Option C recorded. SOURCE_ROW_ORDER_CONVENTION stays primary; delivered outputs not regenerated; downstream research must evaluate both orderings; the hybrid scenario PER_CONTRACT_ID_SEQUENCE is implemented and compared in reports/R1C_DUAL_SCENARIO_COMPARISON.md (4 episodes / 2 instruments / 4 split fills / 1 batch per view / 6 W1-W2 links differ; totals stable). Neither ordering is verified chronology. *Evidence:* reports/R1C_DUAL_SCENARIO_COMPARISON.md; reports/r1c_dual_scenario/dual_scenario_results.json; reports/r1_tie_order/per_contract_id_sequence_sensitivity.json
 * **Current state:** REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; closing-batch sensitivity published (reports/R1_TIE_ORDER_CONVENTION.md section 3.4) and disclosed in the M2-C report addendum.
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH EVIDENCE.** Root cause R1 (unobservable intra-second order). Handled by policy and disclosure, not by changing results: baseline SOURCE_ROW_ORDER_CONVENTION kept, hybrid PER_CONTRACT_ID_SEQUENCE evaluated side by side; the dependence is 1 batch per view out of 1,502-7,127. *Evidence:* reports/R1_TIE_ORDER_CONVENTION.md; reports/R1C_DUAL_SCENARIO_COMPARISON.md; reports/r1c_dual_scenario/file_inventory.json; tests/test_tie_order_policy.py (real-ledger pins); commits 4231867f, 7d16504c, 65a8dcb0
 
 ### B-04 (track B): Existing test suite lets a reporting-layer mutation survive and kills three others only through a committed-output hash snapshot
 * **Location:** portfolio_engine/tests/test_closing_batches.py; python/pe/closing_batches.py:177-179 (summarize), 132 (total_closing_qty), 154 (join gap), 59 (batch numbering)
@@ -69,6 +74,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Assert summarize() rows against a hand-built synthetic expectation; assert total_closing_qty, join_gap_s and numbering directly.
 * **Regression test:** Synthetic 3-parent scenario with known gaps 0/g/g+1 checking pairs_linked, pairs_gap_exactly_threshold, pairs_gap_threshold_plus_1s.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Independent reporting-layer tests with hand-calculated expectations (summarize rows, total_closing_qty, join_gap_s, numbering, batch ids); 12 scratch mutants each killed by an assertion in the subagent run (re-run result file in reports/m2f_audit/medium_remediation/). *Evidence:* tests/test_closing_batches_reporting.py (35 tests); commit acbdd572
 
 ### C-01 (track C): M2-D headline counts are conditional on the same-second tie order of the replay and this is not disclosed in the M2-D report
 * **Location:** portfolio_engine/python/pe/replay.py:13-16 (order_events, tie_order=src); reports/M2D_WING_BODY_REPORT.md section 2-3 (no tie statement)
@@ -81,6 +87,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Amendment 1 (2026-11-15, commit 4231867f; R1_EVIDENCE):** Population 5 (wing/body membership) measured with the production pipeline: items only in one policy 2 (sells_first), 4 (buys_first), 2 (trade_id, order_no), 0 (SENSEX); W1 links changed 1 / 1 / 6 / 6 / 0, W1_S60 2 / 7 / 6 / 6 / 0; opening body units 626,830 / 626,680 / 625,985 / 625,985 / 626,765 (primary 626,765). Disclosed in the M2-D report addendum; no evidence class changed. *Evidence:* reports/R1_TIE_ORDER_CONVENTION.md; reports/r1_tie_order/r1_tie_order_sensitivity.json; reports/m2f_audit/r1/independent_tie_sensitivity_result.json; reports/m2f_audit/r1_review/
 * **Amendment 2 (2026-11-15, commit 7d16504c; OPTION_C_DECISION):** OWNER DECISION: Option C recorded. SOURCE_ROW_ORDER_CONVENTION stays primary; delivered outputs not regenerated; downstream research must evaluate both orderings; the hybrid scenario PER_CONTRACT_ID_SEQUENCE is implemented and compared in reports/R1C_DUAL_SCENARIO_COMPARISON.md (4 episodes / 2 instruments / 4 split fills / 1 batch per view / 6 W1-W2 links differ; totals stable). Neither ordering is verified chronology. *Evidence:* reports/R1C_DUAL_SCENARIO_COMPARISON.md; reports/r1c_dual_scenario/dual_scenario_results.json; reports/r1_tie_order/per_contract_id_sequence_sensitivity.json
 * **Current state:** REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; wing/body sensitivity published (section 3.5) and disclosed in the M2-D report addendum.
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH EVIDENCE.** Same root cause: opening body units 626,765 vs 625,985, 6 W1/W2 links, 2 items differ under the hybrid; evidence-class labels unchanged (structural ceilings). *Evidence:* reports/R1C_DUAL_SCENARIO_COMPARISON.md section 5; reports/r1c_dual_scenario/file_inventory.json (m2d files); docs/ORDERING_SEMANTICS.md
 
 ### C-02 (track C): W3 weight column is not pinned by any existing test (mutant M19 survives all 33 tests)
 * **Location:** portfolio_engine/python/pe/wing_body.py:~120 (weight=round(u / ws[wi].qty, 9)); portfolio_engine/tests/test_wing_body.py
@@ -92,6 +99,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Original disposition (M2-F audit, commit 562d7eb6, verbatim):** FIXED (test only): tests/test_m2f_regressions.py::test_w3_weight_is_queue_matched_over_wing_quantity. No delivered output changed. Not re-run against the mutant.
 * **Amendment 1 (2026-11-15, commit 4231867f; CORRECTION_OF_OVERSTATED_DISPOSITION):** CORRECTION of an earlier disposition: the disposition 'FIXED (test only)' and the final-report phrase 'W3-weight survivor now pinned' overstated the work. The added test reads the committed .gz and cannot kill a mutation in wing_body.py. Status is OPEN until an engine-level synthetic W3 test with unequal quantities exists (remediation phase). *Evidence:* tests/test_m2f_regressions.py as inspected in the R1 review (reports/m2f_audit/r1/amendments.json); mutants not executed against the added tests
 * **Current state:** OPEN (corrected): the added test reads the committed output and cannot kill a wing_body.py mutation; an engine-level synthetic W3 test is still required (remediation phase).
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Engine-level synthetic W3 test with unequal quantities pins queue-matched units, weight, segment, residuals; reads no committed output; 9 scratch mutants killed by assertions (includes register mutant M19, weight = u / body_qty). *Evidence:* tests/test_wing_body_w3_engine.py (5 tests); commit acbdd572
 
 ### D-01 (track D): V4 (C1 and C2) legend hides the widest-batch marker in both cycles
 * **Location:** tools/m2e_charts.py:192 (axs[1].legend(loc="upper right")); title at :193
@@ -101,6 +109,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Place the legend outside the axes (e.g. bbox_to_anchor below the panel) or loc="lower right"; mark the widest batch with an annotation.
 * **Regression test:** Render-time test: for every legend, assert no plotted point/segment lies inside its bbox (probe in legend_overlap_probe.py).
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** V4 legend placement: fixing it regenerates delivered PNGs; the owner has not approved replacing delivered figures. Data CSVs are unaffected. *Evidence:* reports/M2F_DEFECT_REGISTER.md D-01; owner directive 2026-11-16 (delivered outputs preserved)
 
 ### D-02 (track D): Case-study section claims the selection method was "fixed before any case was looked at" and each case says "predefined, outcome-free"; timestamped evidence does not support the first claim
 * **Location:** reports/M2E_POSITION_CASE_STUDIES.md:5 and :45,67,88,... (every case); tools/m2e_cases.py:16,42; python/pe/cases.py:1; reports/M2E_HISTORICAL_FORENSICS_REPORT.md:7,42; reports/m2e_data/review_dispositions.json:3,10
@@ -110,6 +119,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Rename the heading to "Selection method (structural rule; committed with the outputs; no timestamp evidence of being fixed earlier)"; drop "predefined"/"fixed before" or add a commit that precedes the outputs for future runs.
 * **Regression test:** Doc-lint test: forbid "fixed before any case", "predefined" and "outcome-blind" in M2E_*.md unless a git commit timestamp earlier than the first output commit is referenced.
 * **Disposition:** OPEN - superseded by addendum (M2F_METHODOLOGY_LIMITATIONS.md section 4). The earlier report is preserved unmodified; a wording change in tools/m2e_cases.py is proposed and awaits approval.
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Decision A: unsupported "fixed before any case was looked at" / "predefined" wording replaced by the approved structural, price-free, outcome-free (tested) statement in generator, docstring, case report, forensics report and review record; case records and datasets byte-identical (hash-pinned); line-by-line diff guard; lint. *Evidence:* commit 9f06728d, 0b774b35; tests/test_decision_a.py; reports/m2f_audit/r1/mutation_results_DA.json
 
 ### D-03 (track D): Every selected case sits in the first part of D-1; rule structurally favours opening-minute (seed) structures and no D0 case exists
 * **Location:** python/pe/cases.py:11-20 (RULES), :68-73 (pick)
@@ -119,6 +129,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add a stratified rule (e.g. first qualifying per D-label and time-of-day bucket) or state the concentration prominently in the case report.
 * **Regression test:** Test asserting each case-type pick is disclosed with its qualifying count and D-label; report generator prints the concentration.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH EVIDENCE.** The D-1 concentration (17 of 17 case records begin on D-1; 16 at 09:xx, 1 at 11:xx IST; none on D0) is now computed and disclosed in the case report; D0 holds eligible episodes for CT1/CT2/CT3. The canonical sample is NOT replaced; any D0 diagnostic must be labelled POST-HOC and kept separate. *Evidence:* reports/M2E_POSITION_CASE_STUDIES.md section 1.1; python/pe/cases.py (sample_profile, d0_eligibility); tests/test_decision_a.py
 
 ### D-04 (track D): Case-study PNGs are generic single-episode V2 charts with no case-specific content (no case type, quantities, anchor item, counterpart, batch or price)
 * **Location:** tools/m2e_cases.py:~48 (CH.v2 per case), tools/m2e_charts.py:105-125
@@ -128,6 +139,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add case-type title, anchor item, quantities per event, counterpart list / batch bar; or label them "lifecycle context of the case episode".
 * **Regression test:** Check each case PNG manifest entry carries case_type in its title and an anchor annotation.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Case PNGs are generic V2 charts; adding case-specific content regenerates delivered PNGs (not approved). The case report states which episode each chart shows. *Evidence:* reports/M2F_DEFECT_REGISTER.md D-04
 
 ### D-15 (track D): Existing selection tests are weak: test_case_selection_ignores_prices_and_outcomes perturbs only dataset columns that the datasets carry; it cannot detect an upstream dependence; coverage of figure-text, PNG, case-figure CSV and coverage.json values is partial
 * **Location:** tests/test_forensics.py:216-221 and mutation results (mutations.json)
@@ -137,6 +149,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add raw-derived checks (this track verify_*.py) to the test suite; add legend/footer probes.
 * **Regression test:** Port verify_datasets.py / verify_v4v5v6.py / verify_cases.py as tests.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Upstream price-scrambling test: the whole pipeline (ledger -> lineage -> batches -> wing/body -> datasets -> selection) is re-run on a mirror with scrambled fill-ledger prices; selections, episodes and lifecycle tables must not move and prices must really have changed. Price-dependent and outcome-dependent selection mutants are killed by that test. *Evidence:* tests/test_decision_a.py::test_case_selection_is_invariant_under_upstream_price_scrambling; mutation_results_DA.json (DA01, DA02)
 
 ### D-16 (track D): "SENSEX has no reversal" is definition-dependent: one parent flips a short into a long within a second but is not a REVERSED event
 * **Location:** reports/M2E_CYCLE_COVERAGE_REPORT.md:112; reports/M2E_POSITION_CASE_STUDIES.md:37 (tools/m2e_cases.py:61); reports/M2E_HISTORICAL_FORENSICS_REPORT.md:94; python/pe/ledger.py role rule (reversal = ONE fill crossing zero)
@@ -146,6 +159,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** State the per-fill definition next to "no reversal" and list the parent-level same-second flips (SENSEX 1, NIFTY PE23850 cross-parent) as a measured alternative; do not pick one for the user.
 * **Regression test:** Test counting same-second zero-crossings by fill and by parent and asserting the report text mentions both counts.
 * **Disposition:** OPEN - requires a definition decision (per-fill REVERSED vs net sign flip across parents); both definitions to be reported. No choice made.
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Decision B: per-fill zero-crossing reversal (primary) and parent-level same-second net sign flip (diagnostic) reported separately; baseline 23/26, hybrid 21/22; NIFTY cycle 1/1, SENSEX cycle 0/1; wording corrected in delivered reports (approved lines only). *Evidence:* python/pe/reversals.py; tools/r1c_reversal_measures.py; reports/r1c_dual_scenario/reversal_measures.json; tests/test_reversals.py, tests/test_decision_b.py; commit 1811b25c
 
 ### E-D01 (track E): coverage.json key order depends on PYTHONHASHSEED (byte-nondeterministic output, unhashed)
 * **Location:** portfolio_engine/python/pe/forensics.py:264 (parent_roles=dict(Counter(ls.roles[p] for p in parents)), parents is a set); written by tools/m2e_build.py:36
@@ -155,6 +169,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Build parent_roles from sorted keys: dict(sorted(Counter(...).items())); write JSON with sort_keys=True; add coverage.json, case_studies.json and the summaries to the manifest.
 * **Regression test:** Test: run the m2e builders in two subprocesses with different PYTHONHASHSEED and assert byte equality of every output file.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Source was a set-ordered Counter in cycle_coverage; ordered construction (pe.parents.ROLES order) reproduces the delivered coverage.json byte for byte for both cycles and is independent of PYTHONHASHSEED (slow test across seeds). Delivered files unchanged. *Evidence:* python/pe/forensics.py parent_role_counts; tests/test_hashseed_determinism.py; commit 34bb8444
 
 ### E-D02 (track E): Provenance heads in committed manifests do not identify the generating code; run_id depends on git HEAD; dirty check is partial
 * **Location:** portfolio_engine/python/pe/provenance.py:15-27; tools/m2c_closing_batches.py:24; tools/m2d_wing_body.py:37; tools/m2e_build.py:10,33
@@ -164,6 +179,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Record the code hash (git tree hash of python/, tools/, cpp/) and a full dirty flag in every manifest; exclude the sha from run_id or document it; hash the C++ binary.
 * **Regression test:** Test: provenance.manifest() under two different git shas/dirty states -> same run_id for identical inputs; manifest contains tree hash.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** code_fingerprint(pe_root) implemented and tested (golden hashes, 4 mutants killed); NOT stamped into delivered manifests (they stay byte-identical); stamping into scenario manifests is proposed for M3. *Evidence:* python/pe/provenance.py code_fingerprint; tests/test_cli_and_provenance.py; commit 34bb8444
 
 ### E-D03 (track E): Output manifests do not cover every output file; hash bases differ between stages
 * **Location:** tools/m2c_closing_batches.py:26-31; tools/m2d_wing_body.py:38-43; tools/m2e_build.py:34-36
@@ -175,6 +191,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Original disposition (M2-F audit, commit 562d7eb6, verbatim):** PARTLY ADDRESSED: tests/test_m2f_regressions.py::test_committed_manifests_match_files covers m2c/m2d. Missing manifest coverage and differing hash bases remain.
 * **Amendment 1 (2026-11-15, commit 4231867f; CORRECTION_OF_OVERSTATED_DISPOSITION):** CORRECTION: the added manifest test checks only entries already listed in each manifest; it does not prove every generated output is covered. Status OPEN (remediation phase). *Evidence:* tests/test_m2f_regressions.py as inspected in the R1 review (reports/m2f_audit/r1/amendments.json); mutants not executed against the added tests
 * **Current state:** OPEN (corrected): manifest test covers only listed entries; completeness not proven; remediation phase.
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Completeness is now measured and pinned: of 168 delivered output files 140 are recorded in a manifest with a matching sha256 and 28 are not (8 manifests, 7 summaries, 11 m2c/m2d figure files without any figure manifest, the case-study Markdown, review_dispositions.json); any new unmanifested file or hash mismatch fails. Closing the gap needs manifest changes that would alter delivered manifests (not approved). The file-level inventory records sha256 of every file. *Evidence:* tests/test_manifest_completeness.py; reports/r1c_dual_scenario/file_inventory.json; commit 34bb8444
 
 ### E-D07 (track E): Infrastructure code is untested: pe.cli 0 %, provenance.manifest, tool scripts, cases.record
 * **Location:** portfolio_engine/python/pe/cli.py; provenance.py:20-31; tools/m2c_closing_batches.py, m2d_wing_body.py, m2e_build.py (manifest writing); pe/cases.py:96-123
@@ -184,6 +201,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add tests that run the stage scripts on a small cycle into a temp dir and verify manifest vs files; test cli replay --out-dir and manifest().
 * **Regression test:** Test: execute m2c tool with OUT redirected; verify every manifest entry against bytes.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** pe.cli replay, provenance.manifest, run_id determinism, mode separation, --engine cpp refusal for Python-only policies, schema_version rejection, git sha behaviour are pinned (16 tests); the tool scripts are exercised by the scenario reproduction test. Not covered: the C++ replay path through the CLI (no build in the agent worktree). *Evidence:* tests/test_cli_and_provenance.py; tests/test_scenario.py; commit 34bb8444
 
 ### E-D09 (track E): Dependencies unpinned; reproducibility asserted only for the present environment
 * **Location:** portfolio_engine/docs/DEPENDENCY_AUDIT.md; no requirements/pyproject/lock file
@@ -193,6 +211,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add a lock/requirements file and record versions in manifests.
 * **Regression test:** CI job on the pinned versions.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** requirements.lock.txt pins every third-party import (numpy, pandas, pyarrow, matplotlib, pytest + transitive) with python/g++/cmake versions; docs/ENVIRONMENT.md states what reproducibility is and is not asserted; a test fails if an import is unpinned. Not hash-locked; PNG bytes verified only on this stack. *Evidence:* requirements.lock.txt; docs/ENVIRONMENT.md; tests/test_environment_lock.py; commit 34bb8444
 
 ### E-D12 (track E): Surviving system mutants: C++ IST offset, Python schema_version check, git sha, manifest writers are pinned by no test
 * **Location:** cpp/include/pe/types.hpp:16 (kIstOffsetS); python/pe/tsvio.py:46; python/pe/provenance.py:15; tools/m2c_closing_batches.py:30; tools/m2e_build.py:35
@@ -202,6 +221,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add synthetic fixtures with fills at 18:29:59 / 18:30:00 UTC and 23:59:59 UTC to the parity set; add an invalid-fixture for schema_version; unit-test git_sha against `git rev-parse`; run each stage script in a temp dir in a test and verify its manifest.
 * **Regression test:** Test: parity fixture straddling IST midnight; invalid_schema_version fixture rejected by both engines.
 * **Disposition:** OPEN - correction proposed, not applied (no delivered artefact modified); approval requested
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** IST offset (C++ header vs Python), schema_version check, git sha, manifest fields and run_id are pinned; 10 scratch mutants killed by assertions in the subagent run. The C++ core is not run across midnight by these tests. *Evidence:* tests/test_cli_and_provenance.py; commit 34bb8444
 
 ## Low (29)
 
@@ -213,6 +233,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Document AVG as float/analytical; optionally carry AVG pool as exact rational (cost total, qty) and emit rounded paise.
 * **Regression test:** test_avg_total_matches_fraction_reference_to_1e-6 on the real ledger.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH DOCUMENTED RATIONALE.** AVG is a pooled cost method (NOT_IDENTIFIABLE by lot); its realized P&L is a float by design and is reported as such; FIFO/LIFO are exact integer paise. *Evidence:* M2F_FINAL_AUDIT_REPORT.md section 4
 
 ### D-A05 (track A): Python tsvio accepts integer tokens that C++ rejects (+1, 1_30, leading space, Unicode digits)
 * **Location:** python/pe/tsvio.py:36 _int vs cpp/include/pe/io.hpp to_int
@@ -222,6 +243,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Make Python parse with a strict regex ^-?[0-9]+$ (ASCII).
 * **Regression test:** test_malformed_integer_tokens_rejected_by_both.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH DOCUMENTED RATIONALE.** Python tsvio is more permissive than the C++ reader; every generator writes canonical tokens and the parity tests use them; inputs from outside the project are not supported. *Evidence:* tests/test_parity*.py
 
 ### D-A06 (track A): Parent-order identity is a choice of raw column (163 vs 4); documentation not explicit about the alternative count
 * **Location:** docs/SCHEMAS.md events table; reports/M2B_RECONCILIATION_REPORT.md
@@ -231,6 +253,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** State the choice and the alternative in the data dictionary.
 * **Regression test:** test asserting 1 side/instrument/qty per parent (already true) plus a documented count.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Parent identity (raw column 163) and the alternative (column 4: 37,258 values, reused by up to 6 parents) are documented and pinned by a raw-ledger test. *Evidence:* docs/SCHEMAS.md; docs/BASKET_GROUPING_METHODOLOGY.md; tests/test_decision_d.py
 
 ### D-A07 (track A): Documentation nits
 * **Location:** docs/SCHEMAS.md "instrument_id = UNDERLYING\|YYYY-MM-DD\|CE\|strike" (right is CE or PE); tools write into the repo (parity.py build dir, reports/, data_generated/)
@@ -240,6 +263,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Fix text; add --out-dir to tools.
 * **Regression test:** n/a
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Cosmetic documentation nits (see the defect text); no effect on any result; to be folded into the next documentation revision. *Evidence:* reports/m2f_audit/track_a/defects.json
 
 ### B-02 (track B): Stream boundary (underlying x expiry x session) is stricter than the approved D2 text ("consecutive parents of one underlying") and is not flagged as an interpretation
 * **Location:** docs/BASKET_GROUPING_METHODOLOGY.md D2 vs python/pe/closing_batches.py:3,19; M2C report §1
@@ -249,6 +273,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Record the stream definition as an interpretation of D2 with the nil measured impact.
 * **Regression test:** Synthetic two-expiry same-session case asserting the documented boundary behaviour (already partly covered).
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Stream boundary (underlying x expiry x session) recorded as an interpretation of the approved wording; measured effect nil; counterexamples for different expiry, session and underlying. *Evidence:* docs/BASKET_GROUPING_METHODOLOGY.md (Decision D); tests/test_decision_d.py
 
 ### B-03 (track B): Tie-break wording: approved text says "first source_row_id of the parent"; implementation uses the smallest CLOSING source_row_id
 * **Location:** docs/BASKET_GROUPING_METHODOLOGY.md (Timestamp precision); closing_batches.py:35,51
@@ -258,6 +283,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** State the implemented reading explicitly in D2 together with the measured table.
 * **Regression test:** Existing equal-timestamp tests suffice; add one with a mixed parent whose opening row precedes its closing rows.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Tie-break recorded as the smallest CLOSING source row, then parent id; counterexample where an earlier opening row would change the order. *Evidence:* docs/BASKET_GROUPING_METHODOLOGY.md (Decision D); tests/test_decision_d.py
 
 ### B-05 (track B): Missing / NaN timestamps are not validated: engine fails with an incidental TypeError/ValueError inside replay/formatting
 * **Location:** python/pe/replay.py:30; closing_batches.py (no guard)
@@ -267,6 +293,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Explicit validation with a named error.
 * **Regression test:** Test that a None/NaN timestamp raises a specific, documented exception.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Missing/NaN timestamps cannot occur in the loaded ledger (checked against the raw file); a named validation error is a robustness improvement for future inputs, not a defect of delivered results. *Evidence:* python/pe/generators/historical.py
 
 ### B-06 (track B): parameter_hash does not encode the C2 predecessor reference or the tie-key reading
 * **Location:** python/pe/closing_batches.py:39-41
@@ -276,6 +303,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add c2_reference to the hash payload (changes hashes; needs decision).
 * **Regression test:** Assert param_hash differs between c2_ref variants.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH DOCUMENTED RATIONALE.** Sensitivity variants carry the C2 reference and tie-key reading in their TOKEN (__SENS_*); the primary parameter hash is pinned to the delivered files and the exclusive link rule changes it. *Evidence:* python/pe/closing_batches.py; tests/test_decision_c.py
 
 ### B-07 (track B): Committed manifest records generated_at_head 5b2939ec with working_tree_dirty=true
 * **Location:** portfolio_engine/reports/m2c_data/manifest.json
@@ -285,6 +313,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Regenerate from a clean tree at the audited commit if a clean stamp is wanted.
 * **Regression test:** n/a
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH DOCUMENTED RATIONALE.** Historical provenance (generated_at_head 5b2939ec, dirty tree) is what it was; reproduction from the current code is byte-identical for every generated file (reports/r1c_dual_scenario/file_inventory.json). *Evidence:* reports/r1c_dual_scenario/file_inventory.json
 
 ### C-03 (track C): Closing-level role scope: stop-closed bodies and non-h_-closed h_-opened wings are excluded; magnitude by episode origin not reported
 * **Location:** portfolio_engine/python/pe/wing_body.py build_items (closing branch); reports/M2D_WING_BODY_REPORT.md section 6
@@ -294,6 +323,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add the origin-based table to section 6 and label closing-level coverage as closing-tag-scope only.
 * **Regression test:** none needed beyond a report-number regression of the table.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): FIXED.** Tag-scope exclusions are disclosed with reconciling denominators: opening 1,414,545 = wing 617,130 + body 626,765 + excluded 170,650; closing 1,377,065 = 500,775 + 540,250 + 336,040. *Evidence:* docs/BASKET_GROUPING_METHODOLOGY.md (Decision D); tests/test_decision_d.py
 
 ### C-04 (track C): Same-contract and non-OTM wing/body candidate links are retained unflagged
 * **Location:** portfolio_engine/python/pe/wing_body.py candidates_w1 / candidates_s60 / queue_w3
@@ -303,6 +333,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add a column same_instrument / otm_distance_le_0 flag; keep links (no filtering).
 * **Regression test:** synthetic: long h_ then close then short num same contract in one minute -> flagged.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH DOCUMENTED RATIONALE.** Same-contract and non-OTM candidate links are kept by design (all candidates kept, no forced assignment); their shares are reported descriptively in m2d_summary.json. *Evidence:* reports/m2d_data/m2d_summary.json descriptive_link_properties_opening
 
 ### C-05 (track C): Two items have an order-entry minute later than their first fill (1 s) -- undisclosed data-quality note
 * **Location:** portfolio_engine/reports/m2d_data/wing_body_items.tsv.gz (parents 11431436, 12061224)
@@ -312,6 +343,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Mention in limitations; add a count of entry_minute > first_fill items to the summary.
 * **Regression test:** real-ledger assertion that the count equals 2 (documented).
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH DOCUMENTED RATIONALE.** Two items have an order-entry minute 1 s later than the first fill (minute-precision field vs whole-second clock: CLOSING BODY 11431436 row 20515, OPENING BODY 12061224 row 32722); recorded here as a data-quality note; no rule depends on it. *Evidence:* reports/m2f_audit/track_c/defects.json C-05
 
 ### C-06 (track C): Wording: "independently equal to the pairing TP-03 Phase 1 E6 used" could not be verified; second-key share quoted with differing denominators
 * **Location:** reports/M2D_WING_BODY_REPORT.md section 3; docs/BASKET_GROUPING_METHODOLOGY.md W4 row; reports/M2A_REVIEW_PACKET.md:24
@@ -321,6 +353,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Quote denominators with each percentage; mark the TP-03 E6 equality as reported, not re-verified.
 * **Regression test:** none
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): OPEN.** The quoted equality with TP-03 E6 and the second-key share denominators were not independently re-verified in this closure; recommended wording softening is not applied to the delivered M2-D report. *Evidence:* reports/m2f_audit/track_c/defects.json C-06
 
 ### D-05 (track D): V4 C1 and C2 figures (and the V6 "C1 vs C2 separate views" panel) are identical in both cycles but present as two independent views
 * **Location:** tools/m2e_charts.py:210,317; verified by direct comparison
@@ -330,6 +363,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add "C2 == C1 on this cycle (M2-C §3)" to the V4/V6 titles or merge.
 * **Regression test:** Test: if C1 and C2 batch sets are identical the figure title must say so.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Figure presentation; delivered PNG changes not approved. *Evidence:* M2F_DEFECT_REGISTER.md D-05
 
 ### D-06 (track D): V5_W2 scatter: heavy overplotting and a y = x reference line
 * **Location:** tools/m2e_charts.py:276
@@ -339,6 +373,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Replace by a bubble/count plot or histogram of sum-of-weights / body units; remove y = x or label it.
 * **Regression test:** Visual probe: count of distinct plotted points vs rows.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Figure presentation; delivered PNG changes not approved. *Evidence:* M2F_DEFECT_REGISTER.md D-06
 
 ### D-07 (track D): Legends / annotations overlap data in V5
 * **Location:** tools/m2e_charts.py:246,264,271 (legend and text placement)
@@ -348,6 +383,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Move legends outside axes.
 * **Regression test:** Legend-overlap probe as a render test.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Figure presentation; delivered PNG changes not approved. *Evidence:* M2F_DEFECT_REGISTER.md D-07
 
 ### D-08 (track D): V3 bottom panel: stacked bars ~1 px wide and no legend for the colour classes
 * **Location:** tools/m2e_charts.py:168 (width = 1/1440*0.9)
@@ -357,6 +393,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Use step/area or wider bars and add its own legend.
 * **Regression test:** n/a (visual)
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Figure presentation; delivered PNG changes not approved. *Evidence:* M2F_DEFECT_REGISTER.md D-08
 
 ### D-09 (track D): "Red = short" but the plotted colour is vermilion/orange; V1 "wing/body by tag" curves overlap
 * **Location:** tools/m2e_charts.py:12,123
@@ -366,6 +403,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Say "orange" or change colour.
 * **Regression test:** n/a
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Figure presentation; delivered PNG changes not approved. *Evidence:* M2F_DEFECT_REGISTER.md D-09
 
 ### D-10 (track D): W3 "queue partners" are labelled "candidate bodies/wings" in CSVs and drawn on the same axis as W1/W1_S60 candidates in V6; V6 title and fills use "matched"
 * **Location:** tools/m2e_charts.py:248,305,327
@@ -375,6 +413,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Rename W3 categories to "queue partner" in CSV and V6 panel; use "paired (arithmetic)".
 * **Regression test:** Vocabulary lint over figure CSV categories per method.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Figure/CSV labelling of W3 partners; delivered files not regenerated. *Evidence:* M2F_DEFECT_REGISTER.md D-10
 
 ### D-11 (track D): TP-03 class label NOT_LISTED_BY_TP03_AS_OFF_WINDOW is attached to 494 NIFTY / 312 SENSEX items including wings and s_/v_ items TP-03 never classifies
 * **Location:** python/pe/forensics.py:138; opening_items.tsv; V3 CSV column tp03_event_class
@@ -384,6 +423,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Use NA for items outside TP-03 scope.
 * **Regression test:** Test: tp03_event_class == NA for non BODY_SHORT_BY_TAG items.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Label semantics in a delivered column (tp03_event_class); a rename changes delivered data. The report text discloses that TP-03 does not classify these items. *Evidence:* M2F_DEFECT_REGISTER.md D-11
 
 ### D-12 (track D): Provenance gaps: figure manifests list source datasets without hashes; dataset manifests record generated_at_head 10e33962 not HEAD 7117bbce
 * **Location:** tools/m2e_charts.py:55; tools/m2e_build.py (manifest)
@@ -393,6 +433,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add source sha256 to figure manifest; regenerate at final HEAD.
 * **Regression test:** Manifest test: each source dataset hash equals dataset manifest hash.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Figure manifests list source datasets without hashes; the same gap as E-D03; every file hash is recorded in the file inventory. *Evidence:* reports/r1c_dual_scenario/file_inventory.json
 
 ### D-13 (track D): W1_S60 histogram note says "N links beyond the axis" but those links are at \|dt\| = 60 s (inside the method definition)
 * **Location:** tools/m2e_charts.py:269
@@ -402,6 +443,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Say "at the +/-60 s boundary".
 * **Regression test:** n/a
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Histogram note wording inside a delivered PNG. *Evidence:* M2F_DEFECT_REGISTER.md D-13
 
 ### D-14 (track D): Latent: item -> episode mapping uses the lexicographically first episode id (sorted strings), "#10" < "#2"
 * **Location:** python/pe/forensics.py:140 (sorted set joined with ;); python/pe/cases.py:67 (episode_ids.split(";")[0])
@@ -411,6 +453,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Sort by (instrument, numeric suffix).
 * **Regression test:** Unit test with 11 synthetic episodes.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Latent: maximum episodes per instrument is 4 (NIFTY cycle) and 3 (SENSEX cycle), so the lexicographic episode order has no current effect (re-measured on the delivered episodes tables). *Evidence:* reports/m2e_data/*/episodes.tsv
 
 ### E-D04 (track E): Writers use locale-default encoding/newline; ASCII-locale run fails and leaves truncated reports
 * **Location:** portfolio_engine/tools/m2e_cases.py:65, m2e_catalog.py:32, m2e_coverage_report.py, m2e_build.py:35 (open(path, "w") without encoding/newline)
@@ -420,6 +463,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Pass encoding="utf-8", newline="\n" to every open() that writes.
 * **Regression test:** Test: run the report tools with PYTHONUTF8=0 LC_ALL=C.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Locale-default encoding/newlines: the supported environment is documented (docs/ENVIRONMENT.md); a non-UTF-8 locale is unsupported. *Evidence:* docs/ENVIRONMENT.md
 
 ### E-D05 (track E): Python and C++ TSV readers accept different token sets; io.hpp claims identical validation
 * **Location:** portfolio_engine/python/pe/tsvio.py:35-37 (int()); cpp/include/pe/io.hpp:1,10-14,18-25 (from_chars, getline)
@@ -429,6 +473,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Use a strict regex ^-?[0-9]+$ in Python; strip \r or reject it in C++; reject a file with no header and rows; fail if the first non-comment line is absent.
 * **Regression test:** Test: fixtures with CRLF/+/space/underscore tokens must be rejected (or accepted) identically by both engines.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH DOCUMENTED RATIONALE.** Same as D-A05: canonical inputs only. *Evidence:* tests/test_parity*.py
 
 ### E-D06 (track E): Overflow and float-sum semantics differ between engines at extreme magnitudes
 * **Location:** portfolio_engine/python/pe/ledger.py (no overflow guard) vs cpp/include/pe/ledger.hpp (checked_mul/add); python/pe/invariants.py:27 and lineage_set.py:116 use float sum() (compensated on Python >= 3.12) while cpp sums left to right
@@ -438,6 +483,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Document the domain; add an overflow guard or Python check mirroring C++; replace sum() over floats by an explicit loop in invariants/lineage_set; make AVG tolerance relative to intermediate magnitudes.
 * **Regression test:** Test: q=3e9, px=3e9 sequence must raise in both engines.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): ACCEPTED WITH DOCUMENTED RATIONALE.** Overflow and float-sum differences occur only at magnitudes far outside the ledger (units up to 10^6). *Evidence:* M2F_METHODOLOGY_LIMITATIONS.md section 10
 
 ### E-D08 (track E): Test tiering: "slow" marker does not describe real-data tests
 * **Location:** portfolio_engine/pytest.ini; tests/test_forensics.py (87 of 89 tests use real-ledger fixtures)
@@ -447,6 +493,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Mark real-ledger fixtures slow or add a "real" marker.
 * **Regression test:** Check marker assignment in CI.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Test tiering names only; no effect on results. *Evidence:* pytest.ini
 
 ### E-D10 (track E): Inconsistent schema versioning across files
 * **Location:** portfolio_engine/docs/SCHEMAS.md; python/pe/lineage.py (observed_tsv/lifecycle_tsv headers); parents.py; tools/m2d_wing_body.py
@@ -456,6 +503,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Add a version comment line/field to every shared file.
 * **Regression test:** Test: every output file declares a schema version matched to SCHEMAS.md.
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): DEFERRED WITH REASON.** Schema version strings differ by file type; each is validated by its own reader. *Evidence:* docs/SCHEMAS.md
 
 ### E-D11 (track E): stage2_alpha_research evidence: commit message claims sources added; only .gitignore is tracked, no .py exists in the tree
 * **Location:** commit e32ff484; stage2_alpha_research/
@@ -465,6 +513,7 @@ Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Cr
 * **Proposed correction:** Merge or reference the branch; correct the commit description.
 * **Regression test:** n/a
 * **Disposition:** OPEN (Low) - documented; correction proposed, not applied
+* **Closure disposition (M2 closure, 2026-11-16): OPEN.** stage2_alpha_research is outside portfolio_engine and outside the M2 scope; its evidence discrepancy (commit message vs tracked files) is unchanged and untouched by rule. *Evidence:* M2F_DEFECT_REGISTER.md E-D11
 
 ## Mutation records
 
