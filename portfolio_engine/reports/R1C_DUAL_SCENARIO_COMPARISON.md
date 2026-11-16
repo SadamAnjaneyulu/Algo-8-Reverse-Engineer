@@ -102,3 +102,16 @@ Realized P&L: the total FIFO and LIFO delta is 0 in the reference run (`realized
 3. A conclusion is called ordering-stable only if it holds under both; otherwise it is labelled ordering-dependent with the size of the dependence.
 4. Neither ordering is described as verified chronology; the individual `trade_id`, `order_no`, `sensex_trade_id_time` policies remain separate sensitivities.
 5. Source data is never modified; the ordering is a configurable convention applied at replay time (M3 requirement, see `IMPLEMENTATION_PLAN.md`).
+
+## UPDATE 2026-11-16 — the two "not tested" items of section 5 are now tested (earlier text above unchanged)
+
+Both scenarios were regenerated from empty out roots with `tools/r1c_scenario_run.py` and compared file by file (`reports/r1c_dual_scenario/file_inventory.json`, `N2_PROVENANCE_AND_RECONCILIATION.md`).
+
+| Class | Result |
+|---|---|
+| **Verified stable under the hybrid** | all 17 case records and the case-study Markdown; episodes, session carry, opening items, TP-03 windows and coverage of both frozen cycles; every M2-E figure PNG; M2-D wing-level headline numbers (8,399 wings; 7,301 with a candidate; 133,640 unmatched wing units; the method-disagreement counts); M2-D evidence-class labels (assigned by structural ceilings, not thresholds) |
+| **Ordering-dependent (measured)** | 33 of 170 universe files differ: M2-C closing-batch files (1 batch per view), M2-D items / links / body units (626,765 to 625,985), the M2-D summary and 3 M2-D figure CSVs + the overview PNG, M2-E fills (row order), inventory series and lifecycle events at the reordered intra-second rows, the V1/V2 CSVs |
+| **Not tested** | other cycles; the hybrid in C++ (Python only); M2-E reports other than the case study |
+| **Cannot be tested with the available data** | true intra-second chronology; lot ownership; protective intent; settlement |
+
+Portfolio-level event-path interpretation of intermediate aggregate states is **not authorized** for either scenario (`docs/ORDERING_SEMANTICS.md`): only per-instrument transitions and second-end states.
