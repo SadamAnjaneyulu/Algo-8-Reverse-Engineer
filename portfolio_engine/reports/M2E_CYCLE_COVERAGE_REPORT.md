@@ -109,4 +109,4 @@ TP-03 publishes entry-window rows and per-parent `OFF_WINDOW_ACTION` / `INITIAL_
 | Raw 1-minute option/index bars (`ALGO8_MARKET_DIR`) | absent in this environment | no marks, no unrealized P&L, no price context charts |
 | TP-03 per-parent window id | not published | window attribution shown only as overlay + classes |
 | Expired-unclosed positions | none exist in either frozen cycle | that case study UNAVAILABLE (not borrowed from another cycle) |
-| Reversal in SENSEX | none | reversal case UNAVAILABLE for SENSEX; available for NIFTY |
+| Reversal measures (never merged) | NIFTY: per-fill zero crossing 1, parent-level same-second net sign flip 1; SENSEX: per-fill zero crossing 0, parent-level same-second net sign flip 1 | the reversal CASE type is defined by the per-fill REVERSED event; a parent-level flip is a grouping diagnostic, not a REVERSED event. SENSEX: No per-fill zero-crossing reversal was observed in the frozen cycle; one parent-level same-second sign flip is present under the approved diagnostic definition. |

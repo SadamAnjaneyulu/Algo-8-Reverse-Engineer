@@ -1,0 +1,1173 @@
+{
+ "definitions": {
+  "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": "for one (instrument, parent, second): inventory before the parent's first fill and after its last fill have opposite non-zero signs (diagnostic; not a broker-designated reversal; not a subset or superset of the per-fill measure)",
+  "PER_FILL_ZERO_CROSSING_REVERSAL": "one fill changes the instrument inventory from one non-zero sign to the opposite non-zero sign"
+ },
+ "results": {
+  "NIFTY_2026-06-30": {
+   "baseline": {
+    "counts": {
+     "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 1,
+     "PER_FILL_ZERO_CROSSING_REVERSAL": 1
+    },
+    "parent_level": [
+     {
+      "fills": [
+       5680,
+       5681
+      ],
+      "instrument_id": "NIFTY|2026-06-30|CE|24100",
+      "inventory_after": 130,
+      "inventory_before": -520,
+      "n_fills": 2,
+      "parent_order_id": "h_30084825701151",
+      "timestamp_s": 1782809305
+     }
+    ],
+    "parent_level_without_a_per_fill_event": 0,
+    "per_fill": [
+     {
+      "fill_id": "F005681",
+      "instrument_id": "NIFTY|2026-06-30|CE|24100",
+      "inventory_after": 130,
+      "inventory_before": -390,
+      "parent_order_id": "h_30084825701151",
+      "source_row_id": 5681,
+      "timestamp_s": 1782809305
+     }
+    ],
+    "per_fill_without_a_parent_level_flip": 0,
+    "sentence": "1 per-fill zero-crossing reversal was observed in NIFTY 2026-06-30; one parent-level same-second sign flip is present under the approved diagnostic definition."
+   },
+   "per_contract_id_sequence": {
+    "counts": {
+     "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 1,
+     "PER_FILL_ZERO_CROSSING_REVERSAL": 1
+    },
+    "parent_level": [
+     {
+      "fills": [
+       5680,
+       5681
+      ],
+      "instrument_id": "NIFTY|2026-06-30|CE|24100",
+      "inventory_after": 130,
+      "inventory_before": -520,
+      "n_fills": 2,
+      "parent_order_id": "h_30084825701151",
+      "timestamp_s": 1782809305
+     }
+    ],
+    "parent_level_without_a_per_fill_event": 0,
+    "per_fill": [
+     {
+      "fill_id": "F005681",
+      "instrument_id": "NIFTY|2026-06-30|CE|24100",
+      "inventory_after": 130,
+      "inventory_before": -390,
+      "parent_order_id": "h_30084825701151",
+      "source_row_id": 5681,
+      "timestamp_s": 1782809305
+     }
+    ],
+    "per_fill_without_a_parent_level_flip": 0,
+    "sentence": "1 per-fill zero-crossing reversal was observed in NIFTY 2026-06-30; one parent-level same-second sign flip is present under the approved diagnostic definition."
+   }
+  },
+  "SENSEX_2026-07-16": {
+   "baseline": {
+    "counts": {
+     "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 1,
+     "PER_FILL_ZERO_CROSSING_REVERSAL": 0
+    },
+    "parent_level": [
+     {
+      "fills": [
+       12632,
+       12638,
+       12641
+      ],
+      "instrument_id": "SENSEX|2026-07-16|CE|77600",
+      "inventory_after": 20,
+      "inventory_before": -160,
+      "n_fills": 3,
+      "parent_order_id": "s_16053046299662",
+      "timestamp_s": 1784179852
+     }
+    ],
+    "parent_level_without_a_per_fill_event": 1,
+    "per_fill": [],
+    "per_fill_without_a_parent_level_flip": 0,
+    "sentence": "No per-fill zero-crossing reversal was observed in SENSEX 2026-07-16; one parent-level same-second sign flip is present under the approved diagnostic definition."
+   },
+   "per_contract_id_sequence": {
+    "counts": {
+     "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 1,
+     "PER_FILL_ZERO_CROSSING_REVERSAL": 0
+    },
+    "parent_level": [
+     {
+      "fills": [
+       12632,
+       12638,
+       12641
+      ],
+      "instrument_id": "SENSEX|2026-07-16|CE|77600",
+      "inventory_after": 20,
+      "inventory_before": -160,
+      "n_fills": 3,
+      "parent_order_id": "s_16053046299662",
+      "timestamp_s": 1784179852
+     }
+    ],
+    "parent_level_without_a_per_fill_event": 1,
+    "per_fill": [],
+    "per_fill_without_a_parent_level_flip": 0,
+    "sentence": "No per-fill zero-crossing reversal was observed in SENSEX 2026-07-16; one parent-level same-second sign flip is present under the approved diagnostic definition."
+   }
+  },
+  "full_ledger": {
+   "baseline": {
+    "counts": {
+     "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 26,
+     "PER_FILL_ZERO_CROSSING_REVERSAL": 23
+    },
+    "parent_level": [
+     {
+      "fills": [
+       1901
+      ],
+      "instrument_id": "NIFTY|2026-06-23|CE|24000",
+      "inventory_after": 260,
+      "inventory_before": -520,
+      "n_fills": 1,
+      "parent_order_id": "h_23093122795492",
+      "timestamp_s": 1782207082
+     },
+     {
+      "fills": [
+       3997
+      ],
+      "instrument_id": "SENSEX|2026-06-25|CE|77900",
+      "inventory_after": 20,
+      "inventory_before": -40,
+      "n_fills": 1,
+      "parent_order_id": "h_25085351760551",
+      "timestamp_s": 1782377632
+     },
+     {
+      "fills": [
+       4408
+      ],
+      "instrument_id": "SENSEX|2026-06-25|CE|77600",
+      "inventory_after": 160,
+      "inventory_before": -100,
+      "n_fills": 1,
+      "parent_order_id": "h_25093109017177",
+      "timestamp_s": 1782379869
+     },
+     {
+      "fills": [
+       4500
+      ],
+      "instrument_id": "SENSEX|2026-06-25|CE|77500",
+      "inventory_after": 60,
+      "inventory_before": -60,
+      "n_fills": 1,
+      "parent_order_id": "h_25093610984178",
+      "timestamp_s": 1782380171
+     },
+     {
+      "fills": [
+       5680,
+       5681
+      ],
+      "instrument_id": "NIFTY|2026-06-30|CE|24100",
+      "inventory_after": 130,
+      "inventory_before": -520,
+      "n_fills": 2,
+      "parent_order_id": "h_30084825701151",
+      "timestamp_s": 1782809305
+     },
+     {
+      "fills": [
+       11367
+      ],
+      "instrument_id": "SENSEX|2026-07-09|CE|77200",
+      "inventory_after": 40,
+      "inventory_before": -20,
+      "n_fills": 1,
+      "parent_order_id": "h_09093824293799",
+      "timestamp_s": 1783589904
+     },
+     {
+      "fills": [
+       12632,
+       12638,
+       12641
+      ],
+      "instrument_id": "SENSEX|2026-07-16|CE|77600",
+      "inventory_after": 20,
+      "inventory_before": -160,
+      "n_fills": 3,
+      "parent_order_id": "s_16053046299662",
+      "timestamp_s": 1784179852
+     },
+     {
+      "fills": [
+       15829
+      ],
+      "instrument_id": "SENSEX|2026-07-23|PE|76000",
+      "inventory_after": 20,
+      "inventory_before": -40,
+      "n_fills": 1,
+      "parent_order_id": "h_23093312426291",
+      "timestamp_s": 1784799192
+     },
+     {
+      "fills": [
+       18968
+      ],
+      "instrument_id": "SENSEX|2026-07-30|PE|77400",
+      "inventory_after": 20,
+      "inventory_before": -20,
+      "n_fills": 1,
+      "parent_order_id": "h_30093142028251",
+      "timestamp_s": 1785403902
+     },
+     {
+      "fills": [
+       19070
+      ],
+      "instrument_id": "SENSEX|2026-07-30|PE|77500",
+      "inventory_after": 60,
+      "inventory_before": -180,
+      "n_fills": 1,
+      "parent_order_id": "h_30093557034905",
+      "timestamp_s": 1785404157
+     },
+     {
+      "fills": [
+       21321,
+       21330
+      ],
+      "instrument_id": "SENSEX|2026-08-06|CE|78700",
+      "inventory_after": 20,
+      "inventory_before": -120,
+      "n_fills": 2,
+      "parent_order_id": "s_06035240918762",
+      "timestamp_s": 1785988479
+     },
+     {
+      "fills": [
+       24158,
+       24164,
+       24168,
+       24171,
+       24174,
+       24176,
+       24178,
+       24179,
+       24180,
+       24181
+      ],
+      "instrument_id": "NIFTY|2026-08-18|PE|24250",
+      "inventory_after": 130,
+      "inventory_before": -1170,
+      "n_fills": 10,
+      "parent_order_id": "s_18034507000846",
+      "timestamp_s": 1787024712
+     },
+     {
+      "fills": [
+       24621,
+       24630,
+       24636,
+       24641,
+       24645,
+       24648,
+       24649,
+       24650
+      ],
+      "instrument_id": "SENSEX|2026-08-20|CE|76900",
+      "inventory_after": 580,
+      "inventory_before": -60,
+      "n_fills": 8,
+      "parent_order_id": "s_20034413657253",
+      "timestamp_s": 1787197513
+     },
+     {
+      "fills": [
+       24623
+      ],
+      "instrument_id": "SENSEX|2026-08-20|PE|77100",
+      "inventory_after": 20,
+      "inventory_before": -60,
+      "n_fills": 1,
+      "parent_order_id": "s_20034413657423",
+      "timestamp_s": 1787197513
+     },
+     {
+      "fills": [
+       24624,
+       24631,
+       24637,
+       24642,
+       24646
+      ],
+      "instrument_id": "SENSEX|2026-08-20|CE|77000",
+      "inventory_after": 180,
+      "inventory_before": -80,
+      "n_fills": 5,
+      "parent_order_id": "s_20034413657345",
+      "timestamp_s": 1787197513
+     },
+     {
+      "fills": [
+       24625,
+       24632,
+       24638,
+       24643,
+       24647
+      ],
+      "instrument_id": "SENSEX|2026-08-20|PE|76900",
+      "inventory_after": 120,
+      "inventory_before": -400,
+      "n_fills": 5,
+      "parent_order_id": "s_20034413657763",
+      "timestamp_s": 1787197513
+     },
+     {
+      "fills": [
+       27906,
+       27916
+      ],
+      "instrument_id": "NIFTY|2026-09-01|PE|23200",
+      "inventory_after": -650,
+      "inventory_before": 650,
+      "n_fills": 2,
+      "parent_order_id": "11747186",
+      "timestamp_s": 1788167791
+     },
+     {
+      "fills": [
+       27908,
+       27917
+      ],
+      "instrument_id": "NIFTY|2026-09-01|CE|24600",
+      "inventory_after": -520,
+      "inventory_before": 650,
+      "n_fills": 2,
+      "parent_order_id": "11747185",
+      "timestamp_s": 1788167791
+     },
+     {
+      "fills": [
+       27911
+      ],
+      "instrument_id": "NIFTY|2026-09-01|CE|24600",
+      "inventory_after": -260,
+      "inventory_before": 260,
+      "n_fills": 1,
+      "parent_order_id": "s_31091625053407",
+      "timestamp_s": 1788167791
+     },
+     {
+      "fills": [
+       27912
+      ],
+      "instrument_id": "NIFTY|2026-09-01|PE|23200",
+      "inventory_after": -130,
+      "inventory_before": 520,
+      "n_fills": 1,
+      "parent_order_id": "s_31091625053962",
+      "timestamp_s": 1788167791
+     },
+     {
+      "fills": [
+       33690,
+       33698,
+       33703,
+       33706,
+       33708,
+       33710,
+       33711,
+       33712,
+       33713,
+       33714,
+       33715,
+       33716,
+       33717
+      ],
+      "instrument_id": "NIFTY|2026-09-22|CE|23300",
+      "inventory_after": 65,
+      "inventory_before": -1755,
+      "n_fills": 13,
+      "parent_order_id": "s_22084429338804",
+      "timestamp_s": 1790066670
+     },
+     {
+      "fills": [
+       34113
+      ],
+      "instrument_id": "SENSEX|2026-09-24|PE|74600",
+      "inventory_after": 40,
+      "inventory_before": -20,
+      "n_fills": 1,
+      "parent_order_id": "s_24034500563733",
+      "timestamp_s": 1790221512
+     },
+     {
+      "fills": [
+       34139,
+       34140
+      ],
+      "instrument_id": "SENSEX|2026-09-24|PE|73900",
+      "inventory_after": -580,
+      "inventory_before": 100,
+      "n_fills": 2,
+      "parent_order_id": "s_24034500565627",
+      "timestamp_s": 1790221523
+     },
+     {
+      "fills": [
+       35468
+      ],
+      "instrument_id": "SENSEX|2026-10-01|CE|72700",
+      "inventory_after": 40,
+      "inventory_before": -60,
+      "n_fills": 1,
+      "parent_order_id": "h_01082836661112",
+      "timestamp_s": 1790843317
+     },
+     {
+      "fills": [
+       38352
+      ],
+      "instrument_id": "SENSEX|2026-10-08|CE|72200",
+      "inventory_after": 20,
+      "inventory_before": -120,
+      "n_fills": 1,
+      "parent_order_id": "h_08094212394937",
+      "timestamp_s": 1791452532
+     },
+     {
+      "fills": [
+       40009,
+       40016
+      ],
+      "instrument_id": "NIFTY|2026-10-19|CE|24000",
+      "inventory_after": -4940,
+      "inventory_before": 780,
+      "n_fills": 2,
+      "parent_order_id": "12489618",
+      "timestamp_s": 1792382185
+     }
+    ],
+    "parent_level_without_a_per_fill_event": 3,
+    "per_fill": [
+     {
+      "fill_id": "F001901",
+      "instrument_id": "NIFTY|2026-06-23|CE|24000",
+      "inventory_after": 260,
+      "inventory_before": -520,
+      "parent_order_id": "h_23093122795492",
+      "source_row_id": 1901,
+      "timestamp_s": 1782207082
+     },
+     {
+      "fill_id": "F003997",
+      "instrument_id": "SENSEX|2026-06-25|CE|77900",
+      "inventory_after": 20,
+      "inventory_before": -40,
+      "parent_order_id": "h_25085351760551",
+      "source_row_id": 3997,
+      "timestamp_s": 1782377632
+     },
+     {
+      "fill_id": "F004408",
+      "instrument_id": "SENSEX|2026-06-25|CE|77600",
+      "inventory_after": 160,
+      "inventory_before": -100,
+      "parent_order_id": "h_25093109017177",
+      "source_row_id": 4408,
+      "timestamp_s": 1782379869
+     },
+     {
+      "fill_id": "F004500",
+      "instrument_id": "SENSEX|2026-06-25|CE|77500",
+      "inventory_after": 60,
+      "inventory_before": -60,
+      "parent_order_id": "h_25093610984178",
+      "source_row_id": 4500,
+      "timestamp_s": 1782380171
+     },
+     {
+      "fill_id": "F005681",
+      "instrument_id": "NIFTY|2026-06-30|CE|24100",
+      "inventory_after": 130,
+      "inventory_before": -390,
+      "parent_order_id": "h_30084825701151",
+      "source_row_id": 5681,
+      "timestamp_s": 1782809305
+     },
+     {
+      "fill_id": "F011367",
+      "instrument_id": "SENSEX|2026-07-09|CE|77200",
+      "inventory_after": 40,
+      "inventory_before": -20,
+      "parent_order_id": "h_09093824293799",
+      "source_row_id": 11367,
+      "timestamp_s": 1783589904
+     },
+     {
+      "fill_id": "F015829",
+      "instrument_id": "SENSEX|2026-07-23|PE|76000",
+      "inventory_after": 20,
+      "inventory_before": -40,
+      "parent_order_id": "h_23093312426291",
+      "source_row_id": 15829,
+      "timestamp_s": 1784799192
+     },
+     {
+      "fill_id": "F018968",
+      "instrument_id": "SENSEX|2026-07-30|PE|77400",
+      "inventory_after": 20,
+      "inventory_before": -20,
+      "parent_order_id": "h_30093142028251",
+      "source_row_id": 18968,
+      "timestamp_s": 1785403902
+     },
+     {
+      "fill_id": "F019070",
+      "instrument_id": "SENSEX|2026-07-30|PE|77500",
+      "inventory_after": 60,
+      "inventory_before": -180,
+      "parent_order_id": "h_30093557034905",
+      "source_row_id": 19070,
+      "timestamp_s": 1785404157
+     },
+     {
+      "fill_id": "F021330",
+      "instrument_id": "SENSEX|2026-08-06|CE|78700",
+      "inventory_after": 20,
+      "inventory_before": -80,
+      "parent_order_id": "s_06035240918762",
+      "source_row_id": 21330,
+      "timestamp_s": 1785988479
+     },
+     {
+      "fill_id": "F024181",
+      "instrument_id": "NIFTY|2026-08-18|PE|24250",
+      "inventory_after": 130,
+      "inventory_before": -195,
+      "parent_order_id": "s_18034507000846",
+      "source_row_id": 24181,
+      "timestamp_s": 1787024712
+     },
+     {
+      "fill_id": "F024621",
+      "instrument_id": "SENSEX|2026-08-20|CE|76900",
+      "inventory_after": 20,
+      "inventory_before": -60,
+      "parent_order_id": "s_20034413657253",
+      "source_row_id": 24621,
+      "timestamp_s": 1787197513
+     },
+     {
+      "fill_id": "F024623",
+      "instrument_id": "SENSEX|2026-08-20|PE|77100",
+      "inventory_after": 20,
+      "inventory_before": -60,
+      "parent_order_id": "s_20034413657423",
+      "source_row_id": 24623,
+      "timestamp_s": 1787197513
+     },
+     {
+      "fill_id": "F024637",
+      "instrument_id": "SENSEX|2026-08-20|CE|77000",
+      "inventory_after": 20,
+      "inventory_before": -20,
+      "parent_order_id": "s_20034413657345",
+      "source_row_id": 24637,
+      "timestamp_s": 1787197513
+     },
+     {
+      "fill_id": "F024647",
+      "instrument_id": "SENSEX|2026-08-20|PE|76900",
+      "inventory_after": 120,
+      "inventory_before": -40,
+      "parent_order_id": "s_20034413657763",
+      "source_row_id": 24647,
+      "timestamp_s": 1787197513
+     },
+     {
+      "fill_id": "F027911",
+      "instrument_id": "NIFTY|2026-09-01|CE|24600",
+      "inventory_after": -260,
+      "inventory_before": 260,
+      "parent_order_id": "s_31091625053407",
+      "source_row_id": 27911,
+      "timestamp_s": 1788167791
+     },
+     {
+      "fill_id": "F027912",
+      "instrument_id": "NIFTY|2026-09-01|PE|23200",
+      "inventory_after": -130,
+      "inventory_before": 520,
+      "parent_order_id": "s_31091625053962",
+      "source_row_id": 27912,
+      "timestamp_s": 1788167791
+     },
+     {
+      "fill_id": "F033717",
+      "instrument_id": "NIFTY|2026-09-22|CE|23300",
+      "inventory_after": 65,
+      "inventory_before": -65,
+      "parent_order_id": "s_22084429338804",
+      "source_row_id": 33717,
+      "timestamp_s": 1790066670
+     },
+     {
+      "fill_id": "F034113",
+      "instrument_id": "SENSEX|2026-09-24|PE|74600",
+      "inventory_after": 40,
+      "inventory_before": -20,
+      "parent_order_id": "s_24034500563733",
+      "source_row_id": 34113,
+      "timestamp_s": 1790221512
+     },
+     {
+      "fill_id": "F034139",
+      "instrument_id": "SENSEX|2026-09-24|PE|73900",
+      "inventory_after": -260,
+      "inventory_before": 100,
+      "parent_order_id": "s_24034500565627",
+      "source_row_id": 34139,
+      "timestamp_s": 1790221523
+     },
+     {
+      "fill_id": "F035468",
+      "instrument_id": "SENSEX|2026-10-01|CE|72700",
+      "inventory_after": 40,
+      "inventory_before": -60,
+      "parent_order_id": "h_01082836661112",
+      "source_row_id": 35468,
+      "timestamp_s": 1790843317
+     },
+     {
+      "fill_id": "F038352",
+      "instrument_id": "SENSEX|2026-10-08|CE|72200",
+      "inventory_after": 20,
+      "inventory_before": -120,
+      "parent_order_id": "h_08094212394937",
+      "source_row_id": 38352,
+      "timestamp_s": 1791452532
+     },
+     {
+      "fill_id": "F040009",
+      "instrument_id": "NIFTY|2026-10-19|CE|24000",
+      "inventory_after": -1430,
+      "inventory_before": 780,
+      "parent_order_id": "12489618",
+      "source_row_id": 40009,
+      "timestamp_s": 1792382185
+     }
+    ],
+    "per_fill_without_a_parent_level_flip": 0,
+    "sentence": "23 per-fill zero-crossing reversals were observed in full ledger; 26 parent-level same-second sign flips are present under the approved diagnostic definition."
+   },
+   "per_contract_id_sequence": {
+    "counts": {
+     "PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP": 22,
+     "PER_FILL_ZERO_CROSSING_REVERSAL": 21
+    },
+    "parent_level": [
+     {
+      "fills": [
+       1901
+      ],
+      "instrument_id": "NIFTY|2026-06-23|CE|24000",
+      "inventory_after": 260,
+      "inventory_before": -520,
+      "n_fills": 1,
+      "parent_order_id": "h_23093122795492",
+      "timestamp_s": 1782207082
+     },
+     {
+      "fills": [
+       3997
+      ],
+      "instrument_id": "SENSEX|2026-06-25|CE|77900",
+      "inventory_after": 20,
+      "inventory_before": -40,
+      "n_fills": 1,
+      "parent_order_id": "h_25085351760551",
+      "timestamp_s": 1782377632
+     },
+     {
+      "fills": [
+       4408
+      ],
+      "instrument_id": "SENSEX|2026-06-25|CE|77600",
+      "inventory_after": 160,
+      "inventory_before": -100,
+      "n_fills": 1,
+      "parent_order_id": "h_25093109017177",
+      "timestamp_s": 1782379869
+     },
+     {
+      "fills": [
+       4500
+      ],
+      "instrument_id": "SENSEX|2026-06-25|CE|77500",
+      "inventory_after": 60,
+      "inventory_before": -60,
+      "n_fills": 1,
+      "parent_order_id": "h_25093610984178",
+      "timestamp_s": 1782380171
+     },
+     {
+      "fills": [
+       5680,
+       5681
+      ],
+      "instrument_id": "NIFTY|2026-06-30|CE|24100",
+      "inventory_after": 130,
+      "inventory_before": -520,
+      "n_fills": 2,
+      "parent_order_id": "h_30084825701151",
+      "timestamp_s": 1782809305
+     },
+     {
+      "fills": [
+       11367
+      ],
+      "instrument_id": "SENSEX|2026-07-09|CE|77200",
+      "inventory_after": 40,
+      "inventory_before": -20,
+      "n_fills": 1,
+      "parent_order_id": "h_09093824293799",
+      "timestamp_s": 1783589904
+     },
+     {
+      "fills": [
+       12632,
+       12638,
+       12641
+      ],
+      "instrument_id": "SENSEX|2026-07-16|CE|77600",
+      "inventory_after": 20,
+      "inventory_before": -160,
+      "n_fills": 3,
+      "parent_order_id": "s_16053046299662",
+      "timestamp_s": 1784179852
+     },
+     {
+      "fills": [
+       15829
+      ],
+      "instrument_id": "SENSEX|2026-07-23|PE|76000",
+      "inventory_after": 20,
+      "inventory_before": -40,
+      "n_fills": 1,
+      "parent_order_id": "h_23093312426291",
+      "timestamp_s": 1784799192
+     },
+     {
+      "fills": [
+       18968
+      ],
+      "instrument_id": "SENSEX|2026-07-30|PE|77400",
+      "inventory_after": 20,
+      "inventory_before": -20,
+      "n_fills": 1,
+      "parent_order_id": "h_30093142028251",
+      "timestamp_s": 1785403902
+     },
+     {
+      "fills": [
+       19070
+      ],
+      "instrument_id": "SENSEX|2026-07-30|PE|77500",
+      "inventory_after": 60,
+      "inventory_before": -180,
+      "n_fills": 1,
+      "parent_order_id": "h_30093557034905",
+      "timestamp_s": 1785404157
+     },
+     {
+      "fills": [
+       21321,
+       21330
+      ],
+      "instrument_id": "SENSEX|2026-08-06|CE|78700",
+      "inventory_after": 20,
+      "inventory_before": -120,
+      "n_fills": 2,
+      "parent_order_id": "s_06035240918762",
+      "timestamp_s": 1785988479
+     },
+     {
+      "fills": [
+       24158,
+       24164,
+       24168,
+       24171,
+       24174,
+       24176,
+       24178,
+       24179,
+       24180,
+       24181
+      ],
+      "instrument_id": "NIFTY|2026-08-18|PE|24250",
+      "inventory_after": 130,
+      "inventory_before": -1170,
+      "n_fills": 10,
+      "parent_order_id": "s_18034507000846",
+      "timestamp_s": 1787024712
+     },
+     {
+      "fills": [
+       24621,
+       24630,
+       24636,
+       24641,
+       24645,
+       24648,
+       24649,
+       24650
+      ],
+      "instrument_id": "SENSEX|2026-08-20|CE|76900",
+      "inventory_after": 580,
+      "inventory_before": -60,
+      "n_fills": 8,
+      "parent_order_id": "s_20034413657253",
+      "timestamp_s": 1787197513
+     },
+     {
+      "fills": [
+       24623
+      ],
+      "instrument_id": "SENSEX|2026-08-20|PE|77100",
+      "inventory_after": 20,
+      "inventory_before": -60,
+      "n_fills": 1,
+      "parent_order_id": "s_20034413657423",
+      "timestamp_s": 1787197513
+     },
+     {
+      "fills": [
+       24624,
+       24631,
+       24637,
+       24642,
+       24646
+      ],
+      "instrument_id": "SENSEX|2026-08-20|CE|77000",
+      "inventory_after": 180,
+      "inventory_before": -80,
+      "n_fills": 5,
+      "parent_order_id": "s_20034413657345",
+      "timestamp_s": 1787197513
+     },
+     {
+      "fills": [
+       24625,
+       24632,
+       24638,
+       24643,
+       24647
+      ],
+      "instrument_id": "SENSEX|2026-08-20|PE|76900",
+      "inventory_after": 120,
+      "inventory_before": -400,
+      "n_fills": 5,
+      "parent_order_id": "s_20034413657763",
+      "timestamp_s": 1787197513
+     },
+     {
+      "fills": [
+       33690,
+       33698,
+       33703,
+       33706,
+       33708,
+       33710,
+       33711,
+       33712,
+       33713,
+       33714,
+       33715,
+       33716,
+       33717
+      ],
+      "instrument_id": "NIFTY|2026-09-22|CE|23300",
+      "inventory_after": 65,
+      "inventory_before": -1690,
+      "n_fills": 13,
+      "parent_order_id": "s_22084429338804",
+      "timestamp_s": 1790066670
+     },
+     {
+      "fills": [
+       34113
+      ],
+      "instrument_id": "SENSEX|2026-09-24|PE|74600",
+      "inventory_after": 40,
+      "inventory_before": -20,
+      "n_fills": 1,
+      "parent_order_id": "s_24034500563733",
+      "timestamp_s": 1790221512
+     },
+     {
+      "fills": [
+       34139,
+       34140
+      ],
+      "instrument_id": "SENSEX|2026-09-24|PE|73900",
+      "inventory_after": -580,
+      "inventory_before": 100,
+      "n_fills": 2,
+      "parent_order_id": "s_24034500565627",
+      "timestamp_s": 1790221523
+     },
+     {
+      "fills": [
+       35468
+      ],
+      "instrument_id": "SENSEX|2026-10-01|CE|72700",
+      "inventory_after": 40,
+      "inventory_before": -60,
+      "n_fills": 1,
+      "parent_order_id": "h_01082836661112",
+      "timestamp_s": 1790843317
+     },
+     {
+      "fills": [
+       38352
+      ],
+      "instrument_id": "SENSEX|2026-10-08|CE|72200",
+      "inventory_after": 20,
+      "inventory_before": -120,
+      "n_fills": 1,
+      "parent_order_id": "h_08094212394937",
+      "timestamp_s": 1791452532
+     },
+     {
+      "fills": [
+       40009,
+       40016
+      ],
+      "instrument_id": "NIFTY|2026-10-19|CE|24000",
+      "inventory_after": -2730,
+      "inventory_before": 780,
+      "n_fills": 2,
+      "parent_order_id": "12489618",
+      "timestamp_s": 1792382185
+     }
+    ],
+    "parent_level_without_a_per_fill_event": 1,
+    "per_fill": [
+     {
+      "fill_id": "F001901",
+      "instrument_id": "NIFTY|2026-06-23|CE|24000",
+      "inventory_after": 260,
+      "inventory_before": -520,
+      "parent_order_id": "h_23093122795492",
+      "source_row_id": 1901,
+      "timestamp_s": 1782207082
+     },
+     {
+      "fill_id": "F003997",
+      "instrument_id": "SENSEX|2026-06-25|CE|77900",
+      "inventory_after": 20,
+      "inventory_before": -40,
+      "parent_order_id": "h_25085351760551",
+      "source_row_id": 3997,
+      "timestamp_s": 1782377632
+     },
+     {
+      "fill_id": "F004408",
+      "instrument_id": "SENSEX|2026-06-25|CE|77600",
+      "inventory_after": 160,
+      "inventory_before": -100,
+      "parent_order_id": "h_25093109017177",
+      "source_row_id": 4408,
+      "timestamp_s": 1782379869
+     },
+     {
+      "fill_id": "F004500",
+      "instrument_id": "SENSEX|2026-06-25|CE|77500",
+      "inventory_after": 60,
+      "inventory_before": -60,
+      "parent_order_id": "h_25093610984178",
+      "source_row_id": 4500,
+      "timestamp_s": 1782380171
+     },
+     {
+      "fill_id": "F005681",
+      "instrument_id": "NIFTY|2026-06-30|CE|24100",
+      "inventory_after": 130,
+      "inventory_before": -390,
+      "parent_order_id": "h_30084825701151",
+      "source_row_id": 5681,
+      "timestamp_s": 1782809305
+     },
+     {
+      "fill_id": "F011367",
+      "instrument_id": "SENSEX|2026-07-09|CE|77200",
+      "inventory_after": 40,
+      "inventory_before": -20,
+      "parent_order_id": "h_09093824293799",
+      "source_row_id": 11367,
+      "timestamp_s": 1783589904
+     },
+     {
+      "fill_id": "F015829",
+      "instrument_id": "SENSEX|2026-07-23|PE|76000",
+      "inventory_after": 20,
+      "inventory_before": -40,
+      "parent_order_id": "h_23093312426291",
+      "source_row_id": 15829,
+      "timestamp_s": 1784799192
+     },
+     {
+      "fill_id": "F018968",
+      "instrument_id": "SENSEX|2026-07-30|PE|77400",
+      "inventory_after": 20,
+      "inventory_before": -20,
+      "parent_order_id": "h_30093142028251",
+      "source_row_id": 18968,
+      "timestamp_s": 1785403902
+     },
+     {
+      "fill_id": "F019070",
+      "instrument_id": "SENSEX|2026-07-30|PE|77500",
+      "inventory_after": 60,
+      "inventory_before": -180,
+      "parent_order_id": "h_30093557034905",
+      "source_row_id": 19070,
+      "timestamp_s": 1785404157
+     },
+     {
+      "fill_id": "F021330",
+      "instrument_id": "SENSEX|2026-08-06|CE|78700",
+      "inventory_after": 20,
+      "inventory_before": -80,
+      "parent_order_id": "s_06035240918762",
+      "source_row_id": 21330,
+      "timestamp_s": 1785988479
+     },
+     {
+      "fill_id": "F024181",
+      "instrument_id": "NIFTY|2026-08-18|PE|24250",
+      "inventory_after": 130,
+      "inventory_before": -195,
+      "parent_order_id": "s_18034507000846",
+      "source_row_id": 24181,
+      "timestamp_s": 1787024712
+     },
+     {
+      "fill_id": "F024621",
+      "instrument_id": "SENSEX|2026-08-20|CE|76900",
+      "inventory_after": 20,
+      "inventory_before": -60,
+      "parent_order_id": "s_20034413657253",
+      "source_row_id": 24621,
+      "timestamp_s": 1787197513
+     },
+     {
+      "fill_id": "F024623",
+      "instrument_id": "SENSEX|2026-08-20|PE|77100",
+      "inventory_after": 20,
+      "inventory_before": -60,
+      "parent_order_id": "s_20034413657423",
+      "source_row_id": 24623,
+      "timestamp_s": 1787197513
+     },
+     {
+      "fill_id": "F024637",
+      "instrument_id": "SENSEX|2026-08-20|CE|77000",
+      "inventory_after": 20,
+      "inventory_before": -20,
+      "parent_order_id": "s_20034413657345",
+      "source_row_id": 24637,
+      "timestamp_s": 1787197513
+     },
+     {
+      "fill_id": "F024647",
+      "instrument_id": "SENSEX|2026-08-20|PE|76900",
+      "inventory_after": 120,
+      "inventory_before": -40,
+      "parent_order_id": "s_20034413657763",
+      "source_row_id": 24647,
+      "timestamp_s": 1787197513
+     },
+     {
+      "fill_id": "F033717",
+      "instrument_id": "NIFTY|2026-09-22|CE|23300",
+      "inventory_after": 65,
+      "inventory_before": -65,
+      "parent_order_id": "s_22084429338804",
+      "source_row_id": 33717,
+      "timestamp_s": 1790066670
+     },
+     {
+      "fill_id": "F034113",
+      "instrument_id": "SENSEX|2026-09-24|PE|74600",
+      "inventory_after": 40,
+      "inventory_before": -20,
+      "parent_order_id": "s_24034500563733",
+      "source_row_id": 34113,
+      "timestamp_s": 1790221512
+     },
+     {
+      "fill_id": "F034139",
+      "instrument_id": "SENSEX|2026-09-24|PE|73900",
+      "inventory_after": -260,
+      "inventory_before": 100,
+      "parent_order_id": "s_24034500565627",
+      "source_row_id": 34139,
+      "timestamp_s": 1790221523
+     },
+     {
+      "fill_id": "F035468",
+      "instrument_id": "SENSEX|2026-10-01|CE|72700",
+      "inventory_after": 40,
+      "inventory_before": -60,
+      "parent_order_id": "h_01082836661112",
+      "source_row_id": 35468,
+      "timestamp_s": 1790843317
+     },
+     {
+      "fill_id": "F038352",
+      "instrument_id": "SENSEX|2026-10-08|CE|72200",
+      "inventory_after": 20,
+      "inventory_before": -120,
+      "parent_order_id": "h_08094212394937",
+      "source_row_id": 38352,
+      "timestamp_s": 1791452532
+     },
+     {
+      "fill_id": "F040009",
+      "instrument_id": "NIFTY|2026-10-19|CE|24000",
+      "inventory_after": -1430,
+      "inventory_before": 780,
+      "parent_order_id": "12489618",
+      "source_row_id": 40009,
+      "timestamp_s": 1792382185
+     }
+    ],
+    "per_fill_without_a_parent_level_flip": 0,
+    "sentence": "21 per-fill zero-crossing reversals were observed in full ledger; 22 parent-level same-second sign flips are present under the approved diagnostic definition."
+   }
+  }
+ },
+ "source_hashes": {
+  "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "tp01_ledger_sha256": "3b47c55150d79535a43fcea485a41e8e7bd76b201384fd89eae9a88f2c736053"
+ },
+ "statement": "Neither ordering is verified chronology. The measures are conditional on the same-instrument same-second order."
+}

@@ -2,7 +2,7 @@
 python3 portfolio_engine/tools/m2e_cases.py"""
 import json, os, sys, importlib
 HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); REPO = os.path.dirname(PE); sys.path.insert(0, os.path.join(PE, 'python')); sys.path.insert(0, HERE)
-from pe import forensics as F, cases as K
+from pe import forensics as F, cases as K, reversals as RV
 CH = importlib.import_module('m2e_charts'); SCN = CH.SCN
 DATA = SCN.reports('m2e_data')
 
@@ -40,11 +40,11 @@ def render(rec, cy):
 def main():
     out = {}; md = ['# M2-E — Position case studies', '', '**Purpose:** make single positions inspectable. **Not** an explanation of why Algo 8 acted: no rationale is offered or inferred.', '',
                     '## 1. Selection method (structural, price-free, outcome-free (tested); not shown to have been prospectively fixed)', '', f'**Terminology:** `{K.SELECTION_TERMINOLOGY}`', '', K.SELECTION_STATEMENT, '', 'Candidates are scanned **chronologically** (first fill time, then id) and the **first qualifying candidate whose episode was not already used by an earlier case type** is taken (reuse only if every qualifying candidate was used; any skipped chronologically-first candidate is named in the case note). Profit, loss, price and every outcome are never consulted. A case type with no qualifying candidate in a cycle is **UNAVAILABLE** for that cycle (never borrowed from the other cycle). Rules (`pe/cases.py`, `RULES`):', '', '| Case type | Rule |', '|---|---|'] + [f'| {n} | {r} |' for n, r in K.RULES]
-    PROFILE = []; D0E = {}
+    PROFILE = []; D0E = {}; RMS = {}
     avail = {}; cman = {}
     for und, exp in F.CYCLES:
         cy = F.cycle_key(und, exp); c = F.Cycle(REPO, und, exp, SCN); D = K.load_data(os.path.join(DATA, cy)); S = K.select(D); recs = {n: K.record(c, D, n, S[n]) for n in S}; out[cy] = recs; avail[cy] = S; cman[cy] = []
-        EP = {e['episode_id']: e for e in D['episodes']}; D0E[cy] = K.d0_eligibility(D, c.d_label)
+        EP = {e['episode_id']: e for e in D['episodes']}; D0E[cy] = K.d0_eligibility(D, c.d_label); RMS[cy] = RV.from_fills(c.ordered_fills())
         for n_, r_ in recs.items():
             if r_['status'] == 'AVAILABLE': ts_ = int(EP[r_['position_id']]['first_ts_utc_s']); PROFILE.append((cy, c.d_label(ts_), F.ist_str(ts_)[11:13]))
         for n, r in recs.items():
@@ -67,7 +67,7 @@ def main():
         for und, exp in F.CYCLES:
             s = avail[F.cycle_key(und, exp)][n]; cells.append(f"`{s['episode_id'].replace('|', chr(92) + '|')}`" + (' (reused)' if s['note'].startswith('reuses') else ' (earlier-chronological candidate skipped; see case note)' if s['note'] else '') if s['status'] == 'AVAILABLE' else '**UNAVAILABLE**')
         md.append(f'| {n} | ' + ' | '.join(cells) + ' |')
-    md += ['', 'UNAVAILABLE items are reported, not substituted. Neither frozen cycle has a position that expired unclosed; SENSEX has no reversal.', '', 'Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/<case>.png` + its CSV). Full records (all fills, all candidates, all batch rows): `m2e_data/<cycle>/case_studies.json`.', '']
+    md += ['', 'UNAVAILABLE items are reported, not substituted. Neither frozen cycle has a position that expired unclosed.', '', '**Reversal measures (computed; never merged):** the case type CT5 uses the per-fill zero-crossing event. ' + ' '.join(f"**{cy.split('_')[0]}:** " + RV.sentence(m['counts'][RV.PER_FILL], m['counts'][RV.PARENT_LEVEL], 'the frozen cycle') for cy, m in RMS.items()) + ' A parent-level flip is a grouping diagnostic, not a broker-designated reversal.', '', 'Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/<case>.png` + its CSV). Full records (all fills, all candidates, all batch rows): `m2e_data/<cycle>/case_studies.json`.', '']
     for und, exp in F.CYCLES:
         cy = F.cycle_key(und, exp); md += [f'## 3. {cy.replace("_", " ")}', '']
         for n, _ in K.RULES: md += [render(out[cy][n], cy), '']

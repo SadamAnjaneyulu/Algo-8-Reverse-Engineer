@@ -31,3 +31,15 @@ def measures(rows):
 def from_fills(ordered_fills):
     """ordered_fills: pe.schema.Fill objects in processing order (e.g. replay.order_events(fills, tie_order))"""
     return measures((f.fill_id, f.source_row_id, f.instrument_id, f.parent_order_id, f.timestamp_s, f.side * f.quantity) for f in ordered_fills)
+
+
+def from_table_rows(rows):
+    """rows: dict rows of a delivered fills table (m2e_data/<cycle>/fills.tsv): fill_id, source_row_id, instrument_id, parent_order_id, ts_utc_s, side (+1/-1), quantity; in the table's own (processing) order"""
+    return measures((r['fill_id'], int(r['source_row_id']), r['instrument_id'], r['parent_order_id'], int(r['ts_utc_s']), int(r['side']) * int(r['quantity'])) for r in rows)
+
+
+def sentence(per_fill, parent_level, where='the frozen cycle'):
+    """the approved reporting wording; both numbers come from `measures`, never typed"""
+    pf = 'No per-fill zero-crossing reversal was observed' if per_fill == 0 else f"{per_fill} per-fill zero-crossing reversal{'s were' if per_fill > 1 else ' was'} observed"
+    pl = 'no parent-level same-second sign flip is present' if parent_level == 0 else ('one parent-level same-second sign flip is present' if parent_level == 1 else f'{parent_level} parent-level same-second sign flips are present')
+    return f'{pf} in {where}; {pl} under the approved diagnostic definition.'

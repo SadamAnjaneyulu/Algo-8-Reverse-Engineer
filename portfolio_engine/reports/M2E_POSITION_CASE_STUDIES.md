@@ -42,7 +42,9 @@ Of the 17 selected case records, 17 begin in D-1; **no selected case begins on D
 | CT8_W1_VS_W1S60_DISAGREEMENT | `NIFTY\|2026-06-30\|CE\|24000#1` | `SENSEX\|2026-07-16\|CE\|77600#1` |
 | CT9_MULTI_PARENT_CLOSING_BATCH | `NIFTY\|2026-06-30\|PE\|24050#1` (earlier-chronological candidate skipped; see case note) | `SENSEX\|2026-07-16\|CE\|77400#1` (earlier-chronological candidate skipped; see case note) |
 
-UNAVAILABLE items are reported, not substituted. Neither frozen cycle has a position that expired unclosed; SENSEX has no reversal.
+UNAVAILABLE items are reported, not substituted. Neither frozen cycle has a position that expired unclosed.
+
+**Reversal measures (computed; never merged):** the case type CT5 uses the per-fill zero-crossing event. **NIFTY:** 1 per-fill zero-crossing reversal was observed in the frozen cycle; one parent-level same-second sign flip is present under the approved diagnostic definition. **SENSEX:** No per-fill zero-crossing reversal was observed in the frozen cycle; one parent-level same-second sign flip is present under the approved diagnostic definition. A parent-level flip is a grouping diagnostic, not a broker-designated reversal.
 
 Every case below links to a single-episode V2 chart (`m2e_figures/<cycle>/cases/<case>.png` + its CSV). Full records (all fills, all candidates, all batch rows): `m2e_data/<cycle>/case_studies.json`.
 
