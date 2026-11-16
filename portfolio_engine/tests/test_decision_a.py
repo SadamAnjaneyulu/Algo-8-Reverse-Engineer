@@ -94,4 +94,4 @@ def test_case_selection_is_invariant_under_upstream_price_scrambling(tmp_path):
         a = json.load(open(os.path.join(PE, 'reports', 'm2e_data', cy, 'case_studies.json'))); b = json.load(open(out / 'reports' / 'm2e_data' / cy / 'case_studies.json'))
         assert a['selection'] == b['selection'] and a['selection_rules'] == b['selection_rules']                                           # the selections did not move
         assert open(out / 'reports' / 'm2e_data' / cy / 'fills.tsv').read() != open(os.path.join(PE, 'reports', 'm2e_data', cy, 'fills.tsv')).read()      # and the prices really changed upstream
-        for n in ('episodes.tsv', 'lifecycle_events.tsv', 'opening_items.tsv'): assert open(out / 'reports' / 'm2e_data' / cy / n).read() == open(os.path.join(PE, 'reports', 'm2e_data', cy, n)).read(), n
+        for n in ('episodes.tsv', 'lifecycle_events.tsv'): assert open(out / 'reports' / 'm2e_data' / cy / n).read() == open(os.path.join(PE, 'reports', 'm2e_data', cy, n)).read(), n

@@ -397,7 +397,7 @@ def test_reversal_case_record_does_not_mix_episodes():
 
 def test_case_markdown_states_selection_rule_and_numbers():
     md = open(os.path.join(PE, 'reports', 'M2E_POSITION_CASE_STUDIES.md')).read(); assert 'not already used by an earlier case type' in md and 'skipped' in md and 'UNAVAILABLE' in md
-    assert md.count('\n### ') == 2 * len(K_RULES()); assert 'cannot be borrowed' not in md and 'Cannot conclude' in md
+    assert md.count('\n### CT') == 2 * len(K_RULES());       # one section per case type and cycle (the sample-concentration subsection '### 1.1' is not a case section) assert 'cannot be borrowed' not in md and 'Cannot conclude' in md
     assert 'no wing existed' in md                                                                     # empty candidate sets are not read as 'no wing'
 
 

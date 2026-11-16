@@ -74,4 +74,4 @@ def main():
     os.makedirs(SCN.reports(), exist_ok=True); open(SCN.reports('M2E_POSITION_CASE_STUDIES.md'), 'w').write('\n'.join(md) + '\n'); print(len('\n'.join(md).splitlines()), 'lines'); [print(cy, {n: r['status'] for n, r in v.items()}) for cy, v in out.items()]
 
 
-main()
+if __name__ == '__main__': main()      # importing the module (tests do) must never regenerate the delivered outputs
