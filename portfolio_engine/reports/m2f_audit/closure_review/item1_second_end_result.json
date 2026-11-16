@@ -1,0 +1,789 @@
+{
+ "baseline_totals": {
+  "opened": 1414545,
+  "closed": 1377065,
+  "rev": 23,
+  "cash": 278748200,
+  "rfifo": 210055200,
+  "rlifo": 209687450
+ },
+ "runs": {
+  "hybrid": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 6527,
+    "rfifo": 1514,
+    "rlifo": 1155
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 21,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X0": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12209,
+    "rfifo": 13736,
+    "rlifo": 13083
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "X1": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 14188,
+    "rfifo": 10377,
+    "rlifo": 12402
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 18,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X2": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 18406,
+    "rfifo": 14082,
+    "rlifo": 13517
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 24,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "X3": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12374,
+    "rfifo": 9944,
+    "rlifo": 11354
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X4": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12752,
+    "rfifo": 10026,
+    "rlifo": 12480
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X5": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12615,
+    "rfifo": 9623,
+    "rlifo": 12522
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 22,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X6": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12209,
+    "rfifo": 13777,
+    "rlifo": 11483
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X7": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 14160,
+    "rfifo": 8906,
+    "rlifo": 13924
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "X8": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 10491,
+    "rfifo": 9180,
+    "rlifo": 11888
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X9": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 8100,
+    "rfifo": 14408,
+    "rlifo": 11586
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X10": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12374,
+    "rfifo": 14958,
+    "rlifo": 12754
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 19,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "X11": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12209,
+    "rfifo": 14057,
+    "rlifo": 13634
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "I0": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 18434,
+    "rfifo": 14427,
+    "rlifo": 12714
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 21,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "I1": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 18241,
+    "rfifo": 9523,
+    "rlifo": 13378
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "I2": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 18406,
+    "rfifo": 9305,
+    "rlifo": 12468
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 22,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "I3": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 6527,
+    "rfifo": 10169,
+    "rlifo": 12384
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "I4": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 8128,
+    "rfifo": 10229,
+    "rlifo": 11033
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 22,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "I5": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 14353,
+    "rfifo": 9831,
+    "rlifo": 13798
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 22,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "I6": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12374,
+    "rfifo": 9764,
+    "rlifo": 13580
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "I7": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 8293,
+    "rfifo": 14404,
+    "rlifo": 14031
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "I8": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 18241,
+    "rfifo": 14042,
+    "rlifo": 13181
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209686150
+   },
+   "final_inventory_equal": true
+  },
+  "I9": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 12374,
+    "rfifo": 14299,
+    "rlifo": 11450
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 21,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "I10": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 14325,
+    "rfifo": 13528,
+    "rlifo": 11608
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 24,
+    "cash": 278748200,
+    "rfifo": 210054800,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "I11": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 14160,
+    "rfifo": 9874,
+    "rlifo": 12701
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 20,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C0": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C1": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C2": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C3": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C4": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C5": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C6": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C7": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C8": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C9": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C10": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  },
+  "C11": {
+   "seconds_differing": {
+    "agg": 0,
+    "cash": 0,
+    "touched": 0,
+    "opened": 0,
+    "closed": 0,
+    "rev": 0,
+    "rfifo": 0,
+    "rlifo": 0
+   },
+   "totals": {
+    "opened": 1414545,
+    "closed": 1377065,
+    "rev": 23,
+    "cash": 278748200,
+    "rfifo": 210055200,
+    "rlifo": 209687450
+   },
+   "final_inventory_equal": true
+  }
+ }
+}

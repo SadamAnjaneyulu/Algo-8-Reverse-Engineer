@@ -1,0 +1,43 @@
+{
+ "six_original_dispositions_verbatim": {
+  "D-A01": true,
+  "D-A08": true,
+  "B-01": true,
+  "C-01": true,
+  "C-02": true,
+  "E-D03": true
+ },
+ "final_report_original_is_prefix_of_current": true,
+ "final_report_decision_line_present": true,
+ "limitations_original_is_prefix_of_current": true,
+ "n_path_refs_checked": 69,
+ "unresolved_paths_or_tests": [
+  [
+   "B-04",
+   "reports/m2f_audit/medium_remediation/"
+  ]
+ ],
+ "n_commit_refs": 20,
+ "unresolved_commits": [
+  [
+   "D-A02",
+   "26a0da63"
+  ],
+  [
+   "D-A02",
+   "90c9c7ee"
+  ]
+ ],
+ "test_function_counts": {
+  "tests/test_closing_batches_reporting.py": 7,
+  "tests/test_wing_body_w3_engine.py": 5,
+  "tests/test_expiry_status.py": 11,
+  "tests/test_historical_generator_raw.py": 17,
+  "tests/test_hashseed_determinism.py": 3,
+  "tests/test_decision_a.py": 8,
+  "tests/test_reversals.py": 7,
+  "tests/test_decision_b.py": 6,
+  "tests/test_decision_c.py": 7,
+  "tests/test_decision_d.py": 10
+ }
+}

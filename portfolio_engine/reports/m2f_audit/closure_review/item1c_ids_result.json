@@ -1,0 +1,22 @@
+{
+ "nifty_rows": 19904,
+ "nifty_distinct_tid": 19882,
+ "nifty_tids_shared_by_rows": 22,
+ "nifty_tids_shared_by_different_instruments": 22,
+ "nifty_per_instrument_day_decreases_in_file_order": 212,
+ "nifty_day_level_decreases_in_file_order": 6392,
+ "nifty_day_level_adjacent_pairs": 19873,
+ "nifty_cross_instrument_adjacent_same_second_pairs_tid_increasing_with_file_order": 4564,
+ "..._decreasing": 2385,
+ "sensex_rows_using_epoch_fallback": [
+  8079
+ ],
+ "row_8079_same_instrument_second_group": [
+  8079
+ ],
+ "row_8079_tid": "1782986309637335907-15980320",
+ "row_8079_epoch": 1782986253,
+ "sensex_embedded_ns_decreases_within_instrument_file_order": 33,
+ "sensex_groups_with_tied_hybrid_key": 130,
+ "nifty_groups_with_tied_hybrid_key": 0
+}

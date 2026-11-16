@@ -1,0 +1,98 @@
+{
+ "c1_synthetic_C2_tiebreak": {
+  "A_before_B": [
+   [
+    "A",
+    "B"
+   ],
+   [
+    "C"
+   ]
+  ],
+  "B_before_A": [
+   [
+    "A",
+    "B",
+    "C"
+   ]
+  ]
+ },
+ "c2_sensex_ns_resolution_C1": {
+  "2": {
+   "sensex_links_at_exact_gap": 340,
+   "of_which_true_ns_gap_exceeds_g": 157,
+   "sensex_nonlinks_at_gap_g_plus_1": 894,
+   "of_which_true_ns_gap_within_g": 0
+  },
+  "5": {
+   "sensex_links_at_exact_gap": 290,
+   "of_which_true_ns_gap_exceeds_g": 103,
+   "sensex_nonlinks_at_gap_g_plus_1": 131,
+   "of_which_true_ns_gap_within_g": 0
+  },
+  "10": {
+   "sensex_links_at_exact_gap": 45,
+   "of_which_true_ns_gap_exceeds_g": 18,
+   "sensex_nonlinks_at_gap_g_plus_1": 31,
+   "of_which_true_ns_gap_within_g": 0
+  },
+  "30": {
+   "sensex_links_at_exact_gap": 12,
+   "of_which_true_ns_gap_exceeds_g": 7,
+   "sensex_nonlinks_at_gap_g_plus_1": 16,
+   "of_which_true_ns_gap_within_g": 0
+  },
+  "60": {
+   "sensex_links_at_exact_gap": 11,
+   "of_which_true_ns_gap_exceeds_g": 6,
+   "sensex_nonlinks_at_gap_g_plus_1": 11,
+   "of_which_true_ns_gap_within_g": 0
+  }
+ },
+ "c3_C2_counts_under_60_random_tiebreaks": {
+  "delivered": {
+   "2": 7127,
+   "5": 3777,
+   "10": 3065,
+   "30": 2171,
+   "60": 1502
+  },
+  "observed": {
+   "2": [
+    7126,
+    7127
+   ],
+   "5": [
+    3776,
+    3777
+   ],
+   "10": [
+    3064,
+    3065
+   ],
+   "30": [
+    2171
+   ],
+   "60": [
+    1502
+   ]
+  }
+ },
+ "c3_C1_counts_under_60_random_tiebreaks": {
+  "2": [
+   7127
+  ],
+  "5": [
+   3777
+  ],
+  "10": [
+   3065
+  ],
+  "30": [
+   2171
+  ],
+  "60": [
+   1502
+  ]
+ }
+}
