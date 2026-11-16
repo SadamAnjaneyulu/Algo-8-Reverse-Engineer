@@ -34,6 +34,7 @@ def main():
                 bucket.append(x)
     disp = json.load(open(os.path.join(A, 'dispositions.json'))) if os.path.exists(os.path.join(A, 'dispositions.json')) else {}
     amend = json.load(open(os.path.join(A, 'r1', 'amendments.json'))) if os.path.exists(os.path.join(A, 'r1', 'amendments.json')) else {}
+    HIST = json.load(open(os.path.join(A, 'disposition_history.json')))['defects'] if os.path.exists(os.path.join(A, 'disposition_history.json')) else {}
     for x in Dd: x['amendments'] = amend.get(x['id'], [])
     for x in Dd: x['disposition'] = disp.get(x['id'], 'OPEN (Low) - documented; correction proposed, not applied' if str(x.get('severity')).lower() == 'low' else 'OPEN - correction proposed, not applied (no delivered artefact modified); approval requested')
     json.dump(dict(claims=C, defects=Dd, mutations=M, missing_inputs=missing), open(os.path.join(A, 'consolidated.json'), 'w'), indent=1, default=str)
@@ -46,7 +47,12 @@ def main():
     L = ['# M2-F — Defect register', '', 'Merged from `reports/m2f_audit/track_*/defects.json`. Severity definitions: **Critical** corrupts observed inventory, accounting, position identity or material research results; **High** changes memberships, methodology interpretation or significant reported conclusions; **Medium** weakens validation, reproducibility or scope reporting; **Low** documentation, presentation or non-material maintainability.', '']
     for s in SEV:
         ds = [x for x in Dd if str(x.get('severity', '')).capitalize() == s]; L += [f'## {s} ({len(ds)})', '']
-        for x in ds: L += [f"### {x['id']} (track {x['track']}): {esc(x.get('title'))}", f"* **Location:** {esc(x.get('location'))}", f"* **Evidence:** {esc(x.get('evidence'))}", f"* **Reproduction:** {esc(x.get('repro'))}", f"* **Impact:** {esc(x.get('impact'))}", f"* **Proposed correction:** {esc(x.get('proposed_fix'))}", f"* **Regression test:** {esc(x.get('proposed_test'))}", f"* **Disposition:** {esc(x.get('disposition', 'OPEN'))}"] + [f"* **Amendment ({am['date']}, appended; the evidence text above is unchanged; the disposition line shows the current status, the earlier one is in git at 562d7eb6):** {esc(am['text'])}" for am in x.get('amendments', [])] + ['']
+        for x in ds:
+            h = HIST.get(x['id'])
+            tail = ([f"* **Original disposition (M2-F audit, commit {h['original']['commit']}, verbatim):** {esc(h['original']['text'])}"]
+                    + [f"* **Amendment {k} ({am['date']}, commit {am['commit']}{'; text revised in ' + ', '.join(am['text_revised_in_commits']) if am['text_revised_in_commits'] else ''}; {am['kind']}):** {esc(am['text'])} *Evidence:* {esc(am['evidence'])}" for k, am in enumerate(h['amendments'], 1)]
+                    + [f"* **Current state:** {esc(h['current_state'])}"]) if h else None
+            L += [f"### {x['id']} (track {x['track']}): {esc(x.get('title'))}", f"* **Location:** {esc(x.get('location'))}", f"* **Evidence:** {esc(x.get('evidence'))}", f"* **Reproduction:** {esc(x.get('repro'))}", f"* **Impact:** {esc(x.get('impact'))}", f"* **Proposed correction:** {esc(x.get('proposed_fix'))}", f"* **Regression test:** {esc(x.get('proposed_test'))}"] + (tail if tail else [f"* **Disposition:** {esc(x.get('disposition', 'OPEN'))}"] + [f"* **Amendment ({am['date']}, appended; the evidence text above is unchanged):** {esc(am['text'])}" for am in x.get('amendments', [])]) + ['']
     rest = [x for x in Dd if str(x.get('severity', '')).capitalize() not in SEV]
     if rest: L += [f'## Unclassified severity ({len(rest)})', ''] + [f"* {x['id']}: {esc(x.get('title'))}" for x in rest]
     L += ['## Mutation records', '', '| # | Track | Change | Expected detector | Existing tests caught | Own check caught | Detector independent of mutated path | Notes |', '|---|---|---|---|---|---|---|---|']

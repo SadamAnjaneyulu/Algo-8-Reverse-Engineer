@@ -46,7 +46,9 @@ M = [
 
 def run(P):
     p = subprocess.run([sys.executable, '-m', 'pytest', 'tests/test_tie_order_policy.py', '-q', '-k', 'keyed_order or hybrid_key or hybrid_keys or other_keyed', '-p', 'no:cacheprovider', '--tb=line', '-rf'], cwd=P, capture_output=True, text=True, env=dict(os.environ, PYTHONDONTWRITEBYTECODE='1'), timeout=900)
-    t = p.stdout + p.stderr; failed = re.findall(r'^FAILED (\S+)', t, re.M); return ('failed' if failed else ('survived' if p.returncode == 0 else 'ERROR')), failed, t.strip().splitlines()[-1]
+    t = p.stdout + p.stderr; failed = re.findall(r'^FAILED (\S+)', t, re.M); lines = re.findall(r'^(?:/|tests/|python/).*?:\d+: (?:AssertionError|Assert|assert).*$', t, re.M)[:2]; kind = 'failed' if failed else ('survived' if p.returncode == 0 else 'ERROR')
+    if failed and not lines: kind = 'FAILED_WITHOUT_ASSERTION'          # a crash is not a kill
+    return kind, failed, t.strip().splitlines()[-1] + ' | ' + ' || '.join(re.sub(r'^.*/(?=[^/]+:\d+:)', '', x)[:170] for x in lines)
 
 
 res = []; o, f, last = run(prep('baseline')); res.append(dict(id='BASELINE_unmutated', outcome=o, summary=last)); print('baseline', o, last, flush=True); assert o == 'survived'

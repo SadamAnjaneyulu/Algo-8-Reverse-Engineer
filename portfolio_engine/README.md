@@ -3,9 +3,14 @@
 Modular portfolio-construction research engine (Python research layer + C++ deterministic core) for the Algo 8 reverse-engineering project.
 Design: [`ARCHITECTURE_DESIGN.md`](ARCHITECTURE_DESIGN.md) · plan: [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) · schemas: [`docs/SCHEMAS.md`](docs/SCHEMAS.md) · evidence: [`docs/EVIDENCE_REGISTRY.md`](docs/EVIDENCE_REGISTRY.md) · Milestone 1 report: [`reports/M1_REPORT.md`](reports/M1_REPORT.md)
 
-**Status: Milestone 1 (shared model, deterministic replay, accounting invariants, Python/C++ parity) only. No entry/exit/basket behavior is implemented.**
+**Status (2026-11-16): Milestone 1 (shared model, deterministic replay, accounting invariants, Python/C++ parity) is complete. Milestone 2 (historical position reconstruction M2-A..M2-F, fill-order policies R1, dual-scenario decision R1-C) is IMPLEMENTED and independently audited (M2-F: CONDITIONAL PASS) but NOT YET ACCEPTED: closure items are open (see [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md), "Status as of 2026-11-16"). M3-M6 are not started. No entry/exit/basket *behaviour* (cuts, re-entry, execution states, plugins) is implemented; M2 produces analytical views only.**
+
+Baseline fill-order convention: `SOURCE_ROW_ORDER_CONVENTION` (deterministic, not verified chronology). Alternative scenario: `PER_CONTRACT_ID_SEQUENCE` ([`reports/R1C_DUAL_SCENARIO_COMPARISON.md`](reports/R1C_DUAL_SCENARIO_COMPARISON.md), [`docs/ORDERING_SEMANTICS.md`](docs/ORDERING_SEMANTICS.md)). Historical outputs: `reports/m2c_data`, `m2d_data`, `m2e_data`, figures `m2c_figures`, `m2d_figures`, `m2e_figures`; audit: [`reports/M2F_FINAL_AUDIT_REPORT.md`](reports/M2F_FINAL_AUDIT_REPORT.md); fill-order evidence: [`reports/R1_TIE_ORDER_CONVENTION.md`](reports/R1_TIE_ORDER_CONVENTION.md).
 
 ```bash
+# reproduce the historical outputs of a scenario into an EMPTY directory (never into reports/): baseline reproduces the delivered files
+python3 portfolio_engine/tools/r1c_scenario_run.py --scenario=baseline --out-root=/tmp/baseline_out
+python3 portfolio_engine/tools/r1c_scenario_run.py --scenario=per_contract_id_sequence --out-root=/tmp/hybrid_out
 # build the C++ core and its unit tests
 cmake -S portfolio_engine/cpp -B portfolio_engine/build -DCMAKE_BUILD_TYPE=Release && cmake --build portfolio_engine/build
 portfolio_engine/build/pe_core_tests

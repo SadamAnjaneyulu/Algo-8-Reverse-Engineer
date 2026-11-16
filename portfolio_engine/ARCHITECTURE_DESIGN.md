@@ -3,6 +3,8 @@
 Branch `engineering/portfolio-construction-engine-skeleton`, created from the verified TP-02 head `a5feffafb5ba230f52ec8232390de3a8e10fb774`.
 Status of this document: **design**. Only the parts marked *(M1)* are implemented in Milestone 1; everything else is a planned interface.
 
+> **Status update (2026-11-16; the paragraph above is the original M0/M1 text):** M1 is complete. The M2 position-lineage, closing-batch, wing/body and forensics layers described in §13 **are implemented** (M2-B..M2-E) and were independently audited (M2-F, CONDITIONAL PASS); M2 is not yet accepted. Everything marked *(M2)* for baskets as *behaviour* (§6.2, cuts, re-entry, plugins, M3-M6) remains a planned interface and is not implemented. Fill-order conventions: see `docs/ORDERING_SEMANTICS.md`.
+
 ## 0. Interpretation of the brief (stated, not silently assumed)
 
 | Word in the brief | Interpretation used here | Not assumed |
@@ -133,12 +135,12 @@ Structural errors (missing column, non-integer quantity, price off the tick grid
 Run manifest: `run_id`, `execution_mode`, `config_hash`, `source_hashes` (raw CSV, ledger parquet, events file), `git_sha`, `matching`, `tie_order`, `timestamp_range`, `warnings`, `reproduce_command`. Evidence classes and claim types per behavior in `docs/EVIDENCE_REGISTRY.md`.
 
 ## 11. Test architecture
-Layer 1 accounting invariants (synthetic + real); Layer 2 data-quality fixtures; Layer 3 mode isolation; Layer 4 cross-language parity on shared fixtures (synthetic, then all 41,421 real fills × 3 conventions × 3 tie orders); Layer 5 reconciliation to TP-01 (totals, 8,001 episodes, per-fill roles). Parity means **identical dumps**, not "both compile".
+Layer 1 accounting invariants (synthetic + real); Layer 2 data-quality fixtures; Layer 3 mode isolation; Layer 4 cross-language parity on shared fixtures (synthetic, then all 41,421 real fills × 3 conventions × 3 tie orders) *(2026-11-16: the C++ core supports exactly these three tie orders; the Python engine additionally has sensitivity-only keyed policies (`trade_id`, `order_no`, `sensex_trade_id_time`, `per_contract_id_sequence`) with no C++ counterpart; they are local to an (instrument, second), see `docs/ORDERING_SEMANTICS.md`)*; Layer 5 reconciliation to TP-01 (totals, 8,001 episodes, per-fill roles). Parity means **identical dumps**, not "both compile".
 
 ## 12. Evidence handling
-Each implemented Algo 8 behavior needs a registry row (source report, finding id if one exists, source field, evidence class, claim type, limitation, implementation mode). M1 implements **accounting only**; it implements no entry/exit/basket behavior, so no TRIGGER claim is made anywhere.
+Each implemented Algo 8 behavior needs a registry row (source report, finding id if one exists, source field, evidence class, claim type, limitation, implementation mode). M1 implements **accounting only**; it implements no entry/exit/basket behavior, so no TRIGGER claim is made anywhere. *(Status update 2026-11-16: M2 adds analytical lineage, closing-batch and wing/body views with evidence classes in `docs/EVIDENCE_REGISTRY.md`; it still implements no entry/exit/basket behaviour, so no TRIGGER claim is made.)*
 
 
 ---
-## 13. M2 extension (position lineage and baskets) — DRAFT
+## 13. M2 extension (position lineage and baskets) — DRAFT *(status update 2026-11-16: implemented as M2-B..M2-E; audited in M2-F; the heading is kept as originally written)*
 Two layers (see `docs/POSITION_BASKET_ONTOLOGY.md`): **L1** observed, convention-independent (OpeningAllocation, ClosingPortion, InventoryEpisode, lifecycle) and **L2** analytical (ClosingAllocation, PositionSlice, three basket views, wing/body links). The core engine (C++ and Python reference) owns L1 and the convention-dependent allocation mechanics; Python owns Models B and C and the wing/body analytics (they need analytical inputs outside the core state). Rules: `docs/POSITION_LINEAGE_RULES.md`; grouping: `docs/BASKET_GROUPING_METHODOLOGY.md`; schema additions: `docs/SCHEMAS.md` (v1.1). Plugins and policies are **not** touched in M2: no cut or re-entry policy exists.
