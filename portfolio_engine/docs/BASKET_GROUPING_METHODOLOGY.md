@@ -121,3 +121,31 @@ Frozen in `docs/DEMO_CYCLE_SELECTION.md` (formula) and `reports/DEMO_CYCLE_SELEC
 
 ## M2-D status (executed)
 Wing/body association analysis **executed** (`reports/M2D_WING_BODY_REPORT.md`): W1, W1_S60, W2, W2_S60, W3; W4 (number-block) **not implemented**; W5 = unmatched quantity reported per method. Roles are module-tag attribution (wing = long `h_`, body = short `num`; closing by the closing fill's tag) with a direction-based sensitivity. Clarification of the approved text: the ±60 s sensitivity also requires the same IST session. Not started: M2-E, Models A and B, cut/re-entry, M3. (The earlier "Not implemented: wing/body associations" line under *M2-C status* is superseded by this section.)
+
+## Recorded interpretations (Decision D, owner-approved 2026-11-16; earlier text unchanged)
+
+These record how the approved text was implemented. They are interpretations, not new methodology; each has a synthetic counterexample or a raw-ledger measurement in `tests/test_decision_d.py`.
+
+| Topic | Recorded treatment | Where the approved text differs |
+|---|---|---|
+| C2 predecessor | the previous parent's **last closing fill** (`first(next) - last(previous)`); the running-maximum reference is a sensitivity only (1 fewer batch at 2 / 5 / 10 s) | the text says "previous" without defining it when closing intervals overlap |
+| Stream boundary | **underlying x expiry x session** (IST date) | stricter than the approved wording "consecutive parents of one underlying"; the measured effect on this ledger is nil |
+| Closing-parent tie-break | equal first seconds are ordered by the **smallest CLOSING source row**, then parent id (a mixed parent's earlier opening rows never count) | the text says "first source_row_id of the parent"; C1 is invariant to it, C2 changes by 1 batch at 2 / 5 / 10 s under alternatives |
+| Parent identity | raw **column 163** (39,874 parents); raw column 4 (order number) gives 37,258 distinct values because **one order number is reused by up to 6 parents** (2,224 order numbers are shared); every column-163 parent has exactly one order number | none; the alternative count was not stated before |
+| `EXPIRED_UNCLOSED` | the schema token is retained (delivered data contain it). It is **inferred from the expiry date and missing closing fills**; no settlement data exist and no settlement P&L is inferred | the label reads like an observation; it is not one |
+| Number-block grouping | **unresolved and unimplemented** (gap <= 20 consecutive numbers vs a jump > 500 starts a new block are incompatible readings) | text ambiguous |
+| W1 | WEAKLY_SUPPORTED: items satisfy the candidate association criteria (same underlying / expiry / right / entry minute); not lot ownership | |
+| W1_S60 | UNRESOLVED: execution-time proximity only | |
+| W2 | arithmetic weights, **not** position ownership or allocations | |
+| W3 | arithmetic queue association, **not** ownership | |
+| Protective intent | NOT TESTABLE: the broker export has no leg identifiers or decision log | |
+| Opening-cohort gap set {2, 5, 10, 30, 60} s | registered (D1) but **not executed** | |
+| Tag-based role scope | wing = long `h_` item, body = short `num` item. Units outside that scope are excluded; the denominators reconcile (below) | |
+
+Do not write "these wings hedge the short positions". Write: "these items satisfy the W1 candidate association criteria; the available broker export does not establish lot-level ownership or protective intent."
+
+### Tag-scope denominators (computed from `reports/m2d_data/m2d_summary.json`)
+* Opening units 1,414,545 = tagged wing 617,130 + tagged body 626,765 + excluded 170,650.
+* Closing units 1,377,065 = tagged wing 500,775 + tagged body 540,250 + excluded 336,040.
+* Excluded opening units by origin: LONG|m_ 1,040, LONG|num 61,470, LONG|s_ 3,255, LONG|v_ 67,635, SHORT|h_ 130, SHORT|s_ 37,120.
+* Excluded closing units by origin (episode direction | closing module): LONG | m_ 1,040, LONG | num 132,235, LONG | s_ 44,530, LONG | v_ 41,575, SHORT | h_ 21,175, SHORT | s_ 95,485.
