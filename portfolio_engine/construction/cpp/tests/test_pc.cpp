@@ -29,10 +29,12 @@ static std::vector<std::vector<std::string>> rows(const std::string& tsv) { std:
 static std::string kv(const std::string& summary, const std::string& key) { for (auto& r : rows(summary)) if (r[0] == key) return r[1]; return "<missing>"; }
 static const std::string CUTID = "basket_cut|" + T(T0 + 600) + "|B1|SCE|CUT";
 
-static std::string example_body(const std::string& extra_re_cfg = "", const std::string& risk = "") {
-  return plugins() + cfg("basket_cut", "policy", "MARK_ADVERSE_MOVE") + cfg("basket_cut", "trigger_bp", "2000") + cfg("basket_cut", "scope", "LEG") + cfg("basket_cut", "leg_side_filter", "SHORT") + cfg("basket_cut", "option_type_filter", "CE") + cfg("basket_cut", "units", "65")
-         + cfg("basket_reentry", "cooldown_s", "600") + cfg("basket_reentry", "price_condition", "WITHIN_BAND") + cfg("basket_reentry", "band_bp", "1500") + extra_re_cfg + risk
-         + mark(0, SCE, 10000) + mark(300, SCE, 11000) + mark(600, SCE, 12500) + mark(900, SCE, 12000) + mark(1200, SCE, 11000) + mark(1500, SCE, 10800)
+static std::string example_body(const std::string& extra_re_cfg = "", const std::string& risk = "") {      // extra_re_cfg re-states settings: they override the example's own (a setting appears once per file)
+  std::map<std::pair<std::string, std::string>, std::string> base = {{{"basket_cut", "policy"}, "MARK_ADVERSE_MOVE"}, {{"basket_cut", "trigger_bp"}, "2000"}, {{"basket_cut", "scope"}, "LEG"}, {{"basket_cut", "leg_side_filter"}, "SHORT"},
+    {{"basket_cut", "option_type_filter"}, "CE"}, {{"basket_cut", "units"}, "65"}, {{"basket_reentry", "cooldown_s"}, "600"}, {{"basket_reentry", "price_condition"}, "WITHIN_BAND"}, {{"basket_reentry", "band_bp"}, "1500"}};
+  for (auto& l : split(extra_re_cfg, '\n')) { if (l.empty()) continue; auto f = split(l, '\t'); base[{f[1], f[2]}] = f[3]; }
+  std::string cfgs; for (auto& kv : base) cfgs += cfg(kv.first.first, kv.first.second, kv.second);
+  return plugins() + cfgs + risk + mark(0, SCE, 10000) + mark(300, SCE, 11000) + mark(600, SCE, 12500) + mark(900, SCE, 12000) + mark(1200, SCE, 11000) + mark(1500, SCE, 10800)
          + mark(0, SPE, 9000) + mark(0, WCE, 200) + mark(0, WPE, 250) + tick(0) + tick(300) + tick(600) + tick(900) + tick(1200) + tick(1500);
 }
 
@@ -132,8 +134,34 @@ static void test_lineage_and_reconciliation() {
   pe::Fill rogue; rogue.fill_id = "rogue"; rogue.source_row = 99; rogue.parent_id = "rogue"; rogue.module_tag = "x"; rogue.instrument_id = SCE; rogue.ts = T0 + 5; rogue.side = 1; rogue.qty = 65; rogue.price = 10000; rogue.requested = 65; rogue.status = "Filled"; rogue.mode = "SYNTHETIC_TEST";
   sim.ledger->apply_fill(rogue); THROWS(sim.reconcile(), EngineInvariantError);                              // a fill that bypasses the engine is detected
 }
+struct BadDetail : Plugin {
+  std::string name() const override { return "bad"; } std::string version() const override { return "1.0.0"; } int mode = 0;
+  void evaluate(const EvalContext& ctx, PluginResult& r) const override {
+    Decision d{ctx.ts, name(), version(), "B1", "SCE", "NOT_PROPOSED", "X", "ok", ctx.ts};
+    if (mode == 1) d.detail = "a\n\tb";
+    if (mode == 2) d.info_ts = ctx.ts + 1;
+    if (mode == 3) d.plugin = "basket_cut";
+    if (mode == 4) d.ts = ctx.ts - 1;
+    if (mode == 5) d.detail = "caf\xc3\xa9";
+    r.decisions.push_back(d);
+    if (mode == 6) r.status = "MAYBE";
+  }
+};
+template <int M> struct BadM : BadDetail { BadM() { mode = M; } };
+static void test_plugin_isolation_and_output_validation() {
+  const std::string pre = scn(L({"PLUGIN", "bad", "1.0.0", "1"}) + mark(0, SCE, 10000) + tick(0));
+  auto one = [&](Catalog cat) { auto f = run(pre, cat); return std::make_pair(rows(f["decisions.tsv"]), kv(f["summary.tsv"], "plugin_errors")); };
+  { Catalog c; c["bad"] = [] { return std::make_shared<BadM<0>>(); }; auto r = one(c); CHECK(r.second == "0" && r.first.size() == 1 && r.first[0][7] == "X"); }               // a well-formed result is kept
+  { Catalog c; c["bad"] = [] { return std::make_shared<BadM<1>>(); }; auto r = one(c); CHECK(r.second == "1" && r.first[0][7] == "PLUGIN_ERROR" && r.first[0][8] == "invalid plugin output"); }
+  { Catalog c; c["bad"] = [] { return std::make_shared<BadM<2>>(); }; CHECK(one(c).second == "1"); }
+  { Catalog c; c["bad"] = [] { return std::make_shared<BadM<3>>(); }; CHECK(one(c).second == "1"); }
+  { Catalog c; c["bad"] = [] { return std::make_shared<BadM<4>>(); }; CHECK(one(c).second == "1"); }
+  { Catalog c; c["bad"] = [] { return std::make_shared<BadM<5>>(); }; CHECK(one(c).second == "1"); }
+  { Catalog c; c["bad"] = [] { return std::make_shared<BadM<6>>(); }; CHECK(one(c).second == "1"); }
+  MarkStore m; m.add(100, "x", 5); m.add(101, "x", 7); m.finish(); auto v = m.truncated(100); CHECK(!v->at("x", 101).has_value() || v->at("x", 101)->first == 5); CHECK(v->at("x", 1000000)->first == 5);       // the context copy cannot reveal later marks
+}
 static void test_lookahead_and_errors() {
-  EvalContext c; c.ts = 100; MarkStore m; m.add(100, "x", 5); m.add(101, "x", 7); m.finish(); c.marks = &m;
+  EvalContext c; c.ts = 100; MarkStore m; m.add(100, "x", 5); m.add(101, "x", 7); m.finish(); c.marks = m.truncated(100);
   CHECK(c.mark("x")->first == 5); THROWS(c.mark("x", 101), LookAheadError); CHECK(!c.mark("y").has_value());
   const std::string base = example_body(); const std::string alt = base + mark(1260, SCE, 5) + mark(1800, SCE, 99995) + tick(1800);      // future marks differ
   auto f1 = run(scn(base)); auto f2 = run(scn(alt)); auto d1 = rows(f1["decisions.tsv"]), d2 = rows(f2["decisions.tsv"]);
@@ -157,6 +185,6 @@ static void test_scenario_rules() {
   THROWS(Scenario::parse(scn(L({"LEG", "f9", "B1", "SCE", SCE, "-1", "70", "10000", T(T0)}))), ScenarioError);                                  // not a lot multiple
 }
 int main() {
-  test_registry(); test_example_by_hand(); test_cut_variants(); test_risk(); test_boundaries_and_groups(); test_lineage_and_reconciliation(); test_lookahead_and_errors(); test_new_plugin_without_core_change(); test_scenario_rules();
+  test_registry(); test_example_by_hand(); test_cut_variants(); test_risk(); test_boundaries_and_groups(); test_lineage_and_reconciliation(); test_plugin_isolation_and_output_validation(); test_lookahead_and_errors(); test_new_plugin_without_core_change(); test_scenario_rules();
   std::cout << (failures ? "FAILED " : "") << (checks - failures) << "/" << checks << " plugin checks passed\n"; return failures ? 1 : 0;
 }

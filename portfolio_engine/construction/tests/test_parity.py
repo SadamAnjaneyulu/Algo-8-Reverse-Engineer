@@ -1,6 +1,6 @@
 """Python / C++ parity for the NEW plugin behaviour (not the M2 replay parity): both read the same scenario file and must write byte-identical
 decision, action, state, lineage, event, instrument and summary files. Categories are asserted separately so a failure names what differs."""
-import os, random, subprocess, tempfile
+import os, random, subprocess, sys, tempfile
 import pytest
 from helpers import *
 from pc import generators as G
@@ -74,6 +74,26 @@ def test_invalid_scenarios_are_refused_by_both(tmp_path, build):
         p = tmp_path / f'{name}.scn'; p.write_text(text)
         with pytest.raises(Exception): run(text)
         assert cpp_run(str(p), str(tmp_path / f'o_{name}')).returncode == 2, name
+
+
+def test_cpp_refuses_every_malformed_scenario_python_refuses(tmp_path, build):
+    from test_review_findings import BAD
+    for name, text in BAD.items():
+        p = tmp_path / f'{name}.scn'; p.write_bytes(text.encode('utf-8'))
+        r = cpp_run(str(p), str(tmp_path / f'o_{name}')); assert r.returncode == 2 and 'ERROR' in r.stderr, (name, r.returncode, r.stderr)
+        r = subprocess.run([sys.executable, '-m', 'pc.cli', 'run', str(p), '--out', str(tmp_path / f'py_{name}')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'python')))
+        assert r.returncode == 2 and 'ERROR' in r.stderr and 'Traceback' not in r.stderr, (name, r.returncode, r.stderr[-200:])           # clean refusal, no traceback, same exit code
+    p = tmp_path / 'bytes.scn'; p.write_bytes(scn(plugins() + tick(0)).encode() + b'\xff\xfe\n'); assert cpp_run(str(p), str(tmp_path / 'ob')).returncode == 2
+
+
+def test_cpp_creates_the_output_directory_like_python(tmp_path, build):
+    p = tmp_path / 's.scn'; p.write_text(G.s05_reentry_success().to_text()); out = tmp_path / 'a' / 'b'; assert cpp_run(str(p), str(out)).returncode == 0 and (out / 'summary.tsv').exists()
+
+
+def test_no_mark_fill_price_and_distinct_reentry_ids_identical_in_both_languages(tmp_path, build):
+    t1 = scn('').replace(L('LEG', 'f1', 'B1', 'SCE', SCE, -1, 195, 10000, T0), L('LEG', 'f1', 'B1', 'SCE', SCE, -1, 65, 10000, T0) + L('LEG', 'f1b', 'B1', 'SCE', SCE, -1, 130, 10050, T0)) + plugins(False, False, True) + tick(0) + action(0, 'c', 'CUT', 'SCE', 65)
+    t2 = scn(plugins(False, True, True) + cfg('basket_reentry', 'cooldown_s', 0) + mark(0, SCE, 10000) + tick(0) + tick(300) + action(0, 'c1', 'CUT', 'SCE', 65) + action(0, 'c2', 'CUT', 'SCE', 65))
+    for i, t in enumerate((t1, t2)): py, cp = both(tmp_path, t, f'n{i}'); compare(py, cp, f'review{i}')
 
 
 def test_the_events_written_by_the_plugin_layer_replay_identically_in_m2_python_and_m2_cpp(tmp_path):

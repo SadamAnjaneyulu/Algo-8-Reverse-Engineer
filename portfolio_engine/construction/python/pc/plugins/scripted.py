@@ -10,7 +10,7 @@ class ScriptedActionsPlugin(Plugin):
     def evaluate(self, ctx):
         res = PluginResult()
         for a in ctx.scripted:
-            res.actions.append(ProposedAction(a['action_id'], a['plugin'] or self.name, a['version'] or self.version, a['type'], a['group_id'], a['basket_id'], a['leg_id'], a['qty'], a['parent_cut_id'], a['ts'], a['info_ts'], 'SCRIPTED'))
-            res.decisions.append(Decision(ctx.ts, self.name, self.version, a['basket_id'], a['leg_id'], 'PROPOSED', 'SCRIPTED', f'type={a["type"]} qty={a["qty"]}', a['info_ts']))
+            res.actions.append(ProposedAction(a.action_id, a.plugin or self.name, a.version or self.version, a.type, a.group_id, a.basket_id, a.leg_id, a.qty, a.parent_cut_id, a.ts, a.info_ts, 'SCRIPTED'))
+            res.decisions.append(Decision(ctx.ts, self.name, self.version, a.basket_id, a.leg_id, 'PROPOSED', 'SCRIPTED', f'type={a.type} qty={a.qty}', ctx.ts))       # the claimed info_ts is on the action row, where the validator checks it
         res.status = OK if res.actions else NO_ACTION
         return res

@@ -11,9 +11,9 @@ class BasketCutPlugin : public Plugin {
  public:
   std::string name() const override { return "basket_cut"; } std::string version() const override { return "1.0.0"; }
   std::vector<std::pair<std::string, Spec>> spec() const override {
-    return {{"policy", espec("MARK_ADVERSE_MOVE", {"MARK_ADVERSE_MOVE", "SCHEDULED"})}, {"trigger_bp", ispec(2000)}, {"cut_at_ts", ispec(0)}, {"scope", espec("LEG", {"LEG", "BASKET"})},
-            {"leg_side_filter", espec("ANY", {"ANY", "SHORT", "LONG"})}, {"option_type_filter", espec("ANY", {"ANY", "CE", "PE"})}, {"qty_mode", espec("UNITS", {"UNITS", "FRACTION_BP"})}, {"units", ispec(65)},
-            {"fraction_bp", ispec(10000, true, 0, true, 10000)}, {"clamp_to_available", ispec(0, true, 0, true, 1)}, {"max_cuts_per_leg", ispec(1, true, 1)}, {"basket_filter", sspec("*")}};
+    return {{"policy", espec("MARK_ADVERSE_MOVE", {"MARK_ADVERSE_MOVE", "SCHEDULED"})}, {"trigger_bp", ispec(2000, true, 0, true, 1000000)}, {"cut_at_ts", ispec(0, true, 0, true, 100000000000LL)}, {"scope", espec("LEG", {"LEG", "BASKET"})},
+            {"leg_side_filter", espec("ANY", {"ANY", "SHORT", "LONG"})}, {"option_type_filter", espec("ANY", {"ANY", "CE", "PE"})}, {"qty_mode", espec("UNITS", {"UNITS", "FRACTION_BP"})}, {"units", ispec(65, true, 0, true, 1000000000)},
+            {"fraction_bp", ispec(10000, true, 0, true, 10000)}, {"clamp_to_available", ispec(0, true, 0, true, 1)}, {"max_cuts_per_leg", ispec(1, true, 1, true, 1000000)}, {"basket_filter", sspec("*")}};
   }
   i64 qty(const EvalContext& ctx, const LegView& l) const {
     if (gets("qty_mode") == "UNITS") { i64 q = geti("units"); return geti("clamp_to_available") ? std::min(q, l.current) : q; }
@@ -62,8 +62,8 @@ class BasketReentryPlugin : public Plugin {
  public:
   std::string name() const override { return "basket_reentry"; } std::string version() const override { return "1.0.0"; }
   std::vector<std::pair<std::string, Spec>> spec() const override {
-    return {{"cooldown_s", ispec(600)}, {"max_wait_s", ispec(0)}, {"max_reentries_per_cut", ispec(1, true, 1)}, {"max_reentry_fraction_bp", ispec(10000, true, 0, true, 10000)}, {"qty_mode", espec("RESTORE", {"RESTORE", "UNITS"})},
-            {"units", ispec(0)}, {"price_condition", espec("NONE", {"NONE", "WITHIN_BAND"})}, {"band_bp", ispec(1000)}, {"basket_filter", sspec("*")}};
+    return {{"cooldown_s", ispec(600, true, 0, true, 100000000000LL)}, {"max_wait_s", ispec(0, true, 0, true, 100000000000LL)}, {"max_reentries_per_cut", ispec(1, true, 1, true, 1000000)}, {"max_reentry_fraction_bp", ispec(10000, true, 0, true, 10000)}, {"qty_mode", espec("RESTORE", {"RESTORE", "UNITS"})},
+            {"units", ispec(0, true, 0, true, 1000000000)}, {"price_condition", espec("NONE", {"NONE", "WITHIN_BAND"})}, {"band_bp", ispec(1000, true, 0, true, 1000000)}, {"basket_filter", sspec("*")}};
   }
   void evaluate(const EvalContext& ctx, PluginResult& res) const override {
     const i64 ts = ctx.ts; std::map<std::pair<std::string, std::string>, LegView> legs; for (auto& b : ctx.baskets) for (auto& l : b.legs) legs[{b.basket_id, l.leg_id}] = l;
@@ -83,7 +83,7 @@ class BasketReentryPlugin : public Plugin {
         dec(cut, "NOT_PROPOSED", "PRICE_CONDITION_NOT_MET", "mark=" + std::to_string(px) + " cut_price=" + std::to_string(cut.price) + " band_bp=" + std::to_string(geti("band_bp")), mts); continue; }
       const i64 q = gets("qty_mode") == "RESTORE" ? qty : std::min(geti("units"), qty);
       if (q <= 0) { dec(cut, "NOT_PROPOSED", "REENTRY_LIMIT_REACHED", "configured units give zero quantity", ts); continue; }
-      res.actions.push_back({name() + "|" + std::to_string(ts) + "|" + cut.basket_id + "|" + cut.leg_id + "|REENTRY", name(), version(), "REENTRY", "", cut.basket_id, cut.leg_id, q, cut.cut_id, ts, mts, "REENTRY_ELIGIBLE"});
+      res.actions.push_back({name() + "|" + std::to_string(ts) + "|" + cut.basket_id + "|" + cut.leg_id + "|REENTRY|" + cut.cut_id, name(), version(), "REENTRY", "", cut.basket_id, cut.leg_id, q, cut.cut_id, ts, mts, "REENTRY_ELIGIBLE"});
       dec(cut, "PROPOSED", "REENTRY_ELIGIBLE", "mark=" + std::to_string(px) + " cut_price=" + std::to_string(cut.price) + " qty=" + std::to_string(q), mts);
     }
     res.status = res.actions.empty() ? "NO_ACTION" : "OK";
@@ -96,7 +96,7 @@ class ScriptedActionsPlugin : public Plugin {
   void evaluate(const EvalContext& ctx, PluginResult& res) const override {
     for (auto& a : ctx.scripted) {
       res.actions.push_back({a.action_id, a.plugin.empty() ? name() : a.plugin, a.version.empty() ? version() : a.version, a.type, a.group_id, a.basket_id, a.leg_id, a.qty, a.parent_cut_id, a.ts, a.info_ts, "SCRIPTED"});
-      res.decisions.push_back(mkdec(ctx.ts, *this, a.basket_id, a.leg_id, "PROPOSED", "SCRIPTED", "type=" + a.type + " qty=" + std::to_string(a.qty), a.info_ts));
+      res.decisions.push_back(mkdec(ctx.ts, *this, a.basket_id, a.leg_id, "PROPOSED", "SCRIPTED", "type=" + a.type + " qty=" + std::to_string(a.qty), ctx.ts));
     }
     res.status = res.actions.empty() ? "NO_ACTION" : "OK";
   }

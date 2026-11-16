@@ -1,5 +1,6 @@
 """The plugin contract. A plugin is a deterministic function from a read-only context to proposed actions plus decision records.
 It never touches the ledger, the basket book or any source data."""
+import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from . import API_VERSION
@@ -66,8 +67,8 @@ class Plugin(ABC):
         for k, s in cls.CONFIG_SPEC.items():
             v = config.get(k, s.default)
             if s.kind == 'int':
-                try: v = int(v)
-                except (TypeError, ValueError): errs.append(f'{k}: not an integer ({v!r})'); continue
+                if type(v) is str and re.match(r'-?[0-9]+\Z', v) and len(v) <= 20: v = int(v)
+                elif type(v) is not int: errs.append(f'{k}: not an integer ({v!r})'); continue
                 if s.minimum is not None and v < s.minimum: errs.append(f'{k}: below minimum {s.minimum}')
                 if s.maximum is not None and v > s.maximum: errs.append(f'{k}: above maximum {s.maximum}')
             elif s.kind == 'str': v = str(v)

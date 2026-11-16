@@ -23,8 +23,12 @@ def action(off, aid, typ, leg, qty, parent='', info_off=0, plugin='', basket='B1
 
 
 def example_body(re_cfg='', risk_lines=''):
-    return (plugins() + cfg('basket_cut', 'policy', 'MARK_ADVERSE_MOVE') + cfg('basket_cut', 'trigger_bp', 2000) + cfg('basket_cut', 'scope', 'LEG') + cfg('basket_cut', 'leg_side_filter', 'SHORT') + cfg('basket_cut', 'option_type_filter', 'CE') + cfg('basket_cut', 'units', 65)
-            + cfg('basket_reentry', 'cooldown_s', 600) + cfg('basket_reentry', 'price_condition', 'WITHIN_BAND') + cfg('basket_reentry', 'band_bp', 1500) + re_cfg + risk_lines
+    """the 195-unit example; `re_cfg` / `risk_lines` may re-state settings (they override the example's own; a setting appears once in the file)"""
+    base = {('basket_cut', 'policy'): 'MARK_ADVERSE_MOVE', ('basket_cut', 'trigger_bp'): 2000, ('basket_cut', 'scope'): 'LEG', ('basket_cut', 'leg_side_filter'): 'SHORT', ('basket_cut', 'option_type_filter'): 'CE', ('basket_cut', 'units'): 65,
+            ('basket_reentry', 'cooldown_s'): 600, ('basket_reentry', 'price_condition'): 'WITHIN_BAND', ('basket_reentry', 'band_bp'): 1500}
+    for line in re_cfg.split('\n'):
+        if line: _, p, k, v = line.split('\t'); base[(p, k)] = v
+    return (plugins() + ''.join(cfg(p, k, v) for (p, k), v in base.items()) + risk_lines
             + mark(0, SCE, 10000) + mark(300, SCE, 11000) + mark(600, SCE, 12500) + mark(900, SCE, 12000) + mark(1200, SCE, 11000) + mark(1500, SCE, 10800)
             + mark(0, SPE, 9000) + mark(0, WCE, 200) + mark(0, WPE, 250) + ''.join(tick(o) for o in (0, 300, 600, 900, 1200, 1500)))
 

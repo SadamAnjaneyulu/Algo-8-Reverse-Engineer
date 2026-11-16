@@ -6,10 +6,10 @@ from ..contract import Plugin, Spec, PluginResult, ProposedAction, Decision, OK,
 class BasketReentryPlugin(Plugin):
     name = 'basket_reentry'; version = '1.0.0'
     CONFIG_SPEC = {
-        'cooldown_s': Spec('int', 600, minimum=0), 'max_wait_s': Spec('int', 0, minimum=0, doc='0 = no limit'),
-        'max_reentries_per_cut': Spec('int', 1, minimum=1), 'max_reentry_fraction_bp': Spec('int', 10000, minimum=0, maximum=10000),
-        'qty_mode': Spec('enum', 'RESTORE', ('RESTORE', 'UNITS')), 'units': Spec('int', 0, minimum=0),
-        'price_condition': Spec('enum', 'NONE', ('NONE', 'WITHIN_BAND')), 'band_bp': Spec('int', 1000, minimum=0), 'basket_filter': Spec('str', '*'),
+        'cooldown_s': Spec('int', 600, minimum=0, maximum=10 ** 11), 'max_wait_s': Spec('int', 0, minimum=0, maximum=10 ** 11, doc='0 = no limit'),
+        'max_reentries_per_cut': Spec('int', 1, minimum=1, maximum=10 ** 6), 'max_reentry_fraction_bp': Spec('int', 10000, minimum=0, maximum=10000),
+        'qty_mode': Spec('enum', 'RESTORE', ('RESTORE', 'UNITS')), 'units': Spec('int', 0, minimum=0, maximum=10 ** 9),
+        'price_condition': Spec('enum', 'NONE', ('NONE', 'WITHIN_BAND')), 'band_bp': Spec('int', 1000, minimum=0, maximum=10 ** 6), 'basket_filter': Spec('str', '*'),
     }
 
     def evaluate(self, ctx):
@@ -31,7 +31,7 @@ class BasketReentryPlugin(Plugin):
                 dec(cut, 'NOT_PROPOSED', 'PRICE_CONDITION_NOT_MET', f'mark={px} cut_price={cut.price} band_bp={c["band_bp"]}', mts); continue
             q = qty if c['qty_mode'] == 'RESTORE' else min(c['units'], qty)
             if q <= 0: dec(cut, 'NOT_PROPOSED', 'REENTRY_LIMIT_REACHED', 'configured units give zero quantity', ts); continue
-            aid = f'{self.name}|{ts}|{cut.basket_id}|{cut.leg_id}|REENTRY'
+            aid = f'{self.name}|{ts}|{cut.basket_id}|{cut.leg_id}|REENTRY|{cut.cut_id}'
             res.actions.append(ProposedAction(aid, self.name, self.version, 'REENTRY', '', cut.basket_id, cut.leg_id, q, cut.cut_id, ts, mts, 'REENTRY_ELIGIBLE'))
             dec(cut, 'PROPOSED', 'REENTRY_ELIGIBLE', f'mark={px} cut_price={cut.price} qty={q}', mts)
         res.status = OK if res.actions else NO_ACTION

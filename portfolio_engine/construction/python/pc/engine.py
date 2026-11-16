@@ -6,8 +6,8 @@ Plugins never touch the ledger or the book. After every fill the book's claims a
 import os
 from . import EVIDENCE
 from ._m2 import m2_ledger, m2_schema, m2_tsvio
-from .contract import Plugin, PluginResult, Decision, fnv1a64, ERROR, ConfigError
-from .model import Book, MarkStore, EvalContext, LegView, BasketView, CutView
+from .contract import Plugin, PluginResult, Decision, ProposedAction, fnv1a64, ERROR, ConfigError
+from .model import Book, MarkStore, EvalContext, LegView, BasketView, CutView, ScriptedAction
 from .plugins import BUILTIN
 from .registry import Registry
 from . import risk as R
@@ -71,7 +71,7 @@ class Simulation:
         baskets = tuple(BasketView(bid, self.book.status(bid), tuple(LegView(bid, l.leg_id, l.instrument_id, l.side, l.initial, l.current, l.entry_price, l.cuts_done) for _, l in sorted(legs.items())))
                         for bid, legs in sorted(self.book.baskets.items()))
         cuts = tuple(CutView(c.cut_id, c.basket_id, c.leg_id, self.book.baskets[c.basket_id][c.leg_id].instrument_id, c.qty, c.ts, c.price, c.reentered, c.reentries) for _, c in sorted(self.book.cuts.items()))
-        return EvalContext(ts, self.marks, baskets, cuts, dict(self.lots), tuple(a for a in self.sc.actions if a['ts'] == ts))
+        return EvalContext(ts, self.marks.view(ts), baskets, cuts, self.lots, tuple(ScriptedAction(**a) for a in self.sc.actions if a['ts'] == ts))
 
     # ------------------------------------------------------------------ seeds (basket creation)
     def _apply_seeds(self, upto):
@@ -89,6 +89,9 @@ class Simulation:
             if not isinstance(res, PluginResult): raise TypeError('not a PluginResult')
         except Exception:
             self.dec_rows.append((len(self.dec_rows) + 1, ts, plugin.name, plugin.version, '*', '*', 'NOT_PROPOSED', 'PLUGIN_ERROR', 'plugin raised an exception', plugin.config_hash, ts)); self._bump('plugin_errors'); return
+        bad = self._invalid_output(plugin, res, ts)
+        if bad:
+            self.dec_rows.append((len(self.dec_rows) + 1, ts, plugin.name, plugin.version, '*', '*', 'NOT_PROPOSED', 'PLUGIN_ERROR', 'invalid plugin output', plugin.config_hash, ts)); self._bump('plugin_errors'); return
         for d in res.decisions:
             self.dec_rows.append((len(self.dec_rows) + 1, d.ts, d.plugin, d.version, d.basket_id, d.leg_id, d.outcome, d.reason, d.detail, plugin.config_hash, d.info_ts)); self._bump('decision_' + d.outcome)
         groups = []                                           # proposals grouped by group_id, in order of first appearance; an empty group_id means a group of one
@@ -99,6 +102,19 @@ class Simulation:
                 else: groups.append((a.group_id, [a]))
             else: groups.append(('', [a]))
         for _, acts in groups: self._handle_group(plugin, acts, ts)
+
+    @staticmethod
+    def _invalid_output(plugin, res, ts):
+        """a plugin result must be plain data: exact types, printable ASCII text, honest decision stamps. Anything else drops the whole result (fail closed)."""
+        def txt(x): return type(x) is str and all(32 <= ord(c) <= 126 for c in x)
+        def num(x): return type(x) is int
+        if res.status not in ('OK', 'NO_ACTION', 'ERROR') or not isinstance(res.actions, list) or not isinstance(res.decisions, list): return True
+        for d in res.decisions:
+            if not isinstance(d, Decision) or not all(txt(x) for x in (d.plugin, d.version, d.basket_id, d.leg_id, d.outcome, d.reason, d.detail)) or not num(d.ts) or not num(d.info_ts): return True
+            if d.plugin != plugin.name or d.version != plugin.version or d.ts != ts or d.info_ts > d.ts or d.outcome not in ('PROPOSED', 'NOT_PROPOSED'): return True
+        for a in res.actions:
+            if not isinstance(a, ProposedAction) or not all(txt(x) for x in (a.action_id, a.plugin, a.version, a.type, a.group_id, a.basket_id, a.leg_id, a.parent_cut_id, a.reason)) or not all(num(x) for x in (a.qty, a.ts, a.info_ts)): return True
+        return False
 
     def _handle_group(self, plugin, acts, ts):
         proj = R.Projection(self.book); inv = self._inv(); reasons = []; failed = None
@@ -124,10 +140,10 @@ class Simulation:
         if leg is not None: self._state(ts, '-', a.action_id, a.basket_id, a.leg_id, leg.current, leg.current)
 
     def _execute(self, a, ts):
-        leg = self.book.leg(a.basket_id, a.leg_id); before = leg.current; m = self.marks.at(leg.instrument_id, ts); px = m[0] if m else leg.entry_price
+        leg = self.book.leg(a.basket_id, a.leg_id); before = leg.current; m = self.marks.at(leg.instrument_id, ts); px = m[0] if m else leg.last_price            # no mark yet: the leg's latest actual fill price (always a valid tick)
         side = -leg.side if a.type == 'CUT' else leg.side; self._pc += 1; fid = f'PC{self._pc:06d}'
         self._fill(fid, leg.instrument_id, ts, side, a.qty, px, a.action_id, 'pc', f'pc:{a.plugin}@{a.version}')
-        (self.book.cut(a, ts, px, fid) if a.type == 'CUT' else self.book.reenter(a)); self._reconcile(); self._bump('accepted')
+        (self.book.cut(a, ts, px, fid) if a.type == 'CUT' else self.book.reenter(a, px)); self._reconcile(); self._bump('accepted')
         self.act_rows.append((len(self.act_rows) + 1, ts, a.action_id, a.plugin, a.version, a.type, a.group_id, a.basket_id, a.leg_id, a.qty, a.parent_cut_id, a.info_ts, 'ACCEPTED', 'OK', '', fid, side, px))
         self._state(ts, fid, a.action_id, a.basket_id, a.leg_id, before, leg.current)
         self.lin_rows.append((fid, a.type, a.action_id, a.basket_id, a.leg_id, leg.instrument_id, a.qty, a.parent_cut_id, ','.join(leg.seed_fills)))
@@ -135,7 +151,7 @@ class Simulation:
     # ------------------------------------------------------------------ run and outputs
     def run(self):
         if self._done: return self
-        times = sorted(set(self.sc.ticks) | {a['ts'] for a in self.sc.actions})
+        times = sorted(set(self.sc.ticks))
         for t in times:
             self._apply_seeds(t)
             for plugin in self.registry.enabled(): self._run_plugin(plugin, t)

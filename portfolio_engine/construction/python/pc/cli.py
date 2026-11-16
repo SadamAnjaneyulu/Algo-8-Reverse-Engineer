@@ -11,7 +11,13 @@ def main(argv=None):
     g = sub.add_parser('generate'); g.add_argument('dir')
     a = ap.parse_args(argv)
     if a.cmd == 'run':
-        Simulation(Scenario.load(a.scenario)).write(a.out); print('wrote', a.out)
+        from .contract import ConfigError
+        from .registry import RegistryError
+        from .scenario import ScenarioError
+        from .engine import EngineInvariantError
+        try: Simulation(Scenario.load(a.scenario)).write(a.out)
+        except (ScenarioError, ConfigError, RegistryError, EngineInvariantError, OverflowError, OSError) as e: print('ERROR:', e, file=sys.stderr); sys.exit(2)
+        print('wrote', a.out)
     else:
         from . import generators
         os.makedirs(a.dir, exist_ok=True)

@@ -24,7 +24,7 @@ def parse_risk(cfg):
         if k not in RISK_SPEC: raise ValueError(f'unknown risk key {k}')
     for k, s in RISK_SPEC.items():
         v = int(cfg.get(k, s.default))
-        if v < s.minimum: raise ValueError(f'{k} below minimum')
+        if v < s.minimum or v > 10 ** 12: raise ValueError(f'risk {k} outside 0..10^12')
         out[k] = v
     return out
 

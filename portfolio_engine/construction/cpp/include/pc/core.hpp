@@ -29,13 +29,36 @@ inline std::string fnv1a64(const std::string& t) {
   std::uint64_t h = 14695981039346656037ULL; for (unsigned char b : t) { h ^= b; h *= 1099511628211ULL; }
   char buf[17]; std::snprintf(buf, sizeof buf, "%016llx", (unsigned long long)h); return buf;
 }
-inline i64 parse_int(const std::string& s, const std::string& what) {
-  std::size_t k = 0; if (s.empty()) throw ScenarioError(what + ": not an integer: ''");
-  if (s[0] == '-' || s[0] == '+') k = 1;
-  if (k == s.size()) throw ScenarioError(what + ": not an integer: " + s);
-  for (std::size_t i = k; i < s.size(); ++i) if (s[i] < '0' || s[i] > '9') throw ScenarioError(what + ": not an integer: " + s);
-  try { return std::stoll(s); } catch (...) { throw ScenarioError(what + ": integer out of range: " + s); }
+// integers: optional '-' then ASCII digits only (identical rule in python/pc/scenario.py)
+inline i64 parse_int(const std::string& s, const std::string& what, i64 lo = INT64_MIN, i64 hi = INT64_MAX) {
+  std::size_t k = (!s.empty() && s[0] == '-') ? 1 : 0;
+  if (k == s.size() || s.size() > 20) throw ScenarioError(what + ": not a valid integer: " + s);
+  for (std::size_t i = k; i < s.size(); ++i) if (s[i] < '0' || s[i] > '9') throw ScenarioError(what + ": not a valid integer: " + s);
+  i64 v; try { v = std::stoll(s); } catch (...) { throw ScenarioError(what + ": integer out of range: " + s); }
+  if (v < lo || v > hi) throw ScenarioError(what + ": " + std::to_string(v) + " outside " + std::to_string(lo) + ".." + std::to_string(hi));
+  return v;
 }
+inline bool in_set(char c, const std::string& extra, bool upper, bool lower, bool digit) { return (upper && c >= 'A' && c <= 'Z') || (lower && c >= 'a' && c <= 'z') || (digit && c >= '0' && c <= '9') || extra.find(c) != std::string::npos; }
+inline bool all_of_set(const std::string& s, const std::string& extra, bool upper, bool lower, bool digit, std::size_t mn, std::size_t mx) { if (s.size() < mn || s.size() > mx) return false; for (char c : s) if (!in_set(c, extra, upper, lower, digit)) return false; return true; }
+inline void need_id(const std::string& s, const std::string& w) { if (!all_of_set(s, "_.:-", true, true, true, 1, 64)) throw ScenarioError(w + ": invalid id '" + s + "'"); }
+inline void need_aid(const std::string& s, const std::string& w) { if (!all_of_set(s, "_.:|-", true, true, true, 1, 300)) throw ScenarioError(w + ": invalid id '" + s + "'"); }
+inline bool is_name(const std::string& s) { return !s.empty() && s.size() <= 41 && s[0] >= 'a' && s[0] <= 'z' && all_of_set(s, "_", false, true, true, 1, 41); }
+inline void need_name(const std::string& s, const std::string& w) { if (!is_name(s)) throw ScenarioError(w + ": invalid name '" + s + "'"); }
+inline void need_key(const std::string& s, const std::string& w) { if (!all_of_set(s, "_", false, true, false, 1, 40)) throw ScenarioError(w + ": invalid key '" + s + "'"); }
+inline bool is_semver(const std::string& v) { std::size_t a = v.find('.'); if (a == std::string::npos) return false; std::size_t b = v.find('.', a + 1); if (b == std::string::npos || v.find('.', b + 1) != std::string::npos) return false;
+  for (auto part : {v.substr(0, a), v.substr(a + 1, b - a - 1), v.substr(b + 1)}) {
+    if (part.empty() || !all_of_set(part, "", false, false, true, 1, 40)) return false;
+  }
+  return true;
+}
+inline void check_instrument_id(const std::string& id) {
+  auto f = [&]() { std::vector<std::string> p; std::string cur; for (char c : id) { if (c == '|') { p.push_back(cur); cur.clear(); } else cur += c; } p.push_back(cur); return p; }(); bool ok = f.size() == 4 && all_of_set(f[0], "", true, false, false, 1, 12);
+  if (ok) { const std::string& d = f[1]; ok = d.size() == 10 && d[4] == '-' && d[7] == '-' && all_of_set(d.substr(0, 4), "", false, false, true, 4, 4) && all_of_set(d.substr(5, 2), "", false, false, true, 2, 2) && all_of_set(d.substr(8, 2), "", false, false, true, 2, 2);
+    if (ok) { const int mo = std::stoi(d.substr(5, 2)), dy = std::stoi(d.substr(8, 2)); ok = mo >= 1 && mo <= 12 && dy >= 1 && dy <= 31; } }
+  ok = ok && (f[2] == "CE" || f[2] == "PE") && all_of_set(f[3], "", false, false, true, 1, 9);
+  if (!ok) throw ScenarioError("invalid instrument id '" + id + "'");
+}
+constexpr i64 kMaxT = 100000000000LL, kMaxPx = 1000000000LL, kMaxQty = 10000000LL, kMaxLot = 1000000LL, kMaxActQty = 1000000000000LL, kNotionalCap = 4000000000000000000LL;
 inline std::vector<std::string> split(const std::string& s, char d) { std::vector<std::string> o; std::string cur; for (char c : s) { if (c == d) { o.push_back(cur); cur.clear(); } else cur += c; } o.push_back(cur); return o; }
 
 // ------------------------------------------------------------------ contract
@@ -54,6 +77,9 @@ class MarkStore {
  public:
   void add(i64 ts, const std::string& iid, i64 px) { m_[iid].push_back({ts, px}); }
   void finish() { for (auto& kv : m_) std::sort(kv.second.begin(), kv.second.end()); }
+  std::shared_ptr<const MarkStore> truncated(i64 ts) const {            // a copy that holds ONLY marks with timestamp <= ts (plugins never see the full series)
+    auto v = std::make_shared<MarkStore>(); for (auto& kv : m_) for (auto& e : kv.second) if (e.first <= ts) v->m_[kv.first].push_back(e); return v;
+  }
   std::optional<std::pair<i64, i64>> at(const std::string& iid, i64 ts) const {
     auto it = m_.find(iid); if (it == m_.end()) return std::nullopt;
     std::optional<std::pair<i64, i64>> r; for (auto& e : it->second) { if (e.first <= ts) r = std::make_pair(e.second, e.first); else break; } return r;
@@ -62,7 +88,7 @@ class MarkStore {
 };
 
 struct EvalContext {
-  i64 ts = 0; const MarkStore* marks = nullptr; std::vector<BasketView> baskets; std::vector<CutView> cuts; std::map<std::string, i64> lots; std::vector<ScriptedAction> scripted;
+  i64 ts = 0; std::shared_ptr<const MarkStore> marks; std::vector<BasketView> baskets; std::vector<CutView> cuts; std::map<std::string, i64> lots; std::vector<ScriptedAction> scripted;
   std::optional<std::pair<i64, i64>> mark(const std::string& iid, i64 at_ts = -1) const {
     const i64 t = at_ts < 0 ? ts : at_ts; if (t > ts) throw LookAheadError("mark requested after the evaluation time"); return marks->at(iid, t);
   }
@@ -125,7 +151,7 @@ class Registry {
 };
 
 // ------------------------------------------------------------------ basket book (claims only; executed inventory lives in the M2 ledger)
-struct Leg { std::string leg_id, basket_id, instrument_id; int side = 0; i64 initial = 0, current = 0, notional = 0, cuts_done = 0; std::vector<std::string> seed_fills; i64 entry_price() const { return initial ? notional / initial : 0; } };
+struct Leg { std::string leg_id, basket_id, instrument_id; int side = 0; i64 initial = 0, current = 0, notional = 0, cuts_done = 0, last_price = 0; std::vector<std::string> seed_fills; i64 entry_price() const { return initial ? notional / initial : 0; } };
 struct Cut { std::string cut_id, basket_id, leg_id; i64 qty = 0, ts = 0, price = 0; std::string fill_id; i64 reentered = 0, reentries = 0; };
 struct Book {
   std::map<std::string, std::map<std::string, Leg>> baskets; std::map<std::string, Cut> cuts; std::set<std::string> seen_ids;
@@ -136,18 +162,19 @@ struct Book {
   }
   void seed(const std::string& b, const std::string& l, const std::string& iid, int side, i64 qty, i64 price, const std::string& fid) {
     auto& m = baskets[b]; auto it = m.find(l); if (it == m.end()) { Leg g; g.leg_id = l; g.basket_id = b; g.instrument_id = iid; g.side = side; it = m.emplace(l, g).first; }
-    Leg& g = it->second; g.initial += qty; g.current += qty; g.notional += qty * price; g.seed_fills.push_back(fid);
+    Leg& g = it->second; if (g.notional + qty * price > kNotionalCap) throw EngineInvariantError("basket leg notional too large");
+    g.initial += qty; g.current += qty; g.notional += qty * price; g.seed_fills.push_back(fid); g.last_price = price;
   }
   void cut(const ProposedAction& a, i64 ts, i64 price, const std::string& fid) {
-    Leg* g = leg(a.basket_id, a.leg_id); g->current -= a.qty; g->cuts_done += 1; Cut c; c.cut_id = a.action_id; c.basket_id = a.basket_id; c.leg_id = a.leg_id; c.qty = a.qty; c.ts = ts; c.price = price; c.fill_id = fid; cuts[a.action_id] = c;
+    Leg* g = leg(a.basket_id, a.leg_id); g->current -= a.qty; g->cuts_done += 1; g->last_price = price; Cut c; c.cut_id = a.action_id; c.basket_id = a.basket_id; c.leg_id = a.leg_id; c.qty = a.qty; c.ts = ts; c.price = price; c.fill_id = fid; cuts[a.action_id] = c;
   }
-  void reenter(const ProposedAction& a) { Leg* g = leg(a.basket_id, a.leg_id); g->current += a.qty; Cut& c = cuts[a.parent_cut_id]; c.reentered += a.qty; c.reentries += 1; }
+  void reenter(const ProposedAction& a, i64 price = 0) { Leg* g = leg(a.basket_id, a.leg_id); g->current += a.qty; if (price) g->last_price = price; Cut& c = cuts[a.parent_cut_id]; c.reentered += a.qty; c.reentries += 1; }
 };
 
 // ------------------------------------------------------------------ prototype risk validation (NOT exchange margin, NOT production controls)
 struct Limits { i64 max_gross_units = 1000000000, max_short_units = 1000000000, max_cut_qty_per_action = 1000000000, max_reentry_qty_per_action = 1000000000, reentry_min_cooldown_s = 0; };
 inline Limits parse_risk(const std::map<std::string, i64>& cfg) {
-  Limits l; for (auto& kv : cfg) { const std::string& k = kv.first; i64 v = kv.second; if (v < 0) throw ScenarioError("risk " + k + " below minimum");
+  Limits l; for (auto& kv : cfg) { const std::string& k = kv.first; i64 v = kv.second; if (v < 0 || v > 1000000000000LL) throw ScenarioError("risk " + k + " outside 0..10^12");
     if (k == "max_gross_units") l.max_gross_units = v; else if (k == "max_short_units") l.max_short_units = v; else if (k == "max_cut_qty_per_action") l.max_cut_qty_per_action = v;
     else if (k == "max_reentry_qty_per_action") l.max_reentry_qty_per_action = v; else if (k == "reentry_min_cooldown_s") l.reentry_min_cooldown_s = v; else throw ScenarioError("unknown risk key " + k); }
   return l;
@@ -195,42 +222,63 @@ inline Verdict check(const ProposedAction& a, i64 now, Projection& proj, const s
 struct SeedLeg { std::string fill_id, basket_id, leg_id, instrument_id; int side = 0; i64 qty = 0, price = 0, ts = 0; bool operator==(const SeedLeg& o) const { return std::tie(fill_id, basket_id, leg_id, instrument_id, side, qty, price, ts) == std::tie(o.fill_id, o.basket_id, o.leg_id, o.instrument_id, o.side, o.qty, o.price, o.ts); } };
 struct Scenario {
   std::string name, description, method = "FIFO"; std::map<std::string, i64> instruments, risk; std::vector<std::tuple<std::string, std::string, bool>> plugins; std::map<std::string, Config> configs;
-  std::vector<SeedLeg> seeds; std::vector<std::tuple<i64, std::string, i64>> marks; std::vector<i64> ticks; std::vector<ScriptedAction> actions; i64 duplicate_seeds = 0;
+  std::vector<SeedLeg> seeds, duplicates; std::vector<std::tuple<i64, std::string, i64>> marks; std::vector<i64> ticks; std::vector<ScriptedAction> actions; i64 duplicate_seeds = 0;
   static Scenario parse(const std::string& text) {
+    for (unsigned char c : text) if (c > 126 || (c < 32 && c != '\n' && c != '\t')) throw ScenarioError("scenario files must be printable ASCII");
     Scenario s; std::map<std::string, std::string> meta; std::map<std::string, SeedLeg> seen; std::map<std::pair<i64, std::string>, i64> markpx; std::map<std::pair<std::string, std::string>, std::pair<std::string, int>> legdef; i64 n = 0;
+    std::set<std::string> seen_plugin; std::set<std::pair<std::string, std::string>> seen_cfg;
     for (auto& line : split(text, '\n')) {
-      ++n; if (line.find_first_not_of(" \t\r") == std::string::npos || line[0] == '#') continue;
+      ++n; if (line.empty() || line[0] == '#') continue;
       auto p = split(line, '\t'); const std::string k = p[0]; const std::string w = "line " + std::to_string(n); auto need = [&](std::size_t c) { if (p.size() < c) throw ScenarioError(w + ": too few fields for " + k); };
-      if (k == "META") { need(2); meta[p[1]] = p.size() > 2 ? p[2] : ""; }
-      else if (k == "INST") { need(3); s.instruments[p[1]] = parse_int(p[2], w); }
-      else if (k == "RISK") { need(3); s.risk[p[1]] = parse_int(p[2], w); }
-      else if (k == "PLUGIN") { need(4); s.plugins.emplace_back(p[1], p[2], p[3] == "1"); }
-      else if (k == "CONFIG") { need(4); s.configs[p[1]][p[2]] = p[3]; }
+      if (k == "META") { need(2); need_key(p[1], w); if (meta.count(p[1])) throw ScenarioError(w + ": META repeated"); meta[p[1]] = p.size() > 2 ? p[2] : ""; }
+      else if (k == "INST") { need(3); check_instrument_id(p[1]); if (s.instruments.count(p[1])) throw ScenarioError(w + ": instrument repeated"); s.instruments[p[1]] = parse_int(p[2], w, 1, kMaxLot); }
+      else if (k == "RISK") { need(3); if (s.risk.count(p[1])) throw ScenarioError(w + ": RISK repeated"); s.risk[p[1]] = parse_int(p[2], w, 0, 1000000000000LL); }
+      else if (k == "PLUGIN") {
+        need(4); need_name(p[1], w); if (!is_semver(p[2])) throw ScenarioError(w + ": invalid version"); if (seen_plugin.count(p[1])) throw ScenarioError(w + ": plugin listed twice");
+        if (p[3] != "0" && p[3] != "1") throw ScenarioError(w + ": enabled flag must be 0 or 1");
+        seen_plugin.insert(p[1]); s.plugins.emplace_back(p[1], p[2], p[3] == "1");
+      }
+      else if (k == "CONFIG") {
+        need(4); need_name(p[1], w); need_key(p[2], w); if (!all_of_set(p[3], "_.*:-", true, true, true, 0, 64)) throw ScenarioError(w + ": invalid value");
+        if (!seen_cfg.insert({p[1], p[2]}).second) throw ScenarioError(w + ": CONFIG repeated");
+        s.configs[p[1]][p[2]] = p[3];
+      }
       else if (k == "LEG") {
-        need(9); SeedLeg d{p[1], p[2], p[3], p[4], (int)parse_int(p[5], w), parse_int(p[6], w), parse_int(p[7], w), parse_int(p[8], w)};
-        auto it = seen.find(d.fill_id); if (it != seen.end()) { if (!(it->second == d)) throw ScenarioError(w + ": fill_id " + d.fill_id + " repeated with different content"); s.duplicate_seeds++; continue; }
+        need(9); need_id(p[1], w); need_id(p[2], w); need_id(p[3], w);
+        SeedLeg d{p[1], p[2], p[3], p[4], (int)parse_int(p[5], w, -1, 1), parse_int(p[6], w, 1, kMaxQty), parse_int(p[7], w, 5, kMaxPx), parse_int(p[8], w, 0, kMaxT)};
+        if (d.fill_id.size() > 2 && d.fill_id[0] == 'P' && d.fill_id[1] == 'C' && all_of_set(d.fill_id.substr(2), "", false, false, true, 1, 64)) throw ScenarioError(w + ": fill ids PC<digits> are reserved for the engine");
+        auto it = seen.find(d.fill_id); if (it != seen.end()) { if (!(it->second == d)) throw ScenarioError(w + ": fill_id " + d.fill_id + " repeated with different content"); s.duplicates.push_back(d); continue; }
         seen[d.fill_id] = d; s.seeds.push_back(d);
       }
-      else if (k == "MARK") { need(4); i64 ts = parse_int(p[1], w), px = parse_int(p[3], w); auto key = std::make_pair(ts, p[2]); auto it = markpx.find(key); if (it != markpx.end() && it->second != px) throw ScenarioError(w + ": conflicting marks"); if (it == markpx.end()) { markpx[key] = px; s.marks.emplace_back(ts, p[2], px); } }
-      else if (k == "TICK") { need(2); s.ticks.push_back(parse_int(p[1], w)); }
+      else if (k == "MARK") { need(4); i64 ts = parse_int(p[1], w, 0, kMaxT), px = parse_int(p[3], w, 5, kMaxPx); auto key = std::make_pair(ts, p[2]); auto it = markpx.find(key); if (it != markpx.end() && it->second != px) throw ScenarioError(w + ": conflicting marks"); if (it == markpx.end()) { markpx[key] = px; s.marks.emplace_back(ts, p[2], px); } }
+      else if (k == "TICK") { need(2); s.ticks.push_back(parse_int(p[1], w, 0, kMaxT)); }
       else if (k == "ACTION") {
-        need(11); ScriptedAction a; a.ts = parse_int(p[1], w); a.action_id = p[2]; a.plugin = p[3]; a.version = p[4]; a.type = p[5]; a.basket_id = p[6]; a.leg_id = p[7]; a.qty = parse_int(p[8], w); a.parent_cut_id = p[9];
-        a.info_ts = p[10].empty() ? a.ts : parse_int(p[10], w); a.group_id = p.size() > 11 ? p[11] : ""; s.actions.push_back(a);
+        need(11); ScriptedAction a; a.ts = parse_int(p[1], w, 0, kMaxT); need_aid(p[2], w); a.action_id = p[2]; if (!p[3].empty()) need_name(p[3], w); a.plugin = p[3]; if (!p[4].empty() && !is_semver(p[4])) throw ScenarioError(w + ": invalid version"); a.version = p[4];
+        if (!all_of_set(p[5], "_", true, false, false, 1, 20)) throw ScenarioError(w + ": invalid action type");
+        a.type = p[5]; need_id(p[6], w); a.basket_id = p[6]; need_id(p[7], w); a.leg_id = p[7]; a.qty = parse_int(p[8], w, -kMaxActQty, kMaxActQty);
+        if (!p[9].empty()) need_aid(p[9], w);
+        a.parent_cut_id = p[9]; a.info_ts = p[10].empty() ? a.ts : parse_int(p[10], w, 0, kMaxT); a.group_id = p.size() > 11 ? p[11] : "";
+        if (!a.group_id.empty()) need_id(a.group_id, w);
+        s.actions.push_back(a);
       }
       else throw ScenarioError(w + ": unknown line type '" + k + "'");
     }
-    if (meta["evidence"] != kEvidence) throw ScenarioError("scenario must declare META evidence SYNTHETIC_TEST_ONLY");
+    if (!meta.count("evidence") || meta["evidence"] != kEvidence) throw ScenarioError("scenario must declare META evidence SYNTHETIC_TEST_ONLY (exactly once)");
     s.name = meta["name"]; s.description = meta["description"]; if (meta.count("method")) s.method = meta["method"]; if (s.method != "FIFO" && s.method != "LIFO" && s.method != "AVG") throw ScenarioError("bad method");
-    for (auto& d : s.seeds) {
+    for (auto& kv : s.configs) if (!seen_plugin.count(kv.first)) throw ScenarioError("CONFIG names plugin '" + kv.first + "' that has no PLUGIN line");
+    parse_risk(s.risk);
+    for (const auto* list : {&s.seeds, &s.duplicates}) for (auto& d : *list) {
       auto it = s.instruments.find(d.instrument_id); if (it == s.instruments.end()) throw ScenarioError("seed " + d.fill_id + ": undeclared instrument");
-      if ((d.side != 1 && d.side != -1) || d.qty <= 0 || d.qty % it->second != 0 || d.price <= 0 || d.price % 5 != 0) throw ScenarioError("seed " + d.fill_id + ": invalid side/qty/price");
+      if ((d.side != 1 && d.side != -1) || d.qty % it->second != 0 || d.price % 5 != 0) throw ScenarioError("seed " + d.fill_id + ": invalid side/qty/price");
       auto key = std::make_pair(d.basket_id, d.leg_id); auto ld = legdef.find(key); if (ld == legdef.end()) legdef[key] = {d.instrument_id, d.side}; else if (ld->second != std::make_pair(d.instrument_id, d.side)) throw ScenarioError("leg seeds disagree on instrument or side");
     }
-    for (auto& m : s.marks) { if (!s.instruments.count(std::get<1>(m)) || std::get<2>(m) <= 0 || std::get<2>(m) % 5 != 0) throw ScenarioError("mark: undeclared instrument or invalid price"); }
-    std::sort(s.seeds.begin(), s.seeds.end(), [](const SeedLeg& a, const SeedLeg& b) { return std::tie(a.ts, a.fill_id) < std::tie(b.ts, b.fill_id); });
+    for (auto& m : s.marks) { if (!s.instruments.count(std::get<1>(m)) || std::get<2>(m) % 5 != 0) throw ScenarioError("mark: undeclared instrument or price not a multiple of the tick"); }
+    auto seedless = [](const SeedLeg& a, const SeedLeg& b) { return std::tie(a.ts, a.fill_id) < std::tie(b.ts, b.fill_id); };
+    std::sort(s.seeds.begin(), s.seeds.end(), seedless); std::sort(s.duplicates.begin(), s.duplicates.end(), seedless); s.duplicate_seeds = (i64)s.duplicates.size();
     std::sort(s.marks.begin(), s.marks.end()); std::sort(s.ticks.begin(), s.ticks.end()); s.ticks.erase(std::unique(s.ticks.begin(), s.ticks.end()), s.ticks.end());
     std::sort(s.actions.begin(), s.actions.end(), [](const ScriptedAction& a, const ScriptedAction& b) {
       return std::tie(a.ts, a.action_id, a.plugin, a.version, a.type, a.basket_id, a.leg_id, a.qty, a.parent_cut_id, a.info_ts, a.group_id) < std::tie(b.ts, b.action_id, b.plugin, b.version, b.type, b.basket_id, b.leg_id, b.qty, b.parent_cut_id, b.info_ts, b.group_id); });
+    for (auto& a : s.actions) if (!std::binary_search(s.ticks.begin(), s.ticks.end(), a.ts)) throw ScenarioError("ACTION " + a.action_id + " is not at a TICK time");
     return s;
   }
 };

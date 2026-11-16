@@ -2,6 +2,7 @@
 #pragma once
 #include <cstdio>
 #include <cstdlib>
+#include <filesystem>
 #include <fstream>
 #include "pc/plugins.hpp"
 namespace pc {
@@ -52,7 +53,7 @@ class Simulation {
     }
   }
   EvalContext context(i64 ts) const {
-    EvalContext c; c.ts = ts; c.marks = &marks; c.lots = lots;
+    EvalContext c; c.ts = ts; c.marks = marks.truncated(ts); c.lots = lots;
     for (auto& b : book.baskets) { BasketView bv; bv.basket_id = b.first; bv.status = book.status(b.first); for (auto& l : b.second) bv.legs.push_back({b.first, l.first, l.second.instrument_id, l.second.side, l.second.initial, l.second.current, l.second.entry_price(), l.second.cuts_done}); c.baskets.push_back(bv); }
     for (auto& k : book.cuts) { const Cut& x = k.second; c.cuts.push_back({x.cut_id, x.basket_id, x.leg_id, book.baskets.at(x.basket_id).at(x.leg_id).instrument_id, x.qty, x.ts, x.price, x.reentered, x.reentries}); }
     for (auto& a : sc.actions) if (a.ts == ts) c.scripted.push_back(a);
@@ -66,11 +67,23 @@ class Simulation {
       lin_rows.push_back(row({d.fill_id, "SEED", "", d.basket_id, d.leg_id, d.instrument_id, S(d.qty), "", d.fill_id}));
     }
   }
+  static bool printable(const std::string& s) { for (unsigned char c : s) if (c < 32 || c > 126) return false; return true; }
+  static bool invalid_output(const Plugin& p, const PluginResult& r, i64 ts) {            // a result must be plain data with printable ASCII text and honest decision stamps (fail closed otherwise)
+    if (r.status != "OK" && r.status != "NO_ACTION" && r.status != "ERROR") return true;
+    for (auto& d : r.decisions) {
+      for (const std::string* x : {&d.plugin, &d.version, &d.basket_id, &d.leg_id, &d.outcome, &d.reason, &d.detail}) if (!printable(*x)) return true;
+      if (d.plugin != p.name() || d.version != p.version() || d.ts != ts || d.info_ts > d.ts || (d.outcome != "PROPOSED" && d.outcome != "NOT_PROPOSED")) return true;
+    }
+    for (auto& a : r.actions) for (const std::string* x : {&a.action_id, &a.plugin, &a.version, &a.type, &a.group_id, &a.basket_id, &a.leg_id, &a.parent_cut_id, &a.reason}) if (!printable(*x)) return true;
+    return false;
+  }
   void run_plugin(const std::shared_ptr<Plugin>& plugin, i64 ts) {
     PluginResult res;
     try { plugin->evaluate(context(ts), res); }
     catch (const std::exception&) {
       dec_rows.push_back(row({S((i64)dec_rows.size() + 1), S(ts), plugin->name(), plugin->version(), "*", "*", "NOT_PROPOSED", "PLUGIN_ERROR", "plugin raised an exception", plugin->config_hash(), S(ts)})); bump("plugin_errors"); return; }
+    if (invalid_output(*plugin, res, ts)) {
+      dec_rows.push_back(row({S((i64)dec_rows.size() + 1), S(ts), plugin->name(), plugin->version(), "*", "*", "NOT_PROPOSED", "PLUGIN_ERROR", "invalid plugin output", plugin->config_hash(), S(ts)})); bump("plugin_errors"); return; }
     for (auto& d : res.decisions) { dec_rows.push_back(row({S((i64)dec_rows.size() + 1), S(d.ts), d.plugin, d.version, d.basket_id, d.leg_id, d.outcome, d.reason, d.detail, plugin->config_hash(), S(d.info_ts)})); bump("decision_" + d.outcome); }
     std::vector<std::pair<std::string, std::vector<ProposedAction>>> groups;
     for (auto& a : res.actions) {
@@ -101,10 +114,11 @@ class Simulation {
     bump("rejected"); bump("reason_" + reason); Leg* leg = book.leg(a.basket_id, a.leg_id); if (leg) state(ts, "-", a.action_id, a.basket_id, a.leg_id, leg->current, leg->current);
   }
   void execute(const ProposedAction& a, i64 ts) {
-    Leg* leg = book.leg(a.basket_id, a.leg_id); const i64 before = leg->current; auto m = marks.at(leg->instrument_id, ts); const i64 px = m ? m->first : leg->entry_price();
+    Leg* leg = book.leg(a.basket_id, a.leg_id); const i64 before = leg->current; auto m = marks.at(leg->instrument_id, ts); const i64 px = m ? m->first : leg->last_price;            // no mark yet: the leg's latest actual fill price (always a valid tick)
     const int side = a.type == "CUT" ? -leg->side : leg->side; ++pc_n; char b[40]; std::snprintf(b, sizeof b, "PC%06lld", (long long)pc_n); const std::string fid = b;
     fill(fid, leg->instrument_id, ts, side, a.qty, px, a.action_id, "pc:" + a.plugin + "@" + a.version);
-    if (a.type == "CUT") book.cut(a, ts, px, fid); else book.reenter(a); reconcile(); bump("accepted");
+    if (a.type == "CUT") book.cut(a, ts, px, fid); else book.reenter(a, px);
+    reconcile(); bump("accepted");
     act_rows.push_back(row({S((i64)act_rows.size() + 1), S(ts), a.action_id, a.plugin, a.version, a.type, a.group_id, a.basket_id, a.leg_id, S(a.qty), a.parent_cut_id, S(a.info_ts), "ACCEPTED", "OK", "", fid, S(side), S(px)}));
     state(ts, fid, a.action_id, a.basket_id, a.leg_id, before, leg->current);
     std::string seeds; for (std::size_t i = 0; i < leg->seed_fills.size(); ++i) { if (i) seeds += ","; seeds += leg->seed_fills[i]; }
@@ -113,7 +127,6 @@ class Simulation {
   Simulation& run() {
     if (done) return *this;
     std::set<i64> times(sc.ticks.begin(), sc.ticks.end());
-    for (auto& a : sc.actions) times.insert(a.ts);
     for (i64 t : times) { apply_seeds(t); for (auto& p : registry.enabled()) run_plugin(p, t); }
     apply_seeds((i64)1 << 62); done = true; return *this;
   }
@@ -136,6 +149,6 @@ class Simulation {
     out["lineage.tsv"] = tsv(note, {"fill_id", "kind", "action_id", "basket_id", "leg_id", "instrument_id", "qty", "parent_cut_id", "origin_seed_fills"}, lin_rows);
     out["events.tsv"] = ev; out["instruments.tsv"] = is; out["summary.tsv"] = tsv(note, {"key", "value"}, sm); return out;
   }
-  void write(const std::string& dir) { for (auto& kv : files()) { std::ofstream f(dir + "/" + kv.first, std::ios::binary); f << kv.second; } }
+  void write(const std::string& dir) { std::filesystem::create_directories(dir); for (auto& kv : files()) { std::ofstream f(dir + "/" + kv.first, std::ios::binary); f << kv.second; } }
 };
 }  // namespace pc

@@ -1,6 +1,7 @@
 """basket_cut: transparent, configurable EXAMPLE cut policies. They are not Algo 8 rules and are not claimed to be good rules.
 
-policy MARK_ADVERSE_MOVE  a short leg triggers when mark >= entry*(1+trigger_bp/10000); a long leg when mark <= entry*(1-trigger_bp/10000)
+policy MARK_ADVERSE_MOVE  a short leg triggers when mark >= entry*(1+trigger_bp/10000); a long leg when mark <= entry*(1-trigger_bp/10000).
+                          entry = the leg's integer volume-weighted average seed price, ROUNDED DOWN to a whole paise (so the threshold can differ from the exact one by < 1 paise x (1+bp/10000))
 policy SCHEDULED          every selected leg triggers once ts >= cut_at_ts
 scope  LEG                cut only the triggered legs        BASKET   cut every selected leg of the basket (one atomic group)
 leg_side_filter / option_type_filter select which legs a policy looks at and cuts (side-aware cutting)
@@ -13,11 +14,11 @@ class BasketCutPlugin(Plugin):
     name = 'basket_cut'; version = '1.0.0'
     CONFIG_SPEC = {
         'policy': Spec('enum', 'MARK_ADVERSE_MOVE', ('MARK_ADVERSE_MOVE', 'SCHEDULED')),
-        'trigger_bp': Spec('int', 2000, minimum=0), 'cut_at_ts': Spec('int', 0, minimum=0),
+        'trigger_bp': Spec('int', 2000, minimum=0, maximum=10 ** 6), 'cut_at_ts': Spec('int', 0, minimum=0, maximum=10 ** 11),
         'scope': Spec('enum', 'LEG', ('LEG', 'BASKET')),
         'leg_side_filter': Spec('enum', 'ANY', ('ANY', 'SHORT', 'LONG')), 'option_type_filter': Spec('enum', 'ANY', ('ANY', 'CE', 'PE')),
-        'qty_mode': Spec('enum', 'UNITS', ('UNITS', 'FRACTION_BP')), 'units': Spec('int', 65, minimum=0), 'fraction_bp': Spec('int', 10000, minimum=0, maximum=10000),
-        'clamp_to_available': Spec('int', 0, minimum=0, maximum=1), 'max_cuts_per_leg': Spec('int', 1, minimum=1), 'basket_filter': Spec('str', '*'),
+        'qty_mode': Spec('enum', 'UNITS', ('UNITS', 'FRACTION_BP')), 'units': Spec('int', 65, minimum=0, maximum=10 ** 9), 'fraction_bp': Spec('int', 10000, minimum=0, maximum=10000),
+        'clamp_to_available': Spec('int', 0, minimum=0, maximum=1), 'max_cuts_per_leg': Spec('int', 1, minimum=1, maximum=10 ** 6), 'basket_filter': Spec('str', '*'),
     }
 
     def _qty(self, ctx, leg):
