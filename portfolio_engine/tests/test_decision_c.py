@@ -6,11 +6,16 @@ from conftest import PE
 from test_closing_batches import make, views_of, sets, CE
 from pe import closing_batches as cb
 
+
+def quick(ls):
+    """views WITHOUT the built-in invariant check, so the boundary tests below fail by their own assertion; the invariants are checked separately (test_invariants_...)"""
+    parents, un, multi = cb.closing_parents(ls); return parents, un, cb.all_views(parents)
+
 THR = (2, 5, 10, 30, 60)
 
 
 def two_parents(gap):
-    ls, _ = make([('open', CE, 0, 130, 'o'), ('close', CE, 100, 65, 'A'), ('close', CE, 100 + gap, 65, 'B')]); parents, un, multi, V = views_of(ls); return ls, parents, un, V
+    ls, _ = make([('open', CE, 0, 130, 'o'), ('close', CE, 100, 65, 'A'), ('close', CE, 100 + gap, 65, 'B')]); parents, un, V = quick(ls); return ls, parents, un, V
 
 
 @pytest.mark.parametrize('g', THR)
@@ -24,7 +29,7 @@ def test_inclusive_boundary_below_at_and_above_every_threshold(g, m):
 @pytest.mark.parametrize('m', ('C1', 'C2'))
 def test_exclusive_sensitivity_boundary_below_at_and_above_every_threshold(g, m):
     for gap, joined in ((g - 1, True), (g, False), (g + 1, False)):                     # exclusive: the threshold itself separates
-        ls, parents, un, V = two_parents(gap); v = cb.build_view(parents, m, g, inclusive=False); cb.check_view(v, parents, ls.cp, un)
+        ls, parents, un, V = two_parents(gap); v = cb.build_view(parents, m, g, inclusive=False)
         assert sets(v) == ([['A', 'B']] if joined else [['A'], ['B']]), (m, g, gap)
 
 
@@ -78,5 +83,5 @@ def test_published_exclusive_artifact_equals_the_independent_m2f_reference_and_s
 def test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold(g):
     """parent A closes at seconds 100 and 200 (last = 200); parent B closes at 200 + d. C2 gap = d (from A's last fill): joined iff d <= g. C1 gap = 100 + d (from A's first): always separated here."""
     for d, joined in ((g - 1, True), (g, True), (g + 1, False)):
-        ls, _ = make([('open', CE, 0, 195, 'o'), ('close', CE, 100, 65, 'A'), ('close', CE, 200, 65, 'A'), ('close', CE, 200 + d, 65, 'B')]); parents, un, multi, V = views_of(ls)
+        ls, _ = make([('open', CE, 0, 195, 'o'), ('close', CE, 100, 65, 'A'), ('close', CE, 200, 65, 'A'), ('close', CE, 200 + d, 65, 'B')]); parents, un, V = quick(ls)
         assert sets(V[('C2', g)]) == ([['A', 'B']] if joined else [['A'], ['B']]), (g, d); assert sets(V[('C1', g)]) == [['A'], ['B']]

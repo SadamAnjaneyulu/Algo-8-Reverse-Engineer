@@ -1,0 +1,230 @@
+{
+ "note": "Closure dispositions (M2 closure, 2026-11-16). The original M2-F dispositions are never replaced; they are rendered beside these. D-A02, D-A04 and D-A08 are added when their remediation is merged.",
+ "defects": {
+  "B-01": {
+   "status": "ACCEPTED WITH EVIDENCE",
+   "rationale": "Root cause R1 (unobservable intra-second order). Handled by policy and disclosure, not by changing results: baseline SOURCE_ROW_ORDER_CONVENTION kept, hybrid PER_CONTRACT_ID_SEQUENCE evaluated side by side; the dependence is 1 batch per view out of 1,502-7,127.",
+   "evidence": "reports/R1_TIE_ORDER_CONVENTION.md; reports/R1C_DUAL_SCENARIO_COMPARISON.md; reports/r1c_dual_scenario/file_inventory.json; tests/test_tie_order_policy.py (real-ledger pins); commits 4231867f, 7d16504c, 65a8dcb0"
+  },
+  "C-01": {
+   "status": "ACCEPTED WITH EVIDENCE",
+   "rationale": "Same root cause: opening body units 626,765 vs 625,985, 6 W1/W2 links, 2 items differ under the hybrid; evidence-class labels unchanged (structural ceilings).",
+   "evidence": "reports/R1C_DUAL_SCENARIO_COMPARISON.md section 5; reports/r1c_dual_scenario/file_inventory.json (m2d files); docs/ORDERING_SEMANTICS.md"
+  },
+  "B-04": {
+   "status": "FIXED",
+   "rationale": "Independent reporting-layer tests with hand-calculated expectations (summarize rows, total_closing_qty, join_gap_s, numbering, batch ids); 12 scratch mutants each killed by an assertion in the subagent run (re-run result file in reports/m2f_audit/medium_remediation/).",
+   "evidence": "tests/test_closing_batches_reporting.py (35 tests); commit acbdd572"
+  },
+  "C-02": {
+   "status": "FIXED",
+   "rationale": "Engine-level synthetic W3 test with unequal quantities pins queue-matched units, weight, segment, residuals; reads no committed output; 9 scratch mutants killed by assertions (includes register mutant M19, weight = u / body_qty).",
+   "evidence": "tests/test_wing_body_w3_engine.py (5 tests); commit acbdd572"
+  },
+  "D-01": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "V4 legend placement: fixing it regenerates delivered PNGs; the owner has not approved replacing delivered figures. Data CSVs are unaffected.",
+   "evidence": "reports/M2F_DEFECT_REGISTER.md D-01; owner directive 2026-11-16 (delivered outputs preserved)"
+  },
+  "D-02": {
+   "status": "FIXED",
+   "rationale": "Decision A: unsupported \"fixed before any case was looked at\" / \"predefined\" wording replaced by the approved structural, price-free, outcome-free (tested) statement in generator, docstring, case report, forensics report and review record; case records and datasets byte-identical (hash-pinned); line-by-line diff guard; lint.",
+   "evidence": "commit 9f06728d, 0b774b35; tests/test_decision_a.py; reports/m2f_audit/r1/mutation_results_DA.json"
+  },
+  "D-03": {
+   "status": "ACCEPTED WITH EVIDENCE",
+   "rationale": "The D-1 concentration (17 of 17 case records begin on D-1; 16 at 09:xx, 1 at 11:xx IST; none on D0) is now computed and disclosed in the case report; D0 holds eligible episodes for CT1/CT2/CT3. The canonical sample is NOT replaced; any D0 diagnostic must be labelled POST-HOC and kept separate.",
+   "evidence": "reports/M2E_POSITION_CASE_STUDIES.md section 1.1; python/pe/cases.py (sample_profile, d0_eligibility); tests/test_decision_a.py"
+  },
+  "D-04": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Case PNGs are generic V2 charts; adding case-specific content regenerates delivered PNGs (not approved). The case report states which episode each chart shows.",
+   "evidence": "reports/M2F_DEFECT_REGISTER.md D-04"
+  },
+  "D-15": {
+   "status": "FIXED",
+   "rationale": "Upstream price-scrambling test: the whole pipeline (ledger -> lineage -> batches -> wing/body -> datasets -> selection) is re-run on a mirror with scrambled fill-ledger prices; selections, episodes and lifecycle tables must not move and prices must really have changed. Price-dependent and outcome-dependent selection mutants are killed by that test.",
+   "evidence": "tests/test_decision_a.py::test_case_selection_is_invariant_under_upstream_price_scrambling; mutation_results_DA.json (DA01, DA02)"
+  },
+  "D-16": {
+   "status": "FIXED",
+   "rationale": "Decision B: per-fill zero-crossing reversal (primary) and parent-level same-second net sign flip (diagnostic) reported separately; baseline 23/26, hybrid 21/22; NIFTY cycle 1/1, SENSEX cycle 0/1; wording corrected in delivered reports (approved lines only).",
+   "evidence": "python/pe/reversals.py; tools/r1c_reversal_measures.py; reports/r1c_dual_scenario/reversal_measures.json; tests/test_reversals.py, tests/test_decision_b.py; commit 1811b25c"
+  },
+  "E-D01": {
+   "status": "FIXED",
+   "rationale": "Source was a set-ordered Counter in cycle_coverage; ordered construction (pe.parents.ROLES order) reproduces the delivered coverage.json byte for byte for both cycles and is independent of PYTHONHASHSEED (slow test across seeds). Delivered files unchanged.",
+   "evidence": "python/pe/forensics.py parent_role_counts; tests/test_hashseed_determinism.py; commit 34bb8444"
+  },
+  "E-D02": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "code_fingerprint(pe_root) implemented and tested (golden hashes, 4 mutants killed); NOT stamped into delivered manifests (they stay byte-identical); stamping into scenario manifests is proposed for M3.",
+   "evidence": "python/pe/provenance.py code_fingerprint; tests/test_cli_and_provenance.py; commit 34bb8444"
+  },
+  "E-D03": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Completeness is now measured and pinned: of 168 delivered output files 140 are recorded in a manifest with a matching sha256 and 28 are not (8 manifests, 7 summaries, 11 m2c/m2d figure files without any figure manifest, the case-study Markdown, review_dispositions.json); any new unmanifested file or hash mismatch fails. Closing the gap needs manifest changes that would alter delivered manifests (not approved). The file-level inventory records sha256 of every file.",
+   "evidence": "tests/test_manifest_completeness.py; reports/r1c_dual_scenario/file_inventory.json; commit 34bb8444"
+  },
+  "E-D07": {
+   "status": "FIXED",
+   "rationale": "pe.cli replay, provenance.manifest, run_id determinism, mode separation, --engine cpp refusal for Python-only policies, schema_version rejection, git sha behaviour are pinned (16 tests); the tool scripts are exercised by the scenario reproduction test. Not covered: the C++ replay path through the CLI (no build in the agent worktree).",
+   "evidence": "tests/test_cli_and_provenance.py; tests/test_scenario.py; commit 34bb8444"
+  },
+  "E-D09": {
+   "status": "FIXED",
+   "rationale": "requirements.lock.txt pins every third-party import (numpy, pandas, pyarrow, matplotlib, pytest + transitive) with python/g++/cmake versions; docs/ENVIRONMENT.md states what reproducibility is and is not asserted; a test fails if an import is unpinned. Not hash-locked; PNG bytes verified only on this stack.",
+   "evidence": "requirements.lock.txt; docs/ENVIRONMENT.md; tests/test_environment_lock.py; commit 34bb8444"
+  },
+  "E-D12": {
+   "status": "FIXED",
+   "rationale": "IST offset (C++ header vs Python), schema_version check, git sha, manifest fields and run_id are pinned; 10 scratch mutants killed by assertions in the subagent run. The C++ core is not run across midnight by these tests.",
+   "evidence": "tests/test_cli_and_provenance.py; commit 34bb8444"
+  },
+  "D-A03": {
+   "status": "ACCEPTED WITH DOCUMENTED RATIONALE",
+   "rationale": "AVG is a pooled cost method (NOT_IDENTIFIABLE by lot); its realized P&L is a float by design and is reported as such; FIFO/LIFO are exact integer paise.",
+   "evidence": "M2F_FINAL_AUDIT_REPORT.md section 4"
+  },
+  "D-A05": {
+   "status": "ACCEPTED WITH DOCUMENTED RATIONALE",
+   "rationale": "Python tsvio is more permissive than the C++ reader; every generator writes canonical tokens and the parity tests use them; inputs from outside the project are not supported.",
+   "evidence": "tests/test_parity*.py"
+  },
+  "D-A06": {
+   "status": "FIXED",
+   "rationale": "Parent identity (raw column 163) and the alternative (column 4: 37,258 values, reused by up to 6 parents) are documented and pinned by a raw-ledger test.",
+   "evidence": "docs/SCHEMAS.md; docs/BASKET_GROUPING_METHODOLOGY.md; tests/test_decision_d.py"
+  },
+  "D-A07": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Cosmetic documentation nits (see the defect text); no effect on any result; to be folded into the next documentation revision.",
+   "evidence": "reports/m2f_audit/track_a/defects.json"
+  },
+  "B-02": {
+   "status": "FIXED",
+   "rationale": "Stream boundary (underlying x expiry x session) recorded as an interpretation of the approved wording; measured effect nil; counterexamples for different expiry, session and underlying.",
+   "evidence": "docs/BASKET_GROUPING_METHODOLOGY.md (Decision D); tests/test_decision_d.py"
+  },
+  "B-03": {
+   "status": "FIXED",
+   "rationale": "Tie-break recorded as the smallest CLOSING source row, then parent id; counterexample where an earlier opening row would change the order.",
+   "evidence": "docs/BASKET_GROUPING_METHODOLOGY.md (Decision D); tests/test_decision_d.py"
+  },
+  "B-05": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Missing/NaN timestamps cannot occur in the loaded ledger (checked against the raw file); a named validation error is a robustness improvement for future inputs, not a defect of delivered results.",
+   "evidence": "python/pe/generators/historical.py"
+  },
+  "B-06": {
+   "status": "ACCEPTED WITH DOCUMENTED RATIONALE",
+   "rationale": "Sensitivity variants carry the C2 reference and tie-key reading in their TOKEN (__SENS_*); the primary parameter hash is pinned to the delivered files and the exclusive link rule changes it.",
+   "evidence": "python/pe/closing_batches.py; tests/test_decision_c.py"
+  },
+  "B-07": {
+   "status": "ACCEPTED WITH DOCUMENTED RATIONALE",
+   "rationale": "Historical provenance (generated_at_head 5b2939ec, dirty tree) is what it was; reproduction from the current code is byte-identical for every generated file (reports/r1c_dual_scenario/file_inventory.json).",
+   "evidence": "reports/r1c_dual_scenario/file_inventory.json"
+  },
+  "C-03": {
+   "status": "FIXED",
+   "rationale": "Tag-scope exclusions are disclosed with reconciling denominators: opening 1,414,545 = wing 617,130 + body 626,765 + excluded 170,650; closing 1,377,065 = 500,775 + 540,250 + 336,040.",
+   "evidence": "docs/BASKET_GROUPING_METHODOLOGY.md (Decision D); tests/test_decision_d.py"
+  },
+  "C-04": {
+   "status": "ACCEPTED WITH DOCUMENTED RATIONALE",
+   "rationale": "Same-contract and non-OTM candidate links are kept by design (all candidates kept, no forced assignment); their shares are reported descriptively in m2d_summary.json.",
+   "evidence": "reports/m2d_data/m2d_summary.json descriptive_link_properties_opening"
+  },
+  "C-05": {
+   "status": "ACCEPTED WITH DOCUMENTED RATIONALE",
+   "rationale": "Two items have an order-entry minute 1 s later than the first fill (minute-precision field vs whole-second clock: CLOSING BODY 11431436 row 20515, OPENING BODY 12061224 row 32722); recorded here as a data-quality note; no rule depends on it.",
+   "evidence": "reports/m2f_audit/track_c/defects.json C-05"
+  },
+  "C-06": {
+   "status": "OPEN",
+   "rationale": "The quoted equality with TP-03 E6 and the second-key share denominators were not independently re-verified in this closure; recommended wording softening is not applied to the delivered M2-D report.",
+   "evidence": "reports/m2f_audit/track_c/defects.json C-06"
+  },
+  "D-05": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Figure presentation; delivered PNG changes not approved.",
+   "evidence": "M2F_DEFECT_REGISTER.md D-05"
+  },
+  "D-06": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Figure presentation; delivered PNG changes not approved.",
+   "evidence": "M2F_DEFECT_REGISTER.md D-06"
+  },
+  "D-07": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Figure presentation; delivered PNG changes not approved.",
+   "evidence": "M2F_DEFECT_REGISTER.md D-07"
+  },
+  "D-08": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Figure presentation; delivered PNG changes not approved.",
+   "evidence": "M2F_DEFECT_REGISTER.md D-08"
+  },
+  "D-09": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Figure presentation; delivered PNG changes not approved.",
+   "evidence": "M2F_DEFECT_REGISTER.md D-09"
+  },
+  "D-10": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Figure/CSV labelling of W3 partners; delivered files not regenerated.",
+   "evidence": "M2F_DEFECT_REGISTER.md D-10"
+  },
+  "D-11": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Label semantics in a delivered column (tp03_event_class); a rename changes delivered data. The report text discloses that TP-03 does not classify these items.",
+   "evidence": "M2F_DEFECT_REGISTER.md D-11"
+  },
+  "D-12": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Figure manifests list source datasets without hashes; the same gap as E-D03; every file hash is recorded in the file inventory.",
+   "evidence": "reports/r1c_dual_scenario/file_inventory.json"
+  },
+  "D-13": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Histogram note wording inside a delivered PNG.",
+   "evidence": "M2F_DEFECT_REGISTER.md D-13"
+  },
+  "D-14": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Latent: maximum episodes per instrument is 4 (NIFTY cycle) and 3 (SENSEX cycle), so the lexicographic episode order has no current effect (re-measured on the delivered episodes tables).",
+   "evidence": "reports/m2e_data/*/episodes.tsv"
+  },
+  "E-D04": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Locale-default encoding/newlines: the supported environment is documented (docs/ENVIRONMENT.md); a non-UTF-8 locale is unsupported.",
+   "evidence": "docs/ENVIRONMENT.md"
+  },
+  "E-D05": {
+   "status": "ACCEPTED WITH DOCUMENTED RATIONALE",
+   "rationale": "Same as D-A05: canonical inputs only.",
+   "evidence": "tests/test_parity*.py"
+  },
+  "E-D06": {
+   "status": "ACCEPTED WITH DOCUMENTED RATIONALE",
+   "rationale": "Overflow and float-sum differences occur only at magnitudes far outside the ledger (units up to 10^6).",
+   "evidence": "M2F_METHODOLOGY_LIMITATIONS.md section 10"
+  },
+  "E-D08": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Test tiering names only; no effect on results.",
+   "evidence": "pytest.ini"
+  },
+  "E-D10": {
+   "status": "DEFERRED WITH REASON",
+   "rationale": "Schema version strings differ by file type; each is validated by its own reader.",
+   "evidence": "docs/SCHEMAS.md"
+  },
+  "E-D11": {
+   "status": "OPEN",
+   "rationale": "stage2_alpha_research is outside portfolio_engine and outside the M2 scope; its evidence discrepancy (commit message vs tracked files) is unchanged and untouched by rule.",
+   "evidence": "M2F_DEFECT_REGISTER.md E-D11"
+  }
+ }
+}

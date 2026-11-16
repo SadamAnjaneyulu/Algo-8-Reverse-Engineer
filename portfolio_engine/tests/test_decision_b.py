@@ -88,3 +88,11 @@ def test_only_approved_reversal_lines_changed_and_data_are_unchanged():
     for cy in ('NIFTY_2026-06-30', 'SENSEX_2026-07-16'):
         for name in ('case_studies.json', 'episodes.tsv', 'lifecycle_events.tsv', 'fills.tsv', 'coverage.json'):
             rel = f'portfolio_engine/reports/m2e_data/{cy}/{name}'; assert hashlib.sha256(open(os.path.join(REPO, rel), 'rb').read()).hexdigest() == base[rel], rel
+
+
+def test_published_counts_are_the_owner_table_fast_pin():
+    """pinned to the values re-derived independently by test_reported_values_are_reproduced_independently_for_both_scenarios (slow)"""
+    pub = json.load(open(os.path.join(PE, 'reports', 'r1c_dual_scenario', 'reversal_measures.json')))['results']
+    want = {('full_ledger', 'baseline'): (23, 26), ('full_ledger', 'per_contract_id_sequence'): (21, 22), ('NIFTY_2026-06-30', 'baseline'): (1, 1), ('NIFTY_2026-06-30', 'per_contract_id_sequence'): (1, 1),
+            ('SENSEX_2026-07-16', 'baseline'): (0, 1), ('SENSEX_2026-07-16', 'per_contract_id_sequence'): (0, 1)}
+    for (k, sc), (a, b) in want.items(): assert (pub[k][sc]['counts'][RV.PER_FILL], pub[k][sc]['counts'][RV.PARENT_LEVEL]) == (a, b), (k, sc)

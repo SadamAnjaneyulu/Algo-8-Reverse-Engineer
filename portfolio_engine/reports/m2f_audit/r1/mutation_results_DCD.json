@@ -1,0 +1,145 @@
+[
+ {
+  "id": "BASELINE_unmutated",
+  "outcome": "survived",
+  "summary": "43 passed in 3.02s | "
+ },
+ {
+  "id": "DC01_inclusive_threshold_becomes_exclusive",
+  "expected_detector": "boundary",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_inclusive_boundary_below_at_and_above_every_threshold[C1-2]",
+   "test_inclusive_boundary_below_at_and_above_every_threshold[C1-5]",
+   "test_inclusive_boundary_below_at_and_above_every_threshold[C1-10]",
+   "test_inclusive_boundary_below_at_and_above_every_threshold[C1-30]"
+  ],
+  "summary": "18 failed, 25 passed in 2.77s | test_decision_c.py:25: AssertionError: ('C1', 2, 2) || test_decision_c.py:25: AssertionError: ('C1', 5, 5)"
+ },
+ {
+  "id": "DC02_exclusive_reading_uses_less_or_equal",
+  "expected_detector": "exclusive_sensitivity_boundary",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_exclusive_sensitivity_boundary_below_at_and_above_every_threshold[C1-2]",
+   "test_exclusive_sensitivity_boundary_below_at_and_above_every_threshold[C1-5]",
+   "test_exclusive_sensitivity_boundary_below_at_and_above_every_threshold[C1-10]",
+   "test_exclusive_sensitivity_boundary_below_at_and_above_every_threshold[C1-30]"
+  ],
+  "summary": "12 failed, 31 passed in 2.75s | test_decision_c.py:33: AssertionError: ('C1', 2, 2) || test_decision_c.py:33: AssertionError: ('C1', 5, 5)"
+ },
+ {
+  "id": "DC03_parameter_hash_ignores_the_link_rule",
+  "expected_detector": "provenance",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_provenance_identifies_the_link_semantics_and_the_primary_is_unchanged"
+  ],
+  "summary": "1 failed, 42 passed in 3.03s | test_decision_c.py:62: AssertionError: assert ('7ec474da4e8d23c2' != '7ec474da4e8d23c2')"
+ },
+ {
+  "id": "DC04_exclusive_token_suffix_dropped",
+  "expected_detector": "provenance",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_provenance_identifies_the_link_semantics_and_the_primary_is_unchanged"
+  ],
+  "summary": "1 failed, 42 passed in 2.74s | test_decision_c.py:61: AssertionError: assert ('CB_FIRST_FILL_GAP_10S' == 'CB_FIRST_FILL_GAP_10S'"
+ },
+ {
+  "id": "DC05_primary_link_text_changed_so_delivered_hashes_would_break",
+  "expected_detector": "provenance",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_provenance_identifies_the_link_semantics_and_the_primary_is_unchanged"
+  ],
+  "summary": "1 failed, 42 passed in 2.81s | test_decision_c.py:68: AssertionError: the primary parameter hash changed: the delivered C1 views would no longer be reproducible"
+ },
+ {
+  "id": "DC06_c2_predecessor_uses_the_previous_parents_first_fill",
+  "expected_detector": "c2_measures",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold[2]",
+   "test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold[5]",
+   "test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold[10]",
+   "test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold[30]"
+  ],
+  "summary": "6 failed, 37 passed in 2.95s | test_decision_c.py:87: AssertionError: (2, 1) || test_decision_c.py:87: AssertionError: (5, 4)"
+ },
+ {
+  "id": "DC07_published_exclusive_count_changed",
+  "expected_detector": "published_exclusive",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_published_exclusive_artifact_equals_the_independent_m2f_reference_and_states_its_semantics"
+  ],
+  "summary": "1 failed, 42 passed in 2.78s | test_decision_c.py:76: assert (9999, 3065, 153, 74) == (3144, 3065, 153, 74)"
+ },
+ {
+  "id": "DD01_stream_boundary_drops_the_expiry",
+  "expected_detector": "different_expiry",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_same_underlying_different_expiry_are_never_joined"
+  ],
+  "summary": "1 failed, 42 passed in 2.96s | test_decision_d.py:17: AssertionError: assert [['A', 'B']] == [['A'], ['B']]"
+ },
+ {
+  "id": "DD02_stream_boundary_drops_the_session",
+  "expected_detector": "different_session",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_same_underlying_and_expiry_different_session_are_never_joined"
+  ],
+  "summary": "1 failed, 42 passed in 2.97s | test_decision_d.py:23: AssertionError: assert (['2026-01-05', '2026-01-06'] != (['2026-01-05'] * 2) and [['A', 'B']] == [['A'], ['B']]"
+ },
+ {
+  "id": "DD03_stream_boundary_drops_the_underlying",
+  "expected_detector": "different_underlying",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_different_underlying_are_never_joined"
+  ],
+  "summary": "1 failed, 42 passed in 2.47s | test_decision_d.py:29: AssertionError: assert [['A', 'B']] == [['A'], ['B']]"
+ },
+ {
+  "id": "DD04_tiebreak_uses_the_largest_closing_row",
+  "expected_detector": "CLOSING_source_row",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_tiebreak_uses_the_SMALLEST_closing_row_of_a_parent_with_several_closing_fills"
+  ],
+  "summary": "1 failed, 42 passed in 2.50s | test_decision_d.py:47: AssertionError: assert ['Y', 'X'] == ['X', 'Y']"
+ },
+ {
+  "id": "DD05_parent_last_second_ignored",
+  "expected_detector": "multiple_closing_fills",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold[2]",
+   "test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold[5]",
+   "test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold[10]",
+   "test_c2_measures_the_gap_from_the_previous_parents_LAST_closing_fill_at_every_threshold[30]"
+  ],
+  "summary": "6 failed, 37 passed in 2.62s | test_decision_c.py:87: AssertionError: (2, 1) || test_decision_c.py:87: AssertionError: (5, 4)"
+ },
+ {
+  "id": "DD06_expired_unclosed_inference_wording_removed_from_docs",
+  "expected_detector": "expired_unclosed",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_expired_unclosed_remains_a_schema_token_and_is_documented_as_an_inference"
+  ],
+  "summary": "1 failed, 42 passed in 2.43s | test_decision_d.py:61: AssertionError: assert ('inferred from the expiry date and missing closing fills' in 'Decision D, owner-approved 2026-11-16; earlier text unchanged"
+ },
+ {
+  "id": "DD07_parent_identity_note_changed_in_schema_doc_is_not_enough_raw_counts_pinned",
+  "expected_detector": "parent_identity",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_parent_identity_is_the_raw_column_163_and_column_4_is_reused_across_parents"
+  ],
+  "summary": "1 failed, 42 passed in 2.38s | test_decision_d.py:56: assert ('raw column **163**' in '# Shared schemas (v1)\\n\\nLanguage-neutral tab-separated files. Header line required; lines starting with `#` are c"
+ }
+]
