@@ -1,5 +1,6 @@
 """Writes the human-readable walkthroughs (state before and after every action) and the compact validation report.
-  python3 tools/make_examples.py <out_dir>        -> walkthrough_<scenario>.txt, validation_report.tsv, scenarios/*.scn, run_<scenario>/ (the seven output files)"""
+  python3 tools/make_examples.py <out_dir>        -> walkthrough_<scenario>.txt, validation_report.tsv, run_<scenario>/ (the seven output files)
+The scenario definitions themselves live only in scenarios/ (python -m pc.cli generate scenarios); they are not copied here."""
 import csv, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.join(os.path.dirname(HERE), 'python'))
 from pc import generators as G
@@ -40,14 +41,13 @@ def walkthrough(name, sc, sim):
     return '\n'.join(L) + '\n'
 
 
-rows = [('scenario', 'purpose', 'accepted', 'rejected_by_risk_validation', 'not_proposed_by_plugin', 'example_accepted_action', 'example_rejected_action', 'rejection_reason')]
-os.makedirs(os.path.join(OUT, 'scenarios'), exist_ok=True)
+rows = [('scenario', 'purpose', 'accepted', 'rejected_by_risk_validation', 'not_proposed_by_plugin', 'example_accepted_action', 'example_rejected_action', 'rejection_reason', 'data_origin')]
 for name, sc in G.all_scenarios().items():
     sim = Simulation(sc).run(); act, dec = table(sim, 'actions.tsv'), table(sim, 'decisions.tsv')
-    open(os.path.join(OUT, 'scenarios', name + '.scn'), 'w', newline='\n').write(sc.to_text()); sim.write(os.path.join(OUT, 'run_' + name))
+    sim.write(os.path.join(OUT, 'run_' + name))
     if name in ('s05_reentry_success', 's06_reentry_rejected_cooldown', 's07_reentry_rejected_risk_limit', 's11_basket_lifecycle_demo'): open(os.path.join(OUT, f'walkthrough_{name}.txt'), 'w', newline='\n').write(walkthrough(name, sc, sim))
     ok = next((a for a in act if a['status'] == 'ACCEPTED'), None); bad = next((a for a in act if a['status'] == 'REJECTED'), None)
     fmt = lambda a: f'{a["type"]} {a["basket_id"]}:{a["leg_id"]} qty {a["qty"]}' if a else ''
-    rows.append((name, sc.description, sum(a['status'] == 'ACCEPTED' for a in act), sum(a['status'] == 'REJECTED' for a in act), sum(d['outcome'] == 'NOT_PROPOSED' for d in dec), fmt(ok), fmt(bad), (bad['reason'] + ': ' + bad['detail']) if bad else ''))
+    rows.append((name, sc.description, sum(a['status'] == 'ACCEPTED' for a in act), sum(a['status'] == 'REJECTED' for a in act), sum(d['outcome'] == 'NOT_PROPOSED' for d in dec), fmt(ok), fmt(bad), (bad['reason'] + ': ' + bad['detail']) if bad else '', 'synthetic simulation (scenarios/' + name + '.scn); not historical Algo 8 data'))
 with open(os.path.join(OUT, 'validation_report.tsv'), 'w', newline='') as f: w = csv.writer(f, delimiter='\t', lineterminator='\n'); w.writerows(rows)
 print('wrote', len(rows) - 1, 'scenarios to', OUT)

@@ -43,6 +43,14 @@ def table(tsv):
 def kv(files, key): return {r['key']: r['value'] for r in table(files['summary.tsv'])}.get(key)
 
 
+def clean_refusal(stderr):
+    """True when a command-line run was refused the intended way: the LAST stderr line is the program's own `ERROR: ...` message and no traceback frame points into
+    this project's source. Output from the Python environment itself (site hooks, warnings) may precede it and is ignored."""
+    lines = [l for l in stderr.strip().split('\n') if l.strip()]
+    if not lines or not lines[-1].startswith('ERROR:'): return False
+    return not any('File "' in l and ('/pc/' in l or '\\pc\\' in l or 'scenario.py' in l or 'engine.py' in l) for l in lines)
+
+
 # ---------------------------------------------------------------- C++ build (shared by the parity tests)
 _BUILD = {}
 def cpp_build():

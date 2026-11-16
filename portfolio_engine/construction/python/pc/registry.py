@@ -8,7 +8,7 @@ class RegistryError(Exception):
     def __init__(self, code, msg=''): super().__init__(f'{code}: {msg}'); self.code = code
 
 
-_SEMVER = re.compile(r'^\d+\.\d+\.\d+$')
+_SEMVER = re.compile(r'[0-9]{1,40}\.[0-9]{1,40}\.[0-9]{1,40}\Z')
 
 
 class Registry:
@@ -17,8 +17,8 @@ class Registry:
 
     def register(self, plugin, enabled=True):
         if not isinstance(plugin, Plugin): raise RegistryError('NOT_A_PLUGIN', type(plugin).__name__)
-        if not plugin.name or not re.match(r'^[a-z][a-z0-9_]*$', plugin.name): raise RegistryError('INVALID_NAME', plugin.name)
-        if not _SEMVER.match(plugin.version): raise RegistryError('INVALID_VERSION', plugin.version)
+        if not isinstance(plugin.name, str) or not re.match(r'^[a-z][a-z0-9_]*\Z', plugin.name): raise RegistryError('INVALID_NAME', repr(plugin.name))
+        if not isinstance(plugin.version, str) or not _SEMVER.match(plugin.version): raise RegistryError('INVALID_VERSION', repr(plugin.version))
         if plugin.api_version != self.api_version: raise RegistryError('INCOMPATIBLE_API_VERSION', f'{plugin.name} needs api {plugin.api_version}, registry is {self.api_version}')
         if plugin.name in self._items: raise RegistryError('DUPLICATE_NAME', plugin.name)
         self._items[plugin.name] = [plugin, bool(enabled)]; self._order.append(plugin.name)

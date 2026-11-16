@@ -1,4 +1,4 @@
-"""Regression tests for every defect an independent review found in the first version (input syntax, arithmetic range, fill-price fallback, id collisions,
+"""Regression tests from the hardening pass of the first version (input syntax, arithmetic range, fill-price fallback, id collisions,
 plugin isolation, boundary behaviour, look-ahead through every input kind). Python / C++ agreement on the refusals is checked in test_parity.py."""
 import dataclasses, os
 import pytest
@@ -27,6 +27,7 @@ BAD = {   # name -> scenario text that every loader must refuse (the same table 
     'evidence_overridden_by_second_meta': scn(L('META', 'evidence', 'REAL'), 'SYNTHETIC_TEST_ONLY'), 'repeated_config': scn(plugins() + cfg('basket_cut', 'units', 65) + cfg('basket_cut', 'units', 130)), 'repeated_instrument': scn(L('INST', SCE, 65)),
     'repeated_risk': scn(risk('max_gross_units', 1) + risk('max_gross_units', 2)), 'config_for_unlisted_plugin': scn(cfg('basket_cut', 'units', 65)), 'action_not_at_a_tick': scn(plugins() + tick(0) + action(7, 'a', 'CUT', 'SCE', 65)),
     'engine_reserved_fill_id': scn('').replace('\tf1\t', '\tPC000001\t', 1), 'pipe_in_basket_id': scn('').replace('\tB1\t', '\tA|B\t'), 'seed_price_not_a_tick': scn('').replace('\t195\t10000', '\t195\t10003', 1),
+    'plugin_version_part_41_digits': scn(L('PLUGIN', 'basket_cut', '1.0.' + '0' * 41, 1) + tick(0)), 'action_version_part_41_digits': scn(plugins() + tick(0) + L('ACTION', T0, 'a', 'scripted_actions', '1.0.' + '0' * 41, 'CUT', 'B1', 'SCE', 65, '', T0, '')),
     'mark_price_not_a_tick': scn(mark(0, SCE, 10003) + tick(0)), 'tab_only_line': scn('') + '\t\n', 'space_only_line': scn('') + '   \n', 'unknown_line_type': scn('BOGUS\t1\n'), 'plugin_enabled_flag_2': scn(L('PLUGIN', 'basket_cut', '1.0.0', 2)),
 }
 

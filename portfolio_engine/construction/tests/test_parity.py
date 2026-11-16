@@ -84,12 +84,12 @@ def test_invalid_scenarios_are_refused_by_both(tmp_path, build):
 
 
 def test_cpp_refuses_every_malformed_scenario_python_refuses(tmp_path, build):
-    from test_review_findings import BAD
+    from test_hardening import BAD
     for name, text in BAD.items():
         p = tmp_path / f'{name}.scn'; p.write_bytes(text.encode('utf-8'))
         r = cpp_run(str(p), str(tmp_path / f'o_{name}')); assert r.returncode == 2 and 'ERROR' in r.stderr, (name, r.returncode, r.stderr)
-        r = subprocess.run([sys.executable, '-m', 'pc.cli', 'run', str(p), '--out', str(tmp_path / f'py_{name}')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'python')))
-        assert r.returncode == 2 and 'ERROR' in r.stderr and 'Traceback' not in r.stderr, (name, r.returncode, r.stderr[-200:])           # clean refusal, no traceback, same exit code
+        r = subprocess.run([sys.executable, '-S', '-m', 'pc.cli', 'run', str(p), '--out', str(tmp_path / f'py_{name}')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'python')))      # -S: no site hooks, so the environment cannot add output
+        assert r.returncode == 2 and clean_refusal(r.stderr), (name, r.returncode, r.stderr[-300:])                 # same exit code, and the program's own ERROR line, not an application traceback
     p = tmp_path / 'bytes.scn'; p.write_bytes(scn(plugins() + tick(0)).encode() + b'\xff\xfe\n'); assert cpp_run(str(p), str(tmp_path / 'ob')).returncode == 2
 
 
@@ -100,7 +100,7 @@ def test_cpp_creates_the_output_directory_like_python(tmp_path, build):
 def test_no_mark_fill_price_and_distinct_reentry_ids_identical_in_both_languages(tmp_path, build):
     t1 = scn('').replace(L('LEG', 'f1', 'B1', 'SCE', SCE, -1, 195, 10000, T0), L('LEG', 'f1', 'B1', 'SCE', SCE, -1, 65, 10000, T0) + L('LEG', 'f1b', 'B1', 'SCE', SCE, -1, 130, 10050, T0)) + plugins(False, False, True) + tick(0) + action(0, 'c', 'CUT', 'SCE', 65)
     t2 = scn(plugins(False, True, True) + cfg('basket_reentry', 'cooldown_s', 0) + mark(0, SCE, 10000) + tick(0) + tick(300) + action(0, 'c1', 'CUT', 'SCE', 65) + action(0, 'c2', 'CUT', 'SCE', 65))
-    for i, t in enumerate((t1, t2)): py, cp = both(tmp_path, t, f'n{i}'); compare(py, cp, f'review{i}')
+    for i, t in enumerate((t1, t2)): py, cp = both(tmp_path, t, f'n{i}'); compare(py, cp, f'targeted{i}')
 
 
 def test_the_events_written_by_the_plugin_layer_replay_identically_in_m2_python_and_m2_cpp(tmp_path):
@@ -111,3 +111,30 @@ def test_the_events_written_by_the_plugin_layer_replay_identically_in_m2_python_
         r = subprocess.run([os.path.join(b, 'pe_replay'), '--events', str(e), '--instruments', str(i), '--mode', 'SYNTHETIC_TEST', '--method', 'FIFO', '--tie', 'src', '--dump', str(dump), '--strict'], capture_output=True, text=True); assert r.returncode == 0, r.stderr
         ins = m2_tsvio.read_instruments(str(i)); res = m2_replay.replay(m2_tsvio.read_events(str(e), ins), ins, 'SYNTHETIC_TEST', 'FIFO', 'src', 0, strict=True)
         assert open(dump).read() == res.dump, name
+
+
+def test_clean_refusal_ignores_environment_output_but_not_application_tracebacks():
+    env_noise = 'Traceback (most recent call last):\n  File "<environment startup hook>", line 1\nRuntimeWarning: from the environment\n'
+    assert clean_refusal(env_noise + "ERROR: line 8: not a valid integer: ' 195'\n")                                   # environment output before the real message is tolerated
+    assert not clean_refusal('Traceback (most recent call last):\n  File "/x/python/pc/scenario.py", line 99, in parse\nValueError: boom\n')       # a crash inside the application is not
+    assert not clean_refusal('Traceback (most recent call last):\n  File "/x/python/pc/cli.py", line 20, in main\nValueError: boom\nERROR: later\n')
+    assert not clean_refusal('') and not clean_refusal('warning only\n')
+
+
+def test_the_refusal_check_holds_when_the_python_environment_prints_at_startup(tmp_path):
+    hook = tmp_path / 'site'; hook.mkdir(); (hook / 'sitecustomize.py').write_text("import sys; sys.stderr.write('Traceback (most recent call last):\\n  File \"<hook>\", line 1\\nRuntimeWarning: injected\\n')\n")
+    bad = tmp_path / 'bad.scn'; bad.write_text(scn(plugins() + risk('max_gross_units', 10 ** 25) + tick(0)))
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    r = subprocess.run([sys.executable, '-m', 'pc.cli', 'run', str(bad), '--out', str(tmp_path / 'o')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.pathsep.join([str(hook), os.path.join(root, 'python')])))
+    assert 'injected' in r.stderr and r.returncode == 2 and clean_refusal(r.stderr)                                        # polluted by the environment, still recognised as a clean refusal
+    r = subprocess.run([sys.executable, '-S', '-m', 'pc.cli', 'run', str(bad), '--out', str(tmp_path / 'o2')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.pathsep.join([str(hook), os.path.join(root, 'python')])))
+    assert 'injected' not in r.stderr and r.returncode == 2 and clean_refusal(r.stderr)                                    # -S keeps the environment out entirely
+
+
+def test_both_languages_refuse_an_output_path_that_is_a_file(tmp_path, build):
+    s = tmp_path / 's.scn'; s.write_text(G.s05_reentry_success().to_text()); blocker = tmp_path / 'blocker'; blocker.write_text('x')
+    assert cpp_run(str(s), str(blocker / 'out'), make_dir=False).returncode == 2
+    r = subprocess.run([sys.executable, '-S', '-m', 'pc.cli', 'run', str(s), '--out', str(blocker / 'out')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'python')))
+    assert r.returncode == 2 and clean_refusal(r.stderr), r.stderr[-300:]
+    r = subprocess.run([sys.executable, '-S', '-m', 'pc.cli', 'generate', str(blocker / 'scn')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'python')))
+    assert r.returncode == 2 and clean_refusal(r.stderr), r.stderr[-300:]

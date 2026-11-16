@@ -90,7 +90,7 @@ def run_mutant(mid, rel, old, new, what, quick):
     if src.count(old) != 1: return dict(id=mid, what=what, result='ERROR', note=f'pattern occurs {src.count(old)} times')
     open(p, 'w').write(src.replace(old, new))
     env = dict(os.environ, ALGO8_M2_PYTHON=M2_PATH, ALGO8_M2_CPP_INCLUDE=os.path.join(os.path.dirname(M2_PATH), 'cpp', 'include'), PYTHONDONTWRITEBYTECODE='1')
-    sel = ['tests/test_plugins.py', 'tests/test_registry.py', 'tests/test_scenarios.py', 'tests/test_bias_controls.py', 'tests/test_review_findings.py'] if quick else ['tests']
+    sel = ['tests/test_plugins.py', 'tests/test_registry.py', 'tests/test_scenarios.py', 'tests/test_bias_controls.py', 'tests/test_hardening.py'] if quick else ['tests']
     r = subprocess.run([sys.executable, '-m', 'pytest', '-q', '-p', 'no:cacheprovider', '-x'] + sel, cwd=dst, env=env, capture_output=True, text=True)
     out = r.stdout + r.stderr; shutil.rmtree(tmp, ignore_errors=True)
     failed = re.search(r'(\d+) failed', out); errors = re.search(r'(\d+) error', out)

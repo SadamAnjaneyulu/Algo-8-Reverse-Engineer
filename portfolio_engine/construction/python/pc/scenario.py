@@ -22,7 +22,7 @@ class ScenarioError(Exception): pass
 
 _INT = re.compile(r'-?[0-9]+\Z')
 _ID = re.compile(r'[A-Za-z0-9_.:-]{1,64}\Z'); _AID = re.compile(r'[A-Za-z0-9_.:|-]{1,300}\Z'); _NAME = re.compile(r'[a-z][a-z0-9_]{0,40}\Z'); _KEY = re.compile(r'[a-z_]{1,40}\Z'); _VAL = re.compile(r'[A-Za-z0-9_.*:-]{0,64}\Z')
-_SEMVER = re.compile(r'[0-9]+\.[0-9]+\.[0-9]+\Z'); _TYPE = re.compile(r'[A-Z_]{1,20}\Z'); _FILLID = re.compile(r'PC[0-9]+\Z')
+_SEMVER = re.compile(r'[0-9]{1,40}\.[0-9]{1,40}\.[0-9]{1,40}\Z'); _TYPE = re.compile(r'[A-Z_]{1,20}\Z'); _FILLID = re.compile(r'PC[0-9]+\Z')
 _INSTR = re.compile(r'([A-Z]{1,12})\|([0-9]{4})-([0-9]{2})-([0-9]{2})\|(CE|PE)\|([0-9]{1,9})\Z')
 
 

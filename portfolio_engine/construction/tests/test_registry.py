@@ -69,3 +69,21 @@ def test_a_failing_plugin_fails_closed_and_the_run_continues():
         def evaluate(self, ctx): raise RuntimeError('bug')
     _, f = run(scn(plugins() + L('PLUGIN', 'boom', '1.0.0', 1) + mark(0, SCE, 10000) + tick(0) + tick(1)), extra={'boom': Boom})
     d = [x for x in table(f['decisions.tsv']) if x['plugin'] == 'boom']; assert len(d) == 2 and all(x['reason'] == 'PLUGIN_ERROR' for x in d) and kv(f, 'plugin_errors') == '2'
+
+
+def test_a_plugin_with_a_non_text_name_or_version_is_a_registry_error_not_a_crash():
+    class NumName(Plugin):
+        name = 123; version = '1.0.0'
+        def evaluate(self, ctx): return PluginResult()
+    class NumVersion(Plugin):
+        name = 'numversion'; version = 1
+        def evaluate(self, ctx): return PluginResult()
+    class LongVersion(Plugin):
+        name = 'longversion'; version = '1.0.' + '0' * 41
+        def evaluate(self, ctx): return PluginResult()
+    class NewlineName(Plugin):
+        name = 'ok\n'; version = '1.0.0'
+        def evaluate(self, ctx): return PluginResult()
+    for cls, code in ((NumName, 'INVALID_NAME'), (NumVersion, 'INVALID_VERSION'), (LongVersion, 'INVALID_VERSION'), (NewlineName, 'INVALID_NAME')):
+        with pytest.raises(RegistryError) as e: Registry().register(cls())
+        assert e.value.code == code
