@@ -1,4 +1,4 @@
-"""Python / C++ parity for the NEW plugin behaviour (not the M2 replay parity): both read the same scenario file and must write byte-identical
+"""Python / C++ parity for the NEW plugin behaviour (not the historical-engine replay parity): both read the same scenario file and must write byte-identical
 decision, action, state, lineage, event, instrument and summary files. Categories are asserted separately so a failure names what differs."""
 import os, random, subprocess, sys, tempfile
 import pytest
@@ -6,7 +6,7 @@ from helpers import *
 from pc import generators as G
 from pc.engine import Simulation
 from pc.scenario import Scenario
-from pc._m2 import M2_PATH, m2_replay, m2_tsvio
+from pc._hist import HIST_PATH, hist_replay, hist_tsvio
 
 FILES = ('decisions.tsv', 'actions.tsv', 'states.tsv', 'lineage.tsv', 'events.tsv', 'instruments.tsv', 'summary.tsv')
 
@@ -103,13 +103,13 @@ def test_no_mark_fill_price_and_distinct_reentry_ids_identical_in_both_languages
     for i, t in enumerate((t1, t2)): py, cp = both(tmp_path, t, f'n{i}'); compare(py, cp, f'targeted{i}')
 
 
-def test_the_events_written_by_the_plugin_layer_replay_identically_in_m2_python_and_m2_cpp(tmp_path):
-    m2_cpp = os.path.join(os.path.dirname(M2_PATH), 'cpp'); b = tempfile.mkdtemp(prefix='m2build_')
-    subprocess.check_call(['cmake', '-S', m2_cpp, '-B', b, '-DCMAKE_BUILD_TYPE=Release'], stdout=subprocess.DEVNULL); subprocess.check_call(['cmake', '--build', b], stdout=subprocess.DEVNULL)
+def test_the_events_written_by_the_plugin_layer_replay_identically_in_the_historical_python_and_cpp_engines(tmp_path):
+    hist_cpp = os.path.join(os.path.dirname(HIST_PATH), 'cpp'); b = tempfile.mkdtemp(prefix='histbuild_')
+    subprocess.check_call(['cmake', '-S', hist_cpp, '-B', b, '-DCMAKE_BUILD_TYPE=Release'], stdout=subprocess.DEVNULL); subprocess.check_call(['cmake', '--build', b], stdout=subprocess.DEVNULL)
     for name, sc in G.all_scenarios().items():
         _, f = run(sc.to_text()); e, i = tmp_path / 'e.tsv', tmp_path / 'i.tsv'; e.write_text(f['events.tsv']); i.write_text(f['instruments.tsv']); dump = tmp_path / 'd.tsv'
         r = subprocess.run([os.path.join(b, 'pe_replay'), '--events', str(e), '--instruments', str(i), '--mode', 'SYNTHETIC_TEST', '--method', 'FIFO', '--tie', 'src', '--dump', str(dump), '--strict'], capture_output=True, text=True); assert r.returncode == 0, r.stderr
-        ins = m2_tsvio.read_instruments(str(i)); res = m2_replay.replay(m2_tsvio.read_events(str(e), ins), ins, 'SYNTHETIC_TEST', 'FIFO', 'src', 0, strict=True)
+        ins = hist_tsvio.read_instruments(str(i)); res = hist_replay.replay(hist_tsvio.read_events(str(e), ins), ins, 'SYNTHETIC_TEST', 'FIFO', 'src', 0, strict=True)
         assert open(dump).read() == res.dump, name
 
 
@@ -121,14 +121,22 @@ def test_clean_refusal_ignores_environment_output_but_not_application_tracebacks
     assert not clean_refusal('') and not clean_refusal('warning only\n')
 
 
-def test_the_refusal_check_holds_when_the_python_environment_prints_at_startup(tmp_path):
-    hook = tmp_path / 'site'; hook.mkdir(); (hook / 'sitecustomize.py').write_text("import sys; sys.stderr.write('Traceback (most recent call last):\\n  File \"<hook>\", line 1\\nRuntimeWarning: injected\\n')\n")
-    bad = tmp_path / 'bad.scn'; bad.write_text(scn(plugins() + risk('max_gross_units', 10 ** 25) + tick(0)))
+def test_the_refusal_check_ignores_noise_printed_by_the_python_environment():
+    noise = 'Traceback (most recent call last):\n  File "<hook>", line 1\nRuntimeWarning: injected\n'
+    assert clean_refusal(noise + 'ERROR: scenario refused\n')                                                             # environment noise before the program's own message
+    assert not clean_refusal(noise)                                                                                       # no program message: not a clean refusal
+    assert not clean_refusal('ERROR: x\nTraceback (most recent call last):\n  File "/x/pc/engine.py", line 9\nKeyError: 1\n')  # a crash inside our code is never clean
+    assert not clean_refusal('')
+
+
+def test_a_refused_scenario_gives_a_clean_refusal_with_the_environment_switched_off(tmp_path):
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    r = subprocess.run([sys.executable, '-m', 'pc.cli', 'run', str(bad), '--out', str(tmp_path / 'o')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.pathsep.join([str(hook), os.path.join(root, 'python')])))
-    assert 'injected' in r.stderr and r.returncode == 2 and clean_refusal(r.stderr)                                        # polluted by the environment, still recognised as a clean refusal
-    r = subprocess.run([sys.executable, '-S', '-m', 'pc.cli', 'run', str(bad), '--out', str(tmp_path / 'o2')], capture_output=True, text=True, env=dict(os.environ, PYTHONPATH=os.pathsep.join([str(hook), os.path.join(root, 'python')])))
-    assert 'injected' not in r.stderr and r.returncode == 2 and clean_refusal(r.stderr)                                    # -S keeps the environment out entirely
+    env = dict(os.environ, PYTHONPATH=os.path.join(root, 'python'))
+    off = subprocess.run([sys.executable, '-S', '-c', "import sys; print('site' in sys.modules)"], capture_output=True, text=True, env=env)
+    assert off.stdout.strip() == 'False'                                                                                  # -S: no site hooks or .pth files are loaded
+    bad = tmp_path / 'bad.scn'; bad.write_text(scn(plugins() + risk('max_gross_units', 10 ** 25) + tick(0)))
+    r = subprocess.run([sys.executable, '-S', '-m', 'pc.cli', 'run', str(bad), '--out', str(tmp_path / 'o')], capture_output=True, text=True, env=env)
+    assert r.returncode == 2 and clean_refusal(r.stderr), r.stderr[-300:]
 
 
 def test_both_languages_refuse_an_output_path_that_is_a_file(tmp_path, build):

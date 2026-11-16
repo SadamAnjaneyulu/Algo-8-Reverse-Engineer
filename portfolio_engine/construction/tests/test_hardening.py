@@ -7,7 +7,7 @@ from pc import generators as G
 from pc.contract import Plugin, PluginResult, ProposedAction, Decision, Spec, OK
 from pc.scenario import Scenario, ScenarioError
 from pc.engine import Simulation, build_registry
-from pc._m2 import m2_replay, m2_tsvio
+from pc._hist import hist_replay, hist_tsvio
 
 
 def acts(f): return table(f['actions.tsv'])
@@ -43,12 +43,12 @@ def test_non_ascii_and_invalid_utf8_files_are_refused(tmp_path):
 
 
 # ------------------------------------------------------------------ fill price when no mark exists
-def test_a_fill_without_a_mark_uses_the_legs_last_actual_price_and_replays_in_m2(tmp_path):
+def test_a_fill_without_a_mark_uses_the_legs_last_actual_price_and_replays_in_the_historical_engine(tmp_path):
     text = scn('').replace(L('LEG', 'f1', 'B1', 'SCE', SCE, -1, 195, 10000, T0), L('LEG', 'f1', 'B1', 'SCE', SCE, -1, 65, 10000, T0) + L('LEG', 'f1b', 'B1', 'SCE', SCE, -1, 130, 10050, T0))
     sim, f = run(text + plugins(False, False, True) + tick(0) + action(0, 'c', 'CUT', 'SCE', 65))                          # VWAP entry = 10033 (not a tick), no mark at all
     assert sim.book.leg('B1', 'SCE').entry_price == 10033 and acts(f)[0]['fill_price_paise'] == '10050'
-    (tmp_path / 'e.tsv').write_text(f['events.tsv']); (tmp_path / 'i.tsv').write_text(f['instruments.tsv']); ins = m2_tsvio.read_instruments(str(tmp_path / 'i.tsv'))
-    m2_replay.replay(m2_tsvio.read_events(str(tmp_path / 'e.tsv'), ins), ins, 'SYNTHETIC_TEST', 'FIFO', 'src', 0, strict=True)       # the unchanged M2 reader accepts every price
+    (tmp_path / 'e.tsv').write_text(f['events.tsv']); (tmp_path / 'i.tsv').write_text(f['instruments.tsv']); ins = hist_tsvio.read_instruments(str(tmp_path / 'i.tsv'))
+    hist_replay.replay(hist_tsvio.read_events(str(tmp_path / 'e.tsv'), ins), ins, 'SYNTHETIC_TEST', 'FIFO', 'src', 0, strict=True)       # the historical engine's reader accepts every price
 
 
 # ------------------------------------------------------------------ id collisions
@@ -182,5 +182,5 @@ def test_appending_future_seeds_ticks_actions_and_config_free_data_changes_nothi
 def test_opposite_baskets_on_one_instrument_net_in_the_single_ledger():
     two = scn('') + L('LEG', 'g1', 'B2', 'SCE', SCE, 1, 195, 9000, T0 + 1) + plugins() + tick(0) + tick(1)
     sim, f = run(two)
-    assert sim.ledger.signed_inventory(SCE) == 0 and sim.ledger.realized_total() == 195 * 1000                  # the long 195@9000 closes the short 195@10000 inside the M2 ledger (its role rule)
+    assert sim.ledger.signed_inventory(SCE) == 0 and sim.ledger.realized_total() == 195 * 1000                  # the long 195@9000 closes the short 195@10000 inside the historical engine's ledger (its role rule)
     assert [(r['leg_id'], r['qty_after']) for r in table(f['states.tsv']) if r['basket_id'] == 'B2'][-1] == ('SCE', '195')    # ... while both baskets still hold their own claims

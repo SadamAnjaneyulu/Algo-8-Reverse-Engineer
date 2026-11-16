@@ -1,9 +1,9 @@
-"""Bias and validation controls: look-ahead leakage, duplicate events, ordering sensitivity, lineage, risk-limit bypass, single source of position state, M2 untouched."""
+"""Bias and validation controls: look-ahead leakage, duplicate events, ordering sensitivity, lineage, risk-limit bypass, single source of position state, historical engine untouched."""
 import dataclasses, hashlib, os, random
 import pytest
 from helpers import *
 from pc import generators as G
-from pc._m2 import M2_PATH, m2_replay, m2_tsvio, m2_ledger
+from pc._hist import HIST_PATH, hist_replay, hist_tsvio, hist_ledger
 from pc.contract import LookAheadError, Plugin, PluginResult
 from pc.engine import Simulation, EngineInvariantError, build_registry
 from pc.model import EvalContext, MarkStore, LegView
@@ -134,25 +134,25 @@ def test_plugin_views_are_immutable_and_cannot_change_state():
 
 def test_the_engine_detects_inventory_changed_behind_its_back():
     sim = Simulation(Scenario.parse(scn(plugins() + tick(0)))); sim.run()
-    from pc._m2 import m2_schema
-    sim.ledger.apply_fill(m2_schema.Fill('rogue', 99, 'rogue', 'x', SCE, T0 + 5, 1, 65, 10000, 65, 'Filled', False, 'SYNTHETIC_TEST', 'rogue'))          # a fill that bypasses the engine
+    from pc._hist import hist_schema
+    sim.ledger.apply_fill(hist_schema.Fill('rogue', 99, 'rogue', 'x', SCE, T0 + 5, 1, 65, 10000, 65, 'Filled', False, 'SYNTHETIC_TEST', 'rogue'))          # a fill that bypasses the engine
     with pytest.raises(EngineInvariantError): sim._reconcile()
 
 
-# ------------------------------------------------------------------ one position state: the unchanged M2 ledger
-def test_output_events_replayed_by_the_unchanged_m2_engine_give_the_same_state(tmp_path):
+# ------------------------------------------------------------------ one position state: the historical engine's ledger
+def test_output_events_replayed_by_the_historical_engine_give_the_same_state(tmp_path):
     for n, sc in G.all_scenarios().items():
         sim, f = run(sc.to_text()); (tmp_path / 'e.tsv').write_text(f['events.tsv']); (tmp_path / 'i.tsv').write_text(f['instruments.tsv'])
-        ins = m2_tsvio.read_instruments(str(tmp_path / 'i.tsv')); fills = m2_tsvio.read_events(str(tmp_path / 'e.tsv'), ins)
-        r = m2_replay.replay(fills, ins, 'SYNTHETIC_TEST', sc.method, 'src', 0, strict=True)
+        ins = hist_tsvio.read_instruments(str(tmp_path / 'i.tsv')); fills = hist_tsvio.read_events(str(tmp_path / 'e.tsv'), ins)
+        r = hist_replay.replay(fills, ins, 'SYNTHETIC_TEST', sc.method, 'src', 0, strict=True)
         for i in sim.ins: assert f'INSTR\t{i}\t{sim.ledger.signed_inventory(i)}\t' in r.dump or (sim.ledger.signed_inventory(i) == 0 and f'INSTR\t{i}\t' not in r.dump), (n, i)       # an instrument that never traded has no INSTR line
         assert f'TOTAL\trealized_pnl_paise\t{sim.ledger.realized_total()}' in r.dump, n
 
 
-def test_m2_engine_files_are_unchanged():
-    here = os.path.dirname(os.path.abspath(__file__)); m2_root = os.path.dirname(M2_PATH); checked = 0
-    for line in open(os.path.join(here, 'm2_sources.sha256')):
+def test_historical_engine_files_match_the_recorded_hashes():
+    here = os.path.dirname(os.path.abspath(__file__)); hist_root = os.path.dirname(HIST_PATH); checked = 0
+    for line in open(os.path.join(here, 'historical_engine_sources.sha256')):
         h, rel = line.strip().split('  ')
-        p = os.path.join(m2_root, rel)
+        p = os.path.join(hist_root, rel)
         if os.path.exists(p): assert hashlib.sha256(open(p, 'rb').read()).hexdigest() == h, rel; checked += 1
     assert checked >= 40

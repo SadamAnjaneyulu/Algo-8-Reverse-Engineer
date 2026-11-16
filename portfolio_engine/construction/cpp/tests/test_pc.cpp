@@ -1,4 +1,4 @@
-// C++ tests of the portfolio-construction skeleton. Expected values are hand-calculated; the same behaviour is compared with Python in tests/test_parity.py.
+// C++ tests of the portfolio-construction prototype. Expected values are hand-calculated; the same behaviour is compared with Python in tests/test_parity.py.
 #include <iostream>
 #include "pc/engine.hpp"
 using namespace pc;

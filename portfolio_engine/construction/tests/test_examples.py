@@ -1,9 +1,9 @@
-"""The commands and snippets shown in 04_Documentation/02_How_To_Run_and_Add_a_Plugin.docx are real: this test runs them."""
+"""The commands and snippets shown in 04_Documentation/02_How_To_Run_and_Inspect.docx are real: this test runs them."""
 import os, subprocess, sys
 import pytest
 from helpers import *
 from pc import generators as G
-from pc._m2 import M2_PATH
+from pc._hist import HIST_PATH
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXPECTED = 't+600s  flatten_leg proposed CUT B1:WPE qty 195 -> ACCEPTED'
@@ -22,6 +22,6 @@ def test_python_add_a_plugin_example_runs():
 
 def test_cpp_add_a_plugin_example_builds_and_runs(tmp_path):
     exe = tmp_path / 'add_a_plugin'
-    b = subprocess.run(['g++', '-std=c++17', '-Wall', '-Wextra', '-I', os.path.join(ROOT, 'cpp', 'include'), '-I', os.path.join(os.path.dirname(M2_PATH), 'cpp', 'include'), os.path.join(ROOT, 'examples', 'add_a_plugin.cpp'), '-o', str(exe)], capture_output=True, text=True)
+    b = subprocess.run(['g++', '-std=c++17', '-Wall', '-Wextra', '-I', os.path.join(ROOT, 'cpp', 'include'), '-I', os.path.join(os.path.dirname(HIST_PATH), 'cpp', 'include'), os.path.join(ROOT, 'examples', 'add_a_plugin.cpp'), '-o', str(exe)], capture_output=True, text=True)
     assert b.returncode == 0 and b.stderr.strip() == '', b.stderr[-500:]
     r = subprocess.run([str(exe)], capture_output=True, text=True, cwd=ROOT); assert r.returncode == 0 and r.stdout.strip() == EXPECTED, (r.stdout, r.stderr)

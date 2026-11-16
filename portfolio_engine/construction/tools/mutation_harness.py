@@ -4,7 +4,7 @@
 import json, os, shutil, subprocess, sys, tempfile, re
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(ROOT, 'python'))
-from pc._m2 import M2_PATH
+from pc._hist import HIST_PATH
 
 PY = [   # (id, file, old, new, what it breaks)
  ('P01', 'python/pc/risk.py', "    if action.action_id in b.seen_ids: return DUPLICATE_ACTION_ID, action.action_id\n", "", 'duplicate action ids no longer rejected'),
@@ -89,7 +89,7 @@ def run_mutant(mid, rel, old, new, what, quick):
     p = os.path.join(dst, rel); src = open(p).read()
     if src.count(old) != 1: return dict(id=mid, what=what, result='ERROR', note=f'pattern occurs {src.count(old)} times')
     open(p, 'w').write(src.replace(old, new))
-    env = dict(os.environ, ALGO8_M2_PYTHON=M2_PATH, ALGO8_M2_CPP_INCLUDE=os.path.join(os.path.dirname(M2_PATH), 'cpp', 'include'), PYTHONDONTWRITEBYTECODE='1')
+    env = dict(os.environ, ALGO8_HISTORICAL_PYTHON=HIST_PATH, ALGO8_HISTORICAL_CPP_INCLUDE=os.path.join(os.path.dirname(HIST_PATH), 'cpp', 'include'), PYTHONDONTWRITEBYTECODE='1')
     sel = ['tests/test_plugins.py', 'tests/test_registry.py', 'tests/test_scenarios.py', 'tests/test_bias_controls.py', 'tests/test_hardening.py'] if quick else ['tests']
     r = subprocess.run([sys.executable, '-m', 'pytest', '-q', '-p', 'no:cacheprovider', '-x'] + sel, cwd=dst, env=env, capture_output=True, text=True)
     out = r.stdout + r.stderr; shutil.rmtree(tmp, ignore_errors=True)

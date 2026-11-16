@@ -1,5 +1,5 @@
-// Portfolio-construction skeleton (prototype, SYNTHETIC_TEST_ONLY): plugin contract, registry, basket book, risk validator, simulation. Mirrors python/pc rule for rule.
-// Plugins propose; the engine validates and applies accepted actions as explicit synthetic fills through the UNCHANGED M2 ledger (pe::PortfolioState::apply_fill).
+// Portfolio-construction prototype (SYNTHETIC_TEST_ONLY): plugin contract, registry, basket book, risk validator, simulation. Mirrors python/pc rule for rule.
+// Plugins propose; the engine validates and applies accepted actions as explicit synthetic fills through the historical engine's ledger (pe::PortfolioState::apply_fill).
 #pragma once
 #include <algorithm>
 #include <cstdint>
@@ -150,7 +150,7 @@ class Registry {
   std::map<std::string, std::pair<std::shared_ptr<Plugin>, bool>> items_; std::vector<std::string> order_;
 };
 
-// ------------------------------------------------------------------ basket book (claims only; executed inventory lives in the M2 ledger)
+// ------------------------------------------------------------------ basket book (claims only; executed inventory lives in the historical engine's ledger)
 struct Leg { std::string leg_id, basket_id, instrument_id; int side = 0; i64 initial = 0, current = 0, notional = 0, cuts_done = 0, last_price = 0; std::vector<std::string> seed_fills; i64 entry_price() const { return initial ? notional / initial : 0; } };
 struct Cut { std::string cut_id, basket_id, leg_id; i64 qty = 0, ts = 0, price = 0; std::string fill_id; i64 reentered = 0, reentries = 0; };
 struct Book {

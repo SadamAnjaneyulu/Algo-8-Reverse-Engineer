@@ -1,5 +1,5 @@
 """Basket book (who owns which claim on the ledger's inventory), cut records, and the read-only views plugins receive.
-The book holds CLAIMS only (leg quantities, cut lineage). Executed inventory lives in the M2 ledger; the engine checks after every fill that the two agree."""
+The book holds CLAIMS only (leg quantities, cut lineage). Executed inventory lives in the historical engine's ledger; the engine checks after every fill that the two agree."""
 import bisect, types
 from dataclasses import dataclass
 from .contract import LookAheadError

@@ -1,5 +1,5 @@
 """Adds a new plugin to the simulation WITHOUT touching any file of the framework.
-Run from 02_Portfolio_Construction_Skeleton:   PYTHONPATH=python python3 examples/add_a_plugin.py
+Run from 02_Portfolio_Construction_Prototype:   PYTHONPATH=python python3 examples/add_a_plugin.py
 The new plugin (flatten_leg) cuts the whole long put wing of a basket once a configured time is reached. It is registered by name, listed in the scenario with a PLUGIN line,
 configured with a CONFIG line, and its proposals go through the same risk validation as the built-in plugins."""
 import os, sys

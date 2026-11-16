@@ -1,11 +1,11 @@
 """Simulation / execution layer.
 
 At every evaluation time t:  seeds <= t are applied  ->  each enabled plugin (registration order) sees a read-only context (data <= t)  ->  its proposed
-actions are validated (atomic groups)  ->  accepted actions become NEW explicit synthetic fills applied through the unchanged M2 ledger (PortfolioState.apply_fill).
+actions are validated (atomic groups)  ->  accepted actions become NEW explicit synthetic fills applied through the historical engine's ledger (PortfolioState.apply_fill).
 Plugins never touch the ledger or the book. After every fill the book's claims are reconciled with the ledger's inventory."""
 import os
 from . import EVIDENCE
-from ._m2 import m2_ledger, m2_schema, m2_tsvio
+from ._hist import hist_ledger, hist_schema, hist_tsvio
 from .contract import Plugin, PluginResult, Decision, ProposedAction, fnv1a64, ERROR, ConfigError
 from .model import Book, MarkStore, EvalContext, LegView, BasketView, CutView, ScriptedAction
 from .plugins import BUILTIN
@@ -27,7 +27,7 @@ def build_registry(sc, extra=None):
 
 def _instrument(iid, lot):
     und, expiry, cp, strike = iid.split('|')
-    return m2_schema.Instrument(iid, und, 'NSEFO', 'OPTION', cp, int(strike), expiry, lot, m2_schema.TICK_PAISE, 'SYNTHETIC')
+    return hist_schema.Instrument(iid, und, 'NSEFO', 'OPTION', cp, int(strike), expiry, lot, hist_schema.TICK_PAISE, 'SYNTHETIC')
 
 
 def _tsv(header_note, cols, rows):
@@ -38,7 +38,7 @@ class Simulation:
     def __init__(self, scenario, registry=None):
         self.sc = scenario; self.registry = registry or build_registry(scenario)
         self.lots = dict(scenario.instruments); self.ins = {i: _instrument(i, l) for i, l in self.lots.items()}
-        self.ledger = m2_ledger.PortfolioState(scenario.method, self.ins)           # THE position state (unchanged M2 code)
+        self.ledger = hist_ledger.PortfolioState(scenario.method, self.ins)           # THE position state (historical engine code)
         self.book = Book(); self.marks = MarkStore(scenario.marks); self.limits = R.parse_risk(scenario.risk)
         self.fills = []; self.dec_rows = []; self.act_rows = []; self.state_rows = []; self.lin_rows = []
         self._pc = 0; self._seed_i = 0; self.counts = {}; self._done = False
@@ -58,7 +58,7 @@ class Simulation:
             if self.ledger.signed_inventory(iid) != claims.get(iid, 0): raise EngineInvariantError(f'ledger inventory {self.ledger.signed_inventory(iid)} != basket claims {claims.get(iid, 0)} for {iid}')
 
     def _fill(self, fid, iid, ts, side, qty, px, parent, module, source):
-        f = m2_schema.Fill(fid, len(self.fills) + 1, parent, module, iid, ts, side, qty, px, qty, 'Filled', False, 'SYNTHETIC_TEST', source)
+        f = hist_schema.Fill(fid, len(self.fills) + 1, parent, module, iid, ts, side, qty, px, qty, 'Filled', False, 'SYNTHETIC_TEST', source)
         self.ledger.apply_fill(f); self.fills.append(f); return f
 
     def _state(self, ts, event_id, action_id, bid, touched, before, after):
@@ -160,9 +160,9 @@ class Simulation:
 
     def files(self):
         self.run(); note = f'{EVIDENCE}; scenario={self.sc.name}; not Algo 8 data'
-        ev = f'# {note}\n' + '\t'.join(m2_schema.EVENT_COLUMNS) + '\n' + ''.join('\t'.join([m2_schema.SCHEMA_FILL, x.execution_mode, x.fill_id, str(x.source_row_id), x.parent_order_id, x.module_tag, x.instrument_id, str(x.timestamp_s), str(x.side), str(x.quantity),
+        ev = f'# {note}\n' + '\t'.join(hist_schema.EVENT_COLUMNS) + '\n' + ''.join('\t'.join([hist_schema.SCHEMA_FILL, x.execution_mode, x.fill_id, str(x.source_row_id), x.parent_order_id, x.module_tag, x.instrument_id, str(x.timestamp_s), str(x.side), str(x.quantity),
                                                                                          str(x.price_paise), str(x.requested_quantity), x.order_status, '0', x.evidence_source]) + '\n' for x in self.fills)
-        ins = f'# {note}\n' + '\t'.join(m2_schema.INSTRUMENT_COLUMNS) + '\n' + ''.join('\t'.join([i.instrument_id, i.underlying, i.exchange_segment, i.instrument_type, i.option_type, str(i.strike), i.expiry, str(i.lot_size), str(i.tick_size_paise), i.lot_size_source]) + '\n' for _, i in sorted(self.ins.items()))
+        ins = f'# {note}\n' + '\t'.join(hist_schema.INSTRUMENT_COLUMNS) + '\n' + ''.join('\t'.join([i.instrument_id, i.underlying, i.exchange_segment, i.instrument_type, i.option_type, str(i.strike), i.expiry, str(i.lot_size), str(i.tick_size_paise), i.lot_size_source]) + '\n' for _, i in sorted(self.ins.items()))
         g, s = self._exposure(); digest = fnv1a64(';'.join(f'{i}:{self.ledger.signed_inventory(i)}' for i in sorted(self.ins)))
         summ = [('scenario', self.sc.name), ('evidence', EVIDENCE), ('method', self.sc.method), ('plugins', ','.join(f'{n}@{v}:{int(e)}:{h}' for n, v, e, h in self.registry.list())), ('seed_fills_applied', self.counts.get('seed_fills', 0)), ('duplicate_seed_events_ignored', self.sc.duplicate_seeds),
                 ('actions_proposed', self.counts.get('proposed', 0)), ('actions_accepted', self.counts.get('accepted', 0)), ('actions_rejected', self.counts.get('rejected', 0)), ('plugin_errors', self.counts.get('plugin_errors', 0))]

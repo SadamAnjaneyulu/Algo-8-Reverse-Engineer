@@ -1,9 +1,9 @@
 """Deterministic synthetic scenario generators. Every scenario is marked SYNTHETIC_TEST_ONLY and is an illustration of the machinery, not a statement about Algo 8's real decisions."""
 import random
-from ._m2 import m2_schema
+from ._hist import hist_schema
 from .scenario import Scenario
 
-BASE = m2_schema.days_from_civil(2026, 1, 5) * 86400 - m2_schema.IST_OFFSET_S + 9 * 3600 + 16 * 60       # 2026-01-05 09:16 IST
+BASE = hist_schema.days_from_civil(2026, 1, 5) * 86400 - hist_schema.IST_OFFSET_S + 9 * 3600 + 16 * 60       # 2026-01-05 09:16 IST
 LOT = 65
 SCE, SPE, WCE, WPE = (f'NIFTY|2026-01-08|{cp}|{k}' for cp, k in (('CE', 24000), ('PE', 24000), ('CE', 24800), ('PE', 23200)))
 ENTRY = {SCE: 10000, SPE: 9000, WCE: 200, WPE: 250}

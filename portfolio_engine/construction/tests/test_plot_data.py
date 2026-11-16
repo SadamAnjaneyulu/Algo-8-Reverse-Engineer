@@ -25,7 +25,7 @@ def test_every_plot_has_a_png_and_a_data_file_with_provenance(plots):
         assert os.path.getsize(plots / f'{n}.png') > 10000
         rows = tsv(plots / (n + ('_components' if n == '01_architecture' else '') + '.tsv')); assert rows and all(r['data_origin'].strip() for r in rows)
         if n != '01_architecture': assert all(r['data_origin'].startswith('synthetic simulation: ') for r in rows), n
-    comp = tsv(plots / '01_architecture_components.tsv'); assert {r['data_origin'] for r in comp} == {'historical observations (external, not included in this ZIP)', 'engine code that processes historical data', 'engine code that processes synthetic scenarios'}
+    comp = tsv(plots / '01_architecture_components.tsv'); assert {r['data_origin'] for r in comp} == {'historical observations (external, not included in this ZIP)', 'code that processes historical data', 'code that processes synthetic scenarios', 'synthetic scenario files'}
 
 
 def test_risk_validation_plot_data_equals_a_recount_of_all_scenario_logs(plots):
@@ -64,6 +64,8 @@ def test_state_plots_equal_the_state_log(plots):
 def test_reentry_timeline_data_equals_the_decision_and_action_logs(plots):
     for n in ('s05_reentry_success', 's06_reentry_rejected_cooldown', 's07_reentry_rejected_risk_limit'):
         f = logs(n); got = [r for r in tsv(plots / '05_reentry_decision_timeline.tsv') if r['scenario'] == n]
+        acts = table(f['actions.tsv'])
         assert sum(r['layer'] == 'plugin decision' for r in got) == sum(d['plugin'] == 'basket_reentry' for d in table(f['decisions.tsv'])), n
-        assert sum(r['layer'] == 'risk validation' for r in got) == sum(a['type'] == 'REENTRY' for a in table(f['actions.tsv'])), n
-        assert sum(r['layer'] == 'cut accepted' for r in got) == sum(a['type'] == 'CUT' and a['status'] == 'ACCEPTED' for a in table(f['actions.tsv'])), n
+        assert all(r['action_source'] == 'basket_reentry' for r in got if r['layer'] == 'plugin decision'), n
+        assert sorted((r['layer'], r['action_source'], r['outcome_or_reason']) for r in got if r['layer'] != 'plugin decision') == \
+            sorted((f"action ({a['type']})", a['plugin'], 'ACCEPTED' if a['status'] == 'ACCEPTED' else 'REJECTED: ' + a['reason']) for a in acts), n

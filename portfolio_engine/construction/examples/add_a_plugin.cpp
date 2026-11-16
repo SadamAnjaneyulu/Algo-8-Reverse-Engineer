@@ -1,6 +1,6 @@
 // Adds a new plugin to the C++ simulation WITHOUT touching any framework header.
-// Build and run from 02_Portfolio_Construction_Skeleton (see 04_Documentation/02_How_To_Run_and_Add_a_Plugin.docx):
-//   g++ -std=c++17 -I cpp/include -I ../01_M2_Position_Reconstruction/01_CODE/cpp/include examples/add_a_plugin.cpp -o /tmp/add_a_plugin && /tmp/add_a_plugin
+// Build and run from 02_Portfolio_Construction_Prototype (see 04_Documentation/02_How_To_Run_and_Inspect.docx):
+//   g++ -std=c++17 -I cpp/include -I ../01_Historical_Position_Reconstruction/cpp/include examples/add_a_plugin.cpp -o /tmp/add_a_plugin && /tmp/add_a_plugin
 #include <fstream>
 #include <iostream>
 #include <sstream>

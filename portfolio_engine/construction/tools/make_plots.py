@@ -1,4 +1,4 @@
-"""Builds the six inspection plots for the portfolio-construction skeleton, each with its data exported next to it.
+"""Builds the six plots for the portfolio-construction prototype, each with its data exported next to it.
   python3 tools/make_plots.py <out_dir>
 All new-engine plots use SYNTHETIC scenarios (labelled on the figure). Plot 1 is a diagram of the system, not data."""
 import csv, os, sys, textwrap
@@ -39,47 +39,50 @@ def arrow(ax, x1, y1, x2, y2, style='-|>', color=EDGE, ls='-'):
 
 
 # ---------------------------------------------------------------- 1. architecture
-COMP = [('Raw fills (external)', 'M2', 'data', 'not shipped'), ('Validation + ordering', 'M2', 'Python + C++', 'validated, unchanged'), ('Replay / PortfolioState.apply_fill', 'M2', 'Python + C++', 'validated, unchanged; THE position state'),
-        ('Lineage, closing batches, wing/body', 'M2', 'Python', 'validated, unchanged'), ('Scenario generators', 'plugin framework', 'Python', 'new, synthetic'), ('Simulation loop', 'plugin framework', 'Python + C++', 'new'),
-        ('Plugin registry', 'plugin framework', 'Python + C++', 'new'), ('basket_cut / basket_reentry / scripted_actions / drop-ins', 'plugin framework', 'Python + C++', 'new, example policies only'),
-        ('Risk validator (prototype)', 'plugin framework', 'Python + C++', 'new, not calibrated'), ('Basket book (claims + cut lineage)', 'plugin framework', 'Python + C++', 'new'), ('Decision / action / state / lineage logs', 'plugin framework', 'Python + C++', 'new, byte-identical across languages')]
-save_csv('01_architecture_components.tsv', ['component', 'layer', 'language', 'status'], COMP, lambda r: 'historical observations (external, not included in this ZIP)' if r[2] == 'data' else ('engine code that processes historical data' if r[1] == 'M2' else 'engine code that processes synthetic scenarios'))
+HIST, PROTO = 'historical reconstruction', 'portfolio-construction prototype'
+COMP = [('Historical fills (observed)', HIST, 'data', 'external, not in this ZIP'), ('Validation + ordering', HIST, 'Python + C++', 'reconstruction engine'), ('Replay / PortfolioState.apply_fill', HIST, 'Python + C++', 'the one position state'),
+        ('Lineage, closing batches, wing/body links', HIST, 'Python', 'reconstruction outputs'), ('Synthetic scenarios', PROTO, 'scenario files', 'synthetic examples'), ('Simulation loop', PROTO, 'Python + C++', 'prototype'),
+        ('Plugin registry', PROTO, 'Python + C++', 'prototype'), ('basket_cut / basket_reentry / scripted_actions / your own plugins', PROTO, 'Python + C++', 'sample policies you can change'),
+        ('Risk validator', PROTO, 'Python + C++', 'prototype'), ('Basket book (claims + cut lineage)', PROTO, 'Python + C++', 'prototype'), ('Decision / action / state / lineage logs', PROTO, 'Python + C++', 'identical from Python and C++')]
+save_csv('01_architecture_components.tsv', ['component', 'part', 'language', 'role'], COMP, lambda r: 'historical observations (external, not included in this ZIP)' if r[2] == 'data' else ('synthetic scenario files' if r[2] == 'scenario files' else ('code that processes historical data' if r[1] == HIST else 'code that processes synthetic scenarios')))
 fig, ax = plt.subplots(figsize=(15.5, 8.4)); ax.set_xlim(0, 15.5); ax.set_ylim(0, 8.4); ax.axis('off')
-ax.text(7.75, 8.2, 'System architecture: M2 reconstruction + portfolio-construction prototype', ha='center', va='top', fontsize=15, fontweight='bold', color=INK)
-ax.text(7.75, 7.72, 'Left: M2 reconstruction of observed historical fills. Right: the prototype, which runs on synthetic scenarios. They meet at PortfolioState.apply_fill.', ha='center', va='top', fontsize=10, color=MUTED)
-ax.add_patch(FancyBboxPatch((0.3, 0.5), 4.4, 6.8, boxstyle='round,pad=0.02,rounding_size=0.12', fc='#f8fafc', ec='#94a3b8', lw=1.2)); ax.text(2.5, 7.12, 'M2 reconstruction: HISTORICAL data', ha='center', fontsize=11, fontweight='bold', color=INK)
+ax.text(7.75, 8.2, 'Architecture: historical position reconstruction + portfolio-construction prototype', ha='center', va='top', fontsize=15, fontweight='bold', color=INK)
+ax.text(7.75, 7.72, 'Left: positions rebuilt from the observed Algo 8 fills. Right: the prototype, which runs on synthetic scenarios. The two parts meet at the ledger (PortfolioState.apply_fill).', ha='center', va='top', fontsize=10, color=MUTED)
+ax.add_patch(FancyBboxPatch((0.3, 0.5), 4.4, 6.8, boxstyle='round,pad=0.02,rounding_size=0.12', fc='#f8fafc', ec='#94a3b8', lw=1.2)); ax.text(2.5, 7.12, 'Historical position reconstruction (observed fills)', ha='center', fontsize=11, fontweight='bold', color=INK)
 for k, (t, b, c) in enumerate([('Historical fills (observed)', 'trade export + ledger (external, not in this ZIP)', GREY), ('Validation + ordering', 'Python + C++', GREEN), ('Replay / accounting', 'apply_fill (Python + C++):\nthe only place inventory changes', GREEN), ('Reconstruction outputs', 'lineage, closing batches, wing/body, case studies (Python)', BLUE)]):
     box(ax, 0.55, 5.55 - k * 1.5, 3.9, 1.25, t, b, c, wrap=34); (arrow(ax, 2.5, 5.55 - k * 1.5, 2.5, 5.55 - k * 1.5 - 0.2) if k < 3 else None)
-ax.add_patch(FancyBboxPatch((5.4, 0.5), 9.8, 6.8, boxstyle='round,pad=0.02,rounding_size=0.12', fc='#fffbeb', ec='#d97706', lw=1.2)); ax.text(10.3, 7.12, 'Portfolio-construction prototype: SYNTHETIC scenarios', ha='center', fontsize=11, fontweight='bold', color=INK)
-box(ax, 5.65, 5.2, 2.9, 1.6, 'Synthetic scenarios', 'generated .scn files: 10 required cases, a lifecycle demo, seeded stress runs', VIOLET, bsize=8.3); box(ax, 5.65, 3.35, 2.9, 1.6, 'Simulation loop', 'at each time t plugins see only data up to t (Python + C++)', AMBER, bsize=8.3)
+ax.add_patch(FancyBboxPatch((5.4, 0.5), 9.8, 6.8, boxstyle='round,pad=0.02,rounding_size=0.12', fc='#fffbeb', ec='#d97706', lw=1.2)); ax.text(10.3, 7.12, 'Portfolio-construction prototype (synthetic scenarios)', ha='center', fontsize=11, fontweight='bold', color=INK)
+box(ax, 5.65, 5.2, 2.9, 1.6, 'Synthetic scenarios', '13 scenario files: 9 named cases, a lifecycle demo, 3 fixed-seed stress runs', VIOLET, bsize=8.3); box(ax, 5.65, 3.35, 2.9, 1.6, 'Simulation loop', 'at each time t plugins see only data up to t (Python + C++)', AMBER, bsize=8.3)
 box(ax, 9.1, 5.2, 2.9, 1.6, 'Plugin registry', 'register, enable, configure; rejects duplicates and bad versions', AMBER, bsize=8.3); box(ax, 9.1, 3.35, 2.9, 1.6, 'Plugins', 'basket_cut, basket_reentry, scripted_actions, drop-ins', AMBER, bsize=8.3)
 box(ax, 12.35, 3.35, 2.6, 1.6, 'Risk validator', 'prototype limits, lineage, cooldown, look-ahead', RED, bsize=8.3); box(ax, 12.35, 5.2, 2.6, 1.6, 'Basket book', 'claims on inventory and cut lineage', AMBER, bsize=8.3)
-box(ax, 5.65, 1.25, 9.3, 1.5, 'Accepted actions become NEW synthetic fills', 'events.tsv (same format as M2) -> M2 PortfolioState.apply_fill. Logs: decisions, actions, states, lineage, summary (identical from Python and C++).', GREEN, wrap=100)
+box(ax, 5.65, 1.25, 9.3, 1.5, 'Accepted actions become NEW synthetic fills', 'events.tsv (the same format the reconstruction engine reads) -> PortfolioState.apply_fill. Logs: decisions, actions, states, lineage, summary (identical from Python and C++).', GREEN, wrap=100)
 arrow(ax, 7.1, 5.2, 7.1, 4.97); arrow(ax, 8.55, 4.15, 9.1, 4.15); arrow(ax, 10.55, 5.2, 10.55, 4.97, style='<|-'); arrow(ax, 12.0, 4.15, 12.35, 4.15); arrow(ax, 13.65, 3.35, 13.65, 2.77); arrow(ax, 13.65, 5.2, 13.65, 4.97, style='<|-')
 arrow(ax, 5.65, 2.0, 4.5, 3.6, color='#b45309'); ax.text(5.55, 0.62, 'Bias controls: every row records what was configured, which plugin decided and what risk validation rejected.\nLook-ahead, ordering, duplicates, lineage and limit bypass are tested.', fontsize=8.5, color=MUTED)
 for k, (c, l) in enumerate([(GREY, 'historical data (external)'), (VIOLET, 'synthetic scenario data'), (GREEN, 'engine code (Python + C++)'), (AMBER, 'prototype components'), (RED, 'risk validation')]):
     ax.add_patch(FancyBboxPatch((0.35 + k * 2.95, 0.12), 0.22, 0.22, boxstyle='round,pad=0.01', fc=c, ec=EDGE)); ax.text(0.65 + k * 2.95, 0.23, l, fontsize=8.5, va='center', color=INK)
-ax.text(0.3, -0.12, 'Historical observations are confined to the M2 reconstruction section. The portfolio-construction scenarios and simulation outputs are synthetic examples.', fontsize=9, color=MUTED)
+ax.text(0.3, -0.12, 'Historical observations are confined to the reconstruction part. The prototype\'s scenarios and simulation outputs are synthetic examples.', fontsize=9, color=MUTED)
 fig.savefig(os.path.join(OUT, '01_architecture.png'), dpi=160, bbox_inches='tight', facecolor='white'); plt.close(fig)
 
 # ---------------------------------------------------------------- 2. basket lifecycle
 sim = RUN['s11_basket_lifecycle_demo']; st = tsv_rows(sim, 'states.tsv'); act = tsv_rows(sim, 'actions.tsv'); base = min(int(r['ts']) for r in st)
+source_of = {a['action_id']: a['plugin'] for a in act}
 by_event = {}
 for r in st:
     if r['event_id'] not in ('-',): by_event.setdefault(r['event_id'], []).append(r)
-life = []                      # (minutes, total units held by the basket, status, event)
+life = []                      # (minutes, total units held by the basket, status, event, action, who proposed it)
 for ev, rs in by_event.items():
-    life.append(((int(rs[0]['ts']) - base) / 60, sum(int(x['qty_after']) for x in rs), rs[0]['basket_status'], ev, rs[0]['action_id']))
+    life.append(((int(rs[0]['ts']) - base) / 60, sum(int(x['qty_after']) for x in rs), rs[0]['basket_status'], ev, rs[0]['action_id'], source_of.get(rs[0]['action_id'], 'scenario seed fill')))
 life = sorted(life, key=lambda x: (x[0], x[3]))
-save_csv('02_basket_lifecycle.tsv', ['minutes_since_creation', 'basket_total_units_after', 'basket_status', 'event_id', 'action_id'], life, 'synthetic simulation: s11_basket_lifecycle_demo')
-fig, ax = plt.subplots(figsize=(12, 5.4)); colors = {'ACTIVE': '#34d399', 'PARTIALLY_CUT': '#fbbf24', 'FULLY_CUT': '#f87171'}
+save_csv('02_basket_lifecycle.tsv', ['minutes_since_creation', 'basket_total_units_after', 'basket_status', 'event_id', 'action_id', 'action_source'], life, 'synthetic simulation: s11_basket_lifecycle_demo')
+fig, ax = plt.subplots(figsize=(12, 5.6)); colors = {'ACTIVE': '#34d399', 'PARTIALLY_CUT': '#fbbf24', 'FULLY_CUT': '#f87171'}; shapes = {'scenario seed fill': 's', 'basket_cut': 'o', 'scripted_actions': 'D', 'basket_reentry': '^'}
 xs = [x[0] for x in life]; ys = [x[1] for x in life]; ax.step(xs, ys, where='post', color=EDGE, lw=1.6)
-for x, y, s_, ev, aid in life: ax.scatter([x], [y], color=colors[s_], s=55, zorder=3, edgecolor=EDGE)
-for lab, minute in (('creation\n(4 seed fills)', 0), ('partial cut\n(plugin, 1/3 of each leg)', 5), ('full cut\n(scripted group, rest of each leg)', 15), ('re-entry\n(65 units of the short CE, cites cut #1)', 25)):
+for x, y, s_, ev, aid, src in life: ax.scatter([x], [y], color=colors[s_], marker=shapes[src], s=60, zorder=3, edgecolor=EDGE)
+for lab, minute in (('creation\n(seed fills from the scenario)', 0), ('partial cut\n(basket_cut plugin, 1/3 of each leg)', 5), ('full cut\n(scripted_actions, rest of each leg)', 15), ('re-entry\n(scripted_actions, 65 units of the\nshort CE, cites the first cut)', 25)):
     ax.axvline(minute, color='#cbd5e1', ls=':'); ax.text(minute + 0.2, max(ys) * 1.03, lab, fontsize=8.5, color=MUTED, va='bottom')
-for s_, c in colors.items(): ax.scatter([], [], color=c, label=s_, edgecolor=EDGE)
-ax.set_xlabel('minutes since basket creation (synthetic clock)'); ax.set_ylabel('total units held by the basket (sum over legs)'); ax.set_ylim(-30, max(ys) * 1.28); ax.legend(loc='center right', title='basket status after the event', fontsize=8.5)
-ax.set_title('Basket lifecycle: creation -> partial cut -> full cut -> re-entry', fontsize=12.5, fontweight='bold', color=INK, loc='left'); fig.text(0.01, -0.04, SYN + '   (s11_basket_lifecycle_demo)', fontsize=8.5, color='#b45309')
+leg1 = ax.legend(handles=[plt.Line2D([], [], marker='o', ls='', color=c, markeredgecolor=EDGE, label=s_) for s_, c in colors.items()], title='basket status after the event', fontsize=8.5, loc='center right'); ax.add_artist(leg1)
+ax.legend(handles=[plt.Line2D([], [], marker=m, ls='', color='#cbd5e1', markeredgecolor=EDGE, label=k) for k, m in shapes.items() if k in {x[5] for x in life}], title='who produced the event', fontsize=8.5, loc='upper right', bbox_to_anchor=(1.0, 0.8))
+ax.set_xlabel('minutes since basket creation (synthetic clock)'); ax.set_ylabel('total units held by the basket (sum over legs)'); ax.set_ylim(-30, max(ys) * 1.3)
+ax.set_title('Basket lifecycle: creation, partial cut, full cut, re-entry (s11_basket_lifecycle_demo)', fontsize=12.5, fontweight='bold', color=INK, loc='left'); fig.text(0.01, -0.04, SYN, fontsize=8.5, color='#b45309')
 fig.savefig(os.path.join(OUT, '02_basket_lifecycle.png'), dpi=160, bbox_inches='tight', facecolor='white'); plt.close(fig)
 
 # ---------------------------------------------------------------- 3. exposure over time
@@ -92,7 +95,7 @@ for ax, n, title in zip(axes, ('s05_reentry_success', 's07_reentry_rejected_risk
     for key, c in (('max_gross_units', '#2563eb'), ('max_short_units', '#dc2626')):
         if key in SC[n].risk: ax.axhline(SC[n].risk[key], color=c, ls='--', lw=1, alpha=.7); ax.text(0.2, SC[n].risk[key] + 8, f'limit {key.split("_")[1]} = {SC[n].risk[key]}', fontsize=7.5, color=c)
     ax.set_title(title, fontsize=10, loc='left'); ax.set_xlabel('minutes since creation')
-axes[0].set_ylabel('units (ledger inventory)'); axes[0].legend(fontsize=8, loc='lower left'); fig.suptitle('Position exposure over time (net inventory in the M2 ledger after every event)', fontsize=12.5, fontweight='bold', x=0.01, ha='left'); fig.text(0.01, -0.02, SYN, fontsize=8.5, color='#b45309')
+axes[0].set_ylabel('units'); axes[0].legend(fontsize=8, loc='lower left'); fig.suptitle('Gross and short unit exposure from per-instrument net inventory after each event', fontsize=12.5, fontweight='bold', x=0.01, ha='left'); fig.text(0.01, -0.02, SYN, fontsize=8.5, color='#b45309')
 save_csv('03_exposure_over_time.tsv', ['scenario', 'minutes_since_creation', 'event_id', 'gross_units', 'short_units'], rows3, lambda r: 'synthetic simulation: ' + r[0])
 fig.savefig(os.path.join(OUT, '03_exposure_over_time.png'), dpi=160, bbox_inches='tight', facecolor='white'); plt.close(fig)
 
@@ -114,22 +117,23 @@ fig.savefig(os.path.join(OUT, '04_leg_quantity_before_after_cuts.png'), dpi=160,
 
 # ---------------------------------------------------------------- 5. re-entry decision timeline
 REASON_COLOR = {'COOLDOWN_ACTIVE': '#9ca3af', 'REENTRY_ELIGIBLE': '#10b981', 'PRICE_CONDITION_NOT_MET': '#f59e0b', 'WINDOW_EXPIRED': '#8b5cf6', 'REENTRY_LIMIT_REACHED': '#d1d5db', 'NO_MARK_AVAILABLE': '#6b7280'}
-VAL_COLOR = {'ACCEPTED': '#047857', 'COOLDOWN_NOT_ELAPSED': '#dc2626', 'EXPOSURE_LIMIT_EXCEEDED': '#b91c1c'}
-rows5 = []; names = ('s05_reentry_success', 's06_reentry_rejected_cooldown', 's07_reentry_rejected_risk_limit'); fig, ax = plt.subplots(figsize=(12.5, 4.8))
+SRC_SHAPE = {'basket_cut': '^', 'basket_reentry': 's', 'scripted_actions': 'D'}; OK_C, BAD_C = '#047857', '#dc2626'
+rows5 = []; names = ('s05_reentry_success', 's06_reentry_rejected_cooldown', 's07_reentry_rejected_risk_limit'); fig, ax = plt.subplots(figsize=(13, 5))
 for k, n in enumerate(names):
     sim = RUN[n]; b0 = min(int(r['ts']) for r in tsv_rows(sim, 'states.tsv'))
     for d in tsv_rows(sim, 'decisions.tsv'):
         if d['plugin'] != 'basket_reentry': continue
-        x = (int(d['ts']) - b0) / 60; ax.scatter([x], [k + 0.12], marker='o', s=90, color=REASON_COLOR.get(d['reason'], '#000'), edgecolor=EDGE, zorder=3); rows5.append((n, x, 'plugin decision', d['reason'], d['detail']))
+        x = (int(d['ts']) - b0) / 60; ax.scatter([x], [k + 0.2], marker='o', s=90, color=REASON_COLOR.get(d['reason'], '#000'), edgecolor=EDGE, zorder=3); rows5.append((n, x, 'plugin decision', 'basket_reentry', d['reason'], d['detail']))
     for a in tsv_rows(sim, 'actions.tsv'):
-        if a['type'] == 'CUT' and a['status'] == 'ACCEPTED': ax.scatter([(int(a['ts']) - b0) / 60], [k + 0.38], marker='^', s=80, color='#2563eb', edgecolor=EDGE, zorder=3); rows5.append((n, (int(a['ts']) - b0) / 60, 'cut accepted', a['action_id'], a['detail']))
-        if a['type'] != 'REENTRY': continue
-        x = (int(a['ts']) - b0) / 60; res = 'ACCEPTED' if a['status'] == 'ACCEPTED' else a['reason']; ax.scatter([x], [k - 0.18], marker='s' if a['status'] == 'ACCEPTED' else 'X', s=95, color=VAL_COLOR.get(res, '#dc2626'), edgecolor=EDGE, zorder=3); rows5.append((n, x, 'risk validation', res, a['detail']))
+        x = (int(a['ts']) - b0) / 60; ok = a['status'] == 'ACCEPTED'; y = k - 0.2 + (0.18 if a['type'] == 'CUT' else 0)
+        ax.scatter([x], [y], marker=SRC_SHAPE[a['plugin']], s=95, color=OK_C if ok else BAD_C, edgecolor=EDGE, zorder=3)
+        rows5.append((n, x, f"action ({a['type']})", a['plugin'], 'ACCEPTED' if ok else 'REJECTED: ' + a['reason'], a['detail']))
 ax.set_yticks(range(len(names))); ax.set_yticklabels([n.replace('_', ' ', 1) for n in names], fontsize=9); ax.set_ylim(-0.7, len(names) - 0.1); ax.set_xlabel('minutes since basket creation (synthetic clock)')
-for r, c in REASON_COLOR.items(): ax.scatter([], [], color=c, marker='o', label=f'plugin: {r}', edgecolor=EDGE)
-ax.scatter([], [], color='#2563eb', marker='^', label='cut accepted (lineage root)', edgecolor=EDGE); ax.scatter([], [], color=VAL_COLOR['ACCEPTED'], marker='s', label='validator: ACCEPTED', edgecolor=EDGE); ax.scatter([], [], color='#dc2626', marker='X', label='validator: REJECTED', edgecolor=EDGE)
-ax.legend(fontsize=7.5, loc='center left', bbox_to_anchor=(1.01, 0.5)); ax.set_title('Re-entry decision timeline: plugin decision (circle, upper) and risk validation (square / cross, lower)', fontsize=11.5, fontweight='bold', loc='left'); fig.text(0.01, -0.02, SYN, fontsize=8.5, color='#b45309')
-save_csv('05_reentry_decision_timeline.tsv', ['scenario', 'minutes_since_creation', 'layer', 'outcome_or_reason', 'detail'], rows5, lambda r: 'synthetic simulation: ' + r[0])
+for r, c in REASON_COLOR.items(): ax.scatter([], [], color=c, marker='o', label=f'basket_reentry decision: {r}', edgecolor=EDGE)
+for src, m in SRC_SHAPE.items(): ax.scatter([], [], color='#cbd5e1', marker=m, label=f'action proposed by {src}', edgecolor=EDGE)
+ax.scatter([], [], color=OK_C, marker='o', label='green = accepted by risk validation', edgecolor=EDGE); ax.scatter([], [], color=BAD_C, marker='o', label='red = rejected by risk validation', edgecolor=EDGE)
+ax.legend(fontsize=7.5, loc='center left', bbox_to_anchor=(1.01, 0.5)); ax.set_title('Re-entry decisions: what basket_reentry decided (circles, upper row) and what happened to each proposed action (shape = who proposed it)', fontsize=10.5, fontweight='bold', loc='left'); fig.text(0.01, -0.02, SYN, fontsize=8.5, color='#b45309')
+save_csv('05_reentry_decision_timeline.tsv', ['scenario', 'minutes_since_creation', 'layer', 'action_source', 'outcome_or_reason', 'detail'], rows5, lambda r: 'synthetic simulation: ' + r[0])
 fig.savefig(os.path.join(OUT, '05_reentry_decision_timeline.png'), dpi=160, bbox_inches='tight', facecolor='white'); plt.close(fig)
 
 # ---------------------------------------------------------------- 6. risk validation and rejected actions
@@ -143,8 +147,8 @@ save_csv('06_risk_validation_and_rejections.tsv', ['layer', 'outcome_or_reason',
 fig, axes = plt.subplots(1, 2, figsize=(16, 5.4)); fig.subplots_adjust(wspace=0.75); order = sorted(cnt, key=lambda r: (r != 'ACCEPTED', -sum(cnt[r].values())))
 axes[0].barh(order, [sum(cnt[r].values()) for r in order], color=['#10b981' if r == 'ACCEPTED' else '#ef4444' for r in order], edgecolor=EDGE); axes[0].invert_yaxis(); axes[0].set_xscale('log'); axes[0].set_xlim(0.8, 300); axes[0].set_xlabel('number of proposed actions (log scale)')
 for i, r in enumerate(order): axes[0].text(sum(cnt[r].values()) * 1.08, i, str(sum(cnt[r].values())), va='center', fontsize=8)
-axes[0].set_title('Risk validation: accepted and rejected actions, all synthetic scenarios', fontsize=10.5, loc='left')
+axes[0].set_title('Risk validation: accepted and rejected actions across the generated scenarios', fontsize=10.5, loc='left')
 po = sorted(plug, key=lambda r: -sum(plug[r].values())); axes[1].barh(po, [sum(plug[r].values()) for r in po], color='#94a3b8', edgecolor=EDGE); axes[1].invert_yaxis(); axes[1].set_xscale('log'); axes[1].set_xlim(1, 600); axes[1].set_xlabel('number of plugin decisions (log scale)')
-axes[1].set_title('Plugin decisions that proposed nothing (before risk validation)', fontsize=10.5, loc='left'); fig.text(0.01, -0.02, SYN + '  (includes the three random stress scenarios, which push many invalid actions on purpose)', fontsize=8.5, color='#b45309')
+axes[1].set_title('Plugin decisions that proposed nothing (before risk validation)', fontsize=10.5, loc='left'); fig.text(0.01, -0.03, 'Counts come from the generated test scenarios, including three random stress runs that send many invalid actions on purpose. They are not real trading rejection rates.', fontsize=9, color='#b45309')
 fig.savefig(os.path.join(OUT, '06_risk_validation_and_rejections.png'), dpi=160, bbox_inches='tight', facecolor='white'); plt.close(fig)
 print('wrote', sorted(os.listdir(OUT)))
