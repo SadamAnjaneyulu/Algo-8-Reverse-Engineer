@@ -61,8 +61,8 @@ def _lines(t): return t.split('\n')
 
 def test_only_approved_documentation_lines_changed():
     """every changed line of the three delivered documents removes an unsupported phrase / adds the corrected disclosure; all other lines are byte-identical"""
-    removed_ok = [re.compile(p, re.I) for p in (r'predefined', r'fixed before any case', r'written in code before cases were viewed')]
-    added_ok = [re.compile(p) for p in (r'structural, price-free, outcome-free', r'Terminology', r'Cases were selected using structural', r'Sample concentration', r'Of the 17 selected case records', r'^$')]
+    removed_ok = [re.compile(p, re.I) for p in (r'predefined', r'fixed before any case', r'written in code before cases were viewed', r'SENSEX has no reversal', r'Only NIFTY has a reversal')]          # the last two are Decision B's approved edits
+    added_ok = [re.compile(p) for p in (r'structural, price-free, outcome-free', r'Terminology', r'Cases were selected using structural', r'Sample concentration', r'Of the 17 selected case records', r'^$', r'Reversal measures', r'per-fill zero-crossing', r'parent-level same-second', r'^UNAVAILABLE items are reported, not substituted\. Neither frozen cycle has a position that expired unclosed\.$')]
     total_changed = 0
     for rel in DOCS:
         old = _lines(open(os.path.join(PE, 'reports', 'm2f_audit', 'decision_a', 'before', os.path.basename(rel))).read()); new = _lines(open(os.path.join(REPO, rel)).read())
