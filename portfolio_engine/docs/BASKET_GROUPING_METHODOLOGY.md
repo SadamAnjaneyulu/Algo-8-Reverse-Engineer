@@ -149,3 +149,9 @@ Do not write "these wings hedge the short positions". Write: "these items satisf
 * Closing units 1,377,065 = tagged wing 500,775 + tagged body 540,250 + excluded 336,040.
 * Excluded opening units by origin: LONG|m_ 1,040, LONG|num 61,470, LONG|s_ 3,255, LONG|v_ 67,635, SHORT|h_ 130, SHORT|s_ 37,120.
 * Excluded closing units by origin (episode direction | closing module): LONG | m_ 1,040, LONG | num 132,235, LONG | s_ 44,530, LONG | v_ 41,575, SHORT | h_ 21,175, SHORT | s_ 95,485.
+
+### Decision C notes from the independent closure review (CR-03, CR-04)
+* The threshold comparison is on **whole seconds**. With SENSEX's embedded nanosecond time, 157 of 340 C1 links at a reported gap of exactly 2 s (103/290 at 5 s, 18/45 at 10 s, 7/12 at 30 s, 6/11 at 60 s) have a true gap above the threshold; no pair at reported gap g+1 has a true gap within g. The inclusive rule therefore behaves like "true gap < g+1" and the exclusive rule like "true gap < g". The primary rule stays inclusive on whole seconds (approved).
+* The exclusive artifact lists batches present **only in the exclusive view** (1,214 / 840 / 153 / 50 / 63) and, in `inclusive_batches_not_in_exclusive`, the other direction (553 / 399 / 74 / 25 / 30). The **net** batch-count change from inclusive to exclusive equals the number of pairs at exactly the threshold: +661 / +441 / +79 / +25 / +33.
+* C2 membership depends on the tie-break among parents with equal first closing second; C1 does not (see `docs/ORDERING_SEMANTICS.md`, review notes).
+

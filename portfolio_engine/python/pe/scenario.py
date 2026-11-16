@@ -20,7 +20,7 @@ from .schema import EngineError
 BASELINE = 'baseline'
 DELIVERED_DIRS = ('m2c_data', 'm2c_figures', 'm2d_data', 'm2d_figures', 'm2e_data', 'm2e_figures')
 ORDERING_SEMANTICS = ('same-instrument fills inside one second are ordered by the scenario policy; the interleaving of different instruments inside a second is the baseline serialization (source-file row order), '
-                      'a deterministic output order and NOT chronology; portfolio-level states between fills of the same second are UNORDERED_WITHIN_SECOND')
+                      'a deterministic output order and NOT chronology; portfolio-level states between fills of the same second are UNORDERED_WITHIN_SECOND; at second end inventory, cash and cumulative gross opened/closed units are order-invariant, but cumulative realized P&L, per-module attribution and reversal counts are NOT (they depend on same-instrument order)')
 
 
 class Scenario:

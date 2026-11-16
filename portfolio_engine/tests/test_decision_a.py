@@ -104,3 +104,12 @@ def test_case_selection_is_invariant_under_upstream_price_scrambling(tmp_path):
         assert a['selection'] == b['selection'] and a['selection_rules'] == b['selection_rules']                                           # the selections did not move
         assert open(out / 'reports' / 'm2e_data' / cy / 'fills.tsv').read() != open(os.path.join(PE, 'reports', 'm2e_data', cy, 'fills.tsv')).read()      # and the prices really changed upstream
         for n in ('episodes.tsv', 'lifecycle_events.tsv'): assert open(out / 'reports' / 'm2e_data' / cy / n).read() == open(os.path.join(PE, 'reports', 'm2e_data', cy, n)).read(), n
+
+
+def test_selection_code_reads_no_price_or_outcome_column():
+    """static complement of the scrambling test (closure review CR-06): the scrambling test only perturbs the ledger px_fill column, so a rule that read price elsewhere (raw csv, another column) would pass it.
+    The selection functions must not mention price, P&L or the raw csv at all."""
+    import inspect, re
+    src = ''.join(inspect.getsource(f) for f in (K.select, K._cands, K.episode_of_fill, K.load_data, K.sample_profile, K.d0_eligibility))
+    for tok in ('price', 'px_', 'paise', 'pnl', 'profit', 'realized', 'Trades_GKOHNP140', 'csv.reader', 'read_csv', 'read_parquet'):
+        assert not re.search(tok, src, re.I), f'selection code mentions {tok!r}'

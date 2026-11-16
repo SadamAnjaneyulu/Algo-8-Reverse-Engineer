@@ -192,15 +192,16 @@ def recompute_m2c_m2d(c):
 
 
 def intra_second_flag_table(c):
-    """Per fill of the ordered stream: how much of the portfolio state after it can be trusted as an ORDER-INVARIANT state.
-    The state after the LAST fill of a second is identical under every ordering of that second's fills (a permutation does not change a sum); every earlier state inside a second that holds more than one fill
-    depends on an ordering the whole-second data cannot supply: UNORDERED_WITHIN_SECOND. Emitted for non-baseline scenario outputs (a delivered file is never changed)."""
+    """Per fill of the ordered stream: which part of the portfolio state after it can be trusted as ORDER-INVARIANT.
+    After the LAST fill of a second, these are identical under any ordering of that second's fills (a permutation does not change a sum): aggregate and per-instrument INVENTORY, CASH, cumulative gross opened and closed units.
+    These are NOT invariant even at second end, because they depend on the order of same-instrument fills: cumulative FIFO/LIFO realized P&L, per-module (tag) opened/closed units and the reversal count (independent review CR-01).
+    Every earlier state inside a second that holds more than one fill is UNORDERED_WITHIN_SECOND. Emitted for non-baseline scenario outputs (a delivered file is never changed)."""
     fills = c.ordered_fills(); per = Counter(f.timestamp_s for f in fills); inst = defaultdict(set); seen = Counter()
     for f in fills: inst[f.timestamp_s].add(f.instrument_id)
     rows = []
     for f in fills:
         seen[f.timestamp_s] += 1
-        state = 'SINGLE_FILL_SECOND' if per[f.timestamp_s] == 1 else ('SECOND_END_ORDER_INVARIANT' if seen[f.timestamp_s] == per[f.timestamp_s] else 'UNORDERED_WITHIN_SECOND')
+        state = 'SINGLE_FILL_SECOND' if per[f.timestamp_s] == 1 else ('SECOND_END_INVENTORY_CASH_INVARIANT' if seen[f.timestamp_s] == per[f.timestamp_s] else 'UNORDERED_WITHIN_SECOND')
         rows.append((f.fill_id, f.source_row_id, f.timestamp_s, per[f.timestamp_s], len(inst[f.timestamp_s]), state))
     return ['fill_id', 'source_row_id', 'ts_utc_s', 'fills_in_second', 'instruments_in_second', 'aggregate_state_after_fill'], rows
 

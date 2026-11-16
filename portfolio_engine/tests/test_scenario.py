@@ -27,7 +27,7 @@ def test_non_delivered_manifest_states_scenario_convention_source_generator_and_
         s = SC.Scenario(sid, PE, str(tmp_path)); e = s.manifest_extra({'raw_trades_sha256': 'abc'}, 'tool')
         assert list(e)[0] == 'tie_order_convention' and e['tie_order_convention']['verified_intra_second_chronology'] is False
         sc = e['scenario']; assert sc['scenario_id'] == sid and sc['tie_order_convention'] == conv and sc['source_hash'] == {'raw_trades_sha256': 'abc'} and sc['generator_version'].startswith('tool@')
-        assert sc['execution_mode'] == 'HISTORICAL_OBSERVED_REPLAY' and 'UNORDERED_WITHIN_SECOND' in sc['ordering_semantics'] and 'NOT chronology' in sc['ordering_semantics']
+        assert sc['execution_mode'] == 'HISTORICAL_OBSERVED_REPLAY' and 'UNORDERED_WITHIN_SECOND' in sc['ordering_semantics'] and 'realized P&L' in sc['ordering_semantics'] and 'NOT chronology' in sc['ordering_semantics']
 
 
 def test_intra_second_flags_hand_calculated():
@@ -36,7 +36,7 @@ def test_intra_second_flags_hand_calculated():
     class Cy:
         def ordered_fills(self): return [Fx(1, 10, 'A'), Fx(2, 10, 'B'), Fx(3, 10, 'A'), Fx(4, 11, 'A'), Fx(5, 12, 'A'), Fx(6, 12, 'A')]
     h, rows = F.intra_second_flag_table(Cy())
-    assert [r[5] for r in rows] == ['UNORDERED_WITHIN_SECOND', 'UNORDERED_WITHIN_SECOND', 'SECOND_END_ORDER_INVARIANT', 'SINGLE_FILL_SECOND', 'UNORDERED_WITHIN_SECOND', 'SECOND_END_ORDER_INVARIANT']
+    assert [r[5] for r in rows] == ['UNORDERED_WITHIN_SECOND', 'UNORDERED_WITHIN_SECOND', 'SECOND_END_INVENTORY_CASH_INVARIANT', 'SINGLE_FILL_SECOND', 'UNORDERED_WITHIN_SECOND', 'SECOND_END_INVENTORY_CASH_INVARIANT']
     assert [(r[3], r[4]) for r in rows] == [(3, 2), (3, 2), (3, 2), (1, 1), (2, 1), (2, 1)]
 
 
@@ -61,3 +61,17 @@ def test_baseline_scenario_reproduces_every_generated_delivered_output_byte_for_
     assert delivered - produced == only_hand_written and produced - delivered == flags, (sorted(delivered - produced), sorted(produced - delivered))
     assert len(delivered) == 168 and not [r for r in sorted(produced & delivered) if _norm(os.path.join(out, r)) != _norm(os.path.join(PE, r))]
     man = json.load(open(out / 'reports' / 'm2e_data' / 'NIFTY_2026-06-30' / 'manifest.json')); assert man['scenario']['scenario_id'] == 'baseline' and man['scenario']['tie_order_convention'] == 'SOURCE_ROW_ORDER_CONVENTION'
+
+
+def test_second_end_invariance_is_limited_to_inventory_and_cash_not_realized_pnl():
+    """CR-01 counterexample (hand-calculated): +65 units bought at 100.00; in ONE second a buy of 65 @ 120.00 and a sell of 65 @ 110.00 on the same instrument. Order buy-then-sell: LIFO sell closes the 120.00 lot: (11000 - 12000) * 65 = -65,000 paise.
+    Order sell-then-buy: the sell closes the 100.00 lot: (11000 - 10000) * 65 = +65,000. Inventory (+65) and cash are identical at the end of the second; LIFO realized P&L is not."""
+    from pe import replay as rp
+    from pe.generators.synthetic import Builder
+    def run(order):
+        b = Builder('cr01'); i = b.add_inst(); b.fill(i, 0, 1, 65, 10000)
+        for side, px in order: b.fill(i, 60, side, 65, px)
+        ins, fills = b.out(); r = rp.replay(fills, ins, 'SYNTHETIC_TEST', 'LIFO', 'src', strict=True)
+        t = lambda n: next(l.split('\t')[2] for l in r.dump.splitlines() if l.startswith(f'TOTAL\t{n}\t')); return t('remaining_units'), t('realized_pnl_paise')
+    a, b_ = run([(1, 12000), (-1, 11000)]), run([(-1, 11000), (1, 12000)])
+    assert a[0] == b_[0] == '65' and (a[1], b_[1]) == (str(-65000), str(65000))

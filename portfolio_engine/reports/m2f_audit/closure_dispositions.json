@@ -8,13 +8,13 @@
   },
   "C-01": {
    "status": "ACCEPTED WITH EVIDENCE",
-   "rationale": "Same root cause: opening body units 626,765 vs 625,985, 6 W1/W2 links, 2 items differ under the hybrid; evidence-class labels unchanged (structural ceilings).",
+   "rationale": "Same root cause: opening body units 626,765 vs 625,985, 6 W1/W2 links, 2 items differ under the hybrid; the evidence-class labels are constants per method by construction, and the numbers behind them moved by at most 0.3 %.",
    "evidence": "reports/R1C_DUAL_SCENARIO_COMPARISON.md section 5; reports/r1c_dual_scenario/file_inventory.json (m2d files); docs/ORDERING_SEMANTICS.md"
   },
   "B-04": {
    "status": "FIXED",
-   "rationale": "Independent reporting-layer tests with hand-calculated expectations (summarize rows, total_closing_qty, join_gap_s, numbering, batch ids); 12 scratch mutants each killed by an assertion in the subagent run (re-run result file in reports/m2f_audit/medium_remediation/).",
-   "evidence": "tests/test_closing_batches_reporting.py (35 tests); commit acbdd572"
+   "rationale": "Independent reporting-layer tests with hand-calculated expectations (summarize rows, total_closing_qty, join_gap_s, numbering, batch ids); 12 scratch mutants each killed by an assertion in the subagent run.",
+   "evidence": "tests/test_closing_batches_reporting.py (35 tests); commit acbdd572; mutants re-run by the lead on the merged tree: reports/m2f_audit/r1/mutation_results_B04_C02_reverified_by_lead.json (21 of 21 killed by assertion)"
   },
   "C-02": {
    "status": "FIXED",
@@ -43,7 +43,7 @@
   },
   "D-15": {
    "status": "FIXED",
-   "rationale": "Upstream price-scrambling test: the whole pipeline (ledger -> lineage -> batches -> wing/body -> datasets -> selection) is re-run on a mirror with scrambled fill-ledger prices; selections, episodes and lifecycle tables must not move and prices must really have changed. Price-dependent and outcome-dependent selection mutants are killed by that test.",
+   "rationale": "Upstream price-scrambling test: the whole pipeline (ledger -> lineage -> batches -> wing/body -> datasets -> selection) is re-run on a mirror with scrambled fill-ledger prices; selections, episodes and lifecycle tables must not move and prices must really have changed. Price-dependent and outcome-dependent selection mutants are killed by that test. LIMIT (closure review CR-06): the test scrambles the ledger px_fill column only; a selection that read price from outside it (e.g. directly from the raw CSV) is NOT caught by that test and is covered instead by a static lint of the selection code (tests/test_decision_a.py::test_selection_code_reads_no_price_or_outcome_column).",
    "evidence": "tests/test_decision_a.py::test_case_selection_is_invariant_under_upstream_price_scrambling; mutation_results_DA.json (DA01, DA02)"
   },
   "D-16": {
@@ -234,7 +234,7 @@
   "D-A08": {
    "status": "FIXED",
    "rationale": "Independent generator-vs-raw test: the test reads the CSV itself and converts prices with Decimal paise; compares all 41,421 fills (price, timestamp, side, quantity, parent, instrument, fill id) and 1,674 instruments; float truncation is shown to differ from exact paise on this data. Generator mutants: truncation with grid check neutralised, +1 on one row, +1 everywhere, epoch +19800 (audit M11), side flip, parent = order number, quantity +1: all killed by assertion. Three mutants were stopped by the generator own grid self-check (an ERROR, not an assertion) and are NOT counted as kills.",
-   "evidence": "tests/test_historical_generator_raw.py; commit (cherry-pick of 2a511c25)"
+   "evidence": "tests/test_historical_generator_raw.py; commit (cherry-pick of 2a511c25); mutants re-run by the lead: reports/m2f_audit/r1/mutation_results_DA02_DA08_DA04_reverified_by_lead.json"
   },
   "D-A04": {
    "status": "FIXED",

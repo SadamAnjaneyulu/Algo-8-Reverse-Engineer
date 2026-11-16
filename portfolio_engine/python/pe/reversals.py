@@ -6,6 +6,7 @@ PARENT_LEVEL_SAME_SECOND_NET_SIGN_FLIP (additional diagnostic): for one (instrum
   immediately after its LAST fill of that second have opposite non-zero signs. Fills of other parents that interleave inside the second are part of the inventory path.
 A parent-level sign flip is NOT automatically a broker-designated reversal and NOT proof of a strategy event; it is a grouping diagnostic. Neither measure is a subset of the other
 (a parent can cross zero twice inside the second and end on its starting sign: two per-fill events, no parent-level flip).
+Caveat (closure review CR-05): a parent-level flip can arise from OTHER parents' interleaved fills (baseline: 3 of the 26 parent-level flips, 0 of the 22 under the hybrid), so the parent-level count is a diagnostic of the whole second, not an attribute of the parent alone.
 Both depend on the order of same-instrument fills inside a second (a convention, see docs/ORDERING_SEMANTICS.md); they are reported under the baseline and the hybrid scenario.
 """
 from collections import OrderedDict

@@ -109,7 +109,8 @@ Both scenarios were regenerated from empty out roots with `tools/r1c_scenario_ru
 
 | Class | Result |
 |---|---|
-| **Verified stable under the hybrid** | all 17 case records and the case-study Markdown; episodes, session carry, opening items, TP-03 windows and coverage of both frozen cycles; every M2-E figure PNG; M2-D wing-level headline numbers (8,399 wings; 7,301 with a candidate; 133,640 unmatched wing units; the method-disagreement counts); M2-D evidence-class labels (assigned by structural ceilings, not thresholds) |
+| **Verified stable under the hybrid** | all 17 case records and the case-study Markdown; episodes, session carry, opening items, TP-03 windows and coverage of both frozen cycles; every M2-E figure PNG; M2-D wing-level headline numbers (8,399 wings; 7,301 with a candidate; 133,640 unmatched wing units; the method-disagreement counts) |
+| **Not a measured stability (CR-08)** | the M2-D evidence-class labels are **constants per method by construction** (structural ceilings, not thresholds), so they cannot change with link membership; what was measured is that the numbers behind them moved by at most 0.3 % (e.g. the 1:1 group share 81.18 % to 81.22 %) |
 | **Ordering-dependent (measured)** | 33 of 170 universe files differ: M2-C closing-batch files (1 batch per view), M2-D items / links / body units (626,765 to 625,985), the M2-D summary and 3 M2-D figure CSVs + the overview PNG, M2-E fills (row order), inventory series and lifecycle events at the reordered intra-second rows, the V1/V2 CSVs |
 | **Not tested** | other cycles; the hybrid in C++ (Python only); M2-E reports other than the case study |
 | **Cannot be tested with the available data** | true intra-second chronology; lot ownership; protective intent; settlement |
