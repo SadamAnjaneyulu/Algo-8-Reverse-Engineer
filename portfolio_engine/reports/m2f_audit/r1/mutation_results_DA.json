@@ -1,0 +1,16 @@
+[
+ {
+  "id": "BASELINE_unmutated",
+  "outcome": "survived",
+  "summary": "11 passed, 1 deselected in 0.33s | "
+ },
+ {
+  "id": "DA01_selection_takes_the_highest_first_fill_price",
+  "expected_detector": "scrambling",
+  "outcome": "failed",
+  "failed_tests": [
+   "test_case_selection_is_invariant_under_upstream_price_scrambling"
+  ],
+  "summary": "1 failed, 11 deselected in 142.47s (0:02:22) | test_decision_a.py:92: AssertionError:"
+ }
+]
