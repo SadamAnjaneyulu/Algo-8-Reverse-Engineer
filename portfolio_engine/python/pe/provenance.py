@@ -17,6 +17,26 @@ def git_sha(cwd=None):
     except Exception: return 'UNAVAILABLE'
 
 
+def code_fingerprint(pe_root):
+    """sha256 identifying the GENERATING CODE of a portfolio_engine tree (M2-F E-D02; stamping it into manifests is a proposal, not done here).
+    Covers python/pe/**/*.py (recursive) and tools/*.py (not recursive); __pycache__, tests, cpp, docs, fixtures and reports are NOT covered.
+    Files are taken in sorted order of their POSIX relative path; for each the hash is fed `<relpath>\\0<byte length>\\0<raw bytes>`, so renaming, adding or removing a file changes the result,
+    and concatenation cannot make two different trees collide. Raw bytes: no newline normalisation (a CRLF checkout fingerprints differently from an LF one)."""
+    from .schema import EngineError
+    root = os.path.abspath(pe_root); files = []
+    for base, recursive in (('python/pe', True), ('tools', False)):
+        top = os.path.join(root, *base.split('/'))
+        if not os.path.isdir(top): raise EngineError(f'code_fingerprint: {top} is not a directory (pe_root must be the portfolio_engine directory)')
+        for d, dirs, names in os.walk(top):
+            dirs[:] = sorted(x for x in dirs if x != '__pycache__') if recursive else []
+            files += [os.path.relpath(os.path.join(d, n), root).replace(os.sep, '/') for n in names if n.endswith('.py')]
+    h = hashlib.sha256()
+    for rel in sorted(files):
+        with open(os.path.join(root, *rel.split('/')), 'rb') as f: b = f.read()
+        h.update(rel.encode() + b'\0' + str(len(b)).encode() + b'\0' + b)
+    return h.hexdigest()
+
+
 def manifest(result, *, events_path, instruments_path, extra_sources=None, config, implementation, reproduce):
     src = {'events_sha256': sha256_file(events_path), 'instruments_sha256': sha256_file(instruments_path)}; src.update(extra_sources or {})
     cfg_hash = sha256_text(json.dumps(config, sort_keys=True)); sha = git_sha(os.path.dirname(os.path.abspath(events_path)))

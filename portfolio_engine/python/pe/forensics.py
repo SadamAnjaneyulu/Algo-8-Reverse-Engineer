@@ -259,6 +259,14 @@ def marks_audit(c):
                 prices_used_in_M2E='EXECUTION prices only (fill price_paise); no market mark, no interpolation, unrealized P&L = NA', expired_unclosed_positions=0)
 
 
+def parent_role_counts(roles, parents):
+    """count of parents per role, keys in the FIXED canonical order pe.parents.ROLES (OPENING_ONLY, CLOSING_ONLY, MIXED), roles with no parent omitted.
+    `parents` is a set: iterating it directly made the key order depend on PYTHONHASHSEED (M2-F E-D01); the canonical order equals the delivered coverage.json order."""
+    from .parents import ROLES
+    n = Counter(roles[p] for p in parents); unknown = sorted(set(n) - set(ROLES)); assert not unknown, f'unknown parent role(s) {unknown}'
+    return {r: n[r] for r in ROLES if n[r]}
+
+
 def cycle_coverage(c, slices_c, slices_d, R, recomputed_meta):
     from . import wing_body as wb
     ls = c.ls; I = {}
@@ -283,7 +291,7 @@ def cycle_coverage(c, slices_c, slices_d, R, recomputed_meta):
         cycle=f'{c.und}|{c.expiry}', sessions=c.sessions,
         fills=dict(raw_fill_count=len(fills), duplicate_flagged=sum(f.is_duplicate_fill for f in fills), partially_filled_status=sum(1 for f in fills if f.order_status == 'PartiallyFilled'), unique_parent_orders=len(parents),
                    opening_fills=sum(1 for f in fills if oq[f.fill_id] > 0), closing_fills=sum(1 for f in fills if cq[f.fill_id] > 0), fills_with_both_opening_and_closing_quantity=sum(1 for f in fills if oq[f.fill_id] > 0 and cq[f.fill_id] > 0),
-                   opening_units=sum(oq.values()), closing_units=sum(cq.values()), parent_roles=dict(Counter(ls.roles[p] for p in parents)), mixed_parent_ids=sorted(p for p in parents if ls.roles[p] == 'MIXED')),
+                   opening_units=sum(oq.values()), closing_units=sum(cq.values()), parent_roles=parent_role_counts(ls.roles, parents), mixed_parent_ids=sorted(p for p in parents if ls.roles[p] == 'MIXED')),
         episodes=dict(episode_count=len(ER), terminal_status=dict(Counter(r[J['terminal_status']] for r in ER)), started_by_reversal=sum(r[J['started_by_reversal']] for r in ER), expired_unclosed=sum(1 for r in ER if r[J['terminal_status']] not in ('CLOSED', 'REVERSED'))),
         historical_marks=marks_audit(c),
         role_classification=dict(opening_units_by_tag_role=dict(role_units), opening_units_total=sum(role_units.values()),
