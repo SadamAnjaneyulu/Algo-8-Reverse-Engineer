@@ -38,7 +38,7 @@ def test_delivered_output_builders_assert_primary_and_stamp_metadata(tool):
     tree = ast.parse(open(os.path.join(PE, 'tools', tool)).read()); calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call)]
     guards = [c for c in calls if isinstance(c.func, ast.Attribute) and c.func.attr == 'require_primary']
     assert guards and all(isinstance(c.args[0], ast.Attribute) and c.args[0].attr == 'tie' for c in guards)          # the guard inspects the policy the LineageSet actually used (ls.tie), not a constant
-    assert any(k.arg == 'tie_order_convention' and isinstance(k.value, ast.Attribute) and k.value.attr == 'CONVENTION_METADATA' for c in calls for k in c.keywords)
+    assert any(isinstance(c.func, ast.Attribute) and c.func.attr == 'manifest_extra' for c in calls)                 # the manifest is stamped through pe.scenario (baseline delivered -> exactly the existing tie_order_convention key)
 
 
 def test_run_manifest_states_the_convention(tmp_path):

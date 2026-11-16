@@ -7,11 +7,13 @@ import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt, matplotlib.dates as mdates, matplotlib.ticker
 from collections import Counter, defaultdict
 from pe import forensics as F, cases as K
+from pe import scenario as SC
+SCN = SC.from_argv(sys.argv, PE)
 
-DATA = os.path.join(PE, 'reports', 'm2e_data'); FIG = os.path.join(PE, 'reports', 'm2e_figures')
+DATA = SCN.reports('m2e_data'); FIG = SCN.reports('m2e_figures')
 C = dict(short='#D55E00', long='#0072B2', grey='#8a8a8a', green='#009E73', purple='#CC79A7', orange='#E69F00', sky='#56B4E9', dark='#222222')
 plt.rcParams.update({'font.size': 8, 'axes.titlesize': 9, 'axes.grid': True, 'grid.alpha': 0.25, 'figure.dpi': 110, 'savefig.dpi': 110})
-SUM_D = json.load(open(os.path.join(PE, 'reports', 'm2d_data', 'm2d_summary.json')))
+SUM_D = json.load(open(SCN.reports('m2d_data', 'm2d_summary.json')))
 FULL_W1 = SUM_D['coverage']['OPENING|W1']; FULL_S60 = SUM_D['coverage']['OPENING|W1_S60']; FULL_CLOSING_WING_MIXED = SUM_D['closing_wing_episode_origin_units']
 EXCL_CLOSING_UNITS = sum(v for k, v in SUM_D['scope_exclusions_TAGGED_units'].items() if k.startswith('CLOSING'))
 
@@ -51,8 +53,8 @@ class Fig:
         if warning: self.fig.text(0.005, 0.018, '\n'.join(textwrap.wrap(warning, 235)), fontsize=6.4, color='#7a1f1f', va='bottom')
         png = os.path.join(self.dir, f'{self.vid}.png'); cs = os.path.join(self.dir, f'{self.vid}.csv'); os.makedirs(os.path.dirname(png), exist_ok=True); self.fig.savefig(png); plt.close(self.fig); wcsv(cs, header, data); add = []
         for name, (h2, r2) in (more or {}).items():
-            p2 = os.path.join(self.dir, f'{self.vid}__{name}.csv'); wcsv(p2, h2, r2); add.append(dict(name=name, data_csv=os.path.relpath(p2, PE), rows=len(r2), sha256=sha_file(p2)))
-        return dict(figure=self.vid, title=self.title, png=os.path.relpath(png, PE), data_csv=os.path.relpath(cs, PE), data_rows=len(data), additional_data_csv=add, source_datasets=[os.path.join('reports', 'm2e_data', self.cycle, x) for x in sources],
+            p2 = os.path.join(self.dir, f'{self.vid}__{name}.csv'); wcsv(p2, h2, r2); add.append(dict(name=name, data_csv=os.path.relpath(p2, SCN.root), rows=len(r2), sha256=sha_file(p2)))
+        return dict(figure=self.vid, title=self.title, png=os.path.relpath(png, SCN.root), data_csv=os.path.relpath(cs, SCN.root), data_rows=len(data), additional_data_csv=add, source_datasets=[os.path.join('reports', 'm2e_data', self.cycle, x) for x in sources],
                     data_csv_sha256=sha_file(cs), png_sha256_informational=sha_file(png), scope_warning_shown=bool(warning), **(extra or {}))
 
 

@@ -3,8 +3,8 @@ python3 portfolio_engine/tools/m2e_cases.py"""
 import json, os, sys, importlib
 HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); REPO = os.path.dirname(PE); sys.path.insert(0, os.path.join(PE, 'python')); sys.path.insert(0, HERE)
 from pe import forensics as F, cases as K
-CH = importlib.import_module('m2e_charts')
-DATA = os.path.join(PE, 'reports', 'm2e_data')
+CH = importlib.import_module('m2e_charts'); SCN = CH.SCN
+DATA = SCN.reports('m2e_data')
 
 
 def short(item_id): _, _, p, i = K.item_parts(item_id); x = i.split('|'); return f'{p} {x[2]}{x[3]}'
@@ -42,7 +42,7 @@ def main():
                     '## 1. Selection method (fixed before any case was looked at)', '', 'Candidates are scanned **chronologically** (first fill time, then id) and the **first qualifying candidate whose episode was not already used by an earlier case type** is taken (reuse only if every qualifying candidate was used; any skipped chronologically-first candidate is named in the case note). Profit, loss, price and every outcome are never consulted. A case type with no qualifying candidate in a cycle is **UNAVAILABLE** for that cycle (never borrowed from the other cycle). Rules (`pe/cases.py`, `RULES`):', '', '| Case type | Rule |', '|---|---|'] + [f'| {n} | {r} |' for n, r in K.RULES]
     avail = {}; cman = {}
     for und, exp in F.CYCLES:
-        cy = F.cycle_key(und, exp); c = F.Cycle(REPO, und, exp); D = K.load_data(os.path.join(DATA, cy)); S = K.select(D); recs = {n: K.record(c, D, n, S[n]) for n in S}; out[cy] = recs; avail[cy] = S; cman[cy] = []
+        cy = F.cycle_key(und, exp); c = F.Cycle(REPO, und, exp, SCN); D = K.load_data(os.path.join(DATA, cy)); S = K.select(D); recs = {n: K.record(c, D, n, S[n]) for n in S}; out[cy] = recs; avail[cy] = S; cman[cy] = []
         for n, r in recs.items():
             if r['status'] == 'AVAILABLE':
                 E = {e['episode_id']: e for e in D['episodes']}; me = E[r['position_id']]; ids = {r['position_id']}
@@ -62,7 +62,7 @@ def main():
     for und, exp in F.CYCLES:
         cy = F.cycle_key(und, exp); md += [f'## 3. {cy.replace("_", " ")}', '']
         for n, _ in K.RULES: md += [render(out[cy][n], cy), '']
-    open(os.path.join(PE, 'reports', 'M2E_POSITION_CASE_STUDIES.md'), 'w').write('\n'.join(md) + '\n'); print(len('\n'.join(md).splitlines()), 'lines'); [print(cy, {n: r['status'] for n, r in v.items()}) for cy, v in out.items()]
+    os.makedirs(SCN.reports(), exist_ok=True); open(SCN.reports('M2E_POSITION_CASE_STUDIES.md'), 'w').write('\n'.join(md) + '\n'); print(len('\n'.join(md).splitlines()), 'lines'); [print(cy, {n: r['status'] for n, r in v.items()}) for cy, v in out.items()]
 
 
 main()

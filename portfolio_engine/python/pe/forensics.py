@@ -18,16 +18,24 @@ def cycle_key(und, expiry): return f'{und}_{expiry}'
 
 
 class Cycle:
-    def __init__(self, repo, und, expiry):
+    def __init__(self, repo, und, expiry, scenario=None):
+        """scenario (pe.scenario.Scenario) selects the fill-order convention and the reports directory the M2-C/M2-D slices are read from; None = the delivered baseline"""
         from .lineage_set import LineageSet
         from .generators import historical as H
-        self.repo, self.und, self.expiry = repo, und, expiry
+        self.repo, self.und, self.expiry, self.scenario = repo, und, expiry, scenario
+        self.tie = scenario.tie if scenario else 'src'; self.reports_dir = scenario.reports() if scenario else os.path.join(repo, 'portfolio_engine', 'reports')
         self.ins, self.fills, self.src = H.generate(repo, cycle=(und, expiry))
-        self.ls = LineageSet(self.fills, self.ins, 'HISTORICAL_OBSERVED_REPLAY', 'src')
+        if scenario: self.fills = scenario.attach(repo, self.fills)
+        self.ls = LineageSet(self.fills, self.ins, 'HISTORICAL_OBSERVED_REPLAY', self.tie)
         rows = H.generate_parents(repo, self.ls.roles); pids = {f.parent_order_id for f in self.fills}
         self.meta = {r['parent_order_id']: r for r in rows if r['parent_order_id'] in pids}
         self.sessions = sorted({ist_date(f.timestamp_s) for f in self.fills})
         self.key = cycle_key(und, expiry)
+
+    def ordered_fills(self):
+        """the fills in the order the lineage engine processed them (scenario policy inside an (instrument, second); baseline = source-row order). Serialization order, not chronology."""
+        from .replay import order_events
+        return order_events(self.fills, self.tie)
 
     def d_label(self, ts):
         s = ist_date(ts)
@@ -62,7 +70,7 @@ def fills_table(c):
     for r in c.ls.oa.values(): oq[r[2]] += r[8]
     for r in c.ls.cp.values(): cq[r[2]] += r[8]
     rows = [(f.fill_id, f.source_row_id, f.parent_order_id, f.module_tag, f.instrument_id, c.right(f.instrument_id), c.strike(f.instrument_id), f.timestamp_s, ist_str(f.timestamp_s), ist_date(f.timestamp_s), c.d_label(f.timestamp_s),
-             f.side, f.quantity, f.price_paise, f.requested_quantity, f.order_status, int(f.is_duplicate_fill), oq[f.fill_id], cq[f.fill_id]) for f in sorted(c.fills, key=lambda f: (f.timestamp_s, f.source_row_id))]
+             f.side, f.quantity, f.price_paise, f.requested_quantity, f.order_status, int(f.is_duplicate_fill), oq[f.fill_id], cq[f.fill_id]) for f in c.ordered_fills()]
     return H, rows
 
 
@@ -70,7 +78,7 @@ def inventory_series(c):
     """V1 data. Position per instrument is taken from the M2-B lifecycle events (signed inventory_after); one row per fill (state AFTER the fill)."""
     ls = c.ls; ev_by_fill = defaultdict(list)
     for e in ls.events: ev_by_fill[e[4]].append(e)
-    fills = sorted(c.fills, key=lambda f: (f.timestamp_s, f.source_row_id)); pos = defaultdict(int)
+    fills = c.ordered_fills(); pos = defaultdict(int)
     cum_open = defaultdict(int); cum_close = defaultdict(int); opened_by_fill = defaultdict(list); closed_by_fill = defaultdict(list)
     for r in ls.oa.values(): opened_by_fill[r[2]].append(r)
     for r in ls.cp.values(): closed_by_fill[r[2]].append(r)
@@ -161,7 +169,7 @@ def m2c_slice(repo, c):
     out = {}; key = f':{c.und}:{c.expiry}:'
     for kind in ('closing_batches', 'closing_batch_members', 'closing_batch_portions'):
         for m in ('C1', 'C2'):
-            name = f'{kind}_{m}.tsv'; text = read_gz_text(os.path.join(repo, 'portfolio_engine', 'reports', 'm2c_data', name + '.gz')); L = text.rstrip('\n').split('\n')
+            name = f'{kind}_{m}.tsv'; text = read_gz_text(os.path.join(c.reports_dir, 'm2c_data', name + '.gz')); L = text.rstrip('\n').split('\n')
             out[name] = '\n'.join([L[0]] + [l for l in L[1:] if key in l.split('\t')[0]]) + '\n'
     return out
 
@@ -169,7 +177,7 @@ def m2c_slice(repo, c):
 def m2d_slice(repo, c):
     out = {}
     for name in ['wing_body_items'] + [f'wing_body_links_{m}' for m in ('W1', 'W1_S60', 'W2', 'W2_S60', 'W3')]:
-        text = read_gz_text(os.path.join(repo, 'portfolio_engine', 'reports', 'm2d_data', name + '.tsv.gz')); L = text.rstrip('\n').split('\n'); h = L[0].split('\t'); u, e = h.index('underlying'), h.index('expiry')
+        text = read_gz_text(os.path.join(c.reports_dir, 'm2d_data', name + '.tsv.gz')); L = text.rstrip('\n').split('\n'); h = L[0].split('\t'); u, e = h.index('underlying'), h.index('expiry')
         out[name + '.tsv'] = '\n'.join([L[0]] + [l for l in L[1:] if l.split('\t')[u] == c.und and l.split('\t')[e] == c.expiry]) + '\n'
     return out
 
@@ -183,6 +191,20 @@ def recompute_m2c_m2d(c):
     return files, R, dict(closing_parents=len(parents), unattributable=len(unattr), parents_in_multiple_streams=len(multi))
 
 
+def intra_second_flag_table(c):
+    """Per fill of the ordered stream: how much of the portfolio state after it can be trusted as an ORDER-INVARIANT state.
+    The state after the LAST fill of a second is identical under every ordering of that second's fills (a permutation does not change a sum); every earlier state inside a second that holds more than one fill
+    depends on an ordering the whole-second data cannot supply: UNORDERED_WITHIN_SECOND. Emitted for non-baseline scenario outputs (a delivered file is never changed)."""
+    fills = c.ordered_fills(); per = Counter(f.timestamp_s for f in fills); inst = defaultdict(set); seen = Counter()
+    for f in fills: inst[f.timestamp_s].add(f.instrument_id)
+    rows = []
+    for f in fills:
+        seen[f.timestamp_s] += 1
+        state = 'SINGLE_FILL_SECOND' if per[f.timestamp_s] == 1 else ('SECOND_END_ORDER_INVARIANT' if seen[f.timestamp_s] == per[f.timestamp_s] else 'UNORDERED_WITHIN_SECOND')
+        rows.append((f.fill_id, f.source_row_id, f.timestamp_s, per[f.timestamp_s], len(inst[f.timestamp_s]), state))
+    return ['fill_id', 'source_row_id', 'ts_utc_s', 'fills_in_second', 'instruments_in_second', 'aggregate_state_after_fill'], rows
+
+
 # ------------------------------------------------------------------------------------------------------------------------------ independent reconciliation (computed from raw fills only)
 class ReconciliationError(AssertionError): pass
 
@@ -193,7 +215,7 @@ def need(cond, msg):
 
 def reconcile_observed(c):
     """Independent re-derivation: signed position per instrument from side*quantity only (no lineage), compared with the V1 series, lifecycle table and episode table."""
-    H, rows = inventory_series(c); I = {h: k for k, h in enumerate(H)}; fills = sorted(c.fills, key=lambda f: (f.timestamp_s, f.source_row_id))
+    H, rows = inventory_series(c); I = {h: k for k, h in enumerate(H)}; fills = c.ordered_fills()
     need(len(rows) == len(fills), 'series rows != fills'); pos = defaultdict(int); n = 0; carry_ok = True
     for r, f in zip(rows, fills):
         need(r[I['fill_id']] == f.fill_id, 'series order differs from fill order'); pos[f.instrument_id] += f.side * f.quantity

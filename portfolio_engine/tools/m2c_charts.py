@@ -7,8 +7,10 @@ from pe.schema import *
 from pe.lineage_set import LineageSet
 from pe import closing_batches as cb
 from pe.generators import historical as H
-OUT = os.path.join(PE, 'reports', 'm2c_figures'); os.makedirs(OUT, exist_ok=True)
-ins, fills, src = H.generate(REPO); ls = LineageSet(fills, ins, 'HISTORICAL_OBSERVED_REPLAY', 'src'); parents, un, multi = cb.closing_parents(ls); V = cb.all_views(parents); S = cb.summarize(V, parents, ls)
+from pe import scenario as SC
+SCN = SC.from_argv(sys.argv, PE)
+OUT = SCN.reports('m2c_figures'); os.makedirs(OUT, exist_ok=True)
+ins, fills, src = H.generate(REPO); fills = SCN.attach(REPO, fills); ls = LineageSet(fills, ins, 'HISTORICAL_OBSERVED_REPLAY', SCN.tie); parents, un, multi = cb.closing_parents(ls); V = cb.all_views(parents); S = cb.summarize(V, parents, ls)
 STAMP = (f'Source: Trades_GKOHNP140.csv (sha256 {src["raw_trades_sha256"][:8]}…) → TP-01 ledger; mode HISTORICAL_OBSERVED_REPLAY; closing portions are convention-independent (no FIFO/LIFO/AVG used). '
          'Grouping = INFERRED analytical view (execution-time proximity of closing parent orders), not an original basket and not evidence of one decision. Units: parent orders / closing units / seconds.')
 def stamp(fig, extra=''): fig.text(0.01, 0.005, (extra + ' ' + STAMP).strip(), fontsize=6, wrap=True, va='bottom')

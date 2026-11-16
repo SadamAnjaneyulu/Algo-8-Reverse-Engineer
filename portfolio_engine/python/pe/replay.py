@@ -16,9 +16,22 @@ def order_events(fills, tie_order):
     if tie_order in KEYED_TIE_ORDERS:                                       # sensitivity-only policies: key attached by pe.tie_policy / the loader
         if any(f.tie_key is None for f in fills): raise EngineError(f'tie order {tie_order} needs Fill.tie_key on every fill')
         if any(f.tie_key[0] != tie_order for f in fills): raise EngineError(f'Fill.tie_key was built for another policy than {tie_order}')
-        return sorted(fills, key=lambda f: (f.timestamp_s, f.tie_key, f.source_row_id, f.fill_id))
+        return _local_keyed_order(fills)
     tk = TIE_KEY[tie_order]
     return sorted(fills, key=lambda f: (f.timestamp_s, tk(f.side), f.source_row_id, f.fill_id))
+
+
+def _local_keyed_order(fills):
+    """Keyed (sensitivity-only) policies order fills ONLY inside one (instrument, second) group. Their keys have per-contract meaning (NIFTY trade id = a per-contract counter, SENSEX = embedded nanosecond time),
+    so a key of one instrument is never compared with a key of another. Method: take the baseline serialization (timestamp, source row, fill id), and refill the slots that each (instrument, second)
+    group occupies in it with that group's fills sorted by (tie key, source row, fill id). Cross-instrument interleaving inside a second therefore stays the baseline serialization; it is a deterministic
+    OUTPUT ORDER, not a claim about chronology (whole-second data cannot order different instruments inside a second)."""
+    base = sorted(fills, key=lambda f: (f.timestamp_s, f.source_row_id, f.fill_id)); slots = {}
+    for i, f in enumerate(base): slots.setdefault((f.timestamp_s, f.instrument_id), []).append(i)
+    out = list(base)
+    for idx in slots.values():
+        for i, f in zip(idx, sorted((base[i] for i in idx), key=lambda f: (f.tie_key, f.source_row_id, f.fill_id))): out[i] = f
+    return out
 
 
 def _fmt(x, avg): return f'{x:.6f}' if avg else str(int(x))

@@ -293,3 +293,37 @@ def test_hybrid_group_counts_from_the_raw_csv_independently_of_the_policy_code()
     differs = [k for k, v in G.items() if [f.source_row_id for f in sorted(v, key=lambda f: (hk(f), f.source_row_id))] != sorted(f.source_row_id for f in v)]
     assert len(differs) == 172 and collections.Counter(ins[k[0]].underlying for k in differs) == {'NIFTY': 151, 'SENSEX': 21}           # independent count == production report
     pj = json.load(open(os.path.join(PE, 'reports', 'r1_tie_order', 'per_contract_id_sequence_sensitivity.json')))['policies']['per_contract_id_sequence']; assert pj['1_groups_differing_in_order']['differing'] == 172
+
+
+# ------------------------------------------------------------------------------------------------------------- N1: keyed orders are LOCAL to (instrument, second); keys of different instruments are never compared
+def _kf(i, inst, ts, side, key, pol='per_contract_id_sequence'):
+    return Fill(f'F{i:06d}', i, 'P', 'm', inst, ts, side, 65, 100, 65, 'c', False, 'SYNTHETIC_TEST', 't', tie_key=(pol,) + key)
+
+
+def test_keyed_order_never_compares_keys_across_instruments_hand_calculated():
+    """rows 10..13 in one second: NIFTY keys 300/100 (rows 10/12), SENSEX keys 900000/800000 (rows 11/13). Baseline serialization = 10, 11, 12, 13 (NIFTY, SENSEX, NIFTY, SENSEX).
+    Local ordering: NIFTY slots {0, 2} get row 12 (key 100) then row 10 (key 300); SENSEX slots {1, 3} get row 13 (800000) then row 11 (900000)  ->  12, 13, 10, 11.
+    A global sort by key would give 12, 10, 13, 11 (NIFTY ids compared with SENSEX nanosecond keys): that is the defect N1."""
+    fs = [_kf(10, 'NIFTY|CE', 1000, -1, (300,)), _kf(11, 'SENSEX|PE', 1000, 1, (900000,)), _kf(12, 'NIFTY|CE', 1000, -1, (100,)), _kf(13, 'SENSEX|PE', 1000, -1, (800000,))]
+    out = [f.source_row_id for f in rp.order_events(fs, 'per_contract_id_sequence')]
+    assert out == [12, 13, 10, 11] and out != [12, 10, 13, 11]
+    assert [(f.timestamp_s, f.instrument_id) for f in rp.order_events(fs, 'per_contract_id_sequence')] == [(1000, 'NIFTY|CE'), (1000, 'SENSEX|PE'), (1000, 'NIFTY|CE'), (1000, 'SENSEX|PE')]       # the instrument pattern is the baseline's
+
+
+def test_keyed_order_is_bounded_by_the_second_and_ties_fall_back_to_ascending_source_row():
+    fs = [_kf(1, 'A', 1000, 1, (9,)), _kf(2, 'A', 1001, 1, (1,)), _kf(3, 'A', 1001, 1, (1,)), _kf(4, 'A', 1000, 1, (5,))]
+    out = [f.source_row_id for f in rp.order_events(fs, 'per_contract_id_sequence')]
+    assert out == [4, 1, 2, 3]                                       # second 1000: key 5 before key 9; second 1001: equal keys -> source rows 2, 3; seconds are never swapped
+    assert [f.timestamp_s for f in rp.order_events(fs, 'per_contract_id_sequence')] == [1000, 1000, 1001, 1001]
+
+
+def test_hybrid_keys_built_by_the_policy_function_keep_nifty_and_sensex_separate():
+    ns = 1782272760351084326; ep = 1782272760
+    mk = lambda i, inst, und, tid, ts: dc.replace(_kf(i, inst, ts, 1, (0,)), tie_key=tp.tie_key('per_contract_id_sequence', und, tid, '1', ts))
+    fs = [mk(1, 'NIFTY|CE', 'NIFTY', '3109390', ep), mk(2, 'SENSEX|PE', 'SENSEX', f'{ns}-7', ep), mk(3, 'NIFTY|CE', 'NIFTY', '3109353', ep), mk(4, 'SENSEX|PE', 'SENSEX', f'{ns - 1}-9', ep)]
+    assert [f.source_row_id for f in rp.order_events(fs, 'per_contract_id_sequence')] == [3, 4, 1, 2]
+
+
+def test_other_keyed_policies_are_also_local():
+    fs = [_kf(10, 'N', 1000, -1, (300,), 'trade_id'), _kf(11, 'S', 1000, 1, (900000,), 'trade_id'), _kf(12, 'N', 1000, -1, (100,), 'trade_id'), _kf(13, 'S', 1000, -1, (800000,), 'trade_id')]
+    assert [f.source_row_id for f in rp.order_events(fs, 'trade_id')] == [12, 13, 10, 11]

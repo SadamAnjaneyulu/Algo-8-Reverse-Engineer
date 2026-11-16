@@ -1,6 +1,9 @@
 """M2-D charts from the committed M2-D link files (HISTORICAL_OBSERVED_REPLAY); each PNG has its data CSV beside it. python3 portfolio_engine/tools/m2d_charts.py -> reports/m2d_figures/"""
 import gzip, io, json, os
-HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); D = os.path.join(PE, 'reports', 'm2d_data'); OUT = os.path.join(PE, 'reports', 'm2d_figures'); os.makedirs(OUT, exist_ok=True)
+import sys
+HERE = os.path.dirname(os.path.abspath(__file__)); PE = os.path.dirname(HERE); sys.path.insert(0, os.path.join(PE, 'python'))
+from pe import scenario as SC
+SCN = SC.from_argv(sys.argv, PE); D = SCN.reports('m2d_data'); OUT = SCN.reports('m2d_figures'); os.makedirs(OUT, exist_ok=True)
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt, numpy as np, pandas as pd
 rd = lambda n: pd.read_csv(io.StringIO(gzip.open(os.path.join(D, n), 'rt').read()), sep='\t'); S = json.load(open(os.path.join(D, 'm2d_summary.json')))
 W1 = rd('wing_body_links_W1.tsv.gz'); W60 = rd('wing_body_links_W1_S60.tsv.gz'); items = rd('wing_body_items.tsv.gz')
