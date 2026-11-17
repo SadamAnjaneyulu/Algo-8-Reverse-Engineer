@@ -1,0 +1,127 @@
+{
+ "NIFTY": {
+  "index": {
+   "rows": 31839,
+   "sessions": 85,
+   "first_date": "2026-06-22",
+   "last_date": "2026-10-22",
+   "tz_values": [
+    "+05:30"
+   ],
+   "duplicates": 0,
+   "nulls": 0,
+   "ohlc_inconsistent": 0,
+   "provider_volume_nonzero": 0,
+   "bars_per_session": {
+    "370": 4,
+    "371": 4,
+    "375": 77
+   },
+   "sessions_short_of_375": 8,
+   "missing_calendar_weekdays": [
+    "2026-06-26",
+    "2026-09-14",
+    "2026-10-02",
+    "2026-10-20"
+   ]
+  },
+  "options": {
+   "rows": 545979,
+   "contract_days": 1445,
+   "distinct_contracts": 775,
+   "trade_date_first": "2026-06-23",
+   "trade_date_last": "2026-10-19",
+   "trade_sessions": 33,
+   "expiries": [
+    "2026-06-23",
+    "2026-06-30",
+    "2026-07-07",
+    "2026-07-14",
+    "2026-07-21",
+    "2026-07-28",
+    "2026-08-04",
+    "2026-08-11",
+    "2026-08-18",
+    "2026-08-25",
+    "2026-09-01",
+    "2026-09-08",
+    "2026-09-15",
+    "2026-09-22",
+    "2026-09-29",
+    "2026-10-06",
+    "2026-10-13",
+    "2026-10-19"
+   ],
+   "n_expiries": 18,
+   "tz_values": [
+    "+05:30"
+   ],
+   "duplicates": 0,
+   "nulls": 0,
+   "ohlc_inconsistent": 0,
+   "zero_price_rows": 0,
+   "zero_volume_rows": 19224,
+   "open_interest": {
+    "rows_nonzero": 545979,
+    "share_nonzero": 1.0,
+    "max": 76624665.0
+   },
+   "bars_in_session_09_15_to_15_29": 536900,
+   "bars_after_15_29": 9079,
+   "dte_days_counts": {
+    "0": 775,
+    "1": 628,
+    "3": 42
+   },
+   "strike_step_ok_share": 1.0,
+   "tick_005_ok_share": 1.0,
+   "contract_days_by_bars": {
+    "full_375_or_more": 1380,
+    "between_300_374": 39,
+    "below_300": 26
+   },
+   "chain_coverage": {
+    "session_expiry_pairs": 33,
+    "strikes_per_pair": {
+     "count": 33.0,
+     "mean": 37.3,
+     "std": 8.8,
+     "min": 17.0,
+     "25%": 30.0,
+     "50%": 38.0,
+     "75%": 44.0,
+     "max": 54.0
+    },
+    "pairs_whose_strike_band_covers_the_days_index_range": 33,
+    "offset_steps_from_open_quantiles": {
+     "0.0": -42.6,
+     "0.01": -40.5,
+     "0.05": -33.1,
+     "0.25": -14.3,
+     "0.5": -1.8,
+     "0.75": 5.8,
+     "0.95": 30.8,
+     "0.99": 40.6,
+     "1.0": 44.4
+    }
+   },
+   "expiry_weekdays": {
+    "Tuesday": 17,
+    "Monday": 1
+   },
+   "ce_and_pe_same_minute_share_of_contract_minutes": 0.17592111979564892
+  },
+  "coverage_gap_vs_3y_target": {
+   "target_start": "2023-10-23",
+   "target_end": "2026-10-22",
+   "have_first": "2026-06-23",
+   "have_last": "2026-10-19",
+   "calendar_days_have": 119,
+   "calendar_days_target": 1096
+  }
+ },
+ "futures": {
+  "found": false,
+  "note": "No futures bar data exists in the normalized tree; searched indices/ and options/ only. See the repository-wide search in the report."
+ }
+}
