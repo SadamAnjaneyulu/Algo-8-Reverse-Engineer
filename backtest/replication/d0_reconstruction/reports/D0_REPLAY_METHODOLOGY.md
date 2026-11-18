@@ -28,4 +28,5 @@
 NULL (flatten + cycle stop), V0 (S1 + S2), V1 (V0 + S3). The NULL control already tracks the actual D0 P&L increment with correlation 0.67 (discovery) and reproduces 6 of 7 live stop cycles, because the **actual carried book** and the cycle stop dominate the outcome. **Aggregate agreement with the actual D0 outcome is therefore a weak discriminator of decision logic**; event-level metrics are the primary evidence.
 
 ## 5. Known limitations
+**Found by the independent review (not fixed, v2):** passive lump/stop-module lots are held to settlement even after a stop (inflates simulated P&L in stopped cycles); replacement sales get no wings (`floor(1×0.47)=0`); the hedge-add comparison is therefore a lower bound; matching uses fixed 2-/10-minute bins (parity-dependent). See `INDEPENDENT_REVIEW_D0.md`.
 Minute resolution; fills at bar opens with no slippage in the behavioural comparison; chain gaps for far wings; no lump/stop-module behaviour; one-lot orders (the live algorithm sends one-lot child orders, so quantities are comparable); the actual carry-in book is known only for 30 cycles.

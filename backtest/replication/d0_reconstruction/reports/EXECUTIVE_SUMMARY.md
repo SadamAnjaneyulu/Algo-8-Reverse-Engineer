@@ -1,6 +1,6 @@
 # Executive Summary — Phase 5: D0 short-sale, buy-back and replacement logic
 
-**Bottom line:** the D0 *decision triggers* of Algo 8 were **not recovered**. What was recovered is the **timing structure** (a Clock-B minute for buy-backs, grid-A windows for scheduled sales, a 15:14 clearance, a cycle stop) and several **negative findings** that remove wrong explanations. A frozen rule set tested on a chronological holdout passes the pre-registered criterion for **one** category only (15:14 final-liquidation timing, wide interval) and fails scheduled-sale quantity (recall 0.48 vs 0.50 required), Clock-B buy-backs, replacements, price-stop buy-backs and hedge actions. Nothing was ported into the engine (Gate 7 not entered); existing engine tests (180) still pass.
+**Bottom line:** the D0 *decision triggers* of Algo 8 were **not recovered**. What was recovered is the **timing structure** (a Clock-B minute for buy-backs, grid-A windows for scheduled sales, a 15:14 clearance, a cycle stop) and several **negative findings** that remove wrong explanations. A frozen rule set tested on a chronological holdout passes the pre-registered criterion for **one** category only (15:14 final-liquidation timing, wide interval) and is borderline on scheduled sales (recall 0.48 vs 0.50 under the pre-registered bin matching, 0.55 with a ±1-minute window — convention-dependent; quantity unresolved), and fails Clock-B buy-backs, replacements, price-stop buy-backs and hedge actions. Nothing was ported into the engine (Gate 7 not entered); existing engine tests (180) still pass.
 
 ## What we now know (status)
 | Finding | Evidence | Status |
@@ -14,12 +14,12 @@
 | The largest unreproduced P&L stream is the **intraday buy-back of carried lots** (+₹27.5 L actual vs −₹4.3 L simulated in discovery); D0-opened sales are small and convention-dependent. | lineage FIFO/LIFO | Indicative |
 
 ## Holdout outcome (8 cycles, frozen rules, partially exposed)
-Scheduled sales L2 precision 0.65 / recall 0.48; final liquidation 0.79 / 0.60 (**passes**); price-stop-like buy-backs 0.47 / 0.35; Clock-B buy-backs 0.20 / 0.01; replacement sales 0 / 0; hedge additions 0.69 / 0.20. Simulated net short book ≈ 17 lots vs 75 actual (state correlation −0.33; discovery +0.79). D0 P&L is not matched and is sensitive to intra-minute fill assumptions (+₹0.08 L vs −₹1.26 L with a one-minute latency; live +₹1.9 L).
+Scheduled sales L2 precision 0.65 / recall 0.48; final liquidation 0.79 / 0.60 (**passes**); price-stop-like buy-backs 0.47 / 0.35; Clock-B buy-backs 0.20 / 0.01; replacement sales 0 / 0; hedge additions 0.69 / 0.20. Simulated net short book ≈ 17 lots vs 75 actual (level correlation −0.33; change-from-10:00 correlation 0.77; discovery level +0.79). Simulated D0 P&L is **unreliable** (review finding A1) and is sensitive to intra-minute fill assumptions (+₹0.08 L vs −₹1.26 L with a one-minute latency; live +₹1.9 L).
 
 ## Integrity notes
 * Rules were fitted on 25 discovery cycles, frozen with hashes and committed (`40642216`) before the holdout run; holdout event data was locked by code until then. The holdout is **not pristine** (earlier research scored the same TEST cycles; Phase-4 pooled descriptive tables included them).
 * A start-book bug in the simulator found by a unit test was fixed (addendum 1; rules unchanged); the corrected holdout re-run is **not** independent evidence; the original outputs are kept. Conclusions are identical.
-* An independent reviewer audited the event table, simulator, matching and holdout discipline (`INDEPENDENT_REVIEW_D0.md`).
+* An independent reviewer audited the event table, simulator, matching and holdout discipline (`INDEPENDENT_REVIEW_D0.md`). **It confirmed defects that change how results are read:** lump hedges stay in the simulated book after a stop (simulated D0 P&L and stop counts are unreliable; one holdout cycle adds ₹217 k spuriously), replacement sales never get wings in the simulator, matching uses fixed bins (the scheduled-sale verdict flips with a sliding window), the event table has a small 09:15 look-ahead in features, and several constants and scripts weaken holdout independence. Replacement, Clock-B and buy-back failures are robust to all of these.
 * A previous-phase claim was corrected ("60 % replacements"; "off-schedule sales are the profitable class").
 
 ## Benchmark

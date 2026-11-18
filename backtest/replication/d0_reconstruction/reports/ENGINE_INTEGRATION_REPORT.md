@@ -20,7 +20,7 @@
 Every future plugin must have unit, integration, historical-replay (`compare_events.py` reused as the replay test), counterexample and regression tests, and Python/C++ parity runs.
 
 ## 3. Independent review (Gate 6)
-A separate reviewer agent (no edits to tracked files) audited `build_events.py`, `d0_sim.py`, `compare_events.py`, `d0common.py`, the freeze hashes and the tests. **Its findings and my responses are recorded in `INDEPENDENT_REVIEW_D0.md`** (written after the review completed).
+A separate reviewer agent (no edits to tracked files) audited `build_events.py`, `d0_sim.py`, `compare_events.py`, `d0common.py`, the freeze hashes and the tests. **Its findings and my responses are recorded in `INDEPENDENT_REVIEW_D0.md`.** Gate 6 is complete; the review confirmed five defects (passive lots after a stop, no replacement wings, bin-dependent matching, minute-0 feature look-ahead in the event table, coincidence-contaminated replacement labels) and several holdout-independence weaknesses, none of which changes the decision not to port any rule.
 
 ## 4. Tests added in this phase (`backtest/tests/test_d0_reconstruction.py`, 8 tests; all passing with the earlier 16: 24)
 Event table reconciles with the ledger (orders, lots, all 1,674 contract nets); every order has one class and the split boundary is respected; holdout guard raises before freeze; frozen files unchanged (with addendum); simulated start book equals ledger; D0-open decisions independent of the 09:15 bar's close/spot; flatten and stop semantics; frozen holdout results regression; lineage reconciles with live P&L.
