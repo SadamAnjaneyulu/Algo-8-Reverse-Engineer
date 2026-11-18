@@ -1,0 +1,98 @@
+{
+ "fills": 41421,
+ "distinct_source_rows": 41421,
+ "rows_not_covered": 0,
+ "mismatch_counts": {},
+ "examples": [],
+ "all_dup_flags": 0,
+ "source_row_is_unique_and_in_range": true,
+ "attach_trade_id_key_mismatch": 0,
+ "attach_trade_id_types": [
+  "int"
+ ],
+ "attach_trade_id_lens": [
+  2
+ ],
+ "attach_order_no_key_mismatch": 0,
+ "attach_order_no_types": [
+  "int"
+ ],
+ "attach_order_no_lens": [
+  1
+ ],
+ "attach_sensex_trade_id_time_key_mismatch": 0,
+ "attach_sensex_trade_id_time_types": [
+  "int"
+ ],
+ "attach_sensex_trade_id_time_lens": [
+  1
+ ],
+ "engine_vs_reviewer": {
+  "source_row": {
+   "roles": 41421,
+   "split_disagree_with_reviewer": 0,
+   "engine_open": 1414545,
+   "engine_close": 1377065,
+   "engine_realized": 210055200,
+   "reviewer_realized": 210055200,
+   "engine_episodes": 2667,
+   "reviewer_episodes": 2667,
+   "dump_tie_order": "src"
+  },
+  "sells_first": {
+   "roles": 41421,
+   "split_disagree_with_reviewer": 0,
+   "engine_open": 1414545,
+   "engine_close": 1377065,
+   "engine_realized": 210055200,
+   "reviewer_realized": 210055200,
+   "engine_episodes": 2667,
+   "reviewer_episodes": 2667,
+   "dump_tie_order": "sells_first"
+  },
+  "buys_first": {
+   "roles": 41421,
+   "split_disagree_with_reviewer": 0,
+   "engine_open": 1414545,
+   "engine_close": 1377065,
+   "engine_realized": 210055200,
+   "reviewer_realized": 210055200,
+   "engine_episodes": 2667,
+   "reviewer_episodes": 2667,
+   "dump_tie_order": "buys_first"
+  },
+  "trade_id": {
+   "roles": 41421,
+   "split_disagree_with_reviewer": 0,
+   "engine_open": 1414545,
+   "engine_close": 1377065,
+   "engine_realized": 210055200,
+   "reviewer_realized": 210055200,
+   "engine_episodes": 2667,
+   "reviewer_episodes": 2667,
+   "dump_tie_order": "trade_id"
+  },
+  "order_no": {
+   "roles": 41421,
+   "split_disagree_with_reviewer": 0,
+   "engine_open": 1414545,
+   "engine_close": 1377065,
+   "engine_realized": 210055200,
+   "reviewer_realized": 210055200,
+   "engine_episodes": 2667,
+   "reviewer_episodes": 2667,
+   "dump_tie_order": "order_no"
+  },
+  "sensex_trade_id_time": {
+   "roles": 41421,
+   "split_disagree_with_reviewer": 0,
+   "engine_open": 1414545,
+   "engine_close": 1377065,
+   "engine_realized": 210055200,
+   "reviewer_realized": 210055200,
+   "engine_episodes": 2667,
+   "reviewer_episodes": 2667,
+   "dump_tie_order": "sensex_trade_id_time"
+  }
+ }
+}

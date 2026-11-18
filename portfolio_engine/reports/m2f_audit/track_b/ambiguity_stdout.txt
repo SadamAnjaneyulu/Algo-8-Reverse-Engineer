@@ -1,0 +1,52 @@
+scenario | method | g: batches_alt (base) ; changed batches only_alt/only_base ; portions in changed alt batches ; maxparents ; maxdur
+C2COMBO_minrow_any+runmax_chain C2 2s:7126(7127) d1/2 p5 mp78 md57 | 5s:3776(3777) d1/2 p5 mp96 md66 | 10s:3064(3065) d1/2 p5 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+C2COMBO_minrow_any+runmax_stream C2 2s:7126(7127) d1/2 p5 mp78 md57 | 5s:3776(3777) d1/2 p5 mp96 md66 | 10s:3064(3065) d1/2 p5 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+C2COMBO_pid_only+runmax_chain C2 2s:7126(7127) d1/2 p5 mp78 md57 | 5s:3776(3777) d1/2 p5 mp96 md66 | 10s:3064(3065) d1/2 p5 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+C2COMBO_pid_only+runmax_stream C2 2s:7126(7127) d1/2 p5 mp78 md57 | 5s:3776(3777) d1/2 p5 mp96 md66 | 10s:3064(3065) d1/2 p5 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+C2REF_runmax_chain C2 2s:7126(7127) d1/2 p5 mp78 md57 | 5s:3776(3777) d1/2 p5 mp96 md66 | 10s:3064(3065) d1/2 p5 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+C2REF_runmax_stream C2 2s:7126(7127) d1/2 p5 mp78 md57 | 5s:3776(3777) d1/2 p5 mp96 md66 | 10s:3064(3065) d1/2 p5 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+EXCLUDE_MIXED_parents C1 2s:7122(7127) d15/20 p321 mp78 md57 | 5s:3774(3777) d17/20 p642 mp92 md66 | 10s:3063(3065) d17/19 p817 mp118 md125 | 30s:2171(2171) d19/19 p995 mp127 md481 | 60s:1502(1502) d18/18 p1630 mp197 md1175
+EXCLUDE_MIXED_parents C2 2s:7122(7127) d15/20 p321 mp78 md57 | 5s:3774(3777) d17/20 p642 mp92 md66 | 10s:3063(3065) d17/19 p817 mp118 md125 | 30s:2171(2171) d19/19 p995 mp127 md481 | 60s:1502(1502) d18/18 p1630 mp197 md1175
+EXCLUSIVE_gap_lt_g C1 2s:7788(7127) d1214/553 p3518 mp78 md57 | 5s:4218(3777) d840/399 p3121 mp95 md57 | 10s:3144(3065) d153/74 p1361 mp122 md118 | 30s:2196(2171) d50/25 p622 mp128 md481 | 60s:1535(1502) d63/30 p558 mp198 md1175
+EXCLUSIVE_gap_lt_g C2 2s:7788(7127) d1214/553 p3518 mp78 md57 | 5s:4218(3777) d840/399 p3121 mp95 md57 | 10s:3144(3065) d153/74 p1361 mp122 md118 | 30s:2196(2171) d50/25 p622 mp128 md481 | 60s:1535(1502) d63/30 p558 mp198 md1175
+REPLAY_buys_first C1 2s:7127(7127) d2/2 p10 mp78 md57 | 5s:3777(3777) d2/2 p16 mp96 md66 | 10s:3065(3065) d2/2 p16 mp122 md125 | 30s:2171(2171) d2/2 p322 mp128 md481 | 60s:1502(1502) d2/2 p322 mp198 md1175
+REPLAY_buys_first C2 2s:7127(7127) d2/2 p10 mp78 md57 | 5s:3777(3777) d2/2 p16 mp96 md66 | 10s:3065(3065) d2/2 p16 mp122 md125 | 30s:2171(2171) d2/2 p322 mp128 md481 | 60s:1502(1502) d2/2 p322 mp198 md1175
+REPLAY_sells_first C1 2s:7127(7127) d1/1 p9 mp78 md57 | 5s:3777(3777) d1/1 p9 mp96 md66 | 10s:3065(3065) d1/1 p9 mp122 md125 | 30s:2171(2171) d1/1 p171 mp128 md481 | 60s:1502(1502) d1/1 p171 mp198 md1175
+REPLAY_sells_first C2 2s:7127(7127) d1/1 p9 mp78 md57 | 5s:3777(3777) d1/1 p9 mp96 md66 | 10s:3065(3065) d1/1 p9 mp122 md125 | 30s:2171(2171) d1/1 p171 mp128 md481 | 60s:1502(1502) d1/1 p171 mp198 md1175
+STREAM_und C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+STREAM_und C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+STREAM_und_exp C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+STREAM_und_exp C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+STREAM_und_sess C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+STREAM_und_sess C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_by_last_then_row C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_by_last_then_row C2 2s:7126(7127) d1/2 p5 mp78 md57 | 5s:3776(3777) d1/2 p5 mp96 md66 | 10s:3064(3065) d1/2 p5 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_minrow_any C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_minrow_any C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_pid_numeric_first C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_pid_numeric_first C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_pid_only C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_pid_only C2 2s:7126(7127) d1/2 p5 mp78 md57 | 5s:3776(3777) d1/2 p5 mp96 md66 | 10s:3064(3065) d1/2 p5 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_pid_reversed C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TIE_pid_reversed C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TS_ANYFILL_for_mixed(first&last over all C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TS_ANYFILL_for_mixed(first&last over all C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TS_FIRST_ANYFILL_only C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+TS_FIRST_ANYFILL_only C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+UNIT_order_number_col4 C1 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+UNIT_order_number_col4 C2 2s:7127(7127) d0/0 p0 mp78 md57 | 5s:3777(3777) d0/0 p0 mp96 md66 | 10s:3065(3065) d0/0 p0 mp122 md125 | 30s:2171(2171) d0/0 p0 mp128 md481 | 60s:1502(1502) d0/0 p0 mp198 md1175
+mixed_parents_with_closing 26
+unit_order_no_parents 16435
+REPLAY_sells_first|closing_portions 17760
+REPLAY_sells_first|closing_units 1377065
+REPLAY_sells_first|parents 16817
+REPLAY_sells_first|fills_with_changed_split 2
+REPLAY_buys_first|closing_portions 17760
+REPLAY_buys_first|closing_units 1377065
+REPLAY_buys_first|parents 16817
+REPLAY_buys_first|fills_with_changed_split 4
+parents_with_closing_fills_in_multiple_streams 0
+parents_with_closing_in_multiple_instruments 0
+parents_last_gt_first [('10853057', 1782986253, 1782986310)]
+equal_first_ts_groups 3438
+parents_in_equal_first_ts_groups 11139

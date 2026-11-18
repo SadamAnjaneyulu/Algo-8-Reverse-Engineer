@@ -1,0 +1,712 @@
+{
+ "baseline": "SOURCE_ROW_ORDER_CONVENTION",
+ "definition": "NIFTY: numeric trade id; SENSEX: nanosecond trade-id time (epoch fallback when the id time disagrees with the epoch, i.e. row 8079); final tie-break: source row; SENSEX id suffix not used",
+ "distinctness_from_individual_policies": {
+  "multi_fill_groups": 4464,
+  "order_no": {
+   "by_underlying": {
+    "NIFTY": 18,
+    "SENSEX": 17
+   },
+   "examples": [
+    [
+     [
+      "NIFTY|2026-06-23|CE|23850",
+      1782207405
+     ],
+     [
+      2056,
+      2058,
+      2057,
+      2055
+     ],
+     [
+      2055,
+      2056,
+      2058,
+      2057
+     ]
+    ],
+    [
+     [
+      "NIFTY|2026-06-23|CE|23850",
+      1782208038
+     ],
+     [
+      2122,
+      2120,
+      2121
+     ],
+     [
+      2120,
+      2121,
+      2122
+     ]
+    ],
+    [
+     [
+      "SENSEX|2026-06-25|CE|77300",
+      1782379769
+     ],
+     [
+      4365,
+      4364,
+      4363
+     ],
+     [
+      4363,
+      4364,
+      4365
+     ]
+    ]
+   ],
+   "groups_where_order_differs_from_hybrid": 35
+  },
+  "sensex_trade_id_time": {
+   "by_underlying": {
+    "NIFTY": 151
+   },
+   "examples": [
+    [
+     [
+      "NIFTY|2026-06-23|PE|24050",
+      1782186388
+     ],
+     [
+      14,
+      20,
+      18,
+      21
+     ],
+     [
+      14,
+      18,
+      20,
+      21
+     ]
+    ],
+    [
+     [
+      "NIFTY|2026-06-23|CE|24050",
+      1782186392
+     ],
+     [
+      26,
+      30,
+      27
+     ],
+     [
+      26,
+      27,
+      30
+     ]
+    ],
+    [
+     [
+      "NIFTY|2026-06-23|PE|24050",
+      1782186410
+     ],
+     [
+      41,
+      44,
+      47,
+      45
+     ],
+     [
+      41,
+      44,
+      45,
+      47
+     ]
+    ]
+   ],
+   "groups_where_order_differs_from_hybrid": 151
+  },
+  "source_row": {
+   "groups_where_order_differs_from_hybrid": 172
+  },
+  "trade_id": {
+   "by_underlying": {
+    "SENSEX": 2
+   },
+   "examples": [
+    [
+     [
+      "SENSEX|2026-06-25|CE|77500",
+      1782381102
+     ],
+     [
+      4736,
+      4737,
+      4739,
+      4740,
+      4744,
+      4738,
+      4742,
+      4741,
+      4735,
+      4743
+     ],
+     [
+      4736,
+      4744,
+      4737,
+      4740,
+      4739,
+      4742,
+      4738,
+      4741,
+      4735,
+      4743
+     ]
+    ],
+    [
+     [
+      "SENSEX|2026-06-25|CE|77500",
+      1782381103
+     ],
+     [
+      4745,
+      4746,
+      4747
+     ],
+     [
+      4747,
+      4745,
+      4746
+     ]
+    ]
+   ],
+   "groups_where_order_differs_from_hybrid": 2
+  }
+ },
+ "independent_reference": {
+  "baseline": {
+   "absolute": {
+    "FIFO": {
+     "closing_units": 1377065,
+     "n_episodes": 2667,
+     "opening_units": 1414545,
+     "realized_total_paise": "210055200",
+     "reversal_ended_episodes": 23,
+     "reversal_fills": 23
+    },
+    "LIFO": {
+     "closing_units": 1377065,
+     "n_episodes": 2667,
+     "opening_units": 1414545,
+     "realized_total_paise": "209687450",
+     "reversal_ended_episodes": 23,
+     "reversal_fills": 23
+    }
+   },
+   "accounting": {
+    "FIFO": {
+     "CA_pairs_diff": 0,
+     "CP_membership_diff": 0,
+     "CP_units": 1377065,
+     "OA_membership_diff": 0,
+     "OA_units": 1414545,
+     "_instruments": [],
+     "_split_rows": [],
+     "cash_equal": true,
+     "episodes_identity_changed": 0,
+     "fills_open_close_split_changed": 0,
+     "final_inv_equal": true,
+     "instruments_changed": 0,
+     "n_episodes": 2667,
+     "realized_delta_paise": 0.0,
+     "reversal_fills": 23
+    },
+    "LIFO": {
+     "CA_pairs_diff": 0,
+     "CP_membership_diff": 0,
+     "CP_units": 1377065,
+     "OA_membership_diff": 0,
+     "OA_units": 1414545,
+     "_instruments": [],
+     "_split_rows": [],
+     "cash_equal": true,
+     "episodes_identity_changed": 0,
+     "fills_open_close_split_changed": 0,
+     "final_inv_equal": true,
+     "instruments_changed": 0,
+     "n_episodes": 2667,
+     "realized_delta_paise": 0.0,
+     "reversal_fills": 23
+    }
+   },
+   "batches": {
+    "C1@10s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 3065,
+     "n_batches_baseline": 3065,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C1@2s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 7127,
+     "n_batches_baseline": 7127,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C1@30s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 2171,
+     "n_batches_baseline": 2171,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C1@5s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 3777,
+     "n_batches_baseline": 3777,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C1@60s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 1502,
+     "n_batches_baseline": 1502,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C2@10s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 3065,
+     "n_batches_baseline": 3065,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C2@2s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 7127,
+     "n_batches_baseline": 7127,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C2@30s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 2171,
+     "n_batches_baseline": 2171,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C2@5s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 3777,
+     "n_batches_baseline": 3777,
+     "parents_in_changed_baseline_batches": 0
+    },
+    "C2@60s": {
+     "alternative_batches_not_in_baseline": 0,
+     "baseline_batches_not_in_alternative": 0,
+     "n_batches": 1502,
+     "n_batches_baseline": 1502,
+     "parents_in_changed_baseline_batches": 0
+    }
+   },
+   "wing_body": {
+    "headline": {
+     "closing_body_units": 540250,
+     "closing_wing_units": 500775,
+     "links": {
+      "W1": 42777,
+      "W1_S60": 65228,
+      "W2": 42777,
+      "W2_S60": 65228,
+      "W3": 12096
+     },
+     "opening_body_items": 13325,
+     "opening_body_units": 626765,
+     "opening_wing_items": 8399,
+     "opening_wing_units": 617130
+    },
+    "items_only_in_one": 0,
+    "items_qty_or_first_ts_changed": 0,
+    "links_baseline": {
+     "W1": 42777,
+     "W1_S60": 65228,
+     "W2": 42777,
+     "W2_S60": 65228,
+     "W3": 12096
+    },
+    "links_changed": {
+     "W1": 0,
+     "W1_S60": 0,
+     "W2": 0,
+     "W2_S60": 0,
+     "W3": 0
+    }
+   }
+  },
+  "scenario": {
+   "absolute": {
+    "FIFO": {
+     "closing_units": 1377065,
+     "n_episodes": 2667,
+     "opening_units": 1414545,
+     "realized_total_paise": "210055200",
+     "reversal_ended_episodes": 21,
+     "reversal_fills": 21
+    },
+    "LIFO": {
+     "closing_units": 1377065,
+     "n_episodes": 2667,
+     "opening_units": 1414545,
+     "realized_total_paise": "209687450",
+     "reversal_ended_episodes": 21,
+     "reversal_fills": 21
+    }
+   },
+   "accounting": {
+    "FIFO": {
+     "CA_pairs_diff": 2068,
+     "CP_membership_diff": 4,
+     "CP_units": 1377065,
+     "OA_membership_diff": 2,
+     "OA_units": 1414545,
+     "_instruments": [
+      "NIFTY|2026-09-01|CE|24600",
+      "NIFTY|2026-09-01|PE|23200"
+     ],
+     "_split_rows": [
+      27911,
+      27912,
+      27916,
+      27917
+     ],
+     "cash_equal": true,
+     "episodes_identity_changed": 4,
+     "fills_open_close_split_changed": 4,
+     "final_inv_equal": true,
+     "instruments_changed": 2,
+     "n_episodes": 2667,
+     "realized_delta_paise": 0.0,
+     "reversal_fills": 21
+    },
+    "LIFO": {
+     "CA_pairs_diff": 2063,
+     "CP_membership_diff": 4,
+     "CP_units": 1377065,
+     "OA_membership_diff": 2,
+     "OA_units": 1414545,
+     "_instruments": [
+      "NIFTY|2026-09-01|CE|24600",
+      "NIFTY|2026-09-01|PE|23200"
+     ],
+     "_split_rows": [
+      27911,
+      27912,
+      27916,
+      27917
+     ],
+     "cash_equal": true,
+     "episodes_identity_changed": 4,
+     "fills_open_close_split_changed": 4,
+     "final_inv_equal": true,
+     "instruments_changed": 2,
+     "n_episodes": 2667,
+     "realized_delta_paise": 0.0,
+     "reversal_fills": 21
+    }
+   },
+   "batches": {
+    "C1@10s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 3065,
+     "n_batches_baseline": 3065,
+     "parents_in_changed_baseline_batches": 35
+    },
+    "C1@2s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 7127,
+     "n_batches_baseline": 7127,
+     "parents_in_changed_baseline_batches": 25
+    },
+    "C1@30s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 2171,
+     "n_batches_baseline": 2171,
+     "parents_in_changed_baseline_batches": 35
+    },
+    "C1@5s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 3777,
+     "n_batches_baseline": 3777,
+     "parents_in_changed_baseline_batches": 35
+    },
+    "C1@60s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 1502,
+     "n_batches_baseline": 1502,
+     "parents_in_changed_baseline_batches": 35
+    },
+    "C2@10s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 3065,
+     "n_batches_baseline": 3065,
+     "parents_in_changed_baseline_batches": 35
+    },
+    "C2@2s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 7127,
+     "n_batches_baseline": 7127,
+     "parents_in_changed_baseline_batches": 25
+    },
+    "C2@30s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 2171,
+     "n_batches_baseline": 2171,
+     "parents_in_changed_baseline_batches": 35
+    },
+    "C2@5s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 3777,
+     "n_batches_baseline": 3777,
+     "parents_in_changed_baseline_batches": 35
+    },
+    "C2@60s": {
+     "alternative_batches_not_in_baseline": 1,
+     "baseline_batches_not_in_alternative": 1,
+     "n_batches": 1502,
+     "n_batches_baseline": 1502,
+     "parents_in_changed_baseline_batches": 35
+    }
+   },
+   "wing_body": {
+    "headline": {
+     "closing_body_units": 540250,
+     "closing_wing_units": 500775,
+     "links": {
+      "W1": 42771,
+      "W1_S60": 65222,
+      "W2": 42771,
+      "W2_S60": 65222,
+      "W3": 12096
+     },
+     "opening_body_items": 13323,
+     "opening_body_units": 625985,
+     "opening_wing_items": 8399,
+     "opening_wing_units": 617130
+    },
+    "items_only_in_one": 2,
+    "items_qty_or_first_ts_changed": 0,
+    "links_baseline": {
+     "W1": 42777,
+     "W1_S60": 65228,
+     "W2": 42777,
+     "W2_S60": 65228,
+     "W3": 12096
+    },
+    "links_changed": {
+     "W1": 6,
+     "W1_S60": 6,
+     "W2": 6,
+     "W2_S60": 6,
+     "W3": 0
+    }
+   }
+  }
+ },
+ "individual_policies_for_reference": {
+  "buys_first": {
+   "episodes_changed": 12,
+   "fills_split_changed": 4
+  },
+  "order_no": {
+   "episodes_changed": 4,
+   "fills_split_changed": 4
+  },
+  "sells_first": {
+   "episodes_changed": 1,
+   "fills_split_changed": 2
+  },
+  "sensex_trade_id_time": {
+   "episodes_changed": 0,
+   "fills_split_changed": 0
+  },
+  "trade_id": {
+   "episodes_changed": 4,
+   "fills_split_changed": 4
+  }
+ },
+ "production_pipeline_vs_baseline": {
+  "1_groups_differing_in_order": {
+   "differing": 172,
+   "differing_mixed_side": 2,
+   "differing_same_side": 170,
+   "multi_fill_groups": 4464
+  },
+  "2_groups_changing_open_close_allocation": {
+   "fill_rows": [
+    27911,
+    27912,
+    27916,
+    27917
+   ],
+   "fills_changed": 4,
+   "groups": 2,
+   "groups_detail": [
+    {
+     "instrument": "NIFTY|2026-09-01|PE|23200",
+     "rows": [
+      27906,
+      27912,
+      27916
+     ],
+     "sides": "SSS",
+     "ts": 1788167791
+    },
+    {
+     "instrument": "NIFTY|2026-09-01|CE|24600",
+     "rows": [
+      27908,
+      27911,
+      27917
+     ],
+     "sides": "SSS",
+     "ts": 1788167791
+    }
+   ],
+   "mixed_side": 0,
+   "same_side": 2
+  },
+  "3_episode_identity": {
+   "episodes_changed": 4,
+   "episodes_changed_by_content": 4,
+   "episodes_changed_by_content_definition": "baseline episodes whose (instrument, direction, opened, closed, ended_by, reversal, n_open_fills, n_close_fills, opening-fill set) is absent under the alternative",
+   "episodes_changed_definition": "ordinal episode id (instrument#n) whose signature differs",
+   "instruments": [
+    "NIFTY|2026-09-01|CE|24600",
+    "NIFTY|2026-09-01|PE|23200"
+   ],
+   "instruments_changed": 2,
+   "reversal_episodes_alt": 21,
+   "reversal_episodes_base": 23
+  },
+  "4_closing_batch_membership": {
+   "C1@10s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 3065,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 35
+   },
+   "C1@2s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 7127,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 25
+   },
+   "C1@30s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 2171,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 35
+   },
+   "C1@5s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 3777,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 35
+   },
+   "C1@60s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 1502,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 35
+   },
+   "C2@10s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 3065,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 35
+   },
+   "C2@2s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 7127,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 25
+   },
+   "C2@30s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 2171,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 35
+   },
+   "C2@5s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 3777,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 35
+   },
+   "C2@60s": {
+    "alternative_batches_not_in_baseline": 1,
+    "baseline_batches": 1502,
+    "baseline_batches_not_in_alternative": 1,
+    "parents_in_changed_batches": 35
+   }
+  },
+  "5_wing_body_membership": {
+   "closing_body_units": 540250,
+   "closing_wing_units": 500775,
+   "items_only_in_one": 2,
+   "links_baseline": {
+    "W1": 42777,
+    "W1_S60": 65228,
+    "W2": 42777,
+    "W2_S60": 65228,
+    "W3": 12096
+   },
+   "links_changed": {
+    "W1": 6,
+    "W1_S60": 6,
+    "W2": 6,
+    "W2_S60": 6,
+    "W3": 0
+   },
+   "opening_body_units": 625985,
+   "opening_wing_units": 617130
+  },
+  "6_lot_attribution": {
+   "FIFO": {
+    "closing_fills_compared": 17760,
+    "closing_fills_with_changed_consumption_sequence": 666,
+    "closing_fills_with_changed_source_lots": 654
+   },
+   "LIFO": {
+    "closing_fills_compared": 17760,
+    "closing_fills_with_changed_consumption_sequence": 662,
+    "closing_fills_with_changed_source_lots": 653
+   },
+   "note": "FIFO/LIFO closing allocation: which opening lots a closing fill consumed (analytical layer; AVG is pooled and NOT_IDENTIFIABLE). Counted per closing portion id. `changed_source_lots` compares the set of (opening lot, quantity) pairs; `changed_consumption_sequence` also compares the order in which lots were consumed."
+  },
+  "attribution": {
+   "note": "attribution by shared parent order id between the changed-split fills and the changed batch / item / link members; an upper bound on direct causation",
+   "split_changing_groups_whose_parents_appear_in_changed_batches": 2,
+   "split_changing_groups_whose_parents_appear_in_changed_wing_body_items_or_links": 2
+  },
+  "convention": "SENSITIVITY_ONLY:per_contract_id_sequence",
+  "invariants": {
+   "closing_units": 1377065,
+   "closing_units_equal": true,
+   "final_inventory_equal": true,
+   "opening_units": 1414545,
+   "opening_units_equal": true
+  },
+  "sensitivity_only": true
+ },
+ "scenario": "PER_CONTRACT_ID_SEQUENCE (policy `per_contract_id_sequence`, SENSITIVITY-ONLY)",
+ "statement": "Neither ordering is claimed to be verified exchange execution chronology; the true intra-second sequence is UNRESOLVED."
+}

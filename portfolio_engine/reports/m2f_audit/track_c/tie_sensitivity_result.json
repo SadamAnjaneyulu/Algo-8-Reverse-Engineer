@@ -1,0 +1,61 @@
+{
+ "src": {
+  "items": 36784,
+  "wing_open_units": 617130,
+  "body_open_units": 626765,
+  "wing_close_units": 500775,
+  "body_close_units": 540250,
+  "links": {
+   "W1": 42777,
+   "W1_S60": 65228,
+   "W2": 42777,
+   "W2_S60": 65228,
+   "W3": 12096
+  },
+  "w3": {
+   "wing": 56420,
+   "body": 66055
+  },
+  "keys": []
+ },
+ "sells_first": {
+  "items": 36786,
+  "wing_open_units": 617130,
+  "body_open_units": 626830,
+  "wing_close_units": 500775,
+  "body_close_units": 540315,
+  "links": {
+   "W1": 42778,
+   "W1_S60": 65230,
+   "W2": 42778,
+   "W2_S60": 65230,
+   "W3": 12096
+  },
+  "w3": {
+   "wing": 56420,
+   "body": 66120
+  },
+  "keys": [],
+  "items_differing_vs_src": 2
+ },
+ "buys_first": {
+  "items": 36780,
+  "wing_open_units": 617130,
+  "body_open_units": 626680,
+  "wing_close_units": 500775,
+  "body_close_units": 540165,
+  "links": {
+   "W1": 42776,
+   "W1_S60": 65221,
+   "W2": 42776,
+   "W2_S60": 65221,
+   "W3": 12096
+  },
+  "w3": {
+   "wing": 56420,
+   "body": 65970
+  },
+  "keys": [],
+  "items_differing_vs_src": 4
+ }
+}

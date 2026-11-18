@@ -1,0 +1,10 @@
+"""DEVELOPMENT run of the D0 simulator on DISCOVERY cycles (bug-fixing allowed here; rules fixed by fit_discovery.py)."""
+import sys
+from d0_sim import *
+variant = sys.argv[1] if len(sys.argv) > 1 else 'V0'; OPTS = {'NULL': dict(no_scheduled=True, no_clockb=True), 'V0': {}, 'V1': dict(price_stop=True), 'V1-noS1': dict(price_stop=True, no_scheduled=True), 'V1-noS2': dict(price_stop=True, no_clockb=True), 'V1-noStop': dict(price_stop=True, cycle_stop=False), 'NULL+PS': dict(price_stop=True, no_scheduled=True, no_clockb=True)}; opts = OPTS[variant]
+SPLIT = sys.argv[2]; E = load_events(SPLIT == 'DISCOVERY'); S_ = pd.read_csv(f'{RES}/cycle_status.csv'); S_ = S_[(S_.split == SPLIT) & S_.carry_in_known]; rows = []; orders = []
+for st in S_.itertuples():
+    ev = E[(E.und == st.und) & (E.expiry == st.expiry)]; c = load_cycle(st.und, st.expiry, st.d1, st.d0); r = simulate_d0(c, st.und, ev[ev.day == 'D-1'], **opts)
+    act = ev[ev.day == 'D0']; LP = pd.read_csv(f'{RRES}/live_cycle_pnl.csv'); LP = LP[(LP.und == st.und) & (LP.expiry.str[:10] == st.expiry)].iloc[0]
+    rows.append(dict(und=st.und, expiry=st.expiry, v0=r['v0'], sim_gross=r['gross'], live_gross=LP.gross, sim_orders=len(r['orders']), live_orders=len(act), sim_stopped=r['stopped'], live_stop=LP.stop_cycle)); o = r['orders'].copy(); o['und'] = st.und; o['expiry'] = st.expiry; orders.append(o)
+R = pd.DataFrame(rows); R['sim_d0'] = R.sim_gross - R.v0; R['live_d0'] = R.live_gross - R.v0; print('D0 increments: sim', R.sim_d0.sum().round(0), 'live', R.live_d0.sum().round(0), 'corr', np.corrcoef(R.sim_d0, R.live_d0)[0, 1].round(2), 'stop agree', int(((R.sim_stopped) & (R.live_stop)).sum()), 'of live', int(R.live_stop.sum()), 'sim', int(R.sim_stopped.sum())); print(variant, 'cycles', len(R), 'sim gross', R.sim_gross.sum().round(0), 'live gross', R.live_gross.sum().round(0), 'corr', np.corrcoef(R.sim_gross, R.live_gross)[0, 1].round(2), 'stops sim/live', R.sim_stopped.sum(), R.live_stop.sum()); R.to_csv(f'{RES}/replay_{SPLIT}_{variant}.csv', index=False); pd.concat(orders).to_csv(f'{RES}/replay_orders_{SPLIT}_{variant}.csv', index=False)

@@ -1,0 +1,10 @@
+category,sim_lots,actual_lots,L1_exact,L2_strike_mismatch,L3_timing_mismatch,unmatched_sim_spurious,unmatched_actual_missing,precision_L1,precision_L2,precision_L3,recall_L1,recall_L2,recall_L3
+body sales (all classes),0.0,7880.0,0.0,0.0,0.0,0.0,7880.0,,,,0.0,0.0,0.0
+scheduled sales,0.0,2248.0,0.0,0.0,0.0,0.0,2248.0,,,,0.0,0.0,0.0
+replacement sales,0.0,3136.0,0.0,0.0,0.0,0.0,3136.0,,,,0.0,0.0,0.0
+buybacks excl. final liquidation,0.0,6427.0,0.0,0.0,0.0,0.0,6427.0,,,,0.0,0.0,0.0
+Clock-B buybacks (tick minute),0.0,795.0,0.0,0.0,0.0,0.0,795.0,,,,0.0,0.0,0.0
+price-stop-like buybacks (actual: ratio>=1.55),0.0,2621.0,0.0,0.0,0.0,0.0,2621.0,,,,0.0,0.0,0.0
+final liquidation (>=15:10),1613.0,1840.0,304.0,172.0,143.0,994.0,1221.0,0.1884686918784873,0.29510229386236825,0.38375697458152513,0.16521739130434782,0.25869565217391305,0.33641304347826084
+hedge additions,0.0,6396.0,0.0,0.0,0.0,0.0,6396.0,,,,0.0,0.0,0.0
+hedge reductions,2192.0,7129.0,185.0,77.0,363.0,1567.0,6504.0,0.0843978102189781,0.11952554744525548,0.2851277372262774,0.025950343666713425,0.03675129751718333,0.08767007995511292

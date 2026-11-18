@@ -1,0 +1,82 @@
+{
+ "id": "M13",
+ "name": "FIFO consumes the LAST lot (wrong closing source)",
+ "file": "python/pe/ledger.py",
+ "expected": "FIFO P&L vs TP-01; CA pairs vs reference",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_accounting.py::test_partial_close_conventions[FIFO-260000]",
+   "tests/test_accounting.py::test_inventory_identical_across_conventions_but_pnl_differs",
+   "tests/test_lineage.py::test_ab_lots_fifo_lifo_avg_confined_to_analytical_layer",
+   "tests/test_lineage.py::test_FIFO_and_LIFO_diverge_multi_close_but_totals_agree",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+   "tests/test_lineage_real.py::test_realized_pnl_from_allocations_equals_tp01_for_every_convention",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[0]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[1]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[2]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[3]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[4]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[5]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[6]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[7]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[8]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[9]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[10]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[11]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[12]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[13]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[14]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[15]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[16]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[17]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[18]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[19]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[20]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[21]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[22]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[23]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[24]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[25]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[26]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[27]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[28]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[29]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[30]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[31]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[32]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[33]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[34]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[35]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[36]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[37]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[38]",
+   "tests/test_lineage_reference.py::test_engine_equals_independent_reference[39]",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[FIFO]",
+   "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[FIFO]",
+   "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+   "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+  ],
+  "summary": "51 failed, 76 passed in 175.04s (0:02:55)",
+  "seconds": 176
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {
+   "CA_FIFO_row": 24940,
+   "CA_FIFO_total": 1
+  },
+  "false_flags": [
+   "slices_FIFO_identical",
+   "AVG_exact_total_is_integer",
+   "sensitive_sets_identical"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 177,
+   "py_vs_ref_mismatch": 351
+  },
+  "killed": true
+ }
+}

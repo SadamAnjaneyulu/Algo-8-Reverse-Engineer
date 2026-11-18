@@ -1,0 +1,42 @@
+# Track C -- wing/body association (M2-D) independent audit
+
+Auditor: Track C. HEAD 7117bbce, clean tree, read-only on all repository files. Source: `Trades_GKOHNP140.csv` (41,421 rows, 167 columns). Classes: [RAW] independent raw-source verification, [IMPL] independent re-implementation, [XLANG] none used, [INV] internal invariant only, [REPRO] reproducibility only.
+
+## 0. Verdict
+No Critical or High defect found. Every item, every link and every headline number re-derived from the raw CSV agrees exactly with the committed outputs. 2 Medium and 4 Low findings (defects.json). The PASS for M2-D as an **association analysis** is supported; no wording found that upgrades an evidence class. Nothing below supports protective intent or lot ownership, and none is claimed.
+
+## 1. Raw-column verification [RAW]
+VERIFIED by value inspection: col 11 side, 12 underlying, 14 strike, 15 expiry (date part), 16 CE/PE, 19 order qty, 23 order-entry minute (IST wall clock), 27 status, 33 fill qty (units), 137 fill price (rupees), 161 UTC epoch, 163 parent order id. **Correction to the prior reviewer's note:** col 166 is the app key string (`GKOHNP140_...632469` / `...F88187`, last 6 chars = key id), and the module tag is NOT a column: it is the prefix of col 163 (`h_`, `s_`, `v_`, `m_`; purely numeric = `num`; counts h_ 13,181 rows, num 26,954, s_ 763, v_ 515, m_ 8). Per parent the entry minute, app key and order number are constant (0 conflicts); an order number can be shared by several parent ids (37,258 vs 39,874) -- relevant only to the unimplemented W4 and not interpreted. No exact duplicate fills (trade-id collisions are different trades).
+Own replay (ordered by (UTC second, raw row)): 23,684 opening portions / 1,414,545 units, 17,760 closing portions / 1,377,065 units -- equal to the approved ontology targets.
+
+## 2. Full comparison (task 1) -- [RAW][IMPL]
+`ref_wing_body.py` (no pe import; own replay, own items, own W1/W1_S60/W2/W2_S60/W3 -- W3 by cumulative-sum interval overlap, a different algorithm from the engine's two-pointer loop). `compare_full.py`, `compare_extra.py`:
+* items 36,784 vs 36,784, key sets equal, 0 field differences (qty, first_ts, session, entry minute, avg price, n members, tag, strike, right, app key, per-item candidate counts).
+* links: W1 42,777; W1_S60 65,228; W2 42,777; W2_S60 65,228; W3 12,096 -- identical key sets, 0 duplicates, 0 differences over 228,106 rows in dt_s (sign = wing minus body), quantities, qty ratio, strike distance (CE: wing strike minus body; PE: body minus wing), px ratio, weights, weighted units, queue_matched_units, segment, nearest / nearest_tied, n_candidates_for_wing, n_wings_for_body, link_status, in_primary flag, app-key columns, link id grammar, provenance/claim columns. W3 residual 56,420 / 66,055 equal.
+No interpretation difference arose between my reading of the approved text and the engine. Limitation: the reference shares my reading of D6 (same author reads the same text); a shared misreading would not show.
+
+## 3. Headline numbers and denominators (task 2) -- [RAW][IMPL], all VERIFIED
+8,399 / 617,130; 13,325 / 626,765; W1 7,301 (3,501 unique, 3,800 multiple), 1,098 none, 133,640 unmatched wing units = 21.65 % of 617,130; bodies 10,913 with wing / 2,412 without; W1_S60 8,204 / 195 / 68,720; W3 56,420 / 66,055; groups 7,958 / 5,446 / 81.18 % (55.6 % of all, 53.1 % of wing units; closing 3,247 / 2,381 / 71.5 %); 336,040 closing and 170,650 opening units outside tag roles; 107,530 closing wing units from mixed-module episodes. Denominators reconcile: 617,130 + 626,765 + 170,650 = 1,414,545 and 500,775 + 540,250 + 336,040 = 1,377,065, so no excluded population disappears from the universe; but the quoted percentages (e.g. 21.7 %) are fractions of the TAGGED wing set only (direction scope: 750,530 wing units, verified exact). Distributions (candidates per wing, wings per body, |dt|, strike distance, qty ratio) equal the committed summary for all four level x method cells.
+Second app key: 7.84 % of h_ fills / 7.87 % of h_ units / 8.18 % of opening wing items / 8.43 % of opening wing units; it never appears on a `num` row. The "7.8 %" is a share of h_ fills, not "wing units" (C-06).
+App keys as a filter: code inspection (only `_meta`, output columns, `coverage_split`) and perturbation [REPRO] (full ledger, engine run: keys dropped / swapped / all second / garbage) -- all link ids and fields identical for all five methods. VERIFIED not used.
+Tie-order measurement (C-01): 6 same-second mixed-side fills move body units by -85/+65, items by -4/+2 and links by <= 7.
+
+## 4. Assumption challenges (task 3)
+* Temporal candidate = hedge: SUSPECTED only. Placebo [RAW][IMPL]: 86.9 % of opening wings have a same-minute body candidate versus 17.8-25.6 % at +-2..5 minute shifts (49.3 % at -1, 35.2 % at +1; 26.9 % same minute-of-day in another session). So co-timing is non-random, but it equally fits one scheduler submitting several legs; 3,800 wings have several candidates, 2,887 links are nearest-ties, 6 links join the same contract, 24 are not further OTM.
+* Proportional weight = allocation: no. Weights depend only on body quantity; for 1,798 of 2,651 multi-candidate wings with a unique nearest body the largest weight is not on the nearest body; 9.1 % of bodies carry weighted units > own quantity (max 31.5x). Report wording ("weights are not allocations") is correct.
+* FIFO match = ownership: no. W3 pairs have median |dt| 1,007 s (68 % > 600 s), wing before body in 7.9 %; reversing the body queue keeps 136 of 12,096 (1.1 %) pairs; W3 body is outside the W1 set for 6,689 of 8,176 wings.
+* No role-labelled closing wing = no hedge: not testable. Closing roles by closing tag omit 59,065 units of short-num-opened episodes closed by s_ and 114,645 units of h_-only-opened long episodes closed by num / s_ / v_ (C-03).
+* Wing + body in one cycle = one basket: not supported; the 35 cycles have 51-279 distinct opening entry minutes (median 157) and the export has no basket id.
+Wording audit (M2D report, M2E reports, EVIDENCE_REGISTRY, m2e_charts.py titles, m2d_charts stamp): evidence classes W1 WEAKLY_SUPPORTED / W1_S60, W3 UNRESOLVED / lot ownership and protective intent UNRESOLVED/NOT_TESTABLE are repeated consistently; case studies carry "cannot conclude". Only over-reach found: the "independently equal to TP-03 E6" sentence (NOT VERIFIED here) and "unmatched" as a column name (describes the method's empty candidate set; M2E already says so).
+
+## 5. Counterexamples (task 4) -- [IMPL] + hand derivation
+`cx_scenarios.py`: 18 hand-built scenarios x 2 scopes (several wings/one body and vice versa; +-60 boundary at 60/61 before and after; wing before body; different right/expiry/underlying; IST midnight and UTC-midnight-inside-one-IST-day; missing entry minute; partial fills across seconds; qty ratios 1/4/1/3; W2 weights 0.125/0.375/0.5 summing to the wing quantity; W3 unequal queue (hand-checked segments 65/65/65/65/130, body residual 195); opening vs closing and a reversal; CE and PE sign incl. inside-the-body strikes (negative); same-instrument; direction scope; equal-timestamp ties) plus 400 fuzz scenarios: engine and reference agree on every field. Hand derivations match both.
+
+## 6. Frozen cycles (task 5) -- [RAW][IMPL]
+All 125 fields per cycle of `wing_body_coverage_cycle_level` (OPENING W1, W1_S60, W3; CLOSING W1, W1_S60) equal for NIFTY 2026-06-30 and SENSEX 2026-07-16, both via full-ledger filtering and cycle-only replay; per-cycle `m2d_*` TSV key sets equal.
+
+## 7. Mutation testing (task 6)
+29 mutants on a scratch mirror (`mutants_def.py`, `run_mutant.py`, results in mutations.json). Existing `test_wing_body.py` (33 tests, 3 slow real-ledger): 28 killed, **1 survivor: M19** (W3 weight uses body quantity; C-02). Own independent reference (`own_check.py`: full ledger + synthetic + fuzz): 29 of 29 killed. Real-ledger-blind mutants (killed only by synthetic scenarios, both suites): M03 IST->UTC session, M15 S60 session requirement dropped, M24 missing-entry-minute-as-key -- the real data contain no such cases (all fills 09:14-15:31 IST; 0 cross-session links; 0 missing minutes). One crash in my own checker (None share when closing groups vanish, M13) was fixed and re-run; it was never counted as a kill.
+
+## 8. Not inspected / not verified
+TP-03 Phase 1 E6 and E7 artifacts; charts (images, only titles by grep); C++ code; M2-C/M2-B outputs beyond the replay totals; W4 (not implemented, not interpreted); intent, ownership, original baskets (NOT_TESTABLE).

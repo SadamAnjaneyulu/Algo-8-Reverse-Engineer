@@ -1,0 +1,2261 @@
+{
+ "summary": {
+  "cases": 225,
+  "ok": 225,
+  "bit_identical": 225,
+  "worst_decimal_diff": 0,
+  "real_full_included": true
+ },
+ "cases": [
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/ab_lots_close_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/duplicate_flagged_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/equal_second_mixed_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/expired_unclosed_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 7,
+   "fixture": "fixtures/synthetic_m2/fifo_lifo_diverge_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_reversal_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic_m2/mixed_parent_two_contracts_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 9,
+   "fixture": "fixtures/synthetic_m2/multi_cycle_episodes_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic_m2/parent_partial_fills_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4000,
+   "fixture": "fixtures/synthetic_m2/random_stress_seed3_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic_m2/reversal_100_130_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 10,
+   "fixture": "fixtures/synthetic/cut_reentry_195_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/duplicate_flagged_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/equal_second_mixed_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/expired_unclosed_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/open_close_full_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 2,
+   "fixture": "fixtures/synthetic/out_of_order_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 4,
+   "fixture": "fixtures/synthetic/partial_close_lots_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/partial_fills_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3000,
+   "fixture": "fixtures/synthetic/random_stress_seed1_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 5000,
+   "fixture": "fixtures/synthetic/random_stress_seed7_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 3,
+   "fixture": "fixtures/synthetic/reversal_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 417,
+   "fixture": "fixtures/historical_sample/NIFTY_2026-07-14_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 369,
+   "fixture": "fixtures/historical_sample/SENSEX_2026-10-15_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "FIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "FIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "FIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "LIFO",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "LIFO",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "LIFO",
+   "tie": "buys_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "AVG",
+   "tie": "src"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "AVG",
+   "tie": "sells_first"
+  },
+  {
+   "ok": true,
+   "bit_identical": true,
+   "max_abs_decimal_diff": 0.0,
+   "mismatch": null,
+   "events": 41421,
+   "fixture": "data_generated/historical_events.tsv",
+   "method": "AVG",
+   "tie": "buys_first"
+  }
+ ]
+}

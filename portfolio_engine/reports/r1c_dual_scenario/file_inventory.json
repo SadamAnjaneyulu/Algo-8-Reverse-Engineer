@@ -1,0 +1,3424 @@
+{
+ "control": "baseline scenario reproduced from empty out root",
+ "files": [
+  {
+   "category": "markdown_report",
+   "control_sha256": "1e6f875a2cdc1668833249e50988d34627480f5f8758ec2cd908c45651948f74",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1e6f875a2cdc1668833249e50988d34627480f5f8758ec2cd908c45651948f74",
+   "path": "reports/M2E_POSITION_CASE_STUDIES.md",
+   "scenario_sha256": "1e6f875a2cdc1668833249e50988d34627480f5f8758ec2cd908c45651948f74",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2c_closing_batch_data",
+   "control_sha256": "177e883e2e82a22255600147e81889ed19456a304b00c21b3701c2f73423a246",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "177e883e2e82a22255600147e81889ed19456a304b00c21b3701c2f73423a246",
+   "path": "reports/m2c_data/closing_batch_members_C1.tsv.gz",
+   "scenario_sha256": "3e0dacb231adc0dba6e1c313fa59f12cab9b8d6867f73ab61a04d9baa63e2d3e",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 78517,
+     "rows_delivered": 84085,
+     "rows_only_in_delivered": 20,
+     "rows_only_in_other": 10,
+     "rows_other": 84075,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 20 only in delivered, 10 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2c_closing_batch_data",
+   "control_sha256": "5c105c0b1d557c06d77e7ffa359bb352a2d14a744415b8d876790cce97f18427",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5c105c0b1d557c06d77e7ffa359bb352a2d14a744415b8d876790cce97f18427",
+   "path": "reports/m2c_data/closing_batch_members_C2.tsv.gz",
+   "scenario_sha256": "f4268124ede9e142160a22115cf0b76bf23b82bd00c980220adb86aeabe6224a",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 78517,
+     "rows_delivered": 84085,
+     "rows_only_in_delivered": 20,
+     "rows_only_in_other": 10,
+     "rows_other": 84075,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 20 only in delivered, 10 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2c_closing_batch_data",
+   "control_sha256": "5cb20bec25d98a5616c7e64d02997089908331b6c89f2fc49055e70d6a10c3fd",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5cb20bec25d98a5616c7e64d02997089908331b6c89f2fc49055e70d6a10c3fd",
+   "path": "reports/m2c_data/closing_batch_portions_C1.tsv.gz",
+   "scenario_sha256": "903d7ce52aedc913971187b39715b82addb5b9c1d861375fe869e4d678f2a371",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 20,
+     "rows_delivered": 88800,
+     "rows_only_in_delivered": 10,
+     "rows_only_in_other": 10,
+     "rows_other": 88800,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 10 only in delivered, 10 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2c_closing_batch_data",
+   "control_sha256": "d8384d91119434fb9c31e873922ecf23183505c197e8427dae66fc7f2f2c81d5",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "d8384d91119434fb9c31e873922ecf23183505c197e8427dae66fc7f2f2c81d5",
+   "path": "reports/m2c_data/closing_batch_portions_C2.tsv.gz",
+   "scenario_sha256": "11f1ce0551c5aa5667a013bbe2b6b98a8963b1de8adefb2d972060fd60242574",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 20,
+     "rows_delivered": 88800,
+     "rows_only_in_delivered": 10,
+     "rows_only_in_other": 10,
+     "rows_other": 88800,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 10 only in delivered, 10 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2c_closing_batch_data",
+   "control_sha256": "0942c2c577462561ad0e9b2a4d3a95669829b658b4f7060dbfde0f59db95d2ca",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "0942c2c577462561ad0e9b2a4d3a95669829b658b4f7060dbfde0f59db95d2ca",
+   "path": "reports/m2c_data/closing_batches_C1.tsv.gz",
+   "scenario_sha256": "a68b8de952aa0fdb361f37608346cc2ef2f3f4e9fc3ed936f4ad969b4827416a",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 5,
+     "rows_delivered": 17642,
+     "rows_only_in_delivered": 5,
+     "rows_only_in_other": 5,
+     "rows_other": 17642,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 5 only in delivered, 5 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2c_closing_batch_data",
+   "control_sha256": "cc9bf849943f48215202593b74da1e22fd360cc3124b31418b283de3d111b666",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "cc9bf849943f48215202593b74da1e22fd360cc3124b31418b283de3d111b666",
+   "path": "reports/m2c_data/closing_batches_C2.tsv.gz",
+   "scenario_sha256": "62e3db7908b884b301b45f00ad09d080ae1a857e6d044c31fcd9de2276a7026e",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 5,
+     "rows_delivered": 17642,
+     "rows_only_in_delivered": 5,
+     "rows_only_in_other": 5,
+     "rows_other": 17642,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 5 only in delivered, 5 only in the other scenario"
+   }
+  },
+  {
+   "category": "summary_json",
+   "control_sha256": "86cd41f9f3836d6c578019ccce45cca3018c894aa7e18e0711b507b6dab7291e",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "86cd41f9f3836d6c578019ccce45cca3018c894aa7e18e0711b507b6dab7291e",
+   "path": "reports/m2c_data/m2c_summary.json",
+   "scenario_sha256": "1a10d321039c4009cf2c2a9cf3ca3bb68ec61ced639bf7006a38814546834abf",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "differing_leaf_fields": 68,
+     "examples": [
+      "/closing_parents",
+      "/mixed_parents_closing_qty_vs_all_fill_qty/closing_qty",
+      "/mixed_parents_closing_qty_vs_all_fill_qty/fill_qty",
+      "/mixed_parents_in_scope",
+      "/parents_in_equal_first_ts_groups",
+      "/stability/c1_vs_c2[0]/links_both"
+     ],
+     "kind": "json"
+    },
+    "reason": "68 content fields differ"
+   }
+  },
+  {
+   "category": "manifest",
+   "control_sha256": "2344c09e25b1344dbbf59859eff02c62f4b6347f8aecc547a112ea7ead1c2772",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "ad4a03549bda6f657e2e6dc7ec55ea38a8feb76b4e76f871f2e2235174a5accf",
+   "path": "reports/m2c_data/manifest.json",
+   "scenario_sha256": "e84aaf0b57866ce56d32d58246e97a6de1038bbcf821fb11140363a7293a9d56",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "differing_leaf_fields": 14,
+     "examples": [
+      "/files/closing_batch_members_C1.tsv.gz/bytes_gz",
+      "/files/closing_batch_members_C1.tsv.gz/rows",
+      "/files/closing_batch_members_C1.tsv.gz/sha256_of_text",
+      "/files/closing_batch_members_C2.tsv.gz/bytes_gz",
+      "/files/closing_batch_members_C2.tsv.gz/rows",
+      "/files/closing_batch_members_C2.tsv.gz/sha256_of_text"
+     ],
+     "kind": "json"
+    },
+    "reason": "14 content fields differ"
+   }
+  },
+  {
+   "category": "m2c_figure_csv",
+   "control_sha256": "8194458a4a7419a6ea0845415f5a3af2a91a20cd7cdc27ba4279eddfa7537c24",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "8194458a4a7419a6ea0845415f5a3af2a91a20cd7cdc27ba4279eddfa7537c24",
+   "path": "reports/m2c_figures/m2c_batch_map_NIFTY_2026-06-30_D0.csv",
+   "scenario_sha256": "8194458a4a7419a6ea0845415f5a3af2a91a20cd7cdc27ba4279eddfa7537c24",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "889edb956e67142b2841bb20222e4145252a10e5beb8d70ad6722a47754f00a7",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "889edb956e67142b2841bb20222e4145252a10e5beb8d70ad6722a47754f00a7",
+   "path": "reports/m2c_figures/m2c_batch_map_NIFTY_2026-06-30_D0.png",
+   "scenario_sha256": "889edb956e67142b2841bb20222e4145252a10e5beb8d70ad6722a47754f00a7",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2c_figure_csv",
+   "control_sha256": "8c24380e5c738b867074f8ddfa288520cf550d57820fb7fecf2f146f99e4ac98",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "8c24380e5c738b867074f8ddfa288520cf550d57820fb7fecf2f146f99e4ac98",
+   "path": "reports/m2c_figures/m2c_batch_map_SENSEX_2026-07-16_D0.csv",
+   "scenario_sha256": "8c24380e5c738b867074f8ddfa288520cf550d57820fb7fecf2f146f99e4ac98",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "4226827a4377bdc0cbf9735d834bc1ea5a5b689b23571824302fd836243792d8",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "4226827a4377bdc0cbf9735d834bc1ea5a5b689b23571824302fd836243792d8",
+   "path": "reports/m2c_figures/m2c_batch_map_SENSEX_2026-07-16_D0.png",
+   "scenario_sha256": "4226827a4377bdc0cbf9735d834bc1ea5a5b689b23571824302fd836243792d8",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "c4e82a7489779ddbbad69724fdeff7495cb6edc1d2149b4b3c20a03828f21f82",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "c4e82a7489779ddbbad69724fdeff7495cb6edc1d2149b4b3c20a03828f21f82",
+   "path": "reports/m2c_figures/m2c_precision_sensitivity.png",
+   "scenario_sha256": "c4e82a7489779ddbbad69724fdeff7495cb6edc1d2149b4b3c20a03828f21f82",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2c_figure_csv",
+   "control_sha256": "8ea672b47d0c6ce3445ad0e870061dd0f9cc5298e287f4822c4ea883bfb1f08d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "8ea672b47d0c6ce3445ad0e870061dd0f9cc5298e287f4822c4ea883bfb1f08d",
+   "path": "reports/m2c_figures/m2c_threshold_sensitivity.csv",
+   "scenario_sha256": "8ea672b47d0c6ce3445ad0e870061dd0f9cc5298e287f4822c4ea883bfb1f08d",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "154332733ad22e64fa590ab008a20b3a18744058b12eff396c2757bb7bc17f15",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "154332733ad22e64fa590ab008a20b3a18744058b12eff396c2757bb7bc17f15",
+   "path": "reports/m2c_figures/m2c_threshold_sensitivity.png",
+   "scenario_sha256": "154332733ad22e64fa590ab008a20b3a18744058b12eff396c2757bb7bc17f15",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "summary_json",
+   "control_sha256": "ae21cfa3f8d80dde0b8aed3c191089f6e819c2820dbe9cb012b4f42e1bc59ab4",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "ae21cfa3f8d80dde0b8aed3c191089f6e819c2820dbe9cb012b4f42e1bc59ab4",
+   "path": "reports/m2d_data/m2d_summary.json",
+   "scenario_sha256": "d0d2062ebf417ac89d082097db5bfbd260db28a7a668fe24c48d5237ee6d3415",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "differing_leaf_fields": 66,
+     "examples": [
+      "/coverage/OPENING|W1/abs_dt_s/n",
+      "/coverage/OPENING|W1/body_items",
+      "/coverage/OPENING|W1/body_items_with_wing_candidate",
+      "/coverage/OPENING|W1/body_units",
+      "/coverage/OPENING|W1/body_units_with_wing_candidate",
+      "/coverage/OPENING|W1/dt_s/n"
+     ],
+     "kind": "json"
+    },
+    "reason": "66 content fields differ"
+   }
+  },
+  {
+   "category": "manifest",
+   "control_sha256": "fe09fe70e97ed4de9adca5e06855977edcdcde08195b862e63baa3d56dd8f736",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "db21ef171933b5d039359605741b07028f0bfd7a098a98d962fbc58843d330a3",
+   "path": "reports/m2d_data/manifest.json",
+   "scenario_sha256": "1bc9f116bebfbaa5f209d3d5b9f0b5e6d31814ab16d112dcadcd9fa1b715f1ac",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "differing_leaf_fields": 15,
+     "examples": [
+      "/files/wing_body_items.tsv.gz/bytes_gz",
+      "/files/wing_body_items.tsv.gz/rows",
+      "/files/wing_body_items.tsv.gz/sha256_of_text",
+      "/files/wing_body_links_W1.tsv.gz/bytes_gz",
+      "/files/wing_body_links_W1.tsv.gz/rows",
+      "/files/wing_body_links_W1.tsv.gz/sha256_of_text"
+     ],
+     "kind": "json"
+    },
+    "reason": "15 content fields differ"
+   }
+  },
+  {
+   "category": "m2d_wing_body_data",
+   "control_sha256": "87e94c235cbc0ba21e35d77b189524e158c7296d3a1f0b0a60021eaa3b014d67",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "87e94c235cbc0ba21e35d77b189524e158c7296d3a1f0b0a60021eaa3b014d67",
+   "path": "reports/m2d_data/wing_body_items.tsv.gz",
+   "scenario_sha256": "4d0d7a3a29f2329f1eeaa3290181f494fca557291c3e16de8ae131ad672a4b6c",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 11486,
+     "rows_delivered": 36784,
+     "rows_only_in_delivered": 8,
+     "rows_only_in_other": 6,
+     "rows_other": 36782,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 8 only in delivered, 6 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2d_wing_body_data",
+   "control_sha256": "f52b8b0fd35b799046e065da0943b66839846c45b990be6ee194b074502071c3",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "f52b8b0fd35b799046e065da0943b66839846c45b990be6ee194b074502071c3",
+   "path": "reports/m2d_data/wing_body_links_W1.tsv.gz",
+   "scenario_sha256": "ec1402391c863bd5377874682bfdb95766afff1c8c285fc3cb647164e4a7134a",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 29605,
+     "rows_delivered": 42777,
+     "rows_only_in_delivered": 57,
+     "rows_only_in_other": 51,
+     "rows_other": 42771,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 57 only in delivered, 51 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2d_wing_body_data",
+   "control_sha256": "9187039d41150296f1c71f7677a59cdff4b1e3c3209209b59214e9f6d924db40",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "9187039d41150296f1c71f7677a59cdff4b1e3c3209209b59214e9f6d924db40",
+   "path": "reports/m2d_data/wing_body_links_W1_S60.tsv.gz",
+   "scenario_sha256": "c28f182cf07c6b8e37cd2714bab1c8c51e1a5e0c565c6a99ac5d8a59e29200ec",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 45191,
+     "rows_delivered": 65228,
+     "rows_only_in_delivered": 57,
+     "rows_only_in_other": 51,
+     "rows_other": 65222,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 57 only in delivered, 51 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2d_wing_body_data",
+   "control_sha256": "d8f7c5c1e1b0b77a6f96f0ff074951d3a25d21975269c7047b7f818232dcb5fa",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "d8f7c5c1e1b0b77a6f96f0ff074951d3a25d21975269c7047b7f818232dcb5fa",
+   "path": "reports/m2d_data/wing_body_links_W2.tsv.gz",
+   "scenario_sha256": "6ef8a64834ea3034cc7e5fb13974328e338f0f66ee0e83d4cf77baf7d3d81c60",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 29605,
+     "rows_delivered": 42777,
+     "rows_only_in_delivered": 57,
+     "rows_only_in_other": 51,
+     "rows_other": 42771,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 57 only in delivered, 51 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2d_wing_body_data",
+   "control_sha256": "95463484acba4ae978ac8f03c4cf22773d11ee5cfb4b8bd7a85ab796f1cfe9a9",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "95463484acba4ae978ac8f03c4cf22773d11ee5cfb4b8bd7a85ab796f1cfe9a9",
+   "path": "reports/m2d_data/wing_body_links_W2_S60.tsv.gz",
+   "scenario_sha256": "61637272d8b8186f8899320d41fba24e3be87d806513ae87699ebff77e15144d",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 45191,
+     "rows_delivered": 65228,
+     "rows_only_in_delivered": 57,
+     "rows_only_in_other": 51,
+     "rows_other": 65222,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 57 only in delivered, 51 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2d_wing_body_data",
+   "control_sha256": "b3e84704eb1c91d833bf8be80db18820c3b9e2910aee4ff1b0ca7c1872dacaf1",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "b3e84704eb1c91d833bf8be80db18820c3b9e2910aee4ff1b0ca7c1872dacaf1",
+   "path": "reports/m2d_data/wing_body_links_W3.tsv.gz",
+   "scenario_sha256": "b3e84704eb1c91d833bf8be80db18820c3b9e2910aee4ff1b0ca7c1872dacaf1",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2d_figure_csv",
+   "control_sha256": "1ad1027a39192ced304aa910708bada0b77c4e81e23920713fcbe270bf7f441d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1ad1027a39192ced304aa910708bada0b77c4e81e23920713fcbe270bf7f441d",
+   "path": "reports/m2d_figures/m2d_candidates_per_wing.csv",
+   "scenario_sha256": "381fb1a29bd825b124ba8aff9301f016f4769a3bc576777b6f2813958f5698ae",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 4,
+     "rows_delivered": 13,
+     "rows_only_in_delivered": 4,
+     "rows_only_in_other": 4,
+     "rows_other": 13,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 4 only in delivered, 4 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2d_figure_csv",
+   "control_sha256": "1cdff116f08d84d3ce1c2aa34be2071ea4f4c69a13c18e284d2829828224d6de",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1cdff116f08d84d3ce1c2aa34be2071ea4f4c69a13c18e284d2829828224d6de",
+   "path": "reports/m2d_figures/m2d_dt_hist_W1.csv",
+   "scenario_sha256": "1b09d90f0a256cc3c20bf1414cb79e844eb9cc6524d9b6c800ef665438096418",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 3,
+     "rows_delivered": 60,
+     "rows_only_in_delivered": 3,
+     "rows_only_in_other": 3,
+     "rows_other": 60,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 3 only in delivered, 3 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2d_figure_csv",
+   "control_sha256": "42d779e0823c7a78d4cb4a596c3de052a3e4186c0ec985791b61f6f3331d6f79",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "42d779e0823c7a78d4cb4a596c3de052a3e4186c0ec985791b61f6f3331d6f79",
+   "path": "reports/m2d_figures/m2d_group_ratio_hist.csv",
+   "scenario_sha256": "5f2388e355ae6341ccb6705421a6ae626b6a131abf9ec629cae7596dbf87382e",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 2,
+     "rows_delivered": 40,
+     "rows_only_in_delivered": 2,
+     "rows_only_in_other": 2,
+     "rows_other": 40,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 2 only in delivered, 2 only in the other scenario"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "44585f49912a42789da4f9b4bf55495f775ffd1c47d70eb3e438108a6273ed47",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "44585f49912a42789da4f9b4bf55495f775ffd1c47d70eb3e438108a6273ed47",
+   "path": "reports/m2d_figures/m2d_overview.png",
+   "scenario_sha256": "726171dd25b7588b53c6aa20f3ea33482ffd3a002f46b8346893944127bb8207",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "delivered_bytes": 122080,
+     "kind": "png",
+     "note": "rendered image bytes differ",
+     "other_bytes": 122073
+    },
+    "reason": "rendered image bytes differ"
+   }
+  },
+  {
+   "category": "summary_json",
+   "control_sha256": "f28208b265d59f8055c057c463917c6ab4a675f66699c15924f6c2e9add3471b",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "f28208b265d59f8055c057c463917c6ab4a675f66699c15924f6c2e9add3471b",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/case_studies.json",
+   "scenario_sha256": "f28208b265d59f8055c057c463917c6ab4a675f66699c15924f6c2e9add3471b",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   }
+  },
+  {
+   "category": "summary_json",
+   "control_sha256": "50a42cc6bc22e8742831ae85e9e7df8971af26f2a23de73dcd932e5d44e4b1ed",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "50a42cc6bc22e8742831ae85e9e7df8971af26f2a23de73dcd932e5d44e4b1ed",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/coverage.json",
+   "scenario_sha256": "50a42cc6bc22e8742831ae85e9e7df8971af26f2a23de73dcd932e5d44e4b1ed",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "7e55c457fb1fee073f981a3a167115153c5ae005d6145542232b4cbbde98d7db",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "7e55c457fb1fee073f981a3a167115153c5ae005d6145542232b4cbbde98d7db",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/episodes.tsv",
+   "scenario_sha256": "7e55c457fb1fee073f981a3a167115153c5ae005d6145542232b4cbbde98d7db",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "f6803598cea01a743342448f5ad43619f4ddb579c6f3cae9bc4da0f0453303d4",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "f6803598cea01a743342448f5ad43619f4ddb579c6f3cae9bc4da0f0453303d4",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/fills.tsv",
+   "scenario_sha256": "91dc4ff5af88da42610f24630b79330d4a16db8fce41f6d8fb5a2527f19ce190",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 17,
+     "rows_delivered": 1146,
+     "rows_only_in_delivered": 0,
+     "rows_only_in_other": 0,
+     "rows_other": 1146,
+     "same_rows_reordered_only": true
+    },
+    "reason": "same rows, different order"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "0abb649b00bb6bb280849d2c3eace8258b182df2ce529b7be62fb64e58e38a20",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "0abb649b00bb6bb280849d2c3eace8258b182df2ce529b7be62fb64e58e38a20",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/inventory_series.tsv",
+   "scenario_sha256": "50bb6aa7becb2c3bc184d69abfddd55b9a3118bcbf5ae6a9cc57f1596de8ae06",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 34,
+     "rows_delivered": 1146,
+     "rows_only_in_delivered": 34,
+     "rows_only_in_other": 34,
+     "rows_other": 1146,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 34 only in delivered, 34 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "40ea52639c81a79b7e0c183d8a70282ff92b8018285a1dd8af763cbbb4b13744",
+   "control_vs_delivered": {
+    "classification": "NEW",
+    "detail": null,
+    "reason": "produced by the chain, not a delivered file"
+   },
+   "delivered_sha256": null,
+   "path": "reports/m2e_data/NIFTY_2026-06-30/inventory_series_intra_second_flags.tsv",
+   "scenario_sha256": "0b8660888cd2dde6a6870624f238a15f12aa0e91c1e387425f15436d81b8cec2",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "NEW",
+    "detail": null,
+    "reason": "produced by the chain, not a delivered file"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "1db3e42af36aed40cf50bc3fef9bea33a5c1645eda993a0aa265de5e0a83cb90",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1db3e42af36aed40cf50bc3fef9bea33a5c1645eda993a0aa265de5e0a83cb90",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/lifecycle_events.tsv",
+   "scenario_sha256": "51ec85a2b50f2cac53b74b4ee8814bcdad85cf565f95222588dc40dbc5cdcc43",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 17,
+     "rows_delivered": 1147,
+     "rows_only_in_delivered": 17,
+     "rows_only_in_other": 17,
+     "rows_other": 1147,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 17 only in delivered, 17 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "9a98c8bcb3ae48acc4e00004c77b462fba1d34c76ae224d656bd64cada0cd179",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "9a98c8bcb3ae48acc4e00004c77b462fba1d34c76ae224d656bd64cada0cd179",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batch_members_C1.tsv",
+   "scenario_sha256": "9a98c8bcb3ae48acc4e00004c77b462fba1d34c76ae224d656bd64cada0cd179",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "c3629d77f3fc8c1809add54ad0c82af4c487dcf4c2c415f712dd4089f2423d3c",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "c3629d77f3fc8c1809add54ad0c82af4c487dcf4c2c415f712dd4089f2423d3c",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batch_members_C2.tsv",
+   "scenario_sha256": "c3629d77f3fc8c1809add54ad0c82af4c487dcf4c2c415f712dd4089f2423d3c",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "352f2b46ff1ec4ad87a65815f50bf3120df498973a95aad8a4a092b71833f585",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "352f2b46ff1ec4ad87a65815f50bf3120df498973a95aad8a4a092b71833f585",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batch_portions_C1.tsv",
+   "scenario_sha256": "352f2b46ff1ec4ad87a65815f50bf3120df498973a95aad8a4a092b71833f585",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "3df7994b0a4cc8d9576bb3844aab24ce7d217b795caf97bf05a1e8c851529229",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "3df7994b0a4cc8d9576bb3844aab24ce7d217b795caf97bf05a1e8c851529229",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batch_portions_C2.tsv",
+   "scenario_sha256": "3df7994b0a4cc8d9576bb3844aab24ce7d217b795caf97bf05a1e8c851529229",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "eac7fcac55658fe51792d38554ebe7b460bd20a29910a33b5837ab87aacf809a",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "eac7fcac55658fe51792d38554ebe7b460bd20a29910a33b5837ab87aacf809a",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batches_C1.tsv",
+   "scenario_sha256": "eac7fcac55658fe51792d38554ebe7b460bd20a29910a33b5837ab87aacf809a",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "f0c79349a0a5f59ae196a6fc9322668711a49cc058c02f83d335c87a7681cfa7",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "f0c79349a0a5f59ae196a6fc9322668711a49cc058c02f83d335c87a7681cfa7",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2c_closing_batches_C2.tsv",
+   "scenario_sha256": "f0c79349a0a5f59ae196a6fc9322668711a49cc058c02f83d335c87a7681cfa7",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "e1b6a653d32581c5ef66cae2b7426f72e92d4f54be6e48dfcfe3cb707d5409e7",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e1b6a653d32581c5ef66cae2b7426f72e92d4f54be6e48dfcfe3cb707d5409e7",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_items.tsv",
+   "scenario_sha256": "e1b6a653d32581c5ef66cae2b7426f72e92d4f54be6e48dfcfe3cb707d5409e7",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "e9460a1b841540aa6235d32b4e337fb81165b7086ccd1eb51d039c8bb498179e",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e9460a1b841540aa6235d32b4e337fb81165b7086ccd1eb51d039c8bb498179e",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W1.tsv",
+   "scenario_sha256": "e9460a1b841540aa6235d32b4e337fb81165b7086ccd1eb51d039c8bb498179e",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "929981713b5d1278e2fe9d91869a49508772fab2a73ef6e1c49343d65c18ccd3",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "929981713b5d1278e2fe9d91869a49508772fab2a73ef6e1c49343d65c18ccd3",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W1_S60.tsv",
+   "scenario_sha256": "929981713b5d1278e2fe9d91869a49508772fab2a73ef6e1c49343d65c18ccd3",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "3777ab73ed1e06030c6e5265e6b7275f0d0c47618c18f0b4a0ca3144b98fa26c",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "3777ab73ed1e06030c6e5265e6b7275f0d0c47618c18f0b4a0ca3144b98fa26c",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W2.tsv",
+   "scenario_sha256": "3777ab73ed1e06030c6e5265e6b7275f0d0c47618c18f0b4a0ca3144b98fa26c",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "f5d4fd7ee027097365ed2b1613bb3429787f83af51de62546a01d73e66dfbae2",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "f5d4fd7ee027097365ed2b1613bb3429787f83af51de62546a01d73e66dfbae2",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W2_S60.tsv",
+   "scenario_sha256": "f5d4fd7ee027097365ed2b1613bb3429787f83af51de62546a01d73e66dfbae2",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "16dc54c48dbac70c8dc76062ffb01dd753b9e09734bb6178400da4566768a86b",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "16dc54c48dbac70c8dc76062ffb01dd753b9e09734bb6178400da4566768a86b",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/m2d_wing_body_links_W3.tsv",
+   "scenario_sha256": "16dc54c48dbac70c8dc76062ffb01dd753b9e09734bb6178400da4566768a86b",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "manifest",
+   "control_sha256": "3b6e0cae03d62b41a8725d08a5328a352bf21180d4656acb1bc49c68bf7d0d0a",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "9bd3a8590bba44c843280c505772e8c5807feae1aa94603a2fc369854f843b76",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/manifest.json",
+   "scenario_sha256": "1193aef41f46e7d4c4227ab565056332c07d75ef5bbc1df5c74bcf0d6c760ff4",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "differing_leaf_fields": 3,
+     "examples": [
+      "/files/fills.tsv/sha256",
+      "/files/inventory_series.tsv/sha256",
+      "/files/lifecycle_events.tsv/sha256"
+     ],
+     "kind": "json"
+    },
+    "reason": "3 content fields differ"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "4cd86fbe02d02e6b5810c59f663cc4d8f4d5c7eedcfa85948c0f66afc7eff45a",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "4cd86fbe02d02e6b5810c59f663cc4d8f4d5c7eedcfa85948c0f66afc7eff45a",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/opening_items.tsv",
+   "scenario_sha256": "4cd86fbe02d02e6b5810c59f663cc4d8f4d5c7eedcfa85948c0f66afc7eff45a",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "ff8e4607da8fd3ed5a645cb60f08d9ec923ed4a32e12e2d8da41a9fb6d2f9c26",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "ff8e4607da8fd3ed5a645cb60f08d9ec923ed4a32e12e2d8da41a9fb6d2f9c26",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/session_carry.tsv",
+   "scenario_sha256": "ff8e4607da8fd3ed5a645cb60f08d9ec923ed4a32e12e2d8da41a9fb6d2f9c26",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "ea9ed95ce3bf5ced66e525a21b6145ad6bc3bca25a03716ebe8a6f9f8ba71121",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "ea9ed95ce3bf5ced66e525a21b6145ad6bc3bca25a03716ebe8a6f9f8ba71121",
+   "path": "reports/m2e_data/NIFTY_2026-06-30/tp03_windows.tsv",
+   "scenario_sha256": "ea9ed95ce3bf5ced66e525a21b6145ad6bc3bca25a03716ebe8a6f9f8ba71121",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "summary_json",
+   "control_sha256": "ce4d8ea2e038b39dceaf1c8643aad3305994536061072d3d51d884e44e3862ee",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "ce4d8ea2e038b39dceaf1c8643aad3305994536061072d3d51d884e44e3862ee",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/case_studies.json",
+   "scenario_sha256": "ce4d8ea2e038b39dceaf1c8643aad3305994536061072d3d51d884e44e3862ee",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   }
+  },
+  {
+   "category": "summary_json",
+   "control_sha256": "2cb2ced5c094c03d5a4b368fa6c569d151ba6a7853f06c8ac9d4e4aa84f28d71",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "2cb2ced5c094c03d5a4b368fa6c569d151ba6a7853f06c8ac9d4e4aa84f28d71",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/coverage.json",
+   "scenario_sha256": "2cb2ced5c094c03d5a4b368fa6c569d151ba6a7853f06c8ac9d4e4aa84f28d71",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "0644aa5bb073858f4ddfff800baaa961da4ce45e911fa3e191eeaa03469e3787",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "0644aa5bb073858f4ddfff800baaa961da4ce45e911fa3e191eeaa03469e3787",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/episodes.tsv",
+   "scenario_sha256": "0644aa5bb073858f4ddfff800baaa961da4ce45e911fa3e191eeaa03469e3787",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "ca6bf719eb7b079dcd9922feca9702de279e40e10244a741b7031f7197cdbe2d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "ca6bf719eb7b079dcd9922feca9702de279e40e10244a741b7031f7197cdbe2d",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/fills.tsv",
+   "scenario_sha256": "2c726722401391e131910ec2ce76c8be2a8900575de43790a218e1a1a53953b5",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 2,
+     "rows_delivered": 729,
+     "rows_only_in_delivered": 0,
+     "rows_only_in_other": 0,
+     "rows_other": 729,
+     "same_rows_reordered_only": true
+    },
+    "reason": "same rows, different order"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "beeebcaaafc83f737ff1f772076168047c46a7d86adce3fd31b611d46dbd0457",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "beeebcaaafc83f737ff1f772076168047c46a7d86adce3fd31b611d46dbd0457",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/inventory_series.tsv",
+   "scenario_sha256": "37d16e9e992cab0a3fc7a7d54fcf4603b4995d5956d375e0cb06821b95f169e1",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 2,
+     "rows_delivered": 729,
+     "rows_only_in_delivered": 2,
+     "rows_only_in_other": 2,
+     "rows_other": 729,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 2 only in delivered, 2 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "f49c8f33fc793522cf4c98a02a3148ca73ef37c2c6c023dd6ddd30690bf80338",
+   "control_vs_delivered": {
+    "classification": "NEW",
+    "detail": null,
+    "reason": "produced by the chain, not a delivered file"
+   },
+   "delivered_sha256": null,
+   "path": "reports/m2e_data/SENSEX_2026-07-16/inventory_series_intra_second_flags.tsv",
+   "scenario_sha256": "6cd0b59cdc10bde7080438797ff8a298fc4e5a3de03f09c86b06af2eb92f9617",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "NEW",
+    "detail": null,
+    "reason": "produced by the chain, not a delivered file"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "b15201f56ad6f96ed497a8e7afb233a67b6a37a927353fcc0be84978e851d5c2",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "b15201f56ad6f96ed497a8e7afb233a67b6a37a927353fcc0be84978e851d5c2",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/lifecycle_events.tsv",
+   "scenario_sha256": "7dd2c7b161317d99395bb2657ba045cc788e51ffeff83ab81765468720a4ef3d",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 2,
+     "rows_delivered": 729,
+     "rows_only_in_delivered": 2,
+     "rows_only_in_other": 2,
+     "rows_other": 729,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 2 only in delivered, 2 only in the other scenario"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "5976b3ab5b89377fe54a3a2a148f8477c8f774bb1217bce51a36d2cb41968c8a",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5976b3ab5b89377fe54a3a2a148f8477c8f774bb1217bce51a36d2cb41968c8a",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batch_members_C1.tsv",
+   "scenario_sha256": "5976b3ab5b89377fe54a3a2a148f8477c8f774bb1217bce51a36d2cb41968c8a",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "040c5993631404047fe60596a6855b08897cab36baf9e60e1c4d923ef3e866db",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "040c5993631404047fe60596a6855b08897cab36baf9e60e1c4d923ef3e866db",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batch_members_C2.tsv",
+   "scenario_sha256": "040c5993631404047fe60596a6855b08897cab36baf9e60e1c4d923ef3e866db",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "429206b1ec0d014b03ed2eea7db31daf18bfde2b4c6aeb1caac5f923760cd8c1",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "429206b1ec0d014b03ed2eea7db31daf18bfde2b4c6aeb1caac5f923760cd8c1",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batch_portions_C1.tsv",
+   "scenario_sha256": "429206b1ec0d014b03ed2eea7db31daf18bfde2b4c6aeb1caac5f923760cd8c1",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "259982fef80f689542dce2df5817f769006f24167610c6e38f877e82ed3bac10",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "259982fef80f689542dce2df5817f769006f24167610c6e38f877e82ed3bac10",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batch_portions_C2.tsv",
+   "scenario_sha256": "259982fef80f689542dce2df5817f769006f24167610c6e38f877e82ed3bac10",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "1973c6ab39644867b160cfef0e13b6de4631ce7f1d554e5106bff28266c04c33",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1973c6ab39644867b160cfef0e13b6de4631ce7f1d554e5106bff28266c04c33",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batches_C1.tsv",
+   "scenario_sha256": "1973c6ab39644867b160cfef0e13b6de4631ce7f1d554e5106bff28266c04c33",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "52939ccaf92e4b6ebc2265adac41369a59d028d355ac0176c190ec4ea91811ca",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "52939ccaf92e4b6ebc2265adac41369a59d028d355ac0176c190ec4ea91811ca",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2c_closing_batches_C2.tsv",
+   "scenario_sha256": "52939ccaf92e4b6ebc2265adac41369a59d028d355ac0176c190ec4ea91811ca",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "edc24460e26ddb3bf7b1668614c2c9e4f81229f201ddcaa4a8d361c04b30c89e",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "edc24460e26ddb3bf7b1668614c2c9e4f81229f201ddcaa4a8d361c04b30c89e",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_items.tsv",
+   "scenario_sha256": "edc24460e26ddb3bf7b1668614c2c9e4f81229f201ddcaa4a8d361c04b30c89e",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "110ae403e1b8068bb387ca6e2a40ddada5606e2fea0def84204a08655b8d31ab",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "110ae403e1b8068bb387ca6e2a40ddada5606e2fea0def84204a08655b8d31ab",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W1.tsv",
+   "scenario_sha256": "110ae403e1b8068bb387ca6e2a40ddada5606e2fea0def84204a08655b8d31ab",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "fe3e99c2ff157f858ebc1b64a8e1b1916076ca7020ca06312e0e004c2e2958be",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "fe3e99c2ff157f858ebc1b64a8e1b1916076ca7020ca06312e0e004c2e2958be",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W1_S60.tsv",
+   "scenario_sha256": "fe3e99c2ff157f858ebc1b64a8e1b1916076ca7020ca06312e0e004c2e2958be",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "bc4140f85e421ae123b30348054444ae4574ac1f0e181c86459c1943bc53ed64",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "bc4140f85e421ae123b30348054444ae4574ac1f0e181c86459c1943bc53ed64",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W2.tsv",
+   "scenario_sha256": "bc4140f85e421ae123b30348054444ae4574ac1f0e181c86459c1943bc53ed64",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "98ca1c7c68ef9377594b023156c501f8aff12cbc78c357628f4a9a0f657a3b50",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "98ca1c7c68ef9377594b023156c501f8aff12cbc78c357628f4a9a0f657a3b50",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W2_S60.tsv",
+   "scenario_sha256": "98ca1c7c68ef9377594b023156c501f8aff12cbc78c357628f4a9a0f657a3b50",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "f5a061d15f45dce243ef4bce67da4eb8a44420384458d61ea897f47ab4fb8c09",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "f5a061d15f45dce243ef4bce67da4eb8a44420384458d61ea897f47ab4fb8c09",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/m2d_wing_body_links_W3.tsv",
+   "scenario_sha256": "f5a061d15f45dce243ef4bce67da4eb8a44420384458d61ea897f47ab4fb8c09",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "manifest",
+   "control_sha256": "a39c2fca7299516d333990e368eaf983155b4bebf7d2917b206eb65b34141a72",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "b03f715a946b41f44b8c29d816075d8289c5215242b6ca14ea96d9f6fcfa956a",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/manifest.json",
+   "scenario_sha256": "40d0002da12f6fdba2995a375eb7d160af2aeaba693b670c427a37414565cf76",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "differing_leaf_fields": 5,
+     "examples": [
+      "/files/fills.tsv/sha256",
+      "/files/inventory_series.tsv/bytes",
+      "/files/inventory_series.tsv/sha256",
+      "/files/lifecycle_events.tsv/bytes",
+      "/files/lifecycle_events.tsv/sha256"
+     ],
+     "kind": "json"
+    },
+    "reason": "5 content fields differ"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "66c02e08273e6d41085b8841592e234394a7b26851d8894aa67a35054333dfdd",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "66c02e08273e6d41085b8841592e234394a7b26851d8894aa67a35054333dfdd",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/opening_items.tsv",
+   "scenario_sha256": "66c02e08273e6d41085b8841592e234394a7b26851d8894aa67a35054333dfdd",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "20fd85c3666cf86b8d7ee45ddf781946dd359209b4b0f0168e3337254bcac6ba",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "20fd85c3666cf86b8d7ee45ddf781946dd359209b4b0f0168e3337254bcac6ba",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/session_carry.tsv",
+   "scenario_sha256": "20fd85c3666cf86b8d7ee45ddf781946dd359209b4b0f0168e3337254bcac6ba",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": "1782f9bd8d2692d2510ab2133b0ee29480241ba5c2ea5b8c751cf002d9d3636e",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1782f9bd8d2692d2510ab2133b0ee29480241ba5c2ea5b8c751cf002d9d3636e",
+   "path": "reports/m2e_data/SENSEX_2026-07-16/tp03_windows.tsv",
+   "scenario_sha256": "1782f9bd8d2692d2510ab2133b0ee29480241ba5c2ea5b8c751cf002d9d3636e",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "summary_json",
+   "control_sha256": "5e9e4db133b75e43fae0b761f3305265e68cc661698fc2227fc956856d710525",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "fb523d36a7f425f95f218ee11f4ea95ba512bfa59fdc290a7abdb54db8ca867a",
+   "path": "reports/m2e_data/m2e_summary.json",
+   "scenario_sha256": "5e9e4db133b75e43fae0b761f3305265e68cc661698fc2227fc956856d710525",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   }
+  },
+  {
+   "category": "m2e_cycle_table",
+   "control_sha256": null,
+   "control_vs_delivered": {
+    "classification": "EXCLUDED_WITH_REASON",
+    "detail": null,
+    "reason": "hand-written M2-E review record; produced by no generator in the chain"
+   },
+   "delivered_sha256": "8071b0b6ebd7a0cabaa629b19b9b0ad2989424ab264b68597eacfa864c6c4b09",
+   "path": "reports/m2e_data/review_dispositions.json",
+   "scenario_sha256": null,
+   "scenario_vs_delivered": {
+    "classification": "EXCLUDED_WITH_REASON",
+    "detail": null,
+    "reason": "hand-written M2-E review record; produced by no generator in the chain"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "5a0e2df790b665eed1b8a6b41a56933537e42be02330c256656a68d3b2fc33ae",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5a0e2df790b665eed1b8a6b41a56933537e42be02330c256656a68d3b2fc33ae",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V1_inventory_evolution.csv",
+   "scenario_sha256": "a360478a2ebe7f5f5801fba108d040a51359d1b6a86e4fdfa801293675ca5ed5",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 26,
+     "rows_delivered": 1148,
+     "rows_only_in_delivered": 25,
+     "rows_only_in_other": 25,
+     "rows_other": 1148,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 25 only in delivered, 25 only in the other scenario"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "a60337601525d7e91ef6b5599b3dc0a10e42d801614542bf90114d9458c749bb",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "a60337601525d7e91ef6b5599b3dc0a10e42d801614542bf90114d9458c749bb",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V1_inventory_evolution.png",
+   "scenario_sha256": "a60337601525d7e91ef6b5599b3dc0a10e42d801614542bf90114d9458c749bb",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "0f30f13ee003a2e783639e9c652b3b06a11d9f9d8955dd426d5c4f8a87048043",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "0f30f13ee003a2e783639e9c652b3b06a11d9f9d8955dd426d5c4f8a87048043",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V2_position_lifecycle_timeline.csv",
+   "scenario_sha256": "6d1a93fc48bd11ac4616314461a13d7dc5c23ae8291e31e460330667e063f36a",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 17,
+     "rows_delivered": 1232,
+     "rows_only_in_delivered": 17,
+     "rows_only_in_other": 17,
+     "rows_other": 1232,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 17 only in delivered, 17 only in the other scenario"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "b7d18c3aca644d40f6db2fc868bad4787807053b4b7559d7567fa010286276e9",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "b7d18c3aca644d40f6db2fc868bad4787807053b4b7559d7567fa010286276e9",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V2_position_lifecycle_timeline.png",
+   "scenario_sha256": "b7d18c3aca644d40f6db2fc868bad4787807053b4b7559d7567fa010286276e9",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "137eb3f2765fbc81e56ab87383d4ee63c96d5b69ff42967492b9a4a4b601eebb",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "137eb3f2765fbc81e56ab87383d4ee63c96d5b69ff42967492b9a4a4b601eebb",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V3_opening_activity_cohort_map.csv",
+   "scenario_sha256": "137eb3f2765fbc81e56ab87383d4ee63c96d5b69ff42967492b9a4a4b601eebb",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "f0cc547cf07eb96ff849ce0c6b57b35b18497312014b5b36cd46d5e65ee9d5e1",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "f0cc547cf07eb96ff849ce0c6b57b35b18497312014b5b36cd46d5e65ee9d5e1",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V3_opening_activity_cohort_map.png",
+   "scenario_sha256": "f0cc547cf07eb96ff849ce0c6b57b35b18497312014b5b36cd46d5e65ee9d5e1",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "23eada5560cdad4c462c133defb7ff62f8da77dd63dbf17043c47de060cceaf9",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "23eada5560cdad4c462c133defb7ff62f8da77dd63dbf17043c47de060cceaf9",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V3_opening_activity_cohort_map__entry_minute_cohorts.csv",
+   "scenario_sha256": "23eada5560cdad4c462c133defb7ff62f8da77dd63dbf17043c47de060cceaf9",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "66c2a16f0bfb8b2a804ee7d3837615647f50003a196353a9434d3359166a14c4",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "66c2a16f0bfb8b2a804ee7d3837615647f50003a196353a9434d3359166a14c4",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V3_opening_activity_cohort_map__tp03_windows_overlay.csv",
+   "scenario_sha256": "66c2a16f0bfb8b2a804ee7d3837615647f50003a196353a9434d3359166a14c4",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "56a91d6723beeb0bf1dfd54908fc3648a460196b7f81e439f916d04843243c9a",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "56a91d6723beeb0bf1dfd54908fc3648a460196b7f81e439f916d04843243c9a",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C1_closing_batches.csv",
+   "scenario_sha256": "56a91d6723beeb0bf1dfd54908fc3648a460196b7f81e439f916d04843243c9a",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "a58e520e453112ef643ad6523ba01665f33060d37130a5ba249b244ecb4bcf69",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "a58e520e453112ef643ad6523ba01665f33060d37130a5ba249b244ecb4bcf69",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C1_closing_batches.png",
+   "scenario_sha256": "a58e520e453112ef643ad6523ba01665f33060d37130a5ba249b244ecb4bcf69",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "6e2c4a606ee905814aa77eeeebfa5146e979a5859b49cbedc0fbe3b7ac5f1f3d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "6e2c4a606ee905814aa77eeeebfa5146e979a5859b49cbedc0fbe3b7ac5f1f3d",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C1_closing_batches__longest_chains.csv",
+   "scenario_sha256": "6e2c4a606ee905814aa77eeeebfa5146e979a5859b49cbedc0fbe3b7ac5f1f3d",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "1b56eeb15b561caa914d19d8a8fb497229fd96c7918c960ca546355086026e46",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1b56eeb15b561caa914d19d8a8fb497229fd96c7918c960ca546355086026e46",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C1_closing_batches__members_10s.csv",
+   "scenario_sha256": "1b56eeb15b561caa914d19d8a8fb497229fd96c7918c960ca546355086026e46",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "e0c266e7be7eaaeaf83868689f5c24aa9ce0d2e998d63b1cebe63c08c2958c18",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e0c266e7be7eaaeaf83868689f5c24aa9ce0d2e998d63b1cebe63c08c2958c18",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C1_closing_batches__sensitivity_by_threshold.csv",
+   "scenario_sha256": "e0c266e7be7eaaeaf83868689f5c24aa9ce0d2e998d63b1cebe63c08c2958c18",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "1b68c1ffbf1f44345ae313758208cd6a180f3c02553dc76adcea26e25596e8b4",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1b68c1ffbf1f44345ae313758208cd6a180f3c02553dc76adcea26e25596e8b4",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C2_closing_batches.csv",
+   "scenario_sha256": "1b68c1ffbf1f44345ae313758208cd6a180f3c02553dc76adcea26e25596e8b4",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "83619d6074b2dcbac3be265e118161906106505240dbf8638617fe7a95a1c851",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "83619d6074b2dcbac3be265e118161906106505240dbf8638617fe7a95a1c851",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C2_closing_batches.png",
+   "scenario_sha256": "83619d6074b2dcbac3be265e118161906106505240dbf8638617fe7a95a1c851",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "b5c057d41b9fa845c4f08a94e4279689404796c9406294a3b6a17c8b358bc638",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "b5c057d41b9fa845c4f08a94e4279689404796c9406294a3b6a17c8b358bc638",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C2_closing_batches__longest_chains.csv",
+   "scenario_sha256": "b5c057d41b9fa845c4f08a94e4279689404796c9406294a3b6a17c8b358bc638",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "1a76c6bef2786ceb023a04fc792bc14ec5ffd902f94ff9af885691cafa55fa72",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1a76c6bef2786ceb023a04fc792bc14ec5ffd902f94ff9af885691cafa55fa72",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C2_closing_batches__members_10s.csv",
+   "scenario_sha256": "1a76c6bef2786ceb023a04fc792bc14ec5ffd902f94ff9af885691cafa55fa72",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "e0c266e7be7eaaeaf83868689f5c24aa9ce0d2e998d63b1cebe63c08c2958c18",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e0c266e7be7eaaeaf83868689f5c24aa9ce0d2e998d63b1cebe63c08c2958c18",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V4_C2_closing_batches__sensitivity_by_threshold.csv",
+   "scenario_sha256": "e0c266e7be7eaaeaf83868689f5c24aa9ce0d2e998d63b1cebe63c08c2958c18",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "039148a7134e4a715dde28dad2c45a275450261681b57be7a961d8abce0a2478",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "039148a7134e4a715dde28dad2c45a275450261681b57be7a961d8abce0a2478",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V5_W1_S60_wing_body.csv",
+   "scenario_sha256": "039148a7134e4a715dde28dad2c45a275450261681b57be7a961d8abce0a2478",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "1a066649c0f9d6104e80bdc3a69650d37d9101df476f292dd72e513f1cf8f36d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1a066649c0f9d6104e80bdc3a69650d37d9101df476f292dd72e513f1cf8f36d",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V5_W1_S60_wing_body.png",
+   "scenario_sha256": "1a066649c0f9d6104e80bdc3a69650d37d9101df476f292dd72e513f1cf8f36d",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "df9f2f5d11fe2fa2a594d34ddeeb51e4d60e8ba850b9c2fcf179f4f646ddb86f",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "df9f2f5d11fe2fa2a594d34ddeeb51e4d60e8ba850b9c2fcf179f4f646ddb86f",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V5_W1_wing_body.csv",
+   "scenario_sha256": "df9f2f5d11fe2fa2a594d34ddeeb51e4d60e8ba850b9c2fcf179f4f646ddb86f",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "330d2dbe5a2ce91484f1151d80d7890fb7a4f16b8e0618c92c704b3270d78f34",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "330d2dbe5a2ce91484f1151d80d7890fb7a4f16b8e0618c92c704b3270d78f34",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V5_W1_wing_body.png",
+   "scenario_sha256": "330d2dbe5a2ce91484f1151d80d7890fb7a4f16b8e0618c92c704b3270d78f34",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "c38dbfafd29be44c184702c46545edea3ba39e69f1b7862798ef65e2a0e08e2d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "c38dbfafd29be44c184702c46545edea3ba39e69f1b7862798ef65e2a0e08e2d",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V5_W2_wing_body.csv",
+   "scenario_sha256": "c38dbfafd29be44c184702c46545edea3ba39e69f1b7862798ef65e2a0e08e2d",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "0d653ca70e2fa5d3bf2a410189e63f787d5139b25c0bbda8c8e00fcde600c720",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "0d653ca70e2fa5d3bf2a410189e63f787d5139b25c0bbda8c8e00fcde600c720",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V5_W2_wing_body.png",
+   "scenario_sha256": "0d653ca70e2fa5d3bf2a410189e63f787d5139b25c0bbda8c8e00fcde600c720",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "0e3bd2e7b2ad186d2202885471e972bdc8b30bfff999f939156de35cd6163b5f",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "0e3bd2e7b2ad186d2202885471e972bdc8b30bfff999f939156de35cd6163b5f",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V5_W3_wing_body.csv",
+   "scenario_sha256": "0e3bd2e7b2ad186d2202885471e972bdc8b30bfff999f939156de35cd6163b5f",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "e9869f8391799cd23ac0614a9ef6c30506b49e6f5601f2ce8032497c0839c10c",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e9869f8391799cd23ac0614a9ef6c30506b49e6f5601f2ce8032497c0839c10c",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V5_W3_wing_body.png",
+   "scenario_sha256": "e9869f8391799cd23ac0614a9ef6c30506b49e6f5601f2ce8032497c0839c10c",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "d169cc0c75ae1d32008081cb5f920bcc9af0c3ffe4a2a8b27ab1da8734bf786c",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "d169cc0c75ae1d32008081cb5f920bcc9af0c3ffe4a2a8b27ab1da8734bf786c",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V6_coverage_uncertainty_dashboard.csv",
+   "scenario_sha256": "d169cc0c75ae1d32008081cb5f920bcc9af0c3ffe4a2a8b27ab1da8734bf786c",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "e7050f88ac660721c351871754240316d945c3c1e44ed9a5462fcd7eddcba649",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e7050f88ac660721c351871754240316d945c3c1e44ed9a5462fcd7eddcba649",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/V6_coverage_uncertainty_dashboard.png",
+   "scenario_sha256": "e7050f88ac660721c351871754240316d945c3c1e44ed9a5462fcd7eddcba649",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "manifest",
+   "control_sha256": "784338aecc639450257c286cfcb21b7480e8d6f7a47dbc1827be6b20324bcb99",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "784338aecc639450257c286cfcb21b7480e8d6f7a47dbc1827be6b20324bcb99",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/case_figure_manifest.json",
+   "scenario_sha256": "784338aecc639450257c286cfcb21b7480e8d6f7a47dbc1827be6b20324bcb99",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "5307536c39d0889f4c1a757e9a7a1623fb3a6909d2b27f8b0a2691448c8da902",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5307536c39d0889f4c1a757e9a7a1623fb3a6909d2b27f8b0a2691448c8da902",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT1_INCREMENTAL_OPENING.csv",
+   "scenario_sha256": "5307536c39d0889f4c1a757e9a7a1623fb3a6909d2b27f8b0a2691448c8da902",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "4323337d9d4b5d25afd4bcd3c7c3fb0e17954783bdfbfe69f26d240949d47e53",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "4323337d9d4b5d25afd4bcd3c7c3fb0e17954783bdfbfe69f26d240949d47e53",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT1_INCREMENTAL_OPENING.png",
+   "scenario_sha256": "4323337d9d4b5d25afd4bcd3c7c3fb0e17954783bdfbfe69f26d240949d47e53",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "555a4f8cee4af52460fb2726f71bb3d251e3e949bcc4ac950d8df2100d600ad2",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "555a4f8cee4af52460fb2726f71bb3d251e3e949bcc4ac950d8df2100d600ad2",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT2_PARTIAL_REDUCTION.csv",
+   "scenario_sha256": "555a4f8cee4af52460fb2726f71bb3d251e3e949bcc4ac950d8df2100d600ad2",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "5f9275a0125a07c44a68dad5e0e40a3ab383fcab103a005a11be3275db3d8315",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5f9275a0125a07c44a68dad5e0e40a3ab383fcab103a005a11be3275db3d8315",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT2_PARTIAL_REDUCTION.png",
+   "scenario_sha256": "5f9275a0125a07c44a68dad5e0e40a3ab383fcab103a005a11be3275db3d8315",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "3740e36db5ea9727ff56cf19d47ca5b08742990026eaebacc36afe921f457baf",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "3740e36db5ea9727ff56cf19d47ca5b08742990026eaebacc36afe921f457baf",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT3_FULL_CLOSURE.csv",
+   "scenario_sha256": "3740e36db5ea9727ff56cf19d47ca5b08742990026eaebacc36afe921f457baf",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "edda1abee23e4066f9e815f77a26bc6a2ad82003a00e754609aaf6233c3ac21a",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "edda1abee23e4066f9e815f77a26bc6a2ad82003a00e754609aaf6233c3ac21a",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT3_FULL_CLOSURE.png",
+   "scenario_sha256": "edda1abee23e4066f9e815f77a26bc6a2ad82003a00e754609aaf6233c3ac21a",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "5307536c39d0889f4c1a757e9a7a1623fb3a6909d2b27f8b0a2691448c8da902",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5307536c39d0889f4c1a757e9a7a1623fb3a6909d2b27f8b0a2691448c8da902",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT5_REVERSAL.csv",
+   "scenario_sha256": "5307536c39d0889f4c1a757e9a7a1623fb3a6909d2b27f8b0a2691448c8da902",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "cfaa751362264340a616267489add1aa9885784080ef635f898a07efa17416ca",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "cfaa751362264340a616267489add1aa9885784080ef635f898a07efa17416ca",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT5_REVERSAL.png",
+   "scenario_sha256": "cfaa751362264340a616267489add1aa9885784080ef635f898a07efa17416ca",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "9256ab1eaac2250e41aff13999d5ca43647704e515b4af65e11e41f16eebe814",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "9256ab1eaac2250e41aff13999d5ca43647704e515b4af65e11e41f16eebe814",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT6_MULTIPLE_CANDIDATE_WINGS.csv",
+   "scenario_sha256": "9256ab1eaac2250e41aff13999d5ca43647704e515b4af65e11e41f16eebe814",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "069998e5937c413f38e6d9fbd79170af8dfae10fbcb53f20657c0be002c491ea",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "069998e5937c413f38e6d9fbd79170af8dfae10fbcb53f20657c0be002c491ea",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT6_MULTIPLE_CANDIDATE_WINGS.png",
+   "scenario_sha256": "069998e5937c413f38e6d9fbd79170af8dfae10fbcb53f20657c0be002c491ea",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "ccfb8546cc9053ff7800a41770215bf5cb21cf0f33032103566dd5d2f8de97e4",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "ccfb8546cc9053ff7800a41770215bf5cb21cf0f33032103566dd5d2f8de97e4",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES.csv",
+   "scenario_sha256": "ccfb8546cc9053ff7800a41770215bf5cb21cf0f33032103566dd5d2f8de97e4",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "372f76ef176ae3c7dc2ea20f3169f17f29f666709d32006421215d354b133519",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "372f76ef176ae3c7dc2ea20f3169f17f29f666709d32006421215d354b133519",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES.png",
+   "scenario_sha256": "372f76ef176ae3c7dc2ea20f3169f17f29f666709d32006421215d354b133519",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "8259bdbb602cf493a3c47fb93d8856fd47b07b0c41195c0b451a521714f2b123",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "8259bdbb602cf493a3c47fb93d8856fd47b07b0c41195c0b451a521714f2b123",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT7_NO_CANDIDATE_WING.csv",
+   "scenario_sha256": "8259bdbb602cf493a3c47fb93d8856fd47b07b0c41195c0b451a521714f2b123",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "da2330cdd7446143a73b1cb28bec66888d8682945e9b77a802869846fc6a168e",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "da2330cdd7446143a73b1cb28bec66888d8682945e9b77a802869846fc6a168e",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT7_NO_CANDIDATE_WING.png",
+   "scenario_sha256": "da2330cdd7446143a73b1cb28bec66888d8682945e9b77a802869846fc6a168e",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "31c52a83f4f204b9ce24ecbdb1f2460b02b0a16a415c38aaac3803228677e14f",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "31c52a83f4f204b9ce24ecbdb1f2460b02b0a16a415c38aaac3803228677e14f",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT8_W1_VS_W1S60_DISAGREEMENT.csv",
+   "scenario_sha256": "31c52a83f4f204b9ce24ecbdb1f2460b02b0a16a415c38aaac3803228677e14f",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "90b5481085040486c0dbb4fc149149007d5af33a1b2db1120eaddc6dce63b5a9",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "90b5481085040486c0dbb4fc149149007d5af33a1b2db1120eaddc6dce63b5a9",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT8_W1_VS_W1S60_DISAGREEMENT.png",
+   "scenario_sha256": "90b5481085040486c0dbb4fc149149007d5af33a1b2db1120eaddc6dce63b5a9",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "dba6db5da92583baccf3aeb6e51c2ffe951f462a1837f1a9215f59c4da246f32",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "dba6db5da92583baccf3aeb6e51c2ffe951f462a1837f1a9215f59c4da246f32",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT9_MULTI_PARENT_CLOSING_BATCH.csv",
+   "scenario_sha256": "dba6db5da92583baccf3aeb6e51c2ffe951f462a1837f1a9215f59c4da246f32",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "ae9910d517d687656af57e8d80b4f6103838eaee8adf34da1821fc311fcdca8e",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "ae9910d517d687656af57e8d80b4f6103838eaee8adf34da1821fc311fcdca8e",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/cases/CT9_MULTI_PARENT_CLOSING_BATCH.png",
+   "scenario_sha256": "ae9910d517d687656af57e8d80b4f6103838eaee8adf34da1821fc311fcdca8e",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "manifest",
+   "control_sha256": "6e044af71141d6d46773450e171886488f7da850d0f7a7f12650de7b393038c3",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "6e044af71141d6d46773450e171886488f7da850d0f7a7f12650de7b393038c3",
+   "path": "reports/m2e_figures/NIFTY_2026-06-30/figure_manifest.json",
+   "scenario_sha256": "f82350beae8635d1582cc9a07f2db1d2b873ad27880cc655ee6aa7a01163ecfa",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "differing_leaf_fields": 2,
+     "examples": [
+      "/figures[0]/data_csv_sha256",
+      "/figures[1]/data_csv_sha256"
+     ],
+     "kind": "json"
+    },
+    "reason": "2 content fields differ"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "83cb9f5d5444c64b7b18262598843403f1b984c18d3de8a5634984aa222bda1d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "83cb9f5d5444c64b7b18262598843403f1b984c18d3de8a5634984aa222bda1d",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V1_inventory_evolution.csv",
+   "scenario_sha256": "b99ca8ba3130b335352285fe69626b3e0fde6bee90d0e0e635a9620a2a4a2897",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 1,
+     "rows_delivered": 731,
+     "rows_only_in_delivered": 1,
+     "rows_only_in_other": 1,
+     "rows_other": 731,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 1 only in delivered, 1 only in the other scenario"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "36f795fffa718f66e807b6c8d33c1a2de2897d421784baa7bd4cc0db46ad312f",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "36f795fffa718f66e807b6c8d33c1a2de2897d421784baa7bd4cc0db46ad312f",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V1_inventory_evolution.png",
+   "scenario_sha256": "36f795fffa718f66e807b6c8d33c1a2de2897d421784baa7bd4cc0db46ad312f",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "c4c469c36de575593977128faf8354c1cbe4879f65809826a5569154a37554af",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "c4c469c36de575593977128faf8354c1cbe4879f65809826a5569154a37554af",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V2_position_lifecycle_timeline.csv",
+   "scenario_sha256": "688fd3a32eccd0093dd87954f759a06fb518417cea6b0bc716e177c9a4c2a429",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "header_equal": true,
+     "kind": "table",
+     "positions_changed": 2,
+     "rows_delivered": 799,
+     "rows_only_in_delivered": 2,
+     "rows_only_in_other": 2,
+     "rows_other": 799,
+     "same_rows_reordered_only": false
+    },
+    "reason": "rows changed: 2 only in delivered, 2 only in the other scenario"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "653edf6ed12fbdea25083e66b1030fa82b07f8d09a2eb3f6cbb6fc151de9d7cb",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "653edf6ed12fbdea25083e66b1030fa82b07f8d09a2eb3f6cbb6fc151de9d7cb",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V2_position_lifecycle_timeline.png",
+   "scenario_sha256": "653edf6ed12fbdea25083e66b1030fa82b07f8d09a2eb3f6cbb6fc151de9d7cb",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "5e0fa80afcc15b4320064607f006106b532ddc8c77973ecb5656987d112384d6",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5e0fa80afcc15b4320064607f006106b532ddc8c77973ecb5656987d112384d6",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V3_opening_activity_cohort_map.csv",
+   "scenario_sha256": "5e0fa80afcc15b4320064607f006106b532ddc8c77973ecb5656987d112384d6",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "413ba9e6fbbd2b8935a76d77e1432229a4dd0980e658de2ec2906720c95f7f34",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "413ba9e6fbbd2b8935a76d77e1432229a4dd0980e658de2ec2906720c95f7f34",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V3_opening_activity_cohort_map.png",
+   "scenario_sha256": "413ba9e6fbbd2b8935a76d77e1432229a4dd0980e658de2ec2906720c95f7f34",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "1826fb788ed288aa4e82de5a722b26886d8d4dd00a9cd3424f1e1d5e00321e91",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "1826fb788ed288aa4e82de5a722b26886d8d4dd00a9cd3424f1e1d5e00321e91",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V3_opening_activity_cohort_map__entry_minute_cohorts.csv",
+   "scenario_sha256": "1826fb788ed288aa4e82de5a722b26886d8d4dd00a9cd3424f1e1d5e00321e91",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "b3fd8136b387a2dfb28f80bc9df23f1b6239ffb3107f8775c0b1cc78427c9636",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "b3fd8136b387a2dfb28f80bc9df23f1b6239ffb3107f8775c0b1cc78427c9636",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V3_opening_activity_cohort_map__tp03_windows_overlay.csv",
+   "scenario_sha256": "b3fd8136b387a2dfb28f80bc9df23f1b6239ffb3107f8775c0b1cc78427c9636",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "6024ba67313efcd9abc99cd337c79719b886119608dd525ae0119b7759ded687",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "6024ba67313efcd9abc99cd337c79719b886119608dd525ae0119b7759ded687",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches.csv",
+   "scenario_sha256": "6024ba67313efcd9abc99cd337c79719b886119608dd525ae0119b7759ded687",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "9f2bd715ea3429d40916dbcac1fcbd3d32bba6e6e94d2de131b4b1dd60ed29e9",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "9f2bd715ea3429d40916dbcac1fcbd3d32bba6e6e94d2de131b4b1dd60ed29e9",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches.png",
+   "scenario_sha256": "9f2bd715ea3429d40916dbcac1fcbd3d32bba6e6e94d2de131b4b1dd60ed29e9",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "c6b32900c8a2b8ff9ec8ab43dc6fcf03de5ddfc56f9b339567a0a80a8df8c889",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "c6b32900c8a2b8ff9ec8ab43dc6fcf03de5ddfc56f9b339567a0a80a8df8c889",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches__longest_chains.csv",
+   "scenario_sha256": "c6b32900c8a2b8ff9ec8ab43dc6fcf03de5ddfc56f9b339567a0a80a8df8c889",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "6128f6ba7d822105a80b6b9e78d9d3bf8375004f89aed91882ce0f8a5d9b8a73",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "6128f6ba7d822105a80b6b9e78d9d3bf8375004f89aed91882ce0f8a5d9b8a73",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches__members_10s.csv",
+   "scenario_sha256": "6128f6ba7d822105a80b6b9e78d9d3bf8375004f89aed91882ce0f8a5d9b8a73",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "c04acc9f345db10601c8d306eb7ef33bd06d175c43ae9778be1e85acc8dd45c8",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "c04acc9f345db10601c8d306eb7ef33bd06d175c43ae9778be1e85acc8dd45c8",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C1_closing_batches__sensitivity_by_threshold.csv",
+   "scenario_sha256": "c04acc9f345db10601c8d306eb7ef33bd06d175c43ae9778be1e85acc8dd45c8",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "21bef94d6b8050c3bb1d84aa1aac206c208353d689565b916b0907090f8aa646",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "21bef94d6b8050c3bb1d84aa1aac206c208353d689565b916b0907090f8aa646",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches.csv",
+   "scenario_sha256": "21bef94d6b8050c3bb1d84aa1aac206c208353d689565b916b0907090f8aa646",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "2969dd69756770d6ed2a70c9cf97bdae005b859bbfaa9e030b5e6f9873be6a6c",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "2969dd69756770d6ed2a70c9cf97bdae005b859bbfaa9e030b5e6f9873be6a6c",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches.png",
+   "scenario_sha256": "2969dd69756770d6ed2a70c9cf97bdae005b859bbfaa9e030b5e6f9873be6a6c",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "7c028636797bcf4a611f7829924f23f20813672649d251096e49597b72c13e5e",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "7c028636797bcf4a611f7829924f23f20813672649d251096e49597b72c13e5e",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches__longest_chains.csv",
+   "scenario_sha256": "7c028636797bcf4a611f7829924f23f20813672649d251096e49597b72c13e5e",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "64f5b770ab37638be0ad2df1602d0e66bb89f72e36e16bfd0ef9b4cd946be856",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "64f5b770ab37638be0ad2df1602d0e66bb89f72e36e16bfd0ef9b4cd946be856",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches__members_10s.csv",
+   "scenario_sha256": "64f5b770ab37638be0ad2df1602d0e66bb89f72e36e16bfd0ef9b4cd946be856",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "c04acc9f345db10601c8d306eb7ef33bd06d175c43ae9778be1e85acc8dd45c8",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "c04acc9f345db10601c8d306eb7ef33bd06d175c43ae9778be1e85acc8dd45c8",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V4_C2_closing_batches__sensitivity_by_threshold.csv",
+   "scenario_sha256": "c04acc9f345db10601c8d306eb7ef33bd06d175c43ae9778be1e85acc8dd45c8",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "2ba500a5b68a06196a4ab5b7da14ab18def73448775cb64a632f65c458b7e2b2",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "2ba500a5b68a06196a4ab5b7da14ab18def73448775cb64a632f65c458b7e2b2",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V5_W1_S60_wing_body.csv",
+   "scenario_sha256": "2ba500a5b68a06196a4ab5b7da14ab18def73448775cb64a632f65c458b7e2b2",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "9291bba1d5a1e3ae733603a8dac365495561b7f4b660c30c2004deffdaace6cb",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "9291bba1d5a1e3ae733603a8dac365495561b7f4b660c30c2004deffdaace6cb",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V5_W1_S60_wing_body.png",
+   "scenario_sha256": "9291bba1d5a1e3ae733603a8dac365495561b7f4b660c30c2004deffdaace6cb",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "a7bfc0c5f45967af8bd323362a6f7af4ca6173d0dd8cafa15325f6cebdd11f11",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "a7bfc0c5f45967af8bd323362a6f7af4ca6173d0dd8cafa15325f6cebdd11f11",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V5_W1_wing_body.csv",
+   "scenario_sha256": "a7bfc0c5f45967af8bd323362a6f7af4ca6173d0dd8cafa15325f6cebdd11f11",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "da4bfd395366029210f7da1f24b33864e38d240c342181d05c80f9c43dc7cee1",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "da4bfd395366029210f7da1f24b33864e38d240c342181d05c80f9c43dc7cee1",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V5_W1_wing_body.png",
+   "scenario_sha256": "da4bfd395366029210f7da1f24b33864e38d240c342181d05c80f9c43dc7cee1",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "82ebe564b2f88a568f32a43ec01024d2edcc6c5bc77c34f457459d4aa7c4ef6a",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "82ebe564b2f88a568f32a43ec01024d2edcc6c5bc77c34f457459d4aa7c4ef6a",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V5_W2_wing_body.csv",
+   "scenario_sha256": "82ebe564b2f88a568f32a43ec01024d2edcc6c5bc77c34f457459d4aa7c4ef6a",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "f3739f09133ef27535eaa2340df5909b78e6a9b26938958303164631dc3e01b9",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "f3739f09133ef27535eaa2340df5909b78e6a9b26938958303164631dc3e01b9",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V5_W2_wing_body.png",
+   "scenario_sha256": "f3739f09133ef27535eaa2340df5909b78e6a9b26938958303164631dc3e01b9",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "04bf44e80b90750209e5a5c005a475b5d519835451fc838d1bb16d9cadd93d9c",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "04bf44e80b90750209e5a5c005a475b5d519835451fc838d1bb16d9cadd93d9c",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V5_W3_wing_body.csv",
+   "scenario_sha256": "04bf44e80b90750209e5a5c005a475b5d519835451fc838d1bb16d9cadd93d9c",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "0ef0d0490356f4291ee8828f4bbd79e405d04d047afc67709b78623e92baa25d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "0ef0d0490356f4291ee8828f4bbd79e405d04d047afc67709b78623e92baa25d",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V5_W3_wing_body.png",
+   "scenario_sha256": "0ef0d0490356f4291ee8828f4bbd79e405d04d047afc67709b78623e92baa25d",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "74e975a7a09f17b45b91b08e650f719e869023e362da43a2fcd671479ca7b6c4",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "74e975a7a09f17b45b91b08e650f719e869023e362da43a2fcd671479ca7b6c4",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V6_coverage_uncertainty_dashboard.csv",
+   "scenario_sha256": "74e975a7a09f17b45b91b08e650f719e869023e362da43a2fcd671479ca7b6c4",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "040abd82f07ec7b6ac86973bac762874212117fd48b4c81a01665d53b8a82e20",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "040abd82f07ec7b6ac86973bac762874212117fd48b4c81a01665d53b8a82e20",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/V6_coverage_uncertainty_dashboard.png",
+   "scenario_sha256": "040abd82f07ec7b6ac86973bac762874212117fd48b4c81a01665d53b8a82e20",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "manifest",
+   "control_sha256": "816865e08eb894990f83aeef4fc4f13a665c8c990c855391eba677503639f5fe",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "816865e08eb894990f83aeef4fc4f13a665c8c990c855391eba677503639f5fe",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/case_figure_manifest.json",
+   "scenario_sha256": "816865e08eb894990f83aeef4fc4f13a665c8c990c855391eba677503639f5fe",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "0399e0c87de8706eb542a35da948129b576f5f3458bdd17ebab8eff551aebdd9",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "0399e0c87de8706eb542a35da948129b576f5f3458bdd17ebab8eff551aebdd9",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT1_INCREMENTAL_OPENING.csv",
+   "scenario_sha256": "0399e0c87de8706eb542a35da948129b576f5f3458bdd17ebab8eff551aebdd9",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "8f7f0a933f4cd4e01c4f95475c207fe33f5ee86b89609f655c3746c93d19a959",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "8f7f0a933f4cd4e01c4f95475c207fe33f5ee86b89609f655c3746c93d19a959",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT1_INCREMENTAL_OPENING.png",
+   "scenario_sha256": "8f7f0a933f4cd4e01c4f95475c207fe33f5ee86b89609f655c3746c93d19a959",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "e7bb9602b601fbdc4c5e8f88b2bb34b431d72b31abc3bd4d72aebdee7d636f40",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e7bb9602b601fbdc4c5e8f88b2bb34b431d72b31abc3bd4d72aebdee7d636f40",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT2_PARTIAL_REDUCTION.csv",
+   "scenario_sha256": "e7bb9602b601fbdc4c5e8f88b2bb34b431d72b31abc3bd4d72aebdee7d636f40",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "e25d3c16dc58d948040ab69323313721d1db9f0757f3d1a8be0cf6f50edef2de",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e25d3c16dc58d948040ab69323313721d1db9f0757f3d1a8be0cf6f50edef2de",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT2_PARTIAL_REDUCTION.png",
+   "scenario_sha256": "e25d3c16dc58d948040ab69323313721d1db9f0757f3d1a8be0cf6f50edef2de",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "167d5ef40d9e8d564e3a43922e342ce86d05c6b730e6a7ccd23227784f4914ed",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "167d5ef40d9e8d564e3a43922e342ce86d05c6b730e6a7ccd23227784f4914ed",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT3_FULL_CLOSURE.csv",
+   "scenario_sha256": "167d5ef40d9e8d564e3a43922e342ce86d05c6b730e6a7ccd23227784f4914ed",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "e926f978174cf11d7dc613cb357a50599336e9a860d6e8281ab0fdad0eed3947",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e926f978174cf11d7dc613cb357a50599336e9a860d6e8281ab0fdad0eed3947",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT3_FULL_CLOSURE.png",
+   "scenario_sha256": "e926f978174cf11d7dc613cb357a50599336e9a860d6e8281ab0fdad0eed3947",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "ee0b1d5edd4e7d26b9d1508d86d1a1bad56058939746d5455e35f8cccd8d4fa4",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "ee0b1d5edd4e7d26b9d1508d86d1a1bad56058939746d5455e35f8cccd8d4fa4",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT6_MULTIPLE_CANDIDATE_WINGS.csv",
+   "scenario_sha256": "ee0b1d5edd4e7d26b9d1508d86d1a1bad56058939746d5455e35f8cccd8d4fa4",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "7ccee37e5fb9c7538bcfc0b96d1f4d7d636801bcd30301bb78634d612e27a980",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "7ccee37e5fb9c7538bcfc0b96d1f4d7d636801bcd30301bb78634d612e27a980",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT6_MULTIPLE_CANDIDATE_WINGS.png",
+   "scenario_sha256": "7ccee37e5fb9c7538bcfc0b96d1f4d7d636801bcd30301bb78634d612e27a980",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "e26c2d2c0b54193eb9393b3737da7e1aca4708b80da16c9cf4171e6564d5db54",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "e26c2d2c0b54193eb9393b3737da7e1aca4708b80da16c9cf4171e6564d5db54",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES.csv",
+   "scenario_sha256": "e26c2d2c0b54193eb9393b3737da7e1aca4708b80da16c9cf4171e6564d5db54",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "54b9897bbeb482dc53bd09551f532a4ac662d0ef89159a2791fc72d6ae4b06e9",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "54b9897bbeb482dc53bd09551f532a4ac662d0ef89159a2791fc72d6ae4b06e9",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES.png",
+   "scenario_sha256": "54b9897bbeb482dc53bd09551f532a4ac662d0ef89159a2791fc72d6ae4b06e9",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "6a54cd8c35d73702e02e2b5264710d1fe93df781fa664a8e215e0f6c9a0f1640",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "6a54cd8c35d73702e02e2b5264710d1fe93df781fa664a8e215e0f6c9a0f1640",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT7_NO_CANDIDATE_WING.csv",
+   "scenario_sha256": "6a54cd8c35d73702e02e2b5264710d1fe93df781fa664a8e215e0f6c9a0f1640",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "4e25132d25bbfabfeb0365004df30df616a1d3df41abcb3079e96d3a7ef72850",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "4e25132d25bbfabfeb0365004df30df616a1d3df41abcb3079e96d3a7ef72850",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT7_NO_CANDIDATE_WING.png",
+   "scenario_sha256": "4e25132d25bbfabfeb0365004df30df616a1d3df41abcb3079e96d3a7ef72850",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "203a9ede3e6433a7cdc6a6c8a1daae009e28f386cb2d041752635a985b754fdb",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "203a9ede3e6433a7cdc6a6c8a1daae009e28f386cb2d041752635a985b754fdb",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT8_W1_VS_W1S60_DISAGREEMENT.csv",
+   "scenario_sha256": "203a9ede3e6433a7cdc6a6c8a1daae009e28f386cb2d041752635a985b754fdb",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "8f14c328cf4041df4eb7a45759ceb2bf8cd59c80718eb2bc135185abe19f837f",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "8f14c328cf4041df4eb7a45759ceb2bf8cd59c80718eb2bc135185abe19f837f",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT8_W1_VS_W1S60_DISAGREEMENT.png",
+   "scenario_sha256": "8f14c328cf4041df4eb7a45759ceb2bf8cd59c80718eb2bc135185abe19f837f",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "m2e_figure_csv",
+   "control_sha256": "5a1475dc241a530d39057a809e56efde0980e0f156ffee7f7d6f5042f4a81f9e",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "5a1475dc241a530d39057a809e56efde0980e0f156ffee7f7d6f5042f4a81f9e",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT9_MULTI_PARENT_CLOSING_BATCH.csv",
+   "scenario_sha256": "5a1475dc241a530d39057a809e56efde0980e0f156ffee7f7d6f5042f4a81f9e",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "figure_png",
+   "control_sha256": "817609ef433d90ee0b4bc4dd38ea7336fd947fb112675658e70ef7312e54e741",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   },
+   "delivered_sha256": "817609ef433d90ee0b4bc4dd38ea7336fd947fb112675658e70ef7312e54e741",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/cases/CT9_MULTI_PARENT_CLOSING_BATCH.png",
+   "scenario_sha256": "817609ef433d90ee0b4bc4dd38ea7336fd947fb112675658e70ef7312e54e741",
+   "scenario_vs_control": "IDENTICAL",
+   "scenario_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal"
+   }
+  },
+  {
+   "category": "manifest",
+   "control_sha256": "143ce5b409878020570d4d79e8cccb0aefc8bf4fdcca90d1523a13ee18aae78d",
+   "control_vs_delivered": {
+    "classification": "IDENTICAL",
+    "detail": null,
+    "reason": "bytes equal after dropping provenance-only keys"
+   },
+   "delivered_sha256": "143ce5b409878020570d4d79e8cccb0aefc8bf4fdcca90d1523a13ee18aae78d",
+   "path": "reports/m2e_figures/SENSEX_2026-07-16/figure_manifest.json",
+   "scenario_sha256": "d478a390dafeee78c0a77a9d82844c3f2b0d457d399f99f3d27349aef5ae5328",
+   "scenario_vs_control": "DIFFERENT",
+   "scenario_vs_delivered": {
+    "classification": "DIFFERENT",
+    "detail": {
+     "differing_leaf_fields": 2,
+     "examples": [
+      "/figures[0]/data_csv_sha256",
+      "/figures[1]/data_csv_sha256"
+     ],
+     "kind": "json"
+    },
+    "reason": "2 content fields differ"
+   }
+  }
+ ],
+ "scenario": "alternative scenario produced from empty out root",
+ "statement": "Every path appears once. IDENTICAL + DIFFERENT + MISSING + NEW + EXCLUDED_WITH_REASON = TOTAL_UNIVERSE for both comparisons (asserted by the tool).",
+ "summary": {
+  "control_files_produced": 169,
+  "control_vs_delivered": {
+   "DIFFERENT": 0,
+   "EXCLUDED_WITH_REASON": 1,
+   "IDENTICAL": 167,
+   "MISSING": 0,
+   "NEW": 2,
+   "TOTAL_UNIVERSE": 170
+  },
+  "delivered_files": 168,
+  "scenario_files_produced": 169,
+  "scenario_vs_delivered": {
+   "DIFFERENT": 33,
+   "EXCLUDED_WITH_REASON": 1,
+   "IDENTICAL": 134,
+   "MISSING": 0,
+   "NEW": 2,
+   "TOTAL_UNIVERSE": 170
+  },
+  "scenario_vs_delivered_by_category": {
+   "figure_png": {
+    "DIFFERENT": 1,
+    "IDENTICAL": 41
+   },
+   "m2c_closing_batch_data": {
+    "DIFFERENT": 6
+   },
+   "m2c_figure_csv": {
+    "IDENTICAL": 3
+   },
+   "m2d_figure_csv": {
+    "DIFFERENT": 3
+   },
+   "m2d_wing_body_data": {
+    "DIFFERENT": 5,
+    "IDENTICAL": 1
+   },
+   "m2e_cycle_table": {
+    "DIFFERENT": 6,
+    "EXCLUDED_WITH_REASON": 1,
+    "IDENTICAL": 32,
+    "NEW": 2
+   },
+   "m2e_figure_csv": {
+    "DIFFERENT": 4,
+    "IDENTICAL": 49
+   },
+   "manifest": {
+    "DIFFERENT": 6,
+    "IDENTICAL": 2
+   },
+   "markdown_report": {
+    "IDENTICAL": 1
+   },
+   "summary_json": {
+    "DIFFERENT": 2,
+    "IDENTICAL": 5
+   }
+  }
+ }
+}

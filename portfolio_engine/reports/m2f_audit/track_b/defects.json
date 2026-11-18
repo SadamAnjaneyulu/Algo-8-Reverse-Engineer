@@ -1,0 +1,79 @@
+[
+ {
+  "id": "B-01",
+  "severity": "Medium",
+  "title": "Closing identification (hence C1/C2 membership) depends on the order of same-second opposite-side fills in one instrument; not disclosed or measured in the M2-C reports",
+  "location": "portfolio_engine/reports/M2C_CLOSING_BATCH_REPORT.md (\u00a71,\u00a73,\u00a78 silent); docs/POSITION_BASKET_ONTOLOGY.md \u00a73.3 (documents it for episode numbering only)",
+  "evidence": "[IMPL] own replay with tie order sells_first / buys_first within (instrument, second) changes the open/close split of 2 / 4 fills; closing portions (17,760), units (1,377,065) and parents (16,817) are unchanged, but memberships change: 1 batch replaced at every threshold for sells_first (2 for buys_first); portions in changed batches 9/9/9/171/171 (sells_first) and 10/16/16/322/322 (buys_first) at g=2/5/10/30/60. ambiguity_result.json REPLAY_*.",
+  "repro": "python3 track_b/ambiguity_measure.py (scenarios REPLAY_sells_first, REPLAY_buys_first)",
+  "impact": "Result stated as convention-independent observed layer; batch membership is in fact sensitive to a documented M1 tie convention for 1-2 batches (up to 322 closing portions at 30/60 s). Small, but undisclosed in Model C.",
+  "proposed_fix": "Add a sentence + the measured table to M2C report \u00a73/\u00a78 and the evidence registry; keep file order (src) as the stated convention.",
+  "proposed_test": "Regression test building a synthetic same-second buy/sell on a closed contract and asserting the documented tie convention and the number of affected closing portions."
+ },
+ {
+  "id": "B-02",
+  "severity": "Low",
+  "title": "Stream boundary (underlying x expiry x session) is stricter than the approved D2 text (\"consecutive parents of one underlying\") and is not flagged as an interpretation",
+  "location": "docs/BASKET_GROUPING_METHODOLOGY.md D2 vs python/pe/closing_batches.py:3,19; M2C report \u00a71",
+  "evidence": "[IMPL] stream=underlying only, underlying x session, underlying x expiry give identical closing-portion partitions at all 10 views on the full ledger (ambiguity_result.json STREAM_*: 0 changed batches) - impact measured nil on this data.",
+  "repro": "python3 track_b/ambiguity_measure.py",
+  "impact": "None on the committed data; would matter on data with concurrent expiries or overnight activity. Interpretation not recorded as such (the report lists only tie order and C2 reference as decisions).",
+  "proposed_fix": "Record the stream definition as an interpretation of D2 with the nil measured impact.",
+  "proposed_test": "Synthetic two-expiry same-session case asserting the documented boundary behaviour (already partly covered)."
+ },
+ {
+  "id": "B-03",
+  "severity": "Low",
+  "title": "Tie-break wording: approved text says \"first source_row_id of the parent\"; implementation uses the smallest CLOSING source_row_id",
+  "location": "docs/BASKET_GROUPING_METHODOLOGY.md (Timestamp precision); closing_batches.py:35,51",
+  "evidence": "[IMPL] alternative keys (min row over all fills of the parent; parent id only; numeric-aware id; reversed id; last-fill) give 0 change for C1 (provably tie-invariant) and 0 or 1 batch for C2 (parent-id-only and last-then-row give 1 batch fewer at 2/5/10 s; min-row-any, numeric-aware and reversed give 0).",
+  "repro": "ambiguity_measure.py TIE_*",
+  "impact": "At most one batch at 2/5/10 s (C2 only).",
+  "proposed_fix": "State the implemented reading explicitly in D2 together with the measured table.",
+  "proposed_test": "Existing equal-timestamp tests suffice; add one with a mixed parent whose opening row precedes its closing rows."
+ },
+ {
+  "id": "B-04",
+  "severity": "Medium",
+  "title": "Existing test suite lets a reporting-layer mutation survive and kills three others only through a committed-output hash snapshot",
+  "location": "portfolio_engine/tests/test_closing_batches.py; python/pe/closing_batches.py:177-179 (summarize), 132 (total_closing_qty), 154 (join gap), 59 (batch numbering)",
+  "evidence": "[IMPL]/mutation: M22 (pairs_linked uses < instead of <=) -> 25/25 tests pass; M14, M25, M26 killed only by test_real_outputs_reproduce_the_committed_manifest ([REPRO], not independent). Own reference kills all four. mutations.json.",
+  "repro": "run_mutations.py M22",
+  "impact": "Headline report table (pairs linked / gap == g) is not independently asserted; snapshot tests would also pass if outputs and code were regenerated together.",
+  "proposed_fix": "Assert summarize() rows against a hand-built synthetic expectation; assert total_closing_qty, join_gap_s and numbering directly.",
+  "proposed_test": "Synthetic 3-parent scenario with known gaps 0/g/g+1 checking pairs_linked, pairs_gap_exactly_threshold, pairs_gap_threshold_plus_1s."
+ },
+ {
+  "id": "B-05",
+  "severity": "Low",
+  "title": "Missing / NaN timestamps are not validated: engine fails with an incidental TypeError/ValueError inside replay/formatting",
+  "location": "python/pe/replay.py:30; closing_batches.py (no guard)",
+  "evidence": "[IMPL] synthetic Fill with timestamp None -> TypeError in replay.py:30; NaN -> ValueError (format code d). No silent mis-grouping; no test.",
+  "repro": "synthetic_boundaries.py (missing-ts block)",
+  "impact": "Loud failure only; raw data has none (col 161 complete, 41,421/41,421).",
+  "proposed_fix": "Explicit validation with a named error.",
+  "proposed_test": "Test that a None/NaN timestamp raises a specific, documented exception."
+ },
+ {
+  "id": "B-06",
+  "severity": "Low",
+  "title": "parameter_hash does not encode the C2 predecessor reference or the tie-key reading",
+  "location": "python/pe/closing_batches.py:39-41",
+  "evidence": "[INSPECTED] hash input contains order=first_ts,first_src,parent_id and link text but nothing distinguishing previous-parent vs running-max reference; sensitivity views are separated only by the __SENS_ id suffix.",
+  "repro": "read lines 39-41",
+  "impact": "A reader of parameter_hash alone cannot distinguish the approved C2 rule from the running-max variant.",
+  "proposed_fix": "Add c2_reference to the hash payload (changes hashes; needs decision).",
+  "proposed_test": "Assert param_hash differs between c2_ref variants."
+ },
+ {
+  "id": "B-07",
+  "severity": "Low",
+  "title": "Committed manifest records generated_at_head 5b2939ec with working_tree_dirty=true",
+  "location": "portfolio_engine/reports/m2c_data/manifest.json",
+  "evidence": "[REPRO] the 5b2939ec commit is an ancestor of HEAD; all 6 gz files match manifest hashes; current engine code reproduces the six text hashes (own detector baseline REPRO=[]), so the content is reproducible even though the stamped head is not the producing clean commit.",
+  "repro": "sha256 of decompressed files vs manifest",
+  "impact": "Provenance stamp is weak; content verified.",
+  "proposed_fix": "Regenerate from a clean tree at the audited commit if a clean stamp is wanted.",
+  "proposed_test": "n/a"
+ }
+]

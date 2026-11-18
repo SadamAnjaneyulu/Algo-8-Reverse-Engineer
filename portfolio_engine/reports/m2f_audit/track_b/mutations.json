@@ -1,0 +1,762 @@
+[
+ {
+  "id": "M01",
+  "change": "threshold made exclusive: `gap <= g` -> `gap < g`",
+  "expected_detector": "boundary tests (gap==g) ; own: synthetic gap_exactly_threshold + real partition",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 9,
+  "existing_tests_failed_names": [
+   "test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "test_inclusive_threshold_boundary_and_one_second_sensitivity_is_counted",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest",
+   "test_batch_record_times_and_duration_and_nesting_detector"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 349,
+   "real_ledger_mismatches": 55,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M02",
+  "change": "chain-transitivity break: C1 compares to batch ANCHOR (first member) instead of adjacent previous",
+  "expected_detector": "transitive-chain test; own: long_transitive_chain + real",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 7,
+  "existing_tests_failed_names": [
+   "test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_over_seconds",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest",
+   "test_batch_record_times_and_duration_and_nesting_detector"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 775,
+   "real_ledger_mismatches": 33,
+   "repro_hash_files_changed": 3,
+   "sample": [
+    "multi_fill_parent_interval_overlap C160: batch attrs [(53, 35)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M03",
+  "change": "tie-order reversal: sort key -first_src (C2-relevant)",
+  "expected_detector": "C2 tie dependence tests; reference_partition inside check_view",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 6,
+  "existing_tests_failed_names": [
+   "test_equal_first_timestamps_are_ordered_by_source_row_then_parent_id",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 138,
+   "real_ledger_mismatches": 25,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "tie_with_multi_fill_parent_c2 C12: batch attrs [(1, 2)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M04",
+  "change": "C2 collapses to C1: gap uses prev.first_ts for both methods",
+  "expected_detector": "overlap test (C2 joins what C1 does not); own synthetic overlap cases (NOT detectable on real data since C2==C1 there)",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 5,
+  "existing_tests_failed_names": [
+   "test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 308,
+   "real_ledger_mismatches": 3,
+   "repro_hash_files_changed": 1,
+   "sample": [
+    "multi_fill_parent_interval_overlap C22: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "C2==C1 on the real data, so the real-data partition cannot see it; own B kills it only via the c2 sensitivity counts; synthetic overlap cases kill it.",
+  "status": "killed"
+ },
+ {
+  "id": "M05",
+  "change": "last/first swap for C2: gap = last(next) - first(prev)",
+  "expected_detector": "C2 overlap tests; own synthetic + real",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 5,
+  "existing_tests_failed_names": [
+   "test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 313,
+   "real_ledger_mismatches": 4,
+   "repro_hash_files_changed": 1,
+   "sample": [
+    "multi_fill_parent_interval_overlap C22: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "As M04.",
+  "status": "killed"
+ },
+ {
+  "id": "M06",
+  "change": "drop one parent per stream (ps = ps[1:])",
+  "expected_detector": "check_view eligible-parent-once invariant; own: partition real",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 20,
+  "existing_tests_failed_names": [
+   "test_C1_identical_timestamps_are_one_batch_and_order_independent",
+   "test_COUNTEREXAMPLE_mixed_parent_contributes_only_its_closing_portions",
+   "test_different_contracts_and_both_rights_share_one_batch_and_are_only_descriptive",
+   "test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "test_long_gap_then_tight_cluster",
+   "test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "test_inclusive_threshold_boundary_and_one_second_sensitivity_is_counted",
+   "test_equal_first_timestamps_are_ordered_by_source_row_then_parent_id",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+   "test_opening_only_parent_never_enters_and_a_duplicated_member_is_rejected",
+   "test_grouping_never_mutates_the_observed_ledger_and_ignores_the_matching_convention",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_files_have_provenance_and_reconcile_to_closing_portions",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_outputs_reproduce_the_committed_manifest",
+   "test_overlap_flags_distinguish_touching_from_strict_overlap",
+   "test_batch_record_times_and_duration_and_nesting_detector",
+   "test_check_view_rejects_tampering_with_members_and_partitions",
+   "test_unattributable_parent_ids_in_both_spellings_are_excluded"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 1320,
+   "real_ledger_mismatches": 63,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M07",
+  "change": "merge across sessions: session label constant",
+  "expected_detector": "session-boundary tests (23:59:59 vs 00:00:01 IST)",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 3,
+  "existing_tests_failed_names": [
+   "test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+   "test_duplicate_parent_id_across_sessions_is_two_members_and_is_reported",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 1330,
+   "real_ledger_mismatches": 10,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Own real-data B detection is by stream LABEL only (measured: merging sessions leaves real membership unchanged); synthetic cases kill it on membership.",
+  "status": "killed"
+ },
+ {
+  "id": "M08",
+  "change": "merge across expiries: stream expiry replaced by 'ALL'",
+  "expected_detector": "expiry boundary test",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 2,
+  "existing_tests_failed_names": [
+   "test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 1330,
+   "real_ledger_mismatches": 10,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "As M07: real membership unchanged (STREAM_und_exp measured identical); label and synthetic cases kill.",
+  "status": "killed"
+ },
+ {
+  "id": "M09",
+  "change": "merge across underlyings: stream underlying replaced by 'ALL'",
+  "expected_detector": "underlying boundary test",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 2,
+  "existing_tests_failed_names": [
+   "test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 1330,
+   "real_ledger_mismatches": 10,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "As M07 for underlyings.",
+  "status": "killed"
+ },
+ {
+  "id": "M10",
+  "change": "off-by-one second in gap (gap - 1)",
+  "expected_detector": "inclusive-boundary tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 7,
+  "existing_tests_failed_names": [
+   "test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "test_long_gap_then_tight_cluster",
+   "test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_outputs_reproduce_the_committed_manifest",
+   "test_overlap_flags_distinguish_touching_from_strict_overlap"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 8041,
+   "real_ledger_mismatches": 53,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M11",
+  "change": "ignore MIXED parents (skip their closing portions)",
+  "expected_detector": "check_view portions-exactly-once; mixed-parent tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 4,
+  "existing_tests_failed_names": [
+   "test_COUNTEREXAMPLE_mixed_parent_contributes_only_its_closing_portions",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 1180,
+   "real_ledger_mismatches": 83,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "mixed_open_close_parent C12: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M12",
+  "change": "duplicate a closing portion (every source row % 97 == 0)",
+  "expected_detector": "check_view duplicate-portion invariant",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 3,
+  "existing_tests_failed_names": [
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 20,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "long_transitive_chain_each_gap_equals_threshold C12: batch attrs [(2, 1), (130, 65)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M13",
+  "change": "wrong closing-quantity attribution at parent level: qty += min(r[8], 65)",
+  "expected_detector": "check_view summary-vs-portions invariant",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 4,
+  "existing_tests_failed_names": [
+   "test_grouping_never_mutates_the_observed_ledger_and_ignores_the_matching_convention",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": false,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 0,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 2,
+   "sample": []
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Existing tests kill it (4 tests incl. members-file closing_qty). OWN IMPL detector SURVIVES: it does not compare the members-file closing_qty column; only the [REPRO] manifest-hash check caught it. Own-check gap.",
+  "status": "SURVIVOR (own check)"
+ },
+ {
+  "id": "M14",
+  "change": "wrong closing-quantity attribution in batch record: total_closing_qty counts BUY-side portions only",
+  "expected_detector": "batch_record tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 1,
+  "existing_tests_failed_names": [
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": true,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 9641,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 2,
+   "sample": [
+    "mixed_open_close_parent C12: batch attrs [(0, 65)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by existing ONLY through the committed-manifest hash test (test_real_outputs_reproduce_the_committed_manifest, a [REPRO] snapshot): no direct assertion on batch_record.total_closing_qty. Own synthetic detector kills it [IMPL].",
+  "status": "killed"
+ },
+ {
+  "id": "M15",
+  "change": "interval_overlap flag `<=` -> `<`",
+  "expected_detector": "overlap-flag tests (same-second touching)",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 2,
+  "existing_tests_failed_names": [
+   "test_real_outputs_reproduce_the_committed_manifest",
+   "test_overlap_flags_distinguish_touching_from_strict_overlap"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 1512,
+   "real_ledger_mismatches": 20,
+   "repro_hash_files_changed": 4,
+   "sample": [
+    "equal_timestamps_many_parents_unsorted_input C12: batch attrs [(0, 6), (0, 1)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M16",
+  "change": "strict_overlap flag `<` -> `<=`",
+  "expected_detector": "strict overlap tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 2,
+  "existing_tests_failed_names": [
+   "test_real_outputs_reproduce_the_committed_manifest",
+   "test_overlap_flags_distinguish_touching_from_strict_overlap"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 1512,
+   "real_ledger_mismatches": 10,
+   "repro_hash_files_changed": 4,
+   "sample": [
+    "equal_timestamps_many_parents_unsorted_input C12: batch attrs [(6, 0)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M17",
+  "change": "parent last_ts never advances (last := first)",
+  "expected_detector": "multi-fill parent test; C2 overlap tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 8,
+  "existing_tests_failed_names": [
+   "test_several_partial_closing_fills_of_one_parent_are_one_decision",
+   "test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_over_seconds",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 863,
+   "real_ledger_mismatches": 15,
+   "repro_hash_files_changed": 4,
+   "sample": [
+    "multi_fill_parent_interval_overlap C12: batch attrs [(1767588360, 1767588410), (0, 50)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M18",
+  "change": "C2 default reference = running max of last fills (approved rule is previous parent)",
+  "expected_detector": "C2 rule sensitivity real test",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 5,
+  "existing_tests_failed_names": [
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_grouping_never_mutates_the_observed_ledger_and_ignores_the_matching_convention",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 14195,
+   "real_ledger_mismatches": 32,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S__SENS_src_running_max:NIFTY:2026-02-01:2026-01-05:001 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-01:2026-01-05:001"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M19",
+  "change": "session by UTC date instead of IST date",
+  "expected_detector": "IST-midnight test",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 1,
+  "existing_tests_failed_names": [
+   "test_COUNTEREXAMPLE_session_expiry_and_underlying_boundaries_are_never_crossed"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 20,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 0,
+   "sample": [
+    "ist_midnight_and_session_boundary C12: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Real-data partition cannot kill (no real fill crosses UTC midnight inside a session); both existing and own synthetic IST-midnight case kill it.",
+  "status": "killed"
+ },
+ {
+  "id": "M20",
+  "change": "parent first_ts = LATEST closing fill (first_ts uses `>`)",
+  "expected_detector": "multi-fill parent test",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 8,
+  "existing_tests_failed_names": [
+   "test_several_partial_closing_fills_of_one_parent_are_one_decision",
+   "test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_views_are_independent_ids_unique_and_nested_properties_hold",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_over_seconds",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 805,
+   "real_ledger_mismatches": 63,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "multi_fill_parent_interval_overlap C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-01-08:2026-01-05:001 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-01-08:2026-01-05:002"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M21",
+  "change": "tie-break by parent_id only (drop first_src) in build_view",
+  "expected_detector": "tie-order tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 5,
+  "existing_tests_failed_names": [
+   "test_equal_first_timestamps_are_ordered_by_source_row_then_parent_id",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 107,
+   "real_ledger_mismatches": 25,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "tie_with_multi_fill_parent_c2 C12: batch attrs [(1, 2)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M22",
+  "change": "summarize: pairs_linked uses `<` instead of `<=`",
+  "expected_detector": "real summary regression (report numbers)",
+  "existing_tests_caught": false,
+  "existing_tests_failed_count": 0,
+  "existing_tests_failed_names": [],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 0,
+   "real_ledger_mismatches": 10,
+   "repro_hash_files_changed": 0,
+   "sample": [
+    "summary C1_2 pairs_linked"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "EXISTING TESTS SURVIVE (25/25 pass): reporting-layer summarize() numbers (pairs_linked, the headline table) are not asserted by any non-snapshot test. Own detector B kills it.",
+  "status": "SURVIVOR (existing tests)"
+ },
+ {
+  "id": "M23",
+  "change": "stability: nested forced True",
+  "expected_detector": "stability test",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 1,
+  "existing_tests_failed_names": [
+   "test_batch_record_times_and_duration_and_nesting_detector"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": false,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 0,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 0,
+   "sample": []
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Own detector survives: on the real data nesting is always true so forcing nested=True is behaviourally equivalent there; existing synthetic test kills it. Own check does not test nesting on synthetic data.",
+  "status": "SURVIVOR (own check)"
+ },
+ {
+  "id": "M24",
+  "change": "batch record duration off by one (end - start + 1)",
+  "expected_detector": "duration tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 3,
+  "existing_tests_failed_names": [
+   "test_transitive_chain_exceeds_the_threshold_and_is_reported",
+   "test_real_outputs_reproduce_the_committed_manifest",
+   "test_batch_record_times_and_duration_and_nesting_detector"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 15469,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 2,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: batch attrs [(2, 1)]"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M25",
+  "change": "members file join gap sign dropped (abs)",
+  "expected_detector": "member-row tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 1,
+  "existing_tests_failed_names": [
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": true,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 290,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 1,
+   "sample": [
+    "multi_fill_parent_interval_overlap C22: member link row"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Existing: killed only by the manifest-hash snapshot test. Own detector kills it on C2 overlap synthetic [IMPL]; real-data B does not compare member join gaps (but compare_links_committed.py does, [IMPL] on committed files).",
+  "status": "killed"
+ },
+ {
+  "id": "M26",
+  "change": "batch numbering skips (n += 2)",
+  "expected_detector": "id tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 1,
+  "existing_tests_failed_names": [
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": true,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 15469,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 6,
+   "sample": [
+    "gap_exactly_threshold_and_plus_one C12: id INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-01:2026-01-05:002 != INF:CLOSING_BATCH@CB_FIRST_FILL_GAP_2S:NIFTY:2026-02-01:2026-01-05:001"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Existing: killed only by the manifest-hash snapshot test. Own detector kills via id comparison [IMPL].",
+  "status": "killed"
+ },
+ {
+  "id": "M27",
+  "change": "C2 overlap negative gap not linked: gap clipped (abs(gap) for C2 link test)",
+  "expected_detector": "overlap tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 6,
+  "existing_tests_failed_names": [
+   "test_C2_overlapping_intervals_join_when_C1_does_not_and_are_flagged",
+   "test_C2_result_depends_on_the_open_tie_rule_and_the_dependence_is_measured",
+   "test_real_scope_and_all_ten_views_partition_exactly",
+   "test_real_nesting_and_C2_equals_C1_on_this_data_because_one_parent_spreads_over_seconds",
+   "test_real_C2_rule_sensitivity_is_one_batch_at_2_5_10_seconds",
+   "test_real_outputs_reproduce_the_committed_manifest"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": true,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 198,
+   "real_ledger_mismatches": 28,
+   "repro_hash_files_changed": 3,
+   "sample": [
+    "multi_fill_parent_interval_overlap C22: partition differs"
+   ]
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Killed by both. Failure messages inspected: assertion failures, not crashes.",
+  "status": "killed"
+ },
+ {
+  "id": "M28",
+  "change": "closing portions without parent id pooled (unattributable check removed)",
+  "expected_detector": "missing parent id tests",
+  "existing_tests_caught": true,
+  "existing_tests_failed_count": 2,
+  "existing_tests_failed_names": [
+   "test_missing_parent_id_is_unattributable_never_pooled_and_reconciles",
+   "test_unattributable_parent_ids_in_both_spellings_are_excluded"
+  ],
+  "existing_killed_only_by_manifest_hash_snapshot": false,
+  "own_check_caught": false,
+  "own_check_detail": {
+   "synthetic_deep_mismatches": 0,
+   "real_ledger_mismatches": 0,
+   "repro_hash_files_changed": 0,
+   "sample": []
+  },
+  "detector_independent": "own: YES for [IMPL] reference (ref_closing.py, written from the approved text before reading the implementation, no pe import); existing: tests partly independent (check_view reference_partition is a second implementation by the same author from the same spec), manifest-hash test is [REPRO] not independent",
+  "crash_for_unrelated_reason": false,
+  "notes": "Existing tests kill it; own detector has no missing-parent-id scenario (own-check gap; real data has 0 such rows).",
+  "status": "SURVIVOR (own check)"
+ }
+]

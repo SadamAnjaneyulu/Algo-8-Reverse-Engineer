@@ -1,0 +1,24 @@
+===== 7 re-entry (same-side sale within 60 s of a buy-back episode) (depth-3 tree, DEV fit) =====
+|--- since_sale <= 1.50
+|   |--- sideboth <= 0.50
+|   |   |--- up_basket <= 268692.12
+|   |   |   |--- class: 0
+|   |   |--- up_basket >  268692.12
+|   |   |   |--- class: 1
+|   |--- sideboth >  0.50
+|   |   |--- mv5 <= -0.58
+|   |   |   |--- class: 1
+|   |   |--- mv5 >  -0.58
+|   |   |   |--- class: 1
+|--- since_sale >  1.50
+|   |--- tte_min <= 305.00
+|   |   |--- since_sale <= 5.50
+|   |   |   |--- class: 1
+|   |   |--- since_sale >  5.50
+|   |   |   |--- class: 0
+|   |--- tte_min >  305.00
+|   |   |--- mv_prevclose <= -3.74
+|   |   |   |--- class: 0
+|   |   |--- mv_prevclose >  -3.74
+|   |   |   |--- class: 0
+

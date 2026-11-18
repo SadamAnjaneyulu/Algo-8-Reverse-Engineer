@@ -1,0 +1,74 @@
+{
+ "created_utc": "2026-11-16T09:16:00Z",
+ "generated_at_head": "9f06728d6cf72e3e97fc7811078590573c9dba3e",
+ "execution_mode": "HISTORICAL_OBSERVED_REPLAY",
+ "source_hashes": {
+  "raw_trades_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "tp01_ledger_sha256": "3b47c55150d79535a43fcea485a41e8e7bd76b201384fd89eae9a88f2c736053"
+ },
+ "tie_order_convention": {
+  "id": "SOURCE_ROW_ORDER_CONVENTION",
+  "engine_policy": "src",
+  "verified_intra_second_chronology": false,
+  "statement": "same-instrument fills inside one second are processed in source-file row order; a deterministic convention, not verified execution chronology",
+  "sensitivity": "reports/R1_TIE_ORDER_CONVENTION.md"
+ },
+ "link_semantics": "EXCLUSIVE (gap < threshold): SENSITIVITY ONLY; the primary C1/C2 views in reports/m2c_data use gap <= threshold",
+ "primary_parameter_hashes": {
+  "C1@2": "f37f7bb2342754ac",
+  "C1@5": "35b552d1997ac5ca",
+  "C1@10": "7ec474da4e8d23c2",
+  "C1@30": "e3e1b07f7dca9630",
+  "C1@60": "1b82982663cc60fc",
+  "C2@2": "f477c972d17ed359",
+  "C2@5": "b2a4a8e3f5b860d2",
+  "C2@10": "b22d5cf2e98f74c1",
+  "C2@30": "6e3da85369812216",
+  "C2@60": "3f6cc1ea75aad1da"
+ },
+ "exclusive_parameter_hashes": {
+  "C1@2": "4f67720408fc31d2",
+  "C1@5": "fe181b6895e1d79b",
+  "C1@10": "5f92a9f98c75a0c5",
+  "C1@30": "3295f8ae51ac2376",
+  "C1@60": "24856a972778ebda",
+  "C2@2": "3081df349d84a862",
+  "C2@5": "ddab1a7651154cb9",
+  "C2@10": "9048592601d8f5ee",
+  "C2@30": "2ba1b54cd667ec04",
+  "C2@60": "83d148eb25127fe4"
+ },
+ "files": {
+  "closing_batches_C1_EXCLUSIVE.tsv.gz": {
+   "sha256_of_text": "9ece9fb2cf74885192a376187e8d6fcfdeab270b7f106d8ee95f215f5df65064",
+   "rows": 18881,
+   "bytes_gz": 451924
+  },
+  "closing_batch_members_C1_EXCLUSIVE.tsv.gz": {
+   "sha256_of_text": "0d257a6987610235110bf3a60e3cddb8ac096e2e79ddc7771701cc06e14f5dc2",
+   "rows": 84085,
+   "bytes_gz": 1080977
+  },
+  "closing_batch_portions_C1_EXCLUSIVE.tsv.gz": {
+   "sha256_of_text": "e96a15d6cfb6e024bed44c8f3bdcf415b19e01f4c8bad140634cbcda1b8ba092",
+   "rows": 88800,
+   "bytes_gz": 1613350
+  },
+  "closing_batches_C2_EXCLUSIVE.tsv.gz": {
+   "sha256_of_text": "945c655571472b430e6a225e3968342d328048453830e28601b01fe74c96215d",
+   "rows": 18881,
+   "bytes_gz": 452947
+  },
+  "closing_batch_members_C2_EXCLUSIVE.tsv.gz": {
+   "sha256_of_text": "c679d77afe6b2806864736c36628ee76aea19b095e3bfd0d24d35ac00599df2c",
+   "rows": 84085,
+   "bytes_gz": 1092310
+  },
+  "closing_batch_portions_C2_EXCLUSIVE.tsv.gz": {
+   "sha256_of_text": "0d023b7ca3b8f696897fc4615a5a35ed57ff1808fad258435e61821cb6534381",
+   "rows": 88800,
+   "bytes_gz": 1609705
+  }
+ },
+ "reproduce": "python3 portfolio_engine/tools/r1c_exclusive_sensitivity.py"
+}

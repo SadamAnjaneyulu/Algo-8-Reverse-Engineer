@@ -1,0 +1,45 @@
+{
+ "id": "M06",
+ "name": "price off by one tick on 1 in 1000 historical fills",
+ "file": "python/pe/generators/historical.py",
+ "expected": "fill price vs raw col 137; realized P&L",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage_real.py::test_realized_pnl_from_allocations_equals_tp01_for_every_convention",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[FIFO]",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[LIFO]",
+   "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[AVG]",
+   "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[FIFO]",
+   "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[LIFO]",
+   "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[AVG]"
+  ],
+  "summary": "7 failed, 120 passed in 254.57s (0:04:14)",
+  "seconds": 256
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {
+   "fill_field_vs_raw": 42,
+   "OA_fields": 23,
+   "CP_fields": 19,
+   "CA_FIFO_row": 57,
+   "CA_FIFO_total": 1,
+   "CA_LIFO_row": 51,
+   "CA_LIFO_total": 1,
+   "CA_AVG_value": 514
+  },
+  "false_flags": [
+   "cash_equal_ref_FIFO",
+   "cash_equal_ref_LIFO",
+   "AVG_exact_total_is_integer",
+   "cash_equal_ref_AVG"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 0,
+   "py_vs_ref_mismatch": 0
+  },
+  "killed": true
+ }
+}

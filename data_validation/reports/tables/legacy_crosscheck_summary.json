@@ -1,0 +1,23 @@
+{
+ "legacy_contract_days": 3243,
+ "overlapping_sessions": 67,
+ "legacy_sessions_not_in_broad": 0,
+ "contract_days_compared": 3243,
+ "legacy_contract_days_absent_in_broad": 20,
+ "contract_days_with_any_mismatch": 0,
+ "minutes_legacy_only": 0,
+ "minutes_broad_only": 1290,
+ "minutes_both": 1222729,
+ "field_mismatches": {
+  "mismatch_open": 0,
+  "mismatch_high": 0,
+  "mismatch_low": 0,
+  "mismatch_close": 0,
+  "mismatch_volume": 0,
+  "mismatch_open_interest": 0
+ },
+ "index_days_compared": 72,
+ "index_days_with_mismatch": 0,
+ "index_minutes_legacy_only": 0,
+ "index_minutes_broad_only": 1035
+}

@@ -1,0 +1,10 @@
+action,orders,lots,cycles,sessions,distinct_decision_minutes,orders_DEV,orders_VAL,orders_TEST,orders_D1,orders_D0
+"scheduled or extra short entry (body sell, label open)",13354,14803,35,64,4355,7724,3046,2584,4408,8946
+individual buy-back (label 1 individual lot stop-loss),3245,3456,34,61,895,1920,735,590,691,2554
+side-level reduction,803,871,33,52,281,481,161,161,171,632
+basket reduction,1529,1804,31,44,418,1063,308,158,116,1413
+Clock-B rebalance,682,744,31,40,236,477,112,93,60,622
+"Clock-B exit, no replacement",414,419,29,37,86,285,83,46,32,382
+hedge: wing bought (open),9657,15256,35,65,4249,5509,2222,1926,3345,6312
+hedge: wing released,2441,4907,35,58,1264,1378,558,505,641,1800
+hedge: overnight lump,80,1583,30,35,49,47,14,19,73,7

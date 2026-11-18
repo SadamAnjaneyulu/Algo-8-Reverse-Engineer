@@ -1,0 +1,18 @@
+{
+  "status": "PROPOSED - dates are targets until the lookback probe shows how far back Breeze really goes; they must be re-stated from the actual first/last downloaded session",
+  "window": {"start": "2023-10-23", "end": "2026-10-22"},
+  "in_sample": {"start": "2023-10-23", "end": "2025-10-22", "months": 24, "use": "research, development, parameter selection, backtesting"},
+  "out_of_sample": {"start": "2025-10-23", "end": "2026-10-22", "months": 12, "use": "independent validation, opened once after the strategy is frozen"},
+  "exposed_inside_oos": {"start": "2026-06-22", "end": "2026-10-22", "reason": "these four months were already inspected while reverse-engineering Algo 8 (PRs #1-#5); strategy ideas derived from Algo 8 behaviour are NOT out-of-sample there"},
+  "clean_oos_if_exposed_months_are_excluded": {"start": "2025-10-23", "end": "2026-06-19", "months": "about 8"},
+  "walk_forward_inside_in_sample": {
+    "recommended": true, "type": "anchored (expanding) train, 3-month validation blocks, embargo of 5 trading days between train end and validation start (positions carry D-1 to D0)",
+    "folds": [
+      {"train": ["2023-10-23", "2024-10-22"], "validate": ["2024-10-30", "2025-01-22"]},
+      {"train": ["2023-10-23", "2025-01-22"], "validate": ["2025-01-30", "2025-04-22"]},
+      {"train": ["2023-10-23", "2025-04-22"], "validate": ["2025-04-30", "2025-07-22"]},
+      {"train": ["2023-10-23", "2025-07-22"], "validate": ["2025-07-30", "2025-10-22"]}
+    ]
+  },
+  "rules": ["no random shuffling", "OOS never used for feature selection, parameter tuning, strategy design or model selection", "any OOS look invalidates it: record it in the research ledger and label the period CONTAMINATED"]
+}

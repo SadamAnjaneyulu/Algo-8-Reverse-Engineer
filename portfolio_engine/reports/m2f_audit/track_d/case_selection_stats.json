@@ -1,0 +1,270 @@
+{
+ "NIFTY_2026-06-30": {
+  "CT1_INCREMENTAL_OPENING": {
+   "episode": "NIFTY|2026-06-30|CE|24100#1",
+   "n_qualifying": 38,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-06-29 09:16:01",
+   "d_label": "D-1"
+  },
+  "CT2_PARTIAL_REDUCTION": {
+   "episode": "NIFTY|2026-06-30|PE|22100#1",
+   "n_qualifying": 32,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-06-29 09:16:00",
+   "d_label": "D-1"
+  },
+  "CT3_FULL_CLOSURE": {
+   "episode": "NIFTY|2026-06-30|CE|26100#1",
+   "n_qualifying": 33,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-06-29 09:16:00",
+   "d_label": "D-1"
+  },
+  "CT4_REMAINING_AT_EXPIRY": "UNAVAILABLE",
+  "CT5_REVERSAL": {
+   "episode": "NIFTY|2026-06-30|CE|24100#1",
+   "n_qualifying": 1,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": false,
+   "reused_episode": true,
+   "episode_first_fill_ist": "2026-06-29 09:16:01",
+   "d_label": "D-1"
+  },
+  "CT6_MULTIPLE_CANDIDATE_WINGS": {
+   "episode": "NIFTY|2026-06-30|CE|24050#1",
+   "n_qualifying": 159,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-06-29 09:24:21",
+   "d_label": "D-1"
+  },
+  "CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES": {
+   "episode": "NIFTY|2026-06-30|PE|23200#1",
+   "n_qualifying": 115,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-06-29 09:31:04",
+   "d_label": "D-1"
+  },
+  "CT7_NO_CANDIDATE_WING": {
+   "episode": "NIFTY|2026-06-30|PE|24100#1",
+   "n_qualifying": 27,
+   "rank_of_chosen_among_qualifying": 2,
+   "chosen_is_chronological_first": false,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-06-29 09:16:01",
+   "d_label": "D-1"
+  },
+  "CT8_W1_VS_W1S60_DISAGREEMENT": {
+   "episode": "NIFTY|2026-06-30|CE|24000#1",
+   "n_qualifying": 179,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-06-29 09:25:20",
+   "d_label": "D-1"
+  },
+  "CT9_MULTI_PARENT_CLOSING_BATCH": {
+   "episode": "NIFTY|2026-06-30|PE|24050#1",
+   "n_qualifying": 47,
+   "rank_of_chosen_among_qualifying": 5,
+   "chosen_is_chronological_first": false,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-06-29 09:31:00",
+   "d_label": "D-1"
+  }
+ },
+ "SENSEX_2026-07-16": {
+  "CT1_INCREMENTAL_OPENING": {
+   "episode": "SENSEX|2026-07-16|PE|77400#1",
+   "n_qualifying": 31,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-07-15 09:21:27",
+   "d_label": "D-1"
+  },
+  "CT2_PARTIAL_REDUCTION": {
+   "episode": "SENSEX|2026-07-16|CE|81200#1",
+   "n_qualifying": 27,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-07-15 09:16:00",
+   "d_label": "D-1"
+  },
+  "CT3_FULL_CLOSURE": {
+   "episode": "SENSEX|2026-07-16|CE|79500#1",
+   "n_qualifying": 37,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-07-15 09:31:05",
+   "d_label": "D-1"
+  },
+  "CT4_REMAINING_AT_EXPIRY": "UNAVAILABLE",
+  "CT5_REVERSAL": "UNAVAILABLE",
+  "CT6_MULTIPLE_CANDIDATE_WINGS": {
+   "episode": "SENSEX|2026-07-16|CE|77500#1",
+   "n_qualifying": 83,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-07-15 09:46:00",
+   "d_label": "D-1"
+  },
+  "CT6b_WING_WITH_MULTIPLE_CANDIDATE_BODIES": {
+   "episode": "SENSEX|2026-07-16|PE|74900#1",
+   "n_qualifying": 80,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-07-15 09:21:30",
+   "d_label": "D-1"
+  },
+  "CT7_NO_CANDIDATE_WING": {
+   "episode": "SENSEX|2026-07-16|CE|77200#1",
+   "n_qualifying": 16,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-07-15 09:16:02",
+   "d_label": "D-1"
+  },
+  "CT8_W1_VS_W1S60_DISAGREEMENT": {
+   "episode": "SENSEX|2026-07-16|CE|77600#1",
+   "n_qualifying": 125,
+   "rank_of_chosen_among_qualifying": 1,
+   "chosen_is_chronological_first": true,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-07-15 09:31:00",
+   "d_label": "D-1"
+  },
+  "CT9_MULTI_PARENT_CLOSING_BATCH": {
+   "episode": "SENSEX|2026-07-16|CE|77400#1",
+   "n_qualifying": 25,
+   "rank_of_chosen_among_qualifying": 6,
+   "chosen_is_chronological_first": false,
+   "reused_episode": false,
+   "episode_first_fill_ist": "2026-07-15 11:15:06",
+   "d_label": "D-1"
+  }
+ },
+ "NIFTY_reversing_fill": {
+  "fill_row": 5681,
+  "parent": "h_30084825701151",
+  "qty": 520,
+  "closing_portion": [
+   [
+    "NIFTY|2026-06-30|CE|24100#1",
+    390
+   ]
+  ],
+  "opening_portion": [
+   [
+    "NIFTY|2026-06-30|CE|24100#2",
+    130
+   ]
+  ],
+  "ts_ist": "2026-06-30 14:18:25",
+  "side": 1,
+  "tag": "h_"
+ },
+ "NIFTY_mixed_parent_h_30084825701151": {
+  "fills": [
+   [
+    5680,
+    "2026-06-30 14:18:25",
+    "CE|24100",
+    "BUY",
+    130,
+    "h_",
+    [
+     [
+      "CE|24100#1",
+      "close",
+      130
+     ]
+    ]
+   ],
+   [
+    5681,
+    "2026-06-30 14:18:25",
+    "CE|24100",
+    "BUY",
+    520,
+    "h_",
+    [
+     [
+      "CE|24100#2",
+      "open",
+      130
+     ],
+     [
+      "CE|24100#1",
+      "close",
+      390
+     ]
+    ]
+   ]
+  ]
+ },
+ "SENSEX_mixed_parent_s_16053046299662": {
+  "fills": [
+   [
+    12632,
+    "2026-07-16 11:00:52",
+    "CE|77600",
+    "BUY",
+    60,
+    "s_",
+    [
+     [
+      "CE|77600#1",
+      "close",
+      60
+     ]
+    ]
+   ],
+   [
+    12638,
+    "2026-07-16 11:00:52",
+    "CE|77600",
+    "BUY",
+    100,
+    "s_",
+    [
+     [
+      "CE|77600#1",
+      "close",
+      100
+     ]
+    ]
+   ],
+   [
+    12641,
+    "2026-07-16 11:00:52",
+    "CE|77600",
+    "BUY",
+    20,
+    "s_",
+    [
+     [
+      "CE|77600#2",
+      "open",
+      20
+     ]
+    ]
+   ]
+  ]
+ }
+}

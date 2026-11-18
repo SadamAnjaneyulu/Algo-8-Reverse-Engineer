@@ -1,0 +1,109 @@
+conv,day,split,ref,n,hit1,random_hit1
+cheap,D-1,DEV,chain_min (min of chain-allocation avg entry),351,0.5470085470085471,0.11318685271676725
+cheap,D-1,DEV,contract_wavg (aggregate),351,0.49572649572649574,0.11318685271676725
+cheap,D-1,DEV,lot_max (negative control),351,0.42165242165242167,0.11318685271676725
+cheap,D-1,DEV,lot_min (cheapest open lot),351,0.5754985754985755,0.11318685271676725
+cheap,D-1,DEV,lot_newest,351,0.47293447293447294,0.11318685271676725
+cheap,D-1,DEV,slot_min (min of slot-allocation avg entry),351,0.5612535612535613,0.11318685271676725
+cheap,D-1,TEST,chain_min (min of chain-allocation avg entry),208,0.625,0.1116834947553571
+cheap,D-1,TEST,contract_wavg (aggregate),208,0.5384615384615384,0.1116834947553571
+cheap,D-1,TEST,lot_max (negative control),208,0.5192307692307693,0.1116834947553571
+cheap,D-1,TEST,lot_min (cheapest open lot),208,0.6298076923076923,0.1116834947553571
+cheap,D-1,TEST,lot_newest,208,0.6298076923076923,0.1116834947553571
+cheap,D-1,TEST,slot_min (min of slot-allocation avg entry),208,0.6346153846153846,0.1116834947553571
+cheap,D-1,VAL,chain_min (min of chain-allocation avg entry),132,0.4696969696969697,0.12335858585858585
+cheap,D-1,VAL,contract_wavg (aggregate),132,0.4166666666666667,0.12335858585858585
+cheap,D-1,VAL,lot_max (negative control),132,0.32575757575757575,0.12335858585858585
+cheap,D-1,VAL,lot_min (cheapest open lot),132,0.4090909090909091,0.12335858585858585
+cheap,D-1,VAL,lot_newest,132,0.3484848484848485,0.12335858585858585
+cheap,D-1,VAL,slot_min (min of slot-allocation avg entry),132,0.3939393939393939,0.12335858585858585
+cheap,D0,DEV,chain_min (min of chain-allocation avg entry),1569,0.3690248565965583,0.08914268943245614
+cheap,D0,DEV,contract_wavg (aggregate),1569,0.2594008922880816,0.08914268943245614
+cheap,D0,DEV,lot_max (negative control),1569,0.16252390057361377,0.08914268943245614
+cheap,D0,DEV,lot_min (cheapest open lot),1569,0.3862332695984704,0.08914268943245614
+cheap,D0,DEV,lot_newest,1569,0.3384321223709369,0.08914268943245614
+cheap,D0,DEV,slot_min (min of slot-allocation avg entry),1569,0.38559592096876993,0.08914268943245614
+cheap,D0,TEST,chain_min (min of chain-allocation avg entry),382,0.23036649214659685,0.060327750908666475
+cheap,D0,TEST,contract_wavg (aggregate),382,0.193717277486911,0.060327750908666475
+cheap,D0,TEST,lot_max (negative control),382,0.17015706806282724,0.060327750908666475
+cheap,D0,TEST,lot_min (cheapest open lot),382,0.23821989528795812,0.060327750908666475
+cheap,D0,TEST,lot_newest,382,0.23821989528795812,0.060327750908666475
+cheap,D0,TEST,slot_min (min of slot-allocation avg entry),382,0.22774869109947643,0.060327750908666475
+cheap,D0,VAL,chain_min (min of chain-allocation avg entry),603,0.37976782752902155,0.10164912478345314
+cheap,D0,VAL,contract_wavg (aggregate),603,0.1791044776119403,0.10164912478345314
+cheap,D0,VAL,lot_max (negative control),603,0.14096185737976782,0.10164912478345314
+cheap,D0,VAL,lot_min (cheapest open lot),603,0.3880597014925373,0.10164912478345314
+cheap,D0,VAL,lot_newest,603,0.34328358208955223,0.10164912478345314
+cheap,D0,VAL,slot_min (min of slot-allocation avg entry),603,0.3880597014925373,0.10164912478345314
+fifo,D-1,DEV,chain_min (min of chain-allocation avg entry),351,0.5185185185185185,0.11318685271676725
+fifo,D-1,DEV,contract_wavg (aggregate),351,0.4700854700854701,0.11318685271676725
+fifo,D-1,DEV,lot_max (negative control),351,0.42165242165242167,0.11318685271676725
+fifo,D-1,DEV,lot_min (cheapest open lot),351,0.5356125356125356,0.11318685271676725
+fifo,D-1,DEV,lot_newest,351,0.4472934472934473,0.11318685271676725
+fifo,D-1,DEV,slot_min (min of slot-allocation avg entry),351,0.5242165242165242,0.11318685271676725
+fifo,D-1,TEST,chain_min (min of chain-allocation avg entry),208,0.6298076923076923,0.1116834947553571
+fifo,D-1,TEST,contract_wavg (aggregate),208,0.5673076923076923,0.1116834947553571
+fifo,D-1,TEST,lot_max (negative control),208,0.5240384615384616,0.1116834947553571
+fifo,D-1,TEST,lot_min (cheapest open lot),208,0.6298076923076923,0.1116834947553571
+fifo,D-1,TEST,lot_newest,208,0.6153846153846154,0.1116834947553571
+fifo,D-1,TEST,slot_min (min of slot-allocation avg entry),208,0.6298076923076923,0.1116834947553571
+fifo,D-1,VAL,chain_min (min of chain-allocation avg entry),132,0.5227272727272727,0.12335858585858585
+fifo,D-1,VAL,contract_wavg (aggregate),132,0.4393939393939394,0.12335858585858585
+fifo,D-1,VAL,lot_max (negative control),132,0.3333333333333333,0.12335858585858585
+fifo,D-1,VAL,lot_min (cheapest open lot),132,0.4772727272727273,0.12335858585858585
+fifo,D-1,VAL,lot_newest,132,0.3181818181818182,0.12335858585858585
+fifo,D-1,VAL,slot_min (min of slot-allocation avg entry),132,0.4318181818181818,0.12335858585858585
+fifo,D0,DEV,chain_min (min of chain-allocation avg entry),1569,0.31803696622052263,0.08914268943245614
+fifo,D0,DEV,contract_wavg (aggregate),1569,0.22115997450605482,0.08914268943245614
+fifo,D0,DEV,lot_max (negative control),1569,0.16889738687061823,0.08914268943245614
+fifo,D0,DEV,lot_min (cheapest open lot),1569,0.3078393881453155,0.08914268943245614
+fifo,D0,DEV,lot_newest,1569,0.22817080943275972,0.08914268943245614
+fifo,D0,DEV,slot_min (min of slot-allocation avg entry),1569,0.2995538559592097,0.08914268943245614
+fifo,D0,TEST,chain_min (min of chain-allocation avg entry),382,0.19633507853403143,0.060327750908666475
+fifo,D0,TEST,contract_wavg (aggregate),382,0.14921465968586387,0.060327750908666475
+fifo,D0,TEST,lot_max (negative control),382,0.13350785340314136,0.060327750908666475
+fifo,D0,TEST,lot_min (cheapest open lot),382,0.193717277486911,0.060327750908666475
+fifo,D0,TEST,lot_newest,382,0.193717277486911,0.060327750908666475
+fifo,D0,TEST,slot_min (min of slot-allocation avg entry),382,0.17801047120418848,0.060327750908666475
+fifo,D0,VAL,chain_min (min of chain-allocation avg entry),603,0.3913764510779436,0.10164912478345314
+fifo,D0,VAL,contract_wavg (aggregate),603,0.2537313432835821,0.10164912478345314
+fifo,D0,VAL,lot_max (negative control),603,0.15920398009950248,0.10164912478345314
+fifo,D0,VAL,lot_min (cheapest open lot),603,0.4079601990049751,0.10164912478345314
+fifo,D0,VAL,lot_newest,603,0.26865671641791045,0.10164912478345314
+fifo,D0,VAL,slot_min (min of slot-allocation avg entry),603,0.4013266998341625,0.10164912478345314
+lifo,D-1,DEV,chain_min (min of chain-allocation avg entry),351,0.48148148148148145,0.11318685271676725
+lifo,D-1,DEV,contract_wavg (aggregate),351,0.45584045584045585,0.11318685271676725
+lifo,D-1,DEV,lot_max (negative control),351,0.3646723646723647,0.11318685271676725
+lifo,D-1,DEV,lot_min (cheapest open lot),351,0.5185185185185185,0.11318685271676725
+lifo,D-1,DEV,lot_newest,351,0.4757834757834758,0.11318685271676725
+lifo,D-1,DEV,slot_min (min of slot-allocation avg entry),351,0.5014245014245015,0.11318685271676725
+lifo,D-1,TEST,chain_min (min of chain-allocation avg entry),208,0.6442307692307693,0.1116834947553571
+lifo,D-1,TEST,contract_wavg (aggregate),208,0.5721153846153846,0.1116834947553571
+lifo,D-1,TEST,lot_max (negative control),208,0.5144230769230769,0.1116834947553571
+lifo,D-1,TEST,lot_min (cheapest open lot),208,0.6490384615384616,0.1116834947553571
+lifo,D-1,TEST,lot_newest,208,0.6442307692307693,0.1116834947553571
+lifo,D-1,TEST,slot_min (min of slot-allocation avg entry),208,0.6538461538461539,0.1116834947553571
+lifo,D-1,VAL,chain_min (min of chain-allocation avg entry),132,0.48484848484848486,0.12335858585858585
+lifo,D-1,VAL,contract_wavg (aggregate),132,0.38636363636363635,0.12335858585858585
+lifo,D-1,VAL,lot_max (negative control),132,0.29545454545454547,0.12335858585858585
+lifo,D-1,VAL,lot_min (cheapest open lot),132,0.4166666666666667,0.12335858585858585
+lifo,D-1,VAL,lot_newest,132,0.36363636363636365,0.12335858585858585
+lifo,D-1,VAL,slot_min (min of slot-allocation avg entry),132,0.42424242424242425,0.12335858585858585
+lifo,D0,DEV,chain_min (min of chain-allocation avg entry),1569,0.40662842574888464,0.08914268943245614
+lifo,D0,DEV,contract_wavg (aggregate),1569,0.24537922243467178,0.08914268943245614
+lifo,D0,DEV,lot_max (negative control),1569,0.16634799235181644,0.08914268943245614
+lifo,D0,DEV,lot_min (cheapest open lot),1569,0.4308476736775016,0.08914268943245614
+lifo,D0,DEV,lot_newest,1569,0.3824091778202677,0.08914268943245614
+lifo,D0,DEV,slot_min (min of slot-allocation avg entry),1569,0.40854047163798596,0.08914268943245614
+lifo,D0,TEST,chain_min (min of chain-allocation avg entry),382,0.21465968586387435,0.060327750908666475
+lifo,D0,TEST,contract_wavg (aggregate),382,0.18586387434554974,0.060327750908666475
+lifo,D0,TEST,lot_max (negative control),382,0.1649214659685864,0.060327750908666475
+lifo,D0,TEST,lot_min (cheapest open lot),382,0.2356020942408377,0.060327750908666475
+lifo,D0,TEST,lot_newest,382,0.22251308900523561,0.060327750908666475
+lifo,D0,TEST,slot_min (min of slot-allocation avg entry),382,0.23298429319371727,0.060327750908666475
+lifo,D0,VAL,chain_min (min of chain-allocation avg entry),603,0.3582089552238806,0.10164912478345314
+lifo,D0,VAL,contract_wavg (aggregate),603,0.1890547263681592,0.10164912478345314
+lifo,D0,VAL,lot_max (negative control),603,0.13598673300165837,0.10164912478345314
+lifo,D0,VAL,lot_min (cheapest open lot),603,0.36318407960199006,0.10164912478345314
+lifo,D0,VAL,lot_newest,603,0.3880597014925373,0.10164912478345314
+lifo,D0,VAL,slot_min (min of slot-allocation avg entry),603,0.36318407960199006,0.10164912478345314

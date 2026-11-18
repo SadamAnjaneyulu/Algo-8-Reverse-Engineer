@@ -1,0 +1,27 @@
+# portfolio_engine environment lock (M2-F defect E-D09). Exact versions of the environment in which every delivered output was generated and every test was run (2026-11-16).
+# See docs/ENVIRONMENT.md for what reproducibility is and is NOT asserted. Install: python3 -m pip install -r portfolio_engine/requirements.lock.txt
+# python: 3.13.18   (the engine's data outputs were also verified identical on 3.11 and 3.12 by the M2-F audit; matplotlib PNG bytes were verified on this stack only)
+# g++: g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0   (C++17 core, no third-party C++ libraries)
+# cmake: 3.28.3
+# The Python engine core (ledger, replay, lineage, invariants, closing_batches, wing_body, cases, tsvio, provenance, cli) imports the standard library only.
+#
+# --- direct imports of this project's code (pandas also needs pyarrow at run time: pandas.read_parquet reads the TP-01 ledger; pyarrow is not imported by name) ---
+numpy==2.5.3
+pandas==3.0.5
+pyarrow==26.0.1
+matplotlib==3.11.2
+pytest==9.2.0
+# --- transitive dependencies of the above (as installed) ---
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.68.0
+iniconfig==2.3.1
+kiwisolver==1.5.1
+packaging==26.3
+pillow==12.3.0
+pluggy==1.7.0
+Pygments==2.21.0
+pyparsing==3.1.1
+python-dateutil==2.9.0.post0
+six==1.17.0
+# NOT pinned here and NOT installable from PyPI: `market_data` (tools/select_demo_cycles.py only; raw 1-minute bars under ALGO8_MARKET_DIR, outside this repository).

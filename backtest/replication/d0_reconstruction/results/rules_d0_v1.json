@@ -1,0 +1,126 @@
+{
+ "version": "D0-v1",
+ "fitted_on": "DISCOVERY cycles only (D0 < 2026-09-23)",
+ "n_discovery_cycles_with_d0": 25,
+ "S1_scheduled_ladder_slot0_is_0916": [
+  {
+   "CE": 1,
+   "PE": 8
+  },
+  {
+   "CE": 5,
+   "PE": 5
+  },
+  {
+   "CE": 4,
+   "PE": 4
+  },
+  {
+   "CE": 1,
+   "PE": 2
+  },
+  {
+   "CE": 4,
+   "PE": 4
+  },
+  {
+   "CE": 3,
+   "PE": 3
+  },
+  {
+   "CE": 2,
+   "PE": 2
+  },
+  {
+   "CE": 2,
+   "PE": 2
+  },
+  {
+   "CE": 3,
+   "PE": 3
+  },
+  {
+   "CE": 2,
+   "PE": 2
+  },
+  {
+   "CE": 3,
+   "PE": 3
+  },
+  {
+   "CE": 1,
+   "PE": 1
+  },
+  {
+   "CE": 0,
+   "PE": 0
+  },
+  {
+   "CE": 2,
+   "PE": 3
+  },
+  {
+   "CE": 2,
+   "PE": 2
+  },
+  {
+   "CE": 1,
+   "PE": 1
+  },
+  {
+   "CE": 1,
+   "PE": 1
+  },
+  {
+   "CE": 2,
+   "PE": 2
+  },
+  {
+   "CE": 1,
+   "PE": 0
+  },
+  {
+   "CE": 2,
+   "PE": 2
+  },
+  {
+   "CE": 0,
+   "PE": 0
+  },
+  {
+   "CE": 0,
+   "PE": 0
+  },
+  {
+   "CE": 0,
+   "PE": 0
+  },
+  {
+   "CE": 0,
+   "PE": 0
+  },
+  {
+   "CE": 0,
+   "PE": 0
+  }
+ ],
+ "S2_clockB_act_threshold_total_short_lots": 134,
+ "S2_fit_discovery": {
+  "F1": 0.6237424547283702,
+  "precision": 0.4740061162079511,
+  "recall": 0.9117647058823529,
+  "ticks": 460,
+  "acted_share": 0.3695652173913043
+ },
+ "S2_contract_choice": "short body contract with the most lots (ties: nearest to ATM)",
+ "S2_buyback_lots": 1,
+ "S2_replacement": "1 lot, same right, nearest strike to previous-minute spot, minute after the buyback",
+ "S3_price_stop_mult": 1.6,
+ "S3_status": "HYPOTHESIS (weak on D0: EXT-05); replayed as an explicit variant",
+ "S4_final_flatten_minute_0915_eq_0": 359,
+ "S5_wing_ratio_sched_off": 0.02719797596457938,
+ "S5_wing_lots_per_lot_sched_off": 1.0,
+ "S5_wing_lots_per_lot_replacement": 0.4701311316172899,
+ "S5_wing_ratio_replacement": 0.03975652407855798,
+ "cycle_stop_rs": 144000
+}

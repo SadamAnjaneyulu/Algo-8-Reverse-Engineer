@@ -1,0 +1,68 @@
+[
+ {
+  "id": "C-01",
+  "severity": "Medium",
+  "title": "M2-D headline counts are conditional on the same-second tie order of the replay and this is not disclosed in the M2-D report",
+  "location": "portfolio_engine/python/pe/replay.py:13-16 (order_events, tie_order=src); reports/M2D_WING_BODY_REPORT.md section 2-3 (no tie statement)",
+  "evidence": "[RAW][IMPL] tie_sensitivity_result.json: replay of the raw ledger under (ts,row) [engine], sells-first and buys-first. Opening body units 626,765 / 626,830 / 626,680; closing body units 540,250 / 540,315 / 540,165; items 36,784 / 36,786 / 36,780; W1 links 42,777 / 42,778 / 42,776; W1_S60 65,228 / 65,230 / 65,221; W3 body residual 66,055 / 66,120 / 65,970. Wing units unchanged (617,130 / 500,775). EVIDENCE_REGISTRY records the 6 tie-ambiguous fills for M1/M2-B only.",
+  "repro": "python3 portfolio_engine/reports/m2f_audit/track_c/tie_sensitivity.py",
+  "impact": "Tiny (<= 0.014 % of body units, <= 4 items, <= 7 links) but the exact headline integers (626,765; 540,250; 66,055) are convention-conditional facts, presented without that label.",
+  "proposed_fix": "State the tie-order convention beside the M2-D headline integers and add the measured sensitivity table (above) to the report.",
+  "proposed_test": "test: run wb.analyse on the 6 ambiguous fills under src/sells_first/buys_first and assert the documented deltas."
+ },
+ {
+  "id": "C-02",
+  "severity": "Medium",
+  "title": "W3 weight column is not pinned by any existing test (mutant M19 survives all 33 tests)",
+  "location": "portfolio_engine/python/pe/wing_body.py:~120 (weight=round(u / ws[wi].qty, 9)); portfolio_engine/tests/test_wing_body.py",
+  "evidence": "Mutation M19 (W3 weight = matched / body_qty) -> 33 passed on the mirror; own reference detects it on the full ledger (links:W3 field diffs). INSPECTED: test_real_outputs_reproduce_the_committed_manifest hashes the committed files (not regenerated output) and compares only the W1 row count to the live run, so W3 columns are not compared to a live run anywhere.",
+  "repro": "python3 run_mutant.py M19 (track_c)",
+  "impact": "A wrong W3 weight would pass the suite; weight is a published column of wing_body_links_W3.",
+  "proposed_fix": "Assert W3 weight == queue_matched_units / wing_qty in the unequal-quantity W3 test.",
+  "proposed_test": "extend test_W3_is_arithmetic_conserves_units...: for each segment assert weight == pytest.approx(units / wing_qty); add a W3 case with wing qty != body qty."
+ },
+ {
+  "id": "C-03",
+  "severity": "Low",
+  "title": "Closing-level role scope: stop-closed bodies and non-h_-closed h_-opened wings are excluded; magnitude by episode origin not reported",
+  "location": "portfolio_engine/python/pe/wing_body.py build_items (closing branch); reports/M2D_WING_BODY_REPORT.md section 6",
+  "evidence": "[RAW][IMPL] scope_probe_result.json: of 95,485 units of short episodes closed by s_, 59,065 were opened only by num (short bodies by the opening-tag rule) and are absent from closing bodies (540,250); long episodes opened only by h_ but closed by num / s_ / v_ = 67,070 / 22,075 / 25,500 = 114,645 units are absent from closing wings. The report gives exclusions by closing tag and says stop-closed bodies are omitted, but not these origin-based magnitudes.",
+  "repro": "python3 scope_probe.py",
+  "impact": "Closing-level coverage numbers (105,060 body units without wing; 105,750 unmatched wing units) are not comparable with opening-level numbers; reader could read them as population coverage.",
+  "proposed_fix": "Add the origin-based table to section 6 and label closing-level coverage as closing-tag-scope only.",
+  "proposed_test": "none needed beyond a report-number regression of the table."
+ },
+ {
+  "id": "C-04",
+  "severity": "Low",
+  "title": "Same-contract and non-OTM wing/body candidate links are retained unflagged",
+  "location": "portfolio_engine/python/pe/wing_body.py candidates_w1 / candidates_s60 / queue_w3",
+  "evidence": "[RAW][IMPL] real_checks_result.json: same-instrument wing/body links: W1 6, W1_S60 7, W3 8; links with wing not further OTM: W1 24, S60 32, W3 27 (of 42,777 / 65,228 / 12,096). A long and a short in the same contract cannot be a spread leg pair; the report discloses the 99.9 % OTM share only.",
+  "repro": "python3 real_checks.py",
+  "impact": "Negligible numerically; matters for any later reading of candidates as protective pairs.",
+  "proposed_fix": "Add a column same_instrument / otm_distance_le_0 flag; keep links (no filtering).",
+  "proposed_test": "synthetic: long h_ then close then short num same contract in one minute -> flagged."
+ },
+ {
+  "id": "C-05",
+  "severity": "Low",
+  "title": "Two items have an order-entry minute later than their first fill (1 s) -- undisclosed data-quality note",
+  "location": "portfolio_engine/reports/m2d_data/wing_body_items.tsv.gz (parents 11431436, 12061224)",
+  "evidence": "[RAW] first fill ts = entry minute start - 1 s for CLOSING BODY 11431436 (row 20515) and OPENING BODY 12061224 (row 32722). Minute-precision field vs whole-second execution clock.",
+  "repro": "python3 -c in track_c (see FINDINGS)",
+  "impact": "None on W1 (matches use the minute key); weakens the statement that the entry minute precedes the fill.",
+  "proposed_fix": "Mention in limitations; add a count of entry_minute > first_fill items to the summary.",
+  "proposed_test": "real-ledger assertion that the count equals 2 (documented)."
+ },
+ {
+  "id": "C-06",
+  "severity": "Low",
+  "title": "Wording: \"independently equal to the pairing TP-03 Phase 1 E6 used\" could not be verified; second-key share quoted with differing denominators",
+  "location": "reports/M2D_WING_BODY_REPORT.md section 3; docs/BASKET_GROUPING_METHODOLOGY.md W4 row; reports/M2A_REVIEW_PACKET.md:24",
+  "evidence": "[RAW] second app key F88187: 7.84 % of h_ fills, 7.87 % of h_ units (all h_ rows), 8.18 % of opening wing items, 8.43 % of opening wing units; 0 of 26,954 num rows carry it (also used by v_ and s_). The \"7.8 %\" is a share of h_ fills, not of wing units. The TP-03 E6 equality is NOT VERIFIED here (TP-03 artifacts not re-run).",
+  "repro": "python3 headline.py; python3 -c on raw col 166",
+  "impact": "Documentation precision only.",
+  "proposed_fix": "Quote denominators with each percentage; mark the TP-03 E6 equality as reported, not re-verified.",
+  "proposed_test": "none"
+ }
+]

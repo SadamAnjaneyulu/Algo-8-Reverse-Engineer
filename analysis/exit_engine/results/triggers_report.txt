@@ -1,0 +1,44 @@
+=== T1 static stop level: P(lot-stop exit this minute | minute-high / cheapest entry in bin) ===
+rh_cheap  (0.0, 1.0]  (1.0, 1.2]  (1.2, 1.3]  (1.3, 1.4]  (1.4, 1.45]  (1.45, 1.5]  (1.5, 1.55]  (1.55, 1.6]  (1.6, 1.7]  (1.7, 1.8]  (1.8, 2.0]  (2.0, 2.5]  (2.5, 100.0]
+size         99109.0     57361.0  16916.0000  12089.0000    4687.0000    3766.0000    2878.0000     2246.000   2922.0000   1680.0000   1862.0000    2087.000     1503.0000
+mean             0.0         0.0      0.0001      0.0001       0.0002       0.0098       0.0351        0.057      0.0945      0.1619      0.1386       0.103        0.0692
+
+by entry-premium band (hazard at rh_cheap bins):
+  entry Rs 0-10: {Interval(0.0, 1.3, closed='right'): 0.0, Interval(1.3, 1.45, closed='right'): 0.0, Interval(1.45, 1.55, closed='right'): 0.0, Interval(1.55, 1.7, closed='right'): 0.017, Interval(1.7, 2.0, closed='right'): 0.059, Interval(2.0, 3.0, closed='right'): 0.098, Interval(3.0, 100.0, closed='right'): 0.273}
+  entry Rs 10-25: {Interval(0.0, 1.3, closed='right'): 0.0, Interval(1.3, 1.45, closed='right'): 0.0, Interval(1.45, 1.55, closed='right'): 0.0, Interval(1.55, 1.7, closed='right'): 0.05, Interval(1.7, 2.0, closed='right'): 0.089, Interval(2.0, 3.0, closed='right'): 0.294, Interval(3.0, 100.0, closed='right'): 0.538}
+  entry Rs 25-50: {Interval(0.0, 1.3, closed='right'): 0.0, Interval(1.3, 1.45, closed='right'): 0.0, Interval(1.45, 1.55, closed='right'): 0.024, Interval(1.55, 1.7, closed='right'): 0.058, Interval(1.7, 2.0, closed='right'): 0.157, Interval(2.0, 3.0, closed='right'): 0.252, Interval(3.0, 100.0, closed='right'): 0.101}
+  entry Rs 50-100: {Interval(0.0, 1.3, closed='right'): 0.0, Interval(1.3, 1.45, closed='right'): 0.0, Interval(1.45, 1.55, closed='right'): 0.018, Interval(1.55, 1.7, closed='right'): 0.07, Interval(1.7, 2.0, closed='right'): 0.206, Interval(2.0, 3.0, closed='right'): 0.096, Interval(3.0, 100.0, closed='right'): 0.036}
+  entry Rs 100-10000: {Interval(0.0, 1.3, closed='right'): 0.0, Interval(1.3, 1.45, closed='right'): 0.0, Interval(1.45, 1.55, closed='right'): 0.024, Interval(1.55, 1.7, closed='right'): 0.093, Interval(1.7, 2.0, closed='right'): 0.133, Interval(2.0, 3.0, closed='right'): 0.067, Interval(3.0, 100.0, closed='right'): 0.013}
+
+points test for cheap entries (<= Rs 25): hazard by points above entry (minute high - entry):
+pts_above  (-100, 0]  (0, 2]   (2, 4]   (4, 6]   (6, 8]  (8, 10]  (10, 15]  (15, 20]  (20, 30]  (30, 1000]
+size          5739.0  1871.0  769.000  528.000  349.000  194.000    297.00   113.000    72.000        25.0
+mean             0.0     0.0    0.001    0.002    0.003    0.021      0.04     0.106     0.278         0.6
+
+=== T2 dynamic stop level: hazard-implied threshold by condition (entries > Rs 25), with cycle bootstrap 90% band ===
+  TTE (min): (0, 120]: 2.05 [(np.float64(2.0), np.float64(2.42))] n=25071; (120, 375]: nan [(np.float64(2.5), np.float64(2.55))] n=72996; (1000, 5000]: 1.7 [(np.float64(1.7), np.float64(1.7))] n=101082
+  day: (-1.0, 0.5]: nan [(np.float64(2.09), np.float64(2.53))] n=98067; (0.5, 2.0]: 1.7 [(np.float64(1.7), np.float64(1.7))] n=101082
+  IV change since entry: (-5.0, -0.03]: nan [(np.float64(1.7), np.float64(2.0))] n=9169; (-0.03, 0.0]: 1.7 [(np.float64(1.7), np.float64(1.95))] n=77228; (0.0, 0.03]: 1.7 [(np.float64(1.7), np.float64(1.7))] n=63854; (0.03, 5.0]: nan [(np.float64(2.15), np.float64(2.45))] n=48898
+  spot move since entry (ATR, adverse+): (-100, 0]: nan [(np.float64(1.56), np.float64(1.9))] n=100515; (0, 2]: 1.75 [(np.float64(1.65), np.float64(1.85))] n=34807; (2, 5]: 1.7 [(np.float64(1.7), np.float64(1.85))] n=30491; (5, 100]: nan [(np.float64(2.19), np.float64(2.55))] n=33039
+  minutes since entry: (0, 30]: 1.7 [(np.float64(1.65), np.float64(1.7))] n=63343; (30, 120]: nan [(np.float64(1.7), np.float64(2.45))] n=68871; (120, 400]: nan [(np.float64(1.82), np.float64(2.51))] n=56932; (400, 5000]: nan [(np.float64(2.55), np.float64(2.55))] n=10003
+
+=== T3 trailing: exits while IN PROFIT (r_cheap < 1); non-stop, non-salvage, non-flatten, non-cycle categories ===
+  premium (0, 0.3) of entry: hazard by bounce off running low  {Interval(0.0, 1.05, closed='right'): 0.0139, Interval(1.05, 1.15, closed='right'): 0.0133, Interval(1.15, 1.3, closed='right'): 0.0121, Interval(1.3, 1.5, closed='right'): 0.0139, Interval(1.5, 2.0, closed='right'): 0.0167, Interval(2.0, 3.0, closed='right'): 0.0104, Interval(3.0, 100.0, closed='right'): 0.0769}  n={Interval(0.0, 1.05, closed='right'): 5737, Interval(1.05, 1.15, closed='right'): 8187, Interval(1.15, 1.3, closed='right'): 6058, Interval(1.3, 1.5, closed='right'): 3298, Interval(1.5, 2.0, closed='right'): 3061, Interval(2.0, 3.0, closed='right'): 869, Interval(3.0, 100.0, closed='right'): 169}
+  premium (0.3, 0.6) of entry: hazard by bounce off running low  {Interval(0.0, 1.05, closed='right'): 0.0102, Interval(1.05, 1.15, closed='right'): 0.0073, Interval(1.15, 1.3, closed='right'): 0.0104, Interval(1.3, 1.5, closed='right'): 0.0135, Interval(1.5, 2.0, closed='right'): 0.0289, Interval(2.0, 3.0, closed='right'): 0.026, Interval(3.0, 100.0, closed='right'): 0.0758}  n={Interval(0.0, 1.05, closed='right'): 4784, Interval(1.05, 1.15, closed='right'): 7487, Interval(1.15, 1.3, closed='right'): 4903, Interval(1.3, 1.5, closed='right'): 2292, Interval(1.5, 2.0, closed='right'): 1557, Interval(2.0, 3.0, closed='right'): 731, Interval(3.0, 100.0, closed='right'): 264}
+  premium (0.6, 0.9) of entry: hazard by bounce off running low  {Interval(0.0, 1.05, closed='right'): 0.01, Interval(1.05, 1.15, closed='right'): 0.008, Interval(1.15, 1.3, closed='right'): 0.0103, Interval(1.3, 1.5, closed='right'): 0.0165, Interval(1.5, 2.0, closed='right'): 0.0274, Interval(2.0, 3.0, closed='right'): 0.057, Interval(3.0, 100.0, closed='right'): 0.1227}  n={Interval(0.0, 1.05, closed='right'): 9087, Interval(1.05, 1.15, closed='right'): 12358, Interval(1.15, 1.3, closed='right'): 6800, Interval(1.3, 1.5, closed='right'): 2659, Interval(1.5, 2.0, closed='right'): 1572, Interval(2.0, 3.0, closed='right'): 526, Interval(3.0, 100.0, closed='right'): 220}
+  hazard by drawdown from contract peak unrealised P&L (Rs):
+   {Interval(-10000000.0, -20000.0, closed='right'): {'size': 4593, 'mean': 0.0581}, Interval(-20000.0, -10000.0, closed='right'): {'size': 6441, 'mean': 0.0312}, Interval(-10000.0, -5000.0, closed='right'): {'size': 10326, 'mean': 0.0198}, Interval(-5000.0, -2000.0, closed='right'): {'size': 17591, 'mean': 0.0111}, Interval(-2000.0, -500.0, closed='right'): {'size': 24471, 'mean': 0.0074}, Interval(-500.0, 0.1, closed='right'): {'size': 43019, 'mean': 0.0085}}
+
+=== T4 feature families: OOS AUC gain over timing+inventory baseline (3 chronological folds) ===
+                                    category  positives  base_auc  premium_ratio    pnl  drawdown/trailing  spot_atr     iv  greeks  since_trades    all
+                  1 individual lot stop-loss       1398     0.669          0.320  0.278              0.291     0.285  0.059   0.258         0.189  0.323
+            2 same-contract partial buy-back        454     0.738          0.069  0.012              0.039     0.067 -0.007   0.024         0.054  0.129
+                      3 side-level reduction        394     0.660          0.198  0.070              0.202     0.208  0.017   0.073         0.169  0.265
+                    4 basket-level reduction        960     0.844          0.035  0.021              0.022     0.033 -0.001   0.008         0.044  0.066
+                         8 clock-B rebalance        427     0.966          0.010  0.003              0.005     0.007  0.003   0.003         0.007  0.013
+             8b grid rebalance (A/:00 clock)        322     0.937          0.014 -0.006              0.001     0.011 -0.001   0.006         0.011  0.014
+6 clock-based exit (clock B, no replacement)        185     0.950         -0.010 -0.019             -0.100     0.001 -0.008  -0.013         0.021  0.023
+                        7 expiry-day salvage        716     0.963          0.022  0.009              0.012     0.013 -0.004   0.012         0.012  0.027
+                              11 unexplained         48     0.922         -0.080 -0.214             -0.024    -0.197 -0.087  -0.041        -0.026 -0.469
+
+T4 categories with no part file: none (categories with < 40 positives are skipped by design)

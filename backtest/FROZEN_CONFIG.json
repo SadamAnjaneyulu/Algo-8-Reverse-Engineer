@@ -1,0 +1,55 @@
+{
+ "frozen_at_utc": "2026-11-18T12:39:14",
+ "code_commit_before_freeze": "05433d73d0d86fb9be0d357e5b49f28e87cfebe1",
+ "data_commit": "eb4097308d47ccc75078ab73ba76d33bb1c7030b",
+ "engine": "portfolio_engine/construction (Python reference + C++ runner) + capital_stop plugin",
+ "preregistration": "backtest/PREREGISTRATION.md",
+ "oos_accounting_run_before_freeze": false,
+ "frozen": {
+  "HOLD_SETTLE": {
+   "config": "cut_t20000_f10000_re_cd1800band",
+   "spec": {
+    "cut": {
+     "policy": "MARK_ADVERSE_MOVE",
+     "trigger_bp": 20000,
+     "leg_side_filter": "SHORT",
+     "scope": "LEG",
+     "qty_mode": "FRACTION_BP",
+     "fraction_bp": 10000,
+     "max_cuts_per_leg": 1
+    },
+    "reentry": {
+     "cooldown_s": 1800,
+     "price_condition": "WITHIN_BAND",
+     "band_bp": 2000
+    },
+    "stop": false
+   },
+   "reason": "highest in-sample net P&L; positive in 2 of 3 thirds",
+   "is_net_pnl_frozen": 520143.0901620434,
+   "is_net_pnl_hold": 497091.255459244,
+   "walk_forward_note": "selection rule applied to expanding training windows; see results/is_selection.json"
+  },
+  "FLATTEN_1525": {
+   "config": "HOLD",
+   "spec": {
+    "cut": null,
+    "reentry": null,
+    "stop": false
+   },
+   "reason": "best configuration cut_t20000_f10000_re_cd1800band positive in only 1 of 3 thirds",
+   "is_net_pnl_frozen": 428326.79447197274,
+   "is_net_pnl_hold": 428326.79447197274,
+   "walk_forward_note": "selection rule applied to expanding training windows; see results/is_selection.json"
+  }
+ },
+ "reported_reference": "HOLD (no plugin acts) is reported next to every frozen result",
+ "cost_and_slippage_base": {
+  "slip_pct": 0.005,
+  "slip_min_rs": 0.1,
+  "brokerage_rs_per_order": 20,
+  "cost_mult": 1.0
+ },
+ "capital_rs": 20000000,
+ "lots_per_leg": 3
+}

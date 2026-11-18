@@ -1,0 +1,176 @@
+LINK CLASSES x WINDOW (lots)
+window                                     0-30 s  30-60 s  1-5 min  5-15 min  > 15 min
+cls                                                                                    
+ATM re-centering                              185       69      191       231         2
+same-contract re-entry after full closure      18       12       19         8         0
+same-contract replacement                     120       77      143       183         1
+same-right, different-strike replacement     1284      182      436       457         1
+unresolved association                          0        0        0         0      1941
+
+LINK CLASSES x WINDOW, only links whose (reduction group, window) shows excess over the null (lots)
+window                                     0-30 s  1-5 min  30-60 s  5-15 min
+cls                                                                          
+ATM re-centering                              176       33       64        88
+same-contract re-entry after full closure      18        3       12         6
+same-contract replacement                     112       66       63       120
+same-right, different-strike replacement     1257      105      156       183
+
+CLOCK-B REBALANCE reductions: class x window (lots)
+window                                     0-30 s  30-60 s  1-5 min  5-15 min  > 15 min
+cls                                                                                    
+ATM re-centering                               30       26        7        36         1
+same-contract re-entry after full closure       5        3        1         1         0
+same-contract replacement                      24       25       10        29         1
+same-right, different-strike replacement       99       22       14        39         0
+unresolved association                          0        0        0         0        55
+
+median dt (s) by class
+cls
+ATM re-centering                              120.0
+same-contract re-entry after full closure      47.0
+same-contract replacement                     117.5
+same-right, different-strike replacement       44.0
+unresolved association                       4214.0
+
+Clock-B rebalance links: dt quantiles (s)
+count      383.0
+mean       677.5
+std       1799.7
+min          0.0
+10%          3.2
+25%         15.0
+50%         48.0
+75%        614.0
+90%       1462.0
+max      12074.0
+
+unlinked sale lots by class
+cls
+independent off-grid entry (antecedent capacity exhausted)      85
+independent off-grid entry (no eligible antecedent)           2854
+independent scheduled entry                                   6813
+
+ASSOCIATION vs time-shifted null
+                             reduction_group   window  observed_pairs  null_mean  null_p95  excess_ratio  p_value
+                  1 individual lot stop-loss   0-30 s            1126    314.630    356.00         3.579    0.000
+                  1 individual lot stop-loss  30-60 s             411    316.260    359.00         1.300    0.000
+                  1 individual lot stop-loss  1-5 min            1764   2532.250   2693.50         0.697    1.000
+                  1 individual lot stop-loss 5-15 min            4650   6327.155   6605.15         0.735    1.000
+                  1 individual lot stop-loss > 15 min          121400 129980.050 131331.50         0.934    1.000
+            2 same-contract partial buy-back   0-30 s             223    127.050    157.05         1.755    0.000
+            2 same-contract partial buy-back  30-60 s             131    124.760    159.05         1.050    0.365
+            2 same-contract partial buy-back  1-5 min            1000   1008.240   1121.35         0.992    0.555
+            2 same-contract partial buy-back 5-15 min            2025   2522.160   2727.60         0.803    1.000
+            2 same-contract partial buy-back > 15 min           31083  37534.670  38760.05         0.828    1.000
+                      3 side-level reduction   0-30 s             122    140.125    178.25         0.871    0.800
+                      3 side-level reduction  30-60 s              86    138.515    175.05         0.621    0.990
+                      3 side-level reduction  1-5 min             934   1087.065   1205.25         0.859    0.990
+                      3 side-level reduction 5-15 min            1891   2703.865   2923.00         0.699    1.000
+                      3 side-level reduction > 15 min           28092  38546.025  39651.45         0.729    1.000
+                    4 basket-level reduction   0-30 s             481    240.475    275.20         2.000    0.000
+                    4 basket-level reduction  30-60 s             531    242.655    284.00         2.188    0.000
+                    4 basket-level reduction  1-5 min            2790   1929.775   2063.10         1.446    0.000
+                    4 basket-level reduction 5-15 min            6623   4866.195   5093.70         1.361    0.000
+                    4 basket-level reduction > 15 min           51169  72998.915  74691.90         0.701    1.000
+6 clock-based exit (clock B, no replacement)   0-30 s               0     50.835     69.00         0.000    1.000
+6 clock-based exit (clock B, no replacement)  30-60 s               0     51.930     72.05         0.000    1.000
+6 clock-based exit (clock B, no replacement)  1-5 min             210    411.230    465.05         0.511    1.000
+6 clock-based exit (clock B, no replacement) 5-15 min             895   1017.430   1123.30         0.880    0.980
+6 clock-based exit (clock B, no replacement) > 15 min            9433  13288.365  13706.10         0.710    1.000
+                         8 clock-B rebalance   0-30 s             413    124.665    157.00         3.313    0.000
+                         8 clock-B rebalance  30-60 s             513    124.130    155.05         4.133    0.000
+                         8 clock-B rebalance  1-5 min             553    990.275   1087.30         0.558    1.000
+                         8 clock-B rebalance 5-15 min            3157   2453.755   2664.40         1.287    0.000
+                         8 clock-B rebalance > 15 min           26626  35229.285  36586.45         0.756    1.000
+             8b grid rebalance (A/:00 clock)   0-30 s             197     92.545    119.05         2.129    0.000
+             8b grid rebalance (A/:00 clock)  30-60 s              36     93.720    119.25         0.384    1.000
+             8b grid rebalance (A/:00 clock)  1-5 min             794    759.475    855.05         1.045    0.280
+             8b grid rebalance (A/:00 clock) 5-15 min            3031   1889.400   2053.05         1.604    0.000
+             8b grid rebalance (A/:00 clock) > 15 min           29352  34300.920  35386.95         0.856    1.000
+             scheduled / liquidation / other   0-30 s            1478    513.905    572.35         2.876    0.000
+             scheduled / liquidation / other  30-60 s             654    511.135    573.20         1.280    0.000
+             scheduled / liquidation / other  1-5 min            4186   4232.545   4461.15         0.989    0.640
+             scheduled / liquidation / other 5-15 min            7665  11848.650  12380.25         0.647    1.000
+             scheduled / liquidation / other > 15 min           17852 104755.875 106494.45         0.170    1.000
+
+VARIANT STABILITY (share of sale lots)
+variant                                                     earliest-first  horizon 15 min  primary (recent, sched excluded, same day)  same-contract-first  scheduled sales consume capacity
+cls                                                                                                                                                                                          
+ATM re-centering                                                     0.019           0.044                                       0.044                0.030                             0.039
+independent off-grid entry (antecedent capacity exhausted)           0.005           0.002                                       0.006                0.006                             0.004
+independent off-grid entry (no eligible antecedent)                  0.188           0.317                                       0.186                0.186                             0.262
+independent scheduled entry                                          0.445           0.445                                       0.445                0.445                             0.445
+partial position replenishment                                         NaN             NaN                                         NaN                0.000                               NaN
+same-contract re-entry after full closure                            0.001           0.004                                       0.004                0.008                             0.003
+same-contract replacement                                            0.012           0.034                                       0.034                0.067                             0.029
+same-right, different-strike replacement                             0.082           0.154                                       0.154                0.111                             0.140
+unresolved association                                               0.249             NaN                                       0.127                0.146                             0.077
+
+HEDGE ADJUSTMENTS (wing orders within 60 s after a same-right reduction)
+window    wing_side
+0-30 s    Buy           1633
+          Sell         11382
+1-5 min   Buy             30
+          Sell            77
+30-60 s   Buy           1125
+          Sell           150
+negative  Buy            128
+
+OWNERSHIP (replacement / re-entry lot pairs)
+       A_continuation  B_continuation  ownership_ambiguous
+conv                                                      
+cheap           0.007           0.030                0.731
+fifo            0.004           0.026                0.731
+lifo            0.008           0.036                0.731
+owner_convention_status
+convention-dependent                            0.897
+identified (same slot under all conventions)    0.103
+
+share of replacement / re-entry links with competing antecedents on >= 2 contracts within 60 s (sensitivity of the 15-min ambiguity rule):
+0.21
+
+PER REDUCTION LABEL
+                                              reduction_lots  resold_0_30s  resold_0_60s  resold_0_15min  le60s_same-contract replacement  le60s_partial position replenishment  le60s_ATM re-centering  le60s_same-right, different-strike replacement  le60s_same-contract re-entry after full closure  median_dt_le15min_s
+label                                                                                                                                                                                                                                                                                                                        
+1 individual lot stop-loss                              3456         0.036         0.041           0.117                            0.002                                   0.0                   0.007                                           0.032                                            0.000                163.0
+10 manual / platform risk engine                         254         0.315         0.346           0.378                            0.000                                   0.0                   0.028                                           0.319                                            0.000                 15.0
+11 unexplained                                            87         0.356         0.437           0.770                            0.023                                   0.0                   0.069                                           0.310                                            0.034                 44.0
+2 same-contract partial buy-back                         811         0.162         0.200           0.455                            0.028                                   0.0                   0.028                                           0.141                                            0.002                 87.0
+3 side-level reduction                                   871         0.051         0.062           0.152                            0.010                                   0.0                   0.014                                           0.038                                            0.000                150.5
+4 basket-level reduction                                1804         0.120         0.181           0.368                            0.045                                   0.0                   0.029                                           0.098                                            0.008                 67.0
+5 cycle stop & liquidation                              2111         0.279         0.286           0.286                            0.001                                   0.0                   0.000                                           0.283                                            0.001                  5.0
+6 clock-based exit (clock B, no replacement)             419         0.000         0.000           0.084                            0.000                                   0.0                   0.000                                           0.000                                            0.000                555.0
+6 clock-based exit (final flatten)                      2005         0.008         0.011           0.018                            0.003                                   0.0                   0.001                                           0.006                                            0.000                 36.5
+7 expiry-day salvage                                    2067         0.086         0.113           0.275                            0.005                                   0.0                   0.028                                           0.080                                            0.000                 68.0
+8 clock-B rebalance                                      744         0.212         0.315           0.499                            0.066                                   0.0                   0.075                                           0.163                                            0.011                 40.0
+8b grid rebalance (A/:00 clock)                          698         0.056         0.062           0.388                            0.007                                   0.0                   0.017                                           0.037                                            0.000                401.0
+
+STATE METRICS
+                                         0      1      2      3      4      5      6      7      8
+model                                    A      B      C      A      B      C      A      B      C
+conv                                 cheap  cheap  cheap   fifo   fifo   fifo   lifo   lifo   lifo
+threads                               6547   4357   6527   6547   4357   6527   6547   4357   6527
+events                               27427  26782  27531  27460  26797  27578  27391  26795  27494
+mean_events_per_thread               4.189  6.147  4.218  4.194   6.15  4.225  4.184   6.15  4.212
+negative_inventory_events                0      0      0      0      0      0      0      0      0
+inventory_mismatches_vs_orders           0      0      0      0      0      0      0      0      0
+threads_with_CARRY                    1655   1228   1650   1657   1237   1655   1640   1228   1636
+threads_with_REPLACE                     0      0   2257      0      0   2236      0      0   2245
+threads_with_RE_ENTER                   23    163     54     10    118     47     34    174     63
+threads_closed_and_reopened             23    163    404     10    118    392     34    174    406
+ambiguous_threads                        0      0   1752      0      0   1752      0      0   1752
+share_threads_with_at_most_2_events  0.456  0.472  0.471  0.454  0.471   0.48  0.459  0.473  0.476
+n_OPEN                                6547   4357   4775   6547   4357   4775   6547   4357   4775
+n_ADD                                 6838   8726   6008   6852   8846   6017   6826   8707   5998
+n_REDUCE                              5778   7448   5423   5823   7574   5526   5745   7442   5394
+n_CLOSE                                 31    333    502     17    213    445     43    352    508
+n_REPLACE                                0      0   2584      0      0   2580      0      0   2584
+n_RE-ENTER                              31    333     62     17    213     53     43    352     72
+n_CARRY                               1655   1228   1650   1657   1237   1655   1640   1228   1636
+n_FINAL CLOSE                         6547   4357   6527   6547   4357   6527   6547   4357   6527
+replacement_lot_pairs                 3611   3611   3611   3611   3611   3611   3611   3611   3611
+A_continuation_share                 0.007  0.007  0.007  0.004  0.004  0.004  0.008  0.008  0.008
+B_continuation_share                  0.03   0.03   0.03  0.026  0.026  0.026  0.036  0.036  0.036
+ownership_identified_share           0.035  0.035  0.035  0.035  0.035  0.035  0.035  0.035  0.035
+orders_checked                       39874  39874  39874  39874  39874  39874  39874  39874  39874
+replace_restores_thread_peak           NaN    NaN  0.923    NaN    NaN  0.878    NaN    NaN  0.925

@@ -1,0 +1,157 @@
+{
+ "replay_units": {
+  "open_portions": 23684,
+  "open_units": 1414545,
+  "close_portions": 17760,
+  "close_units": 1377065,
+  "fills": 41421,
+  "fill_units": 2791610
+ },
+ "coverage": {
+  "OPENING|W1": {
+   "wing_items": 8399,
+   "body_items": 13325,
+   "wing_units": 617130,
+   "body_units": 626765,
+   "wing_with": 7301,
+   "wing_unique": 3501,
+   "wing_multi": 3800,
+   "wing_none": 1098,
+   "wing_units_unmatched": 133640,
+   "body_with": 10913,
+   "body_without": 2412,
+   "body_units_without": 128430,
+   "links": 18823
+  },
+  "OPENING|W1_S60": {
+   "wing_items": 8399,
+   "body_items": 13325,
+   "wing_units": 617130,
+   "body_units": 626765,
+   "wing_with": 8204,
+   "wing_unique": 2631,
+   "wing_multi": 5573,
+   "wing_none": 195,
+   "wing_units_unmatched": 68720,
+   "body_with": 12452,
+   "body_without": 873,
+   "body_units_without": 65845,
+   "links": 29079
+  },
+  "CLOSING|W1": {
+   "wing_items": 4306,
+   "body_items": 10754,
+   "wing_units": 500775,
+   "body_units": 540250,
+   "wing_with": 3981,
+   "wing_unique": 939,
+   "wing_multi": 3042,
+   "wing_none": 325,
+   "wing_units_unmatched": 105750,
+   "body_with": 8864,
+   "body_without": 1890,
+   "body_units_without": 105060,
+   "links": 23954
+  },
+  "CLOSING|W1_S60": {
+   "wing_items": 4306,
+   "body_items": 10754,
+   "wing_units": 500775,
+   "body_units": 540250,
+   "wing_with": 4146,
+   "wing_unique": 696,
+   "wing_multi": 3450,
+   "wing_none": 160,
+   "wing_units_unmatched": 83180,
+   "body_with": 9352,
+   "body_without": 1402,
+   "body_units_without": 79530,
+   "links": 36149
+  }
+ },
+ "W3_resid": {
+  "wing": 56420,
+  "body": 66055
+ },
+ "W3_wings_with_segment": 8176,
+ "W3_links": 12096,
+ "group_level": {
+  "OPENING": {
+   "groups": 7958,
+   "both": 5446,
+   "wing_only": 1000,
+   "body_only": 1512,
+   "wing_units_wing_only": 133640,
+   "body_units_body_only": 128430,
+   "exact_share_both": 0.8117884686008079,
+   "exact_share_all": 0.5555415933651672,
+   "wing_units_in_exact": 0.5314196360572326,
+   "lt1": 0.09768637532133675,
+   "gt1": 0.0905251560778553
+  },
+  "CLOSING": {
+   "groups": 3247,
+   "both": 2381,
+   "wing_only": 180,
+   "body_only": 686,
+   "wing_units_wing_only": 105750,
+   "body_units_body_only": 105060,
+   "exact_share_both": 0.7148257034859303,
+   "exact_share_all": 0.5241761626116415,
+   "wing_units_in_exact": 0.3699066447007139,
+   "lt1": 0.21797564048719026,
+   "gt1": 0.06719865602687947
+  }
+ },
+ "exclusions": {
+  "CLOSING|LONG|m_": 1040,
+  "CLOSING|LONG|num": 132235,
+  "CLOSING|LONG|s_": 44530,
+  "CLOSING|LONG|v_": 41575,
+  "CLOSING|SHORT|h_": 21175,
+  "CLOSING|SHORT|s_": 95485,
+  "OPENING|LONG|m_": 1040,
+  "OPENING|LONG|num": 61470,
+  "OPENING|LONG|s_": 3255,
+  "OPENING|LONG|v_": 67635,
+  "OPENING|SHORT|h_": 130,
+  "OPENING|SHORT|s_": 37120
+ },
+ "exclusion_totals": {
+  "closing": 336040,
+  "opening": 170650
+ },
+ "closing_wing_origin": {
+  "opened_only_by_h_": 387985,
+  "opened_by_mixed_modules": 107530,
+  "opened_without_h_": 5260
+ },
+ "wing_app_key": {
+  "632469": [
+   7712,
+   565125
+  ],
+  "F88187": [
+   687,
+   52005
+  ]
+ },
+ "second_key_unit_share": 0.0842691167177094,
+ "second_key_item_share": 0.08179545183950471,
+ "app_key_by_tag_rows": {
+  "h_|632469": 12147,
+  "h_|F88187": 1034,
+  "m_|632469": 8,
+  "num|632469": 26954,
+  "s_|632469": 653,
+  "s_|F88187": 110,
+  "v_|632469": 457,
+  "v_|F88187": 58
+ },
+ "stop_closed_short_units": {
+  "stop_closed_short_units": 95485
+ },
+ "long_num_open_units": {
+  "long_num_open_units": 61470
+ }
+}

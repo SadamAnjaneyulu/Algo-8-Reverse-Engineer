@@ -1,0 +1,39 @@
+{
+ "NIFTY_2026-09-01": {
+  "second_end_rows_differing_by_column": {
+   "cum_opened_num_short": 3,
+   "cum_opened_other": 3,
+   "cum_closed_by_tag_num": 3,
+   "cum_closed_by_tag_s_": 3
+  },
+  "n_rows": 3,
+  "flags_of_those_rows": {
+   "SECOND_END_ORDER_INVARIANT": 3
+  },
+  "first_example": [
+   {
+    "ts": 1788167791,
+    "fill_id": "F027911",
+    "flag": "SECOND_END_ORDER_INVARIANT",
+    "differing_columns": [
+     "cum_opened_num_short",
+     "cum_opened_other",
+     "cum_closed_by_tag_num",
+     "cum_closed_by_tag_s_"
+    ],
+    "baseline": {
+     "cum_opened_num_short": 8970,
+     "cum_opened_other": 1235,
+     "cum_closed_by_tag_num": 7670,
+     "cum_closed_by_tag_s_": 5395
+    },
+    "hybrid": {
+     "cum_opened_num_short": 8190,
+     "cum_opened_other": 2015,
+     "cum_closed_by_tag_num": 8450,
+     "cum_closed_by_tag_s_": 4615
+    }
+   }
+  ]
+ }
+}

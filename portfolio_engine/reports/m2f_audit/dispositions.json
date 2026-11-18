@@ -1,0 +1,11 @@
+{
+ "D-A01": "REMEDIATED BY POLICY AND DISCLOSURE (R1, 2026-11-15): SOURCE_ROW_ORDER_CONVENTION approved as the primary deterministic convention; sensitivity-only policies added; convention stamped in four manifests; disclosure addenda appended; six populations reported separately. The ambiguity is not eliminated (whole-second timestamps). Independent R1 review done (14 findings; the HIGH one, a wrongly pooled NIFTY trade-id metric, corrected). Owner decision Option C (2026-11-15): baseline kept, both orderings evaluated downstream, dual-scenario comparison published. Disposition stays REMEDIATED BY POLICY AND DISCLOSURE (not closed); the dependence is a documented limitation handled by mandatory dual-scenario research; pending the final M2 acceptance decision.",
+ "B-01": "REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; closing-batch sensitivity published (reports/R1_TIE_ORDER_CONVENTION.md section 3.4) and disclosed in the M2-C report addendum.",
+ "C-01": "REMEDIATED BY POLICY AND DISCLOSURE (R1): same root cause as D-A01; wing/body sensitivity published (section 3.5) and disclosed in the M2-D report addendum.",
+ "C-02": "OPEN (corrected): the added test reads the committed output and cannot kill a wing_body.py mutation; an engine-level synthetic W3 test is still required (remediation phase).",
+ "D-A08": "OPEN (corrected): generator test added but not run against the mutant and uses float price conversion; remediation phase.",
+ "E-D03": "OPEN (corrected): manifest test covers only listed entries; completeness not proven; remediation phase.",
+ "D-02": "OPEN - superseded by addendum (M2F_METHODOLOGY_LIMITATIONS.md section 4). The earlier report is preserved unmodified; a wording change in tools/m2e_cases.py is proposed and awaits approval.",
+ "D-16": "OPEN - requires a definition decision (per-fill REVERSED vs net sign flip across parents); both definitions to be reported. No choice made.",
+ "D-A04": "OPEN - label is an inference by design; proposal: disclose as inference in reports and add a synthetic expiry-boundary test on the OPEN_AT_END_OF_DATA path."
+}

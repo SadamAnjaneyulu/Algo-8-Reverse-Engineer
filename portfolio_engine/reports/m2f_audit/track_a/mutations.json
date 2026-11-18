@@ -1,0 +1,1268 @@
+[
+ {
+  "id": "M01",
+  "change": "duplicate opening allocation [python/pe/lineage.py]",
+  "expected_detector": "I-unique-observed-ids / OA count 23,684",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "59 failed, 68 passed in 172.55s (0:02:52)",
+   "n_failed": 59,
+   "detecting_test_files": {
+    "test_lineage.py": 5,
+    "test_lineage_mutations.py": 11,
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 1,
+    "test_lineage_reference.py": 40
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage.py::test_ab_lots_fifo_lifo_avg_confined_to_analytical_layer",
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage.py::test_reversal_100_130_closes_100_and_opens_30_in_a_new_episode",
+    "tests/test_lineage.py::test_mixed_parent_without_reversal_is_represented_without_double_counting",
+    "tests/test_lineage.py::test_expired_unclosed_has_no_settlement_pnl",
+    "tests/test_lineage_mutations.py::test_M1_duplicate_oa_row_is_detected"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "cross-language byte mismatch (XLANG only)",
+    "RERUN after adding emitted-row-list length check to compare_ref_vs_engine.py: 65,128 observed rows vs reference 41,444. My ORIGINAL comparison was blind (dict keyed by fill id) and caught M01 only through XLANG."
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py"
+   ],
+   "internal_files": [
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M02",
+  "change": "dropped closing portion on every reversal fill [python/pe/lineage.py]",
+  "expected_detector": "I5 OA+CP=qty; CP count; reversal I11",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "55 failed, 72 passed in 226.43s (0:03:46)",
+   "n_failed": 55,
+   "detecting_test_files": {
+    "test_lineage.py": 3,
+    "test_lineage_mutations.py": 6,
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 4,
+    "test_lineage_reference.py": 40
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage.py::test_reversal_100_130_closes_100_and_opens_30_in_a_new_episode",
+    "tests/test_lineage.py::test_mixed_parent_from_a_reversal_fill",
+    "tests/test_lineage_mutations.py::test_M1_duplicate_oa_row_is_detected",
+    "tests/test_lineage_mutations.py::test_M2_reversed_event_carrying_the_whole_fill_quantity_is_detected",
+    "tests/test_lineage_mutations.py::test_M3_flipped_oa_side_is_detected"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"CP_membership\": 23, \"roles\": 10}",
+    "false flags engine_CP_ids_equal_ref,parent_roles_identical,sensitive_sets_identical",
+    "fuzz vs reference mismatches py=522 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py"
+   ],
+   "internal_files": [
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M03",
+  "change": "dropped closing portion sparse (1 in 997 source rows) [python/pe/lineage.py]",
+  "expected_detector": "I4/I5; CP membership vs raw reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "7 failed, 120 passed in 212.60s (0:03:32)",
+   "n_failed": 7,
+   "detecting_test_files": {
+    "test_lineage.py": 1,
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 4
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+    "tests/test_lineage_real.py::test_reference_counts",
+    "tests/test_lineage_real.py::test_all_invariants_hold_on_real_data",
+    "tests/test_lineage_real.py::test_closing_portions_match_tp02_timeline_rows_without_assuming_identical_semantics"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"CP_membership\": 22, \"roles\": 10}",
+    "false flags engine_CP_ids_equal_ref,parent_roles_identical,sensitive_sets_identical"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py"
+   ],
+   "internal_files": [
+    "test_lineage.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": "Data-dependent: only 1 in 997 source rows; fuzz sequences (<997 rows) cannot hit it; detected on the real ledger only (test_lineage_real, my raw comparison)."
+ },
+ {
+  "id": "M04",
+  "change": "sign flip of FIFO/LIFO realized P&L [python/pe/ledger.py]",
+  "expected_detector": "realized P&L vs TP-01 / reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "89 failed, 19 passed, 19 errors in 51.44s",
+   "n_failed": 108,
+   "detecting_test_files": {
+    "test_accounting.py": 14,
+    "test_lineage.py": 17,
+    "test_lineage_mutations.py": 12,
+    "test_lineage_parity.py": 2,
+    "test_lineage_reference.py": 40,
+    "test_tp01_reconciliation.py": 12,
+    "test_parity.py": 2,
+    "test_lineage_real.py": 9
+   },
+   "failing_tests_sample": [
+    "tests/test_accounting.py::test_open_close_full",
+    "tests/test_accounting.py::test_partial_close_conventions[FIFO-260000]",
+    "tests/test_accounting.py::test_partial_close_conventions[LIFO-520000]",
+    "tests/test_accounting.py::test_inventory_identical_across_conventions_but_pnl_differs",
+    "tests/test_accounting.py::test_reversal_counts_and_pnl",
+    "tests/test_accounting.py::test_duplicate_fill_flagged_is_ignored_and_counted"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 420110400",
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_accounting.py",
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[INV]/crash"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M05",
+  "change": "AVG realized P&L sign flip [python/pe/ledger.py]",
+  "expected_detector": "AVG realized vs TP-01 / reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "69 failed, 39 passed, 19 errors in 137.27s (0:02:17)",
+   "n_failed": 88,
+   "detecting_test_files": {
+    "test_accounting.py": 3,
+    "test_lineage.py": 13,
+    "test_lineage_mutations.py": 8,
+    "test_lineage_parity.py": 2,
+    "test_lineage_reference.py": 40,
+    "test_tp01_reconciliation.py": 11,
+    "test_parity.py": 2,
+    "test_lineage_real.py": 9
+   },
+   "failing_tests_sample": [
+    "tests/test_accounting.py::test_partial_close_conventions[AVG-390000]",
+    "tests/test_accounting.py::test_inventory_identical_across_conventions_but_pnl_differs",
+    "tests/test_accounting.py::test_all_invariants_every_fill_on_stress[AVG]",
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage.py::test_COUNTEREXAMPLE_an_ownership_claim_under_avg_is_impossible",
+    "tests/test_lineage.py::test_reversal_100_130_closes_100_and_opens_30_in_a_new_episode"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff 420022325.428",
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_accounting.py",
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[INV]/crash"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M06",
+  "change": "price off by one tick on 1 in 1000 historical fills [python/pe/generators/historical.py]",
+  "expected_detector": "fill price vs raw col 137; realized P&L",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "7 failed, 120 passed in 254.57s (0:04:14)",
+   "n_failed": 7,
+   "detecting_test_files": {
+    "test_lineage_real.py": 1,
+    "test_tp01_reconciliation.py": 6
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_real.py::test_realized_pnl_from_allocations_equals_tp01_for_every_convention",
+    "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[FIFO]",
+    "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[LIFO]",
+    "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[AVG]",
+    "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[FIFO]",
+    "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[LIFO]"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"fill_field_vs_raw\": 42, \"OA_fields\": 23, \"CP_fields\": 19, \"CA_FIFO_row\": 57, \"CA_FIFO_total\": 1, \"CA_LIFO_row\": 51, \"CA_LIFO_total\": 1, \"CA_AVG_valu",
+    "false flags cash_equal_ref_FIFO,cash_equal_ref_LIFO,cash_equal_ref_AVG"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [],
+   "internal_files": [],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M07",
+  "change": "wrong price column (order running average col 18 instead of per-fill col 137) [python/pe/generators/historical.py]",
+  "expected_detector": "fill price vs raw col 137",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "2 failed, 103 passed, 22 errors in 58.48s",
+   "n_failed": 24,
+   "detecting_test_files": {
+    "test_lineage_parity.py": 1,
+    "test_parity.py": 1,
+    "test_lineage_real.py": 9,
+    "test_tp01_reconciliation.py": 13
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+    "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders",
+    "tests/test_lineage_real.py::test_reference_counts",
+    "tests/test_lineage_real.py::test_mixed_parents_are_23_reversals_plus_3_others_without_double_counting",
+    "tests/test_lineage_real.py::test_all_invariants_hold_on_real_data",
+    "tests/test_lineage_real.py::test_realized_pnl_from_allocations_equals_tp01_for_every_convention"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "engine exception: EngineError: price off the paise grid at row 21"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [],
+   "own_check_class": "[INV]/crash"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M08",
+  "change": "buy/sell reversed on 1 in 4001 historical fills [python/pe/generators/historical.py]",
+  "expected_detector": "fill side vs raw col 11; roles; realized P&L",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "18 failed, 109 passed in 230.18s (0:03:50)",
+   "n_failed": 18,
+   "detecting_test_files": {
+    "test_lineage_real.py": 7,
+    "test_tp01_reconciliation.py": 11
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_real.py::test_reference_counts",
+    "tests/test_lineage_real.py::test_mixed_parents_are_23_reversals_plus_3_others_without_double_counting",
+    "tests/test_lineage_real.py::test_realized_pnl_from_allocations_equals_tp01_for_every_convention",
+    "tests/test_lineage_real.py::test_episode_identity_and_fields_equal_tp01_for_every_convention",
+    "tests/test_lineage_real.py::test_closing_portions_match_tp02_timeline_rows_without_assuming_identical_semantics",
+    "tests/test_lineage_real.py::test_observed_layer_identical_across_conventions_and_remaining_slices_reconcile"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"fill_field_vs_raw\": 11, \"OA_fields\": 40, \"OA_membership\": 32, \"CP_membership\": 30, \"CP_fields\": 45, \"episode_membership\": 11, \"episode_fields\": 14, ",
+    "false flags engine_OA_ids_equal_ref,engine_CP_ids_equal_ref,lifecycle_events_identical,parent_roles_identical,slices_FIFO_identical,final_inventory_FIFO_identical"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [],
+   "internal_files": [],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M09",
+  "change": "wrong parent id on closing portions (stale parent of previous CP) [python/pe/lineage.py]",
+  "expected_detector": "I5 row-vs-fill; parent roles",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "49 failed, 78 passed in 170.13s (0:02:50)",
+   "n_failed": 49,
+   "detecting_test_files": {
+    "test_lineage.py": 2,
+    "test_lineage_mutations.py": 2,
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 3,
+    "test_lineage_reference.py": 40
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage.py::test_parent_roles_are_convention_independent_and_complete",
+    "tests/test_lineage_mutations.py::test_M8_non_unique_ca_ids_and_flipped_ownership_label_are_detected",
+    "tests/test_lineage_mutations.py::test_M12_episode_timestamps_and_fill_counts_follow_the_events",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"CP_fields\": 17486, \"roles\": 1}",
+    "false flags parent_roles_identical",
+    "fuzz vs reference mismatches py=540 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py"
+   ],
+   "internal_files": [
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M10",
+  "change": "same-second order swap (reverse source-row tie-break) [python/pe/replay.py]",
+  "expected_detector": "episode/role identity vs TP-01 and raw reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "61 failed, 66 passed in 168.70s (0:02:48)",
+   "n_failed": 61,
+   "detecting_test_files": {
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 7,
+    "test_lineage_reference.py": 40,
+    "test_tp01_reconciliation.py": 10,
+    "test_parity.py": 2
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+    "tests/test_lineage_real.py::test_reference_counts",
+    "tests/test_lineage_real.py::test_mixed_parents_are_23_reversals_plus_3_others_without_double_counting",
+    "tests/test_lineage_real.py::test_realized_pnl_from_allocations_equals_tp01_for_every_convention",
+    "tests/test_lineage_real.py::test_episode_identity_and_fields_equal_tp01_for_every_convention"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"OA_fields\": 20, \"OA_membership\": 38, \"CP_fields\": 17, \"CP_membership\": 39, \"episode_fields\": 22, \"episode_membership\": 4, \"lifecycle\": 2, \"roles\": 1",
+    "false flags engine_OA_ids_equal_ref,engine_CP_ids_equal_ref,lifecycle_events_identical,parent_roles_identical,slices_FIFO_identical,slices_LIFO_identical",
+    "fuzz vs reference mismatches py=1496 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M11",
+  "change": "19800-second timestamp shift in historical generator [python/pe/generators/historical.py]",
+  "expected_detector": "timestamp vs raw col 161",
+  "existing_tests_caught": {
+   "caught": false,
+   "summary": "127 passed in 255.02s (0:04:15)",
+   "n_failed": 0,
+   "detecting_test_files": {},
+   "failing_tests_sample": []
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"fill_field_vs_raw\": 41421, \"OA_fields\": 23684, \"CP_fields\": 17760, \"episode_fields\": 2667}"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": false,
+   "independent_reference_test_files": [],
+   "xlang_only_files": [],
+   "internal_files": [],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": "SURVIVOR of all 127 existing tests: the shift is uniform so ordering, day assignment (max IST time 15:39+5:30 < 24:00) and all aggregates are unchanged; only a comparison of timestamp_s against raw column 161 (my compare_ref_vs_engine) detects it."
+ },
+ {
+  "id": "M12",
+  "change": "reversal opening allocation assigned to the OLD (closed) episode [python/pe/ledger.py]",
+  "expected_detector": "I11; OA episode vs reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "51 failed, 76 passed in 270.24s (0:04:30)",
+   "n_failed": 51,
+   "detecting_test_files": {
+    "test_lineage.py": 2,
+    "test_lineage_mutations.py": 6,
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 1,
+    "test_lineage_reference.py": 40
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage.py::test_reversal_100_130_closes_100_and_opens_30_in_a_new_episode",
+    "tests/test_lineage_mutations.py::test_M1_duplicate_oa_row_is_detected",
+    "tests/test_lineage_mutations.py::test_M2_reversed_event_carrying_the_whole_fill_quantity_is_detected",
+    "tests/test_lineage_mutations.py::test_M3_flipped_oa_side_is_detected",
+    "tests/test_lineage_mutations.py::test_M7_dropped_started_by_reversal_flag_is_detected"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"OA_fields\": 23}",
+    "fuzz vs reference mismatches py=522 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py"
+   ],
+   "internal_files": [
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M13",
+  "change": "FIFO consumes the LAST lot (wrong closing source) [python/pe/ledger.py]",
+  "expected_detector": "FIFO P&L vs TP-01; CA pairs vs reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "51 failed, 76 passed in 175.04s (0:02:55)",
+   "n_failed": 51,
+   "detecting_test_files": {
+    "test_accounting.py": 2,
+    "test_lineage.py": 2,
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 1,
+    "test_lineage_reference.py": 40,
+    "test_tp01_reconciliation.py": 2,
+    "test_parity.py": 2
+   },
+   "failing_tests_sample": [
+    "tests/test_accounting.py::test_partial_close_conventions[FIFO-260000]",
+    "tests/test_accounting.py::test_inventory_identical_across_conventions_but_pnl_differs",
+    "tests/test_lineage.py::test_ab_lots_fifo_lifo_avg_confined_to_analytical_layer",
+    "tests/test_lineage.py::test_FIFO_and_LIFO_diverge_multi_close_but_totals_agree",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"CA_FIFO_row\": 24940, \"CA_FIFO_total\": 1}",
+    "false flags slices_FIFO_identical,sensitive_sets_identical",
+    "fuzz vs reference mismatches py=351 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_accounting.py",
+    "test_lineage.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M14",
+  "change": "remaining slice quantity off by one lot (65) [python/pe/lineage.py]",
+  "expected_detector": "I3/I7",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "61 failed, 66 passed in 217.70s (0:03:37)",
+   "n_failed": 61,
+   "detecting_test_files": {
+    "test_lineage.py": 6,
+    "test_lineage_mutations.py": 11,
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 2,
+    "test_lineage_reference.py": 40
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage.py::test_ab_lots_fifo_lifo_avg_confined_to_analytical_layer",
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage.py::test_reversal_100_130_closes_100_and_opens_30_in_a_new_episode",
+    "tests/test_lineage.py::test_mixed_parent_without_reversal_is_represented_without_double_counting",
+    "tests/test_lineage.py::test_expired_unclosed_has_no_settlement_pnl",
+    "tests/test_lineage.py::test_FIFO_and_LIFO_diverge_multi_close_but_totals_agree"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "false flags slices_FIFO_identical,slices_LIFO_identical",
+    "fuzz vs reference mismatches py=360 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py"
+   ],
+   "internal_files": [
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M15",
+  "change": "remaining expired-unclosed units off by one lot in dump [python/pe/replay.py]",
+  "expected_detector": "TOTAL remaining_expired_unclosed_units vs 37,480",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "6 failed, 121 passed in 143.16s (0:02:23)",
+   "n_failed": 6,
+   "detecting_test_files": {
+    "test_accounting.py": 1,
+    "test_tp01_reconciliation.py": 3,
+    "test_parity.py": 2
+   },
+   "failing_tests_sample": [
+    "tests/test_accounting.py::test_expired_contract_inventory_has_no_invented_settlement",
+    "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[FIFO]",
+    "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[LIFO]",
+    "tests/test_tp01_reconciliation.py::test_totals_match_tp01_reconciliation_summary[AVG]",
+    "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+    "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "cross-language byte mismatch (XLANG only)",
+    "RERUN after adding dump TOTAL checks: remaining_expired_unclosed_units mismatch. ORIGINAL comparison did not compare dump totals (only XLANG fuzz caught it)."
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py"
+   ],
+   "xlang_only_files": [
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_accounting.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M16",
+  "change": "convention leak: AVG observed OA price differs [python/pe/lineage.py]",
+  "expected_detector": "separation guard in LineageSet; observed layer vs reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "73 failed, 45 passed, 9 errors in 63.57s (0:01:03)",
+   "n_failed": 82,
+   "detecting_test_files": {
+    "test_lineage.py": 17,
+    "test_lineage_mutations.py": 14,
+    "test_lineage_parity.py": 2,
+    "test_lineage_reference.py": 40,
+    "test_lineage_real.py": 9
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage.py::test_ab_lots_fifo_lifo_avg_confined_to_analytical_layer",
+    "tests/test_lineage.py::test_average_cost_pool_is_the_quantity_weighted_average",
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage.py::test_COUNTEREXAMPLE_an_ownership_claim_under_avg_is_impossible",
+    "tests/test_lineage.py::test_reversal_100_130_closes_100_and_opens_30_in_a_new_episode",
+    "tests/test_lineage.py::test_lifecycle_sequence_and_stable_episode_ids"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "engine exception: InvariantViolation: observed layer observed_allocations.tsv differs between FIFO and AVG: ",
+    "fuzz vs reference mismatches py=180 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py"
+   ],
+   "internal_files": [
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": "Convention leak is caught by the LineageSet separation guard (a cross-convention comparison of outputs) and by reference comparison."
+ },
+ {
+  "id": "M17",
+  "change": "LIFO pops the wrong (front) lot when exhausted [python/pe/ledger.py]",
+  "expected_detector": "lots-reconcile invariant; LIFO CA vs reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "68 failed, 40 passed, 19 errors in 53.89s",
+   "n_failed": 87,
+   "detecting_test_files": {
+    "test_accounting.py": 3,
+    "test_lineage.py": 13,
+    "test_lineage_mutations.py": 7,
+    "test_lineage_parity.py": 2,
+    "test_lineage_reference.py": 40,
+    "test_tp01_reconciliation.py": 11,
+    "test_parity.py": 2,
+    "test_lineage_real.py": 9
+   },
+   "failing_tests_sample": [
+    "tests/test_accounting.py::test_partial_close_conventions[LIFO-520000]",
+    "tests/test_accounting.py::test_inventory_identical_across_conventions_but_pnl_differs",
+    "tests/test_accounting.py::test_all_invariants_every_fill_on_stress[LIFO]",
+    "tests/test_lineage.py::test_ab_lots_fifo_lifo_avg_confined_to_analytical_layer",
+    "tests/test_lineage.py::test_average_cost_pool_is_the_quantity_weighted_average",
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "engine exception: IndexError: deque index out of range",
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_accounting.py",
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[INV]/crash"
+  },
+  "notes": "Existing-test failures are a consequence of an IndexError crash (deque index out of range) after the wrong lot is popped, i.e. a crash, not a designed invariant detector; counted as crash-not-kill for the existing suite. My reference comparison reports ENGINE_EXCEPTION as well, so also crash-only for own check on the Python engine; fuzz kill compares C++ output to reference only for C-mutants, Python mutants are compared in-process (py_vs_ref) and the crash is flagged."
+ },
+ {
+  "id": "M18",
+  "change": "reversal opens full fill quantity (close+open != q) [python/pe/ledger.py]",
+  "expected_detector": "role arithmetic guard",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "68 failed, 40 passed, 19 errors in 27.62s",
+   "n_failed": 87,
+   "detecting_test_files": {
+    "test_accounting.py": 7,
+    "test_lineage.py": 8,
+    "test_lineage_mutations.py": 7,
+    "test_lineage_parity.py": 2,
+    "test_lineage_reference.py": 40,
+    "test_tp01_reconciliation.py": 12,
+    "test_parity.py": 2,
+    "test_lineage_real.py": 9
+   },
+   "failing_tests_sample": [
+    "tests/test_accounting.py::test_reversal_counts_and_pnl",
+    "tests/test_accounting.py::test_partial_close_cannot_exceed_remaining_is_enforced_by_role_arithmetic",
+    "tests/test_accounting.py::test_replay_is_deterministic",
+    "tests/test_accounting.py::test_aggregates_and_snapshots_reconcile",
+    "tests/test_accounting.py::test_all_invariants_every_fill_on_stress[FIFO]",
+    "tests/test_accounting.py::test_all_invariants_every_fill_on_stress[LIFO]"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "engine exception: InvariantViolation: role arithmetic broken on F001901",
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_accounting.py",
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[INV]/crash"
+  },
+  "notes": "Killed by the designed role-arithmetic InvariantViolation guard (an internal invariant [INV], same code path family as the mutation but a purpose-built check); not an independent detector."
+ },
+ {
+  "id": "M19",
+  "change": "expiry boundary < instead of <= in episode terminal status [python/pe/lineage.py]",
+  "expected_detector": "terminal_status counts (81 EXPIRED_UNCLOSED)",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "1 failed, 126 passed in 271.14s (0:04:31)",
+   "n_failed": 1,
+   "detecting_test_files": {
+    "test_lineage_mutations.py": 1
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_mutations.py::test_M11_expiry_boundary_is_exact[2026-01-05-EXPIRED_UNCLOSED]"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "fuzz vs reference mismatches py=9 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)",
+    "Real-data comparison cannot detect it (no non-flat instrument has expiry == last data day 2026-10-22; 72 instruments expire that day, all flat); fuzz vs reference (9 of 540 cases) does."
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": false,
+   "independent_reference_test_files": [],
+   "xlang_only_files": [],
+   "internal_files": [
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": "Existing suite: 1 test (synthetic exact expiry boundary). Real ledger does not exercise the boundary."
+ },
+ {
+  "id": "M20",
+  "change": "flagged duplicate fills no longer ignored [python/pe/replay.py]",
+  "expected_detector": "duplicate synthetic fixtures (real data has none)",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "46 failed, 81 passed in 235.52s (0:03:55)",
+   "n_failed": 46,
+   "detecting_test_files": {
+    "test_accounting.py": 1,
+    "test_lineage.py": 3,
+    "test_lineage_parity.py": 1,
+    "test_lineage_reference.py": 40,
+    "test_parity.py": 1
+   },
+   "failing_tests_sample": [
+    "tests/test_accounting.py::test_duplicate_fill_flagged_is_ignored_and_counted",
+    "tests/test_lineage.py::test_every_scenario_passes_all_invariants_and_observed_layer_is_identical",
+    "tests/test_lineage.py::test_duplicate_flagged_fill_creates_no_allocation",
+    "tests/test_lineage.py::test_parent_roles_are_convention_independent_and_complete",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_reference.py::test_engine_equals_independent_reference[0]"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_lineage_reference.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_accounting.py",
+    "test_lineage.py"
+   ],
+   "own_check_class": "[INV]/crash"
+  },
+  "notes": "Real data contains no flagged duplicates, so only synthetic duplicate fixtures can detect it."
+ },
+ {
+  "id": "M21",
+  "change": "direction of reversal-created episodes recorded wrong [python/pe/ledger.py]",
+  "expected_detector": "episode direction vs TP-01 / reference",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "9 failed, 118 passed in 205.86s (0:03:25)",
+   "n_failed": 9,
+   "detecting_test_files": {
+    "test_lineage.py": 1,
+    "test_lineage_parity.py": 2,
+    "test_lineage_real.py": 1,
+    "test_tp01_reconciliation.py": 3,
+    "test_parity.py": 2
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage.py::test_reversal_100_130_closes_100_and_opens_30_in_a_new_episode",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+    "tests/test_lineage_real.py::test_episode_identity_and_fields_equal_tp01_for_every_convention",
+    "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[FIFO]",
+    "tests/test_tp01_reconciliation.py::test_every_episode_matches_tp01[LIFO]"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "raw-reference mismatches {\"episode_fields\": 23}",
+    "fuzz vs reference mismatches py=522 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_lineage.py"
+   ],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "M22",
+  "change": "tie-order keys sells_first/buys_first swapped (Python only) [python/pe/replay.py]",
+  "expected_detector": "cross-language parity; tie-order tests",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "4 failed, 123 passed in 211.56s (0:03:31)",
+   "n_failed": 4,
+   "detecting_test_files": {
+    "test_lineage_parity.py": 2,
+    "test_parity.py": 2
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+    "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+    "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "fuzz vs reference mismatches py=920 cpp=None of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": false,
+   "independent_reference_test_files": [],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": "Python-only tie-key swap; real-data src order never uses the key, so detection needs sells_first/buys_first runs (parity vs C++, fuzz)."
+ },
+ {
+  "id": "M23",
+  "change": "cash flow sign flipped [python/pe/ledger.py]",
+  "expected_detector": "cash identity invariant",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "96 failed, 12 passed, 19 errors in 46.16s",
+   "n_failed": 115,
+   "detecting_test_files": {
+    "test_accounting.py": 17,
+    "test_lineage.py": 18,
+    "test_lineage_mutations.py": 15,
+    "test_lineage_parity.py": 2,
+    "test_lineage_reference.py": 40,
+    "test_tp01_reconciliation.py": 12,
+    "test_parity.py": 2,
+    "test_lineage_real.py": 9
+   },
+   "failing_tests_sample": [
+    "tests/test_accounting.py::test_open_close_full",
+    "tests/test_accounting.py::test_partial_close_conventions[FIFO-260000]",
+    "tests/test_accounting.py::test_partial_close_conventions[LIFO-520000]",
+    "tests/test_accounting.py::test_partial_close_conventions[AVG-390000]",
+    "tests/test_accounting.py::test_inventory_identical_across_conventions_but_pnl_differs",
+    "tests/test_accounting.py::test_reversal_counts_and_pnl"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": true,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "engine exception: InvariantViolation: cash_identity_cash_equals_realized_plus_book_value: diff -557496400",
+    "fuzz harness raised an exception (engine strict-mode guard, or for M20 a KeyError because the engine emitted a role for a flagged duplicate the reference excludes; see mut_results/<id>.json)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": true,
+   "independent_reference_test_files": [
+    "test_tp01_reconciliation.py",
+    "test_lineage_reference.py",
+    "test_lineage_real.py"
+   ],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [
+    "test_accounting.py",
+    "test_lineage.py",
+    "test_lineage_mutations.py"
+   ],
+   "own_check_class": "[INV]/crash"
+  },
+  "notes": ""
+ },
+ {
+  "id": "C01",
+  "change": "C++ FIFO consumes last lot [cpp/include/pe/ledger.hpp]",
+  "expected_detector": "parity tests; fuzz",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "5 failed, 122 passed in 188.63s (0:03:08)",
+   "n_failed": 5,
+   "detecting_test_files": {
+    "test_lineage_parity.py": 2,
+    "test_parity.py": 3
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+    "tests/test_parity.py::test_cpp_core_unit_tests_pass",
+    "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+    "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "fuzz vs reference mismatches py=0 cpp=177 of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": false,
+   "independent_reference_test_files": [],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "C02",
+  "change": "C++ tie keys swapped [cpp/include/pe/replay.hpp]",
+  "expected_detector": "parity tests; fuzz",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "4 failed, 123 passed in 143.58s (0:02:23)",
+   "n_failed": 4,
+   "detecting_test_files": {
+    "test_lineage_parity.py": 2,
+    "test_parity.py": 2
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+    "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+    "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": true,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": false,
+   "detail": [
+    "fuzz vs reference mismatches py=0 cpp=360 of 540",
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": false,
+   "independent_reference_test_files": [],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [],
+   "own_check_class": "[RAW]/[IMPL] reference comparison"
+  },
+  "notes": ""
+ },
+ {
+  "id": "C03",
+  "change": "C++ AVG pool average floored [cpp/include/pe/ledger.hpp]",
+  "expected_detector": "parity tests; fuzz",
+  "existing_tests_caught": {
+   "caught": true,
+   "summary": "4 failed, 123 passed in 97.09s (0:01:37)",
+   "n_failed": 4,
+   "detecting_test_files": {
+    "test_lineage_parity.py": 2,
+    "test_parity.py": 2
+   },
+   "failing_tests_sample": [
+    "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+    "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+    "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+    "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+   ]
+  },
+  "own_check_caught": {
+   "caught": true,
+   "caught_by_independent_reference_comparison": false,
+   "caught_only_by_crash_or_internal_guard": false,
+   "caught_only_by_xlang": true,
+   "detail": [
+    "cross-language byte mismatch (XLANG only)"
+   ]
+  },
+  "detector_independent": {
+   "existing_suite_has_independent_reference_detector": false,
+   "independent_reference_test_files": [],
+   "xlang_only_files": [
+    "test_lineage_parity.py",
+    "test_parity.py"
+   ],
+   "internal_files": [],
+   "own_check_class": "[XLANG] only"
+  },
+  "notes": ""
+ }
+]

@@ -1,0 +1,11 @@
+{
+ "addendum": 1,
+ "utc": "2026-11-18T14:56:31+00:00",
+ "kind": "BUG FIX in the simulator start state (rules and parameters unchanged)",
+ "defect": "start_book() did not net a body Sell against earlier body LONG lots (same-contract buy-before-sell), overstating the carried short book by 78 lots over 22 discovery cycles and 31 lots over 8 holdout cycles (20/22 and 7/8 cycles affected)",
+ "found_by": "unit test comparing the simulated start book with the ledger",
+ "holdout_already_seen": true,
+ "consequence": "Corrected holdout re-run is NOT independent evidence: the holdout result of v1.0 had been seen. Both v1.0 (frozen, results/v1_0_frozen_outputs/) and v1.1 results are reported; conclusions unchanged.",
+ "d0_sim_v1_0_sha256": "0c4069184c6f8e1e6135e9afdd8123064eec8b7f028b739e82c4fdd29c706808",
+ "d0_sim_v1_1_sha256": "2bf6f083c23a9fdba53162104d35d4b315752fda3ef71538e609c06da21a05ab"
+}

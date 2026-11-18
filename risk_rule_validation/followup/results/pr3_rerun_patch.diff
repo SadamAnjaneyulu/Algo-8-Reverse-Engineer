@@ -1,0 +1,17 @@
+--- pr3/common.py
++++ rerun/common.py
+@@ -78,8 +78,12 @@
+     pd.to_pickle(out, p); return out
+ 
+ def minute_index(grid, t):
+-    """index of the minute containing t (clipped to the grid)"""
+-    i = grid.searchsorted(pd.Timestamp(t).floor('min'), side='left')
++    """FOLLOW-UP AUDIT PATCH (sandbox only): index of the minute containing t, clipped inside t's OWN session.
++    The original clipped to the whole two-day grid, so an order after the last D-1 bar landed on the first D0 minute."""
++    t = pd.Timestamp(t); fm = t.floor('min'); day = fm.normalize()
++    lo = grid.searchsorted(day); hi = grid.searchsorted(day + pd.Timedelta(days=1))
++    i = grid.searchsorted(fm, side='left')
++    if hi > lo: return int(min(max(i, lo), hi - 1))
+     return int(min(i, len(grid) - 1))
+ 
+ def replay_book(conv='cheap'):

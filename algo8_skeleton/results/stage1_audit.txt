@@ -1,0 +1,20 @@
+orders 39874 fills 41421 cycles 35
+orders by module {'num': 26253, 'h_': 12812, 's_': 417, 'v_': 385, 'm_': 7}
+cycles by split {'DEV': 18, 'TEST': 9, 'VAL': 8} | cycles with a D-1 session 32 of 35
+cheap unit lots 32196 short 15408 long 16788 short open at end of export 110 long open 630
+short lots opened by non-body modules (entry_tp): {'num': 14744, 's_': 244, 'h_': 230, 'v_': 80}
+fifo unit lots 32196 short 15408 long 16788 short open at end of export 110 long open 630
+lifo unit lots 32196 short 15408 long 16788 short open at end of export 110 long open 630
+
+share of closed short lots bought back below their assigned entry (descriptive; NOT a take-profit test):
+                                          lots  share
+convention segment                                   
+cheap      D-1 entry carried, D0 exit   3011.0  0.628
+           D-1 entry, D-1 exit          1442.0  0.148
+           D0 entry, D0 exit           10845.0  0.460
+fifo       D-1 entry carried, D0 exit   3012.0  0.646
+           D-1 entry, D-1 exit          1442.0  0.248
+           D0 entry, D0 exit           10844.0  0.561
+lifo       D-1 entry carried, D0 exit   3012.0  0.632
+           D-1 entry, D-1 exit          1442.0  0.154
+           D0 entry, D0 exit           10844.0  0.462

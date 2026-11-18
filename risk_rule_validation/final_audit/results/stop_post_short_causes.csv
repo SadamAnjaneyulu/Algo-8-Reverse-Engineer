@@ -1,0 +1,185 @@
+und,expiry,stop_decision,event_seq,fill_time,seconds_from_stop,order_no,module,cp,strike,short_open_lots,order_lots,position_before_decision_second,submission_vs_stop,submission_evidence,clock,schedule_propensity_non_stop_sessions,within_60s_after_body_buyback_same_right,within_60s_after_s_buyback_same_right,contract_bought_back_earlier_in_session,contract_long_at_stop
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,68,2026-06-30 14:25:15,1.285,1210130208,num,PE,23950,1.0,1,-17.0,before the first s_ submission of its block (in flight),bounded: order number below the first s_ order of its block,off-grid,0.2,True,False,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,69,2026-06-30 14:25:16,2.285,1210130209,num,PE,23950,1.0,1,-17.0,before the first s_ submission of its block (in flight),bounded: order number below the first s_ order of its block,off-grid,0.2,True,False,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,70,2026-06-30 14:25:16,2.285,1210130210,num,PE,24000,1.0,1,-3.0,before the first s_ submission of its block (in flight),bounded: order number below the first s_ order of its block,off-grid,0.2,True,False,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,71,2026-06-30 14:25:16,2.285,1210130211,num,PE,24000,1.0,1,-3.0,before the first s_ submission of its block (in flight),bounded: order number below the first s_ order of its block,off-grid,0.2,True,False,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,119,2026-06-30 14:25:19,5.285,1210130233,num,PE,24000,1.0,1,-3.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,121,2026-06-30 14:25:19,5.285,1210130235,num,PE,24000,1.0,1,-3.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,122,2026-06-30 14:25:19,5.285,1210130236,num,CE,24000,1.0,1,-6.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,124,2026-06-30 14:25:19,5.285,1210130238,num,CE,24000,1.0,1,-6.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,126,2026-06-30 14:25:22,8.285,1210130251,num,PE,24000,1.0,1,-3.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,127,2026-06-30 14:25:22,8.285,1210130252,num,PE,24000,1.0,1,-3.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,True,False
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,163,2026-06-30 14:25:40,26.285,1210130979,s_,PE,23500,1.0,1,1.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,164,2026-06-30 14:25:40,26.285,1210130980,s_,CE,24100,6.0,6,6.0,stop module,tag s_,off-grid,0.2,True,True,True,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,165,2026-06-30 14:25:40,26.285,1210130984,s_,CE,24450,5.0,5,5.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,166,2026-06-30 14:25:40,26.285,1210130985,s_,PE,23550,4.0,18,18.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,167,2026-06-30 14:25:40,26.285,1210130986,s_,CE,24300,9.0,18,18.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,168,2026-06-30 14:25:40,26.285,1210130990,s_,CE,24350,3.0,3,3.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,169,2026-06-30 14:25:40,26.285,1210130991,s_,CE,24150,14.0,14,14.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,170,2026-06-30 14:25:40,26.285,1210130992,s_,CE,24250,7.0,27,34.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,171,2026-06-30 14:25:40,26.285,1210130985,s_,PE,23550,14.0,18,18.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,172,2026-06-30 14:25:40,26.285,1210130986,s_,CE,24300,9.0,18,18.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,173,2026-06-30 14:25:40,26.285,1210130992,s_,CE,24250,20.0,27,34.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,189,2026-06-30 14:25:51,37.285,1210131009,s_,PE,23600,21.0,21,21.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,190,2026-06-30 14:25:51,37.285,1210131010,s_,CE,24250,7.0,7,34.0,stop module,tag s_,off-grid,0.2,True,True,True,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,191,2026-06-30 14:25:51,37.285,1210131011,s_,PE,23650,4.0,8,8.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,192,2026-06-30 14:25:51,37.285,1210131012,s_,CE,24200,8.0,13,13.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,193,2026-06-30 14:25:51,37.285,1210131011,s_,PE,23650,4.0,8,8.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-06-30,2026-06-30 14:25:13.714863,194,2026-06-30 14:25:51,37.285,1210131012,s_,CE,24200,5.0,13,13.0,stop module,tag s_,off-grid,0.2,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,62,2026-07-14 09:15:23,5.899,1210400281,num,CE,24050,1.0,1,-1.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,True,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,63,2026-07-14 09:15:23,5.899,1210400282,num,CE,24050,1.0,1,-1.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,True,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,64,2026-07-14 09:15:24,6.899,1210400283,num,CE,24000,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,False,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,65,2026-07-14 09:15:24,6.899,1210400285,num,CE,24050,1.0,1,-1.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,True,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,66,2026-07-14 09:15:24,6.899,1210400289,num,CE,24050,1.0,1,-1.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,True,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,67,2026-07-14 09:15:24,6.899,1210400291,num,CE,24000,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,False,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,68,2026-07-14 09:15:24,6.899,1210400293,num,CE,24050,1.0,1,-1.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,True,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,69,2026-07-14 09:15:24,6.899,1210400296,num,CE,24000,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,False,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,74,2026-07-14 09:15:25,7.899,1210400304,num,CE,24050,1.0,1,-1.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,True,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,77,2026-07-14 09:15:26,8.899,1210400311,num,CE,24000,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,False,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,78,2026-07-14 09:15:26,8.899,1210400313,num,CE,24050,1.0,1,-1.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),0.9,False,True,True,False
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,91,2026-07-14 09:15:57,39.899,1210400344,s_,CE,24750,6.0,6,6.0,stop module,tag s_,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,92,2026-07-14 09:15:57,39.899,1210400345,s_,PE,23700,17.0,23,50.0,stop module,tag s_,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,93,2026-07-14 09:15:57,39.899,1210400346,s_,PE,23700,21.0,27,50.0,stop module,tag s_,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,94,2026-07-14 09:15:57,39.899,1210400347,s_,PE,23300,3.0,3,3.0,stop module,tag s_,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,95,2026-07-14 09:15:57,39.899,1210400348,s_,PE,23250,10.0,10,10.0,stop module,tag s_,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,96,2026-07-14 09:15:57,39.899,1210400349,s_,PE,23150,5.0,5,5.0,stop module,tag s_,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,100,2026-07-14 09:15:57,39.899,1210400345,s_,PE,23700,6.0,23,50.0,stop module,tag s_,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,101,2026-07-14 09:15:57,39.899,1210400346,s_,PE,23700,6.0,27,50.0,stop module,tag s_,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,105,2026-07-14 09:15:59,41.899,1210400365,num,PE,22000,3.0,3,3.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,0.9,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,124,2026-07-14 09:16:10,52.899,1210400825,s_,CE,25000,2.0,2,2.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,125,2026-07-14 09:16:10,52.899,1210400826,s_,CE,24700,3.0,8,8.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,126,2026-07-14 09:16:10,52.899,1210400827,s_,PE,23200,9.0,9,9.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,127,2026-07-14 09:16:10,52.899,1210400828,s_,PE,23100,2.0,11,11.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,128,2026-07-14 09:16:10,52.899,1210400829,s_,PE,23000,9.0,12,12.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,129,2026-07-14 09:16:10,52.899,1210400830,s_,PE,23050,1.0,1,1.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,130,2026-07-14 09:16:10,52.899,1210400826,s_,CE,24700,2.0,8,8.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,131,2026-07-14 09:16:10,52.899,1210400828,s_,PE,23100,9.0,11,11.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,132,2026-07-14 09:16:10,52.899,1210400829,s_,PE,23000,3.0,12,12.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-07-14,2026-07-14 09:15:17.101019,133,2026-07-14 09:16:10,52.899,1210400826,s_,CE,24700,3.0,8,8.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,84,2026-08-18 09:15:18,11.0,1210026174,s_,PE,23350,1.0,9,9.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,85,2026-08-18 09:15:18,11.0,1210026175,s_,PE,23200,2.0,2,2.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,88,2026-08-18 09:15:18,11.0,1210026174,s_,PE,23350,6.0,9,9.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,89,2026-08-18 09:15:18,11.0,1210026174,s_,PE,23350,1.0,9,9.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,90,2026-08-18 09:15:18,11.0,1210026174,s_,PE,23350,1.0,9,9.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,109,2026-08-18 09:15:22,15.0,1210026178,s_,PE,23600,2.0,6,6.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,110,2026-08-18 09:15:22,15.0,1210026179,s_,PE,23550,2.0,2,2.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,111,2026-08-18 09:15:22,15.0,1210026180,s_,PE,23650,1.0,9,9.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,112,2026-08-18 09:15:22,15.0,1210026181,s_,PE,23250,1.0,3,3.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,113,2026-08-18 09:15:22,15.0,1210026182,s_,PE,23700,7.0,7,7.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,114,2026-08-18 09:15:22,15.0,1210026183,s_,CE,24800,5.0,5,5.0,stop module,tag s_,quarter start (A0),0.9,False,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,115,2026-08-18 09:15:22,15.0,1210026184,s_,CE,24700,11.0,12,12.0,stop module,tag s_,quarter start (A0),0.9,False,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,116,2026-08-18 09:15:22,15.0,1210026185,s_,PE,23100,5.0,5,5.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,117,2026-08-18 09:15:22,15.0,1210026186,s_,PE,23450,8.0,8,8.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,118,2026-08-18 09:15:22,15.0,1210026187,s_,PE,23400,5.0,5,5.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,119,2026-08-18 09:15:22,15.0,1210026178,s_,PE,23600,4.0,6,6.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,120,2026-08-18 09:15:22,15.0,1210026180,s_,PE,23650,8.0,9,9.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,121,2026-08-18 09:15:22,15.0,1210026181,s_,PE,23250,2.0,3,3.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,122,2026-08-18 09:15:22,15.0,1210026184,s_,CE,24700,1.0,12,12.0,stop module,tag s_,quarter start (A0),0.9,False,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,136,2026-08-18 09:15:25,18.0,1210026188,s_,PE,23750,4.0,4,4.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,137,2026-08-18 09:15:25,18.0,1210026189,s_,PE,24000,2.0,27,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,138,2026-08-18 09:15:25,18.0,1210026190,s_,PE,23300,1.0,1,1.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,139,2026-08-18 09:15:25,18.0,1210026191,s_,PE,23500,7.0,7,7.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,140,2026-08-18 09:15:25,18.0,1210026192,s_,CE,24750,9.0,9,9.0,stop module,tag s_,quarter start (A0),0.9,False,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,141,2026-08-18 09:15:25,18.0,1210026193,s_,PE,24000,13.0,16,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,142,2026-08-18 09:15:25,18.0,1210026194,s_,PE,24000,16.0,27,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,143,2026-08-18 09:15:25,18.0,1210026189,s_,PE,24000,2.0,27,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,144,2026-08-18 09:15:25,18.0,1210026193,s_,PE,24000,3.0,16,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,145,2026-08-18 09:15:25,18.0,1210026194,s_,PE,24000,11.0,27,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,146,2026-08-18 09:15:25,18.0,1210026189,s_,PE,24000,8.0,27,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,147,2026-08-18 09:15:25,18.0,1210026189,s_,PE,24000,1.0,27,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-08-18,2026-08-18 09:15:07.000090,148,2026-08-18 09:15:25,18.0,1210026189,s_,PE,24000,14.0,27,70.0,stop module,tag s_,quarter start (A0),0.9,True,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,87,2026-08-31 14:46:31,5.947,1210048530,s_,CE,25850,1.0,1,1.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,88,2026-08-31 14:46:31,5.947,1210048531,s_,PE,23400,2.0,2,2.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,89,2026-08-31 14:46:31,5.947,1210048532,s_,CE,24600,4.0,8,8.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,90,2026-08-31 14:46:31,5.947,1210048533,s_,PE,23200,2.0,10,10.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,91,2026-08-31 14:46:31,5.947,1210048534,s_,PE,23300,1.0,1,1.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,92,2026-08-31 14:46:31,5.947,1210048535,s_,PE,23100,1.0,1,1.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,93,2026-08-31 14:46:31,5.947,1210048536,s_,PE,23050,2.0,2,2.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,94,2026-08-31 14:46:31,5.947,1210048527,num,PE,23200,8.0,10,10.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,95,2026-08-31 14:46:31,5.947,1210048529,num,CE,24600,4.0,10,8.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,96,2026-08-31 14:46:32,6.947,1210048537,s_,CE,24550,15.0,15,15.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,97,2026-08-31 14:46:32,6.947,1210048538,s_,PE,23450,5.0,5,5.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-09-01,2026-08-31 14:46:25.052696,98,2026-08-31 14:46:32,6.947,1210048539,s_,PE,23350,1.0,1,1.0,stop module,tag s_,grid A slot window,0.0,False,True,False,True
+NIFTY,2026-10-13,2026-10-13 09:18:01.122124,210,2026-10-13 09:18:21,19.878,1210050946,num,PE,22450,1.0,1,-3.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.5,True,True,True,False
+NIFTY,2026-10-13,2026-10-13 09:18:01.122124,233,2026-10-13 09:18:35,33.878,1210050990,num,PE,22450,1.0,1,-3.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.5,True,True,True,False
+NIFTY,2026-10-13,2026-10-13 09:18:01.122124,245,2026-10-13 09:18:51,49.878,1210051058,num,CE,24300,1.0,1,3.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.5,False,True,False,True
+NIFTY,2026-10-13,2026-10-13 09:18:01.122124,257,2026-10-13 09:23:06,304.878,1210055856,num,PE,22450,1.0,1,-3.0,after the stop decision,inferred: order-entry minute,off-grid,0.2,False,False,True,False
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,39,2026-10-19 09:26:21,1.591,1210056917,num,CE,23000,1.0,1,-1.0,before the first s_ submission of its block (in flight),bounded: order number below the first s_ order of its block,off-grid,0.2,True,False,False,False
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,120,2026-10-19 09:26:25,5.591,1210056969,num,CE,23500,33.0,54,153.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,124,2026-10-19 09:26:25,5.591,1210056973,num,CE,24000,22.0,54,120.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,126,2026-10-19 09:26:25,5.591,1210056975,num,PE,22600,23.0,46,46.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,127,2026-10-19 09:26:25,5.591,1210056976,num,CE,24900,1.0,1,1.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,128,2026-10-19 09:26:25,5.591,1210056977,num,PE,21450,1.0,1,1.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,129,2026-10-19 09:26:25,5.591,1210056978,num,CE,24000,34.0,54,120.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,130,2026-10-19 09:26:25,5.591,1210056969,num,CE,23500,21.0,54,153.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,131,2026-10-19 09:26:25,5.591,1210056973,num,CE,24000,20.0,54,120.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,132,2026-10-19 09:26:25,5.591,1210056975,num,PE,22600,23.0,46,46.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,133,2026-10-19 09:26:25,5.591,1210056978,num,CE,24000,20.0,54,120.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,134,2026-10-19 09:26:26,6.591,1210056996,num,CE,24000,11.0,12,120.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+NIFTY,2026-10-19,2026-10-19 09:26:19.408548,135,2026-10-19 09:26:26,6.591,1210056996,num,CE,24000,1.0,12,120.0,after the stop decision,proven: order number above the first s_ order of its block,off-grid,0.2,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,90,2026-07-16 11:01:07,20.701,1210650159,s_,CE,78600,2.0,2,2.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,91,2026-07-16 11:01:07,20.701,1210650160,s_,PE,75900,21.0,21,21.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,92,2026-07-16 11:01:07,20.701,1210650161,s_,CE,78300,4.0,4,4.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,93,2026-07-16 11:01:07,20.701,1210650162,s_,CE,78800,3.0,3,3.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,94,2026-07-16 11:01:07,20.701,1210650163,s_,PE,75600,6.0,6,6.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,95,2026-07-16 11:01:07,20.701,1210650164,s_,PE,75800,5.0,5,5.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,96,2026-07-16 11:01:07,20.701,1210650165,s_,CE,78400,33.0,33,33.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,107,2026-07-16 11:01:15,28.701,1210650176,s_,PE,76200,3.0,3,3.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,108,2026-07-16 11:01:15,28.701,1210650177,s_,PE,76000,16.0,16,16.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-07-16,2026-07-16 11:00:46.298739,109,2026-07-16 11:01:15,28.701,1210650178,s_,PE,76100,5.0,5,5.0,stop module,tag s_,grid A slot window,1.0,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,53,2026-08-06 09:24:43,122.081,1210702883,s_,PE,77000,6.0,6,6.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,54,2026-08-06 09:24:43,122.081,1210702884,s_,CE,79800,8.0,14,14.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,55,2026-08-06 09:24:43,122.081,1210702885,s_,PE,77100,4.0,4,4.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,56,2026-08-06 09:24:43,122.081,1210702886,s_,CE,80400,8.0,8,10.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,57,2026-08-06 09:24:43,122.081,1210702887,s_,PE,76800,4.0,4,4.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,58,2026-08-06 09:24:43,122.081,1210702884,s_,CE,79800,6.0,14,14.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,59,2026-08-06 09:24:46,125.081,1210702888,s_,CE,80300,12.0,12,12.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,60,2026-08-06 09:24:46,125.081,1210702889,s_,PE,77400,6.0,6,6.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,61,2026-08-06 09:24:46,125.081,1210702890,s_,PE,76900,10.0,10,10.0,stop module,tag s_,off-grid,0.6666666666666666,True,True,False,True
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,79,2026-08-06 09:30:58,497.081,1210702928,num,PE,78700,1.0,1,-3.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,False,False,True,False
+SENSEX,2026-08-06,2026-08-06 09:22:40.918527,80,2026-08-06 09:30:58,497.081,1210702929,num,CE,78900,1.0,1,-3.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,False,False,True,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,126,2026-08-20 09:15:25,71.343,1210026786,s_,PE,75200,3.0,3,3.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,127,2026-08-20 09:15:25,71.343,1210026787,s_,CE,78000,11.0,37,37.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,128,2026-08-20 09:15:25,71.343,1210026788,s_,CE,78700,24.0,24,33.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,129,2026-08-20 09:15:25,71.343,1210026789,s_,PE,75500,12.0,12,12.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,131,2026-08-20 09:15:25,71.343,1210026791,s_,CE,81200,1.0,1,1.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,132,2026-08-20 09:15:25,71.343,1210026792,s_,CE,78500,1.0,12,12.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,133,2026-08-20 09:15:25,71.343,1210026793,s_,PE,75600,3.0,3,3.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,134,2026-08-20 09:15:25,71.343,1210026794,s_,PE,75300,15.0,15,15.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,135,2026-08-20 09:15:25,71.343,1210026787,s_,CE,78000,2.0,37,37.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,136,2026-08-20 09:15:25,71.343,1210026792,s_,CE,78500,11.0,12,12.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,137,2026-08-20 09:15:25,71.343,1210026787,s_,CE,78000,24.0,37,37.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,138,2026-08-20 09:15:28,74.343,1210026795,s_,CE,78400,2.0,2,2.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,139,2026-08-20 09:15:28,74.343,1210026796,s_,CE,78600,14.0,14,14.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,140,2026-08-20 09:15:28,74.343,1210026797,s_,PE,75400,13.0,13,13.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,141,2026-08-20 09:15:28,74.343,1210026798,s_,CE,81100,2.0,2,2.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,142,2026-08-20 09:15:28,74.343,1210026799,s_,CE,78800,9.0,9,9.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,176,2026-08-20 09:15:40,86.343,1210026800,num,PE,77400,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,177,2026-08-20 09:15:40,86.343,1210026801,num,PE,77500,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,178,2026-08-20 09:15:40,86.343,1210026802,num,PE,77500,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,179,2026-08-20 09:15:40,86.343,1210026803,num,PE,77400,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,180,2026-08-20 09:15:40,86.343,1210026804,num,PE,77500,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,182,2026-08-20 09:15:40,86.343,1210026806,num,PE,77300,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,183,2026-08-20 09:15:40,86.343,1210026807,num,PE,77400,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,184,2026-08-20 09:15:40,86.343,1210026808,num,PE,77400,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,190,2026-08-20 09:16:11,117.343,1210027109,num,PE,77500,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,False,True,True,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,191,2026-08-20 09:16:11,117.343,1210027111,num,PE,76900,1.0,1,-26.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,False,True,True,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,195,2026-08-20 09:16:11,117.343,1210027115,num,PE,77500,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,True,True,True,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,201,2026-08-20 09:16:14,120.343,1210027110,num,PE,77400,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,True,True,True,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,202,2026-08-20 09:16:14,120.343,1210027117,num,PE,77400,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,True,True,True,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,203,2026-08-20 09:16:14,120.343,1210027119,num,PE,77400,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,True,True,True,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,204,2026-08-20 09:16:14,120.343,1210027123,num,PE,77500,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,True,True,True,False
+SENSEX,2026-08-20,2026-08-20 09:14:13.656936,212,2026-08-20 09:17:36,202.343,1210058979,num,CE,77500,1.0,1,0.0,after the stop decision,inferred: order-entry minute,grid A slot window,0.5,False,False,False,False
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,85,2026-09-24 09:15:22,21.436,1210032935,s_,PE,73000,6.0,6,7.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,87,2026-09-24 09:15:23,22.436,1210032937,s_,PE,72600,7.0,7,7.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,88,2026-09-24 09:15:23,22.436,1210032938,s_,PE,72800,23.0,23,23.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,89,2026-09-24 09:15:23,22.436,1210032939,s_,PE,73900,13.0,34,34.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,90,2026-09-24 09:15:23,22.436,1210032939,s_,PE,73900,16.0,34,34.0,stop module,tag s_,quarter start (A0),1.0,True,True,False,True
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,111,2026-09-24 09:15:39,38.436,1210032982,num,CE,74200,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,False,False
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,113,2026-09-24 09:15:44,43.436,1210032983,num,CE,74200,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,True,False
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,114,2026-09-24 09:15:44,43.436,1210032984,num,CE,74200,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,True,False
+SENSEX,2026-09-24,2026-09-24 09:15:00.563568,115,2026-09-24 09:15:44,43.436,1210032985,num,CE,74200,1.0,1,0.0,after the stop decision,proven: order number above the first s_ order of its block,quarter start (A0),1.0,True,True,True,False
+SENSEX,2026-10-15,2026-10-15 09:16:28.504443,82,2026-10-15 09:16:34,5.496,1210027523,num,CE,73000,1.0,1,-11.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,True,True,True,False
+SENSEX,2026-10-15,2026-10-15 09:16:28.504443,84,2026-10-15 09:16:34,5.496,1210027525,num,CE,72900,1.0,1,-6.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,True,True,False,False
+SENSEX,2026-10-15,2026-10-15 09:16:28.504443,98,2026-10-15 09:16:40,11.496,1210027535,num,PE,73100,1.0,1,-4.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,False,True,True,False
+SENSEX,2026-10-15,2026-10-15 09:16:28.504443,99,2026-10-15 09:16:40,11.496,1210027536,num,PE,73100,1.0,1,-4.0,after the stop decision,proven: order number above the first s_ order of its block,grid A slot window,1.0,False,True,True,False

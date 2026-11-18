@@ -1,0 +1,24 @@
+===== 3 basket-level reduction (depth-3 tree, DEV fit) =====
+|--- tte_min <= 64.50
+|   |--- tte_min <= 24.50
+|   |   |--- hhmm <= 910.50
+|   |   |   |--- class: 0
+|   |   |--- hhmm >  910.50
+|   |   |   |--- class: 0
+|   |--- tte_min >  24.50
+|   |   |--- hhmm <= 883.50
+|   |   |   |--- class: 0
+|   |   |--- hhmm >  883.50
+|   |   |   |--- class: 0
+|--- tte_min >  64.50
+|   |--- up_pe <= 341664.00
+|   |   |--- up_pe <= -35766.25
+|   |   |   |--- class: 0
+|   |   |--- up_pe >  -35766.25
+|   |   |   |--- class: 0
+|   |--- up_pe >  341664.00
+|   |   |--- since_bb <= 5.50
+|   |   |   |--- class: 0
+|   |   |--- since_bb >  5.50
+|   |   |   |--- class: 0
+

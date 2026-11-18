@@ -1,0 +1,31 @@
+{
+ "id": "C01",
+ "name": "C++ FIFO consumes last lot",
+ "file": "cpp/include/pe/ledger.hpp",
+ "expected": "parity tests; fuzz",
+ "existing_tests": {
+  "returncode": 1,
+  "failed": [
+   "tests/test_lineage_parity.py::test_lineage_parity_on_all_fixtures",
+   "tests/test_lineage_parity.py::test_lineage_parity_on_the_full_real_ledger",
+   "tests/test_parity.py::test_cpp_core_unit_tests_pass",
+   "tests/test_parity.py::test_fixture_parity_all_conventions_and_tie_orders",
+   "tests/test_parity.py::test_real_full_ledger_parity_all_conventions_and_tie_orders"
+  ],
+  "summary": "5 failed, 122 passed in 188.63s (0:03:08)",
+  "seconds": 190
+ },
+ "own": {
+  "cpp_raw_vs_ref_false_keys": [
+   "FIFO/cpp_CA_equals_ref"
+  ],
+  "cpp_vs_py_byte_diff_files": 9,
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 177,
+   "cpp_vs_ref_mismatch": 177,
+   "py_vs_ref_mismatch": 0
+  },
+  "killed": true
+ }
+}

@@ -1,0 +1,2 @@
+# D0 reconstruction (Phase 5)
+Read `reports/EXECUTIVE_SUMMARY.md` first. Deliverables: `reports/` (11 documents + `INDEPENDENT_REVIEW_D0.md`), tables in `results/`, figures in `reports/figures/`, scripts here, tests in `backtest/tests/test_d0_reconstruction.py`. `PREREGISTRATION_D0_v1.md` + `results/FREEZE.json` (+ `FREEZE_ADDENDUM_1.json`) document the frozen rule set. Reproduce with `run_all.sh`.

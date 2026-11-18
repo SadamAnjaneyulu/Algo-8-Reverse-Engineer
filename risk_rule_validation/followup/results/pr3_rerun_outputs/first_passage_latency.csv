@@ -1,0 +1,28 @@
+what,segment,n,lo_median_s,hi_median_s,hi_p75_s,hi_p90_s
+trigger->decision cheap/high/k=1.55,D-1 fresh,500,0.0,119.0,180.0,240.0
+trigger->decision cheap/high/k=1.55,D0 carried,120,60.0,180.0,225.75,286.1
+trigger->decision cheap/high/k=1.55,D0 fresh,700,60.0,145.0,234.0,304.0
+trigger->decision cheap/high/k=1.55,D0 mixed,896,60.0,124.0,200.0,300.0
+trigger->decision cheap/high/k=1.45,D-1 fresh,465,60.0,122.0,202.0,282.0000000000001
+trigger->decision cheap/high/k=1.45,D0 carried,113,120.0,180.0,248.0,326.8
+trigger->decision cheap/high/k=1.45,D0 fresh,701,60.0,177.0,260.0,316.0
+trigger->decision cheap/high/k=1.45,D0 mixed,875,60.0,133.0,226.5,307.0
+trigger->decision avg/high/k=1.55,D-1 fresh,290,0.0,66.5,120.75,221.30000000000007
+trigger->decision avg/high/k=1.55,D0 carried,65,60.0,147.0,194.0,301.8
+trigger->decision avg/high/k=1.55,D0 fresh,370,60.0,120.0,205.0,275.5000000000001
+trigger->decision avg/high/k=1.55,D0 mixed,137,0.0,76.0,101.0,176.0
+"decision->first fill (upper bound, body: fill - order minute start)",1 individual lot stop-loss,3245,0.0,14.0,36.0,50.0
+"decision->first fill (upper bound, body: fill - order minute start)",11 unexplained,64,0.0,23.0,40.25,51.0
+"decision->first fill (upper bound, body: fill - order minute start)",2 same-contract partial buy-back,722,0.0,19.0,39.0,50.0
+"decision->first fill (upper bound, body: fill - order minute start)",3 side-level reduction,803,0.0,21.0,40.0,52.80000000000007
+"decision->first fill (upper bound, body: fill - order minute start)",4 basket-level reduction,1529,0.0,17.0,44.0,55.0
+"decision->first fill (upper bound, body: fill - order minute start)",5 cycle stop & liquidation,100,0.0,7.0,22.0,40.0
+"decision->first fill (upper bound, body: fill - order minute start)","6 clock-based exit (clock B, no replacement)",414,0.0,33.0,46.0,53.0
+"decision->first fill (upper bound, body: fill - order minute start)",6 clock-based exit (final flatten),1063,0.0,30.0,48.0,56.0
+"decision->first fill (upper bound, body: fill - order minute start)",7 expiry-day salvage,1388,0.0,29.0,48.0,57.0
+"decision->first fill (upper bound, body: fill - order minute start)",8 clock-B rebalance,681,0.0,12.0,31.0,47.0
+"decision->first fill (upper bound, body: fill - order minute start)",8b grid rebalance (A/:00 clock),653,0.0,21.0,40.0,53.0
+"decision->first fill (exact, tagged)",10 manual / platform risk engine,40,0.0,0.0,0.28943575,4.9994587
+"decision->first fill (exact, tagged)",5 cycle stop & liquidation,201,0.661665,0.661665,2.947192,15.898146
+"decision->first fill (exact, tagged)",7 expiry-day salvage,101,0.0,0.0,0.219138,0.358154
+first fill->last fill (all buy-backs),all,11007,0.0,0.0,0.0,0.0

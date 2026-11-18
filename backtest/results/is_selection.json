@@ -1,0 +1,100 @@
+{
+ "HOLD_SETTLE": {
+  "chosen": "cut_t20000_f10000_re_cd1800band",
+  "reason": "highest in-sample net P&L; positive in 2 of 3 thirds",
+  "hold_is_net": 497091.255459244,
+  "chosen_is_net": 520143.0901620434,
+  "walk_forward": [
+   {
+    "fold": "2024-11-18..2025-02-17",
+    "chosen": "cut_t5000_f10000_re_none",
+    "why": "highest in-sample net P&L; positive in 3 of 3 thirds",
+    "val_net_chosen": -35922.85040695147,
+    "val_net_hold": 13255.420319431752,
+    "val_cycles": 25,
+    "best_in_hindsight": "cut_t10000_f10000_re_none",
+    "val_net_best": 89303.3561703841
+   },
+   {
+    "fold": "2025-02-18..2025-05-17",
+    "chosen": "cut_t10000_f10000_re_none",
+    "why": "highest in-sample net P&L; positive in 3 of 3 thirds",
+    "val_net_chosen": -14348.304016074064,
+    "val_net_hold": -32320.19349862929,
+    "val_cycles": 24,
+    "best_in_hindsight": "cut_t20000_f10000_re_cd1800band",
+    "val_net_best": 54182.29286464065
+   },
+   {
+    "fold": "2025-05-18..2025-08-17",
+    "chosen": "cut_t5000_f10000_re_none_STOP",
+    "why": "highest in-sample net P&L; positive in 2 of 3 thirds",
+    "val_net_chosen": 66722.0873540743,
+    "val_net_hold": 435159.9018114613,
+    "val_cycles": 26,
+    "best_in_hindsight": "cut_t5000_f10000_re_cd1800band",
+    "val_net_best": 463445.320632508
+   },
+   {
+    "fold": "2025-08-18..2025-11-17",
+    "chosen": "cut_t20000_f10000_re_cd1800band",
+    "why": "highest in-sample net P&L; positive in 2 of 3 thirds",
+    "val_net_chosen": 82675.36432469368,
+    "val_net_hold": 74203.72061109959,
+    "val_cycles": 24,
+    "best_in_hindsight": "cut_t20000_f10000_re_cd1800",
+    "val_net_best": 100490.39869371298
+   }
+  ],
+  "parity_all": true
+ },
+ "FLATTEN_1525": {
+  "chosen": "HOLD",
+  "reason": "best configuration cut_t20000_f10000_re_cd1800band positive in only 1 of 3 thirds",
+  "hold_is_net": 428326.79447197274,
+  "chosen_is_net": 428326.79447197274,
+  "walk_forward": [
+   {
+    "fold": "2024-11-18..2025-02-17",
+    "chosen": "cut_t5000_f10000_re_none",
+    "why": "highest in-sample net P&L; positive in 3 of 3 thirds",
+    "val_net_chosen": -38653.48259389787,
+    "val_net_hold": -228.48739124267013,
+    "val_cycles": 25,
+    "best_in_hindsight": "cut_t10000_f10000_re_none",
+    "val_net_best": 88611.45660683258
+   },
+   {
+    "fold": "2025-02-18..2025-05-17",
+    "chosen": "cut_t10000_f10000_re_none",
+    "why": "highest in-sample net P&L; positive in 3 of 3 thirds",
+    "val_net_chosen": 22070.97395117648,
+    "val_net_hold": -30226.15674803585,
+    "val_cycles": 24,
+    "best_in_hindsight": "cut_t5000_f10000_re_none_STOP",
+    "val_net_best": 94187.03162161249
+   },
+   {
+    "fold": "2025-05-18..2025-08-17",
+    "chosen": "cut_t5000_f10000_re_none_STOP",
+    "why": "highest in-sample net P&L; positive in 2 of 3 thirds",
+    "val_net_chosen": 75448.68264134797,
+    "val_net_hold": 443800.1346787135,
+    "val_cycles": 26,
+    "best_in_hindsight": "cut_t5000_f10000_re_cd1800",
+    "val_net_best": 471339.35633323266
+   },
+   {
+    "fold": "2025-08-18..2025-11-17",
+    "chosen": "cut_t20000_f10000_re_cd1800band",
+    "why": "highest in-sample net P&L; positive in 2 of 3 thirds",
+    "val_net_chosen": 66497.4281739336,
+    "val_net_hold": 58040.278131757106,
+    "val_cycles": 24,
+    "best_in_hindsight": "cut_t20000_f10000_re_none",
+    "val_net_best": 84513.95875555184
+   }
+  ],
+  "parity_all": true
+ }
+}

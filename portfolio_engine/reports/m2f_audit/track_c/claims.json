@@ -1,0 +1,186 @@
+[
+ {
+  "claim": "8,399 opening wing items / 617,130 units; 13,325 body items / 626,765 units",
+  "source": "M2D report s2",
+  "independent_verification": "[RAW][IMPL] own replay of raw CSV; exact",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "conditional on tie order src (C-01); roles = module tag"
+ },
+ {
+  "claim": "Closing: 4,306 wing items / 500,775 units; 10,754 body items / 540,250 units",
+  "source": "M2D summary",
+  "independent_verification": "[RAW][IMPL] exact",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "closing role = closing-fill tag; conditional on tie order"
+ },
+ {
+  "claim": "All 36,784 items and all 228,106 link rows of W1, W1_S60, W2, W2_S60, W3 equal the committed outputs (keys, dt_s, quantities, ratios, otm sign, weights, matched units, nearest/tied, multiplicity, link_status, app keys, ids)",
+  "source": "m2d_data",
+  "independent_verification": "[RAW][IMPL] compare_full.py + compare_extra.py: 0 differences",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "reference shares the written rule set (same interpretation of the approved text); row order not compared"
+ },
+ {
+  "claim": "Opening W1: 7,301 wings with candidate (3,501 unique, 3,800 multiple), 1,098 none, 133,640 unmatched units (21.7 %), bodies 10,913 with wing / 2,412 without (128,430 units)",
+  "source": "M2D report s3",
+  "independent_verification": "[RAW][IMPL] exact",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "method-dependent coincidence measure; not protection"
+ },
+ {
+  "claim": "W1_S60: 8,204 with candidate, 195 none, 68,720 unmatched units; 873 bodies / 65,845 units without wing",
+  "source": "M2D report s3",
+  "independent_verification": "[RAW][IMPL] exact; boundary 60 inclusive / 61 excluded confirmed on hand-built cases",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "execution-time proximity only"
+ },
+ {
+  "claim": "W3 residuals 56,420 wing / 66,055 body units; 8,176 wings with a segment; 12,096 links",
+  "source": "M2D report s3",
+  "independent_verification": "[RAW][IMPL] exact (own cumulative-sum queue)",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "arithmetic pairing; queue order dependent: reversing the body queue keeps only 136 of 12,096 (1.1 %) pairs"
+ },
+ {
+  "claim": "Group level: 7,958 opening groups, 5,446 with both sides, 81.2 % exactly 1:1 of those (55.6 % of all groups, 53.1 % of wing units); closing 3,247 / 2,381 / 71.5 %",
+  "source": "M2D report s2",
+  "independent_verification": "[RAW][IMPL] exact",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "group-level quantity ratio only; not lot-level"
+ },
+ {
+  "claim": "336,040 closing units and 170,650 opening units are outside tag roles (opening 617,130+626,765+170,650 = 1,414,545; closing 500,775+540,250+336,040 = 1,377,065); breakdown by tag",
+  "source": "M2D report s6",
+  "independent_verification": "[RAW][IMPL] exact, denominators reconcile to the full OA/CP universe",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "exclusions are listed, but origin-based magnitudes are not (C-03)"
+ },
+ {
+  "claim": "107,530 closing wing units come from episodes opened by mixed modules (387,985 h_-only, 5,260 without h_)",
+  "source": "M2D report s6",
+  "independent_verification": "[RAW][IMPL] exact",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "episode counter from own replay"
+ },
+ {
+  "claim": "Stop-closed s_ bodies are not in the short-body set; num seed wings not identified as wings",
+  "source": "M2D report s6",
+  "independent_verification": "[RAW][IMPL] 95,485 units short episodes closed by s_ (59,065 opened only by num); 61,470 long num opening units; direction scope adds 133,400 wing units",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "whether long num fills are wings is not testable"
+ },
+ {
+  "claim": "Second app key F88187 ~7.8 % of h_ ",
+  "source": "M2A packet / methodology",
+  "independent_verification": "[RAW] 7.84 % of h_ fills, 7.87 % of h_ units; 8.18 %/8.43 % of opening wing items/units",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": "different denominators (C-06); the key never appears on num rows"
+ },
+ {
+  "claim": "App keys do not enter any rule",
+  "source": "M2D report s4",
+  "independent_verification": "[REPRO] engine run on full ledger with app keys dropped / swapped / all-second / garbage: all link ids and fields of all methods unchanged; code inspection: app_key used only in _meta, output columns, coverage_split",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "engine run by me, not independent code"
+ },
+ {
+  "claim": "Frozen cycles NIFTY 2026-06-30 and SENSEX 2026-07-16 cycle-level W1 / W1_S60 / W3 coverage (125 fields per cycle, both closing and opening)",
+  "source": "m2e_data/*/coverage.json",
+  "independent_verification": "[RAW][IMPL] 0 differences both via full-ledger filter and cycle-only replay; per-cycle link TSV key sets equal",
+  "class": "Reproduced result with limited independent verification",
+  "status": "VERIFIED",
+  "limitation": "percentile convention replicated from the engine"
+ },
+ {
+  "claim": "M2-E text numbers: 179/406 NIFTY and 125/252 SENSEX body candidate sets differ; 180/376 NIFTY W3 links are also W1; 59 %/64 % (W1) and 77 %/75 % (S60) wing units with >=2 candidates; 76.8 %/68.0 % opening units tag-classified",
+  "source": "M2E_HISTORICAL_FORENSICS_REPORT / COVERAGE_REPORT",
+  "independent_verification": "[RAW][IMPL] exact",
+  "class": "Independently verified fact",
+  "status": "VERIFIED",
+  "limitation": ""
+ },
+ {
+  "claim": "Direction-scope sensitivity numbers (opening wings 9,669 / 750,530 etc.)",
+  "source": "m2d_summary",
+  "independent_verification": "[RAW][IMPL] exact for all 4 level x method cells",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": ""
+ },
+ {
+  "claim": "W1 same-minute coincidence is specific: share of opening wings with a body candidate is 86.9 % at shift 0 vs 17.8-25.6 % at +-2..5 min (49.3 % at -1, 35.2 % at +1) and 26.9 % at the same minute-of-day in another session",
+  "source": "own placebo (assumptions.py)",
+  "independent_verification": "[RAW][IMPL] measured",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "shows co-timing is non-random; says nothing about protection or shared basket (a scheduler submitting both would give the same pattern)"
+ },
+ {
+  "claim": "A temporal candidate is a protective hedge",
+  "source": "M2D wording is \"candidate\"/WEAKLY_SUPPORTED",
+  "independent_verification": "data cannot test: 6 W1 links are same-contract, 24 not OTM, median 2 candidates per wing (3,800 multi), 2,887 nearest ties",
+  "class": "Inferred association",
+  "status": "SUSPECTED",
+  "limitation": "not upgraded; W1 WEAKLY_SUPPORTED, W1_S60 UNRESOLVED, W3 UNRESOLVED unchanged"
+ },
+ {
+  "claim": "W2 weight is an allocation",
+  "source": "M2D: \"weights are not allocations\"",
+  "independent_verification": "weights depend only on body quantity; for 1,798 of 2,651 multi-candidate wings with a unique nearest body the max-weight body is not the nearest; 9.1 % of bodies exceed weight 1 (max 31.5x)",
+  "class": "Method-dependent result",
+  "status": "VERIFIED",
+  "limitation": "wording in report is already correct"
+ },
+ {
+  "claim": "FIFO queue match (W3) is ownership",
+  "source": "M2D: arithmetic pairing",
+  "independent_verification": "median |dt| 1,007 s, 68.4 % > 600 s, wing before body in only 7.9 %; W3 body outside W1 set for 6,689 of 8,176 wings; reversed queue keeps 1.1 % of pairs",
+  "class": "Not testable with available data",
+  "status": "NOT VERIFIED",
+  "limitation": "no leg identifiers in the export"
+ },
+ {
+  "claim": "A closing position without a role-labelled wing has no hedge",
+  "source": "M2E: \"cannot conclude\"",
+  "independent_verification": "closing-tag roles drop 114,645 units of h_-opened long episodes closed by non-h_ and 59,065 short-num units closed by s_",
+  "class": "Not testable with available data",
+  "status": "NOT VERIFIED",
+  "limitation": "absence from tag scope is not absence of a wing"
+ },
+ {
+  "claim": "Body and wing in one cycle belong to one original basket",
+  "source": "not claimed",
+  "independent_verification": "35 cycles have 51-279 distinct opening entry minutes (median 157): cycle != basket; no basket id in the export",
+  "class": "Unresolved",
+  "status": "UNRESOLVED",
+  "limitation": ""
+ },
+ {
+  "claim": "W1 pairs 7,301 of 8,399 independently equal to TP-03 Phase 1 E6",
+  "source": "M2D report s3",
+  "independent_verification": "TP-03 artifacts not inspected or re-run",
+  "class": "Unresolved",
+  "status": "NOT VERIFIED",
+  "limitation": ""
+ },
+ {
+  "claim": "W4 number-block is not implemented",
+  "source": "M2D report",
+  "independent_verification": "[INV] inspection: LINK_METHODS has no W4; no key in outputs",
+  "class": "Independently verified fact",
+  "status": "INSPECTED",
+  "limitation": "not interpreted"
+ }
+]

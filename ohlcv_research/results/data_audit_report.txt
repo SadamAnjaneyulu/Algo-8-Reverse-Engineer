@@ -1,0 +1,86 @@
+INDEX rows 63678 | tz offsets {'+05:30': 63678} | files 170 | files per (und, date) max 1
+provider_volume non-zero rows: 0
+index sessions per underlying: {'NIFTY': 85, 'SENSEX': 85} | date range 2026-06-22 2026-10-22
+index bars per session: {'min': 370.0, '50%': 375.0, 'max': 375.0} | sessions with missing minutes: 16 | total missing minutes: 72 | duplicate timestamps: 0 | off-session bars: 0
+   und       date  bars  dup first  last  off_session  not_on_minute  missing
+ NIFTY 2026-10-12   371    0 09:15 15:29            0              0        4
+ NIFTY 2026-10-13   370    0 09:15 15:28            0              0        5
+ NIFTY 2026-10-14   371    0 09:15 15:29            0              0        4
+ NIFTY 2026-10-15   370    0 09:15 15:28            0              0        5
+ NIFTY 2026-10-16   370    0 09:15 15:28            0              0        5
+ NIFTY 2026-10-19   371    0 09:15 15:29            0              0        4
+ NIFTY 2026-10-21   371    0 09:15 15:29            0              0        4
+ NIFTY 2026-10-22   370    0 09:15 15:28            0              0        5
+SENSEX 2026-10-12   370    0 09:15 15:28            0              0        5
+SENSEX 2026-10-13   371    0 09:15 15:29            0              0        4
+SENSEX 2026-10-14   371    0 09:15 15:29            0              0        4
+SENSEX 2026-10-15   370    0 09:15 15:28            0              0        5
+SENSEX 2026-10-16   370    0 09:15 15:28            0              0        5
+SENSEX 2026-10-19   370    0 09:15 15:28            0              0        5
+SENSEX 2026-10-21   371    0 09:15 15:29            0              0        4
+SENSEX 2026-10-22   371    0 09:15 15:29            0              0        4
+index OHLC inconsistent rows: 0 | zero-range bars share: 0.0092
+sessions only in NIFTY: [] | only in SENSEX: []
+NIFTY weekday counts: {'Wednesday': 18, 'Thursday': 18, 'Monday': 17, 'Tuesday': 17, 'Friday': 15} | weekdays absent between first and last session: [datetime.date(2026, 6, 26), datetime.date(2026, 9, 14), datetime.date(2026, 10, 2), datetime.date(2026, 10, 20)]
+
+OPTION rows 1230065 | tz offsets {'+05:30': 1230065} | files 3243 | contract-days 3243 | files per contract-day max 1
+duplicate (contract, ts) rows: 0
+off-session option bars: 19518 | not on a minute: 0
+option OHLC inconsistent rows: 0 | price not on 0.05 tick (close): 0
+volume: negative 0 | zero 29391 (2.39%) | non-integer 0 | multiple of lot size (NIFTY 65 / SENSEX 20): {'NIFTY': 1.0, 'SENSEX': 1.0}
+contract-days by underlying and dte:
+            contract_days  median_bars  mean_coverage  full_375
+und    dte                                                     
+NIFTY  0              775        385.0          1.006     0.345
+       1              628        385.0          1.010     0.358
+       3               42        385.0          0.993     0.000
+SENSEX 0              899        385.0          1.015     0.416
+       1              899        385.0          1.015     0.402
+expiries: {'NIFTY': ['2026-06-23', '2026-06-30', '2026-07-07', '2026-07-14', '2026-07-21', '2026-07-28', '2026-08-04', '2026-08-11', '2026-08-18', '2026-08-25', '2026-09-01', '2026-09-08', '2026-09-15', '2026-09-22', '2026-09-29', '2026-10-06', '2026-10-13', '2026-10-19'], 'SENSEX': ['2026-06-25', '2026-07-02', '2026-07-09', '2026-07-16', '2026-07-23', '2026-07-30', '2026-08-06', '2026-08-13', '2026-08-20', '2026-08-27', '2026-09-10', '2026-09-17', '2026-09-24', '2026-10-01', '2026-10-08', '2026-10-15', '2026-10-22']}
+expiry weekday: {'NIFTY': {'Tuesday': 17, 'Monday': 1}, 'SENSEX': {'Thursday': 17}}
+strike step check (share of strikes on the step grid): {'NIFTY': 1.0, 'SENSEX': 1.0}
+gap between consecutive bars of a contract-day (minutes): share == 1: 0.9953 | > 5: 0.00023 | > 30: 1e-06 | max: 40.0
+coverage by moneyness at the session open:
+                         contract_days  mean_coverage  median_bars
+und    mny                                                        
+NIFTY  ITM > 3                      64          1.019        385.0
+       ITM 1-3                      94          1.018        385.0
+       ATM +-1                     125          1.018        385.0
+       OTM 1-3                     114          1.017        385.0
+       OTM 3-10                    321          1.016        385.0
+       OTM > 10 (wings)            727          0.998        385.0
+SENSEX ITM > 3                     216          1.014        385.0
+       ITM 1-3                     115          1.017        385.0
+       ATM +-1                     129          1.017        385.0
+       OTM 1-3                     122          1.017        385.0
+       OTM 3-10                    321          1.015        385.0
+       OTM > 10 (wings)            895          1.013        385.0
+contract-days without an index session: 0
+
+LEDGER orders 39874 | cycles 35 | trade dates 65 | orders whose contract-day has candles: 1.0 | lots: 1.0
+orders without candles by module: {}
+ledger (und, date) sessions: 65 | with index bars: 65
+contract-days in market data that Algo 8 did NOT trade that day: 752 of 3243 | traded contract-days: 2491
+age (minutes) of the last COMPLETED bar of the traded contract at the decision minute: none that day 0.0337 | 0 (bar ended at the decision minute) 0.9663 | <= 5 0.9663 | > 15 0.0
+           n    none   fresh     le5  gt15
+mod                                       
+body   26253  0.0359  0.9641  0.9641   0.0
+other    809  0.1990  0.8010  0.8010   0.0
+wing   12812  0.0187  0.9813  0.9813   0.0
+
+BAR LABEL CHECK - share of Algo 8 fills whose price lies inside [low, high] of the candidate bar (bar exists share, inside share):
+   bar labelled floor(fill minute)  [bar START convention] -> 1.0 0.9728
+   bar labelled fill minute + 1   [bar END convention] -> 0.9999 0.6133
+   bar labelled fill minute - 1 -> 0.9636 0.5869
+VOLUME CHECK - contract-minutes with Algo 8 fills: 24898 | bar volume >= Algo 8 filled quantity: 0.9999 | bar volume == 0 although Algo 8 traded: 1
+
+PAIRS - (contract-strike, minute) rows: 1006753 | CE and PE both printed that minute: 0.2218
+ATM straddle (nearest strike to the previous index close) availability per session-expiry, by dte:
+            session_expiries  strikes  atm_both_same_minute  atm_both_within_5min  worst
+und    dte                                                                              
+NIFTY  0                  18     37.0                 0.912                 0.912  0.061
+       1                  14     38.5                 0.999                 0.999  0.986
+       3                   1     36.0                 0.986                 0.986  0.986
+SENSEX 0                  17     44.0                 0.837                 0.837  0.000
+       1                  17     44.0                 0.998                 0.998  0.986
+sessions with option data per underlying: {'NIFTY': 33, 'SENSEX': 34} | index sessions with NO option data: {'NIFTY': 52, 'SENSEX': 51}

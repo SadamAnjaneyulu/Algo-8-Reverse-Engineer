@@ -1,0 +1,50 @@
+{
+ "per_contract_id_sequence": {
+  "fills": 41421,
+  "per_instrument_sequences_local_equal_global": true,
+  "stream_positions_differing_global_vs_local": 8196,
+  "aggregate_gross_states_differing_global_vs_local": 2532,
+  "max_abs_aggregate_gross_diff_global_vs_local": 7150,
+  "stream_positions_differing_local_vs_baseline": 681,
+  "aggregate_gross_states_differing_local_vs_baseline": 509,
+  "bucket_end_aggregate_equal_local_vs_baseline": true,
+  "bucket_end_aggregate_equal_global_vs_baseline": true,
+  "local_cross_instrument_pattern_equals_baseline": true
+ },
+ "trade_id": {
+  "fills": 41421,
+  "per_instrument_sequences_local_equal_global": true,
+  "stream_positions_differing_global_vs_local": 8199,
+  "aggregate_gross_states_differing_global_vs_local": 2534,
+  "max_abs_aggregate_gross_diff_global_vs_local": 7150,
+  "stream_positions_differing_local_vs_baseline": 682,
+  "aggregate_gross_states_differing_local_vs_baseline": 509,
+  "bucket_end_aggregate_equal_local_vs_baseline": true,
+  "bucket_end_aggregate_equal_global_vs_baseline": true,
+  "local_cross_instrument_pattern_equals_baseline": true
+ },
+ "order_no": {
+  "fills": 41421,
+  "per_instrument_sequences_local_equal_global": true,
+  "stream_positions_differing_global_vs_local": 1734,
+  "aggregate_gross_states_differing_global_vs_local": 1218,
+  "max_abs_aggregate_gross_diff_global_vs_local": 3250,
+  "stream_positions_differing_local_vs_baseline": 596,
+  "aggregate_gross_states_differing_local_vs_baseline": 506,
+  "bucket_end_aggregate_equal_local_vs_baseline": true,
+  "bucket_end_aggregate_equal_global_vs_baseline": true,
+  "local_cross_instrument_pattern_equals_baseline": true
+ },
+ "sensex_trade_id_time": {
+  "fills": 41421,
+  "per_instrument_sequences_local_equal_global": true,
+  "stream_positions_differing_global_vs_local": 2296,
+  "aggregate_gross_states_differing_global_vs_local": 644,
+  "max_abs_aggregate_gross_diff_global_vs_local": 740,
+  "stream_positions_differing_local_vs_baseline": 66,
+  "aggregate_gross_states_differing_local_vs_baseline": 9,
+  "bucket_end_aggregate_equal_local_vs_baseline": true,
+  "bucket_end_aggregate_equal_global_vs_baseline": true,
+  "local_cross_instrument_pattern_equals_baseline": true
+ }
+}

@@ -1,0 +1,62 @@
+{
+ "baseline": {
+  "parent_level": 26,
+  "flips_not_attributable_to_the_parent_alone": [
+   {
+    "inst": "NIFTY|2026-09-01|PE|23200",
+    "parent": "11747186",
+    "ts": 1788167791,
+    "rows": [
+     27906,
+     27916
+    ],
+    "before": 650,
+    "after": -650,
+    "own_net": -650
+   },
+   {
+    "inst": "NIFTY|2026-09-01|CE|24600",
+    "parent": "11747185",
+    "ts": 1788167791,
+    "rows": [
+     27908,
+     27917
+    ],
+    "before": 650,
+    "after": -520,
+    "own_net": -650
+   },
+   {
+    "inst": "NIFTY|2026-09-22|CE|23300",
+    "parent": "s_22084429338804",
+    "ts": 1790066670,
+    "rows": [
+     33690,
+     33698,
+     33703,
+     33706,
+     33708,
+     33710,
+     33711,
+     33712,
+     33713,
+     33714,
+     33715,
+     33716,
+     33717
+    ],
+    "before": -1755,
+    "after": 65,
+    "own_net": 1755
+   }
+  ],
+  "per_fill_outside_any_parent_level_group": 0,
+  "per_fill": 23
+ },
+ "hybrid": {
+  "parent_level": 22,
+  "flips_not_attributable_to_the_parent_alone": [],
+  "per_fill_outside_any_parent_level_group": 0,
+  "per_fill": 21
+ }
+}

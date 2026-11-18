@@ -1,0 +1,87 @@
+cheap 205911
+fifo 205911
+lifo 205911
+MATCHED-HAZARD (same lot-level ratio; high vs no dispersion):
+ conv              alternative day split  bins_used  n_high  stops_high  n_low  stops_low   delta  delta_lo  delta_hi  h_low_weighted                   verdict
+cheap chain-allocation average D-1   DEV          4     150          10   1115        102 -0.0456   -0.1192    0.0321          0.0882              inconclusive
+cheap chain-allocation average D-1  TEST          2      86           4   1000        106 -0.0582   -0.1354   -0.0322          0.0582          average favoured
+cheap chain-allocation average  D0   DEV          5     256          47   3398        325  0.0595   -0.0067    0.1039          0.0848 consistent with lot-level
+cheap         contract average D-1   DEV          4     385          45    796         49  0.0496    0.0053    0.1408          0.0425              inconclusive
+cheap         contract average D-1   VAL          2     162          20    264         16  0.0271   -0.0117    0.0771          0.0251 consistent with lot-level
+cheap         contract average D-1  TEST          4     246          29    498         40  0.0257   -0.0132    0.0671          0.0554 consistent with lot-level
+cheap         contract average  D0   DEV         10    2237         323   1184         43  0.0999    0.0808    0.1139          0.0356              inconclusive
+cheap         contract average  D0   VAL         16    1325         139    847         13  0.0848    0.0475    0.1221          0.0201              inconclusive
+cheap         contract average  D0  TEST          7     584          81   1152         28  0.0917    0.0591    0.1619          0.0292              inconclusive
+ fifo  slot-allocation average  D0   DEV          4     214          16   8629        309  0.0227    0.0034    0.0503          0.0289              inconclusive
+ fifo chain-allocation average D-1   DEV          4     263          12   1821        104 -0.0540   -0.0940   -0.0279          0.0690          average favoured
+ fifo chain-allocation average D-1   VAL          2      85           4    942         39 -0.0395   -0.0917   -0.0324          0.0395          average favoured
+ fifo chain-allocation average D-1  TEST          2      79           3   1501        106 -0.0211   -0.0463   -0.0077          0.0211          average favoured
+ fifo chain-allocation average  D0   DEV         11     769          34   7569        278  0.0036   -0.0073    0.0178          0.0345 consistent with lot-level
+ fifo chain-allocation average  D0   VAL          6     270          13   3361        126  0.0014   -0.0161    0.0186          0.0345 consistent with lot-level
+ fifo chain-allocation average  D0  TEST          5     191          10   2578        114 -0.0024   -0.0356    0.0446          0.0391              inconclusive
+ fifo         contract average D-1   DEV          6     983          56    951         47 -0.0124   -0.0366    0.0160          0.0558              inconclusive
+ fifo         contract average D-1   VAL          4     490          27    450         14  0.0055   -0.0041    0.0249          0.0264 consistent with lot-level
+ fifo         contract average D-1  TEST          5     393          35    693         36  0.0234   -0.0055    0.0502          0.0296 consistent with lot-level
+ fifo         contract average  D0   DEV         16    5867         270   2025         33  0.0300    0.0215    0.0379          0.0161              inconclusive
+ fifo         contract average  D0   VAL         16    2290         132   1211         12  0.0414    0.0189    0.0526          0.0162              inconclusive
+ fifo         contract average  D0  TEST         15     935          88   1324         24  0.0703    0.0481    0.0833          0.0214              inconclusive
+ lifo chain-allocation average D-1   DEV          3     131           9   2301        101  0.0023   -0.0316    0.0444          0.0296              inconclusive
+ lifo chain-allocation average D-1  TEST          2      96           5   1240         97 -0.0404   -0.0883   -0.0294          0.0404          average favoured
+ lifo chain-allocation average  D0   DEV         10     417          42   4366        320  0.0258   -0.0223    0.0660          0.0697 consistent with lot-level
+ lifo chain-allocation average  D0   VAL          3     256          14   2674        123 -0.0062   -0.0283    0.0245          0.0447              inconclusive
+ lifo         contract average D-1   DEV          7     987          51   1264         45  0.0054   -0.0177    0.0256          0.0365 consistent with lot-level
+ lifo         contract average D-1   VAL          4     416          25    526         13  0.0133   -0.0141    0.0276          0.0227              inconclusive
+ lifo         contract average D-1  TEST          5     611          37    620         33  0.0020   -0.0133    0.0275          0.0419 consistent with lot-level
+ lifo         contract average  D0   DEV         14    3507         326   1179         37  0.0597    0.0340    0.0741          0.0327              inconclusive
+ lifo         contract average  D0   VAL          9    2081         143    564         10  0.0539    0.0291    0.0809          0.0209              inconclusive
+ lifo         contract average  D0  TEST         11    1180          98   1089         22  0.0468    0.0211    0.1241          0.0306              inconclusive
+verdict  average favoured  consistent with lot-level  inconclusive
+day                                                               
+D-1                     5                          6             5
+D0                      0                          4            12
+EXIT-LEVEL (material dispersion >= 10 %):
+ conv day split              alternative  n_material  mean_dispersion  q05_lot  q50_lot  q05_alt  q50_alt  iqr_log_lot  iqr_log_alt  diff_lot_minus_alt  diff_lo  diff_hi           verdict
+cheap D-1   DEV         contract average          96            0.150    1.474    1.590    1.277    1.373        0.106        0.095               0.011   -0.017    0.021      inconclusive
+cheap D-1  TEST         contract average          44            0.170    1.488    1.666    1.254    1.443        0.073        0.070               0.003   -0.040    0.051      inconclusive
+cheap D-1   VAL         contract average          45            0.167    1.460    1.695    1.245    1.421        0.106        0.126              -0.020   -0.089    0.005      inconclusive
+cheap  D0   DEV  slot-allocation average          31            0.209    1.559    1.986    1.323    1.536        0.175        0.210              -0.035   -0.125    0.112      inconclusive
+cheap  D0   DEV chain-allocation average         161            0.316    1.511    1.772    0.955    1.486        0.206        0.236              -0.030   -0.064    0.028      inconclusive
+cheap  D0   DEV         contract average        1215            0.782    1.488    1.736    0.618    1.197        0.208        0.412              -0.205   -0.266   -0.132 lot-level tighter
+cheap  D0  TEST         contract average         220            0.269    1.475    1.694    1.056    1.388        0.139        0.182              -0.044   -0.129    0.088      inconclusive
+cheap  D0   VAL chain-allocation average          35            0.177    1.498    1.821    1.256    1.551        0.173        0.231              -0.058   -0.139    0.008      inconclusive
+cheap  D0   VAL         contract average         470            0.552    1.496    1.733    0.833    1.224        0.149        0.243              -0.094   -0.129   -0.014 lot-level tighter
+ fifo D-1   DEV         contract average         130            0.174    1.506    1.745    1.318    1.482        0.131        0.130               0.001   -0.030    0.047      inconclusive
+ fifo D-1  TEST         contract average          70            0.159    1.583    1.771    1.314    1.511        0.113        0.121              -0.008   -0.044    0.033      inconclusive
+ fifo D-1   VAL         contract average          64            0.157    1.503    1.786    1.255    1.532        0.124        0.139              -0.014   -0.078    0.022      inconclusive
+ fifo  D0   DEV  slot-allocation average          74            0.173    1.691    2.314    1.298    2.073        0.472        0.487              -0.015   -0.210    0.027      inconclusive
+ fifo  D0   DEV chain-allocation average         174            0.215    1.633    2.502    1.338    2.230        0.475        0.440               0.035   -0.070    0.142      inconclusive
+ fifo  D0   DEV         contract average        1254            0.578    1.570    2.226    0.831    1.596        0.428        0.475              -0.047   -0.102    0.027      inconclusive
+ fifo  D0  TEST         contract average         215            0.261    1.552    1.861    1.116    1.540        0.231        0.243              -0.012   -0.092    0.035      inconclusive
+ fifo  D0   VAL chain-allocation average          51            0.141    1.578    2.088    1.380    1.768        0.137        0.171              -0.034   -0.076    0.062      inconclusive
+ fifo  D0   VAL         contract average         470            0.404    1.565    2.001    0.986    1.560        0.269        0.269              -0.001   -0.095    0.039      inconclusive
+ lifo D-1   DEV         contract average         124            0.176    1.505    1.713    1.303    1.474        0.149        0.140               0.008   -0.032    0.055      inconclusive
+ lifo D-1  TEST         contract average          66            0.154    1.520    1.710    1.276    1.486        0.091        0.096              -0.006   -0.065    0.010      inconclusive
+ lifo D-1   VAL         contract average          57            0.195    1.510    1.748    1.276    1.517        0.086        0.101              -0.015   -0.071    0.031      inconclusive
+ lifo  D0   DEV  slot-allocation average          39            0.199    1.567    1.969    1.324    1.574        0.210        0.185               0.025   -0.102    0.105      inconclusive
+ lifo  D0   DEV chain-allocation average         171            0.310    1.565    1.950    1.077    1.649        0.252        0.255              -0.003   -0.065    0.060      inconclusive
+ lifo  D0   DEV         contract average        1272            0.839    1.521    1.885    0.634    1.241        0.274        0.438              -0.163   -0.222   -0.098 lot-level tighter
+ lifo  D0  TEST         contract average         248            0.276    1.525    1.790    1.061    1.466        0.216        0.209               0.007   -0.091    0.047      inconclusive
+ lifo  D0   VAL chain-allocation average          68            0.178    1.631    2.008    1.307    1.761        0.085        0.207              -0.122   -0.154    0.267      inconclusive
+ lifo  D0   VAL         contract average         499            0.638    1.542    1.928    0.849    1.284        0.227        0.302              -0.075   -0.128    0.031      inconclusive
+verdict  inconclusive  lot-level tighter
+day                                     
+D-1                 9                  0
+D0                 15                  3
+     alternative day split   k  rows_A  stops_A  rows_B  stops_B    h_A    h_B    h_C  theta  theta_lo  theta_hi            verdict
+contract average  D0   DEV 1.5    1544      273     240       41 0.1768 0.1708 0.0041 1.0359    0.3669    1.5318       inconclusive
+contract average  D0   DEV 1.6     885      206     178       27 0.2328 0.1517 0.0064 1.5581    0.3204    2.2822       inconclusive
+contract average  D0   DEV 1.7     518      146     149       19 0.2819 0.1275 0.0083 2.2942    0.3201    4.0392       inconclusive
+contract average  D0   VAL 1.5     970      114     245       16 0.1175 0.0653 0.0035 1.8456    1.0332    3.8037 lot-level favoured
+contract average  D0   VAL 1.6     669       81     189       10 0.1211 0.0529 0.0060 2.4523    1.2174    7.6872 lot-level favoured
+contract average  D0  TEST 1.5     397       54      63       22 0.1360 0.3492 0.0025 0.3851    0.2350    0.6924       inconclusive
+
+HAZARD TEST verdict counts by day (reported cells only):
+verdict  average favoured  inconclusive  lot-level favoured
+day                                                        
+D-1                     7             1                   0
+D0                      0            35                  14

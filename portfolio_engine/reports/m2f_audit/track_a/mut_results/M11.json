@@ -1,0 +1,30 @@
+{
+ "id": "M11",
+ "name": "19800-second timestamp shift in historical generator",
+ "file": "python/pe/generators/historical.py",
+ "expected": "timestamp vs raw col 161",
+ "existing_tests": {
+  "returncode": 0,
+  "failed": [],
+  "summary": "127 passed in 255.02s (0:04:15)",
+  "seconds": 256
+ },
+ "own": {
+  "engine_exception": null,
+  "mismatch_summary": {
+   "fill_field_vs_raw": 41421,
+   "OA_fields": 23684,
+   "CP_fields": 17760,
+   "episode_fields": 2667
+  },
+  "false_flags": [
+   "AVG_exact_total_is_integer"
+  ],
+  "fuzz": {
+   "cases": 540,
+   "xlang_byte_mismatch": 0,
+   "py_vs_ref_mismatch": 0
+  },
+  "killed": true
+ }
+}
