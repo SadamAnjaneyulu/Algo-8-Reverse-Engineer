@@ -1,0 +1,13 @@
+                                      category  sim_lots  actual_lots  precision_L1  precision_L2  precision_L3  recall_L1  recall_L2  recall_L3
+                      body sales (all classes)     391.0       1952.0         0.688         0.744         0.918      0.138      0.149      0.184
+                               scheduled sales     358.0        542.0         0.606         0.648         0.740      0.400      0.428      0.489
+                             replacement sales      33.0        731.0         0.091         0.182         0.303      0.004      0.008      0.014
+              buybacks excl. final liquidation      33.0       1128.0         0.152         0.333         0.606      0.004      0.010      0.018
+                Clock-B buybacks (tick minute)      33.0        113.0         0.121         0.212         0.212      0.035      0.062      0.062
+price-stop-like buybacks (actual: ratio>=1.55)       0.0        411.0           NaN           NaN           NaN      0.000      0.000      0.000
+                   final liquidation (>=15:10)     347.0        550.0         0.389         0.490         0.559      0.245      0.309      0.353
+                               hedge additions     358.0       1383.0         0.324         0.679         0.841      0.084      0.176      0.218
+                              hedge reductions    1136.0       1301.0         0.129         0.155         0.239      0.112      0.135      0.208
+execution: L1-matched sale orders 339  median (sim ref - actual)/actual price 0.0017  abs median 0.0162
+timing: median minutes from a simulated sale to the nearest actual same-right sale 0.0  share within 1 min 0.944
+portfolio state (net short body lots): corr -0.479  MAE 68.3  mean actual 74.6  mean sim 15.8 | by hour MAE {10: 54.9, 11: 55.2, 12: 64.0, 13: 77.0, 14: 81.1, 15: 77.8}

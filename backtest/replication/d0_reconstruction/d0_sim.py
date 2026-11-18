@@ -19,7 +19,11 @@ def start_book(ev_d1):
         cash += -(1 if r.side == 'Buy' else -1) * r.lots * LOT[r.und] * r.px; k = (r.cp, r.strike); q = r.lots
         if r.module == 'num':
             if r.side == 'Sell':
-                body[k].append([q, r.px]); q = 0
+                bl = passive.get(('body_long',) + k, 0.0)            # v1.1 fix: a body Sell first closes any body LONG lots (same routing as build_events.py)
+                t = min(q, bl)
+                if t > 0: passive[('body_long',) + k] = bl - t; q -= t
+                if q > 1e-9: body[k].append([q, r.px])
+                q = 0
             else:
                 L = body[k]
                 while q > 1e-9 and L: t = min(q, L[0][0]); L[0][0] -= t; q -= t; (L.popleft() if L[0][0] <= 1e-9 else None)
