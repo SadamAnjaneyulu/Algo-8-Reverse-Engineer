@@ -3,8 +3,8 @@ Pinned commit `eb4097308d47ccc75078ab73ba76d33bb1c7030b`; expected expiries come
 
 |  | Expected expiries | Complete | Partial | Missing | Unverified | D-1 usable | D0 usable | Planned contracts | Contracts with rows | Share |
 |---|---|---|---|---|---|---|---|---|---|---|
-| NIFTY | 160 | 156 | 2 | 2 | 0 | 156 | 158 | 57,512 | 52,134 | 90.6% |
-| SENSEX | 159 | 123 | 1 | 35 | 0 | 123 | 124 | 45,136 | 36,404 | 80.7% |
+| NIFTY | 160 | 155 | 3 | 2 | 0 | 155 | 158 | 57,512 | 52,134 | 90.6% |
+| SENSEX | 159 | 121 | 3 | 35 | 0 | 122 | 123 | 45,136 | 36,404 | 80.7% |
 
 "D-1 usable" counts sessions that are the true previous regular session and have data near the money; D0 counts expiry sessions with data.
 
@@ -19,8 +19,11 @@ Pinned commit `eb4097308d47ccc75078ab73ba76d33bb1c7030b`; expected expiries come
 |---|---|---|---|
 | NIFTY | 2023-11-02 | Missing |  |
 | NIFTY | 2024-06-27 | Partial | D-1 session 2024-06-26 is incomplete: only 0 of 22 contracts within +-5 steps of the centre have data |
+| NIFTY | 2026-05-12 | Partial | D-1 session 2026-05-11: no contract traded for 117 min although prices moved (volume unusable) |
 | NIFTY | 2026-11-09 | Partial | dataset D-1 2026-11-08 differs from expected previous regular session 2026-11-06 (dataset D-1 is a special Muhurat session) |
 | NIFTY | 2026-11-17 | Missing |  |
+| SENSEX | 2024-08-02 | Partial | D0 session 2024-08-02 has an intraday outage: 35 min without option data |
+| SENSEX | 2024-10-18 | Partial | D-1 session 2024-10-17 has an intraday outage: 136 min without option data |
 | SENSEX | 2024-11-22 | Missing |  |
 | SENSEX | 2025-02-25 | Missing |  |
 | SENSEX | 2025-04-01 | Missing |  |

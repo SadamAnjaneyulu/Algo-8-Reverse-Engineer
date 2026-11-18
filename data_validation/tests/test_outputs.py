@@ -40,7 +40,7 @@ def test_known_defects_are_still_detected():
     o = pd.DataFrame(json.load(open(os.path.join(T, 'option_session_scan.json')))); assert int(o.volume_neg.sum()) == 13
     assert int(((o['index'] == 'nifty') & (o.weekend_rows > 0)).sum()) == 1                                       # Muhurat Sunday session
     q = J('quality_summary.json'); assert q['sensex']['oi']['share_rows_oi_zero'] == 1.0
-    t = pd.read_csv(os.path.join(T, 'nifty_expiry_coverage.csv')); assert set(t[t.status == 'Partial'].expected_expiry) == {'2024-06-27', '2026-11-09'}
+    t = pd.read_csv(os.path.join(T, 'nifty_expiry_coverage.csv')); assert set(t[t.status == 'Partial'].expected_expiry) == {'2024-06-27', '2026-05-12', '2026-11-09'}
     s = pd.read_csv(os.path.join(T, 'sensex_expiry_coverage.csv')); assert {'2024-11-22', '2025-02-25', '2025-04-01', '2025-08-26', '2026-03-12'} <= set(s[s.status == 'Missing'].expected_expiry)
 
 
@@ -55,3 +55,10 @@ def test_split_never_crosses_an_expiry():
 
 def test_put_call_parity_holds_everywhere_it_can_be_tested():
     r = pd.read_csv(os.path.join(T, 'put_call_parity.csv')); assert r.median_err_pct.max() < 0.3 and r.median_err_pct.isna().sum() <= 3
+
+
+def test_wrap_around_volumes_and_outages_are_detected():
+    r = pd.read_csv(os.path.join(T, 'review_scan_sessions.csv'))
+    assert int(r.wrap_neg.sum()) == 13 and int(r.wrap_pos.sum()) == 10 and (r.raw_atm_ref.notna()).all()
+    z = r[r.zero_volume_run_minutes > 0]; assert list(z.day) == ['2026-05-11'] and int(z.zero_volume_run_minutes.iloc[0]) == 117
+    g = r[r.no_option_data_minutes >= 30]; assert set(g.day) >= {'2024-10-17', '2024-08-02'}

@@ -34,6 +34,7 @@ def build(commit, tab, out):
         idx = und.lower(); exp = pd.DataFrame(CE.expected_expiries(und)); cal = dataset_calendar(g, idx); y = CE.yahoo_daily(und); td = CE.trading_days(und)
         oi = o[o['index'] == idx]; ui = u[u['index'] == idx]; cal_by_exp = {r['expiry']: r for r in cal.values() if r['expiry']}
         sess = {(r.expiry, r.day): r for r in oi.itertuples()}; spot = {(r.day) for r in ui[ui.kind == 'spot'].itertuples() if getattr(r, 'rows', 0)}; fut = {(r.day) for r in ui[ui.kind == 'futures'].itertuples() if getattr(r, 'rows', 0)}
+        rs = pd.read_csv(f'{tab}/review_scan_sessions.csv'); rs = rs[rs['index'] == idx].set_index(['expiry', 'day'])               # outage scan: runs of >= 10 minutes without data / without any trading
         cc = c[c['index'] == idx].merge(oi[['expiry', 'day', 'plan_center']], on=['expiry', 'day']); cc = cc[((cc.strike - cc.plan_center).abs() / STEP[und]) <= 5]; near = cc.groupby(['expiry', 'day']).size().to_dict()   # contracts within +-5 steps of the window centre that have rows (22 planned)
         rows = []
         for e in exp.itertuples():
@@ -49,6 +50,12 @@ def build(commit, tab, out):
             for dd, lab in ((d1, 'D-1'), (d0, 'D0')):
                 if (E_, dd) in sess and near.get((E_, dd), 0) < 20 and status in ('Complete', 'Partial'):
                     note.append(f'{lab} session {dd} is incomplete: only {near.get((E_, dd), 0)} of 22 contracts within +-5 steps of the centre have data'); status = 'Partial' if status == 'Complete' else status
+            for dd, lab in ((d1, 'D-1'), (d0, 'D0')):
+                if (E_, dd) in rs.index:
+                    r_ = rs.loc[(E_, dd)]
+                    if r_.no_option_data_minutes >= 30 or r_.zero_volume_run_minutes >= 60:
+                        note.append(f'{lab} session {dd} has an intraday outage: {int(r_.no_option_data_minutes)} min without option data' if r_.no_option_data_minutes >= 30 else f'{lab} session {dd}: no contract traded for {int(r_.zero_volume_run_minutes)} min although prices moved (volume unusable)')
+                        if status == 'Complete': status = 'Partial'
             if status == 'Complete' and not (both_types(d0) and both_types(d1)): note.append('CE or PE absent in a session')
             if status == 'Complete' and not ((d0 in spot) and (d1 in spot)): note.append('spot missing for a session')
             ds_days = sorted(k[1] for k in sess if k[0] == (ds_exp or E_)); ds_d1 = ds_days[0] if ds_days else ''

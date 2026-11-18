@@ -7,7 +7,7 @@ Pinned commit `eb4097308d47ccc75078ab73ba76d33bb1c7030b`. Every figure is recomp
 | Duplicate (datetime, strike, right) rows | 0 | 0 |
 | Missing / NaN OHLC | 0 | 0 |
 | Invalid OHLC (high < low/open/close, low > open/close, price <= 0, off the 0.05 tick) | 0 | 0 |
-| Negative volume | 10 (int32 wrap-around) | 3 (with bad prices) |
+| Volume outside [0, 2^31) (int32 wrap-around) | 20 (10 negative, 10 positive) | 3 (negative, with bad prices) |
 | Missing or negative open interest | 0 | 0 (but all values are 0, see below) |
 | Open interest equal to 0 | 9.7% of rows; 3,482 contract-sessions | 100% of rows |
 | Timestamp unparseable / weekend / other date | 0 / 11,190 (Muhurat Sunday) / 0 | 0 / 0 / 0 |

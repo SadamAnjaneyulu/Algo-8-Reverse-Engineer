@@ -14,7 +14,7 @@ def main():
     u = pd.DataFrame(json.load(open(f'{T}/underlying_scan.json'))); leg = json.load(open(f'{T}/legacy_crosscheck_summary.json')); N['legacy'] = leg; N['inventory'] = {k: inv[k] for k in ('commit', 'files', 'bytes', 'checkpoint_rows')}; N['coverage'] = cs; N['quality'] = q
     for und in ('NIFTY', 'SENSEX'):
         idx = und.lower(); t = pd.read_csv(f'{T}/{idx}_expiry_coverage.csv'); t['notes'] = t.notes.fillna(''); present = t[t.d0_option_rows > 0]
-        usable_d1 = int(((t.d1_option_rows > 0) & ~t.notes.str.contains('D-1 session .* is incomplete|dataset D-1')).sum()); usable_d0 = int(((t.d0_option_rows > 0) & ~t.notes.str.contains('D0 session .* is incomplete')).sum())
+        usable_d1 = int(((t.d1_option_rows > 0) & ~t.notes.str.contains('D-1 session .* (?:is incomplete|has an intraday outage|no contract traded)|dataset D-1')).sum()); usable_d0 = int(((t.d0_option_rows > 0) & ~t.notes.str.contains('D0 session .* (?:is incomplete|has an intraday outage|no contract traded)')).sum())
         first_exp, last_exp = present.expected_expiry.min(), present.expected_expiry.max(); first_day = pd.Timestamp(t[t.expected_expiry == first_exp].d1_expected.iloc[0]).date(); last_day = pd.Timestamp(last_exp).date()
         N[idx] = dict(first_expiry=first_exp, last_expiry=last_exp, first_session=str(first_day), last_session=str(last_day), usable_d1=usable_d1, usable_d0=usable_d0, expiries_present=len(present), span_years=round((last_day - first_day).days / 365.25, 2))
         # split on actual data: last 12 months out-of-sample, remainder in-sample; whole expiries are assigned by D0

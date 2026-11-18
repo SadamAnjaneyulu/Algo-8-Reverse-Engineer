@@ -4,7 +4,7 @@ A separate reviewer (another model instance, given the dataset, the independent 
 |---|---|---|
 | Manifest vs files; option row totals | Reproduced (103,776 rows; 182 contracts per session; 18,978,233 / 12,928,723 rows) | none |
 | Raw = normalized | Reproduced on 26 option sessions and 60 underlying files (same row sets, 0 mismatches; row order differs; raw carries two extra fields; the README's raw `status` key does not exist); raw is already deduplicated | D10 kept |
-| NIFTY coverage | 160 expected expiries reproduced; the 2024-06-27 D-1 session (36 contracts) is a second Partial. My interim chat message said 157 Complete / 1 Partial; the committed tables and reports say **156 / 2 / 2** | corrected in the final verdict |
+| NIFTY coverage | 160 expected expiries reproduced; the 2024-06-27 D-1 session (36 contracts) is a second Partial. My interim chat message said 157 Complete / 1 Partial; the tables at that time said 156 / 2 / 2; after adding outage detection from the review the final numbers are **155 / 3 / 2** (NIFTY) and **121 / 3 / 35** (SENSEX) | corrected in the final verdict |
 | ATM centre | Reproduced (NIFTY 306/316, SENSEX 206/248 sessions exact; two sessions per expiry share one centre, so the true n is 158 and 124). The calendar column `atm_ref` equals ATM of the close of the last trading day of the ISO week (re-verified: 151/160 NIFTY, 119/160 SENSEX), i.e. look-ahead if used; the `atm_ref` stored inside each raw file is the window centre | D17 rewritten |
 | OI | Reproduced; zeros concentrate in deep in-the-money contracts | D03/D13 kept |
 | Negative volume | **Mis-stated by me**: there are also positive wrap-around values (true + 2^32) | D06 rewritten after a full scan |
