@@ -4,6 +4,7 @@ Cycles with a known carry-in book only (30)."""
 from collections import defaultdict
 from ledger import *
 from data import load_cycle, NM
+from panel import panel_cycle
 L = pd.read_csv(f'{OUT}/lots.csv.gz'); F = load_fills(); C = pd.read_csv(f'{OUT}/cycles.csv'); C = C[C.carry_in_known]
 CONV = ('FIFO', 'LIFO', 'LOW_ENTRY_FIRST', 'HIGH_ENTRY_FIRST')
 lots_out = []; panel = []
@@ -28,35 +29,6 @@ for r in C.itertuples():
                              mfe_pts=(l.entry_price - np.nanmin(seg)) if len(seg) and not np.all(np.isnan(seg)) else np.nan, mae_pts=(np.nanmax(seg) - l.entry_price) if len(seg) and not np.all(np.isnan(seg)) else np.nan,
                              off_steps_at_d0_open=(l.strike - spot[NM - 1]) / step, itm_at_d0_open=bool((l.cp == 'CE' and l.strike < spot[NM - 1]) or (l.cp == 'PE' and l.strike > spot[NM - 1])), alloc_agree_all=bool(l.alloc_agree_all),
                              **{f'close_row_{cv}': getattr(l, f'close_row_{cv}') for cv in CONV}))
-    # ---- contract-minute panel on D0
-    g = F[(F.und == r.und) & (F.expiry == r.expiry)].sort_values(['t', 'row']); books = defaultdict(list); ev = defaultdict(float); gi = 0; fl = list(g.itertuples()); bb_first = {}
-    # per minute buy-back lots by contract (body module closing shorts, first fill minute)
-    for f in fl:
-        if f.module == 'num' and f.side == 'Buy' and f.day == r.d0: ev[(f.cp, int(f.strike), f.sec // 60 - 555)] += f.n_lots
-    last_bb_j = -999; mtm_cash = 0.0; ptr = 0
-    for j in range(NM):
-        tabs = 86400 + (555 + j) * 60
-        while ptr < len(fl) and ((0 if fl[ptr].day == r.d1 else 86400) + fl[ptr].sec) < tabs:
-            f = fl[ptr]; ptr += 1; mtm_cash += -f.sgn * f.qty_fill * f.px
-            if f.module == 'num':
-                B = books[(f.cp, int(f.strike))]
-                if f.side == 'Sell': B.extend([[f.px, 0 if f.day == r.d1 else 1] for _ in range(f.n_lots)])
-                else:
-                    for _ in range(f.n_lots):
-                        if B: B.pop(0)
-                    if f.day == r.d0: last_bb_j = f.sec // 60 - 555
-            elif f.module in ('s_', 'm_') and f.side == 'Buy':
-                B = books[(f.cp, int(f.strike))]
-                for _ in range(f.n_lots):
-                    if B: B.pop(0)
-        S = spot[NM + j - 1]; mm = (555 + j) % 60; hh = (555 + j) // 60; Tleft = (15.5 * 60 - (555 + j)) / 60
-        for (cp, k), B in books.items():
-            if not B: continue
-            i = ki.get(k)
-            if i is None: continue
-            pj = P[cp][i, NM + j - 1]; ents = [b[0] for b in B]; avg = float(np.mean(ents)); cheap = float(min(ents)); n = len(B); carried = sum(1 for b in B if b[1] == 0)
-            p5 = P[cp][i, max(NM + j - 6, 0)]
-            panel.append(dict(und=r.und, expiry=r.expiry, j=j, cp=cp, strike=k, lots=n, carried_lots_FIFO=carried, price=pj, avg_entry=avg, cheapest=cheap, ratio_avg=pj / avg, ratio_cheapest=pj / cheap, off_steps=(k - S) / step, itm=bool((cp == 'CE' and k < S) or (cp == 'PE' and k > S)), hours_left=Tleft, minute_of_hour=mm, clockB=bool(mm % 15 == 14 and hh * 60 + mm >= 9 * 60 + 29),
-                              d_price_5m=(pj / p5 - 1) if p5 else np.nan, mins_since_cycle_buyback=(j - last_bb_j) if last_bb_j > -999 else np.nan, buyback_lots=ev.get((cp, k, j), 0.0)))
-LT = pd.DataFrame(lots_out); LT.to_csv(f'{OUT}/carried_lots.csv.gz', index=False); PN = pd.DataFrame(panel); PN['event'] = PN.buyback_lots > 0; PN.to_csv(f'{OUT}/contract_minute_panel.csv.gz', index=False)
+    g = F[(F.und == r.und) & (F.expiry == r.expiry)].sort_values(['t', 'row']); panel.append(panel_cycle(c, g, r.und, r.expiry, r.d1, r.d0))
+LT = pd.DataFrame(lots_out); LT.to_csv(f'{OUT}/carried_lots.csv.gz', index=False); PN = pd.concat(panel, ignore_index=True); PN['event'] = PN.buyback_lots > 0; PN.to_csv(f'{OUT}/contract_minute_panel.csv.gz', index=False)
 print(len(LT), 'carried lots;', len(PN), 'contract-minutes; event rate', PN.event.mean().round(4), ' cycles', PN[['und', 'expiry']].drop_duplicates().shape[0])

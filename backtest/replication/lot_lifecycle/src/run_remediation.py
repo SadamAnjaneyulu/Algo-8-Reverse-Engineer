@@ -1,4 +1,5 @@
-"""Phase 1 evaluation of simulator v2 + window matching. ALL cycles were previously inspected: results are labelled CONTAMINATED-DEVELOPMENT, not evidence of validation."""
+"""NOTE: passive_at_stop default close_all is an ASSUMPTION; *_passive_kept variants are the other bound.
+Phase 1 evaluation of simulator v2 + window matching. ALL cycles were previously inspected: results are labelled CONTAMINATED-DEVELOPMENT, not evidence of validation."""
 import json
 from ledger import *
 from opening_book import opening_book
@@ -6,7 +7,7 @@ import d0_sim_v2 as S2
 from data import load_cycle
 from matching import match, match_binned_legacy
 F = load_fills(); C = pd.read_csv(f'{OUT}/cycles.csv'); C = C[C.carry_in_known]; EV = pd.read_csv(f'{REPL}/d0_reconstruction/results/d0_events.csv', parse_dates=['t']); LPn = pd.read_csv(f'{REPL}/results/live_cycle_pnl.csv'); LPn['expiry'] = LPn.expiry.str[:10]
-VARS = {'V1_none': dict(price_stop=True), 'V1_wings_one_per_lot': dict(price_stop=True, replacement_wings='one_per_lot'), 'V0_none': dict()}; res = []; orders = {v: [] for v in VARS}; passive_info = []
+VARS = {'V1_none': dict(price_stop=True), 'V1_none_passive_kept': dict(price_stop=True, passive_at_stop='keep'), 'V1_wings_one_per_lot': dict(price_stop=True, replacement_wings='one_per_lot'), 'V1_wings_passive_kept': dict(price_stop=True, replacement_wings='one_per_lot', passive_at_stop='keep'), 'V0_none': dict()}; res = []; orders = {v: [] for v in VARS}; passive_info = []
 for r in C.itertuples():
     ev = EV[(EV.und == r.und) & (EV.expiry == r.expiry)]; c = load_cycle(r.und, r.expiry, r.d1, r.d0); start = opening_book(F, r.und, r.expiry, r.d1); split = 'HOLDOUT-LABEL' if r.expiry >= '2026-09-23' else 'DISCOVERY-LABEL'
     for v, kw in VARS.items():

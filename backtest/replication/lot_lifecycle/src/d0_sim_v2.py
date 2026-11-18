@@ -41,7 +41,7 @@ def start_book(ev_d1):
     return body, wing, passive, cash
 
 
-def simulate_d0(c, und, ev_d1, start=None, replacement_wings='none', price_stop=False, cycle_stop=True, stop_rs=RULES['cycle_stop_rs'], no_replacement=False, no_scheduled=False, no_clockb=False):
+def simulate_d0(c, und, ev_d1, start=None, replacement_wings='none', passive_at_stop='close_all', price_stop=False, cycle_stop=True, stop_rs=RULES['cycle_stop_rs'], no_replacement=False, no_scheduled=False, no_clockb=False):
     lot = LOT[und]; step = 50 if und == 'NIFTY' else 100; strikes = c['strikes']; ki = {int(k): i for i, k in enumerate(strikes)}
     px = {}
     for r in ('CE', 'PE'):
@@ -49,7 +49,9 @@ def simulate_d0(c, und, ev_d1, start=None, replacement_wings='none', price_stop=
         for j in range(1, a.shape[1]): m = np.isnan(a[:, j]); a[m, j] = a[m, j - 1]
         px[r] = a[:, NM:]; px[r + '_prev0'] = a[:, NM - 1]
     op = {r: c[(1, r, 'open')] for r in ('CE', 'PE')}; spot1 = c[(1, 'spot')]; spot0_last = c[(0, 'spot')][NM - 1]
-    body, wing, passive, cash = (start if start is not None else start_book(ev_d1)); cash0 = cash; log = []; pend = []; stopped = False; kclock = 0
+    import copy as _copy
+    body, wing, passive, cash = (_copy.deepcopy(start) if start is not None else start_book(ev_d1));          # D7: never mutate the caller's start tuple
+    cash0 = cash; log = []; pend = []; stopped = False; kclock = 0
     def prev(r, si, j): return px[r + '_prev0'][si] if j == 0 else px[r][si, j - 1]
     def mk(cp, k, j, fb):
         i = ki.get(k); p = prev(cp, i, j) if i is not None else np.nan
@@ -113,7 +115,7 @@ def simulate_d0(c, und, ev_d1, start=None, replacement_wings='none', price_stop=
             for (cp, k), L in list(wing.items()):
                 q = sum(x[0] for x in L)
                 if q > 1e-9: trade_k(j, cp, k, -1, q, 'wing', 'STOP_LIQUIDATION'); L.clear()
-            for key, q in list(passive.items()):                  # (A) close every passive lot at the stop
+            for key, q in (list(passive.items()) if passive_at_stop == 'close_all' else []):                  # (A) ASSUMPTION (not evidence): close every passive lot at the stop; passive_at_stop='keep' is the legacy bound (the ledger shows the stop module closing only ~12 % of carried lump lots)
                 if key[0] in ('body_long', 'v_', 's_', 'm_', 'wing_short') and abs(q) > 1e-9:
                     cp_, k_ = key[1], key[2]; side_ = 1 if (key[0] == 'wing_short' or q < 0) else -1; trade_k(j, cp_, k_, side_, abs(q), 'passive', 'STOP_LIQUIDATION_PASSIVE'); passive[key] = 0.0
             stopped = True

@@ -1,5 +1,6 @@
 """Phase 3 analysis. Hypotheses and thresholds were fixed BEFORE evaluation (listed below); thresholds come from earlier project literature (1.55x stop band, Clock-B minute, <=Rs1 salvage), not tuned here. Chronological blocks: development = D0 < 2026-09-23 (22 cycles), later block = D0 >= 2026-09-23 (8 cycles).
-EVIDENCE LABEL: all 30 cycles were previously inspected; the later block is NOT an independent holdout."""
+EVIDENCE LABEL: all 30 cycles were previously inspected; the later block is NOT an independent holdout.
+PROVENANCE OF THRESHOLDS (disclosure after review): H1 (1.55x), H3 (Clock-B minute) and H6 (<= Rs 1) come from the project's earlier literature; H2 (0.5x), H4 (>= 1 step), H5 (<= 1 h), H7 (<= 2 min) are round numbers I chose before computing, but this cannot be verified from history (the file was first committed after evaluation). Treat all hypothesis tests as EXPLORATORY."""
 from ledger import *
 LT = pd.read_csv(f'{OUT}/carried_lots.csv.gz'); PN = pd.read_csv(f'{OUT}/contract_minute_panel.csv.gz'); L = pd.read_csv(f'{OUT}/lots.csv.gz'); F = load_fills(); C = pd.read_csv(f'{OUT}/cycles.csv')
 rng = np.random.default_rng(4); CONV = ('FIFO', 'LIFO', 'LOW_ENTRY_FIRST', 'HIGH_ENTRY_FIRST'); rowmod = F.set_index('row').module.to_dict(); rowsec = F.set_index('row').sec.to_dict(); rowday = F.set_index('row').day.to_dict()
@@ -26,20 +27,22 @@ PN['block'] = np.where(PN.expiry >= '2026-09-23', 'LATER', 'DEV'); PN = PN[(PN.j
 H = {'H1 price stop: price >= 1.55 x cheapest open entry': PN.ratio_cheapest >= 1.55, 'H2 decay take-profit: price <= 0.5 x average entry': PN.ratio_avg <= 0.5, 'H3 Clock-B minute (mm%15=14, >=09:29)': PN.clockB, 'H4 ITM by >= 1 step': PN.itm & (PN.off_steps.abs() >= 1), 'H5 last hour (<= 1.0 h to expiry)': PN.hours_left <= 1.0,
      'H6 salvage: price <= Rs 1': PN.price <= 1.0, 'H7 clustered: <= 2 min since a cycle buy-back': PN.mins_since_cycle_buyback <= 2}
 res = []
-def lift_stats(d, pred):
-    p = pred.loc[d.index]; ev = d.event; base = ev.mean(); n = p.sum()
-    if n == 0 or ev.sum() == 0: return dict(n_pred=int(n), precision=np.nan, recall=np.nan, lift=np.nan)
-    return dict(n_pred=int(n), precision=ev[p].mean(), recall=(ev & p).sum() / ev.sum(), lift=ev[p].mean() / base)
-for blk in ('DEV', 'LATER', 'ALL'):
-    d = PN if blk == 'ALL' else PN[PN.block == blk]; keys = d[['und', 'expiry']].drop_duplicates().values.tolist()
-    for name, pred in H.items():
-        s = lift_stats(d, pred); lifts = []; cyc_lift = []
-        for (u, e), g in d.groupby(['und', 'expiry']):
-            ls = lift_stats(g, pred); cyc_lift.append(ls['lift'])
-        for _ in range(300):
-            idx = rng.integers(0, len(keys), len(keys)); sel = pd.concat([d[(d.und == keys[i][0]) & (d.expiry == keys[i][1])] for i in idx[:60]]) if False else None
-        cyc = np.array(cyc_lift, float); s.update(block=blk, hypothesis=name, base_rate=d.event.mean(), cycles=len(keys), cycles_lift_gt1=np.nanmean(cyc > 1), median_cycle_lift=np.nanmedian(cyc)); res.append(s)
-R = pd.DataFrame(res); R.to_csv(f'{OUT}/carried_hypothesis_tests.csv', index=False); print(R[R.block != 'ALL'][['block', 'hypothesis', 'n_pred', 'precision', 'recall', 'lift', 'cycles_lift_gt1', 'base_rate']].round(3).to_string(index=False))
+def counts(d, pred):
+    p = pred.loc[d.index]; return dict(n=len(d), ev=int(d.event.sum()), npred=int(p.sum()), evpred=int((d.event & p).sum()))
+def lift_from(c): 
+    if c['npred'] == 0 or c['ev'] == 0: return np.nan
+    return (c['evpred'] / c['npred']) / (c['ev'] / c['n'])
+def sumc(cs): return dict(n=sum(c['n'] for c in cs), ev=sum(c['ev'] for c in cs), npred=sum(c['npred'] for c in cs), evpred=sum(c['evpred'] for c in cs))
+for variant, minj in (('all minutes 0-358', 0), ('minutes >= 6 (first minutes excluded: 43 % of minute 0-5 buy-backs have no recorded inventory)', 6)):
+    P2 = PN[PN.j >= minj]
+    for blk in ('DEV', 'LATER', 'ALL'):
+        d = P2 if blk == 'ALL' else P2[P2.block == blk]; cyc = {k: g for k, g in d.groupby(['und', 'expiry'])}; keys = list(cyc)
+        for name, pred in H.items():
+            cc = {k: counts(g, pred) for k, g in cyc.items()}; tot = sumc(list(cc.values())); s_ = dict(variant=variant, block=blk, hypothesis=name, n_pred=tot['npred'], precision=tot['evpred'] / tot['npred'] if tot['npred'] else np.nan, recall=tot['evpred'] / tot['ev'] if tot['ev'] else np.nan, lift=lift_from(tot), base_rate=tot['ev'] / tot['n'], cycles=len(keys))
+            per = np.array([lift_from(c) for c in cc.values()], float); s_.update(cycles_lift_gt1=np.nanmean(per > 1), median_cycle_lift=np.nanmedian(per))
+            bs = [lift_from(sumc([cc[keys[i]] for i in rng.integers(0, len(keys), len(keys))])) for _ in range(500)]; s_.update(lift_ci95_lo=np.nanpercentile(bs, 2.5), lift_ci95_hi=np.nanpercentile(bs, 97.5)); res.append(s_)
+R = pd.DataFrame(res); R.to_csv(f'{OUT}/carried_hypothesis_tests.csv', index=False); pd.set_option('display.max_colwidth', 60)
+print(R[(R.block != 'ALL') & R.variant.str.startswith('all')][['block', 'hypothesis', 'n_pred', 'precision', 'recall', 'lift', 'lift_ci95_lo', 'lift_ci95_hi', 'cycles_lift_gt1']].round(3).to_string(index=False)); print(R[(R.block != 'ALL') & ~R.variant.str.startswith('all')][['block', 'hypothesis', 'precision', 'recall', 'lift', 'lift_ci95_lo', 'lift_ci95_hi']].round(3).to_string(index=False))
 # coverage: share of buy-back contract-minutes explained by at least one hypothesis, and by none
 anyp = np.zeros(len(PN), bool)
 for p in H.values(): anyp |= p.values

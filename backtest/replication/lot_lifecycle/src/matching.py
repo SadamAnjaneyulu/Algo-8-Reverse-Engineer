@@ -8,6 +8,9 @@ from scipy.optimize import linear_sum_assignment
 def match(sim, act, tol_s, strike='any', group=('und', 'expiry', 'cp')):
     """sim, act: DataFrames with columns group + ['sec', 'lots'] (+ 'strike'); lots are expanded to unit rows. returns dict(matched, sim_unmatched, act_unmatched, pairs DataFrame)"""
     keys = list(group) + (['strike'] if strike == 'same' else [])
+    for d_ in (sim, act):
+        assert np.allclose(d_.lots, d_.lots.round()), 'lots must be integers'
+        if strike == 'same': assert d_.strike.notna().all(), 'NaN strikes in same-strike mode'
     sim = sim.reset_index(drop=True); act = act.reset_index(drop=True)                     # duplicate index labels would corrupt the repeat below
     S = sim.loc[sim.index.repeat(sim.lots.astype(int))].reset_index(drop=True); A = act.loc[act.index.repeat(act.lots.astype(int))].reset_index(drop=True); pairs = []; ms = set(); ma = set()
     sg = {k: g for k, g in S.groupby(keys)}; ag = {k: g for k, g in A.groupby(keys)}

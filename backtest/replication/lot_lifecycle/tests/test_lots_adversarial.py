@@ -49,7 +49,7 @@ def test_hedge_lots_and_stop_module_routing():
 def test_missing_carry_in_creates_unrecorded_shorts_not_phantom_longs():
     spec = [('D0', 300, 'num', 'Buy', 'CE', 24000, 2, 60.0)]
     L, f = build(spec, carry=False, settle=24000.0); assert (L.entry_unrecorded).all() and len(L) == 2 and (L.side == 'SHORT').all() and L.realized_pnl.isna().all()
-    L2, _ = build(spec, carry=True, settle=24000.0); assert (L2.side == 'LONG').all() and (L2['flags'] == 'ANOMALOUS_OPEN_LONG_BY_BODY_BUY').all()      # with a known carry-in the same fill is flagged, never matched to nothing
+    L2, _ = build(spec, carry=True, settle=24000.0); assert (L2.side == 'LONG').all() and L2['flags'].str.contains('BODY_BUY_WITHOUT_RECORDED_SHORT_OPENED_AS_LONG').all()      # with a known carry-in the same fill is flagged, never matched to nothing
 
 
 def test_expiry_settlement_in_and_out_of_the_money():
