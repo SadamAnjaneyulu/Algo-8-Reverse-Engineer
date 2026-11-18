@@ -1,0 +1,350 @@
+{
+ "legacy": {
+  "legacy_contract_days": 3243,
+  "overlapping_sessions": 67,
+  "legacy_sessions_not_in_broad": 0,
+  "contract_days_compared": 3243,
+  "legacy_contract_days_absent_in_broad": 20,
+  "contract_days_with_any_mismatch": 0,
+  "minutes_legacy_only": 0,
+  "minutes_broad_only": 1290,
+  "minutes_both": 1222729,
+  "field_mismatches": {
+   "mismatch_open": 0,
+   "mismatch_high": 0,
+   "mismatch_low": 0,
+   "mismatch_close": 0,
+   "mismatch_volume": 0,
+   "mismatch_open_interest": 0
+  },
+  "index_days_compared": 72,
+  "index_days_with_mismatch": 0,
+  "index_minutes_legacy_only": 0,
+  "index_minutes_broad_only": 1035
+ },
+ "inventory": {
+  "commit": "eb4097308d47ccc75078ab73ba76d33bb1c7030b",
+  "files": 3391,
+  "bytes": 12213449577,
+  "checkpoint_rows": 103776
+ },
+ "coverage": {
+  "NIFTY": {
+   "expected": 160,
+   "complete": 156,
+   "partial": 2,
+   "missing": 2,
+   "unverified": 0,
+   "complete_with_notes": 0,
+   "d1_present": 157,
+   "d0_present": 158,
+   "dataset_expiries_not_in_independent_calendar": [],
+   "expected_expiry_differs_from_dataset": [],
+   "missing_expiries": [
+    "2023-11-02",
+    "2026-11-17"
+   ]
+  },
+  "SENSEX": {
+   "expected": 159,
+   "complete": 123,
+   "partial": 1,
+   "missing": 35,
+   "unverified": 0,
+   "complete_with_notes": 2,
+   "d1_present": 123,
+   "d0_present": 124,
+   "dataset_expiries_not_in_independent_calendar": [],
+   "expected_expiry_differs_from_dataset": [],
+   "missing_expiries": [
+    "2023-11-03",
+    "2023-11-10",
+    "2023-11-17",
+    "2023-11-24",
+    "2023-12-01",
+    "2023-12-08",
+    "2023-12-15",
+    "2023-12-22",
+    "2023-12-29",
+    "2024-01-05",
+    "2024-01-12",
+    "2024-01-19",
+    "2024-01-25",
+    "2024-02-02",
+    "2024-02-09",
+    "2024-02-16",
+    "2024-02-23",
+    "2024-03-01",
+    "2024-03-07",
+    "2024-03-15",
+    "2024-03-22",
+    "2024-03-28",
+    "2024-04-05",
+    "2024-04-12",
+    "2024-04-19",
+    "2024-04-26",
+    "2024-05-03",
+    "2024-05-10",
+    "2024-05-17",
+    "2024-05-24",
+    "2024-11-22",
+    "2025-02-25",
+    "2025-04-01",
+    "2025-08-26",
+    "2026-03-12"
+   ]
+  }
+ },
+ "quality": {
+  "nifty": {
+   "sessions": 316,
+   "planned_contracts": 57512,
+   "contracts_with_rows": 52134,
+   "contracts_without_rows": 5378,
+   "share_with_rows": 0.9065,
+   "rows": 18978233,
+   "strike_coverage_by_abs_distance_steps": {
+    "CE": {
+     "0-5": 3465,
+     "6-10": 3150,
+     "11-20": 6297,
+     "21-30": 6127,
+     "31-40": 5208,
+     "41-45": 1843
+    },
+    "PE": {
+     "0-5": 3465,
+     "6-10": 3150,
+     "11-20": 6279,
+     "21-30": 6061,
+     "31-40": 5215,
+     "41-45": 1874
+    }
+   },
+   "share_of_planned_with_rows_by_k": {
+    "-45": 0.62,
+    "-40": 0.766,
+    "-30": 0.938,
+    "-20": 0.997,
+    "-10": 0.997,
+    "-5": 0.997,
+    "0": 0.997,
+    "5": 0.997,
+    "10": 0.997,
+    "20": 0.986,
+    "30": 0.938,
+    "40": 0.579,
+    "45": 0.426
+   },
+   "sessions_with_both_ce_and_pe": 316,
+   "ce_strikes_without_pe_same_session": 906,
+   "pe_strikes_without_ce_same_session": 860,
+   "strikes_with_rows_per_session": {
+    "count": 316.0,
+    "mean": 85.3,
+    "std": 5.6,
+    "min": 20.0,
+    "25%": 82.0,
+    "50%": 85.0,
+    "75%": 90.0,
+    "max": 91.0
+   },
+   "plan_strikes_values": {
+    "91": 316
+   },
+   "candle": {
+    "contract_sessions": 52134,
+    "full_grid": 38773,
+    "coverage_ge_90pct": 48471,
+    "coverage_50_90": 2568,
+    "coverage_lt_50": 1095,
+    "median_coverage": 1.0,
+    "max_gap_gt_30min": 622,
+    "leading_late_open_after_0930": 656,
+    "early_end_before_1500": 243
+   },
+   "zero_volume_bar_share": 0.3347,
+   "flat_bar_share": 0.4073,
+   "contract_sessions_all_zero_volume": 3300,
+   "oi": {
+    "contract_sessions_oi_all_zero": 3482,
+    "share_rows_oi_zero": 0.0969,
+    "contract_sessions_oi_constant": 3574
+   },
+   "dup_series_hash_nontrivial": 0,
+   "out_of_order_contract_sessions": 0,
+   "dup_ts_rows": 0,
+   "raw_vs_norm": {
+    "sessions_compared": 316,
+    "raw_only": 0,
+    "norm_only": 0,
+    "value_mismatch": 0,
+    "raw_dup_rows": 0,
+    "raw_rows": 18978233,
+    "norm_rows": 18978233
+   },
+   "underlying": {
+    "spot_sessions": 316,
+    "futures_sessions": 316,
+    "spot_preopen_rows": 1826,
+    "spot_sessions_with_missing_minutes": 10,
+    "spot_missing_minutes": 342,
+    "spot_volume_nonzero_rows": 60,
+    "raw_mismatch_rows": 0,
+    "raw_only": 0,
+    "norm_only": 0
+   }
+  },
+  "sensex": {
+   "sessions": 248,
+   "planned_contracts": 45136,
+   "contracts_with_rows": 36404,
+   "contracts_without_rows": 8732,
+   "share_with_rows": 0.8065,
+   "rows": 12928723,
+   "strike_coverage_by_abs_distance_steps": {
+    "CE": {
+     "0-5": 2728,
+     "6-10": 2479,
+     "11-20": 4727,
+     "21-30": 3790,
+     "31-40": 2995,
+     "41-45": 1300
+    },
+    "PE": {
+     "0-5": 2728,
+     "6-10": 2480,
+     "11-20": 4808,
+     "21-30": 3904,
+     "31-40": 3090,
+     "41-45": 1375
+    }
+   },
+   "share_of_planned_with_rows_by_k": {
+    "-45": 0.524,
+    "-40": 0.552,
+    "-30": 0.681,
+    "-20": 0.881,
+    "-10": 0.998,
+    "-5": 1.0,
+    "0": 1.0,
+    "5": 1.0,
+    "10": 1.0,
+    "20": 0.929,
+    "30": 0.698,
+    "40": 0.573,
+    "45": 0.516
+   },
+   "sessions_with_both_ce_and_pe": 248,
+   "ce_strikes_without_pe_same_session": 3896,
+   "pe_strikes_without_ce_same_session": 4262,
+   "strikes_with_rows_per_session": {
+    "count": 248.0,
+    "mean": 89.8,
+    "std": 3.2,
+    "min": 71.0,
+    "25%": 91.0,
+    "50%": 91.0,
+    "75%": 91.0,
+    "max": 91.0
+   },
+   "plan_strikes_values": {
+    "91": 248
+   },
+   "candle": {
+    "contract_sessions": 36404,
+    "full_grid": 24703,
+    "coverage_ge_90pct": 32293,
+    "coverage_50_90": 2394,
+    "coverage_lt_50": 1717,
+    "median_coverage": 1.0,
+    "max_gap_gt_30min": 431,
+    "leading_late_open_after_0930": 3588,
+    "early_end_before_1500": 340
+   },
+   "zero_volume_bar_share": 0.1995,
+   "flat_bar_share": 0.2469,
+   "contract_sessions_all_zero_volume": 541,
+   "oi": {
+    "contract_sessions_oi_all_zero": 36404,
+    "share_rows_oi_zero": 1.0,
+    "contract_sessions_oi_constant": 36404
+   },
+   "dup_series_hash_nontrivial": 0,
+   "out_of_order_contract_sessions": 0,
+   "dup_ts_rows": 0,
+   "raw_vs_norm": {
+    "sessions_compared": 248,
+    "raw_only": 0,
+    "norm_only": 0,
+    "value_mismatch": 0,
+    "raw_dup_rows": 0,
+    "raw_rows": 12928723,
+    "norm_rows": 12928723
+   },
+   "underlying": {
+    "spot_sessions": 248,
+    "futures_sessions": 248,
+    "spot_preopen_rows": 1440,
+    "spot_sessions_with_missing_minutes": 13,
+    "spot_missing_minutes": 310,
+    "spot_volume_nonzero_rows": 136,
+    "raw_mismatch_rows": 0,
+    "raw_only": 0,
+    "norm_only": 0
+   }
+  }
+ },
+ "nifty": {
+  "first_expiry": "2023-11-09",
+  "last_expiry": "2026-11-09",
+  "first_session": "2023-11-08",
+  "last_session": "2026-11-09",
+  "usable_d1": 156,
+  "usable_d0": 158,
+  "expiries_present": 158,
+  "span_years": 3.0,
+  "split": {
+   "proposed_oos_from_exclusive": "2025-11-09",
+   "is_expiries": 105,
+   "oos_expiries": 53,
+   "is_first": "2023-11-08",
+   "is_last_d0": "2025-11-04",
+   "oos_first_d0": "2025-11-11",
+   "oos_last_d0": "2026-11-09",
+   "is_months": 23.9,
+   "oos_expiries_inside_algo8_window": 18,
+   "oos_expiries_after_algo8_window": 3,
+   "oos_expiries_before_algo8_window": 32,
+   "algo8_window_expiries": 18,
+   "clean_oos_expiries_before_exposure": 32,
+   "crossing_expiry_pairs": 0
+  }
+ },
+ "sensex": {
+  "first_expiry": "2024-05-31",
+  "last_expiry": "2026-11-12",
+  "first_session": "2024-05-30",
+  "last_session": "2026-11-12",
+  "usable_d1": 123,
+  "usable_d0": 124,
+  "expiries_present": 124,
+  "span_years": 2.45,
+  "split": {
+   "proposed_oos_from_exclusive": "2025-11-12",
+   "is_expiries": 72,
+   "oos_expiries": 52,
+   "is_first": "2024-05-30",
+   "is_last_d0": "2025-11-06",
+   "oos_first_d0": "2025-11-13",
+   "oos_last_d0": "2026-11-12",
+   "is_months": 17.2,
+   "oos_expiries_inside_algo8_window": 18,
+   "oos_expiries_after_algo8_window": 3,
+   "oos_expiries_before_algo8_window": 31,
+   "algo8_window_expiries": 18,
+   "clean_oos_expiries_before_exposure": 31,
+   "crossing_expiry_pairs": 0
+  }
+ }
+}

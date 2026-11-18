@@ -1,0 +1,168 @@
+{
+ "commit": "eb4097308d47ccc75078ab73ba76d33bb1c7030b",
+ "files": 3391,
+ "bytes": 12213449577,
+ "by_pattern": {
+  "README.md": {
+   "files": 1,
+   "bytes": 3890
+  },
+  "manifests/checkpoint.csv": {
+   "files": 1,
+   "bytes": 4742624
+  },
+  "manifests/download_status.json": {
+   "files": 1,
+   "bytes": 292
+  },
+  "metadata/expiry_calendar/expiry_calendar_nifty.csv": {
+   "files": 1,
+   "bytes": 5554
+  },
+  "metadata/expiry_calendar/expiry_calendar_sensex.csv": {
+   "files": 1,
+   "bytes": 5220
+  },
+  "normalized/nifty/options/D.csv": {
+   "files": 316,
+   "bytes": 1609151766
+  },
+  "normalized/nifty/underlying/futures/D.csv": {
+   "files": 316,
+   "bytes": 10637401
+  },
+  "normalized/nifty/underlying/spot/D.csv": {
+   "files": 316,
+   "bytes": 8394178
+  },
+  "normalized/sensex/options/D.csv": {
+   "files": 248,
+   "bytes": 1052206830
+  },
+  "normalized/sensex/underlying/futures/D.csv": {
+   "files": 248,
+   "bytes": 7199812
+  },
+  "normalized/sensex/underlying/spot/D.csv": {
+   "files": 248,
+   "bytes": 6773140
+  },
+  "raw/nifty/options/D.json": {
+   "files": 316,
+   "bytes": 5632514410
+  },
+  "raw/nifty/underlying/futures/D.json": {
+   "files": 316,
+   "bytes": 30206917
+  },
+  "raw/nifty/underlying/spot/D.json": {
+   "files": 316,
+   "bytes": 20559631
+  },
+  "raw/sensex/options/D.json": {
+   "files": 248,
+   "bytes": 3793078250
+  },
+  "raw/sensex/underlying/futures/D.json": {
+   "files": 248,
+   "bytes": 21737228
+  },
+  "raw/sensex/underlying/spot/D.json": {
+   "files": 248,
+   "bytes": 16229053
+  },
+  "reports/acquisition_summary.md": {
+   "files": 1,
+   "bytes": 770
+  },
+  "reports/data_quality_report.md": {
+   "files": 1,
+   "bytes": 2611
+  }
+ },
+ "checkpoint_rows": 103776,
+ "checkpoint_row_widths": {
+  "3": 1128,
+  "6": 102648
+ },
+ "checkpoint_duplicate_rows": 0,
+ "manifest_vs_files": {
+  "nifty": {
+   "option_sessions_in_checkpoint": 316,
+   "option_session_files": 316,
+   "sessions_in_checkpoint_without_file": [],
+   "files_not_in_checkpoint": [],
+   "contracts_in_checkpoint": 57512,
+   "contracts_per_session": {
+    "1": 316
+   },
+   "spot_days_in_checkpoint": 316,
+   "spot_files": 316,
+   "spot_missing_files": [],
+   "spot_extra_files": [],
+   "futures_days_in_checkpoint": 316,
+   "futures_files": 316,
+   "futures_missing_files": []
+  },
+  "sensex": {
+   "option_sessions_in_checkpoint": 248,
+   "option_session_files": 248,
+   "sessions_in_checkpoint_without_file": [],
+   "files_not_in_checkpoint": [],
+   "contracts_in_checkpoint": 45136,
+   "contracts_per_session": {
+    "1": 248
+   },
+   "spot_days_in_checkpoint": 248,
+   "spot_files": 248,
+   "spot_missing_files": [],
+   "spot_extra_files": [],
+   "futures_days_in_checkpoint": 248,
+   "futures_files": 248,
+   "futures_missing_files": []
+  }
+ },
+ "download_status": {
+  "started": "2026-11-17T21:16:53.710186",
+  "indices": {
+   "nifty": {
+    "expiries_planned": 158,
+    "expiries_done": 158
+   },
+   "sensex": {
+    "expiries_planned": 124,
+    "expiries_done": 124
+   }
+  },
+  "elapsed_min": 648.0119514067968,
+  "contracts_fetched": 103776
+ },
+ "calendar_nifty": {
+  "rows": 160,
+  "found": 159,
+  "not_found": 1,
+  "first": "2023-W44",
+  "last": "2026-W47",
+  "weekdays": {
+   "Thursday": 92,
+   "Wednesday": 4,
+   "Tuesday": 57,
+   "Monday": 6,
+   "NOT FOUND": 1
+  }
+ },
+ "calendar_sensex": {
+  "rows": 160,
+  "found": 124,
+  "not_found": 36,
+  "first": "2023-W44",
+  "last": "2026-W47",
+  "weekdays": {
+   "NOT FOUND": 36,
+   "Friday": 29,
+   "Thursday": 59,
+   "Tuesday": 31,
+   "Wednesday": 5
+  }
+ }
+}
