@@ -1,0 +1,3 @@
+# Lot lifecycle reconstruction
+Read `reports/EXECUTIVE_SUMMARY.md` first. Layout: `src/` (engine, remediation, analyses), `tests/` (unit, adversarial, regression), `fixtures/` (synthetic fill builders live in `tests/fixtures.py`), `outputs/` (derived datasets, compressed), `reports/` (10 reports + figures). Reproduce with `run_all.sh`. No raw market data or credentials are committed.
+Datasets: `lots.csv.gz` (one row per unit lot; per-convention close/P&L), `lot_links.csv.gz` (wing/replacement associations), `cycles.csv`, `cycle_reconciliation.csv`, `carried_lots*.csv.gz`, `contract_minute_panel.csv.gz`, `replacement_pairs.csv.gz`, `replacement_cells.csv`.

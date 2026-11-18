@@ -1,0 +1,38 @@
+/home/user/Algo-8-Reverse-Engineer/backtest/replication/lot_lifecycle/src/replacement.py:10: DtypeWarning: Columns (0: entry_trade_id, 1: close_trade_id) have mixed types. Specify dtype option on import or set low_memory=False.
+  L = pd.read_csv(f'{OUT}/lots.csv.gz'); F = load_fills(); C = pd.read_csv(f'{OUT}/cycles.csv'); C = C[C.carry_in_known]; rng = np.random.default_rng(8)
+buy-back orders 8611 with candidate <=300 s 6887
+                                     obs    null  excess_ratio  excess_pairs
+type               dbin    sch                                              
+opposite_right     0-30    sched     684  209.95          3.26        474.05
+                           unsched  1706  357.60          4.77       1348.40
+                   30-60   sched     229  116.98          1.96        112.02
+                           unsched   510  242.45          2.10        267.55
+                   60-120  sched     120  123.88          0.97         -3.88
+                           unsched   451  345.38          1.31        105.62
+                   120-300 sched     166  159.55          1.04          6.45
+                           unsched   402  573.75          0.70       -171.75
+same_contract      0-30    sched      43   44.80          0.96         -1.80
+                           unsched   110   70.88          1.55         39.12
+                   30-60   sched      33   26.22          1.26          6.77
+                           unsched    58   49.32          1.18          8.67
+                   60-120  unsched    55   77.08          0.71        -22.08
+                   120-300 unsched    59  142.62          0.41        -83.62
+same_right_<=1step 0-30    sched     112   65.75          1.70         46.25
+                           unsched   305  110.60          2.76        194.40
+                   30-60   sched      48   39.88          1.20          8.12
+                           unsched    80   74.92          1.07          5.08
+                   60-120  sched      36   39.17          0.92         -3.17
+                           unsched    95  111.35          0.85        -16.35
+                   120-300 sched      45   50.80          0.89         -5.80
+                           unsched    89  199.25          0.45       -110.25
+same_right_far     0-30    sched     232  102.08          2.27        129.93
+                           unsched   394  201.50          1.96        192.50
+                   30-60   sched      57   50.98          1.12          6.02
+                           unsched   212  132.07          1.61         79.93
+                   60-120  sched      73   52.80          1.38         20.20
+                           unsched   150  180.02          0.83        -30.03
+                   120-300 sched     113   57.22          1.97         55.78
+                           unsched   184  288.35          0.64       -104.35
+{'UNRESOLVED': 3241, 'COINCIDENTAL': 2461, 'POSSIBLE_CROSS_RIGHT': 2030, 'POSSIBLE': 740, 'STRONGLY_SUPPORTED': 139} {'UNRESOLVED': 0.376, 'COINCIDENTAL': 0.286, 'POSSIBLE_CROSS_RIGHT': 0.236, 'POSSIBLE': 0.086, 'STRONGLY_SUPPORTED': 0.016}
+lots in each class: {'COINCIDENTAL': 2493, 'POSSIBLE': 898, 'POSSIBLE_CROSS_RIGHT': 2242, 'STRONGLY_SUPPORTED': 139, 'UNRESOLVED': 4178}
+P(same-right opening sale within 60 s of a buy-back): observed 0.196  time-shift null 0.113
