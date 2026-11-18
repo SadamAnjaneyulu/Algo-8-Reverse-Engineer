@@ -8,6 +8,7 @@ python3 -m validation.session_scan "$C" reports/tables
 python3 -m validation.deep_scan "$C" reports/tables
 python3 -m validation.legacy_crosscheck "$C" reports/tables
 python3 -m validation.extra_findings "$C" reports/tables
+python3 -m validation.parity_check "$C" reports/tables
 python3 -m validation.coverage "$C" reports/tables reports/tables
 python3 -m validation.yahoo_compare reports/tables
 python3 -m validation.quality_summary reports/tables

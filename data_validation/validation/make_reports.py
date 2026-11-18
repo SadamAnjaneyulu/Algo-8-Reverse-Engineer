@@ -101,6 +101,9 @@ Pinned commit `{COMMIT}`. Every figure is recomputed from the committed files (`
 | Option minutes with no spot bar in the session | 17,374 | 33,235 |
 | Spot sessions with missing regular minutes | {Q["nifty"]["underlying"]["spot_sessions_with_missing_minutes"]} ({Q["nifty"]["underlying"]["spot_missing_minutes"]} min) | {Q["sensex"]["underlying"]["spot_sessions_with_missing_minutes"]} ({Q["sensex"]["underlying"]["spot_missing_minutes"]} min) |
 
+## Put-call parity (CE/PE labels and spot alignment)
+At 11:00 and 14:00, strikes within 2 steps of spot with volume > 0: median |C - P - (S - K)| is {pd.read_csv(f'{T}/put_call_parity.csv').query("`index`=='nifty'").median_err_pct.median():.3f}% of spot (NIFTY) and {pd.read_csv(f'{T}/put_call_parity.csv').query("`index`=='sensex'").median_err_pct.median():.3f}% (SENSEX); no session exceeds 0.3% (max {pd.read_csv(f'{T}/put_call_parity.csv').median_err_pct.max():.2f}%). Two NIFTY sessions have no testable strikes (the Muhurat session and the incomplete 2024-06-26). This supports correct CE/PE labelling and option/spot minute alignment; it is a plausibility test (carry and early-exercise-free European parity), not a price verification.
+
 ## Missing candles are not all "missing"
 The vendor repeats the previous price (volume 0) for no-trade minutes of contracts that have traded, so a missing minute is rarer than a no-trade minute. A contract-minute with no row at all can be a true gap or a minute before the first trade; the data cannot distinguish them. Treat volume 0 as no trade and an absent row as unknown.
 

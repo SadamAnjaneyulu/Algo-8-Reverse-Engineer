@@ -51,3 +51,7 @@ def test_legacy_crosscheck_has_no_mismatch():
 def test_split_never_crosses_an_expiry():
     n = J('report_numbers.json')
     for i in ('nifty', 'sensex'): assert n[i]['split']['crossing_expiry_pairs'] == 0 and n[i]['split']['is_last_d0'] < n[i]['split']['oos_first_d0']
+
+
+def test_put_call_parity_holds_everywhere_it_can_be_tested():
+    r = pd.read_csv(os.path.join(T, 'put_call_parity.csv')); assert r.median_err_pct.max() < 0.3 and r.median_err_pct.isna().sum() <= 3

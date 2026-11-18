@@ -25,6 +25,9 @@ Pinned commit `eb4097308d47ccc75078ab73ba76d33bb1c7030b`. Every figure is recomp
 | Option minutes with no spot bar in the session | 17,374 | 33,235 |
 | Spot sessions with missing regular minutes | 10 (342 min) | 13 (310 min) |
 
+## Put-call parity (CE/PE labels and spot alignment)
+At 11:00 and 14:00, strikes within 2 steps of spot with volume > 0: median |C - P - (S - K)| is 0.038% of spot (NIFTY) and 0.035% (SENSEX); no session exceeds 0.3% (max 0.27%). Two NIFTY sessions have no testable strikes (the Muhurat session and the incomplete 2024-06-26). This supports correct CE/PE labelling and option/spot minute alignment; it is a plausibility test (carry and early-exercise-free European parity), not a price verification.
+
 ## Missing candles are not all "missing"
 The vendor repeats the previous price (volume 0) for no-trade minutes of contracts that have traded, so a missing minute is rarer than a no-trade minute. A contract-minute with no row at all can be a true gap or a minute before the first trade; the data cannot distinguish them. Treat volume 0 as no trade and an absent row as unknown.
 
