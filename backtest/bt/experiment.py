@@ -69,5 +69,5 @@ def account_all(name, variant, params, cyc=None, tag='', lots=3):
     for r in cyc.itertuples():
         e = eng[(r.und, r.expiry)]; c = _cyc(r.und, r.expiry); a = A.account(c, e['fills'], variant, params)
         rows.append(dict(und=r.und, expiry=r.expiry, d1=r.d1, d0=r.d0, split=r.split, subset=r.subset, gross=a['gross'], net=a['net'], slippage=a['slippage'], costs=a['costs'], n_orders=a['n_orders'], n_engine_orders=a['n_engine_orders'], peak_margin=a['peak_margin'],
-                         min_path=a['min_path'], max_path=a['max_path'], path=a['path'], leg_pnl=a['leg_pnl'], parity=e['parity'], K=c['K'], official_close=c['official_close'], lot=scen.lot_of(c), spot_0915=c['spot_0915']))
+                         min_path=a['min_path'], max_path=a['max_path'], path=a['path'], leg_pnl=a['leg_pnl'], trades=a['trades'], settle=a['settle'], close_src=a['official_close_src'], d1_range=float(c['spot_d1'].close.max() - c['spot_d1'].close.min()), parity=e['parity'], K=c['K'], official_close=c['official_close'], lot=scen.lot_of(c), spot_0915=c['spot_0915']))
     return pd.DataFrame(rows)
