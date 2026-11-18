@@ -102,10 +102,42 @@ class ScriptedActionsPlugin : public Plugin {
   }
 };
 
+class CapitalStopPlugin : public Plugin {
+ public:
+  std::string name() const override { return "capital_stop"; } std::string version() const override { return "1.0.0"; }
+  std::vector<std::pair<std::string, Spec>> spec() const override {
+    return {{"phase_switch_ts", ispec(0, true, 0, true, 100000000000LL)}, {"carry_limit_paise", ispec(0, true, 0, true, 1000000000000000LL)}, {"expiry_limit_paise", ispec(0, true, 0, true, 1000000000000000LL)}, {"basket_filter", sspec("*")}};
+  }
+  void evaluate(const EvalContext& ctx, PluginResult& res) const override {
+    const i64 ts = ctx.ts; auto dec = [&](const std::string& b, const std::string& o, const std::string& r, const std::string& d, i64 info) { res.decisions.push_back(mkdec(ts, *this, b, "*", o, r, d, info)); };
+    for (auto& bk : ctx.baskets) {
+      if ((gets("basket_filter") != "*" && gets("basket_filter") != bk.basket_id) || bk.status == "FULLY_CUT") continue;
+      const bool carry = ts < geti("phase_switch_ts"); const i64 limit = carry ? geti("carry_limit_paise") : geti("expiry_limit_paise");
+      std::vector<LegView> open; for (auto& l : bk.legs) if (l.current > 0) open.push_back(l);
+      if (limit == 0) { dec(bk.basket_id, "NOT_PROPOSED", "STOP_DISABLED_FOR_PHASE", std::string("phase=") + (carry ? "carry" : "expiry"), ts); continue; }
+      i64 loss = 0, info = 0; bool missing = false; std::vector<i64> used;
+      for (auto& l : open) {
+        auto m = ctx.mark(l.instrument_id); if (!m) { missing = true; break; }
+        used.push_back(m->second); loss += -(i64)l.side * (m->first - l.entry_price) * l.current;
+      }
+      if (missing) { dec(bk.basket_id, "NOT_PROPOSED", "NO_MARK_AVAILABLE", "a leg has no mark at or before ts", ts); continue; }
+      info = used.empty() ? ts : *std::max_element(used.begin(), used.end());
+      if (loss < limit) { dec(bk.basket_id, "NOT_PROPOSED", "WITHIN_LIMIT", "loss_paise=" + std::to_string(loss) + " limit_paise=" + std::to_string(limit), info); continue; }
+      const std::string group = name() + "|" + std::to_string(ts) + "|" + bk.basket_id;
+      for (auto& l : open) {
+        res.actions.push_back({name() + "|" + std::to_string(ts) + "|" + bk.basket_id + "|" + l.leg_id + "|CUT", name(), version(), "CUT", group, bk.basket_id, l.leg_id, l.current, "", ts, info, "STOP_TRIGGERED"});
+        dec(bk.basket_id, "PROPOSED", "STOP_TRIGGERED", "loss_paise=" + std::to_string(loss) + " limit_paise=" + std::to_string(limit) + " qty=" + std::to_string(l.current), info);
+      }
+    }
+    res.status = res.actions.empty() ? "NO_ACTION" : "OK";
+  }
+};
+
 inline std::shared_ptr<Plugin> make_builtin(const std::string& n) {
   if (n == "basket_cut") return std::make_shared<BasketCutPlugin>();
   if (n == "basket_reentry") return std::make_shared<BasketReentryPlugin>();
   if (n == "scripted_actions") return std::make_shared<ScriptedActionsPlugin>();
+  if (n == "capital_stop") return std::make_shared<CapitalStopPlugin>();
   return nullptr;
 }
 }  // namespace pc
