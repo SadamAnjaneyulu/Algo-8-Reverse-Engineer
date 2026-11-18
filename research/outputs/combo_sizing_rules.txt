@@ -1,0 +1,136 @@
+|--- equity_pct_capital <= -0.7001
+|   |--- class: 0|0
+|--- equity_pct_capital >  -0.7001
+|   |--- clock_minute <= 232.5000
+|   |   |--- clock_minute <= 172.5000
+|   |   |   |--- x_phase_minute <= 81.5000
+|   |   |   |   |--- x_short_orders_today <= 15.5000
+|   |   |   |   |   |--- missingindicator_rsi_neutral_distance_21 <= 0.5000
+|   |   |   |   |   |   |--- class: 3|3
+|   |   |   |   |   |--- missingindicator_rsi_neutral_distance_21 >  0.5000
+|   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |--- x_short_orders_today >  15.5000
+|   |   |   |   |   |--- x_long_units <= 45.0000
+|   |   |   |   |   |   |--- x_long_orders_15m <= 3.5000
+|   |   |   |   |   |   |   |--- class: 4|4
+|   |   |   |   |   |   |--- x_long_orders_15m >  3.5000
+|   |   |   |   |   |   |   |--- rsi_10 <= 38.6301
+|   |   |   |   |   |   |   |   |--- class: 1|1
+|   |   |   |   |   |   |   |--- rsi_10 >  38.6301
+|   |   |   |   |   |   |   |   |--- class: 1|1
+|   |   |   |   |   |--- x_long_units >  45.0000
+|   |   |   |   |   |   |--- bollinger_abs_z_50 <= 0.8626
+|   |   |   |   |   |   |   |--- class: 4|4
+|   |   |   |   |   |   |--- bollinger_abs_z_50 >  0.8626
+|   |   |   |   |   |   |   |--- atr_pct_21 <= 0.0494
+|   |   |   |   |   |   |   |   |--- class: 4|4
+|   |   |   |   |   |   |   |--- atr_pct_21 >  0.0494
+|   |   |   |   |   |   |   |   |--- class: 4|5
+|   |   |   |--- x_phase_minute >  81.5000
+|   |   |   |   |--- clock_minute <= 142.5000
+|   |   |   |   |   |--- x_since_short_minutes <= 5.3000
+|   |   |   |   |   |   |--- spot_return_60 <= 0.1775
+|   |   |   |   |   |   |   |--- spot_return_5 <= -0.0328
+|   |   |   |   |   |   |   |   |--- class: 3|2
+|   |   |   |   |   |   |   |--- spot_return_5 >  -0.0328
+|   |   |   |   |   |   |   |   |--- class: 3|3
+|   |   |   |   |   |   |--- spot_return_60 >  0.1775
+|   |   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |   |--- x_since_short_minutes >  5.3000
+|   |   |   |   |   |   |--- clock_minute <= 127.5000
+|   |   |   |   |   |   |   |--- reference_iv_pct <= 17.6794
+|   |   |   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |   |   |   |--- reference_iv_pct >  17.6794
+|   |   |   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |   |   |--- clock_minute >  127.5000
+|   |   |   |   |   |   |   |--- x_long_book_equity_pct_capital <= -0.0030
+|   |   |   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |   |   |   |--- x_long_book_equity_pct_capital >  -0.0030
+|   |   |   |   |   |   |   |   |--- class: 1|1
+|   |   |   |   |--- clock_minute >  142.5000
+|   |   |   |   |   |--- clock_minute <= 157.5000
+|   |   |   |   |   |   |--- bollinger_abs_z_50 <= 1.2130
+|   |   |   |   |   |   |   |--- ema_gap_9_50 <= 0.0084
+|   |   |   |   |   |   |   |   |--- class: 3|3
+|   |   |   |   |   |   |   |--- ema_gap_9_50 >  0.0084
+|   |   |   |   |   |   |   |   |--- class: 3|3
+|   |   |   |   |   |   |--- bollinger_abs_z_50 >  1.2130
+|   |   |   |   |   |   |   |--- class: 4|3
+|   |   |   |   |   |--- clock_minute >  157.5000
+|   |   |   |   |   |   |--- x_since_long_minutes <= 3.3750
+|   |   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |   |   |--- x_since_long_minutes >  3.3750
+|   |   |   |   |   |   |   |--- adx_21 <= 20.2237
+|   |   |   |   |   |   |   |   |--- class: 1|1
+|   |   |   |   |   |   |   |--- adx_21 >  20.2237
+|   |   |   |   |   |   |   |   |--- class: 1|1
+|   |   |--- clock_minute >  172.5000
+|   |   |   |--- x_short_orders_today <= 134.0000
+|   |   |   |   |--- x_phase_minute <= 201.5000
+|   |   |   |   |   |--- clock_minute <= 187.5000
+|   |   |   |   |   |   |--- x_unrealized_equity_pct_capital <= 0.1176
+|   |   |   |   |   |   |   |--- class: 0|0
+|   |   |   |   |   |   |--- x_unrealized_equity_pct_capital >  0.1176
+|   |   |   |   |   |   |   |--- class: 0|0
+|   |   |   |   |   |--- clock_minute >  187.5000
+|   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |--- x_phase_minute >  201.5000
+|   |   |   |   |   |--- reference_iv_pct <= 12.4361
+|   |   |   |   |   |   |--- class: 0|0
+|   |   |   |   |   |--- reference_iv_pct >  12.4361
+|   |   |   |   |   |   |--- spot_abs_return_30 <= 0.0858
+|   |   |   |   |   |   |   |--- class: 0|0
+|   |   |   |   |   |   |--- spot_abs_return_30 >  0.0858
+|   |   |   |   |   |   |   |--- class: 0|0
+|   |   |   |--- x_short_orders_today >  134.0000
+|   |   |   |   |--- x_short_orders_15m <= 11.5000
+|   |   |   |   |   |--- spot_abs_return_15 <= 0.0412
+|   |   |   |   |   |   |--- class: 4|4
+|   |   |   |   |   |--- spot_abs_return_15 >  0.0412
+|   |   |   |   |   |   |--- class: 3|3
+|   |   |   |   |--- x_short_orders_15m >  11.5000
+|   |   |   |   |   |--- x_long_orders_5m <= 2.5000
+|   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |   |--- x_long_orders_5m >  2.5000
+|   |   |   |   |   |   |--- class: 3|2
+|   |--- clock_minute >  232.5000
+|   |   |--- x_short_units <= 103.0000
+|   |   |   |--- rsi_28 <= 59.1586
+|   |   |   |   |--- bollinger_abs_z_50 <= 0.9899
+|   |   |   |   |   |--- bollinger_abs_z_30 <= 0.3441
+|   |   |   |   |   |   |--- class: 1|1
+|   |   |   |   |   |--- bollinger_abs_z_30 >  0.3441
+|   |   |   |   |   |   |--- class: 1|1
+|   |   |   |   |--- bollinger_abs_z_50 >  0.9899
+|   |   |   |   |   |--- spot_return_5 <= -0.0244
+|   |   |   |   |   |   |--- class: 2|1
+|   |   |   |   |   |--- spot_return_5 >  -0.0244
+|   |   |   |   |   |   |--- x_spot_change_since_pair_pct <= 0.0066
+|   |   |   |   |   |   |   |--- class: 1|1
+|   |   |   |   |   |   |--- x_spot_change_since_pair_pct >  0.0066
+|   |   |   |   |   |   |   |--- class: 1|1
+|   |   |   |--- rsi_28 >  59.1586
+|   |   |   |   |--- class: 2|2
+|   |   |--- x_short_units >  103.0000
+|   |   |   |--- clock_minute <= 292.5000
+|   |   |   |   |--- time_since_last_pair_min <= 3.2583
+|   |   |   |   |   |--- class: 3|3
+|   |   |   |   |--- time_since_last_pair_min >  3.2583
+|   |   |   |   |   |--- x_short_over4_fraction <= 0.1742
+|   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |   |--- x_short_over4_fraction >  0.1742
+|   |   |   |   |   |   |--- atr_pct_20 <= 0.0327
+|   |   |   |   |   |   |   |--- class: 2|2
+|   |   |   |   |   |   |--- atr_pct_20 >  0.0327
+|   |   |   |   |   |   |   |--- ema_gap_9_20 <= -0.0041
+|   |   |   |   |   |   |   |   |--- class: 10|0
+|   |   |   |   |   |   |   |--- ema_gap_9_20 >  -0.0041
+|   |   |   |   |   |   |   |   |--- class: 3|3
+|   |   |   |--- clock_minute >  292.5000
+|   |   |   |   |--- x_short_orders_5m <= 2.5000
+|   |   |   |   |   |--- time_since_last_pair_min <= 9.6000
+|   |   |   |   |   |   |--- class: 1|1
+|   |   |   |   |   |--- time_since_last_pair_min >  9.6000
+|   |   |   |   |   |   |--- class: 0|0
+|   |   |   |   |--- x_short_orders_5m >  2.5000
+|   |   |   |   |   |--- class: 1|3

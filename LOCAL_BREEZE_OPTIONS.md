@@ -1,8 +1,14 @@
 # Download the option-minute data
 
-The exact traded-option plan is ready. The cloud's current Breeze key/session
-pair was rejected at session exchange on 26 October 2026. No option bars have
-been downloaded in the cloud. This does not establish whether the session is
+**Current status:** all 3,243 planned option contract-days were downloaded locally,
+pushed in `9953c0d`, and received and reproduced in the cloud. There are 1,230,065
+observed candles; 200 contract-days have explicitly recorded minute gaps. See
+`research/OPTION_TRIGGER_FINDINGS.md` for the resulting replay. The commands below
+remain available for reproducibility and additional requested contracts.
+
+The direct cloud Breeze key/session pair was rejected at session exchange on
+26 October 2026. The completed data arrived through the working local download
+and repository push. That earlier rejection does not establish whether the session was
 expired, mismatched to the app key or affected by another account/service issue.
 
 Use the Windows checkout and native TLS setup that successfully downloaded the

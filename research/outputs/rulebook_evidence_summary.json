@@ -1,0 +1,19 @@
+{
+  "ordinary_0916_opening_dates": 31,
+  "opening_snapshot_before": "09:17:00 IST",
+  "dates_with_exactly_four_nonzero_contracts": 7,
+  "dates_with_more_than_four_nonzero_contracts": 24,
+  "opening_short_call_quantity_distributions": {
+    "NIFTY": {
+      "195": 13,
+      "325": 1
+    },
+    "SENSEX": {
+      "60": 16,
+      "40": 1
+    }
+  },
+  "expiry_cycles_with_observed_stable_new_short_sales": 33,
+  "stable_expiry_new_short_fill_records": 9274,
+  "note": "Observed quantities are aggregates across contracts per option role, conditional on inferred fills and zero initial inventory; not inferred account sizing rules or verified exchange lot sizes."
+}

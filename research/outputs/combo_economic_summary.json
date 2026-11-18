@@ -1,0 +1,150 @@
+{
+  "summaries": [
+    {
+      "model": "boolean_temporal",
+      "horizon": "15_minutes",
+      "attempted": 633,
+      "quoted_allocations": 632,
+      "cycles": 15,
+      "mean_net_pnl_per_observed_quantity_unit": -232.50588904272152,
+      "mean_net_per_10000_tail_loss": -82.0264697989282,
+      "positive_after_stress": 122,
+      "allocations_with_zero_volume_endpoint": 4
+    },
+    {
+      "model": "fixed_clock_active_book",
+      "horizon": "15_minutes",
+      "attempted": 421,
+      "quoted_allocations": 417,
+      "cycles": 15,
+      "mean_net_pnl_per_observed_quantity_unit": -225.8953117505995,
+      "mean_net_per_10000_tail_loss": -76.99670554284127,
+      "positive_after_stress": 97,
+      "allocations_with_zero_volume_endpoint": 1
+    },
+    {
+      "model": "joint_entry_exit",
+      "horizon": "15_minutes",
+      "attempted": 276,
+      "quoted_allocations": 276,
+      "cycles": 9,
+      "mean_net_pnl_per_observed_quantity_unit": -236.68252038043477,
+      "mean_net_per_10000_tail_loss": -111.97729572958143,
+      "positive_after_stress": 65,
+      "allocations_with_zero_volume_endpoint": 0
+    },
+    {
+      "model": "tree_combinations",
+      "horizon": "15_minutes",
+      "attempted": 607,
+      "quoted_allocations": 607,
+      "cycles": 15,
+      "mean_net_pnl_per_observed_quantity_unit": -219.76989909390446,
+      "mean_net_per_10000_tail_loss": -81.0072292975468,
+      "positive_after_stress": 132,
+      "allocations_with_zero_volume_endpoint": 4
+    },
+    {
+      "model": "boolean_temporal",
+      "horizon": "expiry_15:14",
+      "attempted": 633,
+      "quoted_allocations": 632,
+      "cycles": 15,
+      "mean_net_pnl_per_observed_quantity_unit": -1573.5305874208861,
+      "mean_net_per_10000_tail_loss": -593.1509306292278,
+      "positive_after_stress": 290,
+      "allocations_with_zero_volume_endpoint": 2
+    },
+    {
+      "model": "fixed_clock_active_book",
+      "horizon": "expiry_15:14",
+      "attempted": 421,
+      "quoted_allocations": 417,
+      "cycles": 15,
+      "mean_net_pnl_per_observed_quantity_unit": -1821.2962649880096,
+      "mean_net_per_10000_tail_loss": -698.1514601789873,
+      "positive_after_stress": 184,
+      "allocations_with_zero_volume_endpoint": 2
+    },
+    {
+      "model": "joint_entry_exit",
+      "horizon": "expiry_15:14",
+      "attempted": 276,
+      "quoted_allocations": 276,
+      "cycles": 9,
+      "mean_net_pnl_per_observed_quantity_unit": -416.4182971014492,
+      "mean_net_per_10000_tail_loss": -235.89929305215753,
+      "positive_after_stress": 140,
+      "allocations_with_zero_volume_endpoint": 0
+    },
+    {
+      "model": "tree_combinations",
+      "horizon": "expiry_15:14",
+      "attempted": 607,
+      "quoted_allocations": 607,
+      "cycles": 15,
+      "mean_net_pnl_per_observed_quantity_unit": -1524.7052162273476,
+      "mean_net_per_10000_tail_loss": -571.6964812100238,
+      "positive_after_stress": 278,
+      "allocations_with_zero_volume_endpoint": 1
+    }
+  ],
+  "comparisons": [
+    {
+      "model": "boolean_temporal",
+      "horizon": "15_minutes",
+      "weeks": 8,
+      "mean_difference": -5.029764256086935,
+      "lower": -24.589997170173646,
+      "upper": 8.412270966029993
+    },
+    {
+      "model": "joint_entry_exit",
+      "horizon": "15_minutes",
+      "weeks": 6,
+      "mean_difference": -32.700204737000846,
+      "lower": -106.18053870825285,
+      "upper": 5.59138644766314
+    },
+    {
+      "model": "tree_combinations",
+      "horizon": "15_minutes",
+      "weeks": 8,
+      "mean_difference": -4.010523754705531,
+      "lower": -16.9294623347388,
+      "upper": 8.699097653611318
+    },
+    {
+      "model": "boolean_temporal",
+      "horizon": "expiry_15:14",
+      "weeks": 8,
+      "mean_difference": 105.00052954975956,
+      "lower": -221.04054028783884,
+      "upper": 416.1545485073923
+    },
+    {
+      "model": "joint_entry_exit",
+      "horizon": "expiry_15:14",
+      "weeks": 6,
+      "mean_difference": 415.39934876087625,
+      "lower": -576.4046544019412,
+      "upper": 1297.7530928424264
+    },
+    {
+      "model": "tree_combinations",
+      "horizon": "expiry_15:14",
+      "weeks": 8,
+      "mean_difference": 126.45497896896359,
+      "lower": -86.91666715690747,
+      "upper": 338.40297102282636
+    }
+  ],
+  "assumptions": [
+    "Same independently chosen ATM short strike and 2.5%-budget wings for all signal models at a given minute.",
+    "Selection uses prior completed prices; entry is the next minute open, with 15-minute or fixed expiry-cutoff exit opens.",
+    "Costs: 25 bps of premium turnover, eight orders at 20 each, eight transacted quantities at 0.05 each; these are stress assumptions.",
+    "PnL normalized by the static basket theoretical expiry tail loss, not historical margin/gamma; no account equity or compounded return is claimed.",
+    "Overlapping allocations, missing chain/quote coverage, zero-volume endpoints and actual-book-conditioned signals preclude an autonomous strategy or alpha claim."
+  ],
+  "note": "Later-period fixed-basket conditional markout diagnostic, not the original Algo 8 backtest or independent alpha validation."
+}

@@ -1,0 +1,203 @@
+{
+  "summaries": [
+    {
+      "task": "fifo|CE|pooled",
+      "quality": "all",
+      "allocations": 1016,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": 344.4476744343857,
+      "mean_clock_net_per_10000_tail_loss": 460.836306219933,
+      "mean_improvement_per_10000_tail_loss": -116.38863178554726,
+      "lower": -596.94103445741,
+      "upper": 549.4404919696108
+    },
+    {
+      "task": "fifo|CE|pooled",
+      "quality": "nonzero_volume_endpoints",
+      "allocations": 1015,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": 344.2471839009025,
+      "mean_clock_net_per_10000_tail_loss": 460.7261633727759,
+      "mean_improvement_per_10000_tail_loss": -116.47897947187332,
+      "lower": -597.218932543169,
+      "upper": 549.4647693314537
+    },
+    {
+      "task": "fifo|CE|pooled",
+      "quality": "nonzero_volume_and_payoff_bounds",
+      "allocations": 1015,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": 344.2471839009025,
+      "mean_clock_net_per_10000_tail_loss": 460.7261633727759,
+      "mean_improvement_per_10000_tail_loss": -116.47897947187332,
+      "lower": -597.218932543169,
+      "upper": 549.4647693314537
+    },
+    {
+      "task": "fifo|PE|pooled",
+      "quality": "all",
+      "allocations": 911,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -380.7268607940069,
+      "mean_clock_net_per_10000_tail_loss": -904.4560313901881,
+      "mean_improvement_per_10000_tail_loss": 523.7291705961813,
+      "lower": 58.445741073765625,
+      "upper": 933.1787847039816
+    },
+    {
+      "task": "fifo|PE|pooled",
+      "quality": "nonzero_volume_endpoints",
+      "allocations": 908,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -381.4314497096182,
+      "mean_clock_net_per_10000_tail_loss": -906.3198801661498,
+      "mean_improvement_per_10000_tail_loss": 524.8884304565318,
+      "lower": 57.999288790897324,
+      "upper": 935.1134384745682
+    },
+    {
+      "task": "fifo|PE|pooled",
+      "quality": "nonzero_volume_and_payoff_bounds",
+      "allocations": 908,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -381.4314497096182,
+      "mean_clock_net_per_10000_tail_loss": -906.3198801661498,
+      "mean_improvement_per_10000_tail_loss": 524.8884304565318,
+      "lower": 57.999288790897324,
+      "upper": 935.1134384745682
+    },
+    {
+      "task": "fifo|combined|pooled",
+      "quality": "all",
+      "allocations": 628,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -181.16006284751091,
+      "mean_clock_net_per_10000_tail_loss": -588.5871944997184,
+      "mean_improvement_per_10000_tail_loss": 407.4271316522075,
+      "lower": -141.95032335961812,
+      "upper": 994.5884089594108
+    },
+    {
+      "task": "fifo|combined|pooled",
+      "quality": "nonzero_volume_endpoints",
+      "allocations": 627,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -181.20802380246369,
+      "mean_clock_net_per_10000_tail_loss": -588.8428662107083,
+      "mean_improvement_per_10000_tail_loss": 407.6348424082446,
+      "lower": -155.3503683580493,
+      "upper": 957.2682190719311
+    },
+    {
+      "task": "fifo|combined|pooled",
+      "quality": "nonzero_volume_and_payoff_bounds",
+      "allocations": 627,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -181.20802380246369,
+      "mean_clock_net_per_10000_tail_loss": -588.8428662107083,
+      "mean_improvement_per_10000_tail_loss": 407.6348424082446,
+      "lower": -155.3503683580493,
+      "upper": 957.2682190719311
+    },
+    {
+      "task": "lifo|CE|pooled",
+      "quality": "all",
+      "allocations": 1013,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": 363.97273051121994,
+      "mean_clock_net_per_10000_tail_loss": 458.05792058852654,
+      "mean_improvement_per_10000_tail_loss": -94.08519007730669,
+      "lower": -712.1231131491802,
+      "upper": 753.9020318289753
+    },
+    {
+      "task": "lifo|CE|pooled",
+      "quality": "nonzero_volume_endpoints",
+      "allocations": 1012,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": 363.76654615788675,
+      "mean_clock_net_per_10000_tail_loss": 457.9447057906058,
+      "mean_improvement_per_10000_tail_loss": -94.17815963271904,
+      "lower": -704.4062992546892,
+      "upper": 782.1276436213872
+    },
+    {
+      "task": "lifo|CE|pooled",
+      "quality": "nonzero_volume_and_payoff_bounds",
+      "allocations": 1012,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": 363.76654615788675,
+      "mean_clock_net_per_10000_tail_loss": 457.9447057906058,
+      "mean_improvement_per_10000_tail_loss": -94.17815963271904,
+      "lower": -704.4062992546892,
+      "upper": 782.1276436213872
+    },
+    {
+      "task": "lifo|PE|pooled",
+      "quality": "all",
+      "allocations": 910,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -380.2317955260999,
+      "mean_clock_net_per_10000_tail_loss": -904.5725494559202,
+      "mean_improvement_per_10000_tail_loss": 524.3407539298202,
+      "lower": 60.016391221811666,
+      "upper": 936.7168970058415
+    },
+    {
+      "task": "lifo|PE|pooled",
+      "quality": "nonzero_volume_endpoints",
+      "allocations": 907,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -380.78474609404645,
+      "mean_clock_net_per_10000_tail_loss": -906.4388385879712,
+      "mean_improvement_per_10000_tail_loss": 525.6540924939247,
+      "lower": 59.754105768673135,
+      "upper": 940.5984291559064
+    },
+    {
+      "task": "lifo|PE|pooled",
+      "quality": "nonzero_volume_and_payoff_bounds",
+      "allocations": 907,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -380.78474609404645,
+      "mean_clock_net_per_10000_tail_loss": -906.4388385879712,
+      "mean_improvement_per_10000_tail_loss": 525.6540924939247,
+      "lower": 59.754105768673135,
+      "upper": 940.5984291559064
+    },
+    {
+      "task": "lifo|combined|pooled",
+      "quality": "all",
+      "allocations": 627,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -216.18887100338185,
+      "mean_clock_net_per_10000_tail_loss": -589.6216035026187,
+      "mean_improvement_per_10000_tail_loss": 373.4327324992368,
+      "lower": -133.8127709751884,
+      "upper": 895.7115392743273
+    },
+    {
+      "task": "lifo|combined|pooled",
+      "quality": "nonzero_volume_endpoints",
+      "allocations": 626,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -216.29286513582792,
+      "mean_clock_net_per_10000_tail_loss": -589.8793360454199,
+      "mean_improvement_per_10000_tail_loss": 373.5864709095919,
+      "lower": -142.63268040941477,
+      "upper": 877.4225646829234
+    },
+    {
+      "task": "lifo|combined|pooled",
+      "quality": "nonzero_volume_and_payoff_bounds",
+      "allocations": 626,
+      "weeks": 8,
+      "mean_candidate_net_per_10000_tail_loss": -216.29286513582792,
+      "mean_clock_net_per_10000_tail_loss": -589.8793360454199,
+      "mean_improvement_per_10000_tail_loss": 373.5864709095919,
+      "lower": -142.63268040941477,
+      "upper": 877.4225646829234
+    }
+  ],
+  "note": "Endpoint-volume/payoff-bound filters are ex-post data-quality sensitivities, not tradable filters. Same recorded entries and inferred frozen hedges; static tail risk is not margin or equal dynamic market exposure. Previously inspected later weeks, multiple searched models and incomplete chain prevent a definitive alpha claim."
+}

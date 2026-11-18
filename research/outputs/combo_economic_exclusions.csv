@@ -1,0 +1,11 @@
+underlying,expiry_date,date,clock,model,horizon,reason
+NIFTY,2026-10-13,2026-10-12,09:30,fixed_clock_active_book,15_minutes,missing_fresh_atm_reference
+NIFTY,2026-10-13,2026-10-12,09:30,fixed_clock_active_book,expiry_15:14,missing_fresh_atm_reference
+NIFTY,2026-10-13,2026-10-12,14:00,boolean_temporal,15_minutes,missing_entry_open
+NIFTY,2026-10-13,2026-10-12,14:00,fixed_clock_active_book,15_minutes,missing_entry_open
+NIFTY,2026-10-13,2026-10-12,14:00,boolean_temporal,expiry_15:14,missing_entry_open
+NIFTY,2026-10-13,2026-10-12,14:00,fixed_clock_active_book,expiry_15:14,missing_entry_open
+SENSEX,2026-09-10,2026-09-10,12:15,fixed_clock_active_book,15_minutes,missing_entry_open
+SENSEX,2026-09-10,2026-09-10,12:15,fixed_clock_active_book,expiry_15:14,missing_entry_open
+SENSEX,2026-09-10,2026-09-10,12:45,fixed_clock_active_book,15_minutes,missing_entry_open
+SENSEX,2026-09-10,2026-09-10,12:45,fixed_clock_active_book,expiry_15:14,missing_entry_open

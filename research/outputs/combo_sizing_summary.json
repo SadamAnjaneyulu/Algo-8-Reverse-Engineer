@@ -1,0 +1,121 @@
+{
+  "calibration_model_settings": 48,
+  "calibration_fold_fits": 192,
+  "selected_parameters": {
+    "depth": 8,
+    "minimum_leaf": 10
+  },
+  "calibration_cv": {
+    "opportunities": 798,
+    "actual_positive_opportunities": 648,
+    "exact_joint_quantity": 372,
+    "exact_rate": 0.46616541353383456,
+    "nonzero_exact_rate": 0.4351851851851852,
+    "mean_absolute_units_per_right": 1.2781954887218046,
+    "cycle_mean_exact": 0.4488095238095238,
+    "false_positive_allocations": 60,
+    "missed_allocations": 33
+  },
+  "evaluation": [
+    {
+      "kind": "clock_quantity",
+      "opportunities": 567,
+      "actual_positive_opportunities": 425,
+      "exact_joint_quantity": 239,
+      "exact_rate": 0.42151675485008816,
+      "nonzero_exact_rate": 0.4,
+      "mean_absolute_units_per_right": 1.2663139329805997,
+      "cycle_mean_exact": 0.42698412698412697,
+      "false_positive_allocations": 73,
+      "missed_allocations": 52
+    },
+    {
+      "kind": "combined_tree_quantity",
+      "opportunities": 567,
+      "actual_positive_opportunities": 425,
+      "exact_joint_quantity": 257,
+      "exact_rate": 0.4532627865961199,
+      "nonzero_exact_rate": 0.36,
+      "mean_absolute_units_per_right": 1.0246913580246915,
+      "cycle_mean_exact": 0.44285714285714284,
+      "false_positive_allocations": 38,
+      "missed_allocations": 9
+    }
+  ],
+  "all_observed_curve_fit": {
+    "opportunities": 1365,
+    "actual_positive_opportunities": 1073,
+    "exact_joint_quantity": 1365,
+    "exact_rate": 1.0,
+    "nonzero_exact_rate": 1.0,
+    "mean_absolute_units_per_right": 0.0,
+    "cycle_mean_exact": 1,
+    "false_positive_allocations": 0,
+    "missed_allocations": 0,
+    "leaves": 473,
+    "note": "All-observed resubstitution, not a later-cycle result."
+  },
+  "configuration_change_points": [
+    {
+      "underlying": "NIFTY",
+      "series": "13:15 observed attendance",
+      "first_later_date": "2026-09-28",
+      "earlier_value": 1,
+      "later_value": 0,
+      "residual_loss": 0.0,
+      "earlier_dates": 11,
+      "later_dates": 4
+    },
+    {
+      "underlying": "NIFTY",
+      "series": "CE first seed gap",
+      "first_later_date": "2026-08-17",
+      "earlier_value": 1950.0,
+      "later_value": 2000.0,
+      "residual_loss": 600.0,
+      "earlier_dates": 6,
+      "later_dates": 8
+    },
+    {
+      "underlying": "NIFTY",
+      "series": "PE first seed gap",
+      "first_later_date": "2026-07-20",
+      "earlier_value": 2000.0,
+      "later_value": 2000.0,
+      "residual_loss": 450.0,
+      "earlier_dates": 3,
+      "later_dates": 11
+    },
+    {
+      "underlying": "SENSEX",
+      "series": "13:15 observed attendance",
+      "first_later_date": "2026-09-16",
+      "earlier_value": 1,
+      "later_value": 0,
+      "residual_loss": 0.0,
+      "earlier_dates": 11,
+      "later_dates": 6
+    },
+    {
+      "underlying": "SENSEX",
+      "series": "CE first seed gap",
+      "first_later_date": "2026-08-26",
+      "earlier_value": 4000.0,
+      "later_value": 2000.0,
+      "residual_loss": 3000.0,
+      "earlier_dates": 9,
+      "later_dates": 8
+    },
+    {
+      "underlying": "SENSEX",
+      "series": "PE first seed gap",
+      "first_later_date": "2026-09-16",
+      "earlier_value": 4000.0,
+      "later_value": 2000.0,
+      "residual_loss": 400.0,
+      "earlier_dates": 11,
+      "later_dates": 6
+    }
+  ],
+  "note": "Targets are CE/PE short units within observed quarter windows. This is not an account-margin formula. Configuration fits use the full observed date sequence; they do not identify no-trade eligibility or prove a software version change."
+}

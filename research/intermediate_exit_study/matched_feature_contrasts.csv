@@ -1,0 +1,21 @@
+tier,feature,paired_cases,cycles,median_case_minus_control,positive_case_fraction,interpretation
+other_strike_secondary,premium_loss_pct,670,35,7.2651038359355,0.591044776119403,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,trailing_rebound_pct,670,35,0.06681803521724206,0.5044776119402985,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,side_equity_pct,666,35,0.0,0.466966966966967,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,side_drawdown_pct,666,35,0.0,0.46396396396396394,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,adverse_spot5_pct,641,35,0.008837745047623951,0.5444617784711389,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,adverse_entry_pct,556,35,0.03741104183452856,0.5881294964028777,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,contract_abs_delta,670,35,0.008679136633872986,0.5313432835820896,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,iv_change5_points,641,35,0.053960641219374494,0.514820592823713,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,protection_deficit_units,670,35,0.0,0.08955223880597014,descriptive matched contrasts; no independent-row inference or causal effect
+other_strike_secondary,age_minutes,670,35,-0.5833333333333339,0.4925373134328358,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,premium_loss_pct,2209,35,5.219943697964741,0.6487098234495247,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,trailing_rebound_pct,2209,35,7.954542681387901,0.6355817111815301,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,side_equity_pct,2199,35,-0.049530015932321536,0.351068667576171,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,side_drawdown_pct,2199,35,0.03910500062942501,0.6398362892223738,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,adverse_spot5_pct,2118,35,0.025982920802153378,0.6534466477809254,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,adverse_entry_pct,1846,35,0.026715890877909695,0.6370530877573131,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,contract_abs_delta,2174,35,0.015790414065122632,0.6370745170193193,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,iv_change5_points,2153,35,0.14343243767461367,0.6024152345564329,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,protection_deficit_units,2243,35,0.0,0.08114132857779759,descriptive matched contrasts; no independent-row inference or causal effect
+same_contract,age_minutes,2243,35,1.0083333333333333,0.5318769505127062,descriptive matched contrasts; no independent-row inference or causal effect

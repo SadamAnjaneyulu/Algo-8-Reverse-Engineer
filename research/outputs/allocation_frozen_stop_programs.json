@@ -1,0 +1,254 @@
+{
+  "fifo|CE|pooled": {
+    "atom1": {
+      "family": "short_loss",
+      "threshold": 50,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "hedged_profit",
+      "threshold": 95,
+      "activation": 0
+    },
+    "calibration_cases": 2068,
+    "calibration_match_rate": 0.17891682785299806
+  },
+  "fifo|CE|NIFTY": {
+    "atom1": {
+      "family": "short_loss",
+      "threshold": 50,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "hedged_profit",
+      "threshold": 90,
+      "activation": 0
+    },
+    "calibration_cases": 957,
+    "calibration_match_rate": 0.1536050156739812
+  },
+  "fifo|CE|SENSEX": {
+    "atom1": {
+      "family": "short_loss",
+      "threshold": 60,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "carry_hedged_loss",
+      "threshold": 3,
+      "activation": 0
+    },
+    "calibration_cases": 1111,
+    "calibration_match_rate": 0.2232223222322232
+  },
+  "fifo|PE|pooled": {
+    "atom1": {
+      "family": "short_loss",
+      "threshold": 60,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "carry_short_loss",
+      "threshold": 10,
+      "activation": 0
+    },
+    "calibration_cases": 2010,
+    "calibration_match_rate": 0.16666666666666666
+  },
+  "fifo|PE|NIFTY": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 50,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "carry_short_loss",
+      "threshold": 20,
+      "activation": 0
+    },
+    "calibration_cases": 927,
+    "calibration_match_rate": 0.22114347357065803
+  },
+  "fifo|PE|SENSEX": {
+    "atom1": {
+      "family": "short_loss",
+      "threshold": 60,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "hedged_profit",
+      "threshold": 90,
+      "activation": 0
+    },
+    "calibration_cases": 1083,
+    "calibration_match_rate": 0.15512465373961218
+  },
+  "fifo|combined|pooled": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 10,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "activated_hedged_trail",
+      "threshold": 20,
+      "activation": 20
+    },
+    "calibration_cases": 1000,
+    "calibration_match_rate": 0.243
+  },
+  "fifo|combined|NIFTY": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 10,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "activated_hedged_trail",
+      "threshold": 20,
+      "activation": 20
+    },
+    "calibration_cases": 632,
+    "calibration_match_rate": 0.20569620253164558
+  },
+  "fifo|combined|SENSEX": {
+    "atom1": {
+      "family": "short_loss",
+      "threshold": 10,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "hedged_profit",
+      "threshold": 30,
+      "activation": 0
+    },
+    "calibration_cases": 368,
+    "calibration_match_rate": 0.3070652173913043
+  },
+  "lifo|CE|pooled": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 50,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "carry_short_loss",
+      "threshold": 20,
+      "activation": 0
+    },
+    "calibration_cases": 2059,
+    "calibration_match_rate": 0.23069451189898008
+  },
+  "lifo|CE|NIFTY": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 50,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "hedged_profit",
+      "threshold": 90,
+      "activation": 0
+    },
+    "calibration_cases": 951,
+    "calibration_match_rate": 0.20504731861198738
+  },
+  "lifo|CE|SENSEX": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 50,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "carry_short_loss",
+      "threshold": 20,
+      "activation": 0
+    },
+    "calibration_cases": 1108,
+    "calibration_match_rate": 0.26895306859205775
+  },
+  "lifo|PE|pooled": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 60,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "carry_short_loss",
+      "threshold": 20,
+      "activation": 0
+    },
+    "calibration_cases": 2006,
+    "calibration_match_rate": 0.20638085742771686
+  },
+  "lifo|PE|NIFTY": {
+    "atom1": {
+      "family": "short_loss",
+      "threshold": 70,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "carry_short_loss",
+      "threshold": 20,
+      "activation": 0
+    },
+    "calibration_cases": 925,
+    "calibration_match_rate": 0.2518918918918919
+  },
+  "lifo|PE|SENSEX": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 60,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "short_profit",
+      "threshold": 90,
+      "activation": 0
+    },
+    "calibration_cases": 1081,
+    "calibration_match_rate": 0.19888991674375578
+  },
+  "lifo|combined|pooled": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 10,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "activated_hedged_trail",
+      "threshold": 50,
+      "activation": 20
+    },
+    "calibration_cases": 997,
+    "calibration_match_rate": 0.29187562688064195
+  },
+  "lifo|combined|NIFTY": {
+    "atom1": {
+      "family": "hedged_loss",
+      "threshold": 10,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "activated_hedged_trail",
+      "threshold": 50,
+      "activation": 20
+    },
+    "calibration_cases": 630,
+    "calibration_match_rate": 0.2761904761904762
+  },
+  "lifo|combined|SENSEX": {
+    "atom1": {
+      "family": "short_loss",
+      "threshold": 10,
+      "activation": 0
+    },
+    "atom2": {
+      "family": "activated_hedged_trail",
+      "threshold": 50,
+      "activation": 20
+    },
+    "calibration_cases": 367,
+    "calibration_match_rate": 0.3242506811989101
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "original_motifs": 59,
+  "cohort_sha256": "1ac4a2ba20013eaf0fbd2dff3be7207126fb127a97dbbb62e329f42d7364ca00",
+  "source_rows_verified": 295,
+  "limit_price_bound_checks": 41421,
+  "simulator_definitions": 84,
+  "model_cycle_replays": 2940,
+  "primary_initialised_cycles": 32,
+  "primary_split_cycles": [
+    11,
+    7,
+    14
+  ],
+  "request_quantity_conservation": true,
+  "policy_execution_do_not_read_historical_targets": true,
+  "frozen_target_streams_identical": true,
+  "prior_0_of32_contradiction_preserved_and_reaudited": true,
+  "saved_yaml_exact_child_goal_request_inventory_replay": true,
+  "cold_cache_byte_identical": true,
+  "prior_tracked_outputs_unchanged": true,
+  "repository_tests": 217,
+  "interpretation": "software and evidence checks, not proof of original controller, cause or economic alpha"
+}

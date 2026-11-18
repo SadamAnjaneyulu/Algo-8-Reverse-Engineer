@@ -1,0 +1,1422 @@
+{
+  "parent_audit": {
+    "total_parent_orders": 39874,
+    "pure_new_short_parents": 13403,
+    "mixed_or_tie_sensitive_new_short_parents_excluded": 11
+  },
+  "opportunities": 1365,
+  "calibration_rows": 798,
+  "evaluation_rows": 567,
+  "calibration_cycles": 20,
+  "evaluation_cycles": 15,
+  "results": [
+    {
+      "model": "clock_only",
+      "scope": "all",
+      "rows": 567,
+      "positives": 402,
+      "negatives": 165,
+      "precision": 0.8040089086859689,
+      "recall": 0.8980099502487562,
+      "f1": 0.8484136310223267,
+      "balanced_accuracy": 0.6823383084577115,
+      "accuracy": 0.7724867724867724,
+      "brier": 0.16057466196355086
+    },
+    {
+      "model": "clock_only",
+      "scope": "preexpiry",
+      "rows": 294,
+      "positives": 245,
+      "negatives": 49,
+      "precision": 0.9603174603174603,
+      "recall": 0.9877551020408163,
+      "f1": 0.9738430583501007,
+      "balanced_accuracy": 0.8918367346938776,
+      "accuracy": 0.95578231292517,
+      "brier": 0.047467876039304614
+    },
+    {
+      "model": "clock_only",
+      "scope": "expiry",
+      "rows": 273,
+      "positives": 157,
+      "negatives": 116,
+      "precision": 0.6040609137055838,
+      "recall": 0.7579617834394905,
+      "f1": 0.672316384180791,
+      "balanced_accuracy": 0.542773995168021,
+      "accuracy": 0.575091575091575,
+      "brier": 0.28238196988196984
+    },
+    {
+      "model": "clock_only",
+      "scope": "active_book",
+      "rows": 478,
+      "positives": 402,
+      "negatives": 76,
+      "precision": 0.9352331606217616,
+      "recall": 0.8980099502487562,
+      "f1": 0.916243654822335,
+      "balanced_accuracy": 0.7845312909138518,
+      "accuracy": 0.8619246861924686,
+      "brier": 0.11967689446768943
+    },
+    {
+      "model": "clock_only",
+      "scope": "active_expiry",
+      "rows": 184,
+      "positives": 157,
+      "negatives": 27,
+      "precision": 0.8880597014925373,
+      "recall": 0.7579617834394905,
+      "f1": 0.8178694158075601,
+      "balanced_accuracy": 0.6012031139419675,
+      "accuracy": 0.7119565217391305,
+      "brier": 0.23505434782608695
+    },
+    {
+      "model": "clock_only",
+      "scope": "nifty_preexpiry_afternoon",
+      "rows": 49,
+      "positives": 39,
+      "negatives": 10,
+      "precision": 0.9047619047619048,
+      "recall": 0.9743589743589743,
+      "f1": 0.9382716049382716,
+      "balanced_accuracy": 0.7871794871794872,
+      "accuracy": 0.8979591836734694,
+      "brier": 0.09489795918367346
+    },
+    {
+      "model": "clock_open_book",
+      "scope": "all",
+      "rows": 567,
+      "positives": 402,
+      "negatives": 165,
+      "precision": 0.9352331606217616,
+      "recall": 0.8980099502487562,
+      "f1": 0.916243654822335,
+      "balanced_accuracy": 0.8732473993668024,
+      "accuracy": 0.8835978835978836,
+      "brier": 0.10089163237311384
+    },
+    {
+      "model": "clock_open_book",
+      "scope": "preexpiry",
+      "rows": 294,
+      "positives": 245,
+      "negatives": 49,
+      "precision": 0.9603174603174603,
+      "recall": 0.9877551020408163,
+      "f1": 0.9738430583501007,
+      "balanced_accuracy": 0.8918367346938776,
+      "accuracy": 0.95578231292517,
+      "brier": 0.047467876039304614
+    },
+    {
+      "model": "clock_open_book",
+      "scope": "expiry",
+      "rows": 273,
+      "positives": 157,
+      "negatives": 116,
+      "precision": 0.8880597014925373,
+      "recall": 0.7579617834394905,
+      "f1": 0.8178694158075601,
+      "balanced_accuracy": 0.8143257193059521,
+      "accuracy": 0.8058608058608059,
+      "brier": 0.15842490842490842
+    },
+    {
+      "model": "clock_open_book",
+      "scope": "active_book",
+      "rows": 478,
+      "positives": 402,
+      "negatives": 76,
+      "precision": 0.9352331606217616,
+      "recall": 0.8980099502487562,
+      "f1": 0.916243654822335,
+      "balanced_accuracy": 0.7845312909138518,
+      "accuracy": 0.8619246861924686,
+      "brier": 0.11967689446768943
+    },
+    {
+      "model": "clock_open_book",
+      "scope": "active_expiry",
+      "rows": 184,
+      "positives": 157,
+      "negatives": 27,
+      "precision": 0.8880597014925373,
+      "recall": 0.7579617834394905,
+      "f1": 0.8178694158075601,
+      "balanced_accuracy": 0.6012031139419675,
+      "accuracy": 0.7119565217391305,
+      "brier": 0.23505434782608695
+    },
+    {
+      "model": "clock_open_book",
+      "scope": "nifty_preexpiry_afternoon",
+      "rows": 49,
+      "positives": 39,
+      "negatives": 10,
+      "precision": 0.9047619047619048,
+      "recall": 0.9743589743589743,
+      "f1": 0.9382716049382716,
+      "balanced_accuracy": 0.7871794871794872,
+      "accuracy": 0.8979591836734694,
+      "brier": 0.09489795918367346
+    },
+    {
+      "model": "clock_open_book",
+      "scope": "weekly_brier_improvement",
+      "weeks": 8,
+      "mean": 0.059683029590436996,
+      "lower": 0.010570987654320988,
+      "upper": 0.11550925925925926,
+      "draws": 10000
+    },
+    {
+      "model": "market_only",
+      "scope": "all",
+      "rows": 567,
+      "positives": 402,
+      "negatives": 165,
+      "precision": 0.7621621621621621,
+      "recall": 0.7014925373134329,
+      "f1": 0.7305699481865285,
+      "balanced_accuracy": 0.5840796019900498,
+      "accuracy": 0.6331569664902998,
+      "brier": 0.17135840039126696
+    },
+    {
+      "model": "market_only",
+      "scope": "preexpiry",
+      "rows": 294,
+      "positives": 245,
+      "negatives": 49,
+      "precision": 0.8277310924369747,
+      "recall": 0.8040816326530612,
+      "f1": 0.8157349896480331,
+      "balanced_accuracy": 0.4836734693877551,
+      "accuracy": 0.6972789115646258,
+      "brier": 0.1720091624210935
+    },
+    {
+      "model": "market_only",
+      "scope": "expiry",
+      "rows": 273,
+      "positives": 157,
+      "negatives": 116,
+      "precision": 0.6439393939393939,
+      "recall": 0.5414012738853503,
+      "f1": 0.5882352941176471,
+      "balanced_accuracy": 0.5681144300461234,
+      "accuracy": 0.5641025641025641,
+      "brier": 0.17065757974376147
+    },
+    {
+      "model": "market_only",
+      "scope": "active_book",
+      "rows": 478,
+      "positives": 402,
+      "negatives": 76,
+      "precision": 0.8650306748466258,
+      "recall": 0.7014925373134329,
+      "f1": 0.7747252747252747,
+      "balanced_accuracy": 0.5612725844461901,
+      "accuracy": 0.6569037656903766,
+      "brier": 0.1662833600912523
+    },
+    {
+      "model": "market_only",
+      "scope": "active_expiry",
+      "rows": 184,
+      "positives": 157,
+      "negatives": 27,
+      "precision": 0.9659090909090909,
+      "recall": 0.5414012738853503,
+      "f1": 0.6938775510204082,
+      "balanced_accuracy": 0.7151450813871196,
+      "accuracy": 0.592391304347826,
+      "brier": 0.15713452375987574
+    },
+    {
+      "model": "market_only",
+      "scope": "nifty_preexpiry_afternoon",
+      "rows": 49,
+      "positives": 39,
+      "negatives": 10,
+      "precision": 0.7959183673469388,
+      "recall": 1.0,
+      "f1": 0.8863636363636364,
+      "balanced_accuracy": 0.5,
+      "accuracy": 0.7959183673469388,
+      "brier": 0.1702071038286905
+    },
+    {
+      "model": "market_only",
+      "scope": "weekly_brier_improvement",
+      "weeks": 8,
+      "mean": -0.010783738427716091,
+      "lower": -0.035648565637542526,
+      "upper": 0.008551046663225845,
+      "draws": 10000
+    },
+    {
+      "model": "clock_market",
+      "scope": "all",
+      "rows": 567,
+      "positives": 402,
+      "negatives": 165,
+      "precision": 0.9166666666666666,
+      "recall": 0.8756218905472637,
+      "f1": 0.8956743002544529,
+      "balanced_accuracy": 0.8408412483039349,
+      "accuracy": 0.855379188712522,
+      "brier": 0.1254146861797386
+    },
+    {
+      "model": "clock_market",
+      "scope": "preexpiry",
+      "rows": 294,
+      "positives": 245,
+      "negatives": 49,
+      "precision": 0.9635627530364372,
+      "recall": 0.9714285714285714,
+      "f1": 0.967479674796748,
+      "balanced_accuracy": 0.8938775510204082,
+      "accuracy": 0.9455782312925171,
+      "brier": 0.04532865317306758
+    },
+    {
+      "model": "clock_market",
+      "scope": "expiry",
+      "rows": 273,
+      "positives": 157,
+      "negatives": 116,
+      "precision": 0.8321167883211679,
+      "recall": 0.7261146496815286,
+      "f1": 0.7755102040816326,
+      "balanced_accuracy": 0.7639193938062816,
+      "accuracy": 0.7582417582417582,
+      "brier": 0.21166118326384586
+    },
+    {
+      "model": "clock_market",
+      "scope": "active_book",
+      "rows": 478,
+      "positives": 402,
+      "negatives": 76,
+      "precision": 0.9386666666666666,
+      "recall": 0.8756218905472637,
+      "f1": 0.9060489060489061,
+      "balanced_accuracy": 0.7864951557999476,
+      "accuracy": 0.8472803347280334,
+      "brier": 0.11628715658018189
+    },
+    {
+      "model": "clock_market",
+      "scope": "active_expiry",
+      "rows": 184,
+      "positives": 157,
+      "negatives": 27,
+      "precision": 0.890625,
+      "recall": 0.7261146496815286,
+      "f1": 0.8,
+      "balanced_accuracy": 0.6037980655815051,
+      "accuracy": 0.6902173913043478,
+      "brier": 0.22966650441546238
+    },
+    {
+      "model": "clock_market",
+      "scope": "nifty_preexpiry_afternoon",
+      "rows": 49,
+      "positives": 39,
+      "negatives": 10,
+      "precision": 0.9047619047619048,
+      "recall": 0.9743589743589743,
+      "f1": 0.9382716049382716,
+      "balanced_accuracy": 0.7871794871794872,
+      "accuracy": 0.8979591836734694,
+      "brier": 0.09696832232059466
+    },
+    {
+      "model": "clock_market",
+      "scope": "weekly_brier_improvement",
+      "weeks": 8,
+      "mean": 0.03515997578381225,
+      "lower": 0.009929128053459512,
+      "upper": 0.061798635741191627,
+      "draws": 10000
+    },
+    {
+      "model": "clock_spot",
+      "scope": "all",
+      "rows": 567,
+      "positives": 402,
+      "negatives": 165,
+      "precision": 0.8762135922330098,
+      "recall": 0.8980099502487562,
+      "f1": 0.8869778869778869,
+      "balanced_accuracy": 0.7944595205789236,
+      "accuracy": 0.8377425044091711,
+      "brier": 0.13684676394166198
+    },
+    {
+      "model": "clock_spot",
+      "scope": "preexpiry",
+      "rows": 294,
+      "positives": 245,
+      "negatives": 49,
+      "precision": 0.9603174603174603,
+      "recall": 0.9877551020408163,
+      "f1": 0.9738430583501007,
+      "balanced_accuracy": 0.8918367346938776,
+      "accuracy": 0.95578231292517,
+      "brier": 0.044242843710415564
+    },
+    {
+      "model": "clock_spot",
+      "scope": "expiry",
+      "rows": 273,
+      "positives": 157,
+      "negatives": 116,
+      "precision": 0.74375,
+      "recall": 0.7579617834394905,
+      "f1": 0.750788643533123,
+      "balanced_accuracy": 0.7022567537887108,
+      "accuracy": 0.7106227106227107,
+      "brier": 0.236574062652235
+    },
+    {
+      "model": "clock_spot",
+      "scope": "active_book",
+      "rows": 478,
+      "positives": 402,
+      "negatives": 76,
+      "precision": 0.9352331606217616,
+      "recall": 0.8980099502487562,
+      "f1": 0.916243654822335,
+      "balanced_accuracy": 0.7845312909138518,
+      "accuracy": 0.8619246861924686,
+      "brier": 0.11532032723846192
+    },
+    {
+      "model": "clock_spot",
+      "scope": "active_expiry",
+      "rows": 184,
+      "positives": 157,
+      "negatives": 27,
+      "precision": 0.8880597014925373,
+      "recall": 0.7579617834394905,
+      "f1": 0.8178694158075601,
+      "balanced_accuracy": 0.6012031139419675,
+      "accuracy": 0.7119565217391305,
+      "brier": 0.2288897846147969
+    },
+    {
+      "model": "clock_spot",
+      "scope": "nifty_preexpiry_afternoon",
+      "rows": 49,
+      "positives": 39,
+      "negatives": 10,
+      "precision": 0.9047619047619048,
+      "recall": 0.9743589743589743,
+      "f1": 0.9382716049382716,
+      "balanced_accuracy": 0.7871794871794872,
+      "accuracy": 0.8979591836734694,
+      "brier": 0.09715581319400476
+    },
+    {
+      "model": "clock_spot",
+      "scope": "weekly_brier_improvement",
+      "weeks": 8,
+      "mean": 0.023727898021888884,
+      "lower": 0.005063250136795156,
+      "upper": 0.0421274467551901,
+      "draws": 10000
+    },
+    {
+      "model": "clock_state",
+      "scope": "all",
+      "rows": 567,
+      "positives": 402,
+      "negatives": 165,
+      "precision": 0.9349593495934959,
+      "recall": 0.8582089552238806,
+      "f1": 0.8949416342412452,
+      "balanced_accuracy": 0.8563772048846676,
+      "accuracy": 0.8571428571428571,
+      "brier": 0.13033223801411598
+    },
+    {
+      "model": "clock_state",
+      "scope": "preexpiry",
+      "rows": 294,
+      "positives": 245,
+      "negatives": 49,
+      "precision": 0.9576271186440678,
+      "recall": 0.9224489795918367,
+      "f1": 0.9397089397089398,
+      "balanced_accuracy": 0.8591836734693877,
+      "accuracy": 0.9013605442176871,
+      "brier": 0.09683452862871555
+    },
+    {
+      "model": "clock_state",
+      "scope": "expiry",
+      "rows": 273,
+      "positives": 157,
+      "negatives": 116,
+      "precision": 0.8947368421052632,
+      "recall": 0.7579617834394905,
+      "f1": 0.8206896551724138,
+      "balanced_accuracy": 0.8186360641335384,
+      "accuracy": 0.8095238095238095,
+      "brier": 0.1664066942753164
+    },
+    {
+      "model": "clock_state",
+      "scope": "active_book",
+      "rows": 478,
+      "positives": 402,
+      "negatives": 76,
+      "precision": 0.9349593495934959,
+      "recall": 0.8582089552238806,
+      "f1": 0.8949416342412452,
+      "balanced_accuracy": 0.7712097407698351,
+      "accuracy": 0.8305439330543933,
+      "brier": 0.15426600902723797
+    },
+    {
+      "model": "clock_state",
+      "scope": "active_expiry",
+      "rows": 184,
+      "positives": 157,
+      "negatives": 27,
+      "precision": 0.8947368421052632,
+      "recall": 0.7579617834394905,
+      "f1": 0.8206896551724138,
+      "balanced_accuracy": 0.619721632460486,
+      "accuracy": 0.717391304347826,
+      "brier": 0.24603152662052924
+    },
+    {
+      "model": "clock_state",
+      "scope": "nifty_preexpiry_afternoon",
+      "rows": 49,
+      "positives": 39,
+      "negatives": 10,
+      "precision": 0.875,
+      "recall": 0.717948717948718,
+      "f1": 0.7887323943661971,
+      "balanced_accuracy": 0.658974358974359,
+      "accuracy": 0.6938775510204082,
+      "brier": 0.29274429738710733
+    },
+    {
+      "model": "clock_state",
+      "scope": "weekly_brier_improvement",
+      "weeks": 8,
+      "mean": 0.03024242394943487,
+      "lower": -0.044067970442287,
+      "upper": 0.09589094951338696,
+      "draws": 10000
+    },
+    {
+      "model": "clock_state_market",
+      "scope": "all",
+      "rows": 567,
+      "positives": 402,
+      "negatives": 165,
+      "precision": 0.9349593495934959,
+      "recall": 0.8582089552238806,
+      "f1": 0.8949416342412452,
+      "balanced_accuracy": 0.8563772048846676,
+      "accuracy": 0.8571428571428571,
+      "brier": 0.12584229046653558
+    },
+    {
+      "model": "clock_state_market",
+      "scope": "preexpiry",
+      "rows": 294,
+      "positives": 245,
+      "negatives": 49,
+      "precision": 0.9576271186440678,
+      "recall": 0.9224489795918367,
+      "f1": 0.9397089397089398,
+      "balanced_accuracy": 0.8591836734693877,
+      "accuracy": 0.9013605442176871,
+      "brier": 0.09567593965741415
+    },
+    {
+      "model": "clock_state_market",
+      "scope": "expiry",
+      "rows": 273,
+      "positives": 157,
+      "negatives": 116,
+      "precision": 0.8947368421052632,
+      "recall": 0.7579617834394905,
+      "f1": 0.8206896551724138,
+      "balanced_accuracy": 0.8186360641335384,
+      "accuracy": 0.8095238095238095,
+      "brier": 0.1583291297994356
+    },
+    {
+      "model": "clock_state_market",
+      "scope": "active_book",
+      "rows": 478,
+      "positives": 402,
+      "negatives": 76,
+      "precision": 0.9349593495934959,
+      "recall": 0.8582089552238806,
+      "f1": 0.8949416342412452,
+      "balanced_accuracy": 0.7712097407698351,
+      "accuracy": 0.8305439330543933,
+      "brier": 0.148215906370599
+    },
+    {
+      "model": "clock_state_market",
+      "scope": "active_expiry",
+      "rows": 184,
+      "positives": 157,
+      "negatives": 27,
+      "precision": 0.8947368421052632,
+      "recall": 0.7579617834394905,
+      "f1": 0.8206896551724138,
+      "balanced_accuracy": 0.619721632460486,
+      "accuracy": 0.717391304347826,
+      "brier": 0.23216563579275307
+    },
+    {
+      "model": "clock_state_market",
+      "scope": "nifty_preexpiry_afternoon",
+      "rows": 49,
+      "positives": 39,
+      "negatives": 10,
+      "precision": 0.875,
+      "recall": 0.717948717948718,
+      "f1": 0.7887323943661971,
+      "balanced_accuracy": 0.658974358974359,
+      "accuracy": 0.6938775510204082,
+      "brier": 0.290209298676779
+    },
+    {
+      "model": "clock_state_market",
+      "scope": "weekly_brier_improvement",
+      "weeks": 8,
+      "mean": 0.034732371497015274,
+      "lower": -0.03994483869013693,
+      "upper": 0.09956639717422587,
+      "draws": 10000
+    }
+  ],
+  "paired_model_comparisons": [
+    {
+      "candidate": "clock_market",
+      "baseline": "clock_open_book",
+      "scope": "all",
+      "rows": 567,
+      "weeks": 8,
+      "mean": -0.02452305380662475,
+      "lower": -0.05886337351389928,
+      "upper": 0.007332075816038192,
+      "draws": 10000
+    },
+    {
+      "candidate": "clock_market",
+      "baseline": "clock_open_book",
+      "scope": "preexpiry",
+      "rows": 294,
+      "weeks": 8,
+      "mean": 0.0021392228662370388,
+      "lower": -0.006754755951500353,
+      "upper": 0.009478471743554219,
+      "draws": 10000
+    },
+    {
+      "candidate": "clock_market",
+      "baseline": "clock_open_book",
+      "scope": "active_expiry",
+      "rows": 184,
+      "weeks": 6,
+      "mean": 0.005387843410624571,
+      "lower": -0.030896340873522415,
+      "upper": 0.0352514222234985,
+      "draws": 10000
+    },
+    {
+      "candidate": "clock_state_market",
+      "baseline": "clock_state",
+      "scope": "all",
+      "rows": 567,
+      "weeks": 8,
+      "mean": 0.004489947547580401,
+      "lower": -0.00020040447406796194,
+      "upper": 0.010733158972728021,
+      "draws": 10000
+    },
+    {
+      "candidate": "clock_state_market",
+      "baseline": "clock_state",
+      "scope": "preexpiry",
+      "rows": 294,
+      "weeks": 8,
+      "mean": 0.0011585889713014138,
+      "lower": -9.259183563697098e-05,
+      "upper": 0.0026391564281494384,
+      "draws": 10000
+    },
+    {
+      "candidate": "clock_state_market",
+      "baseline": "clock_state",
+      "scope": "active_expiry",
+      "rows": 184,
+      "weeks": 6,
+      "mean": 0.013865890827776142,
+      "lower": -0.00016697714825944556,
+      "upper": 0.027569989027128327,
+      "draws": 10000
+    },
+    {
+      "candidate": "market_only",
+      "baseline": "clock_only",
+      "scope": "all",
+      "rows": 567,
+      "weeks": 8,
+      "mean": -0.010783738427716091,
+      "lower": -0.035648565637542526,
+      "upper": 0.008551046663225845,
+      "draws": 10000
+    },
+    {
+      "candidate": "market_only",
+      "baseline": "clock_only",
+      "scope": "preexpiry",
+      "rows": 294,
+      "weeks": 8,
+      "mean": -0.12454128638178885,
+      "lower": -0.1445199234350967,
+      "upper": -0.11025538323248783,
+      "draws": 10000
+    },
+    {
+      "candidate": "market_only",
+      "baseline": "clock_only",
+      "scope": "active_expiry",
+      "rows": 184,
+      "weeks": 6,
+      "mean": 0.07791982406621123,
+      "lower": 0.05509385803505874,
+      "upper": 0.09501534825192214,
+      "draws": 10000
+    }
+  ],
+  "scheduled_build_up": {
+    "observed_sessions": 32,
+    "universal_windows": [
+      "09:30",
+      "09:45",
+      "10:00",
+      "10:15",
+      "10:30",
+      "10:45",
+      "11:00",
+      "11:15",
+      "11:30",
+      "11:45",
+      "12:00",
+      "12:30",
+      "13:30",
+      "13:45",
+      "14:00",
+      "14:15",
+      "14:30"
+    ],
+    "positive_session_windows": 544,
+    "strict_fill_window_misses": 30,
+    "coarse_label_window_misses": 0,
+    "completed_market_contexts": {
+      "spot_return5_pct": {
+        "observations": 544,
+        "positive": 273,
+        "negative": 271,
+        "zero": 0,
+        "minimum": -0.255504102583215,
+        "maximum": 0.24539331836670453
+      },
+      "reference_premium_change5_pct": {
+        "observations": 542,
+        "positive": 227,
+        "negative": 309,
+        "zero": 6,
+        "minimum": -7.660069848661233,
+        "maximum": 21.31697279170797
+      },
+      "iv_change15_points": {
+        "observations": 512,
+        "positive": 184,
+        "negative": 328,
+        "zero": 0,
+        "minimum": -1.556843832061311,
+        "maximum": 6.953472486433188
+      }
+    }
+  },
+  "trees": {
+    "market_only": {
+      "rules": "|--- last_pair_max_leg_change_pct <= 47.2610\n|   |--- reference_iv_pct <= 18.1315\n|   |   |--- last_pair_spot_gap_steps <= 0.9392\n|   |   |   |--- class: 1\n|   |   |--- last_pair_spot_gap_steps >  0.9392\n|   |   |   |--- class: 1\n|   |--- reference_iv_pct >  18.1315\n|   |   |--- is_sensex <= 0.5000\n|   |   |   |--- class: 1\n|   |   |--- is_sensex >  0.5000\n|   |   |   |--- class: 0\n|--- last_pair_max_leg_change_pct >  47.2610\n|   |--- spot_range5_pct <= 0.0864\n|   |   |--- class: 0\n|   |--- spot_range5_pct >  0.0864\n|   |   |--- class: 1\n",
+      "node_support": {
+        "0": {
+          "rows": 798,
+          "cycles": 20,
+          "positives": 579
+        },
+        "1": {
+          "rows": 684,
+          "cycles": 20,
+          "positives": 555
+        },
+        "2": {
+          "rows": 481,
+          "cycles": 19,
+          "positives": 425
+        },
+        "3": {
+          "rows": 433,
+          "cycles": 19,
+          "positives": 389
+        },
+        "4": {
+          "rows": 48,
+          "cycles": 15,
+          "positives": 36
+        },
+        "5": {
+          "rows": 203,
+          "cycles": 17,
+          "positives": 130
+        },
+        "6": {
+          "rows": 75,
+          "cycles": 8,
+          "positives": 68
+        },
+        "7": {
+          "rows": 128,
+          "cycles": 9,
+          "positives": 62
+        },
+        "8": {
+          "rows": 114,
+          "cycles": 14,
+          "positives": 24
+        },
+        "9": {
+          "rows": 73,
+          "cycles": 8,
+          "positives": 3
+        },
+        "10": {
+          "rows": 41,
+          "cycles": 14,
+          "positives": 21
+        }
+      },
+      "importance": {
+        "is_sensex": 0.1430992220877992,
+        "spot_range5_pct": 0.09886981288530929,
+        "reference_iv_pct": 0.14324655523403435,
+        "last_pair_spot_gap_steps": 0.016143272722991597,
+        "last_pair_max_leg_change_pct": 0.5986411370698655
+      },
+      "minimum_cycles_backoff": 3
+    },
+    "clock_market": {
+      "rules": "|--- clock_probability <= 0.4222\n|   |--- last_pair_spot_gap_steps <= -0.0186\n|   |   |--- class: 0\n|   |--- last_pair_spot_gap_steps >  -0.0186\n|   |   |--- spot_return1_pct <= 0.0033\n|   |   |   |--- class: 0\n|   |   |--- spot_return1_pct >  0.0033\n|   |   |   |--- class: 0\n|--- clock_probability >  0.4222\n|   |--- last_pair_max_leg_change_pct <= 47.2610\n|   |   |--- last_pair_premium_change_pct <= -5.5028\n|   |   |   |--- class: 1\n|   |   |--- last_pair_premium_change_pct >  -5.5028\n|   |   |   |--- class: 1\n|   |--- last_pair_max_leg_change_pct >  47.2610\n|   |   |--- spot_range5_pct <= 0.0753\n|   |   |   |--- class: 0\n|   |   |--- spot_range5_pct >  0.0753\n|   |   |   |--- class: 0\n",
+      "node_support": {
+        "0": {
+          "rows": 798,
+          "cycles": 20,
+          "positives": 579
+        },
+        "1": {
+          "rows": 164,
+          "cycles": 20,
+          "positives": 17
+        },
+        "2": {
+          "rows": 67,
+          "cycles": 18,
+          "positives": 13
+        },
+        "3": {
+          "rows": 97,
+          "cycles": 16,
+          "positives": 4
+        },
+        "4": {
+          "rows": 53,
+          "cycles": 15,
+          "positives": 4
+        },
+        "5": {
+          "rows": 44,
+          "cycles": 14,
+          "positives": 0
+        },
+        "6": {
+          "rows": 634,
+          "cycles": 20,
+          "positives": 562
+        },
+        "7": {
+          "rows": 550,
+          "cycles": 20,
+          "positives": 541
+        },
+        "8": {
+          "rows": 40,
+          "cycles": 16,
+          "positives": 34
+        },
+        "9": {
+          "rows": 510,
+          "cycles": 20,
+          "positives": 507
+        },
+        "10": {
+          "rows": 84,
+          "cycles": 14,
+          "positives": 21
+        },
+        "11": {
+          "rows": 43,
+          "cycles": 6,
+          "positives": 2
+        },
+        "12": {
+          "rows": 41,
+          "cycles": 14,
+          "positives": 19
+        }
+      },
+      "importance": {
+        "clock_probability": 0.6410665236418883,
+        "spot_return1_pct": 0.0010995679036184044,
+        "spot_range5_pct": 0.029291396579975308,
+        "last_pair_spot_gap_steps": 0.007428568133875322,
+        "last_pair_premium_change_pct": 0.006185841714540843,
+        "last_pair_max_leg_change_pct": 0.3149281020261017
+      },
+      "minimum_cycles_backoff": 3
+    },
+    "clock_spot": {
+      "rules": "|--- clock_probability <= 0.4222\n|   |--- last_pair_spot_gap_steps <= -0.0186\n|   |   |--- class: 0\n|   |--- last_pair_spot_gap_steps >  -0.0186\n|   |   |--- spot_return1_pct <= 0.0033\n|   |   |   |--- class: 0\n|   |   |--- spot_return1_pct >  0.0033\n|   |   |   |--- class: 0\n|--- clock_probability >  0.4222\n|   |--- last_pair_abs_spot_gap_steps <= 2.9930\n|   |   |--- clock_probability <= 0.8375\n|   |   |   |--- class: 1\n|   |   |--- clock_probability >  0.8375\n|   |   |   |--- class: 1\n|   |--- last_pair_abs_spot_gap_steps >  2.9930\n|   |   |--- class: 0\n",
+      "node_support": {
+        "0": {
+          "rows": 798,
+          "cycles": 20,
+          "positives": 579
+        },
+        "1": {
+          "rows": 164,
+          "cycles": 20,
+          "positives": 17
+        },
+        "2": {
+          "rows": 67,
+          "cycles": 18,
+          "positives": 13
+        },
+        "3": {
+          "rows": 97,
+          "cycles": 16,
+          "positives": 4
+        },
+        "4": {
+          "rows": 53,
+          "cycles": 15,
+          "positives": 4
+        },
+        "5": {
+          "rows": 44,
+          "cycles": 14,
+          "positives": 0
+        },
+        "6": {
+          "rows": 634,
+          "cycles": 20,
+          "positives": 562
+        },
+        "7": {
+          "rows": 577,
+          "cycles": 20,
+          "positives": 556
+        },
+        "8": {
+          "rows": 237,
+          "cycles": 17,
+          "positives": 216
+        },
+        "9": {
+          "rows": 340,
+          "cycles": 19,
+          "positives": 340
+        },
+        "10": {
+          "rows": 57,
+          "cycles": 8,
+          "positives": 6
+        }
+      },
+      "importance": {
+        "clock_probability": 0.6732415686174903,
+        "spot_return1_pct": 0.0011391108769575073,
+        "last_pair_spot_gap_steps": 0.007695716411575035,
+        "last_pair_abs_spot_gap_steps": 0.31792360409397724
+      },
+      "minimum_cycles_backoff": 3
+    },
+    "clock_state": {
+      "rules": "|--- clock_probability <= 0.4222\n|   |--- drawdown_pct_capital <= -0.5695\n|   |   |--- class: 0\n|   |--- drawdown_pct_capital >  -0.5695\n|   |   |--- clock_probability <= 0.1181\n|   |   |   |--- class: 0\n|   |   |--- clock_probability >  0.1181\n|   |   |   |--- class: 0\n|--- clock_probability >  0.4222\n|   |--- equity_pct_capital <= -0.4219\n|   |   |--- class: 0\n|   |--- equity_pct_capital >  -0.4219\n|   |   |--- drawdown_pct_capital <= -0.5715\n|   |   |   |--- class: 1\n|   |   |--- drawdown_pct_capital >  -0.5715\n|   |   |   |--- class: 1\n",
+      "node_support": {
+        "0": {
+          "rows": 798,
+          "cycles": 20,
+          "positives": 579
+        },
+        "1": {
+          "rows": 164,
+          "cycles": 20,
+          "positives": 17
+        },
+        "2": {
+          "rows": 44,
+          "cycles": 11,
+          "positives": 0
+        },
+        "3": {
+          "rows": 120,
+          "cycles": 20,
+          "positives": 17
+        },
+        "4": {
+          "rows": 52,
+          "cycles": 16,
+          "positives": 3
+        },
+        "5": {
+          "rows": 68,
+          "cycles": 18,
+          "positives": 14
+        },
+        "6": {
+          "rows": 634,
+          "cycles": 20,
+          "positives": 562
+        },
+        "7": {
+          "rows": 72,
+          "cycles": 6,
+          "positives": 1
+        },
+        "8": {
+          "rows": 562,
+          "cycles": 20,
+          "positives": 561
+        },
+        "9": {
+          "rows": 40,
+          "cycles": 10,
+          "positives": 39
+        },
+        "10": {
+          "rows": 522,
+          "cycles": 20,
+          "positives": 522
+        }
+      },
+      "importance": {
+        "clock_probability": 0.5628565606489647,
+        "equity_pct_capital": 0.4324623730192704,
+        "drawdown_pct_capital": 0.004681066331764835
+      },
+      "minimum_cycles_backoff": 3
+    },
+    "clock_state_market": {
+      "rules": "|--- clock_probability <= 0.4222\n|   |--- last_pair_spot_gap_steps <= -0.0186\n|   |   |--- class: 0\n|   |--- last_pair_spot_gap_steps >  -0.0186\n|   |   |--- short_pe_units <= 32.5000\n|   |   |   |--- class: 0\n|   |   |--- short_pe_units >  32.5000\n|   |   |   |--- class: 0\n|--- clock_probability >  0.4222\n|   |--- equity_pct_capital <= -0.4219\n|   |   |--- class: 0\n|   |--- equity_pct_capital >  -0.4219\n|   |   |--- iv_change15_points <= -0.7024\n|   |   |   |--- class: 1\n|   |   |--- iv_change15_points >  -0.7024\n|   |   |   |--- class: 1\n",
+      "node_support": {
+        "0": {
+          "rows": 798,
+          "cycles": 20,
+          "positives": 579
+        },
+        "1": {
+          "rows": 164,
+          "cycles": 20,
+          "positives": 17
+        },
+        "2": {
+          "rows": 67,
+          "cycles": 18,
+          "positives": 13
+        },
+        "3": {
+          "rows": 97,
+          "cycles": 16,
+          "positives": 4
+        },
+        "4": {
+          "rows": 46,
+          "cycles": 11,
+          "positives": 0
+        },
+        "5": {
+          "rows": 51,
+          "cycles": 12,
+          "positives": 4
+        },
+        "6": {
+          "rows": 634,
+          "cycles": 20,
+          "positives": 562
+        },
+        "7": {
+          "rows": 72,
+          "cycles": 6,
+          "positives": 1
+        },
+        "8": {
+          "rows": 562,
+          "cycles": 20,
+          "positives": 561
+        },
+        "9": {
+          "rows": 40,
+          "cycles": 17,
+          "positives": 39
+        },
+        "10": {
+          "rows": 522,
+          "cycles": 20,
+          "positives": 522
+        }
+      },
+      "importance": {
+        "clock_probability": 0.5591888428345863,
+        "short_pe_units": 0.0010420493856631418,
+        "equity_pct_capital": 0.4331266843559362,
+        "iv_change15_points": 0.00016263971103998266,
+        "last_pair_spot_gap_steps": 0.006479783712774416
+      },
+      "minimum_cycles_backoff": 3
+    }
+  },
+  "quantity_patterns": [
+    {
+      "underlying": "NIFTY",
+      "phase": "preexpiry",
+      "parents": 2032,
+      "quantity_mode_counts": {
+        "65": 2022,
+        "130": 2,
+        "975": 1,
+        "325": 1,
+        "3510": 4,
+        "780": 2
+      },
+      "first_fill_differs_from_label_minute": 7
+    },
+    {
+      "underlying": "NIFTY",
+      "phase": "expiry",
+      "parents": 4210,
+      "quantity_mode_counts": {
+        "130": 808,
+        "65": 3361,
+        "390": 3,
+        "325": 5,
+        "1170": 2,
+        "195": 4,
+        "910": 1,
+        "1755": 4,
+        "1365": 1,
+        "455": 3,
+        "520": 3,
+        "845": 1,
+        "1495": 1,
+        "650": 1,
+        "585": 4,
+        "715": 1,
+        "780": 3,
+        "260": 1,
+        "1040": 1,
+        "3510": 1,
+        "2990": 1
+      },
+      "first_fill_differs_from_label_minute": 6
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "preexpiry",
+      "parents": 2375,
+      "quantity_mode_counts": {
+        "20": 2375
+      },
+      "first_fill_differs_from_label_minute": 222
+    },
+    {
+      "underlying": "SENSEX",
+      "phase": "expiry",
+      "parents": 4786,
+      "quantity_mode_counts": {
+        "20": 4753,
+        "40": 3,
+        "420": 1,
+        "80": 3,
+        "60": 4,
+        "120": 4,
+        "100": 2,
+        "660": 1,
+        "320": 1,
+        "280": 2,
+        "160": 1,
+        "240": 3,
+        "200": 1,
+        "740": 1,
+        "480": 1,
+        "300": 1,
+        "260": 1,
+        "180": 1,
+        "140": 1,
+        "460": 1
+      },
+      "first_fill_differs_from_label_minute": 408
+    }
+  ],
+  "off_clock_parent_pair_minutes": 466,
+  "focused_nifty_afternoon": {
+    "calibration_cycles": 8,
+    "evaluation_cycles": 7,
+    "selected_feature": "clock_only",
+    "training_cycle_cross_validation": [
+      {
+        "feature": "reference_straddle_price",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.1023946503424392
+      },
+      {
+        "feature": "reference_straddle_pct_spot",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.09485403470329208
+      },
+      {
+        "feature": "equity_pct_capital",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.11033195665664886
+      },
+      {
+        "feature": "last_pair_abs_spot_gap_steps",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.09725995253875948
+      },
+      {
+        "feature": "spot_abs_return5_pct",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.10471225796929431
+      },
+      {
+        "feature": "iv_change15_points",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.09865037926460281
+      },
+      {
+        "feature": "last_pair_premium_change_pct",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.10059799552273103
+      },
+      {
+        "feature": "recent_short_covers5_units",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.09702312297468006
+      },
+      {
+        "feature": "time_since_last_pair_min",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 0.8928571428571429,
+        "recall": 1.0,
+        "f1": 0.9433962264150944,
+        "balanced_accuracy": 0.5,
+        "accuracy": 0.8928571428571429,
+        "brier": 0.09039927729056296
+      },
+      {
+        "feature": "clock_only",
+        "rows": 56,
+        "positives": 50,
+        "negatives": 6,
+        "precision": 1.0,
+        "recall": 0.96,
+        "f1": 0.9795918367346939,
+        "balanced_accuracy": 0.98,
+        "accuracy": 0.9642857142857143,
+        "brier": 0.04409171075837743
+      }
+    ],
+    "selected_rule": {
+      "rules": "Clock-only table wins the calibration comparison."
+    },
+    "evaluation_metrics": {
+      "rows": 49,
+      "positives": 39,
+      "negatives": 10,
+      "precision": 0.9047619047619048,
+      "recall": 0.9743589743589743,
+      "f1": 0.9382716049382716,
+      "balanced_accuracy": 0.7871794871794872,
+      "accuracy": 0.8979591836734694,
+      "brier": 0.09489795918367346
+    },
+    "note": "Secondary exploratory stump study added after global-model results; feature selected only on calibration cycle CV. Not original code or an independent holdout."
+  },
+  "off_clock_matched_comparisons": [
+    {
+      "phase": "preexpiry",
+      "matched_case_minutes": 151,
+      "cycles": 32,
+      "case_minutes_with_recent_covers": 11,
+      "mean_control_recent_cover_fraction": 0.15011037527593818,
+      "features": {
+        "spot_abs_return5_pct": {
+          "cases": 151,
+          "median_difference": 0.002564527529358429,
+          "case_higher": 81
+        },
+        "last_pair_abs_spot_gap_steps": {
+          "cases": 151,
+          "median_difference": -0.06900000000001455,
+          "case_higher": 68
+        },
+        "last_pair_max_leg_change_pct": {
+          "cases": 151,
+          "median_difference": -0.3385674002293726,
+          "case_higher": 70
+        },
+        "recent_short_covers5_units": {
+          "cases": 151,
+          "median_difference": 0.0,
+          "case_higher": 10
+        },
+        "iv_change15_points": {
+          "cases": 151,
+          "median_difference": -0.01356718817643876,
+          "case_higher": 70
+        }
+      }
+    },
+    {
+      "phase": "expiry",
+      "matched_case_minutes": 160,
+      "cycles": 17,
+      "case_minutes_with_recent_covers": 69,
+      "mean_control_recent_cover_fraction": 0.3885416666666667,
+      "features": {
+        "spot_abs_return5_pct": {
+          "cases": 160,
+          "median_difference": 0.00445625546104389,
+          "case_higher": 91
+        },
+        "last_pair_abs_spot_gap_steps": {
+          "cases": 160,
+          "median_difference": -0.039749999999985436,
+          "case_higher": 70
+        },
+        "last_pair_max_leg_change_pct": {
+          "cases": 160,
+          "median_difference": 3.8252861138455163,
+          "case_higher": 96
+        },
+        "recent_short_covers5_units": {
+          "cases": 160,
+          "median_difference": 0.0,
+          "case_higher": 47
+        },
+        "iv_change15_points": {
+          "cases": 160,
+          "median_difference": -0.10300425939469837,
+          "case_higher": 76
+        }
+      }
+    }
+  ],
+  "runtime_versions": {
+    "sklearn": "1.8.0",
+    "numpy": "2.3.5"
+  },
+  "limitations": [
+    "Conditional on observed export sessions, inferred zero-start inventory and parent/order timestamp semantics; not the complete eligible no-trade universe.",
+    "All features have a one-minute embargo and only completed quotes; target label and first-fill clocks remain proxies, not original signal timestamps.",
+    "Model-input imputation uses calibration medians plus flags only; no inventory or option-price gap is filled.",
+    "Chronological evaluation has been seen in earlier research; small expiry-week clusters and retrospective traded-contract quote availability limit inference.",
+    "Predicting execution occurrence is not proof of causal decision logic, original-code identity or an economic alpha."
+  ]
+}

@@ -1,0 +1,9 @@
+task,phase,selected_family,weeks,f1_difference,lower,upper,draws
+quarter_additions,preexpiry,clock,8,0.0,0.0,0.0,5000
+off_quarter_additions,preexpiry,ema,8,0.050314465408805034,0.012048192771084338,0.09411764705882353,5000
+short_covers,preexpiry,book_state,8,0.2077922077922078,0.1645123384253819,0.24579560155239327,5000
+new_protection,preexpiry,clock,8,0.0,0.0,0.0,5000
+quarter_additions,expiry,book_state,7,-0.002538405354598483,-0.018585858585858595,0.012072434607645843,5000
+off_quarter_additions,expiry,clock,7,0.0,0.0,0.0,5000
+short_covers,expiry,book_state,7,0.025594356261022966,-0.07440224691659547,0.11970256104906773,5000
+new_protection,expiry,clock,7,0.0,0.0,0.0,5000

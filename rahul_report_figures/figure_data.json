@@ -1,0 +1,518 @@
+{
+  "1": {
+    "title": "Observed lifecycle and unresolved activation",
+    "source": "S02 S03 S06",
+    "definition": "Solid boxes: observed structure. Dashed gold boxes/arrows: conditions or sequencing not recovered. Schematic only; early closures can bypass later stages.",
+    "data": {},
+    "files": [
+      "Figure_01.png",
+      "Figure_01.svg"
+    ]
+  },
+  "2": {
+    "title": "Observed recurring-window short allocations",
+    "source": "S10",
+    "definition": "Gross inventory-opening CE/PE short quantities averaged per right, divided by65 for NIFTY and20 for SENSEX; median and IQR. Outliers not shown; windows are not sizing instructions.",
+    "data": [
+      {
+        "index": "NIFTY",
+        "clock": "09:30",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 3.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "09:45",
+        "q25": 3.0,
+        "median": 3.0,
+        "q75": 3.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "10:00",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "10:15",
+        "q25": 4.0,
+        "median": 4.0,
+        "q75": 4.5
+      },
+      {
+        "index": "NIFTY",
+        "clock": "10:30",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 2.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "10:45",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "11:00",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "11:15",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.5
+      },
+      {
+        "index": "NIFTY",
+        "clock": "11:30",
+        "q25": 1.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "11:45",
+        "q25": 3.0,
+        "median": 3.0,
+        "q75": 3.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "12:00",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "12:30",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.5
+      },
+      {
+        "index": "NIFTY",
+        "clock": "13:30",
+        "q25": 1.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "NIFTY",
+        "clock": "13:45",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.25
+      },
+      {
+        "index": "NIFTY",
+        "clock": "14:00",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.5
+      },
+      {
+        "index": "NIFTY",
+        "clock": "14:15",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.5
+      },
+      {
+        "index": "NIFTY",
+        "clock": "14:30",
+        "q25": 1.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "09:30",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.5
+      },
+      {
+        "index": "SENSEX",
+        "clock": "09:45",
+        "q25": 3.0,
+        "median": 3.0,
+        "q75": 3.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "10:00",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "10:15",
+        "q25": 3.5,
+        "median": 4.0,
+        "q75": 4.5
+      },
+      {
+        "index": "SENSEX",
+        "clock": "10:30",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 3.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "10:45",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "11:00",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "11:15",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "11:30",
+        "q25": 1.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "11:45",
+        "q25": 2.0,
+        "median": 3.0,
+        "q75": 3.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "12:00",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 2.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "12:30",
+        "q25": 2.0,
+        "median": 2.0,
+        "q75": 2.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "13:30",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "13:45",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.5
+      },
+      {
+        "index": "SENSEX",
+        "clock": "14:00",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 2.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "14:15",
+        "q25": 1.0,
+        "median": 1.0,
+        "q75": 1.0
+      },
+      {
+        "index": "SENSEX",
+        "clock": "14:30",
+        "q25": 1.0,
+        "median": 2.0,
+        "q75": 2.0
+      }
+    ],
+    "files": [
+      "Figure_02.png",
+      "Figure_02.svg"
+    ]
+  },
+  "3": {
+    "title": "Recurring-window structural evidence",
+    "source": "S02 S10",
+    "definition": "32 sessions \u00d717windows. One window lacks a full Greek fit; joint denominator remains544. Rates are correlated and must not be multiplied.",
+    "data": {
+      "numerator": [
+        544,
+        541,
+        530,
+        531,
+        533,
+        533,
+        529
+      ],
+      "denominator": [
+        544,
+        544,
+        544,
+        543,
+        543,
+        543,
+        544
+      ],
+      "labels": [
+        "Retain older shorts and longs",
+        "Fresh quantities in all four roles",
+        "Net short quantity grows",
+        "Modeled theta increases",
+        "Modeled Vega becomes more negative",
+        "Modeled Gamma becomes more negative",
+        "Joint structural pattern"
+      ]
+    },
+    "files": [
+      "Figure_03.png",
+      "Figure_03.svg"
+    ]
+  },
+  "4": {
+    "title": "Opening reconstruction: improvement and remaining mismatch",
+    "source": "S05",
+    "definition": "Different targets: opening gross shorts, true first executed wing pair, 09:17 net roles. Earlier controller contradiction is retained; no unreported net score invented.",
+    "data": {
+      "model28": [
+        28,
+        17,
+        19
+      ],
+      "denominator": 32,
+      "prior13845": [
+        0,
+        0
+      ]
+    },
+    "files": [
+      "Figure_04.png",
+      "Figure_04.svg"
+    ]
+  },
+  "5": {
+    "title": "Autonomous reconstruction remains weak",
+    "source": "S04 S05",
+    "definition": "Four action types, exact contract/action within \u00b12min. Panels have different initialization/cohort/modules; do not read23.3\u219224.3 as a controlled improvement.",
+    "data": {
+      "earlier": [
+        18.1519241,
+        23.3135638
+      ],
+      "separated": [
+        24.299379300000002,
+        24.299379300000002
+      ]
+    },
+    "files": [
+      "Figure_05.png",
+      "Figure_05.svg"
+    ]
+  },
+  "6": {
+    "title": "Intermediate-exit precision versus recall",
+    "source": "S06",
+    "definition": "24 expanding chronological cycles;2200 intermediate episode starts; same-contract one-to-one \u00b1120s. Not an independent-fill test or a full autonomous replay.",
+    "data": {
+      "names": [
+        "premium_loss50",
+        "side_drawdown_halfpct",
+        "clock_only",
+        "inventory_only"
+      ],
+      "precision": [
+        36.36363636363636,
+        18.04733727810651,
+        13.6405529953917,
+        11.310084825636189
+      ],
+      "recall": [
+        9.818181818181811,
+        16.63636363636363,
+        6.72727272727272,
+        10.9090909090909
+      ],
+      "cycles": 24,
+      "episodes": 2200
+    },
+    "files": [
+      "Figure_06.png",
+      "Figure_06.svg"
+    ]
+  },
+  "7": {
+    "title": "Reversal quantity equality is suggestive, not causal proof",
+    "source": "S13",
+    "definition": "Conservative motifs exclude oversize openings. One-base equality can be forced by the size restriction. Saved bootstrap is unadjusted, not a duplication probability.",
+    "data": {
+      "motifs": [
+        49,
+        59
+      ],
+      "strict_controls": [
+        9,
+        14
+      ],
+      "difference_pp": 18.76513317191283,
+      "low95_pp": -2.3809523809523703,
+      "high95_pp": 43.07792207792208
+    },
+    "files": [
+      "Figure_07.png",
+      "Figure_07.svg"
+    ]
+  },
+  "8": {
+    "title": "Economic result changes with declared costs",
+    "source": "S01 S14 S15 S19",
+    "definition": "32 initialized cycles. Net includes quoted residuals, not verified account returns or settlements. Charges are fixed estimates, not authenticated fees.",
+    "data": {
+      "scenarios": [
+        "zero_diagnostic",
+        "moderate",
+        "conservative",
+        "adverse_execution"
+      ],
+      "rupees": [
+        1894355.5,
+        821401.0768749999,
+        475346.65374999994,
+        -477316.84624999994
+      ]
+    },
+    "files": [
+      "Figure_08.png",
+      "Figure_08.svg"
+    ]
+  },
+  "9": {
+    "title": "Conservative net is highly sensitive to winning cycles",
+    "source": "S01 S15",
+    "definition": "Largest winner: NIFTY29Sep; no received expiry-day fills and substantial unrealized quoted gain. This is a sensitivity check, not a rule-selection exercise.",
+    "data": {
+      "rupees": [
+        475346.6537499998,
+        1721.5812499998135,
+        -423305.62375000026
+      ]
+    },
+    "files": [
+      "Figure_09.png",
+      "Figure_09.svg"
+    ]
+  },
+  "10": {
+    "title": "Gross role contributions: gains and protection costs",
+    "source": "S14",
+    "definition": "32 initialized cycles; pooled role cash plus residual marks, not original allocation P&L. Four roles sum to18.94lakh gross; strategy costs are deducted separately once.",
+    "data": {
+      "roles": [
+        "short_CE",
+        "short_PE",
+        "long_CE",
+        "long_PE"
+      ],
+      "rupees": [
+        3618523.4999999995,
+        -887406.9999999997,
+        -485371.5,
+        -351389.5
+      ]
+    },
+    "files": [
+      "Figure_10.png",
+      "Figure_10.svg"
+    ]
+  },
+  "11": {
+    "title": "Model-based repricing decomposition with residual",
+    "source": "S16",
+    "definition": "Primary32, primary model variant-valid intervals. Five signed terms sum to18.94lakh; time is not causal alpha and the bridge is not identified execution alpha.",
+    "data": {
+      "labels": [
+        "Forward / nonlinear repricing",
+        "Time change",
+        "Own-IV / surface repricing",
+        "Trade-to-bar mark bridge",
+        "Unexplained / unfitted residual"
+      ],
+      "rupees": [
+        -5899047.517896355,
+        8765043.418466387,
+        -1923276.9005682473,
+        110284.49999999999,
+        841351.9999982137
+      ]
+    },
+    "files": [
+      "Figure_11.png",
+      "Figure_11.svg"
+    ]
+  },
+  "12": {
+    "title": "Benchmark uncertainty does not establish alpha",
+    "source": "S17",
+    "definition": "Conservative costs; D_common_clock hypothetically closes actual pre-deadline inventory at the same candle open. B:25 and C:20 separate common cohorts; risk budgets unequal; C uses Aug\u2013Oct after June\u2013July size fitting.",
+    "data": [
+      {
+        "benchmark": "B_initial_basket",
+        "quality": "quoted_endpoints",
+        "index": "pooled",
+        "cost_scenario": "conservative",
+        "common_cycles": 25,
+        "mean_actual_minus_benchmark": -7973.488150000002,
+        "paired_total_difference": -199337.20375000004,
+        "bootstrap_mean_low95": -85810.00302000002,
+        "bootstrap_mean_high95": 74961.03427249998,
+        "cycles_actual_better": 10,
+        "comparable_risk_budget": false,
+        "alpha_inference": "inconclusive: dynamic risk not equalized"
+      },
+      {
+        "benchmark": "C_scheduled_accumulation",
+        "quality": "quoted_endpoints",
+        "index": "pooled",
+        "cost_scenario": "conservative",
+        "common_cycles": 20,
+        "mean_actual_minus_benchmark": 50264.03050000001,
+        "paired_total_difference": 1005280.61,
+        "bootstrap_mean_low95": -84527.804465625,
+        "bootstrap_mean_high95": 194279.21403125,
+        "cycles_actual_better": 10,
+        "comparable_risk_budget": false,
+        "alpha_inference": "inconclusive: dynamic risk not equalized"
+      }
+    ],
+    "files": [
+      "Figure_12.png",
+      "Figure_12.svg"
+    ]
+  }
+}

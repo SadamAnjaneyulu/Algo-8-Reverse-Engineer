@@ -1,0 +1,102 @@
+market_only
+|--- last_pair_max_leg_change_pct <= 47.2610
+|   |--- reference_iv_pct <= 18.1315
+|   |   |--- last_pair_spot_gap_steps <= 0.9392
+|   |   |   |--- class: 1
+|   |   |--- last_pair_spot_gap_steps >  0.9392
+|   |   |   |--- class: 1
+|   |--- reference_iv_pct >  18.1315
+|   |   |--- is_sensex <= 0.5000
+|   |   |   |--- class: 1
+|   |   |--- is_sensex >  0.5000
+|   |   |   |--- class: 0
+|--- last_pair_max_leg_change_pct >  47.2610
+|   |--- spot_range5_pct <= 0.0864
+|   |   |--- class: 0
+|   |--- spot_range5_pct >  0.0864
+|   |   |--- class: 1
+
+Group support: {"0": {"rows": 798, "cycles": 20, "positives": 579}, "1": {"rows": 684, "cycles": 20, "positives": 555}, "2": {"rows": 481, "cycles": 19, "positives": 425}, "3": {"rows": 433, "cycles": 19, "positives": 389}, "4": {"rows": 48, "cycles": 15, "positives": 36}, "5": {"rows": 203, "cycles": 17, "positives": 130}, "6": {"rows": 75, "cycles": 8, "positives": 68}, "7": {"rows": 128, "cycles": 9, "positives": 62}, "8": {"rows": 114, "cycles": 14, "positives": 24}, "9": {"rows": 73, "cycles": 8, "positives": 3}, "10": {"rows": 41, "cycles": 14, "positives": 21}}
+
+clock_market
+|--- clock_probability <= 0.4222
+|   |--- last_pair_spot_gap_steps <= -0.0186
+|   |   |--- class: 0
+|   |--- last_pair_spot_gap_steps >  -0.0186
+|   |   |--- spot_return1_pct <= 0.0033
+|   |   |   |--- class: 0
+|   |   |--- spot_return1_pct >  0.0033
+|   |   |   |--- class: 0
+|--- clock_probability >  0.4222
+|   |--- last_pair_max_leg_change_pct <= 47.2610
+|   |   |--- last_pair_premium_change_pct <= -5.5028
+|   |   |   |--- class: 1
+|   |   |--- last_pair_premium_change_pct >  -5.5028
+|   |   |   |--- class: 1
+|   |--- last_pair_max_leg_change_pct >  47.2610
+|   |   |--- spot_range5_pct <= 0.0753
+|   |   |   |--- class: 0
+|   |   |--- spot_range5_pct >  0.0753
+|   |   |   |--- class: 0
+
+Group support: {"0": {"rows": 798, "cycles": 20, "positives": 579}, "1": {"rows": 164, "cycles": 20, "positives": 17}, "2": {"rows": 67, "cycles": 18, "positives": 13}, "3": {"rows": 97, "cycles": 16, "positives": 4}, "4": {"rows": 53, "cycles": 15, "positives": 4}, "5": {"rows": 44, "cycles": 14, "positives": 0}, "6": {"rows": 634, "cycles": 20, "positives": 562}, "7": {"rows": 550, "cycles": 20, "positives": 541}, "8": {"rows": 40, "cycles": 16, "positives": 34}, "9": {"rows": 510, "cycles": 20, "positives": 507}, "10": {"rows": 84, "cycles": 14, "positives": 21}, "11": {"rows": 43, "cycles": 6, "positives": 2}, "12": {"rows": 41, "cycles": 14, "positives": 19}}
+
+clock_spot
+|--- clock_probability <= 0.4222
+|   |--- last_pair_spot_gap_steps <= -0.0186
+|   |   |--- class: 0
+|   |--- last_pair_spot_gap_steps >  -0.0186
+|   |   |--- spot_return1_pct <= 0.0033
+|   |   |   |--- class: 0
+|   |   |--- spot_return1_pct >  0.0033
+|   |   |   |--- class: 0
+|--- clock_probability >  0.4222
+|   |--- last_pair_abs_spot_gap_steps <= 2.9930
+|   |   |--- clock_probability <= 0.8375
+|   |   |   |--- class: 1
+|   |   |--- clock_probability >  0.8375
+|   |   |   |--- class: 1
+|   |--- last_pair_abs_spot_gap_steps >  2.9930
+|   |   |--- class: 0
+
+Group support: {"0": {"rows": 798, "cycles": 20, "positives": 579}, "1": {"rows": 164, "cycles": 20, "positives": 17}, "2": {"rows": 67, "cycles": 18, "positives": 13}, "3": {"rows": 97, "cycles": 16, "positives": 4}, "4": {"rows": 53, "cycles": 15, "positives": 4}, "5": {"rows": 44, "cycles": 14, "positives": 0}, "6": {"rows": 634, "cycles": 20, "positives": 562}, "7": {"rows": 577, "cycles": 20, "positives": 556}, "8": {"rows": 237, "cycles": 17, "positives": 216}, "9": {"rows": 340, "cycles": 19, "positives": 340}, "10": {"rows": 57, "cycles": 8, "positives": 6}}
+
+clock_state
+|--- clock_probability <= 0.4222
+|   |--- drawdown_pct_capital <= -0.5695
+|   |   |--- class: 0
+|   |--- drawdown_pct_capital >  -0.5695
+|   |   |--- clock_probability <= 0.1181
+|   |   |   |--- class: 0
+|   |   |--- clock_probability >  0.1181
+|   |   |   |--- class: 0
+|--- clock_probability >  0.4222
+|   |--- equity_pct_capital <= -0.4219
+|   |   |--- class: 0
+|   |--- equity_pct_capital >  -0.4219
+|   |   |--- drawdown_pct_capital <= -0.5715
+|   |   |   |--- class: 1
+|   |   |--- drawdown_pct_capital >  -0.5715
+|   |   |   |--- class: 1
+
+Group support: {"0": {"rows": 798, "cycles": 20, "positives": 579}, "1": {"rows": 164, "cycles": 20, "positives": 17}, "2": {"rows": 44, "cycles": 11, "positives": 0}, "3": {"rows": 120, "cycles": 20, "positives": 17}, "4": {"rows": 52, "cycles": 16, "positives": 3}, "5": {"rows": 68, "cycles": 18, "positives": 14}, "6": {"rows": 634, "cycles": 20, "positives": 562}, "7": {"rows": 72, "cycles": 6, "positives": 1}, "8": {"rows": 562, "cycles": 20, "positives": 561}, "9": {"rows": 40, "cycles": 10, "positives": 39}, "10": {"rows": 522, "cycles": 20, "positives": 522}}
+
+clock_state_market
+|--- clock_probability <= 0.4222
+|   |--- last_pair_spot_gap_steps <= -0.0186
+|   |   |--- class: 0
+|   |--- last_pair_spot_gap_steps >  -0.0186
+|   |   |--- short_pe_units <= 32.5000
+|   |   |   |--- class: 0
+|   |   |--- short_pe_units >  32.5000
+|   |   |   |--- class: 0
+|--- clock_probability >  0.4222
+|   |--- equity_pct_capital <= -0.4219
+|   |   |--- class: 0
+|   |--- equity_pct_capital >  -0.4219
+|   |   |--- iv_change15_points <= -0.7024
+|   |   |   |--- class: 1
+|   |   |--- iv_change15_points >  -0.7024
+|   |   |   |--- class: 1
+
+Group support: {"0": {"rows": 798, "cycles": 20, "positives": 579}, "1": {"rows": 164, "cycles": 20, "positives": 17}, "2": {"rows": 67, "cycles": 18, "positives": 13}, "3": {"rows": 97, "cycles": 16, "positives": 4}, "4": {"rows": 46, "cycles": 11, "positives": 0}, "5": {"rows": 51, "cycles": 12, "positives": 4}, "6": {"rows": 634, "cycles": 20, "positives": 562}, "7": {"rows": 72, "cycles": 6, "positives": 1}, "8": {"rows": 562, "cycles": 20, "positives": 561}, "9": {"rows": 40, "cycles": 17, "positives": 39}, "10": {"rows": 522, "cycles": 20, "positives": 522}}

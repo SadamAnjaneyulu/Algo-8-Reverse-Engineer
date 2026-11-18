@@ -1,0 +1,65 @@
+{
+  "programs_scored": 1806592,
+  "groups": [
+    {
+      "task": "preexpiry|NIFTY|hedge_refresh",
+      "programs_scored": 451648,
+      "trigger_atoms": 484,
+      "filter_atoms": 128,
+      "gates": 8,
+      "earlier_opportunities": 36865,
+      "earlier_events": 12,
+      "later_opportunities": 28663,
+      "later_events": 1,
+      "selected": {
+        "best_f1": "(CROSS(g_book_delta_per_short_unit <= 0.1) AND hedge_price <= 0.5) AND (clock_minutes >= 870)"
+      }
+    },
+    {
+      "task": "preexpiry|SENSEX|hedge_refresh",
+      "programs_scored": 451648,
+      "trigger_atoms": 484,
+      "filter_atoms": 128,
+      "gates": 8,
+      "earlier_opportunities": 34996,
+      "earlier_events": 3,
+      "later_opportunities": 22651,
+      "later_events": 2,
+      "selected": {
+        "best_f1": "(g_atm_iv_pct >= 20 AND outward_distance_pct >= 5) AND (clock_minutes >= 900)"
+      }
+    },
+    {
+      "task": "expiry|NIFTY|hedge_refresh",
+      "programs_scored": 451648,
+      "trigger_atoms": 484,
+      "filter_atoms": 128,
+      "gates": 8,
+      "earlier_opportunities": 36942,
+      "earlier_events": 78,
+      "later_opportunities": 16756,
+      "later_events": 44,
+      "selected": {
+        "best_f1": "(adverse_spot15_pct >= 0.2 AND hedge_fraction_cost >= 0.6) AND (clock_minutes >= 720)"
+      }
+    },
+    {
+      "task": "expiry|SENSEX|hedge_refresh",
+      "programs_scored": 451648,
+      "trigger_atoms": 484,
+      "filter_atoms": 128,
+      "gates": 8,
+      "earlier_opportunities": 43776,
+      "earlier_events": 34,
+      "later_opportunities": 27629,
+      "later_events": 28,
+      "selected": {
+        "best_f1": "(g_book_delta_per_short_unit <= -0.1 AND hedge_abs_delta >= 0.05) AND (clock_minutes >= 660)"
+      }
+    }
+  ],
+  "observable_refresh_contract_minutes": 221,
+  "positive_contract_minutes": 202,
+  "excluded_contract_minutes": 19,
+  "note": "Targets are equal-quantity different-strike long replacements within five seconds, with no nearby same-right new short. Associations may be ambiguous. Prior-known held-long states and minute bars; actual book is conditioned upon. Data are not independent of earlier research."
+}

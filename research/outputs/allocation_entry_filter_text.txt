@@ -1,0 +1,44 @@
+expiry_any_short_suppression|pooled_common|all best_f1
+|--- g_tau_days <= 0.14306
+|   |--- x_short_orders_5m <= 1.50000
+|   |   |--- class: True
+|   |--- x_short_orders_5m >  1.50000
+|   |   |--- g_PE_theta_pct_capital <= 2.18494
+|   |   |   |--- class: False
+|   |   |--- g_PE_theta_pct_capital >  2.18494
+|   |   |   |--- class: False
+|--- g_tau_days >  0.14306
+|   |--- class: False
+
+
+expiry_any_short_suppression|nifty_with_oi|NIFTY best_f1
+|--- o_pe_relative_volume_15 <= 0.80517
+|   |--- g_tau_days <= 0.14826
+|   |   |--- class: True
+|   |--- g_tau_days >  0.14826
+|   |   |--- class: False
+|--- o_pe_relative_volume_15 >  0.80517
+|   |--- class: False
+
+
+expiry_both_rights_suppression|pooled_common|all best_f1
+|--- g_tau_days <= 0.14306
+|   |--- x_short_orders_5m <= 1.50000
+|   |   |--- class: True
+|   |--- x_short_orders_5m >  1.50000
+|   |   |--- g_spot_return5_pct <= 0.00821
+|   |   |   |--- class: False
+|   |   |--- g_spot_return5_pct >  0.00821
+|   |   |   |--- class: False
+|--- g_tau_days >  0.14306
+|   |--- class: False
+
+
+expiry_both_rights_suppression|per_index|SENSEX best_f1
+|--- g_tau_days <= 0.08576
+|   |--- class: True
+|--- g_tau_days >  0.08576
+|   |--- i_ema_gap_20_100 <= -0.00491
+|   |   |--- class: False
+|   |--- i_ema_gap_20_100 >  -0.00491
+|   |   |--- class: False

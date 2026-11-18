@@ -1,0 +1,63 @@
+{
+  "programs_scored": 5176704,
+  "seconds": 2.982766001994605,
+  "groups": [
+    {
+      "task": "preexpiry|NIFTY|extra_side",
+      "programs_scored": 1294176,
+      "trigger_atoms": 600,
+      "filter_atoms": 160,
+      "gates": 16,
+      "earlier_opportunities": 3728,
+      "earlier_events": 122,
+      "later_opportunities": 3262,
+      "later_events": 142,
+      "selected": {
+        "best_f1": "(same_short_units <= 50 AND side_short_loss_pct <= -25) AND (since_cover >= 3)"
+      }
+    },
+    {
+      "task": "preexpiry|SENSEX|extra_side",
+      "programs_scored": 1294176,
+      "trigger_atoms": 600,
+      "filter_atoms": 160,
+      "gates": 16,
+      "earlier_opportunities": 4660,
+      "earlier_events": 171,
+      "later_opportunities": 3262,
+      "later_events": 156,
+      "selected": {
+        "best_f1": "(adverse_spot5_pct <= -0.05 AND side_short_loss_pct <= -25) AND (clock_minutes >= 600)"
+      }
+    },
+    {
+      "task": "expiry|NIFTY|extra_side",
+      "programs_scored": 1294176,
+      "trigger_atoms": 600,
+      "filter_atoms": 160,
+      "gates": 16,
+      "earlier_opportunities": 3696,
+      "earlier_events": 544,
+      "later_opportunities": 1816,
+      "later_events": 180,
+      "selected": {
+        "best_f1": "(new_shorts15_units >= 5 AND adverse_spot5_pct <= 0) AND (ALWAYS)"
+      }
+    },
+    {
+      "task": "expiry|SENSEX|extra_side",
+      "programs_scored": 1294176,
+      "trigger_atoms": 600,
+      "filter_atoms": 160,
+      "gates": 16,
+      "earlier_opportunities": 3394,
+      "earlier_events": 560,
+      "later_opportunities": 2226,
+      "later_events": 238,
+      "selected": {
+        "best_f1": "(new_shorts15_units >= 5 AND since_cover <= 7) AND (clock_minutes >= 660)"
+      }
+    }
+  ],
+  "note": "Conditional on actual prior active book. Side-minute labels differ from paired-basket labels. Timer-neighbor whole minutes excluded. No later threshold selection, independent alpha or recovered original controller is implied."
+}

@@ -1,0 +1,367 @@
+{
+  "calibration_parameter_context_comparisons": {
+    "action": 132922,
+    "flow_action": 75804,
+    "exit": 15636600,
+    "hedge": 1655,
+    "sizing": 48,
+    "joint": 51840,
+    "liquidity": 5760,
+    "active_book_baselines": 1936
+  },
+  "total_new_comparisons": 15906565,
+  "previous_separate_study_comparisons": 71720,
+  "counts_note": "Repeated rule/parameter/context evaluations, not distinct independent hypotheses. Sizing counts 48 settings; its 192 cycle-fold fits are not added again. Full-history fits and descriptive change points are excluded.",
+  "split": {
+    "calibration_expiry_through": "2026-08-31",
+    "later_expiry_after": "2026-08-31",
+    "limitation": "Later dates were already inspected in previous research; this is not an untouched holdout."
+  },
+  "audits": {
+    "action_score_rows": 132922,
+    "flow_action_score_rows": 75804,
+    "exit_histogram_contexts": 120,
+    "action_later_prediction_rows": 105705,
+    "flow_action_later_prediction_rows": 73143,
+    "joint_later_prediction_rows": 7774,
+    "causal_flow_context_rows": 24860,
+    "full_history": {
+      "preexpiry|fresh_pairs": {
+        "rows": 10432,
+        "leaves": 359,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|fresh_pairs": {
+        "rows": 10758,
+        "leaves": 434,
+        "historical_exact_rate": 1.0
+      },
+      "preexpiry|extra_pairs": {
+        "rows": 8032,
+        "leaves": 198,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|extra_pairs": {
+        "rows": 8283,
+        "leaves": 243,
+        "historical_exact_rate": 1.0
+      },
+      "preexpiry|covers": {
+        "rows": 10432,
+        "leaves": 314,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|covers": {
+        "rows": 10758,
+        "leaves": 694,
+        "historical_exact_rate": 1.0
+      },
+      "preexpiry|protection": {
+        "rows": 10432,
+        "leaves": 515,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|protection": {
+        "rows": 10758,
+        "leaves": 880,
+        "historical_exact_rate": 1.0
+      },
+      "preexpiry|quarter_pairs": {
+        "rows": 672,
+        "leaves": 22,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|quarter_pairs": {
+        "rows": 693,
+        "leaves": 55,
+        "historical_exact_rate": 1.0
+      },
+      "preexpiry|large_late_protection": {
+        "rows": 1650,
+        "leaves": 60,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|large_late_protection": {
+        "rows": 1695,
+        "leaves": 27,
+        "historical_exact_rate": 1.0
+      },
+      "allocation_quantity": {
+        "rows": 1365,
+        "leaves": 475,
+        "historical_exact_rate": 1.0
+      }
+    },
+    "full_history_flow": {
+      "preexpiry|fresh_pairs": {
+        "rows": 10432,
+        "leaves": 364,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|fresh_pairs": {
+        "rows": 10758,
+        "leaves": 433,
+        "historical_exact_rate": 1.0
+      },
+      "preexpiry|extra_pairs": {
+        "rows": 8032,
+        "leaves": 195,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|extra_pairs": {
+        "rows": 8283,
+        "leaves": 242,
+        "historical_exact_rate": 1.0
+      },
+      "preexpiry|covers": {
+        "rows": 10432,
+        "leaves": 317,
+        "historical_exact_rate": 1.0
+      },
+      "expiry|covers": {
+        "rows": 10758,
+        "leaves": 690,
+        "historical_exact_rate": 1.0
+      }
+    },
+    "economic_intervals_include_zero": true
+  },
+  "conclusions": {
+    "extra_entry_trigger": "Not recovered",
+    "exact_exit_controller": "Not recovered",
+    "exact_hedge_selector": "Partial matches only",
+    "sizing": "Partial later quantity matches",
+    "eligibility": "No-trade eligibility unidentified; schedule changes descriptive",
+    "economic_alpha": "Not established by the conditional fixed-basket diagnostic"
+  },
+  "artifact_manifest": {
+    "combo_action_evaluation.csv": {
+      "bytes": 6688,
+      "sha256": "4dac5431f85d8bca0fb334a34654107acc01fb017ed2ee19aba65793fc54ebd8"
+    },
+    "combo_action_predictions.csv.gz": {
+      "bytes": 296466,
+      "sha256": "bbea2199effaa68432af5d64cdeda1c7d07a812818445d07ad662fa33faed0e5"
+    },
+    "combo_action_programs.json": {
+      "bytes": 10357658,
+      "sha256": "cd4e8a67f14d1d153ce7f5ab6493904939d33e62b000e6a6d4189605072af936"
+    },
+    "combo_action_rules.txt": {
+      "bytes": 37328,
+      "sha256": "01968894733f181929a234046059a86cf731c005346867b4e474cc9696b4ec3c"
+    },
+    "combo_action_search_scores.csv.gz": {
+      "bytes": 3227259,
+      "sha256": "c530e91a08a3daaee2aef1969e7f0cd1371120988731770b7e485005a2117d59"
+    },
+    "combo_action_summary.json": {
+      "bytes": 26724,
+      "sha256": "6dd6548ac3c3268e7450d8bbd5fb4a61d8d79ebeea5af082930afc329902bd0b"
+    },
+    "combo_active_book_calibration.csv": {
+      "bytes": 270413,
+      "sha256": "cb0070017a4323a4c17408b1ae5a3de56ca74a5e69e81d374e5b0ed14777ff92"
+    },
+    "combo_active_book_evaluation.csv": {
+      "bytes": 1292,
+      "sha256": "2f7de9a9b643c02496704febc2d0299926e138279a16777dd0002084013ee5ef"
+    },
+    "combo_active_book_predictions.csv": {
+      "bytes": 162959,
+      "sha256": "32a5cd790ae6e7c106c6ead5d71356fe66a8bc02cd173ae51375b115703605af"
+    },
+    "combo_configuration_change_points.csv": {
+      "bytes": 455,
+      "sha256": "c39537d19921b4feff8ea8de6584cdd81c38dff1829f836c158fb279805ebbd5"
+    },
+    "combo_context_features.csv.gz": {
+      "bytes": 2511268,
+      "sha256": "4db6d895b0232f52348ce0cdbfe957ce7cfe75e70f977743dcedcb9cd4399524"
+    },
+    "combo_economic_comparisons.csv": {
+      "bytes": 576,
+      "sha256": "35ffd8b079387b5e3ce4535887fbe8454b9262d4958955d2f0543a67c24779b5"
+    },
+    "combo_economic_exclusions.csv": {
+      "bytes": 953,
+      "sha256": "49ad75140536a546d2f90360933bea3a5ac20db5517b99b51c2782a767179db3"
+    },
+    "combo_economic_markouts.csv.gz": {
+      "bytes": 93871,
+      "sha256": "bbef449847b70c23c6ccc46039ac78582cc1d5a709e2e9e1f9bb1b5ebf05948b"
+    },
+    "combo_economic_summary.csv": {
+      "bytes": 869,
+      "sha256": "8ca3bba92863a1f1e46c7b4811df88b52aca8d8f8b20c9309903571a0150826e"
+    },
+    "combo_economic_summary.json": {
+      "bytes": 5149,
+      "sha256": "de7a496e284575a15598423c200eed93044ccb54b87546d2d0161a9271f36f4c"
+    },
+    "combo_exit_calibration_top.csv": {
+      "bytes": 473203,
+      "sha256": "103e2baa37779e4b4f2caa4e858fd0bbfebf97fd12f0554f39b03b8699174377"
+    },
+    "combo_exit_evaluation.csv": {
+      "bytes": 2149,
+      "sha256": "194b5208984df44f4ba10689181d95b36f60dadf8d30230aa701cfb09592fdc0"
+    },
+    "combo_exit_predictions.csv": {
+      "bytes": 25021,
+      "sha256": "b9042e20dddc3ce5db4366747b366cdaf46adf99104e5cfedc85759d4923a1ae"
+    },
+    "combo_exit_programs.json": {
+      "bytes": 747209,
+      "sha256": "9abf449b26cf3b92146503bad790158ad1ebcdde9a1bb41f7eaf5cdc44b39b60"
+    },
+    "combo_exit_search_histograms.csv": {
+      "bytes": 14598,
+      "sha256": "707c53fafff97d2807b8e76061c068cfd127322daa4f4cbd7d0314de10df9a46"
+    },
+    "combo_exit_summary.json": {
+      "bytes": 6043,
+      "sha256": "f545831fed6171c46a914872b9ee83ba01244aac77e37b21b41904d2412c60c7"
+    },
+    "combo_flow_action_evaluation.csv": {
+      "bytes": 3550,
+      "sha256": "5fc2e264b17657e72ec19ce2804628331f8692765cb47c1a2fe7826ae48c809d"
+    },
+    "combo_flow_action_predictions.csv.gz": {
+      "bytes": 203276,
+      "sha256": "7246fe11b9d7bbcf7c5ac1ed94c8dba5d692489e33d1a14cc3330042a08a79e4"
+    },
+    "combo_flow_action_programs.json": {
+      "bytes": 6381690,
+      "sha256": "82dfb1929498744f3481f3e5e35c4e2dd3121ed1dd30390b280f8efd6ea927d2"
+    },
+    "combo_flow_action_rules.txt": {
+      "bytes": 34307,
+      "sha256": "238c0b8355af74163d0fa8e29b3462fdae30fc2c4e042e877aac5bc970183baf"
+    },
+    "combo_flow_action_search_scores.csv.gz": {
+      "bytes": 2136376,
+      "sha256": "5c457c470763f6993fe68b1ff00f2fd81f4d6e92c38414f7c8e2817b6eb1728f"
+    },
+    "combo_flow_action_summary.json": {
+      "bytes": 13647,
+      "sha256": "0f6ce01ee96f59e3979b0c8c34bdc9d87d484d1e10eea56031545d2e19eca4ac"
+    },
+    "combo_full_history_flow_programs.json": {
+      "bytes": 890453,
+      "sha256": "63e78b6d834bebd566dbe35ce8af6e444969d6edd2721ca88124916b3174d051"
+    },
+    "combo_full_history_flow_rules.txt": {
+      "bytes": 585316,
+      "sha256": "e11d7d431a298f8a676d1bfe66a6d3e5f48afb1624878a3d9f1cac013c3b6304"
+    },
+    "combo_full_history_programs.json": {
+      "bytes": 3762662,
+      "sha256": "e6f932b6f30132ba70eb8bb7d76cc9d50d45167412c4cbf42c99100c9a7731bf"
+    },
+    "combo_full_history_rules.txt": {
+      "bytes": 1098068,
+      "sha256": "02480182f0348cae5bc820f7c2f0637c8d2ab4f493f8cc031f9457e54c38888a"
+    },
+    "combo_hedge_evaluation.csv": {
+      "bytes": 2001,
+      "sha256": "a558a50fc004c99aaeaeadf828ac17b4cc5c6ee2d61cc314becdc143b6eaaf71"
+    },
+    "combo_hedge_predictions.csv.gz": {
+      "bytes": 78256,
+      "sha256": "f8586dde1515d23fd9f85503db76abe2915b8bb9eb423414617b2957fc275cf0"
+    },
+    "combo_hedge_programs.json": {
+      "bytes": 232690,
+      "sha256": "d90ee97977172f78eb4ac7d6ef286c77ebd0111f1674d87d3d6c708647c9d543"
+    },
+    "combo_hedge_representability.csv": {
+      "bytes": 638,
+      "sha256": "0e42b143cf01bf3afff991da6c421a554d41f0fad55f29a44f8d937516aa4401"
+    },
+    "combo_hedge_summary.json": {
+      "bytes": 7163,
+      "sha256": "3d60525fab814eb6ca3ec2be999ced062138e792ad5123d2c424569438f37fe6"
+    },
+    "combo_joint_calibration_scores.csv.gz": {
+      "bytes": 179396,
+      "sha256": "949eb3bbb3a58ea0d2e630798aeffd4d78942b699309248629a295ced63f0ac8"
+    },
+    "combo_joint_evaluation.csv": {
+      "bytes": 705,
+      "sha256": "2e03ff44d928c6a18e47d686ccc5dd032529387f2e627cb61105ad52cf3ca086"
+    },
+    "combo_joint_predictions.csv": {
+      "bytes": 393488,
+      "sha256": "58dd1c084e6bee98365b90fce538d333013b02142cf2c691ca466d0ec2443dd9"
+    },
+    "combo_joint_programs.json": {
+      "bytes": 2458,
+      "sha256": "c71f2548b5c52c47322c48a3641a6152b644d926f246220bb4d168657806aec0"
+    },
+    "combo_joint_summary.json": {
+      "bytes": 5884,
+      "sha256": "62841c6fb90bd9e6522cdd4877b27c5e9da764e5079291fd6688918b0c81e661"
+    },
+    "combo_liquidity_calibration.csv": {
+      "bytes": 545397,
+      "sha256": "2340872bc8d49e28296697f34e45fb015378c51ae3f178e2f02f62ee4da3c5b9"
+    },
+    "combo_liquidity_evaluation.csv": {
+      "bytes": 1531,
+      "sha256": "178ab0bab5f9f976c99eb9aa5a84a31d7ada7ed4a1169cf5b4a4d1d7702d757b"
+    },
+    "combo_liquidity_predictions.csv.gz": {
+      "bytes": 32145,
+      "sha256": "28e1c3b664a78c8e7713ceb3ee985c6a4e849387486dcc93942b11e03f68f352"
+    },
+    "combo_liquidity_programs.json": {
+      "bytes": 880,
+      "sha256": "05c41553f17fa7c0f03a7ecdfdc7b902d3035abd20f6922d84bc9f9e24d404c7"
+    },
+    "combo_liquidity_summary.json": {
+      "bytes": 4983,
+      "sha256": "2a8ddd2754172902ff732707477a02283435a44364b7a319d415fe74468f2723"
+    },
+    "combo_option_flow_features.csv.gz": {
+      "bytes": 2146837,
+      "sha256": "9dc005b2ae8a657b63410b029302b8de9ffbe546b5b58e6386957d177f17e5a7"
+    },
+    "combo_option_flow_summary.json": {
+      "bytes": 407,
+      "sha256": "de7c9a735d64f6a104375f86ff5a85c1691076b56529cdab3db40c1d32914276"
+    },
+    "combo_order_label_delays.csv": {
+      "bytes": 3915776,
+      "sha256": "d19fccf42115a95b03a7e58c43784cadd730671d3a4ada5cab3c411c36148805"
+    },
+    "combo_order_timing_summary.json": {
+      "bytes": 14438,
+      "sha256": "9393bf96b546c6236d7e884bed4b862d0f9016cc9d5534ae520743b0f587013e"
+    },
+    "combo_request_vs_fill_evaluation.csv": {
+      "bytes": 4675,
+      "sha256": "99ee0d72e49a08c8311e17db42b2b6bc7f6779eb56b8ee3a82953227340221d7"
+    },
+    "combo_sizing_calibration_cv.csv": {
+      "bytes": 5032,
+      "sha256": "0b46e3f9a0fd4bde3c6cb06a607b2bff6d5c45f0209498b222caf8948504f6e3"
+    },
+    "combo_sizing_evaluation.csv": {
+      "bytes": 392,
+      "sha256": "0917320a1172cde1371f43a65921615d3fa84fb9be99b9936bf4d5b5a51d36b9"
+    },
+    "combo_sizing_predictions.csv": {
+      "bytes": 85898,
+      "sha256": "179a7db957605174240a4d76874ea57446b179fecbf3e07582d2cb9cf9cc5761"
+    },
+    "combo_sizing_rules.txt": {
+      "bytes": 6747,
+      "sha256": "f591f850778babff80b41801153d3f5a81c23fe366a6ed03aca260eb29c56ba1"
+    },
+    "combo_sizing_summary.json": {
+      "bytes": 3610,
+      "sha256": "4595891549e8ae67ee84fe21b00f47db42ec7d9a5a7cb28d0bbd01c0349d7665"
+    }
+  }
+}

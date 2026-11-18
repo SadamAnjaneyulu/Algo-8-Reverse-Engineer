@@ -1,8 +1,8 @@
 {
   "checked_on_client_date": "2026-10-26",
-  "cloud_session_exchange": "rejected_by_breeze",
-  "cause": "unconfirmed; existing session/app-key pair was not accepted",
-  "observed_option_contract_days": 0,
+  "cloud_session_exchange": "last direct cloud attempt rejected; data successfully received via local push",
+  "cause": "Direct-cloud authentication cause remains unconfirmed; it did not prevent the local download.",
+  "observed_option_contract_days": 3243,
   "smoke_contract_days": 4,
   "prioritized_sample_contract_days": 356,
   "all_traded_contract_days": 3243,
@@ -11,5 +11,10 @@
     "sha256": "a62a6d1acb3b115fec161c52fadf9b78c1b4ee10ff0ab806291ed55b2f1d0b88",
     "reference": "Historical Data V2: OPTIONS; 1000-interval request cap"
   },
-  "note": "No API credentials, login response or credential-bearing errors stored. Sparse observations are never filled or called full replay data."
+  "note": "No API credentials, login response or credential-bearing errors stored. Sparse observations are never filled or called full replay data.",
+  "observed_option_candles": 1230065,
+  "data_commit": "9953c0d",
+  "acquisition": "local download pushed and independently reproduced in cloud",
+  "fully_populated_contract_days": 3043,
+  "sparse_contract_days": 200
 }

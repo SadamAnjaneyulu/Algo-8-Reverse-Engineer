@@ -1,0 +1,126 @@
+{
+  "programs_scored": 16994880,
+  "seconds": 27.37226894799096,
+  "groups": [
+    {
+      "task": "preexpiry|NIFTY|CE",
+      "programs_scored": 2124360,
+      "trigger_atoms": 848,
+      "filter_atoms": 166,
+      "gates": 15,
+      "earlier_opportunities": 10484,
+      "earlier_events": 64,
+      "later_opportunities": 10159,
+      "later_events": 41,
+      "selected": {
+        "best_f1": "(g_fifo_max_loss_pct >= 50 AND g_adverse_spot5_pct >= 0.05) AND (g_age_minutes >= 15)"
+      }
+    },
+    {
+      "task": "preexpiry|NIFTY|PE",
+      "programs_scored": 2124360,
+      "trigger_atoms": 848,
+      "filter_atoms": 166,
+      "gates": 15,
+      "earlier_opportunities": 10248,
+      "earlier_events": 40,
+      "later_opportunities": 9639,
+      "later_events": 57,
+      "selected": {
+        "best_f1": "(CROSS(g_fifo_max_loss_pct >= 50) AND g_adverse_spot5_pct >= 0.05) AND (g_age_minutes >= 15)"
+      }
+    },
+    {
+      "task": "preexpiry|SENSEX|CE",
+      "programs_scored": 2124360,
+      "trigger_atoms": 848,
+      "filter_atoms": 166,
+      "gates": 15,
+      "earlier_opportunities": 19446,
+      "earlier_events": 81,
+      "later_opportunities": 14694,
+      "later_events": 85,
+      "selected": {
+        "best_f1": "(CROSS(same_equity_pct_capital <= 0) AND g_range15_pct >= 0.1) AND (clock_minutes >= 840)"
+      }
+    },
+    {
+      "task": "preexpiry|SENSEX|PE",
+      "programs_scored": 2124360,
+      "trigger_atoms": 848,
+      "filter_atoms": 166,
+      "gates": 15,
+      "earlier_opportunities": 15579,
+      "earlier_events": 98,
+      "later_opportunities": 11379,
+      "later_events": 91,
+      "selected": {
+        "best_f1": "(CROSS(same_equity_pct_capital <= -0.25) AND g_adverse_spot15_pct >= 0) AND (g_age_minutes >= 30)"
+      }
+    },
+    {
+      "task": "expiry|NIFTY|CE",
+      "programs_scored": 2124360,
+      "trigger_atoms": 848,
+      "filter_atoms": 166,
+      "gates": 15,
+      "earlier_opportunities": 11469,
+      "earlier_events": 320,
+      "later_opportunities": 6333,
+      "later_events": 152,
+      "selected": {
+        "best_f1": "(g_trailing_recovery_pct >= 60 OR g_loss_pct <= -90) AND (clock_minutes >= 840)"
+      }
+    },
+    {
+      "task": "expiry|NIFTY|PE",
+      "programs_scored": 2124360,
+      "trigger_atoms": 848,
+      "filter_atoms": 166,
+      "gates": 15,
+      "earlier_opportunities": 10698,
+      "earlier_events": 311,
+      "later_opportunities": 6349,
+      "later_events": 147,
+      "selected": {
+        "best_f1": "(g_from_expiry_open_pct <= 100 AND g_book_vega_pct_capital >= -0.05) AND (clock_minutes >= 840)"
+      }
+    },
+    {
+      "task": "expiry|SENSEX|CE",
+      "programs_scored": 2124360,
+      "trigger_atoms": 848,
+      "filter_atoms": 166,
+      "gates": 15,
+      "earlier_opportunities": 16629,
+      "earlier_events": 446,
+      "later_opportunities": 15385,
+      "later_events": 286,
+      "selected": {
+        "best_f1": "(g_contract_abs_delta <= 0.3 AND same_equity_pct_capital <= 0) AND (g_since_cover_minutes >= 5)"
+      }
+    },
+    {
+      "task": "expiry|SENSEX|PE",
+      "programs_scored": 2124360,
+      "trigger_atoms": 848,
+      "filter_atoms": 166,
+      "gates": 15,
+      "earlier_opportunities": 15495,
+      "earlier_events": 423,
+      "later_opportunities": 9077,
+      "later_events": 227,
+      "selected": {
+        "best_f1": "(g_adverse_spot_since_entry_pct >= -0.25 AND same_equity_pct_capital >= -0.5) AND (clock_minutes >= 840)"
+      }
+    }
+  ],
+  "limitations": [
+    "Finite relevant grammar, not all possible programs.",
+    "Programs are scored separately per index, right and phase; this count is not independent hypotheses.",
+    "Actual prior inventory and five-minute quiet-cover eligibility condition the task; no autonomous replay.",
+    "Threshold search is earlier-only, with no nested selection validation. Later dates were previously inspected.",
+    "Minute close-based states can miss intrabar triggers; stops and profit-taking may coexist.",
+    "Precision-target choices are calibration requirements, not later guarantees or probabilities of original intent."
+  ]
+}

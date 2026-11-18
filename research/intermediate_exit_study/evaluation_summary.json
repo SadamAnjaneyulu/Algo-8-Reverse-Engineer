@@ -1,0 +1,12 @@
+{
+  "fixed_hypotheses": 12,
+  "baselines": [
+    "clock_only",
+    "inventory_only"
+  ],
+  "known_cycles": 32,
+  "chronological_cycles": 24,
+  "qualifies_precision_recall_coverage80": [],
+  "selection": "mean training-cycle F1; tie original registered ordering",
+  "inference": "conditional on actual pre-event inventory; not autonomous replay or external alpha validation"
+}

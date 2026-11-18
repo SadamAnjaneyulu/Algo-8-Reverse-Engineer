@@ -1,0 +1,9 @@
+cohort,index,category,closing_components,eligible_priced_components,cycles,aggregate_local_markout,mean_cycle_markout,bootstrap_mean_low95,bootstrap_mean_high95,positive_cycles,additive_to_strategy_profit,deployable_counterfactual
+primary_32,NIFTY,intermediate,3771,3737,15,-982848.75,-65523.25,-290443.95791666664,197251.2912499999,7,False,False
+primary_32,NIFTY,intermediate_long_sale,1958,1939,15,70365.75,4691.05,-31171.849583333333,28204.610416666666,13,False,False
+primary_32,SENSEX,intermediate,5473,5422,17,1128921.0,66407.11764705883,-175384.95294117648,318164.4102941174,10,False,False
+primary_32,SENSEX,intermediate_long_sale,2674,2674,17,87843.0,5167.235294117647,-21572.048529411764,23552.126470588224,14,False,False
+all_35_sensitivity,NIFTY,intermediate,4682,4606,18,1256274.5,69793.0277777778,-189737.65868055556,349254.7319444445,9,False,False
+all_35_sensitivity,NIFTY,intermediate_long_sale,2530,2511,18,-11212.5,-622.9166666666666,-31704.715972222224,22501.25312499999,15,False,False
+all_35_sensitivity,SENSEX,intermediate,5473,5422,17,1128921.0,66407.11764705883,-172182.12205882353,334236.3073529408,10,False,False
+all_35_sensitivity,SENSEX,intermediate_long_sale,2674,2674,17,87843.0,5167.235294117647,-21733.35294117647,23763.998529411758,14,False,False
