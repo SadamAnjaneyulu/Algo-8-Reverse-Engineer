@@ -99,9 +99,11 @@ def account(c, fills, variant, p):
         mtm = sum(q * (px.mark(l, t) or 0.0) for l, q in pos.items()); path.append((t, cash + mtm - cost_cum))
     path.append((E + 1, net))                                    # final settled value
     # ----- margin proxy path (at fill events)
-    mpos = {l: 0 for l in c['legs']}; peak_margin = 0.0; marg = []
-    for tr in tr_sorted:
-        mpos[tr[1]] += tr[2] * tr[3]; m = max_loss(c, mpos); peak_margin = max(peak_margin, m); marg.append((tr[0], m))
+    mpos = {l: 0 for l in c['legs']}; peak_margin = 0.0; marg = []; k = 0
+    while k < len(tr_sorted):                                    # evaluate after ALL orders sharing a timestamp (a basket built in one minute is never counted as naked)
+        t0 = tr_sorted[k][0]
+        while k < len(tr_sorted) and tr_sorted[k][0] == t0: mpos[tr_sorted[k][1]] += tr_sorted[k][2] * tr_sorted[k][3]; k += 1
+        m = max_loss(c, mpos); peak_margin = max(peak_margin, m); marg.append((t0, m))
     n_orders = len(trades); lots_total = sum(t[3] for t in trades) / lot
     return dict(gross=gross, net=net, slippage=gross - net_px, costs=costs, net_before_costs=net_px, n_orders=n_orders, n_engine_orders=sum(1 for t in trades if t[6] == 'ENGINE'), lots_traded=lots_total, peak_margin=peak_margin,
                 leg_pnl=leg_pnl, path=path, trades=trades, settle=settle, official_close=S_off, official_close_src=c['official_close_src'], min_path=min(v for _, v in path), max_path=max(v for _, v in path))

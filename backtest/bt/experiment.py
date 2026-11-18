@@ -51,12 +51,11 @@ def run_engine(names, variant, cyc=None, lots=3, check=True, drop=0.0, dseed=0, 
     g = grid(); cyc = usable() if cyc is None else cyc; out = os.path.join(ENG, variant + tag); os.makedirs(out, exist_ok=True)
     with Pool(procs) as p:
         for n in names:
-            f = os.path.join(out, n + '.pkl')
-            if os.path.exists(f) and not force:
-                done = pickle.load(open(f, 'rb'))
-                if all((r.und, r.expiry) in done for r in cyc.itertuples()): continue
-            jobs = [(n, g[n], variant, r.und, r.expiry, lots, check, drop, dseed) for r in cyc.itertuples()]
-            pickle.dump(dict(p.imap_unordered(_job, jobs, chunksize=4)), open(f, 'wb'))
+            f = os.path.join(out, n + '.pkl'); have = pickle.load(open(f, 'rb')) if os.path.exists(f) and not force else {}
+            todo = [r for r in cyc.itertuples() if (r.und, r.expiry) not in have]
+            if not todo: continue
+            jobs = [(n, g[n], variant, r.und, r.expiry, lots, check, drop, dseed) for r in todo]
+            have.update(dict(p.imap_unordered(_job, jobs, chunksize=4))); pickle.dump(have, open(f, 'wb'))
     return out
 
 

@@ -68,3 +68,28 @@ def test_metrics_basics():
     df = pd.DataFrame(dict(d0=['2024-01-04', '2024-01-11', '2024-01-18'], d1=['2024-01-03', '2024-01-10', '2024-01-17'], net=[100.0, -50.0, 80.0], gross=[110.0, -40.0, 90.0], costs=[10.0] * 3, slippage=[0.0] * 3, n_orders=[4] * 3, peak_margin=[1000.0] * 3,
                          path=[[(1704331200, 100.0)], [(1704936000, -50.0)], [(1705540800, 80.0)]]))
     s = M.summarize(df, cap=10000.0); assert s['net_pnl'] == 130 and s['win_rate_pct'] == pytest.approx(200 / 3) and s['profit_factor'] == pytest.approx(180 / 50) and s['max_dd_rs'] == pytest.approx(-50)
+
+
+def test_accounting_matches_the_engine_ledger_when_the_engine_closes_everything():
+    """independent cross-check: where the capital stop closed every leg, the engine's own FIFO realised P&L must equal the accounting layer's gross P&L"""
+    from bt import experiment as X
+    f = os.path.join(X.ENG, 'HOLD_SETTLE', 'STOP_ONLY.pkl')
+    if not os.path.exists(f): pytest.skip('engine results not generated')
+    eng = X.load_engine('STOP_ONLY', 'HOLD_SETTLE'); n = 0
+    for (und, exp), e in eng.items():
+        s = dict(l.split('\t') for l in e['summary'].split('\n')[2:] if '\t' in l)
+        if int(s['final_gross_units']) == 0:
+            a = A.account(X._cyc(und, exp), e['fills'], 'HOLD_SETTLE', dict(slip_pct=0, slip_min=0, cost_mult=0)); assert abs(float(s['final_realized_pnl_paise']) / 100 - a['gross']) < 0.5; n += 1
+    assert n > 10
+
+
+def test_every_stored_engine_run_has_python_cpp_parity():
+    from bt import experiment as X
+    bad = 0; total = 0
+    for root, _, fs in os.walk(X.ENG):
+        for f in fs:
+            import pickle
+            for k, v in pickle.load(open(os.path.join(root, f), 'rb')).items():
+                total += 1; bad += v['parity'] is not True
+    if total == 0: pytest.skip('engine results not generated')
+    assert bad == 0
