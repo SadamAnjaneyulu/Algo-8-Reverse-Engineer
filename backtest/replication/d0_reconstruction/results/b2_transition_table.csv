@@ -1,0 +1,6 @@
+subtype,NONE_WITHIN_180S,OPPOSITE_RIGHT_ONLY,SAME_CONTRACT,SAME_RIGHT_OTHER_STRIKE
+1 late (>=15:10),1003,191,36,304
+2 salvage (<=Rs1 or <=5% entry),83,16,17,263
+3 price >= 1.55x cheapest entry,385,820,141,1489
+4 Clock-B tick minute,34,14,30,186
+5 other,779,337,423,1740

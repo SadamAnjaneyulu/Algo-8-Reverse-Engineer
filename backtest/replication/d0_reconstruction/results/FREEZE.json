@@ -1,0 +1,17 @@
+{
+ "frozen_at_utc": "2026-11-18T14:52:58+00:00",
+ "rule_set": "D0-v1",
+ "holdout_start": "2026-09-23",
+ "hashes": {
+  "d0_sim.py": "0c4069184c6f8e1e6135e9afdd8123064eec8b7f028b739e82c4fdd29c706808",
+  "compare_events.py": "4a86c832b5fa238dd21937d5e63c67ff786c1ca700577dfdd76f445fb5ad5896",
+  "fit_discovery.py": "41a14ef7ad5c2b0176ba6c03c2a89b58eacb3b66e062c0be13c606f0b3555b17",
+  "build_events.py": "4f76baa70065cd05eb5629198aa1d74d23136917a96846492c4c113f54c6976b",
+  "PREREGISTRATION_D0_v1.md": "01bc7ad79238a43224b1107deb4fe42a56777767ff5e57ee3c9a6c85acf0a69d",
+  "results/rules_d0_v1.json": "ffb07e459ca0ff582133395e3d1424440a80d44925a0cd01a291410e1b46f414",
+  "results/d0_events.csv": "5e29f07450fadf6ceb4406d06597cd028aa869a887410056bfc411ad56bc5cf1",
+  "../rules.py": "3b111e602b6aafcdfe319db49931d07f87764963ead8b07d67034c8a8fa63d17"
+ },
+ "pass_criterion": "L2 precision >= 0.5 and L2 recall >= 0.5 and better than NULL",
+ "note": "holdout partially exposed (see PREREGISTRATION_D0_v1.md)"
+}
