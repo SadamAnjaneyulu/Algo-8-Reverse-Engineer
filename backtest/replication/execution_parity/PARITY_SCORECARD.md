@@ -2,31 +2,31 @@
 
 Classification rules fixed in `EXECUTION_PARITY_METHODOLOGY.md` section 6 **before** any result (all thresholds provisional). Event agreement is classified at strike-agnostic identity (timing, right, lots); strike, quantity and wing strike have their own rows. **All figures are in-sample** (rules were read from these cycles; the 35 cycles are not a holdout). **No overall parity percentage is shown on purpose.**
 
-Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE': 2, 'UNRESOLVED': 1}
+Behavioural parity components (18): {'MISMATCH': 8, 'PARTIAL MATCH': 6, 'NOT TESTABLE': 3, 'UNRESOLVED': 1}. Hard criteria (software/accounting, not behaviour): {'MATCH': 3}. **No behavioural component is a MATCH.**
 
-| ID | Component | Class | Comparable | Result | Safe to freeze |
-|---|---|---|---|---|---|
-| S1 | Core = legacy R1/R2 simulator (refactor correctness) | **MATCH** | 70 cycle x variant | 70 identical (100.0 %); max |gross diff| 0.0e+00 | YES (as an implementation of the R1 hypotheses only) |
-| S2 | Accounting conservation and inventory bookkeeping (Mode 3) | **MATCH** | 35 cycles x 4 conventions | path/net/cash all equal; max |identity residual| 2.9e-11; max |gross - lot engine| 7.3e-12; gross identical across conventions: True | YES (accounting only) |
-| S3 | No-look-ahead integrity of the core | **MATCH** | unit tests (tests/test_core_integrity.py) | all pass | YES |
-| S4 | Event sequencing within a second / within a poll | **NOT TESTABLE** | n/a | n/a | n/a |
-| S5 | D-1 scheduled body entries (timing, right, count) | **PARTIAL MATCH** | 2234 original lots / 1664 simulated | matched 1484: precision 89.2 %, recall 66.4 %; lift vs null 1.76; with same strike 1360 (precision 81.7 %, recall 60.9 %) | AS A LABELLED SCENARIO |
-| S6 | D-1 body entries including off-schedule | **PARTIAL MATCH** | 4834 / 1664 | precision 96.2 %, recall 33.1 % (2600 original lots lie outside the scheduled windows) | NO |
-| S7 | D0 body entries (expiry-day sales) | **MISMATCH** | 12686 original lots | R1 reproduces 0; R2 matched 2521 (precision 76.6 %, recall 19.9 %; fitted on the same cycles) | NO |
-| S8 | Strike selection (previous completed close, nearest step) | **MISMATCH** | 14312 original body sells | exact 44.7 % (null 22.3 %), within one step 81.5 %; D-1 50.3 %, D0 42.1 %, scheduled windows 60.3 %, off-schedule 33.2 %; NIFTY 52.2 %, SENSEX 38.2 % | AS A LABELLED SCENARIO (scheduled windows only) |
-| S9 | Quantity per slot-leg (D-1 ladder) | **PARTIAL MATCH** | 1088 slot-legs | exact 68.5 % (null mean 24.6 %, 95th pct 36.9 %); MAE 0.52 lots | AS A LABELLED SCENARIO |
-| S10 | Wing entries (D-1) event agreement | **PARTIAL MATCH** | 4337 original wing lots | precision 85.3 %, recall 32.7 %; with same strike precision 58.8 %, recall 22.6 % | NO |
-| S11 | Wing strike selection (price ~ 2.45 % of body) | **MISMATCH** | 8315 body orders with partner (58.5 % of 14300 body sells have one) | exact 32.0 % (null 8.2 %), within one step 55.0 %, within two 67.3 %; median price ratio 0.025 | NO |
-| S12 | D-1 body buy-backs (events) | **PARTIAL MATCH** | 1640 original lots | precision 79.1 %, recall 24.4 %, lift 17.1; with same strike precision 63.6 %, recall 19.6 % | NO (stop only as a labelled hypothesis) |
-| S13 | D0 body buy-backs (events) | **MISMATCH** | 12714 original lots | precision 55.9 %, recall 5.4 %, lift 4.7 | NO |
-| S14 | Wing sells / releases | **MISMATCH** | D-1 1192 / D0 10243 lots | D-1: PARTIAL MATCH, precision 72.3 %, recall 30.7 %; D0: MISMATCH, precision 37.7 %, recall 4.5 % | NO |
-| S15 | Per-lot stop (H-LEG): 32 cells = k {1.55..1.70} x {own, cheapest} x 4 conventions | **MISMATCH** | 12173 original buy-back lots; 1166-6722 simulated stop events per cell | own-entry reference: precision 62.9 %-74.6 %, recall 6.9 %-16.9 %, lift 9.1-11.4; cheapest-entry reference: precision 25.5 %-33.1 %, recall 8.3 %-14.4 %; best recall in any cell 16.9 % | NO (hypothesis only) |
-| S16 | Cycle stop (H-CYC) | **MISMATCH** | 30 cycles, 11 with an actual stop | causal: TP 0 of 11 at every L (recall 0.0 %); non-causal diagnostic: TP 1-3 of 11 (precision 100 %, no false positives); 8 of the 11 actual stops occur within the first 15 minutes of D0 | NO |
-| S17 | Final flatten at 15:14 on D0 (after 2026-08-03) | **PARTIAL MATCH** | 12 post-cutover cycles with shorts (1529 short lots at 15:13) and 9 pre-cutover cycles | post-cutover: 1213 of 1529 short lots closed in the 15:14 minute (79.3 %); 10 of 12 cycles fully flat; the two exceptions (NIFTY 2026-08-11, SENSEX 2026-08-13) keep ~100 % short; pre-cutover cycles keep 93.2 % (median share) of shorts through 15:14 | AS A LABELLED SCENARIO (date-conditioned) |
-| S18 | Carry to settlement vs distance from spot (H-CARRY) | **UNRESOLVED** | 2259 short lots (contract basis), 4163 (body-module basis) | contract-level (all modules): carried share 0.0 %-0.2 % in every distance bin (nothing is carried: 24 of 35 cycles end exactly flat at contract level, the others hold long wings only (one D-1-only cycle holds shorts)); body-module basis: 9.9 % (<=0.5 steps) rising monotonically to 97.8 % (>6 steps) | NO |
-| S19 | Inventory trajectory (contract-level, event by event) - fully simulated | **MISMATCH** | 30 cycles, 505598 active contract-minutes | exact share 5.0 % (mean of cycles), normalised MAE median 0.91; overnight net short lots mean original 104 vs simulated 36 | NO |
-| S20 | Settlement valuation of residual positions | **NOT TESTABLE** | n/a | n/a | n/a |
-| S21 | Historical mechanics robustness across expiry structures | **PARTIAL MATCH** | 274 eligible cycles of 319 expected | hard checks pass in 274/274; brittle: fills priced from a missing open and zero-volume bars differ several-fold between structures; cycle-stop incidence 3%-20% | NO (mechanics pass; policies must be set) |
+| ID | Kind | Component | Class | Comparable | Result | Safe to freeze |
+|---|---|---|---|---|---|---|
+| S1 | hard | Core = legacy R1/R2 simulator (refactor correctness) | **MATCH** | 70 cycle x variant | 70 identical (100.0 %); max |gross diff| 0.0e+00 | YES (as an implementation of the R1 hypotheses only) |
+| S2 | hard | Accounting conservation and inventory bookkeeping (Mode 3) | **MATCH** | 35 cycles x 4 conventions | path/net/cash all equal; max |identity residual| 2.9e-11; max |gross - lot engine| 7.3e-12 (TAUTOLOGICAL: both equal ledger cash + settlement); gross identical across conventions: True; the only non-circular comparison (gross vs the earlier order-level figure) differs by up to Rs 33,744 per cycle | YES (accounting only) |
+| S3 | hard | No-look-ahead integrity of the core | **MATCH** | unit tests (tests/test_core_integrity.py); class is by test, not computed | all pass | YES |
+| S4 | parity | Event sequencing within a second / within a poll | **NOT TESTABLE** | n/a | n/a | n/a |
+| S5 | parity | D-1 scheduled body entries (timing, right, count) | **PARTIAL MATCH** | 1888 original lots / 1664 simulated | matched 1484: precision 89.2 %, recall 78.6 %; lift vs null 1.91; with same strike 1360 (precision 81.7 %, recall 72.0 %) | AS A LABELLED SCENARIO |
+| S6 | parity | D-1 body entries including off-schedule | **PARTIAL MATCH** | 4834 / 1664 | precision 96.2 %, recall 33.1 % (2946 original lots lie outside the scheduled windows) | NO |
+| S7 | parity | D0 body entries (expiry-day sales) | **MISMATCH** | 12686 original lots | R1 reproduces 0; R2 matched 2521 (precision 76.6 %, recall 19.9 %; fitted on the same cycles) | NO |
+| S8 | parity | Strike selection (previous completed close, nearest step) | **MISMATCH** | 14312 original body sells | exact 44.7 % (null 22.3 %), within one step 81.5 %; D-1 50.3 %, D0 42.1 %, D-1 ladder windows (17 slots, first 3 min) 79.0 %, D-1 other 29.9 %; NIFTY 52.2 %, SENSEX 38.2 %; D0 minute 0 (previous-day close is the last completed bar) 10.6 % on 415 orders | AS A LABELLED SCENARIO (D-1 ladder windows only) |
+| S9 | parity | Quantity per slot-leg (D-1 ladder) | **PARTIAL MATCH** | 1088 slot-legs | exact 68.5 % in-sample (null mean 24.6 %, 95th pct 36.9 %); leave-one-cycle-out modal ladder 61.9 %; on cells where ladder or actual is non-zero 63.0 % (161 zero-zero cells excluded); MAE 0.52 lots | AS A LABELLED SCENARIO |
+| S10 | parity | Wing entries (D-1) event agreement | **PARTIAL MATCH** | 4337 original wing lots | precision 85.3 %, recall 32.7 %; with same strike precision 58.8 %, recall 22.6 % | NO |
+| S11 | parity | Wing strike selection (price ~ 2.45 % of body) | **MISMATCH** | 8315 body orders with partner (58.5 % of 14300 body sells have one) | exact 32.0 % (null 8.2 %), within one step 55.0 %, within two 67.3 %; median price ratio 0.025 | NO |
+| S12 | parity | D-1 body buy-backs (events) | **PARTIAL MATCH** | 1640 original lots | precision 79.1 %, recall 24.4 %, lift 17.1; with same strike precision 63.6 %, recall 19.6 % | NO (stop only as a labelled hypothesis) |
+| S13 | parity | D0 body buy-backs (events) | **MISMATCH** | 12714 original lots | precision 55.9 %, recall 5.4 %, lift 4.7 | NO |
+| S14 | parity | Wing sells / releases | **MISMATCH** | D-1 1192 / D0 10243 lots | D-1: PARTIAL MATCH, precision 72.3 %, recall 30.7 %; D0: MISMATCH, precision 37.7 %, recall 4.5 % | NO |
+| S15 | parity | Per-lot stop (H-LEG): 32 cells = k {1.55..1.70} x {own, cheapest} x 4 conventions | **MISMATCH** | 12173 original buy-back lots (module-based: about 9.7 % of num-Buy lots add to a long rather than buy back a short); 1166-6722 simulated stop events per cell | all-buy-back set: own-entry reference precision 62.5 %-74.3 %, recall 6.9 %-16.8 %, lift 10.0-12.5; cheapest-entry reference precision 25.0 %-32.9 %, recall 8.3 %-14.2 %; best recall 16.8 %; ADDED AFTER RESULTS (not pre-registered): a second actual set excluding D0 15:13+ has 1 of 32 cells PARTIAL (best recall 20.1 %) | NO (hypothesis only) |
+| S16 | parity | Cycle stop (H-CYC) | **MISMATCH** | 30 cycles, 11 with an actual stop, 19 without | true positives at L = 1.30 / 1.35 / 1.44 lakh: previous close (causal) 1 / 0 / 0 of 11; open of the decision minute 3 / 2 / 2; close of the decision minute (non-causal) 10 / 9 / 8; false positives among the 19 non-stop cycles: [0, 0, 0] / [0, 0, 0] / [0, 0, 0]; 8 of the 11 actual stops occur within the first 15 minutes of D0 | NO |
+| S17 | parity | Final flatten at 15:14 on D0 (after 2026-08-03) | **PARTIAL MATCH** | 12 post-cutover cycles with shorts (1529 short lots at 15:13) and 9 pre-cutover cycles | pre-registered falsifier (more than 50 % of the 15:13 short book still short after 15:14): remaining share 20.7 % => NOT FALSIFIED. Closed share 1213 of 1529 (79.3 %), 0.7 percentage points under the MATCH line, entirely because of two cycles (NIFTY 2026-08-11, SENSEX 2026-08-13) that keep ~100 % short; the other 10 cycles close 1212 of 1212 lots; pre-cutover cycles keep 93.2 % (median) of shorts through 15:14 | AS A LABELLED SCENARIO (date-conditioned) |
+| S18 | parity | Carry to settlement vs distance from spot (H-CARRY) | **UNRESOLVED** | 2259 short lots (contract basis), 4163 (body-module basis) | contract-level (all modules): carried share 0.0 %-0.2 % in every distance bin; 24 of 35 cycles end exactly flat at contract level, the others hold long wings only except NIFTY 2026-09-29 (109 short lots), SENSEX 2026-07-30 (1 short lots); body-module basis: 9.9 % (<=0.5 steps) rising monotonically to 97.8 % (>6 steps) | NO |
+| S19 | parity | Inventory trajectory (contract-level, event by event) - fully simulated | **MISMATCH** | 30 cycles, 505598 active contract-minutes | exact share 5.0 % (mean of cycles), normalised MAE median 0.91; overnight net short lots mean original 104 vs simulated 36 | NO |
+| S20 | parity | Settlement valuation of residual positions | **NOT TESTABLE** | n/a | n/a | n/a |
+| S21 | parity | Historical parity across expiry structures (mechanics diagnostics reported separately) | **NOT TESTABLE** | 274 eligible cycles of 319 expected | no original records exist for these periods, so parity cannot be tested. Mechanics diagnostics (not a parity class): hard checks pass in 274/274 but cannot fail by construction; brittle: fills priced from a missing open and zero-volume bars differ several-fold between structures; cycle-stop incidence 3%-20% | NO (mechanics pass; policies must be set) |
 
 ## Detail per component
 
@@ -47,7 +47,7 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 * **Our implementation:** PortfolioState under FIFO/LIFO/LOW/HIGH
 * **Comparison methodology:** replay all fills: contract net after every fill vs cumulative sum; cash vs ledger; cash-based gross vs realised+open P&L; gross vs lot engine (30 cycles)
 * **Comparable events:** 35 cycles x 4 conventions
-* **Matches:** path/net/cash all equal; max |identity residual| 2.9e-11; max |gross - lot engine| 7.3e-12; gross identical across conventions: True
+* **Matches:** path/net/cash all equal; max |identity residual| 2.9e-11; max |gross - lot engine| 7.3e-12 (TAUTOLOGICAL: both equal ledger cash + settlement); gross identical across conventions: True; the only non-circular comparison (gross vs the earlier order-level figure) differs by up to Rs 33,744 per cycle
 * **Material discrepancies:** none
 * **Data limitations:** cash conservation is tautological for any allocation; says nothing about ownership or behaviour; settlement uses the Yahoo close proxy
 * **Confidence:** high (hard criterion)
@@ -57,10 +57,10 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 ### S3 No-look-ahead integrity of the core — **MATCH**
 * **Original-system evidence:** n/a (design property)
 * **Our implementation:** MarketView exposes only completed bars
-* **Comparison methodology:** perturbation tests: future bars changed, earlier decisions unchanged; D-1 minute 0 has no bar; D0 minute 0 reads the last D-1 bar
-* **Comparable events:** unit tests (tests/test_core_integrity.py)
+* **Comparison methodology:** perturbation tests (future bars, and the decision minute bar itself, permissive policy): decisions unchanged; D-1 minute 0 has no bar; D0 minute 0 reads the last D-1 bar
+* **Comparable events:** unit tests (tests/test_core_integrity.py); class is by test, not computed
 * **Matches:** all pass
-* **Material discrepancies:** none found
+* **Material discrepancies:** the STRICT execution policy reads the decision minute volume (hindsight liquidity filter; documented and tested as such); it affects only the historical strict_no_market diagnostics
 * **Data limitations:** covers the new core; the stored legacy event table (D0 minute-0 look-ahead) is not used
 * **Confidence:** high (hard criterion)
 * **Required next action:** independent review of the perturbation design
@@ -68,7 +68,7 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 
 ### S4 Event sequencing within a second / within a poll — **NOT TESTABLE**
 * **Original-system evidence:** fills carry whole seconds; within-second order = file order (documented)
-* **Our implementation:** deterministic: minute loop, module order exits -> entries, file order for injected fills
+* **Our implementation:** deterministic: minute loop, module order exits -> entries (the injected-fill path exists but no result used it)
 * **Comparison methodology:** determinism test passes; original sub-second order cannot be compared
 * **Comparable events:** n/a
 * **Matches:** n/a
@@ -82,10 +82,10 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 * **Original-system evidence:** 17 scheduled windows act in 544/544 session-windows (TP-03); ladder is a tendency (deterministic ladder falsified)
 * **Our implementation:** LadderEntries (R1 ladder 3,2,3,1,3,1,2,2,1,1,3,1,0,2,0,0,1)
 * **Comparison methodology:** one-to-one match, same cycle/right, +-1 min, strike ignored; phase-preserving null (40 draws)
-* **Comparable events:** 2234 original lots / 1664 simulated
-* **Matches:** matched 1484: precision 89.2 %, recall 66.4 %; lift vs null 1.76; with same strike 1360 (precision 81.7 %, recall 60.9 %)
+* **Comparable events:** 1888 original lots / 1664 simulated
+* **Matches:** matched 1484: precision 89.2 %, recall 78.6 %; lift vs null 1.91; with same strike 1360 (precision 81.7 %, recall 72.0 %)
 * **Material discrepancies:** quantity per slot is the modal tendency, not the original rule; timing alone is schedule-trivial (lift low)
-* **Data limitations:** in-sample; 3-minute window after each slot; orders vs lots
+* **Data limitations:** in-sample; ladder slots 0-16 only; the denominators are MODULE-based (about 16.9 % of num-Sell lots close a contract that was net long)
 * **Confidence:** medium
 * **Required next action:** resolve quantity rule (needs decision logs)
 * **Safe to freeze:** AS A LABELLED SCENARIO
@@ -95,7 +95,7 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 * **Our implementation:** none (not implemented)
 * **Comparison methodology:** same as S5, all original D-1 body sells
 * **Comparable events:** 4834 / 1664
-* **Matches:** precision 96.2 %, recall 33.1 % (2600 original lots lie outside the scheduled windows)
+* **Matches:** precision 96.2 %, recall 33.1 % (2946 original lots lie outside the scheduled windows)
 * **Material discrepancies:** off-schedule share of original D-1 sells is large and absent from the engine
 * **Data limitations:** trigger unrecoverable from the available records
 * **Confidence:** medium
@@ -116,24 +116,24 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 
 ### S8 Strike selection (previous completed close, nearest step) — **MISMATCH**
 * **Original-system evidence:** first order = ATM in 31/32 cycles (opening); scheduled additions 63 % exact, 93 % within one step (TP-03)
-* **Our implementation:** R.nearest_strike on MarketView.spot_prev
+* **Our implementation:** rules.nearest_strike applied analytically on the previous completed close (a stand-alone re-implementation; the engine module was NOT run in Mode 1)
 * **Comparison methodology:** Mode 1: actual decision minute given; compare rule strike with actual strike; null = same rule at a phase-shifted minute
 * **Comparable events:** 14312 original body sells
-* **Matches:** exact 44.7 % (null 22.3 %), within one step 81.5 %; D-1 50.3 %, D0 42.1 %, scheduled windows 60.3 %, off-schedule 33.2 %; NIFTY 52.2 %, SENSEX 38.2 %
-* **Material discrepancies:** off-schedule and D0 sells follow a different (unknown) strike logic or the 1-minute spot lags the original
-* **Data limitations:** minute spot vs live ticks; mean signed error -0.13 steps
+* **Matches:** exact 44.7 % (null 22.3 %), within one step 81.5 %; D-1 50.3 %, D0 42.1 %, D-1 ladder windows (17 slots, first 3 min) 79.0 %, D-1 other 29.9 %; NIFTY 52.2 %, SENSEX 38.2 %; D0 minute 0 (previous-day close is the last completed bar) 10.6 % on 415 orders
+* **Material discrepancies:** the rule works on the D-1 ladder windows and fails elsewhere (D0 and off-schedule sells follow an unknown strike logic); the result is flat across bar-label offsets (independent review), so it is not a one-minute lag artefact
+* **Data limitations:** minute spot vs live ticks; mean signed error -0.13 steps; 16 orders dropped for missing spot
 * **Confidence:** medium
 * **Required next action:** sub-second timestamps and tick spot
-* **Safe to freeze:** AS A LABELLED SCENARIO (scheduled windows only)
+* **Safe to freeze:** AS A LABELLED SCENARIO (D-1 ladder windows only)
 
 ### S9 Quantity per slot-leg (D-1 ladder) — **PARTIAL MATCH**
 * **Original-system evidence:** window mode explains 64.5 % of quantities (TP-03); deterministic ladder falsified
 * **Our implementation:** R1 ladder per slot
 * **Comparison methodology:** Mode 1: actual lots in the first 3 min of each slot vs ladder; null = ladder shuffled across slots (300 draws)
 * **Comparable events:** 1088 slot-legs
-* **Matches:** exact 68.5 % (null mean 24.6 %, 95th pct 36.9 %); MAE 0.52 lots
+* **Matches:** exact 68.5 % in-sample (null mean 24.6 %, 95th pct 36.9 %); leave-one-cycle-out modal ladder 61.9 %; on cells where ladder or actual is non-zero 63.0 % (161 zero-zero cells excluded); MAE 0.52 lots
 * **Material discrepancies:** what moves quantity off the modal value is unknown
-* **Data limitations:** ladder was read from the same cycles
+* **Data limitations:** the R1 ladder IS the in-sample per-slot mode of these cycles, so the in-sample figure is circular; the leave-one-cycle-out figure is the honest one
 * **Confidence:** medium
 * **Required next action:** decision logs / sizing inputs
 * **Safe to freeze:** AS A LABELLED SCENARIO
@@ -152,7 +152,7 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 
 ### S11 Wing strike selection (price ~ 2.45 % of body) — **MISMATCH**
 * **Original-system evidence:** median wing/body price 0.025
-* **Our implementation:** R.wing_strike_index
+* **Our implementation:** rules.wing_strike_index applied analytically (stand-alone; engine module not run in Mode 1)
 * **Comparison methodology:** Mode 1: for each actual body sell with an identified wing partner (+-15 s, one-to-one) apply the rule; compare strikes; null = rule of a random other body
 * **Comparable events:** 8315 body orders with partner (58.5 % of 14300 body sells have one)
 * **Matches:** exact 32.0 % (null 8.2 %), within one step 55.0 %, within two 67.3 %; median price ratio 0.025
@@ -200,36 +200,36 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 
 ### S15 Per-lot stop (H-LEG): 32 cells = k {1.55..1.70} x {own, cheapest} x 4 conventions — **MISMATCH**
 * **Original-system evidence:** about 95 % of stop buy-backs at >= 1.5x lowest entry; 0 of 18 candidate rules at 80/80 (earlier)
-* **Our implementation:** LegStop evaluated on the actual book (lot_lifecycle lots) and actual market
-* **Comparison methodology:** rule fires once per lot at first breach; one-to-one with actual body buy-backs, +-2 min, same contract; null (20 draws)
-* **Comparable events:** 12173 original buy-back lots; 1166-6722 simulated stop events per cell
-* **Matches:** own-entry reference: precision 62.9 %-74.6 %, recall 6.9 %-16.9 %, lift 9.1-11.4; cheapest-entry reference: precision 25.5 %-33.1 %, recall 8.3 %-14.4 %; best recall in any cell 16.9 %
-* **Material discrepancies:** when the rule fires a buy-back usually follows (high precision, 8-11x chance) but it explains at most ~17 % of body buy-backs
-* **Data limitations:** ownership-dependent through which lots are open; all cells reported, none selected
+* **Our implementation:** stand-alone re-implementation of the LegStop rule on the actual book (lot_lifecycle lots) and actual market; engine LegStop module NOT run in Mode 1
+* **Comparison methodology:** rule fires once per lot at first breach; one-to-one with actual body buy-backs, same day, +-2 min, same contract; null (20 draws)
+* **Comparable events:** 12173 original buy-back lots (module-based: about 9.7 % of num-Buy lots add to a long rather than buy back a short); 1166-6722 simulated stop events per cell
+* **Matches:** all-buy-back set: own-entry reference precision 62.5 %-74.3 %, recall 6.9 %-16.8 %, lift 10.0-12.5; cheapest-entry reference precision 25.0 %-32.9 %, recall 8.3 %-14.2 %; best recall 16.8 %; ADDED AFTER RESULTS (not pre-registered): a second actual set excluding D0 15:13+ has 1 of 32 cells PARTIAL (best recall 20.1 %)
+* **Material discrepancies:** when the rule fires a buy-back usually follows (high precision, 8-11x chance) but it explains at most ~17 % of buy-backs
+* **Data limitations:** ownership-dependent through which lots are open; all cells reported, none selected; recall must not be read as the share of stop-type buy-backs explained
 * **Confidence:** medium
 * **Required next action:** stop configuration; trigger log
 * **Safe to freeze:** NO (hypothesis only)
 
 ### S16 Cycle stop (H-CYC) — **MISMATCH**
 * **Original-system evidence:** cumulative LTP MTM stop; s_ liquidation in 11 of the 30 complete cycles (earlier research: ~-Rs 1.30 to -1.44 L)
-* **Our implementation:** CycleStop (MTM at the previous completed close)
-* **Comparison methodology:** Mode 1: MTM from actual fills (excluding s_) and minute marks; first breach of L in {1.30, 1.35, 1.44} lakh vs first actual s_ order; non-causal diagnostic uses the decision-minute close
-* **Comparable events:** 30 cycles, 11 with an actual stop
-* **Matches:** causal: TP 0 of 11 at every L (recall 0.0 %); non-causal diagnostic: TP 1-3 of 11 (precision 100 %, no false positives); 8 of the 11 actual stops occur within the first 15 minutes of D0
-* **Material discrepancies:** at the decision minute the MTM seen with previous-completed marks has median Rs -105,372 (range Rs -133,341 to Rs 30,889) against thresholds of Rs -130,000 to -144,000: the right region but no crossing
-* **Data limitations:** minute marks cannot reproduce a stop that fires within seconds of the open: partly a data-resolution limit, partly an unrecovered rule (U8)
+* **Our implementation:** stand-alone MTM trigger using actual fill prices (engine CycleStop uses reference prices and was NOT run in Mode 1)
+* **Comparison methodology:** Mode 1: MTM from actual fills (excluding s_) and minute marks; first breach of L in {1.30, 1.35, 1.44} lakh in a window that INCLUDES the decision minute of the first actual s_ order; three marks: previous completed close (causal, primary), open of the decision minute, close of the decision minute (non-causal diagnostic)
+* **Comparable events:** 30 cycles, 11 with an actual stop, 19 without
+* **Matches:** true positives at L = 1.30 / 1.35 / 1.44 lakh: previous close (causal) 1 / 0 / 0 of 11; open of the decision minute 3 / 2 / 2; close of the decision minute (non-causal) 10 / 9 / 8; false positives among the 19 non-stop cycles: [0, 0, 0] / [0, 0, 0] / [0, 0, 0]; 8 of the 11 actual stops occur within the first 15 minutes of D0
+* **Material discrepancies:** with the causal mark the rule is not reproduced (the MTM at the decision minute has median Rs -105,372, range Rs -133,341 to Rs 30,889); with the decision-minute close the threshold separates stop from non-stop cycles almost perfectly, i.e. the failure is mostly a data-resolution effect at the D0 open (MTM moves by more than Rs 100,000 inside one minute there)
+* **Data limitations:** minute marks cannot reproduce a stop that fires within seconds of the open; the constant itself is consistent with the data when the mark is taken at the stop minute (HYPOTHESIS, in-sample)
 * **Confidence:** medium
 * **Required next action:** risk-engine parameters and poll log; sub-second quotes
 * **Safe to freeze:** NO
 
 ### S17 Final flatten at 15:14 on D0 (after 2026-08-03) — **PARTIAL MATCH**
 * **Original-system evidence:** 15:14 flatten after the cut-over (EXT-08); earlier rule unknown
-* **Our implementation:** Flatten(minute 359)
-* **Comparison methodology:** Mode 1, contract-level (all modules): net short lots at the end of 15:13 vs 15:14
+* **Our implementation:** analytic contract-level check of a minute-359 flatten (engine Flatten module NOT run in Mode 1)
+* **Comparison methodology:** Mode 1, contract-level (all modules): net short lots at the end of 15:13 vs 15:14. Class from the section 6 event ladder (precision = recall = closed share of the short book; no lift computed). The pre-registered H-FLAT falsifier is stated separately
 * **Comparable events:** 12 post-cutover cycles with shorts (1529 short lots at 15:13) and 9 pre-cutover cycles
-* **Matches:** post-cutover: 1213 of 1529 short lots closed in the 15:14 minute (79.3 %); 10 of 12 cycles fully flat; the two exceptions (NIFTY 2026-08-11, SENSEX 2026-08-13) keep ~100 % short; pre-cutover cycles keep 93.2 % (median share) of shorts through 15:14
-* **Material discrepancies:** two exceptions in the first two weeks after the stated cut-over; the exact cut-over date looks like later than 2026-08-03 (a post-hoc observation, not adopted); the flatten includes num SELLS of wing contracts (cross-role), so the body-module view hides it
-* **Data limitations:** contract-level inventory; 15:14 is minute-resolution
+* **Matches:** pre-registered falsifier (more than 50 % of the 15:13 short book still short after 15:14): remaining share 20.7 % => NOT FALSIFIED. Closed share 1213 of 1529 (79.3 %), 0.7 percentage points under the MATCH line, entirely because of two cycles (NIFTY 2026-08-11, SENSEX 2026-08-13) that keep ~100 % short; the other 10 cycles close 1212 of 1212 lots; pre-cutover cycles keep 93.2 % (median) of shorts through 15:14
+* **Material discrepancies:** two exceptions in the first two weeks after the stated cut-over (a later cut-over date would remove them: a post-hoc observation, NOT adopted); the flatten includes num SELLS of wing contracts (1,092 of 1,099 lots at 15:14 close a long), so the body-module view hides it
+* **Data limitations:** contract-level inventory; 15:14 is minute-resolution; the class is threshold-sensitive (two cycles)
 * **Confidence:** medium
 * **Required next action:** platform release history
 * **Safe to freeze:** AS A LABELLED SCENARIO (date-conditioned)
@@ -239,7 +239,7 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 * **Our implementation:** Flatten + hold (R1 holds nothing past 15:14)
 * **Comparison methodology:** short lots at 15:13 still short at the end of the ledger, by |strike - spot| in steps; two inventory bases
 * **Comparable events:** 2259 short lots (contract basis), 4163 (body-module basis)
-* **Matches:** contract-level (all modules): carried share 0.0 %-0.2 % in every distance bin (nothing is carried: 24 of 35 cycles end exactly flat at contract level, the others hold long wings only (one D-1-only cycle holds shorts)); body-module basis: 9.9 % (<=0.5 steps) rising monotonically to 97.8 % (>6 steps)
+* **Matches:** contract-level (all modules): carried share 0.0 %-0.2 % in every distance bin; 24 of 35 cycles end exactly flat at contract level, the others hold long wings only except NIFTY 2026-09-29 (109 short lots), SENSEX 2026-07-30 (1 short lots); body-module basis: 9.9 % (<=0.5 steps) rising monotonically to 97.8 % (>6 steps)
 * **Material discrepancies:** the carry relationship exists only on the role-routing basis; at contract level the body shorts are offset by same-contract long wings (economically flat)
 * **Data limitations:** depends on an unvalidated role-routing assumption (num fills touch only body inventory)
 * **Confidence:** medium
@@ -270,12 +270,12 @@ Counts of classes: {'MISMATCH': 8, 'PARTIAL MATCH': 7, 'MATCH': 3, 'NOT TESTABLE
 * **Required next action:** exchange settlement prices
 * **Safe to freeze:** n/a
 
-### S21 Historical mechanics robustness across expiry structures — **PARTIAL MATCH**
+### S21 Historical parity across expiry structures (mechanics diagnostics reported separately) — **NOT TESTABLE**
 * **Original-system evidence:** no original records for 2023-2025: tests mechanics only
 * **Our implementation:** R1 modules on 274 eligible cycles (5 expiry structures)
 * **Comparison methodology:** hard checks (inventory reconciles, finite P&L, no over-closing, determinism) + price-quality and stop-incidence diagnostics by structure
 * **Comparable events:** 274 eligible cycles of 319 expected
-* **Matches:** hard checks pass in 274/274; brittle: fills priced from a missing open and zero-volume bars differ several-fold between structures; cycle-stop incidence 3%-20%
+* **Matches:** no original records exist for these periods, so parity cannot be tested. Mechanics diagnostics (not a parity class): hard checks pass in 274/274 but cannot fail by construction; brittle: fills priced from a missing open and zero-volume bars differ several-fold between structures; cycle-stop incidence 3%-20%
 * **Material discrepancies:** stale-price fallback; unfillable exits; size-dependent rupee constants
 * **Data limitations:** cannot show historical parity; structures differ in weekday, lot size and liquidity
 * **Confidence:** medium

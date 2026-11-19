@@ -22,7 +22,7 @@ Written before any parity result of this milestone (pre-registration). Results l
 
 ---
 ## Updates after results (appended; entries above unchanged)
-* **U7 correction:** the ledger contains 417 `s_` orders / 763 `s_` fills (the "468 fills" figure came from an earlier phase). Per-lot stop: the rule fires only before about 8-17 % of body buy-backs (S15); precision is high (63-75 %, 8-11x chance) for the own-entry reference.
+* **U7 correction:** the ledger contains 417 `s_` orders / 763 `s_` fills (the "468 fills" figure came from an earlier phase). Per-lot stop: the rule explains 7-17 % of body buy-backs (S15, recall); precision is high (63-74 %, 10-12.5x chance) for the own-entry reference.
 * **U8:** at the stop minute the −1.30/−1.35/−1.44 lakh LTP-MTM threshold separates the 11 stop cycles from the 19 non-stop cycles almost perfectly when marked at the close of the decision minute (non-causal diagnostic); with causal marks it does not. Eight of 11 stops are in the first 15 minutes of D0, where minute data lag the open gap. Status: OPEN, mostly a data-resolution limit.
 * **U9:** 10 of 12 post-2026-08-03 cycles flatten fully in the 15:14 minute at contract level; NIFTY 2026-08-11 and SENSEX 2026-08-13 do not. A later cut-over date is a post-hoc observation, not adopted. The 15:14 flatten includes `num` SELLS of wing contracts (cross-role).
 * **U1/U2/U3 (inventory basis):** contract-level inventory ends flat in 24 of 35 cycles; the carry-to-settlement relationship exists only on the module-role basis. Status unchanged: BOUNDED.

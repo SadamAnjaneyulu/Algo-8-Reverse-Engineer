@@ -1,11 +1,11 @@
 # Next phase — what must be frozen before independent alpha research
 
-**Decision of this milestone (rule fixed in advance, `EXECUTION_PARITY_METHODOLOGY.md` section 9): NOT READY** — core components are MISMATCH (D0 entries, D0 buy-backs, strike over all sells, per-lot stop, cycle stop, wing strike, inventory trajectory). See `PARITY_SCORECARD.md` and `EXECUTIVE_SUMMARY.md`. Nothing in this file overrides that decision; it says what would change it and what can safely be reused meanwhile. No alpha research was started.
+**Decision of this milestone (rule fixed in advance, `EXECUTION_PARITY_METHODOLOGY.md` section 9): NOT READY** — core components are MISMATCH (D0 entries, D0 buy-backs, strike over all sells, per-lot stop, causal cycle stop, wing strike, inventory trajectory). The decision survived an independent adversarial review that corrected several numbers (`INDEPENDENT_REVIEW.md`). See `PARITY_SCORECARD.md` and `EXECUTIVE_SUMMARY.md`. Nothing in this file overrides that decision; it says what would change it and what can safely be reused meanwhile. No alpha research was started.
 
 ## 1. What can be frozen now (as a research harness, not as a replica)
 | Layer | Status | Why it is safe |
 |---|---|---|
-| Event-driven core (`exec_core.py`): causal `MarketView`, `OrderIntent`, `ExecutionModel`, `PortfolioState`, `EventLoop` | freeze | no-look-ahead perturbation tests pass; deterministic; equals the legacy simulator event-for-event on 70 cycle x variant runs |
+| Event-driven core (`exec_core.py`): causal `MarketView`, `OrderIntent`, `ExecutionModel`, `PortfolioState`, `EventLoop` | freeze (permissive policy) | no-look-ahead perturbation tests pass, including the decision-minute bar; deterministic; equals the legacy simulator event-for-event on 70 cycle x variant runs. **Caveats:** the strict execution policy reads the decision minute's volume (hindsight filter); the exit modules (`LegStop`, `CycleStop`, `Flatten`) have evidence only from Mode 2 and the historical runs, because Mode 1 used stand-alone re-implementations |
 | Accounting and contract-level inventory (`PortfolioState`, `compare.path_from_events`) | freeze | Mode 3 replay: path/cash/net exact; gross equals the lot engine to 1e-11. **This only proves bookkeeping** |
 | Comparison engine (`compare.py`) with phase-preserving null and pre-registered classes | freeze | unit-tested; the same tooling can score any new entry module against the original ledger |
 | Eligibility register and expiry-structure segmentation | freeze | availability-based, fixed before use |
@@ -14,7 +14,7 @@
 D-1 scheduled ladder (PARTIAL MATCH, in-sample), nearest-step strike in scheduled windows (60 % exact), 2.45 % wing budget (wing strike exact 32 %), 15:14 flatten conditioned on date (79 % of short lots; 10 of 12 post-cutover cycles). Each carries its evidence label from `algo8_replica/config/rule_evidence.yaml`.
 
 ## 3. What must NOT be treated as execution truth
-D0 entries and buy-backs (engine reproduces ~0 % / ~5 %), per-lot stop (explains ≤ 17 % of buy-backs), cycle stop (0 of 11 reproduced causally), wing association, lot ownership, body-buy interpretation, the carry-to-settlement relationship (basis-dependent), settlement valuation.
+D0 entries and buy-backs (engine reproduces ~0 % / ~5 %), per-lot stop (explains ≤ 17 % of buy-backs), cycle stop (1 / 0 / 0 of 11 reproduced at L = 1.30 / 1.35 / 1.44 lakh with causal marks; 10 / 9 / 8 with the decision-minute close, a non-causal diagnostic that points to a data-resolution limit at the D0 open), wing association, lot ownership, body-buy interpretation, the carry-to-settlement relationship (basis-dependent), settlement valuation.
 
 ## 4. What would move the decision
 * **CONDITIONALLY READY** needs no core MISMATCH. The shortest path is data, not code: parent-order ids and sub-second timestamps would let the D0 sales, stops and wing association be identified or rejected; without them a D0 behaviour model cannot be validated.

@@ -5,7 +5,7 @@ Start with `EXECUTIVE_SUMMARY.md`, then `PARITY_SCORECARD.md`. Direction from Ra
 | File | Content |
 |---|---|
 | `EXECUTIVE_SUMMARY.md` | what was tested, what matches, readiness decision, next data requirement |
-| `PARITY_SCORECARD.md` | 21 components: MATCH / PARTIAL MATCH / MISMATCH / UNRESOLVED / NOT TESTABLE with all required fields (no overall percentage) |
+| `PARITY_SCORECARD.md` | 21 rows (3 hard criteria + 18 behavioural parity components): MATCH / PARTIAL MATCH / MISMATCH / UNRESOLVED / NOT TESTABLE with all required fields (no overall percentage) |
 | `EXECUTION_PARITY_METHODOLOGY.md` | pre-registered tolerances, classes, hypotheses, readiness rule (written before any result) |
 | `UNRESOLVED_EXECUTION_RULES.md` | living register of unknown rules (U1-U14) |
 | `DISCREPANCY_REGISTER.md` | every material difference with severity and root-cause status |
