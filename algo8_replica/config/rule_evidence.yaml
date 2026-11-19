@@ -1,0 +1,540 @@
+# Algo 8 mechanical replica -- rule evidence register (machine-readable).
+#
+# RULES OF THIS FILE
+#  * classification is set from the evidence in the repository reports ONLY. It must never be changed because a rule
+#    performs well (or badly) in a backtest. Any change needs a dated entry in `changelog` with the new evidence.
+#  * classification in {CONFIRMED_OBSERVATION, STRONGLY_SUPPORTED, HYPOTHESIS, UNKNOWN, REJECTED}
+#  * mode in {OBSERVED_CONSTANT, BAND, TEACHER_FORCED_ONLY, USER_RULE_ONLY, DISABLED_BY_DEFAULT, NOT_IMPLEMENTED, ACCOUNTING}
+#      OBSERVED_CONSTANT   a value read directly from the ledger/exchange structure
+#      BAND                configurable inside the evidenced range; every value is reported separately
+#      TEACHER_FORCED_ONLY actual historical orders are injected; allowed ONLY for live-ledger behavioural validation
+#      USER_RULE_ONLY      a rule supplied by the user for experiments; never reported as recovered
+#      DISABLED_BY_DEFAULT the module exists but is off in the mechanical baseline
+#      ACCOUNTING          bookkeeping, not a decision rule
+#  * may_run_historically: true | false | conditional  (conditional = only with the stated condition)
+#  * implementation_status is updated by the implementer; at creation of this file every rule is NOT_STARTED.
+#  * evidence IDs (STR-01, ENT-02, ...) refer to algo8_skeleton/STAGE1_IMPLEMENTATION_SPEC.md and audit/ALGO8_MASTER_FINDINGS_REGISTER.md.
+#  * the 35 live cycles are CONTAMINATED development data (all inspected repeatedly); nothing here is validated out of sample.
+
+schema_version: 1
+created: 2026-11-19
+base_commit: 9e64fbadccce8a09e102e539572b74ae71935380
+changelog: []
+
+rules:
+
+# ---------------------------------------------------------------- A. cycle and market structure
+- id: A-01
+  group: A_cycle_market_structure
+  description: "A cycle is one weekly expiry of one underlying: session D-1 (last session before expiry) plus D0 (expiry day); NIFTY and SENSEX are separate cycles."
+  evidence_source: "STR-01; tp_reconstruction TP-01; lot_lifecycle cycles.csv"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: OBSERVED_CONSTANT
+  observed_or_hypothetical: observed
+  limitations: "Live ledger: 35 cycles, 3 D0-only (no D-1 log), 2 without D0 log. History: only D-1 and D0 sessions exist in the dataset."
+- id: A-02
+  group: A_cycle_market_structure
+  description: "Actual historical expiry calendar (weekday changes, holidays, special sessions) taken from an independent calendar, never from the future."
+  evidence_source: "data_validation/validation/calendar_evidence.py; reports/tables/*_expiry_coverage.csv"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {source: "data_validation expiry coverage tables"}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: OBSERVED_CONSTANT
+  observed_or_hypothetical: observed
+  limitations: "Independent of the dataset manifest but built from public exchange-rule reports + Yahoo trading days; special-session dates 2023-2025 not independently verifiable (data_validation report A). Muhurat sessions mis-taken as D-1 for two expiries (defect D04)."
+- id: A-03
+  group: A_cycle_market_structure
+  description: "Session calendar: regular sessions 09:15-15:29 bars; special sessions (Muhurat, outages) flagged and excluded or repaired."
+  evidence_source: "data_validation defects D04, D05, D21"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {regular_bars: "09:15-15:29", post_2026_08_03_last_bar: "15:39 (option bars)"}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: OBSERVED_CONSTANT
+  observed_or_hypothetical: observed
+  limitations: "NIFTY spot after 15:14 invalid on sessions after 2026-08-03 (D05); four intraday outage sessions must be masked (D21)."
+- id: A-04
+  group: A_cycle_market_structure
+  description: "Index-to-option contract mapping: weekly options on the same underlying and expiry; CE/PE; strike grid 50 (NIFTY) / 100 (SENSEX)."
+  evidence_source: "STR-01; DAT-01; STK-01"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {strike_step: {NIFTY: 50, SENSEX: 100}}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: OBSERVED_CONSTANT
+  observed_or_hypothetical: observed
+  limitations: "Historical strike spacing assumed constant over 2023-2026; not independently verified per session."
+- id: A-05
+  group: A_cycle_market_structure
+  description: "Contract lot size per session. Live (2026): 65 NIFTY / 20 SENSEX. Historical: inferred per session as the gcd of option volumes (NIFTY 50/25/75/65; SENSEX 10/20)."
+  evidence_source: "SIZ-01 (live); backtest/bt/cycles.py (inferred history)"
+  classification: STRONGLY_SUPPORTED
+  parameters: {live: {NIFTY: 65, SENSEX: 20}, history: "inferred from volume gcd"}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: OBSERVED_CONSTANT
+  observed_or_hypothetical: observed_live_inferred_history
+  limitations: "Historical lot size is inferred, not supplied (data_validation D-readiness 'lot-size history not supplied'). Sizing variable is LOTS, not units (decision to be confirmed before freeze)."
+- id: A-06
+  group: A_cycle_market_structure
+  description: "Option universe available to the simulator: ATM +-45 strikes around the D-2 close; a contract outside it, or without a bar, yields NO_MARKET (never a fabricated fill)."
+  evidence_source: "data_validation D_RESEARCH_READINESS_REPORT; defects D08/D09"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {window_steps: 45}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: ACCOUNTING
+  observed_or_hypothetical: observed
+  limitations: "Far strikes without rows cannot be classed as unlisted or failed; 20 SENSEX contract-days of the earlier exact-trade data lie outside the window."
+
+# ---------------------------------------------------------------- B. entry modules
+- id: B-01
+  group: B_entry_modules
+  description: "Initial opening around 09:16 of D-1: CE and PE shorts within ~1 s, 3 base units per role."
+  evidence_source: "ENT-01; SIZ-02; lot_lifecycle reports"
+  classification: STRONGLY_SUPPORTED
+  parameters: {time: "09:16", units_per_role: 3}
+  parameter_ranges: {time: ["09:16"], units_per_role: [3]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live_extrapolated_history
+  limitations: "Observed Jun-Oct 2026 only. Whether the same opening applied in 2023-2025 is UNKNOWN (backtest report: 'extrapolation to 2023-2025')."
+- id: B-02
+  group: B_entry_modules
+  description: "Opening strike K = step*floor(S/step+0.5), S = completed 09:15 index close (previous completed minute)."
+  evidence_source: "STK-01; TP-03 E5 (31/32 first orders; 88.4 % of 190 initial orders, NIFTY 98.9 %, SENSEX 79.2 %, misses <= 2 steps)"
+  classification: STRONGLY_SUPPORTED
+  parameters: {reference: "previous completed 1-minute index close", rounding: "nearest step"}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: OBSERVED_CONSTANT
+  observed_or_hypothetical: observed_live
+  limitations: "SENSEX opening strike matches only 79 %."
+- id: B-03
+  group: B_entry_modules
+  description: "17 pre-expiry (D-1) scheduled windows 09:30..14:30; each window creates a fresh same-strike CE+PE body short pair (window start T-2 s, end T+3 min)."
+  evidence_source: "ENT-02; TP-03 E1 (544/544 windows act; 587/672 over all 21 candidate windows; control windows 12:15, 12:45, 13:00 act 19-22 %, 13:15 75 %)"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {windows: "17 registered", skipped_windows_unexplained: ["12:15", "12:45", "13:00"]}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live
+  limitations: "Window set was chosen from this data (selection-conditioned). 'Timer is the trigger' is only WEAKLY_SUPPORTED. Why 12:15/12:45/13:00 are skipped is unexplained. Not every scheduled window must be assumed to act in history."
+- id: B-04
+  group: B_entry_modules
+  description: "Expiry-day (D0) entries at the quarter-hour windows while the book is active (book holds any short)."
+  evidence_source: "ENT-03; TP-03 (510/543 = 94 % of applicable windows)"
+  classification: STRONGLY_SUPPORTED
+  parameters: {active_definition: "book holds any short"}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live
+  limitations: "Quantity and strike rules on D0 less certain; D0 sale trigger unidentified (see B-07)."
+- id: B-05
+  group: B_entry_modules
+  description: "Scheduled-window strike: near the previous-minute ATM (offset 0 default)."
+  evidence_source: "STK-02; TP-03 E5 (63.0 % exact, 93.2 % within one step; chance 23.6 %)"
+  classification: HYPOTHESIS
+  parameters: {offset_steps: 0}
+  parameter_ranges: {offset_steps: [-1, 0, 1]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live
+  limitations: "Residual (off-grid) tilt unresolved (STK-03/STK-04: CE ~0.55-0.58 delta, one strike toward the move). Greeks need reliable IV, which is unavailable; delta-placement stays USER_RULE_ONLY."
+- id: B-06
+  group: B_entry_modules
+  description: "Quantity per scheduled window: modal ladder per slot. Lineage Y and X templates disagree (2-3 vs 4 at 10:15/10:16)."
+  evidence_source: "SIZ-03; REC-04; TP-03 E3 (window mode explains only 64.5 % of pre-expiry and 40 % of D0 quantities; deterministic ladder FALSIFIED)"
+  classification: HYPOTHESIS
+  parameters: {ladder: "Y"}
+  parameter_ranges: {ladder: ["Y", "X"], extra: ["EXPLICIT_UNKNOWN_SIZING"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live
+  limitations: "What moves quantity off the mode is unknown. Template tendency is WEAKLY_SUPPORTED, template as a rule is falsified."
+- id: B-07
+  group: B_entry_modules
+  description: "Additional (off-schedule) entries. Trigger not recovered (a fitted classifier reaches AUC 0.887 but is NOT a recovered rule)."
+  evidence_source: "ENT-04; TP-03 E2 (no feature survives Holm; 13 nominal p<0.05 of 96 vs ~4.8 expected)"
+  classification: UNKNOWN
+  parameters: {mode: "DISABLED"}
+  parameter_ranges: {mode: ["DISABLED", "TEACHER_FORCED", "EXPLICIT_USER_RULE"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: teacher_forced_or_user_rule
+  limitations: "TEACHER_FORCED is for live-ledger behavioural validation only. No fitted ML substitution. D-1 off-schedule sales were worth ~Rs469/lot vs Rs323 scheduled (replication report): excluding them is a known economic gap."
+- id: B-08
+  group: B_entry_modules
+  description: "Entry order pricing: marketable limit = LTP x 1.15 (buy) / x 0.85 (sell); lump buy ~x 1.03; Rs 0.05 tick; body DAY, wings/lump/stop IOC."
+  evidence_source: "DAT-05; DAT-06"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {buy_band: 1.15, sell_band: 0.85, lump_buy_band: 1.03, tick: 0.05}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: OBSERVED_CONSTANT
+  observed_or_hypothetical: observed_live
+  limitations: "Band observed in 2026 orders only; a 1-minute bar says nothing about queue position or depth."
+- id: B-09
+  group: B_entry_modules
+  description: "Entry eligibility / no-trade filter."
+  evidence_source: "ENT-05; skeleton UNRESOLVED list"
+  classification: UNKNOWN
+  parameters: {filter: "none (trade every cycle in the data)"}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: hypothetical
+  limitations: "No eligibility data. Margin / capital gate NOT TESTABLE (TP-03 E4)."
+
+# ---------------------------------------------------------------- C. position management
+- id: C-01
+  group: C_position_management
+  description: "Old exposure is retained across windows (D-1 accumulates; no re-centring of earlier shorts)."
+  evidence_source: "MGT-01"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: OBSERVED_CONSTANT
+  observed_or_hypothetical: observed_live
+  limitations: "Observed in 35 cycles only."
+- id: C-02
+  group: C_position_management
+  description: "Short-lot lifecycle: whole-lot unit lots; each closing fill is allocated to open lots under an ownership convention. Ownership is NOT identifiable from the ledger."
+  evidence_source: "lot_lifecycle LOT_IDENTITY_METHODOLOGY / EXECUTIVE_SUMMARY (89 % of body shorts ambiguous in 30 complete cycles; carried/D0 P&L split moves Rs 4.9 L across conventions)"
+  classification: UNKNOWN
+  parameters: {convention: "FIFO"}
+  parameter_ranges: {convention: ["FIFO", "LIFO", "LOW_ENTRY_FIRST", "HIGH_ENTRY_FIRST"], body_buy_without_short: ["OPEN_LONG", "CLOSE_UNRECORDED_SHORT"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: BAND
+  observed_or_hypothetical: hypothetical
+  limitations: "Each convention is a SCENARIO, never selected by profit. D1 (body buy with no recorded short) unresolved: both readings implemented upstream."
+- id: C-03
+  group: C_position_management
+  description: "Partial buy-backs: buy-back orders close 1-42 lots (median 1); lot-level assignment ambiguous."
+  evidence_source: "lot_lifecycle CARRIED_LOT_BUYBACK_ANALYSIS"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: TEACHER_FORCED_ONLY
+  observed_or_hypothetical: teacher_forced
+  limitations: "Contract-level exact; the TRIGGER of buy-backs is not recovered (no hypothesis exceeds 7.5 % precision)."
+- id: C-04
+  group: C_position_management
+  description: "Per-lot stop: buy back one lot when LTP >= k x reference. Reference candidates: own entry; cheapest open entry. Entries <= Rs 4 exempt in the earlier model."
+  evidence_source: "EXT-02..EXT-04; ALC-02..ALC-04; replication/rules.py R-LEGSTOP; ~95 % of stop buy-backs at >= 1.5x lowest entry"
+  classification: HYPOTHESIS
+  parameters: {k: 1.55, reference: "cheapest_open_entry", exempt_entry_px: 4}
+  parameter_ranges: {k: [1.55, 1.60, 1.65, 1.70], reference: ["own_entry", "cheapest_open_entry"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live_band
+  limitations: "Exact rule UNKNOWN (0 of 18 candidate rules at 80/80 precision/recall). D0 scope is weaker (EXT-05). Stop executes on OHLC crossing under a conservative intrabar policy, never at the bar high."
+- id: C-05
+  group: C_position_management
+  description: "Carried-lot management: deep-OTM carried lots are held to settlement (76 % beyond 6 strike steps vs <=1 % within 3 steps); no recovered buy-back trigger."
+  evidence_source: "lot_lifecycle CARRIED_LOT_BUYBACK_ANALYSIS; VALIDATION_AND_LIMITATIONS"
+  classification: STRONGLY_SUPPORTED
+  parameters: {mode: "HOLD_TO_EXPIRY"}
+  parameter_ranges: {mode: ["HOLD_TO_EXPIRY", "DISTANCE_CONDITIONED", "USER_RULE"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live
+  limitations: "The OBSERVATION (held) is supported; the DECISION RULE is unknown. FIFO-set statistic; ~same under other conventions."
+- id: C-06
+  group: C_position_management
+  description: "Side/basket reductions: contract choice 'largest exposure' hit@1 0.77/0.58, fraction median 11-20 %; trigger unknown."
+  evidence_source: "MGT-05; MGT-06; EXT-10"
+  classification: UNKNOWN
+  parameters: {mode: "DISABLED"}
+  parameter_ranges: {mode: ["DISABLED", "TEACHER_FORCED", "USER_RULE"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: teacher_forced
+  limitations: "Choice rule usable only if a trigger exists."
+- id: C-07
+  group: C_position_management
+  description: "Clock-B: D0 tick times :14/:29/:44/:59 from 09:29; one lot per acting tick per contract; re-sale at ATM ~28 s later. Act/no-act and contract choice unknown."
+  evidence_source: "MGT-02..MGT-04; STK-05; ALC-08; TP-02 (15-min block end has 2.7x the closing hazard, Holm p=0.030)"
+  classification: HYPOTHESIS
+  parameters: {mode: "DISABLED", tick_minutes: [14, 29, 44, 59]}
+  parameter_ranges: {mode: ["DISABLED", "TEACHER_FORCED", "USER_RULE"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: teacher_forced
+  limitations: "Tick TIMES are observed; the DECISION is not. Same-contract replacement REJECTED as general rule (C-09)."
+- id: C-08
+  group: C_position_management
+  description: "Expiry settlement of residual lots at the settlement value (see C-10 for the proxy treatment)."
+  evidence_source: "bt/account.py; lot_lifecycle PNL_RECONCILIATION"
+  classification: CONFIRMED_OBSERVATION
+  parameters: {source_order: ["exchange_settlement", "official_index_close", "last_1min_spot_bar", "yahoo_proxy"]}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: ACCOUNTING
+  observed_or_hypothetical: observed
+  limitations: "No exchange settlement price in the data: every settled P&L is proxy-based. The Yahoo official close differs from the 15:29 spot bar by up to 89 points in 13 early live cycles."
+- id: C-09
+  group: C_position_management
+  description: "Replacement after a buy-back (same-contract / same-right / cross-right). Same-contract replacement as a general rule REJECTED; cross-right sale ~2.8x chance at 0-30 s is an exploratory hypothesis only."
+  evidence_source: "lot_lifecycle REPLACEMENT_ANALYSIS (v2: same-right <=60 s ratio 1.25, CI 0.91-1.56; 0 strongly supported at primary thresholds)"
+  classification: REJECTED
+  parameters: {mode: "DISABLED"}
+  parameter_ranges: {mode: ["DISABLED", "TEACHER_FORCED", "USER_RULE"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: hypothetical
+  limitations: "REJECTED covers 'replacement as a general rule' and '60 % of D0 sales are replacements'. The cross-right pattern is a separate HYPOTHESIS and must be tested on new data."
+- id: C-10
+  group: C_position_management
+  description: "Final liquidation: flatten the short book at 15:14 in the later live period (after 3 Aug 2026); earlier-period rule unknown."
+  evidence_source: "EXT-08"
+  classification: HYPOTHESIS
+  parameters: {time: "15:14", from_date: "2026-08-03"}
+  parameter_ranges: {variants: ["15:14_everywhere", "15:14_only_after_cutover", "HOLD_TO_EXPIRY"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live_band
+  limitations: "Cut-over date and pre-cut-over rule UNKNOWN. Cutover must be explicit in every config."
+- id: C-11
+  group: C_position_management
+  description: "Decay take-profit (price <= 0.5x entry) as a general trigger."
+  evidence_source: "lot_lifecycle CARRIED_LOT_BUYBACK_ANALYSIS H2 (lift 0.87 / 0.69)"
+  classification: REJECTED
+  parameters: {}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: hypothetical
+  limitations: "Must not be enabled as a default."
+- id: C-12
+  group: C_position_management
+  description: "Salvage: buy back every option <= Rs 1 (or <= 5 % of entry)."
+  evidence_source: "lot_lifecycle H6 (lift 0.11 / 0.04: near-worthless contracts are HELD); EXT-07 labelling thresholds"
+  classification: REJECTED
+  parameters: {}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: hypothetical
+  limitations: "Rejected as a trigger; some expiry-day wing sales at <= Rs 1 exist as labels, not recovered instructions."
+
+# ---------------------------------------------------------------- D. hedge modules
+- id: D-01
+  group: D_hedge_modules
+  description: "Seed wings before/with the opening shorts: NIFTY K +-2,000; SENSEX K +-4,000 before 2026-09-16, +-2,000 from 2026-09-16."
+  evidence_source: "HDG-01"
+  classification: STRONGLY_SUPPORTED
+  parameters: {distance: {NIFTY: 2000, SENSEX_before_2026_09_16: 4000, SENSEX_from_2026_09_16: 2000}}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live_extrapolated_history
+  limitations: "Historically the wing often did not trade at 09:16-09:20 (substituted toward ATM in 54 % NIFTY / 31 % SENSEX cycles in the BT). A substituted wing must be labelled, not silently accepted."
+- id: D-02
+  group: D_hedge_modules
+  description: "Routine wing with each addition: highest OTM premium <= 2.5 % of the ATM leg premium, per right."
+  evidence_source: "HDG-02; HDG-03 (strike match only ~50 % exact)"
+  classification: HYPOTHESIS
+  parameters: {budget_fraction: 0.025}
+  parameter_ranges: {budget_fraction: [0.0244, 0.025]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live
+  limitations: "Budget supported; strike choice only ~50 % exact."
+- id: D-03
+  group: D_hedge_modules
+  description: "Overnight lump (v_) hedge: late D-1, heavier short side, 0.9-2.3 % OTM; size not predictable."
+  evidence_source: "SIZ-04; HDG"
+  classification: UNKNOWN
+  parameters: {mode: "DISABLED"}
+  parameter_ranges: {mode: ["DISABLED", "TEACHER_FORCED", "USER_RULE"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: teacher_forced
+  limitations: "Timing/strike band only; size is a placeholder."
+- id: D-04
+  group: D_hedge_modules
+  description: "Wing release: wings are sold with short buy-backs (same side, within 60 s; 84 % of short closings have a same-right wing closing within +-10 s)."
+  evidence_source: "HDG-06; TP-02"
+  classification: STRONGLY_SUPPORTED
+  parameters: {coupling_window_s: 10}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live
+  limitations: "Association, not a recovered ratio. Release ratio unknown."
+- id: D-05
+  group: D_hedge_modules
+  description: "Wing coupling to replacement (sale) orders. Ledger gives a wing for ~41 % of replacement-labelled sales."
+  evidence_source: "lot_lifecycle SIMULATOR_DEFECT_REMEDIATION defect B"
+  classification: UNKNOWN
+  parameters: {replacement_wings: "none"}
+  parameter_ranges: {replacement_wings: ["none", "one_per_lot"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: BAND
+  observed_or_hypothetical: hypothetical
+  limitations: "Two bounds only; neither is a recovered rule."
+- id: D-06
+  group: D_hedge_modules
+  description: "Expiry hedge replacement inward (81.5 %) and hedge sizing beyond the budget."
+  evidence_source: "HDG-04"
+  classification: UNKNOWN
+  parameters: {mode: "DISABLED"}
+  parameter_ranges: {mode: ["DISABLED", "TEACHER_FORCED", "USER_RULE"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: DISABLED_BY_DEFAULT
+  observed_or_hypothetical: teacher_forced
+  limitations: "Association only."
+- id: D-07
+  group: D_hedge_modules
+  description: "Carry book is long >= short per right (assertion check, not an action)."
+  evidence_source: "HDG-05"
+  classification: STRONGLY_SUPPORTED
+  parameters: {}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: ACCOUNTING
+  observed_or_hypothetical: observed_live
+  limitations: "Constraint check on the live book."
+
+# ---------------------------------------------------------------- E. risk modules
+- id: E-01
+  group: E_risk_modules
+  description: "Cycle-level MTM stop on cumulative LTP MTM (body + hedges, D-1 + D0): approx -Rs 1.30 to -1.35 L configured (the stop sits near -1.44 L)."
+  evidence_source: "RSK-01; backtest capital_stop plugin; d0_sim_v2"
+  classification: HYPOTHESIS
+  parameters: {threshold_rs: -135000}
+  parameter_ranges: {threshold_rs: [-130000, -133000, -135000], poll_interval_s: [60], delay_minutes: [0, 1], passive_at_stop: ["close_all", "keep"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live_band
+  limitations: "Threshold was read from live (Rs 2 Cr) book size; scaling to historical sizing is an assumption. Passive-lot behaviour at a stop is an ASSUMPTION with two bounds (sign of later-block D0 P&L depends on it). The stop does not execute at the threshold."
+- id: E-02
+  group: E_risk_modules
+  description: "No new entries after the s_ cycle stop."
+  evidence_source: "RSK-01; ALC-09 (post-stop short fills occur in 7/12 stop cycles)"
+  classification: HYPOTHESIS
+  parameters: {post_stop_entries: "none"}
+  parameter_ranges: {post_stop_entries: ["none", "teacher_forced"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: conditional
+  mode: BAND
+  observed_or_hypothetical: observed_live
+  limitations: "Contradicted in 7 of 12 live stop cycles; not simulated beyond the stop."
+- id: E-03
+  group: E_risk_modules
+  description: "Stop polling latency and post-stop order behaviour."
+  evidence_source: "lot_lifecycle D0 simulator v2; d0_reconstruction"
+  classification: UNKNOWN
+  parameters: {latency_minutes: 0}
+  parameter_ranges: {latency_minutes: [0, 1]}
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: BAND
+  observed_or_hypothetical: hypothetical
+  limitations: "Second-level latency not observable."
+- id: E-04
+  group: E_risk_modules
+  description: "'4 % carry SL' (Info.txt) and '1 % of capital on expiry day': stated, not reproduced."
+  evidence_source: "RSK-02; RSK-03; Info.txt"
+  classification: UNKNOWN
+  parameters: {mode: "DISABLED"}
+  parameter_ranges: {mode: ["DISABLED", "USER_RULE"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: USER_RULE_ONLY
+  observed_or_hypothetical: hypothetical
+  limitations: "Six interpretations exist upstream; each must carry a user-rule label."
+- id: E-05
+  group: E_risk_modules
+  description: "Margin and capital constraint: Rs 2 Cr capital stated; margin modelled only as worst-case expiry loss proxy, not SPAN."
+  evidence_source: "bt METHODOLOGY section 5; TP-03 E4 NOT_TESTABLE"
+  classification: UNKNOWN
+  parameters: {capital_rs: 20000000, margin_proxy: "worst_case_expiry_loss"}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: ACCOUNTING
+  observed_or_hypothetical: hypothetical
+  limitations: "Capital figure unverified; real broker margin unknown."
+
+# ---------------------------------------------------------------- X. accounting / execution (not decision rules)
+- id: X-01
+  group: X_accounting_execution
+  description: "Cost model: brokerage, STT, exchange charge, SEBI, GST, stamp, slippage, spread."
+  evidence_source: "bt/account.py; Part K of the brief"
+  classification: UNKNOWN
+  parameters: {status: "rates to be re-sourced from authoritative references; STT 2026 change confirmed only"}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: ACCOUNTING
+  observed_or_hypothetical: estimate
+  limitations: "Export has no charges. All historical cost rates except STT 2026 were quoted from memory in the earlier BT and are unverified."
+- id: X-02
+  group: X_accounting_execution
+  description: "Execution models: decision-minute open, next-minute open, adverse bar, configurable delay, NO_MARKET when the bar is absent."
+  evidence_source: "skeleton spec section 4; analysis/engine.py"
+  classification: HYPOTHESIS
+  parameters: {model: "decision_minute_open"}
+  parameter_ranges: {model: ["decision_minute_open", "next_minute_open", "adverse_bar", "delay_n_minutes"]}
+  implementation_status: NOT_STARTED
+  may_run_historically: true
+  mode: BAND
+  observed_or_hypothetical: hypothetical
+  limitations: "97.3 % of live fills lie inside their own-minute bar. No bid/ask, depth, queue or impact data."
+- id: X-03
+  group: X_accounting_execution
+  description: "Benchmark Sharpe 2.19 (3 Mar 2025 - 27 May 2026, 47.22 %, CAGR 36.88 %): methodology UNKNOWN; comparison label NOT COMPARABLE unless identical methodology is established."
+  evidence_source: "ORIGINAL_SHARPE_BENCHMARK.md; BENCHMARK_METHODOLOGY_STATUS.md"
+  classification: UNKNOWN
+  parameters: {}
+  parameter_ranges: null
+  implementation_status: NOT_STARTED
+  may_run_historically: false
+  mode: ACCOUNTING
+  observed_or_hypothetical: unverified_summary
+  limitations: "Screenshot not in the repository; return frequency, annualisation, capital, risk-free, costs, instruments unknown."

@@ -1,0 +1,26 @@
+# Cycle eligibility criteria for the HISTORICAL replay. Written BEFORE any replica performance exists and before the eligibility table
+# was computed. A cycle's class depends only on data availability, never on P&L.
+version: 1
+policy:
+  executable_bar: "volume > 0 on the bar (a zero-volume bar is a carried/stale price and is NOT executable)"
+  fill_window_minutes: 3          # first executable bar in decision minute .. decision minute + 2 (the registered window is [T-2 s, T+3 min))
+  decision_spot: "previous completed 1-minute index close (strike selection); fill = open of the first executable bar"
+  no_market_rule: "no executable bar inside the window -> NO_MARKET; no price is invented"
+windows:
+  opening: "09:16"
+  d1_scheduled: ["09:30","09:45","10:00","10:15","10:30","10:45","11:00","11:15","11:30","11:45","12:00","12:30","13:30","13:45","14:00","14:15","14:30"]
+  d0_quarter: {start: "09:30", end: "15:00", step_minutes: 15}   # 23 windows
+wings:
+  distance_points: {NIFTY: 2000, SENSEX_before_2026_09_16: 4000, SENSEX_from_2026_09_16: 2000}
+  exact_rule: "wing strike K+-W has an executable bar in 09:16-09:20"
+classes:
+  FULLY_FEASIBLE: "validation status Complete; not a special/outage session; opening ATM CE and PE executable; both seed wings exact; >= 15 of 17 D-1 windows have an executable ATM CE+PE"
+  FEASIBLE_WITH_DECLARED_SUBSTITUTION: "as FULLY_FEASIBLE but at least one seed wing is not exact (nearest traded strike toward ATM is used and the distance is recorded)"
+  PARTIAL: "status Partial, or Complete with a special/outage session, or opening ATM leg not executable, or < 15 of 17 D-1 windows executable"
+  UNUSABLE: "status Missing, or no D-1 session, or D-1 is a special session"
+reporting:
+  denominators: ["strictly complete (FULLY_FEASIBLE)", "FULLY_FEASIBLE + FEASIBLE_WITH_DECLARED_SUBSTITUTION, reported separately", "all expected cycles (coverage shown)"]
+special_sessions_and_outages:
+  # data_validation defects D04 and D21
+  special_d1: [["NIFTY", "2026-11-09"], ["SENSEX", "2025-10-23"]]
+  outage: [["NIFTY", "D-1", "2026-05-11"], ["SENSEX", "D-1", "2024-10-17"], ["SENSEX", "D0", "2024-08-02"], ["SENSEX", "D0", "2025-10-16"]]
