@@ -1,0 +1,7 @@
+mark,L_rupees,cycles,actual_stop_cycles,TP,FP,FN,TN,precision,recall,timing_err_min_median,within_2min
+"prev (causal, primary)",130000.0,30,11,0,0,11,19,,0.0,,0
+"prev (causal, primary)",135000.0,30,11,0,0,11,19,,0.0,,0
+"prev (causal, primary)",144000.0,30,11,0,0,11,19,,0.0,,0
+same (NON-causal diagnostic: includes the decision minute close),130000.0,30,11,3,0,8,19,1.0,0.2727272727272727,-1.0,3
+same (NON-causal diagnostic: includes the decision minute close),135000.0,30,11,2,0,9,19,1.0,0.18181818181818182,-1.0,2
+same (NON-causal diagnostic: includes the decision minute close),144000.0,30,11,1,0,10,19,1.0,0.09090909090909091,-1.0,1

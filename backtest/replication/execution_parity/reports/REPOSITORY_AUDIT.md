@@ -46,7 +46,7 @@ Fixed-bin matching (C, fixed in `matching.py`); D0 09:15 look-ahead (D, fixed in
 ## 6. Gap analysis → what this milestone builds
 | Gap | Built | Mode |
 |---|---|---|
-| G1 no event-driven execution core | `execution_parity/src/engine.py` (MarketView, PortfolioState, OrderIntent, ExecutionModel, Fill, PositionEvent, EventLoop), small, tested | all |
+| G1 no event-driven execution core | `execution_parity/src/exec_core.py` (MarketView, PortfolioState, OrderIntent, ExecutionModel, Fill, PositionEvent, EventLoop), small, tested | all |
 | G2 no inventory path comparison | `compare.py`: contract-level net position at every event time, original vs reconstructed (ownership-independent) | 1, 2, 3 |
 | G3 no teacher-forced management | `components.py` + `run_parity.py`: inject original orders, **leave one component out**, test whether our component reproduces the omitted original behaviour | 1 |
 | G5 no null baselines | phase-preserving circular-shift null for every event-agreement metric | all |
