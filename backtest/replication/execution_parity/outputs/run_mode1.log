@@ -1,0 +1,97 @@
+H-STK orders dropped for NaN spot: 16 of 14328
+H-FLAT pre-registered falsifier: share of 15:13 shorts still short after 15:14 (post-cutover): 0.2067 (falsified only if > 0.5)
+== strike
+                                                    subset     n  exact  within1  null_exact  null_within1  mean_signed
+                                            all body sells 14312  0.447    0.815       0.223         0.536       -0.134
+                                                       D-1  4536  0.503    0.897       0.232         0.560       -0.294
+                                                        D0  9776  0.421    0.777       0.219         0.524       -0.060
+                D-1 ladder windows (17 slots, first 3 min)  1888  0.790    0.970       0.288         0.653       -0.169
+                                                 D-1 other  2648  0.299    0.844       0.192         0.494       -0.383
+D0 minute 0 (previous-day close is the last completed bar)   415  0.106    0.369       0.178         0.477       -0.186
+                                     D0 excluding minute 0  9361  0.435    0.795       0.221         0.526       -0.055
+                                                     NIFTY  6685  0.522    0.845       0.280         0.636       -0.115
+                                                    SENSEX  7627  0.382    0.788       0.174         0.448       -0.151
+== qty
+ exact_leave_one_cycle_out  exact_nonzero_cells  zero_zero_cells  n_slot_legs  exact_vs_R1_ladder  mae_lots  null_exact_mean  null_exact_p95  exact_vs_own_window_mode  actual_mean_lots  rule_mean_lots
+                     0.619                 0.63              161         1088               0.685     0.524            0.246           0.369                     0.685             1.735           1.529
+== wing
+ body_orders  with_wing_partner  partner_share  compared  exact  within1  within2  null_exact  median_wing_to_body_price_ratio  mean_signed_err_steps
+       14300               8369          0.585      8315   0.32     0.55    0.673       0.082                            0.025                  0.548
+== cyc
+                                                                                                                            mark  L_rupees  cycles  actual_stop_cycles  TP  FP  FN  TN  precision  recall  timing_err_min_median  within_2min
+                                                                                                          prev (causal, primary)  130000.0      30                  11   1   0  10  19        1.0   0.091                    0.0            1
+                                                                                                          prev (causal, primary)  135000.0      30                  11   0   0  11  19        NaN   0.000                    NaN            0
+                                                                                                          prev (causal, primary)  144000.0      30                  11   0   0  11  19        NaN   0.000                    NaN            0
+open (open of the decision minute: known at the start of the minute, usable only if the decision is taken after its first print)  130000.0      30                  11   3   0   8  19        1.0   0.273                    0.0            3
+open (open of the decision minute: known at the start of the minute, usable only if the decision is taken after its first print)  135000.0      30                  11   2   0   9  19        1.0   0.182                    0.0            2
+open (open of the decision minute: known at the start of the minute, usable only if the decision is taken after its first print)  144000.0      30                  11   2   0   9  19        1.0   0.182                    0.0            2
+                                                                same (NON-causal diagnostic: includes the decision minute close)  130000.0      30                  11  10   0   1  19        1.0   0.909                    0.0           10
+                                                                same (NON-causal diagnostic: includes the decision minute close)  135000.0      30                  11   9   0   2  19        1.0   0.818                    0.0            9
+                                                                same (NON-causal diagnostic: includes the decision minute close)  144000.0      30                  11   8   0   3  19        1.0   0.727                    0.0            8
+== flat
+   und     expiry  post_cutover  short_lots_1513_all  short_lots_1514_all  short_lots_end_all  remaining_share_1514_all  short_lots_1513_body  short_lots_1514_body  short_lots_end_body  remaining_share_1514_body  body_buy_lots_in_1514
+ NIFTY 2026-06-23         False                   62                   62                   0                     1.000                    82                    82                   36                      1.000                      0
+ NIFTY 2026-06-30         False                    0                    0                   0                       NaN                   279                   279                  279                      1.000                      0
+ NIFTY 2026-07-07         False                   73                   68                   0                     0.932                    74                    69                   78                      0.932                      5
+ NIFTY 2026-07-14         False                    0                    0                   0                       NaN                    65                    65                   65                      1.000                      0
+ NIFTY 2026-07-21         False                  104                   95                   0                     0.913                   104                    95                    0                      0.913                      9
+ NIFTY 2026-07-28         False                  121                  112                   0                     0.926                   121                   112                    4                      0.926                      9
+ NIFTY 2026-08-04          True                   10                    0                   0                     0.000                    18                     8                    8                      0.444                     10
+ NIFTY 2026-08-11          True                  156                  156                   0                     1.000                   156                   156                    0                      1.000                      0
+ NIFTY 2026-08-18          True                    0                    0                   0                       NaN                    59                    59                   59                      1.000                      0
+ NIFTY 2026-08-25          True                  121                    0                   0                     0.000                   121                   116                  116                      0.959                    121
+ NIFTY 2026-09-08          True                  219                    0                   0                     0.000                   243                   235                  235                      0.967                    225
+ NIFTY 2026-09-15          True                  162                    0                   0                     0.000                   162                   136                  136                      0.840                    162
+ NIFTY 2026-09-22          True                    0                    0                   0                       NaN                   204                   204                  204                      1.000                      0
+ NIFTY 2026-10-06          True                  137                    0                   0                     0.000                   137                   116                  116                      0.847                    138
+ NIFTY 2026-10-13          True                    0                    0                   0                       NaN                    84                    84                   84                      1.000                      0
+ NIFTY 2026-10-19          True                    0                    0                   0                       NaN                   439                   439                  439                      1.000                      0
+SENSEX 2026-06-25         False                   60                   54                   0                     0.900                    92                    86                    0                      0.935                      6
+SENSEX 2026-07-02         False                   69                   62                   0                     0.899                    74                    66                   26                      0.892                      8
+SENSEX 2026-07-09         False                  102                   98                   0                     0.961                   113                   109                    1                      0.965                      4
+SENSEX 2026-07-16         False                    0                    0                   0                       NaN                   122                   122                  122                      1.000                      0
+SENSEX 2026-07-23         False                   20                   20                   0                     1.000                    29                    29                    0                      1.000                      0
+SENSEX 2026-07-30         False                  119                  116                   1                     0.975                   129                   126                    1                      0.977                      3
+SENSEX 2026-08-06          True                    0                    0                   0                       NaN                    90                    90                   90                      1.000                      0
+SENSEX 2026-08-13          True                  161                  160                   0                     0.994                   161                   160                    0                      0.994                      1
+SENSEX 2026-08-20          True                    0                    0                   0                       NaN                    52                    52                   52                      1.000                      0
+SENSEX 2026-08-27          True                  174                    0                   0                     0.000                   175                   170                  170                      0.971                    174
+SENSEX 2026-09-10          True                    0                    0                   0                       NaN                   210                   210                  210                      1.000                      0
+SENSEX 2026-09-17          True                  109                    0                   0                     0.000                   109                    96                   96                      0.881                    109
+SENSEX 2026-09-24          True                    0                    0                   0                       NaN                    66                    66                   66                      1.000                      0
+SENSEX 2026-10-01          True                  125                    0                   0                     0.000                   139                   103                  103                      0.741                    125
+SENSEX 2026-10-08          True                  117                    0                   0                     0.000                   144                    94                   94                      0.653                    132
+SENSEX 2026-10-15          True                    0                    0                   0                       NaN                    62                    62                   62                      1.000                      0
+SENSEX 2026-10-22          True                   38                    0                   0                     0.000                    48                    33                   33                      0.688                     53
+== carry
+    bin  contracts  short_lots_1513  still_short_at_end  carried_share                                                                basis          subset
+  <=0.5       38.0            789.0                 0.0          0.000                          contract (all modules, ownership/role-free)          all D0
+0.5-1.5       76.0            862.0                 0.0          0.000                          contract (all modules, ownership/role-free)          all D0
+  1.5-3       58.0            441.0                 1.0          0.002                          contract (all modules, ownership/role-free)          all D0
+    3-6       29.0            147.0                 0.0          0.000                          contract (all modules, ownership/role-free)          all D0
+     >6        6.0             20.0                 0.0          0.000                          contract (all modules, ownership/role-free)          all D0
+  <=0.5       24.0            511.0                 0.0          0.000                          contract (all modules, ownership/role-free) post 2026-08-03
+0.5-1.5       45.0            545.0                 0.0          0.000                          contract (all modules, ownership/role-free) post 2026-08-03
+  1.5-3       38.0            332.0                 0.0          0.000                          contract (all modules, ownership/role-free) post 2026-08-03
+    3-6       21.0            127.0                 0.0          0.000                          contract (all modules, ownership/role-free) post 2026-08-03
+     >6        3.0             14.0                 0.0          0.000                          contract (all modules, ownership/role-free) post 2026-08-03
+  <=0.5       14.0            278.0                 0.0          0.000                          contract (all modules, ownership/role-free)  pre 2026-08-03
+0.5-1.5       31.0            317.0                 0.0          0.000                          contract (all modules, ownership/role-free)  pre 2026-08-03
+  1.5-3       20.0            109.0                 1.0          0.009                          contract (all modules, ownership/role-free)  pre 2026-08-03
+    3-6        8.0             20.0                 0.0          0.000                          contract (all modules, ownership/role-free)  pre 2026-08-03
+     >6        3.0              6.0                 0.0          0.000                          contract (all modules, ownership/role-free)  pre 2026-08-03
+  <=0.5       50.0            876.0                87.0          0.099 body-module role basis (assumes num fills touch only body inventory)          all D0
+0.5-1.5       95.0           1049.0               187.0          0.178 body-module role basis (assumes num fills touch only body inventory)          all D0
+  1.5-3       79.0            629.0               176.0          0.280 body-module role basis (assumes num fills touch only body inventory)          all D0
+    3-6       75.0            591.0               388.0          0.657 body-module role basis (assumes num fills touch only body inventory)          all D0
+     >6       89.0           1018.0               996.0          0.978 body-module role basis (assumes num fills touch only body inventory)          all D0
+  <=0.5       31.0            571.0                60.0          0.105 body-module role basis (assumes num fills touch only body inventory) post 2026-08-03
+0.5-1.5       55.0            643.0                98.0          0.152 body-module role basis (assumes num fills touch only body inventory) post 2026-08-03
+  1.5-3       46.0            366.0                34.0          0.093 body-module role basis (assumes num fills touch only body inventory) post 2026-08-03
+    3-6       43.0            417.0               290.0          0.695 body-module role basis (assumes num fills touch only body inventory) post 2026-08-03
+     >6       72.0            882.0               868.0          0.984 body-module role basis (assumes num fills touch only body inventory) post 2026-08-03
+  <=0.5       19.0            305.0                27.0          0.089 body-module role basis (assumes num fills touch only body inventory)  pre 2026-08-03
+0.5-1.5       40.0            406.0                89.0          0.219 body-module role basis (assumes num fills touch only body inventory)  pre 2026-08-03
+  1.5-3       33.0            263.0               142.0          0.540 body-module role basis (assumes num fills touch only body inventory)  pre 2026-08-03
+    3-6       32.0            174.0                98.0          0.563 body-module role basis (assumes num fills touch only body inventory)  pre 2026-08-03
+     >6       17.0            136.0               128.0          0.941 body-module role basis (assumes num fills touch only body inventory)  pre 2026-08-03

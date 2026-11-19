@@ -1,0 +1,19 @@
+# Cost model verification (date-aware model `src/costs_v2.py`)
+
+**What was done.** The earlier backtest used flat exchange charges (0.035 % NSE, 0.0325 % BSE) for the whole history, with most rates "quoted from memory". I checked each component against web sources (broker disclosures and press reports). **The exchange circulars themselves were not retrieved**, so status is "cross-checked against secondary sources", not primary-source verified. Algo 8's actual broker terms are unknown.
+
+| Component | Rate used in `costs_v2.py` | Status | Sources |
+|---|---|---|---|
+| NSE index-options exchange transaction charge | **0.0495 % of premium until 2024-09-30; 0.03503 % from 2024-10-01** (the old model used 0.035 % throughout) | cross-checked (secondary). Brokers show the cut at SEBI's end of slab-wise charging on 1 Oct 2024; Zerodha's current page shows 0.03553 % (a ≈ 1 % difference in the charge, immaterial). The rate before April 2024 is **UNVERIFIED** (a Zerodha bulletin announces a revision from 1 Apr 2024 whose content I did not see) | [Zerodha bulletin, 28 Sep 2024](https://zerodha.com/marketintel/bulletin/391488/revision-in-transactions-charges-from-1st-october-2024), [Zerodha update, 1 Oct 2024](https://zerodha.com/z-connect/?p=391776), [Zerodha exchange charges](https://support.zerodha.com/category/account-opening/resident-individual/ri-charges/articles/exchange-transaction-charges) |
+| BSE Sensex options exchange transaction charge | **0.0495 % until 2024-09-30; 0.0325 % from 2024-10-01** | cross-checked (secondary) | [Zerodha bulletin](https://zerodha.com/marketintel/bulletin/391488/revision-in-transactions-charges-from-1st-october-2024), [5paisa](https://5paisa.com/blog/revised-charges-schedule-and-pricing-update) |
+| STT on option sells (premium) | 0.0625 % until 2024-09-30; **0.1 % from 2024-10-01; 0.15 % from 2026-04-01** | cross-checked (multiple sources agree on both changes) | [Zerodha update, 1 Oct 2024](https://zerodha.com/z-connect/?p=391776), [Zerodha STT bulletin, Apr 2026](https://zerodha.com/marketintel/bulletin/445377/revision-in-stt-securities-transaction-tax-from-1st-april-2026), [Business Standard, 1 Feb 2026](https://www.business-standard.com/markets/news/markets-fm-hikes-stt-on-fo-trades-surprise-move-126020100888_1.html) |
+| SEBI turnover fee | 0.0001 % (₹10 per crore) | cross-checked | [Zerodha charges](https://zerodha.com/charges) |
+| Stamp duty (buy premium) | 0.003 % (₹300 per crore) | cross-checked | [Zerodha charges](https://zerodha.com/charges) |
+| GST | 18 % on brokerage + exchange charge + SEBI fee | cross-checked | [Zerodha charges](https://zerodha.com/charges) |
+| Brokerage | ₹20 per executed order | **ASSUMPTION** (a common discount-broker flat fee; Algo 8's terms unknown) | — |
+| Slippage | max(₹0.10, 0.5 % of price) against every order | **ASSUMPTION** (no bid/ask or depth data); stressed ×0 and ×3 | — |
+| Exercise STT / settlement brokerage on held options (0.125 % → 0.15 % of intrinsic) | **not charged**: the base engine flattens before expiry; the hold-to-expiry ablation (A3) therefore understates cost | rate cross-checked (Business Standard) but not applied | — |
+| NSE IPFT charge (₹0.01 per crore) | ignored (immaterial) | — | — |
+
+**Effect on the backtest.** Replacing the flat rates with the date-aware model changes net P&L by under 0.2 %: in-sample net ₹52.03 L (new) vs ₹52.13 L (legacy flat), out-of-sample ₹3.83 L vs ₹3.83 L; weekly Sharpe unchanged (1.59 / 0.22). The cost burden is dominated by STT, brokerage and slippage, not by the exchange charge. The legacy model stays available as variant `C1_legacy_flat_cost_model`.
+**Remaining uncertainty.** Brokerage, slippage, the pre-April-2024 NSE rate and exercise costs. Net figures are therefore still estimates, but the statutory part is now consistent with published schedules.

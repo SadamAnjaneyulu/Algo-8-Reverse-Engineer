@@ -1,0 +1,791 @@
+{
+ "provenance": {
+  "source": "Trades_GKOHNP140.csv (35 live cycles, 2026-06-23..2026-10-22)",
+  "ledger_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
+  "git_head": "19949aec6f3869ca00c918dfd426caac5ce76cb3",
+  "status": "IN-SAMPLE descriptive extraction; every value is a HYPOTHESIS about the original decision rule, not a recovered rule"
+ },
+ "ladder_d1": {
+  "design": "PER-MINUTE schedule: minute index j (0 = 09:15) is scheduled for a right when the original sold at that minute in >= 50 % of the cycles that have the session; lots = conditional median over the cycles that sold",
+  "cycles_with_session": 32,
+  "minutes": {
+   "1": {
+    "CE": {
+     "p_act": 0.969,
+     "lots": 3,
+     "median_when_active": 3.0
+    },
+    "PE": {
+     "p_act": 0.969,
+     "lots": 3,
+     "median_when_active": 3.0
+    }
+   },
+   "16": {
+    "CE": {
+     "p_act": 0.844,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.844,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "31": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "32": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "46": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "60": {
+    "CE": {
+     "p_act": 0.938,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.906,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "61": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 3,
+     "median_when_active": 2.5
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 3,
+     "median_when_active": 3.0
+    }
+   },
+   "76": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "91": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "92": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "106": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "120": {
+    "CE": {
+     "p_act": 0.969,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.906,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "121": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "136": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "151": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 2,
+     "median_when_active": 1.5
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "152": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "166": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "196": {
+    "CE": {
+     "p_act": 1.0,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 1.0,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "241": {
+    "CE": {
+     "p_act": 0.562,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.531,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "255": {
+    "CE": {
+     "p_act": 0.625,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.656,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "270": {
+    "CE": {
+     "p_act": 0.75,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.781,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "285": {
+    "CE": {
+     "p_act": 0.781,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.844,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "300": {
+    "CE": {
+     "p_act": 0.781,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.844,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "315": {
+    "CE": {
+     "p_act": 0.781,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.844,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   }
+  },
+  "share_of_original_lots_covered": 0.433,
+  "gate": "none (runs while no cycle stop)"
+ },
+ "ladder_d0": {
+  "design": "PER-MINUTE schedule: minute index j (0 = 09:15) is scheduled for a right when the original sold at that minute in >= 50 % of the cycles that have the session; lots = conditional median over the cycles that sold",
+  "cycles_with_session": 33,
+  "minutes": {
+   "0": {
+    "CE": {
+     "p_act": 0.697,
+     "lots": 8,
+     "median_when_active": 8.0
+    },
+    "PE": {
+     "p_act": 0.636,
+     "lots": 8,
+     "median_when_active": 8.0
+    }
+   },
+   "1": {
+    "CE": {
+     "p_act": 0.848,
+     "lots": 10,
+     "median_when_active": 10.0
+    },
+    "PE": {
+     "p_act": 0.879,
+     "lots": 9,
+     "median_when_active": 9.0
+    }
+   },
+   "15": {
+    "CE": {
+     "p_act": 0.788,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.788,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "16": {
+    "CE": {
+     "p_act": 0.758,
+     "lots": 3,
+     "median_when_active": 3.0
+    },
+    "PE": {
+     "p_act": 0.758,
+     "lots": 3,
+     "median_when_active": 3.0
+    }
+   },
+   "17": {
+    "CE": {
+     "p_act": 0.576,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.576,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "31": {
+    "CE": {
+     "p_act": 0.758,
+     "lots": 4,
+     "median_when_active": 4.0
+    },
+    "PE": {
+     "p_act": 0.758,
+     "lots": 4,
+     "median_when_active": 4.0
+    }
+   },
+   "32": {
+    "PE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "45": {
+    "CE": {
+     "p_act": 0.758,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.758,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "61": {
+    "CE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "62": {
+    "CE": {
+     "p_act": 0.636,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.636,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "74": {
+    "CE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "76": {
+    "CE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "77": {
+    "CE": {
+     "p_act": 0.576,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.545,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "91": {
+    "CE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "106": {
+    "CE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.758,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "116": {
+    "CE": {
+     "p_act": 0.727,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.727,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "121": {
+    "CE": {
+     "p_act": 0.727,
+     "lots": 4,
+     "median_when_active": 4.0
+    },
+    "PE": {
+     "p_act": 0.727,
+     "lots": 4,
+     "median_when_active": 4.0
+    }
+   },
+   "136": {
+    "CE": {
+     "p_act": 0.727,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.727,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "151": {
+    "CE": {
+     "p_act": 0.727,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.727,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "152": {
+    "CE": {
+     "p_act": 0.606,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.606,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "158": {
+    "PE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "176": {
+    "CE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "196": {
+    "CE": {
+     "p_act": 0.727,
+     "lots": 3,
+     "median_when_active": 3.0
+    },
+    "PE": {
+     "p_act": 0.727,
+     "lots": 3,
+     "median_when_active": 3.0
+    }
+   },
+   "197": {
+    "CE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "202": {
+    "CE": {
+     "p_act": 0.727,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.727,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "211": {
+    "CE": {
+     "p_act": 0.667,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.697,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "212": {
+    "CE": {
+     "p_act": 0.545,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "226": {
+    "CE": {
+     "p_act": 0.727,
+     "lots": 3,
+     "median_when_active": 3.0
+    },
+    "PE": {
+     "p_act": 0.727,
+     "lots": 3,
+     "median_when_active": 3.0
+    }
+   },
+   "239": {
+    "CE": {
+     "p_act": 0.606,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "241": {
+    "CE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "254": {
+    "CE": {
+     "p_act": 0.545,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "256": {
+    "CE": {
+     "p_act": 0.727,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.727,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "257": {
+    "CE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "269": {
+    "CE": {
+     "p_act": 0.515,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "284": {
+    "CE": {
+     "p_act": 0.606,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "286": {
+    "CE": {
+     "p_act": 0.697,
+     "lots": 2,
+     "median_when_active": 2.0
+    },
+    "PE": {
+     "p_act": 0.667,
+     "lots": 2,
+     "median_when_active": 2.0
+    }
+   },
+   "292": {
+    "CE": {
+     "p_act": 0.697,
+     "lots": 1,
+     "median_when_active": 1.0
+    },
+    "PE": {
+     "p_act": 0.697,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   },
+   "299": {
+    "CE": {
+     "p_act": 0.545,
+     "lots": 1,
+     "median_when_active": 1.0
+    }
+   }
+  },
+  "share_of_original_lots_covered": 0.33,
+  "gate": "D0 entries only while the book holds an open body short and the cycle stop has not fired (ENT-03)"
+ },
+ "wing": {
+  "price_ratio_to_body": 0.0251,
+  "rule": "highest OTM same-right strike whose last close <= ratio x body price (cheapest-first search outward), one wing per body lot",
+  "evidence": "HYPOTHESIS: strike exact 32 % vs original, within one step 55 % (parity S11)"
+ },
+ "flatten": {
+  "cutover_date": "2026-08-03",
+  "minute_post_cutover": 359,
+  "minute_pre_cutover": 365,
+  "pre_cutover_values": [
+   310,
+   365,
+   365,
+   365,
+   365,
+   366,
+   370,
+   371,
+   371,
+   372
+  ],
+  "post_cutover_values": [
+   359,
+   359,
+   359,
+   359,
+   359,
+   359,
+   359,
+   359,
+   359,
+   359,
+   379,
+   381
+  ],
+  "note": "minute index 0 = 09:15; 359 = 15:14. Pre-cutover value is the mode of the last minute holding shorts in cycles that were still short after 15:00; the cut-over date is the registered 2026-08-03 (two later cycles do not conform; not adopted)"
+ },
+ "risk": {
+  "per_lot_stop": {
+   "multiplier": 1.6,
+   "reference": "own_entry",
+   "exempt_entry_px": 4.0,
+   "band": [
+    1.55,
+    1.7
+   ],
+   "evidence": "HYPOTHESIS (explains <= 17 % of original buy-backs, precision 63-74 %)"
+  },
+  "cycle_stop": {
+   "limit_rs": 144000.0,
+   "scaling": "limit_rs is the value at the 2026 lot size (NIFTY 65 / SENSEX 20) and scales linearly with the session lot size (user decision; fixed-rupee is a sensitivity)",
+   "band_rs": [
+    130000.0,
+    144000.0
+   ],
+   "mark": "previous completed close (causal); open-of-minute as sensitivity",
+   "evidence": "HYPOTHESIS (reproduced 1/0/0 of 11 causally; 10/9/8 with the decision-minute close)"
+  },
+  "after_cycle_stop": "no new entries; every open lot liquidated at the stop minute (passive-lot treatment: all lots, an ASSUMPTION; U4)",
+  "unknown_not_modelled": [
+   "4 % carry SL (Info.txt)",
+   "1 % of capital on expiry day (Info.txt)",
+   "off-schedule entries",
+   "Clock-B reductions",
+   "lump hedge",
+   "margin gate"
+  ]
+ }
+}

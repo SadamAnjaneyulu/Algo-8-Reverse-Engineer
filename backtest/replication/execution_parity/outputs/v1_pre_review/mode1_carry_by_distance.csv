@@ -1,0 +1,31 @@
+bin,contracts,short_lots_1513,still_short_at_end,carried_share,basis,subset
+<=0.5,38.0,789.0,0.0,0.0,"contract (all modules, ownership/role-free)",all D0
+0.5-1.5,76.0,862.0,0.0,0.0,"contract (all modules, ownership/role-free)",all D0
+1.5-3,58.0,441.0,1.0,0.0022675736961451248,"contract (all modules, ownership/role-free)",all D0
+3-6,29.0,147.0,0.0,0.0,"contract (all modules, ownership/role-free)",all D0
+>6,6.0,20.0,0.0,0.0,"contract (all modules, ownership/role-free)",all D0
+<=0.5,24.0,511.0,0.0,0.0,"contract (all modules, ownership/role-free)",post 2026-08-03
+0.5-1.5,45.0,545.0,0.0,0.0,"contract (all modules, ownership/role-free)",post 2026-08-03
+1.5-3,38.0,332.0,0.0,0.0,"contract (all modules, ownership/role-free)",post 2026-08-03
+3-6,21.0,127.0,0.0,0.0,"contract (all modules, ownership/role-free)",post 2026-08-03
+>6,3.0,14.0,0.0,0.0,"contract (all modules, ownership/role-free)",post 2026-08-03
+<=0.5,14.0,278.0,0.0,0.0,"contract (all modules, ownership/role-free)",pre 2026-08-03
+0.5-1.5,31.0,317.0,0.0,0.0,"contract (all modules, ownership/role-free)",pre 2026-08-03
+1.5-3,20.0,109.0,1.0,0.009174311926605505,"contract (all modules, ownership/role-free)",pre 2026-08-03
+3-6,8.0,20.0,0.0,0.0,"contract (all modules, ownership/role-free)",pre 2026-08-03
+>6,3.0,6.0,0.0,0.0,"contract (all modules, ownership/role-free)",pre 2026-08-03
+<=0.5,50.0,876.0,87.0,0.09931506849315068,body-module role basis (assumes num fills touch only body inventory),all D0
+0.5-1.5,95.0,1049.0,187.0,0.1782650142993327,body-module role basis (assumes num fills touch only body inventory),all D0
+1.5-3,79.0,629.0,176.0,0.27980922098569155,body-module role basis (assumes num fills touch only body inventory),all D0
+3-6,75.0,591.0,388.0,0.6565143824027073,body-module role basis (assumes num fills touch only body inventory),all D0
+>6,89.0,1018.0,996.0,0.9783889980353635,body-module role basis (assumes num fills touch only body inventory),all D0
+<=0.5,31.0,571.0,60.0,0.10507880910683012,body-module role basis (assumes num fills touch only body inventory),post 2026-08-03
+0.5-1.5,55.0,643.0,98.0,0.15241057542768274,body-module role basis (assumes num fills touch only body inventory),post 2026-08-03
+1.5-3,46.0,366.0,34.0,0.09289617486338798,body-module role basis (assumes num fills touch only body inventory),post 2026-08-03
+3-6,43.0,417.0,290.0,0.6954436450839329,body-module role basis (assumes num fills touch only body inventory),post 2026-08-03
+>6,72.0,882.0,868.0,0.9841269841269841,body-module role basis (assumes num fills touch only body inventory),post 2026-08-03
+<=0.5,19.0,305.0,27.0,0.08852459016393442,body-module role basis (assumes num fills touch only body inventory),pre 2026-08-03
+0.5-1.5,40.0,406.0,89.0,0.21921182266009853,body-module role basis (assumes num fills touch only body inventory),pre 2026-08-03
+1.5-3,33.0,263.0,142.0,0.5399239543726235,body-module role basis (assumes num fills touch only body inventory),pre 2026-08-03
+3-6,32.0,174.0,98.0,0.5632183908045977,body-module role basis (assumes num fills touch only body inventory),pre 2026-08-03
+>6,17.0,136.0,128.0,0.9411764705882353,body-module role basis (assumes num fills touch only body inventory),pre 2026-08-03
