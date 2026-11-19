@@ -23,6 +23,10 @@ class Mkt:
     def spot_prev(self, d, j):
         s = self.c[(d, 'spot')]
         return s[j - 1] if j > 0 else (self.c[(0, 'spot')][NM - 1] if d == 1 else np.nan)
+    def open_px(self, d, r, strike, j):
+        i = self.si.get(int(strike))
+        if i is None: return np.nan
+        o = self.c[(d, r, 'open')][i, j]; return o if o == o else self.prev_close(d, r, strike, j)
     def same_close(self, d, r, strike, j):
         i = self.si.get(int(strike)); return np.nan if i is None else self.px[(d, r)][i, j]
     def prev_close(self, d, r, strike, j):
@@ -40,18 +44,20 @@ HAS = {(r.und, r.expiry): (bool(r.has_d1), bool(r.has_d0), bool(r.carry_in_known
 out = {}
 # ------------------------------------------------------------------ H-STK strike selection (given the actual decision minute)
 b = O[(O.module == 'num') & (O.side == 'Sell')].copy(); b = b[[(HAS[(u, e)][0] if d == 0 else HAS[(u, e)][1]) and (u, e) in MK for u, e, d in zip(b.und, b.expiry, b.dayno)]]
-b['sched'] = np.where(b.dayno == 0, ((b.jc - 1) % 15) < 3, ((b.jc - 1) % 15) < 3)
+b['slot'] = (b.jc - 1) // 15; b['ladder_win'] = (b.dayno == 0) & (((b.jc - 1) % 15) < 3) & (b.slot < 17) & (b.jc >= 1)           # D-1, the 17 ladder slots, first 3 minutes of each (review MEDIUM-1)
+b['sched'] = b.ladder_win; b['d0_minute0'] = (b.dayno == 1) & (b.jc == 0)
 def ruleK(und, d, j):
     S = MK[(und, exp_)].spot_prev(d, j); return np.nan if S != S else STEP[und] * np.floor(S / STEP[und] + 0.5)
 rows = []
 for r in b.itertuples():
     mk = MK[(r.und, r.expiry)]; S = mk.spot_prev(r.dayno, r.jc); k = STEP[r.und] * np.floor(S / STEP[r.und] + 0.5) if S == S else np.nan
-    sh = int(rng.integers(2, 9)) * 15 * int(rng.choice([-1, 1])); jn = 1 + np.mod(r.jc - 1 + sh, NM - 1); Sn = mk.spot_prev(r.dayno, jn); kn = STEP[r.und] * np.floor(Sn / STEP[r.und] + 0.5) if Sn == Sn else np.nan
-    rows.append(dict(und=r.und, expiry=r.expiry, day=r.dayno, sched=r.sched, lots=r.lots, err=(r.strike - k) / STEP[r.und] if k == k else np.nan, err_null=(r.strike - kn) / STEP[r.und] if kn == kn else np.nan))
+    sh = int(rng.integers(2, 9)) * 15 * int(rng.choice([-1, 1])); jn = int(np.mod(r.jc + sh, NM)); Sn = mk.spot_prev(r.dayno, jn); kn = STEP[r.und] * np.floor(Sn / STEP[r.und] + 0.5) if Sn == Sn else np.nan
+    rows.append(dict(und=r.und, expiry=r.expiry, day=r.dayno, sched=r.sched, d0_minute0=r.d0_minute0, lots=r.lots, err=(r.strike - k) / STEP[r.und] if k == k else np.nan, err_null=(r.strike - kn) / STEP[r.und] if kn == kn else np.nan))
 H = pd.DataFrame(rows).dropna(subset=['err']); H.to_csv(f'{ref.OUT}/mode1_strike_errors.csv', index=False)
 def sk(x, w=None): return dict(n=len(x), exact=float((x.err == 0).mean()), within1=float((x.err.abs() <= 1).mean()), null_exact=float((x.err_null == 0).mean()), null_within1=float((x.err_null.abs() <= 1).mean()), mean_signed=float(x.err.mean()))
 srows = []
-for nm, sel in (('all body sells', H), ('D-1', H[H.day == 0]), ('D0', H[H.day == 1]), ('scheduled windows', H[H.sched]), ('off-schedule', H[~H.sched]), ('NIFTY', H[H.und == 'NIFTY']), ('SENSEX', H[H.und == 'SENSEX'])): srows.append(dict(subset=nm, **sk(sel)))
+for nm, sel in (('all body sells', H), ('D-1', H[H.day == 0]), ('D0', H[H.day == 1]), ('D-1 ladder windows (17 slots, first 3 min)', H[H.sched]), ('D-1 other', H[(H.day == 0) & ~H.sched]), ('D0 minute 0 (previous-day close is the last completed bar)', H[H.d0_minute0]), ('D0 excluding minute 0', H[(H.day == 1) & ~H.d0_minute0]), ('NIFTY', H[H.und == 'NIFTY']), ('SENSEX', H[H.und == 'SENSEX'])): srows.append(dict(subset=nm, **sk(sel)))
+print('H-STK orders dropped for NaN spot:', len(b) - len(H), 'of', len(b))
 pd.DataFrame(srows).to_csv(f'{ref.OUT}/mode1_strike_summary.csv', index=False); out['strike'] = pd.DataFrame(srows)
 # ------------------------------------------------------------------ H-QTY quantity per slot-leg on D-1 (R1 ladder), actual lots in the first 3 minutes of each slot
 q = O[(O.module == 'num') & (O.side == 'Sell') & (O.dayno == 0)].copy(); q = q[[HAS[(u, e)][0] for u, e in zip(q.und, q.expiry)]]; q['k'] = (q.jc - 1) // 15; q['off'] = (q.jc - 1) % 15; q = q[(q.off < 3) & (q.k >= 0) & (q.k < 17)]
@@ -66,7 +72,11 @@ null = []
 for _ in range(300):
     p = rng.permutation(lad); null.append(float((full.actual == p[full.k.values]).mean()))
 modal = full.groupby('k').actual.agg(lambda s: s.mode().iloc[0]); share_mode = float((full.actual == modal.reindex(full.k).values).mean())
-Q = pd.DataFrame([dict(n_slot_legs=len(full), exact_vs_R1_ladder=exact, mae_lots=mae, null_exact_mean=float(np.mean(null)), null_exact_p95=float(np.quantile(null, .95)), exact_vs_own_window_mode=share_mode, actual_mean_lots=float(full.actual.mean()), rule_mean_lots=float(full.rule.mean()))]); Q.to_csv(f'{ref.OUT}/mode1_quantity_summary.csv', index=False); full.to_csv(f'{ref.OUT}/mode1_quantity_slotlegs.csv', index=False); out['qty'] = Q
+loco = []
+for (u_, e_), g_ in full.groupby(['und', 'expiry']):
+    rest = full[~((full.und == u_) & (full.expiry == e_))]; md_ = rest.groupby('k').actual.agg(lambda t: t.mode().iloc[0]); loco.append(((g_.actual == md_.reindex(g_.k).values).sum(), len(g_)))
+loco_exact = sum(a for a, _ in loco) / sum(b_ for _, b_ in loco); nz = full[(full.actual > 0) | (full.rule > 0)]; exact_nz = float((nz.actual == nz.rule).mean())
+Q = pd.DataFrame([dict(exact_leave_one_cycle_out=loco_exact, exact_nonzero_cells=exact_nz, zero_zero_cells=int(((full.actual == 0) & (full.rule == 0)).sum()), n_slot_legs=len(full), exact_vs_R1_ladder=exact, mae_lots=mae, null_exact_mean=float(np.mean(null)), null_exact_p95=float(np.quantile(null, .95)), exact_vs_own_window_mode=share_mode, actual_mean_lots=float(full.actual.mean()), rule_mean_lots=float(full.rule.mean()))]); Q.to_csv(f'{ref.OUT}/mode1_quantity_summary.csv', index=False); full.to_csv(f'{ref.OUT}/mode1_quantity_slotlegs.csv', index=False); out['qty'] = Q
 # ------------------------------------------------------------------ H-WNG wing selection given the actual body order (partner = h_ Buy same right within 15 s, one-to-one nearest)
 wrows = []
 for (u, e), mk in MK.items():
@@ -101,22 +111,22 @@ def mtm_series(u, e, mark='prev'):
         if i is None: missing += 1; continue
         for d in (0, 1):
             for j in range(NM):
-                t = d * NM + j; p = mk.prev_close(d, cp, k, j) if mark == 'prev' else mk.same_close(d, cp, k, j); p = 0.0 if p != p else p
+                t = d * NM + j; p = mk.prev_close(d, cp, k, j) if mark == 'prev' else (mk.open_px(d, cp, k, j) if mark == 'open' else mk.same_close(d, cp, k, j)); p = 0.0 if p != p else p
                 # decision at the START of minute (d, j): positions after fills of previous minutes, LTP = previous completed close
                 n_prev = net[t - 1] if t > 0 else 0.0; mtm[t] += n_prev * lotu * p
     # cash must also be as of the start of the minute: shift by one minute
     cash_prev = np.concatenate([[0.0], cash[:-1]]); mtm = cash_prev + (mtm - cash)
     return mtm, missing
 stops = F[F.module == 's_'].groupby(['und', 'expiry']).agg(sec_first=('sec', 'min'), day_first=('dayno', 'min'), j_first=('j', 'min')).reset_index(); stops['t_first'] = stops.day_first * NM + stops.j_first.clip(0, 374)
-crow = []; Ls = (130000.0, 135000.0, 144000.0); MARKS = ('prev', 'same')
+crow = []; Ls = (130000.0, 135000.0, 144000.0); MARKS = ('prev', 'open', 'same')
 for r in cyc[cyc.carry_in_known].itertuples():
     if (r.und, r.expiry) not in MK: continue
     s_ = stops[(stops.und == r.und) & (stops.expiry == r.expiry)]; act = len(s_) > 0; ta = int(s_.t_first.iloc[0]) if act else None
     for mark in MARKS:
-        mt, miss = mtm_series(r.und, r.expiry, mark); lim = ta if act else len(mt)                      # before the first actual s_ order the book is the actual book
-        row = dict(mark=mark, und=r.und, expiry=r.expiry, actual_stop=act, actual_t=ta, min_mtm_before_stop=float(np.nanmin(mt[:lim])) if lim > 0 else np.nan, mtm_at_stop_decision=float(mt[ta]) if act and ta is not None and ta < len(mt) else np.nan, contracts_without_market=miss)
+        mt, miss = mtm_series(r.und, r.expiry, mark); lim = (ta + 1) if act else len(mt)                  # window INCLUDES the decision minute of the first actual s_ order (review HIGH-1); before it the book is the actual book
+        row = dict(mark=mark, und=r.und, expiry=r.expiry, actual_stop=act, actual_t=ta, min_mtm_before_stop=float(np.nanmin(mt[:lim])) if lim > 0 else np.nan, min_mtm_before_decision_minute=float(np.nanmin(mt[:ta])) if act and ta else np.nan, mtm_at_stop_decision=float(mt[ta]) if act and ta is not None and ta < len(mt) else np.nan, contracts_without_market=miss)
         for L in Ls:
-            hit = np.where(mt[:lim] <= -L)[0]; row[f'trig_{int(L)}'] = bool(len(hit)); row[f'trig_t_{int(L)}'] = int(hit[0]) if len(hit) else None
+            fb = C.first_breach(mt, L, lim - 1); row[f'trig_{int(L)}'] = fb is not None; row[f'trig_t_{int(L)}'] = fb
         crow.append(row)
 CY = pd.DataFrame(crow); CY.to_csv(f'{ref.OUT}/mode1_cycle_stop.csv', index=False)
 cs = []
@@ -124,7 +134,7 @@ for mark in MARKS:
     X = CY[CY.mark == mark]
     for L in Ls:
         tp = int((X.actual_stop & X[f'trig_{int(L)}']).sum()); fp = int((~X.actual_stop & X[f'trig_{int(L)}']).sum()); fn = int((X.actual_stop & ~X[f'trig_{int(L)}']).sum()); tn = int((~X.actual_stop & ~X[f'trig_{int(L)}']).sum())
-        d = X[X.actual_stop & X[f'trig_{int(L)}']]; te = (d[f'trig_t_{int(L)}'].astype(float) - d.actual_t.astype(float)); cs.append(dict(mark=mark + (' (causal, primary)' if mark == 'prev' else ' (NON-causal diagnostic: includes the decision minute close)'), L_rupees=L, cycles=len(X), actual_stop_cycles=int(X.actual_stop.sum()), TP=tp, FP=fp, FN=fn, TN=tn, precision=tp / (tp + fp) if tp + fp else np.nan, recall=tp / (tp + fn) if tp + fn else np.nan, timing_err_min_median=float(te.median()) if len(te) else np.nan, within_2min=int((te.abs() <= 2).sum())))
+        d = X[X.actual_stop & X[f'trig_{int(L)}']]; te = (d[f'trig_t_{int(L)}'].astype(float) - d.actual_t.astype(float)); cs.append(dict(mark=mark + {'prev': ' (causal, primary)', 'open': ' (open of the decision minute: known at the start of the minute, usable only if the decision is taken after its first print)', 'same': ' (NON-causal diagnostic: includes the decision minute close)'}[mark], L_rupees=L, cycles=len(X), actual_stop_cycles=int(X.actual_stop.sum()), TP=tp, FP=fp, FN=fn, TN=tn, precision=tp / (tp + fp) if tp + fp else np.nan, recall=tp / (tp + fn) if tp + fn else np.nan, timing_err_min_median=float(te.median()) if len(te) else np.nan, within_2min=int((te.abs() <= 2).sum())))
 CS = pd.DataFrame(cs); CS.to_csv(f'{ref.OUT}/mode1_cycle_stop_summary.csv', index=False); out['cyc'] = CS
 # ------------------------------------------------------------------ H-FLAT final flatten at 15:14 (minute index 359) on D0, split at the 2026-08-03 cut-over
 frows = []
@@ -138,7 +148,7 @@ for r in cyc[cyc.has_d0].itertuples():
         b13, _ = short_lots(g, (g.dayno == 0) | (g.j <= 358), basis); b14, _ = short_lots(g, (g.dayno == 0) | (g.j <= 359), basis); bend, _ = short_lots(g, g.j > -999, basis)
         row.update({f'short_lots_1513_{basis}': b13, f'short_lots_1514_{basis}': b14, f'short_lots_end_{basis}': bend, f'remaining_share_1514_{basis}': (b14 / b13) if b13 else np.nan})
     row['body_buy_lots_in_1514'] = int(g[(g.dayno == 1) & (g.j == 359) & (g.side == 'Buy') & (g.module == 'num')].n_lots.sum()); frows.append(row)
-FL = pd.DataFrame(frows); FL.to_csv(f'{ref.OUT}/mode1_final_flatten.csv', index=False); out['flat'] = FL
+FL = pd.DataFrame(frows); _p = FL[FL.post_cutover & (FL.short_lots_1513_all > 0)]; print('H-FLAT pre-registered falsifier: share of 15:13 shorts still short after 15:14 (post-cutover):', round(_p.short_lots_1514_all.sum() / _p.short_lots_1513_all.sum(), 4), '(falsified only if > 0.5)'); FL.to_csv(f'{ref.OUT}/mode1_final_flatten.csv', index=False); out['flat'] = FL
 # ------------------------------------------------------------------ H-CARRY: share of the 15:13 short book still short at the end of the ledger, by distance from the D0 spot at 15:13. Two bases (they disagree: see DISCREPANCY_REGISTER)
 crw = []
 for r in cyc[cyc.has_d0].itertuples():

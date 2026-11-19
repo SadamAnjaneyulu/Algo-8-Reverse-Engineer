@@ -19,3 +19,11 @@ Written before any parity result of this milestone (pre-registration). Results l
 | U12 | Settlement value | Last bar; Yahoo official close | The exchange settlement price | Yahoo close · 15:29 spot bar (differs by up to 89 pts in 13 early cycles) | Residual-inventory valuation under both | Exchange settlement prices | Settled-lot value only | BOUNDED |
 | U13 | Within-second ordering | File order within a second (documented) | True sequence | file order | cannot be tested | Sub-second timestamps | Same-second event order | NOT TESTABLE |
 | U14 | Lot-size scaling across years | 65/20 in 2026; historical sizes inferred from volume gcd | Whether Algo 8's base unit tracked the lot size | lots · constant quantity | not testable on the 2026 ledger | Original records from earlier years | Historical sizing only | OPEN |
+
+---
+## Updates after results (appended; entries above unchanged)
+* **U7 correction:** the ledger contains 417 `s_` orders / 763 `s_` fills (the "468 fills" figure came from an earlier phase). Per-lot stop: the rule fires only before about 8-17 % of body buy-backs (S15); precision is high (63-75 %, 8-11x chance) for the own-entry reference.
+* **U8:** at the stop minute the −1.30/−1.35/−1.44 lakh LTP-MTM threshold separates the 11 stop cycles from the 19 non-stop cycles almost perfectly when marked at the close of the decision minute (non-causal diagnostic); with causal marks it does not. Eight of 11 stops are in the first 15 minutes of D0, where minute data lag the open gap. Status: OPEN, mostly a data-resolution limit.
+* **U9:** 10 of 12 post-2026-08-03 cycles flatten fully in the 15:14 minute at contract level; NIFTY 2026-08-11 and SENSEX 2026-08-13 do not. A later cut-over date is a post-hoc observation, not adopted. The 15:14 flatten includes `num` SELLS of wing contracts (cross-role).
+* **U1/U2/U3 (inventory basis):** contract-level inventory ends flat in 24 of 35 cycles; the carry-to-settlement relationship exists only on the module-role basis. Status unchanged: BOUNDED.
+* **U11:** the engine reproduces 0 D0 body entries (R1) and about 5 % of D0 body buy-backs: the largest gap.

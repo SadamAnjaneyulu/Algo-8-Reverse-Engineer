@@ -59,6 +59,7 @@ class MarketView:
         return None if self.strict else self.prev_close(d, r, si, j)                    # sim_compat: fall back to the last completed close; strict: NO_MARKET
 
     def executable(self, d, r, si, j):
+        """HINDSIGHT liquidity filter: reads the volume of the DECISION MINUTE ITSELF (not known when the decision is taken). Used only by the strict policy to measure how often the permissive fill relies on an untraded bar; it is a diagnostic, not a causal execution rule (independent review, finding MEDIUM-6)."""
         v = self._vol[(d, r)][si, j]; return bool(v == v and v > 0)
 
 

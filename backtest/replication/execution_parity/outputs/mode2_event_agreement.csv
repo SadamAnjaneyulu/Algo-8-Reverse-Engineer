@@ -7,14 +7,14 @@ R1,D-1 body entries (all original D-1 body sells),same,0,False,,1203,1664,4834,0
 R1,D-1 body entries (all original D-1 body sells),same,1,True,PARTIAL MATCH,1487,1664,4834,0.8936298076923077,0.30761274306992137,0.19749098557692307,0.06798200248241622,4.524914416127806,4.524914416127805
 R1,D-1 body entries (all original D-1 body sells),same,2,False,,1491,1664,4834,0.8960336538461539,0.30844021514273895,,,,
 R1,D-1 body entries (all original D-1 body sells),same,5,False,,1498,1664,4834,0.9002403846153846,0.30988829127016965,,,,
-R1,D-1 body entries (original sells inside the 17 scheduled windows only),any,0,False,,1291,1664,2234,0.7758413461538461,0.5778871978513876,,,,
-R1,D-1 body entries (original sells inside the 17 scheduled windows only),any,1,True,PARTIAL MATCH,1484,1664,2234,0.8918269230769231,0.6642793196060878,0.505408653846154,0.3764547896150403,1.7645659928656359,1.764565992865636
-R1,D-1 body entries (original sells inside the 17 scheduled windows only),any,2,False,,1491,1664,2234,0.8960336538461539,0.6674127126230975,,,,
-R1,D-1 body entries (original sells inside the 17 scheduled windows only),any,5,False,,1491,1664,2234,0.8960336538461539,0.6674127126230975,,,,
-R1,D-1 body entries (original sells inside the 17 scheduled windows only),same,0,False,,1203,1664,2234,0.7229567307692307,0.5384959713518352,,,,
-R1,D-1 body entries (original sells inside the 17 scheduled windows only),same,1,True,PARTIAL MATCH,1360,1664,2234,0.8173076923076923,0.6087735004476276,0.15963040865384617,0.11890107430617727,5.119999999999999,5.119999999999999
-R1,D-1 body entries (original sells inside the 17 scheduled windows only),same,2,False,,1366,1664,2234,0.8209134615384616,0.6114592658907789,,,,
-R1,D-1 body entries (original sells inside the 17 scheduled windows only),same,5,False,,1366,1664,2234,0.8209134615384616,0.6114592658907789,,,,
+R1,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",any,0,False,,1291,1664,1888,0.7758413461538461,0.683792372881356,,,,
+R1,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",any,1,True,PARTIAL MATCH,1484,1664,1888,0.8918269230769231,0.7860169491525424,0.466962139423077,0.4115598516949152,1.9098484604742445,1.909848460474245
+R1,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",any,2,False,,1491,1664,1888,0.8960336538461539,0.7897245762711864,,,,
+R1,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",any,5,False,,1491,1664,1888,0.8960336538461539,0.7897245762711864,,,,
+R1,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",same,0,False,,1203,1664,1888,0.7229567307692307,0.6371822033898306,,,,
+R1,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",same,1,True,PARTIAL MATCH,1360,1664,1888,0.8173076923076923,0.7203389830508474,0.15213341346153847,0.13408368644067797,5.372308907762196,5.3723089077621955
+R1,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",same,2,False,,1366,1664,1888,0.8209134615384616,0.7235169491525424,,,,
+R1,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",same,5,False,,1366,1664,1888,0.8209134615384616,0.7235169491525424,,,,
 R1,D-1 wing entries (h_ Buy),any,0,False,,1204,1664,4337,0.7235576923076923,0.2776112520175236,,,,
 R1,D-1 wing entries (h_ Buy),any,1,True,PARTIAL MATCH,1420,1664,4337,0.8533653846153846,0.32741526400737836,0.6161658653846154,0.23640765506110215,1.3849604993660392,1.3849604993660392
 R1,D-1 wing entries (h_ Buy),any,2,False,,1424,1664,4337,0.8557692307692307,0.328337560525709,,,,
@@ -71,14 +71,14 @@ R2,D-1 body entries (all original D-1 body sells),same,0,False,,1203,1664,4834,0
 R2,D-1 body entries (all original D-1 body sells),same,1,True,PARTIAL MATCH,1487,1664,4834,0.8936298076923077,0.30761274306992137,0.19749098557692307,0.06798200248241622,4.524914416127806,4.524914416127805
 R2,D-1 body entries (all original D-1 body sells),same,2,False,,1491,1664,4834,0.8960336538461539,0.30844021514273895,,,,
 R2,D-1 body entries (all original D-1 body sells),same,5,False,,1498,1664,4834,0.9002403846153846,0.30988829127016965,,,,
-R2,D-1 body entries (original sells inside the 17 scheduled windows only),any,0,False,,1291,1664,2234,0.7758413461538461,0.5778871978513876,,,,
-R2,D-1 body entries (original sells inside the 17 scheduled windows only),any,1,True,PARTIAL MATCH,1484,1664,2234,0.8918269230769231,0.6642793196060878,0.505408653846154,0.3764547896150403,1.7645659928656359,1.764565992865636
-R2,D-1 body entries (original sells inside the 17 scheduled windows only),any,2,False,,1491,1664,2234,0.8960336538461539,0.6674127126230975,,,,
-R2,D-1 body entries (original sells inside the 17 scheduled windows only),any,5,False,,1491,1664,2234,0.8960336538461539,0.6674127126230975,,,,
-R2,D-1 body entries (original sells inside the 17 scheduled windows only),same,0,False,,1203,1664,2234,0.7229567307692307,0.5384959713518352,,,,
-R2,D-1 body entries (original sells inside the 17 scheduled windows only),same,1,True,PARTIAL MATCH,1360,1664,2234,0.8173076923076923,0.6087735004476276,0.15963040865384617,0.11890107430617727,5.119999999999999,5.119999999999999
-R2,D-1 body entries (original sells inside the 17 scheduled windows only),same,2,False,,1366,1664,2234,0.8209134615384616,0.6114592658907789,,,,
-R2,D-1 body entries (original sells inside the 17 scheduled windows only),same,5,False,,1366,1664,2234,0.8209134615384616,0.6114592658907789,,,,
+R2,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",any,0,False,,1291,1664,1888,0.7758413461538461,0.683792372881356,,,,
+R2,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",any,1,True,PARTIAL MATCH,1484,1664,1888,0.8918269230769231,0.7860169491525424,0.466962139423077,0.4115598516949152,1.9098484604742445,1.909848460474245
+R2,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",any,2,False,,1491,1664,1888,0.8960336538461539,0.7897245762711864,,,,
+R2,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",any,5,False,,1491,1664,1888,0.8960336538461539,0.7897245762711864,,,,
+R2,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",same,0,False,,1203,1664,1888,0.7229567307692307,0.6371822033898306,,,,
+R2,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",same,1,True,PARTIAL MATCH,1360,1664,1888,0.8173076923076923,0.7203389830508474,0.15213341346153847,0.13408368644067797,5.372308907762196,5.3723089077621955
+R2,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",same,2,False,,1366,1664,1888,0.8209134615384616,0.7235169491525424,,,,
+R2,"D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)",same,5,False,,1366,1664,1888,0.8209134615384616,0.7235169491525424,,,,
 R2,D-1 wing entries (h_ Buy),any,0,False,,1204,1664,4337,0.7235576923076923,0.2776112520175236,,,,
 R2,D-1 wing entries (h_ Buy),any,1,True,PARTIAL MATCH,1420,1664,4337,0.8533653846153846,0.32741526400737836,0.6161658653846154,0.23640765506110215,1.3849604993660392,1.3849604993660392
 R2,D-1 wing entries (h_ Buy),any,2,False,,1424,1664,4337,0.8557692307692307,0.328337560525709,,,,

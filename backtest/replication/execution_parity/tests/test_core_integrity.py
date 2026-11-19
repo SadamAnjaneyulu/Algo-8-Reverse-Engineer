@@ -121,3 +121,34 @@ def test_inventory_compare_identity_and_active_mask():
 def test_inventory_path_from_events_matches_cumulative_sum():
     ev = pd.DataFrame(dict(d=[0, 0, 1], j=[5, 9, 3], right=['CE', 'CE', 'PE'], strike=[100, 100, 200], sl=[-2, 1, -1])); keys, M = C.path_from_events(ev)
     assert keys == [('CE', 100), ('PE', 200)] and M[0, 4] == 0 and M[0, 5] == -2 and M[0, 9] == -1 and M[1, C.NM + 3] == -1 and M[1, C.NM + 2] == 0
+
+
+# ---------------------------------------------------------------- added after the independent review
+def test_cycle_stop_window_includes_the_decision_minute():
+    mtm = np.array([0, -10, -50, -90, -140.0]); assert C.first_breach(mtm, 130, 4) == 4 and C.first_breach(mtm, 130, 3) is None          # a breach AT the decision minute of the original stop counts (review HIGH-1)
+    assert C.first_breach(mtm, 40, 4) == 2 and C.first_breach(mtm, 200, 4) is None
+
+
+def test_agreement_never_matches_across_days():
+    s = _ev([('N', 'e', 'CE', 1, 1, 100, 0)]); a = _ev([('N', 'e', 'CE', 1, 1, 100, 1)])
+    assert C.agree(s, a, 2, 'same')['matched'] == 0                                                                                          # D-1 minute 100 must not match D0 minute 100 (review MEDIUM-5)
+
+
+def test_permissive_decisions_do_not_depend_on_the_decision_minute_bar():
+    import runner
+    c = fake_cycle(11); c['strikes'] = np.arange(100, 350, 50); a = runner.build(c, 'NIFTY', 'R1', slip=False).run(); ea = runner.events(a)
+    cut = int(ea[(ea.d == 0)].j.iloc[len(ea[ea.d == 0]) // 2]); c2 = copy.deepcopy(c)
+    for r in ('CE', 'PE'):
+        for k in ('close', 'open', 'volume'): c2[(0, r, k)][:, cut] = 777.0
+    c2[(0, 'spot')][cut] = 7777.0; b = runner.build(c2, 'NIFTY', 'R1', slip=False).run(); eb = runner.events(b)
+    pa = ea[(ea.d == 0) & (ea.j <= cut)][['j', 'right', 'strike', 'side', 'role', 'tag']].reset_index(drop=True); pb = eb[(eb.d == 0) & (eb.j <= cut)][['j', 'right', 'strike', 'side', 'role', 'tag']].reset_index(drop=True)
+    assert len(pa) == len(pb) > 0 and (pa.values == pb.values).all()                                                                     # the decision-minute bar changes at most the fill price, never the decision
+
+
+def test_strict_policy_is_a_documented_hindsight_filter():
+    import runner
+    c = fake_cycle(12); c['strikes'] = np.arange(100, 350, 50); a = runner.build(c, 'NIFTY', 'R1', strict=True, slip=False).run(); ea = runner.events(a); j0 = int(ea[ea.d == 0].j.iloc[0])
+    c2 = copy.deepcopy(c)
+    for r in ('CE', 'PE'): c2[(0, r, 'volume')][:, j0] = 0.0
+    b = runner.build(c2, 'NIFTY', 'R1', strict=True, slip=False).run(); eb = runner.events(b)
+    assert len(eb[(eb.d == 0) & (eb.j == j0)]) < len(ea[(ea.d == 0) & (ea.j == j0)])              # strict fills depend on the decision minute's own volume: a liquidity filter with hindsight, not a causal rule

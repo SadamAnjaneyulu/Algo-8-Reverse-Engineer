@@ -26,13 +26,13 @@ def sub(S, v, role, side, tag_in=None, day=None, cyc_flag=None):
     return x
 def act(mod, side, day, sched=None):
     x = O[(O.module == mod) & (O.side == side) & (O.dayno == day) & (O['has_d1' if day == 0 else 'has_d0'])]
-    if sched is True: x = x[((x.j - 1) % 15) < 3]
-    if sched is False: x = x[((x.j - 1) % 15) >= 3]
+    if sched is True: x = x[(((x.j - 1) % 15) < 3) & (((x.j - 1) // 15) < 17) & (x.j >= 1)]          # the 17 ladder slots only (review finding MEDIUM-1: the first mask spanned 25 slots)
+    if sched is False: x = x[~((((x.j - 1) % 15) < 3) & (((x.j - 1) // 15) < 17) & (x.j >= 1))]
     return x
 rows = []
 CATS = [  # name, sim selector, actual selector, tolerance (min), tag
     ('D-1 body entries (all original D-1 body sells)', lambda S, v: sub(S, v, 'body', -1, ['ENTRY'], 0), lambda: act('num', 'Sell', 0), 1),
-    ('D-1 body entries (original sells inside the 17 scheduled windows only)', lambda S, v: sub(S, v, 'body', -1, ['ENTRY'], 0), lambda: act('num', 'Sell', 0, True), 1),
+    ('D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)', lambda S, v: sub(S, v, 'body', -1, ['ENTRY'], 0), lambda: act('num', 'Sell', 0, True), 1),
     ('D-1 wing entries (h_ Buy)', lambda S, v: sub(S, v, 'wing', 1, ['ENTRY'], 0), lambda: act('h_', 'Buy', 0), 1),
     ('D-1 body buy-backs', lambda S, v: sub(S, v, 'body', 1, None, 0), lambda: act('num', 'Buy', 0), 2),
     ('D-1 wing sells (h_ Sell)', lambda S, v: sub(S, v, 'wing', -1, None, 0), lambda: act('h_', 'Sell', 0), 2),

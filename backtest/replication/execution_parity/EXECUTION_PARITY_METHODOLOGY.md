@@ -83,3 +83,18 @@ No single overall parity percentage is produced. Any composite would have to sho
 
 ## 10. Limits that apply to everything
 Second-resolution fills; minute-resolution market data; no bid/ask or depth; no parent/allocation ids; unknown pre-log positions; settlement proxy; the 35 cycles are not a holdout; sub-minute ordering cannot be validated.
+
+---
+## Addendum after the independent review (appended; the pre-registered text above is unchanged — `git diff 22fed85b` on sections 1-10 is empty)
+Added after seeing results or after review; each is a deviation or clarification, not part of the pre-registration:
+1. **Mode 1 attribution.** Mode 1 results come from stand-alone analytic re-implementations of each rule on the actual book and market, **not** from running the engine modules with `EventLoop(injected=...)` (that path exists but no result uses it). Engine-module parity is evidenced only by Mode 2 and the historical runs (review HIGH-2).
+2. **Scheduled-window subsets.** The 17-slot ladder window mask is `D-1, slot k < 17, first 3 minutes of the slot`. The first run used `(j-1)%15 < 3` without the slot bound (25 slots); superseded.
+3. **Cycle-stop window.** The trigger window includes the decision minute of the first original `s_` order (the first run excluded it); a third mark (open of the decision minute) was added. The non-causal decision-minute-close mark is a labelled diagnostic.
+4. **Matching key.** Event agreement now groups by (cycle, right, day[, strike]); the first run ignored the day (affected H-LEG only, <1 %).
+5. **S17 class basis.** The flatten class uses the section 6 *event* ladder (precision = recall = closed share); the pre-registered H-FLAT falsifier (>50 % of the 15:13 short book remaining) is reported separately. The class is sensitive to two cycles.
+6. **Second H-LEG actual set** ("excluding D0 15:13+") was added after results; reported, not used for the class.
+7. **Composite labels** (S14 worst of D-1/D0, S15 all 32 cells, S18 UNRESOLVED by evidence, S21 NOT TESTABLE) are applications of the evidence rules, not computed thresholds.
+8. **`lift_P` equals `lift_R`** by construction (both are matched / null-matched); "lift on both" is a single test.
+9. **Strict execution policy** reads the decision minute's volume: a hindsight liquidity diagnostic, not a causal execution rule.
+10. **Module-based denominators.** Event classes use module tags; about 16.9 % of `num` Sell lots close a net-long contract and 9.7 % of `num` Buy lots add to a long. Contract-level classification is future work.
+11. **Revised evaluation label.** All results after the review are a **REVISED, CONTAMINATED evaluation**: the 35 cycles informed the rules and the first-run results informed the fixes. v1 outputs are preserved in `outputs/v1_pre_review/`.

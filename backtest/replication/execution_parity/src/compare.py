@@ -10,7 +10,7 @@ def _prep(df, minute_col):
     d = df.copy(); d['sec'] = d[minute_col].astype(int) * 60; d['lots'] = d['lots'].astype(int); return d
 
 
-def agree(sim, act, tol_min, strike='any', group=('und', 'expiry', 'cp'), minute='j'):
+def agree(sim, act, tol_min, strike='any', group=('und', 'expiry', 'cp', 'day'), minute='j'):
     """sim/act columns: und, expiry, cp, strike, lots, <minute>. returns dict(P, R, matched, n_sim, n_act)"""
     s = _prep(sim, minute); a = _prep(act, minute)
     if len(s) == 0 or len(a) == 0: return dict(matched=0, n_sim=int(s.lots.sum()) if len(s) else 0, n_act=int(a.lots.sum()) if len(a) else 0, P=np.nan, R=0.0 if len(a) else np.nan)
@@ -25,7 +25,7 @@ def shifted(sim, rng, minute='j', lo=0, hi=NM - 1, by_day=True):
     return s
 
 
-def agree_with_null(sim, act, tol_min, strike='any', group=('und', 'expiry', 'cp'), ndraw=100, seed=11, minute='j'):
+def agree_with_null(sim, act, tol_min, strike='any', group=('und', 'expiry', 'cp', 'day'), ndraw=100, seed=11, minute='j'):
     o = agree(sim, act, tol_min, strike, group, minute); rng = np.random.default_rng(seed); Ps = []; Rs = []
     for _ in range(ndraw):
         n = agree(shifted(sim, rng, minute), act, tol_min, strike, group, minute); Ps.append(n['P']); Rs.append(n['R'])
@@ -63,3 +63,8 @@ def inventory_compare(keys_a, Ma, keys_s, Ms):
     if n == 0: return dict(active=0, exact=np.nan, mae=np.nan, nmae=np.nan, mean_abs_actual=np.nan)
     d = np.abs(A - S)[act]; ma = np.abs(A)[act].mean()
     return dict(active=n, exact=float((d == 0).mean()), mae=float(d.mean()), nmae=float(d.mean() / ma) if ma > 0 else np.nan, mean_abs_actual=float(ma), A=A, S=S, keys=ks)
+
+
+def first_breach(mtm, limit, last_decision_index):
+    """first index t <= last_decision_index (INCLUSIVE: the decision at the start of the minute in which the original acted is part of the window) with mtm[t] <= -limit, else None"""
+    seg = np.asarray(mtm[:last_decision_index + 1]); hit = np.where(seg <= -limit)[0]; return int(hit[0]) if len(hit) else None

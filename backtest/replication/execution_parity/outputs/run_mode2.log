@@ -1,20 +1,20 @@
-                                                              category strike_mode  tol_min  n_sim  n_act  matched     P     R  lift_P  lift_R           cls
-                        D-1 body entries (all original D-1 body sells)         any        1   1664   4834     1600 0.962 0.331   1.506   1.506 PARTIAL MATCH
-                        D-1 body entries (all original D-1 body sells)        same        1   1664   4834     1487 0.894 0.308   4.525   4.525 PARTIAL MATCH
-D-1 body entries (original sells inside the 17 scheduled windows only)         any        1   1664   2234     1484 0.892 0.664   1.765   1.765 PARTIAL MATCH
-D-1 body entries (original sells inside the 17 scheduled windows only)        same        1   1664   2234     1360 0.817 0.609   5.120   5.120 PARTIAL MATCH
-                                             D-1 wing entries (h_ Buy)         any        1   1664   4337     1420 0.853 0.327   1.385   1.385 PARTIAL MATCH
-                                             D-1 wing entries (h_ Buy)        same        1   1664   4337      978 0.588 0.226   3.971   3.971 PARTIAL MATCH
-                                                    D-1 body buy-backs         any        2    506   1640      400 0.791 0.244  17.112  17.112 PARTIAL MATCH
-                                                    D-1 body buy-backs        same        2    506   1640      322 0.636 0.196  64.724  64.724      MISMATCH
-                                              D-1 wing sells (h_ Sell)         any        2    506   1192      366 0.723 0.307  19.598  19.598 PARTIAL MATCH
-                                              D-1 wing sells (h_ Sell)        same        2    506   1192      181 0.358 0.152  35.842  35.842      MISMATCH
-                                            D0 body entries (num Sell)         any        1      0  12686        0   NaN 0.000     NaN     NaN      MISMATCH
-                                            D0 body entries (num Sell)        same        1      0  12686        0   NaN 0.000     NaN     NaN      MISMATCH
-                                                     D0 body buy-backs         any        2   1228  12714      687 0.559 0.054   4.696   4.696      MISMATCH
-                                                     D0 body buy-backs        same        2   1228  12714      348 0.283 0.027   7.887   7.887      MISMATCH
-                                               D0 wing sells (h_ Sell)         any        2   1228  10243      463 0.377 0.045   3.744   3.744      MISMATCH
-                                               D0 wing sells (h_ Sell)        same        2   1228  10243       85 0.069 0.008   7.098   7.098      MISMATCH
+                                                                     category strike_mode  tol_min  n_sim  n_act  matched     P     R  lift_P  lift_R           cls
+                               D-1 body entries (all original D-1 body sells)         any        1   1664   4834     1600 0.962 0.331   1.506   1.506 PARTIAL MATCH
+                               D-1 body entries (all original D-1 body sells)        same        1   1664   4834     1487 0.894 0.308   4.525   4.525 PARTIAL MATCH
+D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)         any        1   1664   1888     1484 0.892 0.786   1.910   1.910 PARTIAL MATCH
+D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)        same        1   1664   1888     1360 0.817 0.720   5.372   5.372 PARTIAL MATCH
+                                                    D-1 wing entries (h_ Buy)         any        1   1664   4337     1420 0.853 0.327   1.385   1.385 PARTIAL MATCH
+                                                    D-1 wing entries (h_ Buy)        same        1   1664   4337      978 0.588 0.226   3.971   3.971 PARTIAL MATCH
+                                                           D-1 body buy-backs         any        2    506   1640      400 0.791 0.244  17.112  17.112 PARTIAL MATCH
+                                                           D-1 body buy-backs        same        2    506   1640      322 0.636 0.196  64.724  64.724      MISMATCH
+                                                     D-1 wing sells (h_ Sell)         any        2    506   1192      366 0.723 0.307  19.598  19.598 PARTIAL MATCH
+                                                     D-1 wing sells (h_ Sell)        same        2    506   1192      181 0.358 0.152  35.842  35.842      MISMATCH
+                                                   D0 body entries (num Sell)         any        1      0  12686        0   NaN 0.000     NaN     NaN      MISMATCH
+                                                   D0 body entries (num Sell)        same        1      0  12686        0   NaN 0.000     NaN     NaN      MISMATCH
+                                                            D0 body buy-backs         any        2   1228  12714      687 0.559 0.054   4.696   4.696      MISMATCH
+                                                            D0 body buy-backs        same        2   1228  12714      348 0.283 0.027   7.887   7.887      MISMATCH
+                                                      D0 wing sells (h_ Sell)         any        2   1228  10243      463 0.377 0.045   3.744   3.744      MISMATCH
+                                                      D0 wing sells (h_ Sell)        same        2   1228  10243       85 0.069 0.008   7.098   7.098      MISMATCH
          cycles  exact_share_mean  nmae_median  nmae_mean
 variant                                                  
 R1         30.0             0.050        0.906      0.923
