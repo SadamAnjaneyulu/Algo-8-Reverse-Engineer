@@ -12,6 +12,8 @@ Start with `EXECUTIVE_SUMMARY.md`, then `PARITY_SCORECARD.md`. Direction from Ra
 | `HISTORICAL_REGIME_ROBUSTNESS.md` | expiry-structure and regime segmentation, mechanics checks, brittle assumptions |
 | `INDEPENDENT_REVIEW.md` | adversarial review findings, fixes and the contamination label |
 | `NEXT_PHASE_ALPHA_READINESS.md` | what can be frozen, what cannot, prioritised data requests |
+| `ALGO8_V1_BACKTEST_REPORT.md` | **Algo 8 decision engine v1** built from the 35 cycles (entry schedule, strikes, wings, per-lot/cycle stops, flatten) and its 2-year IS / 1-year OOS backtest, with fidelity vs the live cycles, tiers, structures, sensitivities and caveats |
+| `config/algo8_v1_params.json` | decision parameters extracted from the 35 cycles (ledger hash, evidence labels) |
 | `reports/REPOSITORY_AUDIT.md` | Phase 1 audit and gap analysis |
 | `src/`, `tests/`, `outputs/` | code, tests, event-level tables |
 
@@ -24,6 +26,7 @@ python3 src/run_mode1.py                  # Mode 1 component-isolated: strike, q
 python3 src/run_mode1_leg.py              # Mode 1 per-lot stop grid (32 cells)   (~3 min)
 python3 src/run_historical.py             # Phase 5 mechanics on 274 eligible historical cycles (~30 s)
 python3 src/make_scorecard.py && python3 src/make_historical_md.py
+python3 src/params_from_35.py && python3 src/run_v1_parity.py && python3 src/run_v1_backtest.py && python3 src/make_v1_report.py   # Algo 8 v1 + IS/OOS backtest (~5 min)
 python3 -m pytest tests -q -p no:cacheprovider
 ```
 Nothing here modifies `replication/sim.py`, the lot engine, the C++ engine, PR #13 outputs or the frozen alpha research. All results are **in-sample** (the 35 cycles are not a holdout). There is no CI workflow in the repository; "tests passed" means the commands above were run locally.
