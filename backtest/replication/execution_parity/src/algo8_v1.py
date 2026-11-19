@@ -8,6 +8,7 @@ sys.path.insert(0, ref.REPL)
 import rules as R
 from common import YAHOO
 from bt import account as A
+import costs_v2 as C2
 from exec_core import EventLoop, ExecutionModel, OrderIntent, NM
 from components import LegStop, _open, _close
 PARAMS = json.load(open(f'{ref.EP}/config/algo8_v1_params.json')); LOT26 = ref.LOT; STEP = ref.STEP
@@ -75,10 +76,10 @@ def events(loop):
     return pd.DataFrame(rows)
 
 
-def result(loop, c, und, cost_mult=1.0):
+def result(loop, c, und, cost_mult=1.0, cost_model='v2'):
     u = loop.state.units; costs = 0.0
     for f in loop.fills:
-        it = f.intent; day = c['d1'] if it.day == 0 else c['d0']; costs += A.order_costs(und, day, it.side, u * f.price, cost_mult)
+        it = f.intent; day = c['d1'] if it.day == 0 else c['d0']; costs += (C2.order_costs if cost_model == 'v2' else A.order_costs)(und, day, it.side, u * f.price, cost_mult)
     settle = loop.settle(); gross = loop.state.cash_ref + settle; net = loop.state.cash + settle - costs; ev = events(loop)
     return dict(gross=gross, net=net, costs=costs, slippage=gross - (loop.state.cash + settle), n_orders=len(ev), leg_stops=int((ev.tag == 'LEG_STOP').sum()) if len(ev) else 0, cycle_stop=loop.stopped is not None, stop_day=None if loop.stopped is None else loop.stopped[0], stop_j=None if loop.stopped is None else loop.stopped[1],
                 flatten_orders=int((ev.tag == 'FLATTEN').sum()) if len(ev) else 0, open_at_end=len(loop.state.lots), no_market=len(loop.no_market), body_entries_d1=int(((ev.role == 'body') & (ev.tag == 'ENTRY') & (ev.d == 0)).sum()) if len(ev) else 0, body_entries_d0=int(((ev.role == 'body') & (ev.tag == 'ENTRY') & (ev.d == 1)).sum()) if len(ev) else 0)

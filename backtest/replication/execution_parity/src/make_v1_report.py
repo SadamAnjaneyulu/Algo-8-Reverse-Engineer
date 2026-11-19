@@ -42,7 +42,7 @@ L = f'''# Algo 8 decision engine v1 — built from the 35 live cycles, backteste
 | Cycle stop | cumulative LTP MTM ≤ −₹1,44,000 → liquidate everything, no further entries (marks: previous completed close) | −1.30 to −1.44 lakh band; reproduced 1/0/0 of 11 causally (S16) |
 | Final flatten | D0 minute {P["flatten"]["minute_post_cutover"]} (15:14) from 2026-08-03; minute {P["flatten"]["minute_pre_cutover"]} (15:20) before | observed last-short minute; pre-cutover rule extrapolated to all earlier history |
 | Settlement | residual lots cash-settled at the official index close (Yahoo) | proxy (U12) |
-| Execution | fill at the open of the decision minute; slippage max(₹0.10, 0.5 %) against the order; costs per `bt/account.py` | **cost rates other than the 2026 STT are unverified**; no bid/ask data |
+| Execution | fill at the open of the decision minute; slippage max(₹0.10, 0.5 %) against the order; costs per the date-aware `src/costs_v2.py` (exchange charge, STT, SEBI, stamp, GST by date; brokerage ₹20) | statutory rates cross-checked against broker disclosures and press reports (`COST_MODEL_VERIFICATION.md`; exchange circulars not retrieved); brokerage and slippage are assumptions; no bid/ask data |
 | Size | lots as in the ladder, at each session's inferred lot size; **the cycle-stop rupee limit scales linearly with the session lot size** (₹1,44,000 at the 2026 size of the index: NIFTY 65 / SENSEX 20; user decision); the per-lot stop is a price multiple and needs no scaling | historical lot size is inferred from volumes (U14); variant S1 uses 2026 sizes; V8 keeps the limit fixed in rupees (changes {NCH} of {NALL} cycles, all with non-2026 lot sizes) |
 
 ## 3. How close is v1 to the 35 live cycles? (in-sample; same pre-registered classes as the parity study)
@@ -51,13 +51,13 @@ L = f'''# Algo 8 decision engine v1 — built from the 35 live cycles, backteste
 Inventory: contract-minutes exactly equal **{100 * PI.exact.mean():.1f} %** (R1: {100 * I2[I2.variant == "R1"].exact.mean():.1f} %); overnight short lots actual {PI.short_end_d1_actual.mean():.0f} vs v1 {PI.short_end_d1_sim.mean():.0f} (R1: {I2[I2.variant == "R1"].short_lots_end_d1_sim.mean():.0f}); cycle stops v1 {int(PC.cycle_stop.sum())} of 35 vs 12 actual (R1: {int(SM[SM.variant == "R1"].stopped.sum())}); orders per cycle v1 {PC.n_orders.mean():.0f} vs {N_ORD / 35:.0f} actual.
 **Reading:** v1 moves D0 entries from 0 to precision 75 % / recall 26 % and raises D-1 recall to 42 %, but the original's off-schedule and D0 trigger-based actions are still absent, so the inventory path remains a MISMATCH. v1 is *closer*, not equivalent.
 
-## 4. Backtest results (V0 base; net of slippage and estimated costs; ₹2 crore stated capital; weekly Sharpe = weekly net/₹2 Cr × √52, secondary diagnostic)
+## 4. Backtest results (V0 base; net of slippage and date-aware estimated costs; ₹2 crore stated capital; weekly Sharpe = weekly net/₹2 Cr × √52, secondary diagnostic)
 {md(base)}
 
 By expiry structure (all periods, V0):
 {md(struct)}
 
-**Caveats on these numbers.** Costs are large (≈ {100 * D[(D.variant == "V0_base")].costs.sum() / D[(D.variant == "V0_base")].gross.sum():.0f} % of gross) because the engine places ≈ 770 orders per cycle; the cost rates are estimates, not verified statutory figures (only the 2026 STT change is confirmed), so net figures are provisional. Drawdown is computed on the cycle-level cumulative P&L, not the minute path. There is no margin model (the cycle stop is the only capital control). The scaled cycle stop fires in about 32 % of in-sample cycles versus 25 % when the limit is held fixed in rupees (variant V8), because older, smaller lots reach a proportionally smaller limit. Cells of 5–60 cycles carry no confidence intervals. Differences between structures are confounded with lot size, liquidity and volatility.
+**Caveats on these numbers.** Costs are large (≈ {100 * D[(D.variant == "V0_base")].costs.sum() / D[(D.variant == "V0_base")].gross.sum():.0f} % of gross) because the engine places ≈ 770 orders per cycle; the statutory rates are cross-checked against secondary sources (`COST_MODEL_VERIFICATION.md`) and replacing the old flat rates changes net P&L by under 0.2 %, but brokerage and slippage remain assumptions, so net figures are estimates. Drawdown is computed on the cycle-level cumulative P&L, not the minute path. There is no margin model (the cycle stop is the only capital control). The scaled cycle stop fires in about 32 % of in-sample cycles versus 25 % when the limit is held fixed in rupees (variant V8), because older, smaller lots reach a proportionally smaller limit. Cells of 5–60 cycles carry no confidence intervals. Differences between structures are confounded with lot size, liquidity and volatility.
 
 ## 5. Sensitivities and ablations (pre-declared; none selected; none changes the rules)
 {md(sens.round(2))}

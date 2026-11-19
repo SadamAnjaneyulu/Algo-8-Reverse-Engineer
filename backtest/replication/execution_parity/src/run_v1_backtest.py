@@ -11,15 +11,15 @@ import data, algo8_v1 as V
 CAP = 20_000_000
 REG = pd.read_csv(f'{ref.OUT}/historical_regime_register.csv'); REG = REG[REG.eligible].copy()
 LH = pd.read_csv(f'{ref.ROOT}/backtest/results/cycle_feasibility.csv')[['und', 'expiry', 'lot1']]; REG = REG.merge(LH, on=['und', 'expiry'], how='left')
-VARIANTS = {'V0_base': {}, 'V1_slippage_x0': dict(slip_mult=0.0), 'V2_slippage_x3': dict(slip_mult=3.0), 'V3_costs_x2': dict(cost_mult=2.0), 'V4_cycle_stop_mark_open': dict(cycle_mark='open'), 'V5_leg_k155': dict(leg_mult=1.55), 'V6_leg_k170': dict(leg_mult=1.70),
+VARIANTS = {'V0_base': {}, 'V1_slippage_x0': dict(slip_mult=0.0), 'V2_slippage_x3': dict(slip_mult=3.0), 'V3_costs_x2': dict(cost_mult=2.0), 'C1_legacy_flat_cost_model': dict(cost_model='legacy'), 'V4_cycle_stop_mark_open': dict(cycle_mark='open'), 'V5_leg_k155': dict(leg_mult=1.55), 'V6_leg_k170': dict(leg_mult=1.70),
             'V7_cycle_limit_130k': dict(cycle_limit=130000.0), 'V8_fixed_rupee_cycle_stop': dict(stop_scaling='fixed'), 'A1_no_cycle_stop': dict(cycle_stop=False), 'A2_no_leg_stop': dict(leg_stop=False), 'A3_no_flatten_hold': dict(flatten=False), 'A4_D1_entries_only': dict(d0_entries=False), 'A5_no_wings': dict(wings=False), 'S1_2026_lot_sizes': dict(lots2026=True)}
 
 
 def one(args):
-    vname, kw, row = args; kw = dict(kw); cm = kw.pop('cost_mult', 1.0); l26 = kw.pop('lots2026', False)
+    vname, kw, row = args; kw = dict(kw); cm = kw.pop('cost_mult', 1.0); cmod = kw.pop('cost_model', 'v2'); l26 = kw.pop('lots2026', False)
     try:
         c = data.load_cycle(row['und'], row['expiry'], row['d1'], row['d0']); units = ref.LOT[row['und']] if (l26 or not row['lot1'] == row['lot1']) else int(row['lot1'])
-        lp = V.build(c, row['und'], units=units, **kw).run(); r = V.result(lp, c, row['und'], cm); r.update(variant=vname, und=row['und'], expiry=row['expiry'], d1=row['d1'], d0=row['d0'], units=units, ok=True)
+        lp = V.build(c, row['und'], units=units, **kw).run(); r = V.result(lp, c, row['und'], cm, cmod); r.update(variant=vname, und=row['und'], expiry=row['expiry'], d1=row['d1'], d0=row['d0'], units=units, ok=True)
     except Exception as e: r = dict(variant=vname, und=row['und'], expiry=row['expiry'], ok=False, err=repr(e)[:150])
     return r
 

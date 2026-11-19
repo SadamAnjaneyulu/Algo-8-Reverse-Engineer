@@ -13,6 +13,7 @@ Start with `EXECUTIVE_SUMMARY.md`, then `PARITY_SCORECARD.md`. Direction from Ra
 | `INDEPENDENT_REVIEW.md` | adversarial review findings, fixes and the contamination label |
 | `NEXT_PHASE_ALPHA_READINESS.md` | what can be frozen, what cannot, prioritised data requests |
 | `ALGO8_V1_BACKTEST_REPORT.md` | **Algo 8 decision engine v1** built from the 35 cycles (entry schedule, strikes, wings, per-lot/cycle stops, flatten) and its 2-year IS / 1-year OOS backtest, with fidelity vs the live cycles, tiers, structures, sensitivities and caveats |
+| `COST_MODEL_VERIFICATION.md` | each cost rate with source and status (date-aware model `src/costs_v2.py`) |
 | `config/algo8_v1_params.json` | decision parameters extracted from the 35 cycles (ledger hash, evidence labels) |
 | `reports/REPOSITORY_AUDIT.md` | Phase 1 audit and gap analysis |
 | `src/`, `tests/`, `outputs/` | code, tests, event-level tables |

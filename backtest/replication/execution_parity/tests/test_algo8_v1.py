@@ -60,3 +60,10 @@ def test_cycle_stop_limit_scales_with_lot_size():
     lim = lambda lp: next(m.limit for m in lp.exit_modules if hasattr(m, 'limit'))
     assert abs(lim(lp_small) - 144000.0 * 25 / 65) < 1e-6 and abs(lim(lp_big) - 144000.0) < 1e-6 and lim(lp_fixed) == 144000.0
     c2 = cyc(8); assert abs(lim(V.build(c2, 'SENSEX', units=10)) - 144000.0 * 10 / 20) < 1e-6                                   # per-index lot size reference
+
+
+def test_cost_model_is_date_aware():
+    import costs_v2 as C2
+    assert C2.txn_rate('NIFTY', '2024-09-30') == 0.000495 and C2.txn_rate('NIFTY', '2024-10-01') == 0.0003503 and C2.txn_rate('SENSEX', '2024-10-01') == 0.000325
+    assert C2.stt_sell('2024-09-30') == 0.000625 and C2.stt_sell('2025-01-01') == 0.001 and C2.stt_sell('2026-04-01') == 0.0015
+    buy = C2.order_costs('NIFTY', '2025-01-01', 1, 100000); sell = C2.order_costs('NIFTY', '2025-01-01', -1, 100000); assert sell > buy > 20.0 * 1.18       # STT only on sells, stamp only on buys
