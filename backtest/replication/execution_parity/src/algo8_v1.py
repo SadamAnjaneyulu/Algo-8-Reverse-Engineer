@@ -61,10 +61,11 @@ class FlattenV1:
             for L in list(loop.state.lots): _close(loop, L, d, j, 'FLATTEN', self.rule_id, self.evidence)
 
 
-def build(c, und, units=None, leg_mult=1.60, reference='own', cycle_limit=144000.0, cycle_mark='prev', slip_mult=1.0, d0_entries=True, wings=True, leg_stop=True, cycle_stop=True, flatten=True, delay=0, strict=False):
-    exe = ExecutionModel(delay=delay, slip_pct=0.005 * slip_mult, slip_min=0.10 * slip_mult, strict=strict)
-    exits = ([LegStop(leg_mult, reference)] if leg_stop else []) + ([CycleStopV1(cycle_limit, cycle_mark)] if cycle_stop else []) + ([FlattenV1()] if flatten else [])
-    return EventLoop(c, units or LOT26[und], exits, [ParamEntries(step=STEP[und], d0=d0_entries, wings=wings)], exe, strict=strict, settle_close=YAHOO[und].close.get(pd.Timestamp(c['d0']), np.nan))
+def build(c, und, units=None, leg_mult=1.60, reference='own', cycle_limit=144000.0, stop_scaling='lot', cycle_mark='prev', slip_mult=1.0, d0_entries=True, wings=True, leg_stop=True, cycle_stop=True, flatten=True, delay=0, strict=False):
+    exe = ExecutionModel(delay=delay, slip_pct=0.005 * slip_mult, slip_min=0.10 * slip_mult, strict=strict); u = units or LOT26[und]
+    limit = cycle_limit * (u / LOT26[und]) if stop_scaling == 'lot' else cycle_limit                      # cycle_limit is stated at the 2026 lot size (NIFTY 65 / SENSEX 20) and scales linearly with the session lot size; 'fixed' keeps it in rupees
+    exits = ([LegStop(leg_mult, reference)] if leg_stop else []) + ([CycleStopV1(limit, cycle_mark)] if cycle_stop else []) + ([FlattenV1()] if flatten else [])
+    return EventLoop(c, u, exits, [ParamEntries(step=STEP[und], d0=d0_entries, wings=wings)], exe, strict=strict, settle_close=YAHOO[und].close.get(pd.Timestamp(c['d0']), np.nan))
 
 
 def events(loop):

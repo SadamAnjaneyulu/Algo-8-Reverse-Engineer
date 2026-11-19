@@ -2,7 +2,7 @@
  "provenance": {
   "source": "Trades_GKOHNP140.csv (35 live cycles, 2026-06-23..2026-10-22)",
   "ledger_sha256": "86e65ab6ece492a74402cb3f0ed0fc3c0d638a46a8b62b33ff2bf0094c06f528",
-  "git_head": "d954e8b638ac6f15a13b2be422755465e499295c",
+  "git_head": "19949aec6f3869ca00c918dfd426caac5ce76cb3",
   "status": "IN-SAMPLE descriptive extraction; every value is a HYPOTHESIS about the original decision rule, not a recovered rule"
  },
  "ladder_d1": {
@@ -770,6 +770,7 @@
   },
   "cycle_stop": {
    "limit_rs": 144000.0,
+   "scaling": "limit_rs is the value at the 2026 lot size (NIFTY 65 / SENSEX 20) and scales linearly with the session lot size (user decision; fixed-rupee is a sensitivity)",
    "band_rs": [
     130000.0,
     144000.0

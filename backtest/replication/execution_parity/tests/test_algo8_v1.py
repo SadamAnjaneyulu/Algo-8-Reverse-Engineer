@@ -53,3 +53,10 @@ def test_decisions_do_not_depend_on_future_bars():
 def test_net_pnl_identity_and_determinism():
     c = cyc(6); lp = V.build(c, 'NIFTY').run(); r = V.result(lp, c, 'NIFTY'); r2 = V.result(V.build(c, 'NIFTY').run(), c, 'NIFTY')
     assert r == r2 and abs(r['net'] - (lp.state.cash + lp.settle() - r['costs'])) < 1e-6 and abs(r['gross'] - r['net'] - r['costs'] - r['slippage']) < 1e-6
+
+
+def test_cycle_stop_limit_scales_with_lot_size():
+    c = cyc(8); lp_small = V.build(c, 'NIFTY', units=25); lp_big = V.build(c, 'NIFTY', units=65); lp_fixed = V.build(c, 'NIFTY', units=25, stop_scaling='fixed')
+    lim = lambda lp: next(m.limit for m in lp.exit_modules if hasattr(m, 'limit'))
+    assert abs(lim(lp_small) - 144000.0 * 25 / 65) < 1e-6 and abs(lim(lp_big) - 144000.0) < 1e-6 and lim(lp_fixed) == 144000.0
+    c2 = cyc(8); assert abs(lim(V.build(c2, 'SENSEX', units=10)) - 144000.0 * 10 / 20) < 1e-6                                   # per-index lot size reference

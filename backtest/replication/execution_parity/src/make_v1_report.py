@@ -19,7 +19,7 @@ for g in ('IS', 'OOS (all)'):
 sens = pd.concat(sens)
 fid = PA[PA.strike_mode == 'any'][['category', 'n_sim', 'n_act', 'P', 'R', 'lift_P', 'cls']].copy(); r1 = M2[(M2.variant == 'R1') & M2.primary & (M2.strike_mode == 'any')].set_index('category')
 fid['R1_recall_for_comparison'] = [r1.R.get({'D-1 body entries (17 ladder slots, first 3 min)': 'D-1 body entries (original sells in the 17 ladder slots, first 3 min of each)', 'D-1 body entries (all original D-1 body sells)': 'D-1 body entries (all original D-1 body sells)', 'D-1 wing entries': 'D-1 wing entries (h_ Buy)', 'D0 body entries': 'D0 body entries (num Sell)'}.get(c, c), np.nan) for c in fid.category]
-dpos = D[D.variant == 'V0_base']; n_is = int((dpos.split == 'IS').sum()); n_oos = int(dpos.split.str.startswith('OOS').sum())
+dpos = D[D.variant == 'V0_base']; _f = D[D.variant == 'V8_fixed_rupee_cycle_stop'].merge(dpos, on=['und', 'expiry'], suffixes=('_f', '')); NCH = int((abs(_f.net - _f.net_f) > 1).sum()); NALL = len(_f); n_is = int((dpos.split == 'IS').sum()); n_oos = int(dpos.split.str.startswith('OOS').sum())
 L = f'''# Algo 8 decision engine v1 — built from the 35 live cycles, backtested 2 years in-sample / 1 year out-of-sample
 
 **What this is.** A rule engine whose entry schedule, strike choice, wing choice, risk controls (per-lot stop, cycle stop, flatten) and settlement are taken from the 35 live cycles and run on the event-driven core (`src/algo8_v1.py`, parameters in `config/algo8_v1_params.json` with ledger hash and provenance). It is the closest executable approximation of Algo 8's observed decision making that the evidence supports. **It is not the original algorithm:** entry schedule and risk constants are descriptive, in-sample hypotheses; behaviours whose trigger is unknown are *not* modelled (off-schedule entries, Clock-B reductions, lump hedge, "4 % carry SL", "1 % expiry-day" rule, margin gate).
@@ -43,7 +43,7 @@ L = f'''# Algo 8 decision engine v1 — built from the 35 live cycles, backteste
 | Final flatten | D0 minute {P["flatten"]["minute_post_cutover"]} (15:14) from 2026-08-03; minute {P["flatten"]["minute_pre_cutover"]} (15:20) before | observed last-short minute; pre-cutover rule extrapolated to all earlier history |
 | Settlement | residual lots cash-settled at the official index close (Yahoo) | proxy (U12) |
 | Execution | fill at the open of the decision minute; slippage max(₹0.10, 0.5 %) against the order; costs per `bt/account.py` | **cost rates other than the 2026 STT are unverified**; no bid/ask data |
-| Size | lots as in the ladder, at each session's inferred lot size; rupee stops fixed | historical lot size is inferred from volumes (U14); variant S1 uses 2026 sizes |
+| Size | lots as in the ladder, at each session's inferred lot size; **the cycle-stop rupee limit scales linearly with the session lot size** (₹1,44,000 at the 2026 size of the index: NIFTY 65 / SENSEX 20; user decision); the per-lot stop is a price multiple and needs no scaling | historical lot size is inferred from volumes (U14); variant S1 uses 2026 sizes; V8 keeps the limit fixed in rupees (changes {NCH} of {NALL} cycles, all with non-2026 lot sizes) |
 
 ## 3. How close is v1 to the 35 live cycles? (in-sample; same pre-registered classes as the parity study)
 {md(fid.round(3))}
@@ -57,7 +57,7 @@ Inventory: contract-minutes exactly equal **{100 * PI.exact.mean():.1f} %** (R1:
 By expiry structure (all periods, V0):
 {md(struct)}
 
-**Caveats on these numbers.** Costs are large (≈ {100 * D[(D.variant == "V0_base")].costs.sum() / D[(D.variant == "V0_base")].gross.sum():.0f} % of gross) because the engine places ≈ 770 orders per cycle; the cost rates are estimates, not verified statutory figures (only the 2026 STT change is confirmed), so net figures are provisional. Drawdown is computed on the cycle-level cumulative P&L, not the minute path. There is no margin model (the cycle stop is the only capital control). Cells of 5–60 cycles carry no confidence intervals. Differences between structures are confounded with lot size, liquidity and volatility.
+**Caveats on these numbers.** Costs are large (≈ {100 * D[(D.variant == "V0_base")].costs.sum() / D[(D.variant == "V0_base")].gross.sum():.0f} % of gross) because the engine places ≈ 770 orders per cycle; the cost rates are estimates, not verified statutory figures (only the 2026 STT change is confirmed), so net figures are provisional. Drawdown is computed on the cycle-level cumulative P&L, not the minute path. There is no margin model (the cycle stop is the only capital control). The scaled cycle stop fires in about 32 % of in-sample cycles versus 25 % when the limit is held fixed in rupees (variant V8), because older, smaller lots reach a proportionally smaller limit. Cells of 5–60 cycles carry no confidence intervals. Differences between structures are confounded with lot size, liquidity and volatility.
 
 ## 5. Sensitivities and ablations (pre-declared; none selected; none changes the rules)
 {md(sens.round(2))}
