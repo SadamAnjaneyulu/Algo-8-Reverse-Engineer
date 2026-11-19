@@ -17,8 +17,8 @@ def agree(sim, act, tol_min, strike='any', group=('und', 'expiry', 'cp'), minute
     m = match(s, a, tol_min * 60, strike, group); return dict(matched=m['matched'], n_sim=m['sim_lots'], n_act=m['act_lots'], P=m['precision'], R=m['recall'])
 
 
-def shifted(sim, rng, minute='j', lo=1, hi=NM - 1, by_day=True):
-    """circular shift of every simulated event minute inside [lo, hi] by a random multiple of 15 min (30..120), one shift per (cycle, day); phase-preserving, no draw dropped"""
+def shifted(sim, rng, minute='j', lo=0, hi=NM - 1, by_day=True):
+    """circular shift of every simulated event minute inside the 375-minute session [0, 374] (375 = 25 x 15, so wrapping preserves the 15-minute clock phase exactly) by a random multiple of 15 min (30..120), one shift per (cycle, day); no event dropped"""
     s = sim.copy(); W = hi - lo + 1
     for key, idx in s.groupby(['und', 'expiry', 'day']).groups.items():
         sh = int(rng.integers(2, 9)) * 15 * int(rng.choice([-1, 1])); s.loc[idx, minute] = lo + np.mod(s.loc[idx, minute].values - lo + sh, W)

@@ -63,7 +63,10 @@ for r in cyc[cyc.carry_in_known].itertuples():
         e = SE[(SE.variant == v) & (SE.und == r.und) & (SE.expiry == r.expiry)].copy(); e['sl'] = e.side
         keys_s, Ms = C.path_from_events(e) if len(e) else ([], np.zeros((0, 750)))
         res = C.inventory_compare(keys_a, Ma[:, :750] if Ma.shape[1] >= 750 else Ma, keys_s, Ms)
-        inv.append(dict(variant=v, und=r.und, expiry=r.expiry, **{k: res[k] for k in ('active', 'exact', 'mae', 'nmae', 'mean_abs_actual')}))
+        ov = {}
+        if res['active']:
+            a374, s374 = res['A'][:, 374], res['S'][:, 374]; ov = dict(short_lots_end_d1_actual=float(-a374[a374 < 0].sum()), short_lots_end_d1_sim=float(-s374[s374 < 0].sum()), long_lots_end_d1_actual=float(a374[a374 > 0].sum()), long_lots_end_d1_sim=float(s374[s374 > 0].sum()))
+        inv.append(dict(variant=v, und=r.und, expiry=r.expiry, **{k: res[k] for k in ('active', 'exact', 'mae', 'nmae', 'mean_abs_actual')}, **ov))
         if res['active']:
             Aa, Ss = res['A'], res['S']; T = Aa.shape[1]
             for b0 in range(0, T, 75):
