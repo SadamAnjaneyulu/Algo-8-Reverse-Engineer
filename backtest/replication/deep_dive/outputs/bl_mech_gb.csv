@@ -1,0 +1,14 @@
+model,LOCO_AUC
+clock only (j),0.6239
+"no clock, ids only",0.4818
+no clock + volume,0.5997
+clock + volume,0.6901
+no clock + realised_vol,0.572
+clock + realised_vol,0.6277
+no clock + range_open,0.5287
+clock + range_open,0.6361
+no clock + progress,0.6326
+clock + progress,0.6432
+"all proxies, no clock",0.6724
+all proxies + clock,0.6903
+"all proxies + clock, clock shuffled within cycle",0.6704

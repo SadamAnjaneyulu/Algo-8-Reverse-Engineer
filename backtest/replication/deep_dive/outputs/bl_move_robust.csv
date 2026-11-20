@@ -1,0 +1,43 @@
+day,subset,feature,minutes,episode_starts,AUC,lo,hi
+D-1,all,fav30,17092,329,0.763,0.742,0.782
+D-1,all,own_ratio,17092,329,0.285,0.26,0.31
+D-1,all,other_ratio,17092,329,0.701,0.675,0.73
+D-1,CE only (calls into falls),fav30,8524,177,0.774,0.745,0.799
+D-1,CE only (calls into falls),own_ratio,8524,177,0.304,0.271,0.334
+D-1,CE only (calls into falls),other_ratio,8524,177,0.71,0.672,0.747
+D-1,PE only (puts into rises),fav30,8568,152,0.749,0.717,0.783
+D-1,PE only (puts into rises),own_ratio,8568,152,0.263,0.223,0.294
+D-1,PE only (puts into rises),other_ratio,8568,152,0.69,0.645,0.719
+D-1,NIFTY,fav30,8008,153,0.766,0.737,0.797
+D-1,NIFTY,own_ratio,8008,153,0.296,0.264,0.328
+D-1,NIFTY,other_ratio,8008,153,0.703,0.658,0.744
+D-1,SENSEX,fav30,9084,176,0.76,0.737,0.78
+D-1,SENSEX,own_ratio,9084,176,0.275,0.24,0.313
+D-1,SENSEX,other_ratio,9084,176,0.701,0.663,0.742
+D-1,excluding last 15 min (j<360),fav30,16431,300,0.768,0.753,0.782
+D-1,excluding last 15 min (j<360),own_ratio,16431,300,0.278,0.254,0.304
+D-1,excluding last 15 min (j<360),other_ratio,16431,300,0.721,0.694,0.747
+D-1,excluding first 90 min (j>=90),fav30,15502,304,0.764,0.744,0.783
+D-1,excluding first 90 min (j>=90),own_ratio,15502,304,0.293,0.268,0.32
+D-1,excluding first 90 min (j>=90),other_ratio,15502,304,0.693,0.665,0.723
+D0,all,fav30,16659,552,0.56,0.518,0.614
+D0,all,own_ratio,16659,552,0.455,0.391,0.519
+D0,all,other_ratio,16659,552,0.563,0.505,0.643
+D0,CE only (calls into falls),fav30,8262,303,0.558,0.495,0.617
+D0,CE only (calls into falls),own_ratio,8262,303,0.425,0.343,0.506
+D0,CE only (calls into falls),other_ratio,8262,303,0.62,0.539,0.696
+D0,PE only (puts into rises),fav30,8397,249,0.552,0.514,0.606
+D0,PE only (puts into rises),own_ratio,8397,249,0.504,0.386,0.613
+D0,PE only (puts into rises),other_ratio,8397,249,0.485,0.393,0.585
+D0,NIFTY,fav30,8424,178,0.636,0.563,0.691
+D0,NIFTY,own_ratio,8424,178,0.456,0.339,0.594
+D0,NIFTY,other_ratio,8424,178,0.679,0.596,0.779
+D0,SENSEX,fav30,8235,374,0.526,0.466,0.596
+D0,SENSEX,own_ratio,8235,374,0.459,0.37,0.536
+D0,SENSEX,other_ratio,8235,374,0.52,0.444,0.604
+D0,excluding last 15 min (j<360),fav30,16053,547,0.564,0.514,0.621
+D0,excluding last 15 min (j<360),own_ratio,16053,547,0.451,0.395,0.508
+D0,excluding last 15 min (j<360),other_ratio,16053,547,0.562,0.507,0.64
+D0,excluding first 90 min (j>=90),fav30,15119,496,0.563,0.516,0.622
+D0,excluding first 90 min (j>=90),own_ratio,15119,496,0.452,0.374,0.522
+D0,excluding first 90 min (j>=90),other_ratio,15119,496,0.567,0.512,0.648

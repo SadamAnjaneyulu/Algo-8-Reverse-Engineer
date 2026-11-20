@@ -1,0 +1,26 @@
+model,LOCO_AUC
+all,0.7634
+drop r_avg,0.7628
+drop r_low,0.7644
+drop r_fifo,0.7601
+drop abs_itm,0.7613
+drop itm_steps,0.7444
+drop hold_min,0.7406
+drop price,0.7477
+drop n_open,0.7656
+drop o_n_open,0.7351
+drop o_r,0.7622
+drop straddle_r,0.7529
+drop tod_min,0.7719
+r_low + r_avg,0.5857
+r_low + r_low,0.5705
+r_low + r_fifo,0.5685
+r_low + abs_itm,0.6234
+r_low + itm_steps,0.6192
+r_low + hold_min,0.631
+r_low + price,0.6235
+r_low + n_open,0.5763
+r_low + o_n_open,0.6368
+r_low + o_r,0.6159
+r_low + straddle_r,0.6098
+r_low + tod_min,0.5861

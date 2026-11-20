@@ -1,0 +1,30 @@
+{
+ "by_kind": {
+  "reactive": {
+   "held_both": 0.658,
+   "is_top_held": 0.04,
+   "is_last_pair_strike": 0.202,
+   "is_last_sched_strike": 0.024
+  },
+  "scheduled": {
+   "held_both": 0.802,
+   "is_top_held": 0.469,
+   "is_last_pair_strike": 0.599,
+   "is_last_sched_strike": 0.671
+  }
+ },
+ "n_react": 377,
+ "off_last_sched": {
+  "-4.0": 0.005,
+  "-3.0": 0.019,
+  "-2.0": 0.207,
+  "-1.0": 0.3,
+  "0.0": 0.024,
+  "1.0": 0.199,
+  "2.0": 0.188,
+  "3.0": 0.04,
+  "4.0": 0.013,
+  "5.0": 0.005
+ },
+ "react_held_both_median_lots": 1.0
+}

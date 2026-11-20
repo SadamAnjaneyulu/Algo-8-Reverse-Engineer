@@ -1,0 +1,92 @@
+{
+ "onset": {
+  "excursion_threshold": [
+   "t_dev1",
+   "t_dev15",
+   "t_dev2",
+   "t_dev3",
+   "t_range02",
+   "t_range03"
+  ],
+  "n": [
+   32,
+   30,
+   29,
+   21,
+   32,
+   32
+  ],
+  "spearman_with_first_reactive": [
+   0.239,
+   0.1251,
+   0.1661,
+   -0.2476,
+   0.3062,
+   0.267
+  ],
+  "perm_p": [
+   0.196,
+   0.466,
+   0.406,
+   0.284,
+   0.092,
+   0.108
+  ],
+  "median_time_reached": [
+   "9:30",
+   "10:01",
+   "10:18",
+   "11:35",
+   "9:30",
+   "9:54"
+  ],
+  "share_reached_AFTER_first_reactive": [
+   0.2188,
+   0.4333,
+   0.5517,
+   0.6667,
+   0.0625,
+   0.3438
+  ]
+ },
+ "first_q": [
+  "9:38",
+  "10:30",
+  "10:40",
+  "11:07",
+  "11:32"
+ ],
+ "last_q": [
+  "14:28",
+  "14:39",
+  "15:01",
+  "15:26",
+  "15:29"
+ ],
+ "first_react_before_1100": 0.6875,
+ "first_react_before_1030": 0.15625,
+ "last_after_1500": 0.53125,
+ "last_after_1525": 0.28125,
+ "london_block": 14,
+ "vol_ratio_1230_vs_prev": 0.9244428073576111,
+ "react_rate_1230_vs_prev": [
+  20.833333333333332,
+  31.25
+ ],
+ "rv_ratio_1230_vs_prev": 0.9758677332089045,
+ "gb": {
+  "clock only (j)": 0.6238812970872779,
+  "no clock, ids only": 0.4818439321262126,
+  "no clock + volume": 0.5996531392599656,
+  "clock + volume": 0.690098212345583,
+  "no clock + realised_vol": 0.5719800899664977,
+  "clock + realised_vol": 0.6276880085750332,
+  "no clock + range_open": 0.528715536896318,
+  "clock + range_open": 0.6361110165176415,
+  "no clock + progress": 0.6325901124419061,
+  "clock + progress": 0.6432300534804452,
+  "all proxies, no clock": 0.6723860581117413,
+  "all proxies + clock": 0.6902585482767232,
+  "all proxies + clock, clock shuffled within cycle": 0.6703959466427967
+ }
+}

@@ -1,0 +1,16 @@
+subset,gap_group,cycle_minutes,events,per1000
+all,|gap| < 0.1 step,1507,6,3.98
+all,0.1 - 0.5,3964,108,27.25
+all,>= 0.5,2774,114,41.1
+first half,|gap| < 0.1 step,770,2,2.6
+first half,0.1 - 0.5,1999,54,27.01
+first half,>= 0.5,1359,59,43.41
+second half,|gap| < 0.1 step,737,4,5.43
+second half,0.1 - 0.5,1965,54,27.48
+second half,>= 0.5,1415,55,38.87
+NIFTY,|gap| < 0.1 step,925,5,5.41
+NIFTY,0.1 - 0.5,2183,76,34.81
+NIFTY,>= 0.5,757,33,43.59
+SENSEX,|gap| < 0.1 step,582,1,1.72
+SENSEX,0.1 - 0.5,1781,32,17.97
+SENSEX,>= 0.5,2017,81,40.16

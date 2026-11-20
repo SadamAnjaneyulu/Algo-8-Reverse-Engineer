@@ -1,0 +1,27 @@
+day,item,metric,value,lo,hi
+D-1,fav_open,tilt gap alone AUC,0.5375,,
+D-1,fav_open,baseline + tilt gap: AUC gain,0.0076,-0.0058,0.0213
+D-1,dd_ext,tilt gap alone AUC,0.5542,,
+D-1,dd_ext,baseline + tilt gap: AUC gain,0.0092,-0.0078,0.023
+D-1,fav60,tilt gap alone AUC,0.5295,,
+D-1,fav60,baseline + tilt gap: AUC gain,0.0327,0.0087,0.0537
+D-1,fav30,tilt gap alone AUC,0.4624,,
+D-1,fav30,baseline + tilt gap: AUC gain,0.03,0.0174,0.048
+D-1,S_own+S_other (inventory only),baseline + ...: AUC gain,0.041,0.023,0.0539
+D-1,tilt,baseline + ...: AUC gain,0.0308,0.0156,0.0453
+D-1,tilt + fav_open,baseline + ...: AUC gain,0.0295,0.0102,0.0449
+D-1,tilt gap(fav_open) + tilt + fav_open,baseline + ...: AUC gain,0.03,0.0111,0.0483
+D-1,gap_fav_open permutation null,median/max gain,-0.0012,,-0.0006
+D0,fav_open,tilt gap alone AUC,0.501,,
+D0,fav_open,baseline + tilt gap: AUC gain,0.0061,-0.0031,0.0174
+D0,dd_ext,tilt gap alone AUC,0.4923,,
+D0,dd_ext,baseline + tilt gap: AUC gain,0.0033,-0.0139,0.0164
+D0,fav60,tilt gap alone AUC,0.4795,,
+D0,fav60,baseline + tilt gap: AUC gain,0.0162,0.0062,0.026
+D0,fav30,tilt gap alone AUC,0.4599,,
+D0,fav30,baseline + tilt gap: AUC gain,0.0139,0.0069,0.0208
+D0,S_own+S_other (inventory only),baseline + ...: AUC gain,0.0056,-0.0016,0.014
+D0,tilt,baseline + ...: AUC gain,0.0149,0.0076,0.023
+D0,tilt + fav_open,baseline + ...: AUC gain,0.0049,-0.0087,0.0166
+D0,tilt gap(fav_open) + tilt + fav_open,baseline + ...: AUC gain,0.003,-0.008,0.0144
+D0,gap_fav_open permutation null,median/max gain,0.0023,,0.0055

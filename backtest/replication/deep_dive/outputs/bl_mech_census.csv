@@ -1,0 +1,10 @@
+cls,orders,lots,lots_per_cycle,share_of_sold_lots,median_clock_h,cycles_with
+scheduled cell,2143,2143,67.0,0.353,11.017,32
+hedge-module sell closing a long wing,600,1192,37.2,0.196,12.709,31
+reactive pair (outside timetable),954,954,29.8,0.157,13.165,32
+single solo,751,751,23.5,0.124,12.22,32
+"batch (>= 3 lots, one strike/right, within 3 s)",321,555,17.3,0.091,13.135,25
+end-of-day solo (>= 15:00),220,220,6.9,0.036,15.118,31
+body sell closing a long wing,134,163,5.1,0.027,11.206,30
+"near-pair (CE and PE within 3 s, different strikes)",19,48,1.5,0.008,13.255,4
+stop-module sell closing a long wing,10,46,1.4,0.008,14.774,1

@@ -1,0 +1,25 @@
+C1 D0 body lots by hour x class:
+cls  close_long  cover_short  minute_before_slot  open_long  other  roll_sell  slot_minute
+h                                                                                         
+9           282         1099                 452        829    705        568          719
+10          123          665                 143          9    570         97          369
+11          135          975                 133         57    534        344          446
+12          103          967                  45         25    622        405          228
+13          312         1274                  94         27    600        570          211
+14          273         3047                  72         92    576        793          150
+15         1268         3471                  27        177    190        476           51
+C2 D0 body buy-back lots 11498; followed by a sale on the same right within 60 s: 0.296 ; shifted-time null (5 shifts) 0.211 (range 0.152-0.259)
+   roll pairs 3049 | same strike 0.145 | new strike more ITM 0.353, more OTM 0.501 | old strike ITM share 0.399 | median ITM-offset old -0.39 new -0.53 | |offset| old 1.45 new 1.00 | new closer to spot 0.514
+   corr(dk, -itm_old) (does the new strike move back toward spot?) 0.776
+C3 D0 sells minute-of-hour:  slot minutes (:16 :31 :46 :01) 0.292 ; clock-B minutes (:14 :29 :44 :59) 0.071 ; chance for 4 minutes = 0.067 ; top minutes {16: 0.108, 31: 0.073, 1: 0.065, 15: 0.063, 46: 0.047, 0: 0.038}
+C3 D0 covers minute-of-hour:  slot minutes (:16 :31 :46 :01) 0.070 ; clock-B minutes (:14 :29 :44 :59) 0.124 ; chance for 4 minutes = 0.067 ; top minutes {15: 0.057, 14: 0.046, 17: 0.033, 58: 0.032, 59: 0.032, 19: 0.027}
+C4 hazard AUC (buy-back in the minute vs not, open D0 body-short contract-minutes) n=164643 events=4137
+    driver   AUC    lo    hi  p_boot  holm_p
+ ratio_avg 0.560 0.533 0.600   0.002   0.015
+      dist 0.267 0.234 0.297   0.002   0.015
+     itm_i 0.600 0.561 0.641   0.002   0.015
+      mins 0.641 0.599 0.675   0.002   0.015
+d_price_5m 0.571 0.536 0.625   0.002   0.015
+       clk 0.530 0.519 0.544   0.002   0.015
+   hazard by price/entry: {Interval(0.0, 0.5, closed='right'): 0.0211, Interval(0.5, 0.8, closed='right'): 0.0182, Interval(0.8, 1.0, closed='right'): 0.0201, Interval(1.0, 1.2, closed='right'): 0.0292, Interval(1.2, 1.5, closed='right'): 0.04, Interval(1.5, 1.7, closed='right'): 0.0533, Interval(1.7, 3.0, closed='right'): 0.0489, Interval(3.0, 20.0, closed='right'): 0.086}
+   hazard by |steps from spot|: {Interval(-1.0, 0.5, closed='right'): 0.0523, Interval(0.5, 1.5, closed='right'): 0.0467, Interval(1.5, 3.0, closed='right'): 0.0415, Interval(3.0, 6.0, closed='right'): 0.0265, Interval(6.0, 100.0, closed='right'): 0.0028}

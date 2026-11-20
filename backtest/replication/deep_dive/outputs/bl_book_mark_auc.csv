@@ -1,0 +1,85 @@
+day,subset,target,variable,events,rows,AUC,lo,hi
+D-1,all,B,own1,187,23424,0.21,0.176,0.245
+D-1,all,B,own3,187,23424,0.24,0.198,0.282
+D-1,all,B,own5,187,23424,0.272,0.236,0.346
+D-1,all,B,own15,187,23424,0.384,0.334,0.436
+D-1,all,B,oth3,187,23424,0.725,0.681,0.768
+D-1,all,B,oth5,187,23424,0.693,0.646,0.74
+D-1,all,B,oth15,187,23424,0.583,0.537,0.626
+D-1,all,S,own1,236,23424,0.156,0.126,0.185
+D-1,all,S,own3,236,23424,0.125,0.101,0.159
+D-1,all,S,own5,236,23424,0.118,0.087,0.142
+D-1,all,S,own15,236,23424,0.098,0.075,0.122
+D-1,all,S,oth3,236,23424,0.894,0.849,0.923
+D-1,all,S,oth5,236,23424,0.906,0.876,0.937
+D-1,all,S,oth15,236,23424,0.924,0.9,0.946
+D-1,no body buy-back on this right in prev 5 min,B,own1,132,21684,0.21,0.172,0.25
+D-1,no body buy-back on this right in prev 5 min,B,own3,132,21684,0.253,0.198,0.321
+D-1,no body buy-back on this right in prev 5 min,B,own5,132,21684,0.295,0.233,0.35
+D-1,no body buy-back on this right in prev 5 min,B,own15,132,21684,0.392,0.34,0.462
+D-1,no body buy-back on this right in prev 5 min,B,oth3,132,21684,0.725,0.674,0.773
+D-1,no body buy-back on this right in prev 5 min,B,oth5,132,21684,0.687,0.627,0.744
+D-1,no body buy-back on this right in prev 5 min,B,oth15,132,21684,0.575,0.524,0.617
+D-1,no body buy-back on this right in prev 5 min,S,own1,107,21684,0.188,0.148,0.23
+D-1,no body buy-back on this right in prev 5 min,S,own3,107,21684,0.146,0.108,0.19
+D-1,no body buy-back on this right in prev 5 min,S,own5,107,21684,0.146,0.109,0.179
+D-1,no body buy-back on this right in prev 5 min,S,own15,107,21684,0.118,0.088,0.147
+D-1,no body buy-back on this right in prev 5 min,S,oth3,107,21684,0.88,0.827,0.918
+D-1,no body buy-back on this right in prev 5 min,S,oth5,107,21684,0.888,0.846,0.926
+D-1,no body buy-back on this right in prev 5 min,S,oth15,107,21684,0.911,0.878,0.939
+D-1,no stop-like in cycle in prev 15 min,B,own1,126,19777,0.209,0.163,0.251
+D-1,no stop-like in cycle in prev 15 min,B,own3,126,19777,0.202,0.158,0.248
+D-1,no stop-like in cycle in prev 15 min,B,own5,126,19777,0.2,0.149,0.239
+D-1,no stop-like in cycle in prev 15 min,B,own15,126,19777,0.239,0.183,0.284
+D-1,no stop-like in cycle in prev 15 min,B,oth3,126,19777,0.771,0.74,0.819
+D-1,no stop-like in cycle in prev 15 min,B,oth5,126,19777,0.762,0.709,0.792
+D-1,no stop-like in cycle in prev 15 min,B,oth15,126,19777,0.703,0.654,0.749
+D-1,no stop-like in cycle in prev 15 min,S,own1,92,19777,0.16,0.122,0.202
+D-1,no stop-like in cycle in prev 15 min,S,own3,92,19777,0.127,0.092,0.163
+D-1,no stop-like in cycle in prev 15 min,S,own5,92,19777,0.122,0.087,0.158
+D-1,no stop-like in cycle in prev 15 min,S,own15,92,19777,0.118,0.083,0.154
+D-1,no stop-like in cycle in prev 15 min,S,oth3,92,19777,0.884,0.834,0.923
+D-1,no stop-like in cycle in prev 15 min,S,oth5,92,19777,0.902,0.87,0.936
+D-1,no stop-like in cycle in prev 15 min,S,oth15,92,19777,0.903,0.862,0.941
+D0,all,B,own1,1636,17066,0.505,0.47,0.531
+D0,all,B,own3,1636,17066,0.529,0.498,0.548
+D0,all,B,own5,1636,17066,0.534,0.505,0.551
+D0,all,B,own15,1636,17066,0.573,0.55,0.602
+D0,all,B,oth3,1636,17066,0.475,0.456,0.498
+D0,all,B,oth5,1636,17066,0.472,0.455,0.497
+D0,all,B,oth15,1636,17066,0.459,0.435,0.476
+D0,all,S,own1,593,17066,0.215,0.187,0.241
+D0,all,S,own3,593,17066,0.157,0.13,0.18
+D0,all,S,own5,593,17066,0.152,0.125,0.172
+D0,all,S,own15,593,17066,0.163,0.137,0.185
+D0,all,S,oth3,593,17066,0.83,0.802,0.848
+D0,all,S,oth5,593,17066,0.839,0.811,0.864
+D0,all,S,oth15,593,17066,0.83,0.799,0.848
+D0,no body buy-back on this right in prev 5 min,B,own1,338,10678,0.485,0.457,0.513
+D0,no body buy-back on this right in prev 5 min,B,own3,338,10678,0.513,0.491,0.533
+D0,no body buy-back on this right in prev 5 min,B,own5,338,10678,0.5,0.47,0.522
+D0,no body buy-back on this right in prev 5 min,B,own15,338,10678,0.548,0.512,0.577
+D0,no body buy-back on this right in prev 5 min,B,oth3,338,10678,0.474,0.453,0.494
+D0,no body buy-back on this right in prev 5 min,B,oth5,338,10678,0.489,0.464,0.521
+D0,no body buy-back on this right in prev 5 min,B,oth15,338,10678,0.459,0.417,0.493
+D0,no body buy-back on this right in prev 5 min,S,own1,161,10678,0.191,0.143,0.238
+D0,no body buy-back on this right in prev 5 min,S,own3,161,10678,0.162,0.113,0.201
+D0,no body buy-back on this right in prev 5 min,S,own5,161,10678,0.153,0.122,0.178
+D0,no body buy-back on this right in prev 5 min,S,own15,161,10678,0.128,0.105,0.147
+D0,no body buy-back on this right in prev 5 min,S,oth3,161,10678,0.818,0.771,0.865
+D0,no body buy-back on this right in prev 5 min,S,oth5,161,10678,0.83,0.796,0.861
+D0,no body buy-back on this right in prev 5 min,S,oth15,161,10678,0.848,0.826,0.868
+D0,no stop-like in cycle in prev 15 min,B,own1,704,9803,0.53,0.497,0.554
+D0,no stop-like in cycle in prev 15 min,B,own3,704,9803,0.545,0.518,0.577
+D0,no stop-like in cycle in prev 15 min,B,own5,704,9803,0.541,0.507,0.575
+D0,no stop-like in cycle in prev 15 min,B,own15,704,9803,0.557,0.521,0.587
+D0,no stop-like in cycle in prev 15 min,B,oth3,704,9803,0.447,0.423,0.471
+D0,no stop-like in cycle in prev 15 min,B,oth5,704,9803,0.447,0.428,0.481
+D0,no stop-like in cycle in prev 15 min,B,oth15,704,9803,0.454,0.431,0.476
+D0,no stop-like in cycle in prev 15 min,S,own1,150,9803,0.186,0.134,0.224
+D0,no stop-like in cycle in prev 15 min,S,own3,150,9803,0.154,0.109,0.193
+D0,no stop-like in cycle in prev 15 min,S,own5,150,9803,0.163,0.124,0.202
+D0,no stop-like in cycle in prev 15 min,S,own15,150,9803,0.141,0.102,0.17
+D0,no stop-like in cycle in prev 15 min,S,oth3,150,9803,0.827,0.785,0.857
+D0,no stop-like in cycle in prev 15 min,S,oth5,150,9803,0.824,0.797,0.859
+D0,no stop-like in cycle in prev 15 min,S,oth15,150,9803,0.841,0.811,0.871
