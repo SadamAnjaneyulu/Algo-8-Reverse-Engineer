@@ -26,3 +26,5 @@ Body sizing study (plan `BODY_SIZING_PLAN.md`, report `BODY_SIZING_LOGIC.md`): `
 Reactive pairs and wave clock (plan `BODY_REACTIVE_PAIR_PLAN.md`, report `BODY_REACTIVE_PAIRS.md`): `bl_react_panel.py` → `bl_react_tests1.py` → `bl_react_tests1b.py` → `bl_react_tests2.py` (slow, ~10 min) → `bl_react_tests3.py` → `bl_react_waves.py` → `bl_react_fig.py` → `make_react_report.py` (needs the sizing study outputs).
 
 Reactive-pair mechanism and sell census (plan `BODY_REACTIVE_MECHANISM_PLAN.md`, report `BODY_REACTIVE_MECHANISM.md`): `bl_mech_panel.py` → `bl_mech_tests1.py` → `bl_mech_strike.py` → `bl_mech_tests2.py` → `bl_mech_census.py` → `bl_mech_fig.py` → `make_mech_report.py` (needs the reactive-pair and sizing outputs).
+
+Reactive-pair look-back verification (plan `BODY_REACTIVE_LOOKBACK_PLAN.md`, report `BODY_REACTIVE_LOOKBACK.md`): `bl_lb_tests.py` → `bl_lb_tests2.py` → `bl_lb_tests3.py` → `bl_lb_fig.py` → `make_lb_report.py` (needs the reactive-pair and mechanism outputs).

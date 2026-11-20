@@ -282,3 +282,21 @@ def test_mech_census_has_no_residual_and_hedge_wing_sales_are_the_largest_other_
     assert 0.18 < C.loc['hedge-module sell closing a long wing', 'share_of_sold_lots'] < 0.21 and C.loc['hedge-module sell closing a long wing', 'lots'] > C.loc['batch (>= 3 lots, one strike/right, within 3 s)', 'lots']
     S = pd.read_csv(f'{OUT}/bl_mech_census_orders.csv'); assert S.lots.sum() == 6072 and S.cls.notna().all()
     L = pd.read_csv(f'{OUT}/bl_size_lot_classes.csv'); solo = C.loc[['single solo', 'batch (>= 3 lots, one strike/right, within 3 s)', 'end-of-day solo (>= 15:00)', 'near-pair (CE and PE within 3 s, different strikes)'], 'lots'].sum(); assert solo == L[L.cls3 == 'solo'].lots.sum()
+
+
+# ---- reactive-pair look-back: bl_lb_* ----
+def test_lb_stated_rule_hit_rate_and_sample():
+    R = json.load(open(f'{OUT}/bl_summary_lb.json')); assert R['n'] == 363 and 0.78 < R['hit15'] < 0.83 and all(v > 0.75 for v in R['hit15_und'].values()) and all(v > 0.75 for v in R['hit15_half'].values()) and R['dir_zero'] == 0
+    S = pd.read_csv(f'{OUT}/bl_lb_sample.csv'); assert len(S) == 10 and int(S.match.sum()) == R['sample_matches'] == 8 and (S['predicted strike'] - S['previous-minute ATM']).abs().isin([50, 100]).all()
+
+
+def test_lb_length_is_a_plateau_not_15_and_rolling_beats_anchored():
+    R = json.load(open(f'{OUT}/bl_summary_lb.json')); D = pd.DataFrame(R['defs']).set_index('direction definition').hit_rate
+    assert min(D[f'rolling {L}'] for L in (10, 15, 20, 30, 60)) > 0.78 and D['rolling 15'] > D['previous 15-min block (open to close)'] + 0.15 and max(D[k] for k in D.index if not k.startswith('rolling')) < min(D[f'rolling {L}'] for L in (10, 15, 20, 30, 60))
+    assert R['disagree_block_hit'] < 0.15 and R['disagree_rolling_hit'] > 0.7
+    L = pd.read_csv(f'{OUT}/bl_lb_live_scan.csv').set_index('L_min'); assert L.hit_rate_live_proxy.loc[[10, 15, 20, 30, 45, 60]].max() - L.hit_rate_live_proxy.loc[[10, 15, 20, 30, 45, 60]].min() < 0.02 and L.hit_rate_live_proxy.loc[1] < L.hit_rate_live_proxy.loc[15] - 0.03 and L.hit_rate_live_proxy.loc[90] < L.hit_rate_live_proxy.loc[15] - 0.05
+
+
+def test_lb_live_spot_proxy_beats_completed_bar_and_move_does_not_fire():
+    R2 = json.load(open(f'{OUT}/bl_summary_lb2.json')); assert R2['live_hit'] > R2['bar_hit'] + 0.05 and R2['live_minus_bar_ci'][0] > 0.03 and R2['bar_vs_sec_rho'] < -0.05 and abs(R2['live_vs_sec_rho']) < 0.1 and R2['late_live'] > R2['late_bar'] + 0.1
+    assert R2['hazard_ratio_moving_vs_flat'][1] > 1.2 and abs(R2['hazard_up_down'][0] - R2['hazard_up_down'][1]) < 6
