@@ -27,11 +27,16 @@ for u, e, hd1, hd0 in zip(cyc.und, cyc.expiry, cyc.has_d1, cyc.has_d0):
                 nanm = ~np.isfinite(px[cp][:, j - 1] if j >= 1 else pxo[cp][:, 0]); miss += np.abs(net[cp])[nanm].sum()
                 m[cp] = cash[cp] + float((net[cp] * p).sum()) * lot + sum(v * xlast[(c2, k2)] for (c2, k2), v in xnet.items() if c2 == cp) * lot
             tot += sum(abs(v) for v in xnet.values()); miss += sum(abs(v) for v in xnet.values())
+            dm = {}
+            for w in (1, 3, 5, 15):
+                for cp in ('CE', 'PE'):
+                    a = px[cp][:, max(j - 1, 0)] if j >= 1 else pxo[cp][:, 0]; b = px[cp][:, max(j - 1 - w, 0)] if j >= 1 else pxo[cp][:, 0]
+                    a = np.where(np.isfinite(a), a, last[cp]); b = np.where(np.isfinite(b), b, a); dm[(w, cp)] = float((net[cp] * (a - b)).sum()) * lot
             B = m['CE'] + m['PE']
             if first: start_day = B; first = False
-            peak = max(peak, B); hist.append((u, e, ['D-1', 'D0'][d], j, B, m['CE'], m['PE'], B - start_day, peak - B, miss / tot if tot else 0.0, tot))
+            peak = max(peak, B); hist.append((u, e, ['D-1', 'D0'][d], j, B, m['CE'], m['PE'], B - start_day, peak - B, miss / tot if tot else 0.0, tot) + tuple(dm[(w, cp)] for w in (1, 3, 5, 15) for cp in ('CE', 'PE')))
         while ptr < len(evs) and evs[ptr].te < base + 100000: apply(evs[ptr]); ptr += 1
-    H = pd.DataFrame(hist, columns=['und', 'expiry', 'day', 'j', 'B_total', 'B_CE', 'B_PE', 'B_day', 'DD', 'miss_share', 'open_lots']); 
+    H = pd.DataFrame(hist, columns=['und', 'expiry', 'day', 'j', 'B_total', 'B_CE', 'B_PE', 'B_day', 'DD', 'miss_share', 'open_lots'] + [f'dm{w}_{cp}' for w in (1, 3, 5, 15) for cp in ('CE', 'PE')]); 
     for k in (5, 15, 30): H[f'dB{k}'] = H.groupby('day').B_total.diff(k)
     rows.append(H)
     # validation: flat at the end of the ledger -> MTM equals realised cash
