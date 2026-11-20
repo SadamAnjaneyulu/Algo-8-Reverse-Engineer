@@ -1,0 +1,17 @@
+day,model,AUC,logloss
+D-1,fav30 only,0.7613,0.0913
+D-1,own+other ratio only,0.7182,0.0888
+D-1,delta_need only,0.5013,0.0944
+D-1,delta_need_pct only,0.5007,0.0944
+D-1,asym only,0.7187,0.0887
+D-1,"baseline (fav30, own, other)",0.7513,0.0884
+D-1,baseline + delta_need,0.7767,0.0855
+D-1,delta_need + fav30,0.7573,0.0914
+D0,fav30 only,0.5172,0.2006
+D0,own+other ratio only,0.5768,0.2004
+D0,delta_need only,0.4218,0.2012
+D0,delta_need_pct only,0.4159,0.2012
+D0,asym only,0.5417,0.2006
+D0,"baseline (fav30, own, other)",0.5824,0.2004
+D0,baseline + delta_need,0.5906,0.2002
+D0,delta_need + fav30,0.5101,0.2008
