@@ -137,3 +137,48 @@ def test_d1_closes_follow_premium_move_not_delta():
     H = pd.read_csv(f'{OUT}/bl_close_hazard.csv'); h = H[(H.day == 'D-1') & (H.feature == 'ratio')].reset_index(drop=True); assert h.rate_per_1000.iloc[8] > 20 * h.rate_per_1000.iloc[2] and h.rate_per_1000.is_monotonic_increasing
     d = H[(H.day == 'D-1') & (H.feature == 'abs_delta')].reset_index(drop=True); assert d.rate_per_1000.iloc[-1] < d.rate_per_1000.max() / 3        # no delta limit: the deepest ITM bin is not the highest
     U = pd.read_csv(f'{OUT}/bl_close_univariate.csv').set_index(['day', 'feature']).AUC; assert U[('D-1', 'ratio')] > 0.7 and U[('D0', 'ratio')] < 0.6
+
+
+# ---- buy-back (close) logic study: bl_close_build / bl_close_logic1-6 ----
+def _flags(day='D-1'):
+    F = pd.read_csv(f'{OUT}/bl_close_orders_flags.csv'); return F[F.day == day]
+
+
+def test_close_orders_table_invariants():
+    d = _flags(); assert len(d) == 1324 and (d.lots == 1).all()
+    assert (d.n_open >= 1).all()                                         # every D-1 body buy-back closes a tracked body short
+    assert (d.low <= d.high + 1e-9).all()                                # cheapest <= highest open entry (same lot list)
+    one = d[d.n_open == 1]; assert len(one) > 100 and np.allclose(one.low, one.high)   # one open lot in a list: its min and max coincide (the conventions leave different lots open, so avg/fifo can differ)
+    r = d.dec_px / d.px_chain; assert 0.97 < r.median() < 1.03           # decision price (limit / 1.15) ~ previous minute close
+
+
+def test_close_lot_tracker_reconciles():
+    L = pd.read_csv(f'{OUT}/bl_close_lots.csv'); n = L.groupby('conv').size(); assert n.nunique() == 1 and n.iloc[0] == 4671
+    for cv, g in L.groupby('conv'): assert g.closed_d1.sum() + (1 - g.closed_d1).sum() == len(g) and abs((1 - g.closed_d1).mean() - 0.693) < 0.01
+    P = pd.read_csv(f'{OUT}/bl_close_panel2.csv.gz'); assert int(((P.day == 'D-1') & (P.bb_lots > 0)).sum()) == 750          # same buy-back contract-minutes as the earlier close panel
+    assert (L[L.closed_d1 == 1].closed_te.notna()).all() and (L[L.closed_d1 == 0].closed_te.isna()).all()
+
+
+def test_close_pairing_is_rare_and_above_chance():
+    R = json.load(open(f'{OUT}/bl_summary_close1.json')); assert R['D-1_paired'] < 0.15 and R['D-1_paired'] > 20 * R['D-1_pair_null'][0] and R['D-1_pair_null'][2] < 0.02
+    assert R['D-1_pair_both_ge12'] == 0.0 and R['D-1_pair_one_ge12_one_lt'] > 0.6        # a pair is one stop-like leg plus a leg that is not
+    R2 = json.load(open(f'{OUT}/bl_summary_close2.json')); assert R2['D-1_both_ge12_rows'] == 0.0 and R2['D-1_single_higher_leg'][2] > 0.8
+
+
+def test_close_single_leg_trigger_not_combined():
+    A = pd.read_csv(f'{OUT}/bl_close_C_auc.csv'); a = A[(A.day == 'D-1')].set_index(['target', 'variable']).AUC
+    for t, own, oth in (('ce', 'r_ce', 'r_pe'), ('pe', 'r_pe', 'r_ce')): assert a[(t, own)] > 0.7 and a[(t, own)] > a[(t, 'r_max')] + 0.03 and a[(t, own)] > a[(t, 'straddle_r')] + 0.03 and a[(t, oth)] < 0.35
+    R2 = json.load(open(f'{OUT}/bl_summary_close2.json')); assert all(abs(R2[f'D-1_loco_{t}']['gain']) < 0.01 for t in ('ce', 'pe'))
+
+
+def test_close_hazard_has_no_step_at_1p2_but_rises_after_1p4():
+    P = pd.read_csv(f'{OUT}/bl_close_panel2.csv.gz'); Q = P[P.day == 'D-1']
+    h = lambda lo, hi: ((Q.bb_lots > 0) & (Q.r_low > lo) & (Q.r_low <= hi)).sum() / ((Q.r_low > lo) & (Q.r_low <= hi)).sum() * 1000
+    assert h(1.2, 1.3) < 2 * h(1.1, 1.2) and h(1.3, 1.4) < 2 * h(1.2, 1.3)       # flat through 1.2-1.4
+    assert h(1.5, 1.6) > 3 * h(1.4, 1.5) and h(1.7, 1.8) > 25 * h(1.2, 1.3)      # the rise is after 1.4
+
+
+def test_close_carry_by_max_ratio_and_below12_composition():
+    R = json.load(open(f'{OUT}/bl_summary_close5.json')); assert R['low_never12_carried_share'] > 0.75 and R['low_ge17_closed_share'] > 0.9 and R['low_early_never12_carried'] > 0.7
+    R6 = json.load(open(f'{OUT}/bl_summary_close6.json')); assert R6['D-1_sub_within3s_of_stop'] > 20 * R6['D-1_sub_within3s_null'] and R6['D-1_join_same_right'] > 0.6 and R6['D-1_join_same_strike'] < 0.2
+    R1 = json.load(open(f'{OUT}/bl_summary_close1.json')); assert 0.25 < R1['D-1_below12_r_low'] < 0.4 and R1['D-1_below12_all3'] > 0.25

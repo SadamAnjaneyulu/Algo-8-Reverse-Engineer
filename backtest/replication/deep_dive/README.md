@@ -16,3 +16,5 @@ Solo-sell studies (D-1 clock vs event, then the move/loss hypothesis): `bl_trigg
 Variable search for solo sells (plan `BODY_SOLO_VARIABLE_SEARCH_PLAN.md`, report `BODY_SOLO_VARIABLE_SEARCH.md`): `bl_feat_panel.py` (needs `bl_greeks.py`) → `bl_var_search.py` → `bl_tilt_test.py` → `bl_var_gb.py` → `bl_shape_feats.py` → `bl_shape_test.py` → `bl_breakout_test.py` → `bl_final_models.py` → `bl_breakout_fig.py` → `make_variable_report.py`.
 
 Paired-sell and close logic (plan `BODY_PAIRED_SELL_PLAN.md`, report `BODY_PAIRED_SELL_AND_CLOSE_LOGIC.md`): `bl_slot_panel.py` → `bl_slot_test.py` → `bl_slot_strike.py` → `bl_close_panel.py` → `bl_close_test.py` → `bl_paired_fig.py` → `make_paired_report.py`.
+
+Buy-back logic (plan `BODY_CLOSE_LOGIC_PLAN.md`, report `BODY_CLOSE_LOGIC.md`): `bl_close_build.py` → `bl_close_logic1.py` → `bl_close_logic2.py` → `bl_close_logic2b.py` → `bl_close_logic3.py` → `bl_close_logic4.py` → `bl_close_logic5.py` → `bl_close_logic6.py` → `bl_close_logic7.py` → `bl_close_fig.py` → `make_close_report.py` (needs `outputs/bl_all_orders.pkl.gz` from `bl_events.py`).
