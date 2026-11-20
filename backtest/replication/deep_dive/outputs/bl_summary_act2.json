@@ -2,101 +2,106 @@
  "auc_top": {
   "feature": [
    "abs_m5",
+   "abs_cm_now",
    "abs_m15",
    "age_sell",
+   "abs_c_m15",
    "age_oth",
+   "abs_c_m5",
    "abs_d_last_pair",
    "abs_d_last_react",
-   "abs_d_centre",
-   "age_bb",
-   "since_atm_chg",
-   "age_lo"
+   "abs_d_centre"
   ],
   "AUC": [
    0.7198,
+   0.7184,
    0.6999,
    0.3436,
+   0.6418,
    0.3606,
+   0.6265,
    0.5831,
    0.4225,
-   0.5615,
-   0.5584,
-   0.4445,
-   0.5502
+   0.5615
   ],
   "lo": [
    0.6902,
+   0.6876,
    0.6711,
    0.3156,
+   0.6091,
    0.3212,
+   0.5976,
    0.5495,
    0.3858,
-   0.5333,
-   0.5039,
-   0.4126,
-   0.5251
+   0.5333
   ],
   "hi": [
    0.7461,
+   0.7565,
    0.7262,
    0.3755,
+   0.6681,
    0.3977,
+   0.658,
    0.6224,
    0.4615,
-   0.595,
-   0.6036,
-   0.4795,
-   0.5769
+   0.595
   ],
   "null_max": [
    0.5164,
+   0.5268,
    0.5191,
    0.5099,
+   0.5214,
    0.5161,
+   0.5185,
    0.5275,
    0.5279,
-   0.518,
-   0.515,
-   0.516,
-   0.5202
+   0.518
   ],
   "half1": [
    0.7218,
+   0.7153,
    0.7248,
    0.3493,
+   0.6543,
    0.3572,
+   0.6146,
    0.6016,
    0.423,
-   0.5269,
-   0.5823,
-   0.467,
-   0.5443
+   0.5269
   ],
   "half2": [
    0.7206,
+   0.7216,
    0.6775,
    0.3388,
+   0.6301,
    0.3644,
+   0.6375,
    0.573,
    0.4235,
-   0.5957,
-   0.5402,
-   0.4237,
-   0.556
+   0.5957
   ]
  },
  "auc_max_dev": 0.2198395171347839,
  "gb": {
   "clock only": 0.5700569430847418,
   "clock + ages": 0.7382859397885693,
-  "clock + ages + spot_position": 0.9095733189647539,
-  "clock + ages + atm_dynamics": 0.7337202478074003,
-  "clock + ages + move": 0.8551434707708186,
-  "all blocks": 0.9053963122332769,
-  "all blocks, ages shuffled": 0.8856496343348335,
-  "all blocks, spot_position shuffled": 0.840770717442393,
-  "all blocks, atm_dynamics shuffled": 0.9065345415082455,
-  "all blocks, move shuffled": 0.9047383426046086
+  "CAUSAL (completed bars only): clock + ages + spot_position": 0.8652793904484363,
+  "CAUSAL (completed bars only): clock + ages + atm_dynamics": 0.729067028916766,
+  "CAUSAL (completed bars only): clock + ages + move": 0.7527944104202557,
+  "CAUSAL: all blocks": 0.8538763543271433,
+  "CAUSAL: all blocks + current-minute move (look-ahead)": 0.8959876754016499,
+  "LIVE-PROXY clock + ages + spot_position": 0.9095733189647539,
+  "LIVE-PROXY clock + ages + atm_dynamics": 0.7337202478074003,
+  "LIVE-PROXY clock + ages + move": 0.8551434707708186,
+  "LIVE-PROXY all blocks": 0.9053963122332769,
+  "LIVE-PROXY all blocks, ages shuffled": 0.8823180464803305,
+  "LIVE-PROXY all blocks, spot_position shuffled": 0.8400109282152858,
+  "LIVE-PROXY all blocks, atm_dynamics shuffled": 0.9053282638556868,
+  "LIVE-PROXY all blocks, move shuffled": 0.9080586733854954
  },
  "lags": {
   "age_of": [

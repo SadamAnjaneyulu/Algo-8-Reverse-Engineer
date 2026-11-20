@@ -1,11 +1,16 @@
 model,LOCO_AUC
 clock only,0.5701
 clock + ages,0.7383
-clock + ages + spot_position,0.9096
-clock + ages + atm_dynamics,0.7337
-clock + ages + move,0.8551
-all blocks,0.9054
-"all blocks, ages shuffled",0.8856
-"all blocks, spot_position shuffled",0.8408
-"all blocks, atm_dynamics shuffled",0.9065
-"all blocks, move shuffled",0.9047
+CAUSAL (completed bars only): clock + ages + spot_position,0.8653
+CAUSAL (completed bars only): clock + ages + atm_dynamics,0.7291
+CAUSAL (completed bars only): clock + ages + move,0.7528
+CAUSAL: all blocks,0.8539
+CAUSAL: all blocks + current-minute move (look-ahead),0.896
+LIVE-PROXY clock + ages + spot_position,0.9096
+LIVE-PROXY clock + ages + atm_dynamics,0.7337
+LIVE-PROXY clock + ages + move,0.8551
+LIVE-PROXY all blocks,0.9054
+"LIVE-PROXY all blocks, ages shuffled",0.8823
+"LIVE-PROXY all blocks, spot_position shuffled",0.84
+"LIVE-PROXY all blocks, atm_dynamics shuffled",0.9053
+"LIVE-PROXY all blocks, move shuffled",0.9081
