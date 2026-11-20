@@ -108,3 +108,32 @@ def test_rejected_candidates_stay_rejected():
 
 def test_solo_variable_report_exists():
     t = open(os.path.join(C.REP, 'BODY_SOLO_VARIABLE_SEARCH.md')).read(); assert 'fresh favourable extreme' in t and '## 5. Conclusion' in t
+
+
+def test_scheduled_slots_always_fire_and_others_do_not():
+    EX = pd.read_csv(f'{OUT}/bl_slot_execution_d1.csv', index_col=0)
+    for k in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13]: assert EX.executed[k] >= 0.96
+    for k in (12, 14, 15): assert EX.executed[k] < 0.1
+    T = pd.read_csv(f'{OUT}/bl_slot_d1_scheduled.csv'); w = T.pivot_table(index=['und', 'expiry', 'k'], columns='cp', values='lots_paired'); assert (w.CE == w.PE).mean() > 0.98
+
+
+def test_no_state_variable_explains_slot_quantity():
+    ST = pd.read_csv(f'{OUT}/bl_slot_state_tests.csv'); assert len(ST) >= 30 and ST.R2_gain.max() < 0.02 and ((ST.lo > 0) & (ST.R2_gain > ST.perm_null_max)).sum() == 0
+
+
+def test_cycle_stop_halts_the_schedule():
+    O = C.load_orders(); P = pd.read_csv(f'{OUT}/bl_slot_panel.csv'); stp = O[(O.module == 's_') & (O.dayno == 1)].groupby(['und', 'expiry']).tod.min(); d0 = P[(P.day == 'D0') & (P.cp == 'CE')]; aft = ex = 0
+    for (u, e), g in d0.groupby(['und', 'expiry']):
+        t = stp.get((u, e), np.nan)
+        if t == t: m = (C.ref.OPEN_SEC + g.j * 60) >= t; aft += int(m.sum()); ex += int((g[m].lots_paired > 0).sum())
+    assert aft > 100 and ex == 0
+
+
+def test_slot_strike_is_atm_not_delta():
+    R = pd.read_csv(f'{OUT}/bl_slot_strike_rules.csv'); r = R[R.day == 'D-1'].set_index('rule').exact; assert r['ATM'] > 0.9 and r['ATM'] > r['DELTA50'] + 0.2 and r['ATM'] > r['FWD'] + 0.2 and r['ATM'] > r['MINCP'] + 0.2 and r['HYST_1.0'] < r['ATM'] - 0.2
+
+
+def test_d1_closes_follow_premium_move_not_delta():
+    H = pd.read_csv(f'{OUT}/bl_close_hazard.csv'); h = H[(H.day == 'D-1') & (H.feature == 'ratio')].reset_index(drop=True); assert h.rate_per_1000.iloc[8] > 20 * h.rate_per_1000.iloc[2] and h.rate_per_1000.is_monotonic_increasing
+    d = H[(H.day == 'D-1') & (H.feature == 'abs_delta')].reset_index(drop=True); assert d.rate_per_1000.iloc[-1] < d.rate_per_1000.max() / 3        # no delta limit: the deepest ITM bin is not the highest
+    U = pd.read_csv(f'{OUT}/bl_close_univariate.csv').set_index(['day', 'feature']).AUC; assert U[('D-1', 'ratio')] > 0.7 and U[('D0', 'ratio')] < 0.6
