@@ -1,0 +1,13 @@
+orders from 15:00 (post cutover / pre): {False: 3170, True: 1014}
+cutover pre : cycle-rights 32 | open at 15:13 S 839 L 904 | closed share of S by end 0.999, of L by end 0.614 | cycle-rights flat at end 0.656 | flat at end with S=L=0 only 0.656 | cycle-rights with lots traded in 15:14-15:15: 0.469
+cutover post : cycle-rights 28 | open at 15:13 S 1040 L 1052 | closed share of S by end 1.000, of L by end 0.996 | cycle-rights flat at end 0.929 | flat at end with S=L=0 only 0.929 | cycle-rights with lots traded in 15:14-15:15: 0.571
+closing in 15:14-15:15 (lots) by module: body 2167 hedge 231 stop 0 ; total lots at 15:13: S 1879 L 1956
+             open_1513  closed_1514_1515  closed_after_1516  residual_end  share_closed_1514_1515  share_residual
+post  side                                                                                                       
+False long         904               107                476           321                   0.118           0.355
+      short        839               113                725             1                   0.135           0.001
+True  long        1052              1048                  0             4                   0.996           0.004
+      short       1040              1040                  0             0                   1.000           0.000
+residual contracts at the end of D0 (known cycles): 51 {(False, 'long'): {'n': 46, 'lots': 349}, (False, 'short'): {'n': 1, 'lots': 1}, (True, 'long'): {'n': 4, 'lots': 4}}
+residual long wings: median |OTM steps| 5.8, last price quantiles [0.05, 0.05, 0.05] ; residual shorts: OTM steps quantiles [-1.4, -1.4, -1.4]
+last D0 order per cycle (IST) quantiles ['09:15', '11:01', '15:14', '15:21', '15:38']

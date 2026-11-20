@@ -1,0 +1,27 @@
+A. cycles: carry-in known 30 of 35 | D-1 log missing 3 | D0 log missing 2
+opening inventory per cycle: short lots median 102 (IQR [88.5, 114.5]), long lots median 157 (IQR [116.0, 180.0]); short contracts median 11
+D0 open gap vs D-1 close (steps): quantiles [-3.44, -1.48, -0.27, 1.15, 2.7]
+carried shorts at the D0 open: share ITM 0.447 ; |steps from spot| quantiles [1.0, 2.1, 3.6, 5.7]
+D0 body Buys with no recorded short (open_long): known-carry cycles 981 lots (30 cycles), unknown-carry-in cycles 235 lots (3 cycles)
+   timing of those Buys: minute-of-D0 quantiles (known / unknown): [1.2, 359.0] [1.5, 332.6]
+                    orders  lots  exact_prev  exact_cur  within1  share_lots
+cls                                                                         
+minute_before_slot     885   966       0.329      0.452    0.544       0.095
+other                 3564  3797       0.496      0.503    0.900       0.373
+roll_sell             2543  3253       0.348      0.350    0.726       0.319
+slot_minute           1963  2174       0.578      0.541    0.969       0.213
+D0 sells by strike status (lots share): {'carried_strike': 0.468, 'existing_short_strike': 0.443, 'new_strike': 0.089} | by status hit_prev {'carried_strike': 0.516, 'existing_short_strike': 0.416, 'new_strike': 0.141}
+D0 offset (steps; + = ITM side) distribution by class:
+cls   minute_before_slot  other  roll_sell  slot_minute
+itm                                                    
+-3.0               0.045  0.029      0.104        0.005
+-2.0               0.021  0.027      0.094        0.006
+-1.0               0.105  0.159      0.156        0.295
+-0.0               0.548  0.496      0.356        0.578
+ 1.0               0.252  0.244      0.232        0.096
+ 2.0               0.021  0.042      0.044        0.018
+ 3.0                 NaN  0.001        NaN        0.001
+D0 slot_minute with atm_prev != atm_cur: n 422 | K==atm_prev 0.457 K==atm_cur 0.284
+D0 slot_minute hit by distance of spot_prev from strike: {Interval(0.0, 0.2, closed='right'): {'size': 746, 'mean': 0.647}, Interval(0.2, 0.4, closed='right'): {'size': 769, 'mean': 0.599}, Interval(0.4, 0.5, closed='right'): {'size': 444, 'mean': 0.421}}
+D0 hit_prev by time since open (minutes):  {Interval(-1, 5, closed='right'): {'size': 1082, 'mean': 0.36}, Interval(5, 15, closed='right'): {'size': 238, 'mean': 0.382}, Interval(15, 30, closed='right'): {'size': 415, 'mean': 0.627}, Interval(30, 60, closed='right'): {'size': 579, 'mean': 0.532}, Interval(60, 120, closed='right'): {'size': 1199, 'mean': 0.579}, Interval(120, 240, closed='right'): {'size': 2570, 'mean': 0.493}, Interval(240, 400, closed='right'): {'size': 2872, 'mean': 0.373}}
+D0 hit_prev by hour (all sells): {9: 0.439, 10: 0.6, 11: 0.485, 12: 0.51, 13: 0.477, 14: 0.394, 15: 0.205} | by und {'NIFTY': 0.575, 'SENSEX': 0.351}
