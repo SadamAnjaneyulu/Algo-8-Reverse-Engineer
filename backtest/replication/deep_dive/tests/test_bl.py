@@ -182,3 +182,29 @@ def test_close_carry_by_max_ratio_and_below12_composition():
     R = json.load(open(f'{OUT}/bl_summary_close5.json')); assert R['low_never12_carried_share'] > 0.75 and R['low_ge17_closed_share'] > 0.9 and R['low_early_never12_carried'] > 0.7
     R6 = json.load(open(f'{OUT}/bl_summary_close6.json')); assert R6['D-1_sub_within3s_of_stop'] > 20 * R6['D-1_sub_within3s_null'] and R6['D-1_join_same_right'] > 0.6 and R6['D-1_join_same_strike'] < 0.2
     R1 = json.load(open(f'{OUT}/bl_summary_close1.json')); assert 0.25 < R1['D-1_below12_r_low'] < 0.4 and R1['D-1_below12_all3'] > 0.25
+
+
+# ---- capital-loss (book P&L) trigger study: bl_book_* ----
+def test_book_pnl_panel_validation_and_stop_scale():
+    V = pd.read_csv(f'{OUT}/bl_book_validation.csv'); F = V[(V.end_open_lots == 0) & V.has_d1 & V.has_d0]; assert len(F) >= 15 and (F.last_mtm - F.cash).abs().max() < 1e-6      # cash accounting closes at flat (marks are not validated by this)
+    S = pd.read_csv(f'{OUT}/bl_book_first_stop.csv'); assert len(S) == 12 and -1.35 < S.B_lakh.median() < -1.0 and ((S.B_lakh > -1.35) & (S.B_lakh < -1.0)).sum() >= 8   # cycle stop near -1.0..-1.3 lakh on causal marks (earlier U8: -1.30..-1.44 non-causal)
+    Bk = pd.read_csv(f'{OUT}/bl_book_panel.csv.gz'); assert Bk.miss_share.mean() < 0.01 and {'dm1_CE', 'dm3_PE', 'B_total', 'DD'} <= set(Bk.columns)
+
+
+def test_book_level_has_no_identifying_threshold():
+    H = pd.read_csv(f'{OUT}/bl_book_hazard.csv'); h = H[(H.day == 'D-1') & (H['var'] == 'B_total') & (H.target == 'B')].set_index('bin').per1000
+    assert h['(-1.0, -0.5]'] < h['(-0.5, -0.25]']                         # non-monotone in the loss direction
+    E = pd.read_csv(f'{OUT}/bl_book_event_classes.csv'); r = E[(E.day == 'D-1') & (E['class'] == 'sub-1.2x residual')].iloc[0]; assert r['B_total_med_lakh'] > -0.3 and r['share_Btotal<=-1.0L'] < 0.1       # most residual buy-backs are nowhere near the stop level
+
+
+def test_book_features_help_on_d1_not_d0_and_are_not_book_specific():
+    G = pd.read_csv(f'{OUT}/bl_book_gb.csv').set_index(['day', 'target']); assert G.loc[('D-1', 'B'), 'gain_book'] > 0.05 and G.loc[('D-1', 'B'), 'perm_gain_max'] < 0.02 and abs(G.loc[('D0', 'B'), 'gain_book']) < 0.03 and abs(G.loc[('D0', 'A'), 'gain_book']) < 0.03
+    L = pd.read_csv(f'{OUT}/bl_book_lot_gb.csv'); m = L[L.target == 'B'].set_index('model').LOCO_AUC; assert m['+ lot/underlying short-horizon'] - m['baseline'] > 0.08 and m['+ both'] - m['+ lot/underlying short-horizon'] < 0.03
+
+
+def test_book_signal_is_short_horizon_and_graded():
+    W = pd.read_csv(f'{OUT}/bl_book_window_auc.csv'); w = W[(W.day == 'D-1') & (W.target == 'B')].set_index('variable').AUC; assert (1 - w['own3']) > 0.7 and abs(w['own60'] - 0.5) < 0.1 and (1 - w['own3']) - (1 - w['own15']) > 0.08
+    S = pd.read_csv(f'{OUT}/bl_book_lotshape.csv'); s = S[(S['var'] == 'lot_pct3') & (S.target == 'yB')]
+    for sub in ('first half', 'second half', 'NIFTY', 'SENSEX'):
+        t = s[s.subset == sub].set_index('bin'); low = t.loc[['(-100.0, -2.0]', '(-2.0, -0.5]', '(-0.5, 0.0]', '(0.0, 1.0]']]; assert t.loc['(8.0, 100.0]', 'per1000'] > 5 * low.ev.sum() / low.n.sum() * 1000
+    T = pd.read_csv(f'{OUT}/bl_book_trail_auc.csv'); t = T[T.target == 'B'].set_index('variable').AUC; assert t['rebound_inr'] < t['lot_pct3'] - 0.08

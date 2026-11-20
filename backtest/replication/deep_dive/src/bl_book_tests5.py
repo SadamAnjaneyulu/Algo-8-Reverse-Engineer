@@ -14,9 +14,10 @@ U = P.groupby(['und', 'expiry', 'day', 'cp', 'j']).agg(n_open=('n_open', 'sum'))
 for w in W: U[f'own{w}'] = np.where(U.cp == 'CE', U[f'd{w}_CE'], U[f'd{w}_PE'])
 U['own_dd'] = np.where(U.cp == 'CE', U.dd_CE, U.dd_PE)
 for k, nm in (('sub-1.2x residual', 'B'), ('stop-like (>=1.5x)', 'S')): U = U.merge(ev[ev.klass == k].groupby(['und', 'expiry', 'day', 'cp', 'j']).size().rename(nm).reset_index(), on=['und', 'expiry', 'day', 'cp', 'j'], how='left')
-U = U.merge(ev[ev.klass.str.startswith('sub')].groupby(['und', 'expiry', 'day', 'cp', 'j']).size().rename('A').reset_index(), on=['und', 'expiry', 'day', 'cp', 'j'], how='left').fillna({'A': 0, 'B': 0, 'S': 0}); U = U[U.own15.notna()]
+U = U.merge(ev[ev.klass.str.startswith('sub')].groupby(['und', 'expiry', 'day', 'cp', 'j']).size().rename('A').reset_index(), on=['und', 'expiry', 'day', 'cp', 'j'], how='left').fillna({'A': 0, 'B': 0, 'S': 0}); U = U[U.own15.notna()]  # windows >= 20 min are NaN early in the day; auc() drops NaN rows
 for w in (15,): U[f'own{w}_perlot'] = U[f'own{w}'] / U.n_open.clip(lower=1)
-def auc(x, y): n1 = y.sum(); n0 = len(y) - n1; r = stats.rankdata(x); return (r[y == 1].sum() - n1 * (n1 + 1) / 2) / (n1 * n0)
+def auc(x, y):
+    m = ~np.isnan(x); x, y = x[m], y[m]; n1 = y.sum(); n0 = len(y) - n1; r = stats.rankdata(x); return (r[y == 1].sum() - n1 * (n1 + 1) / 2) / (n1 * n0)
 rows = []; thr = []
 for day in ('D-1', 'D0'):
     Q = U[U.day == day]; g = (Q.und + Q.expiry).values; ucy = np.unique(g); idx = {c: np.where(g == c)[0] for c in ucy}

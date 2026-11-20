@@ -1,0 +1,9 @@
+target,model,LOCO_AUC,delta_vs_baseline
+B,baseline,0.711,0.0
+B,+ trough rebound,0.7578,0.0469
+B,+ short-horizon changes,0.8383,0.1273
+B,+ both,0.8426,0.1316
+A,baseline,0.7634,0.0
+A,+ trough rebound,0.8124,0.049
+A,+ short-horizon changes,0.8772,0.1138
+A,+ both,0.877,0.1136
