@@ -1,0 +1,10 @@
+case,und,expiry,cp,day,time,events
+normal,NIFTY,2026-06-30,CE,0,09:24:21.000,2
+body_partial,NIFTY,2026-09-01,PE,0,14:46:29.000,31
+body_partial_no_stop,NIFTY,2026-10-19,CE,0,15:15:03.000,2
+delayed_hedge,NIFTY,2026-06-23,PE,1,09:46:01.000,8
+quantity_differs,NIFTY,2026-06-30,PE,1,09:25:06.889,6
+missing_hedge,NIFTY,2026-06-30,CE,1,09:19:14.000,1
+existing_inventory,NIFTY,2026-07-28,PE,1,15:11:06.000,12
+body_exits_hedge_stays,NIFTY,2026-06-30,CE,1,09:19:14.000,1
+hedge_exits_first,NIFTY,2026-07-07,CE,1,09:16:34.723,22
