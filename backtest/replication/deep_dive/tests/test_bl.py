@@ -256,3 +256,29 @@ def test_react_prediction_is_a_weak_tilt_from_market_and_history_only():
     assert s['clock + market'] - s['clock only'] > r['clock + market'] - r['clock only']
     A = pd.read_csv(f'{OUT}/bl_react_auc.csv'); a = A[A.target == 'R']; assert (a.AUC - .5).abs().max() < 0.12
     M = pd.read_csv(f'{OUT}/bl_react_move_hazard.csv'); m = M[(M['var'] == 'a15')].set_index('bin'); assert m.loc['(0.3, 5.0]', 'R_per1000'] < 0.5 * m.loc['(0.0, 0.1]', 'R_per1000'] and m.loc['(0.3, 5.0]', 'solo_per1000'] > 2 * m.loc['(0.0, 0.1]', 'solo_per1000']
+
+
+# ---- reactive pair mechanism and sell census: bl_mech_* ----
+def test_mech_reactive_pairs_have_a_1030_to_1515_gate():
+    R = json.load(open(f'{OUT}/bl_summary_mech3.json')); g = R['gate_all']; assert g['start'] == '10:30' and g['stop'] == '15:15' and g['h_in'] > 5 * g['h_out'] and R['gate_boot_start'][0] == '10:30' and R['gate_boot_start'][2] == '10:30'
+    G = pd.read_csv(f'{OUT}/bl_mech_gate.csv').set_index('subset'); assert all(G.loc[s, 'start'] == '10:30' and G.loc[s, 'stop'] == '15:15' for s in ('NIFTY', 'SENSEX', 'first half', 'second half', 'V1'))
+    assert R['interarrival_cv'] > 1.0
+
+
+def test_mech_no_volume_or_london_step_and_clock_not_separable():
+    R = json.load(open(f'{OUT}/bl_summary_mech1.json')); assert 0.8 < R['vol_ratio_1230_vs_prev'] < 1.25 and R['first_react_before_1100'] > 0.5
+    g = R['gb']; assert g['no clock + progress'] > g['clock only (j)'] - 0.02 and g['all proxies + clock'] - g['all proxies, no clock'] < 0.03 and g['no clock + range_open'] < g['clock only (j)']
+    O = pd.DataFrame(R['onset']); assert (O.perm_p > 0.05).all()
+
+
+def test_mech_strike_rule_is_atm_plus_one_step_toward_the_move():
+    T = pd.read_csv(f'{OUT}/bl_mech_strike_rules.csv', index_col=0).drop(index=['previous reactive strike +-1 step']); b = T.loc['ATM + 1 step toward 15-min move']
+    assert 0.75 < b.reactive_hit < 0.82 and b.timetable_hit < 0.2 and b.half1 > 0.7 and b.half2 > 0.7 and b.NIFTY > 0.7 and b.SENSEX > 0.7
+    rest = T.drop(index=[i for i in T.index if i.startswith('ATM + 1 step')]); assert rest.reactive_hit.max() < 0.5
+
+
+def test_mech_census_has_no_residual_and_hedge_wing_sales_are_the_largest_other_type():
+    C = pd.read_csv(f'{OUT}/bl_mech_census.csv', index_col=0); assert C.lots.sum() == 6072 and 'residual' not in C.index and C.orders.sum() == 5152
+    assert 0.18 < C.loc['hedge-module sell closing a long wing', 'share_of_sold_lots'] < 0.21 and C.loc['hedge-module sell closing a long wing', 'lots'] > C.loc['batch (>= 3 lots, one strike/right, within 3 s)', 'lots']
+    S = pd.read_csv(f'{OUT}/bl_mech_census_orders.csv'); assert S.lots.sum() == 6072 and S.cls.notna().all()
+    L = pd.read_csv(f'{OUT}/bl_size_lot_classes.csv'); solo = C.loc[['single solo', 'batch (>= 3 lots, one strike/right, within 3 s)', 'end-of-day solo (>= 15:00)', 'near-pair (CE and PE within 3 s, different strikes)'], 'lots'].sum(); assert solo == L[L.cls3 == 'solo'].lots.sum()

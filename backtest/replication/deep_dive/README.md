@@ -24,3 +24,5 @@ Capital-loss (book P&L) trigger study for sub-1.2x buy-backs (plan `BODY_CLOSE_C
 Body sizing study (plan `BODY_SIZING_PLAN.md`, report `BODY_SIZING_LOGIC.md`): `bl_size_build.py` → `bl_size_tests.py` → `bl_size_tests2.py` → `bl_size_fig.py` → `make_size_report.py` (needs `bl_events.py` outputs, `bl_book_panel.csv.gz` from `bl_book_mtm.py`).
 
 Reactive pairs and wave clock (plan `BODY_REACTIVE_PAIR_PLAN.md`, report `BODY_REACTIVE_PAIRS.md`): `bl_react_panel.py` → `bl_react_tests1.py` → `bl_react_tests1b.py` → `bl_react_tests2.py` (slow, ~10 min) → `bl_react_tests3.py` → `bl_react_waves.py` → `bl_react_fig.py` → `make_react_report.py` (needs the sizing study outputs).
+
+Reactive-pair mechanism and sell census (plan `BODY_REACTIVE_MECHANISM_PLAN.md`, report `BODY_REACTIVE_MECHANISM.md`): `bl_mech_panel.py` → `bl_mech_tests1.py` → `bl_mech_strike.py` → `bl_mech_tests2.py` → `bl_mech_census.py` → `bl_mech_fig.py` → `make_mech_report.py` (needs the reactive-pair and sizing outputs).
