@@ -318,3 +318,32 @@ def test_act_dead_zone_near_the_moving_average_and_gap_beats_plain_move():
 def test_act_causal_spot_position_and_order_activity_carry_the_activation():
     G = pd.read_csv(f'{OUT}/bl_act_gb.csv').set_index('model').LOCO_AUC; assert G['clock only'] < 0.6 and G['clock + ages'] > G['clock only'] + 0.1 and G['CAUSAL (completed bars only): clock + ages + spot_position'] > G['clock + ages'] + 0.08 and G['LIVE-PROXY all blocks'] > G['CAUSAL: all blocks'] and G['CAUSAL: all blocks + current-minute move (look-ahead)'] > G['CAUSAL: all blocks']
     L = pd.read_csv(f'{OUT}/bl_act_lags.csv').set_index('age_of'); assert L.loc['age_oth', 'ev<= 60s'] > 2.5 * L.loc['age_oth', 'ctl<= 60s'] and L.loc['age_bb', 'ev<= 60s'] > 2.5 * L.loc['age_bb', 'ctl<= 60s'] and L.loc['age_sell', 'ev<= 300s'] > L.loc['age_sell', 'ctl<= 300s'] + 0.1
+
+
+# ---- reactive-pair indicator search: bl_ind_* ----
+def test_ind_range_position_leads_activation_and_is_ahead_of_ma_variants():
+    F = pd.read_csv(f'{OUT}/bl_ind_family_cv.csv').set_index('family'); B = pd.read_csv(f'{OUT}/bl_ind_boot.csv').set_index('family')
+    assert F.A_crossvalidated.idxmax() == 'Donchian position' and F.A_crossvalidated['Donchian position'] > 0.9
+    assert F.A_crossvalidated['Donchian position'] > F.A_crossvalidated.drop('Donchian position').max() + 0.02 and (B.drop('Donchian position').A_diff_vs_best_hi < 0).all()
+    assert F.A_crossvalidated['SMA gap'] < 0.80 and F.A_crossvalidated['Bollinger z'] > F.A_crossvalidated['SMA gap'] + 0.07
+
+
+def test_ind_direction_does_not_discriminate_level_indicators():
+    F = pd.read_csv(f'{OUT}/bl_ind_family_cv.csv').set_index('family').D_crossvalidated
+    lv = F[['Donchian position', 'EMA z', 'Bollinger z', 'gap/ATR', 'EMA gap', 'WMA gap', 'SMA gap', 'momentum', 'MACD']]; assert lv.max() - lv.min() < 0.015 and lv.min() > 0.88
+    assert F['SMA cross'] < lv.min() - 0.02 and F['regression line gap'] < lv.min() - 0.05 and F['regression drift'] < lv.min() - 0.02
+
+
+def test_ind_volatility_or_range_scaling_beats_absolute_gap():
+    R = json.load(open(f'{OUT}/bl_summary_ind.json'))['norm_boot']; assert R['z_minus_abs'][0] > 0.02 and R['atr_minus_abs'][0] > 0.02
+    C = pd.read_csv(f'{OUT}/bl_ind_combo.csv'); assert C.gain_vs_alone.max() < 0.01 and C.gain_vs_alone.min() > -0.01
+
+
+def test_ind_channel_length_plateau_and_robustness():
+    N = pd.read_csv(f'{OUT}/bl_ind_fine.csv').set_index('N_min'); assert N.AUC.loc[45:65].min() > 0.905 and N.AUC.loc[[30, 90]].max() < N.AUC.max() - 0.015 and N.AUC.idxmax() in (55, 60, 65)
+    R = pd.read_csv(f'{OUT}/bl_ind_robust.csv'); assert R['activation_AUC_|position-0.5|_N60'].min() > 0.88 and (R.direction_hit > 0.85).all()
+
+
+def test_ind_range_edge_breakout_state_but_not_sufficient():
+    Bd = pd.read_csv(f'{OUT}/bl_ind_bands.csv'); assert Bd.share_of_events.iloc[0] > 0.6 and Bd.share_of_control_seconds.iloc[0] < 0.1 and Bd.share_of_events.iloc[3] < 0.05 and Bd.share_of_control_seconds.iloc[3] > 0.4
+    S = json.load(open(f'{OUT}/bl_summary_ind2.json')); assert S['state']['ratio'][3] > 3.0 and S['episodes_with_pair'] < 0.3 and S['pair_minutes_in_episodes'] < 0.6

@@ -1,0 +1,157 @@
+indicator,family,param
+SMA gap|3,SMA gap,3
+EMA gap|3,EMA gap,3
+WMA gap|3,WMA gap,3
+momentum|3,momentum,3
+Bollinger z|3,Bollinger z,3
+gap/ATR|3,gap/ATR,3
+SMA gap|5,SMA gap,5
+EMA gap|5,EMA gap,5
+WMA gap|5,WMA gap,5
+momentum|5,momentum,5
+Bollinger z|5,Bollinger z,5
+gap/ATR|5,gap/ATR,5
+SMA gap|8,SMA gap,8
+EMA gap|8,EMA gap,8
+WMA gap|8,WMA gap,8
+momentum|8,momentum,8
+Bollinger z|8,Bollinger z,8
+gap/ATR|8,gap/ATR,8
+SMA gap|10,SMA gap,10
+EMA gap|10,EMA gap,10
+WMA gap|10,WMA gap,10
+momentum|10,momentum,10
+Bollinger z|10,Bollinger z,10
+gap/ATR|10,gap/ATR,10
+SMA gap|15,SMA gap,15
+EMA gap|15,EMA gap,15
+WMA gap|15,WMA gap,15
+momentum|15,momentum,15
+Bollinger z|15,Bollinger z,15
+gap/ATR|15,gap/ATR,15
+SMA gap|20,SMA gap,20
+EMA gap|20,EMA gap,20
+WMA gap|20,WMA gap,20
+momentum|20,momentum,20
+Bollinger z|20,Bollinger z,20
+gap/ATR|20,gap/ATR,20
+SMA gap|30,SMA gap,30
+EMA gap|30,EMA gap,30
+WMA gap|30,WMA gap,30
+momentum|30,momentum,30
+Bollinger z|30,Bollinger z,30
+gap/ATR|30,gap/ATR,30
+SMA gap|45,SMA gap,45
+EMA gap|45,EMA gap,45
+WMA gap|45,WMA gap,45
+momentum|45,momentum,45
+Bollinger z|45,Bollinger z,45
+gap/ATR|45,gap/ATR,45
+SMA gap|60,SMA gap,60
+EMA gap|60,EMA gap,60
+WMA gap|60,WMA gap,60
+momentum|60,momentum,60
+Bollinger z|60,Bollinger z,60
+gap/ATR|60,gap/ATR,60
+SMA gap|90,SMA gap,90
+EMA gap|90,EMA gap,90
+WMA gap|90,WMA gap,90
+momentum|90,momentum,90
+Bollinger z|90,Bollinger z,90
+gap/ATR|90,gap/ATR,90
+SMA gap|120,SMA gap,120
+EMA gap|120,EMA gap,120
+WMA gap|120,WMA gap,120
+momentum|120,momentum,120
+Bollinger z|120,Bollinger z,120
+gap/ATR|120,gap/ATR,120
+regression drift|10,regression drift,10
+regression line gap|10,regression line gap,10
+regression drift|15,regression drift,15
+regression line gap|15,regression line gap,15
+regression drift|20,regression drift,20
+regression line gap|20,regression line gap,20
+regression drift|30,regression drift,30
+regression line gap|30,regression line gap,30
+regression drift|45,regression drift,45
+regression line gap|45,regression line gap,45
+regression drift|60,regression drift,60
+regression line gap|60,regression line gap,60
+SMA cross|3-15,SMA cross,3-15
+SMA cross|5-20,SMA cross,5-20
+SMA cross|5-30,SMA cross,5-30
+SMA cross|10-30,SMA cross,10-30
+SMA cross|10-60,SMA cross,10-60
+SMA cross|15-60,SMA cross,15-60
+MACD|5-15,MACD,5-15
+MACD|8-21,MACD,8-21
+MACD|12-26,MACD,12-26
+Donchian mid gap|15,Donchian mid gap,15
+Donchian mid gap|30,Donchian mid gap,30
+Donchian mid gap|60,Donchian mid gap,60
+CCI-like gap/MAD|3,CCI-like gap/MAD,3
+momentum/sigma|3,momentum/sigma,3
+Donchian position|3,Donchian position,3
+RSI minus 50|3,RSI minus 50,3
+efficiency ratio|3,efficiency ratio,3
+EMA z|3,EMA z,3
+CCI-like gap/MAD|5,CCI-like gap/MAD,5
+momentum/sigma|5,momentum/sigma,5
+Donchian position|5,Donchian position,5
+RSI minus 50|5,RSI minus 50,5
+efficiency ratio|5,efficiency ratio,5
+EMA z|5,EMA z,5
+CCI-like gap/MAD|8,CCI-like gap/MAD,8
+momentum/sigma|8,momentum/sigma,8
+Donchian position|8,Donchian position,8
+RSI minus 50|8,RSI minus 50,8
+efficiency ratio|8,efficiency ratio,8
+EMA z|8,EMA z,8
+CCI-like gap/MAD|10,CCI-like gap/MAD,10
+momentum/sigma|10,momentum/sigma,10
+Donchian position|10,Donchian position,10
+RSI minus 50|10,RSI minus 50,10
+efficiency ratio|10,efficiency ratio,10
+EMA z|10,EMA z,10
+CCI-like gap/MAD|15,CCI-like gap/MAD,15
+momentum/sigma|15,momentum/sigma,15
+Donchian position|15,Donchian position,15
+RSI minus 50|15,RSI minus 50,15
+efficiency ratio|15,efficiency ratio,15
+EMA z|15,EMA z,15
+CCI-like gap/MAD|20,CCI-like gap/MAD,20
+momentum/sigma|20,momentum/sigma,20
+Donchian position|20,Donchian position,20
+RSI minus 50|20,RSI minus 50,20
+efficiency ratio|20,efficiency ratio,20
+EMA z|20,EMA z,20
+CCI-like gap/MAD|30,CCI-like gap/MAD,30
+momentum/sigma|30,momentum/sigma,30
+Donchian position|30,Donchian position,30
+RSI minus 50|30,RSI minus 50,30
+efficiency ratio|30,efficiency ratio,30
+EMA z|30,EMA z,30
+CCI-like gap/MAD|45,CCI-like gap/MAD,45
+momentum/sigma|45,momentum/sigma,45
+Donchian position|45,Donchian position,45
+RSI minus 50|45,RSI minus 50,45
+efficiency ratio|45,efficiency ratio,45
+EMA z|45,EMA z,45
+CCI-like gap/MAD|60,CCI-like gap/MAD,60
+momentum/sigma|60,momentum/sigma,60
+Donchian position|60,Donchian position,60
+RSI minus 50|60,RSI minus 50,60
+efficiency ratio|60,efficiency ratio,60
+EMA z|60,EMA z,60
+CCI-like gap/MAD|90,CCI-like gap/MAD,90
+momentum/sigma|90,momentum/sigma,90
+Donchian position|90,Donchian position,90
+RSI minus 50|90,RSI minus 50,90
+efficiency ratio|90,efficiency ratio,90
+EMA z|90,EMA z,90
+CCI-like gap/MAD|120,CCI-like gap/MAD,120
+momentum/sigma|120,momentum/sigma,120
+Donchian position|120,Donchian position,120
+RSI minus 50|120,RSI minus 50,120
+efficiency ratio|120,efficiency ratio,120
+EMA z|120,EMA z,120

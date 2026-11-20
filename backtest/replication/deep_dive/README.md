@@ -30,3 +30,5 @@ Reactive-pair mechanism and sell census (plan `BODY_REACTIVE_MECHANISM_PLAN.md`,
 Reactive-pair look-back verification (plan `BODY_REACTIVE_LOOKBACK_PLAN.md`, report `BODY_REACTIVE_LOOKBACK.md`): `bl_lb_tests.py` → `bl_lb_tests2.py` → `bl_lb_tests3.py` → `bl_lb_fig.py` → `make_lb_report.py` (needs the reactive-pair and mechanism outputs).
 
 Reactive-pair dynamic reference and activation (plan `BODY_REACTIVE_ACTIVATION_PLAN.md`, report `BODY_REACTIVE_ACTIVATION.md`): `bl_act_build.py` → `bl_act_tests.py` (slow) → `bl_act_tests2.py` (slow) → `bl_act_tests3.py` → `bl_act_fig.py` → `make_act_report.py` (needs the reactive-pair, mechanism and look-back outputs).
+
+Reactive-pair indicator search (plan `BODY_REACTIVE_INDICATOR_PLAN.md`, report `BODY_REACTIVE_INDICATOR.md`): `bl_ind_build.py` → `bl_ind_tests.py` → `bl_ind_break.py` → `bl_ind_fine.py` → `bl_ind_fig.py` → `make_ind_report.py` (needs the activation study outputs).
