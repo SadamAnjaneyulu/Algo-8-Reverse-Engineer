@@ -1,0 +1,31 @@
+target,model,LOCO_AUC,delta_vs_clock
+R,clock only,0.6503,0.0
+R,clock + history,0.7109,0.0606
+R,clock + market,0.7531,0.1028
+R,clock + book,0.6628,0.0125
+R,clock + inventory,0.6474,-0.0029
+R,all blocks,0.7882,0.1378
+R,"all blocks, history shuffled",0.7588,0.1085
+R,"all blocks, market shuffled",0.6842,0.0339
+R,"all blocks, book shuffled",0.7869,0.1366
+R,"all blocks, inventory shuffled",0.7932,0.1428
+S,clock only,0.6736,0.0
+S,clock + history,0.7008,0.0271
+S,clock + market,0.8126,0.139
+S,clock + book,0.7181,0.0445
+S,clock + inventory,0.6749,0.0013
+S,all blocks,0.8168,0.1432
+S,"all blocks, history shuffled",0.81,0.1363
+S,"all blocks, market shuffled",0.7301,0.0565
+S,"all blocks, book shuffled",0.8153,0.1417
+S,"all blocks, inventory shuffled",0.8136,0.14
+BB,clock only,0.724,0.0
+BB,clock + history,0.8296,0.1056
+BB,clock + market,0.8486,0.1246
+BB,clock + book,0.782,0.058
+BB,clock + inventory,0.7326,0.0086
+BB,all blocks,0.8724,0.1484
+BB,"all blocks, history shuffled",0.8504,0.1264
+BB,"all blocks, market shuffled",0.8348,0.1108
+BB,"all blocks, book shuffled",0.8693,0.1453
+BB,"all blocks, inventory shuffled",0.8697,0.1456

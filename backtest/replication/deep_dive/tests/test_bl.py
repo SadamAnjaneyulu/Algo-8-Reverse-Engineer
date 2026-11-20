@@ -231,3 +231,28 @@ def test_size_change_window_and_no_notional_rule():
 def test_size_class_totals_reconcile():
     L = pd.read_csv(f'{OUT}/bl_size_lot_classes.csv'); assert L.lots.sum() == 4671 and set(L.cls3) == {'scheduled cell', 'reactive pair (outside timetable)', 'solo'}
     R = json.load(open(f'{OUT}/bl_summary_size3.json')); assert 60 <= R['class_per_cycle_median']['scheduled cell'] <= 70 and R['solo_by_right']['CE'] > 1.5 * R['solo_by_right']['PE'] and R['replace_within60'][0] > 3 * R['replace_within60'][1] and abs(R['replace_corr'][0]) < 0.2
+
+
+# ---- reactive pairs and wave clock: bl_react_* ----
+def test_react_pair_table_and_wave_clock():
+    P = pd.read_csv(f'{OUT}/bl_react_pairs.csv'); assert P.sched.sum() == 1061 and P.reactive.sum() == 377 and P.groupby(['und', 'expiry']).ngroups == 32
+    W = pd.read_csv(f'{OUT}/bl_react_wave_clock.csv'); assert W.groupby('version').size().to_dict() == {'V1': 33, 'V2': 33}
+    v1 = W[W.version == 'V1'].clock_time.tolist(); assert v1[:3] == ['09:16:01', '09:16:02', '09:16:07'] and v1[-3:] == ['14:00:00', '14:15:00', '14:30:00'] and '13:30:00' in v1 and '13:45:00' in v1
+
+
+def test_react_strike_one_off_atm_toward_the_move():
+    R1 = json.load(open(f'{OUT}/bl_summary_react1.json')); R3 = json.load(open(f'{OUT}/bl_summary_react3.json'))
+    assert R1['atm_hit_react'][0] < 0.1 and R1['atm_hit_sched'][0] > 0.9 and R3['side']['ch15'] > 0.9 and R3['side']['ch5'] > 0.9 and R3['side']['ch1'] < R3['side']['ch15']
+
+
+def test_react_no_timer_and_weak_buyback_link():
+    R1 = json.load(open(f'{OUT}/bl_summary_react1.json')); assert R1['gap_sell_15min_share'] <= R1['gap_sell_15min_null'][1] and R1['seconds_uniform_p'] > 0.01
+    assert R1['after_any_60'][0] > 2.5 * R1['after_any_60'][1] and R1['after_any_900'][0] < R1['after_any_900'][1] + 0.05
+
+
+def test_react_prediction_is_a_weak_tilt_from_market_and_history_only():
+    G = pd.read_csv(f'{OUT}/bl_react_gb.csv'); r = G[G.target == 'R'].set_index('model').LOCO_AUC; s = G[G.target == 'S'].set_index('model').LOCO_AUC
+    assert r['clock + market'] - r['clock only'] > 0.05 and r['clock + history'] - r['clock only'] > 0.03 and r['clock + book'] - r['clock only'] < 0.03 and r['clock + inventory'] - r['clock only'] < 0.03 and r['all blocks'] > r['all blocks, market shuffled'] + 0.05
+    assert s['clock + market'] - s['clock only'] > r['clock + market'] - r['clock only']
+    A = pd.read_csv(f'{OUT}/bl_react_auc.csv'); a = A[A.target == 'R']; assert (a.AUC - .5).abs().max() < 0.12
+    M = pd.read_csv(f'{OUT}/bl_react_move_hazard.csv'); m = M[(M['var'] == 'a15')].set_index('bin'); assert m.loc['(0.3, 5.0]', 'R_per1000'] < 0.5 * m.loc['(0.0, 0.1]', 'R_per1000'] and m.loc['(0.3, 5.0]', 'solo_per1000'] > 2 * m.loc['(0.0, 0.1]', 'solo_per1000']
