@@ -300,3 +300,21 @@ def test_lb_length_is_a_plateau_not_15_and_rolling_beats_anchored():
 def test_lb_live_spot_proxy_beats_completed_bar_and_move_does_not_fire():
     R2 = json.load(open(f'{OUT}/bl_summary_lb2.json')); assert R2['live_hit'] > R2['bar_hit'] + 0.05 and R2['live_minus_bar_ci'][0] > 0.03 and R2['bar_vs_sec_rho'] < -0.05 and abs(R2['live_vs_sec_rho']) < 0.1 and R2['late_live'] > R2['late_bar'] + 0.1
     assert R2['hazard_ratio_moving_vs_flat'][1] > 1.2 and abs(R2['hazard_up_down'][0] - R2['hazard_up_down'][1]) < 6
+
+
+# ---- reactive-pair dynamic reference and activation: bl_act_* ----
+def test_act_direction_reference_is_a_trailing_price_not_a_book_anchor():
+    D = pd.read_csv(f'{OUT}/bl_act_dirs.csv').set_index('reference X (direction = sign of live spot - X)')
+    for k in ('spot 10 min ago', 'spot 15 min ago', 'spot 30 min ago', 'spot 60 min ago', 'SMA 5', 'SMA 10', 'SMA 15', 'SMA 30', 'SMA 60'): assert D.loc[k, 'hit_rate'] > 0.88
+    assert D.loc['short-book centre', 'hit_rate'] < 0.85 and all(D.loc[k, 'hit_rate'] < 0.78 for k in ('last timetable pair strike', 'day mid-range', 'opening ATM', 'last body sell strike', 'last reactive pair strike')) and D.diff_vs_spot15.max() < 0.02
+
+
+def test_act_dead_zone_near_the_moving_average_and_gap_beats_plain_move():
+    H = pd.read_csv(f'{OUT}/bl_act_gap_hazard.csv').pivot(index='subset', columns='gap_group', values='per1000'); assert (H['>= 0.5'] / H['|gap| < 0.1 step'] > 5).all() and H.loc['all', '|gap| < 0.1 step'] < 8
+    G = pd.read_csv(f'{OUT}/bl_act_gap_auc.csv').set_index('N_min'); assert (G.AUC_abs_gap.loc[[10, 15, 20, 30, 45, 60]] > G.AUC_abs_move_L.loc[[10, 15, 20, 30, 45, 60]] + 0.04).all() and G.AUC_abs_gap.idxmax() in (15, 20, 30, 45) and G.AUC_abs_gap.loc[[3, 120]].max() < G.AUC_abs_gap.max() - 0.05
+    R4 = json.load(open(f'{OUT}/bl_summary_act4.json')); b = pd.DataFrame(R4['hazard_bins']); assert (b.per1000 / b.per1000.shift(1)).max() < 3.0          # no >= 3x adjacent step: dead zone, not a threshold
+
+
+def test_act_causal_spot_position_and_order_activity_carry_the_activation():
+    G = pd.read_csv(f'{OUT}/bl_act_gb.csv').set_index('model').LOCO_AUC; assert G['clock only'] < 0.6 and G['clock + ages'] > G['clock only'] + 0.1 and G['CAUSAL (completed bars only): clock + ages + spot_position'] > G['clock + ages'] + 0.08 and G['LIVE-PROXY all blocks'] > G['CAUSAL: all blocks'] and G['CAUSAL: all blocks + current-minute move (look-ahead)'] > G['CAUSAL: all blocks']
+    L = pd.read_csv(f'{OUT}/bl_act_lags.csv').set_index('age_of'); assert L.loc['age_oth', 'ev<= 60s'] > 2.5 * L.loc['age_oth', 'ctl<= 60s'] and L.loc['age_bb', 'ev<= 60s'] > 2.5 * L.loc['age_bb', 'ctl<= 60s'] and L.loc['age_sell', 'ev<= 300s'] > L.loc['age_sell', 'ctl<= 300s'] + 0.1
