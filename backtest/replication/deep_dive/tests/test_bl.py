@@ -208,3 +208,26 @@ def test_book_signal_is_short_horizon_and_graded():
     for sub in ('first half', 'second half', 'NIFTY', 'SENSEX'):
         t = s[s.subset == sub].set_index('bin'); low = t.loc[['(-100.0, -2.0]', '(-2.0, -0.5]', '(-0.5, 0.0]', '(0.0, 1.0]']]; assert t.loc['(8.0, 100.0]', 'per1000'] > 5 * low.ev.sum() / low.n.sum() * 1000
     T = pd.read_csv(f'{OUT}/bl_book_trail_auc.csv'); t = T[T.target == 'B'].set_index('variable').AUC; assert t['rebound_inr'] < t['lot_pct3'] - 0.08
+
+
+# ---- body sizing study: bl_size_* ----
+def test_size_unit_constant_and_pairs_one_lot():
+    U = pd.read_csv(f'{OUT}/bl_size_unit.csv'); assert (U[U.und == 'NIFTY'].gcd == 65).all() and (U[U.und == 'SENSEX'].gcd == 20).all() and (U[U.und == 'NIFTY'].min_qty == 65).all() and (U[U.und == 'SENSEX'].min_qty == 20).all()
+    R = json.load(open(f'{OUT}/bl_summary_size1.json')); assert R['pair_lots_all_1'] > 0.9 and R['d1_orders_1lot_share'] > 0.99 and R['n_V1'] == 21 and R['n_V2'] == 11
+
+
+def test_size_timetable_is_fixed_and_total_unchanged_across_versions():
+    R = json.load(open(f'{OUT}/bl_summary_size2.json')); assert R['fire_ge95']['V1'] == 1.0 and R['fire_ge95']['V2'] >= 0.85 and R['cell_misses'] / R['cell_obs'] < 0.02 and R['v_diff_net'] == 0 and R['v_diff_cells'] == 14
+    T = pd.read_csv(f'{OUT}/bl_size_scheduled_totals.csv'); m = T.groupby('version').ce.mean(); assert abs(m['V1'] - m['V2']) < 1.0 and T.groupby('version').ce.std().max() < 3 and (T.ce - T.pe).abs().max() <= 4
+    C = pd.read_csv(f'{OUT}/bl_size_cells.csv'); v1 = C[C.version == 'V1'].set_index('k').groupby('k').ce_mode.sum(); assert list(v1.loc[[0, 1, 2, 3, 4]]) == [3, 2, 3, 1, 4] and v1.get(12, 0) == 0 and v1.get(14, 0) == 0 and v1.get(15, 0) == 0
+
+
+def test_size_change_window_and_no_notional_rule():
+    CP = pd.read_csv(f'{OUT}/bl_size_changepoint.csv'); assert str(CP.iloc[0, 0]) == '2026-09-09' and str(CP.iloc[0, 1]) == '2026-09-16'
+    N = pd.read_csv(f'{OUT}/bl_size_notional_dates.csv'); assert N[N.version == 'V1'].notional_lakh.min() >= 14.9 and N[N.version == 'V2'].notional_lakh.max() < 15.3 and N[N.version == 'V2'].notional_lakh.mean() < N[N.version == 'V1'].notional_lakh.mean() - 0.4
+    S = pd.read_csv(f'{OUT}/bl_size_state_tests.csv'); assert (S.perm_p * len(S)).clip(upper=1).min() > 0.05 and S[S.target == 'sched_total'].spearman.abs().max() < 0.4
+
+
+def test_size_class_totals_reconcile():
+    L = pd.read_csv(f'{OUT}/bl_size_lot_classes.csv'); assert L.lots.sum() == 4671 and set(L.cls3) == {'scheduled cell', 'reactive pair (outside timetable)', 'solo'}
+    R = json.load(open(f'{OUT}/bl_summary_size3.json')); assert 60 <= R['class_per_cycle_median']['scheduled cell'] <= 70 and R['solo_by_right']['CE'] > 1.5 * R['solo_by_right']['PE'] and R['replace_within60'][0] > 3 * R['replace_within60'][1] and abs(R['replace_corr'][0]) < 0.2
