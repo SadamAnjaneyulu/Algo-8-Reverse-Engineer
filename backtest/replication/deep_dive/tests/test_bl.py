@@ -54,3 +54,20 @@ def test_overnight_inventory_nonempty_and_carry_share():
 def test_report_sections():
     t = open(os.path.join(C.REP, 'BODY_LIFECYCLE_D1_D0_INVESTIGATION.md')).read()
     for h in ['## 1. Executive summary', '## 2. ATM reference', '## 3. D-1 study', '### 3A', '### 3B', '### 3C', '### 3D', '### 3E', '### 3F', '## 4. D0 study', '### 4A', '### 4B', '### 4C', '### 4D', '### 4E', '### 4F', '## 5. Deliverables', '## 6. Observed', '## 7. D-1 lifecycle model', '## 8. D0 lifecycle model']: assert h in t, h
+
+
+def test_paired_sales_are_clock_driven_single_leg_are_not():
+    S = pd.read_pickle(f'{OUT}/bl_trig_sells_d1.pkl.gz')
+    ray = lambda x, p: abs(np.exp(2j * np.pi * (x % p) / p).mean())
+    assert ray(S[S.paired].tod.values, 900) > 0.6 and ray(S[~S.paired].tod.values, 900) < 0.2 and ray(S[~S.paired].tod.values, 60) < 0.2
+
+
+def test_single_leg_episodes_follow_favourable_moves():
+    A = pd.read_csv(f'{OUT}/bl_trig_auc.csv').set_index('feature')
+    for f in ('adv5', 'adv15', 'ratio_book', 'dev_book'): assert A.AUC[f] < 0.35 and A.hi[f] < 0.4 and A.holm_p[f] < 0.05
+    assert A.holm_p['tslot'] > 0.05                                     # no clock effect inside the single-leg stream
+
+
+def test_single_leg_strike_follows_premium_not_atm():
+    R = pd.read_csv(f'{OUT}/bl_trig_strike_rules.csv').set_index('group'); r = R.loc['single-leg (all)']; assert r.PREVPX_exact > r.ATM_exact + 0.15 and r.PREVPX_exact > r.PREVPX_null_exact + 0.1
+    assert R.loc['paired slot-minute (comparison)'].ATM_exact > 0.8
