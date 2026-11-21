@@ -542,3 +542,10 @@ def test_sl_blocks_market_dominates_and_panel_shape():
     X = pd.read_pickle(f'{OUT}/bl_sl_panel.pkl.gz'); assert len(X) == 32 * 30 * 2 and X.y.sum() == 138 and set(X.cp) == {'CE', 'PE'}
     P = pd.read_csv(f'{OUT}/bl_sl_prem.csv').set_index(['window', 'variable']); h = P.hazard_if
     assert h[('late 15:00-15:29', 'pl15_itm WITHOUT bk15')] > 4 * h[('intraday 10:30-14:59', 'pl15_itm WITHOUT bk15')]
+
+
+def test_auc_all_d1_selling():
+    X = pd.read_pickle(f'{OUT}/bl_auc_all_panel.pkl.gz'); assert len(X) == 32 * 374 * 2 and X.y.sum() == 2635
+    assert ((X.sched_share >= 0) & (X.sched_share <= 1)).all()
+    A = pd.read_csv(f'{OUT}/bl_auc_all.csv').set_index(['variant', 'model']).AUC; assert A[('A same-minute (primary)', 'gb')] > 0.85 and A[('B causal (market lagged 1 min)', 'gb')] < A[('A same-minute (primary)', 'gb')]
+    B = pd.read_csv(f'{OUT}/bl_auc_all2.csv').set_index('variant'); assert abs(B.AUC['A0 same-minute, no book state'] - A[('A same-minute (primary)', 'gb')]) < 0.01 and B.AUC['timetable + clock only'] < 0.85

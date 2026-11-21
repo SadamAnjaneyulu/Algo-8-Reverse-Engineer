@@ -1,0 +1,7 @@
+variant,model,AUC,CI_lo,CI_hi,AUC_without_timetable_minutes,CI2_lo,CI2_hi
+A same-minute (primary),gb,0.9763,0.9715,0.9798,0.9515,0.942,0.9592
+A same-minute (primary),lr,0.9601,,,0.9163,,
+B causal (market lagged 1 min),gb,0.9058,0.899,0.9126,0.7952,0.7797,0.8092
+B causal (market lagged 1 min),lr,0.8749,,,0.7265,,
+C A + real order history (teacher-forced),gb,0.9769,0.9729,0.9803,0.9515,0.9429,0.9588
+C A + real order history (teacher-forced),lr,0.9596,,,0.9157,,

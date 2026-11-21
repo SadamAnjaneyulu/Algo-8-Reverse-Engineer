@@ -1,0 +1,4 @@
+variant,AUC,CI_lo,CI_hi,AUC_without_timetable_minutes,CI2_lo,CI2_hi
+"A0 same-minute, no book state",0.9757,0.971,0.9795,0.9502,0.9404,0.958
+"B0 causal, no book state",0.906,0.8994,0.9127,0.7956,0.7801,0.8096
+timetable + clock only,0.8326,0.8207,0.844,0.6319,0.6017,0.6591

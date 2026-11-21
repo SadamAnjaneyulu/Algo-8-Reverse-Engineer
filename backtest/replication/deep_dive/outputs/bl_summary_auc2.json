@@ -1,0 +1,123 @@
+{
+ "results": [
+  {
+   "variant": "A0 same-minute, no book state",
+   "AUC": 0.9757,
+   "CI_lo": 0.971,
+   "CI_hi": 0.9795,
+   "AUC_without_timetable_minutes": 0.9502,
+   "CI2_lo": 0.9404,
+   "CI2_hi": 0.958
+  },
+  {
+   "variant": "B0 causal, no book state",
+   "AUC": 0.906,
+   "CI_lo": 0.8994,
+   "CI_hi": 0.9127,
+   "AUC_without_timetable_minutes": 0.7956,
+   "CI2_lo": 0.7801,
+   "CI2_hi": 0.8096
+  },
+  {
+   "variant": "timetable + clock only",
+   "AUC": 0.8326,
+   "CI_lo": 0.8207,
+   "CI_hi": 0.844,
+   "AUC_without_timetable_minutes": 0.6319,
+   "CI2_lo": 0.6017,
+   "CI2_hi": 0.6591
+  }
+ ],
+ "types": [
+  {
+   "variant": "A0 same-minute, no book state",
+   "sell_type": "scheduled",
+   "positive_cells": 1574,
+   "AUC": 0.9963
+  },
+  {
+   "variant": "A0 same-minute, no book state",
+   "sell_type": "reactive",
+   "positive_cells": 558,
+   "AUC": 0.9372
+  },
+  {
+   "variant": "A0 same-minute, no book state",
+   "sell_type": "solo",
+   "positive_cells": 627,
+   "AUC": 0.972
+  },
+  {
+   "variant": "A0 same-minute, no book state",
+   "sell_type": "solo after 15:00",
+   "positive_cells": 138,
+   "AUC": 0.9496
+  },
+  {
+   "variant": "A0 same-minute, no book state",
+   "sell_type": "deep-OTM batch",
+   "positive_cells": 5,
+   "AUC": 0.8722
+  },
+  {
+   "variant": "B0 causal, no book state",
+   "sell_type": "scheduled",
+   "positive_cells": 1574,
+   "AUC": 0.9973
+  },
+  {
+   "variant": "B0 causal, no book state",
+   "sell_type": "reactive",
+   "positive_cells": 558,
+   "AUC": 0.7117
+  },
+  {
+   "variant": "B0 causal, no book state",
+   "sell_type": "solo",
+   "positive_cells": 627,
+   "AUC": 0.8563
+  },
+  {
+   "variant": "B0 causal, no book state",
+   "sell_type": "solo after 15:00",
+   "positive_cells": 138,
+   "AUC": 0.8831
+  },
+  {
+   "variant": "B0 causal, no book state",
+   "sell_type": "deep-OTM batch",
+   "positive_cells": 5,
+   "AUC": 0.7794
+  },
+  {
+   "variant": "timetable + clock only",
+   "sell_type": "scheduled",
+   "positive_cells": 1574,
+   "AUC": 0.9985
+  },
+  {
+   "variant": "timetable + clock only",
+   "sell_type": "reactive",
+   "positive_cells": 558,
+   "AUC": 0.6017
+  },
+  {
+   "variant": "timetable + clock only",
+   "sell_type": "solo",
+   "positive_cells": 627,
+   "AUC": 0.5751
+  },
+  {
+   "variant": "timetable + clock only",
+   "sell_type": "solo after 15:00",
+   "positive_cells": 138,
+   "AUC": 0.9205
+  },
+  {
+   "variant": "timetable + clock only",
+   "sell_type": "deep-OTM batch",
+   "positive_cells": 5,
+   "AUC": 0.6441
+  }
+ ]
+}

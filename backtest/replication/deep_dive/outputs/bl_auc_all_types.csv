@@ -1,0 +1,16 @@
+variant,sell_type,positive_cells,AUC
+A same-minute (primary),scheduled,1574,0.9962
+A same-minute (primary),reactive,558,0.9378
+A same-minute (primary),solo,627,0.9733
+A same-minute (primary),solo after 15:00,138,0.9522
+A same-minute (primary),deep-OTM batch,5,0.8803
+B causal (market lagged 1 min),scheduled,1574,0.9971
+B causal (market lagged 1 min),reactive,558,0.7098
+B causal (market lagged 1 min),solo,627,0.8591
+B causal (market lagged 1 min),solo after 15:00,138,0.8798
+B causal (market lagged 1 min),deep-OTM batch,5,0.7791
+C A + real order history (teacher-forced),scheduled,1574,0.9969
+C A + real order history (teacher-forced),reactive,558,0.9375
+C A + real order history (teacher-forced),solo,627,0.9748
+C A + real order history (teacher-forced),solo after 15:00,138,0.9521
+C A + real order history (teacher-forced),deep-OTM batch,5,0.8836
