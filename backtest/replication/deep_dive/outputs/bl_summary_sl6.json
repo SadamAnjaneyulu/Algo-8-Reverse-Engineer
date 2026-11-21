@@ -1,0 +1,311 @@
+{
+ "table": [
+  {
+   "window": "late 15:00-15:29",
+   "variable": "bk15",
+   "base_rate": 0.1385,
+   "recall": 0.6522,
+   "hazard_if": 0.3383,
+   "hazard_not": 0.029,
+   "AUC": 0.7767
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "bk15_prev",
+   "base_rate": 0.1411,
+   "recall": 0.3696,
+   "hazard_if": 0.1882,
+   "hazard_not": 0.0528,
+   "AUC": 0.6231
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl5_itm",
+   "base_rate": 0.2005,
+   "recall": 0.7536,
+   "hazard_if": 0.2701,
+   "hazard_not": 0.0221,
+   "AUC": 0.798
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl5_itm_prev",
+   "base_rate": 0.201,
+   "recall": 0.413,
+   "hazard_if": 0.1477,
+   "hazard_not": 0.0528,
+   "AUC": 0.6142
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl15_itm",
+   "base_rate": 0.1068,
+   "recall": 0.5942,
+   "hazard_if": 0.4,
+   "hazard_not": 0.0327,
+   "AUC": 0.7626
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl15_itm_prev",
+   "base_rate": 0.1031,
+   "recall": 0.3188,
+   "hazard_if": 0.2222,
+   "hazard_not": 0.0546,
+   "AUC": 0.6162
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl30_itm",
+   "base_rate": 0.074,
+   "recall": 0.4638,
+   "hazard_if": 0.4507,
+   "hazard_not": 0.0416,
+   "AUC": 0.71
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl30_itm_prev",
+   "base_rate": 0.0703,
+   "recall": 0.2391,
+   "hazard_if": 0.2444,
+   "hazard_not": 0.0588,
+   "AUC": 0.5909
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl5_atm",
+   "base_rate": 0.2047,
+   "recall": 0.7536,
+   "hazard_if": 0.2646,
+   "hazard_not": 0.0223,
+   "AUC": 0.7957
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl5_atm_prev",
+   "base_rate": 0.2068,
+   "recall": 0.4203,
+   "hazard_if": 0.1461,
+   "hazard_not": 0.0525,
+   "AUC": 0.615
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl15_atm",
+   "base_rate": 0.1104,
+   "recall": 0.6232,
+   "hazard_if": 0.4057,
+   "hazard_not": 0.0304,
+   "AUC": 0.7762
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl15_atm_prev",
+   "base_rate": 0.1104,
+   "recall": 0.3333,
+   "hazard_if": 0.217,
+   "hazard_not": 0.0539,
+   "AUC": 0.6201
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl30_atm",
+   "base_rate": 0.0797,
+   "recall": 0.5145,
+   "hazard_if": 0.4641,
+   "hazard_not": 0.0379,
+   "AUC": 0.7342
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl30_atm_prev",
+   "base_rate": 0.0781,
+   "recall": 0.2609,
+   "hazard_if": 0.24,
+   "hazard_not": 0.0576,
+   "AUC": 0.5984
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "bk15 OR pl15_itm",
+   "base_rate": 0.1911,
+   "recall": 0.8623,
+   "hazard_if": 0.3243,
+   "hazard_not": 0.0122,
+   "AUC": 0.8616
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "bk15 AND pl15_itm",
+   "base_rate": 0.0542,
+   "recall": 0.3841,
+   "hazard_if": 0.5096,
+   "hazard_not": 0.0468,
+   "AUC": 0.6777
+  },
+  {
+   "window": "late 15:00-15:29",
+   "variable": "pl15_itm WITHOUT bk15",
+   "base_rate": 0.0526,
+   "recall": 0.2101,
+   "hazard_if": 0.2871,
+   "hazard_not": 0.0599,
+   "AUC": 0.5849
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "bk15",
+   "base_rate": 0.1405,
+   "recall": 0.8962,
+   "hazard_if": 0.1672,
+   "hazard_not": 0.0032,
+   "AUC": 0.888
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "bk15_prev",
+   "base_rate": 0.1403,
+   "recall": 0.585,
+   "hazard_if": 0.1093,
+   "hazard_not": 0.0127,
+   "AUC": 0.7283
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl5_itm",
+   "base_rate": 0.2422,
+   "recall": 0.9117,
+   "hazard_if": 0.0987,
+   "hazard_not": 0.0031,
+   "AUC": 0.8438
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl5_itm_prev",
+   "base_rate": 0.2411,
+   "recall": 0.6865,
+   "hazard_if": 0.0746,
+   "hazard_not": 0.0108,
+   "AUC": 0.7287
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl15_itm",
+   "base_rate": 0.1346,
+   "recall": 0.883,
+   "hazard_if": 0.172,
+   "hazard_not": 0.0035,
+   "AUC": 0.8843
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl15_itm_prev",
+   "base_rate": 0.1339,
+   "recall": 0.5872,
+   "hazard_if": 0.115,
+   "hazard_not": 0.0125,
+   "AUC": 0.7327
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl30_itm",
+   "base_rate": 0.0944,
+   "recall": 0.8631,
+   "hazard_if": 0.2396,
+   "hazard_not": 0.004,
+   "AUC": 0.8947
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl30_itm_prev",
+   "base_rate": 0.0941,
+   "recall": 0.5475,
+   "hazard_if": 0.1525,
+   "hazard_not": 0.0131,
+   "AUC": 0.7328
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl5_atm",
+   "base_rate": 0.243,
+   "recall": 0.9183,
+   "hazard_if": 0.0991,
+   "hazard_not": 0.0028,
+   "AUC": 0.8468
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl5_atm_prev",
+   "base_rate": 0.2421,
+   "recall": 0.6865,
+   "hazard_if": 0.0743,
+   "hazard_not": 0.0108,
+   "AUC": 0.7282
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl15_atm",
+   "base_rate": 0.1349,
+   "recall": 0.8896,
+   "hazard_if": 0.1729,
+   "hazard_not": 0.0033,
+   "AUC": 0.8875
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl15_atm_prev",
+   "base_rate": 0.1344,
+   "recall": 0.5828,
+   "hazard_if": 0.1136,
+   "hazard_not": 0.0126,
+   "AUC": 0.7302
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl30_atm",
+   "base_rate": 0.0956,
+   "recall": 0.8675,
+   "hazard_if": 0.2379,
+   "hazard_not": 0.0038,
+   "AUC": 0.8964
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl30_atm_prev",
+   "base_rate": 0.0951,
+   "recall": 0.5497,
+   "hazard_if": 0.1516,
+   "hazard_not": 0.013,
+   "AUC": 0.7334
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "bk15 OR pl15_itm",
+   "base_rate": 0.1783,
+   "recall": 0.9713,
+   "hazard_if": 0.1428,
+   "hazard_not": 0.0009,
+   "AUC": 0.9072
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "bk15 AND pl15_itm",
+   "base_rate": 0.0968,
+   "recall": 0.8079,
+   "hazard_if": 0.2188,
+   "hazard_not": 0.0056,
+   "AUC": 0.8651
+  },
+  {
+   "window": "intraday 10:30-14:59",
+   "variable": "pl15_itm WITHOUT bk15",
+   "base_rate": 0.0378,
+   "recall": 0.0751,
+   "hazard_if": 0.0521,
+   "hazard_not": 0.0252,
+   "AUC": 0.5191
+  }
+ ],
+ "own_fill_at_low_share": 0.13690476190476192
+}

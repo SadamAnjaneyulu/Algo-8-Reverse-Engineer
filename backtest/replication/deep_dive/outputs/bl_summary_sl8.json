@@ -1,0 +1,156 @@
+{
+ "cells": 367,
+ "sales": 119,
+ "table": [
+  {
+   "variable": "minute",
+   "AUC": 0.3754,
+   "AUC_even": 0.3855,
+   "AUC_odd": 0.3743
+  },
+  {
+   "variable": "vol_rel",
+   "AUC": 0.613,
+   "AUC_even": 0.643,
+   "AUC_odd": 0.5741
+  },
+  {
+   "variable": "min_since_last",
+   "AUC": 0.3931,
+   "AUC_even": 0.3664,
+   "AUC_odd": 0.4379
+  },
+  {
+   "variable": "bk60",
+   "AUC": 0.5863,
+   "AUC_even": 0.6328,
+   "AUC_odd": 0.544
+  },
+  {
+   "variable": "pos60",
+   "AUC": 0.583,
+   "AUC_even": 0.6119,
+   "AUC_odd": 0.5577
+  },
+  {
+   "variable": "react_min",
+   "AUC": 0.582,
+   "AUC_even": 0.5755,
+   "AUC_odd": 0.5865
+  },
+  {
+   "variable": "gamma",
+   "AUC": 0.4308,
+   "AUC_even": 0.3567,
+   "AUC_odd": 0.5072
+  },
+  {
+   "variable": "rv15",
+   "AUC": 0.4379,
+   "AUC_even": 0.42,
+   "AUC_odd": 0.4499
+  },
+  {
+   "variable": "last_typ_solo",
+   "AUC": 0.5616,
+   "AUC_even": 0.5885,
+   "AUC_odd": 0.5292
+  },
+  {
+   "variable": "strad_chg5",
+   "AUC": 0.4529,
+   "AUC_even": 0.5488,
+   "AUC_odd": 0.373
+  },
+  {
+   "variable": "net_lots",
+   "AUC": 0.4587,
+   "AUC_even": 0.4918,
+   "AUC_odd": 0.4424
+  },
+  {
+   "variable": "short_lots",
+   "AUC": 0.5375,
+   "AUC_even": 0.6041,
+   "AUC_odd": 0.426
+  },
+  {
+   "variable": "strad_chg15",
+   "AUC": 0.4697,
+   "AUC_even": 0.5673,
+   "AUC_odd": 0.38
+  },
+  {
+   "variable": "bk5",
+   "AUC": 0.5245,
+   "AUC_even": 0.5131,
+   "AUC_odd": 0.5374
+  },
+  {
+   "variable": "mrange",
+   "AUC": 0.5212,
+   "AUC_even": 0.465,
+   "AUC_odd": 0.5736
+  },
+  {
+   "variable": "bb_oth_2m",
+   "AUC": 0.5211,
+   "AUC_even": 0.5303,
+   "AUC_odd": 0.5101
+  },
+  {
+   "variable": "delta_toward",
+   "AUC": 0.4824,
+   "AUC_even": 0.4053,
+   "AUC_odd": 0.5382
+  },
+  {
+   "variable": "rsi_fav",
+   "AUC": 0.4838,
+   "AUC_even": 0.5113,
+   "AUC_odd": 0.457
+  },
+  {
+   "variable": "lump_5m",
+   "AUC": 0.4889,
+   "AUC_even": 0.4945,
+   "AUC_odd": 0.4846
+  },
+  {
+   "variable": "fav1",
+   "AUC": 0.4921,
+   "AUC_even": 0.5006,
+   "AUC_odd": 0.4854
+  },
+  {
+   "variable": "solo_before15",
+   "AUC": 0.4932,
+   "AUC_even": 0.542,
+   "AUC_odd": 0.4617
+  },
+  {
+   "variable": "is_ce",
+   "AUC": 0.5066,
+   "AUC_even": 0.5187,
+   "AUC_odd": 0.5105
+  },
+  {
+   "variable": "bb_own_2m",
+   "AUC": 0.494,
+   "AUC_even": 0.4963,
+   "AUC_odd": 0.4912
+  },
+  {
+   "variable": "fav5",
+   "AUC": 0.4971,
+   "AUC_even": 0.509,
+   "AUC_odd": 0.4795
+  },
+  {
+   "variable": "fav15",
+   "AUC": 0.4974,
+   "AUC_even": 0.5145,
+   "AUC_odd": 0.4758
+  }
+ ]
+}

@@ -528,3 +528,17 @@ def test_sd_rules_stay_below_decode_threshold_and_combined_improves():
     C = pd.read_csv(f'{OUT}/bl_sd_combined.csv'); a = C[C.stream == 'all']; assert a.F1.max() > 0.76 and C[C.stream == 'solo'].F1.max() < 0.6
     L = pd.read_csv(f'{OUT}/bl_sd_classes.csv').set_index('solo_class'); assert L.F1['after 15:00'] == 0 and 0.5 < L.share['intraday stand-alone'] < 0.7
     T = json.load(open(f'{OUT}/bl_summary_sd10.json')); assert T['late']['heavier_share'] < T['intraday']['heavier_share'] - 0.15 and T['late']['after_buyback_share'] < 0.05
+
+
+def test_sl_late_solo_trigger_and_rejections():
+    S1 = json.load(open(f'{OUT}/bl_summary_sl1.json')); assert 0.35 < S1['late']['share_reduce_abs_delta'] < 0.6 and S1['intraday']['share_reduce_abs_delta'] < 0.35
+    S4 = json.load(open(f'{OUT}/bl_summary_sl4.json')); assert 0.35 < S4['H3']['lot_share_on_lighter_side'] < 0.6 and S4['H2']['median_ratio_solo_to_long'] > 2
+    S7 = json.load(open(f'{OUT}/bl_summary_sl7.json')); assert S7['lots'] == 336 and 0.6 < S7['lot_coverage']['spot extreme (E)'] < 0.7 and S7['lot_coverage']['E or premium low'] > 0.85
+    R = pd.read_csv(f'{OUT}/bl_sl_rule2.csv').set_index('rule'); assert 0.6 < R.F1['R3'] < 0.7 and R.recall['R3'] > 0.85
+
+
+def test_sl_blocks_market_dominates_and_panel_shape():
+    B = pd.read_csv(f'{OUT}/bl_sl_blocks.csv'); a = B.groupby('block').AUC.max(); assert a['market'] > 0.78 and a['all'] > a['market'] and max(a['greeks'], a['inventory'], a['flow']) < 0.56
+    X = pd.read_pickle(f'{OUT}/bl_sl_panel.pkl.gz'); assert len(X) == 32 * 30 * 2 and X.y.sum() == 138 and set(X.cp) == {'CE', 'PE'}
+    P = pd.read_csv(f'{OUT}/bl_sl_prem.csv').set_index(['window', 'variable']); h = P.hazard_if
+    assert h[('late 15:00-15:29', 'pl15_itm WITHOUT bk15')] > 4 * h[('intraday 10:30-14:59', 'pl15_itm WITHOUT bk15')]

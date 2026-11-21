@@ -1,0 +1,58 @@
+{
+ "rules": [
+  {
+   "rule": "bk15",
+   "fires": 266,
+   "positives": 138,
+   "precision": 0.5414,
+   "recall": 0.7174,
+   "F1": 0.6171
+  },
+  {
+   "rule": "pl15_itm",
+   "fires": 205,
+   "positives": 138,
+   "precision": 0.5707,
+   "recall": 0.7101,
+   "F1": 0.6329
+  },
+  {
+   "rule": "R3",
+   "fires": 367,
+   "positives": 138,
+   "precision": 0.5068,
+   "recall": 0.8986,
+   "F1": 0.6481
+  },
+  {
+   "rule": "bk15_prev",
+   "fires": 271,
+   "positives": 138,
+   "precision": 0.4982,
+   "recall": 0.6957,
+   "F1": 0.5806
+  },
+  {
+   "rule": "pl15_itm_prev",
+   "fires": 198,
+   "positives": 138,
+   "precision": 0.5657,
+   "recall": 0.6667,
+   "F1": 0.612
+  },
+  {
+   "rule": "R3_prev",
+   "fires": 366,
+   "positives": 138,
+   "precision": 0.4836,
+   "recall": 0.8841,
+   "F1": 0.6252
+  }
+ ],
+ "lot_coverage": {
+  "spot extreme (E)": 0.6547619047619048,
+  "E or premium low": 0.8988095238095238,
+  "E or premium low or cross-right buy-back +-10 s": 0.8988095238095238
+ },
+ "lots": 336
+}
