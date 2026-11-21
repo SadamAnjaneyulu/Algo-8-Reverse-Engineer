@@ -1,0 +1,30 @@
+{
+ "legs": [
+  {
+   "leg_definition": "look-ahead legs",
+   "legs": 569,
+   "leg_minutes": 1127,
+   "pair_minutes_in_legs": 210,
+   "legs_with_a_pair": 192,
+   "legs_with_2plus_pair_minutes": 18,
+   "null_mean_legs_with_pair": 178.7325,
+   "null_mean_legs_with_2plus": 26.8395,
+   "null_2plus_p_lower": 0.009,
+   "null_2plus_lo": 20.0,
+   "null_2plus_hi": 34.0
+  },
+  {
+   "leg_definition": "causal legs",
+   "legs": 571,
+   "leg_minutes": 1131,
+   "pair_minutes_in_legs": 110,
+   "legs_with_a_pair": 105,
+   "legs_with_2plus_pair_minutes": 5,
+   "null_mean_legs_with_pair": 99.2325,
+   "null_mean_legs_with_2plus": 9.5905,
+   "null_2plus_p_lower": 0.042,
+   "null_2plus_lo": 5.0,
+   "null_2plus_hi": 14.0
+  }
+ ]
+}

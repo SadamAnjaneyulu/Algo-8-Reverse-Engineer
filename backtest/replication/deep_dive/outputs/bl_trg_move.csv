@@ -1,0 +1,8 @@
+feature,AUC,AUC_even,AUC_odd,n,pairs,kind,comparison,AUC_a,AUC_b,diff,lo,hi
+age_react,0.6876,0.708,0.6692,1060.0,189.0,univariate AUC in look-ahead breakout minutes,,,,,,
+move_since_pair,0.556,0.5576,0.5567,1060.0,189.0,univariate AUC in look-ahead breakout minutes,,,,,,
+abs_move_since_pair,0.5622,0.5551,0.571,1060.0,189.0,univariate AUC in look-ahead breakout minutes,,,,,,
+atm_move_since_pair,0.5378,0.5491,0.5274,1060.0,189.0,univariate AUC in look-ahead breakout minutes,,,,,,
+,,,,,,LOCO logistic comparison,time + move vs time only,0.6649,0.6797,-0.0148,-0.0426,0.0123
+,,,,,,LOCO logistic comparison,time + move vs move only,0.6649,0.4084,0.2565,0.2089,0.3086
+,,,,,,LOCO logistic comparison,move only vs time only,0.4084,0.6797,-0.2713,-0.3269,-0.2106

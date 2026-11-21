@@ -1,0 +1,5 @@
+rule,predicted_minutes,precision,recall,pair_minutes
+"depth<=3 tree, all causal features",442,0.19,0.3158,266
+"depth<=3 tree, edge features only",1700,0.0888,0.5677,266
+completed-bar breakout (N=60) (no learning),1131,0.0973,0.4135,266
+LOOK-AHEAD breakout (current close beyond prior 60 closes) (no learning),1127,0.1863,0.7895,266

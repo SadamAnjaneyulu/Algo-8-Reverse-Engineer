@@ -1,0 +1,53 @@
+bin,minutes,pair_minutes,per1000,population
+10-20,1769,41,23.18,all minutes: minutes since last reactive pair
+2-5,706,18,25.5,all minutes: minutes since last reactive pair
+20-40,2251,78,34.65,all minutes: minutes since last reactive pair
+40+,2144,65,30.32,all minutes: minutes since last reactive pair
+5-10,1063,20,18.81,all minutes: minutes since last reactive pair
+<2 min,498,17,34.14,all minutes: minutes since last reactive pair
+no pair yet,721,27,37.45,all minutes: minutes since last reactive pair
+0,721,27,37.45,all minutes: reactive pairs so far
+1,732,27,36.89,all minutes: reactive pairs so far
+2,969,26,26.83,all minutes: reactive pairs so far
+3+,6730,186,27.64,all minutes: reactive pairs so far
+0.0,2245,82,36.53,all minutes: last pair on the same side as the current breakout side
+1.0,6186,157,25.38,all minutes: last pair on the same side as the current breakout side
+10-20,188,14,74.47,causal breakout minutes: minutes since last reactive pair
+2-5,168,12,71.43,causal breakout minutes: minutes since last reactive pair
+20-40,157,22,140.13,causal breakout minutes: minutes since last reactive pair
+40+,114,24,210.53,causal breakout minutes: minutes since last reactive pair
+5-10,160,12,75.0,causal breakout minutes: minutes since last reactive pair
+<2 min,294,14,47.62,causal breakout minutes: minutes since last reactive pair
+no pair yet,50,12,240.0,causal breakout minutes: minutes since last reactive pair
+0,50,12,240.0,causal breakout minutes: reactive pairs so far
+1,106,11,103.77,causal breakout minutes: reactive pairs so far
+2,119,8,67.23,causal breakout minutes: reactive pairs so far
+3+,856,79,92.29,causal breakout minutes: reactive pairs so far
+0.0,153,32,209.15,causal breakout minutes: last pair on the same side as the current breakout side
+1.0,928,66,71.12,causal breakout minutes: last pair on the same side as the current breakout side
+10-20,208,30,144.23,LOOK-AHEAD breakout minutes: minutes since last reactive pair
+2-5,150,16,106.67,LOOK-AHEAD breakout minutes: minutes since last reactive pair
+20-40,199,56,281.41,LOOK-AHEAD breakout minutes: minutes since last reactive pair
+40+,167,58,347.31,LOOK-AHEAD breakout minutes: minutes since last reactive pair
+5-10,161,16,99.38,LOOK-AHEAD breakout minutes: minutes since last reactive pair
+<2 min,175,13,74.29,LOOK-AHEAD breakout minutes: minutes since last reactive pair
+no pair yet,67,21,313.43,LOOK-AHEAD breakout minutes: minutes since last reactive pair
+0,67,21,313.43,LOOK-AHEAD breakout minutes: reactive pairs so far
+1,109,23,211.01,LOOK-AHEAD breakout minutes: reactive pairs so far
+2,120,22,183.33,LOOK-AHEAD breakout minutes: reactive pairs so far
+3+,831,144,173.29,LOOK-AHEAD breakout minutes: reactive pairs so far
+0.0,214,65,303.74,LOOK-AHEAD breakout minutes: last pair on the same side as the current breakout side
+1.0,846,124,146.57,LOOK-AHEAD breakout minutes: last pair on the same side as the current breakout side
+10-20,1561,11,7.05,inside range (no LA breakout): minutes since last reactive pair
+2-5,556,2,3.6,inside range (no LA breakout): minutes since last reactive pair
+20-40,2052,22,10.72,inside range (no LA breakout): minutes since last reactive pair
+40+,1977,7,3.54,inside range (no LA breakout): minutes since last reactive pair
+5-10,902,4,4.43,inside range (no LA breakout): minutes since last reactive pair
+<2 min,323,4,12.38,inside range (no LA breakout): minutes since last reactive pair
+no pair yet,654,6,9.17,inside range (no LA breakout): minutes since last reactive pair
+0,654,6,9.17,inside range (no LA breakout): reactive pairs so far
+1,623,4,6.42,inside range (no LA breakout): reactive pairs so far
+2,849,4,4.71,inside range (no LA breakout): reactive pairs so far
+3+,5899,42,7.12,inside range (no LA breakout): reactive pairs so far
+0.0,2031,17,8.37,inside range (no LA breakout): last pair on the same side as the current breakout side
+1.0,5340,33,6.18,inside range (no LA breakout): last pair on the same side as the current breakout side

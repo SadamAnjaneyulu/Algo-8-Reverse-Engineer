@@ -32,3 +32,5 @@ Reactive-pair look-back verification (plan `BODY_REACTIVE_LOOKBACK_PLAN.md`, rep
 Reactive-pair dynamic reference and activation (plan `BODY_REACTIVE_ACTIVATION_PLAN.md`, report `BODY_REACTIVE_ACTIVATION.md`): `bl_act_build.py` → `bl_act_tests.py` (slow) → `bl_act_tests2.py` (slow) → `bl_act_tests3.py` → `bl_act_fig.py` → `make_act_report.py` (needs the reactive-pair, mechanism and look-back outputs).
 
 Reactive-pair indicator search (plan `BODY_REACTIVE_INDICATOR_PLAN.md`, report `BODY_REACTIVE_INDICATOR.md`): `bl_ind_build.py` → `bl_ind_tests.py` → `bl_ind_break.py` → `bl_ind_fine.py` → `bl_ind_fig.py` → `make_ind_report.py` (needs the activation study outputs).
+
+Reactive-pair window and trigger study (plan `BODY_REACTIVE_TRIGGER_PLAN.md`, report `BODY_REACTIVE_TRIGGER.md`): `bl_trg_band.py` → `bl_trg_panel.py` → `bl_trg_tests.py` (slow, ~3 min) → `bl_trg_drill.py` → `bl_trg_move.py` → `bl_trg_leg.py` → `bl_trg_fig.py` → `make_trg_report.py` (needs the activation and indicator study outputs).

@@ -347,3 +347,29 @@ def test_ind_channel_length_plateau_and_robustness():
 def test_ind_range_edge_breakout_state_but_not_sufficient():
     Bd = pd.read_csv(f'{OUT}/bl_ind_bands.csv'); assert Bd.share_of_events.iloc[0] > 0.6 and Bd.share_of_control_seconds.iloc[0] < 0.1 and Bd.share_of_events.iloc[3] < 0.05 and Bd.share_of_control_seconds.iloc[3] > 0.4
     S = json.load(open(f'{OUT}/bl_summary_ind2.json')); assert S['state']['ratio'][3] > 3.0 and S['episodes_with_pair'] < 0.3 and S['pair_minutes_in_episodes'] < 0.6
+
+
+# ---- reactive-pair trigger study: bl_trg_* ----
+def test_trg_rolling_window_plateau_and_expanding_rejected():
+    S = pd.read_csv(f'{OUT}/bl_trg_bandscan.csv').set_index('window'); R = json.load(open(f'{OUT}/bl_summary_trg1.json'))
+    assert all(k in R['within_ci_of_best'] for k in ('N45', 'N50', 'N55', 'N60', 'N65')) and all(k in R['excluded_vs_best'] for k in ('N10', 'N20', 'N30', 'N80', 'N120'))
+    assert S.AUC['EXP'] < S.AUC['N60'] - 0.25 and S.AUC['N60'] > 0.9 and S.AUC.drop('EXP').idxmax() in ('N50', 'N55', 'N60', 'N65') and R['best_upper'] in ('N45', 'N50', 'N55', 'N60', 'N65') and R['best_lower'] in ('N45', 'N50', 'N55', 'N60', 'N65')
+    assert R['dir_hit_N60']['beyond'] > 0.9 and R['dir_hit_N60']['beyond'] > R['dir_hit_N60']['not_beyond'] + 0.08
+
+
+def test_trg_breakout_necessary_not_sufficient_and_no_simple_rule():
+    P = pd.read_pickle(f'{OUT}/bl_trg_panel.pkl.gz'); y = P.y == 1; la = P.bkLA60 != 0; cau = P.bk60 != 0
+    assert (la & y).sum() / y.sum() > 0.7 and (cau & y).sum() / y.sum() < 0.5 and (la & y).sum() / la.sum() < 0.25 and (cau & y).sum() / cau.sum() < 0.15
+    T = pd.read_csv(f'{OUT}/bl_trg_tree.csv'); assert not ((T.precision >= 0.5) & (T.recall >= 0.5)).any()
+
+
+def test_trg_only_order_activity_block_adds_and_time_not_move_paces():
+    B = pd.read_csv(f'{OUT}/bl_trg_blocks.csv'); d = B[B.population.str.startswith('LOOK-AHEAD')].set_index(['model', 'features'])
+    for m in ('lr', 'gb'): assert d.loc[(m, 'edge + activity'), 'gain_lo'] > 0.03 and all(d.loc[(m, f'edge + {b}'), 'gain_vs_edge_only'] < 0.03 for b in ('clock', 'book', 'option', 'market'))
+    U = pd.read_csv(f'{OUT}/bl_trg_uni.csv'); u = U[(U.population == 'LOOK-AHEAD breakout minutes')].set_index('feature'); assert u.AUC.sub(.5).abs().idxmax() == 'age_react' and u.AUC['age_react'] > 0.65 and u.AUC_even['age_react'] > 0.6 and u.AUC_odd['age_react'] > 0.6
+    M = pd.read_csv(f'{OUT}/bl_trg_move.csv'); c = M[M.comparison == 'time + move vs time only'].iloc[0]; assert c.lo < 0 < c.hi + 0.05 and c['diff'] < 0.02
+
+
+def test_trg_refractory_is_conditional_on_breakout_and_legs_slightly_spaced():
+    R = json.load(open(f'{OUT}/bl_summary_trg2.json')); r = R['refract_ratio_LA_breakout_lt5_vs_ge5']; a = R['refract_ratio_all']; assert r[2] < 0.7 and a[1] < 1 < a[2]
+    L = pd.read_csv(f'{OUT}/bl_trg_leg.csv').iloc[0]; assert L.legs_with_2plus_pair_minutes < L.null_mean_legs_with_2plus and L.null_2plus_p_lower < 0.05 and L.legs_with_a_pair / L.legs < 0.5

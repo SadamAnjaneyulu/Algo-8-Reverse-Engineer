@@ -1,0 +1,47 @@
+{
+ "best_upper": "N55",
+ "best_upper_AUC": 0.9098952684224676,
+ "best_lower": "N45",
+ "best_lower_AUC": 0.9206453147071559,
+ "best_rolling": "N60",
+ "best_rolling_AUC": 0.9140825990938688,
+ "expanding_AUC": 0.6129752319083649,
+ "expanding_diff_lo_hi": [
+  -0.3459242230426646,
+  -0.25504424224380506
+ ],
+ "within_ci_of_best": [
+  "N40",
+  "N45",
+  "N50",
+  "N55",
+  "N60",
+  "N65",
+  "N70"
+ ],
+ "excluded_vs_best": [
+  "N10",
+  "N15",
+  "N20",
+  "N25",
+  "N30",
+  "N35",
+  "N75",
+  "N80",
+  "N90",
+  "N100",
+  "N120"
+ ],
+ "dir_hit_N60": {
+  "beyond": 0.9449152542372882,
+  "not_beyond": 0.8110236220472441,
+  "n_beyond": 236,
+  "n_not": 127
+ },
+ "dir_hit_best": {
+  "beyond": 0.9449152542372882,
+  "not_beyond": 0.8110236220472441,
+  "n_beyond": 236,
+  "n_not": 127
+ }
+}
