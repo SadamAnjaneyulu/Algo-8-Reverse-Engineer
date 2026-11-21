@@ -1,0 +1,7 @@
+model,AUC,gain_vs_age_only,lo,hi,n,events
+time since the last reactive pair,0.6825,0.0,0.0,0.0,944,236
+pace deficit in reactive pairs,0.7042,0.0217,-0.0392,0.0882,944,236
+pace deficit in all pairs,0.7288,0.0463,-0.0109,0.1066,944,236
+time since last pair + pace deficit (reactive),0.7214,0.0389,-0.0168,0.0941,944,236
+time since last pair + pace deficit (all pairs),0.7462,0.0637,0.0144,0.1123,944,236
+time since last pair + count so far + time of day,0.7307,0.0482,-0.0079,0.1023,944,236

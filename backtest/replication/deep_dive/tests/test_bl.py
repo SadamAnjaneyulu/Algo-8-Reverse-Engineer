@@ -402,3 +402,31 @@ def test_trk_example_cycles_pairs_sit_at_the_range_edge():
     for u in ('NIFTY', 'SENSEX'):
         E = pd.read_csv(f'{OUT}/bl_trk_example_{u}.csv'); assert len(E) == 12 and (E.position_in_70min_range.abs() > 0.4).mean() >= 0.8 and E.machine_fire_within_1min.sum() >= 8 and (E.strike_minus_ATM_steps.abs() == 1).all()
     F = pd.read_csv(f'{OUT}/bl_trk_fires.csv'); assert len(F) == 297 and F.pairs.sum() == 377 and (F.pairs > 1).mean() > 0.15
+
+
+# ---- reactive-pair book-state / pace study: bl_bk_*, bl_pc_* ----
+def test_bk_pair_is_not_a_delta_hedge():
+    R = json.load(open(f'{OUT}/bl_summary_bk1.json')); assert R['mean_pair_delta_lots'] < 0.3 and R['abs_delta_events_median'] > 4 and R['share_pair_moves_delta_toward_move_side'] == 1.0 and R['abs_delta_after_events_median'] > 0.9 * R['abs_delta_events_median']
+    D = pd.read_csv(f'{OUT}/bl_bk_uni.csv'); v = D[D.variable.isin(['delta_vs_move', 'delta_vs_move_norm', 'itm_short', 'dist_out_move', 'pnl_pct', 'prem_pos60', 'sig_chg15', 'prem_chg15', 'pnl_chg15'])]; assert (v.AUC_within_edge.sub(.5).abs() < 0.1).all()
+
+
+def test_bk_book_blocks_add_nothing_but_pace_and_activity_do():
+    B = pd.read_csv(f'{OUT}/bl_bk_blocks.csv'); d = B[B.population.str.startswith('LOOK-AHEAD')].set_index(['model', 'features'])
+    for m in ('lr', 'gb'):
+        for f in ('edge + P&L', 'edge + premium/vol'): assert d.loc[(m, f), 'gain'] < 0.04 and d.loc[(m, f), 'gain_lo'] < 0.03
+        assert d.loc[(m, 'edge + pace deficit'), 'gain_lo'] > 0.0 and d.loc[(m, 'edge + activity (order ages)'), 'gain_lo'] > 0.0
+    P = pd.read_csv(f'{OUT}/bl_bk_pace_uni.csv'); u = P[P.population == 'LOOK-AHEAD breakout minutes'].set_index('variable'); assert u.AUC['def_tot'] > 0.62 and u.AUC['def_react'] > 0.6 and abs(u.AUC['pnl_pct'] - .5) < 0.08 and abs(u.AUC['prem_pos60'] - .5) < 0.08
+
+
+def test_pc_pace_count_not_exposure_and_hedge_follows_pair():
+    R = json.load(open(f'{OUT}/bl_summary_pc2.json')); assert R['def_tot_auc_within_edge'][0] > 0.68 and R['def_react_auc_within_edge'][0] > 0.65 and R['def_short_auc_within_edge'][0] < 0.6 and R['pace_quintiles'][-1]['events_per_control_second'] > 3 * R['pace_quintiles'][0]['events_per_control_second']
+    F = pd.read_csv(f'{OUT}/bl_bk_flow.csv'); a = F[(F.window == 'after: 30 s') & (F.order_kind.str.startswith('h_ | open_long'))]; assert (a.share_of_pairs > 0.8).all() and (a.share_of_control_seconds < 0.06).all()
+
+
+def test_pc_pace_machine_beats_refractory_but_regularity_is_weak():
+    C = pd.read_csv(f'{OUT}/bl_pc_cv.csv').set_index(['family', 'info']); m = C.loc[('M10', 'bar')]; assert m.F1_tol1 > 0.52 and m.precision_tol1 > 0.5 and m.recall_tol1 > 0.5 and m.F1_tol1 > m.null_p99 + 0.35 and C.loc[('M10', 'intra'), 'F1_tol0'] > 0.4 and C.loc[('M11', 'bar'), 'F1_tol1'] < 0.45
+    B = pd.read_csv(f'{OUT}/bl_pc_boot.csv'); assert (B['diff'] > 0.03).all() and (B.lo > 0).all()
+    X = pd.read_csv(f'{OUT}/bl_pc_cross.csv'); assert (X.F1 > 0.5).all(); S = pd.read_csv(f'{OUT}/bl_pc_splits.csv'); assert S.F1.mean() > 0.52 and S.F1.quantile(.025) > 0.45
+    G = pd.read_csv(f'{OUT}/bl_pc_reg.csv').set_index('group'); assert G.loc['reactive pairs (all)', 'p_value_regular'] > 0.5 and G.loc['fires (pairs within 5 s merged)', 'p_value_regular'] < 0.1
+    A = pd.read_csv(f'{OUT}/bl_pc_age.csv').set_index('model'); assert A.loc['time since last pair + pace deficit (reactive)', 'lo'] < 0
+    R = json.load(open(f'{OUT}/bl_summary_pc2.json')); assert abs(R['gap_autocorr']['rho'] - R['gap_autocorr']['null_mean']) < 0.1

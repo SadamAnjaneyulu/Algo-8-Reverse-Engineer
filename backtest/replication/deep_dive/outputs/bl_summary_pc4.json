@@ -1,0 +1,26 @@
+{
+ "rows": [
+  {
+   "group": "reactive pairs (all)",
+   "cycles": 32,
+   "KS_observed": 0.28,
+   "KS_random_mean": 0.2506,
+   "KS_random_p05": 0.2291,
+   "RMS_observed": 0.1247,
+   "RMS_random_mean": 0.1156,
+   "RMS_random_p05": 0.1028,
+   "p_value_regular": 0.9833
+  },
+  {
+   "group": "fires (pairs within 5 s merged)",
+   "cycles": 32,
+   "KS_observed": 0.2549,
+   "KS_random_mean": 0.2805,
+   "KS_random_p05": 0.2564,
+   "RMS_observed": 0.1133,
+   "RMS_random_mean": 0.1304,
+   "RMS_random_p05": 0.1161,
+   "p_value_regular": 0.0403
+  }
+ ]
+}
