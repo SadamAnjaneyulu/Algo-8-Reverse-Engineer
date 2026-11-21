@@ -1,0 +1,149 @@
+{
+ "rows": [
+  {
+   "machine": "previous 2 completed 30-min bars, clock phase 0 (hh:00 / hh:30)",
+   "bars": 320,
+   "both": 195,
+   "act_only": 6,
+   "mach_only": 26,
+   "neither": 93,
+   "precision_bar": 0.8824,
+   "recall_bar": 0.9701,
+   "odds_ratio": 116.25,
+   "phi": 0.7859,
+   "base_rate_actual": 0.6281,
+   "base_rate_machine": 0.6906
+  },
+  {
+   "machine": "same, completed minute closes only",
+   "bars": 320,
+   "both": 194,
+   "act_only": 7,
+   "mach_only": 25,
+   "neither": 94,
+   "precision_bar": 0.8858,
+   "recall_bar": 0.9652,
+   "odds_ratio": 104.2057,
+   "phi": 0.7852,
+   "base_rate_actual": 0.6281,
+   "base_rate_machine": 0.6844
+  },
+  {
+   "machine": "same but clock shifted by +5 min (placebo)",
+   "bars": 352,
+   "both": 179,
+   "act_only": 10,
+   "mach_only": 68,
+   "neither": 95,
+   "precision_bar": 0.7247,
+   "recall_bar": 0.9471,
+   "odds_ratio": 25.0074,
+   "phi": 0.5775,
+   "base_rate_actual": 0.5369,
+   "base_rate_machine": 0.7017
+  },
+  {
+   "machine": "clock shifted by +15 min (placebo)",
+   "bars": 352,
+   "both": 184,
+   "act_only": 4,
+   "mach_only": 70,
+   "neither": 94,
+   "precision_bar": 0.7244,
+   "recall_bar": 0.9787,
+   "odds_ratio": 61.7714,
+   "phi": 0.6142,
+   "base_rate_actual": 0.5341,
+   "base_rate_machine": 0.7216
+  },
+  {
+   "machine": "clock shifted by -1 min (placebo)",
+   "bars": 320,
+   "both": 197,
+   "act_only": 5,
+   "mach_only": 48,
+   "neither": 70,
+   "precision_bar": 0.8041,
+   "recall_bar": 0.9752,
+   "odds_ratio": 57.4583,
+   "phi": 0.6475,
+   "base_rate_actual": 0.6312,
+   "base_rate_machine": 0.7656
+  },
+  {
+   "machine": "previous 1 bar",
+   "bars": 320,
+   "both": 197,
+   "act_only": 4,
+   "mach_only": 78,
+   "neither": 41,
+   "precision_bar": 0.7164,
+   "recall_bar": 0.9801,
+   "odds_ratio": 25.8878,
+   "phi": 0.4513,
+   "base_rate_actual": 0.6281,
+   "base_rate_machine": 0.8594
+  },
+  {
+   "machine": "previous 3 bars",
+   "bars": 320,
+   "both": 168,
+   "act_only": 33,
+   "mach_only": 19,
+   "neither": 100,
+   "precision_bar": 0.8984,
+   "recall_bar": 0.8358,
+   "odds_ratio": 26.7943,
+   "phi": 0.6631,
+   "base_rate_actual": 0.6281,
+   "base_rate_machine": 0.5844
+  },
+  {
+   "machine": "rolling 70-min range, one entry per side per 30-min block",
+   "bars": 320,
+   "both": 194,
+   "act_only": 7,
+   "mach_only": 37,
+   "neither": 82,
+   "precision_bar": 0.8398,
+   "recall_bar": 0.9652,
+   "odds_ratio": 61.4208,
+   "phi": 0.7057,
+   "base_rate_actual": 0.6281,
+   "base_rate_machine": 0.7219
+  }
+ ],
+ "crosstab": {
+  "0": {
+   "0": 0,
+   "1": 6,
+   "2": 0,
+   "3": 0,
+   "4": 0
+  },
+  "1": {
+   "0": 26,
+   "1": 142,
+   "2": 32,
+   "3": 8,
+   "4": 1
+  },
+  "2": {
+   "0": 0,
+   "1": 3,
+   "2": 5,
+   "3": 3,
+   "4": 1
+  }
+ },
+ "actual_bar_count_dist": {
+  "1": 151,
+  "2": 37,
+  "3": 11,
+  "4": 2
+ },
+ "machine_bar_count_dist": {
+  "1": 209,
+  "2": 12
+ }
+}

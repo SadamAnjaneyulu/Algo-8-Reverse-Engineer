@@ -430,3 +430,36 @@ def test_pc_pace_machine_beats_refractory_but_regularity_is_weak():
     G = pd.read_csv(f'{OUT}/bl_pc_reg.csv').set_index('group'); assert G.loc['reactive pairs (all)', 'p_value_regular'] > 0.5 and G.loc['fires (pairs within 5 s merged)', 'p_value_regular'] < 0.1
     A = pd.read_csv(f'{OUT}/bl_pc_age.csv').set_index('model'); assert A.loc['time since last pair + pace deficit (reactive)', 'lo'] < 0
     R = json.load(open(f'{OUT}/bl_summary_pc2.json')); assert abs(R['gap_autocorr']['rho'] - R['gap_autocorr']['null_mean']) < 0.1
+
+
+# ---- reactive-pair 30-minute clock study: bl_clk_* ----
+def test_clk_phase_signature_and_block_length():
+    P = pd.read_csv(f'{OUT}/bl_clk_phase_minutes.csv').set_index('minute_of_hour').fires; assert P[0] > 3 * P.drop([0, 30]).median() and P[30] > 3 * P.drop([0, 30]).median()
+    M = pd.read_csv(f'{OUT}/bl_clk_moduli.csv').set_index('modulus_seconds'); assert M.loc[1800, 'chi2_p_uniform'] < 0.001 and M.loc[900, 'chi2_p_uniform'] < 0.001 and M.loc[420, 'chi2_p_uniform'] > 0.05
+    S = pd.read_csv(f'{OUT}/bl_clk_scan.csv'); b = S.groupby('L').F1.max(); assert b.idxmax() == 30 and b[30] > b.drop(30).max() + 0.01
+    p = S[(S.L == 30) & (S.N == 70)].set_index('phase_min').F1; assert p.idxmax() in (29, 0, 1) and p[[0, 1]].min() > p.drop([29, 0, 1]).max() + 0.03
+
+
+def test_clk_previous_two_completed_bars_is_the_channel():
+    C = pd.read_csv(f'{OUT}/bl_clk_chan.csv').set_index(['kind', 'param']); assert C.F1[('bars_prev', 2)] > C.F1.drop(('bars_prev', 2)).max() + 0.02 and C.F1[('bars_prev', 2)] > C.F1[('bars_prev', 1)] + 0.1 and C.F1[('bars_prev', 2)] > C.F1[('bars_prev', 3)] + 0.04
+    R = json.load(open(f'{OUT}/bl_summary_clk3.json')); assert R['oof_bars_prev']['params'] == [2, 2] and R['oof_bars_prev']['F1'] > 0.6 and R['oof_bars_prev']['precision'] > 0.65 and R['oof_bars_prev']['F1'] > R['oof_roll']['F1'] + 0.02
+
+
+def test_clk_bar_level_agreement_and_placebos():
+    B = pd.read_csv(f'{OUT}/bl_clk_bars.csv'); b0 = B.iloc[0]; assert b0.precision_bar > 0.85 and b0.recall_bar > 0.95 and b0.odds_ratio > 80 and b0.phi > 0.75
+    pl = B[B.machine.str.contains('placebo')]; assert (pl.phi < b0.phi - 0.1).all() and (pl.odds_ratio < b0.odds_ratio / 1.5).all()
+    R = pd.read_csv(f'{OUT}/bl_clk_refine.csv').set_index('variant'); assert R.F1['base: prev 2 bars, one entry per bar, completed bars, phase 0'] > 0.62 and R.F1_same_minute['current-minute close (look-ahead proxy)'] > 0.45 and R.F1['phase -1 min'] < 0.55 and R.F1['phase +5 min'] < 0.55
+    T = json.load(open(f'{OUT}/bl_summary_clk4.json')); d = T['timing_diff']; assert d['0'] / sum(d.values()) > 0.6 and T['side_agreement'] > 0.98
+
+
+def test_clk_wings_follow_every_sell_and_do_not_gate_entries():
+    R = json.load(open(f'{OUT}/bl_summary_clk5.json')); assert all(v > 0.85 for v in R['follow_share'].values()) and R['follow_share']['reactive'] > 0.9
+    for cp in ('CE', 'PE'): assert 0.85 < R['lots_by_leg']['wing_lots'][cp] / R['lots_by_leg']['short_lots'][cp] < 1.0
+    W = pd.read_csv(f'{OUT}/bl_clk_wingstate.csv').set_index('variable'); assert abs(W.AUC['cover'] - 0.5) < 0.06 and abs(W.AUC['short_lots'] - 0.5) < 0.08
+    E = json.load(open(f'{OUT}/bl_summary_clk9.json')); g = E['entry_given_break_by_sched']; assert g['1']['p'] > 0.85 and g['3']['p'] > 0.85 and E['fires_per_bar']['1'] > E['fires_per_bar']['2'] > E['fires_per_bar']['3']
+
+
+def test_clk_example_cycles():
+    for u in ('NIFTY', 'SENSEX'):
+        E = pd.read_csv(f'{OUT}/bl_clk_example_{u}.csv'); assert len(E) == 10 and (E.real_pair_minutes > 0).sum() >= 6
+    R = json.load(open(f'{OUT}/bl_summary_clk8.json')); assert R['NIFTY']['both'] >= 7 and R['SENSEX']['both'] >= 6 and R['NIFTY']['actual_only'] == 0

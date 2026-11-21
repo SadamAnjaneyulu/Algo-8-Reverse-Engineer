@@ -1,0 +1,183 @@
+{
+ "rows": [
+  {
+   "kind": "roll",
+   "param": 40,
+   "F1": 0.4693,
+   "precision": 0.4514,
+   "recall": 0.4887,
+   "fires": 288
+  },
+  {
+   "kind": "roll",
+   "param": 50,
+   "F1": 0.5094,
+   "precision": 0.5075,
+   "recall": 0.5113,
+   "fires": 268
+  },
+  {
+   "kind": "roll",
+   "param": 60,
+   "F1": 0.5437,
+   "precision": 0.5622,
+   "recall": 0.5263,
+   "fires": 249
+  },
+  {
+   "kind": "roll",
+   "param": 70,
+   "F1": 0.6036,
+   "precision": 0.6494,
+   "recall": 0.5639,
+   "fires": 231
+  },
+  {
+   "kind": "roll",
+   "param": 80,
+   "F1": 0.5946,
+   "precision": 0.6651,
+   "recall": 0.5376,
+   "fires": 215
+  },
+  {
+   "kind": "roll",
+   "param": 90,
+   "F1": 0.5787,
+   "precision": 0.6667,
+   "recall": 0.5113,
+   "fires": 204
+  },
+  {
+   "kind": "roll",
+   "param": 105,
+   "F1": 0.5523,
+   "precision": 0.6776,
+   "recall": 0.4662,
+   "fires": 183
+  },
+  {
+   "kind": "roll",
+   "param": 120,
+   "F1": 0.5294,
+   "precision": 0.6648,
+   "recall": 0.4398,
+   "fires": 176
+  },
+  {
+   "kind": "roll",
+   "param": 150,
+   "F1": 0.5047,
+   "precision": 0.6772,
+   "recall": 0.4023,
+   "fires": 158
+  },
+  {
+   "kind": "bars_cur",
+   "param": 1,
+   "F1": 0.4587,
+   "precision": 0.448,
+   "recall": 0.4699,
+   "fires": 279
+  },
+  {
+   "kind": "bars_cur",
+   "param": 2,
+   "F1": 0.6135,
+   "precision": 0.6726,
+   "recall": 0.5639,
+   "fires": 223
+  },
+  {
+   "kind": "bars_cur",
+   "param": 3,
+   "F1": 0.5683,
+   "precision": 0.6862,
+   "recall": 0.485,
+   "fires": 188
+  },
+  {
+   "kind": "bars_cur",
+   "param": 4,
+   "F1": 0.5256,
+   "precision": 0.689,
+   "recall": 0.4248,
+   "fires": 164
+  },
+  {
+   "kind": "bars_cur",
+   "param": 5,
+   "F1": 0.4964,
+   "precision": 0.6797,
+   "recall": 0.391,
+   "fires": 153
+  },
+  {
+   "kind": "bars_prev",
+   "param": 1,
+   "F1": 0.4704,
+   "precision": 0.4635,
+   "recall": 0.4774,
+   "fires": 274
+  },
+  {
+   "kind": "bars_prev",
+   "param": 2,
+   "F1": 0.6392,
+   "precision": 0.7078,
+   "recall": 0.5827,
+   "fires": 219
+  },
+  {
+   "kind": "bars_prev",
+   "param": 3,
+   "F1": 0.5765,
+   "precision": 0.7027,
+   "recall": 0.4887,
+   "fires": 185
+  },
+  {
+   "kind": "bars_prev",
+   "param": 4,
+   "F1": 0.5234,
+   "precision": 0.6914,
+   "recall": 0.4211,
+   "fires": 162
+  },
+  {
+   "kind": "bars_prev",
+   "param": 6,
+   "F1": 0.4867,
+   "precision": 0.6779,
+   "recall": 0.3797,
+   "fires": 149
+  }
+ ],
+ "oof_roll": {
+  "params": [
+   70,
+   70
+  ],
+  "F1": 0.6036217303822937,
+  "precision": 0.6493506493506493,
+  "recall": 0.5639097744360902
+ },
+ "oof_bars_cur": {
+  "params": [
+   2,
+   2
+  ],
+  "F1": 0.6134969325153374,
+  "precision": 0.672645739910314,
+  "recall": 0.5639097744360902
+ },
+ "oof_bars_prev": {
+  "params": [
+   2,
+   2
+  ],
+  "F1": 0.6391752577319587,
+  "precision": 0.7077625570776256,
+  "recall": 0.5827067669172933
+ }
+}

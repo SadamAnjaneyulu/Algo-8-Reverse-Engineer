@@ -38,3 +38,5 @@ Reactive-pair window and trigger study (plan `BODY_REACTIVE_TRIGGER_PLAN.md`, re
 Reactive-pair per-minute tracker study (plan `BODY_REACTIVE_TRACKER_PLAN.md`, report `BODY_REACTIVE_TRACKER.md`): `bl_trk_timing.py` → `bl_trk_clusters.py` → `bl_trk_sim.py` (slow, ~2 min) → `bl_trk_sim2.py` (slow, ~5 min) → `bl_trk_resid.py` → `bl_trk_cap.py` → `bl_trk_side.py` → `bl_trk_example.py` → `bl_trk_fig.py` → `make_trk_report.py` (needs the trigger study outputs).
 
 Reactive-pair book-state and pace study (plan `BODY_REACTIVE_BOOK_PLAN.md`, report `BODY_REACTIVE_BOOK.md`): `bl_bk_build.py` → `bl_bk_tests.py` → `bl_bk_blocks.py` → `bl_bk_flow.py` → `bl_pc_sim.py` (~3 min) → `bl_pc_tests.py` → `bl_pc_reg.py` (~2 min) → `bl_pc_example.py` → `make_bk_report.py` (needs the tracker and trigger study outputs).
+
+Reactive-pair 30-minute clock study (report `BODY_REACTIVE_CLOCK.md`; exploratory, no plan): `bl_clk_sim.py` → `bl_clk_scan.py` → `bl_clk_chan.py` → `bl_clk_refine.py` → `bl_clk_bars.py` → `bl_clk_repeat.py` → `bl_clk_wings.py` → `bl_clk_wingstate.py` → `bl_clk_example.py` → `make_clk_report.py` (needs the trigger, tracker and book study outputs).

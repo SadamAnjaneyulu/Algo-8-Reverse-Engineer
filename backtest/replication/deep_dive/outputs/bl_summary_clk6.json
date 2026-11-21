@@ -1,0 +1,76 @@
+{
+ "rows": [
+  {
+   "variable": "short_lots",
+   "AUC": 0.4719,
+   "AUC_even": 0.4616,
+   "AUC_odd": 0.4899,
+   "n": 233,
+   "matched": 162
+  },
+  {
+   "variable": "long_lots",
+   "AUC": 0.4713,
+   "AUC_even": 0.4604,
+   "AUC_odd": 0.4901,
+   "n": 233,
+   "matched": 162
+  },
+  {
+   "variable": "cover",
+   "AUC": 0.4969,
+   "AUC_even": 0.477,
+   "AUC_odd": 0.5119,
+   "n": 233,
+   "matched": 162
+  },
+  {
+   "variable": "net_lots",
+   "AUC": 0.4969,
+   "AUC_even": 0.477,
+   "AUC_odd": 0.5119,
+   "n": 233,
+   "matched": 162
+  },
+  {
+   "variable": "itm_short",
+   "AUC": 0.5453,
+   "AUC_even": 0.5571,
+   "AUC_odd": 0.5458,
+   "n": 233,
+   "matched": 162
+  },
+  {
+   "variable": "delta",
+   "AUC": 0.4744,
+   "AUC_even": 0.4963,
+   "AUC_odd": 0.4408,
+   "n": 233,
+   "matched": 162
+  },
+  {
+   "variable": "pnl_pct",
+   "AUC": 0.5198,
+   "AUC_even": 0.4475,
+   "AUC_odd": 0.5833,
+   "n": 233,
+   "matched": 162
+  },
+  {
+   "variable": "hour",
+   "AUC": 0.4271,
+   "AUC_even": 0.4206,
+   "AUC_odd": 0.4264,
+   "n": 233,
+   "matched": 162
+  },
+  {
+   "variable": "min_in_bar",
+   "AUC": 0.5332,
+   "AUC_even": 0.5829,
+   "AUC_odd": 0.4976,
+   "n": 233,
+   "matched": 162
+  }
+ ]
+}

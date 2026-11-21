@@ -1,0 +1,150 @@
+{
+ "rows": [
+  {
+   "variant": "base: prev 2 bars, one entry per bar, completed bars, phase 0",
+   "F1": 0.6392,
+   "precision": 0.7078,
+   "recall": 0.5827,
+   "F1_same_minute": 0.1402,
+   "fires": 219
+  },
+  {
+   "variant": "current-minute close (look-ahead proxy)",
+   "F1": 0.6324,
+   "precision": 0.6968,
+   "recall": 0.5789,
+   "F1_same_minute": 0.4928,
+   "fires": 221
+  },
+  {
+   "variant": "one entry per SIDE per bar",
+   "F1": 0.6545,
+   "precision": 0.7074,
+   "recall": 0.609,
+   "F1_same_minute": 0.1535,
+   "fires": 229
+  },
+  {
+   "variant": "phase +1 min",
+   "F1": 0.6392,
+   "precision": 0.7078,
+   "recall": 0.5827,
+   "F1_same_minute": 0.1402,
+   "fires": 219
+  },
+  {
+   "variant": "phase -1 min",
+   "F1": 0.4932,
+   "precision": 0.5143,
+   "recall": 0.4737,
+   "F1_same_minute": 0.1096,
+   "fires": 245
+  },
+  {
+   "variant": "phase +5 min",
+   "F1": 0.4932,
+   "precision": 0.5143,
+   "recall": 0.4737,
+   "F1_same_minute": 0.1331,
+   "fires": 245
+  },
+  {
+   "variant": "phase +15 min",
+   "F1": 0.4277,
+   "precision": 0.4387,
+   "recall": 0.4173,
+   "F1_same_minute": 0.131,
+   "fires": 253
+  },
+  {
+   "variant": "start 10:00 (minute 45)",
+   "F1": 0.6102,
+   "precision": 0.6405,
+   "recall": 0.5827,
+   "F1_same_minute": 0.1339,
+   "fires": 242
+  },
+  {
+   "variant": "start 11:00 (minute 105)",
+   "F1": 0.6121,
+   "precision": 0.7172,
+   "recall": 0.5338,
+   "F1_same_minute": 0.1336,
+   "fires": 198
+  },
+  {
+   "variant": "end 15:30 (minute 375 capped)",
+   "F1": 0.6275,
+   "precision": 0.6798,
+   "recall": 0.5827,
+   "F1_same_minute": 0.1377,
+   "fires": 228
+  },
+  {
+   "variant": "K = 3 bars",
+   "F1": 0.5765,
+   "precision": 0.7027,
+   "recall": 0.4887,
+   "F1_same_minute": 0.1197,
+   "fires": 185
+  },
+  {
+   "variant": "K = 2 bars + current partial",
+   "F1": 0.6135,
+   "precision": 0.6726,
+   "recall": 0.5639,
+   "F1_same_minute": 0.1922,
+   "fires": 223
+  },
+  {
+   "variant": "K = 1 bar",
+   "F1": 0.4704,
+   "precision": 0.4635,
+   "recall": 0.4774,
+   "F1_same_minute": 0.1074,
+   "fires": 274
+  }
+ ],
+ "timing_diff": {
+  "-3": 4,
+  "-2": 3,
+  "-1": 5,
+  "0": 120,
+  "1": 29,
+  "2": 8,
+  "3": 5
+ },
+ "machine_minute_in_block": {
+  "0": 45,
+  "1": 19,
+  "2": 23,
+  "3": 12,
+  "4": 8,
+  "5": 7,
+  "6": 12,
+  "7": 6,
+  "8": 4,
+  "9": 10,
+  "10": 6,
+  "11": 7,
+  "12": 6,
+  "13": 6,
+  "14": 6,
+  "15": 3,
+  "16": 5,
+  "17": 5,
+  "18": 4,
+  "19": 3,
+  "20": 7,
+  "21": 2,
+  "22": 3,
+  "23": 4,
+  "25": 1,
+  "26": 3,
+  "27": 1,
+  "28": 1,
+  "29": 2
+ },
+ "side_agreement": 0.9935483870967742,
+ "side_n": 155
+}

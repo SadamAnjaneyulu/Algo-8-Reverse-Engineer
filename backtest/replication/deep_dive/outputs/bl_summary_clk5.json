@@ -1,0 +1,33 @@
+{
+ "follow_share": {
+  "other (solo / near a pair)": 0.9482,
+  "reactive": 0.9249,
+  "scheduled": 0.8956
+ },
+ "n_sells": {
+  "other (solo / near a pair)": 1564,
+  "reactive": 852,
+  "scheduled": 1992
+ },
+ "lots_by_leg": {
+  "short_lots": {
+   "CE": 2645,
+   "PE": 2026
+  },
+  "wing_lots": {
+   "CE": 2440,
+   "PE": 1896
+  },
+  "body_wing_lots": {
+   "CE": 218,
+   "PE": 98
+  }
+ },
+ "wing_price_q": {
+  "0.05": 1.35,
+  "0.25": 1.95,
+  "0.5": 4.5,
+  "0.75": 6.75,
+  "0.95": 8.45
+ }
+}
