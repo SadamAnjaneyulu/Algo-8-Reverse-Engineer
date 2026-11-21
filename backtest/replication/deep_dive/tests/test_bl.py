@@ -463,3 +463,27 @@ def test_clk_example_cycles():
     for u in ('NIFTY', 'SENSEX'):
         E = pd.read_csv(f'{OUT}/bl_clk_example_{u}.csv'); assert len(E) == 10 and (E.real_pair_minutes > 0).sum() >= 6
     R = json.load(open(f'{OUT}/bl_summary_clk8.json')); assert R['NIFTY']['both'] >= 7 and R['SENSEX']['both'] >= 6 and R['NIFTY']['actual_only'] == 0
+
+
+# ---- reactive-pair decoding with true OHLC: bl_dq_* ----
+def test_dq_true_ohlc_machine_reaches_target():
+    F = pd.read_csv(f'{OUT}/bl_dq_final.csv'); f = F.iloc[0]; assert f.machine.startswith('FINAL') and f.F1 > 0.8 and f.precision > 0.85 and f.recall > 0.7 and f.F1_same_minute > 0.75 and f.bar_recall > 0.95
+    assert (F[F.machine.str.contains('placebo')].F1 < f.F1 - 0.05).all() and (F[~F.machine.str.startswith('FINAL') & ~F.machine.str.contains('per candle')].F1 < f.F1 - 0.05).all()
+    R = json.load(open(f'{OUT}/bl_summary_dq7.json')); assert R['first_entry']['capture'] > 0.9 and R['first_entry']['exact_share'] > 0.85 and R['budget']['repeat_in_candle'] > R['budget']['no_machine_break'] + R['budget']['first_entry_timing_off']
+
+
+def test_dq_ohlc_is_what_changed_and_no_margin():
+    O = pd.read_csv(f'{OUT}/bl_dq_ohlc.csv').set_index('machine'); assert O.F1['TRUE high/low channel + intrabar high/low break'] > O.F1['closes channel, close break (previous report)'] + 0.15 and O.F1['true high/low channel, close break'] < 0.7 and O.F1['closes channel, intrabar high/low break'] < 0.7
+    G = pd.read_csv(f'{OUT}/bl_dq_tune_grid.csv'); g = G.groupby('mu_steps').F1.max(); assert g.idxmax() == 0 and g[0.02] < g[0] - 0.03
+    R = json.load(open(f'{OUT}/bl_summary_dq5.json')); assert R['split_F1'][0] > 0.78 and R['split_F1'][1] > 0.75
+
+
+def test_dq_robust_across_subsets():
+    S = pd.read_csv(f'{OUT}/bl_dq_final_subsets.csv'); assert (S.F1 > 0.77).all() and (S.precision > 0.84).all()
+
+
+def test_dq_repeat_rules_do_not_beat_base_and_count_links_to_book_stress():
+    S = pd.read_csv(f'{OUT}/bl_dq_repeat_sim.csv').set_index('rule'); assert (S.drop('none').F1 <= S.F1['none'] + 0.005).all()
+    G = pd.read_csv(f'{OUT}/bl_dq_repeat_gate.csv'); assert (G.F1.iloc[1:] <= G.F1.iloc[0] + 0.005).all()
+    C = pd.read_csv(f'{OUT}/bl_dq_count.csv').set_index('variable'); assert C.spearman['delta_vs_side'] > 0.2 and C.p['delta_vs_side'] < 0.05 / 19 and C.p['itm_short'] < 0.05 / 19
+    R = json.load(open(f'{OUT}/bl_summary_dq2.json')); assert R['new_bar_extreme'] > 0.85 and R['still_beyond_channel'] > 0.85

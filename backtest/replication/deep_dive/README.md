@@ -40,3 +40,5 @@ Reactive-pair per-minute tracker study (plan `BODY_REACTIVE_TRACKER_PLAN.md`, re
 Reactive-pair book-state and pace study (plan `BODY_REACTIVE_BOOK_PLAN.md`, report `BODY_REACTIVE_BOOK.md`): `bl_bk_build.py` → `bl_bk_tests.py` → `bl_bk_blocks.py` → `bl_bk_flow.py` → `bl_pc_sim.py` (~3 min) → `bl_pc_tests.py` → `bl_pc_reg.py` (~2 min) → `bl_pc_example.py` → `make_bk_report.py` (needs the tracker and trigger study outputs).
 
 Reactive-pair 30-minute clock study (report `BODY_REACTIVE_CLOCK.md`; exploratory, no plan): `bl_clk_sim.py` → `bl_clk_scan.py` → `bl_clk_chan.py` → `bl_clk_refine.py` → `bl_clk_bars.py` → `bl_clk_repeat.py` → `bl_clk_wings.py` → `bl_clk_wingstate.py` → `bl_clk_example.py` → `make_clk_report.py` (needs the trigger, tracker and book study outputs).
+
+Reactive-pair decoding with true one-minute OHLC (report `BODY_REACTIVE_DECODE.md`; exploratory): `bl_ohlc.py` → `bl_dq_ohlc.py` → `bl_dq_repeat_desc.py` → `bl_dq_repeat_sim.py` → `bl_dq_gates.py` (slow) → `bl_dq_tune.py` → `bl_dq_repeat_gate.py` → `bl_dq_final.py` → `bl_dq_count.py` → `bl_dq_fig.py` → `make_dq_report.py`.

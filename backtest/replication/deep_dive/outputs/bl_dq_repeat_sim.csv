@@ -1,0 +1,5 @@
+rule,configs,chosen,precision,recall,F1,F1_same_minute,split_F1_mean,split_lo,split_hi,insample_best,insample_F1
+none,1,"(0, 0, 99, 'trigger') / (0, 0, 99, 'trigger')",0.8952,0.7707,0.8283,0.8,0.8282,0.8015,0.8549,"(0, 0, 99, 'trigger')",0.8283
+ladder,64,"(0.75, 0, 2, 'trigger') / (3.0, 0, 2, 'trigger')",0.821,0.7932,0.8069,0.7725,0.8127,0.7692,0.8483,"(3.0, 0, 2, 'entry_close')",0.8216
+gap,28,"(0, 12, 2, 'trigger') / (0, 15, 2, 'trigger')",0.7167,0.7895,0.7513,0.7191,0.7624,0.7305,0.7929,"(0, 15, 2, 'trigger')",0.765
+ladder_gap,12,"(1.0, 8, 99, 'trigger') / (1.0, 8, 99, 'trigger')",0.7969,0.782,0.7894,0.7552,0.783,0.7309,0.8287,"(1.0, 8, 99, 'trigger')",0.7894

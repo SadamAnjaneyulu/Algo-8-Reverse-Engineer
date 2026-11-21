@@ -1,0 +1,68 @@
+{
+ "split_F1": [
+  0.8110766694381074,
+  0.7825908033637503,
+  0.841279761904762
+ ],
+ "rows": [
+  {
+   "variant": "base (mu 0, end 15:15), scored on full-session targets",
+   "F1": 0.8151,
+   "precision": 0.8952,
+   "recall": 0.7482,
+   "F1_same_minute": 0.7873,
+   "fires": 229,
+   "targets": 274
+  },
+  {
+   "variant": "mu 0, end 15:29 (full session)",
+   "F1": 0.7885,
+   "precision": 0.8333,
+   "recall": 0.7482,
+   "F1_same_minute": 0.7615,
+   "fires": 246,
+   "targets": 274
+  },
+  {
+   "variant": "out-of-fold choice of (mu, end): [(0, 345), (0, 360)]",
+   "F1": 0.8114,
+   "precision": 0.9132,
+   "recall": 0.7299,
+   "F1_same_minute": 0.783,
+   "fires": 219,
+   "targets": 274
+  }
+ ],
+ "best_insample": [
+  {
+   "mu_steps": 0.0,
+   "end_minute": 345,
+   "end_clock": "15:00",
+   "F1": 0.8156
+  },
+  {
+   "mu_steps": 0.0,
+   "end_minute": 360,
+   "end_clock": "15:15",
+   "F1": 0.8151
+  },
+  {
+   "mu_steps": 0.0,
+   "end_minute": 355,
+   "end_clock": "15:10",
+   "F1": 0.812
+  },
+  {
+   "mu_steps": 0.0,
+   "end_minute": 350,
+   "end_clock": "15:05",
+   "F1": 0.8105
+  },
+  {
+   "mu_steps": 0.0,
+   "end_minute": 330,
+   "end_clock": "14:45",
+   "F1": 0.8058
+  }
+ ]
+}

@@ -1,0 +1,4 @@
+variant,F1,precision,recall,F1_same_minute,fires,targets
+"base (mu 0, end 15:15), scored on full-session targets",0.8151,0.8952,0.7482,0.7873,229,274
+"mu 0, end 15:29 (full session)",0.7885,0.8333,0.7482,0.7615,246,274
+"out-of-fold choice of (mu, end): [(0, 345), (0, 360)]",0.8114,0.9132,0.7299,0.783,219,274

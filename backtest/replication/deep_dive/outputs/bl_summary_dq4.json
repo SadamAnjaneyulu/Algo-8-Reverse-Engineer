@@ -1,0 +1,288 @@
+{
+ "univariate": {
+  "first": [
+   {
+    "variable": "hour",
+    "AUC": 0.2486,
+    "AUC_even": 0.0694,
+    "AUC_odd": 0.3074
+   },
+   {
+    "variable": "min_in_candle",
+    "AUC": 0.6766,
+    "AUC_even": 0.5155,
+    "AUC_odd": 0.7313
+   },
+   {
+    "variable": "short_lots",
+    "AUC": 0.3303,
+    "AUC_even": 0.223,
+    "AUC_odd": 0.3778
+   },
+   {
+    "variable": "pnl_chg15",
+    "AUC": 0.3751,
+    "AUC_even": 0.4036,
+    "AUC_odd": 0.3716
+   },
+   {
+    "variable": "prem_tgt",
+    "AUC": 0.412,
+    "AUC_even": 0.4641,
+    "AUC_odd": 0.3999
+   },
+   {
+    "variable": "ret15",
+    "AUC": 0.4194,
+    "AUC_even": 0.317,
+    "AUC_odd": 0.4522
+   },
+   {
+    "variable": "delta_vs_side",
+    "AUC": 0.5796,
+    "AUC_even": 0.6863,
+    "AUC_odd": 0.513
+   },
+   {
+    "variable": "minute_range",
+    "AUC": 0.4206,
+    "AUC_even": 0.5049,
+    "AUC_odd": 0.3863
+   },
+   {
+    "variable": "itm_short",
+    "AUC": 0.427,
+    "AUC_even": 0.3513,
+    "AUC_odd": 0.4644
+   },
+   {
+    "variable": "chan_width",
+    "AUC": 0.4271,
+    "AUC_even": 0.5629,
+    "AUC_odd": 0.384
+   },
+   {
+    "variable": "pnl",
+    "AUC": 0.451,
+    "AUC_even": 0.5278,
+    "AUC_odd": 0.4423
+   },
+   {
+    "variable": "ret5",
+    "AUC": 0.4614,
+    "AUC_even": 0.4461,
+    "AUC_odd": 0.4774
+   },
+   {
+    "variable": "prem_chg5",
+    "AUC": 0.4715,
+    "AUC_even": 0.4493,
+    "AUC_odd": 0.4644
+   },
+   {
+    "variable": "vol_net_prev",
+    "AUC": 0.5228,
+    "AUC_even": 0.5359,
+    "AUC_odd": 0.5147
+   },
+   {
+    "variable": "ext_beyond_channel",
+    "AUC": 0.4803,
+    "AUC_even": 0.6757,
+    "AUC_odd": 0.412
+   },
+   {
+    "variable": "cover",
+    "AUC": 0.519,
+    "AUC_even": 0.4951,
+    "AUC_odd": 0.5294
+   },
+   {
+    "variable": "vol_rel",
+    "AUC": 0.5116,
+    "AUC_even": 0.5899,
+    "AUC_odd": 0.4791
+   },
+   {
+    "variable": "n_prev_in_candle",
+    "AUC": 0.5,
+    "AUC_even": 0.5,
+    "AUC_odd": 0.5
+   },
+   {
+    "variable": "min_since_first",
+    "AUC": 0.5,
+    "AUC_even": 0.5,
+    "AUC_odd": 0.5
+   }
+  ],
+  "repeat": [
+   {
+    "variable": "delta_vs_side",
+    "AUC": 0.6707,
+    "AUC_even": 0.6462,
+    "AUC_odd": 0.6797
+   },
+   {
+    "variable": "pnl_chg15",
+    "AUC": 0.3421,
+    "AUC_even": 0.3981,
+    "AUC_odd": 0.3175
+   },
+   {
+    "variable": "itm_short",
+    "AUC": 0.6531,
+    "AUC_even": 0.5614,
+    "AUC_odd": 0.732
+   },
+   {
+    "variable": "chan_width",
+    "AUC": 0.3806,
+    "AUC_even": 0.4453,
+    "AUC_odd": 0.3221
+   },
+   {
+    "variable": "minute_range",
+    "AUC": 0.6071,
+    "AUC_even": 0.6123,
+    "AUC_odd": 0.6026
+   },
+   {
+    "variable": "hour",
+    "AUC": 0.5826,
+    "AUC_even": 0.4683,
+    "AUC_odd": 0.6822
+   },
+   {
+    "variable": "vol_rel",
+    "AUC": 0.5761,
+    "AUC_even": 0.5552,
+    "AUC_odd": 0.5947
+   },
+   {
+    "variable": "short_lots",
+    "AUC": 0.566,
+    "AUC_even": 0.4571,
+    "AUC_odd": 0.6773
+   },
+   {
+    "variable": "min_in_candle",
+    "AUC": 0.5555,
+    "AUC_even": 0.5694,
+    "AUC_odd": 0.5337
+   },
+   {
+    "variable": "pnl",
+    "AUC": 0.4449,
+    "AUC_even": 0.4379,
+    "AUC_odd": 0.4657
+   },
+   {
+    "variable": "prem_chg5",
+    "AUC": 0.4486,
+    "AUC_even": 0.4849,
+    "AUC_odd": 0.4116
+   },
+   {
+    "variable": "vol_net_prev",
+    "AUC": 0.5417,
+    "AUC_even": 0.5006,
+    "AUC_odd": 0.5725
+   },
+   {
+    "variable": "ret15",
+    "AUC": 0.4633,
+    "AUC_even": 0.4962,
+    "AUC_odd": 0.4376
+   },
+   {
+    "variable": "ext_beyond_channel",
+    "AUC": 0.5347,
+    "AUC_even": 0.5358,
+    "AUC_odd": 0.5431
+   },
+   {
+    "variable": "prem_tgt",
+    "AUC": 0.466,
+    "AUC_even": 0.5183,
+    "AUC_odd": 0.4384
+   },
+   {
+    "variable": "min_since_first",
+    "AUC": 0.4768,
+    "AUC_even": 0.463,
+    "AUC_odd": 0.4848
+   },
+   {
+    "variable": "ret5",
+    "AUC": 0.4902,
+    "AUC_even": 0.5307,
+    "AUC_odd": 0.446
+   },
+   {
+    "variable": "n_prev_in_candle",
+    "AUC": 0.4903,
+    "AUC_even": 0.4779,
+    "AUC_odd": 0.4973
+   },
+   {
+    "variable": "min_since_last",
+    "AUC": 0.4904,
+    "AUC_even": 0.5008,
+    "AUC_odd": 0.481
+   },
+   {
+    "variable": "cover",
+    "AUC": 0.4992,
+    "AUC_even": 0.4638,
+    "AUC_odd": 0.5318
+   }
+  ]
+ },
+ "models": [
+  {
+   "block": "market",
+   "model": "lr",
+   "AUC": 0.641
+  },
+  {
+   "block": "market",
+   "model": "gb",
+   "AUC": 0.7156
+  },
+  {
+   "block": "volume_premium",
+   "model": "lr",
+   "AUC": 0.478
+  },
+  {
+   "block": "volume_premium",
+   "model": "gb",
+   "AUC": 0.5369
+  },
+  {
+   "block": "portfolio",
+   "model": "lr",
+   "AUC": 0.6435
+  },
+  {
+   "block": "portfolio",
+   "model": "gb",
+   "AUC": 0.6366
+  },
+  {
+   "block": "all",
+   "model": "lr",
+   "AUC": 0.6609
+  },
+  {
+   "block": "all",
+   "model": "gb",
+   "AUC": 0.7061
+  }
+ ],
+ "n_first": 229,
+ "n_first_entry": 206,
+ "n_rep": 698,
+ "n_rep_entry": 44
+}
