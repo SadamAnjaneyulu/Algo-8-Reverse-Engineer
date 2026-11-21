@@ -1,0 +1,10 @@
+solo_variant,sell_type,real_lots,model_lots,matched,precision,recall,F1
+stated rule (fresh 15-min extreme),scheduled,2122,2112,2084,0.9867,0.9821,0.9844
+stated rule (fresh 15-min extreme),reactive,754,458,412,0.8996,0.5464,0.6799
+stated rule (fresh 15-min extreme),solo,1508,3268,778,0.2381,0.5159,0.3258
+earlier-findings rule (out-of-fold),scheduled,2122,2112,2084,0.9867,0.9821,0.9844
+earlier-findings rule (out-of-fold),reactive,754,458,412,0.8996,0.5464,0.6799
+earlier-findings rule (out-of-fold),solo,1508,1704,731,0.429,0.4847,0.4552
+best model of earlier variables (out-of-fold),scheduled,2122,2112,2084,0.9867,0.9821,0.9844
+best model of earlier variables (out-of-fold),reactive,754,458,412,0.8996,0.5464,0.6799
+best model of earlier variables (out-of-fold),solo,1508,895,509,0.5687,0.3375,0.4236

@@ -1,0 +1,9 @@
+model,unit,F1,precision,recall,params
+R0 stated: fresh 15-min extreme of closes,lot,0.3147,0.2381,0.4642,
+R0 stated: fresh 15-min extreme of closes,minute,0.3107,0.1919,0.8164,
+R1 earlier-findings rule: fresh extreme AND book conditions (out-of-fold),lot,0.4325,0.429,0.4362,"[(60, 'bkhl', 9, 0, 1), (60, 'bkhl', 9, 0, 0)]"
+R1 in-sample best,lot,0.4349,0.4278,0.4421,"(60, 'bkhl', 9, 0, 0)"
+R1 earlier-findings rule: fresh extreme AND book conditions (out-of-fold),minute,0.4611,0.3535,0.6628,"[(60, 'bkhl', 0.9, 0.9, 1), (60, 'bkhl', 1.1, 0, 1)]"
+R1 in-sample best,minute,0.4785,0.3488,0.7617,"(60, 'bkhl', 9, 0, 1)"
+"R2 best model on all earlier variables (LOCO, threshold out-of-fold)",lot,0.396,0.5687,0.3037,GB
+"R2 best model on all earlier variables (LOCO, threshold out-of-fold)",minute,0.5244,0.4872,0.5677,GB

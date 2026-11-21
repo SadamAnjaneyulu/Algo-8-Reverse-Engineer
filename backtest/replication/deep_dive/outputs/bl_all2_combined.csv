@@ -1,0 +1,7 @@
+solo_variant,scope,real_lots,model_lots,matched,precision,recall,F1
+stated rule (fresh 15-min extreme),all D-1 sold lots,4671,5838,3343,0.5726,0.7157,0.6362
+stated rule (fresh 15-min extreme),excluding deep-OTM batch sells,4384,5838,3343,0.5726,0.7625,0.6541
+earlier-findings rule (out-of-fold),all D-1 sold lots,4671,4274,3285,0.7686,0.7033,0.7345
+earlier-findings rule (out-of-fold),excluding deep-OTM batch sells,4384,4274,3285,0.7686,0.7493,0.7588
+best model of earlier variables (out-of-fold),all D-1 sold lots,4671,3465,3049,0.8799,0.6528,0.7495
+best model of earlier variables (out-of-fold),excluding deep-OTM batch sells,4384,3465,3049,0.8799,0.6955,0.7769

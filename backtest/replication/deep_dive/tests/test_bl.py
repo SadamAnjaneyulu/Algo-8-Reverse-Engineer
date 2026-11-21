@@ -500,3 +500,12 @@ def test_all_scheduled_solved_reactive_precise_solo_open():
 def test_all_solo_rule_variants_stay_weak():
     S = pd.read_csv(f'{OUT}/bl_all_solo_rules.csv'); assert S.F1.max() < 0.5
     W = pd.read_csv(f'{OUT}/bl_all_solo_where.csv').set_index('hour_block'); assert W.share['15:00-15:30'] > 0.2
+
+
+def test_all_recalculated_with_recalled_solo_findings():
+    C = pd.read_csv(f'{OUT}/bl_all2_combined.csv'); a = C[C.scope == 'all D-1 sold lots'].set_index('solo_variant')
+    assert a.F1.max() > 0.72 and a.F1['stated rule (fresh 15-min extreme)'] < a.F1.max() - 0.08
+    T = pd.read_csv(f'{OUT}/bl_all2_type.csv'); s = T[T.sell_type == 'solo']; assert s.F1.max() < 0.5
+    R = json.load(open(f'{OUT}/bl_summary_all3.json')); assert 0.04 < R['shares']['deep-OTM batch'] < 0.1 and R['deep_cycles'] == 3
+    S = json.load(open(f'{OUT}/bl_summary_solo1.json')); assert S['R2_auc'] > 0.9
+    K = pd.read_csv(f'{OUT}/bl_solo_strike.csv'); assert K.exact.iloc[0] > K.exact.iloc[1]

@@ -2,7 +2,7 @@
 import sys, json, os; sys.path.insert(0, '.')
 import numpy as np, pandas as pd
 from bl_common import OUT
-RP = os.path.join(os.path.dirname(OUT), 'reports'); J = lambda n: json.load(open(f'{OUT}/bl_summary_{n}.json')); A1, A2, D7 = J('all1'), J('all2'), J('dq7')
+RP = os.path.join(os.path.dirname(OUT), 'reports'); J = lambda n: json.load(open(f'{OUT}/bl_summary_{n}.json')); A1, A2, D7, A3, S1, S2 = J('all1'), J('all2'), J('dq7'), J('all3'), J('solo1'), J('solo2')
 pct = lambda x, n=0: f'{100 * x:.{n}f}%'
 def table(df):
     c = list(df.columns); s = '| ' + ' | '.join(map(str, c)) + ' |\n|' + '|'.join('---' for _ in c) + '|\n'
@@ -14,6 +14,12 @@ tt = T.copy(); tt = tt.assign(**{k: tt[k].round(3) for k in ('precision', 'recal
 cc = C.copy(); cc = cc.assign(**{k: cc[k].round(3) for k in ('precision', 'recall', 'F1', 'strike_exact_of_matched')}); cc.columns = ['tolerance (min)', 'model', 'real lots', 'model lots', 'matched', 'precision', 'recall', 'F1', 'strike exact (matched)']
 sr_ = SR.copy(); sr_ = sr_.assign(**{k: sr_[k].round(3) for k in ('precision', 'recall', 'F1')}); sr_.columns = ['price used', 'look-back (min)', 'window', 'real solo lots', 'model lots', 'matched', 'precision', 'recall', 'F1']
 wh = WH.copy(); wh['share'] = wh.share.map(lambda v: pct(v)); wh['CE_share'] = wh.CE_share.map(lambda v: pct(v)); wh.columns = ['time of day', 'real solo lots', 'share', 'CE share']
+C2 = pd.read_csv(f'{OUT}/bl_all2_combined.csv'); T2 = pd.read_csv(f'{OUT}/bl_all2_type.csv'); SRC = pd.read_csv(f'{OUT}/bl_solo_recon.csv'); SST = pd.read_csv(f'{OUT}/bl_solo_strike.csv')
+c2 = C2.assign(**{k: C2[k].round(3) for k in ('precision', 'recall', 'F1')}); c2.columns = ['solo model', 'scope', 'real lots', 'model lots', 'matched', 'precision', 'recall', 'F1']
+t2 = T2[T2.sell_type == 'solo'].assign(**{k: T2[k].round(3) for k in ('precision', 'recall', 'F1')})[['solo_variant', 'real_lots', 'model_lots', 'matched', 'precision', 'recall', 'F1']]; t2.columns = ['solo model', 'real solo lots (regular)', 'model lots', 'matched', 'precision', 'recall', 'F1']
+src_ = SRC.assign(**{k: SRC[k].round(3) for k in ('F1', 'precision', 'recall')}); src_.columns = ['solo model', 'unit', 'F1', 'precision', 'recall', 'parameters (fold 1 / fold 2)']
+sst = SST.assign(exact=SST.exact.map(lambda v: pct(v)), within_one_strike=SST.within_one_strike.map(lambda v: '' if v != v else pct(v))); sst.columns = ['solo strike rule', 'exact', 'within one strike']
+best2 = C2[C2.scope == 'all D-1 sold lots'].sort_values('F1', ascending=False).iloc[0]; best2x = C2[C2.scope != 'all D-1 sold lots'].sort_values('F1', ascending=False).iloc[0]; sh3 = A3['shares']
 best_solo = SR.sort_values('F1', ascending=False).iloc[0]; fe = D7['first_entry']
 cy = pd.DataFrame({'sell type': ['scheduled', 'reactive', 'solo'], 'real lots per cycle (mean ± sd)': [f"{CC.actual_scheduled.mean():.1f} ± {CC.actual_scheduled.std():.1f}", f"{CC.actual_reactive.mean():.1f} ± {CC.actual_reactive.std():.1f}", f"{CC.actual_solo.mean():.1f} ± {CC.actual_solo.std():.1f}"], 'model lots per cycle': [f"{CC.pred_scheduled.mean():.1f} ± {CC.pred_scheduled.std():.1f}", f"{CC.pred_reactive.mean():.1f} ± {CC.pred_reactive.std():.1f}", f"{CC.pred_solo.mean():.1f} ± {CC.pred_solo.std():.1f}"], 'Spearman across cycles': [f"{A1['cycle_corr_scheduled'][0]:.2f}" if A1['cycle_corr_scheduled'][0] == A1['cycle_corr_scheduled'][0] else 'n/a (model constant)', f"{A1['cycle_corr_reactive'][0]:.2f}", f"{A1['cycle_corr_solo'][0]:.2f}"]})
 txt = f"""# Algo 8 — D-1 selling: how much is reconstructed, all three sell types together
@@ -22,7 +28,7 @@ txt = f"""# Algo 8 — D-1 selling: how much is reconstructed, all three sell ty
 
 ## 0. Verdict
 
-**D-1 selling is not 100% reconstructed.** All three rules together reproduce the real D-1 sold lots with **F1 {all3.F1:.2f}** (precision {pct(all3.precision)}, recall {pct(all3.recall)}). By type:
+**D-1 selling is not 100% reconstructed.** First pass (one-line solo rule from your notes): all three rules together reproduce the real D-1 sold lots with **F1 {all3.F1:.2f}** (precision {pct(all3.precision)}, recall {pct(all3.recall)}). **Recalculated with the earlier solo findings (§0A): F1 {best2.F1:.2f}, or {best2x.F1:.2f} excluding deep-OTM batch sells.** By type (first pass):
 
 | Sell type | Share of D-1 sold lots | Lot-level F1 (±1 min) | Status |
 |---|---|---|---|
@@ -31,6 +37,23 @@ txt = f"""# Algo 8 — D-1 selling: how much is reconstructed, all three sell ty
 | **3. Solo sells** | {pct(sh['solo'])} | **{t1.F1['solo']:.2f}** with the stated rule (precision {pct(t1.precision['solo'])}, recall {pct(t1.recall['solo'])}); best variant {best_solo.F1:.2f} | **Not solved** — the fresh-extreme rule fires far more often than the real system and misses half the real solo sells |
 
 The scheduled and reactive rules alone are almost never wrong (precision {pct(sr.precision)}), but they cover only {pct(sr.recall)} of the lots sold on D-1. **The open piece is the solo sells — {pct(sh['solo'])} of everything sold on D-1.**
+
+## 0A. Recalculated after recalling the earlier solo studies
+
+The first version of this check scored solo sells with the one-line rule from your notes ("fresh 15-minute high/low"). The earlier studies (`BODY_SELL_TRIGGERS_D1.md`, `BODY_SOLO_SELL_MOVE_TEST.md`, `BODY_SOLO_VARIABLE_SEARCH.md`) found more than that: a **fresh favourable extreme** over 5–60 minutes (CE on a new low, PE on a new high), the **market moving away from that right's shorts**, the **own right's book in profit and the other right's book losing**, repeated **1-lot drips**, and a strike that follows the **premium of the previous sale on that right** rather than ATM. I rebuilt those variables and re-ran the combined check with them (`bl_solo_panel.py`, `bl_solo_recon.py`, `bl_all_sells2.py`). I also separated **deep out-of-the-money batch sells** (≥ 5 strikes from ATM, premiums ₹0.3–5, orders up to 54 lots, all after 14:00, {A3['deep_cycles']} cycles; {pct(sh3['deep-OTM batch'])} of D-1 sold lots) from the regular solo sells — they are a different behaviour that no solo rule describes.
+
+**Recalculated result: all three D-1 sell rules together reach F1 {best2.F1:.2f} on all D-1 sold lots** (precision {pct(best2.precision)}, recall {pct(best2.recall)}; best solo model), **{best2x.F1:.2f} excluding the deep-OTM batches** — up from {all3.F1:.2f} with the one-line solo rule. Scheduled pairs ({pct(sh3['scheduled'])} of lots) F1 {t1.F1['scheduled']:.2f}, reactive pairs ({pct(sh3['reactive'])}) {t1.F1['reactive']:.2f}, **regular solo sells ({pct(sh3['solo'])}) {T2[T2.sell_type == 'solo'].F1.max():.2f}**, deep-OTM batches ({pct(sh3['deep-OTM batch'])}) not modelled.
+
+{table(c2)}
+Solo sells alone (regular solo lots, ±1 minute, same right):
+
+{table(t2)}
+{table(src_)}
+* The earlier variables **rank** minutes very well (gradient-boosting AUC {S1['R2_auc']:.2f} out-of-cycle) but do not turn into a clean yes/no rule: the best rule reaches F1 ≈ 0.43–0.46 by lot and 0.46–0.52 by minute. The best rule out-of-fold is simply a **fresh 60-minute extreme on true highs/lows** (with or without the 30-minute favourable move); the book-ratio thresholds add little.
+* Solo strike (all real solo lots with a previous sale on that right):
+
+{table(sst)}
+* **So solo selling is understood in direction and context, but not decoded as a rule.** What still separates the solo minutes that sell from the many fresh-extreme minutes that do not, and how many lots each minute gets (the drip and the end-of-day bursts), remain open.
 
 ## 1. Your eight findings, checked against the data
 | # | Your statement | Verdict | What the data says (source) |
@@ -66,6 +89,6 @@ Lots per cycle, real vs model:
 In-sample; D-1 only; ±1-minute lot matching (exact-minute numbers in §2); lot ownership in a strike is not observable; the scheduled timetable is applied from the observed wave clock of each version (it is a fit of these cycles, not an external specification); findings 4–7 are quoted from earlier reports, not re-run here.
 
 ## 6. Files
-`src/bl_all_sells.py` (combined simulator and matching) → `bl_all_solo.py` (solo variants, where solo lots sit) → `bl_all_fig.py` → `make_all_report.py`. Outputs `outputs/bl_all_*`, `bl_summary_all1…2.json`. Tests `tests/test_bl.py` (`test_all_*`).
+`src/bl_all_sells.py` (combined simulator and matching) → `bl_all_solo.py` (solo variants, where solo lots sit) → `bl_solo_panel.py` → `bl_solo_recon.py` → `bl_solo_strike.py` (recalled solo findings) → `bl_all_sells2.py` (recalculation) → `bl_all_fig.py` → `make_all_report.py`. Outputs `outputs/bl_all_*`, `bl_summary_all1…2.json`. Tests `tests/test_bl.py` (`test_all_*`).
 """
 open(f'{RP}/D1_SELLING_RECONSTRUCTION.md', 'w').write(txt); print(len(txt.splitlines()))

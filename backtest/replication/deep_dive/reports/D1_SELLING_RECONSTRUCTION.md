@@ -4,7 +4,7 @@
 
 ## 0. Verdict
 
-**D-1 selling is not 100% reconstructed.** All three rules together reproduce the real D-1 sold lots with **F1 0.64** (precision 59%, recall 71%). By type:
+**D-1 selling is not 100% reconstructed.** First pass (one-line solo rule from your notes): all three rules together reproduce the real D-1 sold lots with **F1 0.64** (precision 59%, recall 71%). **Recalculated with the earlier solo findings (§0A): F1 0.75, or 0.78 excluding deep-OTM batch sells.** By type (first pass):
 
 | Sell type | Share of D-1 sold lots | Lot-level F1 (±1 min) | Status |
 |---|---|---|---|
@@ -13,6 +13,51 @@
 | **3. Solo sells** | 38% | **0.31** with the stated rule (precision 24%, recall 42%); best variant 0.46 | **Not solved** — the fresh-extreme rule fires far more often than the real system and misses half the real solo sells |
 
 The scheduled and reactive rules alone are almost never wrong (precision 99%), but they cover only 54% of the lots sold on D-1. **The open piece is the solo sells — 38% of everything sold on D-1.**
+
+## 0A. Recalculated after recalling the earlier solo studies
+
+The first version of this check scored solo sells with the one-line rule from your notes ("fresh 15-minute high/low"). The earlier studies (`BODY_SELL_TRIGGERS_D1.md`, `BODY_SOLO_SELL_MOVE_TEST.md`, `BODY_SOLO_VARIABLE_SEARCH.md`) found more than that: a **fresh favourable extreme** over 5–60 minutes (CE on a new low, PE on a new high), the **market moving away from that right's shorts**, the **own right's book in profit and the other right's book losing**, repeated **1-lot drips**, and a strike that follows the **premium of the previous sale on that right** rather than ATM. I rebuilt those variables and re-ran the combined check with them (`bl_solo_panel.py`, `bl_solo_recon.py`, `bl_all_sells2.py`). I also separated **deep out-of-the-money batch sells** (≥ 5 strikes from ATM, premiums ₹0.3–5, orders up to 54 lots, all after 14:00, 3 cycles; 6% of D-1 sold lots) from the regular solo sells — they are a different behaviour that no solo rule describes.
+
+**Recalculated result: all three D-1 sell rules together reach F1 0.75 on all D-1 sold lots** (precision 88%, recall 65%; best solo model), **0.78 excluding the deep-OTM batches** — up from 0.64 with the one-line solo rule. Scheduled pairs (45% of lots) F1 0.98, reactive pairs (16%) 0.68, **regular solo sells (32%) 0.46**, deep-OTM batches (6%) not modelled.
+
+| solo model | scope | real lots | model lots | matched | precision | recall | F1 |
+|---|---|---|---|---|---|---|---|
+| stated rule (fresh 15-min extreme) | all D-1 sold lots | 4671 | 5838 | 3343 | 0.573 | 0.716 | 0.636 |
+| stated rule (fresh 15-min extreme) | excluding deep-OTM batch sells | 4384 | 5838 | 3343 | 0.573 | 0.762 | 0.654 |
+| earlier-findings rule (out-of-fold) | all D-1 sold lots | 4671 | 4274 | 3285 | 0.769 | 0.703 | 0.734 |
+| earlier-findings rule (out-of-fold) | excluding deep-OTM batch sells | 4384 | 4274 | 3285 | 0.769 | 0.749 | 0.759 |
+| best model of earlier variables (out-of-fold) | all D-1 sold lots | 4671 | 3465 | 3049 | 0.88 | 0.653 | 0.75 |
+| best model of earlier variables (out-of-fold) | excluding deep-OTM batch sells | 4384 | 3465 | 3049 | 0.88 | 0.696 | 0.777 |
+
+Solo sells alone (regular solo lots, ±1 minute, same right):
+
+| solo model | real solo lots (regular) | model lots | matched | precision | recall | F1 |
+|---|---|---|---|---|---|---|
+| stated rule (fresh 15-min extreme) | 1508 | 3268 | 778 | 0.238 | 0.516 | 0.326 |
+| earlier-findings rule (out-of-fold) | 1508 | 1704 | 731 | 0.429 | 0.485 | 0.455 |
+| best model of earlier variables (out-of-fold) | 1508 | 895 | 509 | 0.569 | 0.338 | 0.424 |
+
+| solo model | unit | F1 | precision | recall | parameters (fold 1 / fold 2) |
+|---|---|---|---|---|---|
+| R0 stated: fresh 15-min extreme of closes | lot | 0.315 | 0.238 | 0.464 | nan |
+| R0 stated: fresh 15-min extreme of closes | minute | 0.311 | 0.192 | 0.816 | nan |
+| R1 earlier-findings rule: fresh extreme AND book conditions (out-of-fold) | lot | 0.432 | 0.429 | 0.436 | [(60, 'bkhl', 9, 0, 1), (60, 'bkhl', 9, 0, 0)] |
+| R1 in-sample best | lot | 0.435 | 0.428 | 0.442 | (60, 'bkhl', 9, 0, 0) |
+| R1 earlier-findings rule: fresh extreme AND book conditions (out-of-fold) | minute | 0.461 | 0.354 | 0.663 | [(60, 'bkhl', 0.9, 0.9, 1), (60, 'bkhl', 1.1, 0, 1)] |
+| R1 in-sample best | minute | 0.478 | 0.349 | 0.762 | (60, 'bkhl', 9, 0, 1) |
+| R2 best model on all earlier variables (LOCO, threshold out-of-fold) | lot | 0.396 | 0.569 | 0.304 | GB |
+| R2 best model on all earlier variables (LOCO, threshold out-of-fold) | minute | 0.524 | 0.487 | 0.568 | GB |
+
+* The earlier variables **rank** minutes very well (gradient-boosting AUC 0.95 out-of-cycle) but do not turn into a clean yes/no rule: the best rule reaches F1 ≈ 0.43–0.46 by lot and 0.46–0.52 by minute. The best rule out-of-fold is simply a **fresh 60-minute extreme on true highs/lows** (with or without the 30-minute favourable move); the book-ratio thresholds add little.
+* Solo strike (all real solo lots with a previous sale on that right):
+
+| solo strike rule | exact | within one strike |
+|---|---|---|
+| premium nearest the previous sale on that right (earlier rule) | 37% | 74% |
+| ATM of the previous close | 16% | 78% |
+| same strike as the previous sale on that right | 35% |  |
+
+* **So solo selling is understood in direction and context, but not decoded as a rule.** What still separates the solo minutes that sell from the many fresh-extreme minutes that do not, and how many lots each minute gets (the drip and the end-of-day bursts), remain open.
 
 ## 1. Your eight findings, checked against the data
 | # | Your statement | Verdict | What the data says (source) |
@@ -97,4 +142,4 @@ Lots per cycle, real vs model:
 In-sample; D-1 only; ±1-minute lot matching (exact-minute numbers in §2); lot ownership in a strike is not observable; the scheduled timetable is applied from the observed wave clock of each version (it is a fit of these cycles, not an external specification); findings 4–7 are quoted from earlier reports, not re-run here.
 
 ## 6. Files
-`src/bl_all_sells.py` (combined simulator and matching) → `bl_all_solo.py` (solo variants, where solo lots sit) → `bl_all_fig.py` → `make_all_report.py`. Outputs `outputs/bl_all_*`, `bl_summary_all1…2.json`. Tests `tests/test_bl.py` (`test_all_*`).
+`src/bl_all_sells.py` (combined simulator and matching) → `bl_all_solo.py` (solo variants, where solo lots sit) → `bl_solo_panel.py` → `bl_solo_recon.py` → `bl_solo_strike.py` (recalled solo findings) → `bl_all_sells2.py` (recalculation) → `bl_all_fig.py` → `make_all_report.py`. Outputs `outputs/bl_all_*`, `bl_summary_all1…2.json`. Tests `tests/test_bl.py` (`test_all_*`).
