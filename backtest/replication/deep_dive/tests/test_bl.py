@@ -487,3 +487,16 @@ def test_dq_repeat_rules_do_not_beat_base_and_count_links_to_book_stress():
     G = pd.read_csv(f'{OUT}/bl_dq_repeat_gate.csv'); assert (G.F1.iloc[1:] <= G.F1.iloc[0] + 0.005).all()
     C = pd.read_csv(f'{OUT}/bl_dq_count.csv').set_index('variable'); assert C.spearman['delta_vs_side'] > 0.2 and C.p['delta_vs_side'] < 0.05 / 19 and C.p['itm_short'] < 0.05 / 19
     R = json.load(open(f'{OUT}/bl_summary_dq2.json')); assert R['new_bar_extreme'] > 0.85 and R['still_beyond_channel'] > 0.85
+
+
+# ---- combined D-1 selling reconstruction: bl_all_* ----
+def test_all_scheduled_solved_reactive_precise_solo_open():
+    T = pd.read_csv(f'{OUT}/bl_all_sells_type.csv'); t = T[T.tolerance_min == 1].set_index('sell_type')
+    assert t.F1['scheduled'] > 0.95 and t.strike_exact_of_matched['scheduled'] > 0.9 and t.precision['reactive'] > 0.85 and t.recall['reactive'] < 0.7 and t.F1['solo'] < 0.4
+    C = pd.read_csv(f'{OUT}/bl_all_sells_combined.csv'); c = C[C.tolerance_min == 1].set_index('model'); assert 0.55 < c.F1['all three rules vs all D-1 sells'] < 0.75 and c.precision['scheduled + reactive only vs all D-1 sells'] > 0.95
+    R = json.load(open(f'{OUT}/bl_summary_all1.json')); assert abs(sum(R['actual_share'].values()) - 1) < 1e-9 and R['actual_share']['solo'] > 0.3
+
+
+def test_all_solo_rule_variants_stay_weak():
+    S = pd.read_csv(f'{OUT}/bl_all_solo_rules.csv'); assert S.F1.max() < 0.5
+    W = pd.read_csv(f'{OUT}/bl_all_solo_where.csv').set_index('hour_block'); assert W.share['15:00-15:30'] > 0.2

@@ -42,3 +42,5 @@ Reactive-pair book-state and pace study (plan `BODY_REACTIVE_BOOK_PLAN.md`, repo
 Reactive-pair 30-minute clock study (report `BODY_REACTIVE_CLOCK.md`; exploratory, no plan): `bl_clk_sim.py` → `bl_clk_scan.py` → `bl_clk_chan.py` → `bl_clk_refine.py` → `bl_clk_bars.py` → `bl_clk_repeat.py` → `bl_clk_wings.py` → `bl_clk_wingstate.py` → `bl_clk_example.py` → `make_clk_report.py` (needs the trigger, tracker and book study outputs).
 
 Reactive-pair decoding with true one-minute OHLC (report `BODY_REACTIVE_DECODE.md`; exploratory): `bl_ohlc.py` → `bl_dq_ohlc.py` → `bl_dq_repeat_desc.py` → `bl_dq_repeat_sim.py` → `bl_dq_gates.py` (slow) → `bl_dq_tune.py` → `bl_dq_repeat_gate.py` → `bl_dq_final.py` → `bl_dq_count.py` → `bl_dq_fig.py` → `make_dq_report.py`.
+
+Combined D-1 selling reconstruction (report `D1_SELLING_RECONSTRUCTION.md`): `bl_all_sells.py` → `bl_all_solo.py` → `bl_all_fig.py` → `make_all_report.py` (needs the decoding outputs).

@@ -1,0 +1,17 @@
+price,lookback_min,window,actual,predicted,matched,precision,recall,F1
+close,5,full day,1676,5692,862,0.1514,0.5143,0.234
+close,5,until 15:00,1209,5290,742,0.1403,0.6137,0.2283
+close,15,full day,1676,3082,745,0.2417,0.4445,0.3132
+close,15,until 15:00,1209,2850,646,0.2267,0.5343,0.3183
+close,30,full day,1676,2022,646,0.3195,0.3854,0.3494
+close,30,until 15:00,1209,1855,565,0.3046,0.4673,0.3688
+close,60,full day,1676,1275,533,0.418,0.318,0.3612
+close,60,until 15:00,1209,1159,470,0.4055,0.3888,0.397
+true high/low (intrabar),5,full day,1676,5920,914,0.1544,0.5453,0.2407
+true high/low (intrabar),5,until 15:00,1209,5496,787,0.1432,0.651,0.2348
+true high/low (intrabar),15,full day,1676,3293,830,0.252,0.4952,0.3341
+true high/low (intrabar),15,until 15:00,1209,3033,717,0.2364,0.5931,0.338
+true high/low (intrabar),30,full day,1676,2154,745,0.3459,0.4445,0.389
+true high/low (intrabar),30,until 15:00,1209,1965,651,0.3313,0.5385,0.4102
+true high/low (intrabar),60,full day,1676,1367,636,0.4653,0.3795,0.418
+true high/low (intrabar),60,until 15:00,1209,1237,565,0.4568,0.4673,0.462
