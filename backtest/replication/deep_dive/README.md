@@ -44,3 +44,5 @@ Reactive-pair 30-minute clock study (report `BODY_REACTIVE_CLOCK.md`; explorator
 Reactive-pair decoding with true one-minute OHLC (report `BODY_REACTIVE_DECODE.md`; exploratory): `bl_ohlc.py` → `bl_dq_ohlc.py` → `bl_dq_repeat_desc.py` → `bl_dq_repeat_sim.py` → `bl_dq_gates.py` (slow) → `bl_dq_tune.py` → `bl_dq_repeat_gate.py` → `bl_dq_final.py` → `bl_dq_count.py` → `bl_dq_fig.py` → `make_dq_report.py`.
 
 Combined D-1 selling reconstruction (report `D1_SELLING_RECONSTRUCTION.md`): `bl_all_sells.py` → `bl_all_solo.py` → `bl_all_fig.py` → `make_all_report.py` (needs the decoding outputs).
+
+Solo decode and reactive entry size (plan `BODY_SOLO_DECODE_PLAN.md`, report `BODY_SOLO_DECODE.md`): `bl_sd_build.py` → `bl_sd_scan.py` → `bl_sd_state.py` → `bl_sd_balance.py` → `bl_sd_ladder.py` → `bl_sd_tilt.py` → `bl_sd_spotladder.py` → `bl_sd_reactlots.py` → `bl_sd_combined.py` → `bl_sd_classes.py` → `bl_sd_late.py` → `bl_sd_fig.py` → `make_sd_report.py` (then rerun `make_all_report.py`).

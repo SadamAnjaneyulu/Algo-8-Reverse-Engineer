@@ -1,0 +1,154 @@
+{
+ "rows": [
+  {
+   "model": "pairs only, 1 per fire; no solo",
+   "stream": "reactive",
+   "real_lots": 754,
+   "model_lots": 458,
+   "precision": 0.8996,
+   "recall": 0.5464,
+   "F1": 0.6799,
+   "params": "[(1.0, np.float64(0.61), np.float64(1.82)), (1.0, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "pairs only, 1 per fire; no solo",
+   "stream": "solo",
+   "real_lots": 1508,
+   "model_lots": 0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "F1": 0.0,
+   "params": "[(1.0, np.float64(0.61), np.float64(1.82)), (1.0, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "pairs only, 1 per fire; no solo",
+   "stream": "all",
+   "real_lots": 4384,
+   "model_lots": 2570,
+   "precision": 0.986,
+   "recall": 0.578,
+   "F1": 0.7288,
+   "params": "[(1.0, np.float64(0.61), np.float64(1.82)), (1.0, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ pairs sized by break depth",
+   "stream": "reactive",
+   "real_lots": 754,
+   "model_lots": 474,
+   "precision": 0.8987,
+   "recall": 0.565,
+   "F1": 0.6938,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ pairs sized by break depth",
+   "stream": "solo",
+   "real_lots": 1508,
+   "model_lots": 0,
+   "precision": 0.0,
+   "recall": 0.0,
+   "F1": 0.0,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ pairs sized by break depth",
+   "stream": "all",
+   "real_lots": 4384,
+   "model_lots": 2586,
+   "precision": 0.9853,
+   "recall": 0.5812,
+   "F1": 0.7311,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ attached favourable extras by depth",
+   "stream": "reactive",
+   "real_lots": 754,
+   "model_lots": 474,
+   "precision": 0.8987,
+   "recall": 0.565,
+   "F1": 0.6938,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ attached favourable extras by depth",
+   "stream": "solo",
+   "real_lots": 1508,
+   "model_lots": 233,
+   "precision": 0.6395,
+   "recall": 0.0988,
+   "F1": 0.1712,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ attached favourable extras by depth",
+   "stream": "all",
+   "real_lots": 4384,
+   "model_lots": 2819,
+   "precision": 0.9574,
+   "recall": 0.6156,
+   "F1": 0.7494,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ stand-alone solo ladder (fresh 60-min extreme, 0.2-step ladder)",
+   "stream": "reactive",
+   "real_lots": 754,
+   "model_lots": 474,
+   "precision": 0.8987,
+   "recall": 0.565,
+   "F1": 0.6938,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ stand-alone solo ladder (fresh 60-min extreme, 0.2-step ladder)",
+   "stream": "solo",
+   "real_lots": 1508,
+   "model_lots": 1214,
+   "precision": 0.5222,
+   "recall": 0.4204,
+   "F1": 0.4658,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "+ stand-alone solo ladder (fresh 60-min extreme, 0.2-step ladder)",
+   "stream": "all",
+   "real_lots": 4384,
+   "model_lots": 3800,
+   "precision": 0.8437,
+   "recall": 0.7313,
+   "F1": 0.7835,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "stand-alone solo ladder only (no attached extras)",
+   "stream": "reactive",
+   "real_lots": 754,
+   "model_lots": 474,
+   "precision": 0.8987,
+   "recall": 0.565,
+   "F1": 0.6938,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "stand-alone solo ladder only (no attached extras)",
+   "stream": "solo",
+   "real_lots": 1508,
+   "model_lots": 981,
+   "precision": 0.5596,
+   "recall": 0.3641,
+   "F1": 0.4411,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  },
+  {
+   "model": "stand-alone solo ladder only (no attached extras)",
+   "stream": "all",
+   "real_lots": 4384,
+   "model_lots": 3567,
+   "precision": 0.8713,
+   "recall": 0.7089,
+   "F1": 0.7818,
+   "params": "[(0.4, np.float64(0.61), np.float64(1.82)), (0.4, np.float64(0.98), np.float64(0.98))]"
+  }
+ ]
+}

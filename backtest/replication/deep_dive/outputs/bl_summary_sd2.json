@@ -1,0 +1,76 @@
+{
+ "auc": [
+  {
+   "variable": "last_ratio_prev",
+   "AUC": 0.4438,
+   "AUC_even": 0.4483,
+   "AUC_odd": 0.4395,
+   "median_events": 1.0023,
+   "median_controls": 1.0072
+  },
+  {
+   "variable": "last_ratio_ext",
+   "AUC": 0.2745,
+   "AUC_even": 0.2709,
+   "AUC_odd": 0.2757,
+   "median_events": 0.9426,
+   "median_controls": 0.9872
+  },
+  {
+   "variable": "min_since_last",
+   "AUC": 0.2952,
+   "AUC_even": 0.2993,
+   "AUC_odd": 0.292,
+   "median_events": 1.7167,
+   "median_controls": 6.6995
+  },
+  {
+   "variable": "spot_move_since_last",
+   "AUC": 0.6831,
+   "AUC_even": 0.6816,
+   "AUC_odd": 0.6846,
+   "median_events": 0.08,
+   "median_controls": -0.0004
+  },
+  {
+   "variable": "own_book",
+   "AUC": 0.2594,
+   "AUC_even": 0.2524,
+   "AUC_odd": 0.2616,
+   "median_events": 0.804,
+   "median_controls": 0.9536
+  },
+  {
+   "variable": "other_book",
+   "AUC": 0.7474,
+   "AUC_even": 0.7564,
+   "AUC_odd": 0.7397,
+   "median_events": 1.1623,
+   "median_controls": 0.9521
+  },
+  {
+   "variable": "delta_toward",
+   "AUC": 0.4262,
+   "AUC_even": 0.4653,
+   "AUC_odd": 0.4045,
+   "median_events": -1.7616,
+   "median_controls": -0.0221
+  },
+  {
+   "variable": "imbalance",
+   "AUC": 0.6298,
+   "AUC_even": 0.619,
+   "AUC_odd": 0.6354,
+   "median_events": 8.0,
+   "median_controls": 0.0
+  },
+  {
+   "variable": "hour",
+   "AUC": 0.5554,
+   "AUC_even": 0.565,
+   "AUC_odd": 0.5481,
+   "median_events": 12.9092,
+   "median_controls": 12.3801
+  }
+ ]
+}

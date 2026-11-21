@@ -14,6 +14,9 @@
 
 The scheduled and reactive rules alone are almost never wrong (precision 99%), but they cover only 54% of the lots sold on D-1. **The open piece is the solo sells — 38% of everything sold on D-1.**
 
+## 0B. Latest (after the solo decode, `BODY_SOLO_DECODE.md`)
+With reactive entries sized by break depth, their favourable-side extra lots, and the stand-alone solo drip (spot ladder at fresh 60-minute extremes), all D-1 sells together reach **F1 0.78** (deep-OTM batches excluded; parameters out-of-fold). Solo selling itself stays at F1 ≈ 0.47: understood, not decoded as a rule.
+
 ## 0A. Recalculated after recalling the earlier solo studies
 
 The first version of this check scored solo sells with the one-line rule from your notes ("fresh 15-minute high/low"). The earlier studies (`BODY_SELL_TRIGGERS_D1.md`, `BODY_SOLO_SELL_MOVE_TEST.md`, `BODY_SOLO_VARIABLE_SEARCH.md`) found more than that: a **fresh favourable extreme** over 5–60 minutes (CE on a new low, PE on a new high), the **market moving away from that right's shorts**, the **own right's book in profit and the other right's book losing**, repeated **1-lot drips**, and a strike that follows the **premium of the previous sale on that right** rather than ATM. I rebuilt those variables and re-ran the combined check with them (`bl_solo_panel.py`, `bl_solo_recon.py`, `bl_all_sells2.py`). I also separated **deep out-of-the-money batch sells** (≥ 5 strikes from ATM, premiums ₹0.3–5, orders up to 54 lots, all after 14:00, 3 cycles; 6% of D-1 sold lots) from the regular solo sells — they are a different behaviour that no solo rule describes.

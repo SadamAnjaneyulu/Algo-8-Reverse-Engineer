@@ -509,3 +509,22 @@ def test_all_recalculated_with_recalled_solo_findings():
     R = json.load(open(f'{OUT}/bl_summary_all3.json')); assert 0.04 < R['shares']['deep-OTM batch'] < 0.1 and R['deep_cycles'] == 3
     S = json.load(open(f'{OUT}/bl_summary_solo1.json')); assert S['R2_auc'] > 0.9
     K = pd.read_csv(f'{OUT}/bl_solo_strike.csv'); assert K.exact.iloc[0] > K.exact.iloc[1]
+
+
+# ---- solo decode: bl_sd_* ----
+def test_sd_bursts_and_reactive_attached_extras():
+    R = json.load(open(f'{OUT}/bl_summary_sd1.json')); lb = R['lots_per_burst']; assert R['bursts'] < 1508 and lb['1'] / sum(lb.values()) < 0.8
+    F = pd.read_csv(f'{OUT}/bl_sd_reactlots.csv'); up = F[F.side > 0]; dn = F[F.side < 0]; assert F.extra_other.sum() < 0.05 * F.extra_fav.sum() and (F.extra_fav > 0).mean() > 0.4
+    A = pd.read_csv(f'{OUT}/bl_sd_reactlots_assoc.csv').set_index(['target', 'variable']); assert A.spearman[('extra_fav', 'depth')] > 0.3 and A.p[('extra_fav', 'depth')] < 0.001 and A.spearman[('pairs', 'depth')] > 0.2
+
+
+def test_sd_state_signals_and_rejected_balancing():
+    U = pd.read_csv(f'{OUT}/bl_sd_state_auc.csv').set_index('variable'); assert U.AUC['other_book'] > 0.7 and U.AUC['own_book'] < 0.3 and U.AUC['last_ratio_ext'] < 0.3 and abs(U.AUC['delta_toward'] - 0.5) < 0.1
+    B = json.load(open(f'{OUT}/bl_summary_sd3.json')); assert B['ratio_V'] < 0.5 and B['ratio_L'] < 0.4
+
+
+def test_sd_rules_stay_below_decode_threshold_and_combined_improves():
+    S = json.load(open(f'{OUT}/bl_summary_sd6.json')); assert 0.45 < S['oof_burst']['F1'] < 0.7
+    C = pd.read_csv(f'{OUT}/bl_sd_combined.csv'); a = C[C.stream == 'all']; assert a.F1.max() > 0.76 and C[C.stream == 'solo'].F1.max() < 0.6
+    L = pd.read_csv(f'{OUT}/bl_sd_classes.csv').set_index('solo_class'); assert L.F1['after 15:00'] == 0 and 0.5 < L.share['intraday stand-alone'] < 0.7
+    T = json.load(open(f'{OUT}/bl_summary_sd10.json')); assert T['late']['heavier_share'] < T['intraday']['heavier_share'] - 0.15 and T['late']['after_buyback_share'] < 0.05

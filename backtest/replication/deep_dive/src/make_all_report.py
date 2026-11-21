@@ -2,7 +2,7 @@
 import sys, json, os; sys.path.insert(0, '.')
 import numpy as np, pandas as pd
 from bl_common import OUT
-RP = os.path.join(os.path.dirname(OUT), 'reports'); J = lambda n: json.load(open(f'{OUT}/bl_summary_{n}.json')); A1, A2, D7, A3, S1, S2 = J('all1'), J('all2'), J('dq7'), J('all3'), J('solo1'), J('solo2')
+RP = os.path.join(os.path.dirname(OUT), 'reports'); J = lambda n: json.load(open(f'{OUT}/bl_summary_{n}.json')); A1, A2, D7, A3, S1, S2, SD8 = J('all1'), J('all2'), J('dq7'), J('all3'), J('solo1'), J('solo2'), J('sd8')
 pct = lambda x, n=0: f'{100 * x:.{n}f}%'
 def table(df):
     c = list(df.columns); s = '| ' + ' | '.join(map(str, c)) + ' |\n|' + '|'.join('---' for _ in c) + '|\n'
@@ -37,6 +37,9 @@ txt = f"""# Algo 8 — D-1 selling: how much is reconstructed, all three sell ty
 | **3. Solo sells** | {pct(sh['solo'])} | **{t1.F1['solo']:.2f}** with the stated rule (precision {pct(t1.precision['solo'])}, recall {pct(t1.recall['solo'])}); best variant {best_solo.F1:.2f} | **Not solved** — the fresh-extreme rule fires far more often than the real system and misses half the real solo sells |
 
 The scheduled and reactive rules alone are almost never wrong (precision {pct(sr.precision)}), but they cover only {pct(sr.recall)} of the lots sold on D-1. **The open piece is the solo sells — {pct(sh['solo'])} of everything sold on D-1.**
+
+## 0B. Latest (after the solo decode, `BODY_SOLO_DECODE.md`)
+With reactive entries sized by break depth, their favourable-side extra lots, and the stand-alone solo drip (spot ladder at fresh 60-minute extremes), all D-1 sells together reach **F1 {max(r['F1'] for r in SD8['rows'] if r['stream'] == 'all'):.2f}** (deep-OTM batches excluded; parameters out-of-fold). Solo selling itself stays at F1 ≈ {max(r['F1'] for r in SD8['rows'] if r['stream'] == 'solo'):.2f}: understood, not decoded as a rule.
 
 ## 0A. Recalculated after recalling the earlier solo studies
 
