@@ -1,0 +1,35 @@
+{
+ "rows": [
+  {
+   "model": "one refractory K for both sides (K_same = K_opp)",
+   "configs": 28,
+   "chosen": "(70, 4, 4) / (70, 12, 12)",
+   "precision": 0.4232,
+   "recall": 0.6316,
+   "F1": 0.5068,
+   "split_F1_mean": 0.5129,
+   "split_F1_lo": 0.4677,
+   "split_F1_hi": 0.5539
+  },
+  {
+   "model": "side-specific refractory (K_same, K_opp)",
+   "configs": 288,
+   "chosen": "(70, 4, 1) / (70, 30, 12)",
+   "precision": 0.4266,
+   "recall": 0.5677,
+   "F1": 0.4871,
+   "split_F1_mean": 0.5093,
+   "split_F1_lo": 0.458,
+   "split_F1_hi": 0.5523
+  }
+ ],
+ "n_configs": 288,
+ "insample_best": {
+  "cfg": [
+   70,
+   12,
+   1
+  ],
+  "F1": 0.5372050816696915
+ }
+}

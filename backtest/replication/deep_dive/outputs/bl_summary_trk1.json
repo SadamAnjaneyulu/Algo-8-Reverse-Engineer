@@ -1,0 +1,54 @@
+{
+ "reactive pairs": {
+  "band": [
+   78,
+   55,
+   64,
+   65,
+   46,
+   69
+  ],
+  "p": 0.0029525200124552228
+ },
+ "scheduled (timetable) pairs": {
+  "band": [
+   541,
+   142,
+   0,
+   161,
+   0,
+   217
+  ],
+  "p": 0.0
+ },
+ "react_share_0_5s": 0.15649867374005305,
+ "react_share_54_59s": 0.11936339522546419,
+ "uniform_share_6s": 0.1,
+ "cycles_total": 32,
+ "cycles_with_pairs": 32,
+ "mean": 11.78125,
+ "var": 5.144153225806452,
+ "dispersion_var_over_mean": 0.43663900059895616,
+ "min_max": [
+  7,
+  15
+ ],
+ "median": 12.0,
+ "spearman_pairs_vs_la_breakout_minutes": [
+  0.07646363941267877,
+  0.6774506855137299
+ ],
+ "spearman_pairs_vs_causal_breakout_minutes": [
+  0.07944400604072036,
+  0.6655906026956903
+ ],
+ "spearman_pairs_vs_buyback_lots": [
+  0.03447219443404357,
+  0.8514244832803197
+ ],
+ "spearman_pairs_vs_scheduled_pairs": [
+  -0.1136678751427273,
+  0.5356311573694286
+ ],
+ "count_dispersion_chi2_p_lower": null
+}

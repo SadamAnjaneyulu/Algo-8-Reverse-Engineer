@@ -1,0 +1,37 @@
+{
+ "fires": 284,
+ "fires_matching": 147,
+ "precision": 0.5176056338028169,
+ "pair_minutes": 266,
+ "pair_minutes_matched": 156,
+ "recall": 0.5864661654135338,
+ "miss": [
+  {
+   "machine_near": 0,
+   "n": 110,
+   "la_breakout": 0.6091,
+   "causal_breakout": 0.4091,
+   "age_react_min": 21.4333,
+   "posprev60": 0.4876,
+   "n_react_sofar": 5.5455,
+   "minute_since_1030": 150.9545
+  },
+  {
+   "machine_near": 1,
+   "n": 156,
+   "la_breakout": 0.9167,
+   "causal_breakout": 0.4167,
+   "age_react_min": 28.0833,
+   "posprev60": 0.4792,
+   "n_react_sofar": 4.359,
+   "minute_since_1030": 135.0
+  }
+ ],
+ "precision_by_hour": {
+  "10": 0.582,
+  "11": 0.587,
+  "12": 0.519,
+  "13": 0.492,
+  "14": 0.383
+ }
+}

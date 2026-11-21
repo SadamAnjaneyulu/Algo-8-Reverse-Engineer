@@ -373,3 +373,32 @@ def test_trg_only_order_activity_block_adds_and_time_not_move_paces():
 def test_trg_refractory_is_conditional_on_breakout_and_legs_slightly_spaced():
     R = json.load(open(f'{OUT}/bl_summary_trg2.json')); r = R['refract_ratio_LA_breakout_lt5_vs_ge5']; a = R['refract_ratio_all']; assert r[2] < 0.7 and a[1] < 1 < a[2]
     L = pd.read_csv(f'{OUT}/bl_trg_leg.csv').iloc[0]; assert L.legs_with_2plus_pair_minutes < L.null_mean_legs_with_2plus and L.null_2plus_p_lower < 0.05 and L.legs_with_a_pair / L.legs < 0.5
+
+
+# ---- reactive-pair tracker study: bl_trk_* ----
+def test_trk_seconds_not_a_fixed_second_clock_and_counts_regular():
+    S = pd.read_csv(f'{OUT}/bl_trk_seconds.csv').set_index('group'); assert S.loc['reactive pairs', 'share_first_10s'] < 0.28 and S.loc['scheduled (timetable) pairs', 'share_first_10s'] > 0.4
+    R = json.load(open(f'{OUT}/bl_summary_trk1.json')); assert R['cycles_total'] == 32 and 11 < R['mean'] < 12.5 and R['dispersion_var_over_mean'] < 0.6 and abs(R['spearman_pairs_vs_la_breakout_minutes'][0]) < 0.25 and abs(R['spearman_pairs_vs_buyback_lots'][0]) < 0.25 and abs(R['spearman_pairs_vs_scheduled_pairs'][0]) < 0.3
+
+
+def test_trk_stateful_range_edge_machine_beats_stateless_and_null():
+    C = pd.read_csv(f'{OUT}/bl_trk_sim_cv.csv').set_index(['family', 'info']); m1 = C.loc[('M1', 'bar')]; m0 = C.loc[('M0', 'bar')]
+    assert m1.F1_tol1 > m1.null_F1_p99 + 0.25 and m1.precision_tol1 >= 0.4 and m1.recall_tol1 >= 0.4 and m1.side_agreement_matched > 0.95 and m1.F1_tol1 > m0.F1_tol1 + 0.1
+    assert C.loc[('M2', 'bar'), 'F1_tol1'] < 0.3 and C.loc[('M3', 'bar'), 'F1_tol1'] < 0.3 and C.loc[('M4', 'bar'), 'F1_tol1'] < m1.F1_tol1
+
+
+def test_trk_validation_random_splits_and_cross_instrument():
+    R = json.load(open(f'{OUT}/bl_summary_trk3.json')); assert R['splits']['F1_mean'] > 0.45 and R['splits']['F1_q'][0] > 0.38
+    X = pd.read_csv(f'{OUT}/bl_trk_sim2_cross.csv'); assert (X.F1 > 0.38).all() and (X.F1 > X.same_N_K1_F1 + 0.05).all()
+    C = pd.read_csv(f'{OUT}/bl_trk_sim2_cv.csv').set_index(['family', 'info']); assert C.loc[('M5', 'bar'), 'F1_tol1'] < C.loc[('M1', 'bar'), 'F1_tol1'] - 0.1 and abs(C.loc[('M7', 'bar'), 'F1_tol1'] - C.loc[('M1', 'bar'), 'F1_tol1']) < 0.03
+
+
+def test_trk_capacity_and_side_specific_spacing_are_not_decisive():
+    P = pd.read_csv(f'{OUT}/bl_trk_cap.csv').set_index('model'); base = P.loc['M1 (cap = none, kappa = 0)']; assert P.loc['M1 + cap', 'count_var_over_mean'] < 0.8 and base.count_var_over_mean > 1.2 and P.loc['M1 + cap', 'F1'] < base.F1 + 0.02 and P.loc['M1 + growing refractory', 'F1'] < base.F1 + 0.05
+    S = pd.read_csv(f'{OUT}/bl_trk_side.csv'); assert S.F1.iloc[1] < S.F1.iloc[0] + 0.02
+
+
+def test_trk_example_cycles_pairs_sit_at_the_range_edge():
+    for u in ('NIFTY', 'SENSEX'):
+        E = pd.read_csv(f'{OUT}/bl_trk_example_{u}.csv'); assert len(E) == 12 and (E.position_in_70min_range.abs() > 0.4).mean() >= 0.8 and E.machine_fire_within_1min.sum() >= 8 and (E.strike_minus_ATM_steps.abs() == 1).all()
+    F = pd.read_csv(f'{OUT}/bl_trk_fires.csv'); assert len(F) == 297 and F.pairs.sum() == 377 and (F.pairs > 1).mean() > 0.15
