@@ -7,7 +7,7 @@
 | Question | Answer | Evidence level |
 |---|---|---|
 | **Is the reactive pair a delta hedge / re-centring of the book?** | **No.** One pair adds ≈ **0.21 lot** of delta (always in the direction of the move); the book's net delta is typically ±6.6 lots and drifts to −15 / −22 lots in the example cycles **without any reset at the pairs**. Pairs are placed with the book exposed against the move 57% of the time vs 46% for random seconds at the range edge; within the edge the book-delta variable separates pairs from non-pairs at AUC 0.58. | Observed |
-| **Premium richness / vol spike, P&L, margin, distance to the book's strikes, other greeks?** | **None of them gates the pair.** Within the range-edge seconds every such variable has AUC between 0.43 and 0.58 (table in §1); adding all of them to the edge model changes the AUC by -0.006 (boosting) / +0.021 (logistic), CIs include 0. | Observed |
+| **Premium richness / vol spike, P&L, margin, distance to the book's strikes, other greeks?** | **None of them gates the pair.** Within the range-edge seconds every such variable has AUC between 0.41 and 0.58 (table in §1); adding all of them to the edge model changes the AUC by -0.006 (boosting) / +0.021 (logistic), CIs include 0. | Observed |
 | **What does show up outside price?** | **How many pairs have already been done relative to the clock — a pace.** A cycle that is *behind* the usual cumulative number of pairs fires at the range edge far more often: within the edge, AUC **0.66** (minutes) / 0.73 (seconds) for the all-pairs deficit, against 0.54 for a deficit in *open short lots* (so it is a count of entries, not exposure or margin). Hazard is 0.15–0.42 across book-delta bins but rises from 0.15 to 1.15 events per control second from the most-ahead to the most-behind pace quintile (§2). | Observed (predictive; post-hoc) |
 | **A machine with no timer?** | **Range edge AND behind a pace of one reactive entry per ~30 minutes from 10:30** reproduces the pair times better than the refractory machine: out-of-fold precision 56%, recall 57%, **F1 0.56** (±1 min; null 99th pct 0.12); with the current-minute close **same-minute F1 0.46** (was 0.14 / 0.33). Random half-splits 0.57 (0.52–0.61); fitted on one underlying/schedule version and frozen on the other 0.54–0.60. F1 is +0.058 above the refractory machine (95% CI +0.018 … +0.100). | Observed (description); mechanism **Inferred** |
 | **Is it proved to be a pace/schedule?** | **No.** Pace adds only +0.064 AUC over "time since the last pair" inside the edge (CI +0.014 … +0.112); the cumulative count follows a straight pace only marginally (fires p = 0.04, pairs not more regular than random); there is **no catch-up signature** (gap after a long gap is not shorter: 21 vs 20 min). Pace and "time since the last pair" are close relatives in this data. | Observed; mechanism **Unresolved** |
@@ -29,8 +29,8 @@ Book = all orders of every module on D-1 up to the second (flat at the open); Gr
 | P&L change, 30 min | 0.467 | 0.454 | 0.482 | 0.45 |
 | in-the-money short lots | 0.557 | 0.544 | 0.558 | 0.56 |
 
-* **Delta re-centring is ruled out on size and on timing.** A pair adds ≈ 0.21 lot vs a book of |delta| ≈ 6.6 lots (median); after the pair the median |delta| is 6.6. 56% of pairs reduce |delta| only because about half the time the book happens to be on the right side; the pair direction itself is always the move direction (100%). Book delta by quintile (within the edge) is flat or non-monotonic: events per control second 0.15, 0.42, 0.32, 0.39, 0.42.
-* **Breach of the book's outer strikes, premium/vol jumps, P&L and in-the-money lots** do not gate the pair either (non-monotonic bins, AUC ≤ 0.58 within the edge). In-the-money short lots rise then fall (0.21 → 0.46 → 0.28): an artefact of time of day, not a trigger.
+* **Delta re-centring is ruled out on size and on timing.** A pair adds ≈ 0.21 lot vs a book of |delta| ≈ 6.6 lots (median); after the pair the median |delta| is 6.6. 56% of pairs happen to reduce |delta| (about a coin flip, since the book is on the right side about half the time); the pair direction itself is always the move direction (100%). Book delta by quintile (within the edge) is flat or non-monotonic: events per control second 0.15, 0.42, 0.32, 0.39, 0.42.
+* **Breach of the book's outer strikes, premium/vol jumps, P&L and in-the-money lots** do not gate the pair either (non-monotonic bins, AUC ≤ 0.58 within the edge). In-the-money short lots are non-monotonic (events per control second 0.21 → 0.46 → 0.28), not a gate.
 * Block models (look-ahead breakout minutes, leave-one-cycle-out; edge-only AUC logistic 0.588, boosting 0.601):
 
 | block added to the edge features | logistic gain (95% CI) | boosting gain (95% CI) | logistic AUC |
@@ -148,7 +148,7 @@ Same two cycles as the tracker report (NIFTY 2026-09-08, SENSEX 2026-10-22; chos
 | Claim | Label | Basis |
 |---|---|---|
 | The reactive pair is not a delta re-centring (size 0.21 lot vs |delta| ≈ 7; book delta never reset) | **Observed** | §1, §4 |
-| Premium richness, vol spike, P&L, margin proxy, breach of book strikes do not gate the pair | **Observed** | within-edge AUC 0.43–0.58, block gains include 0 |
+| Premium richness, vol spike, P&L, margin proxy, breach of book strikes do not gate the pair | **Observed** | within-edge AUC 0.41–0.58, block gains include 0 |
 | A count-of-entries pace deficit separates pairs from non-pairs at the range edge (AUC 0.71–0.73) | **Observed (predictive, post-hoc)** | §2 |
 | Range edge AND behind a ~30-min pace reproduces the pair times (F1 0.56; 0.46 same-minute with current close) | **Observed (description)** | §3 |
 | Pace beats the refractory machine | **Observed** | F1 +0.058 (CI +0.018 … +0.100) |
