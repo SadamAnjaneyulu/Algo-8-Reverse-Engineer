@@ -701,3 +701,10 @@ def test_d0q_cycle_comparison():
     J = {c: json.load(open(f'{OUT}/bl_summary_d0q2_{c}.json')) for c in (4, 15, 26)}
     n = J[4]; assert n['D0_pairs'] > 2 * n['D1_pairs'] and n['D1_pairs_recurring_on_D0'] / n['D1_pairs'] > 0.8 and n['D1_strike_atm_share'] > 0.95 and n['D0_strike_atm_share'] > 0.95
     s = J[15]; assert s['D0_pairs'] < s['D1_pairs'] and s['D1_pairs_recurring_on_D0'] <= 3 and J[26]['D1_pairs_recurring_on_D0'] / J[26]['D1_pairs'] < 0.5
+
+
+def test_d0q_why_83():
+    D = pd.read_csv(f'{OUT}/bl_d0q_detail4.csv'); assert len(D) == 83 and (D.lots_CE == 1).all() and (D.lots_PE == 1).all() and int(D.strike_is_that_ATM.sum()) == 80
+    R3 = json.load(open(f'{OUT}/bl_summary_d0q3.json')); assert R3['cycle']['recur_in_other_cycles'] == 78 and R3['loo_pooled']['recur'] > 0.85 and R3['loo_pooled']['null'] == 0.0 and R3['loo_pooled']['recur_extra'] > 0.85
+    R4 = json.load(open(f'{OUT}/bl_summary_d0q4.json')); assert R4['D1_boundaries_not_used_on_D0'] == [] and len(R4['extra_boundaries_D0_only']) == 14 and sum(R4['decomposition'].values()) == 83 and R4['D0_boundaries_used'] == 32
+    assert all(abs(e['spot_prev_min_close'] - (e['strike'] + e['ATM_of_prev_close']) / 2) < 6 for e in R4['exceptions'])

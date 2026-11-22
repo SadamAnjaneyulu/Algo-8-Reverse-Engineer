@@ -29,5 +29,6 @@ They are not two systems. The D-1 scheduled timetable (the fixed seconds at whic
 
 
 ## Caveats
+* The exact split of the 83 NIFTY pairs, with every time listed, is in `D0_SCHEDULED_WHY.md`.
 * One cycle per group; the patterns hold across the other cycles of the group (`D0_SCHEDULED.md` §1, §5).
 * "Same clock time" means within ±3 s of a D-1 pair of the same cycle.

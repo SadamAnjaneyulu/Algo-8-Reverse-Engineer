@@ -1,0 +1,52 @@
+{
+ "loo_pooled": {
+  "pairs": 1044,
+  "recur": 0.8687739463601533,
+  "null": 0.0,
+  "recur_on_D1_clock": 0.8350253807106599,
+  "recur_extra": 0.8892307692307693,
+  "null_extra": 0.0,
+  "n_on_D1_clock": 394,
+  "n_extra": 650
+ },
+ "loo_by_group_extra": {
+  "NIFTY V1": {
+   "pairs": 328,
+   "recur": 0.9786585365853658
+  },
+  "NIFTY V2": {
+   "pairs": 65,
+   "recur": 0.18461538461538463
+  },
+  "SENSEX V1": {
+   "pairs": 71,
+   "recur": 1.0
+  },
+  "SENSEX V2": {
+   "pairs": 186,
+   "recur": 0.9354838709677419
+  }
+ },
+ "cycle": {
+  "cid": 4,
+  "und": "NIFTY",
+  "expiry": "2026-07-28",
+  "pairs": 83,
+  "lots_in_scheduled_pairs": 166,
+  "total_D0_body_sell_lots": 325,
+  "pairs_with_1_lot": 83,
+  "pairs_with_more_lots": 0,
+  "on_D1_clock": 30,
+  "extra": 53,
+  "recur_in_other_cycles": 78,
+  "recur_extra": 48,
+  "strike_is_ATM": 80,
+  "same_second_groups": {
+   "09:16:19": 4,
+   "10:26:04": 2,
+   "13:01:01": 2,
+   "14:01:01": 2
+  },
+  "ce_to_pe_gap_s_median": 0.0
+ }
+}
