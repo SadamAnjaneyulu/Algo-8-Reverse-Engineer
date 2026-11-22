@@ -1,0 +1,425 @@
+{
+ "n": 2430,
+ "ratio_q": {
+  "0.1": 0.0197,
+  "0.25": 0.0231,
+  "0.5": 0.0247,
+  "0.75": 0.0259,
+  "0.9": 0.0297
+ },
+ "ratio_q_by_und": {
+  "NIFTY": {
+   "0.25": 0.0231,
+   "0.5": 0.0247,
+   "0.75": 0.0259
+  },
+  "SENSEX": {
+   "0.25": 0.0232,
+   "0.5": 0.0246,
+   "0.75": 0.0258
+  }
+ },
+ "null_exact_best": 0.4090534979423868,
+ "table": [
+  {
+   "reference": "body_fill",
+   "wing_price": "calibrated",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5325,
+   "within1": 0.7765
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "calibrated",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5317,
+   "within1": 0.777
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "calibrated",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5317,
+   "within1": 0.777
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "calibrated",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5284,
+   "within1": 0.7778
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "open",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5243,
+   "within1": 0.7848
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "high",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5235,
+   "within1": 0.7811
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "high",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5214,
+   "within1": 0.7807
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "high",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5202,
+   "within1": 0.7815
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "prevclose",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5189,
+   "within1": 0.7827
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "high",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5185,
+   "within1": 0.7835
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "open",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5165,
+   "within1": 0.784
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "open",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5156,
+   "within1": 0.7835
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "prevclose",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5156,
+   "within1": 0.7823
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "open",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5144,
+   "within1": 0.7831
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "prevclose",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5123,
+   "within1": 0.7811
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "prevclose",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5119,
+   "within1": 0.7823
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "low",
+   "rule": "nearest_log",
+   "k_fold": "0.024/0.024",
+   "exact": 0.5107,
+   "within1": 0.7778
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "low",
+   "rule": "nearest",
+   "k_fold": "0.024/0.024",
+   "exact": 0.5082,
+   "within1": 0.7774
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "calibrated",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.5078,
+   "within1": 0.7922
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "open",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.5066,
+   "within1": 0.7955
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "calibrated",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.5062,
+   "within1": 0.7893
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "low",
+   "rule": "nearest_log",
+   "k_fold": "0.024/0.024",
+   "exact": 0.5053,
+   "within1": 0.779
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "prevclose",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.5016,
+   "within1": 0.7922
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "low",
+   "rule": "nearest",
+   "k_fold": "0.024/0.024",
+   "exact": 0.5008,
+   "within1": 0.7798
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "open",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.5004,
+   "within1": 0.793
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "prevclose",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.4992,
+   "within1": 0.7897
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "low",
+   "rule": "floor",
+   "k_fold": "0.025/0.025",
+   "exact": 0.4979,
+   "within1": 0.7938
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "high",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.4947,
+   "within1": 0.7934
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "low",
+   "rule": "floor",
+   "k_fold": "0.025/0.025",
+   "exact": 0.4934,
+   "within1": 0.7955
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "high",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.4926,
+   "within1": 0.793
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "close",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.4868,
+   "within1": 0.7728
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "close",
+   "rule": "nearest",
+   "k_fold": "0.025/0.025",
+   "exact": 0.4831,
+   "within1": 0.7728
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "close",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.4827,
+   "within1": 0.7724
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "high",
+   "rule": "ceil",
+   "k_fold": "0.024/0.024",
+   "exact": 0.4823,
+   "within1": 0.7588
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "close",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.4811,
+   "within1": 0.7844
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "close",
+   "rule": "floor",
+   "k_fold": "0.026/0.026",
+   "exact": 0.4807,
+   "within1": 0.786
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "close",
+   "rule": "nearest_log",
+   "k_fold": "0.025/0.025",
+   "exact": 0.4782,
+   "within1": 0.7712
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "high",
+   "rule": "ceil",
+   "k_fold": "0.024/0.024",
+   "exact": 0.4737,
+   "within1": 0.7584
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "low",
+   "rule": "ceil",
+   "k_fold": "0.023/0.023",
+   "exact": 0.472,
+   "within1": 0.7584
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "low",
+   "rule": "ceil",
+   "k_fold": "0.023/0.023",
+   "exact": 0.47,
+   "within1": 0.7593
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "calibrated",
+   "rule": "ceil",
+   "k_fold": "0.024/0.024",
+   "exact": 0.4695,
+   "within1": 0.7547
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "prevclose",
+   "rule": "ceil",
+   "k_fold": "0.023/0.023",
+   "exact": 0.463,
+   "within1": 0.7593
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "calibrated",
+   "rule": "ceil",
+   "k_fold": "0.024/0.024",
+   "exact": 0.463,
+   "within1": 0.7523
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "prevclose",
+   "rule": "ceil",
+   "k_fold": "0.023/0.023",
+   "exact": 0.4609,
+   "within1": 0.7613
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "open",
+   "rule": "ceil",
+   "k_fold": "0.023/0.023",
+   "exact": 0.4556,
+   "within1": 0.7572
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "open",
+   "rule": "ceil",
+   "k_fold": "0.023/0.023",
+   "exact": 0.4494,
+   "within1": 0.7609
+  },
+  {
+   "reference": "body_ref",
+   "wing_price": "close",
+   "rule": "ceil",
+   "k_fold": "0.023/0.023",
+   "exact": 0.4403,
+   "within1": 0.7469
+  },
+  {
+   "reference": "body_fill",
+   "wing_price": "close",
+   "rule": "ceil",
+   "k_fold": "0.023/0.024",
+   "exact": 0.414,
+   "within1": 0.7539
+  },
+  {
+   "reference": "spot",
+   "wing_price": "-",
+   "rule": "sigma distance z",
+   "k_fold": "per und, out-of-fold",
+   "exact": 0.1181,
+   "within1": 0.3276
+  },
+  {
+   "reference": "spot",
+   "wing_price": "-",
+   "rule": "fixed offset from sold strike (steps)",
+   "k_fold": "per und, out-of-fold",
+   "exact": 0.0868,
+   "within1": 0.2588
+  }
+ ]
+}

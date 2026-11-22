@@ -549,3 +549,10 @@ def test_auc_all_d1_selling():
     assert ((X.sched_share >= 0) & (X.sched_share <= 1)).all()
     A = pd.read_csv(f'{OUT}/bl_auc_all.csv').set_index(['variant', 'model']).AUC; assert A[('A same-minute (primary)', 'gb')] > 0.85 and A[('B causal (market lagged 1 min)', 'gb')] < A[('A same-minute (primary)', 'gb')]
     B = pd.read_csv(f'{OUT}/bl_auc_all2.csv').set_index('variant'); assert abs(B.AUC['A0 same-minute, no book state'] - A[('A same-minute (primary)', 'gb')]) < 0.01 and B.AUC['timetable + clock only'] < 0.85
+
+
+def test_hg_long_side_controller_strike_lump():
+    H1 = json.load(open(f'{OUT}/bl_summary_hg1.json')); assert H1['quiet_balanced_share'] > 0.97 and H1['close_gap_equals_v'] > 0.9
+    H = json.load(open(f'{OUT}/bl_summary_hg345.json')); assert H['L3']['buy']['equals_gap'] > 0.95 and H['L4']['outermost'] > H['L4']['chance'] + 0.1 and H['L4']['innermost'] < 0.05
+    T = pd.read_csv(f'{OUT}/bl_hg_strike2.csv').set_index('reference'); assert T.exact['atm_px'] > T.null_same_slot_exact['atm_px'] + 0.1 and T.within1['atm_px'] > 0.9 and T.exact['atm_px'] > T.exact['body_fill']
+    L = json.load(open(f'{OUT}/bl_summary_hg6b.json')); assert L['share_lump_opposes_book_delta'] > 0.85 and L['ratio_q']['0.5'] < 0.2
