@@ -590,3 +590,10 @@ def test_bb_buyback_decode():
     TF = pd.read_csv(f'{OUT}/bl_bb_tf.csv'); assert TF[(TF.cls == 'body_buyback')].F1.max() < 0.65
     O1 = pd.read_csv(f'{OUT}/bl_fr_overall.csv').iloc[0]; O2 = pd.read_csv(f'{OUT}/bl_fr2_overall.csv').iloc[0]; assert O2.F1 >= O1.F1 - 0.005
     R = json.load(open(f'{OUT}/bl_summary_rep1.json')); assert all(c['rep_max'] == 0 for c in R['chosen'])
+
+
+def test_bs_buyback_second_pass():
+    E = pd.read_csv(f'{OUT}/bl_bb_events.csv'); assert 0.8 < (E.r_ref_min > 1).mean() < 0.95
+    X = pd.read_pickle(f'{OUT}/bl_bs_panel.pkl.gz'); g = X[(X.gate == 1) & (X.ratio_h >= 1.7)]; assert g[g.don60 == 1].y.mean() > 2 * g[g.don60 == 0].y.mean()
+    P = pd.read_csv(f'{OUT}/bl_bs_price.csv').set_index('price'); assert P.F1['high'] >= P.F1.max() - 1e-9
+    AB = pd.read_csv(f'{OUT}/bl_bs_ab.csv'); assert AB[(AB['mode'] == 'tf_bb') & (AB.cls == 'body_buyback')].F1.iloc[0] < P.F1['high']

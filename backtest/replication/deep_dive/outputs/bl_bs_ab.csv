@@ -1,0 +1,15 @@
+variant,cls,real_lots,sim_lots,matched,precision,recall,F1,F1_strict,F1_within1,strike_exact_of_matched,within1_of_matched,mode
+A OR B (tf_bb),body_sell,4671,4671,4671,1.0,1.0,1.0,1.0,1.0,1.0,1.0,tf_bb
+A OR B (tf_bb),body_buyback,1324,1029,666,0.6472,0.503,0.5661,0.3179,0.4479,0.5616,0.7913,tf_bb
+A OR B (tf_bb),wing_buy,4336,4402,3974,0.9028,0.9165,0.9096,0.4923,0.81,0.5413,0.8905,tf_bb
+A OR B (tf_bb),wing_sell,1192,952,594,0.6239,0.4983,0.5541,0.2826,0.4562,0.5101,0.8232,tf_bb
+A OR B (tf_bb),opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402,tf_bb
+A OR B (tf_bb),lump,1489,1656,1061,0.6407,0.7126,0.6747,0.2792,0.559,0.4138,0.8285,tf_bb
+A OR B (tf_bb),not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,,tf_bb
+A OR B (free),body_sell,4671,3799,3206,0.8439,0.6864,0.757,0.6026,0.7178,0.796,0.9482,free
+A OR B (free),body_buyback,1324,1037,653,0.6297,0.4932,0.5532,0.2897,0.438,0.5237,0.7917,free
+A OR B (free),wing_buy,4336,3536,2838,0.8026,0.6545,0.721,0.4441,0.6677,0.6159,0.926,free
+A OR B (free),wing_sell,1192,966,580,0.6004,0.4866,0.5375,0.2725,0.43,0.5069,0.8,free
+A OR B (free),opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402,free
+A OR B (free),lump,1489,1264,883,0.6986,0.593,0.6415,0.2703,0.5347,0.4213,0.8335,free
+A OR B (free),not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,,free
