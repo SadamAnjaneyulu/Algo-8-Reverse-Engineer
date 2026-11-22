@@ -41,16 +41,16 @@ def sim_cycle(i, P, mode='free', late=False):
     for j, s, dep in react_fires(i, d, P.get('rep_max', 0), P.get('rep_gap', 2)):
         k = atm(c[cj(j - 1)]) + s * step; n = min(1 + int(dep // P['tp']), 3)
         for cp in ('CE', 'PE'): add(j, cp, k, n, 'reactive', s); ev[cp].append(j)
-        ex = int(np.clip(round(P['a'] + P['b'] * dep), 0, 7))
+        ex = int(np.clip(round(P.get('ex_scale', 1.0) * (P['a'] + P['b'] * dep)), 0, 7))
         if ex: add(j, 'PE' if s > 0 else 'CE', k, ex, 'extra', s)
     # solo ladder (spot ladder X = 0.2 step, fresh 60-min extreme gate), reference reset at scheduled/reactive events
-    X = 0.2; st = step * X; lad = {}
+    X = P.get('lad_X', 0.2); st = step * X; lad = {}; GATE = P.get('lad_gate', 60)
     for cp in ('CE', 'PE'):
         evs = sorted(set(ev[cp])); ptr = 0; refp = None
         for j in range(1, 375):
             while ptr < len(evs) and evs[ptr] < j: refp = c[max(evs[ptr] - 1, 0)]; ptr += 1
             if refp is None: continue
-            if not ((l[j] < l[max(j - 60, 0):j].min()) if cp == 'CE' else (h[j] > h[max(j - 60, 0):j].max())): continue
+            if not ((l[j] < l[max(j - GATE, 0):j].min()) if cp == 'CE' else (h[j] > h[max(j - GATE, 0):j].max())): continue
             if cp == 'CE' and l[j] < refp - st: lad.setdefault(j, []).append(cp); refp = refp - st * max(1, int((refp - l[j]) // st))
             elif cp == 'PE' and h[j] > refp + st: lad.setdefault(j, []).append(cp); refp = refp + st * max(1, int((h[j] - refp) // st))
     late_fires = {}
@@ -63,7 +63,7 @@ def sim_cycle(i, P, mode='free', late=False):
         for q in real[(real.module == 'num') & real.role.isin(['open_short', 'cover_short'])].itertuples():
             ty_, sd0 = lab_.get((round(q.te, 3), q.cp, int(q.strike)), ('solo', 0)); rb.setdefault(q.j, []).append((q.role, q.cp, int(q.strike), int(q.lots), q.px_avg, ty_, sd0))
         for q in real[(real.module == 'num') & real.role.isin(['open_long', 'close_long'])].itertuples(): rl.setdefault(q.j, []).append((q.role, q.cp, int(q.strike), int(q.lots)))
-    shorts = {}; wings = {}; lump = {}; orders = []; last_px = {'CE': None, 'PE': None}; snaps = []; Pl = P['lump_t'][regime(r.d1)]
+    owset = set(); shorts = {}; wings = {}; lump = {}; orders = []; last_px = {'CE': None, 'PE': None}; snaps = []; Pl = P['lump_t'][regime(r.d1)]
     rec_ = lambda cls, cp, j, k, n, typ='': orders.append(dict(cid=i, cls=cls, cp=cp, j=j, strike=int(k), lots=int(n), step=step, typ=typ))
     for j in range(1, JMAX):
         # opening wings (free mode): all at j = 1
@@ -71,7 +71,7 @@ def sim_cycle(i, P, mode='free', late=False):
             off = P['open_off'][(und, r.version)]
             for cp in ('CE', 'PE'):
                 kk = atm(c[0]) + (1 if cp == 'CE' else -1) * off * step; kk = float(K[np.argmin(np.abs(K - kk))])
-                for _ in range(3): wings[(cp, kk)] = wings.get((cp, kk), 0) + 1; rec_('opening_wings', cp, j, kk, 1)
+                for _ in range(3): wings[(cp, kk)] = wings.get((cp, kk), 0) + 1; rec_('opening_wings', cp, j, kk, 1); owset.add((cp, kk))
         bodyorders = []
         if mode in ('free', 'tf_bb'):
             # buy-backs first. Default (P['bb_price'] = 'close', no velocity / cluster): previous completed close >= theta x own entry price.
@@ -228,11 +228,11 @@ def sim_cycle(i, P, mode='free', late=False):
                     ex = -gap; sg = 1 if cp == 'CE' else -1; held = sorted([(kk, v) for (c2, kk), v in wings.items() if c2 == cp and v > 0], key=lambda t: -sg * (t[0] - c[cj(j - 1)]))
                     for kk, v in held:
                         if ex <= 0: break
-                        n = min(v, ex); wings[(cp, kk)] -= n; ex -= n; rec_('wing_sell', cp, j, kk, n)
+                        n = min(v, ex); wings[(cp, kk)] -= n; ex -= n; rec_('body_long_close' if (P.get('ow_close') and (cp, kk) in owset) else 'wing_sell', cp, j, kk, n)
         # overnight lump
-        if j == Pl:
+        if j == Pl + int(P.get('lump_dt', 0)):
             Sce = sum(len(v) for (c2, _), v in shorts.items() if c2 == 'CE'); Spe = sum(len(v) for (c2, _), v in shorts.items() if c2 == 'PE'); cp = 'CE' if Sce > Spe else 'PE'; Sh = max(Sce, Spe)
-            n = int(round(P['lump_ratio'][und] * Sh))
+            n = int(round(P.get('lump_scale', 1.0) * P['lump_ratio'][und] * Sh))
             if n > 0:
                 S0 = c[cj(j - 1)]; a = np.argmin(np.abs(K - S0)); sig = (op[('CE', 'close')][a, cj(j - 1)] + op[('PE', 'close')][a, cj(j - 1)]) / (0.7979 * S0); sg = 1 if cp == 'CE' else -1
                 kk = float(K[np.argmin(np.abs(K - S0 * (1 + sg * P['lump_z'] * sig)))]); lump[(cp, kk)] = n; rec_('lump', cp, j, kk, n)
