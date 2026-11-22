@@ -65,3 +65,5 @@ D0 inventory (plan `D0_PLAN.md`, report `D0_INVENTORY.md`): `bl_d0_data.py` (D0 
 D0 chunk 1, body sells (plan `D0_SELLS_PLAN.md` with addenda 1b/1c, report `D0_SELLS.md`): `bl_d0s_label.py` → `bl_d0s_tests.py` → `bl_d0s_tt.py` → `bl_d0s_solo.py` → `bl_d0s_auc.py` (~1.5 min) → `make_d0s_report.py`; `make_d0inv_report.py` again for the inventory correction note.
 
 D0 chunk 2, body buy-backs (plan `D0_BUYBACKS_PLAN.md` with addenda 2b/2c, report `D0_BUYBACKS.md`): `bl_d0b_ledger.py` → `bl_d0b_tests.py` (~2 min) → `bl_d0b_mach.py` → `bl_d0b_auc.py` (~1 min) → `bl_d0b_side.py` (~7 min) → `bl_d0b_burst.py` → `bl_d0b_carry.py` (~3 min) → `make_d0b_report.py`.
+
+D0 chunk 3, hedge wings / lump / body-stream longs (plan `D0_HEDGE_PLAN.md` with addendum 3b, report `D0_HEDGE.md`): `bl_d0h_tests.py` → `bl_d0h_more.py` (~2 min) → `make_d0h_report.py`.

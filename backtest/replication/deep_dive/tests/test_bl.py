@@ -658,3 +658,10 @@ def test_d0b_machines_and_side():
     assert M['K2a refit theta and price'] > M['K1 D-1 stop unchanged (high >= 1.6x)'] and fin > 1.5 * M['null: rate-matched random minutes'] and fin > 2 * M['null: final machine shifted +15 min']
     S = pd.read_csv(f'{OUT}/bl_d0b_side_auc.csv'); assert not ((S.AUC_half_even >= 0.7) & (S.AUC_half_odd >= 0.7)).any()          # no side-level trigger passes the pre-set bar
     A = pd.read_csv(f'{OUT}/bl_d0b_auc.csv').set_index('variant').AUC; assert 0.78 < A['A same-minute market + book'] < 0.85 and A['clock only'] < A['B completed bars (causal)']
+
+
+def test_d0h_controller_and_lump():
+    R1 = json.load(open(f'{OUT}/bl_summary_d0h1.json')); h = R1['H1']; assert h['buy']['equals_gap'] > 0.9 and h['buy']['equals_gap_excl_v'] < 0.6 and h['sell']['equals_gap'] > 0.85
+    assert 3 < R1['H4_dt_body_q_buy'][2] < 5 and R1['H2']['d1_rule_2p5']['exact'] > 3 * 0.1 and all(o['X'] == 0.025 for o in R1['H2']['oof'])
+    R2 = json.load(open(f'{OUT}/bl_summary_d0h2.json')); v = R2['3b_T1']['v_']; assert v['lots_while_L_gt_S'] > 0.99 and v['le_excess'] > 0.98
+    A = pd.read_csv(f'{OUT}/bl_d0h_auc.csv'); assert (A[A.variant.str.startswith('teacher')].AUC > 0.97).all() and (A[A.variant.str.startswith('causal')].AUC > A[A.variant == 'clock only'].AUC.values).all()

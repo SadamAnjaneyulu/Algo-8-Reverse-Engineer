@@ -1,0 +1,4 @@
+rule,F1,precision,recall,sim_lots,real_lots,null_shift30_F1
+"fixed clock (training median first-sale minute), all lump lots",0.0,0.0,0.0,1412,843,0.0
+"sell when L > S on that right (event-level, real book)",0.04434589800443459,0.03541076487252125,0.05931198102016608,1412,843,0.004434589800443459
+all lump lots at the end of body activity / the stop,0.04878048780487805,0.03895184135977337,0.06524317912218268,1412,843,0.0
