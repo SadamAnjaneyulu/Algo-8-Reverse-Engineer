@@ -141,8 +141,13 @@ def sim_cycle(i, P, mode='free', late=False):
                     shorts[(cp, k)] = keep
             # sells
             sells = [list(x) for x in plan.get(j, [])] if mode == 'free' else [[cp_, k_, n_, ty_, p_, sd0, 'real'] for role_, cp_, k_, n_, p_, ty_, sd0 in rb.get(j, []) if role_ == 'open_short']
-            for cp in (lad.get(j, []) if mode == 'free' else []): sells.append([cp, None, 1, 'solo'])
-            for cp in (late_fires.get(j, []) if mode == 'free' else []): sells.append([cp, None, 1, 'late'])
+            for cp in (lad.get(j, []) if mode == 'free' else []):
+                nS = 1
+                if P.get('solo_b') is not None:                                   # solo lots per ladder fire grow with the depth beyond the 60-min extreme (plan D1_LOTS_PLAN.md)
+                    dep_ = ((l[max(j - 60, 0):j].min() - l[j]) if cp == 'CE' else (h[j] - h[max(j - 60, 0):j].max())) / step
+                    nS = int(np.clip(round(P.get('solo_a', 1.0) + P['solo_b'] * max(dep_, 0.0)), 1, 8))
+                sells.append([cp, None, nS, 'solo'])
+            for cp in (late_fires.get(j, []) if mode == 'free' else []): sells.append([cp, None, int(P.get('late_n', 1)), 'late'])
             if mode == 'free' and P.get('ev_counter'):
                 for cp in ('CE', 'PE'):
                     if fired[cp]: sells.append(['PE' if cp == 'CE' else 'CE', None, 1 if P['ev_counter'] == 'one' else max(nbb[cp], 1), 'solo'])

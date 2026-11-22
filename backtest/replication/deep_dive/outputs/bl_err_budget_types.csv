@@ -1,0 +1,10 @@
+side,sub,matched,missed event,quantity excess,quantity shortfall,spurious event,timing (2-5 min)
+real,deep-OTM,1,240,0,46,0,0
+real,reactive,497,60,0,152,0,45
+real,scheduled,2077,0,0,45,0,0
+real,solo after 15:00,63,105,0,117,0,51
+real,solo intraday,569,25,0,466,0,112
+sim,extra,0,0,88,0,2,0
+sim,reactive,0,0,4,0,7,4
+sim,scheduled,0,0,13,0,12,4
+sim,solo,0,0,222,0,55,181
