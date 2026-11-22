@@ -581,3 +581,12 @@ def test_fr_free_running_reconstruction():
     assert P.F1['body_buyback'] < P.F1['body_sell'] and T.F1['wing_buy'] > P.F1['wing_buy'] + 0.1 and P.real_lots['not_modelled'] == 457
     X = pd.read_pickle(f'{OUT}/bl_fr_orders.pkl.gz')['FR free-running (primary)']; assert set(X[0].cls) <= {'body_sell', 'body_buyback', 'wing_buy', 'wing_sell', 'opening_wings', 'lump'}
     carry = json.load(open(f'{OUT}/bl_summary_fr1.json')); assert 0.3 < carry['carry_FR free-running (primary)']['long_overlap'] < 0.8 and carry['carry_TF-hedge (hedge on real body)']['short_overlap'] > 0.99
+
+
+def test_bb_buyback_decode():
+    G = pd.read_csv(f'{OUT}/bl_bb_eventlevel.csv'); assert len(G) == 841 and 0.4 < (G.r_first >= 1.45).mean() < 0.6
+    s = G[G.r_first >= 1.45]; assert s.r_first.quantile(0.9) < 1.85 and s.r_first.median() > 1.5
+    V = pd.read_csv(f'{OUT}/bl_bb_vel.csv').set_index('variable'); assert V.F1_pm1_oof['rh_min'] > V.F1_pm1_oof['rc_min']
+    TF = pd.read_csv(f'{OUT}/bl_bb_tf.csv'); assert TF[(TF.cls == 'body_buyback')].F1.max() < 0.65
+    O1 = pd.read_csv(f'{OUT}/bl_fr_overall.csv').iloc[0]; O2 = pd.read_csv(f'{OUT}/bl_fr2_overall.csv').iloc[0]; assert O2.F1 >= O1.F1 - 0.005
+    R = json.load(open(f'{OUT}/bl_summary_rep1.json')); assert all(c['rep_max'] == 0 for c in R['chosen'])

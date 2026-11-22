@@ -1,0 +1,5 @@
+rule,params,F1_pm1_oof
+rh_min >= a OR vel_h5 >= b,"[(np.float64(1.65), np.float64(1.439)), (np.float64(1.625), np.float64(1.439))]",0.4415
+rh_min >= a OR vel_h3 >= b,"[(np.float64(1.65), np.float64(1.357)), (np.float64(1.625), np.float64(1.357))]",0.4363
+rh_min >= a OR vel_c5 >= b,"[(np.float64(1.65), np.float64(1.294)), (np.float64(1.625), np.float64(1.34))]",0.4251
+rh_min >= a OR vel_h2 >= b,"[(np.float64(1.65), np.float64(1.315)), (np.float64(1.625), np.float64(1.315))]",0.4321

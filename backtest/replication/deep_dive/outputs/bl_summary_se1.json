@@ -1,0 +1,67 @@
+{
+ "table": [
+  {
+   "side": "real (recall)",
+   "type": "scheduled",
+   "lots": 2122,
+   "matched": 2077,
+   "share": 0.9788
+  },
+  {
+   "side": "real (recall)",
+   "type": "solo intraday",
+   "lots": 1172,
+   "matched": 569,
+   "share": 0.4855
+  },
+  {
+   "side": "real (recall)",
+   "type": "reactive",
+   "lots": 754,
+   "matched": 497,
+   "share": 0.6592
+  },
+  {
+   "side": "real (recall)",
+   "type": "solo after 15:00",
+   "lots": 336,
+   "matched": 63,
+   "share": 0.1875
+  },
+  {
+   "side": "real (recall)",
+   "type": "deep-OTM batch",
+   "lots": 287,
+   "matched": 1,
+   "share": 0.0035
+  },
+  {
+   "side": "simulated (precision)",
+   "type": "scheduled",
+   "lots": 2112,
+   "matched": 2083,
+   "share": 0.9863
+  },
+  {
+   "side": "simulated (precision)",
+   "type": "solo",
+   "lots": 980,
+   "matched": 522,
+   "share": 0.5327
+  },
+  {
+   "side": "simulated (precision)",
+   "type": "reactive",
+   "lots": 474,
+   "matched": 459,
+   "share": 0.9684
+  },
+  {
+   "side": "simulated (precision)",
+   "type": "extra",
+   "lots": 233,
+   "matched": 143,
+   "share": 0.6137
+  }
+ ]
+}

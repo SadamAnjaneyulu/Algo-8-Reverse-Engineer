@@ -1,0 +1,161 @@
+{
+ "hz_delta_short_dir": {
+  "(-99, -20]": [
+   0.0004,
+   2422
+  ],
+  "(-20, -10]": [
+   0.0022,
+   11613
+  ],
+  "(-10, -5]": [
+   0.0032,
+   8329
+  ],
+  "(-5, 0]": [
+   0.0028,
+   20043
+  ],
+  "(0, 5]": [
+   0.0043,
+   22465
+  ],
+  "(5, 10]": [
+   0.0058,
+   10782
+  ],
+  "(10, 20]": [
+   0.0055,
+   21605
+  ],
+  "(20, 99]": [
+   0.003,
+   4657
+  ]
+ },
+ "hz_abs_itm": {
+  "(0.0, 0.25]": [
+   0.0042,
+   11465
+  ],
+  "(0.25, 0.5]": [
+   0.0054,
+   10849
+  ],
+  "(0.5, 1.0]": [
+   0.0057,
+   20753
+  ],
+  "(1.0, 2.0]": [
+   0.0038,
+   31284
+  ],
+  "(2.0, 99.0]": [
+   0.0021,
+   27555
+  ]
+ },
+ "tree": {
+  "F1": 0.12678682411435674,
+  "precision": 0.08450704225352113,
+  "recall": 0.2537313432835821
+ },
+ "auc": [
+  {
+   "variable": "vel_h3",
+   "AUC": 0.7958,
+   "AUC_even": 0.798,
+   "AUC_odd": 0.793
+  },
+  {
+   "variable": "vel_h5",
+   "AUC": 0.7688,
+   "AUC_even": 0.7856,
+   "AUC_odd": 0.7483
+  },
+  {
+   "variable": "spot_adv3",
+   "AUC": 0.7413,
+   "AUC_even": 0.7688,
+   "AUC_odd": 0.71
+  },
+  {
+   "variable": "rh_min",
+   "AUC": 0.6417,
+   "AUC_even": 0.6351,
+   "AUC_odd": 0.6485
+  },
+  {
+   "variable": "min_since_last_sale",
+   "AUC": 0.3797,
+   "AUC_even": 0.4188,
+   "AUC_odd": 0.3336
+  },
+  {
+   "variable": "right_ratio",
+   "AUC": 0.6136,
+   "AUC_even": 0.6123,
+   "AUC_odd": 0.6147
+  },
+  {
+   "variable": "rc_min",
+   "AUC": 0.5966,
+   "AUC_even": 0.593,
+   "AUC_odd": 0.5999
+  },
+  {
+   "variable": "delta_short_dir",
+   "AUC": 0.5895,
+   "AUC_even": 0.6135,
+   "AUC_odd": 0.569
+  },
+  {
+   "variable": "abs_itm",
+   "AUC": 0.4141,
+   "AUC_even": 0.4284,
+   "AUC_odd": 0.3992
+  },
+  {
+   "variable": "itm",
+   "AUC": 0.5494,
+   "AUC_even": 0.5406,
+   "AUC_odd": 0.5583
+  },
+  {
+   "variable": "breach5",
+   "AUC": 0.535,
+   "AUC_even": 0.5396,
+   "AUC_odd": 0.5295
+  },
+  {
+   "variable": "breach3",
+   "AUC": 0.5345,
+   "AUC_even": 0.5359,
+   "AUC_odd": 0.5326
+  },
+  {
+   "variable": "breach1",
+   "AUC": 0.5208,
+   "AUC_even": 0.5182,
+   "AUC_odd": 0.5239
+  },
+  {
+   "variable": "n_open",
+   "AUC": 0.5145,
+   "AUC_even": 0.5276,
+   "AUC_odd": 0.502
+  },
+  {
+   "variable": "delta_book",
+   "AUC": 0.5071,
+   "AUC_even": 0.5231,
+   "AUC_odd": 0.4796
+  },
+  {
+   "variable": "minute",
+   "AUC": 0.4977,
+   "AUC_even": 0.5038,
+   "AUC_odd": 0.4906
+  }
+ ]
+}
