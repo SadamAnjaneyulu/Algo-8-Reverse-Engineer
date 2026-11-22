@@ -23,7 +23,7 @@ a = ax[1, 1]; x = M15.m15; a.bar(x - .2, M15.counter_labelled_share, .4, color='
 a = ax[1, 2]; a.bar(HR.hour - .2, HR.counter_lots, .4, color='#2b6cb0', label='counter-labelled lots'); a.bar(HR.hour + .2, HR.solo_lots - HR.counter_lots, .4, color='#d69e2e', label='other solo lots'); a.set_xlabel('hour of day'); a.legend(fontsize=8); a.set_title('F. When in the day', fontsize=10)
 plt.tight_layout(); plt.savefig(os.path.join(RP, 'figures', 'bl_d0n_summary.png'), dpi=110); plt.close()
 # ---------------- report
-tb = R3['by_other_premium_at_low']; b3 = N3.set_index('rule'); hr = b3.loc['hand rule (post-hoc): ATM premium at 60-min low']; hj = b3.loc['hand rule (post-hoc, uses bar j): ATM premium makes new day low in minute j']; tr = b3.loc['tree: all market/book']; fa = R4['flag_all']
+tb = R3['by_other_premium_at_low']; R6 = J('d0n6'); uv_events = R6['events']; uv_s2, uv_s5, uv_s10, uv_s60 = [R6['share_with_sale'][k] for k in ('2', '5', '10', '60')]; uv_b1, uv_b0 = R6['before_5']['True'], R6['before_5']['False']; uv_d1, uv_d0 = R6['d_balance']['True']['median'], R6['d_balance']['False']['median']; uv_dd = R6['d_balance']['True']['mean'] - R6['d_balance']['False']['mean']; uv_a1, uv_a0 = R6['after_15']['True']['mean'], R6['after_15']['False']['mean']; uv_ad = R6['after_15_diff_with_minus_without']['diff']; uv_ci0, uv_ci1 = R6['after_15_diff_with_minus_without']['ci']; b3 = N3.set_index('rule'); hr = b3.loc['hand rule (post-hoc): ATM premium at 60-min low']; hj = b3.loc['hand rule (post-hoc, uses bar j): ATM premium makes new day low in minute j']; tr = b3.loc['tree: all market/book']; fa = R4['flag_all']
 abl_drop = (n2.loc['all decision-time', 'auc'] - AB.auc).max()
 txt = f"""# Algo 8 — D0 counter-sells: how they happen, when, and what triggers them
 
@@ -113,6 +113,14 @@ First condition met, in this order (share of lots):
 * **Whether the buy-back and the sale are one decision or two rules on the same tick.** The data fit the second, and I can't separate them without tick data.
 * **Why a premium low sometimes does not sell** (precision 45–58%).
 * **The remaining sale minutes** (premium not at a low): minute-of-block structure (minute 1 and 14) belongs to the other solo types.
+
+## 9b. Check of the reading "buy back the losing option and sell the opposite one at the same time, to control sharp moves" (post-hoc, `bl_d0n_userview.py`)
+{uv_events} stop-loss events (events grouped by the lots flagged stop-loss, so the count differs slightly from the 1,395 in `D0_COUNTER.md`).
+* **"At the same time":** a solo sale on the other right falls within 2 s of the stop-loss buy-back in {uv_s2:.0%} of events, within 5 s {uv_s5:.0%}, within 10 s {uv_s10:.0%}, within ±60 s {uv_s60:.0%}. So it is common but **not every time**. *Observed.*
+* **"Depends on the market move":** yes. Events with a same-second sale had a larger spot move in the 5 minutes before ({uv_b1:.2f} vs {uv_b0:.2f} strike steps, in the direction that hurt the stopped right; no CI computed), and the other right's premium is usually at its low (section 5). *Observed.*
+* **"To control sharp moves":** the buy-back cuts the losing side. The sale does the opposite of a hedge: it adds short lots on the side the market has moved toward. Two minutes later, lots on the other right minus lots on the stopped right rose by a median {uv_d1:.0f} with a same-second sale and {uv_d0:.0f} without (the rise is mostly the buy-back itself; the sale adds about {uv_dd:.0f} lots on top). The book leans further toward the side the market moved to. Lot balance is a proxy for direction, not a delta. *Inferred.*
+* **Does the pair time a turn?** The spot move over the next 15 minutes, in the direction that hurt the stopped right, is {uv_a1:+.2f} steps with a same-second sale and {uv_a0:+.2f} without (difference {uv_ad:+.2f}, CI {uv_ci0:+.2f} to {uv_ci1:+.2f}). No sign either way. *Observed.*
+* **Not tested:** the profit-and-loss effect of the sales. That needs the free-run simulator, not this panel.
 
 ## Addendum — changes made after seeing results (all labelled in the text)
 1. **Panel starts at minute 4 (09:19)**, not 09:16: opening solo is its own type and the feature windows are incomplete before that. 24 of 30 cycles remain.

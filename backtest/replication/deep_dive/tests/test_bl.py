@@ -762,3 +762,8 @@ def test_d0n_counter_trigger():
     assert R2['n4']['ratio'] > 3 and R2['n4']['ratio_ci'][0] > 1 and R2['n5']['ci'][0] < 0.3 and R2['h7'][0]['ratio'] < 3 and 0.25 < R3['stop_loss_events_with_tight_sale'] < 0.35
     N3 = pd.read_csv(f'{OUT}/bl_d0n_n3.csv'); assert (N3.exact_F1 < 0.5).all() and abs(R4['flag_all']['exact_precision'] - R4['flag_all']['base_rate']) < 1e-9
     D = pd.read_csv(f'{OUT}/bl_d0n_decomp.csv').set_index('condition'); assert D.loc['prem_low_60', 'counter_labelled'] > 5 * D.loc['prem_low_60', 'all_panel_cells_chance'] and D.loc['prem_low_60', 'counter_labelled'] > D.loc['prem_low_60', 'other_solo']
+
+
+def test_d0n_userview():
+    R = json.load(open(f'{OUT}/bl_summary_d0n6.json')); s = R['share_with_sale']; assert s['2'] < s['5'] < s['10'] < s['60'] and 0.2 < s['2'] < 0.4 and R['d_balance']['True']['mean'] > R['d_balance']['False']['mean'] > 0
+    ci = R['after_15_diff_with_minus_without']['ci']; assert ci[0] < 0 < ci[1]          # no timing information in the pair

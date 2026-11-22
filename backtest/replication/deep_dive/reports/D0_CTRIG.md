@@ -192,6 +192,14 @@ First condition met, in this order (share of lots):
 * **Why a premium low sometimes does not sell** (precision 45–58%).
 * **The remaining sale minutes** (premium not at a low): minute-of-block structure (minute 1 and 14) belongs to the other solo types.
 
+## 9b. Check of the reading "buy back the losing option and sell the opposite one at the same time, to control sharp moves" (post-hoc, `bl_d0n_userview.py`)
+1477 stop-loss events (events grouped by the lots flagged stop-loss, so the count differs slightly from the 1,395 in `D0_COUNTER.md`).
+* **"At the same time":** a solo sale on the other right falls within 2 s of the stop-loss buy-back in 29% of events, within 5 s 42%, within 10 s 54%, within ±60 s 83%. So it is common but **not every time**. *Observed.*
+* **"Depends on the market move":** yes. Events with a same-second sale had a larger spot move in the 5 minutes before (0.79 vs 0.64 strike steps, in the direction that hurt the stopped right; no CI computed), and the other right's premium is usually at its low (section 5). *Observed.*
+* **"To control sharp moves":** the buy-back cuts the losing side. The sale does the opposite of a hedge: it adds short lots on the side the market has moved toward. Two minutes later, lots on the other right minus lots on the stopped right rose by a median 14 with a same-second sale and 8 without (the rise is mostly the buy-back itself; the sale adds about 5 lots on top). The book leans further toward the side the market moved to. Lot balance is a proxy for direction, not a delta. *Inferred.*
+* **Does the pair time a turn?** The spot move over the next 15 minutes, in the direction that hurt the stopped right, is +0.03 steps with a same-second sale and -0.02 without (difference +0.05, CI -0.13 to +0.20). No sign either way. *Observed.*
+* **Not tested:** the profit-and-loss effect of the sales. That needs the free-run simulator, not this panel.
+
 ## Addendum — changes made after seeing results (all labelled in the text)
 1. **Panel starts at minute 4 (09:19)**, not 09:16: opening solo is its own type and the feature windows are incomplete before that. 24 of 30 cycles remain.
 2. **Gradient boosting** is the histogram version, which has no row subsampling (the plan's 0.8 could not be used); other settings as planned.
