@@ -3,7 +3,7 @@
 (b) scheduled timetable test: per version, the share of cycles with a body sell in each D0 minute (a fixed timetable shows minutes with a share near 1);
 (c) hedge controller: quiet-time balance L = S per right on D0 (contract level, all modules, carried book included);
 (d) clock: share of D0 buy-backs at second :00; the 15:14 clearance (lots in 15:14) and stop-module cycles.
-Outputs bl_d0_inv_roles.csv, bl_d0_inv_hour.csv, bl_d0_timetable.csv, bl_summary_d0a.json"""
+Outputs bl_d0_inv_roles.csv, bl_d0_inv_hour.csv, bl_d0_timetable.csv, bl_summary_d0inv.json"""
 import sys, warnings; sys.path.insert(0, '.'); warnings.filterwarnings('ignore')
 from bl_common import *
 CY = pd.read_csv(f'{OUT}/bl_size_cycles.csv'); O = load_orders(); R = {}
@@ -39,4 +39,4 @@ for v in ('V1', 'V2'):
 T = pd.DataFrame(tt); T.to_csv(f'{OUT}/bl_d0_timetable.csv', index=False); print(T.to_string(index=False))
 bb = d0[(d0.module == 'num') & (d0.role == 'cover_short')]; R['bb_sec0'] = float(((bb.tod.round() % 60) == 0).mean()); R['lots_1514'] = int(d0[d0.j == 359].lots.sum()); R['lots_1514_by_role'] = d0[d0.j == 359].groupby(['module', 'role']).lots.sum().to_dict(); R['stop_cycles'] = int(d0[d0.module == 's_'].expiry.nunique())
 R['lots_after_1515'] = int(d0[d0.j >= 360].lots.sum())
-print({k: v for k, v in R.items() if k != 'lots_1514_by_role'}); print('15:14 lots by role', R['lots_1514_by_role']); R['lots_1514_by_role'] = {str(k): int(v) for k, v in R['lots_1514_by_role'].items()}; rec('d0a', R)
+print({k: v for k, v in R.items() if k != 'lots_1514_by_role'}); print('15:14 lots by role', R['lots_1514_by_role']); R['lots_1514_by_role'] = {str(k): int(v) for k, v in R['lots_1514_by_role'].items()}; rec('d0inv', R)

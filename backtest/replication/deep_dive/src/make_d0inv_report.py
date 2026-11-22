@@ -1,8 +1,8 @@
-"""Builds reports/D0_INVENTORY.md from bl_d0_inv_roles.csv, bl_d0_timetable.csv, bl_summary_d0a.json."""
+"""Builds reports/D0_INVENTORY.md from bl_d0_inv_roles.csv, bl_d0_timetable.csv, bl_summary_d0inv.json."""
 import sys, os, json; sys.path.insert(0, '.')
 import pandas as pd
 from bl_common import OUT
-RP = os.path.join(os.path.dirname(OUT), 'reports'); R = json.load(open(f'{OUT}/bl_summary_d0a.json')); RO = pd.read_csv(f'{OUT}/bl_d0_inv_roles.csv'); TT = pd.read_csv(f'{OUT}/bl_d0_timetable.csv'); HR = pd.read_csv(f'{OUT}/bl_d0_inv_hour.csv', header=[0, 1], index_col=0)
+RP = os.path.join(os.path.dirname(OUT), 'reports'); R = json.load(open(f'{OUT}/bl_summary_d0inv.json')); RO = pd.read_csv(f'{OUT}/bl_d0_inv_roles.csv'); TT = pd.read_csv(f'{OUT}/bl_d0_timetable.csv'); HR = pd.read_csv(f'{OUT}/bl_d0_inv_hour.csv', header=[0, 1], index_col=0)
 def table(df):
     c = list(df.columns); s = '| ' + ' | '.join(map(str, c)) + ' |\n|' + '|'.join('---' for _ in c) + '|\n'
     for r in df.itertuples(index=False): s += '| ' + ' | '.join(str(x) for x in r) + ' |\n'
