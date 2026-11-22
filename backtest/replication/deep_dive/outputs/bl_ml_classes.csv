@@ -1,0 +1,85 @@
+variant,cls,real_lots,sim_lots,matched,precision,recall,F1,F1_strict,F1_within1,strike_exact_of_matched,within1_of_matched,setup,model
+out-of-fold halves | baseline,body_sell,4671,3799,3206,0.8439,0.6864,0.757,0.6026,0.7178,0.796,0.9482,out-of-fold halves,baseline
+out-of-fold halves | baseline,body_buyback,1324,909,611,0.6722,0.4615,0.5472,0.3108,0.4469,0.5679,0.8167,out-of-fold halves,baseline
+out-of-fold halves | baseline,wing_buy,4336,3572,2867,0.8026,0.6612,0.7251,0.4466,0.6712,0.616,0.9257,out-of-fold halves,baseline
+out-of-fold halves | baseline,wing_sell,1192,874,552,0.6316,0.4631,0.5344,0.2875,0.4414,0.538,0.8261,out-of-fold halves,baseline
+out-of-fold halves | baseline,opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402,out-of-fold halves,baseline
+out-of-fold halves | baseline,lump,1489,1296,902,0.696,0.6058,0.6478,0.2715,0.5386,0.4191,0.8315,out-of-fold halves,baseline
+out-of-fold halves | baseline,not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,,out-of-fold halves,baseline
+out-of-fold halves | + sell policy,body_sell,4671,5098,3635,0.713,0.7782,0.7442,0.5622,0.6942,0.7554,0.9329,out-of-fold halves,+ sell policy
+out-of-fold halves | + sell policy,body_buyback,1324,1058,672,0.6352,0.5076,0.5642,0.3199,0.4559,0.567,0.808,out-of-fold halves,+ sell policy
+out-of-fold halves | + sell policy,wing_buy,4336,4870,3290,0.6756,0.7588,0.7148,0.4178,0.6539,0.5845,0.9149,out-of-fold halves,+ sell policy
+out-of-fold halves | + sell policy,wing_sell,1192,1022,604,0.591,0.5067,0.5456,0.2999,0.4842,0.5497,0.8874,out-of-fold halves,+ sell policy
+out-of-fold halves | + sell policy,opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402,out-of-fold halves,+ sell policy
+out-of-fold halves | + sell policy,lump,1489,1891,1129,0.597,0.7582,0.668,0.2775,0.5509,0.4154,0.8246,out-of-fold halves,+ sell policy
+out-of-fold halves | + sell policy,not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,,out-of-fold halves,+ sell policy
+out-of-fold halves | + buy-back policy,body_sell,4671,3799,3206,0.8439,0.6864,0.757,0.6026,0.7178,0.796,0.9482,out-of-fold halves,+ buy-back policy
+out-of-fold halves | + buy-back policy,body_buyback,1324,1003,615,0.6132,0.4645,0.5286,0.2871,0.4186,0.5431,0.7919,out-of-fold halves,+ buy-back policy
+out-of-fold halves | + buy-back policy,wing_buy,4336,3574,2868,0.8025,0.6614,0.7252,0.4468,0.6716,0.6161,0.9261,out-of-fold halves,+ buy-back policy
+out-of-fold halves | + buy-back policy,wing_sell,1192,970,553,0.5701,0.4639,0.5116,0.2627,0.4024,0.5136,0.7866,out-of-fold halves,+ buy-back policy
+out-of-fold halves | + buy-back policy,opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402,out-of-fold halves,+ buy-back policy
+out-of-fold halves | + buy-back policy,lump,1489,1262,867,0.687,0.5823,0.6303,0.2697,0.5351,0.4279,0.8489,out-of-fold halves,+ buy-back policy
+out-of-fold halves | + buy-back policy,not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,,out-of-fold halves,+ buy-back policy
+out-of-fold halves | + both policies,body_sell,4671,5054,3627,0.7176,0.7765,0.7459,0.5647,0.6961,0.7571,0.9333,out-of-fold halves,+ both policies
+out-of-fold halves | + both policies,body_buyback,1324,1166,681,0.584,0.5144,0.547,0.2795,0.4337,0.511,0.793,out-of-fold halves,+ both policies
+out-of-fold halves | + both policies,wing_buy,4336,4826,3282,0.6801,0.7569,0.7164,0.4193,0.6553,0.5853,0.9147,out-of-fold halves,+ both policies
+out-of-fold halves | + both policies,wing_sell,1192,1130,614,0.5434,0.5151,0.5289,0.2661,0.4419,0.5033,0.8355,out-of-fold halves,+ both policies
+out-of-fold halves | + both policies,opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402,out-of-fold halves,+ both policies
+out-of-fold halves | + both policies,lump,1489,1835,1117,0.6087,0.7502,0.6721,0.2798,0.5542,0.4163,0.8245,out-of-fold halves,+ both policies
+out-of-fold halves | + both policies,not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,,out-of-fold halves,+ both policies
+"A same version (V1 14->7, V2 7->4) | baseline",body_sell,1799,1278,1093,0.8552,0.6076,0.7104,0.5681,0.6779,0.7996,0.9543,"A same version (V1 14->7, V2 7->4)",baseline
+"A same version (V1 14->7, V2 7->4) | baseline",body_buyback,441,303,206,0.6799,0.4671,0.5538,0.3441,0.4919,0.6214,0.8883,"A same version (V1 14->7, V2 7->4)",baseline
+"A same version (V1 14->7, V2 7->4) | baseline",wing_buy,1601,1203,975,0.8105,0.609,0.6954,0.5128,0.6427,0.7374,0.9241,"A same version (V1 14->7, V2 7->4)",baseline
+"A same version (V1 14->7, V2 7->4) | baseline",wing_sell,395,294,187,0.6361,0.4734,0.5428,0.2816,0.4383,0.5187,0.8075,"A same version (V1 14->7, V2 7->4)",baseline
+"A same version (V1 14->7, V2 7->4) | baseline",opening_wings,66,66,66,1.0,1.0,1.0,0.6364,0.8788,0.6364,0.8788,"A same version (V1 14->7, V2 7->4)",baseline
+"A same version (V1 14->7, V2 7->4) | baseline",lump,536,477,268,0.5618,0.5,0.5291,0.3692,0.5291,0.6978,1.0,"A same version (V1 14->7, V2 7->4)",baseline
+"A same version (V1 14->7, V2 7->4) | baseline",not_modelled,365,0,0,,0.0,0.0,0.0,0.0,,,"A same version (V1 14->7, V2 7->4)",baseline
+"A same version (V1 14->7, V2 7->4) | + sell policy",body_sell,1799,1662,1223,0.7359,0.6798,0.7067,0.538,0.668,0.7612,0.9452,"A same version (V1 14->7, V2 7->4)",+ sell policy
+"A same version (V1 14->7, V2 7->4) | + sell policy",body_buyback,441,331,218,0.6586,0.4943,0.5648,0.3394,0.5,0.6009,0.8853,"A same version (V1 14->7, V2 7->4)",+ sell policy
+"A same version (V1 14->7, V2 7->4) | + sell policy",wing_buy,1601,1586,1104,0.6961,0.6896,0.6928,0.4958,0.6307,0.7156,0.9103,"A same version (V1 14->7, V2 7->4)",+ sell policy
+"A same version (V1 14->7, V2 7->4) | + sell policy",wing_sell,395,321,195,0.6075,0.4937,0.5447,0.2877,0.4804,0.5282,0.8821,"A same version (V1 14->7, V2 7->4)",+ sell policy
+"A same version (V1 14->7, V2 7->4) | + sell policy",opening_wings,66,66,66,1.0,1.0,1.0,0.6364,0.8788,0.6364,0.8788,"A same version (V1 14->7, V2 7->4)",+ sell policy
+"A same version (V1 14->7, V2 7->4) | + sell policy",lump,536,683,321,0.47,0.5989,0.5267,0.356,0.5267,0.676,1.0,"A same version (V1 14->7, V2 7->4)",+ sell policy
+"A same version (V1 14->7, V2 7->4) | + sell policy",not_modelled,365,0,0,,0.0,0.0,0.0,0.0,,,"A same version (V1 14->7, V2 7->4)",+ sell policy
+"A same version (V1 14->7, V2 7->4) | + buy-back policy",body_sell,1799,1278,1093,0.8552,0.6076,0.7104,0.5681,0.6779,0.7996,0.9543,"A same version (V1 14->7, V2 7->4)",+ buy-back policy
+"A same version (V1 14->7, V2 7->4) | + buy-back policy",body_buyback,441,308,186,0.6039,0.4218,0.4967,0.3311,0.4566,0.6667,0.9194,"A same version (V1 14->7, V2 7->4)",+ buy-back policy
+"A same version (V1 14->7, V2 7->4) | + buy-back policy",wing_buy,1601,1208,981,0.8121,0.6127,0.6985,0.5155,0.6465,0.738,0.9256,"A same version (V1 14->7, V2 7->4)",+ buy-back policy
+"A same version (V1 14->7, V2 7->4) | + buy-back policy",wing_sell,395,304,165,0.5428,0.4177,0.4721,0.2318,0.3805,0.4909,0.8061,"A same version (V1 14->7, V2 7->4)",+ buy-back policy
+"A same version (V1 14->7, V2 7->4) | + buy-back policy",opening_wings,66,66,66,1.0,1.0,1.0,0.6364,0.8788,0.6364,0.8788,"A same version (V1 14->7, V2 7->4)",+ buy-back policy
+"A same version (V1 14->7, V2 7->4) | + buy-back policy",lump,536,466,270,0.5794,0.5037,0.5389,0.3772,0.5389,0.7,1.0,"A same version (V1 14->7, V2 7->4)",+ buy-back policy
+"A same version (V1 14->7, V2 7->4) | + buy-back policy",not_modelled,365,0,0,,0.0,0.0,0.0,0.0,,,"A same version (V1 14->7, V2 7->4)",+ buy-back policy
+"A same version (V1 14->7, V2 7->4) | + both policies",body_sell,1799,1662,1224,0.7365,0.6804,0.7073,0.5403,0.6692,0.7639,0.9461,"A same version (V1 14->7, V2 7->4)",+ both policies
+"A same version (V1 14->7, V2 7->4) | + both policies",body_buyback,441,356,187,0.5253,0.424,0.4693,0.3162,0.4291,0.6738,0.9144,"A same version (V1 14->7, V2 7->4)",+ both policies
+"A same version (V1 14->7, V2 7->4) | + both policies",wing_buy,1601,1592,1111,0.6979,0.6939,0.6959,0.4973,0.6333,0.7147,0.91,"A same version (V1 14->7, V2 7->4)",+ both policies
+"A same version (V1 14->7, V2 7->4) | + both policies",wing_sell,395,352,164,0.4659,0.4152,0.4391,0.2169,0.3829,0.4939,0.872,"A same version (V1 14->7, V2 7->4)",+ both policies
+"A same version (V1 14->7, V2 7->4) | + both policies",opening_wings,66,66,66,1.0,1.0,1.0,0.6364,0.8788,0.6364,0.8788,"A same version (V1 14->7, V2 7->4)",+ both policies
+"A same version (V1 14->7, V2 7->4) | + both policies",lump,536,661,324,0.4902,0.6045,0.5414,0.3676,0.5414,0.679,1.0,"A same version (V1 14->7, V2 7->4)",+ both policies
+"A same version (V1 14->7, V2 7->4) | + both policies",not_modelled,365,0,0,,0.0,0.0,0.0,0.0,,,"A same version (V1 14->7, V2 7->4)",+ both policies
+"B version change (train V1, test V2) | baseline",body_sell,1670,1375,1032,0.7505,0.618,0.6778,0.5241,0.6365,0.7733,0.939,"B version change (train V1, test V2)",baseline
+"B version change (train V1, test V2) | baseline",body_buyback,477,387,216,0.5581,0.4528,0.5,0.2199,0.3519,0.4398,0.7037,"B version change (train V1, test V2)",baseline
+"B version change (train V1, test V2) | baseline",wing_buy,1497,1292,930,0.7198,0.6212,0.6669,0.4998,0.6382,0.7495,0.957,"B version change (train V1, test V2)",baseline
+"B version change (train V1, test V2) | baseline",wing_sell,416,370,188,0.5081,0.4519,0.4784,0.2214,0.3435,0.4628,0.7181,"B version change (train V1, test V2)",baseline
+"B version change (train V1, test V2) | baseline",opening_wings,60,66,58,0.8788,0.9667,0.9206,0.254,0.3333,0.2759,0.3621,"B version change (train V1, test V2)",baseline
+"B version change (train V1, test V2) | baseline",lump,436,443,279,0.6298,0.6399,0.6348,0.3709,0.5438,0.5842,0.8566,"B version change (train V1, test V2)",baseline
+"B version change (train V1, test V2) | baseline",not_modelled,177,0,0,,0.0,0.0,0.0,0.0,,,"B version change (train V1, test V2)",baseline
+"B version change (train V1, test V2) | + sell policy",body_sell,1670,1928,1173,0.6084,0.7024,0.652,0.4758,0.6037,0.7298,0.9258,"B version change (train V1, test V2)",+ sell policy
+"B version change (train V1, test V2) | + sell policy",body_buyback,477,437,232,0.5309,0.4864,0.5077,0.2101,0.3523,0.4138,0.694,"B version change (train V1, test V2)",+ sell policy
+"B version change (train V1, test V2) | + sell policy",wing_buy,1497,1843,1070,0.5806,0.7148,0.6407,0.4461,0.609,0.6963,0.9505,"B version change (train V1, test V2)",+ sell policy
+"B version change (train V1, test V2) | + sell policy",wing_sell,416,418,205,0.4904,0.4928,0.4916,0.2134,0.3933,0.4341,0.8,"B version change (train V1, test V2)",+ sell policy
+"B version change (train V1, test V2) | + sell policy",opening_wings,60,66,58,0.8788,0.9667,0.9206,0.254,0.3333,0.2759,0.3621,"B version change (train V1, test V2)",+ sell policy
+"B version change (train V1, test V2) | + sell policy",lump,436,697,334,0.4792,0.7661,0.5896,0.3548,0.4907,0.6018,0.8323,"B version change (train V1, test V2)",+ sell policy
+"B version change (train V1, test V2) | + sell policy",not_modelled,177,0,0,,0.0,0.0,0.0,0.0,,,"B version change (train V1, test V2)",+ sell policy
+"B version change (train V1, test V2) | + buy-back policy",body_sell,1670,1375,1032,0.7505,0.618,0.6778,0.5241,0.6365,0.7733,0.939,"B version change (train V1, test V2)",+ buy-back policy
+"B version change (train V1, test V2) | + buy-back policy",body_buyback,477,404,226,0.5594,0.4738,0.5131,0.2247,0.3655,0.4381,0.7124,"B version change (train V1, test V2)",+ buy-back policy
+"B version change (train V1, test V2) | + buy-back policy",wing_buy,1497,1298,933,0.7188,0.6232,0.6676,0.5009,0.639,0.7503,0.9571,"B version change (train V1, test V2)",+ buy-back policy
+"B version change (train V1, test V2) | + buy-back policy",wing_sell,416,393,202,0.514,0.4856,0.4994,0.2621,0.3881,0.5248,0.7772,"B version change (train V1, test V2)",+ buy-back policy
+"B version change (train V1, test V2) | + buy-back policy",opening_wings,60,66,58,0.8788,0.9667,0.9206,0.254,0.3333,0.2759,0.3621,"B version change (train V1, test V2)",+ buy-back policy
+"B version change (train V1, test V2) | + buy-back policy",lump,436,439,280,0.6378,0.6422,0.64,0.3749,0.5486,0.5857,0.8571,"B version change (train V1, test V2)",+ buy-back policy
+"B version change (train V1, test V2) | + buy-back policy",not_modelled,177,0,0,,0.0,0.0,0.0,0.0,,,"B version change (train V1, test V2)",+ buy-back policy
+"B version change (train V1, test V2) | + both policies",body_sell,1670,1917,1171,0.6109,0.7012,0.6529,0.4767,0.6044,0.7301,0.9257,"B version change (train V1, test V2)",+ both policies
+"B version change (train V1, test V2) | + both policies",body_buyback,477,451,253,0.561,0.5304,0.5453,0.2241,0.3815,0.4111,0.6996,"B version change (train V1, test V2)",+ both policies
+"B version change (train V1, test V2) | + both policies",wing_buy,1497,1837,1071,0.583,0.7154,0.6425,0.4481,0.6113,0.6975,0.9514,"B version change (train V1, test V2)",+ both policies
+"B version change (train V1, test V2) | + both policies",wing_sell,416,437,228,0.5217,0.5481,0.5346,0.2368,0.4338,0.443,0.8114,"B version change (train V1, test V2)",+ both policies
+"B version change (train V1, test V2) | + both policies",opening_wings,60,66,58,0.8788,0.9667,0.9206,0.254,0.3333,0.2759,0.3621,"B version change (train V1, test V2)",+ both policies
+"B version change (train V1, test V2) | + both policies",lump,436,696,336,0.4828,0.7706,0.5936,0.3587,0.4947,0.6042,0.8333,"B version change (train V1, test V2)",+ both policies
+"B version change (train V1, test V2) | + both policies",not_modelled,177,0,0,,0.0,0.0,0.0,0.0,,,"B version change (train V1, test V2)",+ both policies

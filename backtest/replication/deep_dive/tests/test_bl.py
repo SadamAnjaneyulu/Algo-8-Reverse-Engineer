@@ -620,3 +620,10 @@ def test_lots_budget_and_fixes():
     E_ = pd.read_pickle(f'{OUT}/bl_err_lots.pkl.gz'); r = E_[(E_.side == 'real') & (E_.cause != 'matched')].cause.value_counts(); assert r.idxmax() == 'quantity shortfall' and len(E_[E_.side == 'real']) == 13655
     CE = pd.read_csv(f'{OUT}/bl_lots_ceiling.csv'); assert CE.F1.is_monotonic_increasing and CE.F1.iloc[1] - CE.F1.iloc[0] > 0.1
     F = pd.read_csv(f'{OUT}/bl_lots_fit.csv'); fw = F[F.setup.str.startswith(('A', 'B'))].pivot(index='setup', columns='model', values='F1'); assert (fw.fixed <= fw.baseline + 0.005).all()
+
+
+def test_ml_policies_and_scoreboard():
+    M = pd.read_csv(f'{OUT}/bl_ml_fit.csv'); b = M[M.model == 'baseline'].set_index('setup').F1
+    for v in ('+ sell policy', '+ buy-back policy', '+ both policies'):
+        x = M[M.model == v].set_index('setup').F1; assert not ((x > b + 0.005).all())          # no learned policy improves every setup
+    R = json.load(open(f'{OUT}/bl_summary_ml2.json')); assert R['0.1'] > R['ladder_rule']
