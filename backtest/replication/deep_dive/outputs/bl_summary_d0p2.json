@@ -1,0 +1,139 @@
+{
+ "hazard": [
+  {
+   "lag": "0-1 s",
+   "at_risk": 1434,
+   "first_sales": 169,
+   "hazard_per_second": 0.11785,
+   "share_of_at_risk": 0.11785
+  },
+  {
+   "lag": "1-2 s",
+   "at_risk": 1265,
+   "first_sales": 72,
+   "hazard_per_second": 0.05692,
+   "share_of_at_risk": 0.05692
+  },
+  {
+   "lag": "2-5 s",
+   "at_risk": 1193,
+   "first_sales": 113,
+   "hazard_per_second": 0.03157,
+   "share_of_at_risk": 0.09472
+  },
+  {
+   "lag": "5-10 s",
+   "at_risk": 1080,
+   "first_sales": 118,
+   "hazard_per_second": 0.02185,
+   "share_of_at_risk": 0.10926
+  },
+  {
+   "lag": "10-20 s",
+   "at_risk": 962,
+   "first_sales": 161,
+   "hazard_per_second": 0.01674,
+   "share_of_at_risk": 0.16736
+  },
+  {
+   "lag": "20-30 s",
+   "at_risk": 801,
+   "first_sales": 112,
+   "hazard_per_second": 0.01398,
+   "share_of_at_risk": 0.13983
+  },
+  {
+   "lag": "30-60 s",
+   "at_risk": 689,
+   "first_sales": 133,
+   "hazard_per_second": 0.00643,
+   "share_of_at_risk": 0.19303
+  },
+  {
+   "lag": "60-120 s",
+   "at_risk": 556,
+   "first_sales": 120,
+   "hazard_per_second": 0.0036,
+   "share_of_at_risk": 0.21583
+  },
+  {
+   "lag": "120-300 s",
+   "at_risk": 436,
+   "first_sales": 170,
+   "hazard_per_second": 0.00217,
+   "share_of_at_risk": 0.38991
+  },
+  {
+   "lag": "300-900 s",
+   "at_risk": 266,
+   "first_sales": 133,
+   "hazard_per_second": 0.00083,
+   "share_of_at_risk": 0.5
+  }
+ ],
+ "cont": [
+  {
+   "outcome": "sale_2",
+   "model": "decision-time factors",
+   "auc": 0.6085,
+   "lo": 0.5402,
+   "hi": 0.6662
+  },
+  {
+   "outcome": "sale_2",
+   "model": "minute-j bar only",
+   "auc": 0.6168,
+   "lo": 0.5602,
+   "hi": 0.6698
+  },
+  {
+   "outcome": "sale_2",
+   "model": "decision-time + minute-j bar",
+   "auc": 0.6683,
+   "lo": 0.6164,
+   "hi": 0.737
+  },
+  {
+   "outcome": "sale_10",
+   "model": "decision-time factors",
+   "auc": 0.6429,
+   "lo": 0.6033,
+   "hi": 0.675
+  },
+  {
+   "outcome": "sale_10",
+   "model": "minute-j bar only",
+   "auc": 0.654,
+   "lo": 0.6077,
+   "hi": 0.6906
+  },
+  {
+   "outcome": "sale_10",
+   "model": "decision-time + minute-j bar",
+   "auc": 0.7027,
+   "lo": 0.6642,
+   "hi": 0.7363
+  },
+  {
+   "outcome": "sale_60",
+   "model": "decision-time factors",
+   "auc": 0.681,
+   "lo": 0.6415,
+   "hi": 0.7244
+  },
+  {
+   "outcome": "sale_60",
+   "model": "minute-j bar only",
+   "auc": 0.7233,
+   "lo": 0.6824,
+   "hi": 0.7634
+  },
+  {
+   "outcome": "sale_60",
+   "model": "decision-time + minute-j bar",
+   "auc": 0.7955,
+   "lo": 0.7618,
+   "hi": 0.8275
+  }
+ ]
+}

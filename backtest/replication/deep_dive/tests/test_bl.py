@@ -767,3 +767,15 @@ def test_d0n_counter_trigger():
 def test_d0n_userview():
     R = json.load(open(f'{OUT}/bl_summary_d0n6.json')); s = R['share_with_sale']; assert s['2'] < s['5'] < s['10'] < s['60'] and 0.2 < s['2'] < 0.4 and R['d_balance']['True']['mean'] > R['d_balance']['False']['mean'] > 0
     ci = R['after_15_diff_with_minus_without']['ci']; assert ci[0] < 0 < ci[1]          # no timing information in the pair
+
+
+def test_d0p_pair_trigger():
+    R1 = json.load(open(f'{OUT}/bl_summary_d0p1.json')); R3 = json.load(open(f'{OUT}/bl_summary_d0p3.json'))
+    A0 = pd.read_csv(f'{OUT}/bl_d0p_a0.csv'); assert A0.excess.is_monotonic_increasing and (A0.share_events_real > A0.share_events_null).all()
+    H = pd.read_csv(f'{OUT}/bl_d0p_a5_hazard.csv'); assert H.hazard_per_second.is_monotonic_decreasing                      # no plateau: smooth decay
+    A2 = pd.read_csv(f'{OUT}/bl_d0p_a2.csv'); assert A2[(A2.outcome == 'sale_10') & (A2.model == 'all factors')].auc.iloc[0] < 0.7 and not pd.read_csv(f'{OUT}/bl_d0p_a3.csv').gate_accepted.any()
+    CT = pd.read_csv(f'{OUT}/bl_d0p_a5_cont.csv').set_index(['outcome', 'model']).auc; assert CT[('sale_60', 'decision-time + minute-j bar')] > CT[('sale_60', 'decision-time factors')] + 0.05
+    B1 = pd.read_csv(f'{OUT}/bl_d0p_b1.csv'); cols = ['bought_before_crossing', 'lag0', 'lag1', 'lag2_5', 'lag6_15', 'later_in_scope', 'clearance_stop_or_never']; assert (B1[cols].sum(axis=1).sub(1).abs() < 1e-9).all() and B1[(B1.theta == 1.4) & (B1.group == 'all lots')].lag0.iloc[0] < 0.2
+    B3 = pd.read_csv(f'{OUT}/bl_d0p_b3.csv').set_index('model'); assert B3.loc['+G3 premium of the right', 'gain_over_G0_G1'] > 0.03 and B3.loc['+G4 side loss', 'gain_over_G0_G1'] < 0.03 and R3['b4']['median'] >= 3
+    B5 = pd.read_csv(f'{OUT}/bl_d0p_b5.csv').iloc[0]; assert B5.tree_F1 < 0.5 and B5.precision_ratio > 1.5
+    B6 = pd.read_csv(f'{OUT}/bl_d0p_b6.csv'); s = B6[B6.side.str.startswith('sale (decision')]; b = B6[B6.side.str.startswith('buy-back (decision')]; assert (s.rate_when_on > 2 * s.rate_when_off).all() and (b.rate_when_on > 2 * b.rate_when_off).all()
