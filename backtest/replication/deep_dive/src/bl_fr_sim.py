@@ -84,7 +84,34 @@ def sim_cycle(i, P, mode='free', late=False):
                 if pf == 'typical': return (px(cp, k, j, 'high') + px(cp, k, j, 'low') + px(cp, k, j, 'close')) / 3
                 if pf == 'open_now': return px(cp, k, j, 'open')
                 return px(cp, k, j - 1)
-            for (cp, k), lots in list(shorts.items()):
+            mlb = P.get('ml_bb')
+            if mlb:                                                                # learned buy-back policy (plan D1_ML_PLAN.md)
+                feats = []; refs = []; rsum = {}
+                for (cp, k), lots in shorts.items():
+                    pc0 = px(cp, k, j - 1)
+                    for lt in lots: rsum.setdefault(cp, [0.0, 0.0]); rsum[cp][0] += pc0 if pc0 == pc0 else 0.0; rsum[cp][1] += lt[1] if lt[1] == lt[1] else 0.0
+                for (cp, k), lots in shorts.items():
+                    if not lots: continue
+                    sgn = 1 if cp == 'CE' else -1; pc0 = px(cp, k, j - 1); ph0 = px(cp, k, j, 'high'); b4 = px(cp, k, j - 4); jc = cj(j - 1); lo30 = max(jc - 30, 0)
+                    dn = float((c[jc] > h[lo30:jc].max()) if cp == 'CE' else (c[jc] < l[lo30:jc].min())) if jc > lo30 else 0.0
+                    rr = rsum[cp][0] / rsum[cp][1] if rsum[cp][1] > 0 else np.nan
+                    for n_, lt in enumerate(lots):
+                        ej, ep = lt[0], lt[1]
+                        if j <= ej or not (ep > 0): continue
+                        tc = {'scheduled': 0, 'reactive': 1, 'extra': 2, 'solo': 2, 'counter': 2, 'late': 3, 'deep': 4}.get(lt[2], 2) if len(lt) > 2 else 0
+                        adv = sgn * (c[jc] - lt[4]) / step if len(lt) > 4 and lt[4] == lt[4] else 0.0
+                        feats.append([pc0 / ep, ph0 / ep, j - ej, tc, adv, (ph0 / b4) if b4 > 0 else np.nan, dn, rr, len(lots), j]); refs.append((cp, k, n_))
+                if feats:
+                    pr_ = mlb['model'].predict_proba(np.array(feats, float))[:, 1]; drop = {}
+                    for (cp, k, n_), p_ in zip(refs, pr_):
+                        if p_ >= mlb['tau']: drop.setdefault((cp, k), set()).add(n_)
+                    for (cp, k), idx in drop.items():
+                        keep = []
+                        for n_, lt in enumerate(shorts[(cp, k)]):
+                            if n_ in idx: rec_('body_buyback', cp, j, k, 1); bodyorders.append(('cover', cp, k, 1)); fired[cp] = True; nbb[cp] += 1
+                            else: keep.append(lt)
+                        shorts[(cp, k)] = keep
+            for (cp, k), lots in (list(shorts.items()) if not mlb else []):
                 keep = []; pn = pnow(cp, k); vtrig = False
                 if vel and lots:
                     base = px(cp, k, j - 1 - vel[0]); hh = px(cp, k, j, 'high'); vtrig = base == base and base > 0 and hh == hh and hh / base >= vel[1]
@@ -141,13 +168,30 @@ def sim_cycle(i, P, mode='free', late=False):
                     shorts[(cp, k)] = keep
             # sells
             sells = [list(x) for x in plan.get(j, [])] if mode == 'free' else [[cp_, k_, n_, ty_, p_, sd0, 'real'] for role_, cp_, k_, n_, p_, ty_, sd0 in rb.get(j, []) if role_ == 'open_short']
-            for cp in (lad.get(j, []) if mode == 'free' else []):
+            mls = P.get('ml_sell') if mode == 'free' else None
+            if mls:                                                                # learned solo-sell policy (plan D1_ML_PLAN.md)
+                sells = [x for x in sells if x[3] != 'extra']; arr = mls['mkt'][i]; rows_ = []
+                for ci_, cp in enumerate(('CE', 'PE')):
+                    num = den = 0.0; nl = 0
+                    for (c2, k2), lots in shorts.items():
+                        if c2 != cp: continue
+                        pk = px(cp, k2, j - 1)
+                        for lt in lots:
+                            if pk == pk and lt[1] == lt[1]: num += pk; den += lt[1]; nl += 1
+                    bk_ = (num / den if den > 0 else np.nan, nl)
+                    rows_.append([int(cp == 'CE')] + list(arr[min(j, 389), ci_]) + [bk_[0], np.nan, bk_[1], np.nan])
+                rows_[0][-3] = rows_[1][-4]; rows_[0][-1] = rows_[1][-2]; rows_[1][-3] = rows_[0][-4]; rows_[1][-1] = rows_[0][-2]
+                pp = mls['model'].predict_proba(np.array(rows_, float)); cls_ = mls['model'].classes_
+                for ci_, cp in enumerate(('CE', 'PE')):
+                    cum = [pp[ci_][cls_ >= kk].sum() for kk in range(1, int(cls_.max()) + 1)]; nS = int(sum(1 for q in cum if q >= mls['t']))
+                    if nS: sells.append([cp, None, nS, 'late' if j >= 345 else 'solo'])
+            for cp in (lad.get(j, []) if (mode == 'free' and not mls) else []):
                 nS = 1
                 if P.get('solo_b') is not None:                                   # solo lots per ladder fire grow with the depth beyond the 60-min extreme (plan D1_LOTS_PLAN.md)
                     dep_ = ((l[max(j - 60, 0):j].min() - l[j]) if cp == 'CE' else (h[j] - h[max(j - 60, 0):j].max())) / step
                     nS = int(np.clip(round(P.get('solo_a', 1.0) + P['solo_b'] * max(dep_, 0.0)), 1, 8))
                 sells.append([cp, None, nS, 'solo'])
-            for cp in (late_fires.get(j, []) if mode == 'free' else []): sells.append([cp, None, int(P.get('late_n', 1)), 'late'])
+            for cp in (late_fires.get(j, []) if (mode == 'free' and not mls) else []): sells.append([cp, None, int(P.get('late_n', 1)), 'late'])
             if mode == 'free' and P.get('ev_counter'):
                 for cp in ('CE', 'PE'):
                     if fired[cp]: sells.append(['PE' if cp == 'CE' else 'CE', None, 1 if P['ev_counter'] == 'one' else max(nbb[cp], 1), 'solo'])
