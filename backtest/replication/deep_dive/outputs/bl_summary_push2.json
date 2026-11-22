@@ -1,0 +1,126 @@
+{
+ "info": {
+  "out-of-fold halves": [
+   {
+    "setup": "out-of-fold halves",
+    "train_F1_relabel": 0.6635,
+    "train_F1_tuned": 0.6737,
+    "changes": "[(0, 'tp', 0.5, 0.6636), (0, 'lad_gate', 90, 0.6643), (0, 'lump_scale', 1.1, 0.6646), (0, 'lump_scale', 1.2, 0.665), (0, 'ev_counter', 'one', 0.6734), (1, 'tp', 0.75, 0.6735), (1, 'ex_scale', 1.5, 0.6737)]"
+   },
+   {
+    "setup": "out-of-fold halves",
+    "train_F1_relabel": 0.7281,
+    "train_F1_tuned": 0.7329,
+    "changes": "[(0, 'tp', 0.25, 0.7286), (0, 'lad_X', 0.15, 0.7298), (0, 'late_on', True, 0.731), (0, 'ev_counter', 'one', 0.7311), (1, 'ex_scale', 0.0, 0.7329)]"
+   }
+  ],
+  "A same version (V1 14->7, V2 7->4)": [
+   {
+    "setup": "A same version (V1 14->7, V2 7->4)",
+    "train_F1_relabel": 0.6523,
+    "train_F1_tuned": 0.665,
+    "changes": "[(0, 'lad_gate', 90, 0.6529), (0, 'solo_b', 1, 0.6542), (0, 'late_on', True, 0.6551), (0, 'lump_scale', 0.8, 0.6589), (0, 'ev_counter', 'one', 0.665)]"
+   }
+  ],
+  "B version change (train V1, test V2)": [
+   {
+    "setup": "B version change (train V1, test V2)",
+    "train_F1_relabel": 0.6474,
+    "train_F1_tuned": 0.665,
+    "changes": "[(0, 'ex_scale', 0.5, 0.6476), (0, 'ex_scale', 1.5, 0.6479), (0, 'lad_gate', 90, 0.6491), (0, 'solo_b', 1, 0.6496), (0, 'late_on', True, 0.6565), (0, 'lump_scale', 0.8, 0.6607), (0, 'ev_counter', 'one', 0.6647), (1, 'tp', 0.4, 0.665)]"
+   }
+  ]
+ },
+ "rows": [
+  {
+   "setup": "out-of-fold halves",
+   "model": "baseline",
+   "cycles": 32,
+   "F1": 0.685,
+   "precision": 0.782,
+   "recall": 0.6094,
+   "F1_within1": 0.6233,
+   "F1_strict": 0.4487
+  },
+  {
+   "setup": "out-of-fold halves",
+   "model": "+ opening-wing close relabel",
+   "cycles": 32,
+   "F1": 0.6835,
+   "precision": 0.7803,
+   "recall": 0.6081,
+   "F1_within1": 0.6245,
+   "F1_strict": 0.4493
+  },
+  {
+   "setup": "out-of-fold halves",
+   "model": "+ relabel + joint tuning",
+   "cycles": 32,
+   "F1": 0.6891,
+   "precision": 0.7512,
+   "recall": 0.6365,
+   "F1_within1": 0.6278,
+   "F1_strict": 0.4466
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "baseline",
+   "cycles": 11,
+   "F1": 0.6335,
+   "precision": 0.7719,
+   "recall": 0.5372,
+   "F1_within1": 0.5902,
+   "F1_strict": 0.464
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "+ opening-wing close relabel",
+   "cycles": 11,
+   "F1": 0.6346,
+   "precision": 0.7733,
+   "recall": 0.5382,
+   "F1_within1": 0.5938,
+   "F1_strict": 0.466
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "+ relabel + joint tuning",
+   "cycles": 11,
+   "F1": 0.6349,
+   "precision": 0.7287,
+   "recall": 0.5626,
+   "F1_within1": 0.5918,
+   "F1_strict": 0.4623
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "baseline",
+   "cycles": 11,
+   "F1": 0.6238,
+   "precision": 0.6873,
+   "recall": 0.5711,
+   "F1_within1": 0.5553,
+   "F1_strict": 0.4283
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "+ opening-wing close relabel",
+   "cycles": 11,
+   "F1": 0.6227,
+   "precision": 0.686,
+   "recall": 0.57,
+   "F1_within1": 0.5567,
+   "F1_strict": 0.4295
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "+ relabel + joint tuning",
+   "cycles": 11,
+   "F1": 0.6134,
+   "precision": 0.6341,
+   "recall": 0.5939,
+   "F1_within1": 0.544,
+   "F1_strict": 0.4128
+  }
+ ]
+}

@@ -59,3 +59,4 @@ Buy-back rebalancing events in the simulator (plan `BUYBACK_EVENTS_PLAN.md`, rep
 Forward test on unseen cycles (report `D1_FORWARD.md`): `bl_fwd.py` → `make_fwd_report.py`.
 D-1 lot construction (plan `D1_LOTS_PLAN.md`, report `D1_LOTS.md`): `bl_err_budget.py` → `bl_qty_events.py` → `bl_solo_burst.py` → `bl_solo_minute.py` → `bl_lots_fit.py` → `bl_lots_ceiling.py` → `make_lots_report.py`.
 Learned policies and accuracy scoreboard (plan `D1_ML_PLAN.md`, report `D1_ACCURACY_PUSH.md`): `bl_ml_feat.py` → `bl_ml_fit.py` → `bl_ml_tcheck.py` → `make_ml_report.py`.
+Accuracy push round 2 (opening-wing close relabel, joint tuning): `bl_push2.py` → `make_ml_report.py`.

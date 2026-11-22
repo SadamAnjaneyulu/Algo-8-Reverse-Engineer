@@ -8,7 +8,7 @@
   * **0.633** on unseen cycles of the same version, **0.624** after a version change.
   * AUC on unseen cycles 0.92 / 0.91.
   * Minute-cell activity F1 0.89 at ±1 minute.
-* **Nothing tried beats it on unseen cycles.** This covers 9 attempts: stop-design variants, rebalancing events, quantity fixes and learned (gradient-boosting) policies for solo sells and buy-backs. Each was chosen on training cycles and validated out-of-fold and on unseen cycles. The best gain on any test is under +0.01, inside the noise, and none improves both out-of-fold and unseen.
+* **Nothing tried beats it on unseen cycles.** This covers 11 attempts: stop-design variants, rebalancing events, quantity fixes, learned (gradient-boosting) policies for solo sells and buy-backs, booking the opening-wing closes as body-stream closes, and joint tuning of every simulator parameter against overall accuracy. Each was chosen on training cycles and validated out-of-fold and on unseen cycles. The best gain on any test is under +0.01, inside the noise, and none improves both out-of-fold and unseen.
 * **The learned policies are informative but do not help the whole system.**
   * The solo-sell model ranks sell cells better than the decoded ladder: exact-minute cell F1 0.41 vs 0.33 on training cells.
   * In the full free-running simulation it places more lots, the hedge mirrors every extra sell, and overall precision falls as much as recall rises.
@@ -32,6 +32,8 @@
 | Learned solo-sell policy | 0.685 | 0.635 | 0.607 | rejected |
 | Learned buy-back policy | 0.678 | 0.625 | 0.627 | rejected |
 | Both learned policies | 0.682 | 0.622 | 0.615 | rejected |
+| Opening-wing closes booked as body-stream closes | 0.683 | 0.635 | 0.623 | rejected (neutral) |
+| Relabel + joint tuning of all simulator parameters | 0.689 | 0.635 | 0.613 | rejected (overfits) |
 
 
 ## 2. Learned policies (detail)
@@ -51,7 +53,11 @@
 | B version change (train V1, test V2) | + both policies | 11 | 0.615 | 0.577 | 0.659 | 0.546 | 0.4 |
 
 
-## 3. Reading for the PM
+## 3. Round 2 (after "try again as hard as possible")
+* **Opening-wing closes.** 93% of the real body-stream long closes are on the opening-wing contracts, and 81% come within 10 s of a buy-back. The simulator's outermost-first release does close those contracts, but at different moments: only about 24% match in time. Overall effect: neutral.
+* **Joint coordinate-descent tuning** of all parameters against overall lot F1, two passes on the training cycles. It raises the training F1 by 0.005–0.018, but on unseen cycles it gains +0.001 (same version) and loses −0.010 (version change). That is overfitting to the training cycles. Rejected.
+
+## 4. Reading for the PM
 * **Decisions:** what the system does, when, and on which side is reproduced well. AUC is about 0.92 on unseen days, minute cells 0.89.
 * **Execution detail:** how many lots and the exact minute is about 0.63 on unseen days.
 * **With this data,** further modelling on the same 32 cycles mainly fits noise. Every extra layer tried in this pass lost out-of-sample.

@@ -627,3 +627,8 @@ def test_ml_policies_and_scoreboard():
     for v in ('+ sell policy', '+ buy-back policy', '+ both policies'):
         x = M[M.model == v].set_index('setup').F1; assert not ((x > b + 0.005).all())          # no learned policy improves every setup
     R = json.load(open(f'{OUT}/bl_summary_ml2.json')); assert R['0.1'] > R['ladder_rule']
+
+
+def test_push2_round_two():
+    P = pd.read_csv(f'{OUT}/bl_push2.csv').pivot(index='model', columns='setup', values='F1'); b = P.loc['baseline']
+    assert not (P.loc['+ relabel + joint tuning'] > b + 0.005).all() and abs(P.loc['+ opening-wing close relabel'] - b).max() < 0.01

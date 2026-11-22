@@ -7,7 +7,7 @@ def table(df):
     c = list(df.columns); s = '| ' + ' | '.join(map(str, c)) + ' |\n|' + '|'.join('---' for _ in c) + '|\n'
     for r in df.itertuples(index=False): s += '| ' + ' | '.join(str(x) for x in r) + ' |\n'
     return s
-ML = pd.read_csv(f'{OUT}/bl_ml_fit.csv'); LF = pd.read_csv(f'{OUT}/bl_lots_fit.csv'); FW = pd.read_csv(f'{OUT}/bl_fwd.csv'); EV = pd.read_csv(f'{OUT}/bl_ev_overall.csv'); O1 = pd.read_csv(f'{OUT}/bl_fr_overall.csv'); O2 = pd.read_csv(f'{OUT}/bl_fr2_overall.csv').iloc[0]; RP1 = J('rep1'); BS5 = J('bs5'); M2 = J('ml2'); CE = pd.read_csv(f'{OUT}/bl_lots_ceiling.csv')
+ML = pd.read_csv(f'{OUT}/bl_ml_fit.csv'); P2 = pd.read_csv(f'{OUT}/bl_push2.csv'); LF = pd.read_csv(f'{OUT}/bl_lots_fit.csv'); FW = pd.read_csv(f'{OUT}/bl_fwd.csv'); EV = pd.read_csv(f'{OUT}/bl_ev_overall.csv'); O1 = pd.read_csv(f'{OUT}/bl_fr_overall.csv'); O2 = pd.read_csv(f'{OUT}/bl_fr2_overall.csv').iloc[0]; RP1 = J('rep1'); BS5 = J('bs5'); M2 = J('ml2'); CE = pd.read_csv(f'{OUT}/bl_lots_ceiling.csv')
 g = lambda df, s_, m: float(df[(df.setup == s_) & (df.model == m)].F1.iloc[0])
 OOF, A, B = 'out-of-fold halves', 'A same version (V1 14->7, V2 7->4)', 'B version change (train V1, test V2)'
 base = (float(O1.F1.iloc[0]), g(ML, A, 'baseline'), g(ML, B, 'baseline'))
@@ -20,7 +20,9 @@ sc = [('Decoded rules (current simulator)', *base, 'kept'),
       ('Lot fixes (solo depth sizing, late rule, counter-sell)', g(LF, OOF, 'fixed'), g(LF, A, 'fixed'), g(LF, B, 'fixed'), 'rejected'),
       ('Learned solo-sell policy', g(ML, OOF, '+ sell policy'), g(ML, A, '+ sell policy'), g(ML, B, '+ sell policy'), 'rejected'),
       ('Learned buy-back policy', g(ML, OOF, '+ buy-back policy'), g(ML, A, '+ buy-back policy'), g(ML, B, '+ buy-back policy'), 'rejected'),
-      ('Both learned policies', g(ML, OOF, '+ both policies'), g(ML, A, '+ both policies'), g(ML, B, '+ both policies'), 'rejected')]
+      ('Both learned policies', g(ML, OOF, '+ both policies'), g(ML, A, '+ both policies'), g(ML, B, '+ both policies'), 'rejected'),
+      ('Opening-wing closes booked as body-stream closes', g(P2, OOF, '+ opening-wing close relabel'), g(P2, A, '+ opening-wing close relabel'), g(P2, B, '+ opening-wing close relabel'), 'rejected (neutral)'),
+      ('Relabel + joint tuning of all simulator parameters', g(P2, OOF, '+ relabel + joint tuning'), g(P2, A, '+ relabel + joint tuning'), g(P2, B, '+ relabel + joint tuning'), 'rejected (overfits)')]
 T = pd.DataFrame(sc, columns=['attempt', 'out-of-fold F1', 'unseen F1 (same version)', 'unseen F1 (version change)', 'decision'])
 Tf = T.copy()
 for c in T.columns[1:4]: Tf[c] = T[c].map(lambda v: '–' if v != v else f'{v:.3f}')
@@ -40,7 +42,7 @@ txt = f"""# Algo 8 — pushing the D-1 reconstruction accuracy: everything tried
   * **{base[1]:.3f}** on unseen cycles of the same version, **{base[2]:.3f}** after a version change.
   * AUC on unseen cycles {FW.AUC_any_forward.iloc[0]:.2f} / {FW.AUC_any_forward.iloc[1]:.2f}.
   * Minute-cell activity F1 0.89 at ±1 minute.
-* **Nothing tried beats it on unseen cycles.** This covers 9 attempts: stop-design variants, rebalancing events, quantity fixes and learned (gradient-boosting) policies for solo sells and buy-backs. Each was chosen on training cycles and validated out-of-fold and on unseen cycles. The best gain on any test is under +0.01, inside the noise, and none improves both out-of-fold and unseen.
+* **Nothing tried beats it on unseen cycles.** This covers 11 attempts: stop-design variants, rebalancing events, quantity fixes, learned (gradient-boosting) policies for solo sells and buy-backs, booking the opening-wing closes as body-stream closes, and joint tuning of every simulator parameter against overall accuracy. Each was chosen on training cycles and validated out-of-fold and on unseen cycles. The best gain on any test is under +0.01, inside the noise, and none improves both out-of-fold and unseen.
 * **The learned policies are informative but do not help the whole system.**
   * The solo-sell model ranks sell cells better than the decoded ladder: exact-minute cell F1 {M2['0.1']:.2f} vs {M2['ladder_rule']:.2f} on training cells.
   * In the full free-running simulation it places more lots, the hedge mirrors every extra sell, and overall precision falls as much as recall rises.
@@ -57,7 +59,11 @@ txt = f"""# Algo 8 — pushing the D-1 reconstruction accuracy: everything tried
 ## 2. Learned policies (detail)
 {table(mlt)}
 
-## 3. Reading for the PM
+## 3. Round 2 (after "try again as hard as possible")
+* **Opening-wing closes.** 93% of the real body-stream long closes are on the opening-wing contracts, and 81% come within 10 s of a buy-back. The simulator's outermost-first release does close those contracts, but at different moments: only about 24% match in time. Overall effect: neutral.
+* **Joint coordinate-descent tuning** of all parameters against overall lot F1, two passes on the training cycles. It raises the training F1 by 0.005–0.018, but on unseen cycles it gains +0.001 (same version) and loses −0.010 (version change). That is overfitting to the training cycles. Rejected.
+
+## 4. Reading for the PM
 * **Decisions:** what the system does, when, and on which side is reproduced well. AUC is about 0.92 on unseen days, minute cells 0.89.
 * **Execution detail:** how many lots and the exact minute is about 0.63 on unseen days.
 * **With this data,** further modelling on the same 32 cycles mainly fits noise. Every extra layer tried in this pass lost out-of-sample.
