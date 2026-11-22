@@ -731,3 +731,8 @@ def test_d0r_d1_is_15min_marks():
     R = json.load(open(f'{OUT}/bl_summary_d0r4.json')); assert R['cycles'] == 32 and R['pairs'] == 1061 and R['all_1_plus_1'] and R['atm_share'] > 0.9 and R['share_in_mark_windows'] == 1.0
     assert len(R['full_marks']) == 17 and R['skipped_marks_0930_1430'] == ['12:15', '12:45', '13:00'] and len(R['full_marks']) * R['cycles'] == 544          # matches the earlier finding ENT-02 (17 windows, 544 / 544)
     M = pd.read_csv(f'{OUT}/bl_d0r_d1marks.csv').set_index('mark'); assert M.loc['13:15', 'pct_cycles_selling'] < 0.7 and M.loc['10:15', 'avg_straddles_per_cycle'] > 3 and M.loc['10:00', 'avg_straddles_per_cycle'] < 1.1
+
+
+def test_d0r_extra_marks_check():
+    R = json.load(open(f'{OUT}/bl_summary_d0r5.json')); assert R['extra_5min_marks'] == 12 and R['exactly_10_after_a_15min_mark'] == 8 and R['exactly_10_after_a_sold_15min_mark'] == 7 and R['five_after_a_15min_mark'] == 4
+    assert R['atm_prev_close'] > 0.95 and R['atm_within_minute'] == 1.0 and R['lots_per_pair'] == 2.0 and 55 < R['secs_after_mark_q'][1] < 70
