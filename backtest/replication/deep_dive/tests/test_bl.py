@@ -597,3 +597,9 @@ def test_bs_buyback_second_pass():
     X = pd.read_pickle(f'{OUT}/bl_bs_panel.pkl.gz'); g = X[(X.gate == 1) & (X.ratio_h >= 1.7)]; assert g[g.don60 == 1].y.mean() > 2 * g[g.don60 == 0].y.mean()
     P = pd.read_csv(f'{OUT}/bl_bs_price.csv').set_index('price'); assert P.F1['high'] >= P.F1.max() - 1e-9
     AB = pd.read_csv(f'{OUT}/bl_bs_ab.csv'); assert AB[(AB['mode'] == 'tf_bb') & (AB.cls == 'body_buyback')].F1.iloc[0] < P.F1['high']
+
+
+def test_bt_buyback_third_pass():
+    F = pd.read_csv(f'{OUT}/bl_bt_fresh.csv'); f = F[F.ratio > 1]; assert f[f.mins_held <= 10].ratio.median() < 1.2 < 1.5 < f[f.mins_held > 30].ratio.median()
+    X = pd.read_pickle(f'{OUT}/bl_bt_lot.pkl.gz'); assert X.y.sum() > 1250; s = X[X.typ == 'scheduled']; assert s[s.ratio_h > 1.7].y.mean() > 20 * s[(s.ratio_h > 1.1) & (s.ratio_h <= 1.4)].y.mean()
+    B7 = json.load(open(f'{OUT}/bl_summary_bt7.json')); P = pd.DataFrame(B7['table']).set_index('state'); assert P.partner_same_strike_other_right['in profit'] > 3 * P.partner_same_strike_other_right['in loss']
