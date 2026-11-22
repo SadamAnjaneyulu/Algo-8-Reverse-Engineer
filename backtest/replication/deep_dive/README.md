@@ -61,3 +61,5 @@ D-1 lot construction (plan `D1_LOTS_PLAN.md`, report `D1_LOTS.md`): `bl_err_budg
 Learned policies and accuracy scoreboard (plan `D1_ML_PLAN.md`, report `D1_ACCURACY_PUSH.md`): `bl_ml_feat.py` → `bl_ml_fit.py` → `bl_ml_tcheck.py` → `make_ml_report.py`.
 Accuracy push round 2 (opening-wing close relabel, joint tuning): `bl_push2.py` → `make_ml_report.py`.
 D0 inventory (plan `D0_PLAN.md`, report `D0_INVENTORY.md`): `bl_d0_data.py` (D0 spot and option OHLC caches) → `bl_d0_inv.py` → `make_d0inv_report.py`.
+
+D0 chunk 1, body sells (plan `D0_SELLS_PLAN.md` with addenda 1b/1c, report `D0_SELLS.md`): `bl_d0s_label.py` → `bl_d0s_tests.py` → `bl_d0s_tt.py` → `bl_d0s_solo.py` → `bl_d0s_auc.py` (~1.5 min) → `make_d0s_report.py`; `make_d0inv_report.py` again for the inventory correction note.

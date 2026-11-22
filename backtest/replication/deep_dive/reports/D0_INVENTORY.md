@@ -12,6 +12,7 @@
 * **Carried into D0 (median per cycle):** 52 CE and 45 PE short lots, 56 / 48 long lots, the lump being the long excess.
 * **What carries over from D-1:**
   * **The hedge controller does.** Long lots equal short lots at 95% of quiet moments (D-1: 99%; the 15:00 hour drops to 75% with the clearance).
+  * *Correction (D0 chunk 1, `D0_SELLS.md` §2): this test pooled NIFTY and SENSEX. Per underlying and version, D0 has a fixed pair timetable (out-of-fold pair-lot F1 0.805). The line below holds only for the pooled view.*
   * **The D-1 timetable does not.** On D0 only 3 (V1) and 2 (V2) minutes have a sale in at least 80% of cycles, against 33 fixed waves on D-1. D0 selling is not a fixed minute timetable.
   * **Buy-backs are not minute-clocked on D0:** 11% at second :00, against 48% on D-1.
 * **Buy-backs mostly close lots sold during D0** (8,819 lots), not the carried book alone (837 lots on contracts held only from D-1). D0 is an active intraday sell / buy-back cycle on top of the carried position.

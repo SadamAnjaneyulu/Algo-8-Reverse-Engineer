@@ -632,3 +632,17 @@ def test_ml_policies_and_scoreboard():
 def test_push2_round_two():
     P = pd.read_csv(f'{OUT}/bl_push2.csv').pivot(index='model', columns='setup', values='F1'); b = P.loc['baseline']
     assert not (P.loc['+ relabel + joint tuning'] > b + 0.005).all() and abs(P.loc['+ opening-wing close relabel'] - b).max() < 0.01
+
+
+def test_d0s_labels_and_timetable():
+    S = pd.read_pickle(f'{OUT}/bl_d0s_orders.pkl.gz'); R0 = json.load(open(f'{OUT}/bl_summary_d0s0.json')); assert S.lots.sum() == R0['lots'] and sum(R0['by_label'].values()) == R0['lots']
+    p = S[S.pid >= 0]; g = p.groupby(['cid', 'pid']); assert (g.cp.nunique() == 2).all() and (g.strike.nunique() == 1).all() and ((g.tod.max() - g.tod.min()) <= 3).all()
+    TT = pd.read_csv(f'{OUT}/bl_d0s_tt.csv'); a = TT[TT.test.str.startswith('T1b timetable (OOF) vs all')].iloc[0]; assert a.F1 > 0.75 and a.precision > 0.9
+    b = TT[TT.test.str.startswith('T2b breakout')].F1.iloc[0]; assert b > 2 * TT[TT.test.str.contains('placebo')].F1.max()
+
+
+def test_d0s_solo_and_auc():
+    SO = pd.read_csv(f'{OUT}/bl_d0s_solo.csv').set_index('machine'); m1 = SO.loc['M1 spot ladder'].F1; assert m1 > 3 * SO[SO.index.str.startswith('placebo M1')].F1.max() and m1 > 2 * SO.loc['D-1 ladder unchanged (X 0.2, gate 60, 1 lot)'].F1
+    assert SO.loc['M3 r 0.5 real buy-back times (all cycles, reference)'].F1 > 1.5 * SO[SO.index.str.startswith('placebo M3')].F1.max()
+    A = pd.read_csv(f'{OUT}/bl_d0s_auc.csv').set_index('variant').AUC; assert A['A same-minute market + rules'] > 0.9 and A['B causal (market lagged 1 min)'] < A['A same-minute market + rules'] < A['C A + real buy-back history (earlier minutes) + book']
+    CC = pd.read_csv(f'{OUT}/bl_d0s_auc_cc.csv'); assert (CC.AUC_bb_other_now > 0.55).all()

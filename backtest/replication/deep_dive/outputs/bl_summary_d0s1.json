@@ -1,0 +1,83 @@
+{
+ "cycles": 30,
+ "cycles_with_sells": 29,
+ "t1_share_mean": {
+  "V1": 0.454,
+  "V2": 0.483
+ },
+ "t1_off_iqr_median": {
+  "V1": 21.9,
+  "V2": 0.8
+ },
+ "t1_off_median_median": {
+  "V1": 39.5,
+  "V2": 0.0
+ },
+ "t1_window_lots_shift0": 3436,
+ "t1_window_pairlots_shift0": 1539,
+ "t1_window_lots_shift5": 922,
+ "t1_window_pairlots_shift5": 196,
+ "t1_window_lots_shift10": 1011,
+ "t1_window_pairlots_shift10": 206,
+ "t1_S0_precision": 0.46111111111111114,
+ "t1_S0_recall": 0.4322916666666667,
+ "t1_S0_strike_exact": 0.927710843373494,
+ "t1_lots_per_slot_right_quantiles": [
+  1.0,
+  2.0,
+  3.0,
+  4.0
+ ],
+ "t1_slots_with_more_than_1": 0.5778443113772455,
+ "t2_precision": 0.2623762376237624,
+ "t2_recall": 0.1606060606060606,
+ "t2_fires": 202,
+ "t2_targets": 330,
+ "t2_offgrid_pair_minutes_by_hour": {
+  "9": 53,
+  "10": 75,
+  "11": 65,
+  "12": 89,
+  "13": 126,
+  "14": 63,
+  "15": 7
+ },
+ "t2_strike_exact_atm_pm1_side": 0.4444444444444444,
+ "t2_strike_sign_side": 0.6296296296296297,
+ "t2_matched_for_strike": 54,
+ "T3b D-1 solo ladder on D0 vs solo lots precision/recall": [
+  0.7289855072463768,
+  0.08607118412046544
+ ],
+ "T3b placebo: cycle-permuted spot precision/recall": [
+  0.2581648522550544,
+  0.02840520191649555
+ ],
+ "t3c_bb_followed_by_same_right_solo": 0.23161676646706586,
+ "t3c_same_lots": 0.9477766287487074,
+ "t3_solo_lots_repl_only_counter_only_both_neither": [
+  330,
+  2092,
+  1667,
+  1755
+ ],
+ "t3e_bursts": 2032,
+ "t3e_lots_per_burst_q": [
+  1.0,
+  3.0,
+  6.0,
+  20.690000000000055
+ ],
+ "t3e_share_lots_in_bursts_ge5": 0.499315537303217,
+ "t3e_strikes_per_burst_q": [
+  1.0,
+  2.0
+ ],
+ "t3e_spot_move_favourable_bursts_ge5": 0.7595419847328244,
+ "t4_pair_atm_exact": 0.8860353130016051,
+ "t4_pair_atm_pm1": 0.9847512038523274,
+ "t4_solo_atm_exact": 0.2689820801773508,
+ "t4_solo_atm_pm1": 0.8254202845002772,
+ "t4_solo_premium_nearest_prev_sale": 0.4981371087928465,
+ "t4_solo_n": 5368
+}

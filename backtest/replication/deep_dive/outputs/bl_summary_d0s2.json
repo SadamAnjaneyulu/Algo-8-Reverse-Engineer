@@ -1,0 +1,34 @@
+{
+ "waves_all": {
+  "('NIFTY', 'V1')": 76,
+  "('NIFTY', 'V2')": 66,
+  "('SENSEX', 'V1')": 12,
+  "('SENSEX', 'V2')": 71
+ },
+ "cycles_per_group": {
+  "('SENSEX', 'V1')": 11,
+  "('NIFTY', 'V1')": 9,
+  "('SENSEX', 'V2')": 6,
+  "('NIFTY', 'V2')": 4
+ },
+ "t1b_strike_exact": 0.9851767388825542,
+ "t1b_pairs_explained_share": 0.6910112359550562,
+ "t1b_pairs_explained_by_label": {
+  "grid_pair": 0.714,
+  "offgrid_pair": 0.655
+ },
+ "t2b_residual_pairs": 385,
+ "t2b_residual_by_hour": {
+  "9": 123,
+  "10": 39,
+  "11": 50,
+  "12": 62,
+  "13": 55,
+  "14": 47,
+  "15": 9
+ },
+ "t2b_residual_with_bb_60s_before": 0.4103896103896104,
+ "t1b_explained_with_bb_60s_before": 0.21138211382113822,
+ "t2b_residual_before_1000": 123,
+ "t2b_residual_0915_0918": 92
+}
