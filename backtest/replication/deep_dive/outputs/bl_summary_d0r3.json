@@ -1,0 +1,203 @@
+{
+ "nifty_v1_d0_gapped_residual": [
+  "09:16:18",
+  "09:31:06",
+  "09:46:06",
+  "09:47:06",
+  "10:16:57",
+  "10:17:58",
+  "10:29:58",
+  "10:47:31",
+  "11:11:28",
+  "11:47:31",
+  "12:37:27",
+  "12:37:57",
+  "13:49:00",
+  "14:07:28",
+  "14:27:57"
+ ],
+ "rows": [
+  {
+   "day": "D-1",
+   "group": "NIFTY V1",
+   "waves": 33,
+   "strict_timers": 6,
+   "strict_covered": 0.7576,
+   "gapped_timers": 5,
+   "gapped_covered": 0.7879,
+   "null_covered_mean": 0.0114,
+   "null_covered_max": 0.0909,
+   "null_timers": 0.125
+  },
+  {
+   "day": "D-1",
+   "group": "NIFTY V2",
+   "waves": 32,
+   "strict_timers": 5,
+   "strict_covered": 0.6875,
+   "gapped_timers": 6,
+   "gapped_covered": 0.8125,
+   "null_covered_mean": 0.0352,
+   "null_covered_max": 0.1875,
+   "null_timers": 0.375
+  },
+  {
+   "day": "D-1",
+   "group": "SENSEX V1",
+   "waves": 33,
+   "strict_timers": 6,
+   "strict_covered": 0.7576,
+   "gapped_timers": 5,
+   "gapped_covered": 0.7879,
+   "null_covered_mean": 0.0227,
+   "null_covered_max": 0.0909,
+   "null_timers": 0.25
+  },
+  {
+   "day": "D-1",
+   "group": "SENSEX V2",
+   "waves": 32,
+   "strict_timers": 6,
+   "strict_covered": 0.7812,
+   "gapped_timers": 5,
+   "gapped_covered": 0.8125,
+   "null_covered_mean": 0.0,
+   "null_covered_max": 0.0,
+   "null_timers": 0.0
+  },
+  {
+   "day": "D0",
+   "group": "NIFTY V1",
+   "waves": 76,
+   "strict_timers": 11,
+   "strict_covered": 0.6579,
+   "gapped_timers": 10,
+   "gapped_covered": 0.8026,
+   "null_covered_mean": 0.0674,
+   "null_covered_max": 0.0789,
+   "null_timers": 1.625
+  },
+  {
+   "day": "D0",
+   "group": "NIFTY V2",
+   "waves": 66,
+   "strict_timers": 9,
+   "strict_covered": 0.5303,
+   "gapped_timers": 11,
+   "gapped_covered": 0.8636,
+   "null_covered_mean": 0.0625,
+   "null_covered_max": 0.0909,
+   "null_timers": 1.375
+  },
+  {
+   "day": "D0",
+   "group": "SENSEX V1",
+   "waves": 12,
+   "strict_timers": 2,
+   "strict_covered": 0.9167,
+   "gapped_timers": 2,
+   "gapped_covered": 0.9167,
+   "null_covered_mean": 0.0,
+   "null_covered_max": 0.0,
+   "null_timers": 0.0
+  },
+  {
+   "day": "D0",
+   "group": "SENSEX V2",
+   "waves": 71,
+   "strict_timers": 11,
+   "strict_covered": 0.6479,
+   "gapped_timers": 7,
+   "gapped_covered": 0.8873,
+   "null_covered_mean": 0.0651,
+   "null_covered_max": 0.1831,
+   "null_timers": 1.5
+  }
+ ],
+ "forward": [
+  {
+   "day": "D-1",
+   "group": "NIFTY V1",
+   "timers": 4,
+   "targets": 9,
+   "recall": 0.4444,
+   "recall_null_mean": 0.0017,
+   "recall_null_p95": 0.0,
+   "precision": 0.2667,
+   "precision_null_mean": 0.0011,
+   "above_p95": true
+  },
+  {
+   "day": "D-1",
+   "group": "NIFTY V2",
+   "timers": 4,
+   "targets": 9,
+   "recall": 0.3333,
+   "recall_null_mean": 0.0039,
+   "recall_null_p95": 0.0,
+   "precision": 0.2143,
+   "precision_null_mean": 0.0028,
+   "above_p95": true
+  },
+  {
+   "day": "D-1",
+   "group": "SENSEX V1",
+   "timers": 4,
+   "targets": 9,
+   "recall": 0.4444,
+   "recall_null_mean": 0.0042,
+   "recall_null_p95": 0.0,
+   "precision": 0.2667,
+   "precision_null_mean": 0.0027,
+   "above_p95": true
+  },
+  {
+   "day": "D-1",
+   "group": "SENSEX V2",
+   "timers": 3,
+   "targets": 10,
+   "recall": 0.3,
+   "recall_null_mean": 0.0023,
+   "recall_null_p95": 0.0,
+   "precision": 0.2143,
+   "precision_null_mean": 0.0017,
+   "above_p95": true
+  },
+  {
+   "day": "D0",
+   "group": "NIFTY V1",
+   "timers": 5,
+   "targets": 37,
+   "recall": 0.2703,
+   "recall_null_mean": 0.0094,
+   "recall_null_p95": 0.0811,
+   "precision": 0.36,
+   "precision_null_mean": 0.0142,
+   "above_p95": true
+  },
+  {
+   "day": "D0",
+   "group": "NIFTY V2",
+   "timers": 5,
+   "targets": 21,
+   "recall": 0.2381,
+   "recall_null_mean": 0.007,
+   "recall_null_p95": 0.0476,
+   "precision": 0.2222,
+   "precision_null_mean": 0.0089,
+   "above_p95": true
+  },
+  {
+   "day": "D0",
+   "group": "SENSEX V2",
+   "timers": 4,
+   "targets": 29,
+   "recall": 0.4483,
+   "recall_null_mean": 0.0045,
+   "recall_null_p95": 0.0345,
+   "precision": 0.7857,
+   "precision_null_mean": 0.0097,
+   "above_p95": true
+  }
+ ]
+}

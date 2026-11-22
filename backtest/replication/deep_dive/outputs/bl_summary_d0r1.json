@@ -1,0 +1,260 @@
+{
+ "D-1 NIFTY V1": {
+  "waves": 33,
+  "timers": 6,
+  "covered": 0.7575757575757576
+ },
+ "D-1 NIFTY V2": {
+  "waves": 32,
+  "timers": 5,
+  "covered": 0.6875
+ },
+ "D-1 SENSEX V1": {
+  "waves": 33,
+  "timers": 6,
+  "covered": 0.7575757575757576
+ },
+ "D-1 SENSEX V2": {
+  "waves": 32,
+  "timers": 6,
+  "covered": 0.78125
+ },
+ "D0 NIFTY V1": {
+  "waves": 76,
+  "timers": 11,
+  "covered": 0.6578947368421053
+ },
+ "D0 NIFTY V2": {
+  "waves": 66,
+  "timers": 9,
+  "covered": 0.5303030303030303
+ },
+ "D0 SENSEX V1": {
+  "waves": 12,
+  "timers": 2,
+  "covered": 0.9166666666666666
+ },
+ "D0 SENSEX V2": {
+  "waves": 71,
+  "timers": 11,
+  "covered": 0.647887323943662
+ },
+ "tests": [
+  {
+   "test": "T1 morning timers -> afternoon times",
+   "day": "D-1",
+   "group": "NIFTY V1",
+   "targets": 9,
+   "timers_fit": 5,
+   "real_share": 0.4444,
+   "null_mean": 0.006,
+   "null_p95": 0.0,
+   "ratio": 74.0741,
+   "above_null_p95": true
+  },
+  {
+   "test": "T1 morning timers -> afternoon times",
+   "day": "D-1",
+   "group": "NIFTY V2",
+   "targets": 9,
+   "timers_fit": 4,
+   "real_share": 0.5556,
+   "null_mean": 0.0044,
+   "null_p95": 0.0,
+   "ratio": 125.0,
+   "above_null_p95": true
+  },
+  {
+   "test": "T1 morning timers -> afternoon times",
+   "day": "D-1",
+   "group": "SENSEX V1",
+   "targets": 9,
+   "timers_fit": 5,
+   "real_share": 0.4444,
+   "null_mean": 0.0029,
+   "null_p95": 0.0,
+   "ratio": 153.8462,
+   "above_null_p95": true
+  },
+  {
+   "test": "T1 morning timers -> afternoon times",
+   "day": "D-1",
+   "group": "SENSEX V2",
+   "targets": 10,
+   "timers_fit": 4,
+   "real_share": 0.5,
+   "null_mean": 0.0042,
+   "null_p95": 0.0,
+   "ratio": 119.0476,
+   "above_null_p95": true
+  },
+  {
+   "test": "T1 morning timers -> afternoon times",
+   "day": "D0",
+   "group": "NIFTY V1",
+   "targets": 37,
+   "timers_fit": 4,
+   "real_share": 0.1081,
+   "null_mean": 0.0034,
+   "null_p95": 0.027,
+   "ratio": 31.746,
+   "above_null_p95": true
+  },
+  {
+   "test": "T1 morning timers -> afternoon times",
+   "day": "D0",
+   "group": "NIFTY V2",
+   "targets": 21,
+   "timers_fit": 5,
+   "real_share": 0.2381,
+   "null_mean": 0.0025,
+   "null_p95": 0.0,
+   "ratio": 96.1538,
+   "above_null_p95": true
+  },
+  {
+   "test": "T1 morning timers -> afternoon times",
+   "day": "D0",
+   "group": "SENSEX V2",
+   "targets": 29,
+   "timers_fit": 5,
+   "real_share": 0.4828,
+   "null_mean": 0.0063,
+   "null_p95": 0.0362,
+   "ratio": 76.9231,
+   "above_null_p95": true
+  },
+  {
+   "test": "T2 D-1 timers -> D0 times",
+   "day": "D0",
+   "group": "NIFTY V1",
+   "targets": 76,
+   "timers_fit": 6,
+   "real_share": 0.3816,
+   "null_mean": 0.0115,
+   "null_p95": 0.0526,
+   "ratio": 33.1808,
+   "above_null_p95": true
+  },
+  {
+   "test": "T2 D0 timers -> D-1 times",
+   "day": "D-1",
+   "group": "NIFTY V1",
+   "targets": 33,
+   "timers_fit": 11,
+   "real_share": 0.8182,
+   "null_mean": 0.0345,
+   "null_p95": 0.1818,
+   "ratio": 23.6842,
+   "above_null_p95": true
+  },
+  {
+   "test": "T2 D-1 timers -> D0 times",
+   "day": "D0",
+   "group": "NIFTY V2",
+   "targets": 66,
+   "timers_fit": 5,
+   "real_share": 0.5,
+   "null_mean": 0.0092,
+   "null_p95": 0.0455,
+   "ratio": 54.0984,
+   "above_null_p95": true
+  },
+  {
+   "test": "T2 D0 timers -> D-1 times",
+   "day": "D-1",
+   "group": "NIFTY V2",
+   "targets": 32,
+   "timers_fit": 9,
+   "real_share": 0.8125,
+   "null_mean": 0.0188,
+   "null_p95": 0.125,
+   "ratio": 43.1894,
+   "above_null_p95": true
+  },
+  {
+   "test": "T2 D-1 timers -> D0 times",
+   "day": "D0",
+   "group": "SENSEX V1",
+   "targets": 12,
+   "timers_fit": 6,
+   "real_share": 0.0,
+   "null_mean": 0.013,
+   "null_p95": 0.0042,
+   "ratio": 0.0,
+   "above_null_p95": false
+  },
+  {
+   "test": "T2 D0 timers -> D-1 times",
+   "day": "D-1",
+   "group": "SENSEX V1",
+   "targets": 33,
+   "timers_fit": 2,
+   "real_share": 0.0,
+   "null_mean": 0.003,
+   "null_p95": 0.0303,
+   "ratio": 0.0,
+   "above_null_p95": false
+  },
+  {
+   "test": "T2 D-1 timers -> D0 times",
+   "day": "D0",
+   "group": "SENSEX V2",
+   "targets": 71,
+   "timers_fit": 6,
+   "real_share": 0.4366,
+   "null_mean": 0.0106,
+   "null_p95": 0.0563,
+   "ratio": 41.2234,
+   "above_null_p95": true
+  },
+  {
+   "test": "T2 D0 timers -> D-1 times",
+   "day": "D-1",
+   "group": "SENSEX V2",
+   "targets": 32,
+   "timers_fit": 11,
+   "real_share": 0.375,
+   "null_mean": 0.0234,
+   "null_p95": 0.1562,
+   "ratio": 16.0428,
+   "above_null_p95": true
+  },
+  {
+   "test": "T3 NIFTY V1 D0 timers -> other group D0 times",
+   "day": "D0",
+   "group": "NIFTY V2",
+   "targets": 66,
+   "timers_fit": 11,
+   "real_share": 0.7424,
+   "null_mean": 0.0306,
+   "null_p95": 0.1212,
+   "ratio": 24.2334,
+   "above_null_p95": true
+  },
+  {
+   "test": "T3 NIFTY V1 D0 timers -> other group D0 times",
+   "day": "D0",
+   "group": "SENSEX V2",
+   "targets": 71,
+   "timers_fit": 11,
+   "real_share": 0.5634,
+   "null_mean": 0.0338,
+   "null_p95": 0.1838,
+   "ratio": 16.6667,
+   "above_null_p95": true
+  },
+  {
+   "test": "T3 NIFTY V1 D0 timers -> other group D0 times",
+   "day": "D0",
+   "group": "SENSEX V1",
+   "targets": 12,
+   "timers_fit": 11,
+   "real_share": 0.9167,
+   "null_mean": 0.033,
+   "null_p95": 0.1667,
+   "ratio": 27.7778,
+   "above_null_p95": true
+  }
+ ]
+}

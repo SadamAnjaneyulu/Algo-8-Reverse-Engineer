@@ -715,3 +715,13 @@ def test_d0q_alltimes():
     assert 64 <= g('NIFTY', 'V1', 'D-1').avg_lots_per_active_cycle_per_day <= 68 and 140 <= g('NIFTY', 'V1', 'D0').avg_lots_per_active_cycle_per_day <= 160 and g('SENSEX', 'V1', 'D0').avg_lots_per_active_cycle_per_day < g('SENSEX', 'V1', 'D-1').avg_lots_per_active_cycle_per_day
     A = pd.read_csv(f'{OUT}/bl_d0q_alltimes.csv'); one = (A.waves_in_cluster == 1).mean(); assert one > 0.8 and (A.expected_lots == 2 * A.waves_in_cluster).all() and A.avg_lots_per_active_cycle.min() > 0
     assert A[(A.und == 'NIFTY') & (A.version == 'V1') & (A.day == 'D0')].waves_in_cluster.sum() == 76 and A[(A.und == 'NIFTY') & (A.version == 'V1') & (A.day == 'D-1')].waves_in_cluster.sum() == 33
+
+
+def test_d0r_timer_bank():
+    T = pd.read_csv(f'{OUT}/bl_d0r_t1.csv'); f = T[T.test.str.startswith('T1')]; assert len(f) == 7 and f.above_null_p95.all() and (f.real_share > 20 * f.null_mean).all()
+    t3 = T[T.test.str.startswith('T3')]; assert (t3.real_share > 0.5).all() and (t3.real_share > 10 * t3.null_mean).all()
+    RB = pd.read_csv(f'{OUT}/bl_d0r_robust.csv'); assert RB.above.sum() >= 36 and len(RB) == 40
+    GP = pd.read_csv(f'{OUT}/bl_d0r_gap.csv').set_index(['day', 'group']); assert 0.75 <= GP.loc[('D0', 'NIFTY V1'), 'gapped_covered'] <= 0.85 and (GP.gapped_covered > GP.null_covered_max + 0.5).all() and GP.loc[('D-1', 'NIFTY V1'), 'gapped_timers'] <= 6
+    GF = pd.read_csv(f'{OUT}/bl_d0r_gap_fwd.csv'); assert len(GF) == 7 and GF.above_p95.all() and (GF.recall > 15 * GF.recall_null_mean).all()
+    TB = pd.read_csv(f'{OUT}/bl_d0r_timers_gapped.csv'); d1 = set(TB[(TB.day == 'D-1') & (TB.group == 'NIFTY V1')].family); assert {'every 30 min @ :09-10', 'every 45 min @ :00', 'every 60 min @ :30-31'} <= d1
+    assert TB[(TB.day == 'D0') & (TB.group == 'NIFTY V1')].shape[0] > TB[(TB.day == 'D-1') & (TB.group == 'NIFTY V1')].shape[0]
