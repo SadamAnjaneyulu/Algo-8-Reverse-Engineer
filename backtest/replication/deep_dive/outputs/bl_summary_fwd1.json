@@ -1,0 +1,34 @@
+{
+ "rows": [
+  {
+   "split": "A same version (V1 14->7, V2 7->4)",
+   "train_cycles": 21,
+   "test_cycles": 11,
+   "lump_regime_used": "r3",
+   "F1_forward": 0.6335,
+   "precision_forward": 0.7719,
+   "recall_forward": 0.5372,
+   "F1_within1_forward": 0.5902,
+   "F1_out_of_fold_same_cycles": 0.6556,
+   "AUC_any_forward": 0.9208,
+   "AUC_any_out_of_fold_same_cycles": 0.9661,
+   "theta": 1.6,
+   "tp": 0.5
+  },
+  {
+   "split": "B version change (train V1, test V2)",
+   "train_cycles": 21,
+   "test_cycles": 11,
+   "lump_regime_used": "r3",
+   "F1_forward": 0.6238,
+   "precision_forward": 0.6873,
+   "recall_forward": 0.5711,
+   "F1_within1_forward": 0.5553,
+   "F1_out_of_fold_same_cycles": 0.6604,
+   "AUC_any_forward": 0.9117,
+   "AUC_any_out_of_fold_same_cycles": 0.9534,
+   "theta": 1.6,
+   "tp": 0.25
+  }
+ ]
+}

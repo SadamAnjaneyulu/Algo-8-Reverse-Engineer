@@ -609,3 +609,8 @@ def test_ev_rebalancing_events():
     OV = pd.read_csv(f'{OUT}/bl_ev_overall.csv'); g = lambda m, v: float(OV[(OV['mode'] == m) & OV.variant.str.startswith(v)].F1.iloc[0])
     assert abs(g('free', 'rebalancing') - g('free', 'plain')) < 0.03 and abs(g('tf_bb', 'rebalancing') - g('tf_bb', 'plain')) < 0.01
     C = pd.read_csv(f'{OUT}/bl_ev_classes.csv'); b = C[(C['mode'] == 'tf_bb') & (C.cls == 'body_buyback') & C.variant.str.startswith('plain')].F1.iloc[0]; assert 0.57 < b < 0.60
+
+
+def test_fwd_unseen_cycles():
+    F = pd.read_csv(f'{OUT}/bl_fwd.csv'); assert (F.train_cycles == 21).all() and (F.test_cycles == 11).all()
+    assert (F.F1_forward < F.F1_out_of_fold_same_cycles + 0.02).all() and (F.AUC_any_forward > 0.85).all() and (F.F1_forward > 0.5).all()

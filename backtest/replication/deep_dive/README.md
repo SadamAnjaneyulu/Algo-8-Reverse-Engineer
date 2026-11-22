@@ -56,3 +56,4 @@ Buy-back decode (plan `BUYBACK_DECODE_PLAN.md`, report `BUYBACK_DECODE.md`): `bl
 Buy-back second pass, stops on losing positions (plan `BUYBACK_STOP2_PLAN.md`, report `BUYBACK_STOP2.md`): `bl_bs_panel.py` → `bl_bs_score.py` → `bl_bs_mkt.py` → `bl_bs_fit.py` → `bl_bs_price.py` → `bl_bs_ab.py` → `bl_bs_profit.py` → `make_bs_report.py`.
 Buy-back third pass, why exits differ (report `BUYBACK_STOP3.md`): `bl_bt_inv.py` → `bl_bt_fresh.py` → `bl_bt_lot.py` → `bl_bt_react.py` → `bl_bt_adv.py` → `bl_bt_ctx.py` → `bl_bt_profit.py` → `make_bt_report.py`.
 Buy-back rebalancing events in the simulator (plan `BUYBACK_EVENTS_PLAN.md`, report `BUYBACK_EVENTS.md`): `bl_ev_fit.py` → `make_ev_report.py`.
+Forward test on unseen cycles (report `D1_FORWARD.md`): `bl_fwd.py` → `make_fwd_report.py`.

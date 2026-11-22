@@ -1,0 +1,3 @@
+split,train_cycles,test_cycles,lump_regime_used,F1_forward,precision_forward,recall_forward,F1_within1_forward,F1_out_of_fold_same_cycles,AUC_any_forward,AUC_any_out_of_fold_same_cycles,theta,tp
+"A same version (V1 14->7, V2 7->4)",21,11,r3,0.6335,0.7719,0.5372,0.5902,0.6556,0.9208,0.9661,1.6,0.5
+"B version change (train V1, test V2)",21,11,r3,0.6238,0.6873,0.5711,0.5553,0.6604,0.9117,0.9534,1.6,0.25
