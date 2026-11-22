@@ -87,3 +87,5 @@ How the D0 scheduled selling is scheduled, a bank of timers (plan `D0_SCHED_RULE
 D-1 scheduled selling per 15-minute mark (all cycles, used by `D0_SCHED_RULE.md` §1): `bl_d0r_d1marks.py`.
 
 Check of the 14 extra D0 marks (+10 min rule, ATM, lots): `bl_d0r_extra10.py`.
+
+D0 buy-back reasons, open to close (plan `D0_BB_TYPES_PLAN.md` with a post-hoc addendum, report `D0_BB_TYPES.md`): `bl_d0b_ledger.py` → `bl_d0b_tests.py` → `bl_d0y_types.py` (~1 min) → `bl_d0y_other.py` → `make_d0y_report.py`.

@@ -1,0 +1,372 @@
+{
+ "q2_lots": 1786,
+ "q2_bins_above_2x_p95": [
+  "1-2"
+ ],
+ "q2_exact_hold_share": {
+  "5": 0.0016797312430011197,
+  "10": 0.006159014557670772,
+  "15": 0.003919372900335946,
+  "20": 0.002799552071668533,
+  "30": 0.003919372900335946,
+  "45": 0.0022396416573348264,
+  "60": 0.0005599104143337066
+ },
+ "q3_in_133s_after_5min_mark": 0.4268848384424192,
+ "q3_uniform_expectation": 0.4533333333333333,
+ "q3_second_00": 0.09538111019055509,
+ "q3_block_minute_hist": {
+  "0": 0.1030447390223695,
+  "1": 0.06710853355426678,
+  "2": 0.06296603148301574,
+  "3": 0.05395608947804474,
+  "4": 0.055405965202982604,
+  "5": 0.04743164871582436,
+  "6": 0.04183927091963546,
+  "7": 0.05167771333885667,
+  "8": 0.03396851698425849,
+  "9": 0.05260977630488815,
+  "10": 0.06265534382767192,
+  "11": 0.04836371168185584,
+  "12": 0.04960646230323115,
+  "13": 0.061412593206296606,
+  "14": 0.207953603976802
+ },
+ "types": [
+  {
+   "type": "1 cycle-stop window",
+   "lots": 319,
+   "share": 0.033,
+   "cycles": 10,
+   "ratio_q10": 0.2505,
+   "ratio_q25": 0.4411,
+   "ratio_median": 0.9788,
+   "ratio_q75": 1.2428,
+   "ratio_q90": 2.3438,
+   "share_in_loss": 0.4483,
+   "held_min_q25": 0.2167,
+   "held_min_median": 0.6833,
+   "held_min_q75": 200.4917,
+   "carried_from_D1": 0.3417,
+   "CE_share": 0.6176,
+   "median_time": "11:01"
+  },
+  {
+   "type": "2a clearance 15:10-15:13",
+   "lots": 378,
+   "share": 0.0391,
+   "cycles": 18,
+   "ratio_q10": 0.0088,
+   "ratio_q25": 0.0387,
+   "ratio_median": 0.465,
+   "ratio_q75": 0.8964,
+   "ratio_q90": 1.1854,
+   "share_in_loss": 0.2143,
+   "held_min_q25": 12.7583,
+   "held_min_median": 131.0833,
+   "held_min_q75": 201.5833,
+   "carried_from_D1": 0.1905,
+   "CE_share": 0.6058,
+   "median_time": "15:11"
+  },
+  {
+   "type": "2b clearance 15:14",
+   "lots": 1101,
+   "share": 0.114,
+   "cycles": 17,
+   "ratio_q10": 0.0297,
+   "ratio_q25": 0.1023,
+   "ratio_median": 0.36,
+   "ratio_q75": 0.7564,
+   "ratio_q90": 1.128,
+   "share_in_loss": 0.1435,
+   "held_min_q25": 73.0,
+   "held_min_median": 159.725,
+   "held_min_q75": 289.6958,
+   "carried_from_D1": 0.2716,
+   "CE_share": 0.6031,
+   "median_time": "15:14"
+  },
+  {
+   "type": "2c clearance 15:15+",
+   "lots": 800,
+   "share": 0.0829,
+   "cycles": 9,
+   "ratio_q10": 0.0005,
+   "ratio_q25": 0.0019,
+   "ratio_median": 0.1638,
+   "ratio_q75": 0.6707,
+   "ratio_q90": 1.1624,
+   "share_in_loss": 0.1412,
+   "held_min_q25": 14.1125,
+   "held_min_median": 19.7167,
+   "held_min_q75": 193.5,
+   "carried_from_D1": 0.315,
+   "CE_share": 0.52,
+   "median_time": "15:19"
+  },
+  {
+   "type": "3 stop-loss",
+   "lots": 2584,
+   "share": 0.2676,
+   "cycles": 25,
+   "ratio_q10": 1.3747,
+   "ratio_q25": 1.495,
+   "ratio_median": 1.6397,
+   "ratio_q75": 1.799,
+   "ratio_q90": 2.0202,
+   "share_in_loss": 0.9973,
+   "held_min_q25": 15.7042,
+   "held_min_median": 41.2417,
+   "held_min_q75": 84.5333,
+   "carried_from_D1": 0.1176,
+   "CE_share": 0.4799,
+   "median_time": "12:32"
+  },
+  {
+   "type": "4 take-profit",
+   "lots": 853,
+   "share": 0.0883,
+   "cycles": 18,
+   "ratio_q10": 0.01,
+   "ratio_q25": 0.017,
+   "ratio_median": 0.0333,
+   "ratio_q75": 0.0726,
+   "ratio_q90": 0.0953,
+   "share_in_loss": 0.0,
+   "held_min_q25": 146.6083,
+   "held_min_median": 208.5083,
+   "held_min_q75": 293.1833,
+   "carried_from_D1": 0.524,
+   "CE_share": 0.6307,
+   "median_time": "14:44"
+  },
+  {
+   "type": "5 partner",
+   "lots": 386,
+   "share": 0.04,
+   "cycles": 23,
+   "ratio_q10": 0.1458,
+   "ratio_q25": 0.3254,
+   "ratio_median": 0.6211,
+   "ratio_q75": 0.8896,
+   "ratio_q90": 1.048,
+   "share_in_loss": 0.1373,
+   "held_min_q25": 3.7167,
+   "held_min_median": 49.5667,
+   "held_min_q75": 147.0667,
+   "carried_from_D1": 0.1218,
+   "CE_share": 0.6606,
+   "median_time": "14:15"
+  },
+  {
+   "type": "6 roll-out",
+   "lots": 1259,
+   "share": 0.1304,
+   "cycles": 26,
+   "ratio_q10": 0.3696,
+   "ratio_q25": 0.8488,
+   "ratio_median": 1.006,
+   "ratio_q75": 1.234,
+   "ratio_q90": 1.5525,
+   "share_in_loss": 0.5203,
+   "held_min_q25": 1.1667,
+   "held_min_median": 7.1,
+   "held_min_q75": 61.0042,
+   "carried_from_D1": 0.1787,
+   "CE_share": 0.5409,
+   "median_time": "12:37"
+  },
+  {
+   "type": "7 burst member",
+   "lots": 1128,
+   "share": 0.1168,
+   "cycles": 24,
+   "ratio_q10": 0.3103,
+   "ratio_q25": 0.6088,
+   "ratio_median": 0.9925,
+   "ratio_q75": 1.169,
+   "ratio_q90": 1.3229,
+   "share_in_loss": 0.4876,
+   "held_min_q25": 21.475,
+   "held_min_median": 75.1083,
+   "held_min_q75": 177.5417,
+   "carried_from_D1": 0.2571,
+   "CE_share": 0.4672,
+   "median_time": "14:06"
+  },
+  {
+   "type": "8 other",
+   "lots": 848,
+   "share": 0.0878,
+   "cycles": 24,
+   "ratio_q10": 0.2757,
+   "ratio_q25": 0.6877,
+   "ratio_median": 1.012,
+   "ratio_q75": 1.1862,
+   "ratio_q90": 1.292,
+   "share_in_loss": 0.5212,
+   "held_min_q25": 4.525,
+   "held_min_median": 32.0,
+   "held_min_q75": 105.0,
+   "carried_from_D1": 0.0955,
+   "CE_share": 0.5318,
+   "median_time": "14:03"
+  }
+ ],
+ "chance": [
+  {
+   "type": "5 partner",
+   "lots_reaching_rule": 3621,
+   "share_flagged": 0.1066,
+   "chance_shift10min": 0.0341,
+   "chance_shift15min_clock_kept": 0.0348,
+   "ratio_vs_10min": 3.1255,
+   "ratio_vs_15min": 3.0635
+  },
+  {
+   "type": "6 roll-out",
+   "lots_reaching_rule": 3235,
+   "share_flagged": 0.3892,
+   "chance_shift10min": 0.1977,
+   "chance_shift15min_clock_kept": 0.2723,
+   "ratio_vs_10min": 1.9687,
+   "ratio_vs_15min": 1.4291
+  }
+ ],
+ "q1": [
+  {
+   "type": "ALL",
+   "lots": 9656,
+   "ratio_ge_1p2": 0.377,
+   "ratio_ge_1p4": 0.2755,
+   "ratio_ge_1p6": 0.1794,
+   "ratio_lt_1": 0.5058,
+   "ratio_lt_0p25": 0.2298
+  },
+  {
+   "type": "1 cycle-stop window",
+   "lots": 319,
+   "ratio_ge_1p2": 0.2853,
+   "ratio_ge_1p4": 0.2194,
+   "ratio_ge_1p6": 0.1912,
+   "ratio_lt_1": 0.5517,
+   "ratio_lt_0p25": 0.1003
+  },
+  {
+   "type": "2a clearance 15:10-15:13",
+   "lots": 378,
+   "ratio_ge_1p2": 0.0847,
+   "ratio_ge_1p4": 0.0423,
+   "ratio_ge_1p6": 0.0291,
+   "ratio_lt_1": 0.7857,
+   "ratio_lt_0p25": 0.4233
+  },
+  {
+   "type": "2b clearance 15:14",
+   "lots": 1101,
+   "ratio_ge_1p2": 0.0854,
+   "ratio_ge_1p4": 0.0254,
+   "ratio_ge_1p6": 0.0036,
+   "ratio_lt_1": 0.8565,
+   "ratio_lt_0p25": 0.376
+  },
+  {
+   "type": "2c clearance 15:15+",
+   "lots": 800,
+   "ratio_ge_1p2": 0.0925,
+   "ratio_ge_1p4": 0.0388,
+   "ratio_ge_1p6": 0.0238,
+   "ratio_lt_1": 0.8588,
+   "ratio_lt_0p25": 0.56
+  },
+  {
+   "type": "3 stop-loss",
+   "lots": 2584,
+   "ratio_ge_1p2": 0.9853,
+   "ratio_ge_1p4": 0.8769,
+   "ratio_ge_1p6": 0.5747,
+   "ratio_lt_1": 0.0027,
+   "ratio_lt_0p25": 0.0
+  },
+  {
+   "type": "4 take-profit",
+   "lots": 853,
+   "ratio_ge_1p2": 0.0,
+   "ratio_ge_1p4": 0.0,
+   "ratio_ge_1p6": 0.0,
+   "ratio_lt_1": 1.0,
+   "ratio_lt_0p25": 1.0
+  },
+  {
+   "type": "5 partner",
+   "lots": 386,
+   "ratio_ge_1p2": 0.0389,
+   "ratio_ge_1p4": 0.0026,
+   "ratio_ge_1p6": 0.0,
+   "ratio_lt_1": 0.8627,
+   "ratio_lt_0p25": 0.1943
+  },
+  {
+   "type": "6 roll-out",
+   "lots": 1259,
+   "ratio_ge_1p2": 0.278,
+   "ratio_ge_1p4": 0.1366,
+   "ratio_ge_1p6": 0.0834,
+   "ratio_lt_1": 0.4797,
+   "ratio_lt_0p25": 0.0564
+  },
+  {
+   "type": "7 burst member",
+   "lots": 1128,
+   "ratio_ge_1p2": 0.2172,
+   "ratio_ge_1p4": 0.0656,
+   "ratio_ge_1p6": 0.0408,
+   "ratio_lt_1": 0.5124,
+   "ratio_lt_0p25": 0.0816
+  },
+  {
+   "type": "8 other",
+   "lots": 848,
+   "ratio_ge_1p2": 0.2276,
+   "ratio_ge_1p4": 0.0024,
+   "ratio_ge_1p6": 0.0012,
+   "ratio_lt_1": 0.4788,
+   "ratio_lt_0p25": 0.0873
+  }
+ ],
+ "sens": [
+  {
+   "threshold": 1.2,
+   "stop_loss": 3307,
+   "take_profit": 853,
+   "partner": 598,
+   "roll_out": 1020,
+   "other": 0
+  },
+  {
+   "threshold": 1.4,
+   "stop_loss": 2584,
+   "take_profit": 853,
+   "partner": 386,
+   "roll_out": 1259,
+   "other": 0
+  },
+  {
+   "threshold": 1.6,
+   "stop_loss": 1861,
+   "take_profit": 853,
+   "partner": 220,
+   "roll_out": 1496,
+   "other": 0
+  }
+ ],
+ "rollout_solo_sales_only": {
+  "share": 0.31715610510046366,
+  "chance_15min": 0.2061823802163833,
+  "chance_15min_each": [
+   0.23369397217928903,
+   0.1786707882534776
+  ]
+ }
+}
