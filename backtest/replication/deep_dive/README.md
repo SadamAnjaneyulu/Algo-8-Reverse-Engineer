@@ -57,3 +57,4 @@ Buy-back second pass, stops on losing positions (plan `BUYBACK_STOP2_PLAN.md`, r
 Buy-back third pass, why exits differ (report `BUYBACK_STOP3.md`): `bl_bt_inv.py` → `bl_bt_fresh.py` → `bl_bt_lot.py` → `bl_bt_react.py` → `bl_bt_adv.py` → `bl_bt_ctx.py` → `bl_bt_profit.py` → `make_bt_report.py`.
 Buy-back rebalancing events in the simulator (plan `BUYBACK_EVENTS_PLAN.md`, report `BUYBACK_EVENTS.md`): `bl_ev_fit.py` → `make_ev_report.py`.
 Forward test on unseen cycles (report `D1_FORWARD.md`): `bl_fwd.py` → `make_fwd_report.py`.
+D-1 lot construction (plan `D1_LOTS_PLAN.md`, report `D1_LOTS.md`): `bl_err_budget.py` → `bl_qty_events.py` → `bl_solo_burst.py` → `bl_solo_minute.py` → `bl_lots_fit.py` → `bl_lots_ceiling.py` → `make_lots_report.py`.

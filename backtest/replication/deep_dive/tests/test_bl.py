@@ -614,3 +614,9 @@ def test_ev_rebalancing_events():
 def test_fwd_unseen_cycles():
     F = pd.read_csv(f'{OUT}/bl_fwd.csv'); assert (F.train_cycles == 21).all() and (F.test_cycles == 11).all()
     assert (F.F1_forward < F.F1_out_of_fold_same_cycles + 0.02).all() and (F.AUC_any_forward > 0.85).all() and (F.F1_forward > 0.5).all()
+
+
+def test_lots_budget_and_fixes():
+    E_ = pd.read_pickle(f'{OUT}/bl_err_lots.pkl.gz'); r = E_[(E_.side == 'real') & (E_.cause != 'matched')].cause.value_counts(); assert r.idxmax() == 'quantity shortfall' and len(E_[E_.side == 'real']) == 13655
+    CE = pd.read_csv(f'{OUT}/bl_lots_ceiling.csv'); assert CE.F1.is_monotonic_increasing and CE.F1.iloc[1] - CE.F1.iloc[0] > 0.1
+    F = pd.read_csv(f'{OUT}/bl_lots_fit.csv'); fw = F[F.setup.str.startswith(('A', 'B'))].pivot(index='setup', columns='model', values='F1'); assert (fw.fixed <= fw.baseline + 0.005).all()
