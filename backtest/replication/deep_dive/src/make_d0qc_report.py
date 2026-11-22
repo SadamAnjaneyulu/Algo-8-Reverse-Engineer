@@ -24,7 +24,7 @@ They are not two systems. The D-1 scheduled timetable (the fixed seconds at whic
   * The day runs from about 09:16 to 14:30 on both days.
   * {j4['D1_pairs_recurring_on_D0']} of the {j4['D1_pairs']} D-1 pairs repeat on D0 at the same second.
 * **What differs.**
-  * D0 has **{j4['D0_pairs']} pairs against {j4['D1_pairs']}**: {j4['D0_extra_pairs']} extra pairs. Most of them fall one to two minutes after a 15-minute boundary (block minutes 1–2: {j4['D0_extra_block_minute']['1'] + j4['D0_extra_block_minute']['2']} of {j4['D0_extra_pairs']}), and others {', '.join(f'{v}' for k, v in j4['D0_extra_block_minute'].items() if k not in ('1', '2'))} at other fixed points.
+  * D0 has **{j4['D0_pairs']} pairs against {j4['D1_pairs']}**: {j4['D0_extra_pairs']} extra pairs. Most of them fall one to two minutes after a 15-minute boundary (block minutes 1–2: {j4['D0_extra_block_minute']['1'] + j4['D0_extra_block_minute']['2']} of {j4['D0_extra_pairs']}). The other {j4['D0_extra_pairs'] - j4['D0_extra_block_minute']['1'] - j4['D0_extra_block_minute']['2']} sit at other fixed points in the block (the largest group, {j4['D0_extra_block_minute']['11']}, is 11 minutes after a boundary).
   * Four D-1 pairs do not repeat on D0: {', '.join(j4['D1_not_on_D0'])}.
 * **So for NIFTY it is not exactly like D-1.** D0 repeats the D-1 clock and adds roughly twice as many waves. The added waves are fixed clock times too: the same seconds appear on the other NIFTY V1 cycles (`D0_SCHEDULED.md`).
 

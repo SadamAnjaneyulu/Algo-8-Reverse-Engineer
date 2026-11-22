@@ -12,7 +12,7 @@ They are not two systems. The D-1 scheduled timetable (the fixed seconds at whic
   * The day runs from about 09:16 to 14:30 on both days.
   * 29 of the 33 D-1 pairs repeat on D0 at the same second.
 * **What differs.**
-  * D0 has **83 pairs against 33**: 53 extra pairs. Most of them fall one to two minutes after a 15-minute boundary (block minutes 1–2: 31 of 53), and others 3, 1, 4, 3, 9, 1, 1 at other fixed points.
+  * D0 has **83 pairs against 33**: 53 extra pairs. Most of them fall one to two minutes after a 15-minute boundary (block minutes 1–2: 31 of 53). The other 22 sit at other fixed points in the block (the largest group, 9, is 11 minutes after a boundary).
   * Four D-1 pairs do not repeat on D0: 09:16:07, 11:01:00, 11:46:00, 13:16:00.
 * **So for NIFTY it is not exactly like D-1.** D0 repeats the D-1 clock and adds roughly twice as many waves. The added waves are fixed clock times too: the same seconds appear on the other NIFTY V1 cycles (`D0_SCHEDULED.md`).
 
