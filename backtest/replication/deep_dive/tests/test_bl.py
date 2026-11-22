@@ -556,3 +556,12 @@ def test_hg_long_side_controller_strike_lump():
     H = json.load(open(f'{OUT}/bl_summary_hg345.json')); assert H['L3']['buy']['equals_gap'] > 0.95 and H['L4']['outermost'] > H['L4']['chance'] + 0.1 and H['L4']['innermost'] < 0.05
     T = pd.read_csv(f'{OUT}/bl_hg_strike2.csv').set_index('reference'); assert T.exact['atm_px'] > T.null_same_slot_exact['atm_px'] + 0.1 and T.within1['atm_px'] > 0.9 and T.exact['atm_px'] > T.exact['body_fill']
     L = json.load(open(f'{OUT}/bl_summary_hg6b.json')); assert L['share_lump_opposes_book_delta'] > 0.85 and L['ratio_q']['0.5'] < 0.2
+
+
+def test_lp_lump_structure_timing_and_size():
+    D = pd.read_csv(f'{OUT}/bl_lp_dec.csv'); M = D[D.main == 1]; assert len(M) == 30
+    cy = pd.read_csv(f'{OUT}/bl_size_cycles.csv').reset_index().rename(columns={'index': 'cid'}); M = M.merge(cy[['cid', 'd1']], on='cid')
+    assert (M[M.d1 >= '2026-08-24'].hhmmss >= '15:30:00').all() and (M[M.d1 <= '2026-08-05'].hhmmss < '15:15:00').all()
+    O = C.load_orders(); v = O[(O.module == 'v_') & (O.dayno == 0)]; assert v[v.und == 'NIFTY'].lots.max() == 27 and v[v.und == 'SENSEX'].lots.max() == 50
+    S = pd.read_csv(f'{OUT}/bl_lp_size.csv'); assert S.MAE_lots.min() > 10
+    L6 = json.load(open(f'{OUT}/bl_summary_lp6.json')); assert L6['d0']['sell_over_buy_median'] < 0.2 and L6['d0_contracts']['fully_closed_any_module'] > 0.9

@@ -1,0 +1,11 @@
+family,intercept,MAE_lots,median_abs_err_pct,within_5_lots,weights
+S_h,False,14.148629166488515,24.291559381724415,0.13333333333333333,{'S_h': np.float64(0.71)}
+S_h,True,14.148629166488515,24.291559381724415,0.13333333333333333,"{'S_h': np.float64(0.71), 'const': np.float64(0.0)}"
+type,False,13.62975038358359,25.833543280372655,0.1,"{'type_scheduled': np.float64(0.12), 'type_reactive': np.float64(1.98), 'type_solo': np.float64(0.95), 'type_deep': np.float64(0.0)}"
+type,True,13.629750383583588,25.833543280372655,0.1,"{'type_scheduled': np.float64(0.12), 'type_reactive': np.float64(1.98), 'type_solo': np.float64(0.95), 'type_deep': np.float64(0.0), 'const': np.float64(0.0)}"
+moneyness,False,13.503161850337694,27.455448565039433,0.23333333333333334,"{'mny_itm_gt2': np.float64(1.76), 'mny_itm_0_2': np.float64(0.61), 'mny_atm': np.float64(0.61), 'mny_otm_0_2': np.float64(0.85), 'mny_otm_gt2': np.float64(0.59)}"
+moneyness,True,13.503161850337694,27.455448565039433,0.23333333333333334,"{'mny_itm_gt2': np.float64(1.76), 'mny_itm_0_2': np.float64(0.61), 'mny_atm': np.float64(0.61), 'mny_otm_0_2': np.float64(0.85), 'mny_otm_gt2': np.float64(0.59), 'const': np.float64(0.0)}"
+time sold,False,13.854574924259065,23.596236417383004,0.13333333333333333,"{'time_h09_11': np.float64(0.46), 'time_h11_13': np.float64(1.12), 'time_h13_15': np.float64(0.44), 'time_h15': np.float64(0.84)}"
+time sold,True,13.85457492425907,23.596236417382993,0.13333333333333333,"{'time_h09_11': np.float64(0.46), 'time_h11_13': np.float64(1.12), 'time_h13_15': np.float64(0.44), 'time_h15': np.float64(0.84), 'const': np.float64(0.0)}"
+ratio median NIFTY (in-sample),False,8.071834992887625,,,{'ratio': 0.827}
+ratio median SENSEX (in-sample),False,13.464897260273974,,,{'ratio': 0.503}
