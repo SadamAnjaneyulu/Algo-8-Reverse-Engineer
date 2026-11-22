@@ -75,3 +75,5 @@ D0 chunk 5, free-running D0 reconstruction and D0 overview (plan `D0_FREE_RUN_PL
 D0 step 1, sell types and strikes 09:15 → close (plan `D0_SELL_TYPES_PLAN.md` with a post-hoc addendum, report `D0_SELL_TYPES.md`): `bl_d0t_types.py` (~1 min) → `make_d0t_report.py`.
 
 D0 step 1b, scheduled selling in depth (plan `D0_SCHEDULED_PLAN.md`, report `D0_SCHEDULED.md`): `bl_d0q_sched.py` → `make_d0q_report.py`.
+
+D0 scheduled selling, one cycle at a time, D-1 vs D0 (report `D0_SCHEDULED_CYCLE.md`): `bl_d0q_cycle.py 4`, `bl_d0q_cycle.py 15`, `bl_d0q_cycle.py 26` → `make_d0qc_report.py` (needs `bl_d0q_sched.py` outputs).

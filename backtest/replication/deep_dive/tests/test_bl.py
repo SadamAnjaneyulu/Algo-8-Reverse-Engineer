@@ -695,3 +695,9 @@ def test_d0q_scheduled():
     DI = pd.read_csv(f'{OUT}/bl_d0q_disagree.csv').set_index('alternative'); assert (DI.loc[['straddle_min_abs_ce_pe', 'synthetic_forward'], 'real_equals_prev_close'] > 0.85).all()
     SE = pd.read_csv(f'{OUT}/bl_d0q_startend.csv'); assert SE.end_reason.str.startswith('early end').sum() == 2 and R['T3_attendance_all'] > 0.9
     MT = pd.read_csv(f'{OUT}/bl_d0q_d1match.csv').set_index('group'); assert (MT.loc[['NIFTY V1', 'NIFTY V2'], 'D1_waves_matching_a_D0_wave'] > 0.8).all() and MT.loc['SENSEX V1', 'D1_waves_matching_a_D0_wave'] < 0.2
+
+
+def test_d0q_cycle_comparison():
+    J = {c: json.load(open(f'{OUT}/bl_summary_d0q2_{c}.json')) for c in (4, 15, 26)}
+    n = J[4]; assert n['D0_pairs'] > 2 * n['D1_pairs'] and n['D1_pairs_recurring_on_D0'] / n['D1_pairs'] > 0.8 and n['D1_strike_atm_share'] > 0.95 and n['D0_strike_atm_share'] > 0.95
+    s = J[15]; assert s['D0_pairs'] < s['D1_pairs'] and s['D1_pairs_recurring_on_D0'] <= 3 and J[26]['D1_pairs_recurring_on_D0'] / J[26]['D1_pairs'] < 0.5
