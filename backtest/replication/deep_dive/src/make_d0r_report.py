@@ -6,7 +6,7 @@ from bl_common import OUT
 import bl_d0r_gap as G, bl_d0r_ilp as I
 RP = os.path.join(os.path.dirname(OUT), 'reports'); hm = I.hm
 W1 = pd.read_csv(f'{OUT}/bl_d0q_d1waves.csv'); WA = pd.read_csv(f'{OUT}/bl_d0q_waves.csv'); T1 = pd.read_csv(f'{OUT}/bl_d0r_t1.csv'); RB = pd.read_csv(f'{OUT}/bl_d0r_robust.csv'); GP = pd.read_csv(f'{OUT}/bl_d0r_gap.csv'); GF = pd.read_csv(f'{OUT}/bl_d0r_gap_fwd.csv')
-R1, R2, R3 = [json.load(open(f'{OUT}/bl_summary_{k}.json')) for k in ('d0r1', 'd0r2', 'd0r3')]
+R1, R2, R3, R4m = [json.load(open(f'{OUT}/bl_summary_{k}.json')) for k in ('d0r1', 'd0r2', 'd0r3', 'd0r4')]; D1M = pd.read_csv(f'{OUT}/bl_d0r_d1marks.csv')
 def table(df, fmt=2):
     c = list(df.columns); s = '| ' + ' | '.join(map(str, c)) + ' |\n|' + '|'.join('---' for _ in c) + '|\n'
     for r in df.itertuples(index=False): s += '| ' + ' | '.join(('—' if (isinstance(x, float) and x != x) else (f'{x:.{fmt}f}' if isinstance(x, float) else str(x))) for x in r) + ' |\n'
@@ -77,9 +77,12 @@ txt = f"""# Algo 8 — how was scheduled selling actually scheduled? A bank of t
 *Plan `D0_SCHED_RULE_PLAN.md` (written before the validation tests; addendum A, gapped timers with a skip penalty, is post-hoc). Descriptive, consensus clock times of every group. Figures: `figures/bl_d0r_timers_NIFTY_V1.png`, `figures/bl_d0r_bank.png`. Scripts `bl_d0r_ilp.py`, `bl_d0r_val.py`, `bl_d0r_bank.py`, `bl_d0r_gap.py`.*
 
 ## 0. Result
-* **The schedule is not a 15-minute grid, on D-1 either. It is a bank of independent timers.** Each timer fires every N minutes at a fixed second offset, between a start and an end, and may skip a slot.
-  * D-1 (NIFTY, before 16 Sep): {gp.loc[('D-1', 'NIFTY V1'), 'gapped_timers']:.0f} timers explain {gp.loc[('D-1', 'NIFTY V1'), 'gapped_covered']:.0%} of the {gp.loc[('D-1', 'NIFTY V1'), 'waves']:.0f} clock times. The 15-minute look comes from timers of 15, 30, 45 and 60 minutes laid on top of each other.
-  * D0 (same cycles): {gp.loc[n1, 'gapped_timers']:.0f} timers explain {gp.loc[n1, 'gapped_covered']:.0%} of the {gp.loc[n1, 'waves']:.0f} clock times. **D0 simply runs more timers, and several start earlier.**
+* **D-1 is ATM straddle selling at 15-minute marks, as established. This page is about what is inside the marks, and how D0 differs.**
+  * **D-1:** every cycle sells 1 CE + 1 PE at the ATM strike after {len(R4m['full_marks'])} of the 21 marks between 09:30 and 14:30 ({', '.join(R4m['skipped_marks_0930_1430'])} are skipped). {R4m['atm_share']:.0%} of the {R4m['pairs']:,} straddles are at the ATM of the previous minute's close. Each mark gets between {R4m['straddles_per_mark_range'][0]:.0f} and {R4m['straddles_per_mark_range'][1]:.1f} straddles per cycle on average, at different seconds (table in §1).
+  * **Inside the marks, the clock times are built from a bank of independent timers.** Each timer fires every N minutes at a fixed second offset, between a start and an end, and may skip a slot.
+    * D-1 NIFTY (before 16 Sep): {gp.loc[('D-1', 'NIFTY V1'), 'gapped_timers']:.0f} timers explain {gp.loc[('D-1', 'NIFTY V1'), 'gapped_covered']:.0%} of the {gp.loc[('D-1', 'NIFTY V1'), 'waves']:.0f} clock times.
+    * Their periods (15, 30, 45, 60 minutes) are multiples of 15 minutes, consistent with the 15-minute marks (inferred).
+  * **D0:** the same 15-minute marks plus more marks, and more straddles per mark. {gp.loc[n1, 'gapped_timers']:.0f} timers explain {gp.loc[n1, 'gapped_covered']:.0%} of the {gp.loc[n1, 'waves']:.0f} clock times. **D0 runs more timers, and several start earlier.**
   * Null (clock times shifted by up to ±150 s): {gp.loc[n1, 'null_covered_mean']:.0%} covered. *Observed.*
 * **The timers are real, not a fitting artefact.** Timers fitted only on the morning (before 12:00) predict clock times after 12:00 to the second:
 
@@ -102,21 +105,33 @@ txt = f"""# Algo 8 — how was scheduled selling actually scheduled? A bank of t
 * **Not explained:** {1 - gp.loc[n1, 'gapped_covered']:.0%} of the D0 NIFTY times, {1 - gp.loc[('D0', 'NIFTY V2'), 'gapped_covered']:.0%} for NIFTY V2 and {1 - gp.loc[('D0', 'SENSEX V2'), 'gapped_covered']:.0%} for SENSEX V2.
   * These are not noise. Of the 26 NIFTY times that the strict (no-skip) model left out, 65% also appear at the same second in NIFTY V2 and 42% in SENSEX V2 (null 1%). They are fixed clock times without a periodic rule I can see.
 
-## 1. The method in plain words
+## 1. D-1 at the 15-minute marks (all 32 cycles)
+Straddles per cycle in the 3 minutes after each mark. Each straddle is 1 CE + 1 PE at ATM. {R4m['pairs']:,} straddles in total; all of them fall in these windows.
+
+{table(D1M.rename(columns={'mark': '15-min mark', 'pct_cycles_selling': 'share of cycles selling', 'avg_straddles_per_cycle': 'avg straddles per cycle', 'min_straddles': 'min', 'max_straddles': 'max', 'pairs': 'straddles (all cycles)'}).query("`share of cycles selling` > 0"))}
+
+* **17 marks are sold after in every cycle:** 09:30, 09:45, 10:00, 10:15, 10:30, 10:45, 11:00, 11:15, 11:30, 11:45, 12:00, 12:30, 13:30, 13:45, 14:00, 14:15, 14:30.
+* **Not sold after:** 12:15, 12:45, 13:00.
+* **Partly:**
+  * 09:15 is the opening (97% of cycles);
+  * 13:15 only in the cycles before 16 Sep (66%);
+  * 14:45 only in a few (19%).
+
+## 2. The method in plain words
 1. Take the clock times at which the system sells (the consensus list of each group, `D0_SCHEDULED_ALLTIMES.md`).
 2. Look for sets of times that are spaced by a whole number of 5 minutes, at the same second, between a start and an end. Such a set is a **timer**.
 3. An integer program picks the smallest set of timers that explains the most times.
 4. The null: shift every time randomly by ±150 s and repeat. A timer set that explains the real times and not the shifted ones is real.
 5. The key test is forecasting. Learn the timers from the morning only and ask whether they predict the afternoon to the second.
 
-## 2. The timer bank
+## 3. The timer bank
 {table(FAM.rename(columns={'family': 'timer family (period @ second offset)', 'timers': 'timers found', 'group_days': 'group-days where it appears', 'members': 'fires'}), 0)}
 
 A *group-day* is one of the eight cases D-1 / D0 × NIFTY / SENSEX × cycles before / from 16 Sep. Timers with the same period and second offset recurring in several group-days are the strongest evidence.
 
-## 3. Every timer in NIFTY (cycles before 16 Sep)
+## 4. Every timer in NIFTY (cycles before 16 Sep)
 {chr(10).join(lists)}
-## 4. What is not known
+## 5. What is not known
 * **Why those periods, offsets and windows.** The timer shapes are measured; the logic that chose them (an expiry-time ramp, separate strategy legs, a hand-written list) needs the configuration.
 * **Why a timer skips a slot.** Slots are skipped in {int((TB.fill < 1).sum())} of {len(TB)} timers. I found no market state that explains it (`D0_SCHEDULED.md` §3 tested several for whole waves).
 * **The unexplained {1 - gp.loc[n1, 'gapped_covered']:.0%}.** Fixed times that repeat across days and groups, but not on a periodic chain.

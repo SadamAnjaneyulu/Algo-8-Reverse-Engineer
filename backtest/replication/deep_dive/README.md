@@ -83,3 +83,5 @@ D0 scheduled selling, why 83 pairs vs 33 (report `D0_SCHEDULED_WHY.md`): `bl_d0q
 D0 and D-1 scheduled selling, every clock time and the lots executed at each (report `D0_SCHEDULED_ALLTIMES.md`, four figures `bl_d0q_alltimes_<und>_<ver>.png`): `bl_d0q_sched.py` → `bl_d0q_alltimes.py` → `make_d0qa_report.py`.
 
 How the D0 scheduled selling is scheduled, a bank of timers (plan `D0_SCHED_RULE_PLAN.md` with addendum A, report `D0_SCHED_RULE.md`): `bl_d0r_chains.py` and `bl_d0r_ilp.py` (exploratory) → `bl_d0r_val.py` → `bl_d0r_bank.py` → `bl_d0r_gap.py` → `make_d0r_report.py`; per-cycle check scripts `bl_d0q_detail.py`, `bl_d0q_why.py`, `bl_d0q_alltimes.py`.
+
+D-1 scheduled selling per 15-minute mark (all cycles, used by `D0_SCHED_RULE.md` §1): `bl_d0r_d1marks.py`.

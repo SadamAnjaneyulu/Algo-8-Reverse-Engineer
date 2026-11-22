@@ -3,9 +3,12 @@
 *Plan `D0_SCHED_RULE_PLAN.md` (written before the validation tests; addendum A, gapped timers with a skip penalty, is post-hoc). Descriptive, consensus clock times of every group. Figures: `figures/bl_d0r_timers_NIFTY_V1.png`, `figures/bl_d0r_bank.png`. Scripts `bl_d0r_ilp.py`, `bl_d0r_val.py`, `bl_d0r_bank.py`, `bl_d0r_gap.py`.*
 
 ## 0. Result
-* **The schedule is not a 15-minute grid, on D-1 either. It is a bank of independent timers.** Each timer fires every N minutes at a fixed second offset, between a start and an end, and may skip a slot.
-  * D-1 (NIFTY, before 16 Sep): 5 timers explain 79% of the 33 clock times. The 15-minute look comes from timers of 15, 30, 45 and 60 minutes laid on top of each other.
-  * D0 (same cycles): 10 timers explain 80% of the 76 clock times. **D0 simply runs more timers, and several start earlier.**
+* **D-1 is ATM straddle selling at 15-minute marks, as established. This page is about what is inside the marks, and how D0 differs.**
+  * **D-1:** every cycle sells 1 CE + 1 PE at the ATM strike after 17 of the 21 marks between 09:30 and 14:30 (12:15, 12:45, 13:00 are skipped). 93% of the 1,061 straddles are at the ATM of the previous minute's close. Each mark gets between 1 and 3.7 straddles per cycle on average, at different seconds (table in §1).
+  * **Inside the marks, the clock times are built from a bank of independent timers.** Each timer fires every N minutes at a fixed second offset, between a start and an end, and may skip a slot.
+    * D-1 NIFTY (before 16 Sep): 5 timers explain 79% of the 33 clock times.
+    * Their periods (15, 30, 45, 60 minutes) are multiples of 15 minutes, consistent with the 15-minute marks (inferred).
+  * **D0:** the same 15-minute marks plus more marks, and more straddles per mark. 10 timers explain 80% of the 76 clock times. **D0 runs more timers, and several start earlier.**
   * Null (clock times shifted by up to ±150 s): 7% covered. *Observed.*
 * **The timers are real, not a fitting artefact.** Timers fitted only on the morning (before 12:00) predict clock times after 12:00 to the second:
 
@@ -44,14 +47,48 @@
 * **Not explained:** 20% of the D0 NIFTY times, 14% for NIFTY V2 and 11% for SENSEX V2.
   * These are not noise. Of the 26 NIFTY times that the strict (no-skip) model left out, 65% also appear at the same second in NIFTY V2 and 42% in SENSEX V2 (null 1%). They are fixed clock times without a periodic rule I can see.
 
-## 1. The method in plain words
+## 1. D-1 at the 15-minute marks (all 32 cycles)
+Straddles per cycle in the 3 minutes after each mark. Each straddle is 1 CE + 1 PE at ATM. 1,061 straddles in total; all of them fall in these windows.
+
+| 15-min mark | share of cycles selling | avg straddles per cycle | min | max | straddles (all cycles) |
+|---|---|---|---|---|---|
+| 09:15 | 0.97 | 2.94 | 0 | 5 | 94 |
+| 09:30 | 1.00 | 1.88 | 1 | 3 | 60 |
+| 09:45 | 1.00 | 3.03 | 3 | 4 | 97 |
+| 10:00 | 1.00 | 1.00 | 1 | 1 | 32 |
+| 10:15 | 1.00 | 3.69 | 3 | 4 | 118 |
+| 10:30 | 1.00 | 1.44 | 1 | 4 | 46 |
+| 10:45 | 1.00 | 2.00 | 2 | 2 | 64 |
+| 11:00 | 1.00 | 1.69 | 1 | 3 | 54 |
+| 11:15 | 1.00 | 2.00 | 2 | 2 | 64 |
+| 11:30 | 1.00 | 1.38 | 1 | 3 | 44 |
+| 11:45 | 1.00 | 2.66 | 2 | 3 | 85 |
+| 12:00 | 1.00 | 1.03 | 1 | 2 | 33 |
+| 12:30 | 1.00 | 2.06 | 2 | 3 | 66 |
+| 13:15 | 0.66 | 0.66 | 0 | 1 | 21 |
+| 13:30 | 1.00 | 1.00 | 1 | 1 | 32 |
+| 13:45 | 1.00 | 1.00 | 1 | 1 | 32 |
+| 14:00 | 1.00 | 1.09 | 1 | 2 | 35 |
+| 14:15 | 1.00 | 1.00 | 1 | 1 | 32 |
+| 14:30 | 1.00 | 1.44 | 1 | 3 | 46 |
+| 14:45 | 0.19 | 0.19 | 0 | 1 | 6 |
+
+
+* **17 marks are sold after in every cycle:** 09:30, 09:45, 10:00, 10:15, 10:30, 10:45, 11:00, 11:15, 11:30, 11:45, 12:00, 12:30, 13:30, 13:45, 14:00, 14:15, 14:30.
+* **Not sold after:** 12:15, 12:45, 13:00.
+* **Partly:**
+  * 09:15 is the opening (97% of cycles);
+  * 13:15 only in the cycles before 16 Sep (66%);
+  * 14:45 only in a few (19%).
+
+## 2. The method in plain words
 1. Take the clock times at which the system sells (the consensus list of each group, `D0_SCHEDULED_ALLTIMES.md`).
 2. Look for sets of times that are spaced by a whole number of 5 minutes, at the same second, between a start and an end. Such a set is a **timer**.
 3. An integer program picks the smallest set of timers that explains the most times.
 4. The null: shift every time randomly by ±150 s and repeat. A timer set that explains the real times and not the shifted ones is real.
 5. The key test is forecasting. Learn the timers from the morning only and ask whether they predict the afternoon to the second.
 
-## 2. The timer bank
+## 3. The timer bank
 | timer family (period @ second offset) | period_min | timers found | group-days where it appears | fires |
 |---|---|---|---|---|
 | every 15 min @ :00 | 15 | 12 | 7 | 97 |
@@ -71,7 +108,7 @@
 
 A *group-day* is one of the eight cases D-1 / D0 × NIFTY / SENSEX × cycles before / from 16 Sep. Timers with the same period and second offset recurring in several group-days are the strongest evidence.
 
-## 3. Every timer in NIFTY (cycles before 16 Sep)
+## 4. Every timer in NIFTY (cycles before 16 Sep)
 **D-1, NIFTY (cycles before 16 Sep)** — every timer and when it fires:
 
 * **every 15 min @ :00**, 09:16:01 → 09:45:59, 5 fires in 3 slots: 09:16:01, 09:16:02, 09:31:00, 09:31:00, 09:45:59
@@ -95,7 +132,7 @@ A *group-day* is one of the eight cases D-1 / D0 × NIFTY / SENSEX × cycles bef
 * **every 15 min @ :00**, 13:00:00 → 14:30:00, 7 fires in 7 slots: 13:00:00, 13:15:00, 13:30:00, 13:45:00, 13:59:59, 14:15:00, 14:30:00
 * *not in any timer (15):* 09:16:18, 09:31:06, 09:46:06, 09:47:06, 10:16:57, 10:17:58, 10:29:58, 10:47:31, 11:11:28, 11:47:31, 12:37:27, 12:37:57, 13:49:00, 14:07:28, 14:27:57
 
-## 4. What is not known
+## 5. What is not known
 * **Why those periods, offsets and windows.** The timer shapes are measured; the logic that chose them (an expiry-time ramp, separate strategy legs, a hand-written list) needs the configuration.
 * **Why a timer skips a slot.** Slots are skipped in 7 of 51 timers. I found no market state that explains it (`D0_SCHEDULED.md` §3 tested several for whole waves).
 * **The unexplained 20%.** Fixed times that repeat across days and groups, but not on a periodic chain.

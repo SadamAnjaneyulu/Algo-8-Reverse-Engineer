@@ -49,3 +49,9 @@ Why a timer has its particular period, offset and window. That would need the co
 * **Skip penalty.** The first gapped run picked a 15-minute timer with 2 skipped slots for 12:31:28, 13:01:28, 13:31:28, where a 30-minute timer with no skips explains the same members. Fix: the cost of a timer becomes 1.5 + 0.3 × (skipped slots), so a timer prefers the largest period that explains its members.
 * **Re-run.** The gapped decomposition, its coverage against the null and its forward test are re-run with the penalty. Numbers from the run without the penalty are not reported.
 * **The "timers running" table.** It is descriptive. No claim is made about a trend through the day.
+
+## Erratum (after review)
+* The "Starting point" and the first version of the report said D-1 is "not one 15-minute grid" and "only looks like one". **That was an overstatement.**
+* D-1 is ATM straddle selling at the 15-minute marks. 17 marks between 09:30 and 14:30 are sold after in every cycle, as in the earlier finding ENT-02 (17 windows, 544 / 544). 12:15, 12:45 and 13:00 are skipped. 13:15 is sold only in the cycles before 16 Sep.
+* What the timers describe is the structure **inside** the marks: how many straddles each mark gets and at which second. Their periods on D-1 (15, 30, 45, 60 minutes) are all multiples of 15 minutes, consistent with the marks.
+* The tests and numbers are unchanged. Only the wording changed.
