@@ -572,3 +572,12 @@ def test_full_d1_activity_auc():
     T = pd.read_csv(f'{OUT}/bl_full_auc.csv'); A = T[T.variant.str.startswith('A same')].set_index('activity').AUC
     assert (A > 0.85).all() and A['body_buyback'] < 0.99                 # no own-label leak
     O = pd.read_csv(f'{OUT}/bl_full_overall.csv').set_index('variant'); assert O.AUC_any_activity.iloc[0] > 0.9 and O.AUC_any_activity.iloc[2] < O.AUC_any_activity.iloc[0]
+
+
+def test_fr_free_running_reconstruction():
+    OVr = pd.read_csv(f'{OUT}/bl_fr_overall.csv').set_index('variant'); p = OVr.loc['FR free-running (primary)']
+    assert p.real_lots == 13655 and 0.6 < p.F1 < 0.8 and p.F1_strict < p.F1_within1 < p.F1 and p.precision > p.recall
+    C = pd.read_csv(f'{OUT}/bl_fr_classes.csv'); P = C[C.variant == 'FR free-running (primary)'].set_index('cls'); T = C[C.variant.str.startswith('TF')].set_index('cls')
+    assert P.F1['body_buyback'] < P.F1['body_sell'] and T.F1['wing_buy'] > P.F1['wing_buy'] + 0.1 and P.real_lots['not_modelled'] == 457
+    X = pd.read_pickle(f'{OUT}/bl_fr_orders.pkl.gz')['FR free-running (primary)']; assert set(X[0].cls) <= {'body_sell', 'body_buyback', 'wing_buy', 'wing_sell', 'opening_wings', 'lump'}
+    carry = json.load(open(f'{OUT}/bl_summary_fr1.json')); assert 0.3 < carry['carry_FR free-running (primary)']['long_overlap'] < 0.8 and carry['carry_TF-hedge (hedge on real body)']['short_overlap'] > 0.99

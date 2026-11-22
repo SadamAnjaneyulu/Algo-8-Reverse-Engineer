@@ -51,3 +51,4 @@ One AUC for all D-1 selling (plan `D1_SELLING_AUC_PLAN.md`, report `D1_SELLING_A
 D-1 long side / hedge module (plan `D1_LONG_SIDE_PLAN.md`, report `D1_LONG_SIDE.md`): `bl_hg_inv.py` → `bl_hg_lump.py` → `bl_hg_lump2.py` → `bl_hg_strike.py` → `bl_hg_strike2.py` → `bl_hg_life.py` → `bl_hg_fig.py` → `make_hg_report.py`.
 Overnight lump (report `D1_LUMP.md`, exploratory): `bl_lp_dec.py` → `bl_lp_risk.py` → `bl_lp_budget.py` → `bl_lp_subset.py` → `bl_lp_equal.py` → `bl_lp_final.py` → `bl_lp_fig.py` → `make_lp_report.py`.
 Complete D-1 activity AUC (plan `D1_FULL_AUC_PLAN.md`, report `D1_FULL_AUC.md`): `bl_full_auc.py` → `make_full_report.py` (needs the `bl_auc_all*` outputs).
+Free-running complete D-1 reconstruction vs the real ledger (plan `D1_FREE_RUN_PLAN.md`, report `D1_FREE_RUN.md`): `bl_fr_sim.py` (library) → `bl_fr_score.py` → `bl_fr_cell.py` → `make_fr_report.py` (needs the `bl_sd_*`, `bl_lp_dec`, `bl_auc_all_panel` outputs).
