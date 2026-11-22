@@ -687,3 +687,11 @@ def test_d0t_sell_types():
     S = pd.read_csv(f'{OUT}/bl_d0t_strikes.csv').set_index('type'); assert S.loc['scheduled pair', 'exact_atm'] > 0.9 and S.loc['ALL', 'new_strike'] < 0.15 and S.loc['ALL', 'carried_strike'] > 0.5
     C2 = pd.read_csv(f'{OUT}/bl_d0t_chance2.csv').set_index('rule'); assert C2.loc['counter', 'share_flagged'] > 1.8 * C2.loc['counter', 'chance_share'] and C2.loc['replacement', 'share_flagged'] < 1.3 * C2.loc['replacement', 'chance_share']
     R = json.load(open(f'{OUT}/bl_summary_d0t1.json')); assert R['gap_vs_CE_share_spearman'][0] < -0.4 and R['gap_vs_CE_share_spearman'][1] < 0.01 and R['far_otm']['rollout'][0]['share'] > 1.5 * max(x['share'] for x in R['far_otm']['rollout'][1:])
+
+
+def test_d0q_scheduled():
+    R = json.load(open(f'{OUT}/bl_summary_d0q1.json')); assert R['sched_lots_all_timetable'] == 2 * R['sched_pairs_all_timetable'] and all(k.endswith('lots=1') for k in R['T5_lots_per_wave'])
+    SK = pd.read_csv(f'{OUT}/bl_d0q_strike.csv').set_index('candidate').exact_share; assert SK['prev_close'] > 0.95 and SK['any_atm_in_minute'] > 0.99 and SK['prev_close'] > SK['straddle_min_abs_ce_pe'] + 0.1
+    DI = pd.read_csv(f'{OUT}/bl_d0q_disagree.csv').set_index('alternative'); assert (DI.loc[['straddle_min_abs_ce_pe', 'synthetic_forward'], 'real_equals_prev_close'] > 0.85).all()
+    SE = pd.read_csv(f'{OUT}/bl_d0q_startend.csv'); assert SE.end_reason.str.startswith('early end').sum() == 2 and R['T3_attendance_all'] > 0.9
+    MT = pd.read_csv(f'{OUT}/bl_d0q_d1match.csv').set_index('group'); assert (MT.loc[['NIFTY V1', 'NIFTY V2'], 'D1_waves_matching_a_D0_wave'] > 0.8).all() and MT.loc['SENSEX V1', 'D1_waves_matching_a_D0_wave'] < 0.2
