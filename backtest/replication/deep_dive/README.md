@@ -69,3 +69,5 @@ D0 chunk 2, body buy-backs (plan `D0_BUYBACKS_PLAN.md` with addenda 2b/2c, repor
 D0 chunk 3, hedge wings / lump / body-stream longs (plan `D0_HEDGE_PLAN.md` with addendum 3b, report `D0_HEDGE.md`): `bl_d0h_tests.py` → `bl_d0h_more.py` (~2 min) → `make_d0h_report.py`.
 
 D0 chunk 4, cycle stop and 15:14 clearance (plan `D0_STOP_CLEAR_PLAN.md`, report `D0_STOP_CLEAR.md`): `bl_d0x_stop.py` → `make_d0x_report.py`.
+
+D0 chunk 5, free-running D0 reconstruction and D0 overview (plan `D0_FREE_RUN_PLAN.md`, report `D0_FREE_RUN.md`): `bl_d0_fr.py` → `bl_d0_fr_score.py` → `make_d0fr_report.py` (needs the chunk 1–4 outputs).

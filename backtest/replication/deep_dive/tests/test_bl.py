@@ -672,3 +672,10 @@ def test_d0x_stop_and_clearance():
     assert g('close', 1.2) == 1.0 and g('prev_close', 1.2) < 0.6 and S2[S2.scope == 'D0-only'].F1_pm1.max() < 0.5
     R = json.load(open(f'{OUT}/bl_summary_d0x1.json')); b = R['s2_close_L_bounds_lakh']; assert b['nonstop_min_close'] > max(b['stop_cycles_close_at_crossing']) and R['stop_cycles'] == 11
     C2 = pd.read_csv(f'{OUT}/bl_d0x_c2.csv'); assert (C2[C2.lots == 'short'].closed_share > 0.999).all() and (C2[C2.lots == 'long'].accuracy_oof < C2[C2.lots == 'long'].majority_class).all()
+
+
+def test_d0_free_run():
+    OV = pd.read_csv(f'{OUT}/bl_d0_fr_score.csv').set_index('split'); A = pd.read_csv(f'{OUT}/bl_d0_fr_auc.csv').set_index('split')
+    assert (OV.F1 > 2 * OV.null_shift15_F1).all() and (OV.F1 > 0.35).all() and (OV.F1 < 0.6).all() and (A.AUC_model > 0.8).all() and (A.AUC_model > A.AUC_raw_simulator).all()
+    P = json.load(open(f'{OUT}/bl_d0_fr_params.json')); assert all(set(v['train']).isdisjoint(v['test']) for v in P.values())
+    S = pd.read_csv(f'{OUT}/bl_d0_fr_stops.csv'); o = S[S.split.str.startswith('OOF')]; assert (o.agree == 'both').sum() >= 7 and len(o) == 30
