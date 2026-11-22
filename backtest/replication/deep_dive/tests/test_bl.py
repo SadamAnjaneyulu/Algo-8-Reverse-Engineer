@@ -603,3 +603,9 @@ def test_bt_buyback_third_pass():
     F = pd.read_csv(f'{OUT}/bl_bt_fresh.csv'); f = F[F.ratio > 1]; assert f[f.mins_held <= 10].ratio.median() < 1.2 < 1.5 < f[f.mins_held > 30].ratio.median()
     X = pd.read_pickle(f'{OUT}/bl_bt_lot.pkl.gz'); assert X.y.sum() > 1250; s = X[X.typ == 'scheduled']; assert s[s.ratio_h > 1.7].y.mean() > 20 * s[(s.ratio_h > 1.1) & (s.ratio_h <= 1.4)].y.mean()
     B7 = json.load(open(f'{OUT}/bl_summary_bt7.json')); P = pd.DataFrame(B7['table']).set_index('state'); assert P.partner_same_strike_other_right['in profit'] > 3 * P.partner_same_strike_other_right['in loss']
+
+
+def test_ev_rebalancing_events():
+    OV = pd.read_csv(f'{OUT}/bl_ev_overall.csv'); g = lambda m, v: float(OV[(OV['mode'] == m) & OV.variant.str.startswith(v)].F1.iloc[0])
+    assert abs(g('free', 'rebalancing') - g('free', 'plain')) < 0.03 and abs(g('tf_bb', 'rebalancing') - g('tf_bb', 'plain')) < 0.01
+    C = pd.read_csv(f'{OUT}/bl_ev_classes.csv'); b = C[(C['mode'] == 'tf_bb') & (C.cls == 'body_buyback') & C.variant.str.startswith('plain')].F1.iloc[0]; assert 0.57 < b < 0.60

@@ -1,0 +1,9 @@
+mode,variant,fold,theta,cluster,partner,counter,react_d,solo_d,obj_train
+tf_bb,plain stop (reference),0,1.6,,False,,,,0.5849
+tf_bb,plain stop (reference),1,1.6,,False,,,,0.5916
+tf_bb,rebalancing events,0,1.6,,False,,1.5,,0.5909
+tf_bb,rebalancing events,1,1.6,,False,,1.0,,0.597
+free,plain stop (reference),0,1.6,,False,,,,0.666
+free,plain stop (reference),1,1.6,,False,,,,0.7286
+free,rebalancing events,0,1.6,,False,one,1.5,,0.6742
+free,rebalancing events,1,1.6,,False,one,,,0.7311

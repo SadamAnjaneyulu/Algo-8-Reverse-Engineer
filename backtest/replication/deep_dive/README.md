@@ -55,3 +55,4 @@ Free-running complete D-1 reconstruction vs the real ledger (plan `D1_FREE_RUN_P
 Buy-back decode (plan `BUYBACK_DECODE_PLAN.md`, report `BUYBACK_DECODE.md`): `bl_bb_events.py` → `bl_bb_struct.py` → `bl_bb_panel.py` → `bl_bb_right.py` → `bl_bb_vel.py` → `bl_bb_low.py` → `bl_bb_fit.py` → `bl_bb_tf.py` → `bl_sell_err.py` → `bl_rep_fit.py` → `make_bb_report.py`.
 Buy-back second pass, stops on losing positions (plan `BUYBACK_STOP2_PLAN.md`, report `BUYBACK_STOP2.md`): `bl_bs_panel.py` → `bl_bs_score.py` → `bl_bs_mkt.py` → `bl_bs_fit.py` → `bl_bs_price.py` → `bl_bs_ab.py` → `bl_bs_profit.py` → `make_bs_report.py`.
 Buy-back third pass, why exits differ (report `BUYBACK_STOP3.md`): `bl_bt_inv.py` → `bl_bt_fresh.py` → `bl_bt_lot.py` → `bl_bt_react.py` → `bl_bt_adv.py` → `bl_bt_ctx.py` → `bl_bt_profit.py` → `make_bt_report.py`.
+Buy-back rebalancing events in the simulator (plan `BUYBACK_EVENTS_PLAN.md`, report `BUYBACK_EVENTS.md`): `bl_ev_fit.py` → `make_ev_report.py`.

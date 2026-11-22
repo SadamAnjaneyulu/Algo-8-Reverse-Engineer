@@ -41,7 +41,9 @@ txt = f"""# Algo 8 — D-1 buy-backs modelled as rebalancing events: accuracy
 {table(ft)}
 
 ## 3. Reading
-* Parts chosen in both folds are reproducible rules; parts chosen in only one fold are not stable on 16 cycles.
+* **Counter-sell:** the only part chosen in both free-running folds is one solo lot sold on the other right when a stop fires. It adds a small, consistent gain (overall +0.006, body sells +0.003, buy-backs +0.008). This matches the rebalancing pattern found in `BUYBACK_STOP3.md`.
+* **Reactive continuation exit:** chosen in both real-sell folds (d = 1.0 / 1.5 steps), but it gains nothing out-of-fold; chosen in one free-running fold only. Not stable.
+* **Same-right cluster and straddle-partner buy-back:** never chosen. They match real events only together with the stop's minute and lot count, and add more false lots than true ones.
 * Lot-level accuracy is limited because a modelled event must fall in the same minute (±1) as the real one, on the same right, with the same number of lots. The decoded structure (who is exited with whom) is right more often than the exact minute.
 
 ## Evidence labels
