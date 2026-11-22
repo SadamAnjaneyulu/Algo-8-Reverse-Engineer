@@ -708,3 +708,10 @@ def test_d0q_why_83():
     R3 = json.load(open(f'{OUT}/bl_summary_d0q3.json')); assert R3['cycle']['recur_in_other_cycles'] == 78 and R3['loo_pooled']['recur'] > 0.85 and R3['loo_pooled']['null'] == 0.0 and R3['loo_pooled']['recur_extra'] > 0.85
     R4 = json.load(open(f'{OUT}/bl_summary_d0q4.json')); assert R4['D1_boundaries_not_used_on_D0'] == [] and len(R4['extra_boundaries_D0_only']) == 14 and sum(R4['decomposition'].values()) == 83 and R4['D0_boundaries_used'] == 32
     assert all(abs(e['spot_prev_min_close'] - (e['strike'] + e['ATM_of_prev_close']) / 2) < 6 for e in R4['exceptions'])
+
+
+def test_d0q_alltimes():
+    DT = pd.read_csv(f'{OUT}/bl_d0q_daytotals.csv').set_index(['und', 'version', 'day']); g = lambda u, v, d: DT.loc[(u, v, d)]
+    assert 64 <= g('NIFTY', 'V1', 'D-1').avg_lots_per_active_cycle_per_day <= 68 and 140 <= g('NIFTY', 'V1', 'D0').avg_lots_per_active_cycle_per_day <= 160 and g('SENSEX', 'V1', 'D0').avg_lots_per_active_cycle_per_day < g('SENSEX', 'V1', 'D-1').avg_lots_per_active_cycle_per_day
+    A = pd.read_csv(f'{OUT}/bl_d0q_alltimes.csv'); one = (A.waves_in_cluster == 1).mean(); assert one > 0.8 and (A.expected_lots == 2 * A.waves_in_cluster).all() and A.avg_lots_per_active_cycle.min() > 0
+    assert A[(A.und == 'NIFTY') & (A.version == 'V1') & (A.day == 'D0')].waves_in_cluster.sum() == 76 and A[(A.und == 'NIFTY') & (A.version == 'V1') & (A.day == 'D-1')].waves_in_cluster.sum() == 33
