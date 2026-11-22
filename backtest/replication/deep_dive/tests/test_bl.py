@@ -565,3 +565,10 @@ def test_lp_lump_structure_timing_and_size():
     O = C.load_orders(); v = O[(O.module == 'v_') & (O.dayno == 0)]; assert v[v.und == 'NIFTY'].lots.max() == 27 and v[v.und == 'SENSEX'].lots.max() == 50
     S = pd.read_csv(f'{OUT}/bl_lp_size.csv'); assert S.MAE_lots.min() > 10
     L6 = json.load(open(f'{OUT}/bl_summary_lp6.json')); assert L6['d0']['sell_over_buy_median'] < 0.2 and L6['d0_contracts']['fully_closed_any_module'] > 0.9
+
+
+def test_full_d1_activity_auc():
+    X = pd.read_pickle(f'{OUT}/bl_full_panel.pkl.gz'); assert len(X) == 32 * 390 * 2 and X.y_any.sum() >= X.y_body_sell.sum()
+    T = pd.read_csv(f'{OUT}/bl_full_auc.csv'); A = T[T.variant.str.startswith('A same')].set_index('activity').AUC
+    assert (A > 0.85).all() and A['body_buyback'] < 0.99                 # no own-label leak
+    O = pd.read_csv(f'{OUT}/bl_full_overall.csv').set_index('variant'); assert O.AUC_any_activity.iloc[0] > 0.9 and O.AUC_any_activity.iloc[2] < O.AUC_any_activity.iloc[0]

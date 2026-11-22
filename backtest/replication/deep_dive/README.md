@@ -50,3 +50,4 @@ After-15:00 solo regime (plan `BODY_SOLO_LATE_PLAN.md`, report `BODY_SOLO_LATE.m
 One AUC for all D-1 selling (plan `D1_SELLING_AUC_PLAN.md`, report `D1_SELLING_AUC.md`): `bl_auc_all.py` → `bl_auc_all2.py` → `make_auc_report.py`.
 D-1 long side / hedge module (plan `D1_LONG_SIDE_PLAN.md`, report `D1_LONG_SIDE.md`): `bl_hg_inv.py` → `bl_hg_lump.py` → `bl_hg_lump2.py` → `bl_hg_strike.py` → `bl_hg_strike2.py` → `bl_hg_life.py` → `bl_hg_fig.py` → `make_hg_report.py`.
 Overnight lump (report `D1_LUMP.md`, exploratory): `bl_lp_dec.py` → `bl_lp_risk.py` → `bl_lp_budget.py` → `bl_lp_subset.py` → `bl_lp_equal.py` → `bl_lp_final.py` → `bl_lp_fig.py` → `make_lp_report.py`.
+Complete D-1 activity AUC (plan `D1_FULL_AUC_PLAN.md`, report `D1_FULL_AUC.md`): `bl_full_auc.py` → `make_full_report.py` (needs the `bl_auc_all*` outputs).

@@ -1,0 +1,22 @@
+variant,activity,positive_cells,AUC,CI_lo,CI_hi
+"A same-minute, hedge given real body (primary)",body_sell,2644,0.9767,0.9718,0.9807
+"A same-minute, hedge given real body (primary)",body_buyback,483,0.9149,0.8905,0.9344
+"A same-minute, hedge given real body (primary)",wing_buy,2553,0.996,0.9934,0.998
+"A same-minute, hedge given real body (primary)",wing_sell,438,0.9967,0.9923,0.9997
+"A same-minute, hedge given real body (primary)",body_long,172,0.9321,0.9043,0.9578
+"A same-minute, hedge given real body (primary)",lump,47,0.9575,0.9202,0.9836
+"A same-minute, hedge given real body (primary)",any,3365,0.9606,0.9547,0.9667
+A-chained (no real orders in the minute),body_sell,2644,0.9767,0.972,0.981
+A-chained (no real orders in the minute),body_buyback,483,0.9149,0.8875,0.934
+A-chained (no real orders in the minute),wing_buy,2553,0.98,0.9765,0.9833
+A-chained (no real orders in the minute),wing_sell,438,0.9052,0.8784,0.9277
+A-chained (no real orders in the minute),body_long,172,0.9321,0.9025,0.9578
+A-chained (no real orders in the minute),lump,47,0.9575,0.9156,0.9833
+A-chained (no real orders in the minute),any,3365,0.9606,0.9546,0.9661
+"B causal (market lagged 1 min), real body link",body_sell,2644,0.9106,0.9036,0.918
+"B causal (market lagged 1 min), real body link",body_buyback,483,0.8835,0.8585,0.906
+"B causal (market lagged 1 min), real body link",wing_buy,2553,0.9953,0.9926,0.9976
+"B causal (market lagged 1 min), real body link",wing_sell,438,0.9957,0.9904,0.9997
+"B causal (market lagged 1 min), real body link",body_long,172,0.9075,0.8779,0.9392
+"B causal (market lagged 1 min), real body link",lump,47,0.9681,0.951,0.982
+"B causal (market lagged 1 min), real body link",any,3365,0.9009,0.8929,0.9089
