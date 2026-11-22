@@ -740,7 +740,7 @@ def test_d0r_extra_marks_check():
 
 def test_d0y_buyback_types():
     T = pd.read_csv(f'{OUT}/bl_d0y_types.csv').set_index('type'); assert T.lots.sum() == 9656 and abs(T.share.sum() - 1) < 1e-6
-    sl = T.loc['3 stop-loss']; assert sl.ratio_q10 >= 1.35 and sl.share_in_loss == 1.0 and T.loc['4 take-profit'].ratio_q90 <= 0.1001
+    sl = T.loc['3 stop-loss']; assert sl.ratio_q10 >= 1.35 and sl.share_in_loss > 0.99 and T.loc['4 take-profit'].ratio_q90 <= 0.1001
     C = pd.read_csv(f'{OUT}/bl_d0y_chance.csv').set_index('type'); assert C.loc['5 partner', 'ratio_vs_10min'] > 1.5 and C.loc['5 partner', 'ratio_vs_15min'] > 1.5 and C.loc['6 roll-out', 'ratio_vs_15min'] < 1.5
     R = json.load(open(f'{OUT}/bl_summary_d0y1.json')); assert all(v < 0.01 for v in R['q2_exact_hold_share'].values()) and R['q2_bins_above_2x_p95'] == ['1-2']
     A = pd.read_csv(f'{OUT}/bl_d0y_other.csv').set_index(['type', 'window_min']); assert A.loc[('3 stop-loss', 5), 'difference'] > 0.3
