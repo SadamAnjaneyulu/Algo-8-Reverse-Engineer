@@ -1,0 +1,30 @@
+{
+ "K1 D-1 stop unchanged (high >= 1.6x)": [
+  "{\"theta\": 1.6, \"price\": \"high\"}",
+  "{\"theta\": 1.6, \"price\": \"high\"}"
+ ],
+ "K2a refit theta and price": [
+  "{\"theta\": 1.4, \"price\": \"high\"}",
+  "{\"theta\": 1.4, \"price\": \"high\"}"
+ ],
+ "K2b theta per hour block": [
+  "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.6, 1.6, 1.2]}",
+  "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.5, 1.4, 1.4]}"
+ ],
+ "K2c theta per origin": [
+  "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [0.8, 1.0]}",
+  "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [1.0, 1.0]}"
+ ],
+ "K3 + take-profit": [
+  "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [0.8, 1.0], \"tp\": 0.1, \"tp_gate\": 0}",
+  "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.5, 1.4, 1.4], \"tp\": 0.1, \"tp_gate\": 0}"
+ ],
+ "K4 + same-strike partner": [
+  "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [0.8, 1.0], \"tp\": 0.1, \"tp_gate\": 0}",
+  "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.5, 1.4, 1.4], \"tp\": 0.1, \"tp_gate\": 0}"
+ ],
+ "K5 + block clock": [
+  "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [0.8, 1.0], \"tp\": 0.1, \"tp_gate\": 0}",
+  "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.5, 1.4, 1.4], \"tp\": 0.1, \"tp_gate\": 0}"
+ ]
+}

@@ -646,3 +646,15 @@ def test_d0s_solo_and_auc():
     assert SO.loc['M3 r 0.5 real buy-back times (all cycles, reference)'].F1 > 1.5 * SO[SO.index.str.startswith('placebo M3')].F1.max()
     A = pd.read_csv(f'{OUT}/bl_d0s_auc.csv').set_index('variant').AUC; assert A['A same-minute market + rules'] > 0.9 and A['B causal (market lagged 1 min)'] < A['A same-minute market + rules'] < A['C A + real buy-back history (earlier minutes) + book']
     CC = pd.read_csv(f'{OUT}/bl_d0s_auc_cc.csv'); assert (CC.AUC_bb_other_now > 0.55).all()
+
+
+def test_d0b_ledger_and_hazard():
+    X = pd.read_pickle(f'{OUT}/bl_d0b_removed.pkl.gz'); R0 = json.load(open(f'{OUT}/bl_summary_d0b0.json')); assert len(X) == R0['bb_lots'] == 9656 and set(X.origin) == {'D-1', 'D0'}
+    H = pd.read_csv(f'{OUT}/bl_d0b_hazard.csv'); h = H[(H.price == 'rh') & (H.origin == 'all')].set_index('ratio_bin').hazard_pct; assert h['(1.7, 1.8]'] > 5 * h['(1.0, 1.1]'] and h['(0.0, 0.1]'] > h['(0.5, 0.75]']
+
+
+def test_d0b_machines_and_side():
+    M = pd.read_csv(f'{OUT}/bl_d0b_mach.csv').set_index('machine').F1; fin = M['K5 + block clock']
+    assert M['K2a refit theta and price'] > M['K1 D-1 stop unchanged (high >= 1.6x)'] and fin > 1.5 * M['null: rate-matched random minutes'] and fin > 2 * M['null: final machine shifted +15 min']
+    S = pd.read_csv(f'{OUT}/bl_d0b_side_auc.csv'); assert not ((S.AUC_half_even >= 0.7) & (S.AUC_half_odd >= 0.7)).any()          # no side-level trigger passes the pre-set bar
+    A = pd.read_csv(f'{OUT}/bl_d0b_auc.csv').set_index('variant').AUC; assert 0.78 < A['A same-minute market + book'] < 0.85 and A['clock only'] < A['B completed bars (causal)']

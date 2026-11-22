@@ -1,0 +1,51 @@
+{
+ "auc": {
+  "A same-minute market + book": 0.8151,
+  "B completed bars (causal)": 0.7871,
+  "clock only": 0.6899,
+  "A book ratios only (no market)": 0.7826
+ },
+ "ci": {
+  "A same-minute market + book": [
+   0.7809,
+   0.8509
+  ],
+  "B completed bars (causal)": [
+   0.7471,
+   0.8363
+  ],
+  "clock only": [
+   0.656,
+   0.7283
+  ],
+  "A book ratios only (no market)": [
+   0.7336,
+   0.8264
+  ]
+ },
+ "by_group": {
+  "loss": {
+   "cells_with_buyback": 1226,
+   "A same-minute market + book": 0.8377,
+   "B completed bars (causal)": 0.8058,
+   "clock only": 0.6576,
+   "A book ratios only (no market)": 0.8048
+  },
+  "mid-profit": {
+   "cells_with_buyback": 742,
+   "A same-minute market + book": 0.7989,
+   "B completed bars (causal)": 0.7674,
+   "clock only": 0.7559,
+   "A book ratios only (no market)": 0.7606
+  },
+  "deep-profit": {
+   "cells_with_buyback": 462,
+   "A same-minute market + book": 0.8628,
+   "B completed bars (causal)": 0.8532,
+   "clock only": 0.8118,
+   "A book ratios only (no market)": 0.8453
+  }
+ },
+ "cells": 14910,
+ "positives": 1964
+}
