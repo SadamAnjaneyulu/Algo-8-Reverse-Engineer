@@ -67,3 +67,5 @@ D0 chunk 1, body sells (plan `D0_SELLS_PLAN.md` with addenda 1b/1c, report `D0_S
 D0 chunk 2, body buy-backs (plan `D0_BUYBACKS_PLAN.md` with addenda 2b/2c, report `D0_BUYBACKS.md`): `bl_d0b_ledger.py` → `bl_d0b_tests.py` (~2 min) → `bl_d0b_mach.py` → `bl_d0b_auc.py` (~1 min) → `bl_d0b_side.py` (~7 min) → `bl_d0b_burst.py` → `bl_d0b_carry.py` (~3 min) → `make_d0b_report.py`.
 
 D0 chunk 3, hedge wings / lump / body-stream longs (plan `D0_HEDGE_PLAN.md` with addendum 3b, report `D0_HEDGE.md`): `bl_d0h_tests.py` → `bl_d0h_more.py` (~2 min) → `make_d0h_report.py`.
+
+D0 chunk 4, cycle stop and 15:14 clearance (plan `D0_STOP_CLEAR_PLAN.md`, report `D0_STOP_CLEAR.md`): `bl_d0x_stop.py` → `make_d0x_report.py`.

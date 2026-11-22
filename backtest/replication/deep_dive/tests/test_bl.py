@@ -665,3 +665,10 @@ def test_d0h_controller_and_lump():
     assert 3 < R1['H4_dt_body_q_buy'][2] < 5 and R1['H2']['d1_rule_2p5']['exact'] > 3 * 0.1 and all(o['X'] == 0.025 for o in R1['H2']['oof'])
     R2 = json.load(open(f'{OUT}/bl_summary_d0h2.json')); v = R2['3b_T1']['v_']; assert v['lots_while_L_gt_S'] > 0.99 and v['le_excess'] > 0.98
     A = pd.read_csv(f'{OUT}/bl_d0h_auc.csv'); assert (A[A.variant.str.startswith('teacher')].AUC > 0.97).all() and (A[A.variant.str.startswith('causal')].AUC > A[A.variant == 'clock only'].AUC.values).all()
+
+
+def test_d0x_stop_and_clearance():
+    S2 = pd.read_csv(f'{OUT}/bl_d0x_s2.csv'); g = lambda m, L, sc='cumulative': float(S2[(S2.mark == m) & (S2.L_lakh == L) & (S2.scope == sc)].F1_pm1.iloc[0])
+    assert g('close', 1.2) == 1.0 and g('prev_close', 1.2) < 0.6 and S2[S2.scope == 'D0-only'].F1_pm1.max() < 0.5
+    R = json.load(open(f'{OUT}/bl_summary_d0x1.json')); b = R['s2_close_L_bounds_lakh']; assert b['nonstop_min_close'] > max(b['stop_cycles_close_at_crossing']) and R['stop_cycles'] == 11
+    C2 = pd.read_csv(f'{OUT}/bl_d0x_c2.csv'); assert (C2[C2.lots == 'short'].closed_share == 1.0).all() and (C2[C2.lots == 'long'].accuracy_oof < C2[C2.lots == 'long'].majority_class).all()
