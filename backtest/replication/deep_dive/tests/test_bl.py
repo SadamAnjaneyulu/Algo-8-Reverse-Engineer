@@ -744,3 +744,11 @@ def test_d0y_buyback_types():
     C = pd.read_csv(f'{OUT}/bl_d0y_chance.csv').set_index('type'); assert C.loc['5 partner', 'ratio_vs_10min'] > 1.5 and C.loc['5 partner', 'ratio_vs_15min'] > 1.5 and C.loc['6 roll-out', 'ratio_vs_15min'] < 1.5
     R = json.load(open(f'{OUT}/bl_summary_d0y1.json')); assert all(v < 0.01 for v in R['q2_exact_hold_share'].values()) and R['q2_bins_above_2x_p95'] == ['1-2']
     A = pd.read_csv(f'{OUT}/bl_d0y_other.csv').set_index(['type', 'window_min']); assert A.loc[('3 stop-loss', 5), 'difference'] > 0.3
+
+
+def test_d0k_counter_sells():
+    R = json.load(open(f'{OUT}/bl_summary_d0k1.json')); C1 = pd.read_csv(f'{OUT}/bl_d0k_c1.csv').set_index('reason')
+    sl = C1.loc['3 stop-loss']; assert sl.ratio_vs_10 >= 1.5 and sl.ratio_vs_15 >= 1.5 and C1.loc['4 take-profit', 'ratio_vs_15'] < 1.5 and C1.loc['5 partner', 'ratio_vs_10'] < 1.5
+    assert R['events_stop_loss'] == C1.loc['3 stop-loss', 'events'] and 0.8 < R['c2']['after_30s'] / R['c2']['before_30s'] < 1.25     # sales are as common before the buy-back as after
+    assert R['c3']['bins_positive_ci'] < 8 and abs(R['c4']['spearman']) < 0.1 and R['c5']['within1'] > 0.8 and R['c5']['same_strike_as_stopped'] < 0.2
+    C3b = pd.read_csv(f'{OUT}/bl_d0k_c3b.csv'); assert C3b.sold.max() == C3b[C3b.sl & C3b.fe].sold.iloc[0] and C3b[~C3b.sl & ~C3b.fe].sold.iloc[0] < 0.5

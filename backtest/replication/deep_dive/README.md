@@ -89,3 +89,4 @@ D-1 scheduled selling per 15-minute mark (all cycles, used by `D0_SCHED_RULE.md`
 Check of the 14 extra D0 marks (+10 min rule, ATM, lots): `bl_d0r_extra10.py`.
 
 D0 buy-back reasons, open to close (plan `D0_BB_TYPES_PLAN.md` with a post-hoc addendum, report `D0_BB_TYPES.md`): `bl_d0b_ledger.py` → `bl_d0b_tests.py` → `bl_d0y_types.py` (~1 min) → `bl_d0y_other.py` → `make_d0y_report.py`.
+D0 counter-sells (plan `D0_COUNTER_PLAN.md`, report `D0_COUNTER.md`): `bl_d0s_label.py` → `bl_d0y_types.py` → `bl_d0k_counter.py` (~1 min) → `make_d0k_report.py`.

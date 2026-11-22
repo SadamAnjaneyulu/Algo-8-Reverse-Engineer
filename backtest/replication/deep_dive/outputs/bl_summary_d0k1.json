@@ -1,0 +1,182 @@
+{
+ "c2": {
+  "before_30s": 2104,
+  "after_30s": 2029,
+  "null_before": 283,
+  "null_after": 357,
+  "orders_total": 225483
+ },
+ "c3": {
+  "bins": 6,
+  "bins_positive_ci": 4
+ },
+ "c4": {
+  "spearman": -0.022151192469147908,
+  "slope": -0.09076231712967937,
+  "events": 1395,
+  "share_with_sale": 0.6301075268817204,
+  "sold_total": 3546,
+  "bought_total": 2621
+ },
+ "c5": {
+  "orders": 3169,
+  "exact_atm": 0.38308614704954247,
+  "within1": 0.8684127485011045,
+  "same_strike_as_stopped": 0.12685389712843168,
+  "px_ratio_q": [
+   0.22386163767832715,
+   0.3670668953687822,
+   0.5798060467769538,
+   0.8271028037383178,
+   1.218343838296023
+  ],
+  "off_atm_q": [
+   -1.0,
+   0.0,
+   1.0
+  ]
+ },
+ "c6_by_hour": {
+  "9": {
+   "mean": 0.691,
+   "size": 165
+  },
+  "10": {
+   "mean": 0.555,
+   "size": 236
+  },
+  "11": {
+   "mean": 0.592,
+   "size": 201
+  },
+  "12": {
+   "mean": 0.72,
+   "size": 232
+  },
+  "13": {
+   "mean": 0.684,
+   "size": 196
+  },
+  "14": {
+   "mean": 0.599,
+   "size": 327
+  },
+  "15": {
+   "mean": 0.474,
+   "size": 38
+  }
+ },
+ "c1": [
+  {
+   "reason": "1 cycle-stop window",
+   "events": 30,
+   "sales_per_event": 4.8667,
+   "null_10min": 0.7667,
+   "null_15min_clock_kept": 0.4667,
+   "ratio_vs_10": 6.3478,
+   "ratio_vs_15": 10.4286,
+   "share_events_with_sale_0_60s": 0.5667,
+   "null_share_15min": 0.05
+  },
+  {
+   "reason": "2a clearance 15:10-15:13",
+   "events": 160,
+   "sales_per_event": 1.0312,
+   "null_10min": 2.6406,
+   "null_15min_clock_kept": 0.3594,
+   "ratio_vs_10": 0.3905,
+   "ratio_vs_15": 2.8696,
+   "share_events_with_sale_0_60s": 0.1625,
+   "null_share_15min": 0.0812
+  },
+  {
+   "reason": "2b clearance 15:14",
+   "events": 83,
+   "sales_per_event": 0.3012,
+   "null_10min": 1.2349,
+   "null_15min_clock_kept": 0.5602,
+   "ratio_vs_10": 0.2439,
+   "ratio_vs_15": 0.5376,
+   "share_events_with_sale_0_60s": 0.0843,
+   "null_share_15min": 0.0783
+  },
+  {
+   "reason": "2c clearance 15:15+",
+   "events": 382,
+   "sales_per_event": 0.445,
+   "null_10min": 0.6793,
+   "null_15min_clock_kept": 2.6859,
+   "ratio_vs_10": 0.6551,
+   "ratio_vs_15": 0.1657,
+   "share_events_with_sale_0_60s": 0.0838,
+   "null_share_15min": 0.1754
+  },
+  {
+   "reason": "3 stop-loss",
+   "events": 1395,
+   "sales_per_event": 6.7756,
+   "null_10min": 1.7724,
+   "null_15min_clock_kept": 1.4649,
+   "ratio_vs_10": 3.8229,
+   "ratio_vs_15": 4.6254,
+   "share_events_with_sale_0_60s": 0.6301,
+   "null_share_15min": 0.1864
+  },
+  {
+   "reason": "4 take-profit",
+   "events": 612,
+   "sales_per_event": 1.2435,
+   "null_10min": 1.2116,
+   "null_15min_clock_kept": 1.4755,
+   "ratio_vs_10": 1.0263,
+   "ratio_vs_15": 0.8427,
+   "share_events_with_sale_0_60s": 0.1765,
+   "null_share_15min": 0.1765
+  },
+  {
+   "reason": "5 partner",
+   "events": 191,
+   "sales_per_event": 1.0157,
+   "null_10min": 1.1806,
+   "null_15min_clock_kept": 0.7775,
+   "ratio_vs_10": 0.8603,
+   "ratio_vs_15": 1.3064,
+   "share_events_with_sale_0_60s": 0.178,
+   "null_share_15min": 0.1597
+  },
+  {
+   "reason": "6 roll-out",
+   "events": 789,
+   "sales_per_event": 4.109,
+   "null_10min": 1.5868,
+   "null_15min_clock_kept": 1.7288,
+   "ratio_vs_10": 2.5895,
+   "ratio_vs_15": 2.3768,
+   "share_events_with_sale_0_60s": 0.4968,
+   "null_share_15min": 0.3561
+  },
+  {
+   "reason": "7 burst member",
+   "events": 409,
+   "sales_per_event": 4.6846,
+   "null_10min": 1.7127,
+   "null_15min_clock_kept": 1.2836,
+   "ratio_vs_10": 2.7352,
+   "ratio_vs_15": 3.6495,
+   "share_events_with_sale_0_60s": 0.4059,
+   "null_share_15min": 0.1357
+  },
+  {
+   "reason": "8 other",
+   "events": 606,
+   "sales_per_event": 2.4571,
+   "null_10min": 1.4884,
+   "null_15min_clock_kept": 1.2417,
+   "ratio_vs_10": 1.6508,
+   "ratio_vs_15": 1.9787,
+   "share_events_with_sale_0_60s": 0.2211,
+   "null_share_15min": 0.1683
+  }
+ ],
+ "events_stop_loss": 1395
+}
