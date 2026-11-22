@@ -6,6 +6,7 @@ from bl_common import *
 import bl_ohlc, bl_sd_build
 CY = pd.read_csv(f'{OUT}/bl_size_cycles.csv'); OH = bl_ohlc.load(); OP = bl_sd_build.load_opt(); W = pd.read_csv(f'{OUT}/bl_react_wave_clock.csv'); O_ = load_orders(); LATE = pd.read_pickle(f'{OUT}/bl_auc_all_panel.pkl.gz')[['cid', 'j', 'cp', 'bk15', 'pl15_itm']]
 LATE = LATE[(LATE.j >= 345) & (LATE.j <= 374) & ((LATE.bk15 == 1) | (LATE.pl15_itm == 1))]
+SDL = pd.read_pickle(f'{OUT}/bl_sd_orders.pkl.gz'); SDL['t2'] = np.where(SDL.deep, 'deep', np.where((SDL.typ == 'solo') & (SDL.te >= 54000), 'late', SDL.typ)); SDL['sd'] = np.where(SDL.typ == 'reactive', np.sign(SDL.off_atm).astype(int), np.where(SDL.cp == 'CE', -1, 1))
 REAL = O_[O_.dayno == 0].copy(); REAL['j'] = ((REAL.te - 33300) // 60).astype(int)
 JMAX = 390
 def regime(d1): return 'r1' if d1 <= '2026-08-05' else ('r2' if d1 <= '2026-08-19' else 'r3')
@@ -33,15 +34,15 @@ def sim_cycle(i, P, mode='free', late=False):
     def px(cp, k, j, f='close'):
         x = ki.get(int(k)); return float(op[(cp, f)][x, cj(j)]) if x is not None else np.nan
     # ---- body sell plan (free mode): minute -> list of (cp, strike, lots, typ)
-    plan = {}; add = lambda j, cp, k, n, t: plan.setdefault(j, []).append([cp, k, n, t]); ev = {'CE': [], 'PE': []}; wv = W[W.version == r.version]
+    plan = {}; add = lambda j, cp, k, n, t, sd=0: plan.setdefault(j, []).append([cp, k, n, t, sd]); ev = {'CE': [], 'PE': []}; wv = W[W.version == r.version]
     for w in wv.itertuples():
         j = int((33360 + w.sec_after_0916 - 33300) // 60); k = atm(c[cj(j - 1)])
         for cp in ('CE', 'PE'): add(j, cp, k, 1, 'scheduled'); ev[cp].append(j)
     for j, s, dep in react_fires(i, d, P.get('rep_max', 0), P.get('rep_gap', 2)):
         k = atm(c[cj(j - 1)]) + s * step; n = min(1 + int(dep // P['tp']), 3)
-        for cp in ('CE', 'PE'): add(j, cp, k, n, 'reactive'); ev[cp].append(j)
+        for cp in ('CE', 'PE'): add(j, cp, k, n, 'reactive', s); ev[cp].append(j)
         ex = int(np.clip(round(P['a'] + P['b'] * dep), 0, 7))
-        if ex: add(j, 'PE' if s > 0 else 'CE', k, ex, 'extra')
+        if ex: add(j, 'PE' if s > 0 else 'CE', k, ex, 'extra', s)
     # solo ladder (spot ladder X = 0.2 step, fresh 60-min extreme gate), reference reset at scheduled/reactive events
     X = 0.2; st = step * X; lad = {}
     for cp in ('CE', 'PE'):
@@ -58,7 +59,9 @@ def sim_cycle(i, P, mode='free', late=False):
     real = REAL[(REAL.und == r.und) & (REAL.expiry == r.expiry)]
     rb = {}; rl = {}
     if mode in ('tf_hedge', 'tf_bb'):
-        for q in real[(real.module == 'num') & real.role.isin(['open_short', 'cover_short'])].itertuples(): rb.setdefault(q.j, []).append((q.role, q.cp, int(q.strike), int(q.lots), q.px_avg))
+        sdl = SDL[SDL.cid == i]; lab_ = {(round(x.te, 3), x.cp, int(x.strike)): (x.t2, x.sd) for x in sdl.itertuples()}
+        for q in real[(real.module == 'num') & real.role.isin(['open_short', 'cover_short'])].itertuples():
+            ty_, sd0 = lab_.get((round(q.te, 3), q.cp, int(q.strike)), ('solo', 0)); rb.setdefault(q.j, []).append((q.role, q.cp, int(q.strike), int(q.lots), q.px_avg, ty_, sd0))
         for q in real[(real.module == 'num') & real.role.isin(['open_long', 'close_long'])].itertuples(): rl.setdefault(q.j, []).append((q.role, q.cp, int(q.strike), int(q.lots)))
     shorts = {}; wings = {}; lump = {}; orders = []; last_px = {'CE': None, 'PE': None}; snaps = []; Pl = P['lump_t'][regime(r.d1)]
     rec_ = lambda cls, cp, j, k, n, typ='': orders.append(dict(cid=i, cls=cls, cp=cp, j=j, strike=int(k), lots=int(n), step=step, typ=typ))
@@ -74,7 +77,7 @@ def sim_cycle(i, P, mode='free', late=False):
             # buy-backs first. Default (P['bb_price'] = 'close', no velocity / cluster): previous completed close >= theta x own entry price.
             # Options: bb_price 'high' (current minute high, intrabar stop); bb_vel (n, b): own premium high[j] / close[j-1-n] >= b also stops the highest-ratio lot;
             # bb_cluster th2: when any stop fires on a right in this minute, lots on that right with ratio >= th2 are bought back too.
-            fired = {'CE': False, 'PE': False}; pf = P.get('bb_price', 'close'); vel = P.get('bb_vel'); th2 = P.get('bb_cluster')
+            fired = {'CE': False, 'PE': False}; nbb = {'CE': 0, 'PE': 0}; stopped = set(); pf = P.get('bb_price', 'close'); vel = P.get('bb_vel'); th2 = P.get('bb_cluster')
             def pnow(cp, k):
                 if pf == 'high': return px(cp, k, j, 'high')
                 if pf == 'close_now': return px(cp, k, j, 'close')
@@ -97,26 +100,52 @@ def sim_cycle(i, P, mode='free', late=False):
                         base_ = px(cp, k, j - 4); hh_ = px(cp, k, j, 'high'); b_ok = base_ == base_ and base_ > 0 and hh_ / base_ >= vv
                     pc_ = px(cp, k, j - 1)
                 nB = 0
-                for n_, (ej, ep) in enumerate(lots_sorted):
+                for n_, lt in enumerate(lots_sorted):
+                    ej, ep = lt[0], lt[1]
                     rr_ = pn / ep if (pn == pn and ep > 0) else 0.0
                     hit = j > ej and rr_ >= P['theta'] and (mkt_ok or rr_ >= P.get('bb_hi', 99))
                     if not hit and lo_t and b_ok and j > ej and ep > 0 and pc_ > ep and rr_ >= lo_t and (P.get('bb_lo_qty', 'one') == 'all' or nB == 0): hit = True; nB += 1
                     if not hit and vtrig and n_ == 0 and j > ej: hit = True
-                    if hit: rec_('body_buyback', cp, j, k, 1); bodyorders.append(('cover', cp, k, 1)); fired[cp] = True
-                    else: keep.append((ej, ep))
+                    if hit: rec_('body_buyback', cp, j, k, 1); bodyorders.append(('cover', cp, k, 1)); fired[cp] = True; nbb[cp] += 1; stopped.add((cp, k))
+                    else: keep.append(lt)
                 shorts[(cp, k)] = keep
             if th2:
                 for (cp, k), lots in list(shorts.items()):
                     if not fired[cp]: continue
                     pn = pnow(cp, k); keep = []
-                    for (ej, ep) in lots:
-                        if j > ej and pn == pn and ep > 0 and pn / ep >= th2: rec_('body_buyback', cp, j, k, 1); bodyorders.append(('cover', cp, k, 1))
-                        else: keep.append((ej, ep))
+                    for lt in lots:
+                        ej, ep = lt[0], lt[1]
+                        if j > ej and pn == pn and ep > 0 and pn / ep >= th2: rec_('body_buyback', cp, j, k, 1); bodyorders.append(('cover', cp, k, 1)); nbb[cp] += 1
+                        else: keep.append(lt)
+                    shorts[(cp, k)] = keep
+            # rebalancing-event parts (plan BUYBACK_EVENTS_PLAN.md): straddle partner, reactive continuation exit, solo reversal exit
+            if P.get('ev_partner'):
+                for (cp, k) in list(stopped):
+                    oth = 'PE' if cp == 'CE' else 'CE'; lots = shorts.get((oth, k), []); keep = []
+                    for lt in lots:
+                        if j > lt[0]: rec_('body_buyback', oth, j, k, 1); bodyorders.append(('cover', oth, k, 1)); nbb[oth] += 1
+                        else: keep.append(lt)
+                    if lots: shorts[(oth, k)] = keep
+            dR, dS = P.get('ev_react'), P.get('ev_solo')
+            if dR or dS:
+                for (cp, k), lots in list(shorts.items()):
+                    sgn = 1 if cp == 'CE' else -1; keep = []
+                    for lt in lots:
+                        ej, ep, t_, sd_, s0 = lt; hit = False
+                        if j > ej and s0 == s0:
+                            mv = (c[cj(j - 1)] - s0) / step
+                            if dR and t_ in ('reactive', 'extra') and j - ej <= 10 and sd_ == sgn and sd_ * mv >= dR: hit = True
+                            if dS and t_ == 'solo' and sgn * mv >= dS: hit = True
+                        if hit: rec_('body_buyback', cp, j, k, 1); bodyorders.append(('cover', cp, k, 1)); fired[cp] = True; nbb[cp] += 1
+                        else: keep.append(lt)
                     shorts[(cp, k)] = keep
             # sells
-            sells = [list(x) for x in plan.get(j, [])] if mode == 'free' else [[cp_, k_, n_, 'real', p_] for role_, cp_, k_, n_, p_ in rb.get(j, []) if role_ == 'open_short']
+            sells = [list(x) for x in plan.get(j, [])] if mode == 'free' else [[cp_, k_, n_, ty_, p_, sd0, 'real'] for role_, cp_, k_, n_, p_, ty_, sd0 in rb.get(j, []) if role_ == 'open_short']
             for cp in (lad.get(j, []) if mode == 'free' else []): sells.append([cp, None, 1, 'solo'])
             for cp in (late_fires.get(j, []) if mode == 'free' else []): sells.append([cp, None, 1, 'late'])
+            if mode == 'free' and P.get('ev_counter'):
+                for cp in ('CE', 'PE'):
+                    if fired[cp]: sells.append(['PE' if cp == 'CE' else 'CE', None, 1 if P['ev_counter'] == 'one' else max(nbb[cp], 1), 'solo'])
             for sl_ in sells:
                 cp, k, n, t = sl_[:4]
                 if k is None:
@@ -125,13 +154,13 @@ def sim_cycle(i, P, mode='free', late=False):
                     elif last_px[cp] is None: k = a0
                     else:
                         cand = K[np.abs(K - a0) <= 4 * step]; pr = np.array([px(cp, kk, j - 1) for kk in cand]); k = float(cand[np.argmin(np.abs(np.nan_to_num(pr, nan=1e9) - last_px[cp]))])
-                ep = sl_[4] if t == 'real' else px(cp, k, j, 'open'); ep = ep if ep == ep and ep > 0 else px(cp, k, j - 1)
-                for _ in range(n): shorts.setdefault((cp, k), []).append((j, ep)); rec_('body_sell', cp, j, k, 1, t)
+                isreal = len(sl_) > 6 and sl_[6] == 'real'; ep = sl_[4] if isreal else px(cp, k, j, 'open'); ep = ep if ep == ep and ep > 0 else px(cp, k, j - 1); sd_ = sl_[5] if isreal else (sl_[4] if len(sl_) > 4 else 0)
+                for _ in range(n): shorts.setdefault((cp, k), []).append((j, ep, t, sd_, c[cj(j - 1)])); rec_('body_sell', cp, j, k, 1, t)
                 last_px[cp] = ep; bodyorders.append(('sell', cp, k, n))
         else:
-            for role, cp, k, n, p_ in rb.get(j, []):
+            for role, cp, k, n, p_, _t, _s in rb.get(j, []):
                 if role == 'open_short':
-                    for _ in range(n): shorts.setdefault((cp, k), []).append((j, p_))
+                    for _ in range(n): shorts.setdefault((cp, k), []).append((j, p_, 'real', 0, np.nan))
                 else:
                     for _ in range(n):
                         if shorts.get((cp, k)): shorts[(cp, k)].pop(0)
