@@ -12,9 +12,9 @@ gb = lambda: HistGradientBoostingClassifier(max_depth=4, learning_rate=0.05, max
 def sell_lots(pp, cls_, t):
     cum = np.stack([pp[:, cls_ >= k].sum(1) for k in range(1, int(cls_.max()) + 1)], 1); return (cum >= t).sum(1)
 def fit_sell(train):
-    d = XS[XS.cid.isin(train)]; oof = np.zeros((len(d), 6)); cls_all = np.arange(6)
+    d = XS[XS.cid.isin(train)]; oof = np.zeros((len(d), 6)); cls_all = np.arange(6); pos = {c: n % 2 for n, c in enumerate(sorted(train))}; inner = d.cid.map(pos).values
     for h_ in (0, 1):
-        tr = d.cid.values % 2 == h_; m = gb().fit(d.loc[tr, SC].values.astype(float), d.yc.values[tr]); pr = m.predict_proba(d.loc[~tr, SC].values.astype(float)); full = np.zeros((pr.shape[0], 6)); full[:, m.classes_] = pr; oof[~tr] = full
+        tr = inner == h_; m = gb().fit(d.loc[tr, SC].values.astype(float), d.yc.values[tr]); pr = m.predict_proba(d.loc[~tr, SC].values.astype(float)); full = np.zeros((pr.shape[0], 6)); full[:, m.classes_] = pr; oof[~tr] = full
     best = None
     for t in np.arange(0.15, 0.71, 0.025):
         n = sell_lots(oof, cls_all, t); tp = np.minimum(n, d.y.values).sum(); f = 2 * tp / (n.sum() + d.y.sum())
@@ -24,9 +24,9 @@ def bb_f1(d, p, tau):
     f = d[p >= tau].groupby('lid').j.min(); L_ = d.groupby('lid').bb_j.first(); pred = L_.index.map(f); ok = (~pd.isna(pred)) & (~L_.isna()) & (np.abs(pd.Series(pred, index=L_.index).astype(float) - L_) <= 1)
     tp = int(ok.sum()); return 2 * tp / max(int((~pd.isna(pred)).sum()) + int((~L_.isna()).sum()), 1)
 def fit_bb(train):
-    d = LB[LB.cid.isin(train)].reset_index(drop=True); oof = np.zeros(len(d))
+    d = LB[LB.cid.isin(train)].reset_index(drop=True); oof = np.zeros(len(d)); pos = {c: n % 2 for n, c in enumerate(sorted(train))}; inner = d.cid.map(pos).values
     for h_ in (0, 1):
-        tr = d.cid.values % 2 == h_; m = gb().fit(d.loc[tr, BC].values.astype(float), d.y.values[tr]); oof[~tr] = m.predict_proba(d.loc[~tr, BC].values.astype(float))[:, 1]
+        tr = inner == h_; m = gb().fit(d.loc[tr, BC].values.astype(float), d.y.values[tr]); oof[~tr] = m.predict_proba(d.loc[~tr, BC].values.astype(float))[:, 1]
     best = max(((bb_f1(d, oof, tau), tau) for tau in (0.05, 0.08, 0.1, 0.12, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5)), key=lambda x: x[0])
     return dict(model=gb().fit(d[BC].values.astype(float), d.y.values), tau=float(best[1]), cv_f1=float(best[0]))
 def tbl(orders, cids, label):
