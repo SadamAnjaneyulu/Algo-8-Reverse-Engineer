@@ -671,4 +671,4 @@ def test_d0x_stop_and_clearance():
     S2 = pd.read_csv(f'{OUT}/bl_d0x_s2.csv'); g = lambda m, L, sc='cumulative': float(S2[(S2.mark == m) & (S2.L_lakh == L) & (S2.scope == sc)].F1_pm1.iloc[0])
     assert g('close', 1.2) == 1.0 and g('prev_close', 1.2) < 0.6 and S2[S2.scope == 'D0-only'].F1_pm1.max() < 0.5
     R = json.load(open(f'{OUT}/bl_summary_d0x1.json')); b = R['s2_close_L_bounds_lakh']; assert b['nonstop_min_close'] > max(b['stop_cycles_close_at_crossing']) and R['stop_cycles'] == 11
-    C2 = pd.read_csv(f'{OUT}/bl_d0x_c2.csv'); assert (C2[C2.lots == 'short'].closed_share == 1.0).all() and (C2[C2.lots == 'long'].accuracy_oof < C2[C2.lots == 'long'].majority_class).all()
+    C2 = pd.read_csv(f'{OUT}/bl_d0x_c2.csv'); assert (C2[C2.lots == 'short'].closed_share > 0.999).all() and (C2[C2.lots == 'long'].accuracy_oof < C2[C2.lots == 'long'].majority_class).all()

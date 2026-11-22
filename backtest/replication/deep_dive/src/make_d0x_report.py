@@ -40,7 +40,7 @@ txt = f"""# Algo 8 — D0 chunk 4: cycle stop and 15:14 clearance
   * Marking at the adverse intrabar extreme raises false alarms.
   * Loss measured from the D0 open fails (F1 ≤ {S2[S2.scope == 'D0-only'].F1_pm1.max():.2f}): the stop counts the D-1 loss too.
 * **4 of the 11 stops fire before 09:16** (the gap at the open). 8 of 11 are in the first 15 minutes. The `s_` module liquidates the book in a median {S3.s_span_s.median():.0f} s; three stops took 2–5 minutes. After it, body selling stops for the day. During the liquidation, though, the body keeps selling in {int((S3.body_sell_lots_after > 0).sum())} of 11 cycles ({int(S3.body_sell_lots_after.sum())} lots, mostly inside the `s_` window).
-* **15:14 clearance: every short open at 15:09 is bought back before the close** ({c2.loc[('short', 'premium >= p*'), 'closed_share']:.0%} of {int(c2.loc[('short', 'premium >= p*'), 'n_lots']):,} lots in non-stop cycles), nothing is left to expire.
+* **15:14 clearance: shorts open at 15:09 are bought back before the close.** All but {int(round((1 - c2.loc[('short', 'premium >= p*'), 'closed_share']) * c2.loc[('short', 'premium >= p*'), 'n_lots']))} of {int(c2.loc[('short', 'premium >= p*'), 'n_lots']):,} lots in non-stop cycles ({c2.loc[('short', 'premium >= p*'), 'closed_share']:.2%}). Almost nothing is left to expire.
   * The big wave is at 15:14; the rest follow 15:15–15:34.
   * The 15:14 lots are somewhat dearer: premium AUC {R['c3_auc_px_1514_vs_later']:.2f} against later buy-backs.
 * **Longs:** {c2.loc[('long', 'premium >= p*'), 'closed_share']:.0%} of long lots are sold; the rest are kept to expiry. No premium or moneyness rule beats "sell all" ({c2.loc[('long', 'premium >= p*'), 'accuracy_oof']:.0%} vs {c2.loc[('long', 'premium >= p*'), 'majority_class']:.0%}). The kept ones are the cheap ones (premium AUC {c2.loc[('long', 'premium >= p*'), 'AUC_all']:.2f}).
@@ -80,7 +80,7 @@ Cycle-level F1: a hit is a predicted crossing in the real stop minute or the min
 
 {table(C3, 2)}
 
-* All shorts are bought back by the close. Longs are sold except the cheapest.
+* Shorts are bought back by the close (all but one lot). Longs are sold except the cheapest.
 * The split between the 15:14 wave and the 15:15–15:34 tail is only weakly linked to price (premium AUC {R['c3_auc_px_1514_vs_later']:.2f}; moneyness {R['c3_auc_itm_1514_vs_later']:.2f}). It looks like order pacing. *Inferred.*
 
 ## 4. Kept and rejected
@@ -90,7 +90,7 @@ Cycle-level F1: a hit is a predicted crossing in the real stop minute or the min
 | Constant L | between {-b['nonstop_min_close']:.2f} and {-max(b['stop_cycles_close_at_crossing']):.2f} lakh on minute closes | bounded, not pinned | Observed |
 | Stop timed from completed bars (previous close / open) | at most {int(cl('open', 1.2).hits_pm1)}/11 | rejected (the stop is intrabar) | Observed |
 | D0-only loss | F1 ≤ {S2[S2.scope == 'D0-only'].F1_pm1.max():.2f} | rejected | Observed |
-| Clearance: buy back every short by the close | {c2.loc[('short', 'premium >= p*'), 'closed_share']:.0%} of lots | kept | Observed |
+| Clearance: buy back every short by the close | {c2.loc[('short', 'premium >= p*'), 'closed_share']:.2%} of lots | kept | Observed |
 | Clearance: sell longs except the cheapest | {c2.loc[('long', 'premium >= p*'), 'closed_share']:.0%} sold; no threshold beats "sell all" | kept as "sell all" | Observed |
 
 ## 5. Caveats

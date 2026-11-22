@@ -12,7 +12,7 @@
   * Marking at the adverse intrabar extreme raises false alarms.
   * Loss measured from the D0 open fails (F1 ≤ 0.27): the stop counts the D-1 loss too.
 * **4 of the 11 stops fire before 09:16** (the gap at the open). 8 of 11 are in the first 15 minutes. The `s_` module liquidates the book in a median 40 s; three stops took 2–5 minutes. After it, body selling stops for the day. During the liquidation, though, the body keeps selling in 9 of 11 cycles (523 lots, mostly inside the `s_` window).
-* **15:14 clearance: every short open at 15:09 is bought back before the close** (100% of 2,218 lots in non-stop cycles), nothing is left to expire.
+* **15:14 clearance: shorts open at 15:09 are bought back before the close.** All but 1 of 2,218 lots in non-stop cycles (99.95%). Almost nothing is left to expire.
   * The big wave is at 15:14; the rest follow 15:15–15:34.
   * The 15:14 lots are somewhat dearer: premium AUC 0.66 against later buy-backs.
 * **Longs:** 87% of long lots are sold; the rest are kept to expiry. No premium or moneyness rule beats "sell all" (58% vs 87%). The kept ones are the cheap ones (premium AUC 0.70).
@@ -102,7 +102,7 @@ Cycle-level F1: a hit is a predicted crossing in the real stop minute or the min
 | 15:15+ | 800.00 | 14.15 | 97.75 | 0.25 | 0.45 |
 
 
-* All shorts are bought back by the close. Longs are sold except the cheapest.
+* Shorts are bought back by the close (all but one lot). Longs are sold except the cheapest.
 * The split between the 15:14 wave and the 15:15–15:34 tail is only weakly linked to price (premium AUC 0.66; moneyness 0.44). It looks like order pacing. *Inferred.*
 
 ## 4. Kept and rejected
@@ -112,7 +112,7 @@ Cycle-level F1: a hit is a predicted crossing in the real stop minute or the min
 | Constant L | between 1.17 and 1.29 lakh on minute closes | bounded, not pinned | Observed |
 | Stop timed from completed bars (previous close / open) | at most 5/11 | rejected (the stop is intrabar) | Observed |
 | D0-only loss | F1 ≤ 0.27 | rejected | Observed |
-| Clearance: buy back every short by the close | 100% of lots | kept | Observed |
+| Clearance: buy back every short by the close | 99.95% of lots | kept | Observed |
 | Clearance: sell longs except the cheapest | 87% sold; no threshold beats "sell all" | kept as "sell all" | Observed |
 
 ## 5. Caveats
