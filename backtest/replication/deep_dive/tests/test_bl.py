@@ -679,3 +679,11 @@ def test_d0_free_run():
     assert (OV.F1 > 2 * OV.null_shift15_F1).all() and (OV.F1 > 0.35).all() and (OV.F1 < 0.6).all() and (A.AUC_model > 0.8).all() and (A.AUC_model > A.AUC_raw_simulator).all()
     P = json.load(open(f'{OUT}/bl_d0_fr_params.json')); assert all(set(v['train']).isdisjoint(v['test']) for v in P.values())
     S = pd.read_csv(f'{OUT}/bl_d0_fr_stops.csv'); o = S[S.split.str.startswith('OOF')]; assert (o.agree == 'both').sum() >= 7 and len(o) == 30
+
+
+def test_d0t_sell_types():
+    T = pd.read_csv(f'{OUT}/bl_d0t_types.csv'); assert T.lots.sum() == 8336 and abs(T.share_lots.sum() - 1) < 1e-6
+    T2 = pd.read_csv(f'{OUT}/bl_d0t_types2.csv'); assert T2.lots.sum() == 8336
+    S = pd.read_csv(f'{OUT}/bl_d0t_strikes.csv').set_index('type'); assert S.loc['scheduled pair', 'exact_atm'] > 0.9 and S.loc['ALL', 'new_strike'] < 0.15 and S.loc['ALL', 'carried_strike'] > 0.5
+    C2 = pd.read_csv(f'{OUT}/bl_d0t_chance2.csv').set_index('rule'); assert C2.loc['counter', 'share_flagged'] > 1.8 * C2.loc['counter', 'chance_share'] and C2.loc['replacement', 'share_flagged'] < 1.3 * C2.loc['replacement', 'chance_share']
+    R = json.load(open(f'{OUT}/bl_summary_d0t1.json')); assert R['gap_vs_CE_share_spearman'][0] < -0.4 and R['gap_vs_CE_share_spearman'][1] < 0.01 and R['far_otm']['rollout'][0]['share'] > 1.5 * max(x['share'] for x in R['far_otm']['rollout'][1:])
