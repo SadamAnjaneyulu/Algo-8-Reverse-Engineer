@@ -752,3 +752,13 @@ def test_d0k_counter_sells():
     assert R['events_stop_loss'] == C1.loc['3 stop-loss', 'events'] and 0.8 < R['c2']['after_30s'] / R['c2']['before_30s'] < 1.25     # sales are as common before the buy-back as after
     assert R['c3']['bins_positive_ci'] < 8 and abs(R['c4']['spearman']) < 0.1 and R['c5']['within1'] > 0.8 and R['c5']['same_strike_as_stopped'] < 0.2
     C3b = pd.read_csv(f'{OUT}/bl_d0k_c3b.csv'); assert C3b.sold.max() == C3b[C3b.sl & C3b.fe].sold.iloc[0] and C3b[~C3b.sl & ~C3b.fe].sold.iloc[0] < 0.5
+
+
+def test_d0n_counter_trigger():
+    R1 = json.load(open(f'{OUT}/bl_summary_d0n1.json')); R2 = json.load(open(f'{OUT}/bl_summary_d0n2.json')); R3 = json.load(open(f'{OUT}/bl_summary_d0n3.json')); R4 = json.load(open(f'{OUT}/bl_summary_d0n4.json'))
+    N2 = pd.read_csv(f'{OUT}/bl_d0n_n2.csv').set_index('model'); assert R1['panel']['cells'] == 14762 and R1['panel']['cycles'] == 24 and N2.loc['+ premium', 'auc'] > N2.loc['baseline (time, right, underlying)', 'auc'] + 0.05 and R1['placebo_all']['auc'] < N2.loc['all decision-time', 'auc'] - 0.1
+    assert N2.loc['all + bar j (contemporaneous)', 'auc'] > N2.loc['all decision-time', 'auc'] + 0.03          # trigger is inside the minute
+    N1 = pd.read_csv(f'{OUT}/bl_d0n_n1.csv').set_index('model'); assert N1.loc['all market/book (no buy-back features)', 'auc_lo'] < 0.55         # H1 not killed
+    assert R2['n4']['ratio'] > 3 and R2['n4']['ratio_ci'][0] > 1 and R2['n5']['ci'][0] < 0.3 and R2['h7'][0]['ratio'] < 3 and 0.25 < R3['stop_loss_events_with_tight_sale'] < 0.35
+    N3 = pd.read_csv(f'{OUT}/bl_d0n_n3.csv'); assert (N3.exact_F1 < 0.5).all() and abs(R4['flag_all']['exact_precision'] - R4['flag_all']['base_rate']) < 1e-9
+    D = pd.read_csv(f'{OUT}/bl_d0n_decomp.csv').set_index('condition'); assert D.loc['prem_low_60', 'counter_labelled'] > 5 * D.loc['prem_low_60', 'all_panel_cells_chance'] and D.loc['prem_low_60', 'counter_labelled'] > D.loc['prem_low_60', 'other_solo']

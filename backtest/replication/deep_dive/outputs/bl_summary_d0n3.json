@@ -1,0 +1,182 @@
+{
+ "n_tight_orders": 1000,
+ "n_tight_lots": 1027,
+ "share_of_solo_lots": 0.17573579739904174,
+ "lag_s_q": [
+  -2.0,
+  -1.0,
+  -0.0,
+  0.0,
+  2.0
+ ],
+ "share_sale_before_or_same": 0.766,
+ "share_lag_zero": 0.447,
+ "by_bb_type": {
+  "1 cycle-stop window": {
+   "orders": 13,
+   "lots": 40,
+   "median_bb_lots": 2.0
+  },
+  "2a clearance 15:10-15:13": {
+   "orders": 5,
+   "lots": 5,
+   "median_bb_lots": 1.0
+  },
+  "2c clearance 15:15+": {
+   "orders": 10,
+   "lots": 10,
+   "median_bb_lots": 2.0
+  },
+  "3 stop-loss": {
+   "orders": 532,
+   "lots": 532,
+   "median_bb_lots": 1.0
+  },
+  "4 take-profit": {
+   "orders": 18,
+   "lots": 18,
+   "median_bb_lots": 1.0
+  },
+  "5 partner": {
+   "orders": 10,
+   "lots": 10,
+   "median_bb_lots": 1.0
+  },
+  "6 roll-out": {
+   "orders": 183,
+   "lots": 183,
+   "median_bb_lots": 2.0
+  },
+  "7 burst member": {
+   "orders": 89,
+   "lots": 89,
+   "median_bb_lots": 1.0
+  },
+  "8 other": {
+   "orders": 140,
+   "lots": 140,
+   "median_bb_lots": 1.0
+  }
+ },
+ "label_mix": {
+  "counter-sell solo": 545,
+  "replacement solo": 289,
+  "opening solo": 166
+ },
+ "lots_equal": 0.601,
+ "spearman_sold_vs_bought_lots": 0.07836108375410375,
+ "median_sold_over_bought_lots": 1.0,
+ "same_strike": 0.105,
+ "px_ratio_q": [
+  0.27192162171907924,
+  0.4132235334051746,
+  0.6287638668779715,
+  0.9024162767472717,
+  1.7445806451612902
+ ],
+ "median_sold_lots": 1.0,
+ "bb_lots_q": [
+  1.0,
+  1.0,
+  2.0,
+  5.0
+ ],
+ "stop_loss_events": 1395,
+ "stop_loss_events_with_tight_sale": 0.2953405017921147,
+ "tight_by_hour": {
+  "9": 0.382,
+  "10": 0.229,
+  "11": 0.234,
+  "12": 0.362,
+  "13": 0.332,
+  "14": 0.275,
+  "15": 0.237
+ },
+ "tight_by_lots_bought": {
+  "(0, 1]": 0.297,
+  "(1, 2]": 0.3,
+  "(2, 4]": 0.273,
+  "(4, 100]": 0.305
+ },
+ "by_other_premium_at_low": {
+  "False": {
+   "events": 564,
+   "sale_within_2s": 0.25354609929078015,
+   "sale_within_60s": 0.6985815602836879
+  },
+  "True": {
+   "events": 790,
+   "sale_within_2s": 0.3189873417721519,
+   "sale_within_60s": 0.9443037974683545
+  }
+ },
+ "feat_prem_vs_daymin": {
+  "tight_median": 1.0,
+  "other_median": 1.0,
+  "n": [
+   395,
+   959
+  ]
+ },
+ "feat_fav_ret_5": {
+  "tight_median": 0.4913999999999942,
+  "other_median": 0.41099999999998543,
+  "n": [
+   395,
+   959
+  ]
+ },
+ "feat_fav_ret_15": {
+  "tight_median": 0.7955000000000291,
+  "other_median": 0.6085000000000582,
+  "n": [
+   395,
+   959
+  ]
+ },
+ "feat_fresh_60": {
+  "tight_median": 1.0,
+  "other_median": 1.0,
+  "n": [
+   395,
+   959
+  ]
+ },
+ "feat_prem_chg_3": {
+  "tight_median": -0.17067039106145254,
+  "other_median": -0.17514124293785305,
+  "n": [
+   395,
+   959
+  ]
+ },
+ "feat_n_own": {
+  "tight_median": 106.0,
+  "other_median": 97.0,
+  "n": [
+   395,
+   959
+  ]
+ },
+ "feat_share_own": {
+  "tight_median": 0.6150627615062761,
+  "other_median": 0.5637254901960784,
+  "n": [
+   395,
+   959
+  ]
+ },
+ "feat_mtm_to_stop": {
+  "tight_median": 2.3167999999999997,
+  "other_median": 2.25367,
+  "n": [
+   395,
+   959
+  ]
+ },
+ "decomp_by_bb_label": {
+  "counter-sell solo": 570,
+  "opening solo": 168,
+  "replacement solo": 289
+ }
+}

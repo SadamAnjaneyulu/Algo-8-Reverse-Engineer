@@ -1,0 +1,96 @@
+{
+ "n4": {
+  "tight_orders": 532,
+  "tight_null": 41.0,
+  "ratio": 12.975609756097562,
+  "ratio_ci": [
+   7.259156611362494,
+   31.134761904761906
+  ]
+ },
+ "n4b": [
+  {
+   "window_s": 2,
+   "share_all_solo_lots": 0.17573579739904174,
+   "share_counter_lots": 0.3187919463087248,
+   "share_noncounter_lots": 0.11267258382642999,
+   "null_share_all_lots": 0.02797741273100616
+  },
+  {
+   "window_s": 5,
+   "share_all_solo_lots": 0.2950034223134839,
+   "share_counter_lots": 0.4317673378076063,
+   "share_noncounter_lots": 0.23471400394477318,
+   "null_share_all_lots": 0.05586926762491444
+  },
+  {
+   "window_s": 60,
+   "share_all_solo_lots": 0.6461327857631759,
+   "share_counter_lots": 1.0,
+   "share_noncounter_lots": 0.490138067061144,
+   "null_share_all_lots": 0.290041067761807
+  }
+ ],
+ "h7": [
+  {
+   "set": "counter-labelled solo",
+   "orders": 1713,
+   "loco_share_on_other_cycles_times": 0.159369527145359,
+   "null_mean": 0.09320879548550302,
+   "ratio": 1.7098121085594988
+  },
+  {
+   "set": "other solo (not counter)",
+   "orders": 3700,
+   "loco_share_on_other_cycles_times": 0.48,
+   "null_mean": 0.16045045045045045,
+   "ratio": 2.9915777653003928
+  },
+  {
+   "set": "all solo",
+   "orders": 5413,
+   "loco_share_on_other_cycles_times": 0.44503971919453167,
+   "null_mean": 0.20518504834041504,
+   "ratio": 2.168967587034814
+  }
+ ],
+ "in_first_133s_of_5min_counter": 0.493286631640397,
+ "in_first_133s_of_5min_other solo": 0.6597297297297298,
+ "n5": {
+  "events": 1477,
+  "spearman_loss_vs_sold_premium": 0.1029070247053199,
+  "ci": [
+   0.04431346313303396,
+   0.17439072617650248
+  ],
+  "null_spearman": [
+   -0.12590721659426257,
+   -0.09243287175498296
+  ],
+  "median_loss_rs": 2255.882352941176,
+  "median_sold_premium_rs": 2883.0,
+  "share_events_with_sale": 0.6181448882870684,
+  "sold_to_loss_ratio_median_where_sale": 2.765527950310559
+ },
+ "bursts": {
+  "n": 2032,
+  "orders_median": 1.0,
+  "lots_q": [
+   1.0,
+   1.0,
+   6.0
+  ],
+  "span_s_q": [
+   0.0,
+   27.0
+  ],
+  "lots_vs_move_spearman": 0.18964823577493187,
+  "share_lots_in_5plus": 0.499315537303217,
+  "share_bursts_with_counter_label": 0.3154527559055118
+ },
+ "status_values": {
+  "carried strike": 4832,
+  "D0 strike": 2761,
+  "new strike": 312
+ }
+}

@@ -1,0 +1,127 @@
+{
+ "flag_all": {
+  "tol_F1": 0.44716772734444854,
+  "exact_F1": 0.2388451443569554,
+  "exact_precision": 0.13561847988077497,
+  "base_rate": 0.13561847988077497
+ },
+ "n3": [
+  {
+   "rule": "tree: spot + time",
+   "exact_precision": 0.232,
+   "exact_recall": 0.5824,
+   "exact_F1": 0.3318,
+   "exact_F1_lo": 0.2989,
+   "exact_F1_hi": 0.3776,
+   "exact_placebo_F1": 0.3526,
+   "exact_ratio_vs_placebo": 0.9411,
+   "tol_F1": 0.5801,
+   "tol_placebo_F1": 0.579,
+   "flagged_cells": 5026
+  },
+  {
+   "rule": "tree: premium + time",
+   "exact_precision": 0.267,
+   "exact_recall": 0.6144,
+   "exact_F1": 0.3723,
+   "exact_F1_lo": 0.3298,
+   "exact_F1_hi": 0.4291,
+   "exact_placebo_F1": 0.3552,
+   "exact_ratio_vs_placebo": 1.048,
+   "tol_F1": 0.627,
+   "tol_placebo_F1": 0.5811,
+   "flagged_cells": 4606
+  },
+  {
+   "rule": "tree: spot + premium + time",
+   "exact_precision": 0.267,
+   "exact_recall": 0.6144,
+   "exact_F1": 0.3723,
+   "exact_F1_lo": 0.3263,
+   "exact_F1_hi": 0.4376,
+   "exact_placebo_F1": 0.3534,
+   "exact_ratio_vs_placebo": 1.0533,
+   "tol_F1": 0.627,
+   "tol_placebo_F1": 0.5793,
+   "flagged_cells": 4606
+  },
+  {
+   "rule": "tree: all market/book",
+   "exact_precision": 0.267,
+   "exact_recall": 0.6144,
+   "exact_F1": 0.3723,
+   "exact_F1_lo": 0.3197,
+   "exact_F1_hi": 0.4358,
+   "exact_placebo_F1": 0.3524,
+   "exact_ratio_vs_placebo": 1.0565,
+   "tol_F1": 0.627,
+   "tol_placebo_F1": 0.5799,
+   "flagged_cells": 4606
+  },
+  {
+   "rule": "tree: all + past buy-backs",
+   "exact_precision": 0.267,
+   "exact_recall": 0.6144,
+   "exact_F1": 0.3723,
+   "exact_F1_lo": 0.3211,
+   "exact_F1_hi": 0.4334,
+   "exact_placebo_F1": 0.3552,
+   "exact_ratio_vs_placebo": 1.048,
+   "tol_F1": 0.627,
+   "tol_placebo_F1": 0.5811,
+   "flagged_cells": 4606
+  },
+  {
+   "rule": "hand rule (post-hoc): ATM premium at its day low (close at j-1)",
+   "exact_precision": 0.4753,
+   "exact_recall": 0.2498,
+   "exact_F1": 0.3274,
+   "exact_F1_lo": 0.2807,
+   "exact_F1_hi": 0.3786,
+   "exact_placebo_F1": NaN,
+   "exact_ratio_vs_placebo": NaN,
+   "tol_F1": 0.535,
+   "tol_placebo_F1": NaN,
+   "flagged_cells": 1052
+  },
+  {
+   "rule": "hand rule (post-hoc): ATM premium at 60-min low",
+   "exact_precision": 0.4552,
+   "exact_recall": 0.3042,
+   "exact_F1": 0.3647,
+   "exact_F1_lo": 0.3207,
+   "exact_F1_hi": 0.4093,
+   "exact_placebo_F1": NaN,
+   "exact_ratio_vs_placebo": NaN,
+   "tol_F1": 0.5962,
+   "tol_placebo_F1": NaN,
+   "flagged_cells": 1338
+  },
+  {
+   "rule": "hand rule (post-hoc, uses bar j): ATM premium makes new day low in minute j",
+   "exact_precision": 0.5834,
+   "exact_recall": 0.3092,
+   "exact_F1": 0.4042,
+   "exact_F1_lo": 0.3454,
+   "exact_F1_hi": 0.4784,
+   "exact_placebo_F1": NaN,
+   "exact_ratio_vs_placebo": NaN,
+   "tol_F1": 0.5566,
+   "tol_placebo_F1": NaN,
+   "flagged_cells": 1061
+  },
+  {
+   "rule": "hand rule (post-hoc): day low OR spot fresh 60-min extreme",
+   "exact_precision": 0.4243,
+   "exact_recall": 0.3137,
+   "exact_F1": 0.3607,
+   "exact_F1_lo": 0.3186,
+   "exact_F1_hi": 0.4106,
+   "exact_placebo_F1": NaN,
+   "exact_ratio_vs_placebo": NaN,
+   "tol_F1": 0.583,
+   "tol_placebo_F1": NaN,
+   "flagged_cells": 1480
+  }
+ ]
+}

@@ -1,0 +1,294 @@
+{
+ "placebo_all": {
+  "auc": 0.6851801803212462,
+  "auc_lo": 0.6295233661936115,
+  "auc_hi": 0.7220429337498374,
+  "prauc": 0.23525485900814003,
+  "pr_lo": 0.15901105058090542,
+  "pr_hi": 0.30371874963594425
+ },
+ "n1_placebo": {
+  "auc": 0.5667607063471631,
+  "auc_lo": 0.5110463908147883,
+  "auc_hi": 0.618876511074827,
+  "prauc": 0.44200553239052454,
+  "pr_lo": 0.35819535269448827,
+  "pr_hi": 0.5153237615695004
+ },
+ "n2": [
+  {
+   "model": "baseline (time, right, underlying)",
+   "features": 7,
+   "auc": 0.7454,
+   "auc_lo": 0.6917,
+   "auc_hi": 0.7704,
+   "prauc": 0.4715,
+   "pr_lo": 0.3663,
+   "pr_hi": 0.5447,
+   "gain_over_baseline": 0.0
+  },
+  {
+   "model": "+ spot",
+   "features": 22,
+   "auc": 0.8415,
+   "auc_lo": 0.8118,
+   "auc_hi": 0.8633,
+   "prauc": 0.5101,
+   "pr_lo": 0.4434,
+   "pr_hi": 0.5621,
+   "gain_over_baseline": 0.0961
+  },
+  {
+   "model": "+ premium",
+   "features": 17,
+   "auc": 0.8608,
+   "auc_lo": 0.8379,
+   "auc_hi": 0.8812,
+   "prauc": 0.5298,
+   "pr_lo": 0.4694,
+   "pr_hi": 0.5752,
+   "gain_over_baseline": 0.1154
+  },
+  {
+   "model": "+ book",
+   "features": 22,
+   "auc": 0.8214,
+   "auc_lo": 0.7885,
+   "auc_hi": 0.8353,
+   "prauc": 0.5016,
+   "pr_lo": 0.3913,
+   "pr_hi": 0.567,
+   "gain_over_baseline": 0.076
+  },
+  {
+   "model": "+ buy-backs (past)",
+   "features": 20,
+   "auc": 0.8006,
+   "auc_lo": 0.755,
+   "auc_hi": 0.8229,
+   "prauc": 0.4962,
+   "pr_lo": 0.3741,
+   "pr_hi": 0.559,
+   "gain_over_baseline": 0.0552
+  },
+  {
+   "model": "spot + premium",
+   "features": 32,
+   "auc": 0.8582,
+   "auc_lo": 0.8341,
+   "auc_hi": 0.8784,
+   "prauc": 0.5199,
+   "pr_lo": 0.4604,
+   "pr_hi": 0.571,
+   "gain_over_baseline": 0.1129
+  },
+  {
+   "model": "all decision-time",
+   "features": 60,
+   "auc": 0.8763,
+   "auc_lo": 0.8608,
+   "auc_hi": 0.8893,
+   "prauc": 0.5405,
+   "pr_lo": 0.4628,
+   "pr_hi": 0.5877,
+   "gain_over_baseline": 0.131
+  },
+  {
+   "model": "all + bar j (contemporaneous)",
+   "features": 65,
+   "auc": 0.9168,
+   "auc_lo": 0.8978,
+   "auc_hi": 0.9317,
+   "prauc": 0.6845,
+   "pr_lo": 0.6464,
+   "pr_hi": 0.7153,
+   "gain_over_baseline": 0.1715
+  }
+ ],
+ "ablation": [
+  {
+   "dropped": "spot",
+   "auc": 0.87779931667079,
+   "auc_lo": 0.8629258404925498,
+   "auc_hi": 0.8902341393926609,
+   "prauc": 0.5466502884748886,
+   "pr_lo": 0.4568929613977752,
+   "pr_hi": 0.6002617995697183
+  },
+  {
+   "dropped": "prem",
+   "auc": 0.8642999242137174,
+   "auc_lo": 0.8512714488776196,
+   "auc_hi": 0.8753301991862736,
+   "prauc": 0.537959825698542,
+   "pr_lo": 0.4571031797359638,
+   "pr_hi": 0.5956978077027977
+  },
+  {
+   "dropped": "book",
+   "auc": 0.8727048421797637,
+   "auc_lo": 0.8570403750445322,
+   "auc_hi": 0.8842878057083107,
+   "prauc": 0.5383268252941268,
+   "pr_lo": 0.4623124931986909,
+   "pr_hi": 0.5982072359346026
+  },
+  {
+   "dropped": "bb",
+   "auc": 0.8716759337840844,
+   "auc_lo": 0.8571392224168486,
+   "auc_hi": 0.887880868029271,
+   "prauc": 0.5337465978810536,
+   "pr_lo": 0.45331964329230423,
+   "pr_hi": 0.5824118803464503
+  }
+ ],
+ "panel": {
+  "cells": 14762,
+  "cycles": 24,
+  "positive_rate": 0.13561847988077497,
+  "solo_orders_in_panel": 4566
+ },
+ "top_features": [
+  {
+   "feature": "min_in_15",
+   "drop_in_auc": 0.0746,
+   "se": 0.0205,
+   "group": "base"
+  },
+  {
+   "feature": "prem_vs_daymin",
+   "drop_in_auc": 0.0704,
+   "se": 0.0127,
+   "group": "prem"
+  },
+  {
+   "feature": "prem_chg_3",
+   "drop_in_auc": 0.0119,
+   "se": 0.0033,
+   "group": "prem"
+  },
+  {
+   "feature": "prem_chg_15",
+   "drop_in_auc": 0.0096,
+   "se": 0.0025,
+   "group": "prem"
+  },
+  {
+   "feature": "j",
+   "drop_in_auc": 0.009,
+   "se": 0.0019,
+   "group": "base"
+  },
+  {
+   "feature": "prem_chg_5",
+   "drop_in_auc": 0.0051,
+   "se": 0.0031,
+   "group": "prem"
+  },
+  {
+   "feature": "fav_ret_5",
+   "drop_in_auc": 0.0049,
+   "se": 0.0033,
+   "group": "spot"
+  },
+  {
+   "feature": "fav_ret_30",
+   "drop_in_auc": 0.0045,
+   "se": 0.0031,
+   "group": "spot"
+  },
+  {
+   "feature": "prem_chg_1",
+   "drop_in_auc": 0.0044,
+   "se": 0.0011,
+   "group": "prem"
+  },
+  {
+   "feature": "n_other",
+   "drop_in_auc": 0.004,
+   "se": 0.0031,
+   "group": "book"
+  },
+  {
+   "feature": "sell_own_15",
+   "drop_in_auc": 0.0039,
+   "se": 0.0012,
+   "group": "book"
+  },
+  {
+   "feature": "mark_own",
+   "drop_in_auc": 0.0038,
+   "se": 0.0031,
+   "group": "prem"
+  }
+ ],
+ "n1": [
+  {
+   "model": "time + right (baseline)",
+   "orders": 4527,
+   "counter_share": 0.3658051689860835,
+   "auc": 0.5623077560546326,
+   "auc_lo": 0.5116538740319478,
+   "auc_hi": 0.6114053822925182,
+   "prauc": 0.4088975125169909,
+   "pr_lo": 0.3175076154547197,
+   "pr_hi": 0.5047042196861755
+  },
+  {
+   "model": "+ spot",
+   "orders": 4527,
+   "counter_share": 0.3658051689860835,
+   "auc": 0.6267920332762912,
+   "auc_lo": 0.5629651714009702,
+   "auc_hi": 0.7049056093348222,
+   "prauc": 0.4472137422726872,
+   "pr_lo": 0.34080575369121885,
+   "pr_hi": 0.5850232611192683
+  },
+  {
+   "model": "+ premium",
+   "orders": 4527,
+   "counter_share": 0.3658051689860835,
+   "auc": 0.6133873299040715,
+   "auc_lo": 0.5404001437319423,
+   "auc_hi": 0.6850764740355633,
+   "prauc": 0.41784255442641,
+   "pr_lo": 0.30033606960758014,
+   "pr_hi": 0.5826448674951509
+  },
+  {
+   "model": "+ book",
+   "orders": 4527,
+   "counter_share": 0.3658051689860835,
+   "auc": 0.6285724982626533,
+   "auc_lo": 0.5682650069117241,
+   "auc_hi": 0.6898670288953096,
+   "prauc": 0.4788750501947362,
+   "pr_lo": 0.37572537511981313,
+   "pr_hi": 0.6047693063493174
+  },
+  {
+   "model": "all market/book (no buy-back features)",
+   "orders": 4527,
+   "counter_share": 0.3658051689860835,
+   "auc": 0.6190846075278859,
+   "auc_lo": 0.5377904102380399,
+   "auc_hi": 0.6896962449811697,
+   "prauc": 0.4539509369350284,
+   "pr_lo": 0.31031918924117335,
+   "pr_hi": 0.6108969701447929
+  },
+  {
+   "model": "all + past buy-backs",
+   "orders": 4527,
+   "counter_share": 0.3658051689860835,
+   "auc": 0.7518025499034995,
+   "auc_lo": 0.6963786145655084,
+   "auc_hi": 0.7995849206564145,
+   "prauc": 0.6295183479946056,
+   "pr_lo": 0.5111356641828878,
+   "pr_hi": 0.7308822202211757
+  }
+ ]
+}
