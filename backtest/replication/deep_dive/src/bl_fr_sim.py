@@ -75,14 +75,32 @@ def sim_cycle(i, P, mode='free', late=False):
             # Options: bb_price 'high' (current minute high, intrabar stop); bb_vel (n, b): own premium high[j] / close[j-1-n] >= b also stops the highest-ratio lot;
             # bb_cluster th2: when any stop fires on a right in this minute, lots on that right with ratio >= th2 are bought back too.
             fired = {'CE': False, 'PE': False}; pf = P.get('bb_price', 'close'); vel = P.get('bb_vel'); th2 = P.get('bb_cluster')
-            def pnow(cp, k): return px(cp, k, j, 'high') if pf == 'high' else px(cp, k, j - 1)
+            def pnow(cp, k):
+                if pf == 'high': return px(cp, k, j, 'high')
+                if pf == 'close_now': return px(cp, k, j, 'close')
+                if pf == 'typical': return (px(cp, k, j, 'high') + px(cp, k, j, 'low') + px(cp, k, j, 'close')) / 3
+                if pf == 'open_now': return px(cp, k, j, 'open')
+                return px(cp, k, j - 1)
             for (cp, k), lots in list(shorts.items()):
                 keep = []; pn = pnow(cp, k); vtrig = False
                 if vel and lots:
                     base = px(cp, k, j - 1 - vel[0]); hh = px(cp, k, j, 'high'); vtrig = base == base and base > 0 and hh == hh and hh / base >= vel[1]
                 lots_sorted = sorted(lots, key=lambda t: t[1])                       # cheapest entry first (highest ratio)
+                mN = P.get('bb_mkt'); mkt_ok = True
+                if mN:
+                    jc = cj(j - 1); lo_ = max(jc - mN, 0); mkt_ok = (c[jc] > h[lo_:jc].max()) if cp == 'CE' else (c[jc] < l[lo_:jc].min()) if jc > lo_ else False
+                lo_t = P.get('bb_lo'); b_ok = False
+                if lo_t:
+                    jc = cj(j - 1); mN2 = P.get('bb_lo_mkt'); vv = P.get('bb_lo_vel')
+                    if mN2: lo2 = max(jc - mN2, 0); b_ok = ((c[jc] > h[lo2:jc].max()) if cp == 'CE' else (c[jc] < l[lo2:jc].min())) if jc > lo2 else False
+                    if vv and not b_ok:
+                        base_ = px(cp, k, j - 4); hh_ = px(cp, k, j, 'high'); b_ok = base_ == base_ and base_ > 0 and hh_ / base_ >= vv
+                    pc_ = px(cp, k, j - 1)
+                nB = 0
                 for n_, (ej, ep) in enumerate(lots_sorted):
-                    hit = j > ej and pn == pn and ep > 0 and pn / ep >= P['theta']
+                    rr_ = pn / ep if (pn == pn and ep > 0) else 0.0
+                    hit = j > ej and rr_ >= P['theta'] and (mkt_ok or rr_ >= P.get('bb_hi', 99))
+                    if not hit and lo_t and b_ok and j > ej and ep > 0 and pc_ > ep and rr_ >= lo_t and (P.get('bb_lo_qty', 'one') == 'all' or nB == 0): hit = True; nB += 1
                     if not hit and vtrig and n_ == 0 and j > ej: hit = True
                     if hit: rec_('body_buyback', cp, j, k, 1); bodyorders.append(('cover', cp, k, 1)); fired[cp] = True
                     else: keep.append((ej, ep))

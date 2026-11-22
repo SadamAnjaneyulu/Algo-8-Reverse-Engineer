@@ -1,0 +1,68 @@
+{
+ "tf_bb": {
+  "chosen": [
+   {
+    "mode": "tf_bb",
+    "fold": 0,
+    "N": 30,
+    "theta": 1.6,
+    "theta_hi": 1.7,
+    "F1_train": 0.5953
+   },
+   {
+    "mode": "tf_bb",
+    "fold": 1,
+    "N": 15,
+    "theta": 1.55,
+    "theta_hi": 99,
+    "F1_train": 0.5541
+   }
+  ],
+  "overall": {
+   "variant": "combined stop (tf_bb)",
+   "real_lots": 13655,
+   "sim_lots": 12776,
+   "matched": 11095,
+   "precision": 0.868425172197871,
+   "recall": 0.8125228853899671,
+   "F1": 0.8395444742915515,
+   "F1_strict": 0.6098899020090046,
+   "F1_within1": 0.7782528092013167,
+   "F1_modelled_classes_only": 0.8543158543158543,
+   "real_lots_modelled": 13198
+  }
+ },
+ "free": {
+  "chosen": [
+   {
+    "mode": "free",
+    "fold": 0,
+    "N": 15,
+    "theta": 1.6,
+    "theta_hi": 99,
+    "F1_train": 0.5462
+   },
+   {
+    "mode": "free",
+    "fold": 1,
+    "N": 60,
+    "theta": 1.55,
+    "theta_hi": 1.7,
+    "F1_train": 0.542
+   }
+  ],
+  "overall": {
+   "variant": "combined stop (free)",
+   "real_lots": 13655,
+   "sim_lots": 10662,
+   "matched": 8248,
+   "precision": 0.7735884449446633,
+   "recall": 0.6040278286341999,
+   "F1": 0.6783731545832133,
+   "F1_strict": 0.4451206974544557,
+   "F1_within1": 0.6186618415100547,
+   "F1_modelled_classes_only": 0.6913663034367141,
+   "real_lots_modelled": 13198
+  }
+ }
+}
