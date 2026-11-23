@@ -1,0 +1,118 @@
+{
+ "clock": [
+  {
+   "slice": "other solo",
+   "orders": 1105,
+   "loco_share_on_other_cycles_times": 0.6317,
+   "null_share": 0.0919,
+   "ratio": 6.8768,
+   "cycles_above_null": 13,
+   "cycles": 22,
+   "sign_test_p": 0.2617
+  },
+  {
+   "slice": "replacement solo",
+   "orders": 1206,
+   "loco_share_on_other_cycles_times": 0.2172,
+   "null_share": 0.132,
+   "ratio": 1.6461,
+   "cycles_above_null": 14,
+   "cycles": 24,
+   "sign_test_p": 0.2706
+  },
+  {
+   "slice": "far-OTM solo",
+   "orders": 333,
+   "loco_share_on_other_cycles_times": 0.1651,
+   "null_share": 0.0343,
+   "ratio": 4.8182,
+   "cycles_above_null": 2,
+   "cycles": 11,
+   "sign_test_p": 0.9941
+  },
+  {
+   "slice": "counter-sell solo",
+   "orders": 1641,
+   "loco_share_on_other_cycles_times": 0.1517,
+   "null_share": 0.0882,
+   "ratio": 1.7212,
+   "cycles_above_null": 15,
+   "cycles": 24,
+   "sign_test_p": 0.1537
+  },
+  {
+   "slice": "extreme solo",
+   "orders": 402,
+   "loco_share_on_other_cycles_times": 0.0547,
+   "null_share": 0.0203,
+   "ratio": 2.6939,
+   "cycles_above_null": 6,
+   "cycles": 22,
+   "sign_test_p": 0.9915
+  }
+ ],
+ "auc": [
+  {
+   "model": "clock feature only (other cycles' times, +/-0 min)",
+   "features": 2,
+   "auc": 0.8128,
+   "lo": 0.7324,
+   "hi": 0.8612,
+   "prauc": 0.5397,
+   "within_cycle_auc": 0.7192,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486,
+   "forward_auc": 0.7181
+  },
+  {
+   "model": "clock feature + clock position (minute in block, hour)",
+   "features": 5,
+   "auc": 0.8636,
+   "lo": 0.8126,
+   "hi": 0.8948,
+   "prauc": 0.5773,
+   "within_cycle_auc": 0.7874,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486,
+   "forward_auc": 0.8018
+  },
+  {
+   "model": "V1 causal (market / book / past buy-backs)",
+   "features": 64,
+   "auc": 0.8835,
+   "lo": 0.8595,
+   "hi": 0.8994,
+   "prauc": 0.4963,
+   "within_cycle_auc": 0.8374,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486,
+   "forward_auc": 0.7994
+  },
+  {
+   "model": "V1 + clock feature",
+   "features": 66,
+   "auc": 0.9171,
+   "lo": 0.8921,
+   "hi": 0.933,
+   "prauc": 0.6869,
+   "within_cycle_auc": 0.8835,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486,
+   "forward_auc": 0.9131
+  },
+  {
+   "model": "placebo (clock + position shuffled within cycle)",
+   "features": 4,
+   "auc": 0.5434,
+   "lo": 0.5245,
+   "hi": 0.565,
+   "prauc": 0.0611,
+   "within_cycle_auc": 0.5212,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486,
+   "forward_auc": NaN
+  }
+ ],
+ "recurring_times": 45,
+ "orders_at_recurring_times_share": 0.5990950226244344
+}

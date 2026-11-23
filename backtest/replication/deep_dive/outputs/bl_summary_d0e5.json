@@ -1,0 +1,139 @@
+{
+ "auc": [
+  {
+   "outcome": "y_strangle",
+   "model": "clock feature only (strangle times of other cycles)",
+   "cells": 763,
+   "auc": 0.9001,
+   "lo": 0.8795,
+   "hi": 0.9183,
+   "within_cycle_auc": 0.9331,
+   "forward_auc": 0.926
+  },
+  {
+   "outcome": "y_strangle",
+   "model": "clock + clock position",
+   "cells": 763,
+   "auc": 0.9778,
+   "lo": 0.9631,
+   "hi": 0.99,
+   "within_cycle_auc": 0.9434,
+   "forward_auc": 0.9345
+  },
+  {
+   "outcome": "y_strangle",
+   "model": "V1 causal",
+   "cells": 763,
+   "auc": 0.9708,
+   "lo": 0.9505,
+   "hi": 0.9883,
+   "within_cycle_auc": 0.9228,
+   "forward_auc": 0.9099
+  },
+  {
+   "outcome": "y_strangle",
+   "model": "V1 + clock feature",
+   "cells": 763,
+   "auc": 0.9837,
+   "lo": 0.9733,
+   "hi": 0.9919,
+   "within_cycle_auc": 0.9607,
+   "forward_auc": 0.9588
+  },
+  {
+   "outcome": "y_counter_ns",
+   "model": "V1 causal, strangle legs removed from the outcome",
+   "cells": 516,
+   "auc": 0.8843,
+   "lo": 0.851,
+   "hi": 0.9122,
+   "within_cycle_auc": 0.8911,
+   "forward_auc": 0.911
+  },
+  {
+   "outcome": "y_repl_ns",
+   "model": "V1 causal, strangle legs removed from the outcome",
+   "cells": 342,
+   "auc": 0.9074,
+   "lo": 0.8829,
+   "hi": 0.9184,
+   "within_cycle_auc": 0.871,
+   "forward_auc": 0.8451
+  },
+  {
+   "outcome": "y_other_ns",
+   "model": "V1 causal, strangle legs removed from the outcome",
+   "cells": 254,
+   "auc": 0.8106,
+   "lo": 0.7685,
+   "hi": 0.8546,
+   "within_cycle_auc": 0.8097,
+   "forward_auc": 0.8524
+  },
+  {
+   "outcome": "y_strangle",
+   "model": "placebo (clock + position shuffled within cycle)",
+   "cells": 763,
+   "auc": 0.4627,
+   "lo": 0.4339,
+   "hi": 0.4915,
+   "within_cycle_auc": 0.5005,
+   "forward_auc": NaN
+  }
+ ],
+ "relabel": [
+  {
+   "slice": "counter-sell solo",
+   "not a strangle leg": 1435,
+   "strangle leg": 206,
+   "strangle share of slice": 0.125533211456429
+  },
+  {
+   "slice": "extreme solo",
+   "not a strangle leg": 356,
+   "strangle leg": 46,
+   "strangle share of slice": 0.11442786069651742
+  },
+  {
+   "slice": "far-OTM solo",
+   "not a strangle leg": 746,
+   "strangle leg": 15,
+   "strangle share of slice": 0.01971090670170828
+  },
+  {
+   "slice": "late solo",
+   "not a strangle leg": 39,
+   "strangle leg": 0,
+   "strangle share of slice": 0.0
+  },
+  {
+   "slice": "opening solo",
+   "not a strangle leg": 586,
+   "strangle leg": 104,
+   "strangle share of slice": 0.15072463768115943
+  },
+  {
+   "slice": "other solo",
+   "not a strangle leg": 396,
+   "strangle leg": 709,
+   "strangle share of slice": 0.6416289592760182
+  },
+  {
+   "slice": "replacement solo",
+   "not a strangle leg": 1034,
+   "strangle leg": 172,
+   "strangle share of slice": 0.14262023217247097
+  }
+ ],
+ "strangle_lots": 1252,
+ "strangle_by_slice": {
+  "counter-sell solo": 206,
+  "extreme solo": 46,
+  "far-OTM solo": 15,
+  "opening solo": 104,
+  "other solo": 709,
+  "replacement solo": 172
+ },
+ "sensex_v1_solo_lots": 3459,
+ "sensex_v1_strangle_share": 0.3619543220583984
+}

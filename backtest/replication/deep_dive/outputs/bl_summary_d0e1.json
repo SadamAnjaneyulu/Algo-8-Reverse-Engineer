@@ -1,0 +1,401 @@
+{
+ "e1": [
+  {
+   "reason": "1 cycle-stop window",
+   "events": 30,
+   "share_with_same_right_sale_0_60s": 0.4,
+   "null_10min": 0.0333,
+   "null_15min": 0.0833,
+   "ratio_10": 12.0,
+   "ratio_15": 4.8,
+   "kept": true
+  },
+  {
+   "reason": "2a clearance 15:10-15:13",
+   "events": 160,
+   "share_with_same_right_sale_0_60s": 0.1312,
+   "null_10min": 0.1875,
+   "null_15min": 0.0844,
+   "ratio_10": 0.7,
+   "ratio_15": 1.5556,
+   "kept": false
+  },
+  {
+   "reason": "2b clearance 15:14",
+   "events": 83,
+   "share_with_same_right_sale_0_60s": 0.1205,
+   "null_10min": 0.2048,
+   "null_15min": 0.1024,
+   "ratio_10": 0.5882,
+   "ratio_15": 1.1765,
+   "kept": false
+  },
+  {
+   "reason": "2c clearance 15:15+",
+   "events": 382,
+   "share_with_same_right_sale_0_60s": 0.0445,
+   "null_10min": 0.1309,
+   "null_15min": 0.2487,
+   "ratio_10": 0.34,
+   "ratio_15": 0.1789,
+   "kept": false
+  },
+  {
+   "reason": "3 stop-loss",
+   "events": 1395,
+   "share_with_same_right_sale_0_60s": 0.1728,
+   "null_10min": 0.1297,
+   "null_15min": 0.1283,
+   "ratio_10": 1.3315,
+   "ratio_15": 1.3464,
+   "kept": false
+  },
+  {
+   "reason": "4 take-profit",
+   "events": 612,
+   "share_with_same_right_sale_0_60s": 0.2696,
+   "null_10min": 0.2345,
+   "null_15min": 0.1936,
+   "ratio_10": 1.1498,
+   "ratio_15": 1.3924,
+   "kept": false
+  },
+  {
+   "reason": "5 partner",
+   "events": 191,
+   "share_with_same_right_sale_0_60s": 0.5183,
+   "null_10min": 0.2539,
+   "null_15min": 0.1937,
+   "ratio_10": 2.0412,
+   "ratio_15": 2.6757,
+   "kept": true
+  },
+  {
+   "reason": "6 roll-out",
+   "events": 789,
+   "share_with_same_right_sale_0_60s": 0.8188,
+   "null_10min": 0.32,
+   "null_15min": 0.3574,
+   "ratio_10": 2.5584,
+   "ratio_15": 2.2908,
+   "kept": true
+  },
+  {
+   "reason": "7 burst member",
+   "events": 409,
+   "share_with_same_right_sale_0_60s": 0.0,
+   "null_10min": 0.099,
+   "null_15min": 0.1186,
+   "ratio_10": 0.0,
+   "ratio_15": 0.0,
+   "kept": false
+  },
+  {
+   "reason": "8 other",
+   "events": 606,
+   "share_with_same_right_sale_0_60s": 0.0,
+   "null_10min": 0.1856,
+   "null_15min": 0.1832,
+   "ratio_10": 0.0,
+   "ratio_15": 0.0,
+   "kept": false
+  }
+ ],
+ "mech": [
+  {
+   "group": "sales within 60 s after a kept buy-back",
+   "n": 757,
+   "off_median": 0.0,
+   "off_q25": -1.0,
+   "off_q75": 1.0,
+   "further_otm_share": 0.3487,
+   "same_strike_share": 0.1757,
+   "px_ratio_median": 1.0106,
+   "lots_ratio_median": 2.0
+  },
+  {
+   "group": "random same-right solo sale of the cycle (chance)",
+   "n": 1002,
+   "off_median": -1.0,
+   "off_q25": -2.0,
+   "off_q75": 0.5,
+   "further_otm_share": 0.2615,
+   "same_strike_share": 0.1786,
+   "px_ratio_median": 1.6036,
+   "lots_ratio_median": NaN
+  }
+ ],
+ "e2": [
+  {
+   "slice": "replacement solo",
+   "orders": 1154,
+   "others": 1756,
+   "auc": 0.8672,
+   "lo": 0.8331,
+   "hi": 0.9007,
+   "distinct": true
+  },
+  {
+   "slice": "other solo",
+   "orders": 1100,
+   "others": 1810,
+   "auc": 0.9157,
+   "lo": 0.8756,
+   "hi": 0.9384,
+   "distinct": true
+  },
+  {
+   "slice": "far-OTM solo",
+   "orders": 226,
+   "others": 2684,
+   "auc": 0.8978,
+   "lo": 0.8225,
+   "hi": 0.9327,
+   "distinct": true
+  },
+  {
+   "slice": "extreme solo",
+   "orders": 391,
+   "others": 2519,
+   "auc": 0.8434,
+   "lo": 0.7872,
+   "hi": 0.8817,
+   "distinct": true
+  }
+ ],
+ "e3": [
+  {
+   "slice": "replacement solo",
+   "cells": 435,
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "features": 64,
+   "auc": 0.9157,
+   "lo": 0.893,
+   "hi": 0.9267,
+   "prauc": 0.4037,
+   "within_cycle_auc": 0.8757,
+   "within_cycle_cycles": 18,
+   "positive_rate": 0.0295
+  },
+  {
+   "slice": "replacement solo",
+   "cells": 435,
+   "variant": "V2 + the minute's own bar",
+   "features": 71,
+   "auc": 0.9378,
+   "lo": 0.9126,
+   "hi": 0.9475,
+   "prauc": 0.488,
+   "within_cycle_auc": 0.9125,
+   "within_cycle_cycles": 18,
+   "positive_rate": 0.0295
+  },
+  {
+   "slice": "replacement solo",
+   "cells": 435,
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "features": 74,
+   "auc": 0.9781,
+   "lo": 0.9707,
+   "hi": 0.983,
+   "prauc": 0.6081,
+   "within_cycle_auc": 0.9713,
+   "within_cycle_cycles": 18,
+   "positive_rate": 0.0295
+  },
+  {
+   "slice": "replacement solo",
+   "cells": 435,
+   "variant": "placebo (V1 features shuffled within cycle)",
+   "features": 64,
+   "auc": 0.6725,
+   "lo": 0.5502,
+   "hi": 0.7396,
+   "prauc": 0.0612,
+   "within_cycle_auc": 0.4805,
+   "within_cycle_cycles": 18,
+   "positive_rate": 0.0295
+  },
+  {
+   "slice": "other solo",
+   "cells": 717,
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "features": 64,
+   "auc": 0.8835,
+   "lo": 0.8587,
+   "hi": 0.901,
+   "prauc": 0.4963,
+   "within_cycle_auc": 0.8374,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486
+  },
+  {
+   "slice": "other solo",
+   "cells": 717,
+   "variant": "V2 + the minute's own bar",
+   "features": 71,
+   "auc": 0.9213,
+   "lo": 0.9071,
+   "hi": 0.932,
+   "prauc": 0.5406,
+   "within_cycle_auc": 0.8949,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486
+  },
+  {
+   "slice": "other solo",
+   "cells": 717,
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "features": 74,
+   "auc": 0.9291,
+   "lo": 0.9165,
+   "hi": 0.9377,
+   "prauc": 0.5731,
+   "within_cycle_auc": 0.9026,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486
+  },
+  {
+   "slice": "other solo",
+   "cells": 717,
+   "variant": "placebo (V1 features shuffled within cycle)",
+   "features": 64,
+   "auc": 0.6941,
+   "lo": 0.6307,
+   "hi": 0.7245,
+   "prauc": 0.0846,
+   "within_cycle_auc": 0.5262,
+   "within_cycle_cycles": 21,
+   "positive_rate": 0.0486
+  },
+  {
+   "slice": "far-OTM solo",
+   "cells": 238,
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "features": 64,
+   "auc": 0.958,
+   "lo": 0.8512,
+   "hi": 0.9774,
+   "prauc": 0.3792,
+   "within_cycle_auc": 0.7833,
+   "within_cycle_cycles": 3,
+   "positive_rate": 0.0161
+  },
+  {
+   "slice": "far-OTM solo",
+   "cells": 238,
+   "variant": "V2 + the minute's own bar",
+   "features": 71,
+   "auc": 0.9593,
+   "lo": 0.8652,
+   "hi": 0.9762,
+   "prauc": 0.3853,
+   "within_cycle_auc": 0.7924,
+   "within_cycle_cycles": 3,
+   "positive_rate": 0.0161
+  },
+  {
+   "slice": "far-OTM solo",
+   "cells": 238,
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "features": 74,
+   "auc": 0.9627,
+   "lo": 0.902,
+   "hi": 0.9804,
+   "prauc": 0.4953,
+   "within_cycle_auc": 0.8022,
+   "within_cycle_cycles": 3,
+   "positive_rate": 0.0161
+  },
+  {
+   "slice": "far-OTM solo",
+   "cells": 238,
+   "variant": "placebo (V1 features shuffled within cycle)",
+   "features": 64,
+   "auc": 0.8526,
+   "lo": 0.7686,
+   "hi": 0.9276,
+   "prauc": 0.0705,
+   "within_cycle_auc": 0.4798,
+   "within_cycle_cycles": 3,
+   "positive_rate": 0.0161
+  }
+ ],
+ "fwd": [
+  {
+   "slice": "replacement solo",
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "auc": 0.8473
+  },
+  {
+   "slice": "replacement solo",
+   "variant": "V2 + the minute's own bar",
+   "auc": 0.9015
+  },
+  {
+   "slice": "replacement solo",
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "auc": 0.9744
+  },
+  {
+   "slice": "other solo",
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "auc": 0.7994
+  },
+  {
+   "slice": "other solo",
+   "variant": "V2 + the minute's own bar",
+   "auc": 0.8504
+  },
+  {
+   "slice": "other solo",
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "auc": 0.8713
+  },
+  {
+   "slice": "far-OTM solo",
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "auc": NaN
+  },
+  {
+   "slice": "far-OTM solo",
+   "variant": "V2 + the minute's own bar",
+   "auc": NaN
+  },
+  {
+   "slice": "far-OTM solo",
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "auc": NaN
+  }
+ ],
+ "slices": {
+  "counter-sell solo": {
+   "size": 1641,
+   "sum": 1641
+  },
+  "extreme solo": {
+   "size": 402,
+   "sum": 402
+  },
+  "far-OTM solo": {
+   "size": 333,
+   "sum": 761
+  },
+  "late solo": {
+   "size": 39,
+   "sum": 39
+  },
+  "opening solo": {
+   "size": 687,
+   "sum": 690
+  },
+  "other solo": {
+   "size": 1105,
+   "sum": 1105
+  },
+  "replacement solo": {
+   "size": 1206,
+   "sum": 1206
+  }
+ }
+}

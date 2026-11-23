@@ -1,0 +1,266 @@
+{
+ "hours": {
+  "counter-sell solo": {
+   "9": 276,
+   "10": 222,
+   "11": 149,
+   "12": 237,
+   "13": 222,
+   "14": 356,
+   "15": 179
+  },
+  "extreme solo": {
+   "9": 68,
+   "10": 86,
+   "11": 91,
+   "12": 47,
+   "13": 61,
+   "14": 45,
+   "15": 4
+  },
+  "far-OTM solo": {
+   "9": 225,
+   "10": 3,
+   "11": 168,
+   "12": 66,
+   "13": 72,
+   "14": 206,
+   "15": 21
+  },
+  "late solo": {
+   "9": 0,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 39
+  },
+  "opening solo": {
+   "9": 690,
+   "10": 0,
+   "11": 0,
+   "12": 0,
+   "13": 0,
+   "14": 0,
+   "15": 0
+  },
+  "other solo": {
+   "9": 316,
+   "10": 228,
+   "11": 207,
+   "12": 123,
+   "13": 137,
+   "14": 94,
+   "15": 0
+  },
+  "replacement solo": {
+   "9": 38,
+   "10": 39,
+   "11": 93,
+   "12": 146,
+   "13": 181,
+   "14": 365,
+   "15": 344
+  }
+ },
+ "cond": [
+  {
+   "slice": "counter-sell solo",
+   "orders": 1596,
+   "prem_low_60": 0.6397,
+   "spot_fresh_60": 0.4098,
+   "clock_min": 0.2888,
+   "bb_own_recent": 0.4568,
+   "bb_other_recent": 0.6848,
+   "late": 0.3246
+  },
+  {
+   "slice": "extreme solo",
+   "orders": 391,
+   "prem_low_60": 0.5294,
+   "spot_fresh_60": 0.289,
+   "clock_min": 0.2788,
+   "bb_own_recent": 0.2711,
+   "bb_other_recent": 0.376,
+   "late": 0.1176
+  },
+  {
+   "slice": "far-OTM solo",
+   "orders": 286,
+   "prem_low_60": 0.1154,
+   "spot_fresh_60": 0.0629,
+   "clock_min": 0.3042,
+   "bb_own_recent": 0.9231,
+   "bb_other_recent": 0.9161,
+   "late": 0.2622
+  },
+  {
+   "slice": "late solo",
+   "orders": 39,
+   "prem_low_60": 0.5385,
+   "spot_fresh_60": 0.0,
+   "clock_min": 0.2564,
+   "bb_own_recent": 0.3846,
+   "bb_other_recent": 0.5385,
+   "late": 1.0
+  },
+  {
+   "slice": "other solo",
+   "orders": 1100,
+   "prem_low_60": 0.1464,
+   "spot_fresh_60": 0.0264,
+   "clock_min": 0.6045,
+   "bb_own_recent": 0.2473,
+   "bb_other_recent": 0.2118,
+   "late": 0.0855
+  },
+  {
+   "slice": "replacement solo",
+   "orders": 1154,
+   "prem_low_60": 0.4783,
+   "spot_fresh_60": 0.3631,
+   "clock_min": 0.3813,
+   "bb_own_recent": 0.9341,
+   "bb_other_recent": 0.8735,
+   "late": 0.5737
+  },
+  {
+   "slice": "all cells (chance)",
+   "orders": 14762,
+   "prem_low_60": 0.0906,
+   "spot_fresh_60": 0.0642,
+   "clock_min": 0.196,
+   "bb_own_recent": 0.3636,
+   "bb_other_recent": 0.3636,
+   "late": 0.1855
+  }
+ ],
+ "sep": [
+  {
+   "feature": "j",
+   "drop_in_auc": 0.16404,
+   "family": "base"
+  },
+  {
+   "feature": "sell_other_5",
+   "drop_in_auc": 0.00917,
+   "family": "book"
+  },
+  {
+   "feature": "sell_own_15",
+   "drop_in_auc": 0.00872,
+   "family": "book"
+  },
+  {
+   "feature": "prem_chg_15",
+   "drop_in_auc": 0.00714,
+   "family": "prem"
+  },
+  {
+   "feature": "min_in_15",
+   "drop_in_auc": 0.00565,
+   "family": "base"
+  },
+  {
+   "feature": "sell_other_1",
+   "drop_in_auc": 0.0056,
+   "family": "book"
+  },
+  {
+   "feature": "bars_since_fresh60",
+   "drop_in_auc": 0.0038,
+   "family": "spot"
+  },
+  {
+   "feature": "expo_other",
+   "drop_in_auc": 0.00379,
+   "family": "book"
+  }
+ ],
+ "px": [
+  {
+   "group": "1 cycle-stop window",
+   "n": 12,
+   "q25": 0.0099,
+   "median": 0.0341,
+   "q75": 3.3004,
+   "within_10pct": 0.0
+  },
+  {
+   "group": "5 partner",
+   "n": 99,
+   "q25": 1.5688,
+   "median": 2.375,
+   "q75": 5.3311,
+   "within_10pct": 0.101
+  },
+  {
+   "group": "6 roll-out",
+   "n": 646,
+   "q25": 0.555,
+   "median": 0.9709,
+   "q75": 1.7131,
+   "within_10pct": 0.1331
+  },
+  {
+   "group": "all kept reasons",
+   "n": 757,
+   "q25": 0.5772,
+   "median": 1.0106,
+   "q75": 1.9764,
+   "within_10pct": 0.1268
+  },
+  {
+   "group": "chance: random same-right solo sale",
+   "n": 1002,
+   "q25": 0.705,
+   "median": 1.5666,
+   "q75": 3.9358,
+   "within_10pct": 0.0749
+  }
+ ],
+ "ladder": [
+  {
+   "slice": "replacement solo",
+   "variant": "V1 causal",
+   "auc": 0.9157,
+   "lo": 0.89,
+   "hi": 0.9275,
+   "within_cycle_auc": 0.8757,
+   "forward_auc": 0.8473
+  },
+  {
+   "slice": "replacement solo",
+   "variant": "V1 + ladder-state features (post-hoc)",
+   "auc": 0.9177,
+   "lo": 0.8933,
+   "hi": 0.9271,
+   "within_cycle_auc": 0.8777,
+   "forward_auc": 0.8453
+  },
+  {
+   "slice": "other solo",
+   "variant": "V1 causal",
+   "auc": 0.8835,
+   "lo": 0.8603,
+   "hi": 0.9006,
+   "within_cycle_auc": 0.8374,
+   "forward_auc": 0.7994
+  },
+  {
+   "slice": "other solo",
+   "variant": "V1 + ladder-state features (post-hoc)",
+   "auc": 0.8841,
+   "lo": 0.8611,
+   "hi": 0.9006,
+   "within_cycle_auc": 0.8376,
+   "forward_auc": 0.7997
+  }
+ ],
+ "rep_vs_other": {
+  "auc": 0.9354915708208603,
+  "lo": 0.8926397363102487,
+  "hi": 0.9560546555543373
+ }
+}

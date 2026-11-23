@@ -796,3 +796,14 @@ def test_d0c_counter_auc_gate():
     A = pd.read_csv(f'{OUT}/bl_d0c_auc.csv'); c = A[A.outcome == 'counter-sell cell'].set_index('variant'); v1, v2, v3, pl = c.index[:4]
     assert c.loc[v1, 'auc'] >= 0.85 and c.loc[v1, 'lo'] > 0.82 and c.loc[v1, 'within_cycle_auc'] >= 0.85 and c.loc[pl, 'auc'] < 0.65 and c.loc[v1, 'auc'] < c.loc[v2, 'auc'] < c.loc[v3, 'auc']
     F = pd.read_csv(f'{OUT}/bl_d0c_auc_fwd.csv'); assert F[(F.outcome == 'y_counter')].auc.iloc[0] >= 0.80
+
+
+def test_d0e_strangle_and_replacement():
+    R4 = json.load(open(f'{OUT}/bl_summary_d0e4.json')); P = pd.read_csv(f'{OUT}/bl_d0e_str_pairs.csv'); S = P[P.dk == 2]
+    assert len(S) == 626 and set(zip(S.und, S.version)) == {('SENSEX', 'V1')} and S.lag.abs().quantile(.95) <= 1 and R4['strike_rule_exact'] > 0.8 and R4['timetable_oof']['f1'] > 0.85 and 0.14 < R4['share_of_d0_sell_lots'] < 0.16
+    A = pd.read_csv(f'{OUT}/bl_d0e_fin_auc.csv'); a = A[A.outcome == 'y_strangle'].set_index('model'); assert a.loc['V1 + clock feature', 'auc'] > 0.95 and a.loc['V1 + clock feature', 'forward_auc'] > 0.9 and a.loc['placebo (clock + position shuffled within cycle)', 'auc'] < 0.55
+    c = A[A.outcome == 'y_counter_ns'].iloc[0]; assert c.auc >= 0.85 and c.forward_auc >= 0.80                                  # the counter-sell gate survives the removal of strangle legs
+    o = A[A.outcome == 'y_other_ns'].iloc[0]; assert o.auc < 0.85                                                                  # what is left of other solo is not rankable at the gate
+    E3 = pd.read_csv(f'{OUT}/bl_d0e_e3.csv').set_index(['slice', 'variant']); F = pd.read_csv(f'{OUT}/bl_d0e_e3_fwd.csv').set_index(['slice', 'variant']); v1 = E3.index[0][1]
+    assert E3.loc[('replacement solo', v1), 'auc'] >= 0.85 and F.loc[('replacement solo', v1), 'auc'] >= 0.80 and E3.loc[('far-OTM solo', E3.index[-5][1]), 'auc'] > 0.8
+    E1 = pd.read_csv(f'{OUT}/bl_d0e_e1.csv').set_index('reason'); assert E1.loc['5 partner', 'kept'] and not E1.loc['3 stop-loss', 'kept']

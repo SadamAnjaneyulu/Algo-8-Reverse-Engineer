@@ -1,0 +1,9 @@
+outcome,model,cells,auc,lo,hi,within_cycle_auc,forward_auc
+y_strangle,clock feature only (strangle times of other cycles),763,0.9001,0.8795,0.9183,0.9331,0.926
+y_strangle,clock + clock position,763,0.9778,0.9631,0.99,0.9434,0.9345
+y_strangle,V1 causal,763,0.9708,0.9505,0.9883,0.9228,0.9099
+y_strangle,V1 + clock feature,763,0.9837,0.9733,0.9919,0.9607,0.9588
+y_counter_ns,"V1 causal, strangle legs removed from the outcome",516,0.8843,0.851,0.9122,0.8911,0.911
+y_repl_ns,"V1 causal, strangle legs removed from the outcome",342,0.9074,0.8829,0.9184,0.871,0.8451
+y_other_ns,"V1 causal, strangle legs removed from the outcome",254,0.8106,0.7685,0.8546,0.8097,0.8524
+y_strangle,placebo (clock + position shuffled within cycle),763,0.4627,0.4339,0.4915,0.5005,
