@@ -1,0 +1,29 @@
+variant,cls,real_lots,sim_lots,matched,precision,recall,F1,F1_strike_within_one,F1_exact_strike
+research simulator (prev-close stop 1.5x),ALL,13655,10793,8438,0.7818,0.6179,0.6903,0.6255,0.4431
+research simulator (prev-close stop 1.5x),body_sell,4671,3797,3204,0.8438,0.6859,0.7567,0.7175,0.6025
+research simulator (prev-close stop 1.5x),body_buyback,1324,991,637,0.6428,0.4811,0.5503,0.4354,0.3015
+research simulator (prev-close stop 1.5x),wing_buy,4336,3573,2871,0.8035,0.6621,0.726,0.6716,0.4463
+research simulator (prev-close stop 1.5x),wing_sell,1192,959,579,0.6038,0.4857,0.5384,0.4342,0.2743
+research simulator (prev-close stop 1.5x),opening_wings,186,192,184,0.9583,0.9892,0.9735,0.9048,0.6772
+research simulator (prev-close stop 1.5x),lump,1489,1281,963,0.7518,0.6467,0.6953,0.5848,0.2368
+"package, same parameters (prev-close stop 1.5x)",ALL,13655,10793,8438,0.7818,0.6179,0.6903,0.6255,0.4431
+"package, same parameters (prev-close stop 1.5x)",body_sell,4671,3797,3204,0.8438,0.6859,0.7567,0.7175,0.6025
+"package, same parameters (prev-close stop 1.5x)",body_buyback,1324,991,637,0.6428,0.4811,0.5503,0.4354,0.3015
+"package, same parameters (prev-close stop 1.5x)",wing_buy,4336,3573,2871,0.8035,0.6621,0.726,0.6716,0.4463
+"package, same parameters (prev-close stop 1.5x)",wing_sell,1192,959,579,0.6038,0.4857,0.5384,0.4342,0.2743
+"package, same parameters (prev-close stop 1.5x)",opening_wings,186,192,184,0.9583,0.9892,0.9735,0.9048,0.6772
+"package, same parameters (prev-close stop 1.5x)",lump,1489,1281,963,0.7518,0.6467,0.6953,0.5848,0.2368
+"package, intrabar stop 1.6x (minute high)",ALL,13655,10642,8393,0.7887,0.6146,0.6909,0.6287,0.4462
+"package, intrabar stop 1.6x (minute high)",body_sell,4671,3797,3204,0.8438,0.6859,0.7567,0.7175,0.6025
+"package, intrabar stop 1.6x (minute high)",body_buyback,1324,909,611,0.6722,0.4615,0.5472,0.4469,0.3108
+"package, intrabar stop 1.6x (minute high)",wing_buy,4336,3570,2865,0.8025,0.6607,0.7248,0.6709,0.4467
+"package, intrabar stop 1.6x (minute high)",wing_sell,1192,874,552,0.6316,0.4631,0.5344,0.4414,0.2875
+"package, intrabar stop 1.6x (minute high)",opening_wings,186,192,184,0.9583,0.9892,0.9735,0.9048,0.6772
+"package, intrabar stop 1.6x (minute high)",lump,1489,1300,977,0.7515,0.6561,0.7006,0.5895,0.2381
+"package defaults as shipped (rounded constants, stop 1.6x on minute high)",ALL,13655,10642,8393,0.7887,0.6146,0.6909,0.6287,0.4462
+"package defaults as shipped (rounded constants, stop 1.6x on minute high)",body_sell,4671,3797,3204,0.8438,0.6859,0.7567,0.7175,0.6025
+"package defaults as shipped (rounded constants, stop 1.6x on minute high)",body_buyback,1324,909,611,0.6722,0.4615,0.5472,0.4469,0.3108
+"package defaults as shipped (rounded constants, stop 1.6x on minute high)",wing_buy,4336,3570,2865,0.8025,0.6607,0.7248,0.6709,0.4467
+"package defaults as shipped (rounded constants, stop 1.6x on minute high)",wing_sell,1192,874,552,0.6316,0.4631,0.5344,0.4414,0.2875
+"package defaults as shipped (rounded constants, stop 1.6x on minute high)",opening_wings,186,192,184,0.9583,0.9892,0.9735,0.9048,0.6772
+"package defaults as shipped (rounded constants, stop 1.6x on minute high)",lump,1489,1300,977,0.7515,0.6561,0.7006,0.5895,0.2381

@@ -779,3 +779,9 @@ def test_d0p_pair_trigger():
     B3 = pd.read_csv(f'{OUT}/bl_d0p_b3.csv').set_index('model'); assert B3.loc['+G3 premium of the right', 'gain_over_G0_G1'] > 0.03 and B3.loc['+G4 side loss', 'gain_over_G0_G1'] < 0.03 and R3['b4']['median'] >= 3
     B5 = pd.read_csv(f'{OUT}/bl_d0p_b5.csv').iloc[0]; assert B5.tree_F1 < 0.5 and B5.precision_ratio > 1.5
     B6 = pd.read_csv(f'{OUT}/bl_d0p_b6.csv'); s = B6[B6.side.str.startswith('sale (decision')]; b = B6[B6.side.str.startswith('buy-back (decision')]; assert (s.rate_when_on > 2 * s.rate_when_off).all() and (b.rate_when_on > 2 * b.rate_when_off).all()
+
+
+def test_d1pkg_matches_research_simulator():
+    E = pd.read_csv(f'{OUT}/bl_d1pkg_equivalence.csv'); assert len(E) == 32 and E.identical.all()          # the standalone package reproduces the research simulator exactly on identical parameters
+    S = pd.read_csv(f'{OUT}/bl_d1pkg_scores.csv'); a = S[S.cls == 'ALL'].set_index('variant').F1
+    assert abs(a['research simulator (prev-close stop 1.5x)'] - a['package, same parameters (prev-close stop 1.5x)']) < 1e-9 and 0.66 < a['package defaults as shipped (rounded constants, stop 1.6x on minute high)'] < 0.72
