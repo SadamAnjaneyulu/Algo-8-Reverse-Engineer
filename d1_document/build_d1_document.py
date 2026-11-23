@@ -241,11 +241,15 @@ table(['Activity', 'AUC'], [
     widths=[8.4, 8.6], size=9)
 figure('figures/fig09_reconstruction_accuracy.png', 'Reconstruction against the real D-1 order log. **(a)** F1 by class: timing (blue), timing plus strike within one step (green), timing plus exact strike (orange); black diamonds = the hedge rules given the real body orders. **(b)** Short and long lots through the day, real vs rebuilt (mean over cycles). **(c)** F1 per cycle (blue NIFTY, orange SENSEX; dashed = overall). **(d)** Lots by class, real vs rebuilt. "h_" = protective wing orders, "v_" = overnight lump.', 16.5)
 doc.add_heading('The Python code', 2)
-para('The accompanying package (`d1_strategy/`: `algo8_d1.py`, a README, a synthetic-data example and unit tests) implements the strategy above: a scheduled-straddle timetable, a two-candle breakout generator, the solo ladder, per-lot stops, the wing controller, opening wings and the overnight lump. The input is one-minute spot bars and option bars; the output is the list of orders and the end-of-day book.')
+para('The accompanying package (`d1_strategy/`) is the strategy written the way it would be built to run: an **event-driven algo engine** (`d1_algo`) that reads prices every second, builds one-minute bars, applies the rules using only the information available at that second, and sends orders to a broker. It contains:')
 bullets([
-    '**Checked against our research simulator:** on identical parameters it produces the same orders on all 32 cycles.',
-    '**Checked against the real order log:** lot-level F1 0.69 (precision 79%, recall 62%); the figure on cycles not used for fitting is the 0.63 above.',
-    '**Unit tests:** 9, covering the timetable, ATM strike rule, wing equals short, wings out of the money, breakout once per side per candle, ladder gating, stops, the lump and the configuration dates.'])
+    '**Interfaces** for the two things a live deployment must supply: market data (index price, option prices, listed strikes) and a broker (place order, fills, positions).',
+    '**The rules**: opening wings, the scheduled-straddle clock, the two-candle breakout, the solo ladder, per-lot stops, the wing controller and the overnight lump, in that order each second.',
+    '**A position book** with every short lot and its entry price, the wings and the lump, plus pending-order counts so wings are never ordered twice.',
+    '**A risk guard**: kill-switch file, halt flag, short-lot limit, orders-per-minute limit, valid-price check, and splitting at the exchange freeze quantity (27 lots NIFTY, 50 SENSEX).',
+    '**A state file** so the engine can restart mid-session, and a paper broker and replay feed so it can be run and tested without a broker.',
+    '**A template for a live broker adapter** (nothing in the package talks to a broker until one is implemented and tested).'])
+para('**Checked on the real data:** the one-minute bars of the 32 D-1 sessions were replayed second by second through the engine with the paper broker. Its orders matched the real order log with **lot-level F1 0.69 (precision 75%, recall 64%)**, the same as the batch reconstruction; the earlier forward test of the same rules gave 0.63 on cycles not used for fitting. The package has 10 engine tests (clock and ATM strike, late waves, wings equal shorts, breakout once per side per candle, stop, ladder, kill switch, order splitting, restart state, full-day invariants).')
 
 # ===================================================================== 8 D0
 doc.add_heading('8. Moving to D0', 1)

@@ -785,3 +785,8 @@ def test_d1pkg_matches_research_simulator():
     E = pd.read_csv(f'{OUT}/bl_d1pkg_equivalence.csv'); assert len(E) == 32 and E.identical.all()          # the standalone package reproduces the research simulator exactly on identical parameters
     S = pd.read_csv(f'{OUT}/bl_d1pkg_scores.csv'); a = S[S.cls == 'ALL'].set_index('variant').F1
     assert abs(a['research simulator (prev-close stop 1.5x)'] - a['package, same parameters (prev-close stop 1.5x)']) < 1e-9 and 0.66 < a['package defaults as shipped (rounded constants, stop 1.6x on minute high)'] < 0.72
+
+
+def test_d1_engine_replay_matches_real_log():
+    S = pd.read_csv(f'{OUT}/bl_d1eng_scores.csv').set_index('cls'); R = json.load(open(f'{OUT}/bl_summary_d1eng.json'))
+    assert R['cycles'] == 32 and 0.66 < S.loc['ALL', 'F1'] < 0.72 and S.loc['ALL', 'precision'] > 0.7 and S.loc['opening_wings', 'F1'] > 0.9          # causal engine replayed second by second reproduces the real D-1 orders

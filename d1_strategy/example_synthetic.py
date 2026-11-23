@@ -10,6 +10,10 @@ def norm_cdf(x):
 
 
 def bs_price(spot, strike, tau_years, vol, right):
+    return max(_bs_raw(spot, strike, tau_years, vol, right), 0.05)             # listed options never trade below one tick
+
+
+def _bs_raw(spot, strike, tau_years, vol, right):
     if tau_years <= 0:
         return max(spot - strike, 0.0) if right == "CE" else max(strike - spot, 0.0)
     d1 = (math.log(spot / strike) + 0.5 * vol * vol * tau_years) / (vol * math.sqrt(tau_years)); d2 = d1 - vol * math.sqrt(tau_years)

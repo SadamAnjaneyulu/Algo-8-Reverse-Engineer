@@ -1,48 +1,61 @@
-# D-1 strategy (session before index-option expiry) — Python reconstruction
+# D-1 algo: the strategy as a running program
 
-A rule-based reconstruction of what the observed system does on the **day before expiry** ("D-1") on index options (NIFTY / SENSEX style weekly expiry), fitted to the order log of 32 live cycles.
+This is what you would write to run the day-before-expiry (D-1) strategy yourself: an **event-driven engine** that reads prices every second, builds minute bars, applies the rules with only the information available at that second, sends orders through a risk guard to a broker, and keeps a position book and a state file.
 
-## What it does
-One pass over the one-minute bars of the day produces every order:
-
-| Role | Rule (short version) |
-|---|---|
-| `scheduled_straddle` | 33 timetable waves per day at fixed seconds. Each wave sells 1 lot call + 1 lot put at the ATM strike of the previous minute's close. Clock only, no market condition. |
-| `breakout_straddle`, `breakout_extra` | From 10:30 to 15:15, first break per side per 30-minute candle of the high/low of the previous two completed candles: sell a straddle one strike beyond ATM in the break direction (1–3 lots by break depth) plus extra single lots on the favourable side. |
-| `ladder_solo` | One-lot sales of the option whose side the market is moving away from (calls on a fresh low, puts on a fresh high), every 0.2 strike steps beyond a reference, gated by a fresh 60-minute extreme. |
-| `stop_buyback` | Each lot is bought back when its option price reaches about 1.6× its own entry price (minute high). |
-| `protective_wing_buy` / `_sell` | After every body order, long lots on each right are kept equal to short lots on that right, at the OTM strike whose premium is nearest 2.5% of the ATM premium. Wings are released outermost first when shorts are bought back. |
-| `opening_wing_buy` | 3 far OTM calls + 3 far OTM puts at 09:16, about 40 strikes out. |
-| `overnight_lump` | One extra block of OTM longs on the heavier short side before the close, about 2.2 one-day sigmas out, sized about 0.83× (NIFTY) / 0.50× (SENSEX) the heavy-side short lots. |
-
-## Use
-```python
-import numpy as np
-from algo8_d1 import config_for, D1Strategy, OptionChain
-
-# spot_open/high/low/close: arrays of length 375 (09:15..15:29)
-# strikes: ascending 1-D array; bars[(right, field)] -> array [n_strikes, 375], right in {"CE","PE"}, field in {"open","high","low","close"}
-chain = OptionChain(strikes, bars)
-cfg = config_for("NIFTY", "2026-09-08")          # timetable version and lump clock observed for that date
-result = D1Strategy(cfg).run(spot_open, spot_high, spot_low, spot_close, chain)
-print(result.orders_frame().head())               # minute, right, strike, lots, side, role
-print(result.short_lots, result.long_lots)        # end-of-day book carried into expiry day
 ```
-`python example_synthetic.py` runs the whole thing on synthetic data. `python -m pytest test_algo8_d1.py -q` runs the unit tests.
+ MarketData (feed)  ──►  D1Engine.step()  ──►  RiskGuard  ──►  Broker
+   spot, option LTP         bars, signals,         limits,         place(), poll_fills()
+                            book, timers           kill switch
+                              │
+                              └── state file (restart), log
+```
 
-## How well does it reproduce the original?
-* **Checked against our research simulator:** on identical parameters this module produces the same orders on **32 of 32 cycles**.
-* **Against the real order log** (parameters fitted on the same 32 cycles, so in-sample): lot-level F1 **0.69** (precision 79%, recall 62%), timing ±1 minute and same right.
-* **On cycles not used for fitting** (earlier forward test of the same rules): F1 about **0.63**, AUC for "is the system active in this minute" about **0.92**.
+## What the engine does each second
+1. Read the spot and the contracts it watches; update the one-minute bars.
+2. Collect broker fills; update the book (short lots with entry prices, wings, lump) and the pending-order counts.
+3. Run the rules, in this order:
 
-| Class | F1 (in-sample, timing ±1 min) |
+| Rule | Behaviour |
 |---|---|
-| Body sells (all three types) | 0.76 |
-| Opening wings | 0.97 |
-| Wing buys | 0.73 |
-| Overnight lump | 0.70 |
-| Buy-backs | 0.55 |
-| Wing sells | 0.53 |
+| Opening wings | At 09:16:00 buy 3 far OTM calls and 3 far OTM puts (about 40 strikes out). |
+| Scheduled straddles | 33 waves at fixed seconds after 09:16:00. Each sells 1 lot call + 1 lot put at the ATM of the **previous completed minute's close**. |
+| Breakout straddles | From 10:30 to 15:15: first break per side per 30-minute candle of the high/low of the previous two completed clock-aligned candles. Sell a straddle one strike beyond ATM in the break direction (1 to 3 by break depth) plus favourable-side extras. |
+| Solo ladder | One-lot sales when the spot moves 0.2 strike steps beyond a reference (reset at each scheduled/breakout sale) and makes a fresh 60-minute extreme: calls on a fall, puts on a rise. |
+| Stops | Each lot is bought back when the running high of its option in the current minute reaches 1.6 times its own entry price (a lot cannot be stopped in the minute it was sold). Cheapest entry first. |
+| Wing controller | About 4 seconds after body orders, buy exactly the gap between short and long lots on each right at the OTM strike whose premium is nearest 2.5% of the ATM premium; when shorts fall, sell the excess wings, outermost first. |
+| Overnight lump | At the configured minute (15:11 to 15:30 depending on the date regime): on the heavier short side, 0.83x (NIFTY) / 0.50x (SENSEX) the heavy-side short lots, about 2.2 one-day sigmas out. |
+
+4. Every order goes through the risk guard (kill-switch file, halt flag, short-lot limit, orders-per-minute limit, valid limit price), is split at the exchange freeze quantity (27 lots NIFTY, 50 SENSEX), is priced as a marketable limit (LTP -/+ 1%) and is sent.
+
+## Run it on paper
+```bash
+pip install numpy pandas pytest
+python run_paper_example.py          # one synthetic session, second by second, paper broker
+python -m pytest test_d1_algo.py -q  # 10 engine tests
+```
+```python
+from d1_algo import ReplayFeed, PaperBroker, D1Engine, config_for, run_replay
+feed = ReplayFeed(spot_o, spot_h, spot_l, spot_c, strikes, option_bars)   # your one-minute bars
+engine = D1Engine(config_for("NIFTY", "2026-09-08"), feed, PaperBroker(feed))
+run_replay(engine, feed)
+print(engine.orders_frame())
+```
+`option_bars[(right, field)]` is an array `[n_strikes, minutes]` for right in CE/PE and field in open/high/low/close.
+
+## Run it live
+Implement the two adapters in `d1_algo/live_template.py` (`MyFeed`, `MyBroker`) for your data vendor and broker, test them against the broker's paper or sandbox environment, then run the loop. Requirements for the adapters:
+* **Feed:** streaming last-traded prices for the index and every listed strike of the traded expiry, both rights; `now()` in exchange time.
+* **Broker:** `place()` sends a limit order using `OrderRequest.tag` as the client order id (idempotent); `poll_fills()` returns confirmations; `positions()` for reconciliation after a restart.
+* Restart: `engine.load()` restores the book, done waves, ladder references and bars from the state file; `engine.warm_start(history)` loads completed minute bars if there is no state file. Reconcile `engine.book` with `broker.positions()` before trading.
+* Live mode is refused unless `D1_ALLOW_LIVE=1` and `cfg.paper = False`.
+
+## Configuration (`D1Config`)
+Instrument (strike step, lot units, freeze quantity), the scheduled timetable (two versions were observed; `config_for(underlying, d1_date)` picks the one for that date), breakout, ladder, stop and wing parameters, lump parameters, execution buffer, and risk limits (`max_short_lots_per_right`, `max_orders_per_minute`, `max_loss_rupees`, `kill_switch_file`, `state_file`).
+
+## How it was checked
+* **Replay on the real data:** the one-minute bars of the 32 observed D-1 sessions were replayed second by second through this engine with the paper broker, and its orders compared with the real order log lot by lot (same side and class, within one minute): **F1 0.69, precision 75%, recall 64%** (the constants were fitted on the same 32 sessions, so this is in-sample; the earlier forward test of the same rules gave F1 about 0.63 on unseen cycles).
+* **Unit tests:** 10, covering the clock and the ATM strike rule, late waves, wings equal shorts, breakout once per side per candle, the stop, the ladder, the kill switch, freeze-quantity splitting, the state file, and the invariants of a full replayed day.
+* `algo8_d1.py` is a separate batch version (whole-day bars in, orders out) used for research; the engine above is the one to build on.
 
 ## Files
-`algo8_d1.py` (the strategy), `example_synthetic.py` (demo), `test_algo8_d1.py` (tests).
+`d1_algo/` (`config.py`, `models.py`, `interfaces.py`, `book.py`, `bars.py`, `risk.py`, `engine.py`, `sim.py`, `live_template.py`), `test_d1_algo.py`, `run_paper_example.py`, `example_synthetic.py`, `algo8_d1.py` (batch reference), `test_algo8_d1.py`.
