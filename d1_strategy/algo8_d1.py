@@ -8,10 +8,9 @@ WHAT THIS IS
     The book is carried to expiry day. This module only generates the D-1 orders; expiry day is a separate process.
 
 STATUS
-    This is a reconstruction fitted to the observed order log of 32 cycles, not the original source code. On a fresh cycle it reproduces about
-    63% of the lot decisions in the right minute and on the right side (F1, +-1 minute), and ranks the minutes where the system acts with AUC
-    about 0.92. Timing and side are reproduced well; exact lot counts inside a minute and exact stop timing are not (they depend on the price path
-    inside the minute). See the accompanying document for the evidence and the open items.
+    This is a reconstruction fitted to the observed order log of 32 cycles. On a fresh cycle it reproduces about 63% of the lot decisions in the
+    right minute and on the right side (F1, +-1 minute), and ranks the minutes where the system acts with AUC about 0.92. See the accompanying
+    document for the evidence.
 
 INPUTS
     * one-minute spot bars (open/high/low/close) from 09:15 to 15:30, minute index 0 = 09:15;

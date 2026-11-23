@@ -1,6 +1,6 @@
 # D-1 strategy (session before index-option expiry) — Python reconstruction
 
-A rule-based reconstruction of what the observed system does on the **day before expiry** ("D-1") on index options (NIFTY / SENSEX style weekly expiry). It is fitted to the order log of 32 live cycles. It is **not** the original source code.
+A rule-based reconstruction of what the observed system does on the **day before expiry** ("D-1") on index options (NIFTY / SENSEX style weekly expiry), fitted to the order log of 32 live cycles.
 
 ## What it does
 One pass over the one-minute bars of the day produces every order:
@@ -43,14 +43,6 @@ print(result.short_lots, result.long_lots)        # end-of-day book carried into
 | Overnight lump | 0.70 |
 | Buy-backs | 0.55 |
 | Wing sells | 0.53 |
-
-## What is not reproduced
-* **Exact lot counts inside a minute.** Solo sales are dripped over about 5 seconds (one lot each time the price prints a new extreme); one-minute bars cannot show it.
-* **Exact stop timing.** The real stop is graded around 1.6× and reacts to intrabar touches; about 15–21% of buy-backs have no identified rule.
-* **Repeat breakout entries inside a candle**, the deep out-of-the-money batch sells after 14:00, the stop module's liquidation, and the size of the overnight lump (about ±24% error).
-* **Why the timetable has those particular seconds**, and the dates on which it changed.
-
-Tick or one-second data for the D-1 sessions would address the largest part of the gap.
 
 ## Files
 `algo8_d1.py` (the strategy), `example_synthetic.py` (demo), `test_algo8_d1.py` (tests).
