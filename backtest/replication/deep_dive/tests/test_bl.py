@@ -790,3 +790,9 @@ def test_d1pkg_matches_research_simulator():
 def test_d1_engine_replay_matches_real_log():
     S = pd.read_csv(f'{OUT}/bl_d1eng_scores.csv').set_index('cls'); R = json.load(open(f'{OUT}/bl_summary_d1eng.json'))
     assert R['cycles'] == 32 and 0.66 < S.loc['ALL', 'F1'] < 0.72 and S.loc['ALL', 'precision'] > 0.7 and S.loc['opening_wings', 'F1'] > 0.9          # causal engine replayed second by second reproduces the real D-1 orders
+
+
+def test_d0c_counter_auc_gate():
+    A = pd.read_csv(f'{OUT}/bl_d0c_auc.csv'); c = A[A.outcome == 'counter-sell cell'].set_index('variant'); v1, v2, v3, pl = c.index[:4]
+    assert c.loc[v1, 'auc'] >= 0.85 and c.loc[v1, 'lo'] > 0.82 and c.loc[v1, 'within_cycle_auc'] >= 0.85 and c.loc[pl, 'auc'] < 0.65 and c.loc[v1, 'auc'] < c.loc[v2, 'auc'] < c.loc[v3, 'auc']
+    F = pd.read_csv(f'{OUT}/bl_d0c_auc_fwd.csv'); assert F[(F.outcome == 'y_counter')].auc.iloc[0] >= 0.80

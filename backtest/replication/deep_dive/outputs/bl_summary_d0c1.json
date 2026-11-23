@@ -1,0 +1,144 @@
+{
+ "auc": [
+  {
+   "outcome": "counter-sell cell",
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "features": 64,
+   "auc": 0.8817,
+   "lo": 0.8587,
+   "hi": 0.9032,
+   "prauc": 0.2905,
+   "within_cycle_auc": 0.8727,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "variant": "V2 + the minute's own bar",
+   "features": 71,
+   "auc": 0.9352,
+   "lo": 0.9097,
+   "hi": 0.9553,
+   "prauc": 0.5069,
+   "within_cycle_auc": 0.9316,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "features": 74,
+   "auc": 0.9569,
+   "lo": 0.9346,
+   "hi": 0.9725,
+   "prauc": 0.6125,
+   "within_cycle_auc": 0.955,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "variant": "placebo (V1 features shuffled within cycle)",
+   "features": 64,
+   "auc": 0.5817,
+   "lo": 0.5166,
+   "hi": 0.6307,
+   "prauc": 0.0574,
+   "within_cycle_auc": 0.4967,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "features": 64,
+   "auc": 0.8769,
+   "lo": 0.8622,
+   "hi": 0.8893,
+   "prauc": 0.5422,
+   "within_cycle_auc": 0.8573,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "variant": "V2 + the minute's own bar",
+   "features": 71,
+   "auc": 0.9254,
+   "lo": 0.9094,
+   "hi": 0.9387,
+   "prauc": 0.7052,
+   "within_cycle_auc": 0.9157,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "features": 74,
+   "auc": 0.9302,
+   "lo": 0.9164,
+   "hi": 0.9432,
+   "prauc": 0.7151,
+   "within_cycle_auc": 0.9229,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "variant": "placebo (V1 features shuffled within cycle)",
+   "features": 64,
+   "auc": 0.6709,
+   "lo": 0.6094,
+   "hi": 0.7103,
+   "prauc": 0.2152,
+   "within_cycle_auc": 0.4892,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  }
+ ],
+ "fwd": [
+  {
+   "outcome": "y_counter",
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "auc": 0.8864,
+   "train_cycles": 16,
+   "test_cycles": 8
+  },
+  {
+   "outcome": "y_counter",
+   "variant": "V2 + the minute's own bar",
+   "auc": 0.9542,
+   "train_cycles": 16,
+   "test_cycles": 8
+  },
+  {
+   "outcome": "y_counter",
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "auc": 0.9755,
+   "train_cycles": 16,
+   "test_cycles": 8
+  },
+  {
+   "outcome": "y",
+   "variant": "V1 causal (bars to j-1, orders before minute j)",
+   "auc": 0.8179,
+   "train_cycles": 16,
+   "test_cycles": 8
+  },
+  {
+   "outcome": "y",
+   "variant": "V2 + the minute's own bar",
+   "auc": 0.8988,
+   "train_cycles": 16,
+   "test_cycles": 8
+  },
+  {
+   "outcome": "y",
+   "variant": "V3 + same-minute buy-backs (partly definitional)",
+   "auc": 0.9081,
+   "train_cycles": 16,
+   "test_cycles": 8
+  }
+ ]
+}

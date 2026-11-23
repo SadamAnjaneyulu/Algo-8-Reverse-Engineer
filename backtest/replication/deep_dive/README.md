@@ -94,3 +94,4 @@ D0 counter-sell trigger search (plan `D0_CTRIG_PLAN.md` + addendum, report `D0_C
 D0 pair timing and buy-back trigger (plan `D0_PAIR_PLAN.md` + addendum, report `D0_PAIR.md`): `bl_d0p_a.py` (~3 min) → `bl_d0p_a2.py` → `bl_d0p_b.py` (~3 min) → `bl_d0p_b6.py` → `make_d0p_report.py`.
 Standalone D-1 package (`/d1_strategy`, document in `/d1_document`) validated against the research simulator and the real ledger: `src/validate_d1_package.py` (~3 min), outputs `bl_d1pkg_*`.
 Live-style D-1 engine (`/d1_strategy/d1_algo`) replayed second by second on the 32 real sessions and scored against the real log: `src/validate_engine.py` (~1 min, 4 processes), outputs `bl_d1eng_*`.
+D0 counter-sell AUC gate (plan `D0_CAUC_PLAN.md`, report `D0_CAUC.md`): `bl_d0c_auc.py` (~2 min) → `bl_d0c_expl.py` (~3 min) → `make_d0c_report.py`.
