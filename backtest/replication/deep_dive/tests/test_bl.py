@@ -807,3 +807,13 @@ def test_d0e_strangle_and_replacement():
     E3 = pd.read_csv(f'{OUT}/bl_d0e_e3.csv').set_index(['slice', 'variant']); F = pd.read_csv(f'{OUT}/bl_d0e_e3_fwd.csv').set_index(['slice', 'variant']); v1 = E3.index[0][1]
     assert E3.loc[('replacement solo', v1), 'auc'] >= 0.85 and F.loc[('replacement solo', v1), 'auc'] >= 0.80 and E3.loc[('far-OTM solo', E3.index[-5][1]), 'auc'] > 0.8
     E1 = pd.read_csv(f'{OUT}/bl_d0e_e1.csv').set_index('reason'); assert E1.loc['5 partner', 'kept'] and not E1.loc['3 stop-loss', 'kept']
+
+
+def test_d0f_full_selling_auc_on_unseen_cycles():
+    A = pd.read_csv(f'{OUT}/bl_d0f_auc.csv'); S4 = pd.read_csv(f'{OUT}/bl_d0f_s4.csv'); R = json.load(open(f'{OUT}/bl_summary_d0f1.json')); plus = [v for v in A.variant.unique() if v != 'causal'][0]
+    g = lambda var, sch, out, col='auc': A[(A.variant == var) & A.scheme.str.startswith(sch) & (A.outcome == out)][col].iloc[0]; s4 = lambda var, out: S4[(S4.variant == var) & (S4.outcome == out)].mean_auc.iloc[0]
+    assert g('causal', 'S1', 'any D0 sell') >= 0.90 and g('causal', 'S2b', 'any D0 sell') >= 0.90 and s4('causal', 'any D0 sell') >= 0.88 and g(plus, 'S1', 'any D0 sell') > g('causal', 'S1', 'any D0 sell')
+    assert g('causal', 'S3', 'any D0 sell') < 0.70 and g('causal', 'S3b', 'any D0 sell') >= 0.85                        # a new timetable version is the case that fails, and three new cycles repair it
+    for t in ('scheduled pair', 'strangle pair'): assert g('causal', 'S1', t) >= 0.95 and s4('causal', t) >= 0.95
+    assert g('causal', 'S1', 'counter-sell solo') >= 0.85 and g('causal', 'S1', 'replacement solo') >= 0.85 and g('causal', 'S1', 'other solo') < 0.85 and g(plus, 'S1', 'other solo') >= 0.85
+    assert R['placebo_any']['auc'] < 0.55 and R['per_cycle_any']['share_ge_085'] >= 0.8 and R['type_top1_accuracy'] > R['majority_type_share'] + 0.3
