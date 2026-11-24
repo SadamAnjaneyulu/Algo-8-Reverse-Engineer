@@ -2,6 +2,8 @@
 
 *Exploratory diagnosis on the real log (35 cycles, Jun – Oct 2026) vs the simulator. No rule was adopted in this step. Scripts: `bl_d0x_diag.py`, `bl_d0x_book.py`, `bl_d0x_fixA.py`.*
 
+> **Correction (2026-11-24, `LATE_D1_RULE.md`):** two conclusions below are withdrawn. (1) "Real book +16 short lots, further OTM (1.4 vs 0.5 steps), 15:15–15:29 = 14.4 lots" rests on one cycle (NIFTY D-1 16 Oct 2026, a 240-lot deep-OTM call ratio); without it: +4 lots (median +9.5), offset −0.2 steps, late sales 15:15–15:29 ≈ 6.8 lots. (2) "Fix A rejected": 97% of its −₹38k change is one stop flip (SENSEX 8 Oct, −₹7.09 lakh); on the other 18 cycles the change is −₹1.0k mean, ₹0 median — Fix A is unresolved. The overnight-book gap (₹74.9k) itself survives, but 63% of it is 2 stop flips.
+
 ## 1. The "₹56k vs ₹24.5k" premise was wrong
 * The ₹56k real expiry-day figure included **4 post-auction cycles whose real log is missing a whole day** (no D-1 fills, or no D0 fills). Their "real" results are marks, not trades: 11 Aug (+₹3.0 lakh, no D-1 fills), 15 Sep (+₹4.5 lakh, no D-1 fills), 29 Sep (+₹4.9 lakh, no D0 fills), 1 Sep (−₹1.4 lakh, stopped on D-1, no D0 fills).
 * On the **19 complete post-auction cycles**, real Algo 8 makes **₹25,968 per cycle** (both days). The free-running simulator makes ₹-24,804. The gap is real (₹50,772), but it is half of what the incomplete data suggested.

@@ -1,0 +1,161 @@
+{
+ "book": {
+  "all": {
+   "n": 19,
+   "dshort_mean": 15.894736842105264,
+   "dshort_median": 15.0,
+   "doffset_mean": 0.8707441671035809,
+   "gap_d1_book_mean": 74730.43815789482,
+   "gap_d1_book_median": 46851.39999999992,
+   "real_total_mean": 25968.342105263157
+  },
+  "ex_outlier": {
+   "n": 18,
+   "dshort_mean": 4.0,
+   "dshort_median": 9.5,
+   "doffset_mean": -0.18456055797492246,
+   "gap_d1_book_mean": 74852.34583333338,
+   "gap_d1_book_median": 37110.49999999986,
+   "real_total_mean": 35460.375
+  }
+ },
+ "gap_d1_book_flips": {
+  "n": 18,
+  "mean": 74852.34583333338,
+  "median": 37110.49999999986,
+  "flips": 2,
+  "flip_sum": 842838.75,
+  "share_from_flips": 0.6255565470754837,
+  "nonflip_mean": 31531.467187500064,
+  "nonflip_median": 19763.27499999966
+ },
+ "fixA_flips": {
+  "n": 19,
+  "mean": -38306.722368421164,
+  "median": 0.0,
+  "flips": 1,
+  "flip_sum": -709317.8000000016,
+  "share_from_flips": 0.974568260641623,
+  "nonflip_mean": -1028.3291666666935,
+  "nonflip_median": 0.0
+ },
+ "late_value_after": {
+  "15:15": {
+   "n": 18,
+   "mean": 15390.822222222218,
+   "median": 1302.6999999999098,
+   "flips": 0,
+   "flip_sum": 0.0,
+   "share_from_flips": 0.0,
+   "nonflip_mean": 15390.822222222218,
+   "nonflip_median": 1302.6999999999098
+  },
+  "15:00": {
+   "n": 18,
+   "mean": 33578.15555555556,
+   "median": 9362.674999999908,
+   "flips": 2,
+   "flip_sum": 124926.4250000007,
+   "share_from_flips": 0.206692619937434,
+   "nonflip_mean": 29967.52343749996,
+   "nonflip_median": 9362.674999999908
+  },
+  "14:15": {
+   "n": 18,
+   "mean": 64846.03749999998,
+   "median": 721.4749999999622,
+   "flips": 5,
+   "flip_sum": 929345.5249999994,
+   "share_from_flips": 0.7961983327731387,
+   "nonflip_mean": 18298.703846153847,
+   "nonflip_median": -457.0000000000291
+  }
+ },
+ "late_value_before": {
+  "15:15": {
+   "n": 11,
+   "mean": -2752.9386363635854,
+   "median": 0.0,
+   "flips": 0,
+   "flip_sum": 0.0,
+   "share_from_flips": -0.0,
+   "nonflip_mean": -2752.9386363635854,
+   "nonflip_median": 0.0
+  },
+  "15:00": {
+   "n": 11,
+   "mean": -5709.17045454534,
+   "median": 2653.6250000000873,
+   "flips": 0,
+   "flip_sum": 0.0,
+   "share_from_flips": -0.0,
+   "nonflip_mean": -5709.17045454534,
+   "nonflip_median": 2653.6250000000873
+  },
+  "14:15": {
+   "n": 11,
+   "mean": 4260.438636363702,
+   "median": 1703.0,
+   "flips": 1,
+   "flip_sum": 136626.90000000008,
+   "share_from_flips": 2.91534002314098,
+   "nonflip_mean": -8976.207499999935,
+   "nonflip_median": -4079.0499999999447
+  }
+ },
+ "attribution_cycles": {
+  "after": 20,
+  "before": 11
+ },
+ "attribution": {
+  "after|14:15-14:59": {
+   "15:30-15:40 (no data)": 0,
+   "breakout": 135,
+   "ladder": 86,
+   "timetable": 153,
+   "unexplained": 23
+  },
+  "after|15:00-15:14": {
+   "15:30-15:40 (no data)": 0,
+   "breakout": 63,
+   "ladder": 39,
+   "timetable": 0,
+   "unexplained": 35
+  },
+  "after|15:15-15:29": {
+   "15:30-15:40 (no data)": 0,
+   "breakout": 0,
+   "ladder": 56,
+   "timetable": 0,
+   "unexplained": 80
+  },
+  "after|15:30-15:40": {
+   "15:30-15:40 (no data)": 15,
+   "breakout": 0,
+   "ladder": 0,
+   "timetable": 0,
+   "unexplained": 0
+  },
+  "before|14:15-14:59": {
+   "15:30-15:40 (no data)": 0,
+   "breakout": 21,
+   "ladder": 17,
+   "timetable": 55,
+   "unexplained": 13
+  },
+  "before|15:00-15:14": {
+   "15:30-15:40 (no data)": 0,
+   "breakout": 46,
+   "ladder": 23,
+   "timetable": 0,
+   "unexplained": 41
+  },
+  "before|15:15-15:29": {
+   "15:30-15:40 (no data)": 0,
+   "breakout": 0,
+   "ladder": 11,
+   "timetable": 0,
+   "unexplained": 17
+  }
+ }
+}

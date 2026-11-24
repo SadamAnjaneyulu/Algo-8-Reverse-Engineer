@@ -994,3 +994,19 @@ def test_reconstruction_gap_diagnosis():
     f = pd.read_csv(f'{dx}/fixA_eval.csv').set_index(['era', 'sim'])
     assert f.loc[('after', 'fixA'), 'late_short_sim'] > f.loc[('after', 'base'), 'late_short_sim'] and f.loc[('after', 'fixA'), 'mae'] > f.loc[('after', 'base'), 'mae']
     assert os.path.exists(f'{base}/reports/RECONSTRUCTION_GAP.md')
+
+
+def test_late_d1_rule_and_corrections():
+    """Late D-1 rule work: strike/side rules scored, trigger gate gives no gain, outlier and stop-flip corrections reproduced from saved outputs."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); lt = f'{base}/outputs/late'
+    s = pd.read_csv(f'{lt}/rule_scores.csv'); a = s[(s.era == 'after') & (s.measure == 'exact')].set_index('rule').value
+    assert a['S_LAST'] > a['S_ATM'] + 0.2 and abs(a['S_PREM'] - a['S_LAST']) < 0.05 and a['D_TREND'] > a['base rate (always majority side)'] + 0.08
+    r = json.load(open(f'{lt}/audit.json'))
+    assert r['book']['all']['dshort_mean'] > 15 and r['book']['ex_outlier']['dshort_mean'] < 5 and r['book']['ex_outlier']['doffset_mean'] < 0
+    assert r['fixA_flips']['flips'] == 1 and r['fixA_flips']['share_from_flips'] > 0.9 and abs(r['fixA_flips']['nonflip_mean']) < 2000
+    assert r['gap_d1_book_flips']['flips'] == 2 and 0.5 < r['gap_d1_book_flips']['share_from_flips'] < 0.75
+    v = r['late_value_after']['15:15']; assert v['flips'] == 0 and v['mean'] > 0 and v['median'] < v['mean']
+    G = pd.read_csv(f'{base}/outputs/d0x/gap_decomposition.csv'); V = pd.read_csv(f'{lt}/late_value.csv'); n = V[V.cut == 'none'].merge(G, on=['und', 'expiry'])
+    assert (n.total - n.sim_d0_from_real_book).abs().max() < 1e-6
+    assert os.path.exists(f'{base}/reports/LATE_D1_RULE.md') and 'Correction' in open(f'{base}/reports/RECONSTRUCTION_GAP.md').read()
