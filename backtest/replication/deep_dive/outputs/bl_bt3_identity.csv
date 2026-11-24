@@ -1,0 +1,50 @@
+split,cid,same_lots,n_diff_keys,lots_sim2,lots_new,pnl_sim2,pnl_new,rel_pnl_diff
+OOF half 0 test,0,True,0,1136,1136,-143386.75,-143386.75,0.0
+OOF half 0 test,2,True,0,190,190,-141758.5,-141758.5,0.0
+OOF half 0 test,4,True,0,1716,1716,190498.75,190498.75,0.0
+OOF half 0 test,6,True,0,258,258,-213752.5,-213752.5,0.0
+OOF half 0 test,10,True,0,876,876,14436.5,14436.5,0.0
+OOF half 0 test,12,True,0,494,494,7913.75,7913.75,0.0
+OOF half 0 test,14,True,0,1007,1007,-125888.75,-125888.75,0.0
+OOF half 0 test,16,True,0,1222,1222,218172.0,218172.0,0.0
+OOF half 0 test,18,True,0,1406,1406,-9222.0,-9222.0,0.0
+OOF half 0 test,20,True,0,1288,1288,126017.0,126017.0,0.0
+OOF half 0 test,22,True,0,1198,1198,5279.0,5279.0,0.0
+OOF half 0 test,24,True,0,1131,1131,364718.0,364718.0,0.0
+OOF half 0 test,26,True,0,2020,2020,-121069.0,-121069.0,0.0
+OOF half 0 test,28,True,0,2642,2642,451506.0,451506.0,0.0
+OOF half 0 test,30,True,0,83,83,-128988.0,-128988.0,0.0
+OOF half 1 test,1,True,0,2326,2326,121364.75,121364.75,0.0
+OOF half 1 test,3,True,0,1850,1850,189202.0,189202.0,0.0
+OOF half 1 test,5,True,0,1664,1664,-149838.0,-149838.0,0.0
+OOF half 1 test,7,True,0,2007,2007,70801.25,70801.25,0.0
+OOF half 1 test,9,True,0,1524,1524,425278.75,425278.75,0.0
+OOF half 1 test,13,True,0,2264,2264,145177.5,145177.5,0.0
+OOF half 1 test,15,True,0,1822,1822,60746.0,60746.0,0.0
+OOF half 1 test,17,True,0,1944,1944,51073.0,51073.0,0.0
+OOF half 1 test,19,True,0,1850,1850,139472.0,139472.0,0.0
+OOF half 1 test,21,True,0,172,172,-121294.0,-121294.0,0.0
+OOF half 1 test,23,True,0,277,277,-338269.0,-338269.0,0.0
+OOF half 1 test,25,True,0,823,823,324558.0,324558.0,0.0
+OOF half 1 test,27,True,0,283,283,-158192.0,-158192.0,0.0
+OOF half 1 test,29,True,0,2394,2394,537150.0,537150.0,0.0
+OOF half 1 test,31,True,0,2157,2157,-214088.0,-214088.0,0.0
+"forward A (same version, later cycles)",6,True,0,258,258,-213752.5,-213752.5,0.0
+"forward A (same version, later cycles)",23,True,0,277,277,-338269.0,-338269.0,0.0
+"forward A (same version, later cycles)",7,True,0,1895,1895,56013.75,56013.75,0.0
+"forward A (same version, later cycles)",24,True,0,1137,1137,361679.0,361679.0,0.0
+"forward A (same version, later cycles)",9,True,0,1470,1470,416169.0,416169.0,0.0
+"forward A (same version, later cycles)",25,True,0,927,927,346538.0,346538.0,0.0
+"forward A (same version, later cycles)",30,True,0,83,83,-128988.0,-128988.0,0.0
+"forward A (same version, later cycles)",14,True,0,1087,1087,-164879.0,-164879.0,0.0
+"forward A (same version, later cycles)",31,True,0,1957,1957,-123796.0,-123796.0,0.0
+"forward B (train V1, test V2)",10,True,0,1806,1806,65549.25,65549.25,0.0
+"forward B (train V1, test V2)",12,True,0,1492,1492,249590.25,249590.25,0.0
+"forward B (train V1, test V2)",13,True,0,2226,2226,210570.75,210570.75,0.0
+"forward B (train V1, test V2)",14,True,0,1037,1037,-164128.25,-164128.25,0.0
+"forward B (train V1, test V2)",26,True,0,1406,1406,-46897.0,-46897.0,0.0
+"forward B (train V1, test V2)",27,True,0,283,283,-158192.0,-158192.0,0.0
+"forward B (train V1, test V2)",28,True,0,1986,1986,439007.0,439007.0,0.0
+"forward B (train V1, test V2)",29,True,0,1440,1440,496121.0,496121.0,0.0
+"forward B (train V1, test V2)",30,True,0,83,83,-128988.0,-128988.0,0.0
+"forward B (train V1, test V2)",31,True,0,1553,1553,-126840.0,-126840.0,0.0

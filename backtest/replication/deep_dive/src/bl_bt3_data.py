@@ -1,5 +1,5 @@
 """3-year backtest, phase 0 (plan reports/BACKTEST3Y_PLAN.md): full option-chain minute arrays for D-1 and D0 of every Complete cycle, from the pinned dataset commit.
-Same layout as the live-cycle builder (bl_d0_data.py): index j = minute 09:15 + j (375 minutes), spot DataFrame j/open/high/low/close, options {'K', (cp, field): K x 375 float32} with forward fill.
+Same layout as the live-cycle builder (bl_d0_data.py): index j = minute 09:15 + j (375 minutes), spot DataFrame j/open/high/low/close, options {'K', (cp, field): K x 375 float64} with forward fill.
 Units: gcd-of-volume lot from backtest/cache (value 1 = artefact -> neighbouring session's unit). Output outputs/bt3/<UND>_<expiry>.pkl.gz (git-ignored) and outputs/bl_bt3_cycles.csv (cycle table)."""
 import sys, os, json, warnings, time; sys.path.insert(0, '.'); sys.path.insert(0, '../..'); sys.path.insert(0, '../../..'); warnings.filterwarnings('ignore')
 import numpy as np, pandas as pd
@@ -11,13 +11,13 @@ S_ = None
 def init():
     global S_; S_ = D.Src()
 def spot_df(x):
-    h = x.datetime.str.slice(11, 16).map(D.MI); x = x[h.notna()].assign(j=h[h.notna()].astype(int)); return pd.DataFrame({'j': range(375)}).merge(x[['j', 'open', 'high', 'low', 'close']], on='j', how='left').ffill().bfill().astype('float32')
+    h = x.datetime.str.slice(11, 16).map(D.MI); x = x[h.notna()].assign(j=h[h.notna()].astype(int)); return pd.DataFrame({'j': range(375)}).merge(x[['j', 'open', 'high', 'low', 'close']], on='j', how='left').ffill().bfill().astype('float64')
 def opt_dict(x):
     h = x.datetime.str.slice(11, 16).map(D.MI); x = x[h.notna()].assign(j=h[h.notna()].astype(int)); K = np.array(sorted(x.strike.unique()), float); ki = {k: i for i, k in enumerate(K)}; o = {'K': K}
     for cp in ('CE', 'PE'):
         z = x[x.right == cp]
         for col in ('open', 'high', 'low', 'close'):
-            a = np.full((len(K), 375), np.nan, dtype='float32'); a[z.strike.map(ki).values, z.j.values] = z[col].values; o[(cp, col)] = pd.DataFrame(a).T.ffill().T.values.astype('float32')
+            a = np.full((len(K), 375), np.nan, dtype='float64'); a[z.strike.map(ki).values, z.j.values] = z[col].values; o[(cp, col)] = pd.DataFrame(a).T.ffill().T.values.astype('float64')
     return o
 def build(args):
     und, expiry, d1, d0 = args; idx = und.lower(); r = dict(und=und, expiry=expiry, d1=d1, d0=d0, ok=False, why='')
