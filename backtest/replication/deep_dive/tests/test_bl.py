@@ -922,3 +922,16 @@ def test_design_thesis_knowledge_graph_and_market_tests():
     t1 = pd.read_csv(f'{th}/thesis_t1.csv'); assert t1[['und', 'expiry']].drop_duplicates().shape[0] == 275
     md = open(f'{base}/reports/DESIGN_THESIS.md').read(); assert 'Correction to `ALPHA_SOURCE.md`' in md and os.path.exists(f'{base}/reports/figures/bl_thesis.png')
     assert 'trend-aligned (momentum) rule' not in open(f'{base}/reports/ALPHA_SOURCE.md').read().replace('I first called this a trend-aligned (momentum) rule', '')
+
+
+def test_premium_mechanism_and_architecture_margin():
+    """Premium-mechanism and architecture step (plan PREMIUM_AND_ARCHITECTURE_PLAN.md): headline facts hold and the margin model covered every variant x scan range."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); s = json.load(open(f'{base}/outputs/arch/premium_arch_summary.json'))
+    assert s['overnight_median_ratio'] < 0.5 and s['overnight_top10'] > 0.5                 # overnight premium = rare-gap insurance
+    assert s['d0_jump_share'] < 0.15 and s['d0_continuous_ratio_hi'] < 1                     # D0 premium is not jump compensation
+    assert all(lo < 0 < hi or lo > 0 or hi < 0 for lo, hi in zip(s['sebi_diff_lo'].values(), s['sebi_diff_hi'].values()))
+    assert s['over2cr']['d0_no_hedge'] > s['over2cr']['full'] and s['over2cr']['d0_no_stop_tp'] > s['over2cr']['full']
+    assert all(v > 1 for v in s['overnight_margin_ratio_wings'].values()) and s['max_gap'] < 3
+    a = pd.read_csv(f'{base}/outputs/arch/arch_cycles.csv'); assert a.groupby(['variant', 'psr', 'vsr']).size().min() == 275 and a.variant.nunique() == 7
+    md = open(f'{base}/reports/PREMIUM_AND_ARCHITECTURE.md').read(); assert 'The refined idea (version 2)' in md and os.path.exists(f'{base}/reports/figures/bl_premium_arch.png')
