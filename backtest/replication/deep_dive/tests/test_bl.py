@@ -1025,3 +1025,14 @@ def test_extended_session_and_fixA_rescore():
     assert p[0] < 0 and p[2] < 0 and r[1] < 0 < r[2] and d['stops_agree']['XA'] < d['stops_agree']['X']
     s = pd.read_csv(f'{xs}/settlement_check.csv'); assert len(s) == 30 and s['diff'].abs().max() < 1e-6
     assert os.path.exists(f'{base}/reports/EXTENDED_SESSION_FIXA.md')
+
+
+def test_d1_closing_time_underlying():
+    """Post-auction underlying after 15:15: frozen index falsified (no late sales), clean underlyings without stop flips, Fix A flip gone on synthetic."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); cs = f'{base}/outputs/cas'
+    E = pd.read_csv(f'{cs}/cas_eval.csv').set_index('sim')
+    assert E.loc['XF', 'w1515_recall'] == 0 and E.loc['XS', 'w1515_precision'] > E.loc['X', 'w1515_precision'] and abs(E.loc['X', 'sim_mean'] - (-26766.955)) < 1
+    c = json.load(open(f'{cs}/cas_compare.json')); assert c['XF']['recall_change'][2] < 0 and all(c[k]['flips'] == 0 for k in ('XS', 'XU', 'XSA', 'XUA'))
+    f = json.load(open(f'{cs}/fixA_clean.json')); assert f['sensex_1008'][0]['XSA_stop'] is False and f['XSA_vs_XS_w1500']['precision'][2] < 0
+    assert os.path.exists(f'{base}/reports/D1_CLOSING_TIME.md') and 'Correction' in open(f'{base}/reports/EXTENDED_SESSION_FIXA.md').read()

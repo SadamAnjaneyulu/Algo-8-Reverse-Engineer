@@ -3,6 +3,8 @@
 *Follow-up to `LATE_D1_RULE.md`, next steps 1 and 2. Scripts: `src/bl_bt3x_data.py` (cache) → `bl_x_rescore.py`, `bl_x_settle.py` → `outputs/xs/`.*
 *Engine change: `d1_strategy/algo8_d1.py` now takes the session length from the bar arrays instead of a fixed 375. With 375-minute data the behaviour is identical: 19/19 engine tests pass, and the old simulator results reproduce exactly.*
 
+> **Correction (`D1_CLOSING_TIME.md`):** two statements below are wrong. (1) "The index is frozen from 15:29": it is **frozen from 15:15** and shows **indicative auction values 15:20–15:28** (not tradeable). (2) Fix A's stop flip on SENSEX 8 Oct was caused by those fake auction prices: on the option-implied index Fix A sells 5 late lots (real 3) and does not stop. On a clean underlying Fix A is P&L-neutral but still lowers timing precision (−0.048 [−0.076, −0.013], 15:00–15:40), so the verdict "not adopted" stands, for that reason.
+
 ## Result first
 | Question | Answer |
 |---|---|
