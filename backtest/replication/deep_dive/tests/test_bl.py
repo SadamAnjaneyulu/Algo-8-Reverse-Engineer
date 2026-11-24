@@ -855,3 +855,15 @@ def test_d0w_burst_and_long_results():
     L2 = pd.read_csv(f'{OUT}/bl_d0w_long_open.csv').set_index('candidate'); assert L2.loc['baseline: median of the other cycles of the same underlying', 'exact'] > L2.drop('baseline: median of the other cycles of the same underlying').exact.max()
     LG = pd.read_csv(f'{OUT}/bl_d0w_long_gate.csv').set_index('outcome'); assert LG.loc['long sell (intraday)', 'gate'] == 'not met'
     C = pd.read_csv(f'{OUT}/bl_d0w_coverage.csv'); assert abs(C.share.sum() - 1) < 1e-3 and C[C.tier_after <= 2].share.sum() < 0.9 and C[C.tier_after <= 2].share.sum() > C[C.tier_before <= 2].share.sum() + 0.08
+
+
+def test_d0z_rollout_other_and_opening_burst():
+    P = pd.read_csv(f'{OUT}/bl_d0z_post.csv'); r = P[(P.outcome == 'roll-out') & (P.set == 'REF + sale clock')].iloc[0]
+    assert r.auc >= 0.85 and r.lo > 0.82 and r.forward >= 0.80 and r.placebo < 0.65                                         # roll-out passes on the pre-registered set
+    G = pd.read_csv(f'{OUT}/bl_d0z_roll_gate.csv').set_index('outcome'); assert G.loc['other', 'auc'] < 0.85 and P[P.outcome == 'other'].auc.max() < 0.85   # other stays below the gate, post-hoc clock included
+    gn = pd.read_csv(f'{OUT}/bl_d0z_roll_gain.csv').set_index('outcome'); assert gn.loc['roll-out', 'lo'] > 0                  # the sale clock adds real information
+    R = json.load(open(f'{OUT}/bl_summary_d0z2.json')); assert R['single_auc_ci_ro'][1] < 0.82 and R['forward_auc'] < 0.85 and R['loco_auc_ci'][0] < 0.82   # the opening buy-back ranking is not gate-met
+    LG = pd.read_csv(f'{OUT}/bl_d0z_open_longs.csv').set_index('candidate'); a = LG.loc['median ratio x sells_j1']; b = LG.loc['baseline: median of the other cycles, same underlying']
+    assert a.rho > 0.85 and a.mae < 0.8 * b.mae and a.within2 > 0.85                                                          # opening long count follows the 09:16 sells
+    S = pd.read_csv(f'{OUT}/bl_d0z_open_sells.csv'); assert (S[S.target == 'sells'].iloc[:-1].mae > 0.8 * S[(S.target == 'sells')].iloc[-1].mae).all()   # no candidate predicts the opening sell count
+    C = pd.read_csv(f'{OUT}/bl_d0z_coverage.csv'); assert abs(C.share.sum() - 1) < 1e-3 and 0.80 < C[C.tier_after <= 2].share.sum() < 0.9

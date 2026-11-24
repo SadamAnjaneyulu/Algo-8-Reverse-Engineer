@@ -103,3 +103,5 @@ D0 quantity: order execution, lots per event, position management (plan `D0_QTY_
 D0 sizing treatments (A drawn, B fixed median, C scaled) in the free-run simulator (plan `D0_SIZING_PLAN.md`, report `D0_SIZING.md`): `OMP_NUM_THREADS=1 bl_d0v_sizing.py check` (integrity) → `bl_d0v_sizing.py run` (~1 min) → `bl_d0v_analysis.py` → `make_d0v_report.py`.
 
 D0 burst buy-backs, other buy-back types, body-stream longs, coverage (plan `D0_BURST_LONG_PLAN.md`, report `D0_BURST_LONG.md`): `bl_d0w_panel.py` → `OMP_NUM_THREADS=1 bl_d0w_burst.py` (~12 min) → `bl_d0w_burst_placebo.py` → `bl_d0w_burstlots.py` → `bl_d0w_long.py` → `bl_d0w_extra.py` → `make_d0w_report.py`.
+
+D0 roll-out, "other" buy-backs and the opening burst (plan `D0_OPEN_ROLL_PLAN.md`, report `D0_OPEN_ROLL.md`): `bl_d0z_roll.py` (~8 min) → `bl_d0z_post.py` → `bl_d0z_open.py` → `make_d0z_report.py` (needs the `bl_d0w_*` outputs).
