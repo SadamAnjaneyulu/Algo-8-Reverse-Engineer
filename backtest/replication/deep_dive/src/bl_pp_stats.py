@@ -3,7 +3,7 @@ Inputs outputs/prepaper/var_*.csv, exec_cycles.csv, capacity.csv. Output outputs
 import sys, os, json, glob, itertools, warnings; sys.path.insert(0, '.'); warnings.filterwarnings('ignore')
 import numpy as np, pandas as pd
 from scipy.stats import norm
-OUT = os.path.join(os.path.dirname(os.path.abspath('.')), 'outputs'); PP = f'{OUT}/prepaper'; CAP = 2e7; rng = np.random.default_rng(20261124)
+OUT = os.path.join(os.path.dirname(os.path.abspath('.')), 'outputs'); PP = f"{OUT}/{os.environ.get('PP_DIR', 'prepaper')}"; CAP = 2e7; rng = np.random.default_rng(20261124)
 V = pd.concat([pd.read_csv(f) for f in glob.glob(f'{PP}/var_*.csv')]); V = V[V.ok]; V['wk'] = pd.to_datetime(V.d0).dt.strftime('%G-%V')
 E = pd.read_csv(f'{PP}/exec_cycles.csv'); E['wk'] = pd.to_datetime(E.d0).dt.strftime('%G-%V'); full = V[V.variant == 'full']; base = full.net.mean()
 assert abs(E.net.mean() - base) < 1, 'exec and full runs differ'

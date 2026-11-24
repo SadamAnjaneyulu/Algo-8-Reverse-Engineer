@@ -5,7 +5,7 @@ import sys, os, json, warnings; sys.path.insert(0, '.'); sys.path.insert(0, '../
 import numpy as np, pandas as pd
 from multiprocessing import Pool
 import bl_bt3_sim as S, bl_pp_costs as PC, bl_arch_margin as AM
-OUT = S.OUT; PP = f'{OUT}/prepaper'; RES = f'{OUT}/bt3_results'; CAP = 2e7; S_ = None
+OUT = S.OUT; PP = f"{OUT}/{os.environ.get('PP_DIR', 'prepaper')}"; RES = f'{OUT}/bt3_results'; CAP = 2e7; S_ = None
 def init():
     global S_; import data as D; S_ = D.Src()
 def vol_map(und, expiry, d):
@@ -33,12 +33,17 @@ def one(a):
     return r, part
 if __name__ == '__main__':
     T = pd.read_csv(f'{OUT}/bl_bt3_cycles.csv'); T = T[T.split3.isin(['IS', 'OOS', 'LIVE_FITTED']) & T.ok].sort_values('d0')
-    A = pd.read_csv(f'{OUT}/arch/arch_cycles.csv'); A = A[(A.variant == 'full') & (A.psr == 0.093) & (A.vsr == 0.04)][['und', 'expiry', 'peak_margin']]; T = T.merge(A, on=['und', 'expiry'], how='left')
+    FF = pd.read_csv(f'{PP}/full_fills.csv.gz') if os.path.exists(f'{PP}/full_fills.csv.gz') else pd.read_csv(f'{RES}/ablate_full_fills.csv.gz'); FG = {k: g for k, g in FF.groupby(['und', 'expiry'])}
+    if os.path.exists(f'{PP}/full_fills.csv.gz'):                                                                # rebuilt run: margin recomputed on its own fills
+        with Pool(4) as p: mr = p.map(AM.one, [(r.und, r.expiry, r.d0, 'full', FG[(r.und, r.expiry)]) for r in T.itertuples()], chunksize=4)
+        A = pd.DataFrame([x for rs, _ in mr for x in rs]); A = A[(A.psr == 0.093) & (A.vsr == 0.04)][['und', 'expiry', 'peak_margin']]
+    else: A = pd.read_csv(f'{OUT}/arch/arch_cycles.csv'); A = A[(A.variant == 'full') & (A.psr == 0.093) & (A.vsr == 0.04)][['und', 'expiry', 'peak_margin']]
+    T = T.merge(A, on=['und', 'expiry'], how='left')
     sc = []                                                                                                    # causal cap: 90th pct of the previous 8 cycles of the same index
     for u, g in T.groupby('und'):
         pm = g.peak_margin.values
         for i in range(len(g)): prev = pm[max(0, i - 8):i]; sc.append((g.index[i], 1.0 if len(prev) < 4 else min(1.0, CAP / np.quantile(prev, .9))))
-    T['s_cap'] = pd.Series(dict(sc)); FF = pd.read_csv(f'{RES}/ablate_full_fills.csv.gz'); FG = {k: g for k, g in FF.groupby(['und', 'expiry'])}
+    T['s_cap'] = pd.Series(dict(sc))
     jobs = [(r.und, r.expiry, r.d1, r.d0, r.split3, FG[(r.und, r.expiry)], float(r.s_cap)) for r in T.itertuples()]
     with Pool(4, initializer=init) as p: res = p.map(one, jobs, chunksize=2)
     E = pd.DataFrame([a for a, _ in res]).merge(T[['und', 'expiry', 'peak_margin']], on=['und', 'expiry']); E['peak_margin_capped'] = E.peak_margin * E.s_cap; E.to_csv(f'{PP}/exec_cycles.csv', index=False)

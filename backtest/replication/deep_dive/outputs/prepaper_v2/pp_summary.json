@@ -1,0 +1,68 @@
+{
+ "base": 70989.20273659394,
+ "oos": 54238.07598454956,
+ "breakeven_mult": 2.2828847860401096,
+ "funding_per_cycle": 14223.881525729574,
+ "cycles_per_year": 91.39558689717926,
+ "PBO": 0.8857031857031857,
+ "DSR_counted": 0.9975188602077719,
+ "DSR_1000": 0.9960695812215319,
+ "N_counted": 83,
+ "SR_week": 0.281487250365865,
+ "sr0_counted": 0.040493538771526186,
+ "null_pct": 0.9,
+ "null_p95": 72911.64425680548,
+ "null_mean": 65220.50713245703,
+ "null_min": 56073.40164202413,
+ "null_max": 73001.19137163507,
+ "g3_failures": 0,
+ "gates_passed": 5,
+ "verdict": "NO-GO",
+ "path": {
+  "constant lot": {
+   "weeks": 158,
+   "mean_week": 123557.15666179324,
+   "sd_week": 438944.0605256506,
+   "sharpe_annual": 2.0298334291669917,
+   "total": 19522030.75256333,
+   "max_drawdown": 1957163.753181737,
+   "longest_underwater_weeks": 13,
+   "one_year_pnl_median": 6393953.560896933,
+   "one_year_pnl_p5": 1622671.3899264073,
+   "one_year_mdd_p95": 2931413.187226864,
+   "p_loss_10": 0.0012,
+   "p_loss_20": 0.0001,
+   "p_loss_30": 0.0,
+   "p_negative_year": 0.0111
+  },
+  "margin-capped": {
+   "weeks": 158,
+   "mean_week": 111277.57345527795,
+   "sd_week": 406862.72022472357,
+   "sharpe_annual": 1.9722475270312791,
+   "total": 17581856.605933916,
+   "max_drawdown": 1957163.753181737,
+   "longest_underwater_weeks": 13,
+   "one_year_pnl_median": 5813397.136248089,
+   "one_year_pnl_p5": 1488844.208434857,
+   "one_year_mdd_p95": 2762574.997876227,
+   "p_loss_10": 0.0016,
+   "p_loss_20": 0.0003,
+   "p_loss_30": 0.0,
+   "p_negative_year": 0.0133
+  }
+ },
+ "capacity_10": 0.9869752181985564,
+ "iv_shock": {
+  "iv_shock_1.5": {
+   "mean": 83620.96977319701,
+   "p95": 200537.26098734673,
+   "worst": 408510.8999548636
+  },
+  "iv_shock_2.0": {
+   "mean": 45062.696176783276,
+   "p95": 255827.9579495442,
+   "worst": 675012.0309476204
+  }
+ }
+}

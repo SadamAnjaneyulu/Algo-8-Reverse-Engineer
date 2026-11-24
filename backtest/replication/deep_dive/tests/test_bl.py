@@ -974,3 +974,12 @@ def test_prepaper_battery():
     assert 2.0 < s['breakeven_mult'] < 2.6 and 0.5 < s['PBO'] < 0.7 and s['capacity_10'] > 0.95
     er = pd.read_csv(f'{pp}/eras.csv'); assert er.iloc[-1].mean_net < 0 < er.iloc[:-1].mean_net.min()            # simulator negative only after the closing auction
     assert os.path.exists(f'{base}/reports/PREPAPER_RESULT.md') and os.path.exists(f'{base}/reports/figures/bl_prepaper.png')
+
+
+def test_postcas_rebuild():
+    """Post-auction rebuild (plan POSTCAS_REBUILD_PLAN.md): rebuild rejected by its pre-registered validation; battery verdict unchanged."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); d = json.load(open(f'{base}/outputs/postcas/eval_decision.json'))
+    assert d['accept'] is False and d['val_mae_new'] > d['val_mae_old']
+    g1 = pd.read_csv(f'{base}/outputs/prepaper/gates.csv').passed.tolist(); g2 = pd.read_csv(f'{base}/outputs/prepaper_v2/gates.csv').passed.tolist(); assert g1 == g2 and sum(g2) == 5
+    assert pd.read_csv(f'{base}/outputs/prepaper_v2/eras.csv').iloc[-1].mean_net < 0 and os.path.exists(f'{base}/reports/POSTCAS_REBUILD_RESULT.md')

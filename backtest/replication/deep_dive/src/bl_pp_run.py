@@ -4,7 +4,7 @@ import sys, os, time, warnings; sys.path.insert(0, '.'); warnings.filterwarnings
 import numpy as np, pandas as pd
 import bl_bt3_sim as S, bl_pp_costs as PC
 from multiprocessing import Pool
-PP = f'{S.OUT}/prepaper'; os.makedirs(PP, exist_ok=True); P0 = S.P_FROZEN; W0 = P0['W']; L0 = S.L_STOP
+PP = f"{S.OUT}/{os.environ.get('PP_DIR', 'prepaper')}"; os.makedirs(PP, exist_ok=True); L0 = float(os.environ.get('PP_LSTOP', S.L_STOP)); P0 = dict(S.P_FROZEN, L_STOP=L0); W0 = P0['W']                # PP_DIR / PP_LSTOP: rebuilt base (POSTCAS_REBUILD_PLAN.md)
 def shiftW(sec): W = W0.copy(); W['t'] = W.t + sec; return W
 def randW(seed):
     W = W0.copy(); rg = np.random.default_rng(seed)
@@ -28,7 +28,7 @@ def job(a):
     row, name = a; v, po = VAR[name]
     try:
         f, info = S.run_cycle(row, 'B/V2', dict(P0, **po), True, v); old = S.account(f, row['und'], row['d1'], row['d0'], float(row['unit'])); acc = PC.account(f, row['und'], row['d1'], row['d0'], PC.REFU[row['und']])
-        return dict(und=row['und'], expiry=row['expiry'], d0=row['d0'], split=row['split3'], gross_actual_old=old['gross'], gross=acc['gross'], net=acc['net'], costs=acc['costs'], slippage=acc['slippage'], orders=acc['orders'], stop_j=info.get('stop_j'), ok=True)
+        return dict(und=row['und'], expiry=row['expiry'], d0=row['d0'], split=row['split3'], gross_actual_old=old['gross'], gross=acc['gross'], net=acc['net'], costs=acc['costs'], slippage=acc['slippage'], orders=acc['orders'], stop_j=info.get('stop_j'), ok=True, _fills=(f.assign(und=row['und'], expiry=row['expiry']) if name == 'full' else None))
     except Exception as e: return dict(und=row['und'], expiry=row['expiry'], ok=False, why=str(e)[:120])
 if __name__ == '__main__':
     T = pd.read_csv(f'{S.OUT}/bl_bt3_cycles.csv'); T = T[T.split3.isin(['IS', 'OOS', 'LIVE_FITTED']) & T.ok]; rows = [r._asdict() for r in T.itertuples(index=False)]; t0 = time.time()
@@ -37,5 +37,7 @@ if __name__ == '__main__':
         for name in only:
             fn = f"{PP}/var_{name.replace(' ', '_').replace('%', 'pct').replace('+', 'p').replace('-', 'm')}.csv"
             if os.path.exists(fn): continue
-            D = pd.DataFrame(p.map(job, [(r, name) for r in rows], chunksize=4)); D['variant'] = name; D.to_csv(fn, index=False)
+            res = p.map(job, [(r, name) for r in rows], chunksize=4); fl = [x.pop('_fills', None) for x in res]
+            if name == 'full': pd.concat([x for x in fl if x is not None], ignore_index=True).to_csv(f'{PP}/full_fills.csv.gz', index=False)
+            D = pd.DataFrame(res); D['variant'] = name; D.to_csv(fn, index=False)
             print(name, 'ok', int(D.ok.sum()), 'net mean', round(D[D.ok].net.mean()), round(time.time() - t0), 's', flush=True)
