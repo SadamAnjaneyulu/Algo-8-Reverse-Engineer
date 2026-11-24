@@ -1,5 +1,7 @@
 # Why the premium exists, and why Algo 8 is built the way it is
 
+> **Correction, 24 Nov 2026.** The first version of this report measured the overnight gap to the **09:16** open and said the largest gap in 3 years was 2.77%. The first print of the day (09:15) shows **4.6%** (NIFTY, 3 Feb 2026), 3 nights above 2%, 14 above 1%. The overnight ratios below use the 09:16 basis; on the first-print basis the overnight realised ÷ implied variance is 0.63, the median night 0.39 (not 0.27), 28% of nights above priced (not 15%) and the top 10% of nights carry 63% of the realised gap variance (not 68%, n = 224). The conclusion (overnight premium = rare-gap insurance) is unchanged; the statement that the sample 'never had a large gap' was wrong. See `UNRESOLVED_THREE.md`.
+
 *Plan: `PREMIUM_AND_ARCHITECTURE_PLAN.md` (written before the tests). 275 cycles, Nov 2023 – Nov 2026. Every cycle was used before: **exploratory**. Figure: `figures/bl_premium_arch.png`. Builds on `DESIGN_THESIS.md`.*
 
 ## The refined idea (version 2)
@@ -9,7 +11,7 @@ The first version ("options near expiry are over-priced; sell them, carry overni
 >
 > **2. The expiry-day premium is a steady over-pricing, not jump insurance.** Jumps are only 7% of D0 realised variance; even the smooth (continuous) part is only 0.74 of what is priced, and the typical day realises 0.84. Something other than tail risk keeps expiry-day options rich. The leading remaining candidate (**Inferred, untested**) is structural demand for short-dated options and the inventory cost of the sellers who supply it; it cannot be identified here without signed order flow.
 >
-> **3. Algo 8 sells the middle of the gap distribution and buys back the far tail.** Its overnight book is covered by cheap far wings and the lump; with them the carried book's mean gap loss **stops growing beyond about 3%** (≈ ₹7–8 lakh) while without them it keeps growing (≈ ₹30 lakh at ±5%), and they cut the overnight margin to 0.51× (PSR 6%) of an unhedged book, but cost ≈ ₹17.6k per cycle. **No gap above 2.8% happened in 3 years**, so the backtest only shows their cost.
+> **3. Algo 8 sells the middle of the gap distribution and buys back the far tail.** Its overnight book is covered by cheap far wings and the lump; with them the carried book's mean gap loss **stops growing beyond about 3%** (≈ ₹7–8 lakh) while without them it keeps growing (≈ ₹30 lakh at ±5%), and they cut the overnight margin to 0.51× (PSR 6%) of an unhedged book, but cost ≈ ₹17.6k per cycle. The largest first-print gap on a cycle night in 3 years was **4.6%** (NIFTY, 3 Feb 2026); on that single night the long legs were worth ≈ ₹7 lakh in the simulator (full book +₹5.2 lakh net, without D-1 longs −₹1.8 lakh), about 40 average cycles of their cost. Nothing larger occurred, so the sample cannot show their value in a 7–13% gap.
 >
 > **4. The expiry-day rules are capital rules.** Without the D0 hedge controller or the D0 stop/take-profit, the expiry-day book outgrows ₹2 crore of approximate margin in 52% and 55% of cycles (PSR 9.3%; 15% with them). They exist to keep the size the capital allows, and they also cut the expiry-day scenario loss.
 
@@ -79,7 +81,7 @@ Approximate exchange margin (SPAN-like scenario margin + 2% exposure margin on s
 | +3% | 6.2 | 16.2 | 9.9 | 8.8 |
 | +5% | 4 | 30.1 | 12.9 | 7.4 |
 
-Largest overnight gap actually seen in 3 years: **2.77%** (only 2 cycles above 2%, 13 above 1%).
+Largest overnight gap actually seen in 3 years: **4.62%** (only 3 cycles above 2%, 14 above 1%).
 
 ### Component by component
 | Component | Tail it protects against | Cost | Margin effect | What happens without it |
@@ -91,10 +93,10 @@ Largest overnight gap actually seen in 3 years: **2.77%** (only 2 cycles above 2
 | **D-1 per-lot stops** | Trending D-1 (path) | removing them lowers net by ₹22k (interval includes 0) | Overnight margin 1.26× without them | Worse return on margin (-0.17 pp, interval includes 0), larger gap loss |
 | **Cycle stop (≈ ₹1.2–1.4 lakh)** | A bad day turning into a disaster | ≈ ₹20k per cycle | Cycles above ₹2 cr 15% → 20% | 5th-percentile cycle ₹61k worse, worst ₹74k worse |
 
-**Reading against the plan's rule:** no protective component raises the **return on peak margin** in this sample (wings and lump lower it slightly, intervals excluding zero; the others are within noise, except the D0 hedge at PSR 9.3% which helps). So none "pays for itself after margin" **in 3 years without a big gap**. Their measurable jobs are: (a) **capital feasibility** — the D0 hedge and D0 stops keep the expiry-day book within ₹2 crore; (b) **gap insurance** — the wings and lump halve losses in gaps the sample did not contain; (c) **path protection** — the stops cut the 5th-percentile and worst cycles.
+**Reading against the plan's rule:** no protective component raises the **return on peak margin** in this sample (wings and lump lower it slightly, intervals excluding zero; the others are within noise, except the D0 hedge at PSR 9.3% which helps). So none "pays for itself after margin" **in this 3-year sample, whose largest gap was 4.6%**. Their measurable jobs are: (a) **capital feasibility** — the D0 hedge and D0 stops keep the expiry-day book within ₹2 crore; (b) **gap insurance** — the wings and lump halve losses in gaps the sample did not contain; (c) **path protection** — the stops cut the 5th-percentile and worst cycles.
 
 ## How the two questions connect
-The overnight premium exists **because** of rare large gaps (Q1). A seller who keeps the whole overnight premium also keeps the whole gap tail. Algo 8 keeps the part of the premium paid for gaps of roughly 1–3% and **buys back the far tail** with wings that cost ≈ ₹18k a cycle. In a 3-year sample whose largest gap is 2.8%, that insurance can only look like a cost — exactly what a "peso problem" looks like. The backtest therefore **overstates** the value of selling the overnight without wings, and the wings are the designer's admission that the overnight premium is gap risk, not free money.
+The overnight premium exists **because** of rare large gaps (Q1). A seller who keeps the whole overnight premium also keeps the whole gap tail. Algo 8 keeps the part of the premium paid for gaps of roughly 1–3% and **buys back the far tail** with wings that cost ≈ ₹18k a cycle. In this 3-year sample the largest gap was 4.6% and the long legs cost ≈ ₹18k a cycle net (that figure already includes their payoff on the 3 Feb 2026 night). Whether they pay in expectation depends on gaps larger than any in the sample (see `UNRESOLVED_THREE.md`).
 
 ## Evidence levels
 | Claim | Level |
@@ -105,7 +107,7 @@ The overnight premium exists **because** of rare large gaps (Q1). A seller who k
 | Demand pressure causes the premium | **Not testable** with OHLCV + volume (no signed flow) |
 | D0 hedge and D0 stops keep the book within ₹2 crore | **Observed under the approximate margin model**, across the scan-range grid |
 | Wings and lump cap the overnight gap loss (flat beyond ~3%) and halve the overnight margin | **Observed** under the model (stress, not history) |
-| Wings pay for themselves | **Unresolved**: break-even needs a ±5% gap about once every 136 cycles; 3 years contain none |
+| Wings pay for themselves | **Unresolved**: break-even needs a ±5% gap about once every 136 cycles; the 3 years contain one night of 4.6% (worth ≈ ₹7 lakh) and none larger |
 | The real broker margin equals this model | **Unknown** (PSR not verified; real margin calls, peak-margin snapshots, broker add-ons not modelled) |
 
 ## Next tests

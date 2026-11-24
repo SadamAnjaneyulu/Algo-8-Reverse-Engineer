@@ -932,6 +932,20 @@ def test_premium_mechanism_and_architecture_margin():
     assert s['d0_jump_share'] < 0.15 and s['d0_continuous_ratio_hi'] < 1                     # D0 premium is not jump compensation
     assert all(lo < 0 < hi or lo > 0 or hi < 0 for lo, hi in zip(s['sebi_diff_lo'].values(), s['sebi_diff_hi'].values()))
     assert s['over2cr']['d0_no_hedge'] > s['over2cr']['full'] and s['over2cr']['d0_no_stop_tp'] > s['over2cr']['full']
-    assert all(v > 1 for v in s['overnight_margin_ratio_wings'].values()) and s['max_gap'] < 3
+    assert all(v > 1 for v in s['overnight_margin_ratio_wings'].values()) and 4 < s['max_gap'] < 5          # first-print basis (corrected); the 09:16-open basis gave 2.77%
     a = pd.read_csv(f'{base}/outputs/arch/arch_cycles.csv'); assert a.groupby(['variant', 'psr', 'vsr']).size().min() == 275 and a.variant.nunique() == 7
     md = open(f'{base}/reports/PREMIUM_AND_ARCHITECTURE.md').read(); assert 'The refined idea (version 2)' in md and os.path.exists(f'{base}/reports/figures/bl_premium_arch.png')
+
+
+def test_unresolved_three_margin_gap_premium():
+    """Plan UNRESOLVED_THREE_PLAN.md: real-book margin, extreme-gap stress / tail, expiry-day premium mechanisms. Headline facts and the corrected gap measurement hold."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); un = f'{base}/outputs/unres'; s = json.load(open(f'{un}/unres_summary.json')); ng = json.load(open(f'{un}/nightgap_summary.json'))
+    assert 4.0 < 100 * ng['max_abs_first_print'] < 5.0 and 2.5 < 100 * ng['max_abs_0916'] < 3.0 and ng['n_over_2pct'] >= 3 and ng['prev_day_matches'] == 1.0     # corrected gap measurement (first print, not the 09:16 open)
+    assert 1.0 < s['real_peak_median_cr'] < 2.0 and s['real_over_2cr'] <= 0.10 and s['spearman'] < 0.6                                                      # level consistent with a binding capital constraint; cycle-level agreement not validated
+    assert s['full_worst_15'] < 2e7 < s['nolongs_worst_15'] and s['full_mean_m15'] < 0                                                                     # long legs prevent ruin; carried book gains at -15%
+    assert s['var_ratio_settle_print'] < 0.8 and s['extra_lo'] > 0 and s['live_var_ratio'] > 0.9 and s['pin_share_lo'] < 0.5 < 0.6 and s['flow_next_hi'] > 0   # averaging supported (not in the live window); pinning and flow not supported
+    assert s['ev_gpd_extra'] < s['cost'] and s['ev_doc_phi05'] < s['cost']                                                                                  # legs do not clearly pay in expectation
+    cy = pd.read_csv(f'{un}/real_margin_cycles.csv'); assert (cy.book == 'real').sum() == 35 and (cy.book == 'sim_full').sum() == 275
+    md = open(f'{base}/reports/UNRESOLVED_THREE.md').read(); assert '## 0. Corrections first' in md and os.path.exists(f'{base}/reports/figures/bl_unres.png')
+    assert 'Correction, 24 Nov 2026' in open(f'{base}/reports/PREMIUM_AND_ARCHITECTURE.md').read()
