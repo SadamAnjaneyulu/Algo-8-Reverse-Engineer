@@ -1,0 +1,61 @@
+{
+ "first_print_vs_0916_diff_over_0.5pct": 4,
+ "first_print_vs_0916_diff_over_1pct": 1,
+ "max_abs_gap_0916": 0.0276622062472258,
+ "feb3": {
+  "d1_close_1529": 25079.9,
+  "d0_0915_open": 26264.9,
+  "d0_0915_low": 25783.15,
+  "d0_0915_close": 25784.45,
+  "d0_0916_open": 25783.35,
+  "gap_first_print": 0.04616671853455334,
+  "gap_after_first_minute": 0.027704868528733786
+ },
+ "feb3_decomposition": {
+  "full": {
+   "overnight_mtm": -52643.5,
+   "cycle_net": 517997.00750733615,
+   "cycle_gross": 614617.9000000003,
+   "carried_short_lots": 88.0,
+   "carried_long_lots": 152.0
+  },
+  "d1_no_wings": {
+   "overnight_mtm": -214240.0,
+   "cycle_net": -178823.44718984066,
+   "cycle_gross": -155405.25000000015,
+   "carried_short_lots": 88.0,
+   "carried_long_lots": 0.0
+  }
+ },
+ "feb3_overnight_difference": 161596.5,
+ "feb3_net_difference": 696820.4546971768,
+ "e1_by_cas": [
+  {
+   "regime": "after CAS (from 3 Aug 2026)",
+   "cycles": 29,
+   "var_ratio": 1.0076324888445944,
+   "extra_premium": -0.00606766830183666,
+   "median_abs_settle_minus_print_bp": 0.0001715065360005,
+   "var_ratio_lo": 0.9999944068567784,
+   "var_ratio_hi": 1.029569037719171
+  },
+  {
+   "regime": "before CAS",
+   "cycles": 246,
+   "var_ratio": 0.5383085559710541,
+   "extra_premium": 0.3652456725680463,
+   "median_abs_settle_minus_print_bp": 6.21763617770422,
+   "var_ratio_lo": 0.4345788139685435,
+   "var_ratio_hi": 0.6541214650548798
+  },
+  {
+   "regime": "2026 before CAS (Jan - 2 Aug)",
+   "cycles": 59,
+   "var_ratio": 0.5914225424543361,
+   "extra_premium": 0.12610336337949973,
+   "median_abs_settle_minus_print_bp": 6.7943863596142045,
+   "var_ratio_lo": 0.4267260162912235,
+   "var_ratio_hi": 0.8204753449775145
+  }
+ ]
+}

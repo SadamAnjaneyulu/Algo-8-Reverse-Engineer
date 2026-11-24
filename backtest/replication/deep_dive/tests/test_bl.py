@@ -932,7 +932,7 @@ def test_premium_mechanism_and_architecture_margin():
     assert s['d0_jump_share'] < 0.15 and s['d0_continuous_ratio_hi'] < 1                     # D0 premium is not jump compensation
     assert all(lo < 0 < hi or lo > 0 or hi < 0 for lo, hi in zip(s['sebi_diff_lo'].values(), s['sebi_diff_hi'].values()))
     assert s['over2cr']['d0_no_hedge'] > s['over2cr']['full'] and s['over2cr']['d0_no_stop_tp'] > s['over2cr']['full']
-    assert all(v > 1 for v in s['overnight_margin_ratio_wings'].values()) and 4 < s['max_gap'] < 5          # first-print basis (corrected); the 09:16-open basis gave 2.77%
+    assert all(v > 1 for v in s['overnight_margin_ratio_wings'].values()) and 2.5 < s['max_gap'] < 3.0      # tradeable (09:16) basis; the 09:15 opening tick on 3 Feb 2026 printed 4.6% and reverted within the minute
     a = pd.read_csv(f'{base}/outputs/arch/arch_cycles.csv'); assert a.groupby(['variant', 'psr', 'vsr']).size().min() == 275 and a.variant.nunique() == 7
     md = open(f'{base}/reports/PREMIUM_AND_ARCHITECTURE.md').read(); assert 'The refined idea (version 2)' in md and os.path.exists(f'{base}/reports/figures/bl_premium_arch.png')
 
@@ -948,4 +948,15 @@ def test_unresolved_three_margin_gap_premium():
     assert s['ev_gpd_extra'] < s['cost'] and s['ev_doc_phi05'] < s['cost']                                                                                  # legs do not clearly pay in expectation
     cy = pd.read_csv(f'{un}/real_margin_cycles.csv'); assert (cy.book == 'real').sum() == 35 and (cy.book == 'sim_full').sum() == 275
     md = open(f'{base}/reports/UNRESOLVED_THREE.md').read(); assert '## 0. Corrections first' in md and os.path.exists(f'{base}/reports/figures/bl_unres.png')
-    assert 'Correction, 24 Nov 2026' in open(f'{base}/reports/PREMIUM_AND_ARCHITECTURE.md').read()
+    assert 'Corrections, 24 Nov 2026 (two rounds)' in open(f'{base}/reports/PREMIUM_AND_ARCHITECTURE.md').read()
+
+
+def test_final_review_checks():
+    """Review checks (24 Nov): 3 Feb 2026 opening tick vs first tradeable minute, overnight value of the long legs that night, settlement averaging before / after the closing auction (3 Aug 2026)."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); f = json.load(open(f'{base}/outputs/final/final_checks.json'))
+    assert f['feb3']['gap_first_print'] > 0.045 and 0.025 < f['feb3']['gap_after_first_minute'] < 0.03 and f['first_print_vs_0916_diff_over_1pct'] == 1
+    assert 1.0e5 < f['feb3_overnight_difference'] < 2.5e5 < 6.0e5 < f['feb3_net_difference']                              # overnight protection ~1.6 lakh; the 7 lakh net gap is mostly later D0 management
+    e = pd.read_csv(f'{base}/outputs/final/final_e1_cas.csv').set_index('regime')
+    assert e.loc['before CAS', 'var_ratio_hi'] < 0.8 and e.loc['after CAS (from 3 Aug 2026)', 'var_ratio_lo'] > 0.95 and e.loc['2026 before CAS (Jan - 2 Aug)', 'var_ratio'] < 0.8
+    assert os.path.exists(f'{base}/reports/FINAL_ALPHA.md')
