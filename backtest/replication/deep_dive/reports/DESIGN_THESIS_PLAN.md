@@ -34,3 +34,11 @@ These suggest candidate beliefs. Each one makes a **market-level prediction that
 
 ## Deliverable
 `DESIGN_THESIS.md`: (1) a knowledge graph of the findings from all 22 branches (each node: finding, branch/file, evidence level), (2) the test results above, (3) the reconstructed design thesis, each part with its evidence level, (4) what is still unknown.
+
+## Addendum 1 (2026-11-24, written after T1–T4 were run, before T5–T6)
+**What I saw:** T3 shows the index **reverting**, not continuing, after the ladder's trigger (signed return −1.4 bp at +15 min, −5.5 bp to the D-1 close; D0 similar but weaker), and the ladder's right does worse than the opposite right held to the session end. This contradicts the "trend-aligned ladder" reading in `ALPHA_SOURCE.md` (which rested on the simulator's flipped placebo, whose gross interval includes zero). A different role for the ladder fits the structure: **keeping a short-straddle book delta-balanced by selling the side the market moves away from**. Two tests are added to check that role and the role of the 15-minute clock. They are post-hoc additions and are labelled so in the result.
+
+| # | Belief | Test | Prediction |
+|---|---|---|---|
+| B6 | **Spreading the sales over the clock (and re-centring on the current ATM) lowers the risk of a short-premium carry without changing its mean** | **T5:** sell one ATM straddle at the start of every 15-minute block of D-1 (09:16 … 15:01), held to D0 15:14 open, (a) re-struck at each entry's ATM, (b) all at the 09:16 strike; versus the single 09:16 straddle (T4/naive). Per cycle: P&L ÷ premium. Compare mean (bootstrap) and the cycle standard deviation (ratio, bootstrap) | Mean ≈ the single entry; standard deviation lower for (a) than for the single entry and than for (b) |
+| B7 | **The ladder is delta rebalancing, not a forecast** | **T6:** at each D-1 ladder trigger of T3, the delta of a reference book = the (a) straddles of T5 sold before that minute (Black, each leg's own implied total standard deviation, r = 0), and the delta of the ladder's sale | The ladder's sale reduces the absolute book delta in most events (> 50%, bootstrap by week) |
