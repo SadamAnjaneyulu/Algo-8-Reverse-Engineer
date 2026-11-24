@@ -1,0 +1,18 @@
+variant,net_k_diff,net_k_lo,net_k_hi,gross_k_diff,gross_k_lo,gross_k_hi,net_diff_IS,net_diff_OOS,net_diff_LIVE_FITTED,sign_consistent_across_splits,d_sd,d_worst,d_p5,verdict
+d1_no_timetable,-14025.5,-35064.0,7213.0,-25057.2,-47444.6,-2949.2,-29419.4,4050.5,28670.7,False,-39906.8,99027.6,51466.4,not distinguishable from zero
+d1_no_breakout,-7631.9,-17060.0,1824.5,-10542.5,-19799.0,-515.8,-5735.9,-16438.5,-1192.4,True,-25738.8,256471.9,1268.5,not distinguishable from zero
+d1_no_ladder,-19479.2,-34641.6,-4622.9,-24453.3,-40779.2,-7792.7,-20727.2,-26400.1,-1109.0,True,-39266.3,563641.6,-2110.7,removing it LOWERS net (it carries the edge)
+d1_no_stops,-21626.4,-55196.7,6749.4,-22994.0,-57740.1,8711.9,-12182.9,-80190.8,36582.5,False,66973.8,-14693.8,-88282.4,not distinguishable from zero
+d1_no_wings,17550.4,9603.2,25092.8,13914.6,4643.5,22002.7,19811.1,12910.6,14809.7,True,5880.3,-89834.1,10011.1,removing it RAISES net (it hurts the mean)
+d1_no_lump,8069.9,5061.5,11822.5,7971.0,4862.4,12118.3,9031.4,7287.7,4786.2,True,5181.5,-104280.9,1778.4,removing it RAISES net (it hurts the mean)
+d0_no_new_sells,-35514.0,-60256.1,-11030.3,-77699.1,-103884.1,-50936.2,-47683.0,-26086.0,6880.5,False,-89295.9,0.0,73597.8,removing it LOWERS net (it carries the edge)
+d0_no_waves,-23972.0,-45708.8,-3538.1,-48263.0,-70414.8,-25696.9,-32402.1,-14861.2,810.6,False,-75819.5,0.0,36594.9,removing it LOWERS net (it carries the edge)
+d0_no_breakout,-1563.0,-3683.5,292.2,-4380.0,-6491.3,-2401.1,-2328.2,11.1,-641.7,False,-4700.6,0.0,1008.9,not distinguishable from zero
+d0_no_ladder,-23712.6,-42855.9,-5677.4,-43341.4,-62771.2,-23757.7,-33718.5,-15748.7,10769.2,False,-67120.4,0.0,33752.5,removing it LOWERS net (it carries the edge)
+d0_no_counter,-6176.6,-11977.0,-736.9,-15864.4,-21985.1,-10079.0,-7531.0,-6979.5,1835.0,False,-12357.0,0.0,910.6,removing it LOWERS net (it carries the edge)
+d0_no_stop_tp,21365.6,-18964.1,59965.4,3710.0,-36421.4,43216.2,36015.3,9231.5,-28276.8,False,121352.9,0.0,-48189.0,not distinguishable from zero
+d0_no_hedge,8271.6,7020.1,9576.3,216.1,-825.7,1289.7,8879.5,8215.1,5417.0,True,6126.7,0.0,4462.7,removing it RAISES net (it hurts the mean)
+no_cycle_stop,19874.7,594.7,37387.7,35907.8,16250.9,55723.4,17268.4,12466.6,45714.3,True,17444.5,-74186.9,-61138.1,removing it RAISES net (it hurts the mean)
+d0_only,-31877.0,-65316.3,2475.3,-52165.9,-87739.1,-16961.5,-54157.9,-8698.0,35226.2,False,-59773.6,159863.0,68608.4,not distinguishable from zero
+P1_flip_ladder_direction,-35027.9,-69602.7,-1435.0,-35558.6,-71825.6,502.3,-38201.6,-33494.2,-22326.4,True,8016.8,164179.0,-73208.2,removing it LOWERS net (it carries the edge)
+P2_shift_waves_37min,-18654.2,-37340.2,-1250.7,-22371.1,-40556.1,-4042.2,-27182.0,-9011.8,5658.5,False,-27954.0,-81792.7,2246.3,removing it LOWERS net (it carries the edge)

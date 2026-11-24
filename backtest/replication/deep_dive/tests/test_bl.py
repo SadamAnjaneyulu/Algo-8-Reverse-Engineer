@@ -894,3 +894,16 @@ def test_bt3_regime_investigation():
     c = CE[CE.family.str.startswith('opening gap')].set_index('cell'); assert c.loc['low', 'mean_net'] > c.loc['mid', 'mean_net'] > c.loc['high', 'mean_net'] and c.loc['high', 'mean_net'] < 0
     assert abs(J['mechanism_spearman_ratio_net']) < 0.2 and J['mechanism_p'] > 0.05                                                                                      # not a plain short-premium story
     assert 55 <= len(CE) <= 63 and J['cells'] == len(CE) and CE.q_bh.between(0, 1).all()                                                                       # about 63 cells in the plan
+
+
+def test_bt3_alpha_source_investigation():
+    """Alpha-source investigation (plan ALPHA_SOURCE_PLAN.md): files exist, the decomposition reconciles, clock-independent totals agree, headline numbers match the report."""
+    import json, pandas as pd
+    out = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'outputs', 'bt3_results'); rep = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'reports')
+    h = json.load(open(f'{out}/alpha_headline.json')); assert h['cycles'] == 275
+    assert abs(h['recon_sum']) < 0.005 * abs(h['gross_per_cycle'] * h['cycles'])                       # holding + execution = gross to within 0.5%
+    assert abs(h['decay_trading'] - h['decay_calendar']) < 0.02 * abs(h['decay_trading'])             # theta+vega+resid is clock-independent
+    assert h['gamma'] < 0 < h['decay_trading'] and h['execution_share'] < 0.25                       # decay exceeds gamma loss; execution below the 25% reading threshold
+    assert h['diff_lo'] < 0 < h['diff_hi']                                                            # strategy vs naive per rupee of premium: not distinguishable
+    d = pd.read_csv(f'{out}/ablate_diffs.csv').set_index('variant'); assert d.loc['P1_flip_ladder_direction', 'net_k_hi'] < 0 and d.loc['no_cycle_stop', 'net_k_lo'] > 0
+    txt = open(f'{rep}/ALPHA_SOURCE.md').read(); assert 'The answer in five lines' in txt and os.path.exists(f'{rep}/figures/bl_bt3_alpha.png')

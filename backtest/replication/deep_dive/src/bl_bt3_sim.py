@@ -17,13 +17,24 @@ def versions_for(d1, d0, run):
     """run 'A/V1' or 'B/V2' for dates before the live window; observed versions inside and after it."""
     if d1 >= '2026-06-22': return ('B' if d1 >= '2026-09-16' else 'A', 'V2' if d0 >= '2026-09-16' else 'V1')
     return ('A', 'V1') if run == 'A/V1' else ('B', 'V2')
-def d1_config(und, d1, vd1):
-    cfg = A.config_for(und, d1); nifty = und == 'NIFTY'
-    cfg.timetable = list(A.SCHEDULE_B if vd1 == 'B' else A.SCHEDULE_A); cfg.opening_wing_offset_steps = 20.0 if (not nifty and vd1 == 'B') else 39.8; return cfg
+def d1_config(und, d1, vd1, variant=None):
+    cfg = A.config_for(und, d1); nifty = und == 'NIFTY'; v = variant or {}
+    cfg.timetable = list(A.SCHEDULE_B if vd1 == 'B' else A.SCHEDULE_A); cfg.opening_wing_offset_steps = 20.0 if (not nifty and vd1 == 'B') else 39.8
+    if v.get('d1_no_sched'): cfg.timetable = []
+    if v.get('d1_no_brk'): cfg.breakout_start_min = 10 ** 6
+    if v.get('d1_no_lad'): cfg.ladder_step = 1e6
+    if v.get('d1_no_stop'): cfg.stop_ratio = 1e9
+    if v.get('d1_no_wings'): cfg.wing_premium_frac = 0.0; cfg.opening_wing_lots_per_right = 0; cfg.lump_ratio = 0.0
+    if v.get('d1_no_lump'): cfg.lump_ratio = 0.0
+    if v.get('shift_waves'): cfg.timetable = [t + 2220 for t in cfg.timetable]                                                 # +37 minutes
+    return cfg
 # ---------------- D-1: run the batch rules, replay the orders into fills, a carried book and cash
-def run_d1(cyc, cfg, unit, causal=True):
+def run_d1(cyc, cfg, unit, causal=True, flip_ladder=False):
     K = cyc['opt1']['K']; chain = A.OptionChain(strikes=K, bars={(cp, f): cyc['opt1'][(cp, f)] for cp in ('CE', 'PE') for f in ('open', 'high', 'low', 'close')}); s = cyc['spot1']
-    res = A.D1Strategy(cfg).run(s.open.values.astype(float), s.high.values.astype(float), s.low.values.astype(float), s.close.values.astype(float), chain, max_minute=390)
+    orig_lad = A.ladder_fires
+    if flip_ladder: A.ladder_fires = lambda *a, **k: {j_: ['PE' if r_ == 'CE' else 'CE' for r_ in rs_] for j_, rs_ in orig_lad(*a, **k).items()}
+    try: res = A.D1Strategy(cfg).run(s.open.values.astype(float), s.high.values.astype(float), s.low.values.astype(float), s.close.values.astype(float), chain, max_minute=390)
+    finally: A.ladder_fires = orig_lad
     ki = {int(k): i for i, k in enumerate(K)}
     def px(cp, k, j, f='close'):
         i = ki.get(int(k)); v = chain.bars[(cp, f)][i, min(max(j, 0), 374)] if i is not None else np.nan; return float(v) if v == v else np.nan
@@ -81,7 +92,7 @@ def sim_d0(cyc, ver, P, book, unit, causal=True):
         return v
     for j in range(0, 375):
         if stopped: break
-        if mtm(j) <= -L_STOP:
+        if mtm(j) <= -(1e18 if P.get('no_cycle_stop') else L_STOP):
             agg = {}
             for cp, k, e in lots: agg.setdefault((cp, k), []).append(e)
             for (cp, k), es in agg.items():
@@ -117,14 +128,14 @@ def sim_d0(cyc, ver, P, book, unit, causal=True):
             lots = keep
         sells = []
         for n in wv.get(j, []): k = atm(c0); sells += [('CE', k, n, 0), ('PE', k, n, 0)]                                       # 0 = timer (clock) order
-        if 75 <= j <= 360:
+        if 75 <= j <= 360 and not P.get('no_fires'):
             for s_ in fires.get(j, []): k = atm(c0) + s_ * st; sells += [('CE', k, 1, 1), ('PE', k, 1, 1)]                    # 1 = reactive (uses the minute's own extreme)
         pair = len(sells) > 0
         for cp in ('CE', 'PE'):
             if refp[cp] is None or j < 1: continue
             if G_ and not ((l[j] < l[max(j - G_, 0):j].min()) if cp == 'CE' else (h[j] > h[max(j - G_, 0):j].max())): continue
             dv = (refp[cp] - l[j]) if cp == 'CE' else (h[j] - refp[cp])
-            if dv > stp: n = int(dv // stp); sells.append((cp, atm(c0), min(n, 10) if mult else 1, 1)); refp[cp] = refp[cp] - n * stp if cp == 'CE' else refp[cp] + n * stp
+            if dv > stp: n = int(dv // stp); sells.append((('PE' if cp == 'CE' else 'CE') if P.get('flip_ladder') else cp, atm(c0), min(n, 10) if mult else 1, 1)); refp[cp] = refp[cp] - n * stp if cp == 'CE' else refp[cp] + n * stp
         if pair: refp = {'CE': c0, 'PE': c0}
         for cp in ('CE', 'PE'):
             o = 'PE' if cp == 'CE' else 'CE'; acc[cp] += P['r'] * nbb[o]; n = int(acc[cp]); acc[cp] -= n
@@ -142,6 +153,7 @@ def sim_d0(cyc, ver, P, book, unit, causal=True):
                 k = atm(c0 + (1 if cp == 'CE' else -1) * 17 * st); p = px(cp, k, j); fl('body_long', cp, j, k, nn, p if p == p else 0.0, 1, nn); longs[('num', cp, int(k))] = longs.get(('num', cp, int(k)), 0) + nn
         for cp in ('CE', 'PE'):
             S_ = sum(1 for L in lots if L[0] == cp) + sum(n for (m, c2, k), n in oshort.items() if c2 == cp); L_ = sum(n for (m, c2, k), n in longs.items() if c2 == cp); g = S_ - L_; peak[cp] = max(peak[cp], S_)
+            if P.get('no_hedge'): continue
             if g > 0:
                 a = px(cp, atm(c0), jp); pr = op[(cp, 'close')][:, jp]; otm = (K - c0) * (1 if cp == 'CE' else -1) > 0; ok = otm & np.isfinite(pr)
                 if a == a and ok.any():
@@ -154,9 +166,9 @@ def sim_d0(cyc, ver, P, book, unit, causal=True):
                     if longs[key] == 0: del longs[key]
     return fills, dict(gross=cash, peak_CE=peak['CE'], peak_PE=peak['PE'], stop_j=stop_j)
 # ---------------- one cycle, both days
-def run_cycle(row, run, P=None, causal=True):
+def run_cycle(row, run, P=None, causal=True, variant=None):
     P = P or P_FROZEN; cyc = load(row['und'], row['expiry']); unit = float(row['unit']); vd1, vd0 = versions_for(row['d1'], row['d0'], run)
-    cfg = d1_config(row['und'], row['d1'], vd1); r1 = run_d1(cyc, cfg, unit, causal)
+    cfg = d1_config(row['und'], row['d1'], vd1, variant); r1 = run_d1(cyc, cfg, unit, causal, bool((variant or {}).get('flip_ladder')))
     fills0, info = sim_d0(cyc, vd0, P, dict(lots=r1['lots'], longs=r1['longs'], cash=r1['cash']), unit, causal)
     f = pd.DataFrame(r1['fills'] + fills0, columns=['day', 'j', 'cp', 'strike', 'side', 'lots', 'price', 'cls', 'n_orders']); f.insert(0, 'expiry', row['expiry']); f.insert(0, 'und', row['und'])
     return f, dict(und=row['und'], expiry=row['expiry'], d1=row['d1'], d0=row['d0'], split3=row.get('split3'), run=run, vd1=vd1, vd0=vd0, unit=unit, gross=info['gross'], peak_CE=info['peak_CE'], peak_PE=info['peak_PE'], stop_j=info['stop_j'], carried_short_lots=len(r1['lots']), carried_long_lots=int(sum(r1['longs'].values())), d1_orders=r1['n_orders'])

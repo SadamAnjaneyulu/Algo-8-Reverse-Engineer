@@ -111,3 +111,5 @@ D0 roll-out, "other" buy-backs and the opening burst (plan `D0_OPEN_ROLL_PLAN.md
 3-year combined backtest (plans `BACKTEST3Y_PLAN.md` + 2 addenda, result `BACKTEST3Y_RESULT.md`): `bl_bt3_data.py` (full chains, ~2 min) → `bl_bt3_split.py` → `bl_bt3_freeze.py` (before any run) → `bl_bt3_check.py` (identity vs the earlier D0 simulator) → `bl_bt3_run.py IS|OOS|LIVE_FITTED A/V1|B/V2 [hold]` → `bl_bt3_stress.py` → `bl_bt3_metrics.py` → `make_bt3_report.py`. OOS is run once after the freeze.
 
 Seasonality / regime investigation of the 3-year backtest (plan `BACKTEST3Y_REGIME_PLAN.md`, report `BACKTEST3Y_REGIME.md`; exploratory): `bl_bt3_run.py LIVE_FITTED A/V1 hold` (diagnostic) → `bl_bt3_regime.py` (~5 min) → `make_regime_report.py`.
+
+Alpha-source investigation (plan `ALPHA_SOURCE_PLAN.md`, report `ALPHA_SOURCE.md`; exploratory): `bl_bt3_ablate.py` (18 variants incl. 2 placebos, ~25 min) → `bl_bt3_ablate_analysis.py` → `bl_bt3_greeks.py trading|calendar` (Greek decomposition) → `bl_bt3_greeks_variants.py` → `bl_bt3_alpha_extra.py` (implied vs realised volatility, naive straddle) → `make_alpha_report.py`.
