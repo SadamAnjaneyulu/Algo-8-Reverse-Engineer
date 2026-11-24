@@ -817,3 +817,16 @@ def test_d0f_full_selling_auc_on_unseen_cycles():
     for t in ('scheduled pair', 'strangle pair'): assert g('causal', 'S1', t) >= 0.95 and s4('causal', t) >= 0.95
     assert g('causal', 'S1', 'counter-sell solo') >= 0.85 and g('causal', 'S1', 'replacement solo') >= 0.85 and g('causal', 'S1', 'other solo') < 0.85 and g(plus, 'S1', 'other solo') >= 0.85
     assert R['placebo_any']['auc'] < 0.55 and R['per_cycle_any']['share_ge_085'] >= 0.8 and R['type_top1_accuracy'] > R['majority_type_share'] + 0.3
+
+
+def test_d0u_quantity_execution_and_position():
+    A = json.load(open(f'{OUT}/bl_summary_d0u_a.json')); B = json.load(open(f'{OUT}/bl_summary_d0u_b.json')); C = json.load(open(f'{OUT}/bl_summary_d0u_c.json'))
+    assert 0.14 < A['a2_buf_overall_med'] < 0.16 and A['a1_events_above_freeze'] == A['a1_events_above_freeze_split_in_several_orders'] and A['a3_validity_by_module_D0']['num|DAY'] > 20000
+    assert A['a4_pos_by_side']['Sell'] < 0.5 < A['a4_pos_by_side']['Buy'] and A['a4_ref_vs_fill_abs_med'] < 0.03
+    FX = pd.read_csv(f'{OUT}/bl_d0u_b2_fixed.csv').set_index('test'); assert FX.loc['wing-buy event lots == S-L gap before the event (all)', 'share_fit'] > 0.9 and FX.loc['wing-sell event lots <= long excess L-S before', 'share_fit'] > 0.9
+    M = pd.read_csv(f'{OUT}/bl_d0u_b3_models.csv'); caus = M[M.model.str.startswith('LOCO boosting: causal')]
+    assert (caus.rel_mae_vs_best_baseline < 0).all() and (caus.rho < 0.5).all() and B['b3_solo_rho_gapfav'] < 0.1                      # sizes are ranked, not decided
+    P = M[M.model.str.startswith('placebo')]; assert (P.rel_mae_vs_best_baseline > -0.05).all()
+    assert C['c2_best_share_within_10pct_lots'] == 1.0 and max(v for k, v in C['c2_share_within_10pct_by_group_lots'].items() if '|V2|' not in k or 'SENSEX' in k) < 0.7  # no ceiling in any group with 3+ cycles
+    assert C['c2_hazard_by_near_cap']['True']['rate'] >= C['c2_hazard_by_near_cap']['False']['rate'] and C['c3_gain_inventory_on_top_of_spot_book']['hi'] < 0.02 and C['c5_mean_L_over_S'] > 0.99
+    from importlib import util; import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'd1_strategy')); from d1_algo import config as cf; assert cf.D1Config().limit_buffer_pct == 15.0

@@ -1,0 +1,6 @@
+model,auc,lo,hi,cells,positives,gain_vs_base
+"base (time of day, side, underlying)",0.7832,0.7587,0.8084,13490,3258,0.0
+base + spot,0.8212,0.7925,0.8484,13490,3258,0.038
+base + spot + book (existing features),0.8323,0.8128,0.8512,13490,3258,0.0491
+"base + spot + book + inventory (S, CE-PE imbalance, S vs cap)",0.8328,0.8136,0.8514,13490,3258,0.0496
+base + inventory only,0.7825,0.7596,0.8075,13490,3258,-0.0007

@@ -1,0 +1,11 @@
+test,n,share_fit,share_equal_sides,median_lots_each_side
+scheduled pair is exactly 1 CE + 1 PE lot,765,0.8654,0.9556,1.0
+wing-buy event lots == S-L gap before the event (all),5202,0.9358,,1.0
+wing-buy event lots <= S-L gap before (all),5202,0.9614,,
+wing-buy event lots == S-L gap before the event (NIFTY),2594,0.9445,,1.0
+wing-buy event lots <= S-L gap before (NIFTY),2594,0.9749,,
+wing-buy event lots == S-L gap before the event (SENSEX),2608,0.9271,,1.0
+wing-buy event lots <= S-L gap before (SENSEX),2608,0.9479,,
+wing-sell event lots <= long excess L-S before,3121,0.9702,,2.0
+wing-sell event lots == long excess L-S before,3121,0.8875,,
+lump-salvage order lots <= long excess L-S before,311,0.9421,,2.0

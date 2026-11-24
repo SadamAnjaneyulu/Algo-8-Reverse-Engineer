@@ -25,7 +25,7 @@ This is what you would write to run the day-before-expiry (D-1) strategy yoursel
 | Wing controller | About 4 seconds after body orders, buy exactly the gap between short and long lots on each right at the OTM strike whose premium is nearest 2.5% of the ATM premium; when shorts fall, sell the excess wings, outermost first. |
 | Overnight lump | At the configured minute (15:11 to 15:30 depending on the date regime): on the heavier short side, 0.83x (NIFTY) / 0.50x (SENSEX) the heavy-side short lots, about 2.2 one-day sigmas out. |
 
-4. Every order goes through the risk guard (kill-switch file, halt flag, short-lot limit, orders-per-minute limit, valid limit price), is split at the exchange freeze quantity (27 lots NIFTY, 50 SENSEX), is priced as a marketable limit (LTP -/+ 1%) and is sent.
+4. Every order goes through the risk guard (kill-switch file, halt flag, short-lot limit, orders-per-minute limit, valid limit price), is split at the exchange freeze quantity (27 lots NIFTY, 50 SENSEX), is priced as a marketable limit (LTP -/+ 15%, the buffer the real order log shows; it only protects, fills come at about the LTP) and is sent.
 
 ## Run it on paper
 ```bash

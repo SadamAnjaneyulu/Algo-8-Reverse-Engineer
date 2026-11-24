@@ -1,0 +1,15 @@
+task,model,n,exact,within1,mae,rho,rel_mae_vs_best_baseline,ci_lo,ci_hi
+solo sells: lots per cell given a sale,baseline: class median (other cycles),2103,0.514,0.7114,1.4888,,,,
+solo sells: lots per cell given a sale,baseline: previous event of the same cycle and right,2103,0.3538,0.6215,1.874,0.1441,,,
+solo sells: lots per cell given a sale,baseline: always 1 lot,2103,0.514,0.7114,1.4888,,,,
+solo sells: lots per cell given a sale,LOCO boosting: causal (before the minute),2103,0.4056,0.7722,1.2045,0.4649,-0.191,-0.2175,-0.1658
+solo sells: lots per cell given a sale,LOCO boosting: causal + same-minute buy-backs,2103,0.4146,0.7708,1.194,0.4836,-0.198,-0.2308,-0.1643
+solo sells: lots per cell given a sale,LOCO boosting: ladder depth only (gap_fav),2103,0.1888,0.7527,1.5592,0.026,0.0473,-0.0106,0.0989
+solo sells: lots per cell given a sale,"placebo (training targets shuffled), ladder depth only (gap_fav)",2103,0.1973,0.806,1.5169,,0.0188,,
+buy-back events: lots per cell given a buy-back,baseline: class median (other cycles),1964,0.194,0.7327,2.221,,,,
+buy-back events: lots per cell given a buy-back,baseline: previous event of the same cycle and right,1964,0.2887,0.556,2.7602,0.2178,,,
+buy-back events: lots per cell given a buy-back,baseline: always 1 lot,1964,0.4109,0.6049,2.3992,,,,
+buy-back events: lots per cell given a buy-back,LOCO boosting: causal book/market (before the minute),1964,0.2286,0.6675,1.9735,0.4436,-0.1114,-0.1451,-0.0757
+buy-back events: lots per cell given a buy-back,LOCO boosting: plus bar of the minute (crossing counts),1964,0.2531,0.6701,1.9033,0.496,-0.1431,-0.1732,-0.1048
+buy-back events: lots per cell given a buy-back,LOCO boosting: only crossing count n_cross14,1964,0.1792,0.6848,2.1436,0.267,-0.0348,-0.0548,-0.0107
+buy-back events: lots per cell given a buy-back,"placebo (training targets shuffled), only crossing count n_cross14",1964,0.1843,0.6869,2.2307,0.0796,0.0044,,

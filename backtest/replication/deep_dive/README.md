@@ -97,3 +97,5 @@ Live-style D-1 engine (`/d1_strategy/d1_algo`) replayed second by second on the 
 D0 counter-sell AUC gate (plan `D0_CAUC_PLAN.md`, report `D0_CAUC.md`): `bl_d0c_auc.py` (~2 min) → `bl_d0c_expl.py` (~3 min) → `make_d0c_report.py`.
 D0 solo selling after counter-sells: strangle timetable, replacement stream (plan `D0_REPL_PLAN.md`, report `D0_REPL.md`): `bl_d0e_repl.py` → `bl_d0e_more.py` → `bl_d0e_clock.py` → `bl_d0e_strangle.py` → `bl_d0e_final.py` → `make_d0e_report.py` (~15 min in total).
 D0 selling, every type, on unseen cycles (plan `D0_FULL_AUC_PLAN.md`, report `D0_FULL_AUC.md`): `bl_d0f_panel.py` → `OMP_NUM_THREADS=1 bl_d0f_auc.py` (~6 min) → `bl_d0f_abl.py` → `make_d0f_report.py`.
+
+D0 quantity: order execution, lots per event, position management (plan `D0_QTY_PLAN.md`, report `D0_QTY.md`): `bl_d0u_exec.py` → `bl_d0u_size.py` (~2 min) → `bl_d0u_inv.py` → `make_d0u_report.py`.

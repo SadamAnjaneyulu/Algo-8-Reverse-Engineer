@@ -49,7 +49,7 @@ class D1Config:
     lump_ratio: float = 0.827
     lump_sigma_mult: float = 2.2
     # ---- execution
-    limit_buffer_pct: float = 1.0                  # marketable limit: LTP -/+ this percent
+    limit_buffer_pct: float = 15.0                 # marketable limit: LTP -/+ this percent (the real system sends limit = LTP x (1 +/- 0.15); D0_QTY.md part A2)
     # ---- risk (see risk.py)
     max_short_lots_per_right: int = 400
     max_orders_per_minute: int = 40
