@@ -882,3 +882,15 @@ def test_bt3_combined_backtest_pipeline_and_results():
         d = pd.read_csv(f'{R}/{s}_B-V2_stress.csv'); assert d['slippage x3'].mean() < d.base.mean() and d['costs x2'].mean() < d.base.mean() and d['slippage x6'].mean() < d['slippage x3'].mean() and d.gross.mean() > d.base.mean()
     o = C[('OOS', 'B-V2')].net; assert o.mean() > 0 and o.mean() / (o.std(ddof=1) / np.sqrt(len(o))) < 1.96                                                    # positive, but not significant out of sample
     for s in ('IS', 'OOS'): assert pd.read_csv(f'{R}/{s}_B-V2_cycles.csv').net.mean() > pd.read_csv(f'{R}/{s}_B-V2_HOLD_cycles.csv').net.mean()                      # the D0 module adds net value
+
+
+def test_bt3_regime_investigation():
+    R = f'{OUT}/bt3_results'; J = json.load(open(f'{R}/regime_summary.json')); ST = pd.read_csv(f'{R}/regime_stationarity.csv').set_index('series'); FM = pd.read_csv(f'{R}/regime_families.csv').set_index('family'); CE = pd.read_csv(f'{R}/regime_cells.csv')
+    assert J['cycles'] == 275 and J['weeks'] == 158 and J['families'] == 14                                                                                              # every cycle, weekly unit, the 14 pre-registered families
+    assert FM.loc['month of year', 'groups'] == 12 and FM.loc['quarter', 'groups'] == 4 and FM.loc['week of month (D0)', 'groups'] == 5                                  # the label bug (0 groups) stays fixed
+    assert ST.loc['net', 'roll26_sd_p'] > 0.05 and ST.loc['net', 'changepoint_p'] > 0.05 and abs(ST.loc['net', 'acf1']) < ST.loc['net', 'acf_band']                       # no evidence of regimes in time
+    assert FM.loc['month of year', 'family_p'] > 0.05 and FM.loc['quarter', 'family_p'] > 0.05 and FM.loc['calendar year', 'family_p'] > 0.05                            # no supported calendar family
+    sup = FM[FM.supported]; assert list(sup.index) == ['opening gap on D0 (known at the D0 open)'] and sup.p_holm.iloc[0] < 0.05                                          # the gap is the only supported family
+    c = CE[CE.family.str.startswith('opening gap')].set_index('cell'); assert c.loc['low', 'mean_net'] > c.loc['mid', 'mean_net'] > c.loc['high', 'mean_net'] and c.loc['high', 'mean_net'] < 0
+    assert abs(J['mechanism_spearman_ratio_net']) < 0.2 and J['mechanism_p'] > 0.05                                                                                      # not a plain short-premium story
+    assert 55 <= len(CE) <= 63 and J['cells'] == len(CE) and CE.q_bh.between(0, 1).all()                                                                       # about 63 cells in the plan

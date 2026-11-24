@@ -1,0 +1,15 @@
+family,groups,family_p,stat,p_holm,best_cell_q,sign_ok,supported
+month of year,12,0.382,650344698631.4965,1.0,0.0048,True,False
+quarter,4,0.327,191248117783.8314,1.0,0.0616,True,False
+calendar year,4,0.5556,116327380337.6806,1.0,0.0232,True,False
+half-year,7,0.7238,208542080151.3689,1.0,0.0072,True,False
+week of month (D0),5,0.1634,366614638058.2474,1.0,0.0129,True,False
+monthly-expiry week,2,0.8686,1692896805.1449,1.0,0.0357,True,False
+timetable regime,2,0.1472,123278891438.0409,1.0,0.0072,True,False
+weekday of D0 (within week),5,0.0502,640429781230.9462,0.6526,0.0806,True,False
+index (within week),2,0.2912,108605223108.5666,1.0,0.0414,True,False
+implied move at D-1 open (ex ante),3,0.215,169941211349.4668,1.0,0.0048,True,False
+D-1 morning range (ex ante),3,0.3528,117282674867.4119,1.0,0.0048,True,False
+opening gap on D0 (known at the D0 open),3,0.002,686424338088.758,0.028,0.0048,True,True
+realised move (ex post),3,0.305,135019028291.9263,1.0,0.0048,True,False
+realised / implied ratio (ex post),3,0.8122,23589622211.7817,1.0,0.0357,True,False
