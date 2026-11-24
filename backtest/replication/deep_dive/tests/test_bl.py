@@ -1036,3 +1036,20 @@ def test_d1_closing_time_underlying():
     c = json.load(open(f'{cs}/cas_compare.json')); assert c['XF']['recall_change'][2] < 0 and all(c[k]['flips'] == 0 for k in ('XS', 'XU', 'XSA', 'XUA'))
     f = json.load(open(f'{cs}/fixA_clean.json')); assert f['sensex_1008'][0]['XSA_stop'] is False and f['XSA_vs_XS_w1500']['precision'][2] < 0
     assert os.path.exists(f'{base}/reports/D1_CLOSING_TIME.md') and 'Correction' in open(f'{base}/reports/EXTENDED_SESSION_FIXA.md').read()
+
+
+def test_d0_clearance_and_late_trigger():
+    """D0 clearance era clock (observed 15:19 before the auction), falsified after; late-trigger: published index not it, futures-like marginal, ladder gate not resolved."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); cl = f'{base}/outputs/clr'; tr = f'{base}/outputs/trig'
+    c = json.load(open(f'{cl}/clr_summary.json')); b, a = c['before'], c['after']
+    assert b['real_share_by_359'] < 0.6 and b['real_share_by_364'] > 0.95 and b['mae_364'] < b['mae_359'] and b['flips'] == 0 and a['mae_364'] > a['mae_359'] and a['flips'] == 0
+    f = pd.read_csv(f'{cl}/clr_full.csv'); assert len(f) == 11 and (f.era_stop != f.base_stop).sum() == 0 and (f.era_gross - f.real).abs().mean() < (f.base_gross - f.real).abs().mean()
+    r = pd.read_csv(f'{cl}/real_clear_times.csv'); assert (r[r.era == 'before'].j90.between(363, 364)).all() and len(r[r.era == 'before']) == 9
+    s = json.load(open(f'{tr}/summary.json')); co = {x['underlying']: x for x in s['after']['combo']}
+    assert co['FUT']['diff_ci'][0] > 0 and co['FEED']['diff_ci'][0] < 0 < co['FEED']['diff_ci'][1] and co['OPT']['diff_ci'][0] < 0 and s['before']['combo'][0]['diff_ci'][0] > 0
+    assert s['after']['events'] == 48 and s['after']['cycles'] == 18 and s['before']['events'] == 17
+    u = pd.read_csv(f'{tr}/underlying_compare.csv'); assert len(u) == 27 and (u.p_bh < 0.1).sum() == 1
+    fu = json.load(open(f'{tr}/followup.json')); m = {x['U']: x for x in fu['dir_model_full']}; assert m['FUT']['diff_ci'][0] > 0 and m['FEED']['diff_ci'][0] < 0
+    L = pd.read_csv(f'{tr}/ladder_loco.csv').set_index(['era', 'underlying']); assert all(L.loc[('after', u), 'dF1_lo'] < 0 < L.loc[('after', u), 'dF1_hi'] for u in ('FEED', 'FUT', 'OPT')) and (L.loc[('after', 'FUT'), 'loco_precision'] > 2 * L.loc[('after', 'FUT'), 'rnd_precision'])
+    assert os.path.exists(f'{base}/reports/D0_CLEAR_AND_LATE_TRIGGER.md')

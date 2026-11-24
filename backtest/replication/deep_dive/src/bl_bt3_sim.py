@@ -108,7 +108,7 @@ def sim_d0(cyc, ver, P, book, unit, causal=True):
                 p = px(cp, k, j); fl('stop', cp, j, k, n, p if p == p else 0.0, 1, 1)
             lots = []; longs = {}; oshort = {}; stopped = True; stop_j = j; break
         jp = max(j - 1, 0); c0 = c[jp] if j > 0 else sp.open.values[0]
-        if j == 359:
+        if j == (364 if (P.get('clear_era') and cyc['d0'] < '2026-08-03') else P.get('clear_j', 359)):                                                                                 # D0 clearance minute (default 15:14; real: 15:18-15:19 before the auction, reports/D0_CLEAR_AND_LATE_TRIGGER.md)
             agg = {}
             for cp, k, e in lots: agg.setdefault((cp, k), []).append(e)
             for (cp, k), es in agg.items():
