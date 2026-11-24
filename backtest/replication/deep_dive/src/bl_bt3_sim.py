@@ -27,6 +27,11 @@ def d1_config(und, d1, vd1, variant=None):
     if v.get('d1_no_wings'): cfg.wing_premium_frac = 0.0; cfg.opening_wing_lots_per_right = 0; cfg.lump_ratio = 0.0
     if v.get('d1_no_lump'): cfg.lump_ratio = 0.0
     if v.get('shift_waves'): cfg.timetable = [t + 2220 for t in cfg.timetable]                                                 # +37 minutes
+    for k_, val_ in (v.get('d1_set') or {}).items(): setattr(cfg, k_, val_)                                                  # parameter sensitivity (PREPAPER_PLAN B2)
+    if v.get('shift_s'): cfg.timetable = [min(max(t + v['shift_s'], 1), 22000) for t in cfg.timetable]                         # timing shift in seconds
+    if v.get('random_tt') is not None:                                                                                         # random-timetable null (PREPAPER_PLAN B3c)
+        rg = np.random.default_rng(int(v['random_tt']) * 7919 + (1 if nifty else 2) + (10 if vd1 == 'B' else 0)); tt = cfg.timetable
+        if tt: cfg.timetable = sorted(int(x) for x in rg.uniform(1, max(tt), len(tt)))
     return cfg
 # ---------------- D-1: run the batch rules, replay the orders into fills, a carried book and cash
 def run_d1(cyc, cfg, unit, causal=True, flip_ladder=False):
@@ -92,7 +97,7 @@ def sim_d0(cyc, ver, P, book, unit, causal=True):
         return v
     for j in range(0, 375):
         if stopped: break
-        if mtm(j) <= -(1e18 if P.get('no_cycle_stop') else L_STOP):
+        if mtm(j) <= -(1e18 if P.get('no_cycle_stop') else P.get('L_STOP', L_STOP)):                                   # L_STOP override: parameter sensitivity (PREPAPER_PLAN B2)
             agg = {}
             for cp, k, e in lots: agg.setdefault((cp, k), []).append(e)
             for (cp, k), es in agg.items():

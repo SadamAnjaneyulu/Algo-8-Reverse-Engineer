@@ -960,3 +960,17 @@ def test_final_review_checks():
     e = pd.read_csv(f'{base}/outputs/final/final_e1_cas.csv').set_index('regime')
     assert e.loc['before CAS', 'var_ratio_hi'] < 0.8 and e.loc['after CAS (from 3 Aug 2026)', 'var_ratio_lo'] > 0.95 and e.loc['2026 before CAS (Jan - 2 Aug)', 'var_ratio'] < 0.8
     assert os.path.exists(f'{base}/reports/FINAL_ALPHA.md')
+
+
+def test_prepaper_battery():
+    """Pre-paper-trading battery (plan PREPAPER_PLAN.md, gates approved before the runs): 61 variants x 275 cycles, verified costs, gates and the regime finding."""
+    import json, glob, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); pp = f'{base}/outputs/prepaper'; s = json.load(open(f'{pp}/pp_summary.json'))
+    assert len(glob.glob(f'{pp}/var_*.csv')) == 61 and len(pd.read_csv(f'{pp}/var_full.csv')) == 275
+    full = pd.read_csv(f'{pp}/var_full.csv'); abl = pd.read_csv(f'{base}/outputs/bt3_results/ablate_full_cycles.csv'); m = full.merge(abl[['und', 'expiry', 'gross']], on=['und', 'expiry'], suffixes=('', '_abl'))
+    assert (m.gross_actual_old - m.gross_abl).abs().max() < 1e-6                                     # parameter hooks leave the frozen strategy unchanged
+    g = pd.read_csv(f'{pp}/gates.csv').set_index('gate').passed
+    assert s['verdict'] == 'NO-GO' and not g['G4 Overfitting'] and not g['G5 Noise floor'] and not g['G8 Margin-capped book'] and g['G1 Costs'] and g['G2 Execution'] and g['G3 Parameter stability'] and g['G6 Path / tail'] and g['G7 Capacity']
+    assert 2.0 < s['breakeven_mult'] < 2.6 and 0.5 < s['PBO'] < 0.7 and s['capacity_10'] > 0.95
+    er = pd.read_csv(f'{pp}/eras.csv'); assert er.iloc[-1].mean_net < 0 < er.iloc[:-1].mean_net.min()            # simulator negative only after the closing auction
+    assert os.path.exists(f'{base}/reports/PREPAPER_RESULT.md') and os.path.exists(f'{base}/reports/figures/bl_prepaper.png')
