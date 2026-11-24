@@ -1,0 +1,10 @@
+id,test,statistic,p,p_bh_10,bh_significant_10
+F1,held-out straddle (pre-auction),AUC 0.524 vs 0.502,0.6343656343656343,0.6343656343656343,False
+F1p,straddle placebo (cross-cycle permutation),AUC 0.318 vs 0.439,0.001998001998001998,0.005994005994005995,True
+PB3,hazard AUC of PP,AUC 0.539 vs 0.537,0.5034965034965035,0.5664335664335665,False
+PB4,hazard AUC of GB,AUC 0.620 vs 0.564,0.08391608391608392,0.15104895104895105,False
+F2a,side by futures direction (post),share 0.778,0.0004998750312421895,0.002249437640589853,True
+F2a_heldout,side by index direction (pre),share 0.846,0.007498125468632842,0.016870782304423897,True
+F3,side term adds to timing model (J vs T),dAUC -0.027,0.19704670770480925,0.2955700615572139,False
+PB2,close_long sells near short bursts,24/27 vs 0.20,0.0004997501249375312,0.002249437640589853,True
+PB5,any-side cover in previous 10 min,0.243 vs 0.204,0.3353323338330835,0.4311415720711073,False
