@@ -107,3 +107,5 @@ D0 burst buy-backs, other buy-back types, body-stream longs, coverage (plan `D0_
 D0 roll-out, "other" buy-backs and the opening burst (plan `D0_OPEN_ROLL_PLAN.md`, report `D0_OPEN_ROLL.md`): `bl_d0z_roll.py` (~8 min) → `bl_d0z_post.py` → `bl_d0z_open.py` → `make_d0z_report.py` (needs the `bl_d0w_*` outputs).
 
 3-year combined backtest (plan `BACKTEST3Y_PLAN.md`, pre-registered before any run): phase 0 data, `bl_bt3_data.py` (full option chains for every Complete cycle from the pinned dataset commit, ~40 s, cache in `outputs/bt3/` is git-ignored) → `outputs/bl_bt3_cycles.csv` (cycle table with status, split, unit).
+
+3-year combined backtest (plans `BACKTEST3Y_PLAN.md` + 2 addenda, result `BACKTEST3Y_RESULT.md`): `bl_bt3_data.py` (full chains, ~2 min) → `bl_bt3_split.py` → `bl_bt3_freeze.py` (before any run) → `bl_bt3_check.py` (identity vs the earlier D0 simulator) → `bl_bt3_run.py IS|OOS|LIVE_FITTED A/V1|B/V2 [hold]` → `bl_bt3_stress.py` → `bl_bt3_metrics.py` → `make_bt3_report.py`. OOS is run once after the freeze.

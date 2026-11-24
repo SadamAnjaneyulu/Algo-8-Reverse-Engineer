@@ -867,3 +867,18 @@ def test_d0z_rollout_other_and_opening_burst():
     assert a.rho > 0.85 and a.mae < 0.8 * b.mae and a.within2 > 0.85                                                          # opening long count follows the 09:16 sells
     S = pd.read_csv(f'{OUT}/bl_d0z_open_sells.csv'); assert (S[S.target == 'sells'].iloc[:-1].mae > 0.8 * S[(S.target == 'sells')].iloc[-1].mae).all()   # no candidate predicts the opening sell count
     C = pd.read_csv(f'{OUT}/bl_d0z_coverage.csv'); assert abs(C.share.sum() - 1) < 1e-3 and 0.80 < C[C.tier_after <= 2].share.sum() < 0.9
+
+
+def test_bt3_combined_backtest_pipeline_and_results():
+    R = f'{OUT}/bt3_results'; T = pd.read_csv(f'{OUT}/bl_bt3_cycles.csv'); vc = T.split3.value_counts()
+    assert vc['IS'] == 175 and vc['OOS'] == 64 and vc['LIVE_FITTED'] == 36 and vc['EMBARGO'] == 1 and T.ok.all()
+    idn = pd.read_csv(f'{OUT}/bl_bt3_identity.csv'); assert len(idn) == 49 and idn.same_lots.all() and idn.rel_pnl_diff.max() < 1e-9                                  # refactored D0 simulator == earlier simulator
+    assert json.load(open(f'{OUT}/bl_bt3_frozen.json'))['trained_on_cycles'] == 30
+    C = {(s, r): pd.read_csv(f'{R}/{s}_{r}_cycles.csv') for s in ('IS', 'OOS') for r in ('A-V1', 'B-V2')}
+    for (s, r), c in C.items(): assert c.ok.all() and c.gross_check_diff.max() < 1e-6 and len(c) == (175 if s == 'IS' else 64)
+    for r in ('A-V1', 'B-V2'): assert pd.read_csv(f'{R}/IS_{r}_cycles_LEGACY_PRICING.csv').gross.mean() > C[('IS', r)].gross.mean()                                       # the optimistic pricing was optimistic
+    assert open(f'{R}/IS_version_selection.txt').read().split('\n')[0] == 'B/V2' and C[('IS', 'B-V2')].net.mean() > C[('IS', 'A-V1')].net.mean()
+    for s in ('IS', 'OOS'):
+        d = pd.read_csv(f'{R}/{s}_B-V2_stress.csv'); assert d['slippage x3'].mean() < d.base.mean() and d['costs x2'].mean() < d.base.mean() and d['slippage x6'].mean() < d['slippage x3'].mean() and d.gross.mean() > d.base.mean()
+    o = C[('OOS', 'B-V2')].net; assert o.mean() > 0 and o.mean() / (o.std(ddof=1) / np.sqrt(len(o))) < 1.96                                                    # positive, but not significant out of sample
+    for s in ('IS', 'OOS'): assert pd.read_csv(f'{R}/{s}_B-V2_cycles.csv').net.mean() > pd.read_csv(f'{R}/{s}_B-V2_HOLD_cycles.csv').net.mean()                      # the D0 module adds net value

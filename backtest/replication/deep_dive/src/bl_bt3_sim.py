@@ -129,6 +129,7 @@ def sim_d0(cyc, ver, P, book, unit, causal=True):
         for cp in ('CE', 'PE'):
             o = 'PE' if cp == 'CE' else 'CE'; acc[cp] += P['r'] * nbb[o]; n = int(acc[cp]); acc[cp] -= n
             if n: sells.append((cp, atm(c0), n, 1))
+        if P.get('hold'): sells = []                                                                                    # diagnostic variant: no new sells on D0 (the carried D-1 book is only managed and closed)
         for cp, k, n, kind in sells:
             if int(k) not in ki: continue
             e = px(cp, k, jp); e = e if e == e else px(cp, k, j); e = e if e == e else 0.0
