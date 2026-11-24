@@ -1,0 +1,25 @@
+split,treatment,s,cycles,spearman,median_err_lakh,sum_ratio,same_sign,sim_sum_lakh,real_sum_lakh,sim_median_lakh,real_median_lakh
+OOF (cycle halves),M0 reference,1.0,30,0.8105,0.017,1.0173,0.8667,15.7762,15.5083,0.3275,-0.075
+OOF (cycle halves),M0 reference,0.5,30,0.8136,0.0163,1.196,0.8333,9.2738,7.7542,0.1649,-0.0375
+OOF (cycle halves),M0 reference,0.25,30,0.7651,0.0087,1.015,0.8333,3.9351,3.8771,-0.0139,-0.0188
+OOF (cycle halves),M0 reference,0.1,30,0.669,0.0044,1.1241,0.8,1.7432,1.5508,0.023,-0.0075
+OOF (cycle halves),A draw,1.0,30,0.8078,0.0669,0.8533,0.8333,13.233,15.5083,0.3715,-0.075
+OOF (cycle halves),A draw,0.5,30,0.7726,0.0878,0.9289,0.7667,7.2027,7.7542,0.1908,-0.0375
+OOF (cycle halves),A draw,0.25,30,0.6823,-0.0122,0.9004,0.7667,3.491,3.8771,0.1567,-0.0188
+OOF (cycle halves),A draw,0.1,30,0.6156,0.0165,0.8888,0.7667,1.3783,1.5508,0.0123,-0.0075
+OOF (cycle halves),B fixed median,1.0,30,0.8403,0.0145,0.7993,0.8333,12.3959,15.5083,0.4665,-0.075
+OOF (cycle halves),B fixed median,0.5,30,0.7798,0.0503,1.0273,0.8,7.9661,7.7542,0.2807,-0.0375
+OOF (cycle halves),B fixed median,0.25,30,0.7402,0.0086,1.0024,0.8,3.8862,3.8771,0.1494,-0.0188
+OOF (cycle halves),B fixed median,0.1,30,0.6222,0.0308,1.0444,0.7667,1.6196,1.5508,0.0803,-0.0075
+OOF (cycle halves),"A draw, oldest-first",1.0,30,0.8336,0.0255,0.7988,0.9333,12.3884,15.5083,0.407,-0.075
+OOF (cycle halves),"B fixed, oldest-first",1.0,30,0.8549,0.0119,0.7079,0.8333,10.9787,15.5083,0.3206,-0.075
+"forward A (same version, later cycles)",M0 reference,1.0,9,0.95,-0.1999,0.5085,0.8889,2.1072,4.1436,-1.238,-0.1704
+"forward A (same version, later cycles)",A draw,1.0,9,0.9667,0.0688,1.2086,0.7778,5.008,4.1436,1.6859,-0.1704
+"forward A (same version, later cycles)",B fixed median,1.0,9,0.9833,0.1762,1.4026,0.7778,5.8117,4.1436,1.3405,-0.1704
+"forward A (same version, later cycles)","A draw, oldest-first",1.0,9,0.9,-0.1016,0.6078,0.8889,2.5185,4.1436,-1.2899,-0.1704
+"forward A (same version, later cycles)","B fixed, oldest-first",1.0,9,0.95,0.0852,1.2399,0.7778,5.1376,4.1436,1.1315,-0.1704
+"forward B (train V1, test V2)",M0 reference,1.0,10,0.7818,0.1158,22.7955,0.8,8.3579,0.3666,0.0933,-0.8816
+"forward B (train V1, test V2)",A draw,1.0,10,0.9152,-0.0325,-1.1907,0.7,-0.4366,0.3666,0.0743,-0.8816
+"forward B (train V1, test V2)",B fixed median,1.0,10,0.7576,-0.0141,-2.5271,0.8,-0.9266,0.3666,-0.4471,-0.8816
+"forward B (train V1, test V2)","A draw, oldest-first",1.0,10,0.8061,-0.0592,1.2846,0.9,0.471,0.3666,-1.0613,-0.8816
+"forward B (train V1, test V2)","B fixed, oldest-first",1.0,10,0.8303,0.1469,-1.1431,0.8,-0.4191,0.3666,-0.2029,-0.8816

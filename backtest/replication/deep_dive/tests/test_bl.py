@@ -830,3 +830,14 @@ def test_d0u_quantity_execution_and_position():
     assert C['c2_best_share_within_10pct_lots'] == 1.0 and max(v for k, v in C['c2_share_within_10pct_by_group_lots'].items() if '|V2|' not in k or 'SENSEX' in k) < 0.7  # no ceiling in any group with 3+ cycles
     assert C['c2_hazard_by_near_cap']['True']['rate'] >= C['c2_hazard_by_near_cap']['False']['rate'] and C['c3_gain_inventory_on_top_of_spot_book']['hi'] < 0.02 and C['c5_mean_L_over_S'] > 0.99
     from importlib import util; import sys, os; sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', '..', 'd1_strategy')); from d1_algo import config as cf; assert cf.D1Config().limit_buffer_pct == 15.0
+
+
+def test_d0v_sizing_treatments():
+    F = pd.read_csv(f'{OUT}/bl_d0v_f1.csv'); P = pd.read_csv(f'{OUT}/bl_d0v_pnl.csv'); B = pd.read_csv(f'{OUT}/bl_d0v_book.csv'); S = pd.read_csv(f'{OUT}/bl_d0v_scale.csv'); R = json.load(open(f'{OUT}/bl_summary_d0v.json')); OOF = 'OOF (cycle halves)'
+    stored = pd.read_csv(f'{OUT}/bl_d0_fr_score.csv').set_index('split').loc[OOF, 'F1']; f = lambda t, c='F1': float(F[(F.split == OOF) & (F.treatment == t)][c].iloc[0])
+    assert abs(f('M0 reference') - stored) < 1e-3                                                        # integrity: the new simulator reproduces the stored free-run
+    assert f('A draw', 'dF1_hi') < 0 and f('A draw') < f('M0 reference') and f('B fixed median') < f('M0 reference')  # no sizing treatment beats the reference
+    cl = pd.read_csv(f'{OUT}/bl_d0v_f1_class.csv').set_index(['treatment', 'cls']); ratio = lambda t: cl.loc[(t, 'body_sell'), 'sim'] / cl.loc[(t, 'body_sell'), 'real']; assert ratio('B fixed median') < 0.7 and 0.9 < ratio('A draw') < 1.1
+    m0 = B[(B.split == OOF) & (B.treatment == 'M0 reference') & (B.s < 1)]; assert m0[['lots_ratio_body_sell', 'lots_ratio_body_buyback']].min().min() > 0.9 and m0.peak_ratio_median.min() > 0.85   # lot-identity thinning is linear in lots
+    p1 = P[(P.split == OOF) & (P.s == 1)]; assert p1.spearman.min() > R['null_hold_carried_book']['spearman'] + 0.25
+    assert S[(S.treatment == 'M0 reference') & (S.s == 0.1)].noise_per_real_size_lakh.iloc[0] > 3 * S[(S.treatment == 'M0 reference') & (S.s == 0.5)].noise_per_real_size_lakh.iloc[0]

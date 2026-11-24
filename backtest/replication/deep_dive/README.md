@@ -99,3 +99,5 @@ D0 solo selling after counter-sells: strangle timetable, replacement stream (pla
 D0 selling, every type, on unseen cycles (plan `D0_FULL_AUC_PLAN.md`, report `D0_FULL_AUC.md`): `bl_d0f_panel.py` → `OMP_NUM_THREADS=1 bl_d0f_auc.py` (~6 min) → `bl_d0f_abl.py` → `make_d0f_report.py`.
 
 D0 quantity: order execution, lots per event, position management (plan `D0_QTY_PLAN.md`, report `D0_QTY.md`): `bl_d0u_exec.py` → `bl_d0u_size.py` (~2 min) → `bl_d0u_inv.py` → `make_d0u_report.py`.
+
+D0 sizing treatments (A drawn, B fixed median, C scaled) in the free-run simulator (plan `D0_SIZING_PLAN.md`, report `D0_SIZING.md`): `OMP_NUM_THREADS=1 bl_d0v_sizing.py check` (integrity) → `bl_d0v_sizing.py run` (~1 min) → `bl_d0v_analysis.py` → `make_d0v_report.py`.

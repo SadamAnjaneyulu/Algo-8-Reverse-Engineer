@@ -1,0 +1,25 @@
+split,treatment,s,cycles,real_stop,sim_stop,both,real_only,sim_only
+OOF (cycle halves),M0 reference,1.0,30,11,11,8,3,3
+OOF (cycle halves),M0 reference,0.5,30,11,11,8,3,3
+OOF (cycle halves),M0 reference,0.25,30,11,12,9,2,3
+OOF (cycle halves),M0 reference,0.1,30,11,10,7,4,3
+OOF (cycle halves),A draw,1.0,30,11,12,10,1,2
+OOF (cycle halves),A draw,0.5,30,11,12,10,1,2
+OOF (cycle halves),A draw,0.25,30,11,10,8,3,2
+OOF (cycle halves),A draw,0.1,30,11,11,8,3,3
+OOF (cycle halves),B fixed median,1.0,30,11,11,10,1,1
+OOF (cycle halves),B fixed median,0.5,30,11,11,10,1,1
+OOF (cycle halves),B fixed median,0.25,30,11,10,9,2,1
+OOF (cycle halves),B fixed median,0.1,30,11,8,6,5,2
+OOF (cycle halves),"A draw, oldest-first",1.0,30,11,12,10,1,2
+OOF (cycle halves),"B fixed, oldest-first",1.0,30,11,11,10,1,1
+"forward A (same version, later cycles)",M0 reference,1.0,9,4,5,4,0,1
+"forward A (same version, later cycles)",A draw,1.0,9,4,4,4,0,0
+"forward A (same version, later cycles)",B fixed median,1.0,9,4,4,4,0,0
+"forward A (same version, later cycles)","A draw, oldest-first",1.0,9,4,5,4,0,1
+"forward A (same version, later cycles)","B fixed, oldest-first",1.0,9,4,4,4,0,0
+"forward B (train V1, test V2)",M0 reference,1.0,10,5,4,3,2,1
+"forward B (train V1, test V2)",A draw,1.0,10,5,4,4,1,0
+"forward B (train V1, test V2)",B fixed median,1.0,10,5,5,5,0,0
+"forward B (train V1, test V2)","A draw, oldest-first",1.0,10,5,6,4,1,2
+"forward B (train V1, test V2)","B fixed, oldest-first",1.0,10,5,5,5,0,0
