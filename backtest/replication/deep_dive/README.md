@@ -105,3 +105,5 @@ D0 sizing treatments (A drawn, B fixed median, C scaled) in the free-run simulat
 D0 burst buy-backs, other buy-back types, body-stream longs, coverage (plan `D0_BURST_LONG_PLAN.md`, report `D0_BURST_LONG.md`): `bl_d0w_panel.py` → `OMP_NUM_THREADS=1 bl_d0w_burst.py` (~12 min) → `bl_d0w_burst_placebo.py` → `bl_d0w_burstlots.py` → `bl_d0w_long.py` → `bl_d0w_extra.py` → `make_d0w_report.py`.
 
 D0 roll-out, "other" buy-backs and the opening burst (plan `D0_OPEN_ROLL_PLAN.md`, report `D0_OPEN_ROLL.md`): `bl_d0z_roll.py` (~8 min) → `bl_d0z_post.py` → `bl_d0z_open.py` → `make_d0z_report.py` (needs the `bl_d0w_*` outputs).
+
+3-year combined backtest (plan `BACKTEST3Y_PLAN.md`, pre-registered before any run): phase 0 data, `bl_bt3_data.py` (full option chains for every Complete cycle from the pinned dataset commit, ~40 s, cache in `outputs/bt3/` is git-ignored) → `outputs/bl_bt3_cycles.csv` (cycle table with status, split, unit).
