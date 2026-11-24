@@ -1,0 +1,16 @@
+subset,rule,orders,exact,within1,placebo_exact_plus15,param_median,param_q25,param_q75,lots
+all buy orders,premium target P* (Rs),939,0.2039,0.3639,0.1009,3.0,3.0,3.0,981.0
+all buy orders,fraction of ATM premium,939,0.0703,0.1692,0.0673,0.0475,0.0475,0.0475,981.0
+all buy orders,fixed OTM steps,939,0.0765,0.1193,0.0296,40.0,40.0,40.0,981.0
+opening (09:15-09:16),premium target P* (Rs),567,0.2399,0.3898,0.0829,3.0,3.0,3.0,567.0
+opening (09:15-09:16),fraction of ATM premium,567,0.1005,0.1887,0.0794,0.05,0.05,0.05,567.0
+opening (09:15-09:16),fixed OTM steps,567,0.194,0.2734,0.0829,40.0,40.0,40.0,567.0
+intraday,premium target P* (Rs),372,0.1353,0.3357,0.1232,3.0,3.0,3.0,414.0
+intraday,fraction of ATM premium,372,0.0266,0.1884,0.058,0.025,0.025,0.025,414.0
+intraday,fixed OTM steps,372,0.1111,0.3599,0.0942,4.0,4.0,4.0,414.0
+NIFTY,premium target P* (Rs),304,0.2197,0.4525,0.1574,2.75,2.75,2.75,305.0
+NIFTY,fraction of ATM premium,304,0.2066,0.4262,0.1639,0.0575,0.0575,0.0575,305.0
+NIFTY,fixed OTM steps,304,0.2131,0.2689,0.0918,40.0,40.0,40.0,305.0
+SENSEX,premium target P* (Rs),635,0.1538,0.3476,0.0917,3.25,3.25,3.25,676.0
+SENSEX,fraction of ATM premium,635,0.0888,0.2204,0.0473,0.0175,0.0175,0.0175,676.0
+SENSEX,fixed OTM steps,635,0.0459,0.1376,0.0296,4.0,4.0,4.0,676.0

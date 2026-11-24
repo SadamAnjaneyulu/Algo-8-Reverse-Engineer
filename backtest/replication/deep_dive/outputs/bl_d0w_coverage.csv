@@ -1,0 +1,32 @@
+cls,lots,share,tier_before,tier_after,note
+wing buy,9370.0,0.1874,1,1,"gap S-L / excess rule, 94-97% exact given the body orders"
+wing sell,9941.0,0.1988,1,1,"gap S-L / excess rule, 94-97% exact given the body orders"
+lump salvage,952.0,0.019,1,1,"gap S-L / excess rule, 94-97% exact given the body orders"
+stop module,3515.0,0.0703,1,1,cumulative MTM stop; liquidates the whole book
+sell: scheduled pair,2105.254,0.0421,1,1,met (causal)
+sell: strangle pair,1530.538,0.0306,1,1,met (causal)
+sell: counter-sell solo,1753.699,0.0351,2,2,met (causal)
+sell: replacement solo,1263.56,0.0253,3,3,met with same-minute information only
+sell: other solo,484.025,0.0097,3,3,met with same-minute information only
+sell: far-OTM solo,912.005,0.0182,2,2,met (causal)
+sell: extreme solo,435.113,0.0087,3,3,indicative (<150 cells)
+sell: opening solo,716.357,0.0143,3,3,indicative (<150 cells)
+sell: opening pair,225.199,0.0045,3,3,indicative (<150 cells)
+sell: re-centre pair,293.472,0.0059,3,3,met with same-minute information only
+sell: breakout pair,146.736,0.0029,3,3,indicative (<150 cells)
+sell: other pair,276.149,0.0055,4,4,not met
+sell: late solo,47.893,0.001,3,3,indicative (<150 cells)
+buy-back: stop-loss,3076.9296,0.0615,3,2,timing gate met
+buy-back: roll-out,1499.1696,0.03,3,3,timing gate not met
+buy-back: burst member,1343.1798,0.0269,4,2,timing gate met
+buy-back: clearance,2713.7471,0.0543,1,1,rule (D0_STOP_CLEAR)
+buy-back: take-profit,1015.7202,0.0203,3,2,timing gate met
+buy-back: other,1009.7664,0.0202,4,4,timing gate not met
+buy-back: partner,459.6342,0.0092,3,2,timing gate met
+buy-back: cycle-stop window,379.8531,0.0076,1,1,rule (D0_STOP_CLEAR)
+long buy: opening (<= 09:20),724.0,0.0145,4,3,timing = the opening minutes; strike and count rules not found
+long buy: intraday,340.0,0.0068,4,2,LOCO AUC 0.896; 111 positive cells; small sample
+long buy: after 15:09,152.0,0.003,4,4,not examined as a class
+long sell: clearance (>= 15:14),1246.0,0.0249,1,1,84% of longs open at 15:14 are sold; a price rule adds 0.7 points
+long sell: intraday,1250.0,0.025,3,3,"AUC 0.831, gate not met"
+hedge other + other,819.0,0.0164,4,4,not examined

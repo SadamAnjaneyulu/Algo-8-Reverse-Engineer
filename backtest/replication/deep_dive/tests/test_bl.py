@@ -841,3 +841,17 @@ def test_d0v_sizing_treatments():
     m0 = B[(B.split == OOF) & (B.treatment == 'M0 reference') & (B.s < 1)]; assert m0[['lots_ratio_body_sell', 'lots_ratio_body_buyback']].min().min() > 0.9 and m0.peak_ratio_median.min() > 0.85   # lot-identity thinning is linear in lots
     p1 = P[(P.split == OOF) & (P.s == 1)]; assert p1.spearman.min() > R['null_hold_carried_book']['spearman'] + 0.25
     assert S[(S.treatment == 'M0 reference') & (S.s == 0.1)].noise_per_real_size_lakh.iloc[0] > 3 * S[(S.treatment == 'M0 reference') & (S.s == 0.5)].noise_per_real_size_lakh.iloc[0]
+
+
+def test_d0w_burst_and_long_results():
+    G = pd.read_csv(f'{OUT}/bl_d0w_burst_gate.csv').set_index('outcome'); A = pd.read_csv(f'{OUT}/bl_d0w_burst_auc.csv'); P = pd.read_csv(f'{OUT}/bl_d0w_burst_placebo.csv').set_index('outcome')
+    b = G.loc['burst (>= 5 lots)']; assert b.auc >= 0.85 and b.lo > 0.82 and b.forward >= 0.80 and P.loc['burst (>= 5 lots)', 'placebo_auc'] < 0.65
+    z = A[A.outcome == 'burst (>= 5 lots)'].set_index('set'); assert abs(z.loc['ALL (E + lot state + clock)', 'auc_loco'] - z.loc['E existing families', 'auc_loco']) < 0.01 and z.loc['base + ITM depth only', 'auc_loco'] < 0.8   # new features add nothing
+    for t in ('stop-loss', 'take-profit', 'partner', 'burst member'): assert G.loc[t, 'auc'] >= 0.85 and G.loc[t, 'lo'] > 0.82 and P.loc[t, 'placebo_auc'] < 0.65
+    assert G.loc['roll-out', 'lo'] < 0.82 and G.loc['other', 'auc'] < 0.85
+    la = pd.read_csv(f'{OUT}/bl_d0w_burstlots_auc.csv').set_index('feature'); assert la.loc['ITM depth (steps)', 'within_cell_auc'] < 0.7 and la.loc['unrealised loss (lakh)', 'within_cell_auc'] > 0.8
+    rr = pd.read_csv(f'{OUT}/bl_d0w_burstlots_rules.csv'); assert rr.cells_exact_set.dropna().max() < 0.05                                       # no threshold rule gives the set
+    L1 = pd.read_csv(f'{OUT}/bl_d0w_long_strike.csv'); assert L1[L1.subset == 'all buy orders'].exact.max() < 0.4
+    L2 = pd.read_csv(f'{OUT}/bl_d0w_long_open.csv').set_index('candidate'); assert L2.loc['baseline: median of the other cycles of the same underlying', 'exact'] > L2.drop('baseline: median of the other cycles of the same underlying').exact.max()
+    LG = pd.read_csv(f'{OUT}/bl_d0w_long_gate.csv').set_index('outcome'); assert LG.loc['long sell (intraday)', 'gate'] == 'not met'
+    C = pd.read_csv(f'{OUT}/bl_d0w_coverage.csv'); assert abs(C.share.sum() - 1) < 1e-3 and C[C.tier_after <= 2].share.sum() < 0.9 and C[C.tier_after <= 2].share.sum() > C[C.tier_before <= 2].share.sum() + 0.08

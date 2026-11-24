@@ -1,0 +1,41 @@
+outcome,set,auc_loco,lo,hi,within_cycle,forward_auc,placebo_auc,cells,positives
+any buy-back,E existing families,0.8516,0.8395,0.8632,0.846,0.8047,,14910,1964
+any buy-back,E + lot state,0.8511,0.8382,0.8619,0.8437,0.8097,,14910,1964
+any buy-back,E + clock,0.8581,0.8436,0.8732,0.8493,0.8154,,14910,1964
+any buy-back,ALL (E + lot state + clock),0.8564,0.8399,0.8739,0.8502,0.8147,0.572,14910,1964
+any buy-back,base + ITM depth only,0.7252,0.6893,0.7546,0.7235,0.6898,,14910,1964
+burst (>= 5 lots),E existing families,0.9197,0.8984,0.9324,0.8752,0.9121,,14910,388
+burst (>= 5 lots),E + lot state,0.9211,0.9065,0.9352,0.8558,0.8941,,14910,388
+burst (>= 5 lots),E + clock,0.9194,0.9042,0.9337,0.8773,0.912,,14910,388
+burst (>= 5 lots),ALL (E + lot state + clock),0.9222,0.905,0.9368,0.8651,0.8993,0.5867,14910,388
+burst (>= 5 lots),base + ITM depth only,0.7721,0.7354,0.8039,0.7606,0.7133,,14910,388
+stop-loss,E existing families,0.9271,0.9176,0.9365,0.929,0.9321,,14910,680
+stop-loss,E + lot state,0.9332,0.9229,0.9441,0.9355,0.9339,,14910,680
+stop-loss,E + clock,0.9267,0.9173,0.9379,0.9296,0.9301,,14910,680
+stop-loss,ALL (E + lot state + clock),0.9331,0.9228,0.9429,0.9357,0.9351,0.5585,14910,680
+stop-loss,base + ITM depth only,0.76,0.7313,0.7885,0.7822,0.741,,14910,680
+take-profit,E existing families,0.951,0.9244,0.9711,0.9492,0.9376,,14910,351
+take-profit,E + lot state,0.9486,0.9212,0.9675,0.9441,0.9262,,14910,351
+take-profit,E + clock,0.9503,0.9188,0.9706,0.9492,0.9369,,14910,351
+take-profit,ALL (E + lot state + clock),0.9493,0.9276,0.9677,0.9462,0.9262,0.6556,14910,351
+take-profit,base + ITM depth only,0.8705,0.8177,0.9121,0.8942,0.8373,,14910,351
+partner,E existing families,0.8967,0.8636,0.9218,0.9003,0.9261,,14910,149
+partner,E + lot state,0.8957,0.8637,0.9237,0.9007,0.9218,,14910,149
+partner,E + clock,0.9118,0.8897,0.935,0.9229,0.9575,,14910,149
+partner,ALL (E + lot state + clock),0.9078,0.8836,0.9323,0.9217,0.9538,0.4883,14910,149
+partner,base + ITM depth only,0.7732,0.7168,0.8401,0.8047,0.7922,,14910,149
+roll-out,E existing families,0.8268,0.7879,0.8479,0.8,0.7806,,14910,505
+roll-out,E + lot state,0.8208,0.7828,0.8462,0.7999,0.7958,,14910,505
+roll-out,E + clock,0.8415,0.8121,0.8655,0.8182,0.8118,,14910,505
+roll-out,ALL (E + lot state + clock),0.8392,0.8068,0.8603,0.8184,0.8214,0.4914,14910,505
+roll-out,base + ITM depth only,0.6799,0.6138,0.7664,0.7347,0.7095,,14910,505
+burst member,E existing families,0.8999,0.8791,0.9196,0.8683,0.8716,,14910,236
+burst member,E + lot state,0.9026,0.8766,0.9244,0.8651,0.8704,,14910,236
+burst member,E + clock,0.9003,0.8724,0.9204,0.8709,0.8714,,14910,236
+burst member,ALL (E + lot state + clock),0.9021,0.8763,0.9252,0.8678,0.8603,0.584,14910,236
+burst member,base + ITM depth only,0.7781,0.7252,0.8241,0.7553,0.685,,14910,236
+other,E existing families,0.7882,0.7573,0.8164,0.7774,0.7366,,14910,540
+other,E + lot state,0.7856,0.758,0.8201,0.7791,0.7331,,14910,540
+other,E + clock,0.7905,0.7568,0.8299,0.7827,0.7789,,14910,540
+other,ALL (E + lot state + clock),0.7915,0.7531,0.8295,0.7901,0.7802,0.5115,14910,540
+other,base + ITM depth only,0.6902,0.632,0.7573,0.7212,0.7185,,14910,540

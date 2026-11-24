@@ -1,0 +1,9 @@
+outcome,set,auc_loco,lo,hi,within_cycle,forward_auc,placebo_auc,cells,positives
+long buy,E existing families,0.8786,0.8203,0.9359,0.8811,0.9453,,14910,175
+long buy,E + book of shorts and longs,0.8742,0.8034,0.9418,0.8873,0.9489,,14910,175
+long buy,E + book + state of held longs,0.9268,0.8892,0.9594,0.9331,0.969,0.6441,14910,175
+long buy,base + held-long state only,0.9126,0.8648,0.9584,0.9222,0.9721,,14910,175
+long sell (intraday),E existing families,0.7604,0.7108,0.8028,0.7552,0.72,,14910,333
+long sell (intraday),E + book of shorts and longs,0.7743,0.7301,0.8111,0.7788,0.7153,,14910,333
+long sell (intraday),E + book + state of held longs,0.8311,0.7997,0.8568,0.8165,0.7894,0.5299,14910,333
+long sell (intraday),base + held-long state only,0.7724,0.7376,0.8042,0.7515,0.7752,,14910,333
