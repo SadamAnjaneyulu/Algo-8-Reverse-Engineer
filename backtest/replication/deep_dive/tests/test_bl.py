@@ -1010,3 +1010,18 @@ def test_late_d1_rule_and_corrections():
     G = pd.read_csv(f'{base}/outputs/d0x/gap_decomposition.csv'); V = pd.read_csv(f'{lt}/late_value.csv'); n = V[V.cut == 'none'].merge(G, on=['und', 'expiry'])
     assert (n.total - n.sim_d0_from_real_book).abs().max() < 1e-6
     assert os.path.exists(f'{base}/reports/LATE_D1_RULE.md') and 'Correction' in open(f'{base}/reports/RECONSTRUCTION_GAP.md').read()
+
+
+def test_extended_session_and_fixA_rescore():
+    """Extended 15:39 cache: pre-auction cycles unchanged, post-auction small change without flips; Fix A rejected on decisions; settlement neutral."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); xs = f'{base}/outputs/xs'
+    E = pd.read_csv(f'{xs}/rescore_eval.csv').set_index(['era', 'sim'])
+    assert abs(E.loc[('after', 'base'), 'sim_mean'] - (-24804.11)) < 1 and abs(E.loc[('before', 'base'), 'sim_mean'] - 101351.92) < 1
+    assert E.loc[('before', 'X'), 'sim_mean'] == E.loc[('before', 'base'), 'sim_mean'] == E.loc[('before', 'XA'), 'sim_mean']
+    f = json.load(open(f'{xs}/rescore_flips.json')); assert f['after']['X_vs_base']['flips'] == 0 and abs(f['after']['X_vs_base']['mean']) < 5000
+    assert f['after']['XA_vs_X']['flips'] == 1 and abs(f['after']['XA_vs_X']['nonflip_median']) < 1
+    d = json.load(open(f'{xs}/rescore_decisions.json')); p = d['fixA_precision_change']; r = d['fixA_recall_change']
+    assert p[0] < 0 and p[2] < 0 and r[1] < 0 < r[2] and d['stops_agree']['XA'] < d['stops_agree']['X']
+    s = pd.read_csv(f'{xs}/settlement_check.csv'); assert len(s) == 30 and s['diff'].abs().max() < 1e-6
+    assert os.path.exists(f'{base}/reports/EXTENDED_SESSION_FIXA.md')

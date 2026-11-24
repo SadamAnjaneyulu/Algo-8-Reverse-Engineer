@@ -83,7 +83,7 @@ Method: start the D0 simulator from the **real** carried book, then remove the r
 
 ## 7. Decision and next steps
 * **No rule adopted.** Strike and side: keep the engine's. Timing: nothing beat the current rule out-of-fold.
-* **Fix A is reopened as unresolved.** Its P&L verdict was one stop flip.
+* **Fix A is reopened as unresolved.** Its P&L verdict was one stop flip. *(Update: re-scored on decisions in `EXTENDED_SESSION_FIXA.md` → rejected: timing precision −0.047 [−0.092, −0.006], no recall gain, and its one flip comes from 15 late lots where the real system sold 3.)*
 * **New binding reporting rule:** every P&L comparison reports (a) the number of stop flips and their sum, and (b) the mean and median excluding flips. A rule is never accepted or rejected on flips alone.
 * Next:
   * (1) extend the option cache to 15:39, so that the 15:30–15:40 session and the post-15:30 lump buys can be simulated;

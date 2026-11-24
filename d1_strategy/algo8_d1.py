@@ -90,7 +90,8 @@ class OptionChain:
         i = self._idx.get(int(strike))
         if i is None:
             return float("nan")
-        return float(self.bars[(right, field)][i, min(max(minute, 0), MINUTES - 1)])
+        a = self.bars[(right, field)]
+        return float(a[i, min(max(minute, 0), a.shape[1] - 1)])                        # session length = bar array length (375, or 385 after the closing auction)
 
 
 @dataclass
@@ -155,7 +156,7 @@ def ladder_fires(close: np.ndarray, high: np.ndarray, low: np.ndarray, event_min
     st = cfg.strike_step * cfg.ladder_step; out: Dict[int, List[str]] = {}
     for right in ("CE", "PE"):
         evs = sorted(set(event_minutes[right])); ptr = 0; ref = None
-        for j in range(1, MINUTES):
+        for j in range(1, len(close)):
             while ptr < len(evs) and evs[ptr] < j:
                 ref = close[max(evs[ptr] - 1, 0)]; ptr += 1
             if ref is None:
@@ -202,7 +203,7 @@ class D1Strategy:
         """Generate every D-1 order from the minute bars. Spot arrays have length 375. `max_minute` lets the overnight lump fire after 15:29
         (the observed lump time can be as late as 15:35)."""
         cfg = self.cfg; K = chain.strikes; step = cfg.strike_step; c, h, l = spot_close, spot_high, spot_low
-        cj = lambda j: min(max(j, 0), MINUTES - 1)
+        n_min = len(c); cj = lambda j: min(max(j, 0), n_min - 1)                      # session length from the spot bars
         px = chain.price
         orders: List[Order] = []
         shorts: Dict[Tuple[str, float], List[Lot]] = {}

@@ -12,7 +12,7 @@ BT3 = f'{OUT}/bt3'; NT = F.NT; L_STOP = F.L_STOP
 FROZEN = json.load(open(f'{OUT}/bl_bt3_frozen.json')); W_ALL = pd.read_csv(f'{OUT}/bl_bt3_frozen_waves.csv')
 P_FROZEN = dict(W=W_ALL, k3=FROZEN['k3'], m1=tuple(FROZEN['m1']), r=FROZEN['counter_r'], ow=FROZEN['opening_longs'])
 BODY_SELL = ('scheduled_straddle', 'breakout_straddle', 'breakout_extra', 'ladder_solo')
-def load(und, expiry): return pd.read_pickle(f'{BT3}/{und}_{expiry}.pkl.gz')
+def load(und, expiry): return pd.read_pickle(f"{os.environ.get('BT3_DIR', BT3)}/{und}_{expiry}.pkl.gz")   # BT3_DIR=outputs/bt3x: session to 15:39 after the closing auction
 def versions_for(d1, d0, run):
     """run 'A/V1' or 'B/V2' for dates before the live window; observed versions inside and after it."""
     if d1 >= '2026-06-22': return ('B' if d1 >= '2026-09-16' else 'A', 'V2' if d0 >= '2026-09-16' else 'V1')
@@ -42,7 +42,7 @@ def run_d1(cyc, cfg, unit, causal=True, flip_ladder=False):
     finally: A.ladder_fires = orig_lad
     ki = {int(k): i for i, k in enumerate(K)}
     def px(cp, k, j, f='close'):
-        i = ki.get(int(k)); v = chain.bars[(cp, f)][i, min(max(j, 0), 374)] if i is not None else np.nan; return float(v) if v == v else np.nan
+        i = ki.get(int(k)); a_ = chain.bars[(cp, f)]; v = a_[i, min(max(j, 0), a_.shape[1] - 1)] if i is not None else np.nan; return float(v) if v == v else np.nan
     def pc(cp, k, j):
         p = px(cp, k, j); return p if p == p and p > 0 else (px(cp, k, j - 1) if px(cp, k, j - 1) == px(cp, k, j - 1) else 0.05)
     shorts = {}; longs = {}; fills = []; cash = 0.0
@@ -72,7 +72,7 @@ def run_d1(cyc, cfg, unit, causal=True, flip_ladder=False):
 def sim_d0(cyc, ver, P, book, unit, causal=True):
     und = cyc['und']; op = cyc['opt0']; K = op['K']; ki = {int(k): x for x, k in enumerate(K)}; sp = cyc['spot0']; h, l, c = sp.high.values.astype(float), sp.low.values.astype(float), sp.close.values.astype(float); st = ref.STEP[und]; u = float(unit)
     def px(cp, k, j, f='close'):
-        x = ki.get(int(k)); v = op[(cp, f)][x, min(max(j, 0), 374)] if x is not None else np.nan; return float(v) if v == v else np.nan
+        x = ki.get(int(k)); a_ = op[(cp, f)]; v = a_[x, min(max(j, 0), a_.shape[1] - 1)] if x is not None else np.nan; return float(v) if v == v else np.nan
     atm = lambda x: float(K[np.argmin(np.abs(K - x))])
     lots = [list(L) for L in book['lots']]; longs = dict(book['longs']); oshort = dict(book.get('oshort', {})); cash = float(book['cash']); fills = []
     W = P['W']; W = W[(W.und == und) & (W.version == ver)]; wv = {}
