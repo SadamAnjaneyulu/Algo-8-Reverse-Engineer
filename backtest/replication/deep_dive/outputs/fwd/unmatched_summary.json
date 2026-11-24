@@ -1,0 +1,46 @@
+{
+ "orders": 148,
+ "lots": 148,
+ "matched": {
+  "n": 98,
+  "lots": 98,
+  "paired_10s": 0.08163265306122448,
+  "paired_same_min": 0.08163265306122448,
+  "held": 0.7959183673469388,
+  "lighter": 0.4489795918367347,
+  "one_lot": 1.0,
+  "median_lots": 1.0
+ },
+ "unmatched": {
+  "n": 50,
+  "lots": 50,
+  "paired_10s": 0.54,
+  "paired_same_min": 0.54,
+  "held": 0.96,
+  "lighter": 0.44,
+  "one_lot": 1.0,
+  "median_lots": 1.0
+ },
+ "by_bucket": {
+  "15:15-15:19": {
+   "false": 5,
+   "true": 16
+  },
+  "15:20-15:24": {
+   "false": 10,
+   "true": 29
+  },
+  "15:25-15:29": {
+   "false": 27,
+   "true": 47
+  },
+  "15:30-15:39": {
+   "false": 8,
+   "true": 6
+  }
+ },
+ "cycles": 17,
+ "unmatched_with_partner_matched": 3,
+ "unmatched_with_partner_unmatched": 24,
+ "unmatched_no_partner": 23
+}

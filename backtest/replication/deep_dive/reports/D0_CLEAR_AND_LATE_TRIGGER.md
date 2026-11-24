@@ -3,6 +3,8 @@
 *Plan (trigger part): `D0_CLEAR_AND_LATE_TRIGGER_PLAN.md`, written before the trigger tests ran. The clearance test's criterion (decision metric first, P&L last, stop flips separate) was stated in the chat at the start of the turn and is applied here.*
 *Scripts: `src/bl_clr_test.py`, `bl_clr_full.py`, `bl_trig_table.py`, `bl_trig_test.py`, `bl_trig_followup.py`, `bl_trig_ladder.py` → `outputs/clr/`, `outputs/trig/`.*
 
+> **Unit correction (`FORWARD_TEST.md`):** "about 58% of real late sales unmatched" is the **event-level** figure (unique minute × side: recall 0.46). All 148 real late sales are single-lot orders, and at **order level 34% are unmatched** (recall 0.66). Also, strike agreement in the last 25 minutes (15:15+) is 0.31 exact / 0.67 within one step, lower than the 0.54 of the 14:15–15:40 window in `LATE_D1_RULE.md`.
+
 ## Result first
 | Question | Answer | Evidence label |
 |---|---|---|

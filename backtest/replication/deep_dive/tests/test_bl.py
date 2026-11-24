@@ -1053,3 +1053,41 @@ def test_d0_clearance_and_late_trigger():
     fu = json.load(open(f'{tr}/followup.json')); m = {x['U']: x for x in fu['dir_model_full']}; assert m['FUT']['diff_ci'][0] > 0 and m['FEED']['diff_ci'][0] < 0
     L = pd.read_csv(f'{tr}/ladder_loco.csv').set_index(['era', 'underlying']); assert all(L.loc[('after', u), 'dF1_lo'] < 0 < L.loc[('after', u), 'dF1_hi'] for u in ('FEED', 'FUT', 'OPT')) and (L.loc[('after', 'FUT'), 'loco_precision'] > 2 * L.loc[('after', 'FUT'), 'rnd_precision'])
     assert os.path.exists(f'{base}/reports/D0_CLEAR_AND_LATE_TRIGGER.md')
+
+
+def test_forward_harness_end_to_end_on_recorder_logs():
+    """Recorder logs -> evaluation harness (software validation): schema, regimes, metrics computed; frozen model hash intact; dev dry run reproduces the batch ladder exactly."""
+    import json, tempfile, hashlib, numpy as np, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); sys.path.insert(0, f'{base}/src'); sys.path.insert(0, f'{base}/../../../d1_strategy')
+    from d1_algo.shadow import ShadowRecorder, LateRuleConfig, black_price
+    import bl_fwd_eval as FE
+    model = json.load(open(f'{base}/outputs/fwd/frozen_model.json')); m2 = {k: v for k, v in model.items() if k != 'sha256_of_above'}
+    assert hashlib.sha256(json.dumps(m2, indent=1, sort_keys=True).encode()).hexdigest() == model['sha256_of_above'] and model['features'] == ['FUT_ext5', 'FUT_mv1', 'clock']
+    T0 = 555 * 60.0
+    with tempfile.TemporaryDirectory() as d:
+        for cyc, seed in (('NIFTY', 1), ('SENSEX', 2)):
+            rg = np.random.default_rng(seed); K = np.arange(21000.0, 23001.0, 50.0 if cyc == 'NIFTY' else 100.0); rec = ShadowRecorder(d, cyc, '2026-11-24', 75.0, 50.0 if cyc == 'NIFTY' else 100.0, T0 + 86400 + 6 * 3600)
+            F = 22000.0; pos = {('CE', 22100.0): -3, ('PE', 21900.0): -5}
+            for sec in range(330 * 60, 386 * 60, 5):
+                F += rg.normal(0, 3.0); ts = T0 + sec; Tt = (T0 + 86400 + 6 * 3600 - ts) / (365 * 86400); ltp = (lambda Fv, Tv: (lambda r, k: black_price(Fv, k, Tv, 0.15, r == 'CE')))(F - 4, Tt)
+                rec.on_snapshot(ts, F - 30, F, ltp, K, pos)
+                if sec % 300 == 150 and sec > 362 * 60: rec.on_real_order(ts + 1, 'CE' if (sec // 300) % 2 else 'PE', 22100.0, 1, 'sell', 20.0, 'open_short')
+            rec.close()
+        res = FE.evaluate(d, model)
+    assert set(res) == {'3Aug_6Dec'} and res['3Aug_6Dec']['decision']['orders'] > 0 and res['3Aug_6Dec']['primary']['n_cycles'] == 2
+    assert FE.regime('2026-07-30') == 'pre_3Aug' and FE.regime('2026-09-01') == '3Aug_6Dec' and FE.regime('2026-12-08') == 'from_7Dec'
+    dr = json.load(open(f'{base}/outputs/fwd/dev_dry_run.json')); assert dr['live_form_identical_to_batch'] is True
+    assert abs(dr['decision']['event_precision'] - dr['reference_from_bl_trig_ladder']['event_precision']) < 1e-9 and abs(dr['decision']['event_recall'] - dr['reference_from_bl_trig_ladder']['event_recall']) < 1e-9
+
+
+def test_forward_test_preregistration_numbers():
+    """Numbers reported in FORWARD_TEST.md: anatomy of unmatched late sales, power tables, frozen score; report and recorder present."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); fw = f'{base}/outputs/fwd'
+    u = json.load(open(f'{fw}/unmatched_summary.json')); assert u['orders'] == 148 and u['matched']['n'] == 98 and u['unmatched']['n'] == 50 and u['matched']['one_lot'] == 1.0 and u['unmatched']['one_lot'] == 1.0
+    assert u['unmatched']['paired_same_min'] > 5 * u['matched']['paired_same_min'] and abs(u['unmatched']['paired_same_min'] - 0.54) < 1e-9
+    P = pd.read_csv(f'{fw}/power_auc.csv').set_index('cycles'); assert P.loc[30, 'power_at_dev'] > 0.9 and P.loc[30, 'power_at_half'] < 0.5 and P.loc[80, 'power_at_half'] > 0.8
+    F = pd.read_csv(f'{fw}/power.csv').set_index('cycles'); assert F.loc[30, 'power_at_dev_effect'] < 0.7 and F.loc[30, 'power_at_half'] < 0.25
+    m = json.load(open(f'{fw}/frozen_model.json')); assert m['features'] == ['FUT_ext5', 'FUT_mv1', 'clock'] and m['coef'][0] > m['coef'][1] > 0 and m['dev_cycles'] == 18 and m['dev_delta_auc'] > 0.05
+    for f in ('fwd_clearance.png', 'fwd_late_raster.png', 'fwd_paths.png', 'fwd_evidence.png', 'fwd_power.png'): assert os.path.getsize(f'{fw}/{f}') > 20000
+    assert os.path.exists(f'{base}/reports/FORWARD_TEST.md') and os.path.exists(f'{base}/../../../d1_strategy/d1_algo/shadow.py')
