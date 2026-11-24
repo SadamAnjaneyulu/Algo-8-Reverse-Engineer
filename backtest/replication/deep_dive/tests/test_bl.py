@@ -983,3 +983,14 @@ def test_postcas_rebuild():
     assert d['accept'] is False and d['val_mae_new'] > d['val_mae_old']
     g1 = pd.read_csv(f'{base}/outputs/prepaper/gates.csv').passed.tolist(); g2 = pd.read_csv(f'{base}/outputs/prepaper_v2/gates.csv').passed.tolist(); assert g1 == g2 and sum(g2) == 5
     assert pd.read_csv(f'{base}/outputs/prepaper_v2/eras.csv').iloc[-1].mean_net < 0 and os.path.exists(f'{base}/reports/POSTCAS_REBUILD_RESULT.md')
+
+
+def test_reconstruction_gap_diagnosis():
+    """Reconstruction-gap diagnosis: corrected premise (complete cycles only), gap located in the overnight book, Fix A rejected."""
+    import pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); dx = f'{base}/outputs/d0x'
+    g = pd.read_csv(f'{dx}/gap_decomposition.csv'); a = g[g.era == 'after']
+    assert len(a) == 19 and a.real_total.mean() < 40000 and a.sim_d0_from_real_book.mean() > a.real_total.mean() and a.gap_d1_book.mean() > a.gap_total.mean() > 0
+    f = pd.read_csv(f'{dx}/fixA_eval.csv').set_index(['era', 'sim'])
+    assert f.loc[('after', 'fixA'), 'late_short_sim'] > f.loc[('after', 'base'), 'late_short_sim'] and f.loc[('after', 'fixA'), 'mae'] > f.loc[('after', 'base'), 'mae']
+    assert os.path.exists(f'{base}/reports/RECONSTRUCTION_GAP.md')

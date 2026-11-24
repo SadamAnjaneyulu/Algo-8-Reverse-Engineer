@@ -1,104 +1,60 @@
-"""Builds reports/D0_STOP_CLEAR.md and figures/bl_d0x_summary.png from the chunk-4 outputs (bl_d0x_*.csv, bl_d0x_mtm.pkl.gz, bl_summary_d0x1.json)."""
-import sys, os, json; sys.path.insert(0, '.')
-import numpy as np, pandas as pd, matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
-from bl_common import OUT
-RP = os.path.join(os.path.dirname(OUT), 'reports'); R = json.load(open(f'{OUT}/bl_summary_d0x1.json')); D = pd.read_pickle(f'{OUT}/bl_d0x_mtm.pkl.gz'); MT, SJ = D['MT'], D['STOPJ']
-S2 = pd.read_csv(f'{OUT}/bl_d0x_s2.csv'); OO = pd.read_csv(f'{OUT}/bl_d0x_s2_oof.csv'); S3 = pd.read_csv(f'{OUT}/bl_d0x_s3.csv'); C1 = pd.read_csv(f'{OUT}/bl_d0x_c1.csv'); C2 = pd.read_csv(f'{OUT}/bl_d0x_c2.csv'); C3 = pd.read_csv(f'{OUT}/bl_d0x_c3.csv')
-def table(df, fmt=3):
-    c = list(df.columns); s = '| ' + ' | '.join(map(str, c)) + ' |\n|' + '|'.join('---' for _ in c) + '|\n'
-    for r in df.itertuples(index=False): s += '| ' + ' | '.join(('—' if (isinstance(x, float) and x != x) else (f'{x:.{fmt}f}' if isinstance(x, float) else str(x))) for x in r) + ' |\n'
-    return s
-fig, ax = plt.subplots(1, 3, figsize=(18, 5))
-for i, js in SJ.items():
-    x = MT[i]['close'] / 1e5
-    if js is None: ax[0].plot(np.arange(359), x[:359], color='#cbd5e0', lw=.7)
-for i, js in SJ.items():
-    if js is not None: x = MT[i]['close'] / 1e5; ax[0].plot(np.arange(js + 1), x[:js + 1], color='#e53e3e', lw=1); ax[0].plot(js, x[js], 'o', color='#e53e3e', ms=4)
-ax[0].axhline(-R['s2_close_L_bounds_lakh']['nonstop_min_close'] * -1, color='gray', ls=':', lw=.8); ax[0].axhline(-1.29, color='k', ls='--', lw=.8); ax[0].set_xlabel('D0 minute (0 = 09:15)'); ax[0].set_ylabel('cycle MTM since the D-1 open (lakh ₹, minute close)')
-ax[0].set_title('Cycle MTM: stop cycles (red, to the stop) vs others (grey)', fontsize=10); ax[0].set_ylim(-3.5, 4)
-c = S2[S2.scope == 'cumulative'].pivot(index='L_lakh', columns='mark', values='F1_pm1')
-for m, col in (('close', '#2b6cb0'), ('open', '#48bb78'), ('prev_close', '#ed8936'), ('adverse_intrabar', '#9f7aea')): ax[1].plot(c.index, c[m], marker='o', label=m.replace('_', ' '), color=col)
-ax[1].set_xlabel('threshold L (lakh ₹)'); ax[1].set_ylabel('cycle-level F1 (stop minute, -1..0)'); ax[1].legend(fontsize=8); ax[1].set_title('Which mark reproduces the stop (cumulative MTM)', fontsize=10); ax[1].set_ylim(0, 1.05)
-cc = C1.set_index('minute'); cols = [k for k in cc.columns if k in ('num cover_short', 'num close_long', 'h_ close_long', 'h_ cover_short', 'v_ close_long')]
-bottom = np.zeros(len(cc))
-for k, col in zip(cols, ('#2b6cb0', '#ed8936', '#48bb78', '#9f7aea', '#e53e3e')): ax[2].bar(range(len(cc)), cc[k].values, bottom=bottom, label=k, color=col); bottom += cc[k].values
-ax[2].set_xticks(range(0, len(cc), 5)); ax[2].set_xticklabels(cc.index[::5]); ax[2].legend(fontsize=8); ax[2].set_title('Lots per minute 15:00–15:35 (all cycles)', fontsize=10)
-plt.tight_layout(); plt.savefig(os.path.join(RP, 'figures', 'bl_d0x_summary.png'), dpi=130)
-b = R['s2_close_L_bounds_lakh']; oo = OO.groupby('mark')[['TP', 'FP', 'FN']].sum(); c2 = C2.set_index(['lots', 'rule'])
-cl = lambda m, L: S2[(S2.scope == 'cumulative') & (S2.mark == m) & (S2.L_lakh == L)].iloc[0]
-txt = f"""# Algo 8 — D0 chunk 4: cycle stop and 15:14 clearance
+"""Builds reports/RECONSTRUCTION_GAP.md from outputs/d0x/* and outputs/postcas/* (entry / exit / sizing gap vs the real Algo 8, and the anti-overfitting protocol)."""
+import os, json, numpy as np, pandas as pd
+OUT = os.path.join(os.path.dirname(os.path.abspath('.')), 'outputs'); DX = f'{OUT}/d0x'; RP = os.path.join(os.path.dirname(OUT), 'reports')
+def _md(d):
+    f = lambda v: ('' if pd.isna(v) else (f'{v:,.0f}' if isinstance(v, (float, np.floating)) and abs(v) >= 100 else (f'{v:.2f}' if isinstance(v, (float, np.floating)) else str(v))))
+    return '| ' + ' | '.join(map(str, d.columns)) + ' |\n|' + '---|' * len(d.columns) + '\n' + '\n'.join('| ' + ' | '.join(f(v) for v in r) + ' |' for r in d.itertuples(index=False))
+G = pd.read_csv(f'{DX}/gap_decomposition.csv'); B = pd.read_csv(f'{DX}/book_compare.csv'); FA = pd.read_csv(f'{DX}/fixA_eval.csv'); LF = pd.read_csv(f'{DX}/late_fire_check.csv'); P = pd.read_csv(f'{OUT}/postcas/diag_cycles.csv')
+pr = P[P.src == 'real']; inc = pr[~pr.set_index(['und', 'expiry']).index.isin(G.set_index(['und', 'expiry']).index)]
+g = G.groupby('era')[['real_total', 'sim_d0_from_real_book', 'freerun', 'gap_total', 'gap_d0_logic', 'gap_d1_book']].mean(); g['cycles'] = G.groupby('era').size(); g = g.reset_index()
+cols = ['short_total', 'short_CE', 'short_PE', 'short_offset_mean', 'long_total', 'd1_cash']
+bk = pd.concat({s: B.groupby('era')[[f'{c}_{s}' for c in cols]].mean().set_axis(cols, axis=1) for s in ('real', 'sim')}).reset_index().rename(columns={'level_0': 'book'})
+lf = LF.groupby('era')[['late_sale_minutes', 'extended_fires', 'fires_after_1515', 'fires_matched', 'random_matched']].sum().reset_index(); lf['precision'] = lf.fires_matched / lf.extended_fires; lf['random precision'] = lf.random_matched / lf.extended_fires
+md = f"""# Why the simulator earns less than the real Algo 8 — entry, exit and sizing, and how to stop overfitting
 
-*Plan `D0_STOP_CLEAR_PLAN.md`, written before the tests. In-sample: D0 of the 30 cycles with both logs, {R['stop_cycles']} of them with a stop. Figure: `figures/bl_d0x_summary.png`.*
+*Exploratory diagnosis on the real log (35 cycles, Jun – Oct 2026) vs the simulator. No rule was adopted in this step. Scripts: `bl_d0x_diag.py`, `bl_d0x_book.py`, `bl_d0x_fixA.py`.*
 
-## 0. Result
-* **The cycle stop is a cumulative mark-to-market stop on the whole cycle (D-1 + D0, all modules).** It is checked on live prices within the minute.
-  * Marked at the close of the minute, a threshold of **L = 1.20 lakh** reproduces **all {R['stop_cycles']} stops** in the stop minute or the minute before, with **no false alarm** in the 19 cycles without a stop.
-  * Chosen on one half and scored on the other: {int(oo.loc['close', 'TP'])} hits, {int(oo.loc['close', 'FP'])} false alarms, {int(oo.loc['close', 'FN'])} misses. *Observed.*
-  * **The constant lies between {-b['nonstop_min_close']:.2f} and {-max(b['stop_cycles_close_at_crossing']):.2f} lakh on minute-close marks.** No cycle without a stop went below −{-b['nonstop_min_close']:.2f} lakh, and every stop cycle was at −{-max(b['stop_cycles_close_at_crossing']):.2f} lakh or worse when it stopped. The earlier work's −1.30 to −1.44 lakh is the upper part of the range minute data allow. Ticks would pin it.
-* **The stop cannot be timed from completed bars.**
-  * With the previous minute's close, it is caught {int(cl('prev_close', 1.2).hits_pm1)}/{R['stop_cycles']} times at 1.20 lakh; with the minute's open, {int(cl('open', 1.2).hits_pm1)}/{R['stop_cycles']}.
-  * Marking at the adverse intrabar extreme raises false alarms.
-  * Loss measured from the D0 open fails (F1 ≤ {S2[S2.scope == 'D0-only'].F1_pm1.max():.2f}): the stop counts the D-1 loss too.
-* **4 of the 11 stops fire before 09:16** (the gap at the open). 8 of 11 are in the first 15 minutes. The `s_` module liquidates the book in a median {S3.s_span_s.median():.0f} s; three stops took 2–5 minutes. After it, body selling stops for the day. During the liquidation, though, the body keeps selling in {int((S3.body_sell_lots_after > 0).sum())} of 11 cycles ({int(S3.body_sell_lots_after.sum())} lots, mostly inside the `s_` window).
-* **15:14 clearance: shorts open at 15:09 are bought back before the close.** All but {int(round((1 - c2.loc[('short', 'premium >= p*'), 'closed_share']) * c2.loc[('short', 'premium >= p*'), 'n_lots']))} of {int(c2.loc[('short', 'premium >= p*'), 'n_lots']):,} lots in non-stop cycles ({c2.loc[('short', 'premium >= p*'), 'closed_share']:.2%}). Almost nothing is left to expire.
-  * The big wave is at 15:14; the rest follow 15:15–15:34.
-  * The 15:14 lots are somewhat dearer: premium AUC {R['c3_auc_px_1514_vs_later']:.2f} against later buy-backs.
-* **Longs:** {c2.loc[('long', 'premium >= p*'), 'closed_share']:.0%} of long lots are sold; the rest are kept to expiry. No premium or moneyness rule beats "sell all" ({c2.loc[('long', 'premium >= p*'), 'accuracy_oof']:.0%} vs {c2.loc[('long', 'premium >= p*'), 'majority_class']:.0%}). The kept ones are the cheap ones (premium AUC {c2.loc[('long', 'premium >= p*'), 'AUC_all']:.2f}).
+## 1. The "₹56k vs ₹24.5k" premise was wrong
+* The ₹56k real expiry-day figure included **4 post-auction cycles whose real log is missing a whole day** (no D-1 fills, or no D0 fills). Their "real" results are marks, not trades: 11 Aug (+₹3.0 lakh, no D-1 fills), 15 Sep (+₹4.5 lakh, no D-1 fills), 29 Sep (+₹4.9 lakh, no D0 fills), 1 Sep (−₹1.4 lakh, stopped on D-1, no D0 fills).
+* On the **19 complete post-auction cycles**, real Algo 8 makes **₹{g.loc[g.era == 'after', 'real_total'].iloc[0]:,.0f} per cycle** (both days). The free-running simulator makes ₹{g.loc[g.era == 'after', 'freerun'].iloc[0]:,.0f}. The gap is real (₹{g.loc[g.era == 'after', 'gap_total'].iloc[0]:,.0f}), but it is half of what the incomplete data suggested.
 
-## 1. Stop: which mark and threshold (S2)
-Cycle-level F1: a hit is a predicted crossing in the real stop minute or the minute before.
+## 2. Where the gap comes from (complete cycles)
+"D0 from real book" = the simulator's expiry-day logic started from the **real** overnight book.
+{_md(g.rename(columns={'real_total': 'real (₹)', 'sim_d0_from_real_book': 'sim D0 from real book (₹)', 'freerun': 'sim free-run (₹)', 'gap_total': 'gap real − free-run', 'gap_d0_logic': 'of which D0 logic', 'gap_d1_book': 'of which overnight book'}))}
 
-**Cumulative MTM (since the D-1 open):**
+* **Expiry-day entry / exit logic is not what loses money after the auction**: given the real overnight book it earns **more** than the real system (it gives back ₹{-g.loc[g.era == 'after', 'gap_d0_logic'].iloc[0]:,.0f} of the gap).
+* **The overnight book the simulator builds on D-1 is the problem** (₹{g.loc[g.era == 'after', 'gap_d1_book'].iloc[0]:,.0f} per cycle): with the same D0 rules, a different carried book produces a very different expiry day (and a different cycle-stop path).
+* Before the auction the errors run the other way and roughly cancel.
 
-{table(S2[S2.scope == 'cumulative'].pivot(index='L_lakh', columns='mark', values='F1_pm1').reset_index(), 2)}
+## 3. How the overnight books differ (means per cycle at the D-1 close)
+{_md(bk.rename(columns={'short_total': 'short lots', 'short_CE': 'short calls', 'short_PE': 'short puts', 'short_offset_mean': 'short strike, steps OTM', 'long_total': 'long lots (wings)', 'd1_cash': 'D-1 premium cash (₹)'}))}
 
-**D0-only MTM (minus the 09:15 open mark):**
+After the auction the real book is **larger (+16 short lots), more call-heavy, placed further out of the money (1.4 vs 0.5 steps) and carries more wings**. The extra size comes from **late D-1 selling**: real short lots per cycle 14:15–14:59 = 16.6 (simulator 13.2), 15:00–15:14 = 7.2 (3.6), **15:15–15:29 = 14.4 (1.7)**, **15:30–15:40 = 6.4 (0)** — options trade until 15:40 since the auction; the simulator's breakout window ends at 15:15 and its data end at 15:29.
 
-{table(S2[S2.scope == 'D0-only'].pivot(index='L_lakh', columns='mark', values='F1_pm1').reset_index(), 2)}
+## 4. Fix tested: extend the D-1 breakout window after the auction (no fitted parameter)
+Decision-level check first (extended breakout fires vs real late sale minutes, ±1 minute):
+{_md(lf)}
 
-**Out-of-fold (mark fixed, L and scope chosen on the other half):**
+End-to-end on the complete cycles:
+{_md(FA.rename(columns={'real_mean': 'real (₹)', 'sim_mean': 'sim (₹)', 'mae': 'mean abs. error (₹)', 'carried_short_sim': 'carried short sim', 'carried_short_real': 'carried short real', 'late_short_sim': 'late shorts sim', 'late_short_real': 'late shorts real'}))}
 
-{table(OO)}
+**Rejected.** Decisions move towards the real ones (late shorts 5.3 → 11.5 vs 21.6; carried book 91 → 97 vs 107) but the P&L moves away (−₹24.8k → −₹63.1k vs +₹26.0k real). Copying **how much** the real system sells late, without copying **which strikes and sides** it sells, makes things worse. The missing rule is about **strike and side selection in the late session**, not volume.
 
-**MTM at the stop (lakh ₹, minute close)** for each stop cycle: {', '.join(f'{x:.2f}' for x in b['stop_cycles_close_at_crossing'])}. Lowest MTM of the cycles without a stop (before 15:14), most negative first: {', '.join(f"{v['close']:.2f}" for v in sorted(R['min_mtm_nonstop_lakh'].values(), key=lambda v: v['close'])[:5])} …
+## 5. Why every fix keeps overfitting — and the protocol that stops it
+**Why:** 19 complete post-auction cycles; each cycle's P&L depends on dozens of interacting decisions; any rule tuned to make those 19 P&L numbers match will fit noise. The 16 Sep – 22 Oct cycles have now been inspected cycle by cycle: they are **contaminated** as validation data.
 
-* **Correction during this chunk.** A first run let predictions fall up to 5 minutes after the real stop. That made causal marks look perfect, because the stop's own liquidation locked in the loss one minute later. Predictions are now limited to the stop minute and earlier.
-* Contracts with no D0 price at the open: {R['contracts_missing_price_share_at_open']:.1%} of positions (marked 0).
+**Protocol for every further reconstruction change (binding from now):**
+1. **Fit decisions, never P&L.** Targets are order-level: which minute sells, which side, which strike offset, how many lots, which lots are bought back and when (thousands of observations, not 19).
+2. **Teacher-forced scoring.** Each day is simulated from the **real** state at its start (real D-1 open book, real carried book for D0), so a rule is judged on its own decisions, not on compounded earlier errors.
+3. **Cross-validation by cycle.** Any constant estimated from data is estimated leave-one-cycle-out; a rule is kept only if its decision accuracy holds out-of-fold.
+4. **Complexity budget.** At most one new parameter per rule, each with a market-structure or log-level reason written down before testing.
+5. **P&L only at the end, once.** Free-run P&L fidelity is checked after decisions are frozen; it can reject a rule, never tune one.
+6. **Clean hold-out from the future.** The 35 real cycles are now development data. The next ≥ 30 real cycles (forward log) are locked as the validation set before anyone looks at them.
+7. **Ledger.** Every variant tried is recorded (`outputs/d0x/`, this report) and counted in the Deflated Sharpe / PBO of the final strategy.
 
-## 2. What the stop does (S3)
-{table(S3, 2)}
-
-* `s_` closes both sides, buying back the shorts and selling the longs. Median {S3.s_span_s.median():.0f} s; three stops took 2–5 minutes.
-* **Body sells still occur after the stop** in {int((S3.body_sell_lots_after > 0).sum())} of 11 cycles: {int(S3.body_sell_lots_after.sum())} lots, the last one at most {S3.last_body_sell_after_s.max() / 60:.0f} minutes after the stop. The earlier register noted these post-stop short fills (U8). Whether they are late fills of pending orders or new decisions is **unresolved**.
-
-## 3. Clearance (C1–C3)
-**Which open lots at 15:09 are closed later** (cycles without a stop; rules fitted on one half):
-
-{table(C2)}
-
-**15:14 against later buy-backs** (premium at the 15:13 close):
-
-{table(C3, 2)}
-
-* Shorts are bought back by the close (all but one lot). Longs are sold except the cheapest.
-* The split between the 15:14 wave and the 15:15–15:34 tail is only weakly linked to price (premium AUC {R['c3_auc_px_1514_vs_later']:.2f}; moneyness {R['c3_auc_itm_1514_vs_later']:.2f}). It looks like order pacing. *Inferred.*
-
-## 4. Kept and rejected
-| rule | result | decision | evidence |
-|---|---|---|---|
-| Cycle stop: cumulative MTM (D-1 + D0, all modules) ≤ −L, live within the minute | 11/11, no false alarm, at L = 1.20 lakh with minute-close marks; out-of-fold the same | kept | Observed |
-| Constant L | between {-b['nonstop_min_close']:.2f} and {-max(b['stop_cycles_close_at_crossing']):.2f} lakh on minute closes | bounded, not pinned | Observed |
-| Stop timed from completed bars (previous close / open) | at most {int(cl('open', 1.2).hits_pm1)}/11 | rejected (the stop is intrabar) | Observed |
-| D0-only loss | F1 ≤ {S2[S2.scope == 'D0-only'].F1_pm1.max():.2f} | rejected | Observed |
-| Clearance: buy back every short by the close | {c2.loc[('short', 'premium >= p*'), 'closed_share']:.2%} of lots | kept | Observed |
-| Clearance: sell longs except the cheapest | {c2.loc[('long', 'premium >= p*'), 'closed_share']:.0%} sold; no threshold beats "sell all" | kept as "sell all" | Observed |
-
-## 5. Caveats
-* **In-sample:** 11 stop cycles. Out-of-fold over halves.
-* **LTP MTM without costs.** Marks are minute bars, so the true intraminute trigger price is not observed.
-* **The stop decides on live prices.** A minute-bar simulator has to use the close of the minute (a small look-ahead inside the minute) or accept late stops.
-
-## Run order
-`bl_d0x_stop.py` → `make_d0x_report.py`. Outputs `outputs/bl_d0x_*`, `bl_summary_d0x1.json`.
+## 6. What to do next
+* **Late D-1 strike / side rule:** build the decision table for real late sales (minute, side, strike offset from ATM and from the last sale, book imbalance, premium) and fit it teacher-forced with leave-one-cycle-out — this is the most likely missing piece (Section 3).
+* **Extend the data cache to 15:39** (raw option bars exist) so the 15:30–15:40 session can be simulated at all.
+* **Collect the forward log** for the clean hold-out; until then no reconstruction change can be validated, and the battery verdict (NO-GO) stands.
 """
-open(os.path.join(RP, 'D0_STOP_CLEAR.md'), 'w').write(txt); print('written', len(txt))
+open(f'{RP}/RECONSTRUCTION_GAP.md', 'w').write(md); print('ok')
