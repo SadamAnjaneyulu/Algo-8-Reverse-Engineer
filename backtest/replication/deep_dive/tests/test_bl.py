@@ -907,3 +907,18 @@ def test_bt3_alpha_source_investigation():
     assert h['diff_lo'] < 0 < h['diff_hi']                                                            # strategy vs naive per rupee of premium: not distinguishable
     d = pd.read_csv(f'{out}/ablate_diffs.csv').set_index('variant'); assert d.loc['P1_flip_ladder_direction', 'net_k_hi'] < 0 and d.loc['no_cycle_stop', 'net_k_lo'] > 0
     txt = open(f'{rep}/ALPHA_SOURCE.md').read(); assert 'The answer in five lines' in txt and os.path.exists(f'{rep}/figures/bl_bt3_alpha.png')
+
+
+def test_design_thesis_knowledge_graph_and_market_tests():
+    """Design-thesis step (plan DESIGN_THESIS_PLAN.md + Addendum 1): market tests ran on all cycles, graph is consistent, headline facts hold."""
+    import json, pandas as pd
+    base = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'); th = f'{base}/outputs/thesis'
+    s = json.load(open(f'{th}/thesis_summary.json'))
+    assert all(v < 1 for v in s['var_ratio_hi'].values())                              # realised < implied variance in every segment (upper bound below 1)
+    assert s['d0_over_d1_decay'] > 3 and s['t3_d1_end'] < 0                              # D0 decays faster; index reverts after the D-1 ladder trigger
+    assert s['t6_share'] > 0.5 > s['t6_opposite'] and 0.85 < s['t5_sd_ratio'] < 1.1     # ladder re-balances delta; the clock does not cut dispersion
+    n = pd.read_csv(f'{th}/knowledge_graph_nodes.csv'); e = pd.read_csv(f'{th}/knowledge_graph_edges.csv')
+    assert n.id.is_unique and set(e.source) <= set(n.id) and set(e.target) == {f'TH{i}' for i in range(1, 7)}
+    t1 = pd.read_csv(f'{th}/thesis_t1.csv'); assert t1[['und', 'expiry']].drop_duplicates().shape[0] == 275
+    md = open(f'{base}/reports/DESIGN_THESIS.md').read(); assert 'Correction to `ALPHA_SOURCE.md`' in md and os.path.exists(f'{base}/reports/figures/bl_thesis.png')
+    assert 'trend-aligned (momentum) rule' not in open(f'{base}/reports/ALPHA_SOURCE.md').read().replace('I first called this a trend-aligned (momentum) rule', '')

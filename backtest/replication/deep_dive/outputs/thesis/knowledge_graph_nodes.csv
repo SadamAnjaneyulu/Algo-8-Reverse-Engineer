@@ -1,0 +1,33 @@
+id,layer,finding,source,evidence
+K01,context,"Client wording: ""a BTST algorithm"" that carries positions to expiry; capital ₹2 crore; 4% carry stop and 1% expiry-day stop",all lineages : risk_rule_validation/RISK_RULE_VALIDATION_REPORT.md (Info.txt),Stated by client
+K02,context,"Sibling Algo 7 trades the expiry day only (30,171 of 30,192 fills on D0); Algo 8 adds the day before and the overnight carry",skeleton-tp lineage : dte_comparison/DTE_COMPARISON_REPORT.md,Observed
+K03,context,"Cycle = D-1 builds the book, D0 manages it (D0 3.6x the lots, mostly buy-backs and re-sales)",dte_comparison; audit STR-01,Observed
+K04,entry,"First ATM straddle at 09:16 on D-1 (31/32), strike = nearest ATM to the 09:15 close (31/31)",strong-findings : STRONG_FINDINGS.md F01-F02,Strong
+K05,entry,"Protected straddles added on a ~15-minute clock (544/544 windows), common size ladder on both indices (22/22 slots)",strong-findings : F07-F13; audit SIZ-03,Strong
+K06,entry,"Later straddles re-centred near the moving ATM (97% NIFTY, 95% SENSEX within one strike)",strong-findings : F14,Strong
+K07,entry,"Additions fire after rises and falls, IV up and down, book in profit or loss; a falling opening candle still entered",strong-findings : POSITION_BUILDING_RATIONALE.md; audit ENT-05,Strong (counterexamples)
+K08,entry,"No classical index or option indicator is identifiably used (75 + 14 measures, nested chronological models vs shuffled nulls, BH-FDR)",allocation / exit-engine lineage : audit STR-03,Observed (in-sample)
+K09,entry,IV rises do not explain additions (1% of pre-expiry additions follow a 1-point IV rise),strong-findings : research/IV_THETA_HYPOTHESIS_FINDINGS.md,Observed (model IV)
+K10,risk shape,Every addition raises theta and makes vega and gamma more negative (97-98% of windows),strong-findings : F11-F12,Strong (model)
+K11,risk shape,"Opening and overnight books are theta+, vega-, gamma- (31/31)",strong-findings : F25-F26,Strong (model)
+K12,protection,Routine wing = highest OTM premium <= 2.5% of the ATM leg premium,strong-findings : F15; audit HDG-02,Strong (approximate)
+K13,protection,"Opening seed wings about 2,000 points out (SENSEX 4,000 before 16 Sep)",strong-findings : F05-F06,Strong (approximate)
+K14,protection,Every overnight book has long >= short on each right: defined risk overnight (31/31),strong-findings : F34; audit HDG-05,Strong
+K15,protection,"Protection costs money: real logs -₹8.4 lakh gross on longs; in the simulator wings, lump and hedge lower the mean",strong-findings : final_alpha_attribution; body-lifecycle : ALPHA_SOURCE.md,Observed
+K16,management,"Per-lot stop near 1.55-1.6x entry, one lot at a time (D-1); weak on D0",exit-engine lineage : audit EXT-02..05,Strong (D-1)
+K17,management,Cycle stop near ₹1.42 lakh on cumulative D-1+D0 MTM; the client 4% / 1% rules do not match behaviour,risk_rule_validation,Strong / client rule not supported
+K18,management,Momentum-following rebalancing: 68.6% of body orders add delta in the direction of the last 5-min move; no forecasting skill (corr -0.007 / +0.025),audit MGT-09,Observed
+K19,management,Exit: late closures in the 15:14 minute (9/10),strong-findings : F29,Strong
+K20,economics,"Real 32 cycles: gross +₹18.9 lakh; short calls +₹36.2 lakh, short puts -₹8.9 lakh, longs -₹8.4 lakh; model: time +₹87.6 lakh, direction -₹59.0 lakh, IV -₹19.2 lakh",strong-findings : final_alpha_attribution,Observed / model
+K21,economics,Real logs: no demonstrated alpha vs a frozen opening basket; net depends on costs and two winners; overnight phase +₹5.2 lakh gross,strong-findings : final_alpha_attribution; HEDGED_STRADDLE_BENCHMARK_FINDINGS.md,Observed
+K22,economics,"3-year simulation: OOS ₹0.56 lakh per cycle net, t = 1.28; costs take ~51% of gross","body-lifecycle : BACKTEST3Y_RESULT.md, ALPHA_SOURCE.md",Observed (simulator)
+K23,economics,Simulator: premium decay exceeds gamma loss by ~₹79k per cycle; 85% of holding P&L from short lots on D0,body-lifecycle : ALPHA_SOURCE.md,Observed (model)
+K24,economics,No seasonal or regime dependence of the weekly result,body-lifecycle : BACKTEST3Y_REGIME.md,Observed (not supported)
+K25,market,Index momentum has no skill at 15/30/60 min; volatility persistence is the only strong structure,stage2-independent-alpha : MILESTONE2_REPORT.md,Observed (in-sample)
+K26,market,"Realised / implied variance < 1 on D-1, overnight and D0 (T1)",this report,Observed (3 years)
+K27,market,"Short ATM straddle mean P&L positive in each segment, intervals include zero (T1)",this report,Weak
+K28,market,Expiry-day 15-minute decay is ~9x the D-1 rate and accelerates after 14:00 (T2),this report,Descriptive
+K29,market,"After the ladder trigger (new 60-min extreme) the index reverts, not continues (T3)",this report,Observed (short horizons)
+K30,market,The ladder sale reduces |book delta| at 74% of triggers; the opposite sale almost never (T6),this report,Observed (post-hoc)
+K31,market,Spreading sales over the 15-min clock does not lower the dispersion of a held-to-expiry carry (T5),this report,Not supported (post-hoc)
+K32,market,Short call vs short put: no reliable difference over 3 years (T4),this report,Not supported

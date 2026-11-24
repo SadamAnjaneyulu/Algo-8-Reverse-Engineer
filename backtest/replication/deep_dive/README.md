@@ -113,3 +113,5 @@ D0 roll-out, "other" buy-backs and the opening burst (plan `D0_OPEN_ROLL_PLAN.md
 Seasonality / regime investigation of the 3-year backtest (plan `BACKTEST3Y_REGIME_PLAN.md`, report `BACKTEST3Y_REGIME.md`; exploratory): `bl_bt3_run.py LIVE_FITTED A/V1 hold` (diagnostic) → `bl_bt3_regime.py` (~5 min) → `make_regime_report.py`.
 
 Alpha-source investigation (plan `ALPHA_SOURCE_PLAN.md`, report `ALPHA_SOURCE.md`; exploratory): `bl_bt3_ablate.py` (18 variants incl. 2 placebos, ~25 min) → `bl_bt3_ablate_analysis.py` → `bl_bt3_greeks.py trading|calendar` (Greek decomposition) → `bl_bt3_greeks_variants.py` → `bl_bt3_alpha_extra.py` (implied vs realised volatility, naive straddle) → `make_alpha_report.py`.
+
+Design thesis — the idea behind Algo 8 (plan `DESIGN_THESIS_PLAN.md` + Addendum 1, report `DESIGN_THESIS.md`; exploratory, market data only): `bl_thesis_tests.py` (T1–T4, ~15 s) → `bl_thesis_analysis.py` (bootstrap, Holm) → `bl_thesis_t56.py` (post-hoc T5–T6) → `make_thesis_report.py` (knowledge graph of all 22 branches, figure, report).
