@@ -1,0 +1,26 @@
+{
+ "weeks": 158,
+ "columns": 41,
+ "mean_pairwise_corr": 0.9662641308713366,
+ "PBO_recomputed": 0.6021756021756022,
+ "PBO_reported": 0.6,
+ "share_is_best_is_full": 0.0,
+ "top_is_best": {
+  "d1_stop_ratio -40%": 0.489,
+  "d0_stop_theta +40%": 0.137,
+  "d0_ladder_step -40%": 0.082,
+  "d1_ladder_step -40%": 0.043,
+  "cycle_stop -40%": 0.043
+ },
+ "noise_null_PBO_mean": 0.5304571354571355,
+ "noise_null_PBO_p05": 0.2853613053613054,
+ "noise_null_PBO_p95": 0.8814918414918415,
+ "observed_in_null_pctile": 0.6,
+ "sharpe_spread": {
+  "full": 0.2882298409782782,
+  "min": 0.21735740321755118,
+  "max": 0.3164021440607211,
+  "sd": 0.018474674147725124
+ },
+ "median_logit": -0.48550781578170094
+}

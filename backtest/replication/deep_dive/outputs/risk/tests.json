@@ -1,0 +1,330 @@
+{
+ "orders_post_1515": {
+  "h1": {
+   "n_orders": 148,
+   "n_cycles": 17,
+   "observed": 0.40540540540540543,
+   "expected_under_independent_side": 0.4211711711711712,
+   "excess": -0.015765765765765764,
+   "ci": [
+    -0.04666666666666667,
+    1.2452072083726606e-17
+   ],
+   "p": 0.4915,
+   "cycles_with_ge3": 15,
+   "cycles_positive": 2
+  },
+  "h2": {
+   "n_orders": 148,
+   "n_cycles": 17,
+   "observed": 0.36486486486486486,
+   "expected_under_independent_side": 0.3813813813813814,
+   "excess": -0.01651651651651652,
+   "ci": [
+    -0.049217002237136466,
+    1.2003574101357894e-17
+   ],
+   "p": 0.4735,
+   "cycles_with_ge3": 15,
+   "cycles_positive": 2
+  },
+  "h3": {
+   "n_orders": 148,
+   "n_cycles": 17,
+   "observed": 0.32432432432432434,
+   "expected_under_independent_side": 0.33204633204633205,
+   "excess": -0.007722007722007727,
+   "ci": [
+    -0.02380952380952381,
+    5.524188072155399e-18
+   ],
+   "p": 0.1635,
+   "cycles_with_ge3": 15,
+   "cycles_positive": 2
+  },
+  "h3b": {
+   "n_orders": 148,
+   "n_cycles": 17,
+   "observed": -26880.07691148232,
+   "expected_under_independent_side": -26421.994449447466,
+   "excess": -458.0824620348537,
+   "ci": [
+    -1282.7077914150036,
+    399.310546871359
+   ],
+   "p": 0.315,
+   "cycles_with_ge3": 15,
+   "cycles_positive": 6
+  },
+  "h7": {
+   "n_orders": 148,
+   "n_cycles": 17,
+   "observed": 0.40540540540540543,
+   "expected_under_independent_side": 0.4136636636636637,
+   "excess": -0.008258258258258253,
+   "ci": [
+    -0.024774774774774768,
+    1.1290839226816026e-17
+   ],
+   "p": 0.4765,
+   "cycles_with_ge3": 15,
+   "cycles_positive": 2
+  }
+ },
+ "orders_pre_1515": {
+  "h1": {
+   "n_orders": 28,
+   "n_cycles": 7,
+   "observed": 0.75,
+   "expected_under_independent_side": 0.71875,
+   "excess": 0.031249999999999993,
+   "ci": [
+    -2.4671622769447922e-17,
+    0.07720588235294118
+   ],
+   "p": 0.6975,
+   "cycles_with_ge3": 4,
+   "cycles_positive": 1
+  },
+  "h2": {
+   "n_orders": 28,
+   "n_cycles": 7,
+   "observed": 0.6071428571428571,
+   "expected_under_independent_side": 0.6071428571428571,
+   "excess": -7.93016446160826e-18,
+   "ci": [
+    -2.5620531337503614e-17,
+    0.0
+   ],
+   "p": 0.7565,
+   "cycles_with_ge3": 4,
+   "cycles_positive": 0
+  },
+  "h3": {
+   "n_orders": 28,
+   "n_cycles": 7,
+   "observed": 0.6071428571428571,
+   "expected_under_independent_side": 0.6071428571428571,
+   "excess": -7.93016446160826e-18,
+   "ci": [
+    -2.6122894697062506e-17,
+    0.0
+   ],
+   "p": 0.718,
+   "cycles_with_ge3": 4,
+   "cycles_positive": 0
+  },
+  "h3b": {
+   "n_orders": 28,
+   "n_cycles": 7,
+   "observed": -12430.249037399963,
+   "expected_under_independent_side": -12752.62787668567,
+   "excess": 322.378839285708,
+   "ci": [
+    0.0,
+    672.6399999999926
+   ],
+   "p": 0.181,
+   "cycles_with_ge3": 4,
+   "cycles_positive": 2
+  },
+  "h7": {
+   "n_orders": 28,
+   "n_cycles": 7,
+   "observed": 0.6071428571428571,
+   "expected_under_independent_side": 0.6071428571428571,
+   "excess": -7.93016446160826e-18,
+   "ci": [
+    -2.6122894697062506e-17,
+    0.0
+   ],
+   "p": 0.715,
+   "cycles_with_ge3": 4,
+   "cycles_positive": 0
+  }
+ },
+ "orders_post_1415_1514_secondary": {
+  "h1": {
+   "n_orders": 441,
+   "n_cycles": 18,
+   "observed": 0.47619047619047616,
+   "expected_under_independent_side": 0.47146177785736937,
+   "excess": 0.0047286983331067825,
+   "ci": [
+    -0.01639755522713537,
+    0.031109188930133376
+   ],
+   "p": 0.714,
+   "cycles_with_ge3": 18,
+   "cycles_positive": 6
+  },
+  "h2": {
+   "n_orders": 441,
+   "n_cycles": 18,
+   "observed": 0.4580498866213152,
+   "expected_under_independent_side": 0.4613468358097692,
+   "excess": -0.003296949188454009,
+   "ci": [
+    -0.021611866163807492,
+    0.02151876909912766
+   ],
+   "p": 0.778,
+   "cycles_with_ge3": 18,
+   "cycles_positive": 6
+  },
+  "h3": {
+   "n_orders": 441,
+   "n_cycles": 18,
+   "observed": 0.46938775510204084,
+   "expected_under_independent_side": 0.49083292736891215,
+   "excess": -0.021445172266871305,
+   "ci": [
+    -0.043684324580541146,
+    0.003694046066927421
+   ],
+   "p": 0.0905,
+   "cycles_with_ge3": 18,
+   "cycles_positive": 4
+  },
+  "h3b": {
+   "n_orders": 441,
+   "n_cycles": 18,
+   "observed": -19791.99208125561,
+   "expected_under_independent_side": -18477.043591982932,
+   "excess": -1314.9484892726748,
+   "ci": [
+    -2346.489548791314,
+    -156.55153450777019
+   ],
+   "p": 0.0245,
+   "cycles_with_ge3": 18,
+   "cycles_positive": 8
+  },
+  "h7": {
+   "n_orders": 441,
+   "n_cycles": 18,
+   "observed": 0.4421768707482993,
+   "expected_under_independent_side": 0.46510420643644074,
+   "excess": -0.022927335688141422,
+   "ci": [
+    -0.04579266701354978,
+    0.0038245076612566024
+   ],
+   "p": 0.0875,
+   "cycles_with_ge3": 18,
+   "cycles_positive": 4
+  }
+ },
+ "hazard_meta": {
+  "cycles": 18,
+  "events": 48
+ },
+ "bh": {
+  "H4:delta_pressure": {
+   "p": 0.028971028971028972,
+   "p_bh": 0.10864135864135864
+  },
+  "H4:abs_delta": {
+   "p": 0.8951048951048951,
+   "p_bh": 0.998001998001998
+  },
+  "H4:short_gamma": {
+   "p": 0.955044955044955,
+   "p_bh": 0.998001998001998
+  },
+  "H4:vega": {
+   "p": 0.998001998001998,
+   "p_bh": 0.998001998001998
+  },
+  "H4:theta": {
+   "p": 0.987012987012987,
+   "p_bh": 0.998001998001998
+  },
+  "H4:gap_worst": {
+   "p": 0.8751248751248751,
+   "p_bh": 0.998001998001998
+  },
+  "H4:asym_pressure": {
+   "p": 0.02097902097902098,
+   "p_bh": 0.1048951048951049
+  },
+  "H4:lighter_side": {
+   "p": 0.000999000999000999,
+   "p_bh": 0.007492507492507492
+  },
+  "H4:uncovered_same": {
+   "p": 0.17382617382617382,
+   "p_bh": 0.43456543456543456
+  },
+  "H4:vwap_dev_trend": {
+   "p": 0.3836163836163836,
+   "p_bh": 0.7192807192807192
+  },
+  "H4:cum_premium": {
+   "p": 0.000999000999000999,
+   "p_bh": 0.007492507492507492
+  },
+  "H1": {
+   "p": 0.4915,
+   "p_bh": 0.73725
+  },
+  "H2": {
+   "p": 0.4735,
+   "p_bh": 0.73725
+  },
+  "H3a": {
+   "p": 0.1635,
+   "p_bh": 0.43456543456543456
+  },
+  "H3b": {
+   "p": 0.315,
+   "p_bh": 0.6749999999999999
+  }
+ },
+ "bh_with_posthoc_H7": {
+  "H4:delta_pressure": 0.11588411588411589,
+  "H4:abs_delta": 0.998001998001998,
+  "H4:short_gamma": 0.998001998001998,
+  "H4:vega": 0.998001998001998,
+  "H4:theta": 0.998001998001998,
+  "H4:gap_worst": 0.998001998001998,
+  "H4:asym_pressure": 0.11188811188811189,
+  "H4:lighter_side": 0.007992007992007992,
+  "H4:uncovered_same": 0.46353646353646355,
+  "H4:vwap_dev_trend": 0.7149090909090909,
+  "H4:cum_premium": 0.007992007992007992,
+  "H1": 0.7149090909090909,
+  "H2": 0.7149090909090909,
+  "H3a": 0.46353646353646355,
+  "H3b": 0.7149090909090909,
+  "H7(post hoc)": 0.7149090909090909
+ },
+ "H5": {
+  "abs_delta": {
+   "cycles": 24,
+   "improved": 17,
+   "p_sign": 0.06391465663909912
+  },
+  "abs_asym": {
+   "cycles": 24,
+   "improved": 14,
+   "p_sign": 0.5412561893463135
+  },
+  "gap_worst": {
+   "cycles": 24,
+   "improved": 5,
+   "p_sign": 0.006610751152038574
+  }
+ },
+ "H6": {
+  "cycles": 29,
+  "ratio_lower_at_close": 26,
+  "p_sign": 1.5236437320709229e-05,
+  "median_ratio_1415": 0.3939702472869815,
+  "median_ratio_end": 0.2326134968206158,
+  "median_ratio_nolate": 0.23261349682061586,
+  "ratio_end_lower_than_nolate": 21,
+  "near_neutral_end": 7,
+  "near_neutral_1415": 2
+ }
+}

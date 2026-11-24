@@ -1,0 +1,143 @@
+{
+ "config_version": 1,
+ "frozen": {
+  "file_sha256": {
+   "backtest/replication/deep_dive/outputs/fwd/frozen_model.json": "990e8b19d83bd4b6c82a9031f0e18de74b9bc1c4359628709e53f5a3e0695002",
+   "backtest/replication/deep_dive/reports/FORWARD_TEST.md": "ddd9fc9d54881289253586cb735d129b639f1fc5803bc709ec5e4e3f2402ea8c",
+   "backtest/replication/deep_dive/src/bl_fwd_freeze.py": "fc97bdf172abb6f93ae11f0a914cb298494bcdb1f69ba02b62503043aa77bb64",
+   "d1_strategy/d1_algo/shadow.py": "6d4b860853f88fc07b3f8223bfa79899521238b48e364739da708132017ffcf7"
+  },
+  "model_coef": [
+   0.840925622557256,
+   0.1318073693225161,
+   0.6402647712873656
+  ],
+  "model_features": [
+   "FUT_ext5",
+   "FUT_mv1",
+   "clock"
+  ],
+  "model_intercept": -3.5021861626258617,
+  "model_sha256": "7788f7394e87c04d117fdf512243386159bcecb56659c995dc495d769820d69c",
+  "rule_config": {
+   "gate_min": 5,
+   "ladder_step": 0.2,
+   "lots": 1,
+   "reference": "close before the latest REAL sale on that side",
+   "strike_rule": "premium closest to the last sale price within +-4 steps of ATM",
+   "strike_window": 4,
+   "underlying": "FUT",
+   "version": 1,
+   "window_end": 384,
+   "window_start": 360
+  },
+  "rule_sha256": "ca1306cfdd505f34cbbc4ee9470326eb96a8bab45716019d5214673e8a430e03"
+ },
+ "original_protocol": {
+  "alpha_two_sided_overall": 0.05,
+  "burn_in_cycles": 10,
+  "clock_baseline": {
+   "regime_A": "frozen development table",
+   "regime_B": "built from the 10 burn-in cycles, then frozen"
+  },
+  "confirmatory": {
+   "looks_cumulative": [
+    30,
+    60
+   ]
+  },
+  "design": "Pocock, 2 looks, nominal two-sided 0.0294 per look",
+  "freeze_date": "2026-11-25",
+  "futility": "look 1 only: primary point estimate <= 0",
+  "primary_endpoint": "stratified AUC(frozen score) - AUC(clock baseline), within (cycle, side) blocks, cluster bootstrap over cycles",
+  "regime_A": {
+   "end": "2026-12-06",
+   "start": "2026-08-03"
+  },
+  "regime_A_forward_cycles": "reported separately, never pooled with regime B",
+  "regime_B_start": "2026-12-07",
+  "window_minutes": [
+   360,
+   384
+  ]
+ },
+ "proposed_amendment": {
+  "A1_ci_level_at_each_look": {
+   "K2_level": 0.9706,
+   "K2_two_sided_nominal": 0.0294,
+   "K3_two_sided_nominal": 0.0221,
+   "rule": "Pocock-adjusted interval at every look"
+  },
+  "A2_inference_method": {
+   "check": "percentile cluster bootstrap (reported, not decisive)",
+   "primary": "linearised cluster-robust t interval"
+  },
+  "A3_regime_B_baseline": {
+   "primary": "cross-fitted clock: burn-in cycles + all other confirmatory cycles (leave-own-cycle-out)",
+   "secondary": "burn-in-only table (original protocol)"
+  },
+  "A4_burn_in_data_quality": {
+   "criteria_may_use": "data-quality metrics only, never performance",
+   "max_extension_cycles": 5,
+   "max_median_order_clock_skew_seconds": 2.0,
+   "max_missing_order_logs": 0,
+   "min_cycles_passing": 10,
+   "min_window_minutes_with_bars_per_cycle": 0.98,
+   "require_unique_order_ids": true,
+   "rule_hash_constant": true
+  },
+  "A5_sample_size": {
+   "declare": "confirmation impossible for a true effect of +0.025 or less",
+   "option_K2": {
+    "looks_cumulative": [
+     30,
+     60
+    ],
+    "nominal_two_sided": 0.0294
+   },
+   "option_K3": {
+    "looks_cumulative": [
+     30,
+     60,
+     90
+    ],
+    "nominal_two_sided": 0.0221
+   }
+  },
+  "A6_causal_secondary": {
+   "may_select_rule": false,
+   "report_with_primary": [
+    "same score with features through the previous minute",
+    "exploratory score with recorder prices up to the order second"
+   ]
+  },
+  "A7_operational": {
+   "count_missing_rows_and_lost_positives": true,
+   "dedupe_orders_by": "order_id",
+   "label_blocks": [
+    "confirmatory",
+    "exploratory"
+   ],
+   "no_primary_before_look": true,
+   "verify_frozen_hashes_first": true
+  },
+  "A8_roles": {
+   "beyond_protocol": "later",
+   "burn_in": "first 10 regime-B cycles",
+   "confirmatory": "next 30 (look 1) and next 30 (look 2)",
+   "development": "D-1 before 2026-11-25",
+   "regime_A_forward_exploratory": "2026-11-25..2026-12-06"
+  },
+  "document": "reports/VALIDATION_PROTOCOL_AMENDMENT.md",
+  "must_be_adopted_before": "2026-12-07",
+  "status": "PROPOSED_NOT_IN_FORCE"
+ },
+ "purpose": "Machine-readable validation configuration. 'original_protocol' reproduces the numbers pre-registered in reports/FORWARD_TEST.md (unchanged). 'proposed_amendment' items are NOT IN FORCE until adopted by a dated change in reports/VALIDATION_PROTOCOL_AMENDMENT.md.",
+ "roles": [
+  "development",
+  "regime_A_forward_exploratory",
+  "burn_in",
+  "confirmatory",
+  "beyond_protocol"
+ ]
+}
