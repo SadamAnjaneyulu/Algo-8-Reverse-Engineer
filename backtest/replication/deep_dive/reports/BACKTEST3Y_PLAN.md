@@ -51,3 +51,18 @@ Total trades (orders), win rate (by cycle), profit factor (by cycle), Sharpe rat
 * The point result is **M0, S1, both timetable runs, net of the inherited costs**, next to gross and the stress table. A headline that needs a favourable timetable run is reported as the band, not as the better end.
 * A positive result is **performance, not robustness or a deployment case**; the research states (performance → statistical quality → robustness → paper candidate) are kept apart.
 * **Not testable here:** the real broker's costs and fills, whether the 2026 system traded this way earlier, capital or margin at the real broker.
+
+## Addendum 1 — in-sample / out-of-sample division (your instruction; written before any combined run)
+This **replaces the "S0 / S1 / S2" split above.** The boundary is the one of the earlier backtest (`bt/config.py`): **in-sample = D0 up to 2025-11-17**. `bl_bt3_split.py` writes the label `split3` into `outputs/bl_bt3_cycles.csv`.
+
+| split3 | meaning | NIFTY | SENSEX | cycles | D0 range |
+|---|---|---|---|---|---|
+| **IS** | development: may be inspected and used for the choices listed below | 105 | 70 | **175** | 2023-11-09 – 2025-11-13 |
+| **OOS** | locked: after the boundary, never used for the rule fit; **run once** after the freeze | 31 | 33 | **64** | 2025-11-20 – 2026-11-12 (the 5 cycles after the live window are included) |
+| **LIVE_FITTED** | 2026-06-22 – 2026-10-22: the cycles the D-1 and D0 rules were fitted on. **In-sample for the rules, not out-of-sample**, although they are later than the boundary. Used as the reconstruction check against the real P&L | 18 | 18 | **36** | 2026-06-23 – 2026-10-22 |
+| EMBARGO | D-1 in IS, D0 after the boundary | 1 | 0 | 1 | 2025-11-18 (excluded from both) |
+
+* **What the in-sample part is for (and nothing else):** (1) debugging the pipeline and the checks V2–V3 below; (2) the **one** development choice left open: **which timetable version to use as the point line for dates before June 2026**, chosen by a rule fixed now: *the version (A/V1 or B/V2) with the higher mean net P&L per cycle on IS, both indices pooled*. The other version is still reported next to it as the band. Nothing else is tuned on IS.
+* **Primary result = OOS (64 cycles), run once with the frozen configuration and the selected timetable version.** The IS result is reported as the development result. With 64 cycles the intervals will be wide; the report will say so.
+* **If anything is changed after the OOS result is seen, OOS stops being independent and is labelled CONTAMINATED OOS.**
+* The earlier sentence "S1 pre-live hold-out is the primary result" no longer applies: the pre-live cycles are split into IS (up to 2025-11-17) and OOS (after it).

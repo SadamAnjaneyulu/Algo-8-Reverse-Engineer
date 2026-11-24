@@ -1,0 +1,26 @@
+{
+ "code_commit_before_freeze": "5f3d07caeec273a33ba23d5369e709d580970592",
+ "data_commit": "eb4097308d47ccc75078ab73ba76d33bb1c7030b",
+ "trained_on_cycles": 30,
+ "k3": {
+  "theta": 1.4,
+  "price": "high",
+  "tp": 0.1,
+  "tp_gate": 0
+ },
+ "m1": [
+  0.05,
+  60,
+  true
+ ],
+ "counter_r": 0.25,
+ "opening_longs": 20,
+ "waves": 225,
+ "cycle_stop_rs": 120000.0,
+ "waves_by_group": {
+  "NIFTY|V1": 76,
+  "NIFTY|V2": 66,
+  "SENSEX|V1": 12,
+  "SENSEX|V2": 71
+ }
+}
