@@ -1,0 +1,125 @@
+{
+ "G6-1": {
+  "desc": "handoff identity (net positions, cash), reconciliation at the D0 end",
+  "value": {
+   "OOF": {
+    "identity": "30/30",
+    "reconciled": "30/30",
+    "max_cash_diff": 5.820766091346741e-10
+   },
+   "forwardA": {
+    "identity": "9/9",
+    "reconciled": "9/9",
+    "max_cash_diff": 3.4924596548080444e-10
+   },
+   "forwardB": {
+    "identity": "10/10",
+    "reconciled": "10/10",
+    "max_cash_diff": 4.656612873077393e-10
+   }
+  },
+  "threshold": "all equal",
+  "passed": true
+ },
+ "G6-2": {
+  "desc": "no real input: runner signature, source tokens",
+  "value": [
+   "d1_cfg",
+   "d1_feed",
+   "d0_cfg",
+   "d0_market",
+   "unit"
+  ],
+  "threshold": [
+   "d1_cfg",
+   "d1_feed",
+   "d0_cfg",
+   "d0_market",
+   "unit"
+  ],
+  "passed": true
+ },
+ "G6-3": {
+  "desc": "carried contracts outside the D0 chain (rejected handoffs)",
+  "value": {
+   "OOF": 0,
+   "forwardA": 0,
+   "forwardB": 0
+  },
+  "threshold": 0,
+  "passed": true
+ },
+ "G6-4": {
+  "desc": "regression: mode T D0-C keys F1 / legacy; D-1 legacy lot-level F1",
+  "value": {
+   "modeT_keys_F1": 0.42173403103572715,
+   "modeT_legacy": 0.41419826224328593,
+   "d1_legacy": 0.6877975245953666
+  },
+  "threshold": "0.4217 / 0.4142 / 0.6878",
+  "passed": true
+ },
+ "G6-5": {
+  "desc": "determinism on rerun",
+  "value": {
+   "OOF": "30/30",
+   "forwardA": "9/9",
+   "forwardB": "10/10"
+  },
+  "threshold": "all",
+  "passed": true
+ },
+ "G6-6": {
+  "desc": "mode F D0 keys F1 >= 0.8 x mode T and >= placebo + 0.10",
+  "value": {
+   "modeF": 0.3966651623476877,
+   "modeT": 0.42173403103572715,
+   "ratio": 0.9405576338564062,
+   "placebo": 0.22431771216835705
+  },
+  "threshold": ">= 0.337 and >= 0.324",
+  "passed": true
+ },
+ "G6-7": {
+  "desc": "integrated D-1 + D0 keys F1 >= placebo + 0.10 (D-1 and D0 parts reported)",
+  "value": {
+   "both": 0.4981027364057302,
+   "placebo": 0.25508583655115924,
+   "d1_part": 0.7390813677914456,
+   "d0_part": 0.3966651623476877
+  },
+  "threshold": ">= 0.355",
+  "passed": true
+ },
+ "G6-8": {
+  "desc": "carry error at the D0 open (diagnostic, no threshold)",
+  "value": {
+   "median_l1_norm": 0.7895962732919255,
+   "p25": 0.6242271505376344,
+   "p75": 0.9847683264177041,
+   "max": 1.5588235294117647,
+   "real_shorts_median": 100.5,
+   "sim_shorts_median": 99.5,
+   "shorts_ratio_median": 0.9522556390977444
+  },
+  "threshold": "none",
+  "passed": true
+ },
+ "G6-9": {
+  "desc": "risk controls: refused orders, peak short lots per right (D-1 limit 400, D0 limit 306), peak sell decisions",
+  "value": {
+   "d1_rejected": 0,
+   "d1_peak_short": 130,
+   "d0_rejected": {
+    "OOF": 0,
+    "forwardA": 0,
+    "forwardB": 0
+   },
+   "d0_peak_short": 229,
+   "d0_peak_dec": 18
+  },
+  "threshold": "rej 0, <=400, <=306, <=90",
+  "passed": true
+ },
+ "verdict": "PASS"
+}

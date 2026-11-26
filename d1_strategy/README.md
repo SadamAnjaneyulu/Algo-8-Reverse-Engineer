@@ -59,3 +59,6 @@ Instrument (strike step, lot units, freeze quantity), the scheduled timetable (t
 
 ## Files
 `d1_algo/` (`config.py`, `models.py`, `interfaces.py`, `book.py`, `bars.py`, `risk.py`, `engine.py`, `sim.py`, `live_template.py`), `test_d1_algo.py`, `run_paper_example.py`, `example_synthetic.py`, `algo8_d1.py` (batch reference), `test_algo8_d1.py`.
+
+## Forward recording (no orders)
+`d1_algo/shadow.py` is the frozen shadow recorder. `d1_algo/shadow_state.py` adds `StateShadowRecorder`, a drop-in subclass that also writes the pre-order state used to test the late-sale hypotheses (straddle change, oriented price move, sold lots per side, distance of held shorts, MTM / profit %, FIFO exit-over-entry of closed longs). The parent logs stay byte-identical. See `backtest/replication/deep_dive/reports/FORWARD_RECORDER_FIELDS.md`.

@@ -1,0 +1,446 @@
+{
+ "R1": {
+  "loco_keys_F1_60s": 0.4278703724643253,
+  "loco_legacy_F1": 0.4239932216905901,
+  "ci": [
+   0.3910916071495967,
+   0.4621458235803651
+  ],
+  "placebo": 0.23958027092426332,
+  "half_split_OOF": 0.42173403103572715,
+  "half_split_legacy": 0.41419826224328593,
+  "cycles": 30,
+  "per_cycle": {
+   "n": 30,
+   "median": 0.41374045801526715,
+   "iqr": [
+    0.34784305911916946,
+    0.480662374672299
+   ],
+   "p10": 0.20466089561444084,
+   "min": 0.1332323996971991,
+   "max": 0.5819774718397998,
+   "macro_mean": 0.39383043587701394,
+   "below_0_5": 24,
+   "below_0_3": 6,
+   "worst_five": [
+    [
+     "NIFTY|2026-10-13",
+     0.1332323996971991
+    ],
+    [
+     "SENSEX|2026-07-16",
+     0.18738404452690166
+    ],
+    [
+     "SENSEX|2026-10-15",
+     0.1981981981981982
+    ],
+    [
+     "SENSEX|2026-09-10",
+     0.20537897310513448
+    ],
+    [
+     "SENSEX|2026-08-20",
+     0.25380710659898476
+    ]
+   ]
+  },
+  "passed": true
+ },
+ "R2": {
+  "counts": {
+   "theta": {
+    "1.4": 30
+   },
+   "take_profit": {
+    "0.1": 30
+   },
+   "ladder": {
+    "(0.05, 60, True)": 30
+   },
+   "counter_ratio": {
+    "0.25": 30
+   },
+   "opening_wings": {
+    "20": 30
+   }
+  },
+  "modal_share": {
+   "theta": 1.0,
+   "take_profit": 1.0,
+   "ladder": 1.0,
+   "counter_ratio": 1.0,
+   "opening_wings": 1.0
+  },
+  "half_splits": {
+   "OOF half 0 test": {
+    "theta": 1.4,
+    "tp": 0.1,
+    "ladder": [
+     0.05,
+     60,
+     true
+    ],
+    "r": 0.25,
+    "ow": 20
+   },
+   "OOF half 1 test": {
+    "theta": 1.4,
+    "tp": 0.1,
+    "ladder": [
+     0.1,
+     60,
+     true
+    ],
+    "r": 0.5,
+    "ow": 13
+   },
+   "forward A (same version, later cycles)": {
+    "theta": 1.4,
+    "tp": 0.1,
+    "ladder": [
+     0.05,
+     60,
+     true
+    ],
+    "r": 0.25,
+    "ow": 14
+   },
+   "forward B (train V1, test V2)": {
+    "theta": 1.4,
+    "tp": 0.1,
+    "ladder": [
+     0.05,
+     60,
+     true
+    ],
+    "r": 0.25,
+    "ow": 13
+   }
+  },
+  "passed": true
+ },
+ "R3": {
+  "d0_macro_F1": 0.385881170754843,
+  "d0_subgroups": [
+   {
+    "split": "era",
+    "value": "after",
+    "cycles": 19,
+    "macro_F1": 0.3794864044753318,
+    "median_F1": 0.3739837398373983,
+    "ratio_to_all": 0.9834281463721019
+   },
+   {
+    "split": "era",
+    "value": "before",
+    "cycles": 11,
+    "macro_F1": 0.3969266761467262,
+    "median_F1": 0.4218455743879473,
+    "ratio_to_all": 1.0286241108118246
+   },
+   {
+    "split": "und",
+    "value": "NIFTY",
+    "cycles": 13,
+    "macro_F1": 0.3921854658831254,
+    "median_F1": 0.4274809160305343,
+    "ratio_to_all": 1.0163374002311392
+   },
+   {
+    "split": "und",
+    "value": "SENSEX",
+    "cycles": 17,
+    "macro_F1": 0.3810602391861566,
+    "median_F1": 0.3739837398373983,
+    "ratio_to_all": 0.987506693940894
+   },
+   {
+    "split": "version",
+    "value": "V1",
+    "cycles": 20,
+    "macro_F1": 0.39519512586048067,
+    "median_F1": 0.4246632452092408,
+    "ratio_to_all": 1.024136847847274
+   },
+   {
+    "split": "version",
+    "value": "V2",
+    "cycles": 10,
+    "macro_F1": 0.36725326054356805,
+    "median_F1": 0.3606635590543058,
+    "ratio_to_all": 0.9517263043054526
+   },
+   {
+    "split": "stop",
+    "value": "False",
+    "cycles": 19,
+    "macro_F1": 0.44137520749988657,
+    "median_F1": 0.46012832263978,
+    "ratio_to_all": 1.1438112065340962
+   },
+   {
+    "split": "stop",
+    "value": "True",
+    "cycles": 11,
+    "macro_F1": 0.290027834558859,
+    "median_F1": 0.2948960302457467,
+    "ratio_to_all": 0.7515988250774711
+   }
+  ],
+  "d1_macro_F1": 0.7430444097998654,
+  "d1_subgroups": [
+   {
+    "split": "era",
+    "value": "after",
+    "cycles": 21,
+    "macro_F1": 0.732633745344911,
+    "ratio_to_all": 0.9859891759931839
+   },
+   {
+    "split": "era",
+    "value": "before",
+    "cycles": 11,
+    "macro_F1": 0.7629193146684148,
+    "ratio_to_all": 1.0267479367402852
+   },
+   {
+    "split": "und",
+    "value": "NIFTY",
+    "cycles": 15,
+    "macro_F1": 0.7487450795064503,
+    "ratio_to_all": 1.007672044404614
+   },
+   {
+    "split": "und",
+    "value": "SENSEX",
+    "cycles": 17,
+    "macro_F1": 0.7380144071175847,
+    "ratio_to_all": 0.9932305490547523
+   },
+   {
+    "split": "version",
+    "value": "V1",
+    "cycles": 21,
+    "macro_F1": 0.7550378801201847,
+    "ratio_to_all": 1.0161409872171028
+   },
+   {
+    "split": "version",
+    "value": "V2",
+    "cycles": 11,
+    "macro_F1": 0.7201477846428925,
+    "ratio_to_all": 0.9691853880400769
+   },
+   {
+    "split": "stop",
+    "value": "False",
+    "cycles": 31,
+    "macro_F1": 0.7430817899235388,
+    "ratio_to_all": 1.000050306715427
+   },
+   {
+    "split": "stop",
+    "value": "True",
+    "cycles": 1,
+    "macro_F1": 0.7418856259659969,
+    "ratio_to_all": 0.9984404918217734
+   }
+  ],
+  "flagged_d0": [],
+  "flagged_d1": [],
+  "passed": true
+ },
+ "R4": {
+  "f1_by_shift_s": {
+   "-120": 0.2372789606640202,
+   "-60": 0.29944063514976543,
+   "0": 0.42173403103572715,
+   "60": 0.4345904005774089,
+   "120": 0.3173042223024179
+  },
+  "ratio_plus60": 1.0304845438014762,
+  "passed": true
+ },
+ "R5": {
+  "tests": [
+   {
+    "engine": "D0",
+    "cid": 0,
+    "m": 100,
+    "identical": true,
+    "events": 189
+   },
+   {
+    "engine": "D0",
+    "cid": 0,
+    "m": 200,
+    "identical": true,
+    "events": 317
+   },
+   {
+    "engine": "D0",
+    "cid": 0,
+    "m": 300,
+    "identical": true,
+    "events": 317
+   },
+   {
+    "engine": "D0",
+    "cid": 2,
+    "m": 100,
+    "identical": true,
+    "events": 24
+   },
+   {
+    "engine": "D0",
+    "cid": 2,
+    "m": 200,
+    "identical": true,
+    "events": 24
+   },
+   {
+    "engine": "D0",
+    "cid": 2,
+    "m": 300,
+    "identical": true,
+    "events": 24
+   },
+   {
+    "engine": "D0",
+    "cid": 4,
+    "m": 100,
+    "identical": true,
+    "events": 271
+   },
+   {
+    "engine": "D0",
+    "cid": 4,
+    "m": 200,
+    "identical": true,
+    "events": 423
+   },
+   {
+    "engine": "D0",
+    "cid": 4,
+    "m": 300,
+    "identical": true,
+    "events": 673
+   },
+   {
+    "engine": "D0",
+    "cid": 6,
+    "m": 100,
+    "identical": true,
+    "events": 26
+   },
+   {
+    "engine": "D0",
+    "cid": 6,
+    "m": 200,
+    "identical": true,
+    "events": 26
+   },
+   {
+    "engine": "D0",
+    "cid": 6,
+    "m": 300,
+    "identical": true,
+    "events": 26
+   },
+   {
+    "engine": "D1",
+    "cid": 3,
+    "m": 100,
+    "identical": true,
+    "events": 73
+   },
+   {
+    "engine": "D1",
+    "cid": 3,
+    "m": 200,
+    "identical": true,
+    "events": 135
+   },
+   {
+    "engine": "D1",
+    "cid": 3,
+    "m": 300,
+    "identical": true,
+    "events": 227
+   },
+   {
+    "engine": "D1",
+    "cid": 10,
+    "m": 100,
+    "identical": true,
+    "events": 79
+   },
+   {
+    "engine": "D1",
+    "cid": 10,
+    "m": 200,
+    "identical": true,
+    "events": 144
+   },
+   {
+    "engine": "D1",
+    "cid": 10,
+    "m": 300,
+    "identical": true,
+    "events": 213
+   }
+  ],
+  "passed": true
+ },
+ "R6": {
+  "disjoint": {
+   "OOF half 0 test": true,
+   "OOF half 1 test": true,
+   "forward A (same version, later cycles)": true,
+   "forward B (train V1, test V2)": true,
+   "LOCO": true
+  },
+  "d1_note": "D-1 B1 constants were fitted on all 32 cycles (in-sample by construction)",
+  "passed": true
+ },
+ "R7": {
+  "variants_tested_phase1": {
+   "2A solo trigger": 10,
+   "2B strike rule": 10,
+   "2C 15:00+ block": 2,
+   "2D delayed breakout sizing": 4,
+   "3A buy-back stop (K1-K6)": 6,
+   "3B/3C wings and lump": 10,
+   "5C D0 (X1, X3; +1 labelled sensitivity)": 3
+  },
+  "total": 45,
+  "note": "Counted, not deflated. Earlier D-1/D0 research chunks tested many more rules on the same cycles and are not countable."
+ },
+ "R8": {
+  "independent_validation": "none exists",
+  "datasets": [
+   {
+    "name": "32 D-1 development cycles (Jun-Oct 2026)",
+    "independent": false,
+    "use": "all D-1 rules and constants"
+   },
+   {
+    "name": "30 D0 cycles (same expiries)",
+    "independent": false,
+    "use": "D0 structure chosen on all; constants out-of-fold (halves, forward A/B, LOCO)"
+   },
+   {
+    "name": "forward A / B splits",
+    "independent": false,
+    "use": "pseudo-forward: same cycles, later or other-version subsets; structure visible"
+   },
+   {
+    "name": "post-22-Oct exports, tick/second data, decision logs",
+    "independent": null,
+    "use": "not available"
+   }
+  ]
+ }
+}

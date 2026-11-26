@@ -1,0 +1,44 @@
+{
+ "spec": "backtest/replication/deep_dive/reports/ORDER_LEVEL_SCORING_SPEC.md",
+ "version": "1.1",
+ "sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+ "frozen_on": "2026-11-25",
+ "status": "frozen; binds from the first scoring run on real data; later changes are dated amendments (spec section 10)",
+ "scorer_built": true,
+ "simulator_built": false,
+ "first_scoring_run": {
+  "date": "2026-11-25T13:30:38.887828Z",
+  "day": "D-1",
+  "mode": "F",
+  "t_equals_f_for_d1": true,
+  "evidence_label": "historical reproduction",
+  "diagnostic_only": true,
+  "record": "backtest/replication/deep_dive/outputs/scoring/d1_F/run_record.json",
+  "report": "backtest/replication/deep_dive/reports/D1_ORDER_LEVEL_FIRST_RUN.md",
+  "spec_sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+  "note": "the first execution had a class-table defect (F1 1.008); fixed and repeated; archived"
+ },
+ "history": [
+  {
+   "version": "1.0",
+   "sha256": "4abd0d2202ab1884e2b3c6cdf7489a5307327f83fbbf4b79299356ff1274bea5",
+   "archived_as": "backtest/replication/deep_dive/outputs/scoring/ORDER_LEVEL_SCORING_SPEC_v1.0.md",
+   "superseded_on": "2026-11-25",
+   "reason": "user review amendments"
+  }
+ ],
+ "scorer": {
+  "file": "backtest/replication/deep_dive/src/bl_oscore.py",
+  "sha256": "c607cfc66d6c93d9d5d3e72bbf233ef1aeff0343ec1f45648f7688a992b9ebc6",
+  "tests": "backtest/replication/deep_dive/tests/test_order_scorer.py (31 tests)",
+  "legacy_bridge_gate": {
+   "passed": true,
+   "d1_published": 0.6878,
+   "d1_reproduced": 0.6878,
+   "d0_oof_published": 0.4103,
+   "d0_oof_reproduced": 0.4103
+  },
+  "mutation_checked": true,
+  "run_on_real_data": true
+ }
+}

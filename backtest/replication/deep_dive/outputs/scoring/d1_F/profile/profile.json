@@ -1,0 +1,282 @@
+{
+ "cross_class_share_of_matched": 0.040664626147791864,
+ "cross_class_pairs_with_exact_strike_and_lots": 5,
+ "missing_total": 3054,
+ "extra_total": 1874,
+ "granularity": [
+  {
+   "cls": "body_buyback",
+   "real_orders": 1324,
+   "real_mean_lots": 1.0,
+   "real_multi_lot_share": 0.0,
+   "sim_orders": 757.0,
+   "sim_mean_lots": 1.232,
+   "sim_multi_lot_share": 0.182
+  },
+  {
+   "cls": "body_sell",
+   "real_orders": 4408,
+   "real_mean_lots": 1.06,
+   "real_multi_lot_share": 0.002,
+   "sim_orders": 4091.0,
+   "sim_mean_lots": 1.0,
+   "sim_multi_lot_share": 0.0
+  },
+  {
+   "cls": "lump",
+   "real_orders": 73,
+   "real_mean_lots": 20.397,
+   "real_multi_lot_share": 0.932,
+   "sim_orders": 54.0,
+   "sim_mean_lots": 25.907,
+   "sim_multi_lot_share": 1.0
+  },
+  {
+   "cls": "not_modelled",
+   "real_orders": 178,
+   "real_mean_lots": 2.567,
+   "real_multi_lot_share": 0.152,
+   "sim_orders": NaN,
+   "sim_mean_lots": NaN,
+   "sim_multi_lot_share": NaN
+  },
+  {
+   "cls": "opening_wings",
+   "real_orders": 186,
+   "real_mean_lots": 1.0,
+   "real_multi_lot_share": 0.0,
+   "sim_orders": 62.0,
+   "sim_mean_lots": 3.0,
+   "sim_multi_lot_share": 1.0
+  },
+  {
+   "cls": "wing_buy",
+   "real_orders": 3146,
+   "real_mean_lots": 1.378,
+   "real_multi_lot_share": 0.188,
+   "sim_orders": 3270.0,
+   "sim_mean_lots": 1.21,
+   "sim_multi_lot_share": 0.146
+  },
+  {
+   "cls": "wing_sell",
+   "real_orders": 600,
+   "real_mean_lots": 1.987,
+   "real_multi_lot_share": 0.403,
+   "sim_orders": 501.0,
+   "sim_mean_lots": 1.968,
+   "sim_multi_lot_share": 0.433
+  }
+ ],
+ "late_session": {
+  "real": 931,
+  "sim": 633,
+  "real_missing": 657,
+  "sim_extra": 361,
+  "missing_by_cls": {
+   "body_buyback": 69,
+   "body_sell": 321,
+   "lump": 53,
+   "not_modelled": 20,
+   "wing_buy": 164,
+   "wing_sell": 30
+  },
+  "extra_by_role": {
+   "breakout_extra": 2,
+   "breakout_straddle": 14,
+   "ladder_solo": 217,
+   "overnight_lump": 32,
+   "protective_wing_buy": 80,
+   "protective_wing_sell": 6,
+   "stop_buyback": 10
+  },
+  "real_by_cls": {
+   "body_buyback": 106,
+   "body_sell": 440,
+   "lump": 72,
+   "not_modelled": 23,
+   "wing_buy": 242,
+   "wing_sell": 48
+  }
+ },
+ "state": {
+  "events": 6861,
+  "median_rel_error_short_lots": 0.1531942633637549,
+  "median_rel_error_long_lots": 0.16393442622950818,
+  "signed_short_bias": 3.3075353447019387,
+  "signed_long_bias": 3.4720886168197054,
+  "l1_norm_median": 0.5091743119266054,
+  "exact_S_L_share": 0.009036583588398192,
+  "by_time_block": {
+   "9": 0.75,
+   "10": 0.571,
+   "11": 0.484,
+   "12": 0.48,
+   "13": 0.469,
+   "14": 0.477,
+   "15": 0.538
+  }
+ },
+ "end_of_day_book": {
+  "cycles": 32,
+  "l1_over_gross_real_median": 0.7895962732919255,
+  "l1_over_gross_real_iqr": [
+   0.612141393442623,
+   1.0024122807017544
+  ]
+ },
+ "worst_cycle_drivers": [
+  {
+   "cyc": "SENSEX|2026-10-22",
+   "F1": 0.6621067031463749,
+   "strict": 0.3775649794801641,
+   "top_missing": {
+    "body_sell": 42,
+    "body_buyback": 29,
+    "wing_buy": 24
+   },
+   "top_extra": {
+    "ladder_solo": 58,
+    "protective_wing_buy": 37,
+    "stop_buyback": 17
+   }
+  },
+  {
+   "cyc": "NIFTY|2026-10-19",
+   "F1": 0.6691312384473198,
+   "strict": 0.5064695009242144,
+   "top_missing": {
+    "body_sell": 26,
+    "wing_buy": 20,
+    "body_buyback": 18
+   },
+   "top_extra": {
+    "ladder_solo": 30,
+    "protective_wing_buy": 23,
+    "stop_buyback": 16
+   }
+  },
+  {
+   "cyc": "SENSEX|2026-09-10",
+   "F1": 0.6822840409956076,
+   "strict": 0.4333821376281113,
+   "top_missing": {
+    "body_sell": 76,
+    "body_buyback": 41,
+    "wing_buy": 24
+   },
+   "top_extra": {
+    "protective_wing_buy": 18,
+    "ladder_solo": 17,
+    "protective_wing_sell": 6
+   }
+  },
+  {
+   "cyc": "SENSEX|2026-10-01",
+   "F1": 0.6834170854271356,
+   "strict": 0.329145728643216,
+   "top_missing": {
+    "body_sell": 47,
+    "body_buyback": 44,
+    "wing_sell": 17
+   },
+   "top_extra": {
+    "ladder_solo": 39,
+    "protective_wing_buy": 35,
+    "stop_buyback": 32
+   }
+  },
+  {
+   "cyc": "NIFTY|2026-10-06",
+   "F1": 0.6835871404399323,
+   "strict": 0.4433164128595601,
+   "top_missing": {
+    "body_buyback": 45,
+    "body_sell": 25,
+    "wing_sell": 13
+   },
+   "top_extra": {
+    "ladder_solo": 33,
+    "protective_wing_buy": 19,
+    "stop_buyback": 17
+   }
+  },
+  {
+   "cyc": "SENSEX|2026-08-06",
+   "F1": 0.6932599724896836,
+   "strict": 0.4319119669876203,
+   "top_missing": {
+    "body_buyback": 69,
+    "body_sell": 37,
+    "wing_sell": 32
+   },
+   "top_extra": {
+    "protective_wing_buy": 21,
+    "ladder_solo": 17,
+    "stop_buyback": 11
+   }
+  },
+  {
+   "cyc": "SENSEX|2026-10-01",
+   "F1": 0.6834170854271356,
+   "strict": 0.329145728643216,
+   "top_missing": {
+    "body_sell": 47,
+    "body_buyback": 44,
+    "wing_sell": 17
+   },
+   "top_extra": {
+    "ladder_solo": 39,
+    "protective_wing_buy": 35,
+    "stop_buyback": 32
+   }
+  },
+  {
+   "cyc": "SENSEX|2026-07-09",
+   "F1": 0.7159841479524438,
+   "strict": 0.3381770145310436,
+   "top_missing": {
+    "body_sell": 35,
+    "body_buyback": 31,
+    "wing_sell": 22
+   },
+   "top_extra": {
+    "ladder_solo": 47,
+    "protective_wing_buy": 42,
+    "breakout_extra": 3
+   }
+  },
+  {
+   "cyc": "SENSEX|2026-06-25",
+   "F1": 0.73,
+   "strict": 0.3533333333333333,
+   "top_missing": {
+    "body_sell": 26,
+    "body_buyback": 18,
+    "wing_sell": 14
+   },
+   "top_extra": {
+    "ladder_solo": 35,
+    "protective_wing_buy": 34,
+    "stop_buyback": 5
+   }
+  }
+ ],
+ "order_count_ratio": {
+  "median": 0.8806272446337593,
+  "min": 0.6515580736543909,
+  "max": 1.176706827309237
+ },
+ "by_und_strict": {
+  "NIFTY": 0.484,
+  "SENSEX": 0.436
+ },
+ "by_version_strict": {
+  "V1": 0.446,
+  "V2": 0.511
+ },
+ "by_era_F1": {
+  "after": 0.737,
+  "before": 0.779
+ }
+}

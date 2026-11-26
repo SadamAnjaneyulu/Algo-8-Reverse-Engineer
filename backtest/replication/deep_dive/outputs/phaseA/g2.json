@@ -1,0 +1,71 @@
+{
+ "orders": 176,
+ "orders_post": 148,
+ "sensitivity": [
+  {
+   "tolerance_min": 1,
+   "ladder": 113,
+   "v1_breakout": 28,
+   "either": 113,
+   "closing_pair_G1b": 31,
+   "explained_any": 133,
+   "unexplained": 43,
+   "unexplained_share": 0.24431818181818182
+  },
+  {
+   "tolerance_min": 2,
+   "ladder": 121,
+   "v1_breakout": 33,
+   "either": 122,
+   "closing_pair_G1b": 31,
+   "explained_any": 141,
+   "unexplained": 35,
+   "unexplained_share": 0.19886363636363635
+  },
+  {
+   "tolerance_min": 5,
+   "ladder": 134,
+   "v1_breakout": 53,
+   "either": 136,
+   "closing_pair_G1b": 31,
+   "explained_any": 150,
+   "unexplained": 26,
+   "unexplained_share": 0.14772727272727273
+  }
+ ],
+ "unexplained_tol1": {
+  "n": 43,
+  "cycles": 16,
+  "by_cycle": {
+   "NIFTY|2026-08-24": 11,
+   "NIFTY|2026-07-27": 5,
+   "NIFTY|2026-10-05": 5,
+   "NIFTY|2026-09-21": 4,
+   "SENSEX|2026-07-29": 3,
+   "SENSEX|2026-09-30": 3,
+   "NIFTY|2026-08-03": 2,
+   "SENSEX|2026-08-12": 2,
+   "NIFTY|2026-09-07": 1,
+   "NIFTY|2026-10-12": 1,
+   "SENSEX|2026-07-15": 1,
+   "SENSEX|2026-08-26": 1,
+   "SENSEX|2026-09-16": 1,
+   "SENSEX|2026-10-07": 1,
+   "SENSEX|2026-10-14": 1,
+   "SENSEX|2026-10-21": 1
+  },
+  "by_5min_block": {
+   "15:15": 6,
+   "15:20": 17,
+   "15:25": 17,
+   "15:30": 1,
+   "15:35": 2
+  },
+  "by_side": {
+   "PE": 26,
+   "CE": 17
+  },
+  "post": 34
+ },
+ "unexplained_single_cycle_max_share": 0.2558139534883721
+}

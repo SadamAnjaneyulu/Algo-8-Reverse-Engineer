@@ -1,0 +1,119 @@
+{
+ "OOF": {
+  "runs": 30,
+  "rejected": 0,
+  "max_short_lots_per_right": 279,
+  "max_sell_decisions_per_minute": 18,
+  "violations": 0,
+  "reconciled": 30,
+  "deterministic": 30,
+  "stopped": [
+   "NIFTY|2026-06-30",
+   "NIFTY|2026-07-14",
+   "NIFTY|2026-08-18",
+   "NIFTY|2026-10-19",
+   "SENSEX|2026-09-17",
+   "SENSEX|2026-10-15",
+   "NIFTY|2026-08-04",
+   "SENSEX|2026-08-06",
+   "SENSEX|2026-08-20",
+   "SENSEX|2026-09-24",
+   "SENSEX|2026-10-22"
+  ],
+  "cleared": 19,
+  "clearance_lots": {
+   "NIFTY|2026-07-28": 39,
+   "NIFTY|2026-09-22": 96,
+   "NIFTY|2026-10-06": 57,
+   "SENSEX|2026-07-02": 28,
+   "SENSEX|2026-07-16": 30,
+   "SENSEX|2026-07-30": 13,
+   "SENSEX|2026-08-13": 117,
+   "SENSEX|2026-08-27": 88,
+   "SENSEX|2026-10-01": 145,
+   "NIFTY|2026-07-07": 46,
+   "NIFTY|2026-07-21": 66,
+   "NIFTY|2026-08-25": 98,
+   "NIFTY|2026-09-08": 180,
+   "NIFTY|2026-10-13": 60,
+   "SENSEX|2026-06-25": 19,
+   "SENSEX|2026-07-09": 4,
+   "SENSEX|2026-07-23": 13,
+   "SENSEX|2026-09-10": 142,
+   "SENSEX|2026-10-08": 127
+  },
+  "stop_j": {
+   "NIFTY|2026-06-30": 128,
+   "NIFTY|2026-07-14": 0,
+   "NIFTY|2026-08-18": 0,
+   "NIFTY|2026-10-19": 10,
+   "SENSEX|2026-09-17": 335,
+   "SENSEX|2026-10-15": 0,
+   "NIFTY|2026-08-04": 305,
+   "SENSEX|2026-08-06": 6,
+   "SENSEX|2026-08-20": 0,
+   "SENSEX|2026-09-24": 0,
+   "SENSEX|2026-10-22": 251
+  }
+ },
+ "forwardA": {
+  "runs": 9,
+  "rejected": 0,
+  "max_short_lots_per_right": 279,
+  "max_sell_decisions_per_minute": 19,
+  "violations": 0,
+  "reconciled": 9,
+  "deterministic": 9,
+  "stopped": [
+   "NIFTY|2026-08-18",
+   "SENSEX|2026-08-20",
+   "SENSEX|2026-10-15",
+   "NIFTY|2026-10-19",
+   "SENSEX|2026-10-22"
+  ],
+  "cleared": 4,
+  "clearance_lots": {
+   "NIFTY|2026-08-25": 83,
+   "SENSEX|2026-08-27": 87,
+   "NIFTY|2026-09-08": 171,
+   "SENSEX|2026-09-10": 161
+  },
+  "stop_j": {
+   "NIFTY|2026-08-18": 0,
+   "SENSEX|2026-08-20": 0,
+   "SENSEX|2026-10-15": 0,
+   "NIFTY|2026-10-19": 10,
+   "SENSEX|2026-10-22": 227
+  }
+ },
+ "forwardB": {
+  "runs": 10,
+  "rejected": 0,
+  "max_short_lots_per_right": 279,
+  "max_sell_decisions_per_minute": 8,
+  "violations": 0,
+  "reconciled": 10,
+  "deterministic": 10,
+  "stopped": [
+   "NIFTY|2026-10-19",
+   "SENSEX|2026-09-24",
+   "SENSEX|2026-10-15",
+   "SENSEX|2026-10-22"
+  ],
+  "cleared": 6,
+  "clearance_lots": {
+   "NIFTY|2026-09-22": 168,
+   "NIFTY|2026-10-06": 154,
+   "NIFTY|2026-10-13": 47,
+   "SENSEX|2026-09-17": 186,
+   "SENSEX|2026-10-01": 134,
+   "SENSEX|2026-10-08": 70
+  },
+  "stop_j": {
+   "NIFTY|2026-10-19": 10,
+   "SENSEX|2026-09-24": 0,
+   "SENSEX|2026-10-15": 0,
+   "SENSEX|2026-10-22": 227
+  }
+ }
+}

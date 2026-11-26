@@ -1,0 +1,50 @@
+{
+ "BX0": {
+  "L_lakh": 1.2,
+  "hits": 11,
+  "misses": 0,
+  "false_alarms": 2,
+  "detail": [
+   [
+    "NIFTY|2026-10-06",
+    "false alarm",
+    null,
+    291
+   ],
+   [
+    "SENSEX|2026-10-08",
+    "false alarm",
+    null,
+    314
+   ]
+  ],
+  "supported": false
+ },
+ "BX1": {
+  "L_lakh": 1.25,
+  "hits": 11,
+  "misses": 0,
+  "false_alarms": 0,
+  "detail": [],
+  "supported": true
+ },
+ "interval_lakh": [
+  1.21771,
+  1.29023
+ ],
+ "BX1_candidate_valid": true,
+ "extra_d1_only_cycles": {
+  "NIFTY|2026-09-01": {
+   "min_lakh": -1.44963,
+   "real_stop_j": 331,
+   "cross_1_20": 330,
+   "cross_1_25": 331
+  },
+  "NIFTY|2026-09-29": {
+   "min_lakh": 0.0,
+   "real_stop_j": null,
+   "cross_1_20": null,
+   "cross_1_25": null
+  }
+ }
+}

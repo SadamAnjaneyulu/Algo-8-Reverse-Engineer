@@ -19,6 +19,9 @@ class OrderRequest:
     side: str
     limit_price: float
     role: str                                 # why the order exists, see ROLES in engine.py
+    validity: str = ""                       # 'DAY' or 'IOC', set explicitly from ROLE_ORDER_TYPE (never inferred; empty only for orders built outside the engine)
+    module: str = ""                         # order-tag module of the original system: 'num' body, 'h_' wing, 'v_' lump
+    decision_id: str = ""                    # one id per strategy decision (one _submit call): every child order of a split decision carries the same id; independent decisions never share one
 
 
 @dataclass

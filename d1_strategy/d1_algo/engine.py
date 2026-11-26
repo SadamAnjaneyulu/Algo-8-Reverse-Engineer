@@ -30,7 +30,18 @@ ROLES = {
     "protective_wing_sell": "wing released when shorts were bought back",
     "opening_wing_buy": "far OTM long bought before the first scheduled straddles",
     "overnight_lump": "extra OTM long placed before the close on the heavier short side",
+    "cycle_stop_buyback": "cycle stop (P1-9-B candidate, off by default): short lots of a contract bought back at the stop",
+    "cycle_stop_sell": "cycle stop (P1-9-B candidate, off by default): wing and lump longs sold at the stop",
 }
+# Order type by role, as OBSERVED in the real D-1 log (9,885 orders of the 32 cycles outside the stop module `s_`, which the engine does not model): every body-module (`num`) order is DAY, every wing (`h_`) and lump (`v_`) order is IOC, with no exception.
+# The engine emits these explicitly; a role without an entry raises (no default, no inference). Checked against the log in tests/test_order_type.py.
+ROLE_ORDER_TYPE = {"scheduled_straddle": ("num", "DAY"), "breakout_straddle": ("num", "DAY"), "breakout_extra": ("num", "DAY"), "ladder_solo": ("num", "DAY"), "stop_buyback": ("num", "DAY"), "opening_wing_buy": ("num", "DAY"),
+                   "protective_wing_buy": ("h_", "IOC"), "protective_wing_sell": ("h_", "IOC"), "overnight_lump": ("v_", "IOC"),
+                   "cycle_stop_buyback": ("s_", "DAY"), "cycle_stop_sell": ("s_", "DAY")}
+# Execution convention 'one_lot_v2' (D1Config.order_split): roles whose real orders are always single lots (real D-1 log: body buy-backs 1,324 orders, 100% 1-lot; opening-wing buys 186 orders, 100% 1-lot).
+# Wing-controller buys / sells and the lump are sized orders in the real log (18.8% / 40.3% / 93% multi-lot) and are NOT split. Splitting changes order granularity only, never quantity, timing, strike or the decision to trade.
+ONE_LOT_ROLES = {"opening_wing_buy", "stop_buyback"}
+ORDER_SPLIT_CONVENTIONS = ("freeze_v1", "one_lot_v2")
 SELL_ROLES = {"scheduled_straddle", "breakout_straddle", "breakout_extra", "ladder_solo"}
 
 
@@ -47,8 +58,9 @@ class D1Engine:
         self.ladder_ref: Dict[str, Optional[float]] = {"CE": None, "PE": None}; self.ladder_from: Dict[str, int] = {"CE": 10 ** 9, "PE": 10 ** 9}
         self.last_sale_price: Dict[str, Optional[float]] = {"CE": None, "PE": None}
         self.wing_first: Optional[float] = None; self.wing_last: Optional[float] = None
-        self._seq = 0; self._pending: Dict[str, List] = {}; self._pending_stop: Dict[Tuple[str, float], int] = {}
+        self._seq = 0; self._decision_seq = 0; self._stop_trigger_t = {}; self._pending: Dict[str, List] = {}; self._pending_stop: Dict[Tuple[str, float], int] = {}
         self._last_saved = -1
+        self.stopped = False; self.stop_time: Optional[float] = None; self._next_stop_check = 0.0
 
     # ------------------------------------------------------------------ helpers
     def _atm(self, price: float) -> float:
@@ -74,10 +86,39 @@ class D1Engine:
         self.spot_bars.tick(j, spot)
         self._sample_options(j, spot)
         self._process_fills(self.broker.poll_fills())
+        if self.cfg.cycle_stop_rupees is not None:
+            if self.stopped: return
+            if t >= self._next_stop_check:
+                self._next_stop_check = t + self.cfg.cycle_stop_check_s
+                if self.book_mtm() <= -self.cfg.cycle_stop_rupees: self._cycle_stop(t, j); return
         self._opening_wings(t, j); self._scheduled(t, j); self._breakout(t, j, spot); self._ladder(t, j, spot); self._stops(t, j)
         self._wing_controller(t, j); self._lump(t, j); self._risk_watch(t, j)
         if self.cfg.state_file and j != self._last_saved:
             self.save(); self._last_saved = j
+
+    # ------------------------------------------------------------------ cycle stop (P1-9-B candidate; off unless cfg.cycle_stop_rupees is set)
+    def book_mtm(self) -> float:
+        """cumulative mark-to-market of the engine's own book: cash of its simulated fills plus the live price of every open position (unpriced contracts are marked at zero change: skipped)"""
+        u = self.cfg.lot_units; v = 0.0
+        for f in self.fills: v += (1.0 if f.side == "SELL" else -1.0) * f.price * f.lots * u
+        for (r, k), lots in self.book.shorts.items():
+            if lots:
+                p = self.feed.option_ltp(r, k)
+                if p == p: v -= p * len(lots) * u
+        for d in (self.book.wings, self.book.lump):
+            for (r, k), n in d.items():
+                if n > 0:
+                    p = self.feed.option_ltp(r, k)
+                    if p == p: v += p * n * u
+        return v
+
+    def _cycle_stop(self, t: float, j: int):
+        for (r, k), lots in sorted(self.book.shorts.items()):
+            if lots: self._submit(r, float(k), len(lots), "BUY", "cycle_stop_buyback")
+        for d in (self.book.wings, self.book.lump):
+            for (r, k), n in sorted(d.items()):
+                if n > 0: self._submit(r, float(k), int(n), "SELL", "cycle_stop_sell")
+        self.stopped = True; self.stop_time = t; self.log(f"{t:.0f} CYCLE STOP")
 
     # ------------------------------------------------------------------ data
     def _sample_options(self, j: int, spot: float):
@@ -93,12 +134,13 @@ class D1Engine:
         ltp = self.feed.option_ltp(right, strike)
         if ltp != ltp or ltp <= 0:
             self.log(f"{t:.0f} skip {role} {right} {strike}: no price"); return False
-        left = lots; ok_any = False
+        if c.order_split not in ORDER_SPLIT_CONVENTIONS: raise ValueError(f"unknown order_split {c.order_split!r}")
+        left = lots; ok_any = False; one_lot = (c.order_split == "one_lot_v2" and role in ONE_LOT_ROLES) or (role == "ladder_solo" and c.ladder_lots_mode == "steps") or (role in ("breakout_straddle", "breakout_extra") and c.breakout_one_lot); self._decision_seq += 1; did = f"d{self._decision_seq}"       # one decision id per _submit call; under one_lot_v2 the per-minute order limit counts decisions (RiskGuard.check)
         while left > 0:
-            n = min(left, c.freeze_lots); left -= n
+            n = 1 if one_lot else min(left, c.freeze_lots); left -= n
             limit = self._tick_round(ltp * (1 + c.limit_buffer_pct / 100.0), True) if side == "BUY" else self._tick_round(ltp * (1 - c.limit_buffer_pct / 100.0), False)
             limit = max(limit, c.price_tick)
-            self._seq += 1; req = OrderRequest(f"{role}-{self._seq}", t, right, strike, n, side, limit, role)
+            self._seq += 1; mod, validity = ROLE_ORDER_TYPE[role]; req = OrderRequest(f"{role}-{self._seq}", t, right, strike, n, side, limit, role, validity, mod, did)
             allowed, why = self.risk.check(req, self.book.short_count(right), j)
             if not allowed:
                 self.rejected.append((req, why)); self.log(f"{t:.0f} blocked {role} {right} {strike} x{n}: {why}"); continue
@@ -108,6 +150,7 @@ class D1Engine:
 
     def _pending_adjust(self, req: OrderRequest, n: int, sign: int):
         b = self.book
+        if req.role.startswith("cycle_stop"): return
         if req.role in SELL_ROLES: b.pending_short[req.right] += sign * n
         elif req.role == "stop_buyback": b.pending_short[req.right] -= sign * n; self._pending_stop[(req.right, req.strike)] = self._pending_stop.get((req.right, req.strike), 0) + sign * n
         elif req.role in ("protective_wing_buy", "opening_wing_buy"): b.pending_wing[req.right] += sign * n
@@ -124,6 +167,10 @@ class D1Engine:
             if f.role in SELL_ROLES and f.side == "SELL":
                 b.add_short(f.right, f.strike, Lot(f.ts, minute, f.price, f.role), f.lots); self.last_sale_price[f.right] = f.price
             elif f.role == "stop_buyback": b.remove_shorts(f.right, f.strike, f.lots)
+            elif f.role == "cycle_stop_buyback": b.remove_shorts(f.right, f.strike, f.lots)
+            elif f.role == "cycle_stop_sell":
+                w = min(b.wings.get((f.right, f.strike), 0), f.lots); b.sell_wing(f.right, f.strike, w)
+                if f.lots - w > 0: b.lump[(f.right, f.strike)] = max(b.lump.get((f.right, f.strike), 0) - (f.lots - w), 0)
             elif f.role in ("protective_wing_buy", "opening_wing_buy"): b.add_wing(f.right, f.strike, f.lots)
             elif f.role == "protective_wing_sell": b.sell_wing(f.right, f.strike, f.lots)
             elif f.role == "overnight_lump": b.lump[(f.right, f.strike)] = b.lump.get((f.right, f.strike), 0) + f.lots
@@ -213,23 +260,40 @@ class D1Engine:
         pr = np.nan_to_num(np.array(pr, dtype=float), nan=1e9)
         return cand[int(np.argmin(np.abs(pr - last)))]
 
+    def _side_ratio(self, right: str):
+        """lot-weighted mean of (current premium / entry premium) over the held short lots on a right; None if the right holds no (priced) lots"""
+        num = den = 0.0
+        for (r, k), lots in self.book.shorts.items():
+            if r != right or not lots: continue
+            p = self.feed.option_ltp(r, k)
+            if p != p: continue
+            for l in lots:
+                if l.entry_price > 0: num += p / l.entry_price; den += 1.0
+        return num / den if den else None
+
+    def _ladder_allowed(self, right: str) -> bool:
+        if not self.cfg.ladder_book_condition: return True
+        own = self._side_ratio(right); other = self._side_ratio("PE" if right == "CE" else "CE")
+        return (own is None or own <= 1.0) and (other is None or other >= 1.0)
+
     def _ladder(self, t: float, j: int, spot: float):
         c = self.cfg; sb = self.spot_bars; st = c.strike_step * c.ladder_step
-        lo, hi = max(j - c.ladder_gate_min, 0), j
+        gate = c.ladder_late_gate_min if (c.ladder_late_gate_min is not None and j >= c.late_start_min) else c.ladder_gate_min
+        lo, hi = max(j - gate, 0), j
         if sb.completed() < 1: return
         for right in ("CE", "PE"):
             ref = self.ladder_ref[right]
             if ref is None or j < self.ladder_from[right]: continue
             if right == "CE":
-                if sb.cur_low < min(sb.low[lo:hi]) and sb.cur_low < ref - st:
-                    self.ladder_ref[right] = ref - st * max(1, int((ref - sb.cur_low) // st)); self._ladder_fire(right, j, t)
+                if sb.cur_low < min(sb.low[lo:hi]) and sb.cur_low < ref - st and self._ladder_allowed(right):
+                    n = max(1, int((ref - sb.cur_low) // st)); self.ladder_ref[right] = ref - st * n; self._ladder_fire(right, j, t, n)
             else:
-                if sb.cur_high > max(sb.high[lo:hi]) and sb.cur_high > ref + st:
-                    self.ladder_ref[right] = ref + st * max(1, int((sb.cur_high - ref) // st)); self._ladder_fire(right, j, t)
+                if sb.cur_high > max(sb.high[lo:hi]) and sb.cur_high > ref + st and self._ladder_allowed(right):
+                    n = max(1, int((sb.cur_high - ref) // st)); self.ladder_ref[right] = ref + st * n; self._ladder_fire(right, j, t, n)
 
-    def _ladder_fire(self, right: str, j: int, t: float):
-        k = self._solo_strike(right, j)
-        if k is not None and self._submit(right, k, 1, "SELL", "ladder_solo"): self._note_body(t)
+    def _ladder_fire(self, right: str, j: int, t: float, n_steps: int = 1):
+        k = self._solo_strike(right, j); lots = n_steps if self.cfg.ladder_lots_mode == "steps" else 1
+        if k is not None and self._submit(right, k, lots, "SELL", "ladder_solo"): self._note_body(t)
 
     def _stops(self, t: float, j: int):
         c = self.cfg
@@ -238,7 +302,13 @@ class D1Engine:
             now = self.opt_bars.run_high(right, k, j) if c.stop_price == "high" else self.opt_bars.prev_close(right, k, j)
             if now != now: continue
             hit = sum(1 for l in lots if l.minute < j and l.entry_price > 0 and now / l.entry_price >= c.stop_ratio) - self._pending_stop.get((right, k), 0)
-            if hit > 0 and self._submit(right, k, hit, "BUY", "stop_buyback"): self._note_body(t)
+            if c.stop_latency_s > 0:
+                key = (right, k)
+                if hit <= 0: self._stop_trigger_t.pop(key, None); continue
+                t0 = self._stop_trigger_t.setdefault(key, t)
+                if t - t0 < c.stop_latency_s: continue
+            if hit > 0 and self._submit(right, k, hit, "BUY", "stop_buyback"):
+                self._note_body(t); self._stop_trigger_t.pop((right, k), None)
 
     def _wing_controller(self, t: float, j: int):
         c = self.cfg
@@ -311,5 +381,5 @@ class D1Engine:
 
     def orders_frame(self):
         import pandas as pd
-        return pd.DataFrame([{"minute": minute_index(o.ts), "ts": o.ts, "right": o.right, "strike": o.strike, "lots": o.lots, "side": o.side, "limit": o.limit_price, "role": o.role}
+        return pd.DataFrame([{"minute": minute_index(o.ts), "ts": o.ts, "right": o.right, "strike": o.strike, "lots": o.lots, "side": o.side, "limit": o.limit_price, "role": o.role, "validity": o.validity, "module": o.module, "decision_id": o.decision_id}
                              for o in self.orders])

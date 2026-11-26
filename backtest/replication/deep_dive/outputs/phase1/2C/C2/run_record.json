@@ -1,0 +1,16 @@
+{
+ "id": "C2",
+ "feed_rebased_futures": true,
+ "overrides": {
+  "ladder_late_gate_min": 5,
+  "late_start_min": 360
+ },
+ "order_split": "one_lot_v2",
+ "mode": "F",
+ "evidence_label": "historical reproduction",
+ "engine_orders": 8864,
+ "rejected": 0,
+ "legacy_f1": 0.6990486939696872,
+ "seconds": 41,
+ "run_at": "2026-11-25T15:36:17.438970+00:00"
+}

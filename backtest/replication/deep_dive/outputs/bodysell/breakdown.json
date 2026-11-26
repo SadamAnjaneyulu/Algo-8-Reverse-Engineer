@@ -1,0 +1,494 @@
+{
+ "checks": {
+  "real_body_sells": 4408,
+  "sim_body_sells": 4091,
+  "real_missing": 1179,
+  "sim_extra": 873,
+  "every_real_has_one_status": true,
+  "every_sim_has_one_status": true,
+  "F_table_real_body_sell": 4408,
+  "F_table_sim_body_sell": 4091,
+  "F_table_missing_body_sell": 1179,
+  "F_table_extra_body_sell": 873,
+  "reconciles_to_F_tables": true,
+  "M1_with_unmatched_neighbour_(must_be_0)": 0,
+  "probe_body_sell_orders": 4091,
+  "probe_equals_F_simulated_body_sells": true
+ },
+ "missing_by_category": [
+  {
+   "category": "M1",
+   "orders": 727,
+   "persistent_in_TFE": 695,
+   "share": 0.6166,
+   "meaning": "supply/count: a same-type simulated sell within 60 s was matched elsewhere"
+  },
+  {
+   "category": "M2",
+   "orders": 24,
+   "persistent_in_TFE": 24,
+   "share": 0.0204,
+   "meaning": "possible wrong side: an unmatched opposite-type simulated sell within 60 s"
+  },
+  {
+   "category": "M3",
+   "orders": 123,
+   "persistent_in_TFE": 123,
+   "share": 0.1043,
+   "meaning": "timing offset: an unmatched same-type simulated sell within 61-300 s"
+  },
+  {
+   "category": "M4",
+   "orders": 305,
+   "persistent_in_TFE": 303,
+   "share": 0.2587,
+   "meaning": "trigger never fires: no simulated sell of that type within 300 s"
+  }
+ ],
+ "missing_total": {
+  "orders": 1179,
+  "persistent_in_TFE": 1145,
+  "recovered_by_TFE": 34
+ },
+ "missing_by_category_x_module": [
+  {
+   "category": "M1",
+   "pair": 356,
+   "scheduled_clock": 18,
+   "solo": 353
+  },
+  {
+   "category": "M2",
+   "pair": 1,
+   "scheduled_clock": 0,
+   "solo": 23
+  },
+  {
+   "category": "M3",
+   "pair": 33,
+   "scheduled_clock": 0,
+   "solo": 90
+  },
+  {
+   "category": "M4",
+   "pair": 96,
+   "scheduled_clock": 0,
+   "solo": 209
+  }
+ ],
+ "missing_by_category_x_late": [
+  {
+   "category": "M1",
+   "False": 621,
+   "True": 106
+  },
+  {
+   "category": "M2",
+   "False": 10,
+   "True": 14
+  },
+  {
+   "category": "M3",
+   "False": 75,
+   "True": 48
+  },
+  {
+   "category": "M4",
+   "False": 152,
+   "True": 153
+  }
+ ],
+ "missing_M4_by_module_x_late": [
+  {
+   "inferred_module": "pair",
+   "False": 55,
+   "True": 41
+  },
+  {
+   "inferred_module": "solo",
+   "False": 97,
+   "True": 112
+  }
+ ],
+ "missing_by_cp_x_category": [
+  {
+   "cp": "CE",
+   "M1": 431,
+   "M2": 23,
+   "M3": 87,
+   "M4": 167
+  },
+  {
+   "cp": "PE",
+   "M1": 296,
+   "M2": 1,
+   "M3": 36,
+   "M4": 138
+  }
+ ],
+ "missing_by_hour": [
+  {
+   "minute": 9,
+   "M1": 36,
+   "M2": 1,
+   "M3": 11,
+   "M4": 34
+  },
+  {
+   "minute": 10,
+   "M1": 101,
+   "M2": 7,
+   "M3": 19,
+   "M4": 18
+  },
+  {
+   "minute": 11,
+   "M1": 74,
+   "M2": 1,
+   "M3": 12,
+   "M4": 14
+  },
+  {
+   "minute": 12,
+   "M1": 132,
+   "M2": 0,
+   "M3": 3,
+   "M4": 31
+  },
+  {
+   "minute": 13,
+   "M1": 110,
+   "M2": 0,
+   "M3": 10,
+   "M4": 33
+  },
+  {
+   "minute": 14,
+   "M1": 168,
+   "M2": 1,
+   "M3": 20,
+   "M4": 22
+  },
+  {
+   "minute": 15,
+   "M1": 106,
+   "M2": 14,
+   "M3": 48,
+   "M4": 153
+  }
+ ],
+ "M1_holder_role": [
+  {
+   "role": "ladder_solo",
+   "orders": 411
+  },
+  {
+   "role": "breakout_straddle",
+   "orders": 179
+  },
+  {
+   "role": "scheduled_straddle",
+   "orders": 122
+  },
+  {
+   "role": "protective_wing_sell",
+   "orders": 15
+  }
+ ],
+ "M1_nearest_dist_quantiles": {
+  "0.1": 2.0,
+  "0.25": 7.0,
+  "0.5": 13.0,
+  "0.75": 22.0,
+  "0.9": 32.8
+ },
+ "M3_nearest_dist_quantiles": {
+  "0.1": 75.0,
+  "0.25": 88.0,
+  "0.5": 170.0,
+  "0.75": 238.5,
+  "0.9": 270.6
+ },
+ "M3_nearest_sim_role": [
+  {
+   "role": "ladder_solo",
+   "orders": 91
+  },
+  {
+   "role": "breakout_straddle",
+   "orders": 22
+  },
+  {
+   "role": "protective_wing_sell",
+   "orders": 5
+  },
+  {
+   "role": "breakout_extra",
+   "orders": 3
+  },
+  {
+   "role": "scheduled_straddle",
+   "orders": 2
+  }
+ ],
+ "M4_solo_engine_gap_quantiles_points": {
+  "CE": {
+   "0.1": -18.44,
+   "0.25": 3.8,
+   "0.5": 15.6,
+   "0.75": 50.6,
+   "0.9": 129.1
+  },
+  "PE": {
+   "0.1": -44.57,
+   "0.25": 5.75,
+   "0.5": 19.53,
+   "0.75": 71.11,
+   "0.9": 115.61
+  }
+ },
+ "M4_solo_engine_view": {
+  "n": 209,
+  "ladder_live_share": 1.0,
+  "new_extreme_share": 0.08133971291866028
+ },
+ "missing_cycle_concentration": {
+  "top5": {
+   "SENSEX|2026-09-10": 76,
+   "NIFTY|2026-08-18": 59,
+   "NIFTY|2026-07-28": 57,
+   "SENSEX|2026-08-13": 53,
+   "NIFTY|2026-08-25": 51
+  },
+  "share_top5": 0.2510602205258694,
+  "per_cycle_median": 36.5,
+  "cycles": 32
+ },
+ "missing_state_before": {
+  "real_short_lots_median": 73.0,
+  "sim_short_lots_median": 75.0,
+  "median_abs_diff_shorts": 9.0
+ },
+ "extra_by_category": [
+  {
+   "category": "X1",
+   "orders": 324,
+   "share": 0.3711,
+   "meaning": "real supply exhausted: a same-type real sell within 60 s was matched elsewhere"
+  },
+  {
+   "category": "X2",
+   "orders": 81,
+   "share": 0.0928,
+   "meaning": "possible wrong side: an unmatched opposite-type real sell within 60 s"
+  },
+  {
+   "category": "X3",
+   "orders": 109,
+   "share": 0.1249,
+   "meaning": "timing offset: an unmatched same-type real sell within 61-300 s"
+  },
+  {
+   "category": "X4",
+   "orders": 359,
+   "share": 0.4112,
+   "meaning": "no real decision within 300 s"
+  }
+ ],
+ "extra_by_role_x_category": [
+  {
+   "role": "breakout_extra",
+   "X1": 54,
+   "X2": 0,
+   "X3": 0,
+   "X4": 2
+  },
+  {
+   "role": "breakout_straddle",
+   "X1": 50,
+   "X2": 3,
+   "X3": 2,
+   "X4": 6
+  },
+  {
+   "role": "ladder_solo",
+   "X1": 210,
+   "X2": 78,
+   "X3": 105,
+   "X4": 337
+  },
+  {
+   "role": "scheduled_straddle",
+   "X1": 10,
+   "X2": 0,
+   "X3": 2,
+   "X4": 14
+  }
+ ],
+ "extra_by_late": [
+  {
+   "category": "X1",
+   "False": 283,
+   "True": 41
+  },
+  {
+   "category": "X2",
+   "False": 38,
+   "True": 43
+  },
+  {
+   "category": "X3",
+   "False": 97,
+   "True": 12
+  },
+  {
+   "category": "X4",
+   "False": 222,
+   "True": 137
+  }
+ ],
+ "sim_body_sells_by_role": [
+  {
+   "role": "breakout_extra",
+   "orders": 229,
+   "matched": 173,
+   "extra": 56
+  },
+  {
+   "role": "breakout_straddle",
+   "orders": 458,
+   "matched": 397,
+   "extra": 61
+  },
+  {
+   "role": "ladder_solo",
+   "orders": 1292,
+   "matched": 562,
+   "extra": 730
+  },
+  {
+   "role": "scheduled_straddle",
+   "orders": 2112,
+   "matched": 2086,
+   "extra": 26
+  }
+ ],
+ "matched_detail_by_partner_role": [
+  {
+   "partner_role": "breakout_extra",
+   "orders": 171,
+   "exact_second": 0.018,
+   "near": 0.275,
+   "broad": 0.708,
+   "strike_exact": 0.696,
+   "strike_1": 0.199,
+   "strike_2plus": 0.105,
+   "lots_exact": 1.0
+  },
+  {
+   "partner_role": "breakout_straddle",
+   "orders": 384,
+   "exact_second": 0.031,
+   "near": 0.271,
+   "broad": 0.698,
+   "strike_exact": 0.786,
+   "strike_1": 0.185,
+   "strike_2plus": 0.029,
+   "lots_exact": 1.0
+  },
+  {
+   "partner_role": "ladder_solo",
+   "orders": 547,
+   "exact_second": 0.04,
+   "near": 0.245,
+   "broad": 0.715,
+   "strike_exact": 0.256,
+   "strike_1": 0.397,
+   "strike_2plus": 0.347,
+   "lots_exact": 0.998
+  },
+  {
+   "partner_role": "protective_wing_sell",
+   "orders": 43,
+   "exact_second": 0.023,
+   "near": 0.349,
+   "broad": 0.628,
+   "strike_exact": 0.0,
+   "strike_1": 0.0,
+   "strike_2plus": 1.0,
+   "lots_exact": 0.512
+  },
+  {
+   "partner_role": "scheduled_straddle",
+   "orders": 2084,
+   "exact_second": 0.669,
+   "near": 0.329,
+   "broad": 0.001,
+   "strike_exact": 0.945,
+   "strike_1": 0.054,
+   "strike_2plus": 0.001,
+   "lots_exact": 1.0
+  }
+ ],
+ "matched_detail_all": {
+  "orders": 3229,
+  "strike_exact": 0.7835243109321771,
+  "strike_1": 0.13440693713223908,
+  "strike_2plus": 0.08206875193558377,
+  "strike_wrong": 699,
+  "lots_exact": 0.9931867451223289,
+  "lots_wrong": 22,
+  "partner_cls": {
+   "body_sell": 3186,
+   "wing_sell": 43
+  }
+ },
+ "matched_strike_wrong_by_module_late": [
+  {
+   "partner_role": "breakout_extra",
+   "late": false,
+   "orders": 47
+  },
+  {
+   "partner_role": "breakout_extra",
+   "late": true,
+   "orders": 5
+  },
+  {
+   "partner_role": "breakout_straddle",
+   "late": false,
+   "orders": 75
+  },
+  {
+   "partner_role": "breakout_straddle",
+   "late": true,
+   "orders": 7
+  },
+  {
+   "partner_role": "ladder_solo",
+   "late": false,
+   "orders": 351
+  },
+  {
+   "partner_role": "ladder_solo",
+   "late": true,
+   "orders": 56
+  },
+  {
+   "partner_role": "protective_wing_sell",
+   "late": false,
+   "orders": 42
+  },
+  {
+   "partner_role": "protective_wing_sell",
+   "late": true,
+   "orders": 1
+  },
+  {
+   "partner_role": "scheduled_straddle",
+   "late": false,
+   "orders": 115
+  }
+ ],
+ "seconds": 50
+}

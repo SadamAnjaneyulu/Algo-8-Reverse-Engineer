@@ -1,0 +1,87 @@
+{
+ "B1_window": {
+  "real": 165,
+  "sim": 241,
+  "recall": 0.2545454545454545,
+  "precision": 0.16597510373443983,
+  "F1": 0.20093290276282744
+ },
+ "C1": {
+  "window": {
+   "real": 165,
+   "sim": 43,
+   "recall": 0.11515151515151516,
+   "precision": 0.3953488372093023,
+   "F1": 0.17835450027609057
+  },
+  "overall": {
+   "F1": 0.7711918582524252,
+   "strict_F1": 0.6105288519455487,
+   "recall": 0.7273139745916516,
+   "precision": 0.8207038273824814,
+   "extras": 698,
+   "missing": 1202,
+   "sim_lots": 3893
+  },
+  "class_f1": {
+   "body_buyback": 0.5741733936333313,
+   "body_sell": 0.7711918582524252,
+   "lump": 0.3548387096774194,
+   "opening_wings": 0.8542894237491262,
+   "wing_buy": 0.8253490692656169,
+   "wing_sell": 0.4981352608712368
+  },
+  "state_l1": 0.5072463768115942,
+  "legacy_f1": 0.6994420635562384,
+  "window_cycles_improved": 4,
+  "criteria": {
+   "L1": false,
+   "L2": false,
+   "L3": true,
+   "L4": true,
+   "L5": true,
+   "L6": true,
+   "L7": false
+  },
+  "passes_all": false
+ },
+ "C2": {
+  "window": {
+   "real": 165,
+   "sim": 61,
+   "recall": 0.15151515151515152,
+   "precision": 0.39344262295081966,
+   "F1": 0.2187784867821331
+  },
+  "overall": {
+   "F1": 0.7703133243835399,
+   "strict_F1": 0.6080383923215358,
+   "recall": 0.729355716878403,
+   "precision": 0.8161446396740515,
+   "extras": 722,
+   "missing": 1193,
+   "sim_lots": 3927
+  },
+  "class_f1": {
+   "body_buyback": 0.57443291640736,
+   "body_sell": 0.7703133243835399,
+   "lump": 0.3548387096774194,
+   "opening_wings": 0.8542894237491262,
+   "wing_buy": 0.8241096004154469,
+   "wing_sell": 0.4989691644318578
+  },
+  "state_l1": 0.5072463768115942,
+  "legacy_f1": 0.6990486939696872,
+  "window_cycles_improved": 8,
+  "criteria": {
+   "L1": false,
+   "L2": false,
+   "L3": true,
+   "L4": false,
+   "L5": true,
+   "L6": true,
+   "L7": false
+  },
+  "passes_all": false
+ }
+}

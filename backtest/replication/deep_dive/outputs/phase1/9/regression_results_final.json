@@ -1,0 +1,60 @@
+{
+ "d1_strategy": {
+  "passed": 60,
+  "failed": 0,
+  "seconds": 11,
+  "summary": "60 passed in 10.87s"
+ },
+ "d0_strategy": {
+  "passed": 17,
+  "failed": 0,
+  "seconds": 1,
+  "summary": "17 passed in 0.43s"
+ },
+ "algo8_integrated": {
+  "passed": 4,
+  "failed": 0,
+  "seconds": 0,
+  "summary": "4 passed in 0.06s"
+ },
+ "backtest/tests": {
+  "passed": 34,
+  "failed": 0,
+  "seconds": 9,
+  "summary": "34 passed in 8.31s"
+ },
+ "backtest/replication/execution_parity/tests": {
+  "passed": 33,
+  "failed": 0,
+  "seconds": 4,
+  "summary": "33 passed in 3.34s"
+ },
+ "backtest/replication/lot_lifecycle/tests": {
+  "passed": 28,
+  "failed": 0,
+  "seconds": 10,
+  "summary": "28 passed in 9.94s"
+ },
+ "algo8_replica/tests": {
+  "passed": 13,
+  "failed": 0,
+  "seconds": 1,
+  "summary": "13 passed in 0.54s"
+ },
+ "data_validation/tests": {
+  "passed": 27,
+  "failed": 0,
+  "seconds": 2,
+  "summary": "27 passed in 1.47s"
+ },
+ "backtest/replication/deep_dive/tests": {
+  "passed": 350,
+  "failed": 0,
+  "seconds": 70,
+  "summary": "350 passed in 69.66s (0:01:09)",
+  "note": "re-run after fixing tests/test_order_type_matches_log.py (compared the engine role table to the log; the new default-off cycle_stop roles are s_ and outside that population)"
+ },
+ "total_passed": 566,
+ "total_failed": 0,
+ "date": "2026-11-25 (Phase 1 final loop)"
+}

@@ -1,0 +1,26 @@
+{
+ "d0_cycles_in_log": 33,
+ "d0_orders_in_log": 29959,
+ "replayable_cycles": 30,
+ "replayable_orders": 26430,
+ "not_replayable": [
+  {
+   "und": "NIFTY",
+   "expiry": "2026-06-23",
+   "orders": 1846,
+   "in_D1_cycle_table": false
+  },
+  {
+   "und": "NIFTY",
+   "expiry": "2026-08-11",
+   "orders": 797,
+   "in_D1_cycle_table": false
+  },
+  {
+   "und": "NIFTY",
+   "expiry": "2026-09-15",
+   "orders": 886,
+   "in_D1_cycle_table": false
+  }
+ ]
+}

@@ -1,0 +1,172 @@
+{
+ "D1": {
+  "desc": "pooled keys F1 (OOF, events, 60 s)",
+  "value": 0.42204482929689263,
+  "threshold": 0.55,
+  "passed": false
+ },
+ "D2": {
+  "desc": "pooled strict F1",
+  "value": 0.14269607179903487,
+  "threshold": 0.35,
+  "passed": false
+ },
+ "D3": {
+  "desc": "legacy lot-level OOF F1",
+  "value": 0.4145318130213732,
+  "threshold": 0.55,
+  "passed": false
+ },
+ "D4": {
+  "desc": "share of cycles with keys F1 >= 0.35",
+  "value": 0.6666666666666666,
+  "threshold": 0.8,
+  "passed": false
+ },
+ "D5": {
+  "desc": "every class with >=100 real orders F1 >= 0.40",
+  "value": {
+   "body_buyback": 0.3338074869974842,
+   "body_long": 0.3565493748911091,
+   "body_sell": 0.5198710621957954,
+   "stop": 0.1626331074540174,
+   "wing_buy": 0.5742959993146972,
+   "wing_sell": 0.35642392459415795
+  },
+  "threshold": 0.4,
+  "passed": false,
+  "below": {
+   "body_buyback": 0.334,
+   "body_long": 0.357,
+   "stop": 0.163,
+   "wing_sell": 0.356
+  }
+ },
+ "D6": {
+  "desc": "placebo / actual",
+  "value": 0.5631545201966232,
+  "threshold": 0.6,
+  "passed": true
+ },
+ "D7": {
+  "desc": "stop cycles hit / false stops",
+  "value": {
+   "hits": 8,
+   "real_stops": 11,
+   "false_stops": 3,
+   "engine_only": [
+    "NIFTY|2026-08-04",
+    "SENSEX|2026-09-17",
+    "SENSEX|2026-10-22"
+   ],
+   "real_only": [
+    "NIFTY|2026-09-22",
+    "NIFTY|2026-10-13",
+    "SENSEX|2026-07-16"
+   ]
+  },
+  "threshold": ">=8 hits, <=3 false",
+  "passed": true
+ },
+ "D8": {
+  "desc": "risk controls (enforce): refused orders, peak short lots per right, peak sell decisions per minute",
+  "value": {
+   "OOF": {
+    "rej": 0,
+    "viol": 0,
+    "mx": 279,
+    "dec": 18,
+    "runs": 30
+   },
+   "forwardA": {
+    "rej": 0,
+    "viol": 0,
+    "mx": 279,
+    "dec": 19,
+    "runs": 9
+   },
+   "forwardB": {
+    "rej": 0,
+    "viol": 0,
+    "mx": 279,
+    "dec": 8,
+    "runs": 10
+   }
+  },
+  "threshold": "0 refused; <=306; <=90",
+  "passed": true
+ },
+ "D9": {
+  "desc": "median normalised book distance at matched events",
+  "value": 0.7366480128222541,
+  "threshold": 0.45,
+  "passed": false
+ },
+ "D10": {
+  "desc": "forward keys F1 minus OOF",
+  "value": {
+   "forwardA": 0.04913084024464165,
+   "forwardB": -0.029632361677606245
+  },
+  "threshold": -0.05,
+  "passed": true
+ },
+ "D11": {
+  "desc": "median simulated / real clearance lots",
+  "value": 0.8,
+  "threshold": "0.8-1.2",
+  "passed": true,
+  "n": 15
+ },
+ "D12": {
+  "desc": "rerun identical (engine twice per cycle), default config reproduces Gate 5a reference 49/49, suites pass",
+  "value": {
+   "deterministic": {
+    "OOF": [
+     30,
+     30
+    ],
+    "forwardA": [
+     9,
+     9
+    ],
+    "forwardB": [
+     10,
+     10
+    ]
+   },
+   "reconciled": {
+    "OOF": [
+     30,
+     30
+    ],
+    "forwardA": [
+     9,
+     9
+    ],
+    "forwardB": [
+     10,
+     10
+    ]
+   }
+  },
+  "threshold": "all",
+  "passed": true,
+  "note": "default-config 49/49 and suite results are asserted by tests/test_phase1_gate5a_port.py and the engine tests (run separately in this gate)"
+ },
+ "D13": {
+  "desc": "classes with >5% unmatched have a classification or data-limit statement (see result report section on root causes)",
+  "value": {
+   "body_buyback": 0.68,
+   "body_long": 0.755,
+   "body_sell": 0.604,
+   "not_modelled": 0.348,
+   "stop": 0.907,
+   "wing_buy": 0.53,
+   "wing_sell": 0.743
+  },
+  "threshold": "statement present",
+  "passed": true,
+  "note": "satisfied in PHASE1_GATE5D_RESULT.md root-cause table (checked by test)"
+ }
+}

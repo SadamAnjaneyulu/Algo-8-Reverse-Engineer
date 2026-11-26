@@ -1,0 +1,31 @@
+{
+ "splits": {
+  "OOF half 0 test": {
+   "params_match_saved_json": true,
+   "test_cycles": 15,
+   "identical_to_saved": 15,
+   "waves": 158
+  },
+  "OOF half 1 test": {
+   "params_match_saved_json": true,
+   "test_cycles": 15,
+   "identical_to_saved": 15,
+   "waves": 211
+  },
+  "forward A (same version, later cycles)": {
+   "params_match_saved_json": true,
+   "test_cycles": 9,
+   "identical_to_saved": 9,
+   "waves": 220
+  },
+  "forward B (train V1, test V2)": {
+   "params_match_saved_json": true,
+   "test_cycles": 10,
+   "identical_to_saved": 10,
+   "waves": 176
+  }
+ },
+ "cycles": 49,
+ "identical": 49,
+ "ref_params_sha256": "ef52432f8590caf105e58d7fb733e4db066f2d918a5c655e3c85d1257371e2c4"
+}

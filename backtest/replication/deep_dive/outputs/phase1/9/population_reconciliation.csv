@@ -1,0 +1,36 @@
+und,expiry,d0_orders,d1_orders,in_d1_cycle_table,in_d0_evaluation,exclusion_reason
+NIFTY,2026-06-23,1846,0,False,False,"no D-1 cycle record (D-1 log has 0 orders, no market-data cache): D0 not replayable"
+SENSEX,2026-06-25,2290,298,True,True,
+NIFTY,2026-06-30,757,323,True,True,
+SENSEX,2026-07-02,1947,241,True,True,
+NIFTY,2026-07-07,1524,258,True,True,
+SENSEX,2026-07-09,1255,387,True,True,
+NIFTY,2026-07-14,100,270,True,True,
+SENSEX,2026-07-16,404,311,True,True,
+NIFTY,2026-07-21,1207,353,True,True,
+SENSEX,2026-07-23,1422,265,True,True,
+NIFTY,2026-07-28,1272,296,True,True,
+SENSEX,2026-07-30,1469,266,True,True,
+NIFTY,2026-08-04,1265,234,True,True,
+SENSEX,2026-08-06,114,412,True,True,
+NIFTY,2026-08-11,797,0,False,False,"no D-1 cycle record (D-1 log has 0 orders, no market-data cache): D0 not replayable"
+SENSEX,2026-08-13,1104,398,True,True,
+NIFTY,2026-08-18,103,392,True,True,
+SENSEX,2026-08-20,172,276,True,True,
+NIFTY,2026-08-25,1140,285,True,True,
+SENSEX,2026-08-27,1011,307,True,True,
+NIFTY,2026-09-01,0,348,True,False,no D0 order log for this cycle-table row
+NIFTY,2026-09-08,882,246,True,True,
+SENSEX,2026-09-10,515,400,True,True,
+NIFTY,2026-09-15,886,0,False,False,"no D-1 cycle record (D-1 log has 0 orders, no market-data cache): D0 not replayable"
+SENSEX,2026-09-17,952,249,True,True,
+NIFTY,2026-09-22,935,293,True,True,
+SENSEX,2026-09-24,100,279,True,True,
+NIFTY,2026-09-29,0,309,True,False,no D0 order log for this cycle-table row
+SENSEX,2026-10-01,946,395,True,True,
+NIFTY,2026-10-06,879,294,True,True,
+SENSEX,2026-10-08,1074,334,True,True,
+NIFTY,2026-10-13,255,300,True,True,
+SENSEX,2026-10-15,93,269,True,True,
+NIFTY,2026-10-19,228,266,True,True,
+SENSEX,2026-10-22,1015,361,True,True,

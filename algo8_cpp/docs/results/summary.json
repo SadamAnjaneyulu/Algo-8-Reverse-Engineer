@@ -1,0 +1,140 @@
+{
+ "grades": {
+  "NONE": {
+   "R1 PRE Sharpe > 0 and 95% block-bootstrap lower bound > 0": [
+    3.9232011614560007,
+    2.7892792605587995,
+    true
+   ],
+   "R2 PRE net > 0 for NIFTY and SENSEX": [
+    [
+     17482068.31984283,
+     9192531.016578518
+    ],
+    null,
+    true
+   ],
+   "R3 >= 60% of PRE quarters positive": [
+    100.0,
+    60,
+    true
+   ],
+   "R4 PRE net > 0 without the 5 best cycles": [
+    21617547.760035805,
+    0,
+    true
+   ],
+   "R5 PRE net > 0 at 3x costs": [
+    11811726.63211402,
+    0,
+    true
+   ],
+   "R6 POST net > 0": [
+    467074.59725061554,
+    5,
+    true
+   ],
+   "R7 DEV->PRE Sharpe ratio (reported)": [
+    0.9205259162745163,
+    null,
+    null
+   ]
+  },
+  "S125": {
+   "R1 PRE Sharpe > 0 and 95% block-bootstrap lower bound > 0": [
+    2.5756338991404806,
+    1.1536597920916027,
+    true
+   ],
+   "R2 PRE net > 0 for NIFTY and SENSEX": [
+    [
+     10237834.135640599,
+     6973249.666958225
+    ],
+    null,
+    true
+   ],
+   "R3 >= 60% of PRE quarters positive": [
+    81.81818181818183,
+    60,
+    true
+   ],
+   "R4 PRE net > 0 without the 5 best cycles": [
+    12986175.023363614,
+    0,
+    true
+   ],
+   "R5 PRE net > 0 at 3x costs": [
+    5319962.890096477,
+    0,
+    true
+   ],
+   "R6 POST net > 0": [
+    -775174.9820093163,
+    5,
+    false
+   ],
+   "R7 DEV->PRE Sharpe ratio (reported)": [
+    1.9810898667236119,
+    null,
+    null
+   ]
+  },
+  "S200": {
+   "R1 PRE Sharpe > 0 and 95% block-bootstrap lower bound > 0": [
+    2.597468926206105,
+    1.428401348357908,
+    true
+   ],
+   "R2 PRE net > 0 for NIFTY and SENSEX": [
+    [
+     11116247.435321352,
+     7776839.008832884
+    ],
+    null,
+    true
+   ],
+   "R3 >= 60% of PRE quarters positive": [
+    90.9090909090909,
+    60,
+    true
+   ],
+   "R4 PRE net > 0 without the 5 best cycles": [
+    14219045.449193913,
+    0,
+    true
+   ],
+   "R5 PRE net > 0 at 3x costs": [
+    5920723.341312703,
+    0,
+    true
+   ],
+   "R6 POST net > 0": [
+    -829942.3140589019,
+    5,
+    false
+   ],
+   "R7 DEV->PRE Sharpe ratio (reported)": [
+    1.3239385699239572,
+    null,
+    null
+   ]
+  }
+ },
+ "stop_verdict": {
+  "a_paired_ci_lower_gt0_in_PRE": false,
+  "b_positive_mean_in_DEV_PRE_POST": false,
+  "c_positive_after_removing_top5_in_PRE": false,
+  "d_worst_cycle_and_maxdd_not_more_than_25pct_worse": true,
+  "worst_cycle": {
+   "S200": -1353713.4789055588,
+   "S125": -1353713.4789055588
+  },
+  "maxdd_rs": {
+   "S200": -2490216.572305523,
+   "S125": -2926585.9779811203
+  },
+  "S200_better_supported": false
+ },
+ "n_cycles": 275
+}

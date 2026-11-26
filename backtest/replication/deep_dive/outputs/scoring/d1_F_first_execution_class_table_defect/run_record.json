@@ -1,0 +1,17 @@
+{
+ "spec_version": "1.1",
+ "spec_sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+ "scorer_sha256": "2a5749ca2cb57cf59e4285948b51ea487546774abe6ba71449b51aeb416d5f1e",
+ "mode": "F",
+ "t_equals_f_for_d1": true,
+ "evidence_label": "historical reproduction",
+ "simulator": "d1_strategy/d1_algo (D1Engine replay of one-minute bars, config_for(und, d1))",
+ "engine_orders": 8735,
+ "real_orders": 9915,
+ "rejected_orders": 0,
+ "legacy_f1_on_this_replay": 0.6877975245953666,
+ "data_cache": "21bfe7bbd1662c9e9657cf3a075a526b047c1bafaf59f72a8a33bebb4d32e58c",
+ "run_at": "2026-11-25T13:27:46.196811Z",
+ "diagnostic_only": true,
+ "seconds": 72
+}

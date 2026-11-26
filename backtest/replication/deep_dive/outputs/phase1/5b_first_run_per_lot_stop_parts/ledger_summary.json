@@ -1,0 +1,263 @@
+{
+ "real_orders": 26430,
+ "sim_orders": 19198,
+ "matched": 9528,
+ "missing_real": 16902,
+ "extra_sim": 9670,
+ "missing_by_class_category": {
+  "body_buyback": {
+   "A": 2268,
+   "S": 2089,
+   "T": 1264,
+   "W": 1
+  },
+  "body_long": {
+   "A": 514,
+   "S": 508,
+   "T": 145,
+   "W": 1
+  },
+  "body_sell": {
+   "A": 1518,
+   "S": 2863,
+   "T": 394,
+   "W": 0
+  },
+  "not_modelled": {
+   "A": 10,
+   "S": 29,
+   "T": 17,
+   "W": 0
+  },
+  "stop": {
+   "A": 66,
+   "S": 126,
+   "T": 95,
+   "W": 0
+  },
+  "wing_buy": {
+   "A": 1076,
+   "S": 920,
+   "T": 398,
+   "W": 2
+  },
+  "wing_sell": {
+   "A": 1082,
+   "S": 1069,
+   "T": 444,
+   "W": 3
+  }
+ },
+ "extra_by_class_category": {
+  "body_buyback": {
+   "A": 1287,
+   "S": 3869,
+   "T": 856,
+   "W": 2
+  },
+  "body_long": {
+   "A": 14,
+   "S": 18,
+   "T": 7,
+   "W": 9
+  },
+  "body_sell": {
+   "A": 457,
+   "S": 287,
+   "T": 206,
+   "W": 12
+  },
+  "stop": {
+   "A": 0,
+   "S": 905,
+   "T": 292,
+   "W": 35
+  },
+  "wing_buy": {
+   "A": 275,
+   "S": 107,
+   "T": 235,
+   "W": 4
+  },
+  "wing_sell": {
+   "A": 261,
+   "S": 265,
+   "T": 244,
+   "W": 23
+  }
+ },
+ "missing_by_class_window": {
+  "body_buyback": {
+   "15:00-15:13": 569,
+   "clearance (15:14 on)": 1006,
+   "intraday": 3809,
+   "opening (to 09:17)": 238
+  },
+  "body_long": {
+   "15:00-15:13": 44,
+   "clearance (15:14 on)": 193,
+   "intraday": 599,
+   "opening (to 09:17)": 332
+  },
+  "body_sell": {
+   "15:00-15:13": 448,
+   "clearance (15:14 on)": 22,
+   "intraday": 3614,
+   "opening (to 09:17)": 691
+  },
+  "not_modelled": {
+   "15:00-15:13": 17,
+   "clearance (15:14 on)": 2,
+   "intraday": 33,
+   "opening (to 09:17)": 4
+  },
+  "stop": {
+   "15:00-15:13": 0,
+   "clearance (15:14 on)": 0,
+   "intraday": 172,
+   "opening (to 09:17)": 115
+  },
+  "wing_buy": {
+   "15:00-15:13": 62,
+   "clearance (15:14 on)": 7,
+   "intraday": 2270,
+   "opening (to 09:17)": 57
+  },
+  "wing_sell": {
+   "15:00-15:13": 245,
+   "clearance (15:14 on)": 163,
+   "intraday": 2058,
+   "opening (to 09:17)": 132
+  }
+ },
+ "extra_by_class_window": {
+  "body_buyback": {
+   "15:00-15:13": 1066,
+   "clearance (15:14 on)": 34,
+   "intraday": 4604,
+   "opening (to 09:17)": 310
+  },
+  "body_long": {
+   "15:00-15:13": 0,
+   "clearance (15:14 on)": 37,
+   "intraday": 0,
+   "opening (to 09:17)": 11
+  },
+  "body_sell": {
+   "15:00-15:13": 60,
+   "clearance (15:14 on)": 0,
+   "intraday": 892,
+   "opening (to 09:17)": 10
+  },
+  "stop": {
+   "15:00-15:13": 0,
+   "clearance (15:14 on)": 0,
+   "intraday": 1060,
+   "opening (to 09:17)": 172
+  },
+  "wing_buy": {
+   "15:00-15:13": 28,
+   "clearance (15:14 on)": 0,
+   "intraday": 593,
+   "opening (to 09:17)": 0
+  },
+  "wing_sell": {
+   "15:00-15:13": 46,
+   "clearance (15:14 on)": 44,
+   "intraday": 672,
+   "opening (to 09:17)": 31
+  }
+ },
+ "missing_lots_by_class": {
+  "body_buyback": 6597,
+  "body_long": 2248,
+  "body_sell": 5191,
+  "not_modelled": 147,
+  "stop": 2680,
+  "wing_buy": 4006,
+  "wing_sell": 6556
+ },
+ "extra_lots_by_class": {
+  "body_buyback": 6428,
+  "body_long": 281,
+  "body_sell": 2422,
+  "stop": 1956,
+  "wing_buy": 1779,
+  "wing_sell": 3365
+ },
+ "real_lots_by_class": {
+  "body_buyback": 9656,
+  "body_long": 3082,
+  "body_sell": 8336,
+  "not_modelled": 908,
+  "stop": 3515,
+  "wing_buy": 7312,
+  "wing_sell": 8973
+ },
+ "sim_lots_by_class": {
+  "body_buyback": 10498,
+  "body_long": 760,
+  "body_sell": 8865,
+  "stop": 3296,
+  "wing_buy": 6884,
+  "wing_sell": 9721
+ },
+ "by_class": [
+  {
+   "cls": "body_buyback",
+   "real": 8350,
+   "sim": 9207,
+   "recall": 0.3267,
+   "precision": 0.3468,
+   "F1": 0.3365
+  },
+  {
+   "cls": "body_long",
+   "real": 1637,
+   "sim": 113,
+   "recall": 0.2865,
+   "precision": 0.5752,
+   "F1": 0.3825
+  },
+  {
+   "cls": "body_sell",
+   "real": 7905,
+   "sim": 3962,
+   "recall": 0.396,
+   "precision": 0.7572,
+   "F1": 0.52
+  },
+  {
+   "cls": "not_modelled",
+   "real": 164,
+   "sim": 0,
+   "recall": 0.6585,
+   "precision": NaN,
+   "F1": NaN
+  },
+  {
+   "cls": "stop",
+   "real": 387,
+   "sim": 1642,
+   "recall": 0.2584,
+   "precision": 0.2497,
+   "F1": 0.254
+  },
+  {
+   "cls": "wing_buy",
+   "real": 4515,
+   "sim": 2376,
+   "recall": 0.4693,
+   "precision": 0.7386,
+   "F1": 0.574
+  },
+  {
+   "cls": "wing_sell",
+   "real": 3472,
+   "sim": 1898,
+   "recall": 0.2517,
+   "precision": 0.5822,
+   "F1": 0.3515
+  }
+ ]
+}

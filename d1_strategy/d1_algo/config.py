@@ -36,6 +36,14 @@ class D1Config:
     ladder_step: float = 0.2                       # in strike steps of spot movement
     ladder_gate_min: int = 60
     ladder_strike_window: int = 4
+    ladder_lots_mode: str = "one"                  # Phase 1 candidate switch (default = baseline): 'one' = one lot per trigger; 'steps' = k single-lot orders at the same second, k = rungs crossed (P1-2A)
+    cycle_stop_rupees: Optional[float] = None      # Phase 1 final-loop candidate (P1-9-B, default None = baseline, no stop in the D-1 engine): cumulative mark-to-market (cash of the simulated fills plus the live marks of the book) <= -L liquidates the whole book and halts every new order
+    cycle_stop_check_s: int = 5                    # cadence of the stop check in simulated seconds
+    stop_latency_s: float = 0.0                    # Phase 1 candidate execution convention (default 0 = baseline): a per-lot stop is submitted this many seconds after its trigger first holds (P1-3A K6)
+    breakout_one_lot: bool = False                 # Phase 1 candidate switch (default = baseline): breakout straddle / extra orders sent as single-lot orders (P1-2D)
+    ladder_late_gate_min: Optional[int] = None     # Phase 1 candidate switch (default None = baseline): fresh-extreme window of the ladder from minute `late_start_min` on (P1-2C)
+    late_start_min: int = 360                      # 15:15
+    ladder_book_condition: bool = False            # Phase 1 candidate switch (default = baseline): fire only while the own side's premium ratio <= 1 and the other side's >= 1 (each only if that side holds lots); a blocked trigger does not advance the ladder reference (P1-2A)
     # ---- per-lot stop
     stop_ratio: float = 1.6
     stop_price: str = "high"                       # 'high' = running high of the current minute; 'prev_close' = last completed minute close
@@ -49,6 +57,8 @@ class D1Config:
     lump_ratio: float = 0.827
     lump_sigma_mult: float = 2.2
     # ---- execution
+    order_split: str = "freeze_v1"                 # EXECUTION CONVENTION (not a strategy rule). 'freeze_v1' (default, the baseline): an order is split only at the freeze quantity.
+                                                   # 'one_lot_v2': the roles in ONE_LOT_ROLES (opening wings, stop buy-backs) are sent as 1-lot child orders, as the real log shows. Total quantity, timing, strikes and sizing are unchanged.
     limit_buffer_pct: float = 15.0                 # marketable limit: LTP -/+ this percent (the real system sends limit = LTP x (1 +/- 0.15); D0_QTY.md part A2)
     # ---- risk (see risk.py)
     max_short_lots_per_right: int = 400

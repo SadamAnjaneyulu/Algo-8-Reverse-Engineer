@@ -1,0 +1,92 @@
+{
+ "stops": 11,
+ "gap_stops_before_0916": 4,
+ "non_stop_cycles": 19,
+ "non_stop_worst_minute_close_mtm": -117187.99999999999,
+ "non_stop_median_worst": 12244.999999999998,
+ "non_gap_stops": 7,
+ "a_prev_close": {
+  "levels_rupees": [
+   -128894,
+   -127610,
+   -117332,
+   -116552,
+   -114406,
+   -112405,
+   -61841
+  ],
+  "median": -116552.0,
+  "min": -128894.0,
+  "max": -61841.000000000044,
+  "spread_over_median": 0.5753054430640397,
+  "within_10pct_of_median": 5,
+  "n": 7,
+  "smallest_magnitude_stop": -61841.000000000044,
+  "non_stop_min_above_smallest_stop": false
+ },
+ "b_open": {
+  "levels_rupees": [
+   -125960,
+   -125579,
+   -121705,
+   -117894,
+   -116317,
+   -111478,
+   -72998
+  ],
+  "median": -117893.74999999999,
+  "min": -125960.25,
+  "max": -72998.24999999999,
+  "spread_over_median": 0.4492350103376983,
+  "within_10pct_of_median": 6,
+  "n": 7,
+  "smallest_magnitude_stop": -72998.24999999999,
+  "non_stop_min_above_smallest_stop": false
+ },
+ "c_prev_close_plus_decision_prices": {
+  "levels_rupees": [
+   -152885,
+   -149638,
+   -145359,
+   -142967,
+   -142866,
+   -137405,
+   -135692
+  ],
+  "median": -142966.8797953964,
+  "min": -152884.73785166242,
+  "max": -135692.4539641945,
+  "spread_over_median": 0.12025361336886033,
+  "within_10pct_of_median": 7,
+  "n": 7,
+  "smallest_magnitude_stop": -135692.4539641945,
+  "non_stop_min_above_smallest_stop": true
+ },
+ "verdict": "consistent with a single MTM constant",
+ "gap_stops": [
+  {
+   "cyc": "NIFTY|2026-07-14",
+   "stop_time": "09:15:17",
+   "a_prev_close": -116304.0,
+   "c_prev_close_plus_decision_prices": -138135.0
+  },
+  {
+   "cyc": "NIFTY|2026-08-18",
+   "stop_time": "09:15:07",
+   "a_prev_close": -163826.0,
+   "c_prev_close_plus_decision_prices": -213540.0
+  },
+  {
+   "cyc": "SENSEX|2026-08-20",
+   "stop_time": "09:14:13",
+   "a_prev_close": -211333.0,
+   "c_prev_close_plus_decision_prices": -245365.0
+  },
+  {
+   "cyc": "SENSEX|2026-09-24",
+   "stop_time": "09:15:00",
+   "a_prev_close": -197464.0,
+   "c_prev_close_plus_decision_prices": -171111.0
+  }
+ ]
+}

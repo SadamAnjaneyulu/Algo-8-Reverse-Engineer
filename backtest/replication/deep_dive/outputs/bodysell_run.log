@@ -1,0 +1,79 @@
+{
+ "checks": {
+  "real_body_sells": 4408,
+  "sim_body_sells": 4091,
+  "real_missing": 1179,
+  "sim_extra": 873,
+  "every_real_has_one_status": true,
+  "every_sim_has_one_status": true,
+  "F_table_real_body_sell": 4408,
+  "F_table_sim_body_sell": 4091,
+  "F_table_missing_body_sell": 1179,
+  "F_table_extra_body_sell": 873,
+  "reconciles_to_F_tables": true,
+  "M1_with_unmatched_neighbour_(must_be_0)": 0,
+  "probe_body_sell_orders": 4091,
+  "probe_equals_F_simulated_body_sells": true
+ },
+ "missing_total": {
+  "orders": 1179,
+  "persistent_in_TFE": 1145,
+  "recovered_by_TFE": 34
+ },
+ "missing_by_category": [
+  {
+   "category": "M1",
+   "orders": 727,
+   "persistent_in_TFE": 695,
+   "share": 0.6166,
+   "meaning": "supply/count: a same-type simulated sell within 60 s was matched elsewhere"
+  },
+  {
+   "category": "M2",
+   "orders": 24,
+   "persistent_in_TFE": 24,
+   "share": 0.0204,
+   "meaning": "possible wrong side: an unmatched opposite-type simulated sell within 60 s"
+  },
+  {
+   "category": "M3",
+   "orders": 123,
+   "persistent_in_TFE": 123,
+   "share": 0.1043,
+   "meaning": "timing offset: an unmatched same-type simulated sell within 61-300 s"
+  },
+  {
+   "category": "M4",
+   "orders": 305,
+   "persistent_in_TFE": 303,
+   "share": 0.2587,
+   "meaning": "trigger never fires: no simulated sell of that type within 300 s"
+  }
+ ],
+ "extra_by_category": [
+  {
+   "category": "X1",
+   "orders": 324,
+   "share": 0.3711,
+   "meaning": "real supply exhausted: a same-type real sell within 60 s was matched elsewhere"
+  },
+  {
+   "category": "X2",
+   "orders": 81,
+   "share": 0.0928,
+   "meaning": "possible wrong side: an unmatched opposite-type real sell within 60 s"
+  },
+  {
+   "category": "X3",
+   "orders": 109,
+   "share": 0.1249,
+   "meaning": "timing offset: an unmatched same-type real sell within 61-300 s"
+  },
+  {
+   "category": "X4",
+   "orders": 359,
+   "share": 0.4112,
+   "meaning": "no real decision within 300 s"
+  }
+ ]
+}

@@ -1,0 +1,264 @@
+{
+ "LOCO_hr": {
+  "keys_F1_60s": 0.4283906539521851,
+  "ci": [
+   0.39127054601226846,
+   0.46276951885190576
+  ],
+  "legacy_F1": 0.4241881298992161,
+  "strict_F1": 0.14543318118136214,
+  "placebo": 0.2399783070456908,
+  "per_cycle": {
+   "n": 30,
+   "median": 0.41374045801526715,
+   "iqr": [
+    0.34784305911916946,
+    0.48972095270365573
+   ],
+   "p10": 0.20466089561444084,
+   "min": 0.1332323996971991,
+   "max": 0.5819774718397998,
+   "macro_mean": 0.3944254231008775,
+   "below_0_5": 25,
+   "below_0_3": 6,
+   "worst_five": [
+    [
+     "NIFTY|2026-10-13",
+     0.1332323996971991
+    ],
+    [
+     "SENSEX|2026-07-16",
+     0.18738404452690166
+    ],
+    [
+     "SENSEX|2026-10-15",
+     0.1981981981981982
+    ],
+    [
+     "SENSEX|2026-09-10",
+     0.20537897310513448
+    ],
+    [
+     "SENSEX|2026-08-20",
+     0.25380710659898476
+    ]
+   ]
+  },
+  "by_class": {
+   "body_buyback": 0.3363581773852051,
+   "body_long": 0.35848671982732777,
+   "body_sell": 0.5360410446891442,
+   "not_modelled": NaN,
+   "stop": 0.16340590911098352,
+   "wing_buy": 0.5779094504117671,
+   "wing_sell": 0.35679200913753334
+  },
+  "cycles": 30,
+  "real": 26430,
+  "sim": 17824
+ },
+ "LOCO_fwd": {
+  "keys_F1_60s": 0.42718183052074377,
+  "ci": [
+   0.39054430945299373,
+   0.4612460402806719
+  ],
+  "legacy_F1": 0.4207039131192866,
+  "strict_F1": 0.14518391168619643,
+  "placebo": 0.24032936705424604,
+  "per_cycle": {
+   "n": 30,
+   "median": 0.41260583254938854,
+   "iqr": [
+    0.3471284952582523,
+    0.48977676475144133
+   ],
+   "p10": 0.20466089561444084,
+   "min": 0.1332323996971991,
+   "max": 0.5819774718397998,
+   "macro_mean": 0.3936864187715466,
+   "below_0_5": 26,
+   "below_0_3": 6,
+   "worst_five": [
+    [
+     "NIFTY|2026-10-13",
+     0.1332323996971991
+    ],
+    [
+     "SENSEX|2026-07-16",
+     0.18773234200743494
+    ],
+    [
+     "SENSEX|2026-10-15",
+     0.1981981981981982
+    ],
+    [
+     "SENSEX|2026-09-10",
+     0.20537897310513448
+    ],
+    [
+     "SENSEX|2026-08-20",
+     0.25380710659898476
+    ]
+   ]
+  },
+  "by_class": {
+   "body_buyback": 0.3346761306178332,
+   "body_long": 0.34515992305435106,
+   "body_sell": 0.5360616726928236,
+   "not_modelled": NaN,
+   "stop": 0.16340590911098352,
+   "wing_buy": 0.5776700381732564,
+   "wing_sell": 0.35331701855036995
+  },
+  "cycles": 30,
+  "real": 26430,
+  "sim": 17776
+ },
+ "R4_shift_hr": {
+  "-120": 0.23763135344788708,
+  "-60": 0.2997790105082758,
+  "0": 0.42204482929689263,
+  "60": 0.4356649979705047,
+  "120": 0.3182248680828034
+ },
+ "R5": {
+  "tests": [
+   {
+    "engine": "D0",
+    "cid": 0,
+    "m": 100,
+    "identical": true,
+    "events": 189
+   },
+   {
+    "engine": "D0",
+    "cid": 0,
+    "m": 200,
+    "identical": true,
+    "events": 317
+   },
+   {
+    "engine": "D0",
+    "cid": 0,
+    "m": 300,
+    "identical": true,
+    "events": 317
+   },
+   {
+    "engine": "D0",
+    "cid": 2,
+    "m": 100,
+    "identical": true,
+    "events": 24
+   },
+   {
+    "engine": "D0",
+    "cid": 2,
+    "m": 200,
+    "identical": true,
+    "events": 24
+   },
+   {
+    "engine": "D0",
+    "cid": 2,
+    "m": 300,
+    "identical": true,
+    "events": 24
+   },
+   {
+    "engine": "D0",
+    "cid": 4,
+    "m": 100,
+    "identical": true,
+    "events": 271
+   },
+   {
+    "engine": "D0",
+    "cid": 4,
+    "m": 200,
+    "identical": true,
+    "events": 423
+   },
+   {
+    "engine": "D0",
+    "cid": 4,
+    "m": 300,
+    "identical": true,
+    "events": 673
+   },
+   {
+    "engine": "D0",
+    "cid": 6,
+    "m": 100,
+    "identical": true,
+    "events": 26
+   },
+   {
+    "engine": "D0",
+    "cid": 6,
+    "m": 200,
+    "identical": true,
+    "events": 26
+   },
+   {
+    "engine": "D0",
+    "cid": 6,
+    "m": 300,
+    "identical": true,
+    "events": 26
+   },
+   {
+    "engine": "D1+stop",
+    "cid": 8,
+    "m": 100,
+    "identical": true,
+    "events": 83
+   },
+   {
+    "engine": "D1+stop",
+    "cid": 8,
+    "m": 200,
+    "identical": true,
+    "events": 196
+   },
+   {
+    "engine": "D1+stop",
+    "cid": 8,
+    "m": 300,
+    "identical": true,
+    "events": 234
+   },
+   {
+    "engine": "D1+stop",
+    "cid": 29,
+    "m": 100,
+    "identical": true,
+    "events": 121
+   },
+   {
+    "engine": "D1+stop",
+    "cid": 29,
+    "m": 200,
+    "identical": true,
+    "events": 203
+   },
+   {
+    "engine": "D1+stop",
+    "cid": 29,
+    "m": 300,
+    "identical": true,
+    "events": 267
+   }
+  ],
+  "passed": true,
+  "n": 18
+ },
+ "R6_disjoint": {
+  "OOF half 0 test": true,
+  "OOF half 1 test": true,
+  "forward A (same version, later cycles)": true,
+  "forward B (train V1, test V2)": true,
+  "LOCO": true
+ }
+}

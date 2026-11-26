@@ -1,0 +1,70 @@
+{
+ "real_buybacks": 1324,
+ "sim_buybacks": 933,
+ "missing": 675,
+ "extra": 290,
+ "reconciles_to_B1_by_class": true,
+ "missing_by_class": {
+  "U2": 249,
+  "I": 163,
+  "S": 142,
+  "U1": 119,
+  "R1": 2
+ },
+ "extra_by_class": {
+  "XS": 173,
+  "XU": 50,
+  "XI": 34,
+  "XR": 33
+ },
+ "missing_upstream": {
+  "n": 368,
+  "share": 0.5451851851851852
+ },
+ "extra_upstream": {
+  "n": 50,
+  "share": 0.1724137931034483
+ },
+ "missing_I_ratio_quantiles": {
+  "0.1": 0.763,
+  "0.25": 1.024,
+  "0.5": 1.171,
+  "0.75": 1.444,
+  "0.9": 1.547
+ },
+ "missing_R1_nearest_sim_s": {
+  "count": 2.0,
+  "mean": 158.5,
+  "std": 85.6,
+  "min": 98.0,
+  "25%": 128.2,
+  "50%": 158.5,
+  "75%": 188.8,
+  "max": 219.0
+ },
+ "missing_by_class_median_nearest_sim_buy_s": {
+  "I": 166.0,
+  "R1": 158.5,
+  "S": 25.0,
+  "U1": 86.0,
+  "U2": 78.0
+ },
+ "matched_buyback_state": {
+  "n": 649,
+  "SL_equal_share": 0.0,
+  "l1_norm_median": 0.52
+ },
+ "matched_buyback_timing": {
+  "n": 649,
+  "dt_median": -18.0,
+  "dt_quantiles": {
+   "0.1": -30.0,
+   "0.25": -25.0,
+   "0.75": 6.0,
+   "0.9": 26.0
+  },
+  "strike_exact": 0.46533127889060094,
+  "strike_within1": 0.7534668721109399,
+  "lots_exact": 0.9969183359013868
+ }
+}

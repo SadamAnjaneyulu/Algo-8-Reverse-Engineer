@@ -1,0 +1,1 @@
+In TF-E the simulator portfolio book is forced to the real book after every real order, so state tables computed from cumulative simulated orders do not describe the simulator state. They are dropped; see ../pre_reset_drift.csv.

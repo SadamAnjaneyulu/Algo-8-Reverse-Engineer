@@ -1,0 +1,41 @@
+{
+ "G1": {
+  "pair_bursts": 8,
+  "post": 6,
+  "pre": 2,
+  "v1_matched": 0,
+  "v0_matched": 0,
+  "null_mean": 0.543,
+  "p_one_sided": 1.0,
+  "success_rule": "matched >= 5 of 8 and p <= 0.05",
+  "supported": false
+ },
+ "descriptive": {
+  "v1_fires_after_1515": 11,
+  "v1_fires_within_1min_of_any_real_late_sale": 6,
+  "v1_precision_vs_any_late_sale": 0.5454545454545454,
+  "cycles": 29,
+  "late_orders": 176,
+  "order_recall": {
+   "v0": 0.0,
+   "v1": 0.1590909090909091,
+   "ladder": 0.6420454545454546,
+   "either": 0.6420454545454546
+  },
+  "order_recall_post": {
+   "v0": 0.0,
+   "v1": 0.1891891891891892,
+   "ladder": 0.6621621621621622,
+   "either": 0.6621621621621622
+  },
+  "order_recall_pair_burst_orders": {
+   "v0": 0.0,
+   "v1": 0.0,
+   "ladder": 0.2619047619047619,
+   "either": 0.2619047619047619
+  },
+  "pair_burst_orders": 42,
+  "same_strike_bursts": 6,
+  "v1_extra_fires_per_cycle": 0.3793103448275862
+ }
+}

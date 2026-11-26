@@ -1,0 +1,34 @@
+{
+ "criteria": {
+  "C1 overall keys F1 >= base - 0.003": [
+   0.42204482929689263,
+   0.41873403103572715,
+   true
+  ],
+  "C2 legacy lot-level F1 >= 0.4103 - 0.005": [
+   0.4145318130213732,
+   0.4053,
+   true
+  ],
+  "C3 every class F1 >= base - 0.02": [
+   -0.00012119614535660572,
+   -0.02,
+   true
+  ],
+  "C3_worst_class": "stop",
+  "C4 no cycle falls by > 0.05": [
+   0.0,
+   -0.05,
+   true
+  ],
+  "C5 forward A and B not lower by > 0.003": [
+   {
+    "forwardA": -0.00045392646391284597,
+    "forwardB": 0.0
+   },
+   -0.003,
+   true
+  ]
+ },
+ "passed": true
+}
