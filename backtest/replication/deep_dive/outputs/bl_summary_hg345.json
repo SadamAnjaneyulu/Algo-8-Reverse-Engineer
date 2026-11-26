@@ -1,0 +1,79 @@
+{
+ "L3": {
+  "buy": {
+   "waves": 3141,
+   "equals_gap": 0.9786692136262337,
+   "sign_right": 0.9914040114613181
+  },
+  "sell": {
+   "waves": 500,
+   "equals_gap": 0.956,
+   "sign_right": 1.0
+  },
+  "all": {
+   "waves": 3641,
+   "equals_gap": 0.9755561658884921
+  }
+ },
+ "L4": {
+  "n": 587,
+  "chance": 0.2640879593956055,
+  "outermost": 0.44122657580919933,
+  "innermost": 0.018739352640545145,
+  "cheapest": 0.43781942078364566,
+  "dearest": 0.017035775127768313,
+  "oldest": 0.24361158432708688,
+  "newest": 0.37649063032367974,
+  "near_2p5_atm": 0.3270868824531516
+ },
+ "L5": [
+  {
+   "role": "close_long",
+   "window": "09:15-09:17",
+   "orders": 2,
+   "lots": 2,
+   "otm_steps_median": 17.359,
+   "L_ge_S_before": 1.0
+  },
+  {
+   "role": "close_long",
+   "window": "after 15:00",
+   "orders": 17,
+   "lots": 17,
+   "otm_steps_median": 38.725,
+   "L_ge_S_before": 1.0
+  },
+  {
+   "role": "close_long",
+   "window": "other",
+   "orders": 115,
+   "lots": 144,
+   "otm_steps_median": 37.643,
+   "L_ge_S_before": 0.965
+  },
+  {
+   "role": "open_long",
+   "window": "09:15-09:17",
+   "orders": 186,
+   "lots": 186,
+   "otm_steps_median": 39.525,
+   "L_ge_S_before": 0.978
+  },
+  {
+   "role": "open_long",
+   "window": "after 15:00",
+   "orders": 6,
+   "lots": 123,
+   "otm_steps_median": 17.594,
+   "L_ge_S_before": 0.667
+  },
+  {
+   "role": "open_long",
+   "window": "other",
+   "orders": 7,
+   "lots": 7,
+   "otm_steps_median": 37.828,
+   "L_ge_S_before": 1.0
+  }
+ ]
+}

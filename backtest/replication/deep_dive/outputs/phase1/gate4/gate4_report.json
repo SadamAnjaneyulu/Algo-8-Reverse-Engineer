@@ -1,0 +1,623 @@
+{
+ "Q1": {
+  "value": 0.7392084432717678,
+  "threshold": 0.7
+ },
+ "Q2": {
+  "value": 0.4721899736147757,
+  "threshold": 0.55,
+  "note": "strict = strike exact and lots exact (level lots_exact)"
+ },
+ "Q3": {
+  "value": 0.6877975245953666,
+  "threshold": 0.65
+ },
+ "Q4": {
+  "value": 0.6612466124661247,
+  "threshold": 0.6,
+  "worst_five": [
+   [
+    "SENSEX|2026-10-22",
+    0.6612466124661247
+   ],
+   [
+    "NIFTY|2026-10-19",
+    0.6703296703296703
+   ],
+   [
+    "SENSEX|2026-10-01",
+    0.6749072929542645
+   ],
+   [
+    "NIFTY|2026-10-06",
+    0.6789297658862876
+   ],
+   [
+    "SENSEX|2026-09-10",
+    0.6926406926406926
+   ]
+  ],
+  "cycles_below_0_60": 0,
+  "median": 0.7417293298369311
+ },
+ "Q5": {
+  "value": 0.4969601657045319,
+  "threshold": 0.5,
+  "table": [
+   {
+    "cls": "body_buyback",
+    "real": 1324,
+    "recall": 0.4902,
+    "precision": 0.6892,
+    "F1": 0.5729
+   },
+   {
+    "cls": "body_sell",
+    "real": 4408,
+    "recall": 0.7325,
+    "precision": 0.7866,
+    "F1": 0.7586
+   },
+   {
+    "cls": "not_modelled",
+    "real": 178,
+    "recall": 0.382,
+    "precision": NaN,
+    "F1": NaN
+   },
+   {
+    "cls": "opening_wings",
+    "real": 186,
+    "recall": 0.9785,
+    "precision": 0.7581,
+    "F1": 0.8543
+   },
+   {
+    "cls": "wing_buy",
+    "real": 3146,
+    "recall": 0.8296,
+    "precision": 0.8147,
+    "F1": 0.8221
+   },
+   {
+    "cls": "wing_sell",
+    "real": 600,
+    "recall": 0.41,
+    "precision": 0.6307,
+    "F1": 0.497
+   }
+  ],
+  "failing": [
+   "wing_sell"
+  ]
+ },
+ "Q6": {
+  "value": 0.32591029023746704,
+  "actual": 0.7392084432717678,
+  "ratio": 0.440890919474586,
+  "threshold": 0.5
+ },
+ "Q7": {
+  "value": 0.9876893939393939,
+  "threshold": 0.95,
+  "matched": 2086,
+  "simulated": 2112
+ },
+ "Q8": {
+  "rejected": 0,
+  "max_net_short_lots_per_right": {
+   "CE": 130,
+   "PE": 93
+  },
+  "limit": 400,
+  "max_orders_per_minute_children": 45,
+  "decisions_cap": 40,
+  "note": "the decision cap is enforced by the engine (0 rejected); the child count is informational",
+  "pass": true
+ },
+ "Q9": {
+  "value": 0.5084745762711864,
+  "threshold": 0.35,
+  "SL_equal_share": 0.01242147344374643
+ },
+ "by_block": [
+  {
+   "block_start": "09:00",
+   "real": 489,
+   "sim": 736,
+   "matched_by_real_block": 424,
+   "recall": 0.8671,
+   "precision": 0.5761,
+   "F1": 0.6922
+  },
+  {
+   "block_start": "09:30",
+   "real": 842,
+   "sim": 841,
+   "matched_by_real_block": 690,
+   "recall": 0.8195,
+   "precision": 0.8205,
+   "F1": 0.82
+  },
+  {
+   "block_start": "10:00",
+   "real": 888,
+   "sim": 891,
+   "matched_by_real_block": 674,
+   "recall": 0.759,
+   "precision": 0.7565,
+   "F1": 0.7577
+  },
+  {
+   "block_start": "10:30",
+   "real": 731,
+   "sim": 696,
+   "matched_by_real_block": 596,
+   "recall": 0.8153,
+   "precision": 0.8563,
+   "F1": 0.8353
+  },
+  {
+   "block_start": "11:00",
+   "real": 803,
+   "sim": 747,
+   "matched_by_real_block": 674,
+   "recall": 0.8394,
+   "precision": 0.9023,
+   "F1": 0.8697
+  },
+  {
+   "block_start": "11:30",
+   "real": 948,
+   "sim": 922,
+   "matched_by_real_block": 801,
+   "recall": 0.8449,
+   "precision": 0.8688,
+   "F1": 0.8567
+  },
+  {
+   "block_start": "12:00",
+   "real": 592,
+   "sim": 504,
+   "matched_by_real_block": 392,
+   "recall": 0.6622,
+   "precision": 0.7778,
+   "F1": 0.7153
+  },
+  {
+   "block_start": "12:30",
+   "real": 903,
+   "sim": 743,
+   "matched_by_real_block": 609,
+   "recall": 0.6744,
+   "precision": 0.8197,
+   "F1": 0.74
+  },
+  {
+   "block_start": "13:00",
+   "real": 566,
+   "sim": 443,
+   "matched_by_real_block": 363,
+   "recall": 0.6413,
+   "precision": 0.8194,
+   "F1": 0.7195
+  },
+  {
+   "block_start": "13:30",
+   "real": 782,
+   "sim": 664,
+   "matched_by_real_block": 540,
+   "recall": 0.6905,
+   "precision": 0.8133,
+   "F1": 0.7469
+  },
+  {
+   "block_start": "14:00",
+   "real": 708,
+   "sim": 634,
+   "matched_by_real_block": 512,
+   "recall": 0.7232,
+   "precision": 0.8076,
+   "F1": 0.763
+  },
+  {
+   "block_start": "14:30",
+   "real": 732,
+   "sim": 575,
+   "matched_by_real_block": 450,
+   "recall": 0.6148,
+   "precision": 0.7826,
+   "F1": 0.6886
+  },
+  {
+   "block_start": "15:00",
+   "real": 849,
+   "sim": 610,
+   "matched_by_real_block": 269,
+   "recall": 0.3168,
+   "precision": 0.441,
+   "F1": 0.3687
+  },
+  {
+   "block_start": "15:30",
+   "real": 82,
+   "sim": 29,
+   "matched_by_real_block": 10,
+   "recall": 0.122,
+   "precision": 0.3448,
+   "F1": 0.1802
+  }
+ ],
+ "by_class_all": [
+  {
+   "cls": "body_buyback",
+   "real": 1324,
+   "sim": 933,
+   "matched_real_side": 649,
+   "matched_sim_side": 643,
+   "matched_same_class": 605,
+   "recall": 0.4902,
+   "precision": 0.6892,
+   "F1": 0.5729
+  },
+  {
+   "cls": "body_sell",
+   "real": 4408,
+   "sim": 4091,
+   "matched_real_side": 3229,
+   "matched_sim_side": 3218,
+   "matched_same_class": 3186,
+   "recall": 0.7325,
+   "precision": 0.7866,
+   "F1": 0.7586
+  },
+  {
+   "cls": "lump",
+   "real": 73,
+   "sim": 54,
+   "matched_real_side": 20,
+   "matched_sim_side": 22,
+   "matched_same_class": 17,
+   "recall": 0.274,
+   "precision": 0.4074,
+   "F1": 0.3276
+  },
+  {
+   "cls": "not_modelled",
+   "real": 178,
+   "sim": 0,
+   "matched_real_side": 68,
+   "matched_sim_side": 0,
+   "matched_same_class": 0,
+   "recall": 0.382,
+   "precision": NaN,
+   "F1": NaN
+  },
+  {
+   "cls": "opening_wings",
+   "real": 186,
+   "sim": 186,
+   "matched_real_side": 182,
+   "matched_sim_side": 141,
+   "matched_same_class": 136,
+   "recall": 0.9785,
+   "precision": 0.7581,
+   "F1": 0.8543
+  },
+  {
+   "cls": "wing_buy",
+   "real": 3146,
+   "sim": 3270,
+   "matched_real_side": 2610,
+   "matched_sim_side": 2664,
+   "matched_same_class": 2568,
+   "recall": 0.8296,
+   "precision": 0.8147,
+   "F1": 0.8221
+  },
+  {
+   "cls": "wing_sell",
+   "real": 600,
+   "sim": 501,
+   "matched_real_side": 246,
+   "matched_sim_side": 316,
+   "matched_same_class": 222,
+   "recall": 0.41,
+   "precision": 0.6307,
+   "F1": 0.497
+  }
+ ],
+ "per_cycle": [
+  {
+   "cyc": "NIFTY|2026-06-30",
+   "real": 323,
+   "sim": 259,
+   "matched": 231,
+   "F1": 0.7938
+  },
+  {
+   "cyc": "NIFTY|2026-07-07",
+   "real": 258,
+   "sim": 223,
+   "matched": 191,
+   "F1": 0.7942
+  },
+  {
+   "cyc": "NIFTY|2026-07-14",
+   "real": 270,
+   "sim": 265,
+   "matched": 208,
+   "F1": 0.7776
+  },
+  {
+   "cyc": "NIFTY|2026-07-21",
+   "real": 353,
+   "sim": 238,
+   "matched": 214,
+   "F1": 0.7242
+  },
+  {
+   "cyc": "NIFTY|2026-07-28",
+   "real": 296,
+   "sim": 238,
+   "matched": 198,
+   "F1": 0.7416
+  },
+  {
+   "cyc": "NIFTY|2026-08-04",
+   "real": 234,
+   "sim": 205,
+   "matched": 180,
+   "F1": 0.82
+  },
+  {
+   "cyc": "NIFTY|2026-08-18",
+   "real": 392,
+   "sim": 301,
+   "matched": 251,
+   "F1": 0.7244
+  },
+  {
+   "cyc": "NIFTY|2026-08-25",
+   "real": 285,
+   "sim": 239,
+   "matched": 197,
+   "F1": 0.7519
+  },
+  {
+   "cyc": "NIFTY|2026-09-01",
+   "real": 348,
+   "sim": 299,
+   "matched": 240,
+   "F1": 0.7419
+  },
+  {
+   "cyc": "NIFTY|2026-09-08",
+   "real": 246,
+   "sim": 228,
+   "matched": 182,
+   "F1": 0.7679
+  },
+  {
+   "cyc": "NIFTY|2026-09-22",
+   "real": 293,
+   "sim": 244,
+   "matched": 198,
+   "F1": 0.7374
+  },
+  {
+   "cyc": "NIFTY|2026-09-29",
+   "real": 309,
+   "sim": 272,
+   "matched": 215,
+   "F1": 0.7401
+  },
+  {
+   "cyc": "NIFTY|2026-10-06",
+   "real": 294,
+   "sim": 304,
+   "matched": 203,
+   "F1": 0.6789
+  },
+  {
+   "cyc": "NIFTY|2026-10-13",
+   "real": 300,
+   "sim": 292,
+   "matched": 227,
+   "F1": 0.7669
+  },
+  {
+   "cyc": "NIFTY|2026-10-19",
+   "real": 266,
+   "sim": 280,
+   "matched": 183,
+   "F1": 0.6703
+  },
+  {
+   "cyc": "SENSEX|2026-06-25",
+   "real": 298,
+   "sim": 309,
+   "matched": 222,
+   "F1": 0.7315
+  },
+  {
+   "cyc": "SENSEX|2026-07-02",
+   "real": 241,
+   "sim": 229,
+   "matched": 185,
+   "F1": 0.7872
+  },
+  {
+   "cyc": "SENSEX|2026-07-09",
+   "real": 387,
+   "sim": 389,
+   "matched": 282,
+   "F1": 0.7268
+  },
+  {
+   "cyc": "SENSEX|2026-07-16",
+   "real": 311,
+   "sim": 326,
+   "matched": 248,
+   "F1": 0.7786
+  },
+  {
+   "cyc": "SENSEX|2026-07-23",
+   "real": 265,
+   "sim": 250,
+   "matched": 206,
+   "F1": 0.8
+  },
+  {
+   "cyc": "SENSEX|2026-07-30",
+   "real": 266,
+   "sim": 220,
+   "matched": 179,
+   "F1": 0.7366
+  },
+  {
+   "cyc": "SENSEX|2026-08-06",
+   "real": 412,
+   "sim": 323,
+   "matched": 255,
+   "F1": 0.6939
+  },
+  {
+   "cyc": "SENSEX|2026-08-13",
+   "real": 398,
+   "sim": 305,
+   "matched": 264,
+   "F1": 0.7511
+  },
+  {
+   "cyc": "SENSEX|2026-08-20",
+   "real": 276,
+   "sim": 231,
+   "matched": 194,
+   "F1": 0.7653
+  },
+  {
+   "cyc": "SENSEX|2026-08-27",
+   "real": 307,
+   "sim": 284,
+   "matched": 223,
+   "F1": 0.7547
+  },
+  {
+   "cyc": "SENSEX|2026-09-10",
+   "real": 400,
+   "sim": 293,
+   "matched": 240,
+   "F1": 0.6926
+  },
+  {
+   "cyc": "SENSEX|2026-09-17",
+   "real": 249,
+   "sim": 297,
+   "matched": 201,
+   "F1": 0.7363
+  },
+  {
+   "cyc": "SENSEX|2026-09-24",
+   "real": 279,
+   "sim": 237,
+   "matched": 191,
+   "F1": 0.7403
+  },
+  {
+   "cyc": "SENSEX|2026-10-01",
+   "real": 395,
+   "sim": 414,
+   "matched": 273,
+   "F1": 0.6749
+  },
+  {
+   "cyc": "SENSEX|2026-10-08",
+   "real": 334,
+   "sim": 377,
+   "matched": 265,
+   "F1": 0.7454
+  },
+  {
+   "cyc": "SENSEX|2026-10-15",
+   "real": 269,
+   "sim": 287,
+   "matched": 214,
+   "F1": 0.7698
+  },
+  {
+   "cyc": "SENSEX|2026-10-22",
+   "real": 361,
+   "sim": 377,
+   "matched": 244,
+   "F1": 0.6612
+  }
+ ],
+ "Q10": {
+  "replay_identical_to_saved": true
+ },
+ "Q11": {
+  "classes_over_5pct_unmatched": [
+   {
+    "cls": "body_buyback",
+    "real": 1324,
+    "unmatched_share": 0.51
+   },
+   {
+    "cls": "body_sell",
+    "real": 4408,
+    "unmatched_share": 0.267
+   },
+   {
+    "cls": "lump",
+    "real": 73,
+    "unmatched_share": 0.726
+   },
+   {
+    "cls": "not_modelled",
+    "real": 178,
+    "unmatched_share": 0.618
+   },
+   {
+    "cls": "wing_buy",
+    "real": 3146,
+    "unmatched_share": 0.17
+   },
+   {
+    "cls": "wing_sell",
+    "real": 600,
+    "unmatched_share": 0.59
+   }
+  ]
+ },
+ "sensitivity": {
+  "B1": {
+   "keys_F1_60s": 0.7392084432717678,
+   "strict_F1_60s": 0.4721899736147757,
+   "legacy_lot_F1": 0.6877975245953666
+  },
+  "V01_book_condition": {
+   "keys_F1_60s": 0.7452380952380953,
+   "strict_F1_60s": 0.4817099567099567,
+   "legacy_lot_F1": 0.6977977161500816
+  },
+  "C1_rebased_futures_feed": {
+   "keys_F1_60s": 0.746018172100481,
+   "strict_F1_60s": 0.478888295029396,
+   "legacy_lot_F1": 0.6994420635562384
+  }
+ },
+ "tfe_note": "TF-E diagnostics are reported separately (D1_TFE_COMPARISON.md); F1 keys 0.739 (F) versus 0.645 (TF-E first decisions): TF-E is not a score and is not mixed here",
+ "verdict": {
+  "Q1": true,
+  "Q2": false,
+  "Q3": true,
+  "Q4": true,
+  "Q5": false,
+  "Q6": true,
+  "Q7": true,
+  "Q8": true,
+  "Q9": false,
+  "Q10": true
+ }
+}

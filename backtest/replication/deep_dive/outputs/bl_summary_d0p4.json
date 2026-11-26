@@ -1,0 +1,274 @@
+{
+ "b6": [
+  {
+   "side": "sale: premium of the sold right makes a new low",
+   "window_min": 5,
+   "cells": 14762,
+   "share_cells": 0.2485,
+   "rate_when_on": 0.3254,
+   "rate_when_off": 0.0728,
+   "auc": 0.7012
+  },
+  {
+   "side": "sale: premium of the sold right makes a new low",
+   "window_min": 15,
+   "cells": 14762,
+   "share_cells": 0.1526,
+   "rate_when_on": 0.4547,
+   "rate_when_off": 0.0782,
+   "auc": 0.7076
+  },
+  {
+   "side": "sale: premium of the sold right makes a new low",
+   "window_min": 30,
+   "cells": 14762,
+   "share_cells": 0.1139,
+   "rate_when_on": 0.5509,
+   "rate_when_off": 0.0823,
+   "auc": 0.7017
+  },
+  {
+   "side": "sale: premium of the sold right makes a new low",
+   "window_min": 60,
+   "cells": 14762,
+   "share_cells": 0.0896,
+   "rate_when_on": 0.6354,
+   "rate_when_off": 0.0865,
+   "auc": 0.6909
+  },
+  {
+   "side": "sale: premium of the sold right makes a new low",
+   "window_min": 120,
+   "cells": 14762,
+   "share_cells": 0.0762,
+   "rate_when_on": 0.6836,
+   "rate_when_off": 0.0904,
+   "auc": 0.6781
+  },
+  {
+   "side": "sale: premium of the sold right makes a new low",
+   "window_min": "day",
+   "cells": 14762,
+   "share_cells": 0.0698,
+   "rate_when_on": 0.6951,
+   "rate_when_off": 0.0936,
+   "auc": 0.6665
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (cells with a lot \u22651.4\u00d7)",
+   "window_min": 5,
+   "cells": 6315,
+   "share_cells": 0.2909,
+   "rate_when_on": 0.3234,
+   "rate_when_off": 0.0998,
+   "auc": 0.6675
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (cells with a lot \u22651.4\u00d7)",
+   "window_min": 15,
+   "cells": 6315,
+   "share_cells": 0.1802,
+   "rate_when_on": 0.4332,
+   "rate_when_off": 0.1059,
+   "auc": 0.6756
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (cells with a lot \u22651.4\u00d7)",
+   "window_min": 30,
+   "cells": 6315,
+   "share_cells": 0.1253,
+   "rate_when_on": 0.5373,
+   "rate_when_off": 0.1115,
+   "auc": 0.6694
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (cells with a lot \u22651.4\u00d7)",
+   "window_min": 60,
+   "cells": 6315,
+   "share_cells": 0.0747,
+   "rate_when_on": 0.678,
+   "rate_when_off": 0.1234,
+   "auc": 0.6393
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (cells with a lot \u22651.4\u00d7)",
+   "window_min": 120,
+   "cells": 6315,
+   "share_cells": 0.0485,
+   "rate_when_on": 0.6961,
+   "rate_when_off": 0.1378,
+   "auc": 0.5935
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (cells with a lot \u22651.4\u00d7)",
+   "window_min": "day",
+   "cells": 6315,
+   "share_cells": 0.0347,
+   "rate_when_on": 0.6758,
+   "rate_when_off": 0.1465,
+   "auc": 0.5644
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (all cells)",
+   "window_min": 5,
+   "cells": 14762,
+   "share_cells": 0.2078,
+   "rate_when_on": 0.2413,
+   "rate_when_off": 0.1012,
+   "auc": 0.6017
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (all cells)",
+   "window_min": 15,
+   "cells": 14762,
+   "share_cells": 0.1041,
+   "rate_when_on": 0.3604,
+   "rate_when_off": 0.1036,
+   "auc": 0.6057
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (all cells)",
+   "window_min": 30,
+   "cells": 14762,
+   "share_cells": 0.0627,
+   "rate_when_on": 0.5005,
+   "rate_when_off": 0.1056,
+   "auc": 0.6023
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (all cells)",
+   "window_min": 60,
+   "cells": 14762,
+   "share_cells": 0.034,
+   "rate_when_on": 0.6614,
+   "rate_when_off": 0.1116,
+   "auc": 0.5797
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (all cells)",
+   "window_min": 120,
+   "cells": 14762,
+   "share_cells": 0.022,
+   "rate_when_on": 0.6738,
+   "rate_when_off": 0.1181,
+   "auc": 0.5528
+  },
+  {
+   "side": "buy-back: premium of the stopped right makes a new high (all cells)",
+   "window_min": "day",
+   "cells": 14762,
+   "share_cells": 0.0154,
+   "rate_when_on": 0.6667,
+   "rate_when_off": 0.1219,
+   "auc": 0.5365
+  },
+  {
+   "side": "sale (decision-time, close of j-1 below the prior closes)",
+   "window_min": 5,
+   "cells": 14762,
+   "share_cells": 0.249,
+   "rate_when_on": 0.2571,
+   "rate_when_off": 0.0953,
+   "auc": 0.629
+  },
+  {
+   "side": "sale (decision-time, close of j-1 below the prior closes)",
+   "window_min": 15,
+   "cells": 14762,
+   "share_cells": 0.1528,
+   "rate_when_on": 0.341,
+   "rate_when_off": 0.0986,
+   "auc": 0.6338
+  },
+  {
+   "side": "sale (decision-time, close of j-1 below the prior closes)",
+   "window_min": 30,
+   "cells": 14762,
+   "share_cells": 0.1132,
+   "rate_when_on": 0.4004,
+   "rate_when_off": 0.1018,
+   "auc": 0.6278
+  },
+  {
+   "side": "sale (decision-time, close of j-1 below the prior closes)",
+   "window_min": 60,
+   "cells": 14762,
+   "share_cells": 0.0893,
+   "rate_when_on": 0.4552,
+   "rate_when_off": 0.1043,
+   "auc": 0.6217
+  },
+  {
+   "side": "sale (decision-time, close of j-1 below the prior closes)",
+   "window_min": 120,
+   "cells": 14762,
+   "share_cells": 0.0763,
+   "rate_when_on": 0.472,
+   "rate_when_off": 0.1078,
+   "auc": 0.6096
+  },
+  {
+   "side": "sale (decision-time, close of j-1 below the prior closes)",
+   "window_min": "day",
+   "cells": 14762,
+   "share_cells": 0.0699,
+   "rate_when_on": 0.4758,
+   "rate_when_off": 0.1101,
+   "auc": 0.6014
+  },
+  {
+   "side": "buy-back (decision-time, close of j-1 above the prior closes; cells with a lot \u22651.4\u00d7)",
+   "window_min": 5,
+   "cells": 6315,
+   "share_cells": 0.2977,
+   "rate_when_on": 0.3032,
+   "rate_when_off": 0.1062,
+   "auc": 0.6496
+  },
+  {
+   "side": "buy-back (decision-time, close of j-1 above the prior closes; cells with a lot \u22651.4\u00d7)",
+   "window_min": 15,
+   "cells": 6315,
+   "share_cells": 0.1859,
+   "rate_when_on": 0.4037,
+   "rate_when_off": 0.1103,
+   "auc": 0.6613
+  },
+  {
+   "side": "buy-back (decision-time, close of j-1 above the prior closes; cells with a lot \u22651.4\u00d7)",
+   "window_min": 30,
+   "cells": 6315,
+   "share_cells": 0.1281,
+   "rate_when_on": 0.4883,
+   "rate_when_off": 0.1173,
+   "auc": 0.6505
+  },
+  {
+   "side": "buy-back (decision-time, close of j-1 above the prior closes; cells with a lot \u22651.4\u00d7)",
+   "window_min": 60,
+   "cells": 6315,
+   "share_cells": 0.0793,
+   "rate_when_on": 0.5649,
+   "rate_when_off": 0.1304,
+   "auc": 0.6153
+  },
+  {
+   "side": "buy-back (decision-time, close of j-1 above the prior closes; cells with a lot \u22651.4\u00d7)",
+   "window_min": 120,
+   "cells": 6315,
+   "share_cells": 0.0535,
+   "rate_when_on": 0.5917,
+   "rate_when_off": 0.1407,
+   "auc": 0.583
+  },
+  {
+   "side": "buy-back (decision-time, close of j-1 above the prior closes; cells with a lot \u22651.4\u00d7)",
+   "window_min": "day",
+   "cells": 6315,
+   "share_cells": 0.0426,
+   "rate_when_on": 0.5651,
+   "rate_when_off": 0.147,
+   "auc": 0.5619
+  }
+ ]
+}

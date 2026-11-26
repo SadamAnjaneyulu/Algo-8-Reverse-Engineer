@@ -1,0 +1,27 @@
+{
+ "id": "BK1",
+ "overrides": {
+  "breakout_one_lot": true,
+  "breakout_size_after_s": 10.0
+ },
+ "order_split": "one_lot_v2",
+ "mode": "F",
+ "evidence_label": "historical reproduction",
+ "engine_orders": 9395,
+ "real_orders": 9915,
+ "rejected": 0,
+ "legacy_f1": 0.6885730971384076,
+ "engine_sha256": {
+  "engine.py": "43bb06be75ab1ec999b0c66a3c4733170cd5c3e34eb42955a62bc86eda7f3972",
+  "config.py": "b818ca557ed0c6748ad0de15d63b50b27bd3877df82c06e4d96be6af40b3261b",
+  "risk.py": "d7648f72ad7099bf3477487e151b4df34308204182c704a080d34215f353a204",
+  "models.py": "31a6cd1085ada4ba1477849e51f5bc691c5d56bbcb44e02e4608346ebeeb5dd6"
+ },
+ "spec": {
+  "spec_version": "1.1",
+  "spec_sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+  "scorer_sha256": "c607cfc66d6c93d9d5d3e72bbf233ef1aeff0343ec1f45648f7688a992b9ebc6"
+ },
+ "seconds": 40,
+ "run_at": "2026-11-25T15:39:56.097646+00:00"
+}

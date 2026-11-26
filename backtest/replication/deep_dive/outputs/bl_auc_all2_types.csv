@@ -1,0 +1,16 @@
+variant,sell_type,positive_cells,AUC
+"A0 same-minute, no book state",scheduled,1574,0.9963
+"A0 same-minute, no book state",reactive,558,0.9372
+"A0 same-minute, no book state",solo,627,0.972
+"A0 same-minute, no book state",solo after 15:00,138,0.9496
+"A0 same-minute, no book state",deep-OTM batch,5,0.8722
+"B0 causal, no book state",scheduled,1574,0.9973
+"B0 causal, no book state",reactive,558,0.7117
+"B0 causal, no book state",solo,627,0.8563
+"B0 causal, no book state",solo after 15:00,138,0.8831
+"B0 causal, no book state",deep-OTM batch,5,0.7794
+timetable + clock only,scheduled,1574,0.9985
+timetable + clock only,reactive,558,0.6017
+timetable + clock only,solo,627,0.5751
+timetable + clock only,solo after 15:00,138,0.9205
+timetable + clock only,deep-OTM batch,5,0.6441

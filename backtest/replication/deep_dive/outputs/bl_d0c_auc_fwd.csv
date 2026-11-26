@@ -1,0 +1,7 @@
+outcome,variant,auc,train_cycles,test_cycles
+y_counter,"V1 causal (bars to j-1, orders before minute j)",0.8864,16,8
+y_counter,V2 + the minute's own bar,0.9542,16,8
+y_counter,V3 + same-minute buy-backs (partly definitional),0.9755,16,8
+y,"V1 causal (bars to j-1, orders before minute j)",0.8179,16,8
+y,V2 + the minute's own bar,0.8988,16,8
+y,V3 + same-minute buy-backs (partly definitional),0.9081,16,8

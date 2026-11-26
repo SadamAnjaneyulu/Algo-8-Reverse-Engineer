@@ -1,0 +1,135 @@
+{
+ "chosen": [
+  {
+   "fold": 0,
+   "tp": 0.4,
+   "price": "close",
+   "theta": 1.55,
+   "vel": "(3, 1.4)",
+   "cluster": null,
+   "F1_train": 0.5913312693498453
+  },
+  {
+   "fold": 1,
+   "tp": 0.4,
+   "price": "high",
+   "theta": 1.6,
+   "vel": "(5, 1.5)",
+   "cluster": null,
+   "F1_train": 0.5628042843232717
+  }
+ ],
+ "overall": {
+  "variant": "FR with decoded buy-back (stop design out-of-fold)",
+  "real_lots": 13655,
+  "sim_lots": 10811,
+  "matched": 8391,
+  "precision": 0.7761539173064471,
+  "recall": 0.6145001830831197,
+  "F1": 0.6859314967710292,
+  "F1_strict": 0.4486225782718875,
+  "F1_within1": 0.622169541404398,
+  "F1_modelled_classes_only": 0.6989878795451706,
+  "real_lots_modelled": 13198
+ },
+ "classes": [
+  {
+   "variant": "FR with decoded buy-back (stop design out-of-fold)",
+   "cls": "body_sell",
+   "real_lots": 4671,
+   "sim_lots": 3799,
+   "matched": 3206,
+   "precision": 0.8439,
+   "recall": 0.6864,
+   "F1": 0.757,
+   "F1_strict": 0.6026,
+   "F1_within1": 0.7178,
+   "strike_exact_of_matched": 0.796,
+   "within1_of_matched": 0.9482
+  },
+  {
+   "variant": "FR with decoded buy-back (stop design out-of-fold)",
+   "cls": "body_buyback",
+   "real_lots": 1324,
+   "sim_lots": 1008,
+   "matched": 651,
+   "precision": 0.6458,
+   "recall": 0.4917,
+   "F1": 0.5583,
+   "F1_strict": 0.3328,
+   "F1_within1": 0.452,
+   "strike_exact_of_matched": 0.596,
+   "within1_of_matched": 0.8095
+  },
+  {
+   "variant": "FR with decoded buy-back (stop design out-of-fold)",
+   "cls": "wing_buy",
+   "real_lots": 4336,
+   "sim_lots": 3571,
+   "matched": 2865,
+   "precision": 0.8023,
+   "recall": 0.6607,
+   "F1": 0.7247,
+   "F1_strict": 0.4464,
+   "F1_within1": 0.6708,
+   "strike_exact_of_matched": 0.6161,
+   "within1_of_matched": 0.9257
+  },
+  {
+   "variant": "FR with decoded buy-back (stop design out-of-fold)",
+   "cls": "wing_sell",
+   "real_lots": 1192,
+   "sim_lots": 972,
+   "matched": 592,
+   "precision": 0.6091,
+   "recall": 0.4966,
+   "F1": 0.5471,
+   "F1_strict": 0.2791,
+   "F1_within1": 0.4418,
+   "strike_exact_of_matched": 0.5101,
+   "within1_of_matched": 0.8074
+  },
+  {
+   "variant": "FR with decoded buy-back (stop design out-of-fold)",
+   "cls": "opening_wings",
+   "real_lots": 186,
+   "sim_lots": 192,
+   "matched": 184,
+   "precision": 0.9583,
+   "recall": 0.9892,
+   "F1": 0.9735,
+   "F1_strict": 0.5873,
+   "F1_within1": 0.9153,
+   "strike_exact_of_matched": 0.6033,
+   "within1_of_matched": 0.9402
+  },
+  {
+   "variant": "FR with decoded buy-back (stop design out-of-fold)",
+   "cls": "lump",
+   "real_lots": 1489,
+   "sim_lots": 1269,
+   "matched": 893,
+   "precision": 0.7037,
+   "recall": 0.5997,
+   "F1": 0.6476,
+   "F1_strict": 0.2683,
+   "F1_within1": 0.5373,
+   "strike_exact_of_matched": 0.4143,
+   "within1_of_matched": 0.8298
+  },
+  {
+   "variant": "FR with decoded buy-back (stop design out-of-fold)",
+   "cls": "not_modelled",
+   "real_lots": 457,
+   "sim_lots": 0,
+   "matched": 0,
+   "precision": NaN,
+   "recall": 0.0,
+   "F1": 0.0,
+   "F1_strict": 0.0,
+   "F1_within1": 0.0,
+   "strike_exact_of_matched": NaN,
+   "within1_of_matched": NaN
+  }
+ ]
+}

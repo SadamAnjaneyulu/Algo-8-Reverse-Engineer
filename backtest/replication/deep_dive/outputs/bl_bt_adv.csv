@@ -1,0 +1,10 @@
+type,family,params,F1,precision,recall
+scheduled,premium only,"[(np.float64(1.65),), (np.float64(1.6),)]",0.4786,0.6961,0.3691
+scheduled,adverse steps only,"[(np.float64(1.5),), (np.float64(2.75),)]",0.1003,0.1806,0.0833
+scheduled,steps OR premium,"[(np.float64(1.6), np.float64(3.75)), (np.float64(1.6), np.float64(4.0))]",0.4921,0.5927,0.4207
+reactive,premium only,"[(np.float64(1.6),), (np.float64(1.7),)]",0.1737,0.6731,0.1033
+reactive,adverse steps only,"[(np.float64(0.75),), (np.float64(0.5),)]",0.1466,0.1232,0.181
+reactive,steps OR premium,"[(np.float64(1.6), np.float64(3.25)), (np.float64(1.7), np.float64(3.5))]",0.1625,0.4299,0.1033
+solo,premium only,"[(np.float64(1.6),), (np.float64(1.65),)]",0.3484,0.7492,0.2278
+solo,adverse steps only,"[(np.float64(0.75),), (np.float64(2.0),)]",0.0984,0.1326,0.1144
+solo,steps OR premium,"[(np.float64(1.6), np.float64(3.5)), (np.float64(1.6), np.float64(4.0))]",0.3352,0.5794,0.24

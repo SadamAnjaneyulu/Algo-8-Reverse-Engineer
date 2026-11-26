@@ -1,0 +1,15 @@
+variant,cls,real_lots,sim_lots,matched,precision,recall,F1,F1_strict,F1_within1,strike_exact_of_matched,within1_of_matched,mode
+combined stop (tf_bb),body_sell,4671,4671,4671,1.0,1.0,1.0,1.0,1.0,1.0,1.0,tf_bb
+combined stop (tf_bb),body_buyback,1324,924,613,0.6634,0.463,0.5454,0.3336,0.452,0.6117,0.8287,tf_bb
+combined stop (tf_bb),wing_buy,4336,4435,4005,0.903,0.9237,0.9132,0.4946,0.814,0.5416,0.8914,tf_bb
+combined stop (tf_bb),wing_sell,1192,880,547,0.6216,0.4589,0.528,0.277,0.4508,0.5247,0.8537,tf_bb
+combined stop (tf_bb),opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402,tf_bb
+combined stop (tf_bb),lump,1489,1674,1075,0.6422,0.722,0.6797,0.2826,0.5666,0.4158,0.8335,tf_bb
+combined stop (tf_bb),not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,,tf_bb
+combined stop (free),body_sell,4671,3799,3206,0.8439,0.6864,0.757,0.6026,0.7178,0.796,0.9482,free
+combined stop (free),body_buyback,1324,906,566,0.6247,0.4275,0.5076,0.2978,0.4215,0.5866,0.8304,free
+combined stop (free),wing_buy,4336,3587,2879,0.8026,0.664,0.7267,0.4471,0.6727,0.6151,0.9257,free
+combined stop (free),wing_sell,1192,886,513,0.579,0.4304,0.4937,0.2579,0.4081,0.5224,0.8265,free
+combined stop (free),opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402,free
+combined stop (free),lump,1489,1292,900,0.6966,0.6044,0.6472,0.2718,0.5394,0.42,0.8333,free
+combined stop (free),not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,,free

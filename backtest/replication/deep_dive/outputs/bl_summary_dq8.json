@@ -1,0 +1,41 @@
+{
+ "count_dist": {
+  "1": 153,
+  "2": 39,
+  "3": 12,
+  "4": 2
+ },
+ "top": [
+  {
+   "variable": "delta_vs_side",
+   "spearman": 0.26,
+   "p": 0.0002
+  },
+  {
+   "variable": "itm_short",
+   "spearman": 0.2559,
+   "p": 0.0002
+  },
+  {
+   "variable": "chan_width",
+   "spearman": -0.2199,
+   "p": 0.0015
+  },
+  {
+   "variable": "short_lots",
+   "spearman": 0.1732,
+   "p": 0.0128
+  },
+  {
+   "variable": "hour",
+   "spearman": 0.1696,
+   "p": 0.0148
+  },
+  {
+   "variable": "pnl_chg15",
+   "spearman": -0.1354,
+   "p": 0.0523
+  }
+ ],
+ "n_tests": 19
+}

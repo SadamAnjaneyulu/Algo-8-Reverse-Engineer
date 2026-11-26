@@ -1,0 +1,202 @@
+{
+ "variants": {
+  "BK0": {
+   "metrics": {
+    "real": 4408,
+    "sim": 4091,
+    "recall": 0.7325317604355717,
+    "precision": 0.7866047421168418,
+    "sim_lots": 4091,
+    "real_lots": 4671,
+    "extras": 873,
+    "missing": 1179,
+    "F1": 0.7586058995247379,
+    "strict_recall": 0.5739564428312159,
+    "strict_precision": 0.6184307015399658,
+    "strict_F1": 0.5953641604894694,
+    "exact_second_share_of_real": 0.3250907441016334,
+    "near_share_of_real": 0.2236842105263158,
+    "scheduled_sim": 2112,
+    "scheduled_matched": 2086,
+    "scheduled_exact_second_share": 0.6692233940556088,
+    "ladder_solo_orders": 1292,
+    "ladder_solo_matched": 562,
+    "breakout_straddle_orders": 458,
+    "breakout_straddle_matched": 397,
+    "breakout_extra_orders": 229,
+    "breakout_extra_matched": 173
+   },
+   "class_f1": {
+    "body_buyback": 0.5728898465112033,
+    "body_sell": 0.7586058995247379,
+    "lump": 0.3276247207743857,
+    "opening_wings": 0.8542894237491262,
+    "wing_buy": 0.8220839833233664,
+    "wing_sell": 0.4969601657045319
+   },
+   "state_l1": 0.5084745762711864,
+   "cycles_improved": 0,
+   "criteria": {
+    "A1": false,
+    "A2": false,
+    "A3": false,
+    "A4": false,
+    "A5": true,
+    "A6": true,
+    "A7": true,
+    "A8": false
+   },
+   "passes_A1_A8": false
+  },
+  "BK1": {
+   "metrics": {
+    "real": 4408,
+    "sim": 4264,
+    "recall": 0.7481851179673321,
+    "precision": 0.7708724202626641,
+    "sim_lots": 4264,
+    "real_lots": 4671,
+    "extras": 977,
+    "missing": 1110,
+    "F1": 0.759359350356167,
+    "strict_recall": 0.566016333938294,
+    "strict_precision": 0.5851313320825516,
+    "strict_F1": 0.5754151291512916,
+    "exact_second_share_of_real": 0.32667876588021777,
+    "near_share_of_real": 0.21982758620689655,
+    "scheduled_sim": 2112,
+    "scheduled_matched": 2086,
+    "scheduled_exact_second_share": 0.6692233940556088,
+    "ladder_solo_orders": 1459,
+    "ladder_solo_matched": 691,
+    "breakout_straddle_orders": 464,
+    "breakout_straddle_matched": 374,
+    "breakout_extra_orders": 229,
+    "breakout_extra_matched": 136
+   },
+   "class_f1": {
+    "body_buyback": 0.5794077585053028,
+    "body_sell": 0.759359350356167,
+    "lump": 0.3276247207743857,
+    "opening_wings": 0.8542894237491262,
+    "wing_buy": 0.8110598527666293,
+    "wing_sell": 0.5095218333563886
+   },
+   "state_l1": 0.5185185185185185,
+   "cycles_improved": 18,
+   "criteria": {
+    "A1": false,
+    "A2": false,
+    "A3": false,
+    "A4": true,
+    "A5": true,
+    "A6": true,
+    "A7": true,
+    "A8": false
+   },
+   "passes_A1_A8": false
+  },
+  "BK2": {
+   "metrics": {
+    "real": 4408,
+    "sim": 4190,
+    "recall": 0.7363883847549909,
+    "precision": 0.7727923627684964,
+    "sim_lots": 4190,
+    "real_lots": 4671,
+    "extras": 952,
+    "missing": 1162,
+    "F1": 0.7541513111718643,
+    "strict_recall": 0.5630671506352087,
+    "strict_precision": 0.59236276849642,
+    "strict_F1": 0.577343568271691,
+    "exact_second_share_of_real": 0.32304900181488205,
+    "near_share_of_real": 0.20394736842105263,
+    "scheduled_sim": 2112,
+    "scheduled_matched": 2086,
+    "scheduled_exact_second_share": 0.6692233940556088,
+    "ladder_solo_orders": 1384,
+    "ladder_solo_matched": 663,
+    "breakout_straddle_orders": 466,
+    "breakout_straddle_matched": 359,
+    "breakout_extra_orders": 228,
+    "breakout_extra_matched": 130
+   },
+   "class_f1": {
+    "body_buyback": 0.5783618183372881,
+    "body_sell": 0.7541513111718643,
+    "lump": 0.3346613545816733,
+    "opening_wings": 0.8542894237491262,
+    "wing_buy": 0.8040139770035342,
+    "wing_sell": 0.5150038704977005
+   },
+   "state_l1": 0.5204081632653061,
+   "cycles_improved": 13,
+   "criteria": {
+    "A1": false,
+    "A2": false,
+    "A3": false,
+    "A4": true,
+    "A5": true,
+    "A6": true,
+    "A7": true,
+    "A8": false
+   },
+   "passes_A1_A8": false
+  },
+  "BK3": {
+   "metrics": {
+    "real": 4408,
+    "sim": 4214,
+    "recall": 0.7016787658802178,
+    "precision": 0.7351684859990508,
+    "sim_lots": 4214,
+    "real_lots": 4671,
+    "extras": 1116,
+    "missing": 1315,
+    "F1": 0.718033340419663,
+    "strict_recall": 0.5256352087114338,
+    "strict_precision": 0.5498338870431894,
+    "strict_F1": 0.5374623057295291,
+    "exact_second_share_of_real": 0.32259528130671505,
+    "near_share_of_real": 0.2025862068965517,
+    "scheduled_sim": 2112,
+    "scheduled_matched": 2086,
+    "scheduled_exact_second_share": 0.6692233940556088,
+    "ladder_solo_orders": 1392,
+    "ladder_solo_matched": 702,
+    "breakout_straddle_orders": 476,
+    "breakout_straddle_matched": 227,
+    "breakout_extra_orders": 234,
+    "breakout_extra_matched": 83
+   },
+   "class_f1": {
+    "body_buyback": 0.5847539602873673,
+    "body_sell": 0.718033340419663,
+    "lump": 0.34375,
+    "opening_wings": 0.8542894237491262,
+    "wing_buy": 0.7791037331031433,
+    "wing_sell": 0.5242909675728911
+   },
+   "state_l1": 0.5194805194805194,
+   "cycles_improved": 0,
+   "criteria": {
+    "A1": false,
+    "A2": false,
+    "A3": false,
+    "A4": true,
+    "A5": true,
+    "A6": false,
+    "A7": true,
+    "A8": false
+   },
+   "passes_A1_A8": false
+  }
+ },
+ "A9": {
+  "chosen": {
+   "BK1": 32
+  },
+  "loco_F1": 0.759359350356167
+ }
+}

@@ -1,0 +1,19 @@
+|--- phx_prem_low_60 <= 0.50
+|   |--- und_nifty <= 0.50
+|   |   |--- min_in_15 <= 1.50
+|   |   |   |--- class: 0.0
+|   |   |--- min_in_15 >  1.50
+|   |   |   |--- class: 0.0
+|   |--- und_nifty >  0.50
+|   |   |--- prem_vs_daymin <= 1.05
+|   |   |   |--- class: 0.0
+|   |   |--- prem_vs_daymin >  1.05
+|   |   |   |--- class: 0.0
+|--- phx_prem_low_60 >  0.50
+|   |--- prem_chg_3 <= -0.29
+|   |   |--- class: 1.0
+|   |--- prem_chg_3 >  -0.29
+|   |   |--- min_in_15 <= 1.50
+|   |   |   |--- class: 1.0
+|   |   |--- min_in_15 >  1.50
+|   |   |   |--- class: 0.0

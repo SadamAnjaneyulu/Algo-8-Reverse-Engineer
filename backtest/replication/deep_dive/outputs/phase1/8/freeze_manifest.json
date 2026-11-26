@@ -1,0 +1,53 @@
+{
+ "frozen_at": "2026-11-25",
+ "status": "FROZEN CANDIDATE for Phase 1 closure (uncommitted; user review pending)",
+ "evidence_label": "historical reproduction on development cycles; no independent validation exists",
+ "default_regression_vs_gate5a_reference": {
+  "cycles": 49,
+  "identical": 49,
+  "passed": true
+ },
+ "frozen_d0_params_sha256": "234d2902e10ad76dc3b5f655dcc63922c08e3e11b119db9695e2beb9a274a403",
+ "frozen_d0_configs_sha256": "b71e83d00d9f4a8de76384a5d05b37370ef6649cd580048487edddc7bc35f7b8",
+ "frozen_d0_in_sample_check": {
+  "keys_F1_60s": 0.43732988264691447,
+  "label": "in-sample all-cycle fit; not independent; shown only to prove the frozen file runs"
+ },
+ "frozen_d1_configs_sha256": "b5f98e549673ca8663f97776d8d9efd8d3dd4daedf5d153518200747751b8b01",
+ "d1_order_split": "one_lot_v2 (accepted execution convention; B1)",
+ "source_sha256": {
+  "algo8_integrated/__init__.py": "a62453231dcee7db8b71d1137b01200f46375a45ff9685818a7df26755a9b8a9",
+  "algo8_integrated/handoff.py": "e701a925dabb502933063a2af6999839721e29d856b340d5ebc839038be79b94",
+  "algo8_integrated/runner.py": "cd6a97506e3678c6cc2c39853f62ccb1ff0adfec4dd61df970f5b5ca50f8bee8",
+  "algo8_integrated/test_integrated.py": "99efd0bf0341751fa16783bc602ce619fd3a57fe395a153b85356651f0ef7d45",
+  "d0_strategy/d0_algo/__init__.py": "29134337ea5d884753511b698c5572982c8f07ad97f30da69253b2b66424e152",
+  "d0_strategy/d0_algo/config.py": "2eece8564b10efe1ed9345d6821817d7ac1d38b81db713c0ce736ba1b1fde9ef",
+  "d0_strategy/d0_algo/engine.py": "2bbcb16880082bca76af749c787ba1b8c02a0275600132652cf22aef7ccee696",
+  "d0_strategy/test_d0_engine.py": "3a95b2f9844258ad2bdfc201996f3dd2a90488d64fe9e6151ac588a6427325ee",
+  "d1_strategy/d1_algo/__init__.py": "30f772fe78f71503dc91bd6de814cfc05db46e625538b418d106859ece324f46",
+  "d1_strategy/d1_algo/bars.py": "e944032682e619299342fc6657f0f83aab356da1de28af831de4a004b98ed29c",
+  "d1_strategy/d1_algo/book.py": "5da44214ac1c354a48a5cf667393f9d126e3903403a855762914d81fac979569",
+  "d1_strategy/d1_algo/config.py": "df06fc93b1d0c72a399611c95a72763ab56273081c470df28be8cf6796f9982f",
+  "d1_strategy/d1_algo/engine.py": "8940fb2a1083fb2b73382257d033a4f79db9a4f3350ac9e32ab814c77c8a011f",
+  "d1_strategy/d1_algo/interfaces.py": "2c1f6691d9daab813007422140c85a6cee38770f0fff9b702b655175f38785f7",
+  "d1_strategy/d1_algo/live_template.py": "8407f2eafffe5b855151497078b8477825a9c35399ccc789c0ca3ae565ea2e11",
+  "d1_strategy/d1_algo/models.py": "31a6cd1085ada4ba1477849e51f5bc691c5d56bbcb44e02e4608346ebeeb5dd6",
+  "d1_strategy/d1_algo/risk.py": "d7648f72ad7099bf3477487e151b4df34308204182c704a080d34215f353a204",
+  "d1_strategy/d1_algo/shadow.py": "6d4b860853f88fc07b3f8223bfa79899521238b48e364739da708132017ffcf7",
+  "d1_strategy/d1_algo/shadow_state.py": "6c1efa766c32a08b6794fb241313c415640d9b73f70e4d1d42bc36a1a0e7994b",
+  "d1_strategy/d1_algo/sim.py": "8f51d215611da4d31333e8d1909499a9b8c814afdccda1c7cbc5fcbd03ca7703"
+ },
+ "artefact_sha256": {
+  "phase1/baseline_manifest.json": "f46d2efd92a810d80a3a705db0b897d6cde4ba2410d1cb7c6f1664119950666b",
+  "phase1/5d/summary.json": "400ac7f0e7afa1b2609492c965f13180a2ea2d65214c2d43501fa537b4ca59c3",
+  "phase1/5d/standards.json": "86fc810dfd4b6873a7836b29a3c25355b7d2d2ee87b3ba3b8617b2200cac5c3a",
+  "phase1/6/summary.json": "5688897e51a8e74b1b9f02522d3c1a434d5afd495db70ef54b3846415c251451",
+  "phase1/6/acceptance.json": "a36d8701981a830ceee3597be909519e32954384ad340ab9c3f46840d897e2ea",
+  "phase1/7/tests.json": "b10f331d3bf984c15247099be8048a34acbc85014b6a8ec167cd9042d175e872",
+  "phase1/5c/acceptance.json": "7f6fd7a8aed6cb18fb605a7e008323f2e07786caa295d1831731f6b47b8d0550",
+  "scoring/spec_freeze.json": "aa39172ae663f77b00a301ff5d69af13633fc2e0886d77c360faf6285b5be0b0",
+  "scoring/execution_convention.json": "b6a05d39b89aa3064fd1d4d9157097e61e8e4d9cd706167de836bbe24bb34290"
+ },
+ "frozen_scoring_spec": "spec v1.1 (outputs/scoring/spec_freeze.json); one_lot_v2 execution convention",
+ "frozen_late_sale_shadow": "untouched: d1_strategy/d1_algo/shadow.py and shadow_state.py identical to git HEAD"
+}

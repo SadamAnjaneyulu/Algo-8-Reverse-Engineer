@@ -1,0 +1,166 @@
+{
+ "tf_bb|plain stop (reference)": {
+  "chosen": [
+   {
+    "mode": "tf_bb",
+    "variant": "plain stop (reference)",
+    "fold": 0,
+    "theta": 1.6,
+    "cluster": null,
+    "partner": false,
+    "counter": null,
+    "react_d": null,
+    "solo_d": null,
+    "obj_train": 0.5849
+   },
+   {
+    "mode": "tf_bb",
+    "variant": "plain stop (reference)",
+    "fold": 1,
+    "theta": 1.6,
+    "cluster": null,
+    "partner": false,
+    "counter": null,
+    "react_d": null,
+    "solo_d": null,
+    "obj_train": 0.5916
+   }
+  ],
+  "overall": {
+   "variant": "plain stop (reference) (tf_bb)",
+   "real_lots": 13655,
+   "sim_lots": 12750,
+   "matched": 11169,
+   "precision": 0.876,
+   "recall": 0.8179421457341634,
+   "F1": 0.8459761408824087,
+   "F1_strict": 0.6141261124786972,
+   "F1_within1": 0.7824275705358834,
+   "F1_modelled_classes_only": 0.8608755973485432,
+   "real_lots_modelled": 13198
+  }
+ },
+ "tf_bb|rebalancing events": {
+  "chosen": [
+   {
+    "mode": "tf_bb",
+    "variant": "rebalancing events",
+    "fold": 0,
+    "theta": 1.6,
+    "cluster": null,
+    "partner": false,
+    "counter": null,
+    "react_d": 1.5,
+    "solo_d": null,
+    "obj_train": 0.5909
+   },
+   {
+    "mode": "tf_bb",
+    "variant": "rebalancing events",
+    "fold": 1,
+    "theta": 1.6,
+    "cluster": null,
+    "partner": false,
+    "counter": null,
+    "react_d": 1.0,
+    "solo_d": null,
+    "obj_train": 0.597
+   }
+  ],
+  "overall": {
+   "variant": "rebalancing events (tf_bb)",
+   "real_lots": 13655,
+   "sim_lots": 12763,
+   "matched": 11170,
+   "precision": 0.8751860847763065,
+   "recall": 0.8180153789820579,
+   "F1": 0.8456355515179045,
+   "F1_strict": 0.6145052615640851,
+   "F1_within1": 0.7824210765387236,
+   "F1_modelled_classes_only": 0.8605215515581064,
+   "real_lots_modelled": 13198
+  }
+ },
+ "free|plain stop (reference)": {
+  "chosen": [
+   {
+    "mode": "free",
+    "variant": "plain stop (reference)",
+    "fold": 0,
+    "theta": 1.6,
+    "cluster": null,
+    "partner": false,
+    "counter": null,
+    "react_d": null,
+    "solo_d": null,
+    "obj_train": 0.666
+   },
+   {
+    "mode": "free",
+    "variant": "plain stop (reference)",
+    "fold": 1,
+    "theta": 1.6,
+    "cluster": null,
+    "partner": false,
+    "counter": null,
+    "react_d": null,
+    "solo_d": null,
+    "obj_train": 0.7286
+   }
+  ],
+  "overall": {
+   "variant": "plain stop (reference) (free)",
+   "real_lots": 13655,
+   "sim_lots": 10642,
+   "matched": 8322,
+   "precision": 0.7819958654388273,
+   "recall": 0.6094470889783962,
+   "F1": 0.6850228423262131,
+   "F1_strict": 0.44869737004568466,
+   "F1_within1": 0.6232868255340166,
+   "F1_modelled_classes_only": 0.6981543624161074,
+   "real_lots_modelled": 13198
+  }
+ },
+ "free|rebalancing events": {
+  "chosen": [
+   {
+    "mode": "free",
+    "variant": "rebalancing events",
+    "fold": 0,
+    "theta": 1.6,
+    "cluster": null,
+    "partner": false,
+    "counter": "one",
+    "react_d": 1.5,
+    "solo_d": null,
+    "obj_train": 0.6742
+   },
+   {
+    "mode": "free",
+    "variant": "rebalancing events",
+    "fold": 1,
+    "theta": 1.6,
+    "cluster": null,
+    "partner": false,
+    "counter": "one",
+    "react_d": null,
+    "solo_d": null,
+    "obj_train": 0.7311
+   }
+  ],
+  "overall": {
+   "variant": "rebalancing events (free)",
+   "real_lots": 13655,
+   "sim_lots": 11286,
+   "matched": 8612,
+   "precision": 0.7630692893850789,
+   "recall": 0.630684730867814,
+   "F1": 0.690589791908905,
+   "F1_strict": 0.4444088047792791,
+   "F1_within1": 0.6253959344051963,
+   "F1_modelled_classes_only": 0.7034798235582421,
+   "real_lots_modelled": 13198
+  }
+ }
+}

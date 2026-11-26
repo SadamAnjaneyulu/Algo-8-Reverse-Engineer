@@ -1,0 +1,9 @@
+gate,value,passed
+G1 Costs,"mean net ₹70,801 (all) / ₹54,242 (OOS) / ₹33,361 (costs ×1.5, slippage ×2)",True
+G2 Execution,"mean net with 1-minute delay ₹45,786",True
+G3 Parameter stability,no ±20% / ±5-min change flips or halves the mean,True
+G4 Overfitting,"PBO 0.60; Deflated Sharpe 1.00 at N = 83 (1.00 at N = 1,000)",False
+G5 Noise floor,"real timetable ₹70,801 vs random-timetable null: 95th pct ₹70,902; real above 95% of 20 null runs",False
+G6 Path / tail,1-year 95th-pct max drawdown ₹29.6 lakh; P(1-year loss > 10%) 0.1%,True
+G7 Capacity,98.7% of fill volume at ≤ 10% of minute volume,True
+G8 Margin-capped book,"mean net ₹63,943; 10.9% of cycles still above ₹2 crore",False

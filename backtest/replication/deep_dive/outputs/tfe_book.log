@@ -1,0 +1,76 @@
+{
+ "spec_version": "1.1",
+ "spec_sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+ "scorer_sha256": "c607cfc66d6c93d9d5d3e72bbf233ef1aeff0343ec1f45648f7688a992b9ebc6",
+ "mode": "TF-E",
+ "tfe_variant": "book",
+ "order_split": "one_lot_v2",
+ "evidence_label": "historical reproduction",
+ "diagnostic_only": true,
+ "never_a_primary_score_or_closure_gate": true,
+ "plan": "reports/D1_TFE_PLAN.md",
+ "simulator": "d1_strategy/d1_algo (unchanged engine) + bl_tfe.run_teacher_forced",
+ "real_orders": 9915,
+ "engine_orders_all": 10397,
+ "engine_orders_first_decision": 7748,
+ "redecision_orders": 2649,
+ "redecision_by_role": {
+  "stop_buyback": 2649
+ },
+ "rejected_orders": 1247,
+ "rejected_by_role_reason": {
+  "ladder_solo|too many orders this minute": 3,
+  "protective_wing_buy|too many orders this minute": 3,
+  "protective_wing_sell|too many orders this minute": 14,
+  "stop_buyback|too many orders this minute": 1227
+ },
+ "rejected_by_cycle": {
+  "NIFTY|2026-07-28": 433,
+  "NIFTY|2026-08-18": 18,
+  "NIFTY|2026-09-01": 2,
+  "NIFTY|2026-09-29": 425,
+  "SENSEX|2026-07-09": 177,
+  "SENSEX|2026-07-16": 130,
+  "SENSEX|2026-08-13": 62
+ },
+ "legacy_lot_level_F1_info_only_all_orders": 0.5851544558856212,
+ "reset_events": 5705,
+ "pre_reset_SL_equal_share": 0.6713409290096407,
+ "pre_reset_l1_norm_median": 0.0,
+ "pre_reset_l1_norm_mean": 0.02686986537906339,
+ "pre_reset_zero_l1_share": 0.6713409290096407,
+ "bl_tfe_sha256": "2761161f0641447ae96df14b33ae64f70190aae0f9f34069a0787c4bae2f02fd",
+ "engine_sha256": "93f2ce25ecf381ac3a0fdbbca99201b1a739e768392617533c040cdc564f3e62",
+ "risk_sha256": "d7648f72ad7099bf3477487e151b4df34308204182c704a080d34215f353a204",
+ "data_cache": "21bfe7bbd1662c9e9657cf3a075a526b047c1bafaf59f72a8a33bebb4d32e58c",
+ "run_at": "2026-11-25T14:25:11.836232Z",
+ "seconds": 136
+}
+
+ALL ORDERS (pre-registered)
+     tier  matched  share_of_real  share_of_sim  cumulative_matched  cumulative_share_real  cumulative_share_sim  cumulative_tolerance_s  missing_real  extra_sim
+    exact     2185         0.2204        0.2102              2185.0                 0.2204                0.2102                     0.0           NaN        NaN
+     near     1982         0.1999        0.1906              4167.0                 0.4203                0.4008                     5.0           NaN        NaN
+    broad     1897         0.1913        0.1825              6064.0                 0.6116                0.5832                    60.0           NaN        NaN
+unmatched        0         0.3884        0.4168                 NaN                    NaN                   NaN                     NaN        3851.0     4333.0
+ cumulative_tolerance_s      level  matched  precision  recall     F1
+                      0       keys     2185     0.2102  0.2204 0.2151
+                      0 lots_exact     1779     0.1711  0.1794 0.1752
+                      5       keys     4167     0.4008  0.4203 0.4103
+                      5 lots_exact     3015     0.2900  0.3041 0.2969
+                     60       keys     6064     0.5832  0.6116 0.5971
+                     60 lots_exact     3791     0.3646  0.3823 0.3733
+
+FIRST DECISIONS (post hoc)
+     tier  matched  share_of_real  share_of_sim  cumulative_matched  cumulative_share_real  cumulative_share_sim  cumulative_tolerance_s  missing_real  extra_sim
+    exact     2030         0.2047        0.2620              2030.0                 0.2047                0.2620                     0.0           NaN        NaN
+     near     1647         0.1661        0.2126              3677.0                 0.3709                0.4746                     5.0           NaN        NaN
+    broad     2015         0.2032        0.2601              5692.0                 0.5741                0.7346                    60.0           NaN        NaN
+unmatched        0         0.4259        0.2654                 NaN                    NaN                   NaN                     NaN        4223.0     2056.0
+ cumulative_tolerance_s      level  matched  precision  recall     F1
+                      0       keys     2030     0.2620  0.2047 0.2299
+                      0 lots_exact     1682     0.2171  0.1696 0.1905
+                      5       keys     3677     0.4746  0.3709 0.4164
+                      5 lots_exact     2799     0.3613  0.2823 0.3169
+                     60       keys     5692     0.7346  0.5741 0.6445
+                     60 lots_exact     3683     0.4753  0.3715 0.4170

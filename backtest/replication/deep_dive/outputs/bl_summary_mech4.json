@@ -1,0 +1,112 @@
+{
+ "census": {
+  "cls": [
+   "scheduled cell",
+   "hedge-module sell closing a long wing",
+   "reactive pair (outside timetable)",
+   "single solo",
+   "batch (>= 3 lots, one strike/right, within 3 s)",
+   "end-of-day solo (>= 15:00)",
+   "body sell closing a long wing",
+   "near-pair (CE and PE within 3 s, different strikes)",
+   "stop-module sell closing a long wing"
+  ],
+  "orders": [
+   2143,
+   600,
+   954,
+   751,
+   321,
+   220,
+   134,
+   19,
+   10
+  ],
+  "lots": [
+   2143,
+   1192,
+   954,
+   751,
+   555,
+   220,
+   163,
+   48,
+   46
+  ],
+  "lots_per_cycle": [
+   67.0,
+   37.2,
+   29.8,
+   23.5,
+   17.3,
+   6.9,
+   5.1,
+   1.5,
+   1.4
+  ],
+  "share_of_sold_lots": [
+   0.3529,
+   0.1963,
+   0.1571,
+   0.1237,
+   0.0914,
+   0.0362,
+   0.0268,
+   0.0079,
+   0.0076
+  ],
+  "median_clock_h": [
+   11.0169,
+   12.7086,
+   13.165,
+   12.22,
+   13.135,
+   15.1176,
+   11.2057,
+   13.2553,
+   14.7736
+  ],
+  "cycles_with": [
+   32,
+   31,
+   32,
+   32,
+   25,
+   31,
+   30,
+   4,
+   1
+  ]
+ },
+ "n_cycles": 32,
+ "total_lots": 6072,
+ "near_pair_n": 19,
+ "near_pair_strike_diff_steps": {
+  "-49.0": 0.111,
+  "-23.0": 0.111,
+  "-2.0": 0.444,
+  "-1.0": 0.333
+ },
+ "batch_n": 84,
+ "batch_lots_q": [
+  3.0,
+  4.0,
+  5.0,
+  6.0,
+  54.0
+ ],
+ "batch_ce_share": 0.8095238095238095,
+ "batch_hour": {
+  "9": 4,
+  "10": 20,
+  "11": 4,
+  "12": 14,
+  "13": 5,
+  "14": 10,
+  "15": 27
+ },
+ "batch_big_n": 7,
+ "batch_big_share_of_lots": 0.45045045045045046,
+ "batch_single_order_big": 6,
+ "batch_cycles": 25
+}

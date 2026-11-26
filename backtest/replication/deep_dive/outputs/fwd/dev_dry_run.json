@@ -1,0 +1,27 @@
+{
+ "live_form_identical_to_batch": true,
+ "decision": {
+  "cycles": 18,
+  "order_recall": 0.6621621621621622,
+  "orders": 148,
+  "event_precision": 0.46153846153846156,
+  "event_recall": 0.4583333333333333,
+  "event_f1": 0.4599303135888501,
+  "fires": 52,
+  "events": 48
+ },
+ "strike_size": {
+  "matched_with_proposal": 98,
+  "strike_exact": 0.30612244897959184,
+  "strike_within_1_step": 0.673469387755102,
+  "size_equal": 1.0,
+  "last_strike_n": 148,
+  "last_strike_exact": 0.32432432432432434,
+  "last_strike_within_1_step": 0.6621621621621622
+ },
+ "reference_from_bl_trig_ladder": {
+  "event_precision": 0.46153846153846156,
+  "event_recall": 0.4583333333333333,
+  "events": 48
+ }
+}

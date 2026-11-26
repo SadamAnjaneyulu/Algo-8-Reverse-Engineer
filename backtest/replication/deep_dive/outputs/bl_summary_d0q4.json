@@ -1,0 +1,54 @@
+{
+ "nifty_v1_cycles": 10,
+ "nifty_v1_cycles_with_D0": 7,
+ "extra_boundaries_D0_only": [
+  "10:25",
+  "10:55",
+  "11:10",
+  "11:55",
+  "12:05",
+  "12:25",
+  "12:35",
+  "12:45",
+  "12:55",
+  "13:00",
+  "13:05",
+  "13:25",
+  "13:35",
+  "13:55"
+ ],
+ "D1_boundaries_not_used_on_D0": [],
+ "boundaries_used_by_both": 18,
+ "D1_boundaries_used": 18,
+ "D0_boundaries_used": 32,
+ "pairs_per_boundary_both_D1": 1.5611111111111111,
+ "pairs_per_boundary_both_D0": 2.6269841269841265,
+ "pairs_per_extra_boundary_D0": 1.306122448979592,
+ "decomposition": {
+  "A: same second as a D-1 pair": 30,
+  "B: at a boundary D-1 also uses, other second (more pairs per boundary)": 23,
+  "C: at a boundary D-1 does not use": 19,
+  "D: not recurring (opening burst)": 5,
+  "E: other": 6
+ },
+ "exceptions": [
+  {
+   "time": "10:47:31",
+   "strike": 24050,
+   "spot_prev_min_close": 24024.6,
+   "ATM_of_prev_close": 24000
+  },
+  {
+   "time": "11:01:57",
+   "strike": 24000,
+   "spot_prev_min_close": 24030.3,
+   "ATM_of_prev_close": 24050
+  },
+  {
+   "time": "11:47:30",
+   "strike": 24050,
+   "spot_prev_min_close": 24021.7,
+   "ATM_of_prev_close": 24000
+  }
+ ]
+}

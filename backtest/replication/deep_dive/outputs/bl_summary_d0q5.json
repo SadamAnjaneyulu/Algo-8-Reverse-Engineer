@@ -1,0 +1,139 @@
+{
+ "daytotals": [
+  {
+   "und": "NIFTY",
+   "version": "V1",
+   "day": "D-1",
+   "clock_times": 29,
+   "waves": 33,
+   "expected_lots_per_day": 66,
+   "avg_lots_per_active_cycle_per_day": 66.0,
+   "max_lots_in_one_clock_time": 6.0,
+   "slots_used(5-min marks with lots)": 19,
+   "avg_lots_per_used_slot": 3.274
+  },
+  {
+   "und": "NIFTY",
+   "version": "V1",
+   "day": "D0",
+   "clock_times": 69,
+   "waves": 76,
+   "expected_lots_per_day": 152,
+   "avg_lots_per_active_cycle_per_day": 152.571,
+   "max_lots_in_one_clock_time": 4.0,
+   "slots_used(5-min marks with lots)": 33,
+   "avg_lots_per_used_slot": 4.09
+  },
+  {
+   "und": "NIFTY",
+   "version": "V2",
+   "day": "D-1",
+   "clock_times": 29,
+   "waves": 32,
+   "expected_lots_per_day": 64,
+   "avg_lots_per_active_cycle_per_day": 64.8,
+   "max_lots_in_one_clock_time": 4.4,
+   "slots_used(5-min marks with lots)": 18,
+   "avg_lots_per_used_slot": 3.378
+  },
+  {
+   "und": "NIFTY",
+   "version": "V2",
+   "day": "D0",
+   "clock_times": 48,
+   "waves": 66,
+   "expected_lots_per_day": 132,
+   "avg_lots_per_active_cycle_per_day": 132.5,
+   "max_lots_in_one_clock_time": 15.5,
+   "slots_used(5-min marks with lots)": 22,
+   "avg_lots_per_used_slot": 5.295
+  },
+  {
+   "und": "SENSEX",
+   "version": "V1",
+   "day": "D-1",
+   "clock_times": 29,
+   "waves": 33,
+   "expected_lots_per_day": 66,
+   "avg_lots_per_active_cycle_per_day": 66.545,
+   "max_lots_in_one_clock_time": 6.0,
+   "slots_used(5-min marks with lots)": 19,
+   "avg_lots_per_used_slot": 3.321
+  },
+  {
+   "und": "SENSEX",
+   "version": "V1",
+   "day": "D0",
+   "clock_times": 12,
+   "waves": 12,
+   "expected_lots_per_day": 24,
+   "avg_lots_per_active_cycle_per_day": 20.528,
+   "max_lots_in_one_clock_time": 2.0,
+   "slots_used(5-min marks with lots)": 11,
+   "avg_lots_per_used_slot": 1.712
+  },
+  {
+   "und": "SENSEX",
+   "version": "V2",
+   "day": "D-1",
+   "clock_times": 30,
+   "waves": 32,
+   "expected_lots_per_day": 64,
+   "avg_lots_per_active_cycle_per_day": 66.0,
+   "max_lots_in_one_clock_time": 4.0,
+   "slots_used(5-min marks with lots)": 19,
+   "avg_lots_per_used_slot": 3.281
+  },
+  {
+   "und": "SENSEX",
+   "version": "V2",
+   "day": "D0",
+   "clock_times": 51,
+   "waves": 71,
+   "expected_lots_per_day": 142,
+   "avg_lots_per_active_cycle_per_day": 137.0,
+   "max_lots_in_one_clock_time": 14.0,
+   "slots_used(5-min marks with lots)": 22,
+   "avg_lots_per_used_slot": 4.311
+  }
+ ],
+ "lots_per_clock_time_hist": {
+  "NIFTY V1 D-1": {
+   "1": 26,
+   "2": 2,
+   "3": 1
+  },
+  "NIFTY V1 D0": {
+   "1": 62,
+   "2": 7
+  },
+  "NIFTY V2 D-1": {
+   "1": 26,
+   "2": 3
+  },
+  "NIFTY V2 D0": {
+   "1": 40,
+   "2": 6,
+   "5": 1,
+   "9": 1
+  },
+  "SENSEX V1 D-1": {
+   "1": 26,
+   "2": 2,
+   "3": 1
+  },
+  "SENSEX V1 D0": {
+   "1": 12
+  },
+  "SENSEX V2 D-1": {
+   "1": 28,
+   "2": 2
+  },
+  "SENSEX V2 D0": {
+   "1": 39,
+   "2": 10,
+   "4": 1,
+   "8": 1
+  }
+ }
+}

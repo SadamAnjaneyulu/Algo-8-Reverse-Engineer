@@ -1,0 +1,26 @@
+{
+ "id": "V02",
+ "overrides": {
+  "ladder_gate_min": 15
+ },
+ "order_split": "one_lot_v2",
+ "mode": "F",
+ "evidence_label": "historical reproduction",
+ "engine_orders": 11056,
+ "real_orders": 9915,
+ "rejected": 2,
+ "legacy_f1": 0.6511023707285389,
+ "engine_sha256": {
+  "engine.py": "ff2ed7477a29c1515913856cdf5eb090af60b814e291f04c0a770e3c761de5da",
+  "config.py": "31be4663e0a13662514181f75a3d1732b47c445e9ca3c36ebd19ac92af618782",
+  "risk.py": "d7648f72ad7099bf3477487e151b4df34308204182c704a080d34215f353a204",
+  "models.py": "31a6cd1085ada4ba1477849e51f5bc691c5d56bbcb44e02e4608346ebeeb5dd6"
+ },
+ "spec": {
+  "spec_version": "1.1",
+  "spec_sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+  "scorer_sha256": "c607cfc66d6c93d9d5d3e72bbf233ef1aeff0343ec1f45648f7688a992b9ebc6"
+ },
+ "seconds": 44,
+ "run_at": "2026-11-25T15:12:17.526206+00:00"
+}

@@ -1,0 +1,6 @@
+price,theta_folds,precision,recall,F1,F1_strict
+close,"[np.float64(1.5), np.float64(1.45)]",0.6154,0.5015,0.5526,0.3154
+open_now,"[np.float64(1.5), np.float64(1.45)]",0.6165,0.4977,0.5508,0.3142
+close_now,"[np.float64(1.55), np.float64(1.55)]",0.6746,0.4683,0.5528,0.3344
+typical,"[np.float64(1.5), np.float64(1.55)]",0.6358,0.4562,0.5312,0.2982
+high,"[np.float64(1.6), np.float64(1.6)]",0.7212,0.4962,0.5879,0.3544

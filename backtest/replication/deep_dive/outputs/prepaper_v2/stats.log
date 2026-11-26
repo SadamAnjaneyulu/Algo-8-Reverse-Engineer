@@ -1,0 +1,123 @@
+                     gate                                                                                              value  passed
+0                G1 Costs                         mean net ₹70,989 (all) / ₹54,238 (OOS) / ₹32,541 (costs ×1.5, slippage ×2)    True
+1            G2 Execution                                                               mean net with 1-minute delay ₹43,820    True
+2  G3 Parameter stability                                                   no ±20% / ±5-min change flips or halves the mean    True
+3          G4 Overfitting                                       PBO 0.89; Deflated Sharpe 1.00 at N = 83 (1.00 at N = 1,000)   False
+4          G5 Noise floor  real timetable ₹70,989 vs random-timetable null: 95th pct ₹72,912; real above 90% of 20 null runs   False
+5          G6 Path / tail                                 1-year 95th-pct max drawdown ₹29.3 lakh; P(1-year loss > 10%) 0.1%    True
+6             G7 Capacity                                                     98.7% of fill volume at ≤ 10% of minute volume    True
+7   G8 Margin-capped book                                             mean net ₹63,934; 11.3% of cycles still above ₹2 crore   False
+                              set  cycles   mean_net  win_rate  profit_factor         total  return_on_2cr_per_year
+0               all, constant lot     275  70989.203     0.607          1.751  1.952203e+07                   0.324
+1                              IS     175  89762.363     0.634          1.986  1.570841e+07                   0.261
+2                             OOS      64  54238.076     0.609          1.514  3.471237e+06                   0.058
+3                     live window      36   9510.567     0.472          1.103  3.423804e+05                   0.006
+4              all, margin-capped     275  63934.024     0.604          1.725  1.758186e+07                   0.292
+5  all, after funding cost (6.5%)     275  56765.321     0.593          1.566  1.561046e+07                   0.259
+           parameter   level   mean_net  change_vs_full  change_pct  oos_mean_net
+0         cycle_stop    +20%  66686.259       -4302.944      -0.061     49589.111
+1         cycle_stop    +40%  70369.143        -620.060      -0.009     50739.099
+2         cycle_stop    -20%  72130.710        1141.508       0.016     55053.227
+3         cycle_stop    -40%  60744.529      -10244.673      -0.144     51826.115
+4   d0_counter_ratio    +20%  68723.434       -2265.769      -0.032     56220.268
+5   d0_counter_ratio    +40%  71523.007         533.804       0.008     59822.218
+6   d0_counter_ratio    -20%  69834.014       -1155.188      -0.016     53688.192
+7   d0_counter_ratio    -40%  69621.758       -1367.444      -0.019     51924.392
+8     d0_ladder_step    +20%  68930.983       -2058.220      -0.029     52590.137
+9     d0_ladder_step    +40%  67383.817       -3605.386      -0.051     51065.702
+10    d0_ladder_step    -20%  73439.576        2450.373       0.035     59287.960
+11    d0_ladder_step    -40%  79491.926        8502.723       0.120     63986.242
+12     d0_stop_theta    +20%  73052.869        2063.666       0.029     60728.135
+13     d0_stop_theta    +40%  74152.203        3163.000       0.045     63182.434
+14     d0_stop_theta    -20%  65296.987       -5692.216      -0.080     46257.505
+15     d0_stop_theta    -40%  56870.158      -14119.045      -0.199     33489.998
+16    d0_take_profit    +20%  69814.807       -1174.396      -0.017     52175.473
+17    d0_take_profit    +40%  67229.203       -3759.999      -0.053     55607.640
+18    d0_take_profit    -20%  74775.446        3786.243       0.053     61557.551
+19    d0_take_profit    -40%  74696.677        3707.474       0.052     57448.980
+20    d1_ladder_step    +20%  68747.911       -2241.292      -0.032     51099.271
+21    d1_ladder_step    +40%  66418.764       -4570.438      -0.064     49978.997
+22    d1_ladder_step    -20%  70258.430        -730.773      -0.010     56359.053
+23    d1_ladder_step    -40%  71997.188        1007.985       0.014     60951.777
+24     d1_lump_ratio    +20%  67651.285       -3337.917      -0.047     50937.266
+25     d1_lump_ratio    +40%  66439.377       -4549.825      -0.064     49097.950
+26     d1_lump_ratio    -20%  71731.911         742.708       0.010     55531.377
+27     d1_lump_ratio    -40%  73460.615        2471.412       0.035     56890.943
+28     d1_stop_ratio    +20%  62022.405       -8966.798      -0.126     33337.753
+29     d1_stop_ratio    +40%  61003.047       -9986.156      -0.141     20027.407
+30     d1_stop_ratio    -20%  71387.958         398.755       0.006     66550.405
+31     d1_stop_ratio    -40%  68188.504       -2800.699      -0.039     70177.586
+32    d1_wing_budget    +20%  70240.413        -748.790      -0.011     54012.564
+33    d1_wing_budget    +40%  69224.793       -1764.409      -0.025     53408.835
+34    d1_wing_budget    -20%  72275.675        1286.472       0.018     55050.503
+35    d1_wing_budget    -40%  73571.599        2582.396       0.036     55856.443
+36            timing  +15min  63823.056       -7166.147      -0.101     37898.476
+37            timing   +5min  69777.707       -1211.496      -0.017     55280.768
+38            timing  -15min  70276.711        -712.492      -0.010     57845.005
+39            timing   -5min  61338.500       -9650.703      -0.136     44186.441
+{
+"base": 70989.20273659394,
+"oos": 54238.07598454956,
+"breakeven_mult": 2.2828847860401096,
+"funding_per_cycle": 14223.881525729574,
+"cycles_per_year": 91.39558689717926,
+"PBO": 0.8857031857031857,
+"DSR_counted": 0.9975188602077719,
+"DSR_1000": 0.9960695812215319,
+"N_counted": 83,
+"SR_week": 0.281487250365865,
+"sr0_counted": 0.040493538771526186,
+"null_pct": 0.9,
+"null_p95": 72911.64425680548,
+"null_mean": 65220.50713245703,
+"null_min": 56073.40164202413,
+"null_max": 73001.19137163507,
+"g3_failures": 0,
+"gates_passed": 5,
+"verdict": "NO-GO",
+"capacity_10": 0.9869752181985564,
+"iv_shock": {
+"iv_shock_1.5": {
+"mean": 83620.96977319701,
+"p95": 200537.26098734673,
+"worst": 408510.8999548636
+},
+"iv_shock_2.0": {
+"mean": 45062.696176783276,
+"p95": 255827.9579495442,
+"worst": 675012.0309476204
+}
+}
+}
+                          constant lot  margin-capped
+weeks                            158.0          158.0
+mean_week                     123557.0       111278.0
+sd_week                       438944.0       406863.0
+sharpe_annual                      2.0            2.0
+total                       19522031.0     17581857.0
+max_drawdown                 1957164.0      1957164.0
+longest_underwater_weeks          13.0           13.0
+one_year_pnl_median          6393954.0      5813397.0
+one_year_pnl_p5              1622671.0      1488844.0
+one_year_mdd_p95             2931413.0      2762575.0
+p_loss_10                          0.0            0.0
+p_loss_20                          0.0            0.0
+p_loss_30                          0.0            0.0
+p_negative_year                    0.0            0.0
+      und      expiry split        net      gross  iv_shock_2.0  stop_j  gap_min_0916
+0  SENSEX  2026-03-19   OOS -1345932.0 -1315787.0      212804.0     0.0          -0.0
+1  SENSEX  2025-04-15    IS  -851532.0  -821156.0      477245.0     0.0           0.0
+2  SENSEX  2026-11-05   OOS  -678182.0  -652614.0      172628.0     0.0           0.0
+3   NIFTY  2024-08-08    IS  -548365.0  -507518.0       20934.0    72.0          -0.0
+4   NIFTY  2024-12-05    IS  -495652.0  -439653.0      243927.0   169.0           0.0
+5  SENSEX  2025-04-08    IS  -475795.0  -440500.0     -279213.0     0.0           0.0
+6   NIFTY  2024-05-16    IS  -461024.0  -407498.0      135552.0   191.0           0.0
+7   NIFTY  2026-04-13   OOS  -447383.0  -423943.0      102022.0     0.0          -0.0
+8   NIFTY  2025-04-09    IS  -446058.0  -415894.0      -11639.0     0.0          -0.0
+9   NIFTY  2024-07-18    IS  -444866.0  -385742.0      113152.0   236.0          -0.0
+                                                  era  cycles   mean_net  mean_gross  costs_share_of_gross  win_rate  after_funding
+0  Nov 2023 – Sep 2024 (STT 0.0625%, NSE fee 0.0495%)      63  58156.145  113771.932                 0.489     0.587      43932.263
+1                      Oct 2024 – Mar 2026 (STT 0.1%)     149  98215.226  155003.707                 0.366     0.658      83991.345
+2                        Apr – 2 Aug 2026 (STT 0.15%)      34  67965.871  124741.310                 0.455     0.647      53741.989
+3       from 3 Aug 2026 (STT 0.15% + closing auction)      29 -37472.920    8101.132                 5.626     0.345     -51696.802
+weekly trend (Rs per week per week) -483 t -0.81

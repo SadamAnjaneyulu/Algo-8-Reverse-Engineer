@@ -1,0 +1,44 @@
+{
+ "table": [
+  {
+   "price": "close",
+   "theta_folds": "[np.float64(1.5), np.float64(1.45)]",
+   "precision": 0.6154,
+   "recall": 0.5015,
+   "F1": 0.5526,
+   "F1_strict": 0.3154
+  },
+  {
+   "price": "open_now",
+   "theta_folds": "[np.float64(1.5), np.float64(1.45)]",
+   "precision": 0.6165,
+   "recall": 0.4977,
+   "F1": 0.5508,
+   "F1_strict": 0.3142
+  },
+  {
+   "price": "close_now",
+   "theta_folds": "[np.float64(1.55), np.float64(1.55)]",
+   "precision": 0.6746,
+   "recall": 0.4683,
+   "F1": 0.5528,
+   "F1_strict": 0.3344
+  },
+  {
+   "price": "typical",
+   "theta_folds": "[np.float64(1.5), np.float64(1.55)]",
+   "precision": 0.6358,
+   "recall": 0.4562,
+   "F1": 0.5312,
+   "F1_strict": 0.2982
+  },
+  {
+   "price": "high",
+   "theta_folds": "[np.float64(1.6), np.float64(1.6)]",
+   "precision": 0.7212,
+   "recall": 0.4962,
+   "F1": 0.5879,
+   "F1_strict": 0.3544
+  }
+ ]
+}

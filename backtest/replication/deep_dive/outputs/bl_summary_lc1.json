@@ -1,0 +1,76 @@
+{
+ "ceiling": [
+  {
+   "scenario": "current (out-of-fold, lump at \u00b11 min)",
+   "TP": 8168,
+   "sim": 10794,
+   "F1": 0.668
+  },
+  {
+   "scenario": "+ perfect lot count at every event found",
+   "TP": 10529,
+   "sim": 11774,
+   "F1": 0.828
+  },
+  {
+   "scenario": "+ perfect timing (2\u20135 min errors corrected)",
+   "TP": 11371,
+   "sim": 11774,
+   "F1": 0.894
+  },
+  {
+   "scenario": "+ every event found, no spurious events",
+   "TP": 13051,
+   "sim": 13051,
+   "F1": 0.977
+  },
+  {
+   "scenario": "+ not-modelled classes",
+   "TP": 13508,
+   "sim": 13508,
+   "F1": 0.995
+  }
+ ],
+ "intra": [
+  {
+   "sub": "deep",
+   "minutes": 5,
+   "lots_mean": 57.6,
+   "span_s_median": 31.0,
+   "same_second_share": 0.92,
+   "median_gap_s": 0.0
+  },
+  {
+   "sub": "late",
+   "minutes": 70,
+   "lots_mean": 4.2,
+   "span_s_median": 4.5,
+   "same_second_share": 0.43,
+   "median_gap_s": 1.0
+  },
+  {
+   "sub": "reactive",
+   "minutes": 172,
+   "lots_mean": 2.66,
+   "span_s_median": 0.0,
+   "same_second_share": 0.62,
+   "median_gap_s": 0.0
+  },
+  {
+   "sub": "scheduled",
+   "minutes": 445,
+   "lots_mean": 2.35,
+   "span_s_median": 10.0,
+   "same_second_share": 0.16,
+   "median_gap_s": 9.0
+  },
+  {
+   "sub": "solo",
+   "minutes": 216,
+   "lots_mean": 3.94,
+   "span_s_median": 5.0,
+   "same_second_share": 0.49,
+   "median_gap_s": 0.5
+  }
+ ]
+}

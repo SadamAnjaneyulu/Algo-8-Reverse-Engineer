@@ -1,0 +1,33 @@
+variant,j,quantity,MAE_lots,mean_real,mean_sim,corr,median_abs_err_pct
+FR free-running (primary),60,short lots S,2.8281,11.75,12.2031,0.5224,15.3846
+FR free-running (primary),60,long lots L,3.0781,10.5,12.2031,0.5552,17.1569
+FR free-running (primary),120,short lots S,4.0938,22.5781,23.3281,0.8113,11.2632
+FR free-running (primary),120,long lots L,4.4062,21.6406,23.3281,0.8124,16.3889
+FR free-running (primary),180,short lots S,4.7031,30.6719,31.375,0.8897,11.1111
+FR free-running (primary),180,long lots L,4.6875,30.6875,31.375,0.8903,11.1111
+FR free-running (primary),240,short lots S,5.7812,33.0469,33.6406,0.8978,16.1726
+FR free-running (primary),240,long lots L,5.75,32.8906,33.6406,0.8993,16.1438
+FR free-running (primary),300,short lots S,7.7188,39.1719,39.9844,0.8745,18.1593
+FR free-running (primary),300,long lots L,7.7188,39.1719,39.9844,0.8745,18.1593
+FR free-running (primary),360,short lots S,12.625,46.6406,43.7344,0.7182,22.2953
+FR free-running (primary),360,long lots L,15.625,56.3438,52.1875,0.8388,24.6243
+FR free-running (primary),374,short lots S,14.2656,48.8125,43.9531,0.6892,26.8232
+FR free-running (primary),374,long lots L,17.75,60.4688,53.9375,0.8436,28.1746
+FR free-running (primary),all hours,short lots S,7.4308,33.2388,32.6027,0.835,17.9647
+FR free-running (primary),all hours,long lots L,8.4308,35.9576,35.2366,0.8898,19.2928
+TF-hedge (hedge on real body),60,short lots S,0.0,11.75,11.75,1.0,0.0
+TF-hedge (hedge on real body),60,long lots L,1.25,10.5,11.75,0.9851,11.1111
+TF-hedge (hedge on real body),120,short lots S,0.0,22.5781,22.5781,1.0,0.0
+TF-hedge (hedge on real body),120,long lots L,0.9375,21.6406,22.5781,0.9997,4.7619
+TF-hedge (hedge on real body),180,short lots S,0.0,30.6719,30.6719,1.0,0.0
+TF-hedge (hedge on real body),180,long lots L,0.0156,30.6875,30.6719,1.0,0.0
+TF-hedge (hedge on real body),240,short lots S,0.0,33.0469,33.0469,1.0,0.0
+TF-hedge (hedge on real body),240,long lots L,0.1562,32.8906,33.0469,0.9998,0.0
+TF-hedge (hedge on real body),300,short lots S,0.0,39.1719,39.1719,1.0,0.0
+TF-hedge (hedge on real body),300,long lots L,0.0,39.1719,39.1719,1.0,0.0
+TF-hedge (hedge on real body),360,short lots S,1.7031,46.6406,48.3438,0.9357,0.0
+TF-hedge (hedge on real body),360,long lots L,6.0781,56.3438,57.3281,0.9279,0.0
+TF-hedge (hedge on real body),374,short lots S,1.7031,48.8125,50.5156,0.948,0.0
+TF-hedge (hedge on real body),374,long lots L,7.5,60.4688,61.4062,0.9238,0.0
+TF-hedge (hedge on real body),all hours,short lots S,0.4866,33.2388,33.7254,0.9749,0.0
+TF-hedge (hedge on real body),all hours,long lots L,2.2768,35.9576,36.5647,0.9604,0.0

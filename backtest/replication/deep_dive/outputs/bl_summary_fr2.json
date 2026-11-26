@@ -1,0 +1,81 @@
+{
+ "table": [
+  {
+   "cls": "body_sell",
+   "real_cells": 2644,
+   "sim_cells": 2745,
+   "P_exact": 0.784,
+   "R_exact": 0.8139,
+   "F1_exact": 0.7987,
+   "P_pm1": 0.9064,
+   "R_pm1": 0.9073,
+   "F1_pm1": 0.9069
+  },
+  {
+   "cls": "body_buyback",
+   "real_cells": 483,
+   "sim_cells": 267,
+   "P_exact": 0.5843,
+   "R_exact": 0.323,
+   "F1_exact": 0.416,
+   "P_pm1": 0.8315,
+   "R_pm1": 0.4638,
+   "F1_pm1": 0.5954
+  },
+  {
+   "cls": "wing_buy",
+   "real_cells": 2553,
+   "sim_cells": 2656,
+   "P_exact": 0.7564,
+   "R_exact": 0.7869,
+   "F1_exact": 0.7714,
+   "P_pm1": 0.9014,
+   "R_pm1": 0.8986,
+   "F1_pm1": 0.9
+  },
+  {
+   "cls": "wing_sell",
+   "real_cells": 438,
+   "sim_cells": 256,
+   "P_exact": 0.5742,
+   "R_exact": 0.3356,
+   "F1_exact": 0.4236,
+   "P_pm1": 0.8047,
+   "R_pm1": 0.4658,
+   "F1_pm1": 0.59
+  },
+  {
+   "cls": "opening_wings",
+   "real_cells": 63,
+   "sim_cells": 64,
+   "P_exact": 0.9531,
+   "R_exact": 0.9683,
+   "F1_exact": 0.9606,
+   "P_pm1": 0.9688,
+   "R_pm1": 1.0,
+   "F1_pm1": 0.9841
+  },
+  {
+   "cls": "lump",
+   "real_cells": 47,
+   "sim_cells": 32,
+   "P_exact": 0.0938,
+   "R_exact": 0.0638,
+   "F1_exact": 0.0759,
+   "P_pm1": 0.5938,
+   "R_pm1": 0.4043,
+   "F1_pm1": 0.481
+  },
+  {
+   "cls": "any",
+   "real_cells": 3365,
+   "sim_cells": 3018,
+   "P_exact": 0.7982,
+   "R_exact": 0.7159,
+   "F1_exact": 0.7548,
+   "P_pm1": 0.9039,
+   "R_pm1": 0.8701,
+   "F1_pm1": 0.8867
+  }
+ ]
+}

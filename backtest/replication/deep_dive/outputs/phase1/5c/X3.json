@@ -1,0 +1,1377 @@
+{
+ "OOF": {
+  "cycles": 30,
+  "real": 26430,
+  "sim": 17827,
+  "keys_F1_60s": 0.42045326163092844,
+  "strict_F1_60s": 0.142485934428452,
+  "by_class": {
+   "body_buyback": 0.329378053960322,
+   "body_long": 0.3560986253545712,
+   "body_sell": 0.5199307469462231,
+   "not_modelled": NaN,
+   "stop": 0.162754303599374,
+   "wing_buy": 0.5753103138441282,
+   "wing_sell": 0.352831484305206
+  },
+  "win_clear_buyback_pre": null,
+  "win_clear_buyback_all": {
+   "real": 1062,
+   "sim": 104,
+   "matched_real": 56,
+   "matched_sim": 70,
+   "recall": 0.05273069679849341,
+   "precision": 0.6730769230769231,
+   "F1": 0.09779951100244498
+  },
+  "win_open_long": {
+   "real": 617,
+   "sim": 31,
+   "matched_real": 212,
+   "matched_sim": 31,
+   "recall": 0.34359805510534847,
+   "precision": 1.0,
+   "F1": 0.5114595898673101
+  },
+  "win_open_sell": {
+   "real": 963,
+   "sim": 128,
+   "matched_real": 257,
+   "matched_sim": 118,
+   "recall": 0.26687435098650053,
+   "precision": 0.921875,
+   "F1": 0.4139220637412134
+  },
+  "win_open_buyback": {
+   "real": 512,
+   "sim": 632,
+   "matched_real": 167,
+   "matched_sim": 323,
+   "recall": 0.326171875,
+   "precision": 0.5110759493670886,
+   "F1": 0.39820611250553667
+  },
+  "one_lot": {
+   "keys_F1_60s": 0.3986654534425235,
+   "win_clear_buyback_all": {
+    "real": 1062,
+    "sim": 1395,
+    "matched_real": 218,
+    "matched_sim": 283,
+    "recall": 0.20527306967984935,
+    "precision": 0.2028673835125448,
+    "F1": 0.20406313672567544
+   },
+   "win_open_long": {
+    "real": 617,
+    "sim": 326,
+    "matched_real": 401,
+    "matched_sim": 230,
+    "recall": 0.6499189627228525,
+    "precision": 0.7055214723926381,
+    "F1": 0.6765797620270252
+   }
+  },
+  "per_cycle": {
+   "NIFTY|2026-06-30": {
+    "f1": 0.26151012891344383,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 0,
+     "sim": 2,
+     "matched_real": 0,
+     "matched_sim": 2,
+     "recall": NaN,
+     "precision": 1.0,
+     "F1": NaN
+    }
+   },
+   "NIFTY|2026-07-07": {
+    "f1": 0.4910091743119266,
+    "clear": {
+     "real": 76,
+     "sim": 3,
+     "matched_real": 1,
+     "matched_sim": 2,
+     "recall": 0.013157894736842105,
+     "precision": 0.6666666666666666,
+     "F1": 0.025806451612903226
+    },
+    "openl": {
+     "real": 21,
+     "sim": 1,
+     "matched_real": 7,
+     "matched_sim": 1,
+     "recall": 0.3333333333333333,
+     "precision": 1.0,
+     "F1": 0.5
+    }
+   },
+   "NIFTY|2026-07-14": {
+    "f1": 0.4,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 10,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "NIFTY|2026-07-21": {
+    "f1": 0.4577205882352941,
+    "clear": {
+     "real": 104,
+     "sim": 7,
+     "matched_real": 7,
+     "matched_sim": 7,
+     "recall": 0.0673076923076923,
+     "precision": 1.0,
+     "F1": 0.12612612612612611
+    },
+    "openl": {
+     "real": 21,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "NIFTY|2026-07-28": {
+    "f1": 0.46283185840707963,
+    "clear": {
+     "real": 121,
+     "sim": 3,
+     "matched_real": 3,
+     "matched_sim": 3,
+     "recall": 0.024793388429752067,
+     "precision": 1.0,
+     "F1": 0.048387096774193554
+    },
+    "openl": {
+     "real": 21,
+     "sim": 2,
+     "matched_real": 3,
+     "matched_sim": 2,
+     "recall": 0.14285714285714285,
+     "precision": 1.0,
+     "F1": 0.25
+    }
+   },
+   "NIFTY|2026-08-04": {
+    "f1": 0.4292828685258964,
+    "clear": {
+     "real": 10,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 23,
+     "sim": 0,
+     "matched_real": 3,
+     "matched_sim": 0,
+     "recall": 0.13043478260869565,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "NIFTY|2026-08-18": {
+    "f1": 0.42748091603053434,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 4,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "NIFTY|2026-08-25": {
+    "f1": 0.5356472795497186,
+    "clear": {
+     "real": 9,
+     "sim": 8,
+     "matched_real": 5,
+     "matched_sim": 8,
+     "recall": 0.5555555555555556,
+     "precision": 1.0,
+     "F1": 0.7142857142857143
+    },
+    "openl": {
+     "real": 21,
+     "sim": 2,
+     "matched_real": 21,
+     "matched_sim": 2,
+     "recall": 1.0,
+     "precision": 1.0,
+     "F1": 1.0
+    }
+   },
+   "NIFTY|2026-09-08": {
+    "f1": 0.5506692160611855,
+    "clear": {
+     "real": 16,
+     "sim": 11,
+     "matched_real": 7,
+     "matched_sim": 11,
+     "recall": 0.4375,
+     "precision": 1.0,
+     "F1": 0.6086956521739131
+    },
+    "openl": {
+     "real": 22,
+     "sim": 1,
+     "matched_real": 10,
+     "matched_sim": 1,
+     "recall": 0.45454545454545453,
+     "precision": 1.0,
+     "F1": 0.625
+    }
+   },
+   "NIFTY|2026-09-22": {
+    "f1": 0.3415409054805401,
+    "clear": {
+     "real": 0,
+     "sim": 8,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": 0.0,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 27,
+     "sim": 1,
+     "matched_real": 5,
+     "matched_sim": 1,
+     "recall": 0.18518518518518517,
+     "precision": 1.0,
+     "F1": 0.3125
+    }
+   },
+   "NIFTY|2026-10-06": {
+    "f1": 0.2991840435176791,
+    "clear": {
+     "real": 37,
+     "sim": 8,
+     "matched_real": 6,
+     "matched_sim": 8,
+     "recall": 0.16216216216216217,
+     "precision": 1.0,
+     "F1": 0.27906976744186046
+    },
+    "openl": {
+     "real": 27,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "NIFTY|2026-10-13": {
+    "f1": 0.1218274111675127,
+    "clear": {
+     "real": 0,
+     "sim": 5,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": 0.0,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 40,
+     "sim": 2,
+     "matched_real": 17,
+     "matched_sim": 2,
+     "recall": 0.425,
+     "precision": 1.0,
+     "F1": 0.5964912280701754
+    }
+   },
+   "NIFTY|2026-10-19": {
+    "f1": 0.28517110266159695,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 31,
+     "sim": 3,
+     "matched_real": 18,
+     "matched_sim": 3,
+     "recall": 0.5806451612903226,
+     "precision": 1.0,
+     "F1": 0.7346938775510204
+    }
+   },
+   "SENSEX|2026-06-25": {
+    "f1": 0.34377967711301044,
+    "clear": {
+     "real": 63,
+     "sim": 2,
+     "matched_real": 2,
+     "matched_sim": 2,
+     "recall": 0.031746031746031744,
+     "precision": 1.0,
+     "F1": 0.06153846153846154
+    },
+    "openl": {
+     "real": 13,
+     "sim": 2,
+     "matched_real": 13,
+     "matched_sim": 2,
+     "recall": 1.0,
+     "precision": 1.0,
+     "F1": 1.0
+    }
+   },
+   "SENSEX|2026-07-02": {
+    "f1": 0.36777178103315344,
+    "clear": {
+     "real": 72,
+     "sim": 4,
+     "matched_real": 4,
+     "matched_sim": 4,
+     "recall": 0.05555555555555555,
+     "precision": 1.0,
+     "F1": 0.10526315789473684
+    },
+    "openl": {
+     "real": 13,
+     "sim": 1,
+     "matched_real": 9,
+     "matched_sim": 1,
+     "recall": 0.6923076923076923,
+     "precision": 1.0,
+     "F1": 0.8181818181818181
+    }
+   },
+   "SENSEX|2026-07-09": {
+    "f1": 0.4299153339604892,
+    "clear": {
+     "real": 102,
+     "sim": 2,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": 0.0,
+     "F1": 0.0
+    },
+    "openl": {
+     "real": 13,
+     "sim": 1,
+     "matched_real": 8,
+     "matched_sim": 1,
+     "recall": 0.6153846153846154,
+     "precision": 1.0,
+     "F1": 0.761904761904762
+    }
+   },
+   "SENSEX|2026-07-16": {
+    "f1": 0.17663817663817663,
+    "clear": {
+     "real": 0,
+     "sim": 4,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": 0.0,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 13,
+     "sim": 1,
+     "matched_real": 6,
+     "matched_sim": 1,
+     "recall": 0.46153846153846156,
+     "precision": 1.0,
+     "F1": 0.631578947368421
+    }
+   },
+   "SENSEX|2026-07-23": {
+    "f1": 0.5112970711297071,
+    "clear": {
+     "real": 18,
+     "sim": 3,
+     "matched_real": 0,
+     "matched_sim": 3,
+     "recall": 0.0,
+     "precision": 1.0,
+     "F1": 0.0
+    },
+    "openl": {
+     "real": 14,
+     "sim": 2,
+     "matched_real": 14,
+     "matched_sim": 2,
+     "recall": 1.0,
+     "precision": 1.0,
+     "F1": 1.0
+    }
+   },
+   "SENSEX|2026-07-30": {
+    "f1": 0.41858282496480526,
+    "clear": {
+     "real": 118,
+     "sim": 3,
+     "matched_real": 1,
+     "matched_sim": 1,
+     "recall": 0.00847457627118644,
+     "precision": 0.3333333333333333,
+     "F1": 0.01652892561983471
+    },
+    "openl": {
+     "real": 13,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-08-06": {
+    "f1": 0.27586206896551724,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 13,
+     "sim": 1,
+     "matched_real": 5,
+     "matched_sim": 1,
+     "recall": 0.38461538461538464,
+     "precision": 1.0,
+     "F1": 0.5555555555555556
+    }
+   },
+   "SENSEX|2026-08-13": {
+    "f1": 0.3596660244059088,
+    "clear": {
+     "real": 167,
+     "sim": 7,
+     "matched_real": 1,
+     "matched_sim": 2,
+     "recall": 0.005988023952095809,
+     "precision": 0.2857142857142857,
+     "F1": 0.011730205278592375
+    },
+    "openl": {
+     "real": 13,
+     "sim": 0,
+     "matched_real": 6,
+     "matched_sim": 0,
+     "recall": 0.46153846153846156,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-08-20": {
+    "f1": 0.25380710659898476,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 82,
+     "sim": 0,
+     "matched_real": 11,
+     "matched_sim": 0,
+     "recall": 0.13414634146341464,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-08-27": {
+    "f1": 0.482360487491982,
+    "clear": {
+     "real": 15,
+     "sim": 6,
+     "matched_real": 6,
+     "matched_sim": 6,
+     "recall": 0.4,
+     "precision": 1.0,
+     "F1": 0.5714285714285715
+    },
+    "openl": {
+     "real": 14,
+     "sim": 0,
+     "matched_real": 3,
+     "matched_sim": 0,
+     "recall": 0.21428571428571427,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-09-10": {
+    "f1": 0.21508034610630408,
+    "clear": {
+     "real": 0,
+     "sim": 7,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": 0.0,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 13,
+     "sim": 1,
+     "matched_real": 7,
+     "matched_sim": 1,
+     "recall": 0.5384615384615384,
+     "precision": 1.0,
+     "F1": 0.7000000000000001
+    }
+   },
+   "SENSEX|2026-09-17": {
+    "f1": 0.49496743635287155,
+    "clear": {
+     "real": 21,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 28,
+     "sim": 2,
+     "matched_real": 4,
+     "matched_sim": 2,
+     "recall": 0.14285714285714285,
+     "precision": 1.0,
+     "F1": 0.25
+    }
+   },
+   "SENSEX|2026-09-24": {
+    "f1": 0.37398373983739835,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 2,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-10-01": {
+    "f1": 0.5161290322580645,
+    "clear": {
+     "real": 56,
+     "sim": 8,
+     "matched_real": 8,
+     "matched_sim": 8,
+     "recall": 0.14285714285714285,
+     "precision": 1.0,
+     "F1": 0.25
+    },
+    "openl": {
+     "real": 28,
+     "sim": 2,
+     "matched_real": 5,
+     "matched_sim": 2,
+     "recall": 0.17857142857142858,
+     "precision": 1.0,
+     "F1": 0.30303030303030304
+    }
+   },
+   "SENSEX|2026-10-08": {
+    "f1": 0.5052728106373223,
+    "clear": {
+     "real": 43,
+     "sim": 5,
+     "matched_real": 5,
+     "matched_sim": 5,
+     "recall": 0.11627906976744186,
+     "precision": 1.0,
+     "F1": 0.20833333333333334
+    },
+    "openl": {
+     "real": 26,
+     "sim": 2,
+     "matched_real": 11,
+     "matched_sim": 2,
+     "recall": 0.4230769230769231,
+     "precision": 1.0,
+     "F1": 0.5945945945945945
+    }
+   },
+   "SENSEX|2026-10-15": {
+    "f1": 0.1981981981981982,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 25,
+     "sim": 0,
+     "matched_real": 2,
+     "matched_sim": 0,
+     "recall": 0.08,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-10-22": {
+    "f1": 0.5243770314192849,
+    "clear": {
+     "real": 14,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 26,
+     "sim": 2,
+     "matched_real": 24,
+     "matched_sim": 2,
+     "recall": 0.9230769230769231,
+     "precision": 1.0,
+     "F1": 0.9600000000000001
+    }
+   }
+  },
+  "era": {
+   "NIFTY|2026-06-30": "before",
+   "NIFTY|2026-07-14": "before",
+   "NIFTY|2026-07-28": "before",
+   "NIFTY|2026-08-18": "after",
+   "NIFTY|2026-09-22": "after",
+   "NIFTY|2026-10-06": "after",
+   "NIFTY|2026-10-19": "after",
+   "SENSEX|2026-07-02": "before",
+   "SENSEX|2026-07-16": "before",
+   "SENSEX|2026-07-30": "before",
+   "SENSEX|2026-08-13": "after",
+   "SENSEX|2026-08-27": "after",
+   "SENSEX|2026-09-17": "after",
+   "SENSEX|2026-10-01": "after",
+   "SENSEX|2026-10-15": "after",
+   "NIFTY|2026-07-07": "before",
+   "NIFTY|2026-07-21": "before",
+   "NIFTY|2026-08-04": "after",
+   "NIFTY|2026-08-25": "after",
+   "NIFTY|2026-09-08": "after",
+   "NIFTY|2026-10-13": "after",
+   "SENSEX|2026-06-25": "before",
+   "SENSEX|2026-07-09": "before",
+   "SENSEX|2026-07-23": "before",
+   "SENSEX|2026-08-06": "after",
+   "SENSEX|2026-08-20": "after",
+   "SENSEX|2026-09-10": "after",
+   "SENSEX|2026-09-24": "after",
+   "SENSEX|2026-10-08": "after",
+   "SENSEX|2026-10-22": "after"
+  },
+  "legacy_D0_OOF": {
+   "real_lots": 40874,
+   "sim_lots": 39510,
+   "matched": 16346,
+   "precision": 0.4137180460642875,
+   "recall": 0.3999119244507511,
+   "F1": 0.40669785031847133
+  },
+  "sim_orders_hash": {
+   "NIFTY|2026-06-30": 13254554562688241263,
+   "NIFTY|2026-07-14": 7994269859759717708,
+   "NIFTY|2026-07-28": 12677181549508520508,
+   "NIFTY|2026-08-18": 3500704094248121175,
+   "NIFTY|2026-09-22": 1172923363623443496,
+   "NIFTY|2026-10-06": 11297990760408624113,
+   "NIFTY|2026-10-19": 2388629470095641576,
+   "SENSEX|2026-07-02": 3805563806064212271,
+   "SENSEX|2026-07-16": 3961930999472649086,
+   "SENSEX|2026-07-30": 1036645979986859909,
+   "SENSEX|2026-08-13": 2009311323028291215,
+   "SENSEX|2026-08-27": 7631773007549992398,
+   "SENSEX|2026-09-17": 5439850486945275200,
+   "SENSEX|2026-10-01": 13459273219751446799,
+   "SENSEX|2026-10-15": 9047609201429933288,
+   "NIFTY|2026-07-07": 7518765283425979780,
+   "NIFTY|2026-07-21": 3462449600596624712,
+   "NIFTY|2026-08-04": 8525703872276731985,
+   "NIFTY|2026-08-25": 39416525286239208,
+   "NIFTY|2026-09-08": 6933510523263501049,
+   "NIFTY|2026-10-13": 13037510910716108295,
+   "SENSEX|2026-06-25": 6090882681438135073,
+   "SENSEX|2026-07-09": 11097985233280081217,
+   "SENSEX|2026-07-23": 15375300973519102534,
+   "SENSEX|2026-08-06": 16270754419125325140,
+   "SENSEX|2026-08-20": 9887097399078113837,
+   "SENSEX|2026-09-10": 11260595653079115471,
+   "SENSEX|2026-09-24": 4716081411531655320,
+   "SENSEX|2026-10-08": 2753679904756244386,
+   "SENSEX|2026-10-22": 7240473654132902223
+  }
+ },
+ "forwardA": {
+  "cycles": 9,
+  "real": 5159,
+  "sim": 3679,
+  "keys_F1_60s": 0.47612582032133965,
+  "strict_F1_60s": 0.17741570491061326,
+  "by_class": {
+   "body_buyback": 0.34856962978301176,
+   "body_long": 0.446241389637616,
+   "body_sell": 0.6198072460576908,
+   "not_modelled": NaN,
+   "stop": 0.09996033320111068,
+   "wing_buy": 0.6553413597481816,
+   "wing_sell": 0.3652242336518052
+  },
+  "win_clear_buyback_pre": null,
+  "win_clear_buyback_all": {
+   "real": 54,
+   "sim": 31,
+   "matched_real": 17,
+   "matched_sim": 24,
+   "recall": 0.3148148148148148,
+   "precision": 0.7741935483870968,
+   "F1": 0.4476138233680746
+  },
+  "win_open_long": {
+   "real": 238,
+   "sim": 11,
+   "matched_real": 96,
+   "matched_sim": 11,
+   "recall": 0.40336134453781514,
+   "precision": 1.0,
+   "F1": 0.5748502994011977
+  },
+  "win_open_sell": {
+   "real": 291,
+   "sim": 50,
+   "matched_real": 98,
+   "matched_sim": 50,
+   "recall": 0.33676975945017185,
+   "precision": 1.0,
+   "F1": 0.5038560411311054
+  },
+  "win_open_buyback": {
+   "real": 150,
+   "sim": 373,
+   "matched_real": 52,
+   "matched_sim": 131,
+   "recall": 0.3466666666666667,
+   "precision": 0.3512064343163539,
+   "F1": 0.34892178456179895
+  },
+  "one_lot": {
+   "keys_F1_60s": 0.4075063255552432,
+   "win_clear_buyback_all": {
+    "real": 54,
+    "sim": 502,
+    "matched_real": 40,
+    "matched_sim": 51,
+    "recall": 0.7407407407407407,
+    "precision": 0.10159362549800798,
+    "F1": 0.17868091442585618
+   },
+   "win_open_long": {
+    "real": 238,
+    "sim": 126,
+    "matched_real": 186,
+    "matched_sim": 72,
+    "recall": 0.7815126050420168,
+    "precision": 0.5714285714285714,
+    "F1": 0.6601597160603372
+   }
+  },
+  "per_cycle": {
+   "NIFTY|2026-08-18": {
+    "f1": 0.42748091603053434,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 4,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "NIFTY|2026-08-25": {
+    "f1": 0.5493157149598867,
+    "clear": {
+     "real": 9,
+     "sim": 7,
+     "matched_real": 4,
+     "matched_sim": 7,
+     "recall": 0.4444444444444444,
+     "precision": 1.0,
+     "F1": 0.6153846153846153
+    },
+    "openl": {
+     "real": 21,
+     "sim": 2,
+     "matched_real": 21,
+     "matched_sim": 2,
+     "recall": 1.0,
+     "precision": 1.0,
+     "F1": 1.0
+    }
+   },
+   "NIFTY|2026-09-08": {
+    "f1": 0.571247625079164,
+    "clear": {
+     "real": 16,
+     "sim": 11,
+     "matched_real": 7,
+     "matched_sim": 11,
+     "recall": 0.4375,
+     "precision": 1.0,
+     "F1": 0.6086956521739131
+    },
+    "openl": {
+     "real": 22,
+     "sim": 2,
+     "matched_real": 10,
+     "matched_sim": 2,
+     "recall": 0.45454545454545453,
+     "precision": 1.0,
+     "F1": 0.625
+    }
+   },
+   "NIFTY|2026-10-19": {
+    "f1": 0.34782608695652173,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 31,
+     "sim": 4,
+     "matched_real": 18,
+     "matched_sim": 4,
+     "recall": 0.5806451612903226,
+     "precision": 1.0,
+     "F1": 0.7346938775510204
+    }
+   },
+   "SENSEX|2026-08-20": {
+    "f1": 0.25380710659898476,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 82,
+     "sim": 0,
+     "matched_real": 11,
+     "matched_sim": 0,
+     "recall": 0.13414634146341464,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-08-27": {
+    "f1": 0.48655569782330343,
+    "clear": {
+     "real": 15,
+     "sim": 6,
+     "matched_real": 6,
+     "matched_sim": 6,
+     "recall": 0.4,
+     "precision": 1.0,
+     "F1": 0.5714285714285715
+    },
+    "openl": {
+     "real": 14,
+     "sim": 0,
+     "matched_real": 3,
+     "matched_sim": 0,
+     "recall": 0.21428571428571427,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-09-10": {
+    "f1": 0.2206060606060606,
+    "clear": {
+     "real": 0,
+     "sim": 7,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": 0.0,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 13,
+     "sim": 1,
+     "matched_real": 7,
+     "matched_sim": 1,
+     "recall": 0.5384615384615384,
+     "precision": 1.0,
+     "F1": 0.7000000000000001
+    }
+   },
+   "SENSEX|2026-10-15": {
+    "f1": 0.1981981981981982,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 25,
+     "sim": 0,
+     "matched_real": 2,
+     "matched_sim": 0,
+     "recall": 0.08,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-10-22": {
+    "f1": 0.49943246311010214,
+    "clear": {
+     "real": 14,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 26,
+     "sim": 2,
+     "matched_real": 24,
+     "matched_sim": 2,
+     "recall": 0.9230769230769231,
+     "precision": 1.0,
+     "F1": 0.9600000000000001
+    }
+   }
+  },
+  "era": {
+   "NIFTY|2026-08-18": "after",
+   "SENSEX|2026-08-20": "after",
+   "NIFTY|2026-08-25": "after",
+   "SENSEX|2026-08-27": "after",
+   "NIFTY|2026-09-08": "after",
+   "SENSEX|2026-09-10": "after",
+   "SENSEX|2026-10-15": "after",
+   "NIFTY|2026-10-19": "after",
+   "SENSEX|2026-10-22": "after"
+  },
+  "sim_orders_hash": {
+   "NIFTY|2026-08-18": 3500704094248121175,
+   "SENSEX|2026-08-20": 9887097399078113837,
+   "NIFTY|2026-08-25": 13850271971138029303,
+   "SENSEX|2026-08-27": 16133747946430825145,
+   "NIFTY|2026-09-08": 7739700407283704837,
+   "SENSEX|2026-09-10": 4985413547351082239,
+   "SENSEX|2026-10-15": 9047609201429933288,
+   "NIFTY|2026-10-19": 10083020724833500794,
+   "SENSEX|2026-10-22": 6988029103557485758
+  }
+ },
+ "forwardB": {
+  "cycles": 10,
+  "real": 6477,
+  "sim": 5517,
+  "keys_F1_60s": 0.3963648490912123,
+  "strict_F1_60s": 0.10755377688844422,
+  "by_class": {
+   "body_buyback": 0.3100566599661399,
+   "body_long": 0.4398216939078752,
+   "body_sell": 0.47022814094679666,
+   "not_modelled": NaN,
+   "stop": 0.23529411764705882,
+   "wing_buy": 0.509448470796277,
+   "wing_sell": 0.39057827790486566
+  },
+  "win_clear_buyback_pre": null,
+  "win_clear_buyback_all": {
+   "real": 171,
+   "sim": 51,
+   "matched_real": 30,
+   "matched_sim": 36,
+   "recall": 0.17543859649122806,
+   "precision": 0.7058823529411765,
+   "F1": 0.2810304449648712
+  },
+  "win_open_long": {
+   "real": 260,
+   "sim": 13,
+   "matched_real": 82,
+   "matched_sim": 13,
+   "recall": 0.3153846153846154,
+   "precision": 1.0,
+   "F1": 0.47953216374269003
+  },
+  "win_open_sell": {
+   "real": 399,
+   "sim": 29,
+   "matched_real": 81,
+   "matched_sim": 29,
+   "recall": 0.20300751879699247,
+   "precision": 1.0,
+   "F1": 0.3375
+  },
+  "win_open_buyback": {
+   "real": 181,
+   "sim": 331,
+   "matched_real": 46,
+   "matched_sim": 106,
+   "recall": 0.2541436464088398,
+   "precision": 0.3202416918429003,
+   "F1": 0.2833895152853656
+  },
+  "one_lot": {
+   "keys_F1_60s": 0.3579502255562877,
+   "win_clear_buyback_all": {
+    "real": 171,
+    "sim": 759,
+    "matched_real": 152,
+    "matched_sim": 193,
+    "recall": 0.8888888888888888,
+    "precision": 0.25428194993412384,
+    "F1": 0.39544115763862214
+   },
+   "win_open_long": {
+    "real": 260,
+    "sim": 110,
+    "matched_real": 141,
+    "matched_sim": 74,
+    "recall": 0.5423076923076923,
+    "precision": 0.6727272727272727,
+    "F1": 0.6005179856115107
+   }
+  },
+  "per_cycle": {
+   "NIFTY|2026-09-22": {
+    "f1": 0.5361653272101033,
+    "clear": {
+     "real": 0,
+     "sim": 10,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": 0.0,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 27,
+     "sim": 2,
+     "matched_real": 6,
+     "matched_sim": 2,
+     "recall": 0.2222222222222222,
+     "precision": 1.0,
+     "F1": 0.3636363636363636
+    }
+   },
+   "NIFTY|2026-10-06": {
+    "f1": 0.5257142857142857,
+    "clear": {
+     "real": 37,
+     "sim": 12,
+     "matched_real": 8,
+     "matched_sim": 12,
+     "recall": 0.21621621621621623,
+     "precision": 1.0,
+     "F1": 0.35555555555555557
+    },
+    "openl": {
+     "real": 27,
+     "sim": 2,
+     "matched_real": 2,
+     "matched_sim": 2,
+     "recall": 0.07407407407407407,
+     "precision": 1.0,
+     "F1": 0.13793103448275862
+    }
+   },
+   "NIFTY|2026-10-13": {
+    "f1": 0.09874826147426982,
+    "clear": {
+     "real": 0,
+     "sim": 5,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": 0.0,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 40,
+     "sim": 2,
+     "matched_real": 17,
+     "matched_sim": 2,
+     "recall": 0.425,
+     "precision": 1.0,
+     "F1": 0.5964912280701754
+    }
+   },
+   "NIFTY|2026-10-19": {
+    "f1": 0.30280373831775703,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 31,
+     "sim": 4,
+     "matched_real": 18,
+     "matched_sim": 4,
+     "recall": 0.5806451612903226,
+     "precision": 1.0,
+     "F1": 0.7346938775510204
+    }
+   },
+   "SENSEX|2026-09-17": {
+    "f1": 0.3328550932568149,
+    "clear": {
+     "real": 21,
+     "sim": 11,
+     "matched_real": 9,
+     "matched_sim": 11,
+     "recall": 0.42857142857142855,
+     "precision": 1.0,
+     "F1": 0.6
+    },
+    "openl": {
+     "real": 28,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-09-24": {
+    "f1": 0.37398373983739835,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 2,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-10-01": {
+    "f1": 0.4343891402714932,
+    "clear": {
+     "real": 56,
+     "sim": 8,
+     "matched_real": 8,
+     "matched_sim": 8,
+     "recall": 0.14285714285714285,
+     "precision": 1.0,
+     "F1": 0.25
+    },
+    "openl": {
+     "real": 28,
+     "sim": 0,
+     "matched_real": 3,
+     "matched_sim": 0,
+     "recall": 0.10714285714285714,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-10-08": {
+    "f1": 0.432,
+    "clear": {
+     "real": 43,
+     "sim": 5,
+     "matched_real": 5,
+     "matched_sim": 5,
+     "recall": 0.11627906976744186,
+     "precision": 1.0,
+     "F1": 0.20833333333333334
+    },
+    "openl": {
+     "real": 26,
+     "sim": 1,
+     "matched_real": 10,
+     "matched_sim": 1,
+     "recall": 0.38461538461538464,
+     "precision": 1.0,
+     "F1": 0.5555555555555556
+    }
+   },
+   "SENSEX|2026-10-15": {
+    "f1": 0.1981981981981982,
+    "clear": {
+     "real": 0,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": NaN,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 25,
+     "sim": 0,
+     "matched_real": 2,
+     "matched_sim": 0,
+     "recall": 0.08,
+     "precision": NaN,
+     "F1": NaN
+    }
+   },
+   "SENSEX|2026-10-22": {
+    "f1": 0.4056482670089859,
+    "clear": {
+     "real": 14,
+     "sim": 0,
+     "matched_real": 0,
+     "matched_sim": 0,
+     "recall": 0.0,
+     "precision": NaN,
+     "F1": NaN
+    },
+    "openl": {
+     "real": 26,
+     "sim": 2,
+     "matched_real": 24,
+     "matched_sim": 2,
+     "recall": 0.9230769230769231,
+     "precision": 1.0,
+     "F1": 0.9600000000000001
+    }
+   }
+  },
+  "era": {
+   "NIFTY|2026-09-22": "after",
+   "NIFTY|2026-10-06": "after",
+   "NIFTY|2026-10-13": "after",
+   "NIFTY|2026-10-19": "after",
+   "SENSEX|2026-09-17": "after",
+   "SENSEX|2026-09-24": "after",
+   "SENSEX|2026-10-01": "after",
+   "SENSEX|2026-10-08": "after",
+   "SENSEX|2026-10-15": "after",
+   "SENSEX|2026-10-22": "after"
+  },
+  "sim_orders_hash": {
+   "NIFTY|2026-09-22": 5994337136512271520,
+   "NIFTY|2026-10-06": 8226841844350561104,
+   "NIFTY|2026-10-13": 10110956832577766712,
+   "NIFTY|2026-10-19": 5206066884234154099,
+   "SENSEX|2026-09-17": 2935380774955355298,
+   "SENSEX|2026-09-24": 4716081411531655320,
+   "SENSEX|2026-10-01": 12328712300369192462,
+   "SENSEX|2026-10-08": 15560856840559364353,
+   "SENSEX|2026-10-15": 9047609201429933288,
+   "SENSEX|2026-10-22": 1652647554501923368
+  }
+ }
+}

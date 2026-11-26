@@ -1,0 +1,44 @@
+{
+ "d0_log_orders": 29959,
+ "d0_log_cycles": 33,
+ "d0_evaluated_orders": 26430,
+ "d0_evaluated_cycles": 30,
+ "d0_excluded_orders": 3529,
+ "d0_excluded": [
+  {
+   "und": "NIFTY",
+   "expiry": "2026-06-23",
+   "d0_orders": 1846,
+   "exclusion_reason": "no D-1 cycle record (D-1 log has 0 orders, no market-data cache): D0 not replayable"
+  },
+  {
+   "und": "NIFTY",
+   "expiry": "2026-08-11",
+   "d0_orders": 797,
+   "exclusion_reason": "no D-1 cycle record (D-1 log has 0 orders, no market-data cache): D0 not replayable"
+  },
+  {
+   "und": "NIFTY",
+   "expiry": "2026-09-15",
+   "d0_orders": 886,
+   "exclusion_reason": "no D-1 cycle record (D-1 log has 0 orders, no market-data cache): D0 not replayable"
+  }
+ ],
+ "d1_cycle_table_rows": 32,
+ "d1_cycles_without_d0_log": [
+  {
+   "und": "NIFTY",
+   "expiry": "2026-09-01"
+  },
+  {
+   "und": "NIFTY",
+   "expiry": "2026-09-29"
+  }
+ ],
+ "d1_real_orders_32_cycles": 9915,
+ "symbols": [
+  "NIFTY",
+  "SENSEX"
+ ],
+ "reconciles": true
+}

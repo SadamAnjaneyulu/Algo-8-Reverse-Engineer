@@ -1,0 +1,229 @@
+{
+ "T1_stability": {
+  "NIFTY V1": {
+   "waves_half_a": 78,
+   "waves_half_b": 73,
+   "a_in_b": 0.9230769230769231,
+   "b_in_a": 1.0
+  },
+  "NIFTY V2": {
+   "waves_half_a": 0,
+   "waves_half_b": 63,
+   "a_in_b": NaN,
+   "b_in_a": NaN
+  },
+  "SENSEX V1": {
+   "waves_half_a": 11,
+   "waves_half_b": 12,
+   "a_in_b": 1.0,
+   "b_in_a": 0.9166666666666666
+  },
+  "SENSEX V2": {
+   "waves_half_a": 69,
+   "waves_half_b": 63,
+   "a_in_b": 0.927536231884058,
+   "b_in_a": 0.9841269841269841
+  }
+ },
+ "T1_waves": {
+  "NIFTY V1": 76,
+  "NIFTY V2": 66,
+  "SENSEX V1": 12,
+  "SENSEX V2": 71
+ },
+ "T1_first_last": {
+  "NIFTY V1": [
+   "09:15:59",
+   "14:30:00"
+  ],
+  "NIFTY V2": [
+   "09:15:59",
+   "13:59:59"
+  ],
+  "SENSEX V1": [
+   "09:32:01",
+   "13:49:01"
+  ],
+  "SENSEX V2": [
+   "09:16:00",
+   "14:44:00"
+  ]
+ },
+ "sched_pairs_all_timetable": 1044,
+ "sched_lots_all_timetable": 2088,
+ "T2_end_reasons": {
+  "group's last wave": 18,
+  "cycle stop": 5,
+  "no scheduled sale (stopped at the open)": 5,
+  "early end": 2
+ },
+ "T3_attendance": {
+  "NIFTY V1": 0.965,
+  "NIFTY V2": 1.0,
+  "SENSEX V1": 0.853,
+  "SENSEX V2": 0.96
+ },
+ "T3_attendance_all": 0.9518477043673013,
+ "T3_by_hour": {
+  "9": 0.942,
+  "10": 0.983,
+  "11": 0.941,
+  "12": 0.917,
+  "13": 0.957,
+  "14": 1.0
+ },
+ "T4_misses": {
+  "n": 42,
+  "share": 0.040229885057471264,
+  "mid_frac_q": [
+   0.4174000000000524,
+   0.45900000000001456,
+   0.488125
+  ],
+  "all_mid_frac_q": [
+   0.12400000000001456,
+   0.24400000000001454,
+   0.38220000000001164
+  ],
+  "miss_equals_minute_close": 0.5714285714285714,
+  "miss_any_atm_in_minute": 1.0,
+  "miss_equals_previous_sched": 0.30952380952380953
+ },
+ "T5_lots_per_wave": {
+  "NIFTY V1 lots=1": 76,
+  "NIFTY V2 lots=1": 66,
+  "SENSEX V1 lots=1": 12,
+  "SENSEX V2 lots=1": 71
+ },
+ "T5_waves_per_slot": {
+  "NIFTY V1": 3.5,
+  "NIFTY V2": 2.5,
+  "SENSEX V1": 1.0,
+  "SENSEX V2": 3.0
+ },
+ "T4_strike": [
+  {
+   "candidate": "prev_close",
+   "exact_share": 0.9598,
+   "n": 1044
+  },
+  {
+   "candidate": "minute_open",
+   "exact_share": 0.9511,
+   "n": 1044
+  },
+  {
+   "candidate": "minute_close",
+   "exact_share": 0.8439,
+   "n": 1044
+  },
+  {
+   "candidate": "any_atm_in_minute",
+   "exact_share": 1.0,
+   "n": 1038
+  },
+  {
+   "candidate": "straddle_min_abs_ce_pe",
+   "exact_share": 0.8362,
+   "n": 1044
+  },
+  {
+   "candidate": "synthetic_forward",
+   "exact_share": 0.8295,
+   "n": 1044
+  },
+  {
+   "candidate": "previous_sched_strike",
+   "exact_share": 0.8067,
+   "n": 1019
+  }
+ ],
+ "T3_auc": [
+  {
+   "variable": "mtm_lakh",
+   "AUC_skip": 0.4585,
+   "ci_lo": 0.2935,
+   "ci_hi": 0.6154,
+   "AUC_half_even": 0.3866,
+   "AUC_half_odd": 0.4837
+  },
+  {
+   "variable": "book_lots",
+   "AUC_skip": 0.4574,
+   "ci_lo": 0.2946,
+   "ci_hi": 0.5926,
+   "AUC_half_even": 0.392,
+   "AUC_half_odd": 0.4995
+  },
+  {
+   "variable": "spot_move_since_prev_wave",
+   "AUC_skip": 0.5598,
+   "ci_lo": 0.4012,
+   "ci_hi": 0.6691,
+   "AUC_half_even": 0.3974,
+   "AUC_half_odd": 0.6764
+  },
+  {
+   "variable": "dist_to_strike",
+   "AUC_skip": 0.4615,
+   "ci_lo": 0.36,
+   "ci_hi": 0.5666,
+   "AUC_half_even": 0.4466,
+   "AUC_half_odd": 0.4677
+  },
+  {
+   "variable": "straddle_over_step",
+   "AUC_skip": 0.6106,
+   "ci_lo": 0.4921,
+   "ci_hi": 0.7461,
+   "AUC_half_even": 0.6013,
+   "AUC_half_odd": 0.6007
+  },
+  {
+   "variable": "bb_lots_prev5",
+   "AUC_skip": 0.6641,
+   "ci_lo": 0.5336,
+   "ci_hi": 0.8362,
+   "AUC_half_even": 0.7312,
+   "AUC_half_odd": 0.624
+  }
+ ],
+ "T6": [
+  {
+   "group": "NIFTY V1",
+   "D0_waves": 76,
+   "D1_waves": 33,
+   "D0_waves_matching_a_D1_wave": 0.3684210526315789,
+   "D1_waves_matching_a_D0_wave": 0.8787878787878788,
+   "D1_first_last": "09:16:01\u201314:29:59",
+   "D0_first_last": "09:15:59\u201314:30:00"
+  },
+  {
+   "group": "NIFTY V2",
+   "D0_waves": 66,
+   "D1_waves": 32,
+   "D0_waves_matching_a_D1_wave": 0.6212121212121212,
+   "D1_waves_matching_a_D0_wave": 0.875,
+   "D1_first_last": "09:16:01\u201314:31:01",
+   "D0_first_last": "09:15:59\u201313:59:59"
+  },
+  {
+   "group": "SENSEX V1",
+   "D0_waves": 12,
+   "D1_waves": 33,
+   "D0_waves_matching_a_D1_wave": 0.16666666666666666,
+   "D1_waves_matching_a_D0_wave": 0.06060606060606061,
+   "D1_first_last": "09:16:02\u201314:30:00",
+   "D0_first_last": "09:32:01\u201313:49:01"
+  },
+  {
+   "group": "SENSEX V2",
+   "D0_waves": 71,
+   "D1_waves": 32,
+   "D0_waves_matching_a_D1_wave": 0.323943661971831,
+   "D1_waves_matching_a_D0_wave": 0.34375,
+   "D1_first_last": "09:16:01\u201314:45:00",
+   "D0_first_last": "09:16:00\u201314:44:00"
+  }
+ ]
+}

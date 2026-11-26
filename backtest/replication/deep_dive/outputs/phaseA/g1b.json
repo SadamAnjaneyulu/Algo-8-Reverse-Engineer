@@ -1,0 +1,16 @@
+{
+ "cycles": 29,
+ "burst_cycles": 8,
+ "condition_holds": 12,
+ "table": {
+  "cond_burst": 7,
+  "cond_noburst": 5,
+  "nocond_burst": 1,
+  "nocond_noburst": 16
+ },
+ "burst_cycles_with_condition": 7,
+ "fisher_p_one_sided": 0.0032522200438242425,
+ "odds_ratio": 22.4,
+ "success_rule": "condition holds in >= 5 of the burst cycles and Fisher p <= 0.05",
+ "supported": true
+}

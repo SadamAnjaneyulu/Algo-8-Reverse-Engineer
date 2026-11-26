@@ -1,0 +1,52 @@
+{
+ "carried_lots": 3130,
+ "taken_j0": 309,
+ "cycles_stop_open": 4,
+ "taken_in_stop_open_cycles": 109,
+ "lots_no_stop_open": 2722,
+ "taken_no_stop_open": 200,
+ "cycles": 26,
+ "loco_auc_ci": [
+  0.5604860706475908,
+  0.8372398875119286
+ ],
+ "forward_auc": 0.7168431221781905,
+ "forward_taken": 53,
+ "placebo_auc": 0.6203053132434576,
+ "precision_at_m": {
+  "rh": 0.47331291369752904,
+  "ro": 0.4393558797404951,
+  "loss": 0.44060623195238574
+ },
+ "chance_precision_at_m": 0.17478881201334934,
+ "count_cells": 52,
+ "k_median": 0.5,
+ "opening_sell_composition_lots": {
+  "sells": 695,
+  "sched": 70,
+  "opair": 140,
+  "osolo": 485,
+  "bb": 262,
+  "lbuy": 354
+ },
+ "lbuy_range": [
+  6,
+  14
+ ],
+ "lbuy_by_und_median": {
+  "NIFTY": 10.0,
+  "SENSEX": 7.0
+ },
+ "lbuy_over_sells_j1": 1.0,
+ "lbuy_cv": 0.2769062643974369,
+ "single_auc_ci_ro": [
+  0.8502210547184774,
+  0.7454473036275229,
+  0.9096074292450614
+ ],
+ "single_auc_ci_rh": [
+  0.8544369547977796,
+  0.7392926221738219,
+  0.9166792071925719
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "version": "one_lot_v2",
+ "baseline_version": "freeze_v1",
+ "kind": "EXECUTION ASSUMPTION (convention), not a discovered decision rule",
+ "decided_by": "user, 2026-11-25: \"use 1-lot splitting for the identified classes\"",
+ "classes": [
+  "opening_wing_buy",
+  "stop_buyback"
+ ],
+ "evidence_observed": {
+  "opening_wings (real orders, all 1-lot)": {
+   "real_orders": 186,
+   "real_lots": 186,
+   "share_multilot": 0.0,
+   "max_lots": 1
+  },
+  "body buy-backs (real orders, all 1-lot)": {
+   "real_orders": 1324,
+   "real_lots": 1324,
+   "share_multilot": 0.0,
+   "max_lots": 1
+  },
+  "note": "other classes are NOT 1-lot in the real log (body_sell 0.2% multi-lot, wing_buy 18.8%, wing_sell 40.3%, lump 93.2%), so they are not split"
+ },
+ "not_changed": [
+  "entry conditions",
+  "strike selection",
+  "decision timing",
+  "sizing and total quantity",
+  "exposure",
+  "roles outside the two classes"
+ ],
+ "implementation": {
+  "config": "D1Config.order_split (\"freeze_v1\" default | \"one_lot_v2\")",
+  "engine": "ONE_LOT_ROLES in d1_algo/engine.py",
+  "risk_guard": "RiskGuard.check: under one_lot_v2 the per-minute limit counts distinct decision_ids (all roles); under freeze_v1 every order counts (unchanged)"
+ },
+ "why_the_guard_change": "First v2 run (archived, outputs/scoring/d1_F_v2_onelot_attempt1_guard_blocked) counted each 1-lot child against the 40/min limit: 29 orders were rejected in 3 SENSEX cycles (stop buy-backs 20, wing sells 7, wing buy 1, ladder 1), so quantity was NOT preserved. The user condition (preserve total quantity and decisions) requires one rate slot per decision. Baseline freeze_v1 behaviour is unchanged (rate_exempt defaults to False).",
+ "verification": {
+  "software_tests": "d1_strategy/test_order_split.py (12) and test_order_type.py; mutation-checked: no decision-id sharing, sharing that bypasses the other checks, and a disabled cap are each caught",
+  "decision_equality_32_cycles": {
+   "keys_only_in_one_run": 0,
+   "keys_with_different_total_lots": 0,
+   "total_lots_v1": 11553,
+   "total_lots_v2": 11553,
+   "non_split_roles_identical_row_by_row": true,
+   "split_role_lots_all_one_v2": true
+  },
+  "legacy_lot_level_F1_v1_and_v2": 0.6877975245953666,
+  "rejected_orders_v2": 0
+ },
+ "baseline_preserved": "outputs/scoring/d1_F (freeze_v1) not modified",
+ "sha256": {
+  "engine.py": "93f2ce25ecf381ac3a0fdbbca99201b1a739e768392617533c040cdc564f3e62",
+  "risk.py": "d7648f72ad7099bf3477487e151b4df34308204182c704a080d34215f353a204",
+  "config.py": "2488842c8159f6ac8b6b25c45b6ea7f336ee35d7ae9d9bf8050d678b5d99e016",
+  "models.py": "31a6cd1085ada4ba1477849e51f5bc691c5d56bbcb44e02e4608346ebeeb5dd6"
+ },
+ "scope_note": "a granularity convention only; it does not make any reconstruction rule more valid; evidence label for the scoring remains historical reproduction",
+ "accepted_conditions": {
+  "accepted_by": "user, 2026-11-25",
+  "rule": "the per-minute order cap counts strategy decisions, not child orders created by splitting one decision; the 40-per-minute cap stays enforced on independent decisions",
+  "decision_id": "every child order carries the decision_id of its _submit call (OrderRequest.decision_id, orders_frame column); independent decisions never share one",
+  "other_risk_controls": "all checks (quantity, price, short-lot limit, halt/kill switch) run on every child; only the rate slot is shared. The engine has no margin check, so none is bypassed (none exists)",
+  "freeze_v1": "unchanged: every order takes a slot; replay equals the saved baseline exactly (split_comparison/freeze_integrity.json)",
+  "archive": "outputs/scoring/d1_F_v2_onelot_attempt1_guard_blocked (29 rejected orders) kept for comparison",
+  "tests": "d1_strategy/test_order_split.py (12): decision ids, cap enforced on independent decisions in both conventions, 3 children = 1 slot vs 3 independent decisions = 3 slots, freeze_v1 counts every child, other controls not bypassed; mutation-checked (no sharing, sharing bypassing checks, cap disabled)",
+  "interpretation_note": "the order-level F1 gain from this convention (0.458 -> 0.472) is a measurement-granularity effect, not evidence of better strategy reproduction; legacy lot-level F1 is identical"
+ }
+}

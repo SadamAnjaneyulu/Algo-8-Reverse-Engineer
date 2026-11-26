@@ -1,0 +1,332 @@
+{
+ "solo_lots_no_flag": 1147,
+ "open_cycles_with_sells": 28,
+ "open_lots": 1455,
+ "open_by_type": {
+  "counter-sell solo": 169,
+  "extreme solo": 40,
+  "opening pair": 184,
+  "opening solo": 690,
+  "other solo": 65,
+  "re-centre pair": 2,
+  "replacement solo": 205,
+  "scheduled pair": 100
+ },
+ "open_status": {
+  "D0 strike": 272,
+  "carried strike": 909,
+  "new strike": 274
+ },
+ "gap_vs_CE_share_spearman": [
+  -0.6206896551724138,
+  0.00042494133681906686
+ ],
+ "gap_up_sells_more_CE": [
+  8,
+  28,
+  0.03569813817739487
+ ],
+ "heavier_side_share_median": 0.6318879855465221,
+ "heavier_side_sign": [
+  19,
+  28
+ ],
+ "types": [
+  {
+   "type": "scheduled pair",
+   "lots": 1722,
+   "orders": 1722,
+   "cycles": 22,
+   "share_lots": 0.2066,
+   "ci_lo": 0.1237,
+   "ci_hi": 0.2868,
+   "lots_per_order": 1.0,
+   "CE_share": 0.5,
+   "median_time": "11:46"
+  },
+  {
+   "type": "opening pair",
+   "lots": 184,
+   "orders": 184,
+   "cycles": 15,
+   "share_lots": 0.0221,
+   "ci_lo": 0.0128,
+   "ci_hi": 0.0345,
+   "lots_per_order": 1.0,
+   "CE_share": 0.5,
+   "median_time": "09:16"
+  },
+  {
+   "type": "re-centre pair",
+   "lots": 240,
+   "orders": 240,
+   "cycles": 17,
+   "share_lots": 0.0288,
+   "ci_lo": 0.0163,
+   "ci_hi": 0.0465,
+   "lots_per_order": 1.0,
+   "CE_share": 0.5,
+   "median_time": "13:00"
+  },
+  {
+   "type": "breakout pair",
+   "lots": 120,
+   "orders": 120,
+   "cycles": 12,
+   "share_lots": 0.0144,
+   "ci_lo": 0.0067,
+   "ci_hi": 0.0228,
+   "lots_per_order": 1.0,
+   "CE_share": 0.5,
+   "median_time": "12:05"
+  },
+  {
+   "type": "other pair",
+   "lots": 226,
+   "orders": 226,
+   "cycles": 11,
+   "share_lots": 0.0271,
+   "ci_lo": 0.0042,
+   "ci_hi": 0.0627,
+   "lots_per_order": 1.0,
+   "CE_share": 0.5,
+   "median_time": "11:31"
+  },
+  {
+   "type": "opening solo",
+   "lots": 690,
+   "orders": 687,
+   "cycles": 28,
+   "share_lots": 0.0828,
+   "ci_lo": 0.0673,
+   "ci_hi": 0.103,
+   "lots_per_order": 1.0044,
+   "CE_share": 0.5188,
+   "median_time": "09:15"
+  },
+  {
+   "type": "replacement solo",
+   "lots": 1770,
+   "orders": 1428,
+   "cycles": 25,
+   "share_lots": 0.2123,
+   "ci_lo": 0.1253,
+   "ci_hi": 0.3028,
+   "lots_per_order": 1.2395,
+   "CE_share": 0.6023,
+   "median_time": "14:11"
+  },
+  {
+   "type": "counter-sell solo",
+   "lots": 1788,
+   "orders": 1713,
+   "cycles": 25,
+   "share_lots": 0.2145,
+   "ci_lo": 0.1791,
+   "ci_hi": 0.2538,
+   "lots_per_order": 1.0438,
+   "CE_share": 0.5593,
+   "median_time": "12:42"
+  },
+  {
+   "type": "extreme solo",
+   "lots": 410,
+   "orders": 410,
+   "cycles": 22,
+   "share_lots": 0.0492,
+   "ci_lo": 0.0381,
+   "ci_hi": 0.0602,
+   "lots_per_order": 1.0,
+   "CE_share": 0.6585,
+   "median_time": "11:38"
+  },
+  {
+   "type": "late solo",
+   "lots": 39,
+   "orders": 39,
+   "cycles": 7,
+   "share_lots": 0.0047,
+   "ci_lo": 0.0011,
+   "ci_hi": 0.0095,
+   "lots_per_order": 1.0,
+   "CE_share": 0.4359,
+   "median_time": "15:02"
+  },
+  {
+   "type": "other solo",
+   "lots": 1147,
+   "orders": 1136,
+   "cycles": 23,
+   "share_lots": 0.1376,
+   "ci_lo": 0.0996,
+   "ci_hi": 0.1877,
+   "lots_per_order": 1.0097,
+   "CE_share": 0.5031,
+   "median_time": "11:01"
+  }
+ ],
+ "far_otm": {
+  "lots": 761,
+  "cycles": 12,
+  "by_cycle": {
+   "14": 168,
+   "15": 146,
+   "0": 141,
+   "16": 133,
+   "18": 99,
+   "21": 56,
+   "19": 10,
+   "17": 2,
+   "22": 2,
+   "20": 2,
+   "13": 1,
+   "24": 1
+  },
+  "und": {
+   "NIFTY_V1": 141,
+   "NIFTY_V2": 169,
+   "SENSEX_V1": 451
+  },
+  "time_q": [
+   39856.8,
+   46843.0,
+   53108.2
+  ],
+  "px_q": [
+   1.5100000000000002,
+   22.55,
+   41.730000000000004
+  ],
+  "off_q": [
+   3.0,
+   3.0,
+   7.0
+  ],
+  "rollout": [
+   {
+    "shift": 0,
+    "share": 0.6425755584756899,
+    "ratio_median": 0.3526448362720403
+   },
+   {
+    "shift": 600,
+    "share": 0.31274638633377133,
+    "ratio_median": 0.3720392836510688
+   },
+   {
+    "shift": -600,
+    "share": 0.1616294349540079,
+    "ratio_median": 0.6368805848903332
+   }
+  ]
+ },
+ "chance2": [
+  {
+   "rule": "replacement",
+   "lots_reaching_rule": 4393,
+   "share_flagged": 0.27452765763715004,
+   "chance_share": 0.23480537218301845,
+   "excess_lots": 175
+  },
+  {
+   "rule": "counter",
+   "lots_reaching_rule": 3187,
+   "share_flagged": 0.5149042987135237,
+   "chance_share": 0.24819579541888923,
+   "excess_lots": 850
+  },
+  {
+   "rule": "extreme",
+   "lots_reaching_rule": 1546,
+   "share_flagged": 0.26002587322121606,
+   "chance_share": 0.0963777490297542,
+   "excess_lots": 253
+  }
+ ],
+ "types2": [
+  {
+   "type2": "breakout pair",
+   "lots": 120,
+   "orders": 120,
+   "cycles": 12,
+   "share_lots": 0.0144
+  },
+  {
+   "type2": "counter-sell solo",
+   "lots": 1641,
+   "orders": 1641,
+   "cycles": 24,
+   "share_lots": 0.1969
+  },
+  {
+   "type2": "extreme solo",
+   "lots": 402,
+   "orders": 402,
+   "cycles": 22,
+   "share_lots": 0.0482
+  },
+  {
+   "type2": "far-OTM solo",
+   "lots": 761,
+   "orders": 333,
+   "cycles": 12,
+   "share_lots": 0.0913
+  },
+  {
+   "type2": "late solo",
+   "lots": 39,
+   "orders": 39,
+   "cycles": 7,
+   "share_lots": 0.0047
+  },
+  {
+   "type2": "opening pair",
+   "lots": 184,
+   "orders": 184,
+   "cycles": 15,
+   "share_lots": 0.0221
+  },
+  {
+   "type2": "opening solo",
+   "lots": 690,
+   "orders": 687,
+   "cycles": 28,
+   "share_lots": 0.0828
+  },
+  {
+   "type2": "other pair",
+   "lots": 226,
+   "orders": 226,
+   "cycles": 11,
+   "share_lots": 0.0271
+  },
+  {
+   "type2": "other solo",
+   "lots": 1105,
+   "orders": 1105,
+   "cycles": 22,
+   "share_lots": 0.1326
+  },
+  {
+   "type2": "re-centre pair",
+   "lots": 240,
+   "orders": 240,
+   "cycles": 17,
+   "share_lots": 0.0288
+  },
+  {
+   "type2": "replacement solo",
+   "lots": 1206,
+   "orders": 1206,
+   "cycles": 24,
+   "share_lots": 0.1447
+  },
+  {
+   "type2": "scheduled pair",
+   "lots": 1722,
+   "orders": 1722,
+   "cycles": 22,
+   "share_lots": 0.2066
+  }
+ ]
+}

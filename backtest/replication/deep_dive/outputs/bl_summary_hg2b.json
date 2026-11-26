@@ -1,0 +1,46 @@
+{
+ "table": [
+  {
+   "reference": "atm_px",
+   "k_fold": "0.025/0.025",
+   "exact": 0.6514,
+   "within1": 0.9342,
+   "null_same_slot_exact": 0.5218
+  },
+  {
+   "reference": "body_fill",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5325,
+   "within1": 0.7765,
+   "null_same_slot_exact": 0.4091
+  },
+  {
+   "reference": "body_ref",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5317,
+   "within1": 0.777,
+   "null_same_slot_exact": 0.4029
+  },
+  {
+   "reference": "body_open",
+   "k_fold": "0.025/0.025",
+   "exact": 0.5115,
+   "within1": 0.7626,
+   "null_same_slot_exact": 0.4066
+  },
+  {
+   "reference": "body_now",
+   "k_fold": "0.025/0.025",
+   "exact": 0.477,
+   "within1": 0.7704,
+   "null_same_slot_exact": 0.3905
+  },
+  {
+   "reference": "half_straddle",
+   "k_fold": "0.025/0.025",
+   "exact": 0.2897,
+   "within1": 0.6864,
+   "null_same_slot_exact": 0.2877
+  }
+ ]
+}

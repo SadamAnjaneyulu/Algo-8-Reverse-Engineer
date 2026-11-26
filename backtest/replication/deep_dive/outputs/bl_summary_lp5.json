@@ -1,0 +1,26 @@
+{
+ "R3": {
+  "exact": 0.0,
+  "within5": 0.03333333333333333,
+  "within10": 0.06666666666666667,
+  "median_abs_err_pct": 545.1612903225806,
+  "spearman": 0.4611167964870554,
+  "post_over_light_median": 2.03566765325169
+ },
+ "R4": {
+  "exact": 0.0,
+  "within5": 0.03333333333333333,
+  "within10": 0.1,
+  "median_abs_err_pct": 512.4357176250584,
+  "spearman": 0.43374248936594645,
+  "post_over_light_median": 2.0289185226420194
+ },
+ "R6": {
+  "exact": 0.0,
+  "within5": 0.0,
+  "within10": 0.1,
+  "median_abs_err_pct": 512.4357176250584,
+  "spearman": 0.4328456695453239,
+  "post_over_light_median": 2.029825274574972
+ }
+}

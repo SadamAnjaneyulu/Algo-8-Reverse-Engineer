@@ -1,0 +1,10 @@
+feature,pooled_auc,within_cell_auc,precision_at_m_desc,cells,precision_at_m_asc
+ITM depth (steps),0.6775,0.6169,0.1947,386,0.0572
+price / entry (prev close),0.7634,0.7981,0.4718,386,0.0315
+premium now,0.6586,0.6093,0.1912,386,0.0633
+entry price,0.3907,0.2506,0.0517,386,0.369
+unrealised loss (lakh),0.7839,0.8251,0.4335,386,0.0227
+carried from D-1,0.3888,0.3654,0.0538,386,0.1411
+strike,0.5077,0.5011,0.1249,386,0.1226
+lot id (older = lower),0.5052,0.7579,0.3566,386,0.0538
+ALL lot features (LOCO boosting),0.8506,0.8899,0.5399,386,

@@ -1,0 +1,193 @@
+{
+ "classes": [
+  {
+   "variant": "A same-minute, hedge given real body (primary)",
+   "activity": "body_sell",
+   "positive_cells": 2644,
+   "AUC": 0.9767,
+   "CI_lo": 0.9718,
+   "CI_hi": 0.9807
+  },
+  {
+   "variant": "A same-minute, hedge given real body (primary)",
+   "activity": "body_buyback",
+   "positive_cells": 483,
+   "AUC": 0.9149,
+   "CI_lo": 0.8905,
+   "CI_hi": 0.9344
+  },
+  {
+   "variant": "A same-minute, hedge given real body (primary)",
+   "activity": "wing_buy",
+   "positive_cells": 2553,
+   "AUC": 0.996,
+   "CI_lo": 0.9934,
+   "CI_hi": 0.998
+  },
+  {
+   "variant": "A same-minute, hedge given real body (primary)",
+   "activity": "wing_sell",
+   "positive_cells": 438,
+   "AUC": 0.9967,
+   "CI_lo": 0.9923,
+   "CI_hi": 0.9997
+  },
+  {
+   "variant": "A same-minute, hedge given real body (primary)",
+   "activity": "body_long",
+   "positive_cells": 172,
+   "AUC": 0.9321,
+   "CI_lo": 0.9043,
+   "CI_hi": 0.9578
+  },
+  {
+   "variant": "A same-minute, hedge given real body (primary)",
+   "activity": "lump",
+   "positive_cells": 47,
+   "AUC": 0.9575,
+   "CI_lo": 0.9202,
+   "CI_hi": 0.9836
+  },
+  {
+   "variant": "A same-minute, hedge given real body (primary)",
+   "activity": "any",
+   "positive_cells": 3365,
+   "AUC": 0.9606,
+   "CI_lo": 0.9547,
+   "CI_hi": 0.9667
+  },
+  {
+   "variant": "A-chained (no real orders in the minute)",
+   "activity": "body_sell",
+   "positive_cells": 2644,
+   "AUC": 0.9767,
+   "CI_lo": 0.972,
+   "CI_hi": 0.981
+  },
+  {
+   "variant": "A-chained (no real orders in the minute)",
+   "activity": "body_buyback",
+   "positive_cells": 483,
+   "AUC": 0.9149,
+   "CI_lo": 0.8875,
+   "CI_hi": 0.934
+  },
+  {
+   "variant": "A-chained (no real orders in the minute)",
+   "activity": "wing_buy",
+   "positive_cells": 2553,
+   "AUC": 0.98,
+   "CI_lo": 0.9765,
+   "CI_hi": 0.9833
+  },
+  {
+   "variant": "A-chained (no real orders in the minute)",
+   "activity": "wing_sell",
+   "positive_cells": 438,
+   "AUC": 0.9052,
+   "CI_lo": 0.8784,
+   "CI_hi": 0.9277
+  },
+  {
+   "variant": "A-chained (no real orders in the minute)",
+   "activity": "body_long",
+   "positive_cells": 172,
+   "AUC": 0.9321,
+   "CI_lo": 0.9025,
+   "CI_hi": 0.9578
+  },
+  {
+   "variant": "A-chained (no real orders in the minute)",
+   "activity": "lump",
+   "positive_cells": 47,
+   "AUC": 0.9575,
+   "CI_lo": 0.9156,
+   "CI_hi": 0.9833
+  },
+  {
+   "variant": "A-chained (no real orders in the minute)",
+   "activity": "any",
+   "positive_cells": 3365,
+   "AUC": 0.9606,
+   "CI_lo": 0.9546,
+   "CI_hi": 0.9661
+  },
+  {
+   "variant": "B causal (market lagged 1 min), real body link",
+   "activity": "body_sell",
+   "positive_cells": 2644,
+   "AUC": 0.9106,
+   "CI_lo": 0.9036,
+   "CI_hi": 0.918
+  },
+  {
+   "variant": "B causal (market lagged 1 min), real body link",
+   "activity": "body_buyback",
+   "positive_cells": 483,
+   "AUC": 0.8835,
+   "CI_lo": 0.8585,
+   "CI_hi": 0.906
+  },
+  {
+   "variant": "B causal (market lagged 1 min), real body link",
+   "activity": "wing_buy",
+   "positive_cells": 2553,
+   "AUC": 0.9953,
+   "CI_lo": 0.9926,
+   "CI_hi": 0.9976
+  },
+  {
+   "variant": "B causal (market lagged 1 min), real body link",
+   "activity": "wing_sell",
+   "positive_cells": 438,
+   "AUC": 0.9957,
+   "CI_lo": 0.9904,
+   "CI_hi": 0.9997
+  },
+  {
+   "variant": "B causal (market lagged 1 min), real body link",
+   "activity": "body_long",
+   "positive_cells": 172,
+   "AUC": 0.9075,
+   "CI_lo": 0.8779,
+   "CI_hi": 0.9392
+  },
+  {
+   "variant": "B causal (market lagged 1 min), real body link",
+   "activity": "lump",
+   "positive_cells": 47,
+   "AUC": 0.9681,
+   "CI_lo": 0.951,
+   "CI_hi": 0.982
+  },
+  {
+   "variant": "B causal (market lagged 1 min), real body link",
+   "activity": "any",
+   "positive_cells": 3365,
+   "AUC": 0.9009,
+   "CI_lo": 0.8929,
+   "CI_hi": 0.9089
+  }
+ ],
+ "overall": [
+  {
+   "variant": "A same-minute, hedge given real body (primary)",
+   "AUC_any_activity": 0.9606,
+   "AUC_macro_6_classes": 0.9623,
+   "AUC_pooled_class_cells": 0.9881
+  },
+  {
+   "variant": "A-chained (no real orders in the minute)",
+   "AUC_any_activity": 0.9606,
+   "AUC_macro_6_classes": 0.9444,
+   "AUC_pooled_class_cells": 0.9738
+  },
+  {
+   "variant": "B causal (market lagged 1 min), real body link",
+   "AUC_any_activity": 0.9009,
+   "AUC_macro_6_classes": 0.9435,
+   "AUC_pooled_class_cells": 0.9788
+  }
+ ],
+ "cells": 24960
+}

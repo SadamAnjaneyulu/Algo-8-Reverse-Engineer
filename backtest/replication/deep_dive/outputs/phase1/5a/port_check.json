@@ -1,0 +1,116 @@
+{
+ "modes": {
+  "monitor": {
+   "splits": {
+    "OOF half 0 test": {
+     "cycles": 15,
+     "identical_to_reference": 15,
+     "position_reconciles": 15,
+     "deterministic_on_rerun": 15
+    },
+    "OOF half 1 test": {
+     "cycles": 15,
+     "identical_to_reference": 15,
+     "position_reconciles": 15,
+     "deterministic_on_rerun": 15
+    },
+    "forward A (same version, later cycles)": {
+     "cycles": 9,
+     "identical_to_reference": 9,
+     "position_reconciles": 9,
+     "deterministic_on_rerun": 9
+    },
+    "forward B (train V1, test V2)": {
+     "cycles": 10,
+     "identical_to_reference": 10,
+     "position_reconciles": 10,
+     "deterministic_on_rerun": 10
+    }
+   },
+   "cycles": 49,
+   "identical": 49,
+   "reconciled": 49,
+   "deterministic": 49,
+   "stopped": 20,
+   "cleared": 29,
+   "rejected_orders": 0,
+   "violations": [],
+   "max_sell_decisions_per_minute": 19,
+   "legacy_D0_OOF": {
+    "reference": {
+     "real_lots": 40874,
+     "sim_lots": 40024,
+     "matched": 16596,
+     "precision": 0.41465120927443533,
+     "recall": 0.40602828203748104,
+     "F1": 0.4102944448564859
+    },
+    "engine": {
+     "real_lots": 40874,
+     "sim_lots": 40024,
+     "matched": 16596,
+     "precision": 0.41465120927443533,
+     "recall": 0.40602828203748104,
+     "F1": 0.4102944448564859
+    }
+   }
+  },
+  "enforce": {
+   "splits": {
+    "OOF half 0 test": {
+     "cycles": 15,
+     "identical_to_reference": 15,
+     "position_reconciles": 15,
+     "deterministic_on_rerun": 15
+    },
+    "OOF half 1 test": {
+     "cycles": 15,
+     "identical_to_reference": 15,
+     "position_reconciles": 15,
+     "deterministic_on_rerun": 15
+    },
+    "forward A (same version, later cycles)": {
+     "cycles": 9,
+     "identical_to_reference": 9,
+     "position_reconciles": 9,
+     "deterministic_on_rerun": 9
+    },
+    "forward B (train V1, test V2)": {
+     "cycles": 10,
+     "identical_to_reference": 10,
+     "position_reconciles": 10,
+     "deterministic_on_rerun": 10
+    }
+   },
+   "cycles": 49,
+   "identical": 49,
+   "reconciled": 49,
+   "deterministic": 49,
+   "stopped": 20,
+   "cleared": 29,
+   "rejected_orders": 0,
+   "violations": [],
+   "max_sell_decisions_per_minute": 19,
+   "legacy_D0_OOF": {
+    "reference": {
+     "real_lots": 40874,
+     "sim_lots": 40024,
+     "matched": 16596,
+     "precision": 0.41465120927443533,
+     "recall": 0.40602828203748104,
+     "F1": 0.4102944448564859
+    },
+    "engine": {
+     "real_lots": 40874,
+     "sim_lots": 40024,
+     "matched": 16596,
+     "precision": 0.41465120927443533,
+     "recall": 0.40602828203748104,
+     "F1": 0.4102944448564859
+    }
+   }
+  }
+ },
+ "note": "monitor = reference behaviour with risk breaches recorded; enforce = guard refuses sells beyond the observed real D0 envelope (278 net short lots per right, 90 sell decisions per minute)",
+ "engine_events_sha256": "f3f13f0095013d2fba74743eee99fa6a9e57543d4c4a13d5e244ecc45a9cf747"
+}

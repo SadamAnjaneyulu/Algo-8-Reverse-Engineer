@@ -1,0 +1,109 @@
+{
+ "lots_in_scope": 7058,
+ "by_group": {
+  "loss": 4277,
+  "mid-profit": 1616,
+  "deep-profit": 1165
+ },
+ "panel_rows": 1263015,
+ "panel_events": 6497,
+ "b3": [
+  {
+   "group": "all",
+   "lots": 7058,
+   "sec00": 0.1258,
+   "block_min14": 0.1107,
+   "block_min0": 0.1182,
+   "uniform_one_minute": 0.0667
+  },
+  {
+   "group": "deep-profit",
+   "lots": 1165,
+   "sec00": 0.0412,
+   "block_min14": 0.1571,
+   "block_min0": 0.073,
+   "uniform_one_minute": 0.0667
+  },
+  {
+   "group": "loss",
+   "lots": 4277,
+   "sec00": 0.1634,
+   "block_min14": 0.08,
+   "block_min0": 0.1281,
+   "uniform_one_minute": 0.0667
+  },
+  {
+   "group": "mid-profit",
+   "lots": 1616,
+   "sec00": 0.0873,
+   "block_min14": 0.1584,
+   "block_min0": 0.1244,
+   "uniform_one_minute": 0.0667
+  }
+ ],
+ "b4": [
+  {
+   "group": "mid-profit",
+   "context": "partner",
+   "share": 0.3311,
+   "null": 0.0907,
+   "lots": 1616
+  },
+  {
+   "group": "mid-profit",
+   "context": "recentre",
+   "share": 0.0848,
+   "null": 0.0263,
+   "lots": 1616
+  },
+  {
+   "group": "mid-profit",
+   "context": "roll",
+   "share": 0.396,
+   "null": 0.2126,
+   "lots": 1616
+  },
+  {
+   "group": "deep-profit",
+   "context": "partner",
+   "share": 0.1605,
+   "null": 0.0597,
+   "lots": 1165
+  },
+  {
+   "group": "deep-profit",
+   "context": "recentre",
+   "share": 0.0773,
+   "null": 0.0549,
+   "lots": 1165
+  },
+  {
+   "group": "deep-profit",
+   "context": "roll",
+   "share": 0.321,
+   "null": 0.2725,
+   "lots": 1165
+  },
+  {
+   "group": "loss",
+   "context": "partner",
+   "share": 0.0748,
+   "null": 0.0438,
+   "lots": 4277
+  },
+  {
+   "group": "loss",
+   "context": "recentre",
+   "share": 0.1503,
+   "null": 0.0816,
+   "lots": 4277
+  },
+  {
+   "group": "loss",
+   "context": "roll",
+   "share": 0.3379,
+   "null": 0.2126,
+   "lots": 4277
+  }
+ ]
+}

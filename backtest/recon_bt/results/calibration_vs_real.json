@@ -1,0 +1,33 @@
+{
+ "NONE": {
+  "sim_gross": 4249053.6049999995,
+  "sim_net": 2564060.488004762,
+  "sim_costs": 971746.657345237,
+  "sim_slippage": 713246.45965,
+  "ratio_to_real_gross": 2.244281376198794,
+  "corr_cycle_gross": 0.4316114203806257,
+  "stopped": 0
+ },
+ "S125": {
+  "sim_gross": 874220.7000000024,
+  "sim_net": -353221.59691110195,
+  "sim_costs": 704137.8405611042,
+  "sim_slippage": 523304.45635,
+  "ratio_to_real_gross": 0.46174923126145845,
+  "corr_cycle_gross": 0.5625802129622883,
+  "stopped": 13
+ },
+ "S200": {
+  "sim_gross": 1975576.740000001,
+  "sim_net": 503559.3715977733,
+  "sim_costs": 845580.4809022276,
+  "sim_slippage": 626436.8875000002,
+  "ratio_to_real_gross": 1.0434676746878861,
+  "corr_cycle_gross": 0.7414851474800727,
+  "stopped": 8
+ },
+ "real_gross_cash_32cycles": 1893280.2500000012,
+ "cycles": 32,
+ "real_cycles_with_cycle_stop_in_D0": 11,
+ "note": "real = cash flows of the real trade export (fill prices, before brokerage/taxes) plus intrinsic settlement of leftover positions at the 15:29 spot; sim gross = reference fill prices without slippage and costs"
+}

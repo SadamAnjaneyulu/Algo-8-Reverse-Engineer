@@ -1,0 +1,14 @@
+variant,F1,precision,recall,F1_same_minute,fires
+"base: prev 2 bars, one entry per bar, completed bars, phase 0",0.6392,0.7078,0.5827,0.1402,219
+current-minute close (look-ahead proxy),0.6324,0.6968,0.5789,0.4928,221
+one entry per SIDE per bar,0.6545,0.7074,0.609,0.1535,229
+phase +1 min,0.6392,0.7078,0.5827,0.1402,219
+phase -1 min,0.4932,0.5143,0.4737,0.1096,245
+phase +5 min,0.4932,0.5143,0.4737,0.1331,245
+phase +15 min,0.4277,0.4387,0.4173,0.131,253
+start 10:00 (minute 45),0.6102,0.6405,0.5827,0.1339,242
+start 11:00 (minute 105),0.6121,0.7172,0.5338,0.1336,198
+end 15:30 (minute 375 capped),0.6275,0.6798,0.5827,0.1377,228
+K = 3 bars,0.5765,0.7027,0.4887,0.1197,185
+K = 2 bars + current partial,0.6135,0.6726,0.5639,0.1922,223
+K = 1 bar,0.4704,0.4635,0.4774,0.1074,274

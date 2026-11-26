@@ -1,0 +1,76 @@
+(F) AUC of the leg-asymmetry variable (other_ratio - own_ratio) vs single features:
+   D-1 asym AUC 0.718 (0.693-0.745)
+   D-1 fav30 AUC 0.763 (0.745-0.778)
+   D-1 own_ratio AUC 0.285 (0.261-0.311)
+   D-1 other_ratio AUC 0.701 (0.676-0.732)
+   D0 asym AUC 0.568 (0.515-0.627)
+   D0 fav30 AUC 0.560 (0.516-0.620)
+   D0 own_ratio AUC 0.455 (0.390-0.520)
+   D0 other_ratio AUC 0.563 (0.501-0.637)
+
+(F) D-1 episode-start rate by asym bin (other-leg ratio minus own-leg ratio):
+              size  sum  rate_per_1000  lift
+asym                                        
+(-5.0, -0.2]  6240   40            6.4  0.33
+(-0.2, 0.0]   2744   30           10.9  0.57
+(0.0, 0.1]    1323   15           11.3  0.59
+(0.1, 0.2]    1379   27           19.6  1.02
+(0.2, 0.3]    1316   39           29.6  1.54
+(0.3, 0.4]    1329   42           31.6  1.64
+(0.4, 0.6]    1799   77           42.8  2.22
+(0.6, 5.0]     922   58           62.9  3.27
+       rule  share_flagged  recall  lift
+asym >= 0.1          0.395   0.739 1.872
+asym >= 0.2          0.314   0.657 2.091
+asym >= 0.3          0.237   0.538 2.270
+asym >= 0.4          0.159   0.410 2.578
+asym >= 0.5          0.100   0.292 2.918
+
+(F) D-1 rate per 1000 minutes: asym (rows) x favourable 30-min move (cols)
+fb      <=0  0-.1   >.1
+ab                     
+<=0     3.7  12.0  43.6
+0-.2    5.6  19.4  37.0
+.2-.4   6.5  40.3  49.2
+>.4    10.5  49.0  74.5
+fb      <=0  0-.1   >.1
+ab                     
+<=0    6241  2341   390
+0-.2   1260  1033   405
+.2-.4   927  1141   569
+>.4     665  1020  1033
+
+(E) solo sales by the favourable 30-min move at the time of the sale:
+       sales  lots_per_sale  median_gap_s
+cond                                     
+<=0      117           2.93          48.0
+0-.1     386           1.00          27.0
+.1-.2    396           1.04          20.0
+>.2      382           1.00           9.0
+share of D-1 solo sales with a favourable 30-min move >0: 0.845 ; >0.1%: 0.565 ; >0.2%: 0.277
+
+(E) solo lots per 15-minute window by favourable move INSIDE the window (cycle-right windows):
+                    windows  mean_solo_lots  share_with_solo
+day fb                                                      
+D-1 (-100.0, -0.2]       42            0.00             0.00
+    (-0.2, -0.1]        139            0.28             0.09
+    (-0.1, 0.0]         587            0.35             0.16
+    (0.0, 0.1]          587            0.93             0.28
+    (0.1, 0.2]          139            2.11             0.51
+    (0.2, 0.35]          34            2.53             0.68
+    (0.35, 100.0]         8           10.88             1.00
+D0  (-100.0, -0.2]       49            6.59             0.43
+    (-0.2, -0.1]        130            3.45             0.48
+    (-0.1, 0.0]         572            2.57             0.41
+    (0.0, 0.1]          579            3.73             0.48
+    (0.1, 0.2]          132           10.18             0.70
+    (0.2, 0.35]          36           15.86             0.81
+    (0.35, 100.0]        14           19.71             0.50
+D-1 Spearman(favourable window move, solo lots in window) = 0.320 (p=6.9e-38, n=1536)
+D0 Spearman(favourable window move, solo lots in window) = 0.183 (p=7.9e-13, n=1512)
+
+(E) D-1 heavy spells (fav30 >= 0.2 % for consecutive minutes): n=231, median duration 2 min, spells with zero solo lots 0.67, median solo lots per spell 0, mean 1.64, solo lots per hour: median 0.0 mean 13.06
+   for scale: mean solo lots per 15-min window overall 0.82 => per hour 3.26
+
+(E) D0 heavy spells (fav30 >= 0.2 % for consecutive minutes): n=275, median duration 2 min, spells with zero solo lots 0.64, median solo lots per spell 0, mean 4.09, solo lots per hour: median 0.0 mean 34.58
+   for scale: mean solo lots per 15-min window overall 4.36 => per hour 17.45

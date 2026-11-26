@@ -1,0 +1,104 @@
+{
+ "chosen": {
+  "out-of-fold halves": [
+   {
+    "setup": "out-of-fold halves",
+    "solo_a": null,
+    "solo_b": null,
+    "late_n": null,
+    "counter": "one",
+    "F1_train": 0.6736
+   },
+   {
+    "setup": "out-of-fold halves",
+    "solo_a": null,
+    "solo_b": null,
+    "late_n": 1,
+    "counter": "one",
+    "F1_train": 0.733
+   }
+  ],
+  "A same version (V1 14->7, V2 7->4)": [
+   {
+    "setup": "A same version (V1 14->7, V2 7->4)",
+    "solo_a": 1.0,
+    "solo_b": 1,
+    "late_n": null,
+    "counter": "one",
+    "F1_train": 0.6617
+   }
+  ],
+  "B version change (train V1, test V2)": [
+   {
+    "setup": "B version change (train V1, test V2)",
+    "solo_a": 1.0,
+    "solo_b": 1,
+    "late_n": 1,
+    "counter": "one",
+    "F1_train": 0.6577
+   }
+  ]
+ },
+ "rows": [
+  {
+   "setup": "out-of-fold halves",
+   "model": "baseline",
+   "cycles": 32,
+   "F1": 0.685,
+   "precision": 0.782,
+   "recall": 0.6094,
+   "F1_within1": 0.6233,
+   "F1_strict": 0.4487
+  },
+  {
+   "setup": "out-of-fold halves",
+   "model": "fixed",
+   "cycles": 32,
+   "F1": 0.6894,
+   "precision": 0.7469,
+   "recall": 0.6401,
+   "F1_within1": 0.6237,
+   "F1_strict": 0.4427
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "baseline",
+   "cycles": 11,
+   "F1": 0.6335,
+   "precision": 0.7719,
+   "recall": 0.5372,
+   "F1_within1": 0.5902,
+   "F1_strict": 0.464
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "fixed",
+   "cycles": 11,
+   "F1": 0.6331,
+   "precision": 0.7336,
+   "recall": 0.5568,
+   "F1_within1": 0.5868,
+   "F1_strict": 0.4578
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "baseline",
+   "cycles": 11,
+   "F1": 0.6238,
+   "precision": 0.6873,
+   "recall": 0.5711,
+   "F1_within1": 0.5553,
+   "F1_strict": 0.4283
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "fixed",
+   "cycles": 11,
+   "F1": 0.6124,
+   "precision": 0.6173,
+   "recall": 0.6076,
+   "F1_within1": 0.5394,
+   "F1_strict": 0.4103
+  }
+ ]
+}

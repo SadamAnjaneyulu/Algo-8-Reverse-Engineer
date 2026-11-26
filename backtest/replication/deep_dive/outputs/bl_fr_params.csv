@@ -1,0 +1,7 @@
+variant,fold,tp,theta,a,b,lump_ratio,lump_t,open_off
+FR free-running (primary),0,0.4,1.5,0.613,1.823,"{'NIFTY': 0.85, 'SENSEX': 0.42}","{'r1': 357, 'r2': 368, 'r3': 376}","{'NIFTY/V1': 39.8, 'NIFTY/V2': 40.0, 'SENSEX/V1': 39.9, 'SENSEX/V2': 20.0}"
+FR free-running (primary),1,0.4,1.5,0.981,0.979,"{'NIFTY': 0.816, 'SENSEX': 0.604}","{'r1': 355, 'r2': 369, 'r3': 375}","{'NIFTY/V1': 39.2, 'NIFTY/V2': 39.5, 'SENSEX/V1': 39.8, 'SENSEX/V2': 20.0}"
+FR + late R3 (post-hoc),0,0.4,1.5,0.613,1.823,"{'NIFTY': 0.85, 'SENSEX': 0.42}","{'r1': 357, 'r2': 368, 'r3': 376}","{'NIFTY/V1': 39.8, 'NIFTY/V2': 40.0, 'SENSEX/V1': 39.9, 'SENSEX/V2': 20.0}"
+FR + late R3 (post-hoc),1,0.4,1.5,0.981,0.979,"{'NIFTY': 0.816, 'SENSEX': 0.604}","{'r1': 355, 'r2': 369, 'r3': 375}","{'NIFTY/V1': 39.2, 'NIFTY/V2': 39.5, 'SENSEX/V1': 39.8, 'SENSEX/V2': 20.0}"
+TF-hedge (hedge on real body),0,0.4,1.6,0.613,1.823,"{'NIFTY': 0.85, 'SENSEX': 0.42}","{'r1': 357, 'r2': 368, 'r3': 376}","{'NIFTY/V1': 39.8, 'NIFTY/V2': 40.0, 'SENSEX/V1': 39.9, 'SENSEX/V2': 20.0}"
+TF-hedge (hedge on real body),1,0.4,1.6,0.981,0.979,"{'NIFTY': 0.816, 'SENSEX': 0.604}","{'r1': 355, 'r2': 369, 'r3': 375}","{'NIFTY/V1': 39.2, 'NIFTY/V2': 39.5, 'SENSEX/V1': 39.8, 'SENSEX/V2': 20.0}"

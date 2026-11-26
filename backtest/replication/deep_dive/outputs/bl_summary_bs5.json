@@ -1,0 +1,76 @@
+{
+ "tf_bb": {
+  "chosen": [
+   {
+    "mode": "tf_bb",
+    "fold": 0,
+    "theta": 1.6,
+    "theta_lo": 1.4,
+    "N": 30,
+    "v": 1.25,
+    "qty": "one",
+    "F1_train": 0.5894
+   },
+   {
+    "mode": "tf_bb",
+    "fold": 1,
+    "theta": 1.6,
+    "theta_lo": null,
+    "N": null,
+    "v": null,
+    "qty": null,
+    "F1_train": 0.5916
+   }
+  ],
+  "overall": {
+   "variant": "A OR B (tf_bb)",
+   "real_lots": 13655,
+   "sim_lots": 12902,
+   "matched": 11150,
+   "precision": 0.8642070996744691,
+   "recall": 0.816550714024167,
+   "F1": 0.8397032797379222,
+   "F1_strict": 0.6061678653462363,
+   "F1_within1": 0.7740332115826336,
+   "F1_modelled_classes_only": 0.8544061302681992,
+   "real_lots_modelled": 13198
+  }
+ },
+ "free": {
+  "chosen": [
+   {
+    "mode": "free",
+    "fold": 0,
+    "theta": 1.65,
+    "theta_lo": 1.4,
+    "N": null,
+    "v": 1.15,
+    "qty": "one",
+    "F1_train": 0.5695
+   },
+   {
+    "mode": "free",
+    "fold": 1,
+    "theta": 1.6,
+    "theta_lo": 1.4,
+    "N": null,
+    "v": 1.15,
+    "qty": "one",
+    "F1_train": 0.5563
+   }
+  ],
+  "overall": {
+   "variant": "A OR B (free)",
+   "real_lots": 13655,
+   "sim_lots": 10794,
+   "matched": 8344,
+   "precision": 0.7730220492866408,
+   "recall": 0.6110582204320761,
+   "F1": 0.682563704036975,
+   "F1_strict": 0.4432901141150967,
+   "F1_within1": 0.6182665957707881,
+   "F1_modelled_classes_only": 0.695565188396132,
+   "real_lots_modelled": 13198
+  }
+ }
+}

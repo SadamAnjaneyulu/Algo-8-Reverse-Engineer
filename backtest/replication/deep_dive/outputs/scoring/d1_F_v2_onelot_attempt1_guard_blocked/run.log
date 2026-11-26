@@ -1,0 +1,39 @@
+{
+ "spec_version": "1.1",
+ "spec_sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+ "scorer_sha256": "c607cfc66d6c93d9d5d3e72bbf233ef1aeff0343ec1f45648f7688a992b9ebc6",
+ "order_split": "one_lot_v2",
+ "mode": "F",
+ "t_equals_f_for_d1": true,
+ "evidence_label": "historical reproduction",
+ "simulator": "d1_strategy/d1_algo (D1Engine replay of one-minute bars, config_for(und, d1))",
+ "engine_orders": 9030,
+ "real_orders": 9915,
+ "rejected_orders": 29,
+ "legacy_f1_on_this_replay": 0.6876934063318257,
+ "data_cache": "21bfe7bbd1662c9e9657cf3a075a526b047c1bafaf59f72a8a33bebb4d32e58c",
+ "run_at": "2026-11-25T14:00:57.445001Z",
+ "diagnostic_only": true,
+ "seconds": 76
+}
+     tier  matched  share_of_real  share_of_sim  cumulative_matched  cumulative_share_real  cumulative_share_sim  cumulative_tolerance_s  missing_real  extra_sim
+    exact     2022         0.2039        0.2239              2022.0                 0.2039                0.2239                     0.0           NaN        NaN
+     near     2695         0.2718        0.2984              4717.0                 0.4757                0.5224                     5.0           NaN        NaN
+    broad     2282         0.2302        0.2527              6999.0                 0.7059                0.7751                    60.0           NaN        NaN
+unmatched        0         0.2941        0.2249                 NaN                    NaN                   NaN                     NaN        2916.0     2031.0
+ cumulative_tolerance_s           level  matched  precision  recall     F1
+                      0            keys     2022     0.2239  0.2039 0.2135
+                      0 strike_within_1     1967     0.2178  0.1984 0.2077
+                      0    strike_exact     1690     0.1872  0.1704 0.1784
+                      0      lots_exact     1683     0.1864  0.1697 0.1777
+                      0            type     1683     0.1864  0.1697 0.1777
+                      5            keys     4717     0.5224  0.4757 0.4980
+                      5 strike_within_1     4405     0.4878  0.4443 0.4650
+                      5    strike_exact     3661     0.4054  0.3692 0.3865
+                      5      lots_exact     3558     0.3940  0.3589 0.3756
+                      5            type     3558     0.3940  0.3589 0.3756
+                     60            keys     6999     0.7751  0.7059 0.7389
+                     60 strike_within_1     6184     0.6848  0.6237 0.6528
+                     60    strike_exact     4789     0.5303  0.4830 0.5056
+                     60      lots_exact     4473     0.4953  0.4511 0.4722
+                     60            type     4469     0.4949  0.4507 0.4718

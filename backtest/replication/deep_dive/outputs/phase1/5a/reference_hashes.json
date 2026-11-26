@@ -1,0 +1,14 @@
+{
+ "note": "Gate 5a: reference research simulator and its saved outputs at the time of the port; must never change",
+ "sha256": {
+  "src/bl_d0_fr.py": "fbad7173a6246e86e3dfa46f13f3d297e4afe3d3b5a29f0f3099340e922e366f",
+  "src/bl_d0s_tt.py": "baa51338b59220ab4e079ad592f036fb07d7369e11c3bbded4ce85203000ddf3",
+  "src/bl_d0b_mach.py": "d8fcd1188f9674b5afe3835c492a1096e2d8f55468e3227561f2a0be5268cdb2",
+  "src/bl_d0s_solo.py": "fcfcd6a8e47513824c995c8ca12f2a5c6e4bd031c1255bbb6105f391bba1282f",
+  "src/bl_d0_fr_score.py": "c4c391878fb588f80e2690ce7952cfa905733618558d87446086c358d66f4149",
+  "src/bl_d0s_tests.py": "88f55a4280d4f73d91da05a20e78896726dcf4c3b4dc6d482f66bf3d9d15f4a3",
+  "outputs/bl_d0_fr_orders.pkl.gz": "f7924d79d86385c12bc9ce0a2030aeb89f7bcc21f73ccc3d75878ab3119e03b7",
+  "outputs/bl_d0_fr_params.json": "5c50bf239eff716b54c43c43052e3e3531776da21c617e4de260218054c693b4",
+  "outputs/bl_d0_fr_score.csv": "b0bd24169bb9b5917d2666e2daa1472f9abd14e834eae4a70cf5c727d793b14e"
+ }
+}

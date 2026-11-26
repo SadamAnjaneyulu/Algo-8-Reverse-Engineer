@@ -1,0 +1,84 @@
+{
+ "table": [
+  {
+   "family": "S_h",
+   "intercept": false,
+   "MAE_lots": 14.1486,
+   "median_abs_err_pct": 24.2916,
+   "within_5_lots": 0.1333,
+   "weights": "{'S_h': np.float64(0.71)}"
+  },
+  {
+   "family": "S_h",
+   "intercept": true,
+   "MAE_lots": 14.1486,
+   "median_abs_err_pct": 24.2916,
+   "within_5_lots": 0.1333,
+   "weights": "{'S_h': np.float64(0.71), 'const': np.float64(0.0)}"
+  },
+  {
+   "family": "type",
+   "intercept": false,
+   "MAE_lots": 13.6298,
+   "median_abs_err_pct": 25.8335,
+   "within_5_lots": 0.1,
+   "weights": "{'type_scheduled': np.float64(0.12), 'type_reactive': np.float64(1.98), 'type_solo': np.float64(0.95), 'type_deep': np.float64(0.0)}"
+  },
+  {
+   "family": "type",
+   "intercept": true,
+   "MAE_lots": 13.6298,
+   "median_abs_err_pct": 25.8335,
+   "within_5_lots": 0.1,
+   "weights": "{'type_scheduled': np.float64(0.12), 'type_reactive': np.float64(1.98), 'type_solo': np.float64(0.95), 'type_deep': np.float64(0.0), 'const': np.float64(0.0)}"
+  },
+  {
+   "family": "moneyness",
+   "intercept": false,
+   "MAE_lots": 13.5032,
+   "median_abs_err_pct": 27.4554,
+   "within_5_lots": 0.2333,
+   "weights": "{'mny_itm_gt2': np.float64(1.76), 'mny_itm_0_2': np.float64(0.61), 'mny_atm': np.float64(0.61), 'mny_otm_0_2': np.float64(0.85), 'mny_otm_gt2': np.float64(0.59)}"
+  },
+  {
+   "family": "moneyness",
+   "intercept": true,
+   "MAE_lots": 13.5032,
+   "median_abs_err_pct": 27.4554,
+   "within_5_lots": 0.2333,
+   "weights": "{'mny_itm_gt2': np.float64(1.76), 'mny_itm_0_2': np.float64(0.61), 'mny_atm': np.float64(0.61), 'mny_otm_0_2': np.float64(0.85), 'mny_otm_gt2': np.float64(0.59), 'const': np.float64(0.0)}"
+  },
+  {
+   "family": "time sold",
+   "intercept": false,
+   "MAE_lots": 13.8546,
+   "median_abs_err_pct": 23.5962,
+   "within_5_lots": 0.1333,
+   "weights": "{'time_h09_11': np.float64(0.46), 'time_h11_13': np.float64(1.12), 'time_h13_15': np.float64(0.44), 'time_h15': np.float64(0.84)}"
+  },
+  {
+   "family": "time sold",
+   "intercept": true,
+   "MAE_lots": 13.8546,
+   "median_abs_err_pct": 23.5962,
+   "within_5_lots": 0.1333,
+   "weights": "{'time_h09_11': np.float64(0.46), 'time_h11_13': np.float64(1.12), 'time_h13_15': np.float64(0.44), 'time_h15': np.float64(0.84), 'const': np.float64(0.0)}"
+  },
+  {
+   "family": "ratio median NIFTY (in-sample)",
+   "intercept": false,
+   "MAE_lots": 8.0718,
+   "median_abs_err_pct": NaN,
+   "within_5_lots": NaN,
+   "weights": "{'ratio': 0.827}"
+  },
+  {
+   "family": "ratio median SENSEX (in-sample)",
+   "intercept": false,
+   "MAE_lots": 13.4649,
+   "median_abs_err_pct": NaN,
+   "within_5_lots": NaN,
+   "weights": "{'ratio': 0.503}"
+  }
+ ]
+}

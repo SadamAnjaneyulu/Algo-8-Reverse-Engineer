@@ -1,0 +1,76 @@
+{
+ "none_share_shifted_cells_ex_bb": 0.6060521296308622,
+ "n_orders": 4566,
+ "n_counter_orders": 1656,
+ "excl": [
+  {
+   "why": "1 buy-back within 2 s",
+   "counter_labelled_share": 0.3164,
+   "other_solo_share": 0.0938
+  },
+  {
+   "why": "2 R\u2032 premium at 60-min low",
+   "counter_labelled_share": 0.3961,
+   "other_solo_share": 0.2742
+  },
+  {
+   "why": "3 spot fresh 60-min extreme",
+   "counter_labelled_share": 0.0254,
+   "other_solo_share": 0.0364
+  },
+  {
+   "why": "4 minute 0/1/14 of the 15-min block",
+   "counter_labelled_share": 0.1123,
+   "other_solo_share": 0.3079
+  },
+  {
+   "why": "5 none of these",
+   "counter_labelled_share": 0.1498,
+   "other_solo_share": 0.2876
+  }
+ ],
+ "decomp": [
+  {
+   "condition": "sl_2s",
+   "counter_labelled": 0.2355,
+   "other_solo": 0.0505,
+   "all_panel_cells_chance": NaN
+  },
+  {
+   "condition": "bb_2s",
+   "counter_labelled": 0.3164,
+   "other_solo": 0.0938,
+   "all_panel_cells_chance": 0.0353
+  },
+  {
+   "condition": "prem_low_60",
+   "counter_labelled": 0.619,
+   "other_solo": 0.3333,
+   "all_panel_cells_chance": 0.0906
+  },
+  {
+   "condition": "prem_low_day",
+   "counter_labelled": 0.5181,
+   "other_solo": 0.2876,
+   "all_panel_cells_chance": 0.0713
+  },
+  {
+   "condition": "prem_newlow_j",
+   "counter_labelled": 0.622,
+   "other_solo": 0.3746,
+   "all_panel_cells_chance": 0.0719
+  },
+  {
+   "condition": "spot_fresh_60",
+   "counter_labelled": 0.3955,
+   "other_solo": 0.1986,
+   "all_panel_cells_chance": 0.0642
+  },
+  {
+   "condition": "clock_min",
+   "counter_labelled": 0.2905,
+   "other_solo": 0.4436,
+   "all_panel_cells_chance": 0.196
+  }
+ ]
+}

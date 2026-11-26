@@ -1,0 +1,56 @@
+{
+ "episodes": {
+  "n": 571,
+  "pos": 121
+ },
+ "refract_ratio_LA_breakout_lt5_vs_ge5": [
+  0.4135642414860681,
+  0.29433237574209725,
+  0.5463290047431838,
+  323
+ ],
+ "refract_ratio_all": [
+  1.0348493025233447,
+  0.6860154770607504,
+  1.4908283156561308,
+  1199
+ ],
+ "refract_ratio_causal_breakout": [
+  0.48565919498674376,
+  0.30616303839668985,
+  0.7392639426460239,
+  461
+ ],
+ "tree": {
+  "rule": [
+   "depth<=3 tree, all causal features",
+   "depth<=3 tree, edge features only",
+   "completed-bar breakout (N=60) (no learning)",
+   "LOOK-AHEAD breakout (current close beyond prior 60 closes) (no learning)"
+  ],
+  "predicted_minutes": [
+   442,
+   1700,
+   1131,
+   1127
+  ],
+  "precision": [
+   0.19,
+   0.0888,
+   0.0973,
+   0.1863
+  ],
+  "recall": [
+   0.3158,
+   0.5677,
+   0.4135,
+   0.7895
+  ],
+  "pair_minutes": [
+   266,
+   266,
+   266,
+   266
+  ]
+ }
+}

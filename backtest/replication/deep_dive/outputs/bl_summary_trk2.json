@@ -1,0 +1,30 @@
+{
+ "n_configs": 288,
+ "best_cv": [
+  {
+   "family": "M1ss",
+   "info": "bar",
+   "F1_tol1": 0.4932,
+   "precision_tol1": 0.4503,
+   "recall_tol1": 0.5451,
+   "null_F1_p99": 0.1395
+  },
+  {
+   "family": "M1",
+   "info": "bar",
+   "F1_tol1": 0.4898,
+   "precision_tol1": 0.4472,
+   "recall_tol1": 0.5414,
+   "null_F1_p99": 0.1361
+  },
+  {
+   "family": "M1ss",
+   "info": "intra",
+   "F1_tol1": 0.4838,
+   "precision_tol1": 0.4424,
+   "recall_tol1": 0.5338,
+   "null_F1_p99": 0.1329
+  }
+ ],
+ "actual_pair_minutes": 266
+}

@@ -1,0 +1,29 @@
+day,model,AUC,delta
+D-1,all features (GB),0.8931,
+D-1,baseline only (GB),0.7718,
+D-1,drop spot,0.8574,0.0357
+D-1,drop position,0.8926,0.0006
+D-1,drop pnl,0.8927,0.0004
+D-1,drop greeks,0.8956,-0.0025
+D-1,drop vol,0.8944,-0.0013
+D-1,drop time_activity,0.8538,0.0393
+D-1,baseline + spot,0.8364,0.0646
+D-1,baseline + position,0.8046,0.0328
+D-1,baseline + pnl,0.7838,0.012
+D-1,baseline + greeks,0.8036,0.0318
+D-1,baseline + vol,0.7931,0.0214
+D-1,baseline + time_activity,0.8564,0.0846
+D0,all features (GB),0.8536,
+D0,baseline only (GB),0.6013,
+D0,drop spot,0.8384,0.0153
+D0,drop position,0.8574,-0.0037
+D0,drop pnl,0.8555,-0.0018
+D0,drop greeks,0.8582,-0.0046
+D0,drop vol,0.8561,-0.0025
+D0,drop time_activity,0.6868,0.1668
+D0,baseline + spot,0.6226,0.0213
+D0,baseline + position,0.6194,0.0181
+D0,baseline + pnl,0.5958,-0.0055
+D0,baseline + greeks,0.6564,0.0551
+D0,baseline + vol,0.594,-0.0073
+D0,baseline + time_activity,0.8485,0.2472

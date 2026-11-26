@@ -1,0 +1,178 @@
+{
+ "before: 2 min": [
+  {
+   "window": "before: 2 min",
+   "order_kind": "num | cover_short | CE",
+   "share_of_pairs": 0.083,
+   "share_of_control_seconds": 0.033,
+   "lift": 2.521
+  },
+  {
+   "window": "before: 2 min",
+   "order_kind": "num | open_short | PE",
+   "share_of_pairs": 0.366,
+   "share_of_control_seconds": 0.148,
+   "lift": 2.472
+  },
+  {
+   "window": "before: 2 min",
+   "order_kind": "num | open_short | CE",
+   "share_of_pairs": 0.38,
+   "share_of_control_seconds": 0.157,
+   "lift": 2.414
+  },
+  {
+   "window": "before: 2 min",
+   "order_kind": "h_ | close_long | CE",
+   "share_of_pairs": 0.077,
+   "share_of_control_seconds": 0.032,
+   "lift": 2.407
+  },
+  {
+   "window": "before: 2 min",
+   "order_kind": "h_ | open_long | PE",
+   "share_of_pairs": 0.339,
+   "share_of_control_seconds": 0.153,
+   "lift": 2.211
+  },
+  {
+   "window": "before: 2 min",
+   "order_kind": "h_ | open_long | CE",
+   "share_of_pairs": 0.353,
+   "share_of_control_seconds": 0.161,
+   "lift": 2.191
+  }
+ ],
+ "before: 30 s": [
+  {
+   "window": "before: 30 s",
+   "order_kind": "num | cover_short | CE",
+   "share_of_pairs": 0.058,
+   "share_of_control_seconds": 0.009,
+   "lift": 6.702
+  },
+  {
+   "window": "before: 30 s",
+   "order_kind": "h_ | close_long | CE",
+   "share_of_pairs": 0.052,
+   "share_of_control_seconds": 0.008,
+   "lift": 6.404
+  },
+  {
+   "window": "before: 30 s",
+   "order_kind": "num | open_short | PE",
+   "share_of_pairs": 0.196,
+   "share_of_control_seconds": 0.033,
+   "lift": 5.95
+  },
+  {
+   "window": "before: 30 s",
+   "order_kind": "num | open_short | CE",
+   "share_of_pairs": 0.215,
+   "share_of_control_seconds": 0.036,
+   "lift": 5.909
+  },
+  {
+   "window": "before: 30 s",
+   "order_kind": "h_ | open_long | PE",
+   "share_of_pairs": 0.179,
+   "share_of_control_seconds": 0.035,
+   "lift": 5.159
+  },
+  {
+   "window": "before: 30 s",
+   "order_kind": "h_ | open_long | CE",
+   "share_of_pairs": 0.174,
+   "share_of_control_seconds": 0.038,
+   "lift": 4.532
+  }
+ ],
+ "after: 30 s": [
+  {
+   "window": "after: 30 s",
+   "order_kind": "s_ | close_long | CE",
+   "share_of_pairs": 0.017,
+   "share_of_control_seconds": 0.0,
+   "lift": 16528925.62
+  },
+  {
+   "window": "after: 30 s",
+   "order_kind": "s_ | cover_short | PE",
+   "share_of_pairs": 0.017,
+   "share_of_control_seconds": 0.0,
+   "lift": 16528925.62
+  },
+  {
+   "window": "after: 30 s",
+   "order_kind": "s_ | cover_short | CE",
+   "share_of_pairs": 0.017,
+   "share_of_control_seconds": 0.0,
+   "lift": 16528925.62
+  },
+  {
+   "window": "after: 30 s",
+   "order_kind": "s_ | close_long | PE",
+   "share_of_pairs": 0.017,
+   "share_of_control_seconds": 0.0,
+   "lift": 16528925.62
+  },
+  {
+   "window": "after: 30 s",
+   "order_kind": "num | close_long | PE",
+   "share_of_pairs": 0.025,
+   "share_of_control_seconds": 0.001,
+   "lift": 33.75
+  },
+  {
+   "window": "after: 30 s",
+   "order_kind": "num | close_long | CE",
+   "share_of_pairs": 0.014,
+   "share_of_control_seconds": 0.0,
+   "lift": 30.0
+  }
+ ],
+ "after: 2 min": [
+  {
+   "window": "after: 2 min",
+   "order_kind": "s_ | close_long | CE",
+   "share_of_pairs": 0.017,
+   "share_of_control_seconds": 0.0,
+   "lift": 180.0
+  },
+  {
+   "window": "after: 2 min",
+   "order_kind": "s_ | cover_short | PE",
+   "share_of_pairs": 0.017,
+   "share_of_control_seconds": 0.0,
+   "lift": 180.0
+  },
+  {
+   "window": "after: 2 min",
+   "order_kind": "s_ | cover_short | CE",
+   "share_of_pairs": 0.017,
+   "share_of_control_seconds": 0.0,
+   "lift": 180.0
+  },
+  {
+   "window": "after: 2 min",
+   "order_kind": "s_ | close_long | PE",
+   "share_of_pairs": 0.017,
+   "share_of_control_seconds": 0.0,
+   "lift": 180.0
+  },
+  {
+   "window": "after: 2 min",
+   "order_kind": "num | close_long | PE",
+   "share_of_pairs": 0.061,
+   "share_of_control_seconds": 0.005,
+   "lift": 12.222
+  },
+  {
+   "window": "after: 2 min",
+   "order_kind": "v_ | open_long | CE",
+   "share_of_pairs": 0.011,
+   "share_of_control_seconds": 0.001,
+   "lift": 9.231
+  }
+ ]
+}

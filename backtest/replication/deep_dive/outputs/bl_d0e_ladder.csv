@@ -1,0 +1,5 @@
+slice,variant,auc,lo,hi,within_cycle_auc,forward_auc
+replacement solo,V1 causal,0.9157,0.89,0.9275,0.8757,0.8473
+replacement solo,V1 + ladder-state features (post-hoc),0.9177,0.8933,0.9271,0.8777,0.8453
+other solo,V1 causal,0.8835,0.8603,0.9006,0.8374,0.7994
+other solo,V1 + ladder-state features (post-hoc),0.8841,0.8611,0.9006,0.8376,0.7997

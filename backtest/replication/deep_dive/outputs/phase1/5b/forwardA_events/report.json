@@ -1,0 +1,465 @@
+{
+ "run": {
+  "spec_version": "1.1",
+  "spec_sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+  "scorer_sha256": "c607cfc66d6c93d9d5d3e72bbf233ef1aeff0343ec1f45648f7688a992b9ebc6",
+  "mode": "T",
+  "evidence_label": "historical reproduction",
+  "cycles": 9,
+  "real_orders": 5159,
+  "sim_orders": 3653
+ },
+ "ambiguity": {
+  "real_share": 0.41810428377592557,
+  "sim_share": 0.5628250752805913
+ },
+ "tie_break_range": {
+  "keys@0s": [
+   0.06354970494779846,
+   0.06354970494779846
+  ],
+  "keys@5s": [
+   0.20267816613708578,
+   0.20267816613708578
+  ],
+  "keys@60s": [
+   0.4716295960054471,
+   0.4716295960054471
+  ],
+  "strike_within_1@0s": [
+   0.053563322741715845,
+   0.05379028597367227
+  ],
+  "strike_within_1@5s": [
+   0.1495687698592828,
+   0.15002269632319565
+  ],
+  "strike_within_1@60s": [
+   0.317067635043123,
+   0.3179754879709487
+  ],
+  "strike_exact@0s": [
+   0.04471175669541534,
+   0.04471175669541534
+  ],
+  "strike_exact@5s": [
+   0.11529732183386292,
+   0.11529732183386292
+  ],
+  "strike_exact@60s": [
+   0.21811166591012257,
+   0.21811166591012257
+  ],
+  "lots_exact@0s": [
+   0.04403086699954607,
+   0.04403086699954607
+  ],
+  "lots_exact@5s": [
+   0.10054471175669541,
+   0.10077167498865183
+  ],
+  "lots_exact@60s": [
+   0.17544257830231502,
+   0.17544257830231502
+  ],
+  "type@0s": [
+   0.04403086699954607,
+   0.04403086699954607
+  ],
+  "type@5s": [
+   0.10054471175669541,
+   0.10077167498865183
+  ],
+  "type@60s": [
+   0.16772582841579664,
+   0.16772582841579664
+  ]
+ },
+ "timing": {
+  "dt_median": -4.0,
+  "dt_iqr": [
+   -20.0,
+   0.0
+  ],
+  "dt_bias": -7.32483156881617,
+  "same_minute_share": 0.7714148219441771,
+  "by_t_resolution": [
+   {
+    "t_resolution": "minute",
+    "matched": 2078,
+    "exact_share": 0.1347449470644851,
+    "same_minute": 0.7714148219441771
+   }
+  ],
+  "note": "exact-second share is descriptive only (spec principle 7)"
+ },
+ "strike": {
+  "exact_share": 0.4624639076034649,
+  "within_1_share": 0.6742059672762272,
+  "abs_steps": {
+   "count": 2078.0,
+   "mean": 3.474,
+   "std": 6.881,
+   "min": 0.0,
+   "25%": 0.0,
+   "50%": 1.0,
+   "75%": 3.0,
+   "max": 47.0
+  }
+ },
+ "quantity": {
+  "matched": 2078,
+  "lots_exact_share": 0.7001924927815207,
+  "abs_error_mean": 1.731953801732435,
+  "abs_error_median": 0.0,
+  "abs_error_p90": 6.0,
+  "signed_bias": 1.172762271414822
+ },
+ "type": {
+  "available": true,
+  "coverage_of_matched": 1.0,
+  "agreement": 0.7791145332050048,
+  "note": "pairs without simulator-supplied validity are excluded, never assumed"
+ },
+ "per_cycle_F1": {
+  "n": 9,
+  "median": 0.42748091603053434,
+  "iqr": [
+   0.25380710659898476,
+   0.49459920409323477
+  ],
+  "p10": 0.20764940764940765,
+  "min": 0.1981981981981982,
+  "max": 0.569435637285986,
+  "macro_mean": 0.39176100195451075,
+  "below_0_5": 7,
+  "below_0_3": 3,
+  "worst_five": [
+   [
+    "SENSEX|2026-10-15",
+    0.1981981981981982
+   ],
+   [
+    "SENSEX|2026-09-10",
+    0.21001221001221002
+   ],
+   [
+    "SENSEX|2026-08-20",
+    0.25380710659898476
+   ],
+   [
+    "NIFTY|2026-10-19",
+    0.3508137432188065
+   ],
+   [
+    "NIFTY|2026-08-18",
+    0.42748091603053434
+   ]
+  ]
+ },
+ "pooled_F1_ci95": [
+  0.3735107432149087,
+  0.5222536953392304
+ ],
+ "time_shift_placebo": {
+  "shift_s": 900,
+  "note": "a time-shift placebo, not a universal random-chance baseline; it can preserve or disrupt timetable patterns",
+  "tiers": [
+   {
+    "tier": "exact",
+    "matched": 151,
+    "share_of_real": 0.029269238224462105,
+    "share_of_sim": 0.04133588831097728,
+    "cumulative_matched": 151.0,
+    "cumulative_share_real": 0.029269238224462105,
+    "cumulative_share_sim": 0.04133588831097728,
+    "cumulative_tolerance_s": 0.0,
+    "missing_real": NaN,
+    "extra_sim": NaN
+   },
+   {
+    "tier": "near",
+    "matched": 281,
+    "share_of_real": 0.05446792013956193,
+    "share_of_sim": 0.07692307692307693,
+    "cumulative_matched": 432.0,
+    "cumulative_share_real": 0.08373715836402404,
+    "cumulative_share_sim": 0.1182589652340542,
+    "cumulative_tolerance_s": 5.0,
+    "missing_real": NaN,
+    "extra_sim": NaN
+   },
+   {
+    "tier": "broad",
+    "matched": 503,
+    "share_of_real": 0.09749951540996317,
+    "share_of_sim": 0.1376950451683548,
+    "cumulative_matched": 935.0,
+    "cumulative_share_real": 0.1812366737739872,
+    "cumulative_share_sim": 0.255954010402409,
+    "cumulative_tolerance_s": 60.0,
+    "missing_real": NaN,
+    "extra_sim": NaN
+   },
+   {
+    "tier": "unmatched",
+    "matched": 0,
+    "share_of_real": 0.8187633262260128,
+    "share_of_sim": 0.744045989597591,
+    "cumulative_matched": NaN,
+    "cumulative_share_real": NaN,
+    "cumulative_share_sim": NaN,
+    "cumulative_tolerance_s": NaN,
+    "missing_real": 4224.0,
+    "extra_sim": 2718.0
+   }
+  ],
+  "F1_keys_at_60s": 0.21221062187925557
+ },
+ "by_attribute": {
+  "und": [
+   {
+    "value": "NIFTY",
+    "cycles": 4,
+    "real": 2353,
+    "sim": 2027,
+    "matched": 1156,
+    "F1": 0.5278538812785388
+   },
+   {
+    "value": "SENSEX",
+    "cycles": 5,
+    "real": 2806,
+    "sim": 1626,
+    "matched": 922,
+    "F1": 0.41606498194945846
+   }
+  ],
+  "version": [
+   {
+    "value": "V1",
+    "cycles": 6,
+    "real": 3823,
+    "sim": 2566,
+    "matched": 1535,
+    "F1": 0.4805133823759587
+   },
+   {
+    "value": "V2",
+    "cycles": 3,
+    "real": 1336,
+    "sim": 1087,
+    "matched": 543,
+    "F1": 0.448204704911267
+   }
+  ],
+  "era": [
+   {
+    "value": "after",
+    "cycles": 9,
+    "real": 5159,
+    "sim": 3653,
+    "matched": 2078,
+    "F1": 0.4716295960054471
+   }
+  ]
+ },
+ "by_class": [
+  {
+   "cls": "body_buyback",
+   "real": 1358,
+   "sim": 1765,
+   "matched_real_side": 473,
+   "matched_sim_side": 619,
+   "matched_same_class": 402,
+   "recall": 0.3483063328424153,
+   "precision": 0.35070821529745044,
+   "F1": 0.34950314751824435
+  },
+  {
+   "cls": "body_long",
+   "real": 489,
+   "sim": 28,
+   "matched_real_side": 147,
+   "matched_sim_side": 20,
+   "matched_same_class": 7,
+   "recall": 0.3006134969325153,
+   "precision": 0.7142857142857143,
+   "F1": 0.4231433506044905
+  },
+  {
+   "cls": "body_sell",
+   "real": 1566,
+   "sim": 852,
+   "matched_real_side": 766,
+   "matched_sim_side": 712,
+   "matched_same_class": 657,
+   "recall": 0.4891443167305236,
+   "precision": 0.8356807511737089,
+   "F1": 0.6170905124619263
+  },
+  {
+   "cls": "not_modelled",
+   "real": 42,
+   "sim": 0,
+   "matched_real_side": 33,
+   "matched_sim_side": 0,
+   "matched_same_class": 0,
+   "recall": 0.7857142857142857,
+   "precision": NaN,
+   "F1": NaN
+  },
+  {
+   "cls": "stop",
+   "real": 167,
+   "sim": 122,
+   "matched_real_side": 9,
+   "matched_sim_side": 83,
+   "matched_same_class": 9,
+   "recall": 0.05389221556886228,
+   "precision": 0.680327868852459,
+   "F1": 0.09987298616217662
+  },
+  {
+   "cls": "wing_buy",
+   "real": 930,
+   "sim": 516,
+   "matched_real_side": 497,
+   "matched_sim_side": 415,
+   "matched_same_class": 358,
+   "recall": 0.5344086021505376,
+   "precision": 0.8042635658914729,
+   "F1": 0.6421368551156442
+  },
+  {
+   "cls": "wing_sell",
+   "real": 607,
+   "sim": 370,
+   "matched_real_side": 153,
+   "matched_sim_side": 229,
+   "matched_same_class": 109,
+   "recall": 0.25205930807248766,
+   "precision": 0.6189189189189189,
+   "F1": 0.3582277251511914
+  }
+ ],
+ "by_block": [
+  {
+   "block_start": "09:00",
+   "real": 1296,
+   "sim": 693,
+   "matched_by_real_block": 419,
+   "recall": 0.32330246913580246,
+   "precision": 0.6046176046176046,
+   "F1": 0.4213172448466566
+  },
+  {
+   "block_start": "09:30",
+   "real": 387,
+   "sim": 167,
+   "matched_by_real_block": 124,
+   "recall": 0.32041343669250644,
+   "precision": 0.7425149700598802,
+   "F1": 0.44765342960288806
+  },
+  {
+   "block_start": "10:00",
+   "real": 289,
+   "sim": 231,
+   "matched_by_real_block": 169,
+   "recall": 0.5847750865051903,
+   "precision": 0.7316017316017316,
+   "F1": 0.65
+  },
+  {
+   "block_start": "10:30",
+   "real": 240,
+   "sim": 233,
+   "matched_by_real_block": 140,
+   "recall": 0.5833333333333334,
+   "precision": 0.6008583690987125,
+   "F1": 0.5919661733615222
+  },
+  {
+   "block_start": "11:00",
+   "real": 241,
+   "sim": 157,
+   "matched_by_real_block": 117,
+   "recall": 0.4854771784232365,
+   "precision": 0.7452229299363057,
+   "F1": 0.5879396984924623
+  },
+  {
+   "block_start": "11:30",
+   "real": 338,
+   "sim": 258,
+   "matched_by_real_block": 157,
+   "recall": 0.46449704142011833,
+   "precision": 0.6085271317829457,
+   "F1": 0.5268456375838926
+  },
+  {
+   "block_start": "12:00",
+   "real": 189,
+   "sim": 212,
+   "matched_by_real_block": 111,
+   "recall": 0.5873015873015873,
+   "precision": 0.5235849056603774,
+   "F1": 0.5536159600997507
+  },
+  {
+   "block_start": "12:30",
+   "real": 331,
+   "sim": 314,
+   "matched_by_real_block": 191,
+   "recall": 0.5770392749244713,
+   "precision": 0.60828025477707,
+   "F1": 0.5922480620155038
+  },
+  {
+   "block_start": "13:00",
+   "real": 374,
+   "sim": 287,
+   "matched_by_real_block": 162,
+   "recall": 0.43315508021390375,
+   "precision": 0.5644599303135889,
+   "F1": 0.49016641452344933
+  },
+  {
+   "block_start": "13:30",
+   "real": 433,
+   "sim": 427,
+   "matched_by_real_block": 217,
+   "recall": 0.5011547344110855,
+   "precision": 0.5081967213114754,
+   "F1": 0.5046511627906977
+  },
+  {
+   "block_start": "14:00",
+   "real": 227,
+   "sim": 178,
+   "matched_by_real_block": 78,
+   "recall": 0.3436123348017621,
+   "precision": 0.43820224719101125,
+   "F1": 0.3851851851851852
+  },
+  {
+   "block_start": "14:30",
+   "real": 524,
+   "sim": 241,
+   "matched_by_real_block": 95,
+   "recall": 0.18129770992366412,
+   "precision": 0.3941908713692946,
+   "F1": 0.24836601307189543
+  },
+  {
+   "block_start": "15:00",
+   "real": 290,
+   "sim": 255,
+   "matched_by_real_block": 98,
+   "recall": 0.33793103448275863,
+   "precision": 0.3843137254901961,
+   "F1": 0.3596330275229358
+  }
+ ]
+}

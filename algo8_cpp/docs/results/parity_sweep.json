@@ -1,0 +1,19 @@
+{
+ "runs_compared": 825,
+ "cycles": 275,
+ "levels": [
+  "NONE",
+  "S125",
+  "S200"
+ ],
+ "worst_abs_difference": {
+  "gross": 6.05359673500061e-09,
+  "slippage": 4.999998054699972e-06,
+  "costs": 4.993511538486928e-06,
+  "net": 0.0004107230342924595,
+  "min_path": 0.0004413081333041191,
+  "max_path": 0.00037168595008552074
+ },
+ "count_or_flag_mismatches": 0,
+ "parity_ok": true
+}

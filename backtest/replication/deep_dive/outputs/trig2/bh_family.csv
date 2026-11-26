@@ -1,0 +1,38 @@
+id,explanation,test,statistic,p,note,p_bh_10,bh_significant_10
+S1,S timer,cross-cycle same-second coincidence (shift null),12 pairs vs 4.2,0.0011997600479904018,,0.004439112177564487,True
+S2,S timer,share of events in seconds :00-:05 (binomial vs 10%),0.191,0.04819563693781971,,0.08105629848633315,True
+S3,S timer,events within 15:29-15:31 (shift null),9 vs 3.7,0.020395920815836834,,0.04312354312354296,True
+S4_300,S timer,"phase locking to the 09:16 grid, period 300 s (shift null)",R=0.25 vs 0.15,0.12293853073463268,,0.16989194753641865,False
+S4_900,S timer,"phase locking to the 09:16 grid, period 900 s (shift null)",R=0.09 vs 0.22,0.9190404797601199,,0.9445693819756789,False
+S4_1800,S timer,"phase locking to the 09:16 grid, period 1800 s (shift null)",R=0.54 vs 0.24,0.001999000499750125,period 1800 s is longer than the window (1500 s): weak design,0.004930867899383642,True
+P1,P pair,pair share vs independent-leg shift null,0.128 vs 0.007,0.0001999600079984003,only 6 pair events,0.0018496300739852028,True
+P3a,P pair,FIFO pair-completion vs own/mirror expectation,0.446 vs 0.454,0.437,low-power by construction when the side is stable within a cycle,0.5215806451612903,False
+P4,P pair / replacement,late sale within 10 min after a same-side cover (shift null of covers),0.007 vs 0.111,0.01699150424787611,two-sided p derived from the stored upper-tail p (approximate); direction is BELOW chance,0.0392928535732135,True
+R2,R premium,premium target: Spearman late vs pre-15:15 premium,slope -0.13,0.8517943990009383,,0.9166833166833166,False
+R3,R lump,late events within 120 s before the lump (shift null),0.091 vs 0.066,0.6774645070985803,two-sided derived from the upper-tail p (approximate),0.7595814170499234,False
+O_sold_deficit,O portfolio state,hazard AUC of sold_deficit (curveball null),AUC 0.673 vs 0.556,0.0009990009990009,same direction in 16/17 cycles,0.004439112177564487,True
+O_net_deficit,O portfolio state,hazard AUC of net_deficit (curveball null),AUC 0.652 vs 0.554,0.0009990009990009,same direction in 15/17 cycles,0.004439112177564487,True
+O_cover_same_5,O portfolio state,hazard AUC of cover_same_5 (curveball null),AUC 0.479 vs 0.487,0.2047952047952048,same direction in 4/17 cycles,0.2706222349079492,False
+O_cover_other_5,O portfolio state,hazard AUC of cover_other_5 (curveball null),AUC 0.467 vs 0.492,0.0849150849150849,same direction in 5/17 cycles,0.13091075591075588,False
+O_mtm_pnl,O portfolio state,hazard AUC of mtm_pnl (curveball null),AUC 0.552 vs 0.526,0.2587412587412587,same direction in 10/17 cycles,0.33011815770436453,False
+O_mtm_change_15,O portfolio state,hazard AUC of mtm_change_15 (curveball null),AUC 0.651 vs 0.575,0.0289710289710289,same direction in 13/17 cycles,0.05359640359640346,True
+O_decay_same,O portfolio state,hazard AUC of decay_same (curveball null),AUC 0.363 vs 0.438,0.0209790209790209,same direction in 14/17 cycles,0.04312354312354296,True
+O_peak_deficit_same,O portfolio state,hazard AUC of peak_deficit_same (curveball null),AUC 0.544 vs 0.502,0.0239760239760239,same direction in 6/17 cycles,0.0466901519533097,True
+O_mins_since_sale,O portfolio state,hazard AUC of mins_since_sale (curveball null),AUC 0.594 vs 0.480,0.0549450549450549,same direction in 10/17 cycles,0.08838987099856659,True
+O_mins_since_cover,O portfolio state,hazard AUC of mins_since_cover (curveball null),AUC 0.482 vs 0.458,0.8671328671328671,same direction in 10/17 cycles,0.9166833166833166,False
+O_straddle_chg_15,O portfolio state,hazard AUC of straddle_chg_15 (curveball null),AUC 0.318 vs 0.426,0.0019980019980019,same direction in 16/17 cycles,0.004930867899383642,True
+O_straddle_vs_0920,O portfolio state,hazard AUC of straddle_vs_0920 (curveball null),AUC 0.360 vs 0.463,0.0019980019980019,same direction in 15/17 cycles,0.004930867899383642,True
+S5,S timer (minute level),"minute concentration (sum of squares, shift null)",213 vs 141,0.0003999200159968006,post-hoc addition,0.0029594081183763245,True
+S1b,S timer (second level),same-minute different-cycle seconds coincidence,11 vs 7.5,0.1239752049590082,post-hoc addition,0.16989194753641865,False
+S6,S timer / index,"events in 15:15, 15:20, 15:29 (shift null)",0.362 vs 0.119,0.0001999600079984003,post-hoc: minutes chosen after seeing the histogram,0.0018496300739852028,True
+X1_d,index/futures moves,stratified AUC of d for a sale in the minute,0.683 vs 0.501,0.0014997501249375312,CONTEMPORANEOUS (through the sale minute): not causal; post-hoc addition,0.004624229551890721,True
+X1_d_feed,index/futures moves,stratified AUC of d_feed for a sale in the minute,0.682 vs 0.501,0.0014997501249375312,CONTEMPORANEOUS (through the sale minute): not causal; post-hoc addition,0.004624229551890721,True
+X1_d_fut,index/futures moves,stratified AUC of d_fut for a sale in the minute,0.730 vs 0.500,0.0004997501249375312,CONTEMPORANEOUS (through the sale minute): not causal; post-hoc addition,0.003081792437114776,True
+X1_d_l,index/futures moves,stratified AUC of d_l for a sale in the minute,0.466 vs 0.502,0.4744997501249375,strictly BEFORE the minute,0.548640336081959,False
+X1_d_feed_l,index/futures moves,stratified AUC of d_feed_l for a sale in the minute,0.583 vs 0.499,0.10149975012493753,strictly BEFORE the minute,0.15021963018490755,False
+X1_d_fut_l,index/futures moves,stratified AUC of d_fut_l for a sale in the minute,0.502 vs 0.500,0.9684997501249375,strictly BEFORE the minute,0.9684997501249374,False
+X2_feed,index/futures direction,CE after up or PE after down (feed),0.303,0.03508203336969018,CONTEMPORANEOUS: not causal; minutes treated as independent: p optimistic,0.06181120165135889,True
+X2_fut,index/futures direction,CE after up or PE after down (fut),0.111,1.941574737429619e-06,CONTEMPORANEOUS: not causal; minutes treated as independent: p optimistic,7.18382652848959e-05,True
+X2_feed_lag1,index/futures direction,CE after up or PE after down (feed_lag1),0.394,0.296206368599087,strictly BEFORE the minute; minutes treated as independent: p optimistic,0.36532118793887397,False
+X2_fut_lag1,index/futures direction,CE after up or PE after down (fut_lag1),0.222,0.0011932429624721408,strictly BEFORE the minute; minutes treated as independent: p optimistic,0.004439112177564487,True
+S7,S timer / P pair,"all pair events fall inside 15:28:00-15:31:00 (binomial vs 180/1500, x22 window positions)",6 of 6 vs 12% expected,6.569164799999999e-05,POST-HOC: window chosen after seeing the six pair times; Bonferroni for window position only,0.001215295488,True

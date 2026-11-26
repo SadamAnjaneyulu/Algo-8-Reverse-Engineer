@@ -1,0 +1,32 @@
+{
+ "strangle_pairs": 626,
+ "strangle_lots": 1252,
+ "d0_sell_lots": 8336,
+ "share_of_d0_sell_lots": 0.15019193857965452,
+ "strangle_by_group": {
+  "SENSEX/V1": 626
+ },
+ "both_legs_one_step_otm": 0.8306709265175719,
+ "lag_s_q": [
+  0.0,
+  0.0,
+  1.0
+ ],
+ "timetable_oof": {
+  "precision": 0.9544626593806922,
+  "recall": 0.8370607028753994,
+  "f1": 0.8919148936170213,
+  "pairs_actual": 626
+ },
+ "strike_rule_exact": 0.8306709265175719,
+ "other_solo_lots": 1105,
+ "other_solo_in_strangles": 709,
+ "other_solo_left_lots": 396,
+ "other_solo_left_orders": 396,
+ "left_by_group": {
+  "NIFTY/V1": 165,
+  "NIFTY/V2": 33,
+  "SENSEX/V1": 130,
+  "SENSEX/V2": 68
+ }
+}

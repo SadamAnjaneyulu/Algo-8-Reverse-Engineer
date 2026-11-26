@@ -1,0 +1,10 @@
+side,type,lots,matched,share
+real (recall),scheduled,2122,2077,0.9788
+real (recall),solo intraday,1172,569,0.4855
+real (recall),reactive,754,497,0.6592
+real (recall),solo after 15:00,336,63,0.1875
+real (recall),deep-OTM batch,287,1,0.0035
+simulated (precision),scheduled,2112,2083,0.9863
+simulated (precision),solo,980,522,0.5327
+simulated (precision),reactive,474,459,0.9684
+simulated (precision),extra,233,143,0.6137

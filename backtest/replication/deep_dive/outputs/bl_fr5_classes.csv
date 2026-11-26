@@ -1,0 +1,8 @@
+variant,cls,real_lots,sim_lots,matched,precision,recall,F1,F1_strict,F1_within1,strike_exact_of_matched,within1_of_matched
+A OR B (free),body_sell,4671,3799,3206,0.8439,0.6864,0.757,0.6026,0.7178,0.796,0.9482
+A OR B (free),body_buyback,1324,1037,653,0.6297,0.4932,0.5532,0.2897,0.438,0.5237,0.7917
+A OR B (free),wing_buy,4336,3536,2838,0.8026,0.6545,0.721,0.4441,0.6677,0.6159,0.926
+A OR B (free),wing_sell,1192,966,580,0.6004,0.4866,0.5375,0.2725,0.43,0.5069,0.8
+A OR B (free),opening_wings,186,192,184,0.9583,0.9892,0.9735,0.5873,0.9153,0.6033,0.9402
+A OR B (free),lump,1489,1264,883,0.6986,0.593,0.6415,0.2703,0.5347,0.4213,0.8335
+A OR B (free),not_modelled,457,0,0,,0.0,0.0,0.0,0.0,,

@@ -1,0 +1,388 @@
+{
+ "fam": [
+  {
+   "outcome": "counter-sell cell",
+   "model": "V1 causal (reference)",
+   "features": 64,
+   "auc": 0.8817,
+   "lo": 0.8587,
+   "hi": 0.9032,
+   "prauc": 0.2905,
+   "within_cycle_auc": 0.8727,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "V1 + stop pressure of the other right",
+   "features": 76,
+   "auc": 0.8848,
+   "lo": 0.8601,
+   "hi": 0.9051,
+   "prauc": 0.2967,
+   "within_cycle_auc": 0.8759,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "V1 minus base",
+   "features": 57,
+   "auc": 0.8697,
+   "lo": 0.8353,
+   "hi": 0.8944,
+   "prauc": 0.268,
+   "within_cycle_auc": 0.8635,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "V1 minus spot",
+   "features": 49,
+   "auc": 0.8808,
+   "lo": 0.8595,
+   "hi": 0.8949,
+   "prauc": 0.2827,
+   "within_cycle_auc": 0.8704,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "V1 minus prem",
+   "features": 50,
+   "auc": 0.8634,
+   "lo": 0.84,
+   "hi": 0.8855,
+   "prauc": 0.2648,
+   "within_cycle_auc": 0.8538,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "V1 minus book",
+   "features": 49,
+   "auc": 0.8799,
+   "lo": 0.8544,
+   "hi": 0.902,
+   "prauc": 0.292,
+   "within_cycle_auc": 0.8774,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "V1 minus bb",
+   "features": 51,
+   "auc": 0.8653,
+   "lo": 0.8369,
+   "hi": 0.8912,
+   "prauc": 0.2456,
+   "within_cycle_auc": 0.8581,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "only base (+ base)",
+   "features": 7,
+   "auc": 0.632,
+   "lo": 0.5553,
+   "hi": 0.6779,
+   "prauc": 0.1072,
+   "within_cycle_auc": 0.5594,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "only spot (+ base)",
+   "features": 22,
+   "auc": 0.8272,
+   "lo": 0.7865,
+   "hi": 0.8724,
+   "prauc": 0.2165,
+   "within_cycle_auc": 0.8406,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "only prem (+ base)",
+   "features": 21,
+   "auc": 0.8479,
+   "lo": 0.808,
+   "hi": 0.8894,
+   "prauc": 0.217,
+   "within_cycle_auc": 0.861,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "only book (+ base)",
+   "features": 22,
+   "auc": 0.7874,
+   "lo": 0.7607,
+   "hi": 0.8068,
+   "prauc": 0.1753,
+   "within_cycle_auc": 0.7602,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "only bb (+ base)",
+   "features": 20,
+   "auc": 0.7747,
+   "lo": 0.7436,
+   "hi": 0.8016,
+   "prauc": 0.215,
+   "within_cycle_auc": 0.7408,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "counter-sell cell",
+   "model": "only other-right stop pressure (+ base)",
+   "features": 19,
+   "auc": 0.8304,
+   "lo": 0.7918,
+   "hi": 0.867,
+   "prauc": 0.2429,
+   "within_cycle_auc": 0.8373,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.0452
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "V1 causal (reference)",
+   "features": 64,
+   "auc": 0.8769,
+   "lo": 0.8624,
+   "hi": 0.8899,
+   "prauc": 0.5422,
+   "within_cycle_auc": 0.8573,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "V1 + stop pressure of the other right",
+   "features": 76,
+   "auc": 0.8759,
+   "lo": 0.8597,
+   "hi": 0.8898,
+   "prauc": 0.543,
+   "within_cycle_auc": 0.8565,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "V1 minus base",
+   "features": 57,
+   "auc": 0.8089,
+   "lo": 0.7606,
+   "hi": 0.8459,
+   "prauc": 0.4099,
+   "within_cycle_auc": 0.7815,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "V1 minus spot",
+   "features": 49,
+   "auc": 0.878,
+   "lo": 0.8638,
+   "hi": 0.8905,
+   "prauc": 0.5501,
+   "within_cycle_auc": 0.8587,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "V1 minus prem",
+   "features": 50,
+   "auc": 0.8643,
+   "lo": 0.8485,
+   "hi": 0.8755,
+   "prauc": 0.538,
+   "within_cycle_auc": 0.8388,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "V1 minus book",
+   "features": 49,
+   "auc": 0.8744,
+   "lo": 0.8591,
+   "hi": 0.8859,
+   "prauc": 0.5388,
+   "within_cycle_auc": 0.858,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "V1 minus bb",
+   "features": 51,
+   "auc": 0.8729,
+   "lo": 0.8567,
+   "hi": 0.8882,
+   "prauc": 0.532,
+   "within_cycle_auc": 0.857,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "only base (+ base)",
+   "features": 7,
+   "auc": 0.7454,
+   "lo": 0.6832,
+   "hi": 0.774,
+   "prauc": 0.4715,
+   "within_cycle_auc": 0.6596,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "only spot (+ base)",
+   "features": 22,
+   "auc": 0.8415,
+   "lo": 0.8132,
+   "hi": 0.8641,
+   "prauc": 0.5101,
+   "within_cycle_auc": 0.8382,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "only prem (+ base)",
+   "features": 21,
+   "auc": 0.8614,
+   "lo": 0.8411,
+   "hi": 0.881,
+   "prauc": 0.5308,
+   "within_cycle_auc": 0.8543,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "only book (+ base)",
+   "features": 22,
+   "auc": 0.8214,
+   "lo": 0.795,
+   "hi": 0.8376,
+   "prauc": 0.5016,
+   "within_cycle_auc": 0.7707,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "only bb (+ base)",
+   "features": 20,
+   "auc": 0.8006,
+   "lo": 0.7559,
+   "hi": 0.8221,
+   "prauc": 0.4962,
+   "within_cycle_auc": 0.7358,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  },
+  {
+   "outcome": "any solo-sale cell",
+   "model": "only other-right stop pressure (+ base)",
+   "features": 19,
+   "auc": 0.8395,
+   "lo": 0.8233,
+   "hi": 0.855,
+   "prauc": 0.5088,
+   "within_cycle_auc": 0.8284,
+   "within_cycle_cycles": 22,
+   "positive_rate": 0.1356
+  }
+ ],
+ "top": [
+  {
+   "feature": "prem_chg_1",
+   "drop_in_auc": 0.01763,
+   "family": "prem"
+  },
+  {
+   "feature": "prem_vs_daymin",
+   "drop_in_auc": 0.01642,
+   "family": "prem"
+  },
+  {
+   "feature": "min_in_15",
+   "drop_in_auc": 0.00954,
+   "family": "base"
+  },
+  {
+   "feature": "since_bb_other",
+   "drop_in_auc": 0.0094,
+   "family": "bb"
+  },
+  {
+   "feature": "phx_prem_low_60",
+   "drop_in_auc": 0.00605,
+   "family": "prem"
+  },
+  {
+   "feature": "fav_ret_15",
+   "drop_in_auc": 0.00399,
+   "family": "spot"
+  },
+  {
+   "feature": "bb_own_1",
+   "drop_in_auc": 0.00263,
+   "family": "bb"
+  },
+  {
+   "feature": "oth_max_ratio_close_prev",
+   "drop_in_auc": 0.00241,
+   "family": "other_stop"
+  },
+  {
+   "feature": "bb_other_1",
+   "drop_in_auc": 0.00187,
+   "family": "bb"
+  },
+  {
+   "feature": "expo_own",
+   "drop_in_auc": 0.00169,
+   "family": "book"
+  },
+  {
+   "feature": "fav_ret_30",
+   "drop_in_auc": 0.0012,
+   "family": "spot"
+  },
+  {
+   "feature": "prem_chg_15",
+   "drop_in_auc": 0.00101,
+   "family": "prem"
+  },
+  {
+   "feature": "oth_prem_chg_5_cp",
+   "drop_in_auc": 0.00096,
+   "family": "other_stop"
+  },
+  {
+   "feature": "oth_ref_strike_prev",
+   "drop_in_auc": 0.00093,
+   "family": "other_stop"
+  }
+ ]
+}

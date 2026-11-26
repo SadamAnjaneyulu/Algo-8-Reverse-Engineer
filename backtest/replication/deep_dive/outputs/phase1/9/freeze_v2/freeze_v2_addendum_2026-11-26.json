@@ -1,0 +1,15 @@
+{
+ "date": "2026-11-26",
+ "changed": {
+  "d0_strategy/d0_algo/engine.py": {
+   "old": "d21e77612b5f6a74546f9d711d887171656e359bfb4b55d4e99e2a5cc57c8f3d",
+   "new": "30c31aa34a8705519503174bb8f253ca49e9b1d1ffce066cd54057543e601b1b",
+   "reason": "Event.px reference fill price recorded for P&L accounting only (performance backtest); read by no rule, not part of as_tuple; default behaviour unchanged"
+  }
+ },
+ "default_regression_vs_gate5a_reference": {
+  "cycles": 49,
+  "identical": 49,
+  "passed": true
+ }
+}

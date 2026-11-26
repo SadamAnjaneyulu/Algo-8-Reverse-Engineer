@@ -1,0 +1,6 @@
+id,test,statistic,p,p_bh_10,bh_significant_10
+R1,hazard AUC of D (post),AUC 0.564 vs 0.537,0.21578421578421578,0.4064608847788053,False
+R1_held_out,hazard AUC of D (held-out),AUC 0.542 vs 0.529,0.44155844155844154,0.4415584415584416,False
+R2,sold side has the larger D (post-auction),share 0.694,0.02599350162459385,0.12996750812296926,False
+R2_held_out,sold side has the larger D (pre-auction (held-out)),share 0.615,0.32516870782304425,0.4064608847788053,False
+R3,D adds to clock + straddle change (LOCO),dAUC -0.017,0.2798774479245747,0.4064608847788053,False

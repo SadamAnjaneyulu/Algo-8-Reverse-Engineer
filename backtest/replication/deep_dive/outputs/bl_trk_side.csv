@@ -1,0 +1,3 @@
+model,configs,chosen,precision,recall,F1,split_F1_mean,split_F1_lo,split_F1_hi
+one refractory K for both sides (K_same = K_opp),28,"(70, 4, 4) / (70, 12, 12)",0.4232,0.6316,0.5068,0.5129,0.4677,0.5539
+"side-specific refractory (K_same, K_opp)",288,"(70, 4, 1) / (70, 30, 12)",0.4266,0.5677,0.4871,0.5093,0.458,0.5523

@@ -1,0 +1,23 @@
+# Reactive pairs: is "ATM + 1 step toward the 15-minute move" correct, and how is the look-back taken? — plan, written before the tests
+
+**User's statement to verify (restated).** (1) Direction = current spot vs spot 15 minutes earlier (up / down / almost unchanged). (2) The strike = previous-minute ATM + one strike interval toward that direction (e.g. ATM 24,100, upward, interval 50 → 24,150; downward → 24,050), one lot of CE and PE. (3) The 15-minute move decides WHERE the pair is sold, not WHETHER a pair is placed. (4) Question: is the look-back done **every minute on a rolling 15-minute window**, or in some other way (anchored to a time, or to an event)?
+
+**Already known (read-only; `BODY_REACTIVE_MECHANISM.md`).** On 368 D-1 reactive pairs the rule "previous-minute-close ATM + 1 step toward the sign of (close[j−1] − close[j−16])" matches the sold strike in 79.1% (halves 79.5/78.6; NIFTY 79.8 / SENSEX 78.4); +2 steps 13%; 0 step 3.8%; opposite side 3.8%. The time gate 10:30–15:15 exists; inside it the pair rate is flat in the size of the 15-minute move; a weak tilt exists from move/history features. Fills are at second resolution; the market data are minute closes.
+
+## Locked definitions
+* Event = D-1 reactive pair (as before); j = minute of the CE order (spot close of minute j−1 is the last completed bar). step = 50 (NIFTY) / 100 (SENSEX). rule(L) = nearest strike to close[j−1] + step × sign(close[j−1] − close[j−1−L]), sign 0 → the ATM itself.
+
+## Tests
+1. **Correctness of the stated rule and its worked example.** Hit rate (all, by underlying/half); error anatomy (+2, 0, opposite); a pre-registered sample of 10 pairs (the first pair of the first 10 cycles in date order) written out like the user's example: time, previous-minute ATM, 15-min move, predicted strike, actual strike.
+2. **Is the 15-minute length special?** Hit rate of rule(L) for L = 1…90 min; paired cluster-bootstrap difference between L = 15 and every other L; the same for the sign-agreement of the strike side among non-ATM strikes. "Special" only if L = 15 beats the neighbours (L = 10…20) by a margin whose CI excludes 0 and the curve is not a broad plateau.
+3. **Rolling vs anchored look-back** (pre-registered candidate direction definitions, all causal): rolling 15; rolling 10 / 20 / 30 / 60; previous completed 15-minute block (09:16 grid) open-to-close; current block so far; since the previous reactive pair; since the previous sell of any kind; since the last timetable wave; since the open; since the day extreme. Overall hit rate and hit rate by minute-of-block (0–4, 5–9, 10–14). A **rolling** look-back should be equally good in every minute-of-block; an **anchored** one varies with the minute of block. On the events where rolling-15 and anchored directions disagree, which one matches the actual strike side?
+4. **Magnitude and ties.** Hit rate by |15-min move| in steps (including < 0.1 step and exactly zero): does a small or zero move still shift the strike by one step (no dead-band), or does the strike stay at the ATM?
+5. **Bar vs tick use.** Order seconds are not at bar boundaries (uniform). Test whether the rule's hit rate depends on the second within the minute (flat = completed 1-minute bar used; falling = live spot drifts away) and compare ATM(close[j−1]) with ATM(close[j]) by second-bin.
+6. **Direction vs trigger (the user's distinction).** Hazard of a reactive pair inside the 10:30–15:15 window by signed 15-minute move (up / flat / down) and by whether the 15-minute direction just flipped: if direction determined the trigger, the hazard would differ systematically; the earlier flat result is re-checked by sign.
+
+## Decision rules (fixed now)
+* "Stated rule correct" if hit rate ≥ 75% overall and ≥ 70% in each half and each underlying (the 80% line of the earlier study stays reported). "Rolling every minute" is called supported if rolling-15 beats every anchored definition on overall hit rate with a CI excluding 0 **and** its hit rate has no trend across minute-of-block; if rolling and other lengths are indistinguishable, the answer is "a recent-trend direction of unknown length, not specifically 15 minutes".
+* The answer to "does the algorithm look back constantly every minute?" is limited by minute-resolution data and fills at second resolution: I can test what information the strike is consistent with, not how often the algorithm evaluates it. That distinction is reported explicitly.
+
+## Limits (known in advance)
+Minute closes only; 368 events; reactive-pair classification itself depends on the ±3 s pair rule and cell windows; candidate definitions that are strongly correlated (rolling windows) cannot all be separated; no source code.

@@ -1,0 +1,177 @@
+{
+ "pairs_dist": {
+  "1": 228,
+  "2": 59,
+  "3": 8,
+  "5": 1
+ },
+ "extra_dist": {
+  "0": 141,
+  "1": 71,
+  "2": 45,
+  "3": 20,
+  "4": 8,
+  "5": 7,
+  "6": 2,
+  "7": 2
+ },
+ "share_with_extra": 0.5236486486486487,
+ "assoc": [
+  {
+   "target": "extra_fav",
+   "variable": "depth",
+   "spearman": 0.4171,
+   "p": 0.0
+  },
+  {
+   "target": "extra_fav",
+   "variable": "min_in_candle",
+   "spearman": 0.3235,
+   "p": 0.0
+  },
+  {
+   "target": "extra_fav",
+   "variable": "minute_range",
+   "spearman": 0.2458,
+   "p": 0.0
+  },
+  {
+   "target": "extra_fav",
+   "variable": "short_lots",
+   "spearman": 0.2101,
+   "p": 0.0003
+  },
+  {
+   "target": "extra_fav",
+   "variable": "v2",
+   "spearman": -0.2095,
+   "p": 0.0003
+  },
+  {
+   "target": "extra_fav",
+   "variable": "hour",
+   "spearman": 0.1605,
+   "p": 0.0056
+  },
+  {
+   "target": "extra_fav",
+   "variable": "chan_width",
+   "spearman": -0.1536,
+   "p": 0.0081
+  },
+  {
+   "target": "extra_fav",
+   "variable": "tilt_fav",
+   "spearman": 0.0866,
+   "p": 0.1372
+  },
+  {
+   "target": "extra_fav",
+   "variable": "min_since_last_fire",
+   "spearman": -0.0743,
+   "p": 0.2291
+  },
+  {
+   "target": "extra_fav",
+   "variable": "lot_unit",
+   "spearman": -0.0687,
+   "p": 0.2388
+  },
+  {
+   "target": "extra_fav",
+   "variable": "n_fires_before",
+   "spearman": 0.0625,
+   "p": 0.2834
+  },
+  {
+   "target": "extra_fav",
+   "variable": "move_open",
+   "spearman": 0.0181,
+   "p": 0.757
+  },
+  {
+   "target": "extra_fav",
+   "variable": "side",
+   "spearman": -0.0142,
+   "p": 0.8074
+  },
+  {
+   "target": "pairs",
+   "variable": "depth",
+   "spearman": 0.2913,
+   "p": 0.0
+  },
+  {
+   "target": "pairs",
+   "variable": "minute_range",
+   "spearman": 0.2806,
+   "p": 0.0
+  },
+  {
+   "target": "pairs",
+   "variable": "hour",
+   "spearman": 0.1836,
+   "p": 0.0015
+  },
+  {
+   "target": "pairs",
+   "variable": "short_lots",
+   "spearman": 0.1556,
+   "p": 0.0073
+  },
+  {
+   "target": "pairs",
+   "variable": "n_fires_before",
+   "spearman": 0.1517,
+   "p": 0.0089
+  },
+  {
+   "target": "pairs",
+   "variable": "min_since_last_fire",
+   "spearman": -0.1134,
+   "p": 0.0657
+  },
+  {
+   "target": "pairs",
+   "variable": "lot_unit",
+   "spearman": -0.0829,
+   "p": 0.155
+  },
+  {
+   "target": "pairs",
+   "variable": "min_in_candle",
+   "spearman": 0.0808,
+   "p": 0.1658
+  },
+  {
+   "target": "pairs",
+   "variable": "v2",
+   "spearman": -0.0589,
+   "p": 0.3126
+  },
+  {
+   "target": "pairs",
+   "variable": "chan_width",
+   "spearman": -0.05,
+   "p": 0.391
+  },
+  {
+   "target": "pairs",
+   "variable": "tilt_fav",
+   "spearman": 0.0381,
+   "p": 0.5136
+  },
+  {
+   "target": "pairs",
+   "variable": "side",
+   "spearman": 0.0196,
+   "p": 0.7371
+  },
+  {
+   "target": "pairs",
+   "variable": "move_open",
+   "spearman": 0.0117,
+   "p": 0.8412
+  }
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "id": "SL10",
+ "overrides": {
+  "stop_latency_s": 10.0
+ },
+ "order_split": "one_lot_v2",
+ "mode": "F",
+ "evidence_label": "historical reproduction",
+ "engine_orders": 9038,
+ "real_orders": 9915,
+ "rejected": 0,
+ "legacy_f1": 0.6880202965194641,
+ "engine_sha256": {
+  "engine.py": "8940fb2a1083fb2b73382257d033a4f79db9a4f3350ac9e32ab814c77c8a011f",
+  "config.py": "df06fc93b1d0c72a399611c95a72763ab56273081c470df28be8cf6796f9982f",
+  "risk.py": "d7648f72ad7099bf3477487e151b4df34308204182c704a080d34215f353a204",
+  "models.py": "31a6cd1085ada4ba1477849e51f5bc691c5d56bbcb44e02e4608346ebeeb5dd6"
+ },
+ "spec": {
+  "spec_version": "1.1",
+  "spec_sha256": "be1170ab4cd81f077e3e898c0fc3a32fa08bc83f1fcfb3391c8e75e38179da8a",
+  "scorer_sha256": "c607cfc66d6c93d9d5d3e72bbf233ef1aeff0343ec1f45648f7688a992b9ebc6"
+ },
+ "seconds": 41,
+ "run_at": "2026-11-25T16:02:29.765660+00:00"
+}

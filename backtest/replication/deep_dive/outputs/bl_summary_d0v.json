@@ -1,0 +1,50 @@
+{
+ "pnl_spearman_diff_A draw_OOF (cycle halves)": {
+  "diff": -0.0026696329254727313,
+  "lo": -0.16895470053231232,
+  "hi": 0.18367773959412229
+ },
+ "pnl_spearman_diff_A draw_forward A (same version, later cycles)": {
+  "diff": 0.016666666666666607,
+  "lo": 0.0,
+  "hi": 0.22491948470209167
+ },
+ "pnl_spearman_diff_A draw_forward B (train V1, test V2)": {
+  "diff": 0.13333333333333341,
+  "lo": -0.30885929357266945,
+  "hi": 0.6517107892107891
+ },
+ "pnl_spearman_diff_B fixed median_OOF (cycle halves)": {
+  "diff": 0.02981090100111239,
+  "lo": -0.13709941436251927,
+  "hi": 0.1925492987190391
+ },
+ "pnl_spearman_diff_B fixed median_forward A (same version, later cycles)": {
+  "diff": 0.033333333333333215,
+  "lo": 0.0,
+  "hi": 0.26315789473684215
+ },
+ "pnl_spearman_diff_B fixed median_forward B (train V1, test V2)": {
+  "diff": -0.024242424242424288,
+  "lo": -0.5864285714285713,
+  "hi": 0.4924363057324837
+ },
+ "real_pnl_lakh_oof": {
+  "sum": 15.5083475,
+  "median": -0.075005,
+  "cycles": 30,
+  "resid_share": 0.00015844336097253303
+ },
+ "null_hold_carried_book": {
+  "spearman": 0.503448275862069,
+  "median_err_lakh": -0.05630625,
+  "sum_lakh": 2.1255,
+  "real_sum_lakh": 15.5083475,
+  "same_sign": 0.7,
+  "cycles": 30
+ },
+ "real_pnl_spread_lakh": {
+  "std": 2.0335998171661567,
+  "mad": 1.4630625
+ }
+}

@@ -1,0 +1,9 @@
+model,auc,train_cycles,test_cycles
+G0 baseline,0.5693879094469001,16,8
+G0+G1 lot state,0.7171425690324531,16,8
++G2 spot against the right,0.8034150686543083,16,8
++G3 premium of the right,0.8243172383657418,16,8
++G4 side loss,0.7156770474445808,16,8
++G5 book,0.7924799583200283,16,8
++G6 other right,0.7869464378749937,16,8
+all families,0.8641048049612612,16,8

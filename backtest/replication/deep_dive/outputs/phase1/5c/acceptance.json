@@ -1,0 +1,171 @@
+{
+ "X1": {
+  "criteria": {
+   "C1 overall keys F1 >= base - 0.003": [
+    0.42173403103572715,
+    0.4167893594901234,
+    true
+   ],
+   "C2 legacy lot-level F1 >= 0.4103 - 0.005": [
+    0.41419826224328593,
+    0.4053,
+    true
+   ],
+   "C3 every class F1 >= base - 0.02": [
+    -0.0001337093088983332,
+    -0.02,
+    true
+   ],
+   "C3_worst_class": "body_sell",
+   "C4 no cycle falls by > 0.05": [
+    -0.00036228797410178815,
+    -0.05,
+    true
+   ],
+   "C5 forward A and B not lower by > 0.003": [
+    {
+     "forwardA": 0.0,
+     "forwardB": 0.0
+    },
+    -0.003,
+    true
+   ],
+   "K1 one_lot clearance-window F1 >= base + 0.10 and events window F1 not lower": [
+    [
+     0.3219056307333637,
+     0.1530641837747081
+    ],
+    [
+     0.3040631367256754,
+     0.09779951100244498
+    ],
+    true
+   ],
+   "K2 clearance-window F1 improves in a majority of pre-auction cycles with a clearance": [
+    [
+     7,
+     8
+    ],
+    "majority",
+    true
+   ],
+   "K3 post-auction cycles identical": [
+    true,
+    true,
+    true
+   ]
+  },
+  "passed": true
+ },
+ "X1s364": {
+  "criteria": {
+   "C1 overall keys F1 >= base - 0.003": [
+    0.421850331544048,
+    0.4167893594901234,
+    true
+   ],
+   "C2 legacy lot-level F1 >= 0.4103 - 0.005": [
+    0.4135607444340228,
+    0.4053,
+    true
+   ],
+   "C3 every class F1 >= base - 0.02": [
+    0.0,
+    -0.02,
+    true
+   ],
+   "C3_worst_class": "stop",
+   "C4 no cycle falls by > 0.05": [
+    -0.0007232075328151011,
+    -0.05,
+    true
+   ],
+   "C5 forward A and B not lower by > 0.003": [
+    {
+     "forwardA": 0.0,
+     "forwardB": 0.0
+    },
+    -0.003,
+    true
+   ],
+   "K1 one_lot clearance-window F1 >= base + 0.10 and events window F1 not lower": [
+    [
+     0.32741935483870965,
+     0.1530641837747081
+    ],
+    [
+     0.3040631367256754,
+     0.09779951100244498
+    ],
+    true
+   ],
+   "K2 clearance-window F1 improves in a majority of pre-auction cycles with a clearance": [
+    [
+     7,
+     8
+    ],
+    "majority",
+    true
+   ],
+   "K3 post-auction cycles identical": [
+    true,
+    true,
+    true
+   ]
+  },
+  "passed": true
+ },
+ "X3": {
+  "criteria": {
+   "C1 overall keys F1 >= base - 0.003": [
+    0.42045326163092844,
+    0.4167893594901234,
+    true
+   ],
+   "C2 legacy lot-level F1 >= 0.4103 - 0.005": [
+    0.40669785031847133,
+    0.4053,
+    true
+   ],
+   "C3 every class F1 >= base - 0.02": [
+    -0.0005446599359962834,
+    -0.02,
+    true
+   ],
+   "C3_worst_class": "body_buyback",
+   "C4 no cycle falls by > 0.05": [
+    -0.04628558204119415,
+    -0.05,
+    true
+   ],
+   "C5 forward A and B not lower by > 0.003": [
+    {
+     "forwardA": 0.0044962243158925275,
+     "forwardB": 0.003952381471925892
+    },
+    -0.003,
+    true
+   ],
+   "O1 opening-window body-long recall >= base + 0.10 and precision >= base - 0.05": [
+    [
+     0.34359805510534847,
+     1.0
+    ],
+    [
+     0.44197730956239867,
+     0.73
+    ],
+    false
+   ],
+   "O2 opening-long F1 improves in a majority of cycles with real opening longs": [
+    [
+     8,
+     29
+    ],
+    "majority",
+    false
+   ]
+  },
+  "passed": false
+ }
+}

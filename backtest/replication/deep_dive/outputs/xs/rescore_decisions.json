@@ -1,0 +1,46 @@
+{
+ "fixA_precision_change": [
+  -0.047202797202797186,
+  -0.091697269789507,
+  -0.006032937905846903
+ ],
+ "fixA_recall_change": [
+  0.01709401709401709,
+  -0.015273093082430935,
+  0.05357142857142855
+ ],
+ "late_short_ex_outlier": {
+  "real": 15.777777777777779,
+  "base": 5.444444444444445,
+  "X": 5.444444444444445,
+  "XA": 11.277777777777779
+ },
+ "stops_agree": {
+  "base": 12,
+  "X": 12,
+  "XA": 11
+ },
+ "sensex_1008": [
+  {
+   "real": 328620.0,
+   "real_stop": false,
+   "X_gross": 582172.0,
+   "X_stop": false,
+   "XA_gross": -127168.0,
+   "XA_stop": true,
+   "X_late_short": 2.0,
+   "XA_late_short": 15.0,
+   "real_late_short": 3
+  }
+ ],
+ "d1_stop_lots_after_1530": {
+  "sim_X": 25.0,
+  "real": 9.0,
+  "cycles_sim": 4,
+  "cycles_real": 3
+ },
+ "lump_px_abs_err": {
+  "base": 5.287222192304439,
+  "X": 4.787569183814221
+ }
+}

@@ -1,0 +1,179 @@
+{
+ "rows": 900,
+ "events": 48,
+ "negatives": 852,
+ "cycles": 18,
+ "events_per_cycle": 2.6666666666666665,
+ "cycles_with_events": 17,
+ "a0_insample_table_DIAGNOSTIC": {
+  "label": "frozen coefficients + frozen table scored on the cycles that built them: baseline is inflated (own events are in its cells)",
+  "auc_model": 0.8908256880733945,
+  "auc_base": 0.8642201834862385,
+  "delta": 0.026605504587155965,
+  "boot95": [
+   -0.006972415007794691,
+   0.0648941306729979
+  ],
+  "lin95": [
+   -0.013549965794728724,
+   0.06676097496904065
+  ],
+  "se_lin": 0.01903269214796609,
+  "eff_cycles": 14.766343524732786,
+  "cycles": 18
+ },
+ "a_frozen_coeffs_loco_clock": {
+  "label": "frozen coefficients (fitted on all cycles) with leave-own-cycle-out clock; baseline = same clock",
+  "auc_model": 0.8288990825688073,
+  "auc_base": 0.7114678899082569,
+  "delta": 0.11743119266055047,
+  "boot95": [
+   0.0685807785503582,
+   0.17727404862579282
+  ],
+  "lin95": [
+   0.05866300890641313,
+   0.1761993764146878
+  ],
+  "se_lin": 0.027854654393295163,
+  "eff_cycles": 14.766343524732786,
+  "cycles": 18
+ },
+ "b1_loco_prechosen": {
+  "label": "leave-one-cycle-out, 3 features pre-chosen on ALL cycles (the reported +0.098)",
+  "auc_model": 0.8096330275229358,
+  "auc_base": 0.7114678899082569,
+  "delta": 0.0981651376146789,
+  "boot95": [
+   0.023424081583969514,
+   0.1723321894877804
+  ],
+  "lin95": [
+   0.018695317586346002,
+   0.1776349576430118
+  ],
+  "se_lin": 0.03766671403096985,
+  "eff_cycles": 14.766343524732786,
+  "cycles": 18
+ },
+ "b2_chronological": {
+  "label": "chronological expanding window (10 test cycles after 8 warm-up cycles), features still pre-chosen on all cycles",
+  "auc_model": 0.813973063973064,
+  "auc_base": 0.6632996632996633,
+  "delta": 0.15067340067340068,
+  "boot95": [
+   0.08586568920057129,
+   0.24086815761743663
+  ],
+  "lin95": [
+   0.05830335890744903,
+   0.24304344243935233
+  ],
+  "se_lin": 0.04083272519036357,
+  "eff_cycles": 8.720612951062778,
+  "cycles": 10
+ },
+ "c_lag1_frozen_coeffs": {
+  "label": "frozen coefficients, features through minute j-1 (strictly before the minute), frozen table",
+  "auc_model": 0.6839449541284404,
+  "auc_base": 0.7114678899082569,
+  "delta": -0.027522935779816515,
+  "boot95": [
+   -0.06841439318845624,
+   0.01444069405897206
+  ],
+  "lin95": [
+   -0.07274514752177766,
+   0.017699275962144635
+  ],
+  "se_lin": 0.02143420127194354,
+  "eff_cycles": 14.766343524732786,
+  "cycles": 18
+ },
+ "d_second_profile_insample": {
+  "early_0_19s": {
+   "positives": 25,
+   "auc_model": 0.9228070175438596,
+   "auc_base": 0.85,
+   "delta": 0.07280701754385965,
+   "boot95": [
+    0.024241690512876956,
+    0.12940166910346354
+   ]
+  },
+  "mid_20_39s": {
+   "positives": 9,
+   "auc_model": 0.8423645320197044,
+   "auc_base": 0.8891625615763546,
+   "delta": -0.046798029556650245,
+   "boot95": [
+    -0.1572192839275872,
+    0.07352941176470588
+   ]
+  },
+  "late_40_59s": {
+   "positives": 14,
+   "auc_model": 0.8643533123028391,
+   "auc_base": 0.8738170347003155,
+   "delta": -0.00946372239747634,
+   "boot95": [
+    -0.07609409048459062,
+    0.05384615384615385
+   ]
+  }
+ },
+ "e_loo_a": {
+  "min": 0.10553470919324578,
+  "max": 0.12907869481765835,
+  "cycle_of_min": "SENSEX|2026-09-17",
+  "cycle_of_max": "NIFTY|2026-08-25",
+  "n_below_zero": 0
+ },
+ "e_loo_b1": {
+  "min": 0.08583489681050657,
+  "max": 0.1264705882352941,
+  "cycle_of_min": "SENSEX|2026-09-17",
+  "cycle_of_max": "SENSEX|2026-08-06",
+  "n_below_zero": 0
+ },
+ "e_loo_b2": {
+  "min": 0.13157894736842105,
+  "max": 0.17234848484848486,
+  "cycle_of_min": "SENSEX|2026-09-17",
+  "cycle_of_max": "SENSEX|2026-09-10",
+  "n_below_zero": 0
+ },
+ "f_influence_top_cycle_share_of_numerator": 0.11564625850340136,
+ "f_cycles_with_positive_contribution": 15,
+ "f_cycles_with_events": 17,
+ "g_lag1_early_second_positives_EXPLORATORY": {
+  "positives": 25,
+  "auc_model": 0.6728070175438596,
+  "auc_base": 0.6763157894736842,
+  "delta": -0.0035087719298245615,
+  "boot95": [
+   -0.07307111200644636,
+   0.0668514654503106
+  ]
+ },
+ "g2_contemporaneous_early_second_positives_EXPLORATORY": {
+  "positives": 25,
+  "auc_model": 0.8657894736842106,
+  "auc_base": 0.6763157894736842,
+  "delta": 0.18947368421052632,
+  "boot95": [
+   0.10576890896921018,
+   0.2902995856421022
+  ]
+ },
+ "d_second_distribution_of_positives": {
+  "count": 48.0,
+  "mean": 26.2,
+  "std": 20.4,
+  "min": 0.0,
+  "25%": 8.5,
+  "50%": 18.5,
+  "75%": 48.0,
+  "max": 59.0
+ }
+}

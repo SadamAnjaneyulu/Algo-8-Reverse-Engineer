@@ -1,0 +1,123 @@
+{
+ "updated": "2026-11-25 (Phase 1 final loop complete)",
+ "session": 1,
+ "current_gate": "closed (CONDITIONAL; awaiting user review)",
+ "gates": {
+  "0": "PASS",
+  "1": "PASS (re-evaluated after the final loop: criterion (d) met; 12 rules remain Unresolved)",
+  "2": "CONDITIONAL (2A FAIL, 2B CONDITIONAL, 2C FAIL, 2D FAIL; no rule met the registered criteria; residual quantified, data-limited; see reports/PHASE1_GATE2_SUMMARY.md)",
+  "3": "CONDITIONAL (3a, 3b, 3c all run to stop rules; no correction supported; see reports/PHASE1_GATE3_SUMMARY.md)",
+  "4": "CONDITIONAL (7 of 10 standards pass; Q2 strict F1 0.472<0.55, Q5 wing sell 0.497<0.50, Q9 book distance 0.508>0.35 fail; data-limited; reports/PHASE1_GATE4_RESULT.md)",
+  "5": "CONDITIONAL (5a PASS, 5b measured, 5c CONDITIONAL, 5d CONDITIONAL)",
+  "6": "PASS (integration criteria G6-1..G6-9; mode F D0 keys F1 0.397 = 94% of mode T; integrated D-1+D0 0.498; reports/PHASE1_GATE6_RESULT.md). Component quality remains CONDITIONAL.",
+  "7": "CONDITIONAL (R1-R6 pass: LOCO 0.428, constants identical in 30/30 folds, causality 18/18, timing-specific; no independent data exists; reports/PHASE1_GATE7_RESULT.md)",
+  "8": "DONE (Phase 1 CONDITIONAL): freeze manifest, regression 544/0, final register, unresolved register, closure report",
+  "5a": "PASS (reports/PHASE1_GATE5A_RESULT.md)",
+  "5b": "MEASUREMENT COMPLETE (reports/PHASE1_GATE5B_RESULT.md; first run archived after a scoring-layer stop-parts correction, Addendum 1)",
+  "5c": "CONDITIONAL (X1 era clearance clock accepted as candidate; X3 opening-long clock rejected; stop rule confirmed on real book 11/11, 0 false alarms; reports/PHASE1_GATE5C_RESULT.md)",
+  "5d": "CONDITIONAL (7 of 13 D0 standards pass; D1,D2,D3,D4,D5,D9 fail, data-limited/execution; reports/PHASE1_GATE5D_RESULT.md)",
+  "phase1": "CONDITIONAL",
+  "final_loop": "DONE: A rejected (decision level); B stop rule confirmed on real book, constant 1.25, D-1 engine stop rejected; C CH1/CH2 rejected, X1 experimental; D plausible but unconfirmed; freeze v2; regression 566/0"
+ },
+ "baselines": {
+  "B0": "outputs/scoring/d1_F (freeze_v1)",
+  "B1": "outputs/scoring/d1_F_v2_onelot (one_lot_v2, accepted)",
+  "manifest": "outputs/phase1/baseline_manifest.json",
+  "engine_snapshot": "outputs/phase1/baseline_engine_B0/"
+ },
+ "latest_experiment_id": "P1-9-final",
+ "uncommitted_files": 63,
+ "next_exact_action": "User review of audit/PHASE1_CLOSURE_REPORT.md and reports/PHASE1_LOOP2_RESULT.md; commit and push NOT authorised",
+ "master_register": "audit/PHASE1_MASTER_GATE_REGISTER.md (section 17)",
+ "experiments": {
+  "P1-2A-0": "analytic T1-T3 (H1 contradicted)",
+  "P1-2A-V00": "baseline reproduction (identical to B1)",
+  "P1-2A-V01": "book condition: near miss, rejected (fails A1, A3, A4)",
+  "P1-2A-V02..V08": "rejected",
+  "P1-2B-0": "strike rules S0-S6 teacher-forced: none supported",
+  "P1-2B-1": "S8,S9: not supported",
+  "P1-2B-2": "attribution: 0.50 with real context vs 0.25 in F",
+  "P1-2C-C0": "runner check identical to B1",
+  "P1-2C-C1": "rebased futures feed: rejected (fails L1,L2,L7), overall F1 +0.0126, legacy lot F1 +0.0116",
+  "P1-2C-C2": "feed + 5-min late gate: rejected (L1,L2,L4,L7)",
+  "P1-2D-BK0": "single-lot only: identical to B1",
+  "P1-2D-BK1..BK3": "delayed depth sizing: rejected",
+  "P1-3A-step1": "upstream vs independent: 54.5% missing upstream, 17% extra upstream",
+  "P1-3A-step2": "K1-K5 teacher-forced: none supported (K1 recall 0.185 on real position)",
+  "P1-3A-SL10..SL30": "K6 latency: rejected",
+  "P1-3B-0": "wing release rules W1-W6 teacher-forced: none supported (W1 0.411, W2 0.413, chance 0.262)",
+  "P1-3C-0": "lump size M1-M4 LOCO: none supported; side 0.93",
+  "P1-G4": "Gate 4 validation report on B1",
+  "P1-5A-ref": "reference deterministic 49/49",
+  "P1-5A-port": "standalone D0 engine reproduces reference 49/49 (monitor and enforce); legacy F1 0.410294",
+  "P1-5A-env": "real D0 envelope: 90 orders/min, 488 lots/min, 278 net short lots per right",
+  "P1-5B-OOF": "D0 order-level scoring mode T: OOF keys F1 60s 0.4198 (placebo 0.238), events convention; one_lot 0.398",
+  "P1-5B-first-run": "archived first run (per-lot stop parts defect): OOF 0.4176",
+  "P1-5C-V0": "D0-B baseline (reproduces 5b, legacy 0.4103)",
+  "P1-5C-X1": "era clearance clock 363 pre-auction: PASS (candidate)",
+  "P1-5C-X1s364": "sensitivity 364: PASS (not selectable)",
+  "P1-5C-X3": "opening-long clock: REJECTED (O1,O2 fail)",
+  "P1-5C-X2": "cycle stop on real book 11/11, 0 FA (diagnostic, no change)",
+  "P1-5D-OOF": "D0-C (engine + X1) mode T: OOF keys F1 0.4217, legacy 0.4142, placebo 0.238; forward A 0.472, B 0.392; standards 7/13 pass",
+  "P1-5D-opening-mtm": "engine opening MTM equals real book in 29/30 cycles",
+  "P1-6-OOF": "integrated D-1(B1)+D0-C mode F: D0 0.3967, D-1 0.7391, both 0.4981; carry L1 at open 0.79",
+  "P1-6-fwdA": "D0 0.477",
+  "P1-6-fwdB": "D0 0.269 (0.69x mode T)",
+  "P1-7-LOCO": "D0-C true LOCO keys F1 0.4279, legacy 0.424",
+  "P1-7-causality": "18/18 future-bar perturbation tests identical",
+  "P1-7-timing": "shift F1: -120 0.237, -60 0.299, 0 0.422, +60 0.435, +120 0.317",
+  "P1-8-freeze": "frozen D-1 B1 / D0-C / integrated configs and sources hashed; default D0 regression 49/49",
+  "P1-8-regression": "544 passed, 0 failed across 9 suites",
+  "P1-9-pop": "D0 population reconciles: 29,959 = 26,430 + 3,529; 33 = 30 + 3 cycles",
+  "P1-9-A0": "H6 decision level: P F1 0.460 vs S 0.437; PA1 fails; rejected",
+  "P1-9-BX": "stop constant on full real path: 1.20 -> 2 false alarms; 1.25 -> 12/12, 0 FA",
+  "P1-9-BE-D0": "stop 1.25 in D0 engine: accepted (neutral)",
+  "P1-9-BE-D1": "D-1 engine stop: rejected (4 false stops, sched 2046<2076)",
+  "P1-9-C": "CH1/CH2 rejected (CH2 near-miss), CH3 unsupported",
+  "P1-9-D": "G1b timestamp audit; causal analogue passes; plausible but unconfirmed",
+  "P1-9-final": "final validation fwd+hr, integrated, robustness; freeze v2; 566 tests pass"
+ },
+ "open_decisions": [],
+ "decisions": [
+  {
+   "date": "2026-11-25",
+   "item": "V01 (book condition)",
+   "decision": "Rejected; archived as a research candidate; not default"
+  },
+  {
+   "date": "2026-11-25",
+   "item": "C1 (rebased futures input from 15:15 in post-auction cycles)",
+   "decision": "Diagnostic input convention only, for sensitivity analysis; not a trading rule, not a replacement for the frozen baseline; does not reconstruct the late trigger"
+  },
+  {
+   "date": "2026-11-25",
+   "item": "B1",
+   "decision": "Remains the official frozen baseline"
+  },
+  {
+   "date": "2026-11-25",
+   "item": "Gate 2",
+   "decision": "CONDITIONAL closure accepted; not relabelled PASS; investigation complete, mechanisms not reconstructed"
+  },
+  {
+   "date": "2026-11-25",
+   "item": "Next",
+   "decision": "Gate 3a buy-back stop experiment"
+  },
+  {
+   "date": "2026-11-25",
+   "item": "Commits and pushes",
+   "decision": "Not authorised"
+  },
+  {
+   "date": "2026-11-25",
+   "item": "Phase 1 closure",
+   "decision": "CONDITIONAL; commits and pushes not authorised; no instruction to commit received"
+  },
+  {
+   "date": "2026-11-25",
+   "item": "Final loop",
+   "decision": "Phase 1 remains CONDITIONAL; X1 not a production default; stop constant 1.25; commits and pushes not authorised"
+  }
+ ]
+}

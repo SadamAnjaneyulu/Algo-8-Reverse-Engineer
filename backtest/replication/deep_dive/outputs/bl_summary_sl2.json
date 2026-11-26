@@ -1,0 +1,246 @@
+{
+ "rho_lump_lots": [
+  0.39138049894713983,
+  0.026752871487878593
+ ],
+ "rho_lump_premium": [
+  0.23094621133516663,
+  0.20347034834987374
+ ],
+ "rho_buyback_lots": [
+  0.45373362963965386,
+  0.009098789507577004
+ ],
+ "rho_wing_close_lots": [
+  0.4122543713868563,
+  0.019045764377239205
+ ],
+ "rho_react_lots_late": [
+  0.4837241588095263,
+  0.005032924187847294
+ ],
+ "rho_deep_lots": [
+  -0.004156828789396855,
+  0.9819860332939254
+ ],
+ "rho_solo_before_15": [
+  -0.03398552871134024,
+  0.8534993258057005
+ ],
+ "rho_premium_solo_vs_lump": [
+  0.42507561355322365,
+  0.015299850820420721
+ ],
+ "flow": [
+  {
+   "window": "after 10 s",
+   "order_kind": "h_ | close_long | PE",
+   "share_late_solo": 0.0952,
+   "share_controls": 0.0016,
+   "lift": 60.9524
+  },
+  {
+   "window": "after 10 s",
+   "order_kind": "num | cover_short | PE",
+   "share_late_solo": 0.1131,
+   "share_controls": 0.0021,
+   "lift": 54.2857
+  },
+  {
+   "window": "after 10 s",
+   "order_kind": "h_ | open_long | PE",
+   "share_late_solo": 0.5238,
+   "share_controls": 0.0135,
+   "lift": 38.6813
+  },
+  {
+   "window": "after 10 s",
+   "order_kind": "h_ | open_long | CE",
+   "share_late_solo": 0.6012,
+   "share_controls": 0.0167,
+   "lift": 36.0714
+  },
+  {
+   "window": "after 10 s",
+   "order_kind": "num | open_short | CE",
+   "share_late_solo": 0.2827,
+   "share_controls": 0.0167,
+   "lift": 16.9643
+  },
+  {
+   "window": "after 10 s",
+   "order_kind": "num | open_short | PE",
+   "share_late_solo": 0.2262,
+   "share_controls": 0.0167,
+   "lift": 13.5714
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "num | close_long | PE",
+   "share_late_solo": 0.0923,
+   "share_controls": 0.0062,
+   "lift": 14.7619
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "h_ | close_long | PE",
+   "share_late_solo": 0.2321,
+   "share_controls": 0.025,
+   "lift": 9.2857
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "num | cover_short | PE",
+   "share_late_solo": 0.2173,
+   "share_controls": 0.0266,
+   "lift": 8.1793
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "h_ | open_long | CE",
+   "share_late_solo": 0.6548,
+   "share_controls": 0.1479,
+   "lift": 4.4266
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "h_ | open_long | PE",
+   "share_late_solo": 0.6012,
+   "share_controls": 0.1365,
+   "lift": 4.4057
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "num | cover_short | CE",
+   "share_late_solo": 0.0506,
+   "share_controls": 0.0135,
+   "lift": 3.7363
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "num | open_short | CE",
+   "share_late_solo": 0.4464,
+   "share_controls": 0.1505,
+   "lift": 2.9659
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "h_ | close_long | CE",
+   "share_late_solo": 0.0506,
+   "share_controls": 0.0182,
+   "lift": 2.7755
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "num | open_short | PE",
+   "share_late_solo": 0.372,
+   "share_controls": 0.1453,
+   "lift": 2.5602
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "v_ | open_long | PE",
+   "share_late_solo": 0.0923,
+   "share_controls": 0.038,
+   "lift": 2.4266
+  },
+  {
+   "window": "after 2 min",
+   "order_kind": "v_ | open_long | CE",
+   "share_late_solo": 0.0685,
+   "share_controls": 0.0344,
+   "lift": 1.9913
+  },
+  {
+   "window": "before 10 s",
+   "order_kind": "num | cover_short | PE",
+   "share_late_solo": 0.0893,
+   "share_controls": 0.0062,
+   "lift": 14.2857
+  },
+  {
+   "window": "before 10 s",
+   "order_kind": "num | open_short | CE",
+   "share_late_solo": 0.2589,
+   "share_controls": 0.0193,
+   "lift": 13.4363
+  },
+  {
+   "window": "before 10 s",
+   "order_kind": "num | open_short | PE",
+   "share_late_solo": 0.1994,
+   "share_controls": 0.0156,
+   "lift": 12.7619
+  },
+  {
+   "window": "before 10 s",
+   "order_kind": "h_ | open_long | PE",
+   "share_late_solo": 0.0982,
+   "share_controls": 0.0141,
+   "lift": 6.9841
+  },
+  {
+   "window": "before 10 s",
+   "order_kind": "h_ | open_long | CE",
+   "share_late_solo": 0.122,
+   "share_controls": 0.0182,
+   "lift": 6.6939
+  },
+  {
+   "window": "before 2 min",
+   "order_kind": "num | cover_short | PE",
+   "share_late_solo": 0.1458,
+   "share_controls": 0.026,
+   "lift": 5.6
+  },
+  {
+   "window": "before 2 min",
+   "order_kind": "h_ | close_long | PE",
+   "share_late_solo": 0.0982,
+   "share_controls": 0.0229,
+   "lift": 4.2857
+  },
+  {
+   "window": "before 2 min",
+   "order_kind": "num | open_short | CE",
+   "share_late_solo": 0.4851,
+   "share_controls": 0.1609,
+   "lift": 3.0143
+  },
+  {
+   "window": "before 2 min",
+   "order_kind": "h_ | close_long | CE",
+   "share_late_solo": 0.0387,
+   "share_controls": 0.0156,
+   "lift": 2.4762
+  },
+  {
+   "window": "before 2 min",
+   "order_kind": "h_ | open_long | CE",
+   "share_late_solo": 0.3929,
+   "share_controls": 0.1609,
+   "lift": 2.4411
+  },
+  {
+   "window": "before 2 min",
+   "order_kind": "num | open_short | PE",
+   "share_late_solo": 0.3452,
+   "share_controls": 0.1526,
+   "lift": 2.2623
+  },
+  {
+   "window": "before 2 min",
+   "order_kind": "num | cover_short | CE",
+   "share_late_solo": 0.0387,
+   "share_controls": 0.0172,
+   "lift": 2.2511
+  },
+  {
+   "window": "before 2 min",
+   "order_kind": "h_ | open_long | PE",
+   "share_late_solo": 0.2619,
+   "share_controls": 0.1427,
+   "lift": 1.8352
+  }
+ ]
+}

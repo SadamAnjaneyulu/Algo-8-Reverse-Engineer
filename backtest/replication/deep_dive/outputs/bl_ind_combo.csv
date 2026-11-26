@@ -1,0 +1,12 @@
+model,LOCO_AUC,gain_vs_alone
+Donchian position|60 alone,0.9132,0.0
++ SMA gap 10 (absolute),0.9128,-0.0004
++ Bollinger z 30,0.9136,0.0004
++ EMA z 30,0.9161,0.0029
++ gap/ATR 15,0.9121,-0.0011
++ momentum 15,0.9128,-0.0004
+"+ SMA cross (10,30)",0.9141,0.0009
+"+ MACD (12,26)",0.9151,0.0019
++ regression drift 30,0.9146,0.0014
++ Donchian position 15,0.9184,0.0052
++ RSI 14ish (30),0.9178,0.0046

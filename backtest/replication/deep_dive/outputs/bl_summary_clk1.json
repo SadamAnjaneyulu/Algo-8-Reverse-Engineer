@@ -1,0 +1,50 @@
+{
+ "n_configs": 286,
+ "rows": [
+  {
+   "info": "bar",
+   "configs": 128,
+   "chosen": "(70, 30, 30, 1, 0) / (70, 30, 30, 1, 0)",
+   "precision": 0.6494,
+   "recall": 0.5639,
+   "F1": 0.6036,
+   "F1_same_minute": 0.1891,
+   "split_F1_mean": 0.6017,
+   "split_lo": 0.5446,
+   "split_hi": 0.6426,
+   "insample_best": "(70, 30, 30, 1, 0)",
+   "insample_F1": 0.6036
+  },
+  {
+   "info": "intra",
+   "configs": 128,
+   "chosen": "(70, 30, 30, 1, 0) / (70, 30, 30, 1, 0)",
+   "precision": 0.6494,
+   "recall": 0.5639,
+   "F1": 0.6036,
+   "F1_same_minute": 0.4668,
+   "split_F1_mean": 0.5926,
+   "split_lo": 0.54,
+   "split_hi": 0.6526,
+   "insample_best": "(70, 30, 30, 1, 0)",
+   "insample_F1": 0.6036
+  }
+ ],
+ "phase_best": [
+  {
+   "W": 10,
+   "phase_min": 0,
+   "F1": 0.4439
+  },
+  {
+   "W": 5,
+   "phase_min": 0,
+   "F1": 0.3533
+  },
+  {
+   "W": 10,
+   "phase_min": 3,
+   "F1": 0.3333
+  }
+ ]
+}

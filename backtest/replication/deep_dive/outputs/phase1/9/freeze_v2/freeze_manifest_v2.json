@@ -1,0 +1,123 @@
+{
+ "version": "v2",
+ "frozen_at": "2026-11-25 (Phase 1 final loop)",
+ "status": "FROZEN CANDIDATE (uncommitted; user review pending)",
+ "evidence_label": "historical reproduction on development cycles; no independent validation exists",
+ "supersedes": "outputs/phase1/8/freeze_manifest.json (kept unchanged as v1)",
+ "default_regression_vs_gate5a_reference": {
+  "cycles": 49,
+  "identical": 49,
+  "passed": true
+ },
+ "frozen_d0_params_sha256_v1": "234d2902e10ad76dc3b5f655dcc63922c08e3e11b119db9695e2beb9a274a403",
+ "frozen_d0_configs_forward_sha256": "705e05dc59288ab4bea815007809b2a735b04303fd9484a6917575c3feb344b8",
+ "frozen_d0_configs_historical_reproduction_sha256": "3d2f619b85af4336964f8c20785c8eb16a22c41d285f03b76b875bba0ad71c86",
+ "d0_configuration_definitions": {
+  "forward": "production/forward default: clearance minute 359 in every cycle (no era rule), cycle stop 1.25 lakh, enforce risk guard, all candidates off",
+  "historical_reproduction": "forward + EXPERIMENTAL IN-SAMPLE era clearance 363 for pre-auction expiries (X1); not independent; not a production default"
+ },
+ "frozen_d1_configs_sha256": "e3d206cac38b1a562f39a52f7ef20098855666e6e9efa0fbd38e49f03ffcf8c0",
+ "d1_note": "B1 = one_lot_v2; new fields cycle_stop_rupees=None (rejected candidate, default off) and cycle_stop_check_s=5 do not change behaviour",
+ "source_sha256": {
+  "algo8_integrated/__init__.py": "a62453231dcee7db8b71d1137b01200f46375a45ff9685818a7df26755a9b8a9",
+  "algo8_integrated/handoff.py": "e701a925dabb502933063a2af6999839721e29d856b340d5ebc839038be79b94",
+  "algo8_integrated/runner.py": "cd6a97506e3678c6cc2c39853f62ccb1ff0adfec4dd61df970f5b5ca50f8bee8",
+  "algo8_integrated/test_integrated.py": "99efd0bf0341751fa16783bc602ce619fd3a57fe395a153b85356651f0ef7d45",
+  "d0_strategy/d0_algo/__init__.py": "29134337ea5d884753511b698c5572982c8f07ad97f30da69253b2b66424e152",
+  "d0_strategy/d0_algo/config.py": "007bb62e2161d56dbe1a80e408c9e180eddf5f72d49fb7a8361775d7dec5fa10",
+  "d0_strategy/d0_algo/engine.py": "d21e77612b5f6a74546f9d711d887171656e359bfb4b55d4e99e2a5cc57c8f3d",
+  "d0_strategy/test_d0_engine.py": "af960fdea0fb441f4c1977a7f07de2c123ca9cf107e138259c2d701030bddc69",
+  "d1_strategy/d1_algo/__init__.py": "30f772fe78f71503dc91bd6de814cfc05db46e625538b418d106859ece324f46",
+  "d1_strategy/d1_algo/bars.py": "e944032682e619299342fc6657f0f83aab356da1de28af831de4a004b98ed29c",
+  "d1_strategy/d1_algo/book.py": "5da44214ac1c354a48a5cf667393f9d126e3903403a855762914d81fac979569",
+  "d1_strategy/d1_algo/config.py": "234507c11562c6e1b9b6ee0782cee501a1da73e367df6f80e00f5f760f0ef2c3",
+  "d1_strategy/d1_algo/engine.py": "80cabd1b2bea7ad20866cef9b5900abbd4945c33e82196d3fc51e2549f2d801b",
+  "d1_strategy/d1_algo/interfaces.py": "2c1f6691d9daab813007422140c85a6cee38770f0fff9b702b655175f38785f7",
+  "d1_strategy/d1_algo/live_template.py": "8407f2eafffe5b855151497078b8477825a9c35399ccc789c0ca3ae565ea2e11",
+  "d1_strategy/d1_algo/models.py": "31a6cd1085ada4ba1477849e51f5bc691c5d56bbcb44e02e4608346ebeeb5dd6",
+  "d1_strategy/d1_algo/risk.py": "9cf1dfabc5edb940f9545bbe6254a2eda028ff7f6fc6a83c9c0062cef770dcac",
+  "d1_strategy/d1_algo/shadow.py": "6d4b860853f88fc07b3f8223bfa79899521238b48e364739da708132017ffcf7",
+  "d1_strategy/d1_algo/shadow_state.py": "6c1efa766c32a08b6794fb241313c415640d9b73f70e4d1d42bc36a1a0e7994b",
+  "d1_strategy/d1_algo/sim.py": "8f51d215611da4d31333e8d1909499a9b8c814afdccda1c7cbc5fcbd03ca7703",
+  "d1_strategy/test_cycle_stop.py": "ba9f22c64d6fef9c3ec2ef6d9771fb95013140b8cd771403dd71a51da2ccc0a2"
+ },
+ "source_sha256_v1": {
+  "algo8_integrated/__init__.py": "a62453231dcee7db8b71d1137b01200f46375a45ff9685818a7df26755a9b8a9",
+  "algo8_integrated/handoff.py": "e701a925dabb502933063a2af6999839721e29d856b340d5ebc839038be79b94",
+  "algo8_integrated/runner.py": "cd6a97506e3678c6cc2c39853f62ccb1ff0adfec4dd61df970f5b5ca50f8bee8",
+  "algo8_integrated/test_integrated.py": "99efd0bf0341751fa16783bc602ce619fd3a57fe395a153b85356651f0ef7d45",
+  "d0_strategy/d0_algo/__init__.py": "29134337ea5d884753511b698c5572982c8f07ad97f30da69253b2b66424e152",
+  "d0_strategy/d0_algo/config.py": "2eece8564b10efe1ed9345d6821817d7ac1d38b81db713c0ce736ba1b1fde9ef",
+  "d0_strategy/d0_algo/engine.py": "2bbcb16880082bca76af749c787ba1b8c02a0275600132652cf22aef7ccee696",
+  "d0_strategy/test_d0_engine.py": "3a95b2f9844258ad2bdfc201996f3dd2a90488d64fe9e6151ac588a6427325ee",
+  "d1_strategy/d1_algo/__init__.py": "30f772fe78f71503dc91bd6de814cfc05db46e625538b418d106859ece324f46",
+  "d1_strategy/d1_algo/bars.py": "e944032682e619299342fc6657f0f83aab356da1de28af831de4a004b98ed29c",
+  "d1_strategy/d1_algo/book.py": "5da44214ac1c354a48a5cf667393f9d126e3903403a855762914d81fac979569",
+  "d1_strategy/d1_algo/config.py": "df06fc93b1d0c72a399611c95a72763ab56273081c470df28be8cf6796f9982f",
+  "d1_strategy/d1_algo/engine.py": "8940fb2a1083fb2b73382257d033a4f79db9a4f3350ac9e32ab814c77c8a011f",
+  "d1_strategy/d1_algo/interfaces.py": "2c1f6691d9daab813007422140c85a6cee38770f0fff9b702b655175f38785f7",
+  "d1_strategy/d1_algo/live_template.py": "8407f2eafffe5b855151497078b8477825a9c35399ccc789c0ca3ae565ea2e11",
+  "d1_strategy/d1_algo/models.py": "31a6cd1085ada4ba1477849e51f5bc691c5d56bbcb44e02e4608346ebeeb5dd6",
+  "d1_strategy/d1_algo/risk.py": "d7648f72ad7099bf3477487e151b4df34308204182c704a080d34215f353a204",
+  "d1_strategy/d1_algo/shadow.py": "6d4b860853f88fc07b3f8223bfa79899521238b48e364739da708132017ffcf7",
+  "d1_strategy/d1_algo/shadow_state.py": "6c1efa766c32a08b6794fb241313c415640d9b73f70e4d1d42bc36a1a0e7994b",
+  "d1_strategy/d1_algo/sim.py": "8f51d215611da4d31333e8d1909499a9b8c814afdccda1c7cbc5fcbd03ca7703"
+ },
+ "changed_since_v1": {
+  "d0_strategy/d0_algo/config.py": {
+   "old": "2eece8564b10efe1ed9345d6821817d7ac1d38b81db713c0ce736ba1b1fde9ef",
+   "new": "007bb62e2161d56dbe1a80e408c9e180eddf5f72d49fb7a8361775d7dec5fa10",
+   "reason": "default-off clearance_hazards field"
+  },
+  "d0_strategy/d0_algo/engine.py": {
+   "old": "2bbcb16880082bca76af749c787ba1b8c02a0275600132652cf22aef7ccee696",
+   "new": "d21e77612b5f6a74546f9d711d887171656e359bfb4b55d4e99e2a5cc57c8f3d",
+   "reason": "default-off clearance_hazards (CH2, rejected, archived)"
+  },
+  "d0_strategy/test_d0_engine.py": {
+   "old": "3a95b2f9844258ad2bdfc201996f3dd2a90488d64fe9e6151ac588a6427325ee",
+   "new": "af960fdea0fb441f4c1977a7f07de2c123ca9cf107e138259c2d701030bddc69",
+   "reason": "tests for the clearance_hazards switch"
+  },
+  "d1_strategy/d1_algo/config.py": {
+   "old": "df06fc93b1d0c72a399611c95a72763ab56273081c470df28be8cf6796f9982f",
+   "new": "234507c11562c6e1b9b6ee0782cee501a1da73e367df6f80e00f5f760f0ef2c3",
+   "reason": "default-off cycle_stop_rupees / cycle_stop_check_s fields"
+  },
+  "d1_strategy/d1_algo/engine.py": {
+   "old": "8940fb2a1083fb2b73382257d033a4f79db9a4f3350ac9e32ab814c77c8a011f",
+   "new": "80cabd1b2bea7ad20866cef9b5900abbd4945c33e82196d3fc51e2549f2d801b",
+   "reason": "default-off cycle-stop switch (BE-D1, rejected, archived)"
+  },
+  "d1_strategy/d1_algo/risk.py": {
+   "old": "d7648f72ad7099bf3477487e151b4df34308204182c704a080d34215f353a204",
+   "new": "9cf1dfabc5edb940f9545bbe6254a2eda028ff7f6fc6a83c9c0062cef770dcac",
+   "reason": "cycle_stop roles treated as risk-reducing (only reachable with the switch on)"
+  },
+  "d1_strategy/test_cycle_stop.py": {
+   "old": null,
+   "new": "ba9f22c64d6fef9c3ec2ef6d9771fb95013140b8cd771403dd71a51da2ccc0a2",
+   "reason": "new tests for the D-1 cycle-stop switch"
+  }
+ },
+ "unexplained_changes": [],
+ "artefact_sha256": {
+  "phase1/9/population_reconciliation.json": "ac85df2d547e73e869b0d5b2a978f3d1d7fbd9231b398031ccb89e154e300f11",
+  "phase1/9/A_analytic.json": "8425977a428a54680f3a24791cb6cea2380c4560efd097ca35b2d5e606e5be1a",
+  "phase1/9/B_fullpath_stop_test.json": "9f6ba09fcce2d6cd3694cc065b9e82f3d2c2712c5e1ed3aa16832a7684fd9d5f",
+  "phase1/9/BE_D1_result.json": "36772f3c4975e8614b2311081a87a71f4753722b53605e55045f0590bdae842f",
+  "phase1/9/BE_D0_L125.json": "44986a9c94fd5ff631186448b95be854f1f8691f15b673e9f07e0a0cf6aa189e",
+  "phase1/9/C_acceptance.json": "ccc2d4f2b4a8cc1f9387c93430fdc8f03b2118adaffabf85f6f136eeb9d755db",
+  "phase1/9/D_analytic.json": "be5ec6be3b5ae60864e68734a2789c8e7503ef7e6cb71908576f170a7476bb3f",
+  "phase1/9/final_hr/summary.json": "1597c5dbf83045665650fd15e18ab27e34a11e7de34527f289269ecc1a1e9680",
+  "phase1/9/final_fwd/summary.json": "d2c0437a0f521adc08ede3cdb71f4d2f65f21c5ea8633b9cf9aee10c087fdfb3",
+  "phase1/9/final_hr_integrated/summary.json": "298199dd8a696df27face37daf30c7b810950471563e3f705a3c9094c506a6e8",
+  "phase1/9/final_fwd_integrated/summary.json": "2a948ca4124e88ad7ea1a48e1e60593feeaa2494d48e4967052785e194b742a8",
+  "phase1/9/final_robust.json": "29a2116f95e7a3a5e6fbabd7c8085e57baeb5d9337363b09ccb949f372037ae4",
+  "phase1/baseline_manifest.json": "f46d2efd92a810d80a3a705db0b897d6cde4ba2410d1cb7c6f1664119950666b",
+  "scoring/spec_freeze.json": "aa39172ae663f77b00a301ff5d69af13633fc2e0886d77c360faf6285b5be0b0",
+  "scoring/execution_convention.json": "b6a05d39b89aa3064fd1d4d9157097e61e8e4d9cd706167de836bbe24bb34290"
+ },
+ "v1_manifest_sha256": "d36e2a4a7aa0a05f8ecba3b00075e955f5a89aae0bbfe1ec3e58bc3b6faf0ee0",
+ "frozen_late_sale_shadow": "untouched: shadow.py and shadow_state.py hashes equal v1 (and git HEAD)"
+}

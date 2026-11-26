@@ -1,0 +1,77 @@
+{
+ "checks": {
+  "real_orders_identical_between_runs": true,
+  "decision_keys_v1": 8629,
+  "decision_keys_v2": 8629,
+  "keys_only_in_one_run": 0,
+  "keys_with_different_total_lots": 0,
+  "total_lots_v1": 11553,
+  "total_lots_v2": 11553,
+  "non_split_roles_rows_v1": 7916,
+  "non_split_roles_rows_v2": 7916,
+  "non_split_roles_identical_row_by_row": true,
+  "split_role_lots_all_one_v2": true
+ },
+ "split_roles": {
+  "opening_wing_buy": {
+   "orders_v1": 62,
+   "orders_v2": 186,
+   "lots_v1": 186,
+   "lots_v2": 186,
+   "share_multilot_v1": 1.0,
+   "share_multilot_v2": 0.0
+  },
+  "stop_buyback": {
+   "orders_v1": 757,
+   "orders_v2": 933,
+   "lots_v1": 933,
+   "lots_v2": 933,
+   "share_multilot_v1": 0.18229854689564068,
+   "share_multilot_v2": 0.0
+  }
+ },
+ "real_log_evidence": {
+  "opening_wing_buy": {
+   "real_orders": 186,
+   "real_lots": 186,
+   "share_multilot": 0.0,
+   "max_lots": 1
+  },
+  "stop_buyback": {
+   "real_orders": 1324,
+   "real_lots": 1324,
+   "share_multilot": 0.0,
+   "max_lots": 1
+  }
+ },
+ "real_log_other_classes": {
+  "body_buyback": {
+   "real_orders": 1324,
+   "share_multilot": 0.0
+  },
+  "body_sell": {
+   "real_orders": 4408,
+   "share_multilot": 0.0024954627949183303
+  },
+  "lump": {
+   "real_orders": 73,
+   "share_multilot": 0.9315068493150684
+  },
+  "not_modelled": {
+   "real_orders": 178,
+   "share_multilot": 0.15168539325842698
+  },
+  "opening_wings": {
+   "real_orders": 186,
+   "share_multilot": 0.0
+  },
+  "wing_buy": {
+   "real_orders": 3146,
+   "share_multilot": 0.18849332485696121
+  },
+  "wing_sell": {
+   "real_orders": 600,
+   "share_multilot": 0.4033333333333333
+  }
+ }
+}

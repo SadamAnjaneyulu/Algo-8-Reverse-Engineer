@@ -1,0 +1,41 @@
+day,model,kind,AUC,logloss
+D-1,"1 baseline (fav30, own, other ratio)",lr,0.754,0.0822
+D-1,"1 baseline (fav30, own, other ratio)",gb,0.7778,0.0788
+D-1,2 baseline + multi-horizon moves,lr,0.7766,0.0808
+D-1,2 baseline + multi-horizon moves,gb,0.8385,0.0728
+D-1,3 baseline + breakout variables,lr,0.8312,0.0734
+D-1,3 baseline + breakout variables,gb,0.8485,0.0711
+D-1,4 baseline + multi-horizon + breakout,lr,0.8313,0.0736
+D-1,4 baseline + multi-horizon + breakout,gb,0.8601,0.0699
+D-1,"5 baseline + Greeks (delta, gamma, vega)",lr,0.7798,0.0802
+D-1,"5 baseline + Greeks (delta, gamma, vega)",gb,0.7912,0.0779
+D-1,6 baseline + vol (VIX-like) proxies,lr,0.7665,0.0825
+D-1,6 baseline + vol (VIX-like) proxies,gb,0.7897,0.0781
+D-1,7 baseline + inventory,lr,0.7957,0.0785
+D-1,7 baseline + inventory,gb,0.8036,0.077
+D-1,8 baseline + activity history,lr,0.7576,0.0813
+D-1,8 baseline + activity history,gb,0.799,0.077
+D-1,9 market model: 4 + Greeks + vol + inventory,lr,0.8511,0.0724
+D-1,9 market model: 4 + Greeks + vol + inventory,gb,0.8715,0.0692
+D-1,10 everything incl. activity + clock,lr,0.8569,0.0734
+D-1,10 everything incl. activity + clock,gb,0.9,0.0659
+D0,"1 baseline (fav30, own, other ratio)",lr,0.5981,0.1815
+D0,"1 baseline (fav30, own, other ratio)",gb,0.6272,0.1775
+D0,2 baseline + multi-horizon moves,lr,0.6123,0.1809
+D0,2 baseline + multi-horizon moves,gb,0.6536,0.1758
+D0,3 baseline + breakout variables,lr,0.6146,0.1802
+D0,3 baseline + breakout variables,gb,0.655,0.1754
+D0,4 baseline + multi-horizon + breakout,lr,0.6112,0.1801
+D0,4 baseline + multi-horizon + breakout,gb,0.6586,0.1754
+D0,"5 baseline + Greeks (delta, gamma, vega)",lr,0.6393,0.1793
+D0,"5 baseline + Greeks (delta, gamma, vega)",gb,0.6605,0.1759
+D0,6 baseline + vol (VIX-like) proxies,lr,0.5668,0.1829
+D0,6 baseline + vol (VIX-like) proxies,gb,0.6258,0.1782
+D0,7 baseline + inventory,lr,0.6308,0.1807
+D0,7 baseline + inventory,gb,0.6481,0.1763
+D0,8 baseline + activity history,lr,0.6663,0.1781
+D0,8 baseline + activity history,gb,0.8145,0.1508
+D0,9 market model: 4 + Greeks + vol + inventory,lr,0.6793,0.1765
+D0,9 market model: 4 + Greeks + vol + inventory,gb,0.7078,0.1705
+D0,10 everything incl. activity + clock,lr,0.7124,0.173
+D0,10 everything incl. activity + clock,gb,0.8411,0.1447

@@ -1,0 +1,86 @@
+{
+ "n_real_solo_labelled": 1140,
+ "T1": {
+  "distinct_second_pairs_within_60s": 353,
+  "replay_spot_units_of_trigger": {
+   "0.1": 0.0,
+   "0.25": 0.013,
+   "0.5": 0.121,
+   "0.75": 0.56,
+   "0.9": 1.457
+  },
+  "pairs_in_different_minutes": 86,
+  "minute_close_units_of_trigger": {
+   "0.1": 0.289,
+   "0.25": 0.665,
+   "0.5": 1.197,
+   "0.75": 1.968,
+   "0.9": 3.257
+  },
+  "same_second_pairs": 229,
+  "note": "replay spot uses the intrabar path convention; minute-close uses only completed-minute closes (pairs in different minutes only)"
+ },
+ "T2": {
+  "groups": 911,
+  "groups_k_ge_2": 151,
+  "pairs_used": 541,
+  "spearman_k_vs_rungs": -0.029,
+  "p": 0.49738164859170175,
+  "mean_rungs_by_k": {
+   "1": 0.87,
+   "2": 0.74,
+   "3": 1.13,
+   "4": 0.75,
+   "5": 0.21
+  },
+  "count_by_k": {
+   "1": 440,
+   "2": 70,
+   "3": 16,
+   "4": 8,
+   "5": 7
+  }
+ },
+ "T3": [
+  {
+   "N": 5,
+   "sell_minutes": 636,
+   "sell_with_extreme": 557,
+   "minutes": 23680,
+   "minutes_with_extreme": 5972,
+   "share_sell_minutes": 0.8758,
+   "base_rate": 0.2522,
+   "lift": 3.4726
+  },
+  {
+   "N": 15,
+   "sell_minutes": 607,
+   "sell_with_extreme": 504,
+   "minutes": 23040,
+   "minutes_with_extreme": 3312,
+   "share_sell_minutes": 0.8303,
+   "base_rate": 0.1438,
+   "lift": 5.7761
+  },
+  {
+   "N": 30,
+   "sell_minutes": 568,
+   "sell_with_extreme": 445,
+   "minutes": 22080,
+   "minutes_with_extreme": 2164,
+   "share_sell_minutes": 0.7835,
+   "base_rate": 0.098,
+   "lift": 7.9938
+  },
+  {
+   "N": 60,
+   "sell_minutes": 518,
+   "sell_with_extreme": 370,
+   "minutes": 20160,
+   "minutes_with_extreme": 1377,
+   "share_sell_minutes": 0.7143,
+   "base_rate": 0.0683,
+   "lift": 10.4575
+  }
+ ]
+}

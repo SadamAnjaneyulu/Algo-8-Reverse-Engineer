@@ -1,0 +1,32 @@
+NIFTY|2026-08-04 rows 50
+NIFTY|2026-08-18 rows 100
+NIFTY|2026-08-25 rows 150
+NIFTY|2026-09-08 rows 200
+NIFTY|2026-09-22 rows 250
+NIFTY|2026-10-06 rows 300
+NIFTY|2026-10-13 rows 350
+SENSEX|2026-08-06 rows 400
+SENSEX|2026-08-13 rows 450
+SENSEX|2026-08-20 rows 500
+SENSEX|2026-08-27 rows 550
+SENSEX|2026-09-10 rows 600
+SENSEX|2026-09-17 rows 650
+SENSEX|2026-09-24 rows 700
+SENSEX|2026-10-01 rows 750
+SENSEX|2026-10-08 rows 800
+SENSEX|2026-10-15 rows 850
+SENSEX|2026-10-22 rows 900
+          window           feature   auc  null_mean     p cycles_same_direction  p_bh
+post 15:15-15:39      sold_deficit 0.673      0.556 0.001                 16/17 0.006
+post 15:15-15:39       net_deficit 0.652      0.554 0.001                 15/17 0.006
+post 15:15-15:39      cover_same_5 0.479      0.487 0.205                  4/17 0.246
+post 15:15-15:39     cover_other_5 0.467      0.492 0.085                  5/17 0.113
+post 15:15-15:39           mtm_pnl 0.552      0.526 0.259                 10/17 0.282
+post 15:15-15:39     mtm_change_15 0.651      0.575 0.029                 13/17 0.050
+post 15:15-15:39        decay_same 0.363      0.438 0.021                 14/17 0.048
+post 15:15-15:39 peak_deficit_same 0.544      0.502 0.024                  6/17 0.048
+post 15:15-15:39   mins_since_sale 0.594      0.480 0.055                 10/17 0.082
+post 15:15-15:39  mins_since_cover 0.482      0.458 0.867                 10/17 0.867
+post 15:15-15:39   straddle_chg_15 0.318      0.426 0.002                 16/17 0.006
+post 15:15-15:39  straddle_vs_0920 0.360      0.463 0.002                 15/17 0.006
+{"cycles": 17, "theta_up": 17, "median_d_theta": 13136.643320060495, "median_d_gap": -67113.24364867271, "median_gap_relative": -0.059512785333410374, "gap_not_worse_5pct": 8, "gap_improved": 3, "median_d_absdelta": -11856.501129034092, "median_late_premium": 39636.0, "median_extra_lump_cost": 487.4971774193549, "net_premium_positive": 17, "lump_actual_vs_cf": [43.0, 39.0]}

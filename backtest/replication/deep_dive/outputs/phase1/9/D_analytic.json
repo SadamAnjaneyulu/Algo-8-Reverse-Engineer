@@ -1,0 +1,128 @@
+{
+ "DT0": {
+  "bursts": 8,
+  "starts": [
+   [
+    "NIFTY|2026-08-24",
+    55742,
+    58
+   ],
+   [
+    "NIFTY|2026-09-21",
+    55697,
+    103
+   ],
+   [
+    "SENSEX|2026-07-01",
+    55724,
+    76
+   ],
+   [
+    "SENSEX|2026-07-29",
+    55542,
+    258
+   ],
+   [
+    "SENSEX|2026-08-05",
+    55796,
+    4
+   ],
+   [
+    "SENSEX|2026-08-12",
+    55800,
+    0
+   ],
+   [
+    "SENSEX|2026-08-26",
+    55717,
+    83
+   ],
+   [
+    "SENSEX|2026-10-21",
+    55775,
+    25
+   ]
+  ],
+  "before_candle_completion": 7,
+  "at_or_after": 1,
+  "min_lead_s": 0,
+  "max_lead_s": 258,
+  "t_dec_available_for_body_orders": false,
+  "t_dec_note": "t_dec is non-null only for modules h_, s_, v_, m_ (3,850 of 9,915 D-1 orders); body (num) burst orders have fill seconds only"
+ },
+ "DT1": {
+  "burst_hit": 7,
+  "cond_cycles": 12,
+  "cycles": 29,
+  "precision": 0.5833333333333334,
+  "recall": 0.875,
+  "false_positive_cycles": 5,
+  "fisher_p": 0.0032522200438242425,
+  "odds_ratio": 22.4,
+  "success": true,
+  "reproduces_G1b": true
+ },
+ "DT2": {
+  "burst_hit": 6,
+  "cond_cycles": 10,
+  "cycles": 29,
+  "precision": 0.6,
+  "recall": 0.75,
+  "false_positive_cycles": 4,
+  "fisher_p": 0.008908133345914455,
+  "odds_ratio": 12.75,
+  "success": true
+ },
+ "DT3": {
+  "369": {
+   "burst_hit": 6,
+   "cond_cycles": 10,
+   "cycles": 29,
+   "precision": 0.6,
+   "recall": 0.75,
+   "false_positive_cycles": 4,
+   "fisher_p": 0.008908133345914455,
+   "odds_ratio": 12.75,
+   "success": true
+  },
+  "371": {
+   "burst_hit": 6,
+   "cond_cycles": 11,
+   "cycles": 29,
+   "precision": 0.5454545454545454,
+   "recall": 0.75,
+   "false_positive_cycles": 5,
+   "fisher_p": 0.01789105447276362,
+   "odds_ratio": 9.6,
+   "success": true
+  },
+  "373": {
+   "burst_hit": 6,
+   "cond_cycles": 13,
+   "cycles": 29,
+   "precision": 0.46153846153846156,
+   "recall": 0.75,
+   "false_positive_cycles": 7,
+   "fisher_p": 0.054672663668165915,
+   "odds_ratio": 6.0,
+   "success": false
+  },
+  "374": {
+   "burst_hit": 7,
+   "cond_cycles": 12,
+   "cycles": 29,
+   "precision": 0.5833333333333334,
+   "recall": 0.875,
+   "false_positive_cycles": 5,
+   "fisher_p": 0.0032522200438242425,
+   "odds_ratio": 22.4,
+   "success": true
+  }
+ },
+ "DT4": {
+  "starts_in_last_120s": 7,
+  "of": 8,
+  "expected_share_uniform": 0.4,
+  "binomial_p_one_sided": 0.008519680000000003
+ }
+}

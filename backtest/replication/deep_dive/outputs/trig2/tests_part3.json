@@ -1,0 +1,94 @@
+{
+ "S5": {
+  "sumsq": 213,
+  "null_mean": 140.8488,
+  "null_sd": 14.401539451044808,
+  "p": 0.0003999200159968006,
+  "top_minutes": {
+   "15:29": 8,
+   "15:20": 6,
+   "15:23": 6,
+   "15:28": 5,
+   "15:19": 4,
+   "15:15": 3,
+   "15:22": 3,
+   "15:24": 2
+  }
+ },
+ "S6": {
+  "events_in_15_15_15_20_15_29": 17,
+  "of": 47,
+  "share": 0.3617021276595745,
+  "null_share_mean": 0.11945106382978724,
+  "p": 0.0001999600079984003,
+  "note": "minutes chosen from the exchange timetable AFTER seeing the event-minute histogram: exploratory"
+ },
+ "S1b": {
+  "pairs_same_minute_diff_cycle": 77,
+  "coincident_within_3s": 11,
+  "null_mean": 7.5232,
+  "p": 0.1239752049590082
+ },
+ "X1_d": {
+  "auc": 0.6833333333333333,
+  "cycles": 17,
+  "null_mean": 0.5012569892473118,
+  "null_sd": 0.04953873474391276,
+  "p_two_sided": 0.0014997501249375312
+ },
+ "X1_d_feed": {
+  "auc": 0.6817204301075269,
+  "cycles": 17,
+  "null_mean": 0.5009637096774193,
+  "null_sd": 0.048467064874444854,
+  "p_two_sided": 0.0014997501249375312
+ },
+ "X1_d_fut": {
+  "auc": 0.7295698924731183,
+  "cycles": 17,
+  "null_mean": 0.500349193548387,
+  "null_sd": 0.05062517198419476,
+  "p_two_sided": 0.0004997501249375312
+ },
+ "X1_d_l": {
+  "auc": 0.4661290322580645,
+  "cycles": 17,
+  "null_mean": 0.5018849462365591,
+  "null_sd": 0.049787584883278425,
+  "p_two_sided": 0.4744997501249375
+ },
+ "X1_d_feed_l": {
+  "auc": 0.5833333333333334,
+  "cycles": 17,
+  "null_mean": 0.49941801075268816,
+  "null_sd": 0.04927952910869836,
+  "p_two_sided": 0.10149975012493753
+ },
+ "X1_d_fut_l": {
+  "auc": 0.5016129032258064,
+  "cycles": 17,
+  "null_mean": 0.49976801075268823,
+  "null_sd": 0.05029102007440585,
+  "p_two_sided": 0.9684997501249375
+ },
+ "X2_feed": {
+  "solo_side_minutes": 33,
+  "share_CE_after_up_or_PE_after_down": 0.30303030303030304,
+  "p": 0.03508203336969018
+ },
+ "X2_fut": {
+  "solo_side_minutes": 36,
+  "share_CE_after_up_or_PE_after_down": 0.1111111111111111,
+  "p": 1.941574737429619e-06
+ },
+ "X2_feed_lag1": {
+  "solo_side_minutes": 33,
+  "share_CE_after_up_or_PE_after_down": 0.3939393939393939,
+  "p": 0.296206368599087
+ },
+ "X2_fut_lag1": {
+  "solo_side_minutes": 36,
+  "share_CE_after_up_or_PE_after_down": 0.2222222222222222,
+  "p": 0.0011932429624721408
+ }
+}

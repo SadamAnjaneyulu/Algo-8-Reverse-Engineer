@@ -1,0 +1,91 @@
+{
+ "overall": [
+  {
+   "split": "OOF (cycle halves)",
+   "cycles": 30,
+   "real_lots": 40874,
+   "sim_lots": 40024,
+   "precision": 0.4147,
+   "recall": 0.406,
+   "F1": 0.4103,
+   "F1_strict": 0.1938,
+   "F1_within1": 0.3052,
+   "not_modelled_lots": 908,
+   "null_shift15_F1": 0.1508
+  },
+  {
+   "split": "forward A (same version, later cycles)",
+   "cycles": 9,
+   "real_lots": 10106,
+   "sim_lots": 9091,
+   "precision": 0.4771,
+   "recall": 0.4292,
+   "F1": 0.4518,
+   "F1_strict": 0.2585,
+   "F1_within1": 0.3572,
+   "not_modelled_lots": 469,
+   "null_shift15_F1": 0.0932
+  },
+  {
+   "split": "forward B (train V1, test V2)",
+   "cycles": 10,
+   "real_lots": 10947,
+   "sim_lots": 13312,
+   "precision": 0.3549,
+   "recall": 0.4316,
+   "F1": 0.3895,
+   "F1_strict": 0.1876,
+   "F1_within1": 0.2905,
+   "not_modelled_lots": 371,
+   "null_shift15_F1": 0.1073
+  }
+ ],
+ "auc": [
+  {
+   "split": "OOF (cycle halves)",
+   "AUC_model": 0.8297,
+   "ci_lo": 0.8002,
+   "ci_hi": 0.8593,
+   "AUC_raw_simulator": 0.7477,
+   "cells": 22500,
+   "positives": 5440
+  },
+  {
+   "split": "forward A (same version, later cycles)",
+   "AUC_model": 0.8689,
+   "ci_lo": 0.8269,
+   "ci_hi": 0.8958,
+   "AUC_raw_simulator": 0.7973,
+   "cells": 6750,
+   "positives": 1121
+  },
+  {
+   "split": "forward B (train V1, test V2)",
+   "AUC_model": 0.8263,
+   "ci_lo": 0.7764,
+   "ci_hi": 0.8585,
+   "AUC_raw_simulator": 0.7373,
+   "cells": 7500,
+   "positives": 1388
+  }
+ ],
+ "stops": {
+  "OOF (cycle halves)|both": 8,
+  "OOF (cycle halves)|neither": 16,
+  "OOF (cycle halves)|real only": 3,
+  "OOF (cycle halves)|sim only": 3,
+  "forward A (same version, later cycles)|both": 4,
+  "forward A (same version, later cycles)|neither": 4,
+  "forward A (same version, later cycles)|real only": 0,
+  "forward A (same version, later cycles)|sim only": 1,
+  "forward B (train V1, test V2)|both": 3,
+  "forward B (train V1, test V2)|neither": 4,
+  "forward B (train V1, test V2)|real only": 2,
+  "forward B (train V1, test V2)|sim only": 1
+ },
+ "stop_timing_pm1": {
+  "OOF (cycle halves)": 0.875,
+  "forward A (same version, later cycles)": 1.0,
+  "forward B (train V1, test V2)": 1.0
+ }
+}

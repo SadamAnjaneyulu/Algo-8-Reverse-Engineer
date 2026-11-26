@@ -1,0 +1,43 @@
+{
+ "a1_events_above_freeze": 125,
+ "a1_events_above_freeze_split_in_several_orders": 125,
+ "a1_max_order_lots_D0": {
+  "NIFTY": 54,
+  "SENSEX": 50
+ },
+ "a1_lots_by_class_D0": {
+  "body buy-back": 11498,
+  "body long buy": 1216,
+  "body long sell": 2496,
+  "body sell": 10190,
+  "hedge other": 787,
+  "lump salvage": 952,
+  "other": 32,
+  "stop module": 3515,
+  "wing buy": 9370,
+  "wing sell": 9941
+ },
+ "a2_buf_overall_med": 0.14814814814814803,
+ "a2_share_within_1tick_of_15pct": 0.39594111953002437,
+ "a3_validity_by_module_D0": {
+  "h_|IOC": 9065,
+  "m_|IOC": 7,
+  "num|DAY": 20188,
+  "s_|DAY": 229,
+  "s_|IOC": 158,
+  "v_|IOC": 312
+ },
+ "a3_partial_share_D0": 0.032010414232784806,
+ "a3_status_last_D0": {
+  "Filled": 29957,
+  "PartiallyFilled": 2
+ },
+ "a4_outside_bar_overall": 0.027011560032047615,
+ "a4_pos_by_side": {
+  "Buy": 0.6225790328626764,
+  "Sell": 0.30434782608695654
+ },
+ "a4_ref_vs_open_abs_med": 0.045751633986928164,
+ "a4_ref_vs_prevclose_abs_med": 0.045751633986928164,
+ "a4_ref_vs_fill_abs_med": 0.012658227848101111
+}

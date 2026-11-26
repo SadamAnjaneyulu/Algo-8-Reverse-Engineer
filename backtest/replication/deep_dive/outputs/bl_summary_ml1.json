@@ -1,0 +1,160 @@
+{
+ "info": {
+  "out-of-fold halves": [
+   {
+    "setup": "out-of-fold halves",
+    "sell_t": 0.15,
+    "sell_cv_f1": 0.3861,
+    "bb_tau": 0.2,
+    "bb_cv_f1": 0.3837
+   },
+   {
+    "setup": "out-of-fold halves",
+    "sell_t": 0.15,
+    "sell_cv_f1": 0.4344,
+    "bb_tau": 0.15,
+    "bb_cv_f1": 0.3192
+   }
+  ],
+  "A same version (V1 14->7, V2 7->4)": [
+   {
+    "setup": "A same version (V1 14->7, V2 7->4)",
+    "sell_t": 0.15,
+    "sell_cv_f1": 0.4212,
+    "bb_tau": 0.2,
+    "bb_cv_f1": 0.3435
+   }
+  ],
+  "B version change (train V1, test V2)": [
+   {
+    "setup": "B version change (train V1, test V2)",
+    "sell_t": 0.15,
+    "sell_cv_f1": 0.4334,
+    "bb_tau": 0.25,
+    "bb_cv_f1": 0.3778
+   }
+  ]
+ },
+ "rows": [
+  {
+   "setup": "out-of-fold halves",
+   "model": "baseline",
+   "cycles": 32,
+   "F1": 0.685,
+   "precision": 0.782,
+   "recall": 0.6094,
+   "F1_within1": 0.6233,
+   "F1_strict": 0.4487
+  },
+  {
+   "setup": "out-of-fold halves",
+   "model": "+ sell policy",
+   "cycles": 32,
+   "F1": 0.6848,
+   "precision": 0.6733,
+   "recall": 0.6967,
+   "F1_within1": 0.6179,
+   "F1_strict": 0.4291
+  },
+  {
+   "setup": "out-of-fold halves",
+   "model": "+ buy-back policy",
+   "cycles": 32,
+   "F1": 0.6782,
+   "precision": 0.7679,
+   "recall": 0.6073,
+   "F1_within1": 0.6156,
+   "F1_strict": 0.4432
+  },
+  {
+   "setup": "out-of-fold halves",
+   "model": "+ both policies",
+   "cycles": 32,
+   "F1": 0.6824,
+   "precision": 0.6692,
+   "recall": 0.6961,
+   "F1_within1": 0.6127,
+   "F1_strict": 0.4236
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "baseline",
+   "cycles": 11,
+   "F1": 0.6335,
+   "precision": 0.7719,
+   "recall": 0.5372,
+   "F1_within1": 0.5902,
+   "F1_strict": 0.464
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "+ sell policy",
+   "cycles": 11,
+   "F1": 0.6348,
+   "precision": 0.6726,
+   "recall": 0.601,
+   "F1_within1": 0.5897,
+   "F1_strict": 0.4495
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "+ buy-back policy",
+   "cycles": 11,
+   "F1": 0.6252,
+   "precision": 0.7606,
+   "recall": 0.5307,
+   "F1_within1": 0.5849,
+   "F1_strict": 0.4605
+  },
+  {
+   "setup": "A same version (V1 14->7, V2 7->4)",
+   "model": "+ both policies",
+   "cycles": 11,
+   "F1": 0.6219,
+   "precision": 0.656,
+   "recall": 0.5912,
+   "F1_within1": 0.5793,
+   "F1_strict": 0.4444
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "baseline",
+   "cycles": 11,
+   "F1": 0.6238,
+   "precision": 0.6873,
+   "recall": 0.5711,
+   "F1_within1": 0.5553,
+   "F1_strict": 0.4283
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "+ sell policy",
+   "cycles": 11,
+   "F1": 0.607,
+   "precision": 0.5701,
+   "recall": 0.6491,
+   "F1_within1": 0.5388,
+   "F1_strict": 0.3958
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "+ buy-back policy",
+   "cycles": 11,
+   "F1": 0.6272,
+   "precision": 0.687,
+   "recall": 0.577,
+   "F1_within1": 0.5606,
+   "F1_strict": 0.4325
+  },
+  {
+   "setup": "B version change (train V1, test V2)",
+   "model": "+ both policies",
+   "cycles": 11,
+   "F1": 0.615,
+   "precision": 0.5768,
+   "recall": 0.6586,
+   "F1_within1": 0.5457,
+   "F1_strict": 0.3997
+  }
+ ]
+}

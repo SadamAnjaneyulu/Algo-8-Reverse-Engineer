@@ -1,0 +1,4 @@
+rule,f1,precision,recall,theta_median,theta_q25,theta_q75
+take every lot with minute-0 high / entry >= theta,0.3166,0.2642,0.395,1.5,1.5,1.5
+take every lot with open / entry >= theta,0.4008,0.3367,0.495,1.3,1.3,1.3
+placebo: random set of the true size per cycle and right,,0.1748,,,,

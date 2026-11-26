@@ -1,0 +1,14 @@
+target,candidate,n,exact,within2,mae,rho
+sells,median ratio x S0,38,0.1053,0.2368,8.4737,0.4445
+sells,median ratio x L0,38,0.0,0.1053,11.2895,0.4202
+sells,median ratio x bb,38,0.0,0.1053,25.9737,-0.0514
+sells,median ratio x sched,38,0.0263,0.0526,14.6579,0.2314
+sells,median ratio x range_steps,38,0.0263,0.2368,9.5,0.1694
+sells,median ratio x abs_ret,38,0.0526,0.1053,14.5526,0.2181
+sells,median ratio x S0_oth,38,0.0,0.0263,16.1579,-0.4571
+sells,"baseline: median of the other cycles, same underlying",38,0.0263,0.1579,8.8684,
+rem,median ratio x S0,38,0.0526,0.2632,7.6842,0.5331
+rem,median ratio x bb,38,0.1053,0.1579,19.9211,-0.0365
+rem,median ratio x range_steps,38,0.0526,0.1579,10.0789,-0.0416
+rem,median ratio x abs_ret,38,0.0263,0.1316,14.5,-0.0125
+rem,"baseline: median of the other cycles, same underlying",38,0.0526,0.1053,8.5526,

@@ -1,0 +1,8 @@
+group,size,sum,per1000,kind
+down > 0.1%,956,40,41.8,signed 15-min move
+down 0.02-0.1%,2442,65,26.6,signed 15-min move
+flat (< 0.02%),1919,26,13.5,signed 15-min move
+up 0.02-0.1%,2215,72,32.5,signed 15-min move
+up > 0.1%,713,25,35.1,signed 15-min move
+False,5912,173,29.3,direction flipped in last 5 min
+True,2333,55,23.6,direction flipped in last 5 min

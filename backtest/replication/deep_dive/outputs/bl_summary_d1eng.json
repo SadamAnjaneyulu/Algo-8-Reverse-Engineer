@@ -1,0 +1,122 @@
+{
+ "scores": [
+  {
+   "cls": "ALL",
+   "real_lots": 13655,
+   "sim_lots": 11553,
+   "matched": 8669,
+   "precision": 0.7504,
+   "recall": 0.6349,
+   "F1": 0.6878,
+   "F1_strike_within_one": 0.6174,
+   "F1_exact_strike": 0.4435
+  },
+  {
+   "cls": "body_sell",
+   "real_lots": 4671,
+   "sim_lots": 4091,
+   "matched": 3253,
+   "precision": 0.7952,
+   "recall": 0.6964,
+   "F1": 0.7425,
+   "F1_strike_within_one": 0.6859,
+   "F1_exact_strike": 0.5727
+  },
+  {
+   "cls": "body_buyback",
+   "real_lots": 1324,
+   "sim_lots": 933,
+   "matched": 635,
+   "precision": 0.6806,
+   "recall": 0.4796,
+   "F1": 0.5627,
+   "F1_strike_within_one": 0.4572,
+   "F1_exact_strike": 0.3128
+  },
+  {
+   "cls": "wing_buy",
+   "real_lots": 4336,
+   "sim_lots": 3958,
+   "matched": 3047,
+   "precision": 0.7698,
+   "recall": 0.7027,
+   "F1": 0.7347,
+   "F1_strike_within_one": 0.6759,
+   "F1_exact_strike": 0.4866
+  },
+  {
+   "cls": "wing_sell",
+   "real_lots": 1192,
+   "sim_lots": 986,
+   "matched": 581,
+   "precision": 0.5892,
+   "recall": 0.4874,
+   "F1": 0.5335,
+   "F1_strike_within_one": 0.4343,
+   "F1_exact_strike": 0.2645
+  },
+  {
+   "cls": "opening_wings",
+   "real_lots": 186,
+   "sim_lots": 186,
+   "matched": 178,
+   "precision": 0.957,
+   "recall": 0.957,
+   "F1": 0.957,
+   "F1_strike_within_one": 0.8925,
+   "F1_exact_strike": 0.672
+  },
+  {
+   "cls": "lump",
+   "real_lots": 1489,
+   "sim_lots": 1399,
+   "matched": 975,
+   "precision": 0.6969,
+   "recall": 0.6548,
+   "F1": 0.6752,
+   "F1_strike_within_one": 0.5672,
+   "F1_exact_strike": 0.2057
+  }
+ ],
+ "rejected_orders": 0,
+ "cycles": 32,
+ "replay_seconds": 35,
+ "roles": {
+  "breakout_extra": {
+   "size": 229,
+   "sum": 229
+  },
+  "breakout_straddle": {
+   "size": 458,
+   "sum": 458
+  },
+  "ladder_solo": {
+   "size": 1292,
+   "sum": 1292
+  },
+  "opening_wing_buy": {
+   "size": 62,
+   "sum": 186
+  },
+  "overnight_lump": {
+   "size": 54,
+   "sum": 1399
+  },
+  "protective_wing_buy": {
+   "size": 3270,
+   "sum": 3958
+  },
+  "protective_wing_sell": {
+   "size": 501,
+   "sum": 986
+  },
+  "scheduled_straddle": {
+   "size": 2112,
+   "sum": 2112
+  },
+  "stop_buyback": {
+   "size": 757,
+   "sum": 933
+  }
+ }
+}

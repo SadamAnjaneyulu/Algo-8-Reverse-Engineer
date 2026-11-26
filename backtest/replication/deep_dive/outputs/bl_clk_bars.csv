@@ -1,0 +1,9 @@
+machine,bars,both,act_only,mach_only,neither,precision_bar,recall_bar,odds_ratio,phi,base_rate_actual,base_rate_machine
+"previous 2 completed 30-min bars, clock phase 0 (hh:00 / hh:30)",320,195,6,26,93,0.8824,0.9701,116.25,0.7859,0.6281,0.6906
+"same, completed minute closes only",320,194,7,25,94,0.8858,0.9652,104.2057,0.7852,0.6281,0.6844
+same but clock shifted by +5 min (placebo),352,179,10,68,95,0.7247,0.9471,25.0074,0.5775,0.5369,0.7017
+clock shifted by +15 min (placebo),352,184,4,70,94,0.7244,0.9787,61.7714,0.6142,0.5341,0.7216
+clock shifted by -1 min (placebo),320,197,5,48,70,0.8041,0.9752,57.4583,0.6475,0.6312,0.7656
+previous 1 bar,320,197,4,78,41,0.7164,0.9801,25.8878,0.4513,0.6281,0.8594
+previous 3 bars,320,168,33,19,100,0.8984,0.8358,26.7943,0.6631,0.6281,0.5844
+"rolling 70-min range, one entry per side per 30-min block",320,194,7,37,82,0.8398,0.9652,61.4208,0.7057,0.6281,0.7219

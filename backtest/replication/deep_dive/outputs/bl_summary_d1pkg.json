@@ -1,0 +1,140 @@
+{
+ "identical_cycles": 32,
+ "cycles": 32,
+ "scores_all": [
+  {
+   "variant": "research simulator (prev-close stop 1.5x)",
+   "cls": "ALL",
+   "real_lots": 13655,
+   "sim_lots": 10793,
+   "matched": 8438,
+   "precision": 0.7818,
+   "recall": 0.6179,
+   "F1": 0.6903,
+   "F1_strike_within_one": 0.6255,
+   "F1_exact_strike": 0.4431
+  },
+  {
+   "variant": "package, same parameters (prev-close stop 1.5x)",
+   "cls": "ALL",
+   "real_lots": 13655,
+   "sim_lots": 10793,
+   "matched": 8438,
+   "precision": 0.7818,
+   "recall": 0.6179,
+   "F1": 0.6903,
+   "F1_strike_within_one": 0.6255,
+   "F1_exact_strike": 0.4431
+  },
+  {
+   "variant": "package, intrabar stop 1.6x (minute high)",
+   "cls": "ALL",
+   "real_lots": 13655,
+   "sim_lots": 10642,
+   "matched": 8393,
+   "precision": 0.7887,
+   "recall": 0.6146,
+   "F1": 0.6909,
+   "F1_strike_within_one": 0.6287,
+   "F1_exact_strike": 0.4462
+  },
+  {
+   "variant": "package defaults as shipped (rounded constants, stop 1.6x on minute high)",
+   "cls": "ALL",
+   "real_lots": 13655,
+   "sim_lots": 10642,
+   "matched": 8393,
+   "precision": 0.7887,
+   "recall": 0.6146,
+   "F1": 0.6909,
+   "F1_strike_within_one": 0.6287,
+   "F1_exact_strike": 0.4462
+  }
+ ],
+ "scores_defaults_by_class": [
+  {
+   "variant": "package defaults as shipped (rounded constants, stop 1.6x on minute high)",
+   "cls": "ALL",
+   "real_lots": 13655,
+   "sim_lots": 10642,
+   "matched": 8393,
+   "precision": 0.7887,
+   "recall": 0.6146,
+   "F1": 0.6909,
+   "F1_strike_within_one": 0.6287,
+   "F1_exact_strike": 0.4462
+  },
+  {
+   "variant": "package defaults as shipped (rounded constants, stop 1.6x on minute high)",
+   "cls": "body_sell",
+   "real_lots": 4671,
+   "sim_lots": 3797,
+   "matched": 3204,
+   "precision": 0.8438,
+   "recall": 0.6859,
+   "F1": 0.7567,
+   "F1_strike_within_one": 0.7175,
+   "F1_exact_strike": 0.6025
+  },
+  {
+   "variant": "package defaults as shipped (rounded constants, stop 1.6x on minute high)",
+   "cls": "body_buyback",
+   "real_lots": 1324,
+   "sim_lots": 909,
+   "matched": 611,
+   "precision": 0.6722,
+   "recall": 0.4615,
+   "F1": 0.5472,
+   "F1_strike_within_one": 0.4469,
+   "F1_exact_strike": 0.3108
+  },
+  {
+   "variant": "package defaults as shipped (rounded constants, stop 1.6x on minute high)",
+   "cls": "wing_buy",
+   "real_lots": 4336,
+   "sim_lots": 3570,
+   "matched": 2865,
+   "precision": 0.8025,
+   "recall": 0.6607,
+   "F1": 0.7248,
+   "F1_strike_within_one": 0.6709,
+   "F1_exact_strike": 0.4467
+  },
+  {
+   "variant": "package defaults as shipped (rounded constants, stop 1.6x on minute high)",
+   "cls": "wing_sell",
+   "real_lots": 1192,
+   "sim_lots": 874,
+   "matched": 552,
+   "precision": 0.6316,
+   "recall": 0.4631,
+   "F1": 0.5344,
+   "F1_strike_within_one": 0.4414,
+   "F1_exact_strike": 0.2875
+  },
+  {
+   "variant": "package defaults as shipped (rounded constants, stop 1.6x on minute high)",
+   "cls": "opening_wings",
+   "real_lots": 186,
+   "sim_lots": 192,
+   "matched": 184,
+   "precision": 0.9583,
+   "recall": 0.9892,
+   "F1": 0.9735,
+   "F1_strike_within_one": 0.9048,
+   "F1_exact_strike": 0.6772
+  },
+  {
+   "variant": "package defaults as shipped (rounded constants, stop 1.6x on minute high)",
+   "cls": "lump",
+   "real_lots": 1489,
+   "sim_lots": 1300,
+   "matched": 977,
+   "precision": 0.7515,
+   "recall": 0.6561,
+   "F1": 0.7006,
+   "F1_strike_within_one": 0.5895,
+   "F1_exact_strike": 0.2381
+  }
+ ]
+}

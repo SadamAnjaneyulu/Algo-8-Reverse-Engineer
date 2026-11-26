@@ -1,0 +1,31 @@
+population,variable,AUC,AUC_even,AUC_odd
+all minutes,n_react,0.465,0.452,0.476
+all minutes,n_tot,0.485,0.476,0.494
+all minutes,def_react,0.572,0.569,0.578
+all minutes,def_tot,0.567,0.545,0.594
+all minutes,def_sched,0.492,0.48,0.512
+all minutes,age_react,0.532,0.509,0.556
+all minutes,delta_vs_move,0.568,0.586,0.562
+all minutes,itm_short,0.554,0.561,0.55
+all minutes,pnl_pct,0.499,0.504,0.492
+all minutes,prem_pos60,0.358,0.398,0.32
+LOOK-AHEAD breakout minutes,n_react,0.419,0.379,0.452
+LOOK-AHEAD breakout minutes,n_tot,0.447,0.41,0.479
+LOOK-AHEAD breakout minutes,def_react,0.645,0.663,0.639
+LOOK-AHEAD breakout minutes,def_tot,0.662,0.651,0.675
+LOOK-AHEAD breakout minutes,def_sched,0.549,0.532,0.565
+LOOK-AHEAD breakout minutes,age_react,0.688,0.669,0.708
+LOOK-AHEAD breakout minutes,delta_vs_move,0.561,0.547,0.568
+LOOK-AHEAD breakout minutes,itm_short,0.555,0.52,0.586
+LOOK-AHEAD breakout minutes,pnl_pct,0.488,0.486,0.492
+LOOK-AHEAD breakout minutes,prem_pos60,0.473,0.519,0.43
+causal breakout minutes,n_react,0.444,0.398,0.483
+causal breakout minutes,n_tot,0.47,0.422,0.512
+causal breakout minutes,def_react,0.634,0.649,0.639
+causal breakout minutes,def_tot,0.672,0.652,0.692
+causal breakout minutes,def_sched,0.551,0.532,0.575
+causal breakout minutes,age_react,0.645,0.659,0.636
+causal breakout minutes,delta_vs_move,0.618,0.577,0.658
+causal breakout minutes,itm_short,0.547,0.517,0.575
+causal breakout minutes,pnl_pct,0.466,0.467,0.467
+causal breakout minutes,prem_pos60,0.473,0.491,0.457

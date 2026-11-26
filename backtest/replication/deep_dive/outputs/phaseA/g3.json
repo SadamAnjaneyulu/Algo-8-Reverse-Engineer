@@ -1,0 +1,40 @@
+{
+ "all_eras": {
+  "label": "both eras",
+  "orders": 176,
+  "low_lag_share": 0.9147727272727273,
+  "exact_all": 0.48295454545454547,
+  "exact_low_lag": 0.4658385093167702,
+  "exact_high_lag": 0.6666666666666666,
+  "n_low": 161,
+  "n_high": 15,
+  "difference": -0.20082815734989645,
+  "diff_ci95": [
+   -0.46384719680021697,
+   0.23538259490534244
+  ],
+  "median_drift": 0.026463553379519555,
+  "median_gap": 0.20760233812906492,
+  "verdict": "inconclusive"
+ },
+ "post_auction": {
+  "label": "post-auction",
+  "orders": 148,
+  "low_lag_share": 0.918918918918919,
+  "exact_all": 0.4594594594594595,
+  "exact_low_lag": 0.4411764705882353,
+  "exact_high_lag": 0.6666666666666666,
+  "n_low": 136,
+  "n_high": 12,
+  "difference": -0.22549019607843135,
+  "diff_ci95": [
+   -0.5115923285597124,
+   0.34916995397764744
+  ],
+  "median_drift": 0.025345012236744513,
+  "median_gap": 0.20765186915887843,
+  "verdict": "rule incomplete"
+ },
+ "not_usable_orders": 0,
+ "total_orders": 176
+}

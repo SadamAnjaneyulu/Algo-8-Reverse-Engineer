@@ -1,0 +1,6 @@
+model,features,auc,lo,hi,prauc,within_cycle_auc,within_cycle_cycles,positive_rate,forward_auc
+"clock feature only (other cycles' times, +/-0 min)",2,0.8128,0.7324,0.8612,0.5397,0.7192,21,0.0486,0.7181
+"clock feature + clock position (minute in block, hour)",5,0.8636,0.8126,0.8948,0.5773,0.7874,21,0.0486,0.8018
+V1 causal (market / book / past buy-backs),64,0.8835,0.8595,0.8994,0.4963,0.8374,21,0.0486,0.7994
+V1 + clock feature,66,0.9171,0.8921,0.933,0.6869,0.8835,21,0.0486,0.9131
+placebo (clock + position shuffled within cycle),4,0.5434,0.5245,0.565,0.0611,0.5212,21,0.0486,

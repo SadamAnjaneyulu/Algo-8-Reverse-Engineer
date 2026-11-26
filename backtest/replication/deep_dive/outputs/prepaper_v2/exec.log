@@ -1,0 +1,25 @@
+net                   70989.0
+net_cost1.5           54119.0
+net_cost2             37248.0
+net_slip2             49406.0
+net_slip3             27822.0
+net_slip6            -36929.0
+net_cost1.5_slip2     32541.0
+net_cost2_slip3       -5897.0
+net_nse_03553         70981.0
+net_m0               126325.0
+net_m2                15676.0
+net_size0.5           25678.0
+net_size2            129236.0
+net_capped            63934.0
+net_delay1            43820.0
+net_delay2            45152.0
+net_barpos            43291.0
+   size  threshold  share_of_fill_units_at_or_below  share_of_fills_at_or_below
+0   1.0       0.05                            0.982                       0.989
+1   1.0       0.10                            0.987                       0.992
+2   1.0       0.25                            0.991                       0.994
+3   2.0       0.05                            0.970                       0.984
+4   2.0       0.10                            0.982                       0.989
+5   2.0       0.25                            0.988                       0.993
+capped: mean s 0.93 share peak>2cr after cap 0.113

@@ -1,0 +1,437 @@
+script,first_in_git,doc
+bh_b.py,2026-11-20,"Body module reconstruction (B1-B4) from the numeric-tag order stream, contract-level roles (bh_b1_order_roles.csv)."
+bh_b1.py,2026-11-20,"B1: classify every body-stream (numeric tag) order by the contract's net position before it: Sell with net<=0 opens/adds a short, Sell with net>0 closes a long;"
+bh_common.py,2026-11-20,"Body/Hedge investigation: order-level table with the order columns the earlier studies did not use (limit price, validity, status, remaining qty), plus fill-lev"
+bh_figs.py,2026-11-20,"Figures for the Body/Hedge report (reports/figures/bh_*.png), all from computed outputs."
+bh_h1.py,2026-11-20,"H1 (independent re-implementation, order level): lag structure between body orders and opposite-side hedge orders on the same right; 1:1 lot matching; null by t"
+bh_h2_abs.py,2026-11-20,"H2 falsification of the premium-ratio story. Competing rule ABS: the wing's target price is a fixed absolute level per (und, day, 30-min slot), estimated leave-"
+bh_h2_data.py,2026-11-20,"H2 dataset: for every h_ BUY order that increases protection (side Buy), attach the triggering body Sell orders (matched in bh_h1, window [1.5,20] s), decision-"
+bh_h2_test.py,2026-11-20,"H2: hedge-strike rules on 'simple' wing buys (1 trigger body lot, 1 wing lot). Candidate list fixed BEFORE running (plan section 3, H2):"
+bh_h2_variants.py,2026-11-20,"H2 exploratory variants (chosen AFTER seeing that k = 2.5 % is the sharp optimum; flagged exploratory, Holm over all 9 rules in the final table)."
+bh_h3.py,2026-11-20,"H3 (quantity / level control): does the hedge module hold wing lots W equal to body short lots S per (cycle, right)?"
+bh_h3b.py,2026-11-20,"H3b: contract-level quiet-time balance. At T = (a body order's fill second + 30 s) with no other body order in (t, T], per (cycle, right):"
+bh_h3c.py,2026-11-20,H3c: order-level level control with contract-level S and L (all modules). For every h_ order (decision stamp T):
+bh_h4.py,2026-11-20,"H4: order pricing. (a) limit cushion by module/side/day (lim vs first fill price, fills >= 10 rupees where tick rounding is < 0.5 %), (b) IOC partial fills and "
+bh_h5.py,2026-11-20,"H5 lifecycle (contract level, ownership-free)."
+bh_h6.py,2026-11-20,"H6: exceptions. (A) the 928 DD-1 body bursts without a wing response within 10 s, classified (mutually exclusive, ordered rules) with the contract-level book S "
+bh_h7.py,2026-11-20,"H7 refinements, run after proofreading the draft report. (a) isolated-body-order lag histogram (no other body order on the same right within +-20 s) vs null; (b"
+bh_h8.py,2026-11-20,H8: wave-level quantity test and sign-wrong concentration. A WAVE = consecutive hedge orders of one right (same cycle) whose stamps are within 0.05 s of the pre
+bh_h9.py,2026-11-20,H9 baselines for the level-control claims. (a) shuffled-gap null for per-order and per-wave exactness: replace each order's S-L by that of a random other order 
+bh_i1.py,2026-11-20,"I1: event-level timelines for cases selected by pre-registered rules (first instance in cycle order, no cherry-picking). Output outputs/bh_i1_cases.md and outpu"
+bl_act_build.py,2026-11-20,"Activation study step 1 (plan BODY_REACTIVE_ACTIVATION_PLAN.md): events (D-1 reactive pairs) vs controls (random seconds inside 10:30-15:15), live-spot features"
+bl_act_fig.py,2026-11-20,Figure for the activation study -> reports/figures/bl_act_logic.png
+bl_act_tests.py,2026-11-20,"Activation study step 2 (plan test B/C): events vs controls. Univariate AUC (cluster bootstrap over cycles, within-cycle permutation null), leave-one-cycle-out "
+bl_act_tests2.py,2026-11-20,"Activation study step 3 (post-hoc, labelled): which causal spot-position feature carries the gain? Single-feature additions to clock + ages (leave-one-cycle-out"
+bl_act_tests3.py,2026-11-20,"Activation study step 4 (post-hoc after the single-feature diagnostic, labelled): spot-minus-moving-average gap as the activation variable. Minute-level causal "
+bl_all_fig.py,2026-11-21,Figure for the combined D-1 selling reconstruction -> reports/figures/bl_all_sells.png
+bl_all_sells.py,2026-11-21,Combined D-1 selling reconstruction: every real D-1 body sell lot (CE/PE) vs the three decoded sell rules run together.
+bl_all_sells2.py,2026-11-21,"Combined D-1 selling reconstruction, recalculated with the recalled solo findings."
+bl_all_solo.py,2026-11-21,"Solo-sell check for the combined reconstruction: (1) where the real solo lots sit (time of day, order size); (2) the stated fresh-extreme rule on closes vs on t"
+bl_arch_analysis.py,2026-11-24,"Question B statistics (plan reports/PREMIUM_AND_ARCHITECTURE_PLAN.md): per variant and price-scan range, margin, capital feasibility (Rs 2 crore), return on pea"
+bl_arch_margin.py,2026-11-24,"Question B of reports/PREMIUM_AND_ARCHITECTURE_PLAN.md: approximate SPAN-like margin, overnight gap stress and return on margin for the ablation variants."
+bl_auc_all.py,2026-11-21,One AUC for all D-1 selling (plan reports/D1_SELLING_AUC_PLAN.md). Panel cycle x minute (1..374) x right; label = any body open_short lot (all types).
+bl_auc_all2.py,2026-11-21,"POST-HOC check for D1_SELLING_AUC_PLAN: the solo-panel book variables (own/other book ratio, own/other short lots) are built from the real past orders (te < min"
+bl_audit_ledger.py,,"Experiment ledger for the frozen late-sale rule (reports/EXPERIMENT_LEDGER.md). Reconstructed from git history, scripts and saved result tables; unrecoverable i"
+bl_audit_pbo.py,,"Audit of the 0.60 probability of backtest overfitting (pre-paper battery gate G4). Independent re-computation of CSCV on the saved weekly matrix, plus a noise n"
+bl_bb_events.py,2026-11-22,"Buy-back decode step 1: every D-1 body buy-back order with the open lots on its contract (real ledger, all body sells before it)."
+bl_bb_fit.py,2026-11-22,"Buy-back decode step 6: choose the stop design in the free-running simulator (out-of-fold, objective = buy-back lot F1, timing +-1 min), then re-score the whole"
+bl_bb_low.py,2026-11-22,Buy-back decode step 8: what triggers the LOW-ratio buy-backs (first ratio < 1.45; half of the events)?
+bl_bb_panel.py,2026-11-22,Buy-back decode step 3: contract-minute panel (every D-1 minute x contract with open body short lots before the minute; real ledger). Label = body buy-back on t
+bl_bb_right.py,2026-11-22,"Buy-back decode step 4 (right-level controller hypothesis): per D-1 right-minute: all open body short lots of the right (entry decision price, current price = p"
+bl_bb_struct.py,2026-11-22,Buy-back decode step 2: event level (orders on one contract within 3 s). (a) quantity rule for stop-like events: lots closed vs open lots whose own ratio (event
+bl_bb_tf.py,2026-11-22,"Buy-back decode step 7 (diagnostic): the stop rule run on the REAL body sells (mode tf_bb: real sells with their decision prices as entries, buy-backs simulated"
+bl_bb_vel.py,2026-11-22,Buy-back decode step 5: velocity variables on the contract-minute panel: own premium rise over the last n minutes (previous close / close n minutes earlier; cur
+bl_bk_blocks.py,2026-11-21,Book-state study step 3 (plan tests C; pace block added POST-HOC): leave-one-cycle-out logistic / gradient boosting on the cycle-minute panel (table M) with blo
+bl_bk_build.py,2026-11-21,"Book-state study step 1 (plan BODY_REACTIVE_BOOK_PLAN.md): reconstruct the book (all modules, D-1) at each event / control second (table S) and each cycle-minut"
+bl_bk_flow.py,2026-11-21,Book-state study step 4 (H5): order flow around the reactive pairs - share of reactive pairs vs random control seconds that have an order of each module/role/le
+bl_bk_tests.py,2026-11-21,"Book-state study step 2 (plan BODY_REACTIVE_BOOK_PLAN.md tests A, B): single-variable AUCs (all seconds / within the range-edge population), hazard by decile, m"
+bl_book_mtm.py,2026-11-20,"Book-level P&L panel (plan BODY_CLOSE_CAPITAL_PLAN.md). Per cycle and minute: cumulative LTP-marked P&L of the whole ledger (all modules, fill-priced cash + con"
+bl_book_tests1.py,2026-11-20,"Capital-loss trigger study, part 1 (plan tests 1b, 2, 3, 5, 6): where in the book-P&L distribution do the sub-1.2x buy-backs sit? Output bl_book_*.csv, bl_summa"
+bl_book_tests2.py,2026-11-20,"Capital-loss trigger study, part 2 (plan tests 4 and 7): contract-minute panel of lots below 1.2x (cheapest-entry ratio). Targets: A = any sub-1.2x buy-back, B "
+bl_book_tests3.py,2026-11-20,"Capital-loss trigger study, part 3: right-level view. Unit = (cycle, day, minute, right) with body shorts open on that right. Event = residual sub-1.2x buy-back"
+bl_book_tests4.py,2026-11-20,"Capital-loss trigger study, part 4 (decision rule (i) and (iii)): shape of the book-P&L-change effect on D-1 residual sub-1.2x buy-backs."
+bl_book_tests5.py,2026-11-20,"Capital-loss trigger study, part 5: which loss variable and window? Right-level unit (cycle, day, minute, right with body shorts open); target B = residual sub-"
+bl_book_tests6.py,2026-11-20,"Capital-loss trigger study, part 6: artifact control. Part 5 used P&L changes that include execution-vs-mark gaps of earlier buy-backs (a dripped buy-back episo"
+bl_book_tests7.py,2026-11-20,"Capital-loss trigger study, part 7: is the short-horizon own-right loss signal the LOT'S OWN premium spike, an underlying move, or book-level loss? D-1 contract"
+bl_book_tests8.py,2026-11-20,"Capital-loss trigger study, part 8: shape of the short-horizon premium-change effect on D-1 sub-1.2x buy-backs (lot's own premium change over 1/3/5 min and adve"
+bl_book_tests9.py,2026-11-20,"Capital-loss trigger study, part 9 (post-hoc, labelled): trailing-stop reading. Rebound = price(j-1) / lowest minute close since the oldest open lot's entry (st"
+bl_breakout_fig.py,2026-11-20,"Summary figure for the solo-sell variable search: model AUCs, the step at a fresh extreme, and an example cycle."
+bl_breakout_test.py,2026-11-20,"Breakout (fresh favourable extreme) variable: window scan, timing after the break, robustness by right / index, break magnitude, and joint test with the baselin"
+bl_bs_ab.py,2026-11-22,"Buy-back second pass, step 6: rule A OR B on the real sells (tf_bb) and free-running."
+bl_bs_fit.py,2026-11-22,"Buy-back second pass, step 4: the combined stop (loss AND premium high/entry >= theta AND spot close at a fresh N-minute extreme against the right, optional ove"
+bl_bs_mkt.py,2026-11-22,"Buy-back second pass, step 3 (post-hoc refinement of the market condition found in step 2): which breakout? Donchian N in {15, 30, 45, 60, 90, 120} on closes (b"
+bl_bs_panel.py,2026-11-22,"Buy-back second pass, step 1 (plan BUYBACK_STOP2_PLAN.md): contract-minute panel (all D-1 contract-minutes with open body short lots; real ledger before the min"
+bl_bs_price.py,2026-11-22,"Buy-back second pass, step 5 (post-hoc test of the 'sustained price' explanation): the plain own-premium stop on the REAL sells (tf_bb) with different price mea"
+bl_bs_profit.py,2026-11-22,"Buy-back second pass, step 7 (descriptive): buy-backs where every open lot on the contract is in profit at the decision price (13%): coincidence with a stop on "
+bl_bs_score.py,2026-11-22,"Buy-back second pass, step 2: loss gate (previous close > cheapest entry) AND indicator; state vs first-crossing semantics; thresholds out-of-fold (cycle halves"
+bl_bt3_ablate.py,2026-11-24,"Ablations and placebos of the combined backtest (plan reports/ALPHA_SOURCE_PLAN.md, Methods 2 and 3): each variant removes or breaks ONE rule, everything else f"
+bl_bt3_ablate_analysis.py,2026-11-24,"Analysis of the ablation / placebo runs (plan reports/ALPHA_SOURCE_PLAN.md). Constant lot size (NIFTY 65, SENSEX 20). Paired difference to the full strategy wit"
+bl_bt3_alpha_extra.py,2026-11-24,Independent checks for the alpha question (plan reports/ALPHA_SOURCE_PLAN.md): (1) implied volatility (trading-minute clock) and realised volatility by session;
+bl_bt3_check.py,2026-11-24,"Identity check V3 (plan reports/BACKTEST3Y_PLAN.md): bl_bt3_sim.sim_d0, fed the REAL carried book of a live cycle, must reproduce bl_d0v_sizing.sim2 (mode M0, s"
+bl_bt3_data.py,2026-11-24,"3-year backtest, phase 0 (plan reports/BACKTEST3Y_PLAN.md): full option-chain minute arrays for D-1 and D0 of every Complete cycle, from the pinned dataset comm"
+bl_bt3_freeze.py,2026-11-24,Freeze the D0 parameters for the 3-year backtest (plan reports/BACKTEST3Y_PLAN.md): the same fit as bl_d0_fr.py with training = ALL 30 live cycles with both log
+bl_bt3_greeks.py,2026-11-24,"Physical decomposition of the combined backtest P&L (plan reports/ALPHA_SOURCE_PLAN.md, Method 1)."
+bl_bt3_greeks_variants.py,2026-11-24,Greek decomposition of every saved ablation variant (plan reports/ALPHA_SOURCE_PLAN.md): which physical component does each rule add or remove? Trading-minute c
+bl_bt3_metrics.py,2026-11-24,"Metrics for the combined backtest (plan reports/BACKTEST3Y_PLAN.md): total trades (orders), win rate (cycles), profit factor, Sharpe (weekly aggregate, x sqrt 5"
+bl_bt3_regime.py,2026-11-24,"Seasonality / regime investigation of the combined backtest (plan reports/BACKTEST3Y_REGIME_PLAN.md). Exploratory: every cycle (IS, OOS, rule-fitted live window"
+bl_bt3_run.py,2026-11-24,Run the combined D-1 + D0 backtest on one split with one timetable run (plan reports/BACKTEST3Y_PLAN.md).
+bl_bt3_sim.py,2026-11-24,"3-year backtest, simulator (plan reports/BACKTEST3Y_PLAN.md): D-1 (d1_strategy batch rules) -> carried book -> D0 (the M0 simulator of bl_d0_fr / bl_d0v_sizing)"
+bl_bt3_split.py,2026-11-24,"Explicit in-sample / out-of-sample division of the 3-year cycles (plan reports/BACKTEST3Y_PLAN.md, addendum 1). Uses the boundary of the earlier backtest (bt/co"
+bl_bt3_stress.py,2026-11-24,"Stress tests on a split (plan reports/BACKTEST3Y_PLAN.md): slippage x3 / x6, costs x2, execution delay 1 and 3 minutes, fills at the real in-bar position. Re-pr"
+bl_bt3s_data.py,2026-11-24,Underlying during the closing auction (reports/D1_CLOSING_TIME.md). Since 3 Aug 2026 the published index stops at 15:15 (F&O stocks leave
+bl_bt3u_data.py,2026-11-24,"Futures-based underlying during the closing auction (reports/D1_CLOSING_TIME.md): copy of outputs/bt3x where, on post-auction sessions only,"
+bl_bt3x_data.py,2026-11-24,"Extended cache (reports/LATE_D1_RULE.md, step 2): same layout as bl_bt3_data.py, but a trading day on or after the closing auction session"
+bl_bt_adv.py,2026-11-22,"Buy-back third pass, step 5: adverse spot move since the lot's sale (strike steps; + = against this lot: up for calls, down for puts), per sell type, on the lot"
+bl_bt_ctx.py,2026-11-22,"Buy-back third pass, step 6: context of each lot buy-back by lot type: second of minute (0 = minute-clocked), orders within +-5 s (new body sells by type, on sa"
+bl_bt_fresh.py,2026-11-22,"Buy-back third pass, step 2: holding-time structure. For each buy-back order (all, in loss and in profit), the lot bought (cheapest open lot convention, and FIF"
+bl_bt_inv.py,2026-11-22,"Buy-back third pass, step 1 (descriptive): what does the trigger level co-move with? For every buy-back order on a lot in loss (decision price > entry decision "
+bl_bt_lot.py,2026-11-22,"Buy-back third pass, step 3: lot-level panel (every open real body short lot x D-1 minute) with its own sell type (scheduled / reactive / solo-attached-extra / "
+bl_bt_profit.py,2026-11-22,"Buy-back third pass, step 7: buy-backs of lots in profit (ratio <= 1 at the decision). Lot type, holding time, minute-clock, same-strike partner (other right) b"
+bl_bt_react.py,2026-11-22,"Buy-back third pass, step 4: event triggers for reactive / solo lot exits. For each reactive lot (break side from the pair strike vs ATM at sale: +1 = up-break,"
+bl_capital_fig.py,2026-11-20,Figure for the capital-loss study -> reports/figures/bl_capital_logic.png (D-1).
+bl_cas_rescore.py,2026-11-24,Which underlying did the real system trade on during the closing auction? (reports/D1_CLOSING_TIME.md)
+bl_clk_bars.py,2026-11-21,Clock-bar study: bar-level confusion of the machine (previous 2 completed 30-min bars; one entry per side per bar; current-minute close) vs the real reactive en
+bl_clk_chan.py,2026-11-21,"Clock-gate study: what is the range? Inside the one-fire-per-30-min-clock-block machine (phase 0), compare channel definitions: rolling N minutes vs K completed"
+bl_clk_example.py,2026-11-21,"Clock-bar study example plots (same cycles as the earlier examples): reports/figures/bl_clk_example_NIFTY.png, bl_clk_example_SENSEX.png, outputs/bl_clk_example"
+bl_clk_refine.py,2026-11-21,"Clock-gate study: refinements of the two-completed-30-min-bars, one-entry-per-bar machine (post-hoc): phase, per-side limit, information variant, first-break ti"
+bl_clk_repeat.py,2026-11-21,"Clock-bar study: (1) the clock-phase table of the reactive fires (minute of hour, moduli, chi-square); (2) repeat entries inside a 30-min bar (same side / strik"
+bl_clk_scan.py,2026-11-21,Clock-gate study: identify the block length L and the phase of the one-fire-per-block machine (range edge N-min AND first break in each clock block). In-sample 
+bl_clk_sim.py,2026-11-21,"Clock-gate study (post-hoc, motivated by the half-hour phase structure of the reactive fires): machines whose eligibility resets at clock-aligned block boundari"
+bl_clk_wings.py,2026-11-21,Wing (hedge module) decode and link to the reactive entries. (1) For every body short-sell order leg: is it followed by an h_ long-wing buy of the same type wit
+bl_clk_wingstate.py,2026-11-21,"Does the wing/book state decide which first-break bars get an entry? Machine = previous 2 completed 30-min bars, one entry per side per bar (current-minute clos"
+bl_close_build.py,2026-11-20,"Buy-back study, step 1: replay every order per cycle with a lot tracker (three ownership conventions) and write"
+bl_close_fig.py,2026-11-20,"Figure for the buy-back study -> reports/figures/bl_close_logic.png (4 panels, D-1)."
+bl_close_logic1.py,2026-11-20,"Buy-back study, step 2 (plan tests A, B, E, F): order-level pairing, below-1.2x classification, episodes. D-1 primary, D0 secondary."
+bl_close_logic2.py,2026-11-20,"Buy-back study, step 3 (plan test C): single-leg vs combined trigger on the strike-level contract-minute panel (rows = CE leg of a strike while BOTH rights have"
+bl_close_logic2b.py,2026-11-20,"Buy-back study, step 3b: pre-registered decision rule for a COMBINED trigger -- on strike-minutes where BOTH legs were bought back, does the max leg ratio beat "
+bl_close_logic3.py,2026-11-20,"Buy-back study, step 4 (plan test E, residual): do buy-backs of lots that are NOT near a premium stop (cheapest-open-entry ratio < 1.2) have any identifiable si"
+bl_close_logic4.py,2026-11-20,"Buy-back study, step 5: which variables carry the multivariable signal for D-1 buy-backs at r_low < 1.2? Leave-one-variable-out and single-variable-plus-baselin"
+bl_close_logic5.py,2026-11-20,"Buy-back study, step 6 (plan test D): what happens by the end of D-1 to body short lots that never reach ~1.2x? Lot level under three ownership conventions (FIF"
+bl_close_logic6.py,2026-11-20,"Buy-back study, step 7: buy-back CLUSTERS (single-link, gap <= 3 s, same cycle-day, any strike/right). Pre-registered after the below-1.2x classification left a"
+bl_close_logic7.py,2026-11-20,"Buy-back study, step 8: is the RIGHT (CE or PE) chosen for a buy-back the one with more short lots (a balance-control hypothesis, by analogy with the hedge)? Co"
+bl_close_panel.py,2026-11-20,"Contract-minute panel for the BUY-BACK (close) decision of body shorts. Row = (cycle, day, minute j >= 5, contract with a net short position before minute j). E"
+bl_close_test.py,2026-11-20,"Buy-back (close) triggers per contract (plan D): univariate AUC (cluster bootstrap), hazard curves, LOCO incremental value over the premium-move baseline with p"
+bl_clr_full.py,2026-11-24,"Free-run (D-1 + D0) effect of the era clearance regime (364 before 3 Aug 2026, 359 after) on the complete real-log cycles. Output outputs/clr/clr_full.csv."
+bl_clr_test.py,2026-11-24,"D0 clearance-timing test (reports/D0_CLEAR_AND_LATE_TRIGGER.md, pre-registered in that file's plan section)."
+bl_common.py,2026-11-20,"Body lifecycle study: shared builders. Builds on bh_common (order table, Chain, Book) and bh_b1 roles."
+bl_d0_data.py,2026-11-22,"D0 data: true one-minute spot OHLC and option one-minute OHLC for the expiry day (D0 = expiry date) of each live cycle, same layout as the D-1 caches (index j ="
+bl_d0_fr.py,2026-11-22,"D0 chunk 5 (plan reports/D0_FREE_RUN_PLAN.md): free-running D0 simulator from the real carried book, all parts refit on each split's training cycles."
+bl_d0_fr_score.py,2026-11-22,"D0 chunk 5 scoring (plan reports/D0_FREE_RUN_PLAN.md). Lot-level one-to-one matching per cycle x class x right (same minute, then +-1; nearest strike breaks tie"
+bl_d0_inv.py,2026-11-22,D0 step 1 (plan D0_PLAN.md): inventory and carry-over checks.
+bl_d0a.py,2026-11-20,"D0 study, parts A (opening inventory) and B (strike selection). Independent of the D-1 scripts except for the overnight inventory table (a state, not a rule)."
+bl_d0b.py,2026-11-20,"D0 study, parts C (management) and D (ending logic)."
+bl_d0b_auc.py,2026-11-22,"D0 chunk 2, B5 (plan reports/D0_BUYBACKS_PLAN.md): one ranking number for D0 body buy-backs."
+bl_d0b_burst.py,2026-11-22,"D0 chunk 2, burst description (quoted in addendum 2b and the report): in-scope buy-back lots grouped into bursts (same cycle and right, gap <= 30 s)."
+bl_d0b_carry.py,2026-11-22,"D0 chunk 2, addendum 2c (post-hoc, plan reports/D0_BUYBACKS_PLAN.md): is the stop reference of carried (D-1) lots the D0 opening premium (09:15 minute close) in"
+bl_d0b_ledger.py,2026-11-22,D0 chunk 2 data step: body short-lot ledger through D-1 and D0 (real orders). Lots enter at their decision price (ref_px); on a body buy-back the lot removed is
+bl_d0b_mach.py,2026-11-22,"D0 chunk 2, B2 (plan reports/D0_BUYBACKS_PLAN.md): buy-back machines on the real book (real sells; lots leave the book at their real buy-back = 'real' semantics"
+bl_d0b_side.py,2026-11-22,"D0 chunk 2, addendum 2b (plan reports/D0_BUYBACKS_PLAN.md): side-level buy-back trigger."
+bl_d0b_tests.py,2026-11-22,"D0 chunk 2 tests B1, B3, B4 (plan reports/D0_BUYBACKS_PLAN.md). Population: D0 body buy-back lots before 15:10 and before the cycle's stop."
+bl_d0c.py,2026-11-20,"D0 study, part D: ending logic. State of every contract at 15:13:59 IST and after the last event, the orders in 15:14-15:35 by module/role, residual positions, "
+bl_d0c_auc.py,2026-11-23,"AUC gate for D0 counter-sell cells (plan reports/D0_CAUC_PLAN.md). Outputs bl_d0c_auc.csv, bl_d0c_auc_cyc.csv, bl_summary_d0c1.json"
+bl_d0c_expl.py,2026-11-23,"What drives the counter-sell AUC (post-hoc follow-up to reports/D0_CAUC_PLAN.md; labelled post-hoc): family ablation, single families, permutation importance, a"
+bl_d0e_clock.py,2026-11-23,"Is 'other solo' a clock-driven stream? (post-hoc, after the hour/clock-minute finding in bl_d0e_more.py; labelled post-hoc.)"
+bl_d0e_final.py,2026-11-23,"Consequences of the SENSEX strangle timetable (post-hoc): relabel, re-run the AUC gate for strangle cells, and re-check the counter-sell and replacement AUCs wi"
+bl_d0e_more.py,2026-11-23,"Follow-up to bl_d0e_repl.py (post-hoc, labelled in the report): hours by slice, what the other-solo and replacement slices meet, what separates replacement from"
+bl_d0e_repl.py,2026-11-23,"D0 solo slices after the counter-sells: replacement, other solo, far-OTM roll-out (plan reports/D0_REPL_PLAN.md)."
+bl_d0e_strangle.py,2026-11-23,"D0 'other solo' is mostly a strangle timetable (post-hoc, found in the SENSEX version before 16 Sep): a call one strike OTM and a put one strike OTM sold within"
+bl_d0f_abl.py,2026-11-23,"What carries the D0 selling AUC: leave-one-cycle-out with (a) market, book and past buy-backs only, (b) the learned clock features and the time position only, a"
+bl_d0f_auc.py,2026-11-23,"D0 selling, every type, scored on unseen cycles (plan reports/D0_FULL_AUC_PLAN.md)."
+bl_d0f_panel.py,2026-11-23,"[full D0 variant: bl_d0f_panel.py: all cycles with D0 sells, minutes from 09:15, gap features] D0 counter-sell trigger search: builds the minute panel (plan rep"
+bl_d0h_more.py,2026-11-22,D0 chunk 3: addendum 3b (post-hoc) + H6 rules + H8 (plan reports/D0_HEDGE_PLAN.md).
+bl_d0h_tests.py,2026-11-22,"D0 chunk 3 (plan reports/D0_HEDGE_PLAN.md): H1 controller quantity (h_ waves vs gap S - L, all modules, D-1 carried position; variant without v_ positions), H2 "
+bl_d0k_counter.py,2026-11-22,"D0 counter-sells (plan reports/D0_COUNTER_PLAN.md). Events = stop-loss buy-back lots (reason 3, bl_d0y_lots.pkl.gz) on one right in one cycle and minute; counte"
+bl_d0n_decomp.py,2026-11-22,"N7 (post-hoc, after N2-N5): which conditions do counter-labelled sales meet, against chance. Outputs bl_d0n_decomp.csv, bl_d0n_decomp_excl.csv, bl_d0n_minute15."
+bl_d0n_model.py,2026-11-22,"N1 (label vs population) and N2 (trigger search, LOCO gradient boosting) of reports/D0_CTRIG_PLAN.md. Fixed settings: HistGradientBoosting 200 iters, depth 3, l"
+bl_d0n_more.py,2026-11-22,"N4 (tight coupling, timing), H7 (clock), N5 (loss recovery, burst size), N6 (mechanics) of reports/D0_CTRIG_PLAN.md."
+bl_d0n_panel.py,2026-11-22,D0 counter-sell trigger search: builds the minute panel (plan reports/D0_CTRIG_PLAN.md).
+bl_d0n_rule.py,2026-11-22,"N3: from predictors to a rule (reports/D0_CTRIG_PLAN.md). Depth-3 trees, leave-one-cycle-out; threshold picked on the training cycles; cell-level F1 with +-1 mi"
+bl_d0n_tight.py,2026-11-22,N4b: what the same-instant (|lag| <= 2 s) sales are. Post-hoc follow-up to N4 (labelled post-hoc in the report).
+bl_d0n_userview.py,2026-11-22,"Post-hoc check of the reading ""stop-loss buy-back of R + sale of the opposite right R' at the same time, to control sharp moves""."
+bl_d0p_a.py,2026-11-22,Part A of reports/D0_PAIR_PLAN.md: what else decides the sale of the other right after a stop-loss buy-back.
+bl_d0p_a2.py,2026-11-22,"Part A follow-up (post-hoc, after the leak fix): (1) hazard of the first sale after the buy-back by lag; (2) does the minute's own bar (contemporaneous) predict"
+bl_d0p_b.py,2026-11-22,"Part B of reports/D0_PAIR_PLAN.md: what triggers the body buy-back. Builds the lot-state panel (cid, minute j, right) and runs B1-B5."
+bl_d0p_b6.py,2026-11-22,"B6 (post-hoc, after B3/B5): lookback window of the premium breakout, for sales (premium makes a new low) and buy-backs (premium makes a new high, crossing-prese"
+bl_d0q_alltimes.py,2026-11-22,"Every scheduled clock time on D-1 and on D0, per group (underlying x timetable version), with the average lots executed (CE + PE) per active cycle."
+bl_d0q_cycle.py,2026-11-22,"One cycle, D-1 vs D0 scheduled selling side by side (usage: python bl_d0q_cycle.py [cid]; default 4 = NIFTY expiry 2026-07-28, D-1 = 2026-07-27)."
+bl_d0q_detail.py,2026-11-22,"D0 scheduled pairs, full detail for one cycle (usage: python bl_d0q_detail.py [cid]; default 4) + a leave-one-cycle-out recurrence test for all cycles."
+bl_d0q_sched.py,2026-11-22,D0 step 1b (plan reports/D0_SCHEDULED_PLAN.md): scheduled selling in depth.
+bl_d0q_why.py,2026-11-22,"Why D0 has 83 scheduled pairs where D-1 has 33 (cycle 4: NIFTY, expiry 2026-07-28): boundary decomposition + a raster across the NIFTY (timetable V1) cycles."
+bl_d0r_bank.py,2026-11-22,"D0 scheduler structure, step 3 (plan reports/D0_SCHED_RULE_PLAN.md): robustness of T1 to the timer-cost setting, timer FAMILIES (period, second-offset class) ac"
+bl_d0r_chains.py,2026-11-22,"D0 scheduler structure, step 1 (exploratory; plan reports/D0_SCHED_RULE_PLAN.md): decompose a group's clock times into arithmetic progressions ('timers': start,"
+bl_d0r_d1marks.py,2026-11-22,"D-1 scheduled selling per 15-minute mark (all 32 cycles): share of cycles that sell in the 3 minutes after the mark, average straddles per cycle, lots per strad"
+bl_d0r_extra10.py,2026-11-22,"Check of the 14 extra D0 marks (NIFTY, cycles before 16 Sep): offset from the earlier 15-minute marks D0 sells at, strike = ATM of the previous minute's close, "
+bl_d0r_gap.py,2026-11-22,"D0 scheduler structure, step 4 (post-hoc, plan reports/D0_SCHED_RULE_PLAN.md addendum): timers that may SKIP slots."
+bl_d0r_ilp.py,2026-11-22,"D0 scheduler structure, step 2 (plan reports/D0_SCHED_RULE_PLAN.md): minimum-description timer decomposition by integer programming."
+bl_d0r_val.py,2026-11-22,"D0 scheduler structure, validation T1-T4 (plan reports/D0_SCHED_RULE_PLAN.md). Timers from bl_d0r_ilp.solve (periods = multiples of 5 min, chains >= 3, mu = 1.5"
+bl_d0s_auc.py,2026-11-22,"D0 chunk 1, T5 (plan reports/D0_SELLS_PLAN.md + addendum 1c): one ranking number for D0 selling."
+bl_d0s_label.py,2026-11-22,D0 chunk 1 (plan reports/D0_SELLS_PLAN.md): label every D0 body sell order.
+bl_d0s_solo.py,2026-11-22,"D0 chunk 1, addendum 1c (plan reports/D0_SELLS_PLAN.md): competing machines for D0 solo sells, grid-fitted on one cycle half (cid parity), scored on the other."
+bl_d0s_tests.py,2026-11-22,D0 chunk 1 tests T1-T4 (plan reports/D0_SELLS_PLAN.md). Needs bl_d0s_label.py outputs and the D0 spot/option caches.
+bl_d0s_tt.py,2026-11-22,"D0 chunk 1, addendum 1b (plan reports/D0_SELLS_PLAN.md): D0 pair timetable per (underlying, version), learned on one cycle half (cid parity) and scored on the o"
+bl_d0t_types.py,2026-11-22,D0 step 1 (plan reports/D0_SELL_TYPES_PLAN.md): every D0 body sell order gets one type by a fixed precedence; chance levels; multi-label overlap; strike analysi
+bl_d0u_exec.py,2026-11-24,"D0 quantity, Part A: order execution (plan reports/D0_QTY_PLAN.md)."
+bl_d0u_inv.py,2026-11-24,"D0 quantity, Part C: position (inventory) management (plan reports/D0_QTY_PLAN.md)."
+bl_d0u_size.py,2026-11-24,"D0 quantity, Part B: lots per event given the event (plan reports/D0_QTY_PLAN.md)."
+bl_d0v_analysis.py,2026-11-24,"Analysis of bl_d0v_sizing.py runs (plan reports/D0_SIZING_PLAN.md). Metrics fixed in the plan: lot F1, lots per class, peak short lots, cycle cash P&L, stop agr"
+bl_d0v_sizing.py,2026-11-24,D0 sizing treatments in the free-run simulator (plan reports/D0_SIZING_PLAN.md).
+bl_d0w_burst.py,2026-11-24,"D0 burst buy-backs and the open buy-back types (plan reports/D0_BURST_LONG_PLAN.md, Part 1)."
+bl_d0w_burst_placebo.py,2026-11-24,"Placebo (labels shuffled within each cycle) for the BEST feature set of every buy-back outcome, so the gate compares like with like (plan reports/D0_BURST_LONG_"
+bl_d0w_burstlots.py,2026-11-24,"D0 bursts, lot level (plan reports/D0_BURST_LONG_PLAN.md, Part 1): given a burst minute (>= 5 lots bought back on a right), which open lots does it take, and ho"
+bl_d0w_extra.py,2026-11-24,Post-hoc checks (labelled in the report addendum): (1) long buys after the opening minutes only (j >= 5); (2) long sells with the placebo of the same set. Outpu
+bl_d0w_long.py,2026-11-24,"D0 body-stream longs (plan reports/D0_BURST_LONG_PLAN.md, Part 2)."
+bl_d0w_panel.py,2026-11-24,"D0 burst buy-backs and body-stream longs, step 1: enriched minute-cell panel (plan reports/D0_BURST_LONG_PLAN.md)."
+bl_d0x_book.py,2026-11-24,"Carried-book comparison (real vs free-running simulator) at the D-1 close, per complete real cycle: size, side balance, strike distance, premium, wings, D-1 P&L"
+bl_d0x_diag.py,2026-11-24,"Expiry-day (D0) fidelity diagnosis: the D0 simulator started from the REAL carried book of each real cycle, compared with the real D0 orders on"
+bl_d0x_fixA.py,2026-11-24,"Fix A (structural, no fitted parameter): after the closing auction session (D-1 >= 3 Aug 2026) the D-1 breakout window runs to the end of the"
+bl_d0x_stop.py,2026-11-22,"D0 chunk 4 (plan reports/D0_STOP_CLEAR_PLAN.md): S1-S3 cycle stop, C1-C3 15:14 clearance."
+bl_d0y_other.py,2026-11-22,"D0 buy-back reasons, follow-up (plan reports/D0_BB_TYPES_PLAN.md Q3/Q4 + addendum): (1) block-minute association excluding clearance and the stop window, by typ"
+bl_d0y_types.py,2026-11-22,D0 buy-back reasons (plan reports/D0_BB_TYPES_PLAN.md). Every D0 body buy-back lot gets one type by a fixed precedence:
+bl_d0z_open.py,2026-11-24,"D0 opening burst (plan reports/D0_OPEN_ROLL_PLAN.md, Part O). Minute 0 = 09:15:00-09:15:59."
+bl_d0z_post.py,2026-11-24,"Post-hoc / gating checks for Part R (plan addendum): (1) placebo and forward for the PRE-REGISTERED roll-out set 'REF + sale clock' (the R-H1 set, not the best "
+bl_d0z_roll.py,2026-11-24,"D0 roll-out and 'other' buy-backs (plan reports/D0_OPEN_ROLL_PLAN.md, Part R)."
+bl_d1a.py,2026-11-20,"D-1 study, parts A (strike selection) and B (quantity). Outputs outputs/bl_d1_*.csv"
+bl_d1b.py,2026-11-20,"D-1 study, parts C (lifecycle) and D (ending logic). Outputs outputs/bl_d1_C_*.csv, bl_d1_D_*.csv"
+bl_dq_count.py,2026-11-21,"Decoding step 6 (post-hoc): is the number of entries in a candle-side (1, 2, 3+) decided at the first entry? Spearman of the count with the state at the machine"
+bl_dq_fig.py,2026-11-21,"Decoding figures: reports/figures/bl_dq_example_NIFTY.png, bl_dq_example_SENSEX.png (true 30-min candles, channel, machine breaks, real pairs) and bl_dq_summary"
+bl_dq_final.py,2026-11-21,Decoding final evaluation of the true-OHLC machine (previous two completed clock-aligned 30-min candles' high/low; first intrabar break per side per candle; 10:
+bl_dq_gates.py,2026-11-21,"Decoding step 3: what gates (a) a first break that gets no entry and (b) a repeat entry, using a broad feature set: market (extension, minute range, speed, minu"
+bl_dq_ohlc.py,2026-11-21,Decoding step 1: rebuild the 30-minute-candle machine with TRUE one-minute highs/lows (channel = previous K completed clock-aligned 30-min candles; break detect
+bl_dq_repeat_desc.py,2026-11-21,"Decoding step 2a: describe the repeat entries (real pair-minutes after the first entry of the same 30-min candle) with true OHLC: side vs previous entry, gap, e"
+bl_dq_repeat_gate.py,2026-11-21,Decoding step 5 (post-hoc): does a portfolio-stress gate on repeat entries add to the true-OHLC machine? Base = first break per side per 30-min candle (end 15:1
+bl_dq_repeat_sim.py,2026-11-21,"Decoding step 2b: re-entry rules inside a 30-min candle on top of the true-OHLC machine (first break of the previous two candles' high/low, per side)."
+bl_dq_tune.py,2026-11-21,"Decoding step 4: full-session targets (all reactive pair-minutes 10:30-15:29, not cut at 15:15) and a minimum break margin mu (index points as a fraction of a s"
+bl_err_budget.py,2026-11-22,"Lot-construction step 1 (plan D1_LOTS_PLAN.md): error budget of the free-running D-1 reconstruction (primary, out-of-fold orders from bl_fr_score)."
+bl_ev_fit.py,2026-11-22,Buy-back rebalancing events in the simulator (plan reports/BUYBACK_EVENTS_PLAN.md). Out-of-fold (cycle halves) choice of the event parts:
+bl_events.py,2026-11-20,"Time-ordered event tables (D-1 and D0) for ALL modules, with ATM references and contract/right state after every event."
+bl_explore.py,2026-11-20,Exploratory checks that shaped the D-1/D0 analysis (all reproducible from outputs/bl_all_orders.pkl.gz):
+bl_feat_panel.py,2026-11-20,Feature library panel for the solo-sell variable search (see reports/BODY_SOLO_VARIABLE_SEARCH_PLAN.md). Same event/risk-set definition as bl_move_panel.py plus
+bl_figs.py,2026-11-20,Figures for the Body lifecycle report (reports/figures/bl_*.png).
+bl_final_checks.py,2026-11-24,Verification checks requested in review (no new strategy rules): (1) the 3 Feb 2026 first print vs the first tradeable minute; how often the 09:15 print differs
+bl_final_models.py,2026-11-20,"Final comparison: how much of the solo-sell episode-start signal do the candidate variable groups explain (LOCO, non-slot minutes) + chronological-halves replic"
+bl_fr_cell.py,2026-11-22,Free-running D-1: cell-level agreement (cycle x minute x right): does the simulation have any order of a class / any order at all in the same minute (and within
+bl_fr_score.py,2026-11-22,"Free-running D-1 reconstruction vs the real ledger (plan reports/D1_FREE_RUN_PLAN.md): out-of-fold parameters (two cycle halves), lot matching, class and overal"
+bl_fr_sim.py,2026-11-22,"Free-running D-1 simulator (plan reports/D1_FREE_RUN_PLAN.md). sim_cycle(i, P, mode) -> (orders DataFrame, book snapshots)."
+bl_full_auc.py,2026-11-22,"Complete D-1 activity (body + hedge) vs the real ledger: one panel, six activity classes + any activity, LOCO gradient boosting, AUC (plan reports/D1_FULL_AUC_P"
+bl_fwd.py,2026-11-22,Forward (unseen-cycle) test of the complete D-1 reconstruction. Everything learned from earlier cycles only: scheduled timetable (minutes with a scheduled sale 
+bl_fwd_eval.py,2026-11-24,Forward-test evaluation harness (pre-defined in reports/FORWARD_TEST.md; nothing here is tuned on forward data).
+bl_fwd_freeze.py,2026-11-24,Freeze the forward-test score and compute the power of its primary test (reports/FORWARD_TEST.md).
+bl_fwd_power.py,2026-11-24,"Power analysis for the frozen forward test (reports/FORWARD_TEST.md). Per-cycle ladder scores of the development cycles (outputs/trig/ladder_scores.csv, post-au"
+bl_greeks.py,2026-11-20,Black-Scholes helpers shared by the solo-sell variable search.
+bl_hg_fig.py,2026-11-22,Figure for the D-1 long-side study: reports/figures/bl_hg_summary.png
+bl_hg_inv.py,2026-11-22,"D-1 long side, L1: inventory and lifecycle of every D-1 long-side order; contract-level book S/L per right through the day (all modules, flat at the D-1 open); "
+bl_hg_life.py,2026-11-22,"D-1 long side, L3-L5: (L3) h_ waves (orders on one right with decision stamps within 0.05 s) vs the contract-level gap S - L just before (all modules, flat at t"
+bl_hg_lump.py,2026-11-22,"D-1 long side, L6: v_ lumps. Per cycle: lump orders (times, rights, strikes, lots), contract-level book S/L per right just before the first lump order and at ea"
+bl_hg_lump2.py,2026-11-22,"D-1 long side, L6b (POST-HOC hypotheses after bl_hg_lump.py): does the v_ lump (a) neutralise the whole-book delta for the overnight carry, or (b) spend a fixed"
+bl_hg_strike.py,2026-11-22,"D-1 long side, L2: wing strike rule with option one-minute OHLC. Sample: simple D-1 wing buys (h_ open_long, 1 lot) with exactly one 1-lot body open_short on th"
+bl_hg_strike2.py,2026-11-22,"D-1 long side, L2b (POST-HOC): alternative reference prices for the wing strike (calibrated nearest rule, k out-of-fold): ATM same-right price, sold option pric"
+bl_ind_break.py,2026-11-20,"Indicator search step 3 (post-hoc after Donchian position led): breakout reading. (1) robustness of the channel-position activation AUC (halves, underlyings, ve"
+bl_ind_build.py,2026-11-20,"Indicator search step 1 (plan BODY_REACTIVE_INDICATOR_PLAN.md): compute the pre-registered indicator values for the 363 events and 10,890 control seconds. Outpu"
+bl_ind_fig.py,2026-11-20,Figure for the indicator search -> reports/figures/bl_ind_logic.png
+bl_ind_fine.py,2026-11-20,Indicator search step 4: is the channel length N = 60 special? Fine grid of N for the Donchian position (live spot vs the high/low of the previous N completed c
+bl_ind_tests.py,2026-11-20,Indicator search step 2 (plan tests 1-5): per-indicator direction hit (D) and activation AUC (A); family cross-validated scores (parameter chosen on one half of
+bl_late_audit.py,2026-11-24,"Audit of the late D-1 / overnight-book gap (reports/LATE_D1_RULE.md). Reads saved outputs only, plus the real order log and the engine signals:"
+bl_late_rules.py,2026-11-24,"Late D-1 strike and side rules, teacher-forced: at every real late sale (book state as it really was), does a candidate rule predict the real strike / side?"
+bl_late_table.py,2026-11-24,"Late D-1 sale table (D-1 from 14:15 to 15:40): every real short-opening order with the book state just before it, the index state and the last sales."
+bl_late_trigger.py,2026-11-24,"Late D-1 ladder trigger: the engine's own ladder rule with its 60-minute 'new extreme' gate replaced by G minutes (G in 5,10,15,30,60; one parameter)."
+bl_late_value.py,2026-11-24,"Value of the real late D-1 sales, teacher-forced: the D0 simulator is started from the REAL carried book with the real D-1 short-side orders"
+bl_lb_fig.py,2026-11-20,Figure for the look-back study -> reports/figures/bl_lb_logic.png
+bl_lb_tests.py,2026-11-20,"Look-back study (plan BODY_REACTIVE_LOOKBACK_PLAN.md): is 'ATM + 1 step toward the 15-minute move' correct, and is the look-back rolling every minute?"
+bl_lb_tests2.py,2026-11-20,Look-back study part 2: (7) live-spot proxy (linear interpolation between the last two minute closes by the order's second) — is the strike consistent with the 
+bl_lb_tests3.py,2026-11-20,"Look-back study part 3: with the live-spot proxy, is the look-back length identifiable (is 15 special) and what do the remaining misses look like? Output bl_lb_"
+bl_lots_ceiling.py,2026-11-22,Lot-construction step 6: (a) oracle ceilings of the overall D-1 lot F1 (out-of-fold primary reconstruction): what F1 would be if each error cause were fixed per
+bl_lots_fit.py,2026-11-22,"Lot-construction step 5 (plan D1_LOTS_PLAN.md): quantity fixes in the free-running simulator, chosen on training cycles by the overall D-1 lot F1:"
+bl_lots_per_15min.py,2026-11-20,"Body short-sale lots per 15-minute clock bucket (09:15-09:30, ...) per cycle, D-1 and D0, across cycles with that day's log. Outputs outputs/bl_lots_per_15min_{"
+bl_lp_budget.py,2026-11-22,"Lump study step 3 (POST-HOC budget test): lump spend (Rs, main decision) vs candidate budgets at the decision: D-1 MTM P&L (cash + marks, all modules), gross pr"
+bl_lp_dec.py,2026-11-22,"Lump study step 1 (descriptive): group v_ orders into decisions (same right, within 3 s; chunks of the exchange freeze quantity: NIFTY 27 lots, SENSEX 50 lots),"
+bl_lp_equal.py,2026-11-22,"Lump study step 5 (POST-HOC, margin-equalisation hypothesis): the whole book's scenario P&L (marks -> expiry intrinsic) over a spot grid in BOTH directions (0-R"
+bl_lp_fig.py,2026-11-22,Figure for the lump study: reports/figures/bl_lp_summary.png
+bl_lp_final.py,2026-11-22,"Lump study step 6: (a) size models, leave-one-cycle-out (log-linear OLS on main decisions): S_h; S_h + und; S_h + lump price; S_h + und + price; loss at lump st"
+bl_lp_risk.py,2026-11-22,"Lump study step 2 (POST-HOC risk-budget test): at each main lump decision, P&L of the whole book (both rights, all strikes, all modules) from the current marks "
+bl_lp_subset.py,2026-11-22,Lump study step 4 (EXPLORATORY): which subset of heavy-side open shorts does the main lump cover?
+bl_mech_census.py,2026-11-20,"Reactive-pair mechanism study, step 5 (plan test D): census of EVERY D-1 sell order (all modules) in mutually exclusive classes. Outputs bl_mech_census_orders.c"
+bl_mech_fig.py,2026-11-20,Figure for the reactive-pair mechanism study -> reports/figures/bl_mech_logic.png
+bl_mech_panel.py,2026-11-20,"Reactive-pair mechanism study, step 1 (plan BODY_REACTIVE_MECHANISM_PLAN.md): add volume, realised-volatility and range-from-open features to the D-1 cycle-minu"
+bl_mech_strike.py,2026-11-20,"Reactive-pair mechanism study, step 3 (plan test C, strike rule): hit rates of pre-registered strike rules on reactive pairs (and timetable pairs for reference)"
+bl_mech_tests1.py,2026-11-20,"Reactive-pair mechanism study, step 2 (plan tests A and B): onset/stop vs spot excursion and volume; London-open check; clock vs proxies (leave-one-cycle-out GB"
+bl_mech_tests2.py,2026-11-20,"Reactive-pair mechanism study, step 4 (plan tests A/C): the 10:30-15:15 active window (maximum-likelihood gate with cluster bootstrap, by subset), inter-arrival"
+bl_ml_feat.py,2026-11-22,"Learned policies, step 1 (plan D1_ML_PLAN.md): training tables."
+bl_ml_fit.py,2026-11-22,"Learned policies, step 2 (plan D1_ML_PLAN.md): train the solo-sell and buy-back policies on training cycles, choose their thresholds by an inner 2-fold cross-fi"
+bl_ml_tcheck.py,2026-11-22,"Learned policies, step 3 (check): the solo-sell threshold was chosen at the grid edge (0.15). Inner cross-fit lot F1 of the sell model for t in 0.02..0.30 on th"
+bl_move_fig.py,2026-11-20,"Figure: the six largest favourable 60-minute moves (D-1; calls sold into falls, puts into rises) with the solo (single-leg) sales of that right and their runnin"
+bl_move_panel.py,2026-11-20,"User hypothesis test, step 1: build the right-minute panel (D-1 and D0) with market-move and loss features for solo (single-leg) sells."
+bl_move_robust.py,2026-11-20,"Robustness of the move-trigger result: by right (calls into falls vs puts into rises), by underlying, and excluding the last 15 minutes (closing-minute spikes)."
+bl_move_test.py,2026-11-20,"User hypothesis test, step 2: are solo (single-leg) sells triggered by a heavy market move / a loss of x %, and do they drip in during heavy moves?"
+bl_move_test2.py,2026-11-20,"User hypothesis test, step 3: (F) is the trigger the P&L asymmetry between the two legs (other leg losing minus own leg profit)? (E) the 'slow injection' (drip)"
+bl_ohlc.py,2026-11-21,True one-minute spot OHLC for D-1 of each live cycle (the chain cache kept only closes). Index layout matches the chain cache: index j = bar starting 09:15 + j 
+bl_paired_fig.py,2026-11-20,"Figures for the paired-sell study: scheduled ladder by cycle (D-1), D0 slot execution grid with cycle-stop marks, close hazard vs price/entry and |delta| (D-1 a"
+bl_pc_diag.py,2026-11-24,"Post-auction rebuild, step 1 (diagnosis only, no rule changes): real vs simulator per cycle and day, by module and time of day, before / after the closing aucti"
+bl_pc_eval.py,2026-11-24,"Post-auction rebuild, validation (reports/POSTCAS_REBUILD_PLAN.md): old (cycle stop Rs 1.2 lakh) vs rebuilt (Rs 1.45 lakh) simulator against the real log,"
+bl_pc_example.py,2026-11-21,"Pace study example plots (same cycles as the tracker study): reports/figures/bl_pc_example_NIFTY.png, bl_pc_example_SENSEX.png"
+bl_pc_reg.py,2026-11-21,Pace study regularity test (POST-HOC): how closely does each cycle's cumulative count of reactive pairs (and of fires) follow a straight line from 10:30 to 15:1
+bl_pc_sim.py,2026-11-21,"Pace-tracker study (POST-HOC to the book study, motivated by the pace-deficit finding): forward-simulated machines with NO cooldown timer."
+bl_pc_tests.py,2026-11-21,"Pace study checks (POST-HOC): (1) paired cycle bootstrap of out-of-fold F1, pace machine M10 vs refractory machine M1; (2) pace vs time-since-last-pair inside t"
+bl_plot_cycle.py,2026-11-20,"Per-cycle D-1 (or D0) plot of body SHORT sales only (no long wings, no hedges): time vs strike, CE and PE separately, with spot and slot clock."
+bl_pp_costs.py,2026-11-24,Verified cost schedule for the pre-paper-trading battery (reports/PREPAPER_PLAN.md). Rates and sources in the plan; NSE exchange charge 0.0495% before 1 Oct 202
+bl_pp_exec.py,2026-11-24,"Pre-paper-trading battery (reports/PREPAPER_PLAN.md): B1 costs & execution grid, S2 margin-capped sizing, B5 liquidity & capacity, B4 overnight IV shocks."
+bl_pp_run.py,2026-11-24,"Pre-paper-trading battery (reports/PREPAPER_PLAN.md), B2 parameter sensitivity + B3c random-timetable null: full re-simulation of 275 cycles per variant, consta"
+bl_pp_stats.py,2026-11-24,"Pre-paper-trading battery (reports/PREPAPER_PLAN.md): B2 tables, B3 Deflated Sharpe / PBO (CSCV) / random-timetable null, B4 path & tail, headline metrics, gate"
+bl_premium_tests.py,2026-11-24,"Question A of reports/PREMIUM_AND_ARCHITECTURE_PLAN.md: why is near-expiry premium rich? A1 jump vs continuous variance, A2 calendar gap,"
+bl_push2.py,2026-11-22,"Accuracy push, second round: (a) bookkeeping fix: releases of the opening-wing contracts are booked as body-stream long closes (real num close_long: 93% are on "
+bl_qty_events.py,2026-11-22,"Lot-construction step 3: quantity per event. For body sells, per cycle x right x minute cell where both real and simulated sells exist (same minute), real lots "
+bl_react_fig.py,2026-11-20,Figure for the reactive-pair study -> reports/figures/bl_react_logic.png
+bl_react_panel.py,2026-11-20,"Reactive-pair study, step 1 (plan BODY_REACTIVE_PAIR_PLAN.md): classify D-1 pairs as scheduled/reactive; build the D-1 cycle-minute panel (minutes 5..373 withou"
+bl_react_tests1.py,2026-11-20,"Reactive-pair study, step 2 (plan tests 1-4, 6): when, timer-likeness, event-anchored, strike, quantity. Outputs bl_react_*.csv, bl_summary_react1.json"
+bl_react_tests1b.py,2026-11-20,"Reactive-pair study, step 2b: strike identity. Reactive pairs sit one strike off the previous-minute ATM (step 2); test whether the strike is one where the book"
+bl_react_tests2.py,2026-11-20,"Reactive-pair study, step 3 (plan tests 5, 7): which features predict a reactive-pair minute? Panel bl_react_panel.csv.gz (D-1 cycle-minutes without a timetable"
+bl_react_tests3.py,2026-11-20,"Reactive-pair study, step 4: strike side vs the recent move, hazard by move size, fresh extremes. Outputs bl_react_side.csv, bl_react_move_hazard.csv, bl_summar"
+bl_react_waves.py,2026-11-20,Reactive-pair study: exact clock times of the timetable waves per version (answers 'how many waves at what time').
+bl_rep_fit.py,2026-11-22,"Reconstruction improvement step: reactive repeat entries in the free-running simulator (new running-candle extreme beyond the channel after the first entry), re"
+bl_sd_balance.py,2026-11-21,Solo decode step 4 (post-hoc hypothesis from step 3): premium balancing. At each solo decision vs control minutes: marked value of the right's open shorts V_own
+bl_sd_build.py,2026-11-21,Solo decode step 1: option one-minute OHLC cache for D-1 (Breeze option bars incl. high/low) and the solo-sale order table with the state at each sale.
+bl_sd_classes.py,2026-11-21,"Solo decode step 10: split regular solo lots into (a) attached to a reactive fire (within 3 s before to 10 s after a reactive pair, any right), (b) after 15:00,"
+bl_sd_combined.py,2026-11-21,"Solo decode step 9: combined model of the reactive + solo streams, parameters fitted on the other cycle half."
+bl_sd_fig.py,2026-11-21,Figure for the solo decode -> reports/figures/bl_sd_summary.png
+bl_sd_ladder.py,2026-11-21,"Solo decode step 5 (post-hoc): premium-ladder machine. Per right, reference = the last body sale on that right (any type, from the real order stream up to now ="
+bl_sd_late.py,2026-11-21,"Solo decode: after-15:00 regime vs intraday (side relative to the book's heavier side, favourable move since the open, buy-back replacement, minute profile). Ou"
+bl_sd_reactlots.py,2026-11-21,"Solo decode step 8: reactive entries - number of pairs (multi-lot entries) and extra favourable-side lots (""attached solo"") per fire, and what they depend on (b"
+bl_sd_scan.py,2026-11-21,Solo decode step 2: solo decisions (bursts = regular solo lots on the same right within 3 s) vs breakout machines on true one-minute OHLC.
+bl_sd_spotladder.py,2026-11-21,Solo decode step 7 (post-hoc): spot ladder from the previous sale on that right. Reference = spot (previous close) at the last body sale on the right (any type;
+bl_sd_state.py,2026-11-21,Solo decode step 3: state at each solo decision (burst) vs control minutes of the same cycle and right: last-sold contract premium ratio (current/sale price; pr
+bl_sd_tilt.py,2026-11-21,"Solo decode step 6 (post-hoc): tilt target. Per cycle-minute: open body short lots CE and PE, tilt = CE - PE, spot move from the reference (09:15 open, or the f"
+bl_sell_err.py,2026-11-22,"Body-sell error breakdown in the free-running reconstruction (stop design from bl_bb_fit, out-of-fold): recall by real sell type (scheduled / reactive / solo in"
+bl_shape_feats.py,2026-11-20,Candidate 'shape' variables suggested by the flexible-model importance (multi-horizon spot move + time of day). Pre-registered after seeing GB importance (explo
+bl_shape_test.py,2026-11-20,"LOCO test of the shape variables (non-slot minutes): univariate AUC, incremental gain over the baseline (fav30, own_ratio, other_ratio), permutation null, and t"
+bl_size_build.py,2026-11-20,"Sizing study step 1 (plan BODY_SIZING_PLAN.md): unit constancy, pair/solo tables, change-point scan, modal timetables V1/V2."
+bl_size_fig.py,2026-11-20,Figure for the sizing study -> reports/figures/bl_size_logic.png
+bl_size_tests.py,2026-11-20,"Sizing study step 2 (plan tests 2-7). Uses outputs of bl_size_build.py. Cells = (block, in-block offset window) with >= 0.5 pairs per cycle in the version's mod"
+bl_size_tests2.py,2026-11-20,"Sizing study step 3 (plan tests 3-7): classification of every D-1 body sold lot (scheduled-cell / reactive pair / solo), build-up through D-1, solo sells in bet"
+bl_sl_cond.py,2026-11-21,"After-15:00 solo, step 8 (POST-HOC): within minutes where R3 (spot 15-min extreme OR ITM premium 15-min low) holds, which panel variables separate sale from no "
+bl_sl_fig.py,2026-11-21,Figure for the after-15:00 solo study: reports/figures/bl_sl_summary.png
+bl_sl_flow.py,2026-11-21,"After-15:00 solo, step 2: order-flow linkage. (a) For each late regular solo sale vs random control seconds in 15:00-15:30: share with an order of each module/r"
+bl_sl_greeks.py,2026-11-21,"After-15:00 solo, step 1: whole-book Greeks (all modules incl. hedge and lump wings; Black-Scholes from the ATM straddle) at each late solo sale and at intraday"
+bl_sl_panel.py,2026-11-21,"After-15:00 solo, step 3: minute x right panel 15:00-15:29 (label = >= 1 regular late solo lot on that right in the minute) with feature blocks: clock, market/i"
+bl_sl_prem.py,2026-11-21,"After-15:00 solo, step 6 (POST-HOC, labelled): is the trigger the sold option's own premium making a fresh N-minute low (theta/vol decay into the close) rather "
+bl_sl_rest.py,2026-11-21,"After-15:00 solo, step 5: classify every late solo lot by its nearest explanation (post-hoc decomposition, labelled):"
+bl_sl_rule2.py,2026-11-21,"After-15:00 solo, step 7 (POST-HOC rule check, no fitted parameter): minute rules on the late panel scored with +-1 minute tolerance per (cycle, right):"
+bl_sl_tests.py,2026-11-21,"After-15:00 solo, step 4: H2 financing, H3 inventory shaping, late vs intraday drip (same fresh-extreme rule), clock spikes, out-of-fold minute rule."
+bl_slot_panel.py,2026-11-20,"Slot-level panel: one row per (cycle, day, slot k = 09:16 + 15 k, right) with the paired-sale outcome in [slot - 10 s, slot + 90 s) and the state variables know"
+bl_slot_strike.py,2026-11-20,"Strike rule for the scheduled paired sales (plan C). Unit = first scheduled paired sale per (cycle, day, slot, right) in the slot minute. Reference data = chain"
+bl_slot_test.py,2026-11-20,"Slot decisions (plan A/B): is the paired sale a fixed schedule, or does the state at the slot change execution or quantity?"
+bl_solo_burst.py,2026-11-22,"Lot-construction step 2: what sets the size of a solo sell decision? Real stand-alone solo bursts (body solo sells, not attached to a reactive entry, before 15:"
+bl_solo_minute.py,2026-11-22,"Lot-construction step 4: real solo lots per minute (stand-alone, intraday, not within 5 s of a reactive entry) vs the favourable depth beyond the 60-min extreme"
+bl_solo_panel.py,2026-11-21,"Solo recall step 1: rebuild the variables of the earlier solo studies (BODY_SELL_TRIGGERS_D1, BODY_SOLO_SELL_MOVE_TEST, BODY_SOLO_VARIABLE_SEARCH) on a D-1 cycl"
+bl_solo_recon.py,2026-11-21,Solo recall step 2: reconstruct the D-1 solo sells with the earlier findings and rescore.
+bl_solo_strike.py,2026-11-21,Solo recall step 3: strike rule for real solo lots - ATM (previous close) vs the earlier premium-continuity rule (strike whose previous-minute close is nearest 
+bl_thesis_analysis.py,2026-11-24,"Statistics for the design-thesis tests (plan reports/DESIGN_THESIS_PLAN.md): week-cluster bootstrap (2,000 draws, seed 20261124), splits, Holm over the five pri"
+bl_thesis_t56.py,2026-11-24,"Design-thesis plan, Addendum 1 (post-hoc): T5 staggered 15-minute entries vs a single entry; T6 ladder trigger vs reference-book delta."
+bl_thesis_tests.py,2026-11-24,"Market-level tests of the candidate design beliefs (plan reports/DESIGN_THESIS_PLAN.md). Uses only the 3-year D-1/D0 minute chains (outputs/bt3/*.pkl.gz),"
+bl_tilt_test.py,2026-11-20,Tilt-gap hypothesis: the CE/PE composition of the short book tracks the cumulative market move; a solo sale fires when the own side is under-weighted relative t
+bl_trg_band.py,2026-11-21,"Trigger study block A+B (plan BODY_REACTIVE_TRIGGER_PLAN.md): band definition / window identification on the 363 events + 10,890 control seconds."
+bl_trg_drill.py,2026-11-21,Trigger study step 4 (plan block C/E drill-down): which single feature separates firing from non-firing breakout minutes; inter-pair gaps; repeat-strike and sam
+bl_trg_fig.py,2026-11-21,Figure for the trigger study -> reports/figures/bl_trg_logic.png
+bl_trg_leg.py,2026-11-21,"Trigger study step 6 (plan block E, one-pair-per-leg reading suggested by the same-side/time findings): are pairs spaced within a breakout leg?"
+bl_trg_move.py,2026-11-21,"Trigger study step 5 (plan block C/E, added after the drill-down showed time-since-last-pair carries the signal): is it elapsed time or the spot/ATM move since "
+bl_trg_panel.py,2026-11-21,"Trigger study step 2 (plan BODY_REACTIVE_TRIGGER_PLAN.md, Panel B): D-1 cycle-minute panel 10:30-15:15, completed-bar (causal) features at the minute start, lab"
+bl_trg_tests.py,2026-11-21,Trigger study step 3 (plan BODY_REACTIVE_TRIGGER_PLAN.md blocks C-F) on Panel B (outputs/bl_trg_panel.pkl.gz).
+bl_trig_followup.py,2026-11-24,Post-hoc follow-up to bl_trig_test.py (all tests below are ADDED beyond the pre-registered family and counted in the report):
+bl_trig_ladder.py,2026-11-24,"Decision-level confirmation (post-hoc, added to the counted tests): the engine ladder (algo8_d1.ladder_fires) with its extreme gate G in {5,10,15,30,60} minutes"
+bl_trig_table.py,2026-11-24,"Event table for the late D-1 sale trigger (plan: reports/D0_CLEAR_AND_LATE_TRIGGER_PLAN.md). One row per (cycle, minute j, side CE/PE) in the window"
+bl_trig_test.py,2026-11-24,"Late D-1 sale trigger: stratified-AUC tests, BH-FDR, cycle bootstrap, underlying comparison, nested leave-one-cycle-out logistic"
+bl_trigger1.py,2026-11-20,Trigger study part 1 (D-1): pairing structure and clock structure of body short sales.
+bl_trigger2.py,2026-11-20,Trigger study part 2 (D-1): what precedes a single-leg sale episode?
+bl_trigger3.py,2026-11-20,Trigger study part 3 (D-1): does a single-leg sale pick the strike whose premium matches the previous sale on that right?
+bl_trigger_fig.py,2026-11-20,"Example-cycle figure: clock-driven paired sales vs single-leg sales, with the premium ratio of each right's short book (current price / average entry) underneat"
+bl_trk_cap.py,2026-11-21,Tracker study T4 (POST-HOC): does adding a daily capacity (cap on fires) or a refractory that grows with the number of fires improve the stateful range-edge mac
+bl_trk_clusters.py,2026-11-21,Tracker study: group reactive pairs placed within 5 s of each other into 'fires' (one fire can place 2-3 pair-lots). Output bl_trk_fires.csv
+bl_trk_example.py,2026-11-21,"Tracker study deliverable 1: time-aligned D-1 example cycles (rule fixed in BODY_REACTIVE_TRACKER_PLAN.md: >= 8 reactive pairs, count closest to the median over"
+bl_trk_fig.py,2026-11-21,Summary figure for the tracker study -> reports/figures/bl_trk_logic.png
+bl_trk_resid.py,2026-11-21,"Tracker study T3 (POST-HOC): residuals of the stateful range-edge machine M1 (bar variant, N=70, K=12, frozen from the cross-validated search): what separates m"
+bl_trk_side.py,2026-11-21,"Tracker study T5 (POST-HOC): side-specific refractory (K_same after a fire on the same side, K_opp after a fire on the opposite side) on the range-edge machine."
+bl_trk_sim.py,2026-11-21,"Tracker study block T2 (plan BODY_REACTIVE_TRACKER_PLAN.md): forward-simulated per-minute trackers with state reset on fire, scored against the actual reactive "
+bl_trk_sim2.py,2026-11-21,"Tracker study T2 extension (POST-HOC, added after M1 matched the pairs): finer M1 grid, edge-triggered (M7) and band-reset (M5) variants, 100 random half-splits"
+bl_trk_timing.py,2026-11-21,"Tracker study block T1 (plan BODY_REACTIVE_TRACKER_PLAN.md): second-of-minute structure and per-cycle counts. Outputs bl_trk_seconds.csv, bl_trk_counts.csv, bl_"
+bl_unmatched.py,2026-11-24,"Anatomy of the real late D-1 sales (15:15-15:40, post-auction, 18 cycles, 16 Oct excluded) that the best candidate (engine ladder on FUT, gate 5, teacher-forced"
+bl_unres_gap.py,2026-11-24,"Plan reports/UNRESOLVED_THREE_PLAN.md, M2 statistics, G1 tables, G2 tail model, G3 break-even and expected benefit of the long legs."
+bl_unres_margin.py,2026-11-24,"Plan reports/UNRESOLVED_THREE_PLAN.md, M2 / M3 / G1: margin on the REAL book (rebuilt from the real orders) and gap stress of real and simulated carried books."
+bl_unres_nightgaps.py,2026-11-24,"Overnight gaps of the 275 cycle nights measured at the FIRST print of D0 (09:15 open) against the D-1 close, cross-checked against the repo's daily NIFTY / SENS"
+bl_unres_premium.py,2026-11-24,"Plan reports/UNRESOLVED_THREE_PLAN.md, Question 1 (E1-E5): why is the expiry-day premium rich? Settlement = official close of the D0 date from the repo's daily "
+bl_unres_premium_stats.py,2026-11-24,"Statistics for plan reports/UNRESOLVED_THREE_PLAN.md, Question 1 (E1-E5). Week-cluster bootstrap (2,000 draws, seed 20261124)."
+bl_var_gb.py,2026-11-20,"Permutation importance of every library feature in a flexible model (HistGradientBoosting), leave-one-cycle-out, non-slot minutes only. AUC drop when the featur"
+bl_var_search.py,2026-11-20,"Variable search for solo-sell episode starts (plan: reports/BODY_SOLO_VARIABLE_SEARCH_PLAN.md). Univariate AUC (cluster bootstrap, Holm), incremental value over"
+bl_x_rescore.py,2026-11-24,Extended session (15:30-15:39 after the closing auction) and Fix A re-scored (reports/EXTENDED_SESSION_FIXA.md).
+bl_x_settle.py,2026-11-24,Settlement check for the real-log cycle totals: expiring positions settled at the 15:29 index bar (as before) vs at the official closing value
+dd_common.py,2026-11-19,Deep-dive study DD-1: decision structure of the intraday activity in the 35 live cycles. Read-only on all earlier work.
+dd_hedge.py,2026-11-19,"Hedge-module controller test: after each body burst (orders within 3 s) per right, does the hedge module move long-wing lots W so that W equals body short lots "
+dd_roll.py,2026-11-19,"D0 'roll' structure: how many body buy-backs are re-sold (same right, within 60 s) and how does the hazard of buying back a short contract depend on its distanc"
+dd_slots.py,2026-11-19,D-1 slot sizing study: is the lots-per-slot variation (beyond the per-slot mode) explained by market or book state?
+dd_timing.py,2026-11-19,Second-of-minute structure of body exits by day and by price-ratio class (continuous/tick-driven vs minute-clocked).
+make_act_report.py,2026-11-20,"Builds reports/BODY_REACTIVE_ACTIVATION.md from computed outputs (bl_act_*, bl_summary_act*.json)."
+make_all_report.py,2026-11-21,Builds reports/D1_SELLING_RECONSTRUCTION.md (combined D-1 selling check + verification of the eight stated findings).
+make_alpha_report.py,2026-11-24,"Builds reports/ALPHA_SOURCE.md and figures/bl_bt3_alpha.png from outputs/bt3_results/{ablate_*,greeks_*,alpha_*}.csv (plan reports/ALPHA_SOURCE_PLAN.md)."
+make_auc_report.py,2026-11-21,"Builds reports/D1_SELLING_AUC.md and figures/bl_auc_all_roc.png from bl_auc_all*.csv, bl_auc_all_pred.pkl.gz, bl_summary_auc1-2.json."
+make_bb_report.py,2026-11-22,"Builds reports/BUYBACK_DECODE.md and figures/bl_bb_summary.png from bl_bb_*, bl_fr*_overall/classes, bl_sell_err, bl_summary_bb1-8/rep1."
+make_bh_report.py,2026-11-20,Render reports/BODY_HEDGE_MODULE_DEEP_INVESTIGATION.md. Every number in the text is computed here from the bh_*.py outputs (or recomputed from the ledger).
+make_bk_report.py,2026-11-21,"Builds reports/BODY_REACTIVE_BOOK.md from computed outputs (bl_bk_*, bl_pc_*, bl_summary_bk1-3, pc1-4)."
+make_bl_report.py,2026-11-20,"Render reports/BODY_LIFECYCLE_D1_D0_INVESTIGATION.md from the bl_* outputs. Numbers are read from outputs/bl_summary_*.json, bl_*.csv or recomputed here."
+make_bs_report.py,2026-11-22,Builds reports/BUYBACK_STOP2.md and figures/bl_bs_summary.png from bl_bs_* outputs and bl_summary_bs1-6.json (plus bl_bb_tf / bl_fr2 for comparison).
+make_bt3_report.py,2026-11-24,Builds reports/BACKTEST3Y_RESULT.md and figures/bl_bt3_summary.png from outputs/bt3_results (plan reports/BACKTEST3Y_PLAN.md and its two addenda).
+make_bt_report.py,2026-11-22,Builds reports/BUYBACK_STOP3.md and figures/bl_bt_summary.png from bl_bt_* outputs and bl_summary_bt1/5/7.json.
+make_capital_report.py,2026-11-20,Builds reports/BODY_CLOSE_CAPITAL.md from the computed outputs (numbers are read from outputs/bl_book_*.csv|json).
+make_clk_report.py,2026-11-21,"Builds reports/BODY_REACTIVE_CLOCK.md from computed outputs (bl_clk_*, bl_summary_clk1-9.json)."
+make_close_report.py,2026-11-20,Builds reports/BODY_CLOSE_LOGIC.md from the computed outputs (every number below is read from outputs/*.csv|json).
+make_d0b_report.py,2026-11-22,"Builds reports/D0_BUYBACKS.md and figures/bl_d0b_summary.png from the chunk-2 outputs (bl_d0b_*.csv, bl_summary_d0b0..4.json)."
+make_d0c_report.py,2026-11-23,Builds reports/D0_CAUC.md and figures/bl_d0c_summary.png.
+make_d0e_report.py,2026-11-23,Builds reports/D0_REPL.md and figures/bl_d0e_summary.png.
+make_d0f_report.py,2026-11-23,Builds reports/D0_FULL_AUC.md and figures/bl_d0f_summary.png.
+make_d0fr_report.py,2026-11-22,"Builds reports/D0_FREE_RUN.md (chunk 5 + one-page D0 overview) and figures/bl_d0fr_summary.png from bl_d0_fr_*.csv, bl_d0_fr_params.json, bl_fwd.csv / bl_fr_ove"
+make_d0h_report.py,2026-11-22,"Builds reports/D0_HEDGE.md and figures/bl_d0h_summary.png from the chunk-3 outputs (bl_d0h_*.csv, bl_summary_d0h1/2.json)."
+make_d0inv_report.py,2026-11-22,"Builds reports/D0_INVENTORY.md from bl_d0_inv_roles.csv, bl_d0_timetable.csv, bl_summary_d0inv.json."
+make_d0k_report.py,2026-11-22,Builds reports/D0_COUNTER.md and figures/bl_d0k_summary.png from bl_d0k_*.csv and bl_summary_d0k1.json.
+make_d0n_report.py,2026-11-22,Builds reports/D0_CTRIG.md and figures/bl_d0n_summary.png from the bl_d0n_* outputs.
+make_d0p_report.py,2026-11-22,Builds reports/D0_PAIR.md and figures/bl_d0p_summary.png from the bl_d0p_* outputs.
+make_d0q_report.py,2026-11-22,Builds reports/D0_SCHEDULED.md and figures/bl_d0q_summary.png from bl_d0q_*.csv and bl_summary_d0q1.json.
+make_d0qa_report.py,2026-11-22,"Figures figures/bl_d0q_alltimes_<und>_<ver>.png (one per group: D-1 clock times, D0 clock times, average lots per 5-minute slot) and reports/D0_SCHEDULED_ALLTIM"
+make_d0qc_report.py,2026-11-22,"Builds reports/D0_SCHEDULED_CYCLE.md from bl_summary_d0q2_<cid>.json for the cycles plotted by bl_d0q_cycle.py (4, 15, 26)."
+make_d0qw_report.py,2026-11-22,"Builds reports/D0_SCHEDULED_WHY.md from bl_d0q_detail4.csv / bl_d0q_why_cycle.csv / bl_d0q_why_boundaries.csv / bl_d0q_loo.csv and bl_summary_d0q3.json, bl_summ"
+make_d0r_report.py,2026-11-22,"Figures figures/bl_d0r_timers_NIFTY_V1.png (timer chart D-1 vs D0) and figures/bl_d0r_bank.png (timer families across groups and days), and reports/D0_SCHED_RUL"
+make_d0s_report.py,2026-11-22,"Builds reports/D0_SELLS.md and figures/bl_d0s_summary.png from the chunk-1 outputs (bl_d0s_*.csv, bl_summary_d0s0..4.json)."
+make_d0t_report.py,2026-11-22,Builds reports/D0_SELL_TYPES.md and figures/bl_d0t_summary.png from bl_d0t_*.csv / bl_d0t_orders.pkl.gz / bl_summary_d0t1.json.
+make_d0u_report.py,2026-11-24,"Builds reports/D0_QTY.md and figures/bl_d0u_summary.png from the outputs of bl_d0u_exec.py, bl_d0u_size.py, bl_d0u_inv.py. Every verdict is computed from the ta"
+make_d0v_report.py,2026-11-24,Builds reports/D0_SIZING.md and figures/bl_d0v_summary.png from bl_d0v_* outputs. Verdicts are computed from the tables (hypotheses of reports/D0_SIZING_PLAN.md
+make_d0w_report.py,2026-11-24,Builds reports/D0_BURST_LONG.md and figures/bl_d0w_summary.png from bl_d0w_* outputs. Coverage tiers are computed from the test outputs with the mapping written
+make_d0x_report.py,2026-11-22,"Builds reports/RECONSTRUCTION_GAP.md from outputs/d0x/* and outputs/postcas/* (entry / exit / sizing gap vs the real Algo 8, and the anti-overfitting protocol)."
+make_d0y_report.py,2026-11-22,Builds reports/D0_BB_TYPES.md and figures/bl_d0y_summary.png from bl_d0y_*.csv and bl_summary_d0y1/2.json.
+make_d0z_report.py,2026-11-24,Builds reports/D0_OPEN_ROLL.md and figures/bl_d0z_summary.png from bl_d0z_* outputs; recomputes the coverage table (minute-0 buy-backs as their own class; roll-
+make_dd_report.py,2026-11-19,Render ../reports/DD1_INTRADAY_DECISION_STRUCTURE.md from the computed outputs. Every number in the text is computed here.
+make_dq_report.py,2026-11-21,Builds reports/BODY_REACTIVE_DECODE.md from outputs bl_dq_* and bl_summary_dq1-8.json.
+make_ev_report.py,2026-11-22,Builds reports/BUYBACK_EVENTS.md and figures/bl_ev_summary.png from bl_ev_*.csv and bl_summary_ev1.json.
+make_fr_report.py,2026-11-22,Builds reports/D1_FREE_RUN.md and figures/bl_fr_summary.png from bl_fr_*.csv and bl_summary_fr1/fr2.json.
+make_full_report.py,2026-11-22,"Builds reports/D1_FULL_AUC.md and figures/bl_full_auc.png from bl_full_auc.csv, bl_full_overall.csv, bl_full_pred.pkl.gz, bl_full_panel.pkl.gz."
+make_fwd_figs.py,2026-11-24,"Figures for reports/FORWARD_TEST.md (static PNG; palette validated with the dataviz validator: blue/orange/aqua, direct labels + marker shapes as secondary enco"
+make_fwd_report.py,2026-11-22,Builds reports/D1_FORWARD.md from bl_fwd.csv and bl_fwd_classes.csv.
+make_hg_report.py,2026-11-22,Builds reports/D1_LONG_SIDE.md from bl_hg_* outputs and bl_summary_hg*.json.
+make_ind_report.py,2026-11-20,"Builds reports/BODY_REACTIVE_INDICATOR.md from computed outputs (bl_ind_*, bl_summary_ind*.json)."
+make_lb_report.py,2026-11-20,"Builds reports/BODY_REACTIVE_LOOKBACK.md from computed outputs (bl_lb_*, bl_summary_lb*.json)."
+make_lots_report.py,2026-11-22,"Builds reports/D1_LOTS.md and figures/bl_lots_summary.png from bl_err_budget*, bl_qty_events, bl_solo_minute, bl_lots_fit*, bl_summary_lf1.json."
+make_lp_report.py,2026-11-22,Builds reports/D1_LUMP.md from bl_lp_* outputs and bl_summary_lp2-6.json.
+make_mech_report.py,2026-11-20,Builds reports/BODY_REACTIVE_MECHANISM.md from computed outputs (numbers read from outputs/bl_mech_* / bl_react_*).
+make_ml_report.py,2026-11-22,"Builds reports/D1_ACCURACY_PUSH.md and figures/bl_push_summary.png: the learned-policy results (bl_ml_fit.csv, bl_summary_ml2.json) and a scoreboard of every ac"
+make_move_report.py,2026-11-20,Render reports/BODY_SOLO_SELL_MOVE_TEST.md from the bl_move_* outputs.
+make_paired_report.py,2026-11-20,Render reports/BODY_PAIRED_SELL_AND_CLOSE_LOGIC.md from the bl_slot_* and bl_close_* outputs (plan: BODY_PAIRED_SELL_PLAN.md).
+make_pc_report.py,2026-11-24,"Builds reports/POSTCAS_REBUILD_RESULT.md (plan reports/POSTCAS_REBUILD_PLAN.md) from outputs/postcas/* and outputs/prepaper{,_v2}/*."
+make_pp_report.py,2026-11-24,Builds reports/PREPAPER_RESULT.md and figures/bl_prepaper.png (plan reports/PREPAPER_PLAN.md).
+make_premium_arch_report.py,2026-11-24,Builds reports/PREMIUM_AND_ARCHITECTURE.md and figures/bl_premium_arch.png (plan reports/PREMIUM_AND_ARCHITECTURE_PLAN.md).
+make_react_report.py,2026-11-20,Builds reports/BODY_REACTIVE_PAIRS.md from computed outputs (numbers read from outputs/bl_react_*).
+make_regime_report.py,2026-11-24,Builds reports/BACKTEST3Y_REGIME.md and figures/bl_bt3_regime.png from outputs/bt3_results/regime_*.csv (plan reports/BACKTEST3Y_REGIME_PLAN.md).
+make_sd_report.py,2026-11-21,"Builds reports/BODY_SOLO_DECODE.md from outputs bl_sd_*, bl_summary_sd1-9.json."
+make_size_report.py,2026-11-20,Builds reports/BODY_SIZING_LOGIC.md from the computed outputs (numbers read from outputs/bl_size_*.csv|json).
+make_sl_report.py,2026-11-21,"Builds reports/BODY_SOLO_LATE.md from outputs bl_sl_*, bl_summary_sl1-8.json."
+make_thesis_report.py,2026-11-24,"Builds reports/DESIGN_THESIS.md, figures/bl_thesis.png and outputs/thesis/knowledge_graph_{nodes,edges}.csv (plan reports/DESIGN_THESIS_PLAN.md + Addendum 1)."
+make_trg_report.py,2026-11-21,"Builds reports/BODY_REACTIVE_TRIGGER.md from computed outputs (bl_trg_*, bl_summary_trg1-5.json)."
+make_trigger_report.py,2026-11-20,Render reports/BODY_SELL_TRIGGERS_D1.md (clock-driven vs single-leg sales on D-1). Numbers computed from bl_trig_* outputs.
+make_trk_report.py,2026-11-21,"Builds reports/BODY_REACTIVE_TRACKER.md from computed outputs (bl_trk_*, bl_summary_trk1-7.json)."
+make_unres_report.py,2026-11-24,Builds reports/UNRESOLVED_THREE.md and figures/bl_unres.png (plan reports/UNRESOLVED_THREE_PLAN.md).
+make_variable_report.py,2026-11-20,Render reports/BODY_SOLO_VARIABLE_SEARCH.md from the bl_var_* / bl_shape_* / bl_breakout_* / bl_final_models / bl_tilt_* outputs.
+validate_d1_package.py,2026-11-23,Validation of the standalone package d1_strategy/algo8_d1.py against (1) the research simulator bl_fr_sim.py on identical parameters and (2) the real D-1 ledger
+validate_engine.py,2026-11-23,"Validation of the live engine (d1_strategy/d1_algo) by replaying the real one-minute bars of the 32 D-1 sessions through it, second by second, and scoring its o"

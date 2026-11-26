@@ -1,0 +1,44 @@
+{
+ "F1": {
+  "K1 D-1 stop unchanged (high >= 1.6x)": 0.3626,
+  "K2a refit theta and price": 0.3896,
+  "K2b theta per hour block": 0.365,
+  "K2c theta per origin": 0.3862,
+  "K3 + take-profit": 0.3944,
+  "K4 + same-strike partner": 0.3944,
+  "K5 + block clock": 0.3944,
+  "null: final machine shifted +15 min": 0.1569,
+  "null: rate-matched random minutes": 0.2227,
+  "secondary: final machine, own-book semantics": 0.4293
+ },
+ "chosen": {
+  "K1 D-1 stop unchanged (high >= 1.6x)": [
+   "{\"theta\": 1.6, \"price\": \"high\"}",
+   "{\"theta\": 1.6, \"price\": \"high\"}"
+  ],
+  "K2a refit theta and price": [
+   "{\"theta\": 1.4, \"price\": \"high\"}",
+   "{\"theta\": 1.4, \"price\": \"high\"}"
+  ],
+  "K2b theta per hour block": [
+   "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.6, 1.6, 1.2]}",
+   "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.5, 1.4, 1.4]}"
+  ],
+  "K2c theta per origin": [
+   "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [0.8, 1.0]}",
+   "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [1.0, 1.0]}"
+  ],
+  "K3 + take-profit": [
+   "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [0.8, 1.0], \"tp\": 0.1, \"tp_gate\": 0}",
+   "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.5, 1.4, 1.4], \"tp\": 0.1, \"tp_gate\": 0}"
+  ],
+  "K4 + same-strike partner": [
+   "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [0.8, 1.0], \"tp\": 0.1, \"tp_gate\": 0}",
+   "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.5, 1.4, 1.4], \"tp\": 0.1, \"tp_gate\": 0}"
+  ],
+  "K5 + block clock": [
+   "{\"theta\": 1.4, \"price\": \"high\", \"org_mult\": [0.8, 1.0], \"tp\": 0.1, \"tp_gate\": 0}",
+   "{\"theta\": 1.4, \"price\": \"high\", \"theta_blk\": [1.5, 1.4, 1.4], \"tp\": 0.1, \"tp_gate\": 0}"
+  ]
+ }
+}

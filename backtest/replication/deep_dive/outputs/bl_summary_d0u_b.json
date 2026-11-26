@@ -1,0 +1,31 @@
+{
+ "b2_sched_pair_lots_dist": {
+  "1+1": 662,
+  "2+2": 59,
+  "0+1": 13,
+  "1+0": 12,
+  "4+4": 4,
+  "3+3": 3
+ },
+ "b2_state_check_S_diff_equals_lots_body_sell": 0.9889162561576355,
+ "b2_state_check_L_diff_equals_lots_wing_buy": 0.9788248760015261,
+ "b3_solo_cells": 2103,
+ "b3_solo_lots_med": 1.0,
+ "b3_solo_share_1_lot": 0.5140275796481217,
+ "b3_solo_rho_gapfav": 0.010151619819587208,
+ "b3_solo_best_baseline": "class median (other cycles)",
+ "b3_bb_lots_==_n_cross14": 0.04735234215885947,
+ "b3_bb_lots_<=_n_cross14": 0.4694501018329939,
+ "b3_bb_lots_==_round10pct_of_open": 0.05091649694501019,
+ "b3_bb_cells": 1964,
+ "b3_bb_lots_med": 2.0,
+ "b3_bb_share_1_lot": 0.4108961303462322,
+ "b3_bb_frac_open_med": 0.025370092254880926,
+ "b3_bb_frac_open_iqr": [
+  0.013490839833121713,
+  0.05714285714285714
+ ],
+ "b3_bb_rho_n_cross14": 0.22098181554546928,
+ "b3_bb_rho_n_open": 0.05532179661882433,
+ "b3_bb_best_baseline": "class median (other cycles)"
+}

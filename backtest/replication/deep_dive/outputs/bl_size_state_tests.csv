@@ -1,0 +1,37 @@
+target,state_variable,subset,n,spearman,p,perm_p
+sched_total,notional_per_lot,all,32,0.198,0.277,0.28
+sched_total,notional_per_lot,NIFTY,15,0.181,0.519,0.49
+sched_total,notional_per_lot,SENSEX,17,0.325,0.203,0.217
+sched_total,spot_d1_open,all,32,0.219,0.229,0.233
+sched_total,spot_d1_open,NIFTY,15,0.181,0.519,0.533
+sched_total,spot_d1_open,SENSEX,17,0.325,0.203,0.21
+sched_total,straddle_pct_open,all,32,-0.308,0.086,0.073
+sched_total,straddle_pct_open,NIFTY,15,-0.398,0.141,0.15
+sched_total,straddle_pct_open,SENSEX,17,-0.363,0.152,0.14
+sched_total,spot_chg_d1_pct,all,32,-0.061,0.741,0.717
+sched_total,spot_chg_d1_pct,NIFTY,15,0.05,0.859,0.893
+sched_total,spot_chg_d1_pct,SENSEX,17,-0.139,0.595,0.633
+solo,notional_per_lot,all,32,0.201,0.27,0.227
+solo,notional_per_lot,NIFTY,15,0.021,0.939,0.933
+solo,notional_per_lot,SENSEX,17,0.359,0.157,0.143
+solo,spot_d1_open,all,32,0.099,0.591,0.553
+solo,spot_d1_open,NIFTY,15,0.021,0.939,0.93
+solo,spot_d1_open,SENSEX,17,0.359,0.157,0.167
+solo,straddle_pct_open,all,32,-0.041,0.826,0.787
+solo,straddle_pct_open,NIFTY,15,0.138,0.624,0.657
+solo,straddle_pct_open,SENSEX,17,-0.254,0.326,0.34
+solo,spot_chg_d1_pct,all,32,-0.195,0.286,0.283
+solo,spot_chg_d1_pct,NIFTY,15,-0.204,0.466,0.483
+solo,spot_chg_d1_pct,SENSEX,17,-0.302,0.239,0.24
+reactive pair (outside timetable),notional_per_lot,all,32,0.187,0.304,0.3
+reactive pair (outside timetable),notional_per_lot,NIFTY,15,0.289,0.297,0.243
+reactive pair (outside timetable),notional_per_lot,SENSEX,17,-0.017,0.948,0.92
+reactive pair (outside timetable),spot_d1_open,all,32,-0.088,0.634,0.6
+reactive pair (outside timetable),spot_d1_open,NIFTY,15,0.289,0.297,0.323
+reactive pair (outside timetable),spot_d1_open,SENSEX,17,-0.017,0.948,0.963
+reactive pair (outside timetable),straddle_pct_open,all,32,-0.503,0.003,0.003
+reactive pair (outside timetable),straddle_pct_open,NIFTY,15,-0.527,0.044,0.033
+reactive pair (outside timetable),straddle_pct_open,SENSEX,17,-0.35,0.169,0.147
+reactive pair (outside timetable),spot_chg_d1_pct,all,32,-0.08,0.662,0.697
+reactive pair (outside timetable),spot_chg_d1_pct,NIFTY,15,-0.262,0.346,0.387
+reactive pair (outside timetable),spot_chg_d1_pct,SENSEX,17,0.048,0.855,0.86

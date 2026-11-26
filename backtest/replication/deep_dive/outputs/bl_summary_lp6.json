@@ -1,0 +1,101 @@
+{
+ "size": [
+  {
+   "model": "S_h",
+   "MAE_lots": 14.3667,
+   "median_abs_err_pct": 28.0112,
+   "within_5_lots": 0.3,
+   "within_10_lots": 0.5
+  },
+  {
+   "model": "S_h + und",
+   "MAE_lots": 14.7333,
+   "median_abs_err_pct": 27.9133,
+   "within_5_lots": 0.3,
+   "within_10_lots": 0.4
+  },
+  {
+   "model": "S_h + lump price",
+   "MAE_lots": 13.2667,
+   "median_abs_err_pct": 24.0043,
+   "within_5_lots": 0.3667,
+   "within_10_lots": 0.6
+  },
+  {
+   "model": "S_h + und + lump price",
+   "MAE_lots": 17.0333,
+   "median_abs_err_pct": 34.5899,
+   "within_5_lots": 0.2667,
+   "within_10_lots": 0.4333
+  },
+  {
+   "model": "loss at lump strike",
+   "MAE_lots": 12.8,
+   "median_abs_err_pct": 23.8337,
+   "within_5_lots": 0.3333,
+   "within_10_lots": 0.5
+  },
+  {
+   "model": "S_h + und + price + loss",
+   "MAE_lots": 14.9667,
+   "median_abs_err_pct": 30.2231,
+   "within_5_lots": 0.3,
+   "within_10_lots": 0.5
+  }
+ ],
+ "strike": [
+  {
+   "rule": "pct",
+   "param_fold": "1.950/1.750",
+   "exact": 0.0638,
+   "within1": 0.3617
+  },
+  {
+   "rule": "sigma",
+   "param_fold": "2.200/2.200",
+   "exact": 0.3404,
+   "within1": 0.617
+  },
+  {
+   "rule": "premium",
+   "param_fold": "0.060/0.080",
+   "exact": 0.2128,
+   "within1": 0.4681
+  },
+  {
+   "rule": "delta",
+   "param_fold": "0.015/0.025",
+   "exact": 0.234,
+   "within1": 0.617
+  }
+ ],
+ "d0": {
+  "roles": "{(0, 'open_long'): 1489, (1, 'close_long'): 843, (1, 'open_long'): 14, (1, 'open_short'): 95}",
+  "share_sold_d0": 0.5661517797179315,
+  "sell_over_buy_median": 0.06575484696721781,
+  "first_sale_q": {
+   "0.1": 9.266,
+   "0.5": 10.683,
+   "0.9": 14.536
+  },
+  "last_sale_q": {
+   "0.1": 12.842,
+   "0.5": 14.753,
+   "0.9": 15.29
+  },
+  "sale_orders_median": 7.0
+ },
+ "d0_contracts": {
+  "n": 46,
+  "fully_closed_any_module": 0.9565217391304348,
+  "none_sold": 0.021739130434782608,
+  "sold_by_module": {
+   "sold_v_": 924,
+   "sold_num": 380,
+   "sold_h_": 611,
+   "sold_s_": 392,
+   "sold_m_": 16,
+   "sold_all": 2323
+  }
+ }
+}

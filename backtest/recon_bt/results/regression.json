@@ -1,0 +1,55 @@
+{
+ "d1_strategy": {
+  "passed": 60,
+  "failed": 0,
+  "summary": "60 passed in 19.70s"
+ },
+ "d0_strategy": {
+  "passed": 17,
+  "failed": 0,
+  "summary": "17 passed in 0.64s"
+ },
+ "algo8_integrated": {
+  "passed": 4,
+  "failed": 0,
+  "summary": "4 passed in 0.07s"
+ },
+ "backtest/tests": {
+  "passed": 34,
+  "failed": 0,
+  "summary": "34 passed in 12.51s"
+ },
+ "backtest/recon_bt/tests": {
+  "passed": 7,
+  "failed": 0,
+  "summary": "7 passed in 1.86s"
+ },
+ "backtest/replication/execution_parity/tests": {
+  "passed": 33,
+  "failed": 0,
+  "summary": "33 passed in 10.78s"
+ },
+ "backtest/replication/lot_lifecycle/tests": {
+  "passed": 28,
+  "failed": 0,
+  "summary": "28 passed in 16.60s"
+ },
+ "algo8_replica/tests": {
+  "passed": 13,
+  "failed": 0,
+  "summary": "13 passed in 0.82s"
+ },
+ "data_validation/tests": {
+  "passed": 27,
+  "failed": 0,
+  "summary": "27 passed in 2.81s"
+ },
+ "backtest/replication/deep_dive/tests": {
+  "passed": 350,
+  "failed": 0,
+  "summary": "350 passed in 127.83s (0:02:07)"
+ },
+ "total_passed": 573,
+ "total_failed": 0,
+ "date": "2026-11-26"
+}

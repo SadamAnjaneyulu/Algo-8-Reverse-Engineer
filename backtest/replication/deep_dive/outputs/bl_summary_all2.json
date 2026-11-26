@@ -1,0 +1,213 @@
+{
+ "solo_lots_in_orders_ge3": 270,
+ "where": [
+  {
+   "hour_block": "09:15-10:30",
+   "solo_lots": 299,
+   "share": 0.1783,
+   "CE_share": 0.8528
+  },
+  {
+   "hour_block": "10:30-12:00",
+   "solo_lots": 217,
+   "share": 0.1294,
+   "CE_share": 0.6267
+  },
+  {
+   "hour_block": "12:00-13:30",
+   "solo_lots": 319,
+   "share": 0.1902,
+   "CE_share": 0.5893
+  },
+  {
+   "hour_block": "13:30-15:00",
+   "solo_lots": 430,
+   "share": 0.2564,
+   "CE_share": 0.5488
+  },
+  {
+   "hour_block": "15:00-15:30",
+   "solo_lots": 412,
+   "share": 0.2457,
+   "CE_share": 0.6723
+  }
+ ],
+ "rules": [
+  {
+   "price": "close",
+   "lookback_min": 5,
+   "window": "full day",
+   "actual": 1676,
+   "predicted": 5692,
+   "matched": 862,
+   "precision": 0.1514,
+   "recall": 0.5143,
+   "F1": 0.234
+  },
+  {
+   "price": "close",
+   "lookback_min": 5,
+   "window": "until 15:00",
+   "actual": 1209,
+   "predicted": 5290,
+   "matched": 742,
+   "precision": 0.1403,
+   "recall": 0.6137,
+   "F1": 0.2283
+  },
+  {
+   "price": "close",
+   "lookback_min": 15,
+   "window": "full day",
+   "actual": 1676,
+   "predicted": 3082,
+   "matched": 745,
+   "precision": 0.2417,
+   "recall": 0.4445,
+   "F1": 0.3132
+  },
+  {
+   "price": "close",
+   "lookback_min": 15,
+   "window": "until 15:00",
+   "actual": 1209,
+   "predicted": 2850,
+   "matched": 646,
+   "precision": 0.2267,
+   "recall": 0.5343,
+   "F1": 0.3183
+  },
+  {
+   "price": "close",
+   "lookback_min": 30,
+   "window": "full day",
+   "actual": 1676,
+   "predicted": 2022,
+   "matched": 646,
+   "precision": 0.3195,
+   "recall": 0.3854,
+   "F1": 0.3494
+  },
+  {
+   "price": "close",
+   "lookback_min": 30,
+   "window": "until 15:00",
+   "actual": 1209,
+   "predicted": 1855,
+   "matched": 565,
+   "precision": 0.3046,
+   "recall": 0.4673,
+   "F1": 0.3688
+  },
+  {
+   "price": "close",
+   "lookback_min": 60,
+   "window": "full day",
+   "actual": 1676,
+   "predicted": 1275,
+   "matched": 533,
+   "precision": 0.418,
+   "recall": 0.318,
+   "F1": 0.3612
+  },
+  {
+   "price": "close",
+   "lookback_min": 60,
+   "window": "until 15:00",
+   "actual": 1209,
+   "predicted": 1159,
+   "matched": 470,
+   "precision": 0.4055,
+   "recall": 0.3888,
+   "F1": 0.397
+  },
+  {
+   "price": "true high/low (intrabar)",
+   "lookback_min": 5,
+   "window": "full day",
+   "actual": 1676,
+   "predicted": 5920,
+   "matched": 914,
+   "precision": 0.1544,
+   "recall": 0.5453,
+   "F1": 0.2407
+  },
+  {
+   "price": "true high/low (intrabar)",
+   "lookback_min": 5,
+   "window": "until 15:00",
+   "actual": 1209,
+   "predicted": 5496,
+   "matched": 787,
+   "precision": 0.1432,
+   "recall": 0.651,
+   "F1": 0.2348
+  },
+  {
+   "price": "true high/low (intrabar)",
+   "lookback_min": 15,
+   "window": "full day",
+   "actual": 1676,
+   "predicted": 3293,
+   "matched": 830,
+   "precision": 0.252,
+   "recall": 0.4952,
+   "F1": 0.3341
+  },
+  {
+   "price": "true high/low (intrabar)",
+   "lookback_min": 15,
+   "window": "until 15:00",
+   "actual": 1209,
+   "predicted": 3033,
+   "matched": 717,
+   "precision": 0.2364,
+   "recall": 0.5931,
+   "F1": 0.338
+  },
+  {
+   "price": "true high/low (intrabar)",
+   "lookback_min": 30,
+   "window": "full day",
+   "actual": 1676,
+   "predicted": 2154,
+   "matched": 745,
+   "precision": 0.3459,
+   "recall": 0.4445,
+   "F1": 0.389
+  },
+  {
+   "price": "true high/low (intrabar)",
+   "lookback_min": 30,
+   "window": "until 15:00",
+   "actual": 1209,
+   "predicted": 1965,
+   "matched": 651,
+   "precision": 0.3313,
+   "recall": 0.5385,
+   "F1": 0.4102
+  },
+  {
+   "price": "true high/low (intrabar)",
+   "lookback_min": 60,
+   "window": "full day",
+   "actual": 1676,
+   "predicted": 1367,
+   "matched": 636,
+   "precision": 0.4653,
+   "recall": 0.3795,
+   "F1": 0.418
+  },
+  {
+   "price": "true high/low (intrabar)",
+   "lookback_min": 60,
+   "window": "until 15:00",
+   "actual": 1209,
+   "predicted": 1237,
+   "matched": 565,
+   "precision": 0.4568,
+   "recall": 0.4673,
+   "F1": 0.462
+  }
+ ]
+}

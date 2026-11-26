@@ -1,0 +1,173 @@
+after NIFTY|2026-08-03
+after NIFTY|2026-08-17
+after NIFTY|2026-08-24
+after NIFTY|2026-09-07
+after NIFTY|2026-09-21
+after NIFTY|2026-10-05
+after NIFTY|2026-10-12
+after SENSEX|2026-08-05
+after SENSEX|2026-08-12
+after SENSEX|2026-08-19
+after SENSEX|2026-08-26
+after SENSEX|2026-09-09
+after SENSEX|2026-09-16
+after SENSEX|2026-09-23
+after SENSEX|2026-09-30
+after SENSEX|2026-10-07
+after SENSEX|2026-10-14
+after SENSEX|2026-10-21
+before NIFTY|2026-06-29
+before NIFTY|2026-07-06
+before NIFTY|2026-07-13
+before NIFTY|2026-07-20
+before NIFTY|2026-07-27
+before SENSEX|2026-06-24
+before SENSEX|2026-07-01
+before SENSEX|2026-07-08
+before SENSEX|2026-07-15
+before SENSEX|2026-07-22
+before SENSEX|2026-07-29
+{
+ "R1": {
+  "cycles": 18,
+  "sale_minutes": 48,
+  "auc": 0.5642201834862385,
+  "null_mean": 0.5367169724770643,
+  "p": 0.21578421578421578,
+  "cycles_same_direction": "11/17",
+  "share_blocks_with_no_short": 0.0
+ },
+ "R1_held_out": {
+  "cycles": 11,
+  "sale_minutes": 17,
+  "auc": 0.5424528301886793,
+  "null_mean": 0.5286650943396226,
+  "p": 0.44155844155844154,
+  "cycles_same_direction": "4/7",
+  "share_blocks_with_no_short": 0.0
+ },
+ "R2": {
+  "label": "post-auction",
+  "single_side_minutes_with_both_D": 36,
+  "minutes_dropped_no_short_on_a_side": 0,
+  "share_sold_side_has_larger_D": 0.6944444444444444,
+  "ci95": [
+   0.5,
+   0.8571428571428571
+  ],
+  "p_one_sided": 0.02599350162459385,
+  "cycles": 16
+ },
+ "R2_held_out": {
+  "label": "pre-auction (held-out)",
+  "single_side_minutes_with_both_D": 13,
+  "minutes_dropped_no_short_on_a_side": 0,
+  "share_sold_side_has_larger_D": 0.6153846153846154,
+  "ci95": [
+   0.2,
+   0.9375
+  ],
+  "p_one_sided": 0.32516870782304425,
+  "cycles": 6
+ },
+ "R3": {
+  "R_vs_T": {
+   "auc_a": 0.736697247706422,
+   "auc_b": 0.7541284403669725,
+   "delta": -0.01743119266055046,
+   "boot95": [
+    -0.046799353779331525,
+    0.014831032891424739
+   ],
+   "lin95": [
+    -0.0514648616519371,
+    0.016602476330836183
+   ],
+   "p": 0.2798774479245747
+  },
+  "RD_vs_clock": {
+   "auc_a": 0.7197247706422019,
+   "auc_b": 0.7114678899082569,
+   "delta": 0.008256880733944955,
+   "boot95": [
+    -0.023873030181623924,
+    0.04521316102198457
+   ],
+   "lin95": [
+    -0.02960016776150276,
+    0.04611392922939267
+   ],
+   "p": 0.6453976608408483
+  },
+  "T_vs_clock": {
+   "auc_a": 0.7541284403669725,
+   "auc_b": 0.7114678899082569,
+   "delta": 0.0426605504587156,
+   "boot95": [
+    0.0060037750366125275,
+    0.07302074274150389
+   ],
+   "lin95": [
+    0.005485328580715272,
+    0.07983577233671593
+   ],
+   "p": 0.015472515906082007
+  }
+ },
+ "R4": {
+  "after": {
+   "late_sales": 148,
+   "with_same_side_short": 148,
+   "no_same_side_short": 0,
+   "new_strike_closer_to_money": 0.10135135135135136,
+   "same_strike": 0.4391891891891892,
+   "farther": 0.4594594594594595,
+   "median_D_new": -0.9085000000000583,
+   "median_D_before": -1.3347500000000219,
+   "median_improvement_steps": 0.0
+  },
+  "before": {
+   "late_sales": 28,
+   "with_same_side_short": 28,
+   "no_same_side_short": 0,
+   "new_strike_closer_to_money": 0.03571428571428571,
+   "same_strike": 0.25,
+   "farther": 0.7142857142857143,
+   "median_D_new": -0.9640000000000146,
+   "median_D_before": -1.8874000000000524,
+   "median_improvement_steps": -1.0
+  }
+ },
+ "R5": {
+  "D_at_sale": {
+   "n": 48,
+   "median": -1.489749999999949,
+   "p25": -2.4839249999999993,
+   "p75": -1.0550249999999686
+  },
+  "D_other_minutes": {
+   "n": 852,
+   "median": -1.9662499999999272,
+   "p25": -2.713000000000029,
+   "p75": -1.3927499999999782
+  },
+  "share_sale_minutes_without_same_side_short": 0.0,
+  "best_single_threshold_post_hoc": {
+   "threshold_steps": -1.0,
+   "precision": 0.12195121951219512,
+   "recall": 0.20833333333333334,
+   "f1": 0.15384615384615383,
+   "base_rate": 0.05333333333333334
+  }
+ },
+ "R6": {
+  "R2_share_D": 0.6944444444444444,
+  "F2a_share_futures_direction": 0.7777777777777778
+ }
+}
+         id                                                test          statistic      p  p_bh_10  bh_significant_10
+         R1                              hazard AUC of D (post) AUC 0.564 vs 0.537 0.2158   0.4065              False
+R1_held_out                          hazard AUC of D (held-out) AUC 0.542 vs 0.529 0.4416   0.4416              False
+         R2           sold side has the larger D (post-auction)        share 0.694 0.0260   0.1300              False
+R2_held_out sold side has the larger D (pre-auction (held-out))        share 0.615 0.3252   0.4065              False
+         R3            D adds to clock + straddle change (LOCO)        dAUC -0.017 0.2799   0.4065              False

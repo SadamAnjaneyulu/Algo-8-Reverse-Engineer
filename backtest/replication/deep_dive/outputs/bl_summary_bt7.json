@@ -1,0 +1,39 @@
+{
+ "profit_classes": {
+  "none": 58,
+  "stop on the other right (same moment)": 37,
+  "stop on the same right (cluster)": 23,
+  "roll: new sell on the same right": 8,
+  "new sell on the other right": 3
+ },
+ "table": [
+  {
+   "state": "in loss",
+   "held": 86.954,
+   "ratio": 1.505,
+   "sec0": 0.53,
+   "hour": 12.305,
+   "partner_same_strike_other_right": 0.06,
+   "stop_like_any_right": 0.689,
+   "stop_like_same_right": 0.679,
+   "stop_like_other_right": 0.009,
+   "sell_same_right": 0.068,
+   "sell_other_right": 0.292,
+   "n": 1176
+  },
+  {
+   "state": "in profit",
+   "held": 92.574,
+   "ratio": 0.804,
+   "sec0": 0.566,
+   "hour": 12.163,
+   "partner_same_strike_other_right": 0.341,
+   "stop_like_any_right": 0.465,
+   "stop_like_same_right": 0.178,
+   "stop_like_other_right": 0.287,
+   "sell_same_right": 0.186,
+   "sell_other_right": 0.171,
+   "n": 129
+  }
+ ]
+}

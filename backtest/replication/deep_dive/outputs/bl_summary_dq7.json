@@ -1,0 +1,224 @@
+{
+ "machines": [
+  {
+   "machine": "FINAL: true high/low, previous 2 candles, intrabar break, per side, 10:30-15:15",
+   "F1": 0.8151,
+   "precision": 0.8952,
+   "recall": 0.7482,
+   "F1_same_minute": 0.7873,
+   "fires": 229,
+   "targets": 274,
+   "bar_precision": 0.9263,
+   "bar_recall": 0.9805,
+   "bar_odds": 310.9219
+  },
+  {
+   "machine": "placebo: clock shifted +5 min",
+   "F1": 0.5434,
+   "precision": 0.5625,
+   "recall": 0.5255,
+   "F1_same_minute": 0.4755,
+   "fires": 256,
+   "targets": 274,
+   "bar_precision": 0.8649,
+   "bar_recall": 0.9366,
+   "bar_odds": 41.8462
+  },
+  {
+   "machine": "placebo: clock shifted +15 min (09:15-aligned candles)",
+   "F1": 0.4661,
+   "precision": 0.5132,
+   "recall": 0.427,
+   "F1_same_minute": 0.3944,
+   "fires": 228,
+   "targets": 274,
+   "bar_precision": 0.8677,
+   "bar_recall": 0.8,
+   "bar_odds": 14.4
+  },
+  {
+   "machine": "placebo: clock shifted -1 min",
+   "F1": 0.7525,
+   "precision": 0.8225,
+   "recall": 0.6934,
+   "F1_same_minute": 0.6693,
+   "fires": 231,
+   "targets": 274,
+   "bar_precision": 0.911,
+   "bar_recall": 0.8488,
+   "bar_odds": 32.3567
+  },
+  {
+   "machine": "previous 1 candle",
+   "F1": 0.5899,
+   "precision": 0.5652,
+   "recall": 0.6168,
+   "F1_same_minute": 0.5375,
+   "fires": 299,
+   "targets": 274,
+   "bar_precision": 0.7632,
+   "bar_recall": 0.9902,
+   "bar_odds": 83.7778
+  },
+  {
+   "machine": "previous 3 candles",
+   "F1": 0.7316,
+   "precision": 0.8989,
+   "recall": 0.6168,
+   "F1_same_minute": 0.7013,
+   "fires": 188,
+   "targets": 274,
+   "bar_precision": 0.9286,
+   "bar_recall": 0.8244,
+   "bar_odds": 36.8333
+  },
+  {
+   "machine": "channel from closes, break by close (earlier report)",
+   "F1": 0.6391,
+   "precision": 0.6953,
+   "recall": 0.5912,
+   "F1_same_minute": 0.4892,
+   "fires": 233,
+   "targets": 274,
+   "bar_precision": 0.8869,
+   "bar_recall": 0.9561,
+   "bar_odds": 78.4
+  },
+  {
+   "machine": "true channel, break by close only",
+   "F1": 0.6245,
+   "precision": 0.74,
+   "recall": 0.5401,
+   "F1_same_minute": 0.5401,
+   "fires": 200,
+   "targets": 274,
+   "bar_precision": 0.9381,
+   "bar_recall": 0.8878,
+   "bar_odds": 67.9203
+  },
+  {
+   "machine": "one entry per candle (not per side)",
+   "F1": 0.7943,
+   "precision": 0.8986,
+   "recall": 0.7117,
+   "F1_same_minute": 0.7699,
+   "fires": 217,
+   "targets": 274,
+   "bar_precision": 0.9263,
+   "bar_recall": 0.9805,
+   "bar_odds": 310.9219
+  }
+ ],
+ "subsets": [
+  {
+   "subset": "all",
+   "cycles": 32,
+   "F1": 0.8151,
+   "precision": 0.8952,
+   "recall": 0.7482,
+   "F1_same_minute": 0.7873,
+   "fires": 229,
+   "targets": 274,
+   "bar_precision": 0.9263,
+   "bar_recall": 0.9805,
+   "bar_odds": 310.9219
+  },
+  {
+   "subset": "NIFTY",
+   "cycles": 15,
+   "F1": 0.834,
+   "precision": 0.9279,
+   "recall": 0.7574,
+   "F1_same_minute": 0.8016,
+   "fires": 111,
+   "targets": 136,
+   "bar_precision": 0.9619,
+   "bar_recall": 0.9902,
+   "bar_odds": 1111.0
+  },
+  {
+   "subset": "SENSEX",
+   "cycles": 17,
+   "F1": 0.7969,
+   "precision": 0.8644,
+   "recall": 0.7391,
+   "F1_same_minute": 0.7734,
+   "fires": 118,
+   "targets": 138,
+   "bar_precision": 0.8929,
+   "bar_recall": 0.9709,
+   "bar_odds": 152.7778
+  },
+  {
+   "subset": "V1 (to 2026-09-09)",
+   "cycles": 21,
+   "F1": 0.8232,
+   "precision": 0.894,
+   "recall": 0.7627,
+   "F1_same_minute": 0.7866,
+   "fires": 151,
+   "targets": 177,
+   "bar_precision": 0.9375,
+   "bar_recall": 0.9783,
+   "bar_odds": 315.0
+  },
+  {
+   "subset": "V2 (from 2026-09-16)",
+   "cycles": 11,
+   "F1": 0.8,
+   "precision": 0.8974,
+   "recall": 0.7216,
+   "F1_same_minute": 0.7886,
+   "fires": 78,
+   "targets": 97,
+   "bar_precision": 0.9041,
+   "bar_recall": 0.9851,
+   "bar_odds": 339.4286
+  },
+  {
+   "subset": "first half of cycles",
+   "cycles": 16,
+   "F1": 0.8372,
+   "precision": 0.931,
+   "recall": 0.7606,
+   "F1_same_minute": 0.8062,
+   "fires": 116,
+   "targets": 142,
+   "bar_precision": 0.9636,
+   "bar_recall": 0.9907,
+   "bar_odds": 1298.5
+  },
+  {
+   "subset": "second half of cycles",
+   "cycles": 16,
+   "F1": 0.7918,
+   "precision": 0.8584,
+   "recall": 0.7348,
+   "F1_same_minute": 0.7673,
+   "fires": 113,
+   "targets": 132,
+   "bar_precision": 0.8879,
+   "bar_recall": 0.9694,
+   "bar_odds": 131.9444
+  }
+ ],
+ "first_entry": {
+  "candle_sides_with_real_entry": 221,
+  "machine_within_1min": 205,
+  "exact_minute": 198,
+  "capture": 0.9276018099547512,
+  "exact_share": 0.8959276018099548
+ },
+ "budget": {
+  "targets": 274,
+  "matched": 205,
+  "repeat_in_candle": 49,
+  "after_1515": 8,
+  "first_entry_timing_off": 5,
+  "no_machine_break": 7
+ },
+ "fires_unmatched": {
+  "no_real_entry_in_candle_side": 17,
+  "timing_off": 6
+ }
+}

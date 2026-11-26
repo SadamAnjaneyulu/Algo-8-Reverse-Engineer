@@ -1,0 +1,31 @@
+model,outcome,cells,auc,within_cycle_auc
+"market, book and past buy-backs only (no clock features)",any D0 sell,3601,0.8528,0.8602
+"market, book and past buy-backs only (no clock features)",scheduled pair,1283,0.9345,0.9413
+"market, book and past buy-backs only (no clock features)",opening pair,42,0.9992,
+"market, book and past buy-backs only (no clock features)",re-centre pair,164,0.8499,0.8042
+"market, book and past buy-backs only (no clock features)",breakout pair,90,0.7688,0.762
+"market, book and past buy-backs only (no clock features)",other pair,176,0.907,0.7489
+"market, book and past buy-backs only (no clock features)",strangle pair,781,0.9721,0.9254
+"market, book and past buy-backs only (no clock features)",opening solo,77,0.9984,0.9999
+"market, book and past buy-backs only (no clock features)",counter-sell solo,523,0.8853,0.8917
+"market, book and past buy-backs only (no clock features)",replacement solo,343,0.9008,0.8633
+"market, book and past buy-backs only (no clock features)",extreme solo,145,0.9272,0.9227
+"market, book and past buy-backs only (no clock features)",late solo,16,0.9873,
+"market, book and past buy-backs only (no clock features)",far-OTM solo,225,0.8821,0.8509
+"market, book and past buy-backs only (no clock features)",other solo,258,0.8104,0.8044
+"market, book and past buy-backs only (no clock features)",event pairs (re-centre + breakout + other pair; post-hoc group),416,0.8865,0.7671
+learned clock features + time position only,any D0 sell,3601,0.8409,0.8577
+learned clock features + time position only,scheduled pair,1283,0.9969,0.9986
+learned clock features + time position only,opening pair,42,0.9994,
+learned clock features + time position only,re-centre pair,164,0.8048,0.7092
+learned clock features + time position only,breakout pair,90,0.7456,0.6105
+learned clock features + time position only,other pair,176,0.9298,0.8435
+learned clock features + time position only,strangle pair,781,0.9786,0.9447
+learned clock features + time position only,opening solo,77,0.9978,0.9998
+learned clock features + time position only,counter-sell solo,523,0.5685,0.5363
+learned clock features + time position only,replacement solo,343,0.713,0.6521
+learned clock features + time position only,extreme solo,145,0.5415,0.5773
+learned clock features + time position only,late solo,16,0.9894,
+learned clock features + time position only,far-OTM solo,225,0.9027,0.8809
+learned clock features + time position only,other solo,258,0.6483,0.6687
+learned clock features + time position only,event pairs (re-centre + breakout + other pair; post-hoc group),416,0.8815,0.7291

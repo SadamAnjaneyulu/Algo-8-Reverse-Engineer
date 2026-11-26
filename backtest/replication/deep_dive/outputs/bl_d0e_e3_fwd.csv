@@ -1,0 +1,10 @@
+slice,variant,auc
+replacement solo,"V1 causal (bars to j-1, orders before minute j)",0.8473
+replacement solo,V2 + the minute's own bar,0.9015
+replacement solo,V3 + same-minute buy-backs (partly definitional),0.9744
+other solo,"V1 causal (bars to j-1, orders before minute j)",0.7994
+other solo,V2 + the minute's own bar,0.8504
+other solo,V3 + same-minute buy-backs (partly definitional),0.8713
+far-OTM solo,"V1 causal (bars to j-1, orders before minute j)",
+far-OTM solo,V2 + the minute's own bar,
+far-OTM solo,V3 + same-minute buy-backs (partly definitional),

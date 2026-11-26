@@ -1,0 +1,9 @@
+outcome,best_set,auc,lo,forward,placebo,within_cycle,E_auc,gain_over_E,gate
+any buy-back,E + clock,0.8581,0.8436,0.8154,,0.8493,0.8516,0.0066,met
+burst (>= 5 lots),ALL (E + lot state + clock),0.9222,0.905,0.8993,0.5867,0.8651,0.9197,0.0025,met
+stop-loss,E + lot state,0.9332,0.9229,0.9339,,0.9355,0.9271,0.0061,met
+take-profit,E existing families,0.951,0.9244,0.9376,,0.9492,0.951,0.0,met
+partner,E + clock,0.9118,0.8897,0.9575,,0.9229,0.8967,0.0152,met
+roll-out,E + clock,0.8415,0.8121,0.8118,,0.8182,0.8268,0.0147,not met
+burst member,E + lot state,0.9026,0.8766,0.8704,,0.8651,0.8999,0.0027,met
+other,ALL (E + lot state + clock),0.7915,0.7531,0.7802,0.5115,0.7901,0.7882,0.0033,not met

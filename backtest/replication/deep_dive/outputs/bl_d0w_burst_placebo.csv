@@ -1,0 +1,9 @@
+outcome,best_set,placebo_auc
+any buy-back,E + clock,0.5625
+burst (>= 5 lots),ALL (E + lot state + clock),0.5867
+stop-loss,E + lot state,0.5615
+take-profit,E existing families,0.6397
+partner,E + clock,0.5184
+roll-out,E + clock,0.4978
+burst member,E + lot state,0.5861
+other,ALL (E + lot state + clock),0.5115

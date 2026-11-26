@@ -1,0 +1,5 @@
+state (live spot vs trailing 60-min closes),share_of_events,share_of_control_seconds,ratio,rate_per1000_min
+beyond the 60-min high or low (|pos| > 0.5),0.6501,0.065,10.0,277.0
+within 5% of the band (|pos| >= 0.45),0.8788,0.1685,5.2153,144.4627
+within 10% (|pos| >= 0.40),0.9311,0.2725,3.4176,94.6673
+inner half of the range (|pos| < 0.25),0.0331,0.4316,0.0766,2.1217

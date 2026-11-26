@@ -1,0 +1,91 @@
+{
+ "R1_choice": {
+  "lot": null,
+  "minute": null
+ },
+ "R2_auc": 0.9539895242090384,
+ "R2_auc_excl_slot": 0.9535884461678534,
+ "R2_by_time": [
+  {
+   "window": "09:15-15:00",
+   "actual_lots": 1209,
+   "model_lots": 757,
+   "precision": 0.5667107001321003,
+   "recall": 0.3548387096774194
+  },
+  {
+   "window": "15:00-15:30",
+   "actual_lots": 467,
+   "model_lots": 138,
+   "precision": 0.5652173913043478,
+   "recall": 0.1670235546038544
+  }
+ ],
+ "rows": [
+  {
+   "model": "R0 stated: fresh 15-min extreme of closes",
+   "unit": "lot",
+   "F1": 0.3147,
+   "precision": 0.2381,
+   "recall": 0.4642,
+   "params": ""
+  },
+  {
+   "model": "R0 stated: fresh 15-min extreme of closes",
+   "unit": "minute",
+   "F1": 0.3107,
+   "precision": 0.1919,
+   "recall": 0.8164,
+   "params": ""
+  },
+  {
+   "model": "R1 earlier-findings rule: fresh extreme AND book conditions (out-of-fold)",
+   "unit": "lot",
+   "F1": 0.4325,
+   "precision": 0.429,
+   "recall": 0.4362,
+   "params": "[(60, 'bkhl', 9, 0, 1), (60, 'bkhl', 9, 0, 0)]"
+  },
+  {
+   "model": "R1 in-sample best",
+   "unit": "lot",
+   "F1": 0.4349,
+   "precision": 0.4278,
+   "recall": 0.4421,
+   "params": "(60, 'bkhl', 9, 0, 0)"
+  },
+  {
+   "model": "R1 earlier-findings rule: fresh extreme AND book conditions (out-of-fold)",
+   "unit": "minute",
+   "F1": 0.4611,
+   "precision": 0.3535,
+   "recall": 0.6628,
+   "params": "[(60, 'bkhl', 0.9, 0.9, 1), (60, 'bkhl', 1.1, 0, 1)]"
+  },
+  {
+   "model": "R1 in-sample best",
+   "unit": "minute",
+   "F1": 0.4785,
+   "precision": 0.3488,
+   "recall": 0.7617,
+   "params": "(60, 'bkhl', 9, 0, 1)"
+  },
+  {
+   "model": "R2 best model on all earlier variables (LOCO, threshold out-of-fold)",
+   "unit": "lot",
+   "F1": 0.396,
+   "precision": 0.5687,
+   "recall": 0.3037,
+   "params": "GB"
+  },
+  {
+   "model": "R2 best model on all earlier variables (LOCO, threshold out-of-fold)",
+   "unit": "minute",
+   "F1": 0.5244,
+   "precision": 0.4872,
+   "recall": 0.5677,
+   "params": "GB"
+  }
+ ],
+ "grid_size": 320
+}

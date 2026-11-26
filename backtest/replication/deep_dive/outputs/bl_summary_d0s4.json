@@ -1,0 +1,113 @@
+{
+ "auc": {
+  "A same-minute market + rules": 0.9323,
+  "B causal (market lagged 1 min)": 0.8927,
+  "C A + real buy-back history (earlier minutes) + book": 0.9442,
+  "C0 C + same-minute buy-backs (teacher-forced)": 0.9521,
+  "timetable + clock only": 0.834
+ },
+ "auc_ci": {
+  "A same-minute market + rules": [
+   0.9053,
+   0.9571
+  ],
+  "B causal (market lagged 1 min)": [
+   0.8593,
+   0.9272
+  ],
+  "C A + real buy-back history (earlier minutes) + book": [
+   0.9282,
+   0.9587
+  ],
+  "C0 C + same-minute buy-backs (teacher-forced)": [
+   0.9402,
+   0.963
+  ],
+  "timetable + clock only": [
+   0.8045,
+   0.8634
+  ]
+ },
+ "auc_no_wave": {
+  "A same-minute market + rules": 0.8962,
+  "B causal (market lagged 1 min)": 0.8298,
+  "C A + real buy-back history (earlier minutes) + book": 0.9178,
+  "C0 C + same-minute buy-backs (teacher-forced)": 0.9311,
+  "timetable + clock only": 0.7403
+ },
+ "cells": 15670,
+ "positives": 3605,
+ "by_type": {
+  "grid_pair": {
+   "cells_with_sale": 876,
+   "A same-minute market + rules": 0.9743,
+   "B causal (market lagged 1 min)": 0.9722,
+   "C A + real buy-back history (earlier minutes) + book": 0.9734,
+   "C0 C + same-minute buy-backs (teacher-forced)": 0.9768,
+   "timetable + clock only": 0.9745
+  },
+  "offgrid_pair": {
+   "cells_with_sale": 815,
+   "A same-minute market + rules": 0.9625,
+   "B causal (market lagged 1 min)": 0.9567,
+   "C A + real buy-back history (earlier minutes) + book": 0.9668,
+   "C0 C + same-minute buy-backs (teacher-forced)": 0.9687,
+   "timetable + clock only": 0.9256
+  },
+  "solo": {
+   "cells_with_sale": 2108,
+   "A same-minute market + rules": 0.9074,
+   "B causal (market lagged 1 min)": 0.8427,
+   "C A + real buy-back history (earlier minutes) + book": 0.9265,
+   "C0 C + same-minute buy-backs (teacher-forced)": 0.9385,
+   "timetable + clock only": 0.7425
+  }
+ },
+ "cc": [
+  {
+   "quintile": 0,
+   "mv_lo": -14.4671,
+   "mv_hi": -0.078,
+   "cells": 2835,
+   "solo_rate": 0.1175,
+   "AUC_bb_other_now": 0.5937,
+   "AUC_bb_other_prev5": 0.5772
+  },
+  {
+   "quintile": 1,
+   "mv_lo": -0.078,
+   "mv_hi": 0.0274,
+   "cells": 2834,
+   "solo_rate": 0.0713,
+   "AUC_bb_other_now": 0.592,
+   "AUC_bb_other_prev5": 0.572
+  },
+  {
+   "quintile": 2,
+   "mv_lo": 0.0275,
+   "mv_hi": 0.138,
+   "cells": 2835,
+   "solo_rate": 0.091,
+   "AUC_bb_other_now": 0.6163,
+   "AUC_bb_other_prev5": 0.5766
+  },
+  {
+   "quintile": 3,
+   "mv_lo": 0.1381,
+   "mv_hi": 0.3347,
+   "cells": 2834,
+   "solo_rate": 0.1658,
+   "AUC_bb_other_now": 0.5944,
+   "AUC_bb_other_prev5": 0.6074
+  },
+  {
+   "quintile": 4,
+   "mv_lo": 0.3347,
+   "mv_hi": 31.9542,
+   "cells": 2835,
+   "solo_rate": 0.2981,
+   "AUC_bb_other_now": 0.6535,
+   "AUC_bb_other_prev5": 0.6167
+  }
+ ]
+}

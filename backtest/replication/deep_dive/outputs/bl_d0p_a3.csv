@@ -1,0 +1,4 @@
+rule,share_events_on,p_sale_10s_on,p_sale_10s_off,p_sale_2s_on,p_sale_2s_off,p_sale_60s_on,p_sale_60s_off,gate_accepted
+stump on secs_since_solo_R_sale,0.0,,0.3417015341701534,,0.200836820083682,,0.6136680613668062,False
+stump on min_in_15,0.0,,0.3417015341701534,,0.200836820083682,,0.6136680613668062,False
+depth-2 tree on secs_since_solo_R_sale + min_in_15,0.0,,0.3417015341701534,,0.200836820083682,,0.6136680613668062,False

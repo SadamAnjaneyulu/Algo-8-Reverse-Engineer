@@ -1,0 +1,227 @@
+{
+ "F1": {
+  "cycles": 11,
+  "sale_minutes": 17,
+  "auc": 0.5235849056603774,
+  "null_mean": 0.5023207547169811,
+  "p_one_sided": 0.6343656343656343,
+  "cycles_lower_is_sale": "3/7",
+  "post_auc_same_minutes_360_374": 0.42585551330798477,
+  "power_estimate_7cycles_15min": 0.25,
+  "rule": "AUC<=0.40 and p<=0.05 supported; AUC>=0.50 contradicted; else inconclusive"
+ },
+ "F1p": {
+  "post_auc": 0.318348623853211,
+  "placebo_mean": 0.43864220183486236,
+  "placebo_p05": 0.3678440366972477,
+  "p_one_sided": 0.001998001998001998
+ },
+ "PB3": {
+  "feature": "PP",
+  "auc": 0.5385321100917431,
+  "null_mean": 0.5369844036697248,
+  "p_two_sided": 0.5034965034965035,
+  "cycles_same_direction": "9/17"
+ },
+ "PB4": {
+  "feature": "GB",
+  "auc": 0.6201834862385321,
+  "null_mean": 0.5637880733944954,
+  "p_two_sided": 0.08391608391608392,
+  "cycles_same_direction": "13/17"
+ },
+ "F2a": {
+  "label": "post-auction (development)",
+  "single_side_minutes": 36,
+  "cycles": 16,
+  "contrarian_share": 0.7777777777777778,
+  "ci95": [
+   0.6332894736842105,
+   0.9047991071428573
+  ],
+  "p_one_sided": 0.0004998750312421895,
+  "cycles_leaning_contrarian": "9/13 (cycles with >=2 such minutes)",
+  "side_has_larger_option_premium_fall_share_F2b": 0.8055555555555556
+ },
+ "F2a_heldout": {
+  "label": "pre-auction (held-out)",
+  "single_side_minutes": 13,
+  "cycles": 6,
+  "contrarian_share": 0.8461538461538461,
+  "ci95": [
+   0.6,
+   1.0
+  ],
+  "p_one_sided": 0.007498125468632842,
+  "cycles_leaning_contrarian": "4/4 (cycles with >=2 such minutes)",
+  "side_has_larger_option_premium_fall_share_F2b": 0.6923076923076923
+ },
+ "F3": {
+  "J_vs_T": {
+   "auc_a": 0.7275229357798165,
+   "auc_b": 0.7541284403669725,
+   "delta": -0.026605504587155965,
+   "boot95": [
+    -0.06410416666666666,
+    0.012451790921538104
+   ],
+   "lin95": [
+    -0.07011884795764506,
+    0.016907838783333122
+   ],
+   "p": 0.19704670770480925
+  },
+  "T_vs_clock": {
+   "auc_a": 0.7541284403669725,
+   "auc_b": 0.7114678899082569,
+   "delta": 0.0426605504587156,
+   "boot95": [
+    0.004646177685950423,
+    0.07258269407290849
+   ],
+   "lin95": [
+    0.005485328580715272,
+    0.07983577233671593
+   ],
+   "p": 0.015472515906082007
+  },
+  "J_vs_clock": {
+   "auc_a": 0.7275229357798165,
+   "auc_b": 0.7114678899082569,
+   "delta": 0.016055045871559634,
+   "boot95": [
+    -0.03313833169165359,
+    0.0632556749591687
+   ],
+   "lin95": [
+    -0.03832839155593502,
+    0.07043848329905428
+   ],
+   "p": 0.5333775160375045
+  }
+ },
+ "PB1": {
+  "after": {
+   "orders": 27,
+   "matched": 27,
+   "sold_above_entry": 0.0,
+   "median_ratio": 0.65,
+   "share_h_module": 0.7407407407407407,
+   "lots_weighted_profit_share": 0.0
+  },
+  "before": {
+   "orders": 7,
+   "matched": 7,
+   "sold_above_entry": 0.0,
+   "median_ratio": 0.7333333333333334,
+   "share_h_module": 1.0,
+   "lots_weighted_profit_share": 0.0
+  }
+ },
+ "PB2": {
+  "close_long_orders": 27,
+  "within_60s_of_short_burst": 24,
+  "share": 0.8888888888888888,
+  "null_share_mean": 0.1998148148148148,
+  "p_one_sided": 0.0004997501249375312,
+  "excess": 0.6890740740740741
+ },
+ "PB5": {
+  "late_orders": 148,
+  "share": 0.24324324324324326,
+  "null_mean": 0.20441891891891892,
+  "excess": 0.03882432432432434,
+  "p_one_sided": 0.3353323338330835
+ },
+ "F4": {
+  "pair_events": [
+   {
+    "cyc": "NIFTY|2026-08-24",
+    "time": "15:29:02",
+    "n": 11,
+    "ce_lots": 3,
+    "pe_lots": 8,
+    "same_strike": 0,
+    "interleg_gap": 1.0
+   },
+   {
+    "cyc": "NIFTY|2026-09-21",
+    "time": "15:28:17",
+    "n": 2,
+    "ce_lots": 1,
+    "pe_lots": 1,
+    "same_strike": 1,
+    "interleg_gap": 0.0
+   },
+   {
+    "cyc": "SENSEX|2026-08-05",
+    "time": "15:29:56",
+    "n": 6,
+    "ce_lots": 2,
+    "pe_lots": 4,
+    "same_strike": 0,
+    "interleg_gap": 1.0
+   },
+   {
+    "cyc": "SENSEX|2026-08-12",
+    "time": "15:30:00",
+    "n": 5,
+    "ce_lots": 2,
+    "pe_lots": 3,
+    "same_strike": 0,
+    "interleg_gap": 0.0
+   },
+   {
+    "cyc": "SENSEX|2026-08-26",
+    "time": "15:28:37",
+    "n": 5,
+    "ce_lots": 4,
+    "pe_lots": 1,
+    "same_strike": 1,
+    "interleg_gap": 0.0
+   },
+   {
+    "cyc": "SENSEX|2026-10-21",
+    "time": "15:29:35",
+    "n": 6,
+    "ce_lots": 2,
+    "pe_lots": 4,
+    "same_strike": 0,
+    "interleg_gap": 1.0
+   }
+  ],
+  "cycles_with_pair": 6,
+  "of": 18,
+  "pre_auction_events": 0,
+  "pre_auction_pairs": 0,
+  "pre_auction_event_times": [],
+  "state_1527_mean_pair_vs_other": {
+   "sold_deficit_CE_row_1527": [
+    -17.166666666666668,
+    -16.333333333333332
+   ],
+   "PP_1527": [
+    0.06319739914769452,
+    -0.0034526815064946912
+   ],
+   "GB_1527": [
+    -59800.75,
+    -44799.833333333336
+   ],
+   "STR15_1527": [
+    -0.03743655353144695,
+    -0.024588092506817604
+   ]
+  }
+ }
+}
+         id                                       test          statistic      p  p_bh_10  bh_significant_10
+         F1            held-out straddle (pre-auction) AUC 0.524 vs 0.502 0.6344   0.6344              False
+        F1p straddle placebo (cross-cycle permutation) AUC 0.318 vs 0.439 0.0020   0.0060               True
+        PB3                           hazard AUC of PP AUC 0.539 vs 0.537 0.5035   0.5664              False
+        PB4                           hazard AUC of GB AUC 0.620 vs 0.564 0.0839   0.1510              False
+        F2a           side by futures direction (post)        share 0.778 0.0005   0.0022               True
+F2a_heldout              side by index direction (pre)        share 0.846 0.0075   0.0169               True
+         F3    side term adds to timing model (J vs T)        dAUC -0.027 0.1970   0.2956              False
+        PB2         close_long sells near short bursts      24/27 vs 0.20 0.0005   0.0022               True
+        PB5          any-side cover in previous 10 min     0.243 vs 0.204 0.3353   0.4311              False

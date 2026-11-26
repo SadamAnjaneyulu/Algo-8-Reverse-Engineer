@@ -1,0 +1,20 @@
+D-1 short strike-positions (cycle x right x strike): 456 in 32 cycles | carried short 358 (0.785) | closed in D-1 98
+lots sold per position quantiles [4.0, 8.0, 14.0, 21.0] | peak short quantiles [3.0, 7.0, 12.0, 18.5] | sell orders per position [3.0, 8.0, 14.0]
+strikes per (cycle,right) with short on D-1: median 7 IQR [5.0, 8.0]
+hold minutes (closed positions, first short -> last flat): quantiles [0.0, 20.0, 87.0, 184.0, 261.0]
+lots: sold 4750 ; carried short at D-1 end 3238 (0.682)
+FIFO body short lots entered on D-1: 4725 | closed on D-1: 0.305 | carried to D0: 0.695 | close reasons D-1 closes: {'BODY_BUYBACK': 0.919, 'STOP_MODULE': 0.081} | D0 closes: {'BODY_BUYBACK': 0.744, 'STOP_MODULE': 0.133, 'SETTLEMENT': 0.123}
+FIFO hold minutes for D-1 closes: quantiles [7.5, 36.5, 92.7, 171.8, 228.2]
+  convention sensitivity: carried-to-D0 share using LIFO close rows missing (carried) share -> 0.0
+  convention sensitivity: carried-to-D0 share using LOW_ENTRY_FIRST close rows missing (carried) share -> 0.0
+  convention sensitivity: carried-to-D0 share using HIGH_ENTRY_FIRST close rows missing (carried) share -> 0.0
+D-1 body sell lots by 15-min bucket: {'09:15': 226, '09:30': 185, '09:45': 235, '10:00': 110, '10:15': 354, '10:30': 149, '10:45': 183, '11:00': 187, '11:15': 174, '11:30': 148, '11:45': 276, '12:00': 171, '12:15': 71, '12:30': 222, '12:45': 108, '13:00': 111, '13:15': 109, '13:30': 163, '13:45': 155, '14:00': 147, '14:15': 181, '14:30': 200, '14:45': 132, '15:00': 247, '15:15': 304, '15:30': 123}
+D-1 body cover lots by 15-min bucket: {'09:15': 15, '09:30': 19, '09:45': 22, '10:00': 26, '10:15': 57, '10:30': 22, '10:45': 39, '11:00': 57, '11:15': 15, '11:30': 28, '11:45': 69, '12:00': 65, '12:15': 43, '12:30': 112, '12:45': 118, '13:00': 99, '13:15': 45, '13:30': 64, '13:45': 89, '14:00': 30, '14:15': 59, '14:30': 54, '14:45': 71, '15:00': 47, '15:15': 50, '15:30': 9}
+last body sale per cycle (IST): quantiles ['14:46', '15:08', '15:19', '15:25', '15:29', '15:32', '15:35'] | share of cycles with a body sale at/after 15:00: 0.969  after 15:15: 0.812
+top body-cover minutes on D-1: {'12:47': 45, '14:55': 30, '14:54': 29, '13:41': 27, '15:05': 26, '13:47': 25, '13:48': 22, '15:16': 20}  share of D-1 cover lots in top 8 minutes: 0.169
+top body-sale minutes on D-1: {'09:16': 189, '10:16': 167, '12:31': 138, '15:15': 121, '09:46': 116, '15:31': 111, '09:31': 109, '11:01': 102}
+last body order of D-1 per cycle (IST) quantiles ['14:46', '15:22', '15:28', '15:30', '15:35']
+overnight inventory (contracts): 790 {'long': {'size': 432, '<lambda_0>': 4749}, 'short': {'size': 358, '<lambda_0>': 3238}}
+carried shorts: steps from close spot quantiles [0.3, 0.7, 1.6, 2.6, 4.2] | close price quantiles [41.0, 128.7, 342.4]
+carried shorts by right moneyness (CE strike below spot=ITM): ITM share 0.425
+per cycle carried lots: short median 102, long median 157; cycles with zero carried shorts 0 of 31

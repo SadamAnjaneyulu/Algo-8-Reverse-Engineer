@@ -1,0 +1,99 @@
+{
+ "machines": [
+  {
+   "machine": "closes channel, close break (previous report)",
+   "F1": 0.6493,
+   "precision": 0.6953,
+   "recall": 0.609,
+   "F1_same_minute": 0.497,
+   "fires": 233,
+   "bar_precision": 0.8824,
+   "bar_recall": 0.9701,
+   "bar_odds": 116.25
+  },
+  {
+   "machine": "true high/low channel, close break",
+   "F1": 0.6352,
+   "precision": 0.74,
+   "recall": 0.5564,
+   "F1_same_minute": 0.5494,
+   "fires": 200,
+   "bar_precision": 0.933,
+   "bar_recall": 0.9005,
+   "bar_odds": 73.7923
+  },
+  {
+   "machine": "closes channel, intrabar high/low break",
+   "F1": 0.5741,
+   "precision": 0.5808,
+   "recall": 0.5677,
+   "F1_same_minute": 0.4335,
+   "fires": 260,
+   "bar_precision": 0.8306,
+   "bar_recall": 1.0,
+   "bar_odds": 15678.0
+  },
+  {
+   "machine": "TRUE high/low channel + intrabar high/low break",
+   "F1": 0.8283,
+   "precision": 0.8952,
+   "recall": 0.7707,
+   "F1_same_minute": 0.8,
+   "fires": 229,
+   "bar_precision": 0.9217,
+   "bar_recall": 0.995,
+   "bar_odds": 1200.0
+  },
+  {
+   "machine": "true HL, K=1",
+   "F1": 0.5982,
+   "precision": 0.5652,
+   "recall": 0.6353,
+   "F1_same_minute": 0.5451,
+   "fires": 299,
+   "bar_precision": 0.7519,
+   "bar_recall": 0.995,
+   "bar_odds": 160.6061
+  },
+  {
+   "machine": "true HL, K=3",
+   "F1": 0.7445,
+   "precision": 0.8989,
+   "recall": 0.6353,
+   "F1_same_minute": 0.7137,
+   "fires": 188,
+   "bar_precision": 0.9286,
+   "bar_recall": 0.8408,
+   "bar_odds": 43.0625
+  },
+  {
+   "machine": "true HL, one entry per bar (not per side)",
+   "F1": 0.8075,
+   "precision": 0.8986,
+   "recall": 0.7331,
+   "F1_same_minute": 0.7826,
+   "fires": 217,
+   "bar_precision": 0.9217,
+   "bar_recall": 0.995,
+   "bar_odds": 1200.0
+  }
+ ],
+ "errors": {
+  "real_total": 266,
+  "real_matched": 205,
+  "real_repeat_in_machine_bar": 55,
+  "real_first_in_bar_timing_off": 5,
+  "real_in_no_machine_bar": 1,
+  "mach_total": 229,
+  "mach_matched": 205,
+  "mach_in_bar_without_real": 17,
+  "mach_timing_off": 6
+ },
+ "timing_off_diffs": [
+  6,
+  7,
+  9,
+  9,
+  10
+ ]
+}

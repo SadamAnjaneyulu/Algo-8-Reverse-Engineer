@@ -1,0 +1,7 @@
+model,MAE_lots,median_abs_err_pct,within_5_lots,within_10_lots
+S_h,14.367,28.011,0.3,0.5
+S_h + und,14.733,27.913,0.3,0.4
+S_h + lump price,13.267,24.004,0.367,0.6
+S_h + und + lump price,17.033,34.59,0.267,0.433
+loss at lump strike,12.8,23.834,0.333,0.5
+S_h + und + price + loss,14.967,30.223,0.3,0.5

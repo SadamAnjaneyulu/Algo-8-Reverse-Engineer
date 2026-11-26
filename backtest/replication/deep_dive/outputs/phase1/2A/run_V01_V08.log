@@ -1,0 +1,8 @@
+V01 {'ladder_book_condition': True} | orders 8565 rej 0 legacy 0.6978 | body F1 0.7699 strict 0.6149 rec 0.717 prec 0.831 lots 3789 extras 639
+V02 {'ladder_gate_min': 15} | orders 11056 rej 2 legacy 0.6511 | body F1 0.6987 strict 0.5382 rec 0.748 prec 0.656 lots 5008 extras 1723
+V03 {'ladder_gate_min': 5} | orders 12043 rej 2 legacy 0.6312 | body F1 0.673 strict 0.5165 rec 0.751 prec 0.609 lots 5420 extras 2117
+V04 {'ladder_lots_mode': 'steps'} | orders 9498 rej 0 legacy 0.6702 | body F1 0.7348 strict 0.571 rec 0.742 prec 0.728 lots 4475 extras 1217
+V05 {'ladder_lots_mode': 'steps', 'ladder_step': 0.1} | orders 12273 rej 247 legacy 0.6132 | body F1 0.6591 strict 0.4815 rec 0.804 prec 0.559 lots 6345 extras 2801
+V06 {'ladder_lots_mode': 'steps', 'ladder_step': 0.05} | orders 17079 rej 903 legacy 0.4842 | body F1 0.5166 strict 0.3632 rec 0.845 prec 0.372 lots 10042 extras 6305
+V07 {'ladder_step': 0.1} | orders 10756 rej 127 legacy 0.6737 | body F1 0.734 strict 0.5442 rec 0.79 prec 0.686 lots 5071 extras 1594
+V08 {'ladder_step': 0.05} | orders 13150 rej 644 legacy 0.6122 | body F1 0.6602 strict 0.4694 rec 0.831 prec 0.548 lots 6713 extras 3037

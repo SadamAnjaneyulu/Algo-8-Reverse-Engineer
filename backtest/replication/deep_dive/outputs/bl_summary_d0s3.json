@@ -1,0 +1,106 @@
+{
+ "M1 spot ladder": {
+  "F1": 0.3772,
+  "precision": 0.4593,
+  "recall": 0.32,
+  "chosen": "(0.05, 60, True) | (0.05, 60, True)"
+ },
+ "M2 premium ladder": {
+  "F1": 0.3396,
+  "precision": 0.3098,
+  "recall": 0.3758,
+  "chosen": "(0.05, True) | (0.05, True)"
+ },
+ "M3 counter-sell on real buy-backs": {
+  "F1": 0.3143,
+  "precision": 0.2839,
+  "recall": 0.352,
+  "chosen": "0.5 | 1.0"
+ },
+ "M4 union ladder + counter-sell": {
+  "F1": 0.3952,
+  "precision": 0.3665,
+  "recall": 0.4288,
+  "chosen": "('M1', (0.05, 60, True), 0.25) | ('M1', (0.1, 60, True), 0.5)"
+ },
+ "D-1 ladder unchanged (X 0.2, gate 60, 1 lot)": {
+  "F1": 0.1542,
+  "precision": 0.8421,
+  "recall": 0.0849,
+  "chosen": "(0.2, 60, False) | (0.2, 60, False)"
+ },
+ "placebo M1 (0.05, 60, True) on cycle-permuted spot (all cycles)": {
+  "F1": 0.095,
+  "precision": 0.1235,
+  "recall": 0.0772,
+  "chosen": "placebo"
+ },
+ "M1 (0.05, 60, True) real spot (all cycles, same config, for the placebo comparison)": {
+  "F1": 0.3772,
+  "precision": 0.4593,
+  "recall": 0.32,
+  "chosen": "reference"
+ },
+ "placebo M1 (0.1, 60, True) on cycle-permuted spot (all cycles)": {
+  "F1": 0.09,
+  "precision": 0.1681,
+  "recall": 0.0614,
+  "chosen": "placebo"
+ },
+ "M1 (0.1, 60, True) real spot (all cycles, same config, for the placebo comparison)": {
+  "F1": 0.3302,
+  "precision": 0.559,
+  "recall": 0.2343,
+  "chosen": "reference"
+ },
+ "placebo M3 r 0.5, buy-backs shifted +600 s": {
+  "F1": 0.1524,
+  "precision": 0.1746,
+  "recall": 0.1352,
+  "chosen": "placebo"
+ },
+ "placebo M3 r 0.5, buy-backs shifted -600 s": {
+  "F1": 0.1937,
+  "precision": 0.2144,
+  "recall": 0.1766,
+  "chosen": "placebo"
+ },
+ "M3 r 0.5 real buy-back times (all cycles, reference)": {
+  "F1": 0.3245,
+  "precision": 0.3659,
+  "recall": 0.2916,
+  "chosen": "reference"
+ },
+ "post-hoc: M1 extended grid (X 0.02-0.05, gate 60-120)": {
+  "F1": 0.378,
+  "precision": 0.4212,
+  "recall": 0.3427,
+  "chosen": "(0.05, 60, True) | (0.03, 60, True)"
+ },
+ "burst_coupling": {
+  "bursts": 2032,
+  "share_bursts_with_other_bb": 0.5797244094488189,
+  "lots_share": 0.7241615331964408,
+  "dt_q": [
+   -82.0,
+   -62.0,
+   -16.5,
+   15.75,
+   57.0
+  ],
+  "lots_ratio_q": [
+   0.125,
+   0.25,
+   0.5,
+   1.0,
+   2.5
+  ],
+  "prem_ratio_q": [
+   0.06451277752838452,
+   0.16907904918028296,
+   0.4685060826737987,
+   1.2074420276154723,
+   2.8941740098475237
+  ]
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "chosen": [
+  {
+   "fold": 0,
+   "rep_max": 0,
+   "rep_gap": 2,
+   "F1_train": 0.7274
+  },
+  {
+   "fold": 1,
+   "rep_max": 0,
+   "rep_gap": 2,
+   "F1_train": 0.7865
+  }
+ ],
+ "overall": {
+  "variant": "FR + decoded buy-back + reactive repeats",
+  "real_lots": 13655,
+  "sim_lots": 10811,
+  "matched": 8391,
+  "precision": 0.7761539173064471,
+  "recall": 0.6145001830831197,
+  "F1": 0.6859314967710292,
+  "F1_strict": 0.4486225782718875,
+  "F1_within1": 0.622169541404398,
+  "F1_modelled_classes_only": 0.6989878795451706,
+  "real_lots_modelled": 13198
+ }
+}

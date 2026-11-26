@@ -1,0 +1,9 @@
+outcome,variant,features,auc,lo,hi,prauc,within_cycle_auc,within_cycle_cycles,positive_rate
+counter-sell cell,"V1 causal (bars to j-1, orders before minute j)",64,0.8817,0.8587,0.9032,0.2905,0.8727,22,0.0452
+counter-sell cell,V2 + the minute's own bar,71,0.9352,0.9097,0.9553,0.5069,0.9316,22,0.0452
+counter-sell cell,V3 + same-minute buy-backs (partly definitional),74,0.9569,0.9346,0.9725,0.6125,0.955,22,0.0452
+counter-sell cell,placebo (V1 features shuffled within cycle),64,0.5817,0.5166,0.6307,0.0574,0.4967,22,0.0452
+any solo-sale cell,"V1 causal (bars to j-1, orders before minute j)",64,0.8769,0.8622,0.8893,0.5422,0.8573,22,0.1356
+any solo-sale cell,V2 + the minute's own bar,71,0.9254,0.9094,0.9387,0.7052,0.9157,22,0.1356
+any solo-sale cell,V3 + same-minute buy-backs (partly definitional),74,0.9302,0.9164,0.9432,0.7151,0.9229,22,0.1356
+any solo-sale cell,placebo (V1 features shuffled within cycle),64,0.6709,0.6094,0.7103,0.2152,0.4892,22,0.1356

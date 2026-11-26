@@ -1,0 +1,50 @@
+split,cid,real_stop_j,sim_stop_j,agree,dj
+OOF (cycle halves),0,310.0,128.0,both,-182.0
+OOF (cycle halves),1,,,neither,
+OOF (cycle halves),2,0.0,0.0,both,0.0
+OOF (cycle halves),3,,,neither,
+OOF (cycle halves),4,,,neither,
+OOF (cycle halves),5,,305.0,sim only,
+OOF (cycle halves),6,0.0,0.0,both,0.0
+OOF (cycle halves),7,,,neither,
+OOF (cycle halves),9,,,neither,
+OOF (cycle halves),10,299.0,,real only,
+OOF (cycle halves),12,,,neither,
+OOF (cycle halves),13,3.0,,real only,
+OOF (cycle halves),14,11.0,10.0,both,-1.0
+OOF (cycle halves),15,,,neither,
+OOF (cycle halves),16,,,neither,
+OOF (cycle halves),17,,,neither,
+OOF (cycle halves),18,105.0,,real only,
+OOF (cycle halves),19,,,neither,
+OOF (cycle halves),20,,,neither,
+OOF (cycle halves),21,7.0,6.0,both,-1.0
+OOF (cycle halves),22,,,neither,
+OOF (cycle halves),23,0.0,0.0,both,0.0
+OOF (cycle halves),24,,,neither,
+OOF (cycle halves),25,,,neither,
+OOF (cycle halves),26,,335.0,sim only,
+OOF (cycle halves),27,0.0,0.0,both,0.0
+OOF (cycle halves),28,,,neither,
+OOF (cycle halves),29,,,neither,
+OOF (cycle halves),30,1.0,0.0,both,-1.0
+OOF (cycle halves),31,,251.0,sim only,
+"forward A (same version, later cycles)",6,0.0,0.0,both,0.0
+"forward A (same version, later cycles)",23,0.0,0.0,both,0.0
+"forward A (same version, later cycles)",7,,,neither,
+"forward A (same version, later cycles)",24,,,neither,
+"forward A (same version, later cycles)",9,,,neither,
+"forward A (same version, later cycles)",25,,,neither,
+"forward A (same version, later cycles)",30,1.0,0.0,both,-1.0
+"forward A (same version, later cycles)",14,11.0,10.0,both,-1.0
+"forward A (same version, later cycles)",31,,227.0,sim only,
+"forward B (train V1, test V2)",10,299.0,,real only,
+"forward B (train V1, test V2)",12,,,neither,
+"forward B (train V1, test V2)",13,3.0,,real only,
+"forward B (train V1, test V2)",14,11.0,10.0,both,-1.0
+"forward B (train V1, test V2)",26,,,neither,
+"forward B (train V1, test V2)",27,0.0,0.0,both,0.0
+"forward B (train V1, test V2)",28,,,neither,
+"forward B (train V1, test V2)",29,,,neither,
+"forward B (train V1, test V2)",30,1.0,0.0,both,-1.0
+"forward B (train V1, test V2)",31,,227.0,sim only,
